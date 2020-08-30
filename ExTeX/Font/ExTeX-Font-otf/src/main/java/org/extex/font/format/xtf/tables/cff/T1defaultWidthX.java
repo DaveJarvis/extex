@@ -26,8 +26,7 @@ import java.util.List;
  * defaultWidthX.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class T1defaultWidthX extends T1DictNumber {
 
     /**

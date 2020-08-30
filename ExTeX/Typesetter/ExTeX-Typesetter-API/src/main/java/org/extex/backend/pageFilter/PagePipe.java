@@ -27,8 +27,7 @@ import org.extex.typesetter.type.page.Page;
  * in a new node list.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4486 $
- */
+*/
 public interface PagePipe {
 
     /**

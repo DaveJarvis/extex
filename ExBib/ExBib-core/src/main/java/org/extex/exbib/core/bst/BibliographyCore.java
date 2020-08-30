@@ -44,76 +44,75 @@ import java.util.logging.Logger;
  * This is the core implementation of a bibliography.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BibliographyCore implements Bibliography, Observable {
 
     /**
-     * The field <tt>db</tt> contains the database.
+     * The field {@code db} contains the database.
      */
     private DB db;
 
     /**
-     * The field <tt>citations</tt> contains the mapping from normalized forms
+     * The field {@code citations} contains the mapping from normalized forms
      * of citation strings to their original representation. The normalization
      * simply converts strings to their lowercase counterpart.
      */
     private Map<String, String> citations;
 
     /**
-     * The field <tt>endParseObservers</tt> contains the list of observers
+     * The field {@code endParseObservers} contains the list of observers
      * triggered when the parsing is started.
      */
     private final ObserverList endParseObservers = new ObserverList();
 
     /**
-     * The field <tt>parseObservers</tt> contains the list of observers
+     * The field {@code parseObservers} contains the list of observers
      * triggered when the parsing is completed.
      */
     private final ObserverList parseObservers = new ObserverList();
 
     /**
-     * The field <tt>startParseObservers</tt> contains the list of observers
+     * The field {@code startParseObservers} contains the list of observers
      * triggered when the parsing starts.
      */
     private final ObserverList startParseObservers = new ObserverList();
 
     /**
-     * The field <tt>startReadObservers</tt> contains the list of observers
+     * The field {@code startReadObservers} contains the list of observers
      * triggered when the parsing ends.
      */
     private final ObserverList startReadObservers = new ObserverList();
 
     /**
-     * The field <tt>setOptionObservers</tt> contains the list of observers
+     * The field {@code setOptionObservers} contains the list of observers
      * triggered when an option is set.
      */
     private final ObserverList setOptionObservers = new ObserverList();
 
     /**
-     * The field <tt>bibliographyDatabases</tt> contains the list of
+     * The field {@code bibliographyDatabases} contains the list of
      * bibliography databases to consider.
      */
     private List<String> bibliographyDatabases;
 
     /**
-     * The field <tt>bibliographyStyles</tt> contains the list of bibliography
+     * The field {@code bibliographyStyles} contains the list of bibliography
      * styles to load and use.
      */
     private List<String> bibliographyStyles;
 
     /**
-     * The field <tt>theEntries</tt> contains the list of entries.
+     * The field {@code theEntries} contains the list of entries.
      */
     private List<String> theEntries;
 
     /**
-     * The field <tt>logger</tt> contains the writer for logging purposes.
+     * The field {@code logger} contains the writer for logging purposes.
      */
     private Logger logger;
 
     /**
-     * The field <tt>options</tt> contains the options.
+     * The field {@code options} contains the options.
      */
     private Map<String, Token> options = new HashMap<>();
 
@@ -122,7 +121,7 @@ public class BibliographyCore implements Bibliography, Observable {
      * 
      * @param db The database associated with this processor.
      * @param log This argument is a writer which receives the logging output.
-     *        It is an object implementing the interface <code>Writer</code>.
+     *        It is an object implementing the interface {@code Writer}.
      */
     public BibliographyCore(DB db, Logger log) {
 
@@ -184,8 +183,8 @@ public class BibliographyCore implements Bibliography, Observable {
     }
 
     /**
-     * Store an additional <tt>STRING</tt> in the database. To delete a
-     * <tt>STRING</tt> the value <code>null</code> can be used.
+     * Store an additional {@code STRING} in the database. To delete a
+     * {@code STRING} the value {@code null} can be used.
      * 
      * @param name the name of the macro to add
      * @param value the value as Token
@@ -199,16 +198,16 @@ public class BibliographyCore implements Bibliography, Observable {
     /**
      * Configure the current instance. Here the configuration data is shuffled
      * into the options. For this purpose the tags with the name
-     * <code>option</code> contains the value. The attribute <code>name</code>
+     * {@code option} contains the value. The attribute {@code name}
      * determines the name of the option.
      * 
-     * <pre>
-     *   &lt;config&gt;
-     *     &lt;option name="name<sub>1</sub>"&gt;value<sub>1</sub>&lt;/option&gt;
-     *     &lt;option name="name<sub>2</sub>"&gt;value<sub>2</sub>&lt;/option&gt;
-     *     &lt;option name="name<sub>3</sub>"&gt;value<sub>3</sub>&lt;/option&gt;
-     *   &lt;/config&gt;
-     * </pre>
+     * <pre>{@code
+     *   <config>
+     *     <option name="name_1">value_1</option>
+     *     <option name="name_2">value_2</option>
+     *     <option name="name_3">value_3</option>
+     *   </config>
+     * }</pre>
      * 
      * @param config the configuration to consult
      * 
@@ -232,12 +231,7 @@ public class BibliographyCore implements Bibliography, Observable {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.Bibliography#countBibliographyStyles()
-     */
-    @Override
+@Override
     public int countBibliographyStyles() {
 
         return bibliographyStyles.size();
@@ -313,7 +307,7 @@ public class BibliographyCore implements Bibliography, Observable {
      * 
      * @param name the name of the macro to search for
      * 
-     * @return the expanded value of the macro or <code>null</code> if none has
+     * @return the expanded value of the macro or {@code null} if none has
      *         been found.
      */
     public String getMacro(String name) {
@@ -326,7 +320,7 @@ public class BibliographyCore implements Bibliography, Observable {
      * 
      * @param key the key
      * 
-     * @return the option value or <code>null</code>
+     * @return the option value or {@code null}
      */
     public Token getOption(String key) {
 
@@ -441,7 +435,7 @@ public class BibliographyCore implements Bibliography, Observable {
      * @param name the name
      * @param value the value
      * 
-     * @return <code>true</code> iff the option is known and has been set
+     * @return {@code true} iff the option is known and has been set
      */
     @Override
     public boolean setOption(String name, Token value) {

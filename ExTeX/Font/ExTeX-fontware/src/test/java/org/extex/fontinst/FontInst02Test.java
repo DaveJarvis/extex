@@ -35,12 +35,11 @@ import static org.junit.Assert.assertNotNull;
  * Test for fontinst.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class FontInst02Test extends ExTeXLauncher {
 
     /**
-     * The field <tt>SEP</tt> contains the separator for properties.
+     * The field {@code SEP} contains the separator for properties.
      */
     private static final String SEP = System.getProperty("path.separator", ":");
 

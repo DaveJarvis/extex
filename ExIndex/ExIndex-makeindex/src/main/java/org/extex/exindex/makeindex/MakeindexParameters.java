@@ -42,9 +42,11 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <p>
  * The following table lists the mapping, types, and default values.
  * </p>
- * <table>
+* <table>
+ * <caption>TBD</caption>
+
  * <tr>
- * <th>Makeindex name</th>
+* <th>Makeindex name</th>
  * <th>&epsilon;&chi;Index name</th>
  * <th>Type</th>
  * <th>Default Value</th>
@@ -280,19 +282,18 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </table>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:7790 $
- */
+*/
 public final class MakeindexParameters {
 
     /**
-     * The field <tt>map</tt> contains the mapping of makeindex names to
+     * The field {@code map} contains the mapping of makeindex names to
      * parameter names in &epsilon;&chi;Index.
      */
     private static final Map<String, String> MAKEINDEX2PARAM =
             new HashMap<String, String>();
 
     /**
-     * The field <tt>defaultParameters</tt> contains the default parameters.
+     * The field {@code defaultParameters} contains the default parameters.
      */
     private static final Parameters defaultParameters = new Parameters();
 

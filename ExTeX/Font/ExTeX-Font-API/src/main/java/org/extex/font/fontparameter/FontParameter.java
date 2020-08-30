@@ -37,8 +37,7 @@ import org.xml.sax.SAXException;
  * Manage additional font parameters.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class FontParameter {
 
     /**
@@ -81,18 +80,18 @@ public class FontParameter {
     /**
      * The map fr the font dimen values.
      */
-    private Map<String, Integer> fontDimen = new HashMap<String, Integer>();
+    private final Map<String, Integer> fontDimen = new HashMap<String, Integer>();
 
     /**
      * The glyph name map.
      */
-    private Map<String, UnicodeChar> glyphmap =
+    private final Map<String, UnicodeChar> glyphmap =
             new HashMap<String, UnicodeChar>();
 
     /**
      * The Unicode map.
      */
-    private Map<UnicodeChar, String> unicodemap =
+    private final Map<UnicodeChar, String> unicodemap =
             new HashMap<UnicodeChar, String>();
 
     /**
@@ -117,10 +116,10 @@ public class FontParameter {
     }
 
     /**
-     * Returns the font dimen value, or <code>null</code>, if not found.
+     * Returns the font dimen value, or {@code null}, if not found.
      * 
      * @param name The name of the value.
-     * @return Returns the font dimen value, or <code>null</code>, if not found.
+     * @return Returns the font dimen value, or {@code null}, if not found.
      */
     public Integer getFontDimen(String name) {
 
@@ -128,10 +127,10 @@ public class FontParameter {
     }
 
     /**
-     * Returns the name of the glyph, or <code>null</code>, if not found.
+     * Returns the name of the glyph, or {@code null}, if not found.
      * 
      * @param uc the Unicode char.
-     * @return the name of the glyph, or <code>null</code>, if not found.
+     * @return the name of the glyph, or {@code null}, if not found.
      */
     public String getGlyphname(UnicodeChar uc) {
 
@@ -148,12 +147,12 @@ public class FontParameter {
     }
 
     /**
-     * Returns the <code>UnicodeChar</code> for the glyph name or
-     * <code>null</code>, if not found.
+     * Returns the {@code UnicodeChar} for the glyph name or
+     * {@code null}, if not found.
      * 
      * @param name The glyph name.
-     * @return Returns the <code>UnicodeChar</code> for the glyph name or
-     *         <code>null</code>, if not found.
+     * @return Returns the {@code UnicodeChar} for the glyph name or
+     *         {@code null}, if not found.
      */
     public UnicodeChar getUnicode(String name) {
 

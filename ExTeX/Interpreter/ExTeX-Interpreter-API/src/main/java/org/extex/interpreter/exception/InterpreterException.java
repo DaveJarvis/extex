@@ -26,17 +26,16 @@ import org.extex.framework.i18n.Localizer;
  * This is the base class for all exceptions of the interpreter.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5563 $
- */
+*/
 public class InterpreterException extends GeneralException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer.
+     * The field {@code localizer} contains the localizer.
      */
     private Localizer localizer = null;
 

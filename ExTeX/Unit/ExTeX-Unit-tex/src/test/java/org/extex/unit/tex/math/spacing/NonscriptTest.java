@@ -24,11 +24,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\nonscript</tt>.
+ * This is a test suite for the primitive {@code \nonscript}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NonscriptTest extends AbstractMathTester {
 
 
@@ -39,7 +38,7 @@ public class NonscriptTest extends AbstractMathTester {
     /**
      * <testcase primitive="\nonscript">
      *  Test case checking that ...
-     * </testcase>
+     * 
      *
      * @throws Exception in case of an error
      */
@@ -63,7 +62,7 @@ public class NonscriptTest extends AbstractMathTester {
     /**
      * <testcase primitive="\nonscript">
      *  Test case checking that ...
-     * </testcase>
+     * 
      *
      * @throws Exception in case of an error
      */
@@ -87,7 +86,7 @@ public class NonscriptTest extends AbstractMathTester {
     /**
      * <testcase primitive="\nonscript">
      *  Test case checking that ...
-     * </testcase>
+     * 
      *
      * @throws Exception in case of an error
      */
@@ -110,7 +109,7 @@ public class NonscriptTest extends AbstractMathTester {
     /**
      * <testcase primitive="\nonscript">
      *  Test case checking that ...
-     * </testcase>
+     * 
      *
      * @throws Exception in case of an error
      */
@@ -133,7 +132,7 @@ public class NonscriptTest extends AbstractMathTester {
     /**
      * <testcase primitive="\nonscript">
      *  Test case checking that ...
-     * </testcase>
+     * 
      *
      * @throws Exception in case of an error
      */
@@ -157,7 +156,7 @@ public class NonscriptTest extends AbstractMathTester {
     /**
      * <testcase primitive="\nonscript">
      *  Test case checking that ...
-     * </testcase>
+     * 
      *
      * @throws Exception in case of an error
      */
@@ -181,7 +180,7 @@ public class NonscriptTest extends AbstractMathTester {
     /**
      * <testcase primitive="\nonscript">
      *  Test case checking that ...
-     * </testcase>
+     * 
      *
      * @throws Exception in case of an error
      */
@@ -204,7 +203,7 @@ public class NonscriptTest extends AbstractMathTester {
     /**
      * <testcase primitive="\nonscript">
      *  Test case checking that ...
-     * </testcase>
+     * 
      *
      * @throws Exception in case of an error
      */
@@ -227,7 +226,7 @@ public class NonscriptTest extends AbstractMathTester {
     /**
      * <testcase primitive="\nonscript">
      *  Test case checking that ...
-     * </testcase>
+     * 
      *
      * @throws Exception in case of an error
      */
@@ -251,7 +250,7 @@ public class NonscriptTest extends AbstractMathTester {
     /**
      * <testcase primitive="\nonscript">
      *  Test case checking that ...
-     * </testcase>
+     * 
      *
      * @throws Exception in case of an error
      */
@@ -275,7 +274,7 @@ public class NonscriptTest extends AbstractMathTester {
     /**
      * <testcase primitive="\nonscript">
      *  Test case checking that ...
-     * </testcase>
+     * 
      *
      * @throws Exception in case of an error
      */
@@ -298,7 +297,7 @@ public class NonscriptTest extends AbstractMathTester {
     /**
      * <testcase primitive="\nonscript">
      *  Test case checking that ...
-     * </testcase>
+     * 
      *
      * @throws Exception in case of an error
      */

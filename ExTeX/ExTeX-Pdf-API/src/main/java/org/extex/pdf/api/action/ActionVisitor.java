@@ -23,8 +23,7 @@ package org.extex.pdf.api.action;
  * This interface describes a visitor for actions as used on PDF nodes.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface ActionVisitor {
 
     /**

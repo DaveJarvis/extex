@@ -54,28 +54,25 @@ import java.util.logging.Logger;
 /**
  * This class implements the paragraph breaking algorithm as used in
  * TeX.
- * 
+ * <p>
  * The implementation stared as a direct translation of the original sources to
  * Java. This includes the original comments. Thus most of the original comments
- * can still be found in this file. They are typeset in italics.
+ * can still be found in this file.
+ * </p>
  * 
- * <i>
  * <p>
  * 813. Breaking paragraphs into lines.
  * </p>
  * <p>
- * We come now to what is probably the most interesting algorithm of
- * TeX: the mechanism for choosing the "best possible" breakpoints
- * that yield the individual lines of a paragraph. TeX's line-breaking algorithm takes a given horizontal list and
- * converts it to a sequence of boxes that are appended to the current vertical
- * list. In the course of doing this, it creates a special data structure
- * containing three kinds of records that are not used elsewhere in <logo>T<span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>. Such nodes are created while a paragraph is being
- * processed, and they are destroyed afterwards; thus, the other parts of
- * TeX do not need to know anything about how line-breaking is
- * done.
+ * We come now to what is probably the most interesting algorithm of TeX: the
+ * mechanism for choosing the "best possible" breakpoints that yield the
+ * individual lines of a paragraph. TeX's line-breaking algorithm takes a
+ * given horizontal list and converts it to a sequence of boxes that are
+ * appended to the current vertical list. In the course of doing this, it
+ * creates a special data structure containing three kinds of records that
+ * are not used elsewhere in TeX. Such nodes are created while a paragraph
+ * is being processed, and they are destroyed afterwards; thus, the other
+ * parts of TeX do not need to know anything about how line-breaking is done.
  * </p>
  * <p>
  * The method used here is based on an approach devised by Michael F. Plass and
@@ -92,137 +89,123 @@ import java.util.logging.Logger;
  * instead of keeping track of the total distance from the beginning of the
  * paragraph to the current point.
  * </p>
- * </i>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4483 $
- */
+*/
 @SuppressWarnings("RedundantThrows")
 public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
 
     /**
-     * The field <tt>logger</tt> contains the logger.
+     * The field {@code logger} contains the logger.
      */
     private Logger logger;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer or <code>null</code>
+     * The field {@code localizer} contains the localizer or {@code null}
      * if none has been set yet.
      */
     private final Localizer localizer = LocalizerFactory.getLocalizer( getClass());
 
     /**
-     * The field <tt>nodeFactory</tt> contains the node factory.
+     * The field {@code nodeFactory} contains the node factory.
      */
     private NodeFactory nodeFactory;
 
     /**
-     * The field <tt>options</tt> contains the reference to the context.
+     * The field {@code options} contains the reference to the context.
      */
     private TypesetterOptions options;
 
     /**
-     * <doc name="adjdemerits" type="register"> <h3>The Count Parameter
-     * <tt>\adjdemerits</tt></h3>
-     * 
-     * TODO missing documentation </doc>
+     *  <p>The Count Parameter {@code \adjdemerits}</p>
+*
+     * TODO missing documentation
      */
     private long adjDemerits;
 
     /**
-     * <doc name="brokenpenalty" type="register"> <h3>The Count Parameter
-     * <tt>\brokenpenalty</tt></h3>
-     * 
+     *  <p>The Count Parameter {@code \brokenpenalty}</p>
+*
      * <p>
-     * The parameter <tt>\brokenpenalty</tt> contains the penalty which is added
+     * The parameter {@code \brokenpenalty} contains the penalty which is added
      * if a line ends within an hyphenation point.
      * </p>
      * 
-     * </doc>
      */
     private long brokenPenalty;
 
     /**
-     * <doc name="clubpenalty" type="register"> <h3>The Count Parameter
-     * <tt>\clubpenalty</tt></h3>
-     * 
-     * TODO missing documentation </doc>
+     *  <p>The Count Parameter {@code \clubpenalty}</p>
+*
+     * TODO missing documentation
      */
     private long clubPenalty;
 
     /**
-     * <doc name="doublehyphendemerits" type="register"> <h3>The Count Parameter
-     * <tt>\doublehyphendemerits</tt></h3>
-     * 
-     * TODO missing documentation </doc>
+     *  <p>The Count Parameter {@code \doublehyphendemerits}</p>
+*
+     * TODO missing documentation
      */
     private long doubleHyphenDemerits;
 
     /**
-     * <doc name="emergencystretch" type="register"> <h3>The Count Parameter
-     * <tt>\emergencystretch</tt></h3>
-     * 
-     * TODO missing documentation </doc>
+     *  <p>The Count Parameter {@code \emergencystretch}</p>
+*
+     * TODO missing documentation
      */
     private FixedDimen emergencyStretch;
 
     /**
-     * <doc name="exhyphenpenalty" type="register"> <h3>The CountParameter
-     * <tt>\exhyphenpenalty</tt></h3>
-     * 
-     * TODO missing documentation </doc>
+     *  <p>The CountParameter {@code \exhyphenpenalty}</p>
+*
+     * TODO missing documentation
      */
     private long exHyphenPenalty;
 
     /**
-     * <doc name="finalhyphendemerits" type="register"> <h3>The Parameter
-     * <tt>\finalhyphendemerits</tt></h3>
-     * 
-     * </doc>
+     *  <p>The Parameter {@code \finalhyphendemerits}</p>
+*
      */
     private long finalHyphenDemerits;
 
     /**
-     * <doc name="finalwidowpenalty" type="register"> <h3>The Count Parameter
-     * <tt>\finalwidowpenalty</tt></h3>
-     * 
-     * TODO missing documentation </doc>
+     *  <p>The Count Parameter {@code \finalwidowpenalty}</p>
+*
+     * TODO missing documentation
      */
     private long finalWidowPenalty;
 
     /**
-     * <doc name="hyphenpenalty" type="register"> <h3>The Count Parameter
-     * <tt>\hyphenpenalty</tt></h3>
-     * 
-     * The parameter <tt>\hyphenpenalty</tt> contains the penalty inserted
+     *  <p>The Count Parameter {@code \hyphenpenalty}</p>
+*
+     * The parameter {@code \hyphenpenalty} contains the penalty inserted
      * whenever a hyphenation is applied. Thus paragraphs with less hyphenations
-     * are preferred over those with more hyphenations. </doc>
+     * are preferred over those with more hyphenations.
      */
     private long hyphenPenalty;
 
     /**
-     * <doc name="interlinepenalty" type="register"> <h3>The Count Parameter
-     * <tt>\interlinepenalty</tt></h3>
-     * 
-     * TODO missing documentation </doc>
+     *  <p>The Count Parameter {@code \interlinepenalty}</p>
+*
+     * TODO missing documentation
      */
     private long interLinePenalty;
 
     /**
-     * <doc name="leftskip" type="register"> <h3>The Skip Parameter
-     * <tt>\leftskip</tt></h3>
-     * 
+     *  <p>The Skip Parameter {@code \leftskip}</p>
+*
      * <p>
-     * The parameter <tt>\leftskip</tt> contains the glue which is inserted at
+     * The parameter {@code \leftskip} contains the glue which is inserted at
      * the left side of each line in the paragraph. The default is 0&nbsp;pt.
      * </p>
      * <p>
      * This parameter can be used to flash the line to the left side or center
      * the line. Those effects can be achieved in combination with the parameter
-     * <tt>\rightskip</tt>.
+     * {@code \rightskip}.
      * </p>
      * 
-     * <h4>Examples</h4>
+     * <p>Examples</p>
+
      * 
      * <pre class="TeXSample">
      *    \leftskip=0pt plus 2pt minus 2pt  </pre>
@@ -230,48 +213,43 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * <pre class="TeXSample">
      *    \leftskip=1fill  </pre>
      * 
-     * </doc>
      */
     private FixedGlue leftSkip;
 
     /**
-     * <doc name="linepenalty" type="register"> <h3>The Count Parameter
-     * <tt>\linepenalty</tt></h3>
-     * 
-     * TODO missing documentation </doc>
+     *  <p>The Count Parameter {@code \linepenalty}</p>
+*
+     * TODO missing documentation
      */
     private long linePenalty;
 
     /**
-     * <doc name="looseness" type="register"> <h3>The Count Parameter
-     * <tt>\looseness</tt></h3>
-     * 
-     * TODO missing documentation </doc>
+     *  <p>The Count Parameter {@code \looseness}</p>
+*
+     * TODO missing documentation
      */
     private long looseness;
 
     /**
-     * <doc name="parfillskip" type="register"> <h3>The Skip Parameter
-     * <tt>\parfillskip</tt></h3>
-     * <p>
-     * The parameter <tt>\parfillskip</tt> contains the glue which is added at
+     *  <p>The Skip Parameter {@code \parfillskip}</p>
+* <p>
+     * The parameter {@code \parfillskip} contains the glue which is added at
      * the end of each paragraph.
      * </p>
      * 
-     * <h4>Examples</h4>
+     * <p>Examples</p>
+
      * 
      * <pre class="TeXSample">
      *    \parfillskip=.5ex plus 2pt minus 2pt  </pre>
      * 
-     * </doc>
      */
     private FixedGlue parfillSkip;
 
     /**
-     * <doc name="pretolerance" type="register"> <h3>The Count Parameter
-     * <tt>\pretolerance</tt></h3>
-     * 
-     * TODO missing documentation </doc>
+     *  <p>The Count Parameter {@code \pretolerance}</p>
+*
+     * TODO missing documentation
      */
     private long preTolerance;
 
@@ -281,73 +259,68 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
     private int prevGraf;
 
     /**
-     * <doc name="rightskip" type="register"> <h3>The Skip Parameter
-     * <tt>\rightskip</tt></h3>
+     * <p>The Skip Parameter {@code \rightskip}</p>
      * <p>
-     * The parameter <tt>\rightskip</tt> contains the glue which is inserted at
+     * The parameter {@code \rightskip} contains the glue which is inserted at
      * the right side of each line in the paragraph. The default is 0&nbsp;pt.
      * </p>
      * <p>
      * This parameter can be used to flash the line to the right side or center
      * the line. Those effects can be achieved in combination with the parameter
-     * <tt>\leftskip</tt>.
+     * {@code \leftskip}.
      * </p>
      * 
-     * <h4>Examples</h4>
-     * 
+     * <p>Examples</p>
+     *
      * <pre class="TeXSample">
      *    \rightskip=0pt plus 2pt minus 2pt  </pre>
      * 
      * <pre class="TeXSample">
      *    \rightskip=1fill  </pre>
      * 
-     * </doc>
      */
     private FixedGlue rightSkip;
 
     /**
-     * <doc name="tolerance" type="register"> <h3>The CountParameter
-     * <tt>\tolerance</tt></h3>
-     * 
-     * TODO missing documentation </doc>
+     *  <p>The CountParameter {@code \tolerance}</p>
+     *
+     * TODO missing documentation
      */
     private long tolerance;
 
     /**
-     * <doc name="tracingparagraphs" type="register"> <h3>The Count Parameter
-     * <tt>\tracingparagraphs</tt></h3>
-     * 
+     * <p>The Count Parameter {@code \tracingparagraphs}</p>
+     * <p>
      * TODO missing documentation
-     * 
-     * <h4>Examples</h4>
-     * 
+     * </p>
+     * <p>Examples</p>
+     *
+     *
      * <pre class="TeXSample">
      *    \tracingparagraphs=1  </pre>
-     * 
-     * </doc>
      */
     private boolean tracingParagraphs;
 
     /**
-     * The field <tt>active</tt> contains the list of active and delta nodes.
+     * The field {@code active} contains the list of active and delta nodes.
      */
     private final List<Object> active = new ArrayList<Object>();
 
     /**
-     * The field <tt>passive</tt> contains the list of potential break points.
+     * The field {@code passive} contains the list of potential break points.
      */
     private final List<PassiveNode> passive = new ArrayList<PassiveNode>();
 
     /**
-     * The field <tt>parshape</tt> contains the paragraph shape specification.
+     * The field {@code parshape} contains the paragraph shape specification.
      * This field is initialized at the beginning of the line breaking if it is
-     * <code>null</code>. At the end of the line breaking it is reset to
-     * <code>null</code>.
+     * {@code null}. At the end of the line breaking it is reset to
+     * {@code null}.
      */
     private ParagraphShape parshape = null;
 
     /**
-     * The field <tt>fixedParshape</tt> contains the data object used to
+     * The field {@code fixedParshape} contains the data object used to
      * transport the fixed paragraph shape to the appropriate places. The values
      * stored in it will be overwritten whenever this object will be used for
      * the current paragraph.
@@ -356,7 +329,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
         Dimen.ZERO_PT);
 
     /**
-     * The field <tt>hangingParshape</tt> contains the data object used to
+     * The field {@code hangingParshape} contains the data object used to
      * transport the hanging paragraph shape to the appropriate places. The
      * values stored in it will be overwritten whenever this object will be used
      * for the current paragraph.
@@ -375,7 +348,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * alignment finishing routine.
      * </p>
      * <p>
-     * <<Global variables 13>> +::= pack_begin_line: integer; {source file line
+      * &lt;&lt;Global variables 13>> +::= pack_begin_line: integer; {source file line
      * where the current paragraph or alignment began; a negative value denotes
      * alignment}
      * </p>
@@ -411,56 +384,60 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * formula.
      * </p>
      * <p>
-     * <<Global variables 13>> +::=
+      * &lt;&lt;Global variables 13>> +::=
      * </p>
      * <p>
      * just_box: pointer; {the hlist_node for the last line of the new
      * paragraph}
      * </p>
      */
-    private NodeList justBox = null;
+    private NodeList justBox;
 
     /**
      * 821. The passive node for a given breakpoint contains only four fields:
+     *
+     * <ul>
+     * <li>{@code link} points to the passive node created just before this one, if any,
+     * otherwise it is null.</li>
      * 
-     * link points to the passive node created just before this one, if any,
-     * otherwise it is null.
+     * <li>{@code cur_break} points to the position of this breakpoint in the horizontal
+     * list for the paragraph being broken.</li>
      * 
-     * cur_break points to the position of this breakpoint in the horizontal
-     * list for the paragraph being broken.
+     * <li>{@code prev_break} points to the passive node that should precede this one in an
+     * optimal path to this breakpoint.</li>
      * 
-     * prev_break points to the passive node that should precede this one in an
-     * optimal path to this breakpoint.
-     * 
-     * serial is equal to n if this passive node is the nth one created during
+     * <li>{@code serial} is equal to n if this passive node is the nth one created during
      * the current pass. (This field is used only when printing out detailed
-     * statistics about the line-breaking calculations.)
-     * 
-     * 
+     * statistics about the line-breaking calculations.)</li>
+     * </ul>
+     *
+     * <p>
      * There is a global variable called passive that points to the most
-     * recently created passive node. Another global variable, printed_node, is
-     * used to help print out the paragraph when detailed information about the
-     * line-breaking computation is being displayed.
+     * recently created passive node. Another global variable, {@code
+     * printed_node}, is helps print out the paragraph when detailed
+     * information about the line-breaking computation is being displayed.
+     * </p>
+     *
+     * <ul>
+     * <li>define passive_node_size=2 {number of words in passive nodes}</li>
      * 
-     * define passive_node_size=2 {number of words in passive nodes}
+     * <li>define cur_break ::= rlink {in passive node, points to position of this
+     * breakpoint}</li>
      * 
-     * define cur_break ::= rlink {in passive node, points to position of this
-     * breakpoint}
+     * <li>define prev_break ::= llink {points to passive node that should precede
+     * this one}</li>
      * 
-     * define prev_break ::= llink {points to passive node that should precede
-     * this one}
+     * <li>define serial ::= info {serial number for symbolic identification}</li>
      * 
-     * define serial ::= info {serial number for symbolic identification}
+     * <li>&lt;&lt;Global variables 13&gt;&gt; +::=</li>
      * 
-     * <<Global variables 13>> +::=
+     * <li>passive: pointer; {most recent node on passive list}</li>
      * 
-     * passive: pointer; {most recent node on passive list}
+     * <li>printed_node: pointer; {most recent node that has been printed}</li>
      * 
-     * printed_node: pointer; {most recent node that has been printed}
-     * 
-     * pass_number: halfword; {the number of passive nodes allocated on this
-     * pass}
-     * 
+     * <li>pass_number: halfword; {the number of passive nodes allocated on this
+     * pass}</li>
+     * </ul>
      */
     private int printedNode;
 
@@ -494,7 +471,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
     private boolean noShrinkErrorYet;
 
     /**
-     * The field <tt>cur_p</tt> contains the current breakpoint under
+     * The field {@code cur_p} contains the current breakpoint under
      * consideration
      */
     private int curBreak;
@@ -523,7 +500,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
     /*
      * 820.
      * 
-     * <<Initialize the special list heads and constant nodes 790>> +::=
+      * &lt;&lt;Initialize the special list heads and constant nodes 790>> +::=
      * 
      * type(last_active) <-- hyphenated; line_number(last_active) <--
      * max_halfword; subtype(last_active) <-- 0; {the subtype is never examined
@@ -562,13 +539,13 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
     private boolean finalPass;
 
     /**
-     * The field <tt>threshold</tt> contains the maximum badness on feasible
+     * The field {@code threshold} contains the maximum badness on feasible
      * lines.
      */
     private long threshold;
 
     /**
-     * The field <tt>shortfall</tt> is used in badness calculations. shortfall:
+     * The field {@code shortfall} is used in badness calculations. shortfall:
      * scaled; {used in badness calculations}
      */
     private final Dimen shortfall = new Dimen();
@@ -578,7 +555,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      */
     private boolean noBreakYet;
 
-    /**
+    /*
      * 824.
      * 
      * Let's state the principles of the delta nodes more precisely and
@@ -683,9 +660,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      */
     private Fitness fitClass;
 
-    /**
-     */
-    private boolean breakType;
+private boolean breakType;
 
     /**
      * prev_prev_r: pointer; {a step behind prev_r, if type(prev_r)=delta_node}
@@ -715,7 +690,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * define deactivate=60 {go here when node r should be deactivated}
      * 
-     * <<Declare subprocedures for line_break 826>> +::=
+      * &lt;&lt;Declare subprocedures for line_break 826>> +::=
      */
 
     /**
@@ -740,7 +715,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      */
     private long minimumDemerits;
 
-    /**
+    /*
      * f: internal_font_number; {used in character width calculation}
      */
 
@@ -760,7 +735,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      */
     private final Dimen discretionaryWidth = new Dimen();
 
-    /**
+    /*
      * 847.
      * 
      * The length of lines depends on whether the user has specified \parshape
@@ -793,7 +768,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
     private long easyLine;
 
     /**
-     * The field <tt>D_7230584</tt> contains the constant for comparison.
+     * The field {@code D_7230584} contains the constant for comparison.
      */
     private static final Dimen D_7230584 = new Dimen(7230584);
 
@@ -818,7 +793,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * Another variable, minimum_demerits, keeps track of the smallest value in
      * the minimal_demerits array.
      * 
-     * <<Global variables 13>> +::=
+      * &lt;&lt;Global variables 13>> +::=
      * 
      * minimal_demerits: array [very_loose_fit .. tight_fit] of integer; {best
      * total demerits known for current line class and position, given the
@@ -845,7 +820,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
     private int r;
 
     /**
-     * The field <tt>visitor</tt> contains the node visitor for the inner switch
+     * The field {@code visitor} contains the node visitor for the inner switch
      * on the node types.
      */
     private final NodeVisitor<Object, NodeList> visitor =
@@ -1217,7 +1192,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
                      * begin cur_lang <-- what_lang(#); l_hyf <-- what_lhm(#);
                      * r_hyf <-- what_rhm(#); end
                      * 
-                     * <<Advance (p)past a whatsit node in the (l)line_break
+                      * &lt;&lt;Advance (p)past a whatsit node in the (l)line_break
                      * loop 1362>> ::= adv_past(cur_p)
                      */
                     // - - -
@@ -1279,7 +1254,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * way to break the paragraph, and a few other variables are used to help
      * determine what is best.
      * 
-     * <<Global variables 13>> +::=
+      * &lt;&lt;Global variables 13>> +::=
      * 
      * best_bet: pointer; {use this passive node and its predecessors}
      * 
@@ -1305,11 +1280,9 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      */
     private long actualLooseness;
 
-    /**
-     */
     private boolean discBreak;
 
-    /**
+    /*
      * 839.
      * 
      * When cur_p is a discretionary break, the length of a line "from cur_p to
@@ -1349,8 +1322,8 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * paragraph; it is therefore unnecessary to check if link(cur_p)=null when
      * cur_p is a character node.
      * 
-     * <<Advance (c)cur_p to the node following the present string of characters
-     * 867>> ::=
+     * &lt;&lt;Advance (c)cur_p to the node following the present string of characters
+     * 867&gt;&gt; ::=
      * 
      * This code is used in section 866.
      * 
@@ -1399,7 +1372,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 880.
      * 
-     * <<Append a penalty node, if a nonzero penalty is appropriate 890>> ::=
+     * &lt;&lt;Append a penalty node, if a nonzero penalty is appropriate 890&gt;&gt; ::=
      * 
      * @param line the current line
      * @param curLine the current line number
@@ -1447,7 +1420,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 851.
      * 
-     * <<Set the value of b to the badness for shrinking the line, and compute
+     * &lt;&lt;Set the value of b to the badness for shrinking the line, and compute
      * the corresponding fit_class 853>> ::=
      * 
      * @return ...
@@ -1488,7 +1461,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 851.
      * 
-     * <<Set the value of b to the badness for stretching the line, and compute
+      * &lt;&lt;Set the value of b to the badness for stretching the line, and compute
      * the corresponding fit_class 852>> ::=
      * 
      * @return ...
@@ -1536,12 +1509,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
         return badness;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.paragraphBuilder.ParagraphBuilder#build(org.extex.typesetter.type.node.HorizontalListNode)
-     */
-    @Override
+@Override
     public NodeList build(HorizontalListNode nodes) throws TypesetterException {
 
         if (nodes.size() == 0) {
@@ -1694,7 +1662,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 881.
      * 
-     * <<Change discretionary to compulsory and set disc_break <-- true 882>>
+      * &lt;&lt;Change discretionary to compulsory and set disc_break <-- true 882>>
      * ::=
      * 
      * @param node the current node
@@ -1737,7 +1705,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * variable no_shrink_error_yet prevents this error message from appearing
      * more than once per paragraph.
      * 
-     * <<Global variables 13>> +::=
+      * &lt;&lt;Global variables 13>> +::=
      * 
      * no_shrink_error_yet: boolean; {have we complained about infinite
      * shrinkage?}
@@ -1838,7 +1806,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 836.
      * 
-     * <<Compute the values of break_width 837>> ::=
+      * &lt;&lt;Compute the values of break_width 837>> ::=
      * 
      * @param nodes the node list for the paragraph to break
      */
@@ -1874,7 +1842,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
                  * 
                  * This code is used in section 837.
                  * 
-                 * <<Subtract glue from break_width 838>> ::=
+                  * &lt;&lt;Subtract glue from break_width 838>> ::=
                  */
                 // begin v <-- glue_ptr(s);
                 // break_width[1] <-- break_width[1]-width(v);
@@ -1924,7 +1892,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 855.
      * 
-     * <<Compute the demerits, d, from r to cur_p 859>> ::=
+      * &lt;&lt;Compute the demerits, d, from r to cur_p 859>> ::=
      * 
      * @param activeNode the active node
      * @param penalty the panalty
@@ -1981,7 +1949,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 837.
      * 
-     * <<Compute the discretionary break_width values 840>> ::=
+      * &lt;&lt;Compute the discretionary break_width values 840>> ::=
      * 
      * @param nodes the node list for the paragraph to break
      * @param node the current node
@@ -2043,7 +2011,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 835.
      * 
-     * <<Compute the new line width 850>> ::=
+      * &lt;&lt;Compute the new line width 850>> ::=
      * 
      * @param line the line number
      */
@@ -2110,7 +2078,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 835.
      * 
-     * <<Create new active nodes for the best feasible breaks just found 836>>
+      * &lt;&lt;Create new active nodes for the best feasible breaks just found 836>>
      * ::=
      * 
      * @param nodes the node list for the paragraph to break
@@ -2191,7 +2159,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 851.
      * 
-     * <<Deactivate node r 860>> ::=
+      * &lt;&lt;Deactivate node r 860>> ::=
      */
     private void deactivateNodeR() {
 
@@ -2235,12 +2203,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
-     */
-    @Override
+@Override
     public void enableLogging(Logger theLogger) {
 
         this.logger = theLogger;
@@ -2257,7 +2220,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 877.
      * 
-     * <<Reverse the links of the relevant passive nodes, setting cur_p to the
+      * &lt;&lt;Reverse the links of the relevant passive nodes, setting cur_p to the
      * first breakpoint 878>> ::=
      * 
      * @return the first passive node
@@ -2770,7 +2733,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
     }
 
     /**
-     * <<Initialize for hyphenating a paragraph 891>>;
+      * &lt;&lt;Initialize for hyphenating a paragraph 891>>;
      */
     private void initializeForHyphenatingAParagraph() {
 
@@ -2785,7 +2748,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 836.
      * 
-     * <<Insert a new active node from best_place[fit_class] to cur_p 845>> ::=
+      * &lt;&lt;Insert a new active node from best_place[fit_class] to cur_p 845>> ::=
      * 
      * @param nodes the node list for the paragraph to break
      * @param fitness the fitness
@@ -2841,7 +2804,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 836.
      * 
-     * <<Insert a delta node to prepare for the next active node 844>> ::=
+      * &lt;&lt;Insert a delta node to prepare for the next active node 844>> ::=
      */
     private void insertDeltaNodeForActive() {
 
@@ -2895,7 +2858,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 836.
      * 
-     * <<Insert a delta node to prepare for breaks at cur_p 843>> ::=
+      * &lt;&lt;Insert a delta node to prepare for breaks at cur_p 843>> ::=
      */
     private void insertDeltaNodeForBreaks() {
 
@@ -2940,7 +2903,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 880.
      * 
-     * <<Call the packaging subroutine, setting just_box to the justified box
+      * &lt;&lt;Call the packaging subroutine, setting just_box to the justified box
      * 889>> ::=
      * 
      * @param line the current line
@@ -3001,7 +2964,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 880.
      * 
-     * <<Modify the end of the line to reflect the nature of the break and to
+      * &lt;&lt;Modify the end of the line to reflect the nature of the break and to
      * include \rightskip; also set the proper value of disc_break 881>> ::=
      * 
      * @param nodes the node list for the paragraph to break
@@ -3053,7 +3016,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
              * 
              * This code is used in section 881.
              * 
-             * <<Put the (r)\rightskip glue after node q 886>> ::=
+              * &lt;&lt;Put the (r)\rightskip glue after node q 886>> ::=
              */
 
             // r <-- new_param_glue(right_skip_code);
@@ -3154,7 +3117,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
              * 
              * This code is used in section 877.
              * 
-             * <<Justify the line ending at breakpoint cur_p, and append it to
+              * &lt;&lt;Justify the line ending at breakpoint cur_p, and append it to
              * the current vertical list, together with associated penalties and
              * other insertions 880>> ::=
              */
@@ -3226,23 +3189,19 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
     }
 
     /**
-     * Initializes the field <tt>parshape</tt> if not set already. For this
+     * Initializes the field {@code parshape} if not set already. For this
      * purpose the options are considered.
      * 
-     * <doc name="hangafter" type="register"> <h3>The Parameter
-     * <tt>\hangafter</tt></h3>
+     *  <p>The Parameter {@code \hangafter}</p>
+*
      * 
-     * </doc>
+     *  <p>The Parameter {@code \hangindent}</p>
+*
      * 
-     * <doc name="hangindent" type="register"> <h3>The Parameter
-     * <tt>\hangindent</tt></h3>
-     * 
-     * </doc>
-     * 
-     * <doc name="hsize" type="register"> <h3>The Parameter <tt>\hsize</tt></h3>
-     * The parameter <tt>\hsize</tt> contains the horizontal size of the
-     * paragraph to be build. See also <tt>\parshape</tt>, <tt>\hangindent</tt>,
-     * and <tt>\hangafter</tt>. </doc>
+     *  <p>The Parameter {@code \hsize}</p>
+     * The parameter {@code \hsize} contains the horizontal size of the
+     * paragraph to be build. See also {@code \parshape}, {@code \hangindent},
+     * and {@code \hangafter}.
      * 
      */
     private void prepareParshape() {
@@ -3279,7 +3238,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 851.
      * 
-     * <<Prepare to deactivate node r, and goto deactivate unless there is a
+      * &lt;&lt;Prepare to deactivate node r, and goto deactivate unless there is a
      * reason to consider lines of text from r to cur_p 854>> ::=
      * 
      * @param badness the badness
@@ -3308,7 +3267,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 855.
      * 
-     * <<Print a symbolic description of this feasible break 856>> ::=
+      * &lt;&lt;Print a symbolic description of this feasible break 856>> ::=
      * 
      * @param nodes the node list for the paragraph to break
      * @param d the demerits
@@ -3385,7 +3344,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * introducing this subprocedure, we are able to keep line_break from
      * getting extremely long.)
      * 
-     * <<Break the paragraph at the chosen breakpoints, justify the resulting
+      * &lt;&lt;Break the paragraph at the chosen breakpoints, justify the resulting
      * lines to the correct widths, and append them to the current vertical list
      * 876>> ::= post_line_break(final_widow_penalty)
      * 
@@ -3397,7 +3356,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 856.
      * 
-     * <<Print the list between printed_node and cur_p, then set printed_node
+      * &lt;&lt;Print the list between printed_node and cur_p, then set printed_node
      * <-- cur_p 857>> ::=
      * 
      * @param sb the target string buffer
@@ -3429,7 +3388,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 845.
      * 
-     * <<Print a symbolic description of the new break node 846>> ::=
+      * &lt;&lt;Print a symbolic description of the new break node 846>> ::=
      * 
      * @param aNode the active node
      */
@@ -3486,7 +3445,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 877.
      * 
-     * <<Prune unwanted nodes at the beginning of the next line 879>> ::=
+      * &lt;&lt;Prune unwanted nodes at the beginning of the next line 879>> ::=
      * 
      * @param nodes the node list for the paragraph to break
      * @param idx start index
@@ -3547,7 +3506,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 880.
      * 
-     * <<Put the (l)\leftskip glue at the left and detach this line 887>> ::=
+      * &lt;&lt;Put the (l)\leftskip glue at the left and detach this line 887>> ::=
      * 
      * @param line the current line
      */
@@ -3579,7 +3538,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 851.
      * 
-     * <<Record a new feasible break 855>> ::=
+      * &lt;&lt;Record a new feasible break 855>> ::=
      * 
      * @param nodes the node list for the paragraph to break
      * @param penalty the penalty
@@ -3626,23 +3585,13 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.paragraphBuilder.ParagraphBuilder#setNodefactory(org.extex.typesetter.type.node.factory.NodeFactory)
-     */
-    @Override
+@Override
     public void setNodefactory(NodeFactory factory) {
 
         this.nodeFactory = factory;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.paragraphBuilder.ParagraphBuilder#setOptions(org.extex.typesetter.TypesetterOptions)
-     */
-    @Override
+@Override
     public void setOptions(TypesetterOptions options) {
 
         this.options = options;
@@ -3662,7 +3611,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * This code is used in section 829.
      * </p>
      * <p>
-     * <<If a line number class has ended, create new active nodes for the best
+      * &lt;&lt;If a line number class has ended, create new active nodes for the best
      * feasible breaks in that class; then return if r=last_active, otherwise
      * compute the new line_width 835>> ::=
      * </p>
@@ -3711,7 +3660,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 840.
      * 
-     * <<Subtract the width of node v from break_width 841>> ::=
+      * &lt;&lt;Subtract the width of node v from break_width 841>> ::=
      * 
      * @param v ...
      */
@@ -3749,14 +3698,14 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 829.
      * 
-     * <<Consider the demerits for a line from r to cur_p; deactivate node r if
+      * &lt;&lt;Consider the demerits for a line from r to cur_p; deactivate node r if
      * it should no longer be active; then goto continue if a line from r to
      * cur_p is infeasible, otherwise record a new feasible break 851>> ::=
      * 
      * @param nodes the node list for the paragraph to break
      * @param penalty the penalty
      * 
-     * @return <code>true</code> iff ...
+     * @return {@code true} iff ...
      */
     private boolean sub851(NodeList nodes, long penalty) {
 
@@ -3833,7 +3782,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 860.
      * 
-     * <<Update the active widths, since the first active node has been deleted
+      * &lt;&lt;Update the active widths, since the first active node has been deleted
      * 861>> ::=
      */
     private void sub861() {
@@ -3859,7 +3808,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 882.
      * 
-     * <<Destroy the t nodes following q, and make r point to the following node
+      * &lt;&lt;Destroy the t nodes following q, and make r point to the following node
      * 883>> ::=
      */
     private void sub883() {
@@ -3887,7 +3836,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 882.
      * 
-     * <<Transplant the post-break list 884>> ::=
+      * &lt;&lt;Transplant the post-break list 884>> ::=
      * 
      * @param postBreak the list of post break items
      */
@@ -3912,7 +3861,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * This code is used in section 882.
      * 
-     * <<Transplant the pre-break list 885>> ::=
+      * &lt;&lt;Transplant the pre-break list 885>> ::=
      * 
      * @param preBreak the pre-break list
      * @param line the current line
@@ -4058,7 +4007,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * @param nodes the node list for the paragraph to break
      * 
-     * @return <code>true</code> iff the calling program should be finished
+     * @return {@code true} iff the calling program should be finished
      */
     private boolean tryTheFinalLineBreak(NodeList nodes) {
 

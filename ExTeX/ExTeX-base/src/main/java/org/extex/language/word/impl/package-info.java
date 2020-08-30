@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains implementation for the treatment of words.
+ * Contains implementation for the treatment of words.
  */
 
 package org.extex.language.word.impl;

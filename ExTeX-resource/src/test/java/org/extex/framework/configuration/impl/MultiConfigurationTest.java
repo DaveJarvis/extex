@@ -44,12 +44,11 @@ import org.junit.Test;
  * This is a test suite for {@link MultiConfiguration}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MultiConfigurationTest {
 
     /**
-     * The field <tt>CFG1</tt> contains the first base configuration.
+     * The field {@code CFG1} contains the first base configuration.
      */
     private static final Configuration CFG1 = new Configuration() {
 
@@ -148,19 +147,19 @@ public class MultiConfigurationTest {
     };
 
     /**
-     * The field <tt>mc0</tt> contains the multi-configuration without
+     * The field {@code mc0} contains the multi-configuration without
      * sub-configurations.
      */
     private MultiConfiguration mc0;
 
     /**
-     * The field <tt>mc1</tt> contains the multi-configuration with one
+     * The field {@code mc1} contains the multi-configuration with one
      * sub-configuration.
      */
     private MultiConfiguration mc1;
 
     /**
-     * The field <tt>mc1</tt> contains the multi-configuration with two
+     * The field {@code mc1} contains the multi-configuration with two
      * sub-configurations.
      */
     private MultiConfiguration mc2;

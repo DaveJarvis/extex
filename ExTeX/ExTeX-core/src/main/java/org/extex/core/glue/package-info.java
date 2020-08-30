@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the basic glue data types for ??TeX.
+ *Contains basic glue data types for εχTeX.
  */
 
 package org.extex.core.glue;

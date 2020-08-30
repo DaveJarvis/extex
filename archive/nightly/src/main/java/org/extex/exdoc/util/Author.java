@@ -23,17 +23,16 @@ package org.extex.exdoc.util;
  * This class is a container for an author with an email address.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5413 $
- */
+*/
 public class Author {
 
     /**
-     * The field <tt>email</tt> contains the email address.
+     * The field {@code email} contains the email address.
      */
     private String email;
 
     /**
-     * The field <tt>name</tt> contains the name of the author.
+     * The field {@code name} contains the name of the author.
      */
     private String name;
 

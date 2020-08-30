@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\vadjust</tt>.
+ * This is a test suite for the primitive {@code \vadjust}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class VadjustTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -48,8 +47,8 @@ public class VadjustTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\vadjust"> Test case checking that <tt>\vadjust</tt>
-     * ... </testcase>
+     * <testcase primitive="\vadjust"> Test case checking that {@code \vadjust}
+     * ... 
      * 
      * @throws Exception in case of an error
      */

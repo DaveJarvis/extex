@@ -28,8 +28,7 @@ import org.extex.scanner.api.exception.ScannerException;
  * This LaTeX parser pre-loads some common packages to get things started.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LaTeXParserImpl extends EmptyLaTeXParser {
 
     /**

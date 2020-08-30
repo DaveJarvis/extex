@@ -23,8 +23,7 @@ package org.extex.backend.pageFilter.selector;
  * This interface describes a rule to be applied to a number.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 interface Rule {
 
     /**
@@ -32,7 +31,7 @@ interface Rule {
      *
      * @param value the number to check
      *
-     * @return <code>true</code> iff the number is covered
+     * @return {@code true} iff the number is covered
      */
     boolean check(int value);
 

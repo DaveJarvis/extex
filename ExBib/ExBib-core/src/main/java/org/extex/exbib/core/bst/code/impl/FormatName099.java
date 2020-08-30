@@ -25,14 +25,10 @@ import org.extex.exbib.core.io.Locator;
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X built-in function <code>format.name$</code>
+ * >e</span>X built-in function {@code format.name$}
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X documentation:
- * <dt>
+ * <dt>BibTeX documentation</dt>
  * <dd>Pops the top three literals (they are a string, an integer, and a string
  * literal). The last string literal represents a name list (each name
  * corresponding to a person), the integer literal specifies which name to pick
@@ -42,11 +38,8 @@ import org.extex.exbib.core.io.Locator;
  * </dl>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X web documentation:</dt>
- * <dd>The <code>built_in</code> function <code>format.name$</code> pops the top
+ * <dt>BibTeX web documentation:</dt>
+ * <dd>The {@code built_in} function {@code format.name$} pops the top
  * three literals (they are a string, an integer, and a string literal, in that
  * order). The last string literal represents a name list (each name
  * corresponding to a person), the integer literal specifies which name to pick
@@ -59,15 +52,12 @@ import org.extex.exbib.core.io.Locator;
  * </dl>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X web documentation:</dt>
- * <dd>Here we output either the <code>.bst</code> given string if it exists, or
- * else the <code>.bib</code> <code>sep_char</code> if it exists, or else the
- * default string. A <code>tie</code> is the default space character between the
+ * <dt>BibTeX web documentation:</dt>
+ * <dd>Here we output either the {@code .bst} given string if it exists, or
+ * else the {@code .bib} {@code sep_char} if it exists, or else the
+ * default string. A {@code tie} is the default space character between the
  * last two tokens of the name part, and between the first two tokens if the
- * first token is short enough; otherwise, a <code>space</code> is the default.
+ * first token is short enough; otherwise, a {@code space} is the default.
  * 
  * <pre>
  *     long_token = 3       {a token this length or longer is ``long''}
@@ -78,12 +68,11 @@ import org.extex.exbib.core.io.Locator;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class FormatName099 extends FormatName {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2008L;

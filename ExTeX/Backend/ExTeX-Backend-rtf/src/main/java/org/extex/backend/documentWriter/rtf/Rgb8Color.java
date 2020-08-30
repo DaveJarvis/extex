@@ -24,18 +24,17 @@ package org.extex.backend.documentWriter.rtf;
  * channel.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Rgb8Color {
 
     /**
-     * The field <tt>EIGHT_BIT_MASK</tt> contains the bit mask for the lower
+     * The field {@code EIGHT_BIT_MASK} contains the bit mask for the lower
      * eight bits.
      */
     private static final int EIGHT_BIT_MASK = 0xff;
 
     /**
-     * The field <tt>value</tt> contains the condensed value.
+     * The field {@code value} contains the condensed value.
      */
     private int value;
 
@@ -58,8 +57,8 @@ public class Rgb8Color {
      * 
      * @param obj the reference object with which to compare.
      * 
-     * @return <code>true</code> if this object is the same as the obj
-     *         argument; <code>false</code> otherwise.
+     * @return {@code true} if this object is the same as the obj
+     *         argument; {@code false} otherwise.
      * 
      * @see java.lang.Object#equals(java.lang.Object)
      */

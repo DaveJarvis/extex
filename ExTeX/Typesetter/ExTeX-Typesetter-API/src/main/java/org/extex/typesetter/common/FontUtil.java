@@ -32,8 +32,7 @@ import org.extex.typesetter.tc.font.Font;
  * Font utility methods.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class FontUtil {
 
     /**
@@ -44,7 +43,7 @@ public final class FontUtil {
     }
 
     /**
-     * The constant <tt>LOCALIZER</tt> contains the localizer for this utility
+     * The constant {@code LOCALIZER} contains the localizer for this utility
      * class.
      */
     private static final Localizer LOCALIZER =
@@ -52,25 +51,24 @@ public final class FontUtil {
 
     /**
      * This method produces a log entry for lost characters if the count
-     * register <tt>tracinglostchars</tt> is greater than zero.
+     * register {@code tracinglostchars} is greater than zero.
      *
-     * <doc name="tracinglostchars" type="register">
-     * <h3>The Count Parameter <tt>\tracinglostchars</tt></h3>
+     * <p>The Count Parameter {@code \tracinglostchars}</p>
      * <p>
-     *  The count parameter <tt>\tracinglostchars</tt> determines whether
+     *  The count parameter {@code \tracinglostchars} determines whether
      *  characters which are discarded are logged. Characters are discarded
      *  when the font at hand does not contain a glyph for the character.
      * </p>
      * <p>
-     *  If the value of is greater <tt>\tracinglostchars</tt> than zero
+     *  If the value of is greater {@code \tracinglostchars} than zero
      *  then a message is written to the log file. Otherwise the message
      *  is suppressed.
      * </p>
      *
-     * <h4>Examples</h4>
+     * <p>Examples</p>
+
      *  <pre class="TeXSample">
      *    \tracinglostchars=1  </pre>
-     * </doc>
      *
      *
      * @param logger the logger to write to

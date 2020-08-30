@@ -33,13 +33,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**
- * Tests for the <code>XtfReader</code> with opentype files.
+ * Tests for the {@code XtfReader} with opentype files.
  *
- * The test use the data from the <code>ttx</code> output.
+ * The test use the data from the {@code ttx} output.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 @Ignore
 public class XtfReaderFxlrCharStringTest {
 

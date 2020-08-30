@@ -31,8 +31,7 @@ import org.extex.scanner.type.tokens.Tokens;
  * cache some of them and deliver the same token several times.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4738 $
- */
+*/
 public interface TokenFactory {
 
     /**
@@ -86,9 +85,9 @@ public interface TokenFactory {
     /**
      * Convert a character sequence to a list of tokens.
      * <p>
-     * Each character of the string is converted into a <code>OtherToken</code>
+     * Each character of the string is converted into a {@code OtherToken}
      * and added to the internal list. An exception is made for spaces which
-     * are converted into a <code>SpaceToken</code>.
+     * are converted into a {@code SpaceToken}.
      * </p>
      *
      * @param s the character sequence to translate to tokens
@@ -102,7 +101,7 @@ public interface TokenFactory {
     /**
      * Convert a long value into a list of tokens.
      * <p>
-     * Each character is converted into a <code>OtherToken</code>
+     * Each character is converted into a {@code OtherToken}
      * and added to the internal list.
      * </p>
      *

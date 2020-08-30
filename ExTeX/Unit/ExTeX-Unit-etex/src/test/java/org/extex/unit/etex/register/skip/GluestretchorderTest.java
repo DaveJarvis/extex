@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\gluestretchorder</tt>.
+ * This is a test suite for the primitive {@code \gluestretchorder}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class GluestretchorderTest extends AbstractReadonlyCountRegisterTester {
 
     /**
@@ -49,10 +48,10 @@ public class GluestretchorderTest extends AbstractReadonlyCountRegisterTester {
     }
 
     /**
-     * <testcase> Test case showing that <tt>\gluestretchorder</tt> extracts
+     *  Test case showing that {@code \gluestretchorder} extracts
      * the correct value from a fixed stretch. In addition it shows that
-     * <tt>\gluestretchorder</tt> is applicable to <tt>\the</tt>.
-     * </testcase>
+     * {@code \gluestretchorder} is applicable to {@code \the}.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -67,10 +66,10 @@ public class GluestretchorderTest extends AbstractReadonlyCountRegisterTester {
     }
 
     /**
-     * <testcase> Test case showing that <tt>\gluestretchorder</tt> extracts
+     *  Test case showing that {@code \gluestretchorder} extracts
      * the correct value from a fixed stretch. In addition it shows that
-     * <tt>\gluestretchorder</tt> is assignable to a dimen register.
-     * </testcase>
+     * {@code \gluestretchorder} is assignable to a dimen register.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -86,10 +85,10 @@ public class GluestretchorderTest extends AbstractReadonlyCountRegisterTester {
     }
 
     /**
-     * <testcase> Test case showing that <tt>\gluestretchorder</tt> extracts
+     *  Test case showing that {@code \gluestretchorder} extracts
      * the correct value from a fixed stretch. In addition it shows that
-     * <tt>\gluestretchorder</tt> is assignable to a count register.
-     * </testcase>
+     * {@code \gluestretchorder} is assignable to a count register.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -105,10 +104,10 @@ public class GluestretchorderTest extends AbstractReadonlyCountRegisterTester {
     }
 
     /**
-     * <testcase> Test case showing that <tt>\gluestretchorder</tt> extracts
+     *  Test case showing that {@code \gluestretchorder} extracts
      * the correct value from a fil stretch. In addition it shows that
-     * <tt>\gluestretchorder</tt> is applicable to <tt>\the</tt>.
-     * </testcase>
+     * {@code \gluestretchorder} is applicable to {@code \the}.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -123,10 +122,10 @@ public class GluestretchorderTest extends AbstractReadonlyCountRegisterTester {
     }
 
     /**
-     * <testcase> Test case showing that <tt>\gluestretchorder</tt> extracts
+     *  Test case showing that {@code \gluestretchorder} extracts
      * the correct value from a fil stretch. In addition it shows that
-     * <tt>\gluestretchorder</tt> is assignable to a dimen register.
-     * </testcase>
+     * {@code \gluestretchorder} is assignable to a dimen register.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -142,10 +141,10 @@ public class GluestretchorderTest extends AbstractReadonlyCountRegisterTester {
     }
 
     /**
-     * <testcase> Test case showing that <tt>\gluestretchorder</tt> extracts
+     *  Test case showing that {@code \gluestretchorder} extracts
      * the correct value from a fil stretch. In addition it shows that
-     * <tt>\gluestretchorder</tt> is assignable to a count register.
-     * </testcase>
+     * {@code \gluestretchorder} is assignable to a count register.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -161,10 +160,10 @@ public class GluestretchorderTest extends AbstractReadonlyCountRegisterTester {
     }
 
     /**
-     * <testcase> Test case showing that <tt>\gluestretchorder</tt> extracts
+     *  Test case showing that {@code \gluestretchorder} extracts
      * the correct value from a fill stretch. In addition it shows that
-     * <tt>\gluestretchorder</tt> is applicable to <tt>\the</tt>.
-     * </testcase>
+     * {@code \gluestretchorder} is applicable to {@code \the}.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -179,10 +178,10 @@ public class GluestretchorderTest extends AbstractReadonlyCountRegisterTester {
     }
 
     /**
-     * <testcase> Test case showing that <tt>\gluestretchorder</tt> extracts
+     *  Test case showing that {@code \gluestretchorder} extracts
      * the correct value from a fill stretch. In addition it shows that
-     * <tt>\gluestretchorder</tt> is assignable to a dimen register.
-     * </testcase>
+     * {@code \gluestretchorder} is assignable to a dimen register.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -198,10 +197,10 @@ public class GluestretchorderTest extends AbstractReadonlyCountRegisterTester {
     }
 
     /**
-     * <testcase> Test case showing that <tt>\gluestretchorder</tt> extracts
+     *  Test case showing that {@code \gluestretchorder} extracts
      * the correct value from a fill stretch. In addition it shows that
-     * <tt>\gluestretchorder</tt> is assignable to a count register.
-     * </testcase>
+     * {@code \gluestretchorder} is assignable to a count register.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -217,10 +216,10 @@ public class GluestretchorderTest extends AbstractReadonlyCountRegisterTester {
     }
 
     /**
-     * <testcase> Test case showing that <tt>\gluestretchorder</tt> extracts
+     *  Test case showing that {@code \gluestretchorder} extracts
      * the correct value from a filll stretch. In addition it shows that
-     * <tt>\gluestretchorder</tt> is applicable to <tt>\the</tt>.
-     * </testcase>
+     * {@code \gluestretchorder} is applicable to {@code \the}.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -235,10 +234,10 @@ public class GluestretchorderTest extends AbstractReadonlyCountRegisterTester {
     }
 
     /**
-     * <testcase> Test case showing that <tt>\gluestretchorder</tt> extracts
+     *  Test case showing that {@code \gluestretchorder} extracts
      * the correct value from a filll stretch. In addition it shows that
-     * <tt>\gluestretchorder</tt> is assignable to a dimen register.
-     * </testcase>
+     * {@code \gluestretchorder} is assignable to a dimen register.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -254,10 +253,10 @@ public class GluestretchorderTest extends AbstractReadonlyCountRegisterTester {
     }
 
     /**
-     * <testcase> Test case showing that <tt>\gluestretchorder</tt> extracts
+     *  Test case showing that {@code \gluestretchorder} extracts
      * the correct value from a filll stretch. In addition it shows that
-     * <tt>\gluestretchorder</tt> is assignable to a count register.
-     * </testcase>
+     * {@code \gluestretchorder} is assignable to a count register.
+     *
      * 
      * @throws Exception in case of an error
      */

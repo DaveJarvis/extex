@@ -38,34 +38,33 @@ import org.extex.typesetter.type.page.PageFactory;
  * This is a first reference implementation of a page builder.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4483 $
- */
+*/
 public class PageBuilderImpl implements PageBuilder {
 
     /**
-     * The field <tt>context</tt> contains the interpreter context.
+     * The field {@code context} contains the interpreter context.
      */
     private Context context = null;
 
     /**
-     * The field <tt>documentWriter</tt> contains the document writer to
+     * The field {@code documentWriter} contains the document writer to
      * receive the pages.
      */
     private BackendDriver backendDriver = null;
 
     /**
-     * The field <tt>options</tt> contains the options to control the
+     * The field {@code options} contains the options to control the
      * behavior.
      */
     private TypesetterOptions options = null;
 
     /**
-     * The field <tt>output</tt> contains the output routine.
+     * The field {@code output} contains the output routine.
      */
     private OutputRoutine outputRoutine = null;
 
     /**
-     * The field <tt>pageFactory</tt> contains the page factory to use.
+     * The field {@code pageFactory} contains the page factory to use.
      */
     private PageFactory pageFactory = null;
 
@@ -74,12 +73,7 @@ public class PageBuilderImpl implements PageBuilder {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.pageBuilder.PageBuilder#close()
-     */
-    public void close() throws TypesetterException {
+public void close() throws TypesetterException {
 
         try {
             backendDriver.close();
@@ -90,10 +84,7 @@ public class PageBuilderImpl implements PageBuilder {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.pageBuilder.PageBuilder#flush(
-     *      org.extex.typesetter.type.NodeList, org.extex.typesetter.Typesetter)
+*      org.extex.typesetter.type.NodeList, org.extex.typesetter.Typesetter)
      */
     public void flush(NodeList nodes, Typesetter typesetter)
             throws TypesetterException {
@@ -118,10 +109,7 @@ public class PageBuilderImpl implements PageBuilder {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.pageBuilder.PageBuilder#inspectAndBuild(
-     *      org.extex.typesetter.type.node.VerticalListNode,
+*      org.extex.typesetter.type.node.VerticalListNode,
      *      org.extex.typesetter.Typesetter)
      */
     public void inspectAndBuild(VerticalListNode nodes, Typesetter typesetter)
@@ -137,10 +125,7 @@ public class PageBuilderImpl implements PageBuilder {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.pageBuilder.PageBuilder#setContext(
-     *      org.extex.typesetter.PageContext)
+*      org.extex.typesetter.PageContext)
      */
     public void setContext(PageContext context) {
 
@@ -152,10 +137,7 @@ public class PageBuilderImpl implements PageBuilder {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.Typesetter#setBackend(
-     *      org.extex.backend.BackendDriver)
+*      org.extex.backend.BackendDriver)
      */
     public void setBackend(BackendDriver backend) {
 
@@ -173,10 +155,7 @@ public class PageBuilderImpl implements PageBuilder {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.pageBuilder.PageBuilder#setOutputRoutine(
-     *      org.extex.typesetter.output.OutputRoutine)
+*      org.extex.typesetter.output.OutputRoutine)
      */
     public void setOutputRoutine(OutputRoutine output) {
 
@@ -184,10 +163,7 @@ public class PageBuilderImpl implements PageBuilder {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.pageBuilder.PageBuilder#setPageFactory(
-     *      org.extex.typesetter.type.page.PageFactory)
+*      org.extex.typesetter.type.page.PageFactory)
      */
     public void setPageFactory(PageFactory factory) {
 
@@ -195,10 +171,7 @@ public class PageBuilderImpl implements PageBuilder {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.pageBuilder.PageBuilder#shipout(
-     *      org.extex.typesetter.type.NodeList, org.extex.typesetter.Typesetter)
+*      org.extex.typesetter.type.NodeList, org.extex.typesetter.Typesetter)
      */
     public void shipout(NodeList nodes, Typesetter typesetter)
             throws TypesetterException {

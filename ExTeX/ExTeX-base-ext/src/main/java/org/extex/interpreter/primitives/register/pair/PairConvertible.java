@@ -30,8 +30,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * pair.
  * 
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public interface PairConvertible {
 
     /**

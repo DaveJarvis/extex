@@ -31,7 +31,7 @@ import org.extex.core.glue.FixedGlue;
  * The following picture describes the attributes and relations:
  * </p>
  * <p>
- * <img src="doc-files/NodeList.png" />
+ * <img src="doc-files/NodeList.png" alt="">
  * </p>
  * <p>
  * Note that the NodeList does not provide an automatic relation of the contents
@@ -40,8 +40,7 @@ import org.extex.core.glue.FixedGlue;
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public interface NodeList extends Node, Iterable<Node>, Cloneable {
 
     /**
@@ -87,7 +86,7 @@ public interface NodeList extends Node, Iterable<Node>, Cloneable {
      * 
      * @param index the position
      * 
-     * @return the node at position <i>index</i> of <code>null</code> if index
+     * @return the node at position <i>index</i> of {@code null} if index
      *         is out of bounds
      */
     Node get(int index);
@@ -113,8 +112,8 @@ public interface NodeList extends Node, Iterable<Node>, Cloneable {
     /**
      * Test whether the node list is empty.
      * 
-     * @return <code>true</code>, if the <code>NodeList</code> is empty,
-     *         otherwise <code>false</code>.
+     * @return {@code true}, if the {@code NodeList} is empty,
+     *         otherwise {@code false}.
      */
     boolean isEmpty();
 
@@ -177,10 +176,7 @@ public interface NodeList extends Node, Iterable<Node>, Cloneable {
      * Provides a string representation of the current instance.
      * 
      * @return the String representation of the object
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [182]"
-     */
+*/
     String toText();
 
 }

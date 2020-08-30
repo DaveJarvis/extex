@@ -43,19 +43,18 @@ import java.util.List;
  * This is the derived class for a list maker in inner vertical list mode.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class InnerVerticalListMaker extends AbstractListMaker {
 
     /**
-     * The field <tt>afterParagraphObservers</tt> contains the observers to be
+     * The field {@code afterParagraphObservers} contains the observers to be
      * invoked after the paragraph has been completed.
      */
     private final List<ParagraphObserver> afterParagraphObservers =
         new ArrayList<>();
 
     /**
-     * The field <tt>nodes</tt> contains the list of nodes encapsulated.
+     * The field {@code nodes} contains the list of nodes encapsulated.
      */
     private final VerticalListNode nodes = new VerticalListNode();
 
@@ -63,11 +62,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
      * This value contains the previous depth for baseline calculations. In
      * contrast to TeX the value null is used to indicate that the next box on
      * the vertical list should be exempt from the baseline calculations.
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [212]"
-     */
+*/
     private Dimen prevDepth = null;
 
     /**
@@ -163,12 +158,9 @@ public class InnerVerticalListMaker extends AbstractListMaker {
     }
 
     /**
-     * <tt>\par</tt> s are silently ignored in vertical mode.
+     * {@code \par} s are silently ignored in vertical mode.
      * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#par()
-     */
+*/
     @Override
     public void par() throws TypesetterException, ConfigurationException {
 
@@ -184,23 +176,13 @@ public class InnerVerticalListMaker extends AbstractListMaker {
         // nothing more to do
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#removeLastNode()
-     */
-    @Override
+@Override
     public void removeLastNode() {
 
         nodes.remove(nodes.size() - 1);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#setPrevDepth(org.extex.core.dimen.FixedDimen)
-     */
-    @Override
+@Override
     public void setPrevDepth(FixedDimen pd) {
 
         if (prevDepth == null) {
@@ -210,12 +192,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#showlist(StringBuilder, long, long)
-     */
-    public void showlist(StringBuilder sb, long l, long m) {
+public void showlist(StringBuilder sb, long l, long m) {
 
         sb.append("prevdepth ");
         if (prevDepth == null) {
@@ -226,12 +203,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
         sb.append('\n');
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return super.toString() + "\n" + nodes.toString();

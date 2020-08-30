@@ -28,27 +28,25 @@ import static org.junit.Assert.fail;
  * This is a test suite for different encodings.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ExBibI18NTest {
 
     private final static String DIR_TARGET = "build";
 
     /**
-     * The field <tt>DATA_DIR</tt> contains the directory containing database,
+     * The field {@code DATA_DIR} contains the directory containing database,
      * styles and results.
      */
     private static final String DATA_DIR = "src/test/resources/bibtex/i18n";
 
     /**
-     * The field <tt>STYLE_DIR</tt> contains the style directory.
+     * The field {@code STYLE_DIR} contains the style directory.
      */
     private static final String STYLE_DIR = "src/test/resources/bibtex/base";
 
     /**
-     * <testcase> Check that some greek characters encoded as UTF-8 are
-     * processed correctly. </testcase>
-     * 
+     * Check that some greek characters encoded as UTF-8 are processed correctly
+* 
      * @throws Exception in case of an error
      */
     @Test

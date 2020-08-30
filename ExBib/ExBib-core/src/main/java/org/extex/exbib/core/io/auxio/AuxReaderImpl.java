@@ -50,8 +50,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class AuxReaderImpl extends AuxReader099cImpl {
 
     /**
@@ -60,10 +59,7 @@ public class AuxReaderImpl extends AuxReader099cImpl {
     private static final class BiboptionHandler implements AuxHandler {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.io.auxio.AuxHandler#invoke(java.lang.String,
-         *      org.extex.exbib.core.ProcessorContainer, java.lang.String,
+    *      org.extex.exbib.core.ProcessorContainer, java.lang.String,
          *      org.extex.exbib.core.io.auxio.AuxReader)
          */
         public void invoke(String arg, ProcessorContainer processors,
@@ -76,14 +72,14 @@ public class AuxReaderImpl extends AuxReader099cImpl {
     }
 
     /**
-     * The constant <tt>PATTERN</tt> contains the pattern for the recognized
+     * The constant {@code PATTERN} contains the pattern for the recognized
      * macros.
      */
     protected static final Pattern PATTERN = Pattern
         .compile("^\\\\([@cb][a-z]+)\\{([^{}]*)\\}");
 
     /**
-     * The field <tt>OPT_PATTERN</tt> contains the pattern for the recognized
+     * The field {@code OPT_PATTERN} contains the pattern for the recognized
      * macros with optional arguments.
      */
     private static final Pattern OPT_PATTERN = Pattern
@@ -100,10 +96,7 @@ public class AuxReaderImpl extends AuxReader099cImpl {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.auxio.AuxReader#load(org.extex.exbib.core.ProcessorContainer,
-     *      java.lang.String, java.lang.String)
+*      java.lang.String, java.lang.String)
      */
     @Override
     public void load(ProcessorContainer bibliographies, String resource,

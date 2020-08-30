@@ -28,8 +28,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * Abstract class for all TTF/OTF tables.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractXtfTable implements XtfTable, XtfGlyphName {
 
     private final XtfTableMap tablemap;
@@ -73,22 +72,12 @@ public abstract class AbstractXtfTable implements XtfTable, XtfGlyphName {
         return gylphName;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.XtfTable#getInitOrder()
-     */
-    public int getInitOrder() {
+public int getInitOrder() {
 
         return 0;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.XtfTable#getTableMap()
-     */
-    public XtfTableMap getTableMap() {
+public XtfTableMap getTableMap() {
 
         return tablemap;
     }

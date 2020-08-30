@@ -28,19 +28,18 @@ import org.extex.resource.InteractionIndicator;
  * to set a context as final source of information.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ContextawareInteractionIndicator implements InteractionIndicator {
 
     /**
-     * The field <tt>context</tt> contains the interpreter context.
+     * The field {@code context} contains the interpreter context.
      */
     private Context context;
 
     /**
      * Getter for the interaction mode.
      *
-     * @return <code>true</code> iff interaction with the user is desirable
+     * @return {@code true} iff interaction with the user is desirable
      *
      * @see org.extex.resource.InteractionIndicator#isInteractive()
      */

@@ -37,19 +37,18 @@ import org.extex.typesetter.type.node.HorizontalListNode;
  * @see "TTP [687]"
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class LeftNoad extends AbstractNoad {
 
     /**
-     * The field <tt>delimiter</tt> contains the left delimiter.
+     * The field {@code delimiter} contains the left delimiter.
      */
-    private MathDelimiter delimiter;
+    private final MathDelimiter delimiter;
 
     /**
-     * The field <tt>noad</tt> contains the noad following the left delimiter.
+     * The field {@code noad} contains the noad following the left delimiter.
      */
-    private Noad noad;
+    private final Noad noad;
 
     /**
      * Creates a new object.
@@ -122,9 +121,9 @@ public class LeftNoad extends AbstractNoad {
      *  previously typeset. Thus it can be used to look back
      * @param mathContext the context to consider
      * @param logger th logger for debugging
-     * @param height the target height. If <code>null</code> then the natural
+     * @param height the target height. If {@code null} then the natural
      *  height is used
-     * @param depth the target depth. If <code>null</code> then the natural
+     * @param depth the target depth. If {@code null} then the natural
      *  depth is used
      *
      * @throws TypesetterException in case of a problem

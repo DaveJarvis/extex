@@ -31,15 +31,14 @@ import org.extex.exbib.core.io.Locator;
  * should not make it into the processing cycle.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TChar extends AbstractToken {
 
     /**
      * Creates a new object.
      * 
      * @param value a single character for the value
-     * @param locator the locator or <code>null</code>
+     * @param locator the locator or {@code null}
      * 
      * @throws ExBibException in case that the constructor of AbstractToken
      *         throws it
@@ -50,10 +49,7 @@ public class TChar extends AbstractToken {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.Code#execute(org.extex.exbib.core.bst.BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator) {
 
@@ -61,10 +57,7 @@ public class TChar extends AbstractToken {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.Token#visit(org.extex.exbib.core.bst.token.TokenVisitor,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visit(TokenVisitor visitor, Object... args)
             throws ExBibException {

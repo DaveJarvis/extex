@@ -36,11 +36,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\Ocp</tt>.
+ * This is a test suite for the primitive {@code \Ocp}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
@@ -61,8 +60,8 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\ocp"> Test case checking that <tt>\ocp</tt> needs
-     * a control sequence. </testcase>
+     * <testcase primitive="\ocp"> Test case checking that {@code \ocp} needs
+     * a control sequence.
      * 
      * @throws Exception in case of an error
      */
@@ -76,8 +75,8 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\ocp"> Test case checking that <tt>\ocp</tt> takes
-     * an optional =. </testcase>
+     * <testcase primitive="\ocp"> Test case checking that {@code \ocp} takes
+     * an optional =.
      * 
      * @throws Exception in case of an error
      */
@@ -91,8 +90,8 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\ocp"> Test case checking that <tt>\ocp</tt>
-     * defines the control sequence group local. </testcase>
+     * <testcase primitive="\ocp"> Test case checking that {@code \ocp}
+     * defines the control sequence group local.
      * 
      * @throws Exception in case of an error
      */
@@ -108,8 +107,8 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\ocp"> Test case checking that <tt>\ocp</tt>
-     * defines the control sequence group local. </testcase>
+     * <testcase primitive="\ocp"> Test case checking that {@code \ocp}
+     * defines the control sequence group local.
      * 
      * @throws Exception in case of an error
      */
@@ -125,8 +124,8 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\ocp"> Test case checking that <tt>\ocp</tt>
-     * defines the control sequence group local. </testcase>
+     * <testcase primitive="\ocp"> Test case checking that {@code \ocp}
+     * defines the control sequence group local.
      * 
      * @throws Exception in case of an error
      */
@@ -143,8 +142,8 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\ocp"> Test case checking that <tt>\ocp</tt> bails
-     * out an error when the resource can not be found. </testcase>
+     * <testcase primitive="\ocp"> Test case checking that {@code \ocp} bails
+     * out an error when the resource can not be found.
      * 
      * @throws Exception in case of an error
      */
@@ -158,8 +157,8 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\ocp"> Test case checking that <tt>\ocp</tt>
-     * stores the &Omega;CP program in the Context. </testcase>
+     * <testcase primitive="\ocp"> Test case checking that {@code \ocp}
+     * stores the &Omega;CP program in the Context.
      * 
      * @throws Exception in case of an error
      */
@@ -184,8 +183,8 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\ocp"> Test case checking that <tt>\ocp</tt>
-     * honors <tt>\afterassignment</tt>. </testcase>
+     * <testcase primitive="\ocp"> Test case checking that {@code \ocp}
+     * honors {@code \afterassignment}.
      * 
      * @throws Exception in case of an error
      */

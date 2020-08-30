@@ -54,8 +54,7 @@ import org.junit.Test;
  * produced by BibTeX.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class XamplTest {
     
     private final static String DIR_TARGET = "build";

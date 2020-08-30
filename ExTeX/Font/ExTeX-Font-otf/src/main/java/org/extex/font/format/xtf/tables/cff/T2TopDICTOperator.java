@@ -30,15 +30,15 @@ import org.extex.util.file.random.RandomAccessR;
  * 
  * <p>
  * Top DICT Operator Entries
- * <p>
- * <table border="1"> <thead>
+ * </p>
+ * <table> <caption>TBD</caption> <thead>
  * <tr>
  * <td><b>Name</b></td>
  * <td><b>Value</b></td>
  * <td><b>Operand(s)</b></td>
  * <td><b>Default, notes</b></td>
  * </tr>
- * <thead>
+ * </thead>
  * <tr>
  * <td>Version</td>
  * <td>0</td>
@@ -48,7 +48,8 @@ import org.extex.util.file.random.RandomAccessR;
  * <tr>
  * <td>Notice</td>
  * <td>1</td>
- * <td>SID</td>- , FontInfo</td>
+ * <td>SID</td>
+ * <td>- , FontInfo</td>
  * </tr>
  * <tr>
  * <td>Copyright</td>
@@ -179,8 +180,7 @@ import org.extex.util.file.random.RandomAccessR;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public abstract class T2TopDICTOperator extends T2Operator {
 
@@ -612,12 +612,7 @@ public abstract class T2TopDICTOperator extends T2Operator {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#isTopDICTOperator()
-     */
-    @Override
+@Override
     public boolean isTopDICTOperator() {
 
         return true;

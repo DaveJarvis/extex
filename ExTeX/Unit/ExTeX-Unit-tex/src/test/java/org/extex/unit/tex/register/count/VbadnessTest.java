@@ -23,11 +23,10 @@ import org.extex.test.count.AbstractCountRegisterTester;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\vbadness</tt>.
+ * This is a test suite for the primitive {@code \vbadness}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class VbadnessTest extends AbstractCountRegisterTester {
 
     /**

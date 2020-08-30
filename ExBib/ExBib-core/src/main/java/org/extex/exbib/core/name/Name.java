@@ -66,7 +66,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * name. Thus we will use the number of commas for the analysis as well.
  * </p>
  * 
- * <h3>No Commas</h3>
+ * <p>No Commas</p>
  * 
  * <p>
  * If a name does not contain a comma then the following pattern is used to
@@ -93,25 +93,25 @@ import org.extex.framework.i18n.LocalizerFactory;
  * printed in bold, the first name is printed in roman, the von part is printed
  * in italics, and the junior part is underlined.
  * </p>
- * <div style="margin-left:2em;"> <b>Aristotle</b><br />
- * <span>Leslie</span> <b>Lamport</b><br />
- * <span>Donald Ervin</span> <b>Knuth</b><br />
- * <span>Johannes Chrysostomus Wolfgangus Theophilus</span> <b>Mozart</b><br />
- * <span>Ludwig</span> <i>van</i> <b>Beethoven</b><br />
- * <span>Otto Eduard Leopold</span> <i>von</i> <b>Bismarck-Sch&ouml;nhausen</b><br />
- * <span>Miguel</span> <i>de</i> <b>Cervantes Saavedra</b><br />
- * <span>Sammy</span> <b>Davis</b> <u>jr.</u><br />
+ * <div style="margin-left:2em;"> <b>Aristotle</b><br>
+ * <span>Leslie</span> <b>Lamport</b><br>
+ * <span>Donald Ervin</span> <b>Knuth</b><br>
+ * <span>Johannes Chrysostomus Wolfgangus Theophilus</span> <b>Mozart</b><br>
+ * <span>Ludwig</span> <i>van</i> <b>Beethoven</b><br>
+ * <span>Otto Eduard Leopold</span> <i>von</i> <b>Bismarck-Sch&ouml;nhausen</b><br>
+ * <span>Miguel</span> <i>de</i> <b>Cervantes Saavedra</b><br>
+ * <span>Sammy</span> <b>Davis</b> <u>jr.</u><br>
  * <span>Don Quixote</span> <i>de la</i> <b>Mancha</b> </div>
  * 
- * <h3>One Comma</h3>
+ * <p>One Comma</p>
  * <p>
  * If a name does not contain a comma then the following pattern is used to
  * determine the parts of the name:
  * </p>
  * 
  * <pre>
- *   &lt;<i>name</i>&gt; +&equiv; &lt;<i>von</i>&gt;* &lt;<i>last</i>&gt; <tt>,</tt> &lt;<i>first</i>&gt;*
- *          |  &lt;<i>first</i>&gt;* &lt;<i>von</i>&gt;* &lt;<i>last</i>&gt; <tt>,</tt> &lt;<i>jr</i>&gt;* 
+ *   &lt;<i>name</i>&gt; +&equiv; &lt;<i>von</i>&gt;* &lt;<i>last</i>&gt; {@code ,} &lt;<i>first</i>&gt;*
+ *          |  &lt;<i>first</i>&gt;* &lt;<i>von</i>&gt;* &lt;<i>last</i>&gt; {@code ,} &lt;<i>jr</i>&gt;*
  * </pre>
  * 
  * <p>
@@ -125,15 +125,15 @@ import org.extex.framework.i18n.LocalizerFactory;
  * printed in bold, the first name is printed in roman, the von part is printed
  * in italics, and the junior part is underlined.
  * </p>
- * <div style="margin-left:2em;"> <b>Lamport</b>, <span>Leslie</span><br />
- * <b>Knuth</b>, <span>Donald Ervin</span> <br />
- * <b>Mozart</b>, <span>Johannes Chrysostomus Wolfgangus Theophilus</span> <br />
- * <b>Beethoven</b>, <span>Ludwig</span> <i>van</i> <br />
- * <i>von</i> <b>Bismarck-Sch&ouml;nhausen</b>, <span>Otto Eduard Leopold</span> <br />
- * <i>de</i> <b>Cervantes Saavedra</b>, <span>Miguel</span> <br />
+ * <div style="margin-left:2em;"> <b>Lamport</b>, <span>Leslie</span><br>
+ * <b>Knuth</b>, <span>Donald Ervin</span> <br>
+ * <b>Mozart</b>, <span>Johannes Chrysostomus Wolfgangus Theophilus</span> <br>
+ * <b>Beethoven</b>, <span>Ludwig</span> <i>van</i> <br>
+ * <i>von</i> <b>Bismarck-Sch&ouml;nhausen</b>, <span>Otto Eduard Leopold</span> <br>
+ * <i>de</i> <b>Cervantes Saavedra</b>, <span>Miguel</span> <br>
  * <span>Sammy</span> <b>Davis</b>, <u>Jr.</u> </div>
  * 
- * <h3>Two Commas</h3>
+ * <p>Two Commas</p>
  * <p>
  * If a name does contain two commas then the following pattern is used to
  * determine the parts of the name:
@@ -141,7 +141,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * <pre>
  *   &lt;<i>name</i>&gt; +&equiv; &lt;<i>last</i>&gt;* &lt;<i
- *   >von</i>&gt;* <tt>,</tt> &lt;<i>jr</i>&gt;* <tt>,</tt> &lt;<i>first</i>&gt;* 
+ *   >von</i>&gt;* {@code ,} &lt;<i>jr</i>&gt;* {@code ,} &lt;<i>first</i>&gt;*
  * </pre>
  * 
  * <p>
@@ -158,17 +158,17 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <div style="margin-left:2em;"> <b>Davis</b>, <u>Jr.</u>, <span>Sammy</span>
  * </div>
  * 
- * <h3>More Commas</h3>
+ * <p>More Commas</p>
  * <p>
  * More than two commas are not understood by the name parsing in
- * <logo>&epsilon;&chi;Bib</logo>.
+ * ??Bib.
  * </p>
  * 
  * <h2>Name Lists</h2>
  * <p>
  * Names usually come in bibliographies as single names or as lists of names.
  * Thus we have to take care of lists of names. Those lists are made up of
- * single names separated by the word <tt>and</tt> surrounded by whitespace.
+ * single names separated by the word {@code and} surrounded by whitespace.
  * This separator is only considered at brace level 0. Thus it is possible to
  * protect embedded words `and'. Those might be parts of company names &ndash;
  * e.g. acting an author.
@@ -176,7 +176,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <p>
  * The following example is recognizes as two names:
  * </p>
- * <div style="margin-left:2em;"> <b>Barnes</b> <tt>and</tt> <b>Noble</b> </div>
+ * <div style="margin-left:2em;"> <b>Barnes</b> {@code and} <b>Noble</b> </div>
  * <p>
  * The following example is recognized as a single name:
  * </p>
@@ -184,7 +184,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <p>
  * It there are more names in a name list than feasible then the remaining names
  * after some initial ones can be abbreviated. For this purpose simply write
- * <tt>and others</tt> at the end.
+ * {@code and others} at the end.
  * </p>
  * <p>
  * The formal syntax is as follows:
@@ -192,14 +192,13 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * <pre>
  *   &lt;<i>name list</i>&gt; &equiv; &lt;<i>name</i>&gt;
- *               | &lt;<i>name list</i>&gt; <tt> and </tt> &lt;<i>name</i>&gt; 
- *               | &lt;<i>name list</i>&gt; <tt> and others</tt> 
+ *               | &lt;<i>name list</i>&gt; {@code  and } &lt;<i>name</i>&gt;
+ *               | &lt;<i>name list</i>&gt; {@code  and others}
  * </pre>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Name {
 
     /**
@@ -207,15 +206,12 @@ public class Name {
      */
     private enum Type {
         /**
-         * The field <tt>FIRST</tt> contains the type for the first name.
+         * The field {@code FIRST} contains the type for the first name.
          */
         FIRST {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.name.Name.Type#store(java.lang.String,
-             *      java.util.List, java.util.List, java.util.List,
+        *      java.util.List, java.util.List, java.util.List,
              *      java.util.List)
              */
             @Override
@@ -226,15 +222,12 @@ public class Name {
             }
         },
         /**
-         * The field <tt>VON</tt> contains the type for the von part.
+         * The field {@code VON} contains the type for the von part.
          */
         VON {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.name.Name.Type#store(java.lang.String,
-             *      java.util.List, java.util.List, java.util.List,
+        *      java.util.List, java.util.List, java.util.List,
              *      java.util.List)
              */
             @Override
@@ -245,15 +238,12 @@ public class Name {
             }
         },
         /**
-         * The field <tt>LAST</tt> contains the type for the last name.
+         * The field {@code LAST} contains the type for the last name.
          */
         LAST {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.name.Name.Type#store(java.lang.String,
-             *      java.util.List, java.util.List, java.util.List,
+        *      java.util.List, java.util.List, java.util.List,
              *      java.util.List)
              */
             @Override
@@ -264,15 +254,12 @@ public class Name {
             }
         },
         /**
-         * The field <tt>JR</tt> contains the type for the jr part.
+         * The field {@code JR} contains the type for the jr part.
          */
         JR {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.name.Name.Type#store(java.lang.String,
-             *      java.util.List, java.util.List, java.util.List,
+        *      java.util.List, java.util.List, java.util.List,
              *      java.util.List)
              */
             @Override
@@ -283,15 +270,12 @@ public class Name {
             }
         },
         /**
-         * The field <tt>COMMA</tt> contains the type for the comma.
+         * The field {@code COMMA} contains the type for the comma.
          */
         COMMA {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.name.Name.Type#store(java.lang.String,
-             *      java.util.List, java.util.List, java.util.List,
+        *      java.util.List, java.util.List, java.util.List,
              *      java.util.List)
              */
             @Override
@@ -377,22 +361,22 @@ public class Name {
     }
 
     /**
-     * The field <tt>first</tt> contains the list of first name parts.
+     * The field {@code first} contains the list of first name parts.
      */
     private final List<String> first = new ArrayList<String>();
 
     /**
-     * The field <tt>jr</tt> contains the list of jr name parts.
+     * The field {@code jr} contains the list of jr name parts.
      */
     private final List<String> jr = new ArrayList<String>();
 
     /**
-     * The field <tt>last</tt> contains the list of last name parts.
+     * The field {@code last} contains the list of last name parts.
      */
     private final List<String> last = new ArrayList<String>();
 
     /**
-     * The field <tt>von</tt> contains the list of von name parts.
+     * The field {@code von} contains the list of von name parts.
      */
     private final List<String> von = new ArrayList<String>();
 
@@ -622,12 +606,12 @@ public class Name {
 
     /**
      * Search for the first letter in the argument and determine whether this
-     * character is in upper case. If no letter is found then <code>false</code>
+     * character is in upper case. If no letter is found then {@code false}
      * is returned.
      * 
      * @param s the {@link String} to examine
      * 
-     * @return <code>true</code> iff the first letter is upper case
+     * @return {@code true} iff the first letter is upper case
      */
     private boolean isUpper(String s) {
 
@@ -735,12 +719,7 @@ public class Name {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();

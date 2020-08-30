@@ -32,7 +32,7 @@ import org.extex.framework.i18n.Localizer;
  * the resource bundle. For the localized message of the exception it is used
  * plain and for the help the string ".help" is appended.
  * </p>
- * <h3>Example</h3>
+ * <p>Example</p>
  * <p>
  * Consider the following lines in the resource (properties) file for the
  * localizer:
@@ -42,7 +42,9 @@ import org.extex.framework.i18n.Localizer;
  * abc.def.help = This is the help text. \
  *               It can even span several lines.
  * </pre>
+ * <p>
  * Then the following instruction can safely be used:
+ * </p>
  * <pre>
  *     throw new HelpingException(localizer, "abc.def");
  * </pre>
@@ -55,84 +57,76 @@ import org.extex.framework.i18n.Localizer;
  * <pre>
  * ghi = This is the {0} message: {2}
  * </pre>
+ * <p>
  * Then the instruction
+ * </p>
  * <pre>
  *     new HelpingException(localizer, "ghi", "first", "second", "third");
  * </pre>
+ * <p>
  * will produce an exception with the following localized message:
+ * </p>
  * <pre>
  * This is the first message: third
  * </pre>
- * </p>
  * <p>
  * Note that some special rules hold for strings in resource bundles:
+ * </p>
  * <ul>
- * <li>The character <tt>\</tt> acts as escape character. In the combination
- *  <tt>\n</tt> it produces a newline.</li>
- * <li>If the character <tt>\</tt> is the last character of a line then the
+ * <li>The character {@code \} acts as escape character. In the combination
+ *  {@code \n} it produces a newline.</li>
+ * <li>If the character {@code \} is the last character of a line then the
  *  format is continued in the next line. The leading whitespace in the
  *  continuing line is silently removed.</li>
- * <li>The character <tt>'</tt> also has a special meaning. This usually means
+ * <li>The character {@code '} also has a special meaning. This usually means
  *  that you have to double a single quote in your format.</li>
  * </ul>
- * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4726 $
- */
+*/
 public class TypesetterHelpingException extends TypesetterException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
-     * The constant <tt>DEFAULT_TAG</tt> contains the tag to be used if none
+     * The constant {@code DEFAULT_TAG} contains the tag to be used if none
      * is given.
      */
     private static final String DEFAULT_TAG = "GeneralDetailedException.help";
 
     /**
-     * The constant <tt>DEFAULT_ARGUMENT</tt> contains the argument if none
+     * The constant {@code DEFAULT_ARGUMENT} contains the argument if none
      * is given.
      */
     private static final String DEFAULT_ARGUMENT = "?";
 
     /**
-     * The field <tt>arg1</tt> contains the first argument.
+     * The field {@code arg1} contains the first argument.
      */
-    private String arg1;
+    private final String arg1;
 
     /**
-     * The field <tt>arg2</tt> contains the second argument.
+     * The field {@code arg2} contains the second argument.
      */
-    private String arg2;
+    private final String arg2;
 
     /**
-     * The field <tt>arg3</tt> contains the third argument.
+     * The field {@code arg3} contains the third argument.
      */
-    private String arg3;
+    private final String arg3;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer.
+     * The field {@code localizer} contains the localizer.
      */
-    private Localizer localizer;
+    private final Localizer localizer;
 
     /**
-     * The field <tt>tag</tt> contains the name of the message to show.
+     * The field {@code tag} contains the name of the message to show.
      */
-    private String tag;
-
-
-    protected TypesetterHelpingException() {
-
-        this.tag = DEFAULT_TAG;
-        this.localizer = null;
-        this.arg1 = DEFAULT_ARGUMENT;
-        this.arg2 = DEFAULT_ARGUMENT;
-        this.arg3 = DEFAULT_ARGUMENT;
-    }
+    private final String tag;
 
     /**
      * Creates a new object without variable arguments.

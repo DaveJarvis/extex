@@ -37,34 +37,33 @@ import org.extex.exindex.lisp.type.value.LValue;
  * This is a parser for a Lisp-like language.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LParser implements ResourceLocator {
 
     /**
-     * The field <tt>CLOSE</tt> contains the internal indicator that a closing
+     * The field {@code CLOSE} contains the internal indicator that a closing
      * parenthesis has been found.
      */
     private static final LValue CLOSE = new LNumber(0);
 
     /**
-     * The field <tt>reader</tt> contains the reader.
+     * The field {@code reader} contains the reader.
      */
     private LineNumberReader reader;
 
     /**
-     * The field <tt>c</tt> contains the push-back character or -1 for none.
+     * The field {@code c} contains the push-back character or -1 for none.
      */
     private int c = -1;
 
     /**
-     * The field <tt>resource</tt> contains the resource for error messages or
-     * <code>null</code>.
+     * The field {@code resource} contains the resource for error messages or
+     * {@code null}.
      */
     private final String resource;
 
     /**
-     * The field <tt>escape</tt> contains the escape character.
+     * The field {@code escape} contains the escape character.
      */
     private char escape = '\\';
 
@@ -72,7 +71,7 @@ public class LParser implements ResourceLocator {
      * Creates a new object.
      * 
      * @param reader the reader
-     * @param resource the resource for error messages or <code>null</code>
+     * @param resource the resource for error messages or {@code null}
      */
     public LParser(Reader reader, String resource) {
 
@@ -104,22 +103,12 @@ public class LParser implements ResourceLocator {
         return escape;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.lisp.parser.ResourceLocator#getLineNumber()
-     */
-    public int getLineNumber() {
+public int getLineNumber() {
 
         return reader.getLineNumber();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.lisp.parser.ResourceLocator#getResource()
-     */
-    public String getResource() {
+public String getResource() {
 
         return resource;
     }
@@ -130,7 +119,7 @@ public class LParser implements ResourceLocator {
      * 
      * @param cc the character to check
      * 
-     * @return <code>true</code> iff the character is special
+     * @return {@code true} iff the character is special
      */
     private boolean isNotSpecial(int cc) {
 
@@ -141,7 +130,7 @@ public class LParser implements ResourceLocator {
     /**
      * Parse an LValue.
      * 
-     * @return the LValue or <code>null</code> at end of file
+     * @return the LValue or {@code null} at end of file
      * 
      * @throws IOException in case of an I/O error
      */
@@ -158,7 +147,7 @@ public class LParser implements ResourceLocator {
      * 
      * @param accept indicator whether a closing parenthesis is acceptable
      * 
-     * @return the LNode or <code>null</code> at end of file
+     * @return the LNode or {@code null} at end of file
      * 
      * @throws IOException in case of an I/O error
      */
@@ -267,7 +256,7 @@ public class LParser implements ResourceLocator {
     }
 
     /**
-     * Read a number. <br/> Note: The e notation is not supported yet
+     * Read a number. <br> Note: The e notation is not supported yet
      * 
      * @return the number object
      * 

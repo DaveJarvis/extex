@@ -20,7 +20,7 @@
  * Logging and Log Levels
  *
  * <p>
- * This package contains support classes for logging.
+ * Contains support classes for logging.
  * εχTeX uses the definition of logging introduced
  * in Java 1.4. Thus most of the required functionality is already provided
  * by the Java programming language.
@@ -32,10 +32,10 @@
  *  used to distinguish the different cases.
  * </p>
  * <dl>
- *  <dt><code>Level.SEVERE</code></dt>
+ *  <dt>{@code Level.SEVERE}</dt>
  *  <dd>This level is used to signal a real problem. It should be
  *   logged to both streams.</dd>
- *  <dt><code>Level.WARNING</code></dt>
+ *  <dt>{@code Level.WARNING}</dt>
  *  <dd>This level is used to signal a warning.
  *  </dd>
  * </dl>

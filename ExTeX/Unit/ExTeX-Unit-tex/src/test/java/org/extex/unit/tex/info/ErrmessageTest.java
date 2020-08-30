@@ -23,11 +23,10 @@ import org.extex.test.ExTeXLauncher;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\errmessage</tt>.
+ * This is a test suite for the primitive {@code \errmessage}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class ErrmessageTest extends ExTeXLauncher {
 
 
@@ -38,7 +37,7 @@ public class ErrmessageTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\errmessage">
      *  Test case checking that \errmessage delivers a decent value.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */

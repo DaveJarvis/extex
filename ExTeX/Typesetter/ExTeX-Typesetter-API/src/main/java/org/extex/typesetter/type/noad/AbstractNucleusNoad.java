@@ -26,19 +26,18 @@ import org.extex.typesetter.tc.TypesettingContext;
  * This abstract noad represents a Noad with a nucleus.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public abstract class AbstractNucleusNoad extends AbstractNoad {
 
     /**
-     * The field <tt>nucleus</tt> contains the nucleus.
+     * The field {@code nucleus} contains the nucleus.
      */
-    private Noad nucleus;
+    private final Noad nucleus;
 
     /**
-     * The field <tt>tc</tt> contains the typesetting context.
+     * The field {@code tc} contains the typesetting context.
      */
-    private TypesettingContext tc;
+    private final TypesettingContext tc;
 
     /**
      * Creates a new object.

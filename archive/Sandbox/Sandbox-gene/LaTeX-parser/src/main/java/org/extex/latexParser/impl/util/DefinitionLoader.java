@@ -36,8 +36,7 @@ import org.extex.scanner.api.exception.ScannerException;
  * active characters.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class DefinitionLoader {
 
     /**

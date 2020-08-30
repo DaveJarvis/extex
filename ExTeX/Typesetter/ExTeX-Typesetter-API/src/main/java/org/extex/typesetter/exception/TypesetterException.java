@@ -25,12 +25,11 @@ import org.extex.core.exception.GeneralException;
  * This is the base class for all exceptions thrown by the typesetter.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class TypesetterException extends GeneralException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2005L;
 

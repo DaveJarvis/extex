@@ -22,11 +22,10 @@ package org.extex.unit.tex.register.skip;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\skip</tt>.
+ * This is a test suite for the primitive {@code \skip}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SkipTest extends AbstractSkipRegisterTester {
 
     /**

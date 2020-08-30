@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains exception classes which are derived from the
+ * Contains exception classes which are derived from the
  * HelpingException. They are used internally in the interpreter to signal
  * abnormal situations. Those exceptions should be caught and treated by
  * an error handler. Thus they should not show up outside of the interpreter.

@@ -36,12 +36,11 @@ import org.junit.Test;
  * This is a test suite for {@link TBlock}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TBlockTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -67,7 +66,7 @@ public class TBlockTest {
     }
 
     /**
-     * <testcase> A Literal executes to itself. </testcase>
+     *  A Literal executes to itself.
      * 
      * @throws Exception in case of an error
      */
@@ -85,7 +84,7 @@ public class TBlockTest {
     }
 
     /**
-     * <testcase> An empty block expands to the empty string. </testcase>
+     *  An empty block expands to the empty string.
      * 
      * @throws Exception in case of an error
      */
@@ -100,7 +99,7 @@ public class TBlockTest {
     }
 
     /**
-     * <testcase> toString() works. </testcase>
+     *  toString() works.
      * 
      * @throws Exception in case of an error
      */
@@ -111,7 +110,7 @@ public class TBlockTest {
     }
 
     /**
-     * <testcase> The token visitor invokes the correct method. </testcase>
+     *  The token visitor invokes the correct method.
      * 
      * @throws Exception in case of an error
      */

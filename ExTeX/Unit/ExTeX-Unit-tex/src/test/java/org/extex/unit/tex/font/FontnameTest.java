@@ -25,11 +25,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\fontname</tt>.
+ * This is a test suite for the primitive {@code \fontname}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class FontnameTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -50,7 +49,7 @@ public class FontnameTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\fontname"> Test case checking that an end of file
-     * leads to an error. </testcase>
+     * leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -65,7 +64,7 @@ public class FontnameTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\fontname"> Test case checking that a missing font
-     * identifier leads to an error. </testcase>
+     * identifier leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -80,7 +79,7 @@ public class FontnameTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\fontname"> Test case checking that a missing font
-     * identifier leads to an error. </testcase>
+     * identifier leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -95,7 +94,7 @@ public class FontnameTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\fontname"> Test case checking that a correct value
-     * is produced for the nullfont. </testcase>
+     * is produced for the nullfont.
      * 
      * @throws Exception in case of an error
      */
@@ -110,7 +109,7 @@ public class FontnameTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\fontname"> Test case checking that a correct value
-     * is produced for a font loaded at its design size. </testcase>
+     * is produced for a font loaded at its design size.
      * 
      * @throws Exception in case of an error
      */
@@ -126,7 +125,7 @@ public class FontnameTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\fontname"> Test case checking that a correct value
-     * is produced. This test case needs an external font cmi10! </testcase>
+     * is produced. This test case needs an external font cmi10!
      * 
      * @throws Exception in case of an error
      */
@@ -143,7 +142,7 @@ public class FontnameTest extends NoFlagsPrimitiveTester {
     /**
      * <testcase primitive="\fontname"> Test case checking that a correct value
      * is produced for a font loaded with an explicit size which is its design
-     * size. </testcase>
+     * size.
      * 
      * @throws Exception in case of an error
      */
@@ -160,7 +159,7 @@ public class FontnameTest extends NoFlagsPrimitiveTester {
     /**
      * <testcase primitive="\fontname"> Test case checking that a correct value
      * is produced for a font loaded with an explicit size which is not its
-     * design size. </testcase>
+     * design size.
      * 
      * @throws Exception in case of an error
      */
@@ -176,7 +175,7 @@ public class FontnameTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\fontname"> Test case checking that a correct value
-     * is produced for a font loaded with a scale factor. </testcase>
+     * is produced for a font loaded with a scale factor.
      * 
      * @throws Exception in case of an error
      */

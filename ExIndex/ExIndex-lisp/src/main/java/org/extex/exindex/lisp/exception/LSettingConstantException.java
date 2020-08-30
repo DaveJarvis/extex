@@ -26,12 +26,11 @@ import org.extex.exindex.lisp.type.value.LSymbol;
  * constant.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LSettingConstantException extends LException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;

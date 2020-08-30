@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\chardef</tt>.
+ * This is a test suite for the primitive {@code \chardef}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
@@ -48,8 +47,8 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\chardef"> Test case checking that <tt>\chardef</tt>
-     * needs a cs. </testcase>
+     * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
+     * needs a cs.
      * 
      * @throws Exception in case of an error
      */
@@ -61,8 +60,8 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\chardef"> Test case checking that <tt>\chardef</tt>
-     * needs a char as second argument. </testcase>
+     * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
+     * needs a char as second argument.
      * 
      * @throws Exception in case of an error
      */
@@ -74,8 +73,8 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\chardef"> Test case checking that <tt>\chardef</tt>
-     * complains about a bad character code. </testcase>
+     * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
+     * complains about a bad character code.
      * 
      * @throws Exception in case of an error
      */
@@ -87,9 +86,9 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\chardef"> Test case checking that <tt>\chardef</tt>
+     * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
      * can be used to define a control sequence carrying a character.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -101,9 +100,9 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\chardef"> Test case checking that <tt>\chardef</tt>
+     * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
      * can be used to define a control sequence which is convertible into a
-     * count. </testcase>
+     * count.
      * 
      * @throws Exception in case of an error
      */
@@ -115,9 +114,9 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\chardef"> Test case checking that <tt>\chardef</tt>
+     * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
      * can be used to define a control sequence which is applicable to
-     * <tt>\the</tt>. </testcase>
+     * {@code \the}.
      * 
      * @throws Exception in case of an error
      */
@@ -129,9 +128,9 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\chardef"> Test case checking that <tt>\chardef</tt>
+     * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
      * can be used to define a control sequence which is applicable to
-     * <tt>\show</tt>. </testcase>
+     * {@code \show}.
      * 
      * @throws Exception in case of an error
      */
@@ -143,8 +142,8 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\chardef"> Test case checking that <tt>\chardef</tt>
-     * respects grouping. </testcase>
+     * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
+     * respects grouping.
      * 
      * @throws Exception in case of an error
      */
@@ -157,8 +156,8 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\chardef"> Test case checking that <tt>\chardef</tt>
-     * consumes the <tt>\global</tt> flag. </testcase>
+     * <testcase primitive="\chardef"> Test case checking that {@code \chardef}
+     * consumes the {@code \global} flag.
      * 
      * @throws Exception in case of an error
      */

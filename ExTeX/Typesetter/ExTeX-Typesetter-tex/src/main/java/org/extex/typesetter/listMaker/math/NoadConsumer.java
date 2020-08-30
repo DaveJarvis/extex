@@ -41,8 +41,7 @@ import org.extex.typesetter.type.noad.Noad;
  * This is usually the case for math list makers.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4496 $
- */
+*/
 public interface NoadConsumer extends ListMaker {
 
     /**
@@ -97,7 +96,7 @@ public interface NoadConsumer extends ListMaker {
     /**
      * Get access to the previous noad.
      *
-     * @return the previous noad or <code>null</code> if there is none
+     * @return the previous noad or {@code null} if there is none
      *
      * @throws TypesetterException in case of an error
      */
@@ -122,7 +121,7 @@ public interface NoadConsumer extends ListMaker {
     void middle(MathDelimiter delimiter) throws TypesetterException;
 
     /**
-     * Close the group for a <tt>\left</tt>-<tt>\right</tt> construction.
+     * Close the group for a {@code \left}-{@code \right} construction.
      *
      * @param delimiter the delimiter to typeset on the right side
      *
@@ -141,7 +140,7 @@ public interface NoadConsumer extends ListMaker {
      * @param primitive the name of the primitive for error messages
      * @param groupType the group type in case that a group needs to be opened
      *
-     * @return the Noad read or <code>null</code> if none could be gathered
+     * @return the Noad read or {@code null} if none could be gathered
      * @throws TypesetterException in case of an error
      * @throws HelpingException in case of an error
      */
@@ -154,11 +153,11 @@ public interface NoadConsumer extends ListMaker {
      * construction. The math list collected so far is integrated into the
      * fraction noad.
      *
-     * @param leftDelimiter the left delimiter or <code>null</code> if none
+     * @param leftDelimiter the left delimiter or {@code null} if none
      *  should be used.
-     * @param rightDelimiter the right delimiter or <code>null</code> if none
+     * @param rightDelimiter the right delimiter or {@code null} if none
      *  should be used.
-     * @param ruleWidth th width of the rule or <code>null</code> to indicate
+     * @param ruleWidth th width of the rule or {@code null} to indicate
      *  that the default width should be used
      * @param tc the typesetting context
      *

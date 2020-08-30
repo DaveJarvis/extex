@@ -29,8 +29,7 @@ import org.extex.typesetter.type.NodeList;
  * This interface describes a list for alignments with the associated methods.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface AlignmentList {
 
     /**
@@ -40,7 +39,7 @@ public interface AlignmentList {
      *
      * @param context the interpreter context
      * @param source the token source
-     * @param noalign the tokens to be inserted or <code>null</code>
+     * @param noalign the tokens to be inserted or {@code null}
      *
      * @throws TypesetterException in case of an error
      */

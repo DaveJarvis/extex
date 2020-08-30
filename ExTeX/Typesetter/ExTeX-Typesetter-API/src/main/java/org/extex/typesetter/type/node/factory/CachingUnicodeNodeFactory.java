@@ -32,14 +32,13 @@ import org.extex.typesetter.type.Node;
  * and virtual chars.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class CachingUnicodeNodeFactory extends SimpleUnicodeNodeFactory {
 
     /**
-     * The field <tt>cache</tt> contains the cache for previously created nodes.
+     * The field {@code cache} contains the cache for previously created nodes.
      */
-    private Map<TypesettingContext, Map<UnicodeChar, Node>> cache;
+    private final Map<TypesettingContext, Map<UnicodeChar, Node>> cache;
 
 
     public CachingUnicodeNodeFactory() {
@@ -49,7 +48,7 @@ public class CachingUnicodeNodeFactory extends SimpleUnicodeNodeFactory {
 
     /**
      * Create a new instance for the node.
-     * If the character is not defined in the font given then <code>null</code>
+     * If the character is not defined in the font given then {@code null}
      * is returned instead.
      *
      * @param typesettingContext the typographic context for the node

@@ -39,8 +39,7 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class Var implements GCode {
 
     /**
@@ -68,23 +67,23 @@ public final class Var implements GCode {
     }
 
     /**
-     * The field <tt>name</tt> contains the name.
+     * The field {@code name} contains the name.
      */
     private String name;
 
     /**
-     * The field <tt>type</tt> contains the return type.
+     * The field {@code type} contains the return type.
      */
     private ReturnType type;
 
     /**
-     * The field <tt>reference</tt> contains the reference to another variable
+     * The field {@code reference} contains the reference to another variable
      * if this one is bound.
      */
     private GCode reference = null;
 
     /**
-     * The field <tt>age</tt> contains the age of the variable. It helps to
+     * The field {@code age} contains the age of the variable. It helps to
      * determine which variable to bind when two unbound variables are unified.
      */
     private int age;
@@ -106,7 +105,7 @@ public final class Var implements GCode {
      * 
      * @param other the other variable
      * 
-     * @return <code>true</code> if this variable is bound to the same base as
+     * @return {@code true} if this variable is bound to the same base as
      *         another one
      */
     public boolean eq(Var other) {
@@ -122,12 +121,7 @@ public final class Var implements GCode {
         return v == w;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#getType()
-     */
-    public ReturnType getType() {
+public ReturnType getType() {
 
         if (type != null) {
             return type;
@@ -139,42 +133,24 @@ public final class Var implements GCode {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#hasSideEffect()
-     */
-    @Override
+@Override
     public boolean hasSideEffect() {
 
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#optimize()
-     */
-    public GCode optimize() {
+public GCode optimize() {
 
         return (reference != null ? reference.optimize() : this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#optimize(java.util.List, int)
-     */
-    public int optimize(List<GCode> list, int index) {
+public int optimize(List<GCode> list, int index) {
 
         return index + 1;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
-     *      java.lang.String)
+*      java.lang.String)
      */
     public void print(CodeWriter writer, String prefix) throws IOException {
 
@@ -210,12 +186,7 @@ public final class Var implements GCode {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return name;

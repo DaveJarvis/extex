@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains definitions for glue register observers.
+ * Contains definitions for glue register observers.
  */
 
 package org.extex.interpreter.context.observer.glue;

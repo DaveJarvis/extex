@@ -27,13 +27,12 @@ import java.io.IOException;
 import static org.junit.Assert.*;
 
 /**
- * Tests for the <code>XtfReader</code>.
+ * Tests for the {@code XtfReader}.
  * <p>
- * The test use the data from the <code>ttx</code> output.
+ * The test use the data from the {@code ttx} output.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class XtfReaderGara4Test {
 
   /**

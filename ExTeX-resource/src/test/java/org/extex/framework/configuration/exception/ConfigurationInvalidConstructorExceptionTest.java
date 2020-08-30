@@ -34,12 +34,11 @@ import org.junit.Test;
  * This is a test suite for {@link ConfigurationInvalidConstructorException}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ConfigurationInvalidConstructorExceptionTest {
 
     /**
-     * The field <tt>CONF</tt> contains the configuration for testing purposes.
+     * The field {@code CONF} contains the configuration for testing purposes.
      */
     private static final Configuration CONF = new Configuration() {
 
@@ -128,12 +127,7 @@ public class ConfigurationInvalidConstructorExceptionTest {
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return "THE CONFIG";
@@ -142,7 +136,7 @@ public class ConfigurationInvalidConstructorExceptionTest {
     };
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test(expected = NullPointerException.class)
     public void test1() {
@@ -151,7 +145,7 @@ public class ConfigurationInvalidConstructorExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetLocalizedMessage1() {
@@ -165,7 +159,7 @@ public class ConfigurationInvalidConstructorExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetLocalizer() {
@@ -176,7 +170,7 @@ public class ConfigurationInvalidConstructorExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetSource() {
@@ -187,7 +181,7 @@ public class ConfigurationInvalidConstructorExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetText1() {
@@ -200,7 +194,7 @@ public class ConfigurationInvalidConstructorExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetText2() {

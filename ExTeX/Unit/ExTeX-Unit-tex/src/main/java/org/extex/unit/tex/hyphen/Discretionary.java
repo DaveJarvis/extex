@@ -40,12 +40,11 @@ import org.extex.typesetter.type.node.DiscretionaryNode;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\discretionary</code>.
+ * {@code \discretionary}.
  * 
- * <doc name="discretionary">
- * <h3>The Primitive <tt>\discretionary</tt></h3>
+ * <p>The Primitive {@code \discretionary}</p>
  * <p>
- * The primitive <tt>\discretionary</tt> can be used to insert an optional
+ * The primitive {@code \discretionary} can be used to insert an optional
  * break point into the paragraph. The optional break point consists of three
  * parts. The first part is inserted into the paragraph if no line breaking
  * happens at this position. In case that the line breaking chooses this place
@@ -61,28 +60,28 @@ import org.extex.typesetter.type.node.DiscretionaryNode;
  * In math mode the third part is forced to be empty.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;discretionary&rang;
- *      &rarr; <tt>\discretionary</tt>{&lang;pre&rang;}{&lang;post&rang;}{&lang;nobreak&rang;}  </pre>
+ *      &rarr; {@code \discretionary}{&lang;pre&rang;}{&lang;post&rang;}{&lang;nobreak&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \discretionary{f-}{fi}{ffi}
  *    \discretionary{-}{}{}  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Discretionary extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -98,10 +97,7 @@ public class Discretionary extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -131,7 +127,7 @@ public class Discretionary extends AbstractCode {
      * @param typesetter the typesetter
      * @param locator the locator pointing to the start
      * 
-     * @return the node list or <code>null</code> if there are no tokens to
+     * @return the node list or {@code null} if there are no tokens to
      *         put into the list
      * 
      * @throws TypesetterException in case of an error

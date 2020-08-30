@@ -27,8 +27,7 @@ import org.extex.typesetter.tc.TypesettingContextFactory;
  * internal methods.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface ContextInternals extends Context, LanguageManagerCarrier {
 
     /**

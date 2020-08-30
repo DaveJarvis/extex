@@ -23,13 +23,12 @@ package org.extex.font.exception;
  * Font Exception.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class FontException extends Exception {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 1L;

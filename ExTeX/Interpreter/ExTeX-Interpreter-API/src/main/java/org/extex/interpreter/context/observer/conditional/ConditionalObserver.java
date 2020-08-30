@@ -27,8 +27,7 @@ import org.extex.interpreter.context.ContextInternals;
  * change in the conditional processing.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4399 $
- */
+*/
 public interface ConditionalObserver {
 
     /**

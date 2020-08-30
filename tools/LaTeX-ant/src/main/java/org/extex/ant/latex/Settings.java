@@ -25,42 +25,41 @@ import java.io.File;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 5432 $
- */
+*/
 public interface Settings {
 
     /**
-     * The field <tt>BIBTEX_COMMAND</tt> contains the name of the property for
+     * The field {@code BIBTEX_COMMAND} contains the name of the property for
      * the bibtex command.
      */
     public static final String BIBTEX_COMMAND = "bibtex.command";
 
     /**
-     * The field <tt>LATEX_COMMAND</tt> contains the name of the property for
+     * The field {@code LATEX_COMMAND} contains the name of the property for
      * the latex command.
      */
     public static final String LATEX_COMMAND = "latex.command";
 
     /**
-     * The field <tt>MAKEINDEX_COMMAND</tt> contains the name of the property
+     * The field {@code MAKEINDEX_COMMAND} contains the name of the property
      * for the makeindex command.
      */
     public static final String MAKEINDEX_COMMAND = "makeindex.command";
 
     /**
-     * The field <tt>MAKEINDEX_COMMAND</tt> contains the name of the property
+     * The field {@code MAKEINDEX_COMMAND} contains the name of the property
      * for the workng directory.
      */
     public static final String CWD = "latex.working.directory";
 
     /**
-     * The field <tt>OUTPUT_FORMAT</tt> contains the name of the property for
+     * The field {@code OUTPUT_FORMAT} contains the name of the property for
      * the output format.
      */
     public static final String OUTPUT_FORMAT = "latex.output.format";
 
     /**
-     * The field <tt>OUTPUT_DIRACTROY</tt> contains the name of the property for
+     * The field {@code OUTPUT_DIRACTROY} contains the name of the property for
      * the output directory.
      */
     public static final String OUTPUT_DIRECTORY = "latex.output.directory";

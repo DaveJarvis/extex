@@ -33,12 +33,11 @@ import org.extex.unit.tex.math.delimiter.AbstractTeXDelimiter;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\overwithdelims</code>.
+ * {@code \overwithdelims}.
  * 
- * <doc name="overwithdelims">
- * <h3>The Primitive <tt>\overwithdelims</tt></h3>
+ * <p>The Primitive {@code \overwithdelims}</p>
  * <p>
- * The math primitive <tt>\over</tt> arranges that the material in the math
+ * The math primitive {@code \over} arranges that the material in the math
  * group before it is typeset above the material after the primitive. The two
  * parts are separated by a line of the default width which is taken from the
  * font parameters. If the width is less than 0pt then no rule is drawn but the
@@ -46,36 +45,36 @@ import org.extex.unit.tex.math.delimiter.AbstractTeXDelimiter;
  * given
  * </p>
  * <p>
- * If several primitives of type <tt>\above</tt>, <tt>\abovewithdelims</tt>,
- * <tt>\atop</tt>, <tt>\atopwithdelims</tt>, <tt>\over</tt>, or
- * <tt>\overwithdelims</tt> are encountered in the same math group then the
+ * If several primitives of type {@code \above}, {@code \abovewithdelims},
+ * {@code \atop}, {@code \atopwithdelims}, {@code \over}, or
+ * {@code \overwithdelims} are encountered in the same math group then the
  * result is ambiguous and an error is raised.
  * </p>
  * <p>
  * If the primitive is used outside of math mode then an error is raised.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;overwithdelims&rang;
- *       &rarr; &lang;math material&rang; <tt>\overwithdelims</tt> ... &lang;math material&rang; </pre>
+ *       &rarr; &lang;math material&rang; {@code \overwithdelims} ... &lang;math material&rang; </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    {a\overwithdelims\delimiter"123456\delimiter"123456 b}  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Overwithdelims extends AbstractTeXDelimiter {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -91,10 +90,7 @@ public class Overwithdelims extends AbstractTeXDelimiter {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

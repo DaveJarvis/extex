@@ -33,8 +33,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * Convert a xtf font to a xml file.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class Xtf2Xml extends AbstractFontUtil {
 
     /**

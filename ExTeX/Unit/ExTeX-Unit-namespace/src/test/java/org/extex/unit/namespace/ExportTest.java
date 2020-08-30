@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\export</tt>.
+ * This is a test suite for the primitive {@code \export}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ExportTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -49,8 +48,8 @@ public class ExportTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\export"> Test case checking that <tt>\export</tt>
-     * needs an argument. </testcase>
+     * <testcase primitive="\export"> Test case checking that {@code \export}
+     * needs an argument.
      * 
      * @throws Exception in case of an error
      */

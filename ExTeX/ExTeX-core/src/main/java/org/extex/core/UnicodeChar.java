@@ -33,79 +33,78 @@ import com.ibm.icu.lang.UCharacter;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:5417 $
- */
+*/
 public class UnicodeChar implements Serializable {
 
     /**
-     * The constant <tt>MAX_VALUE</tt> contains the maximal admissible code
+     * The constant {@code MAX_VALUE} contains the maximal admissible code
      * point.
      */
     public static final int MAX_VALUE = UCharacter.MAX_VALUE;
 
     /**
-     * The constant <tt>MIN_VALUE</tt> contains the minimal admissible code
+     * The constant {@code MIN_VALUE} contains the minimal admissible code
      * point.
      */
     public static final int MIN_VALUE = UCharacter.MIN_VALUE;
 
     /**
-     * The field <tt>CACHE_SIZE</tt> contains the size of lower cache segment.
+     * The field {@code CACHE_SIZE} contains the size of lower cache segment.
      */
     private static final int CACHE_SIZE = 256;
 
     /**
-     * The field <tt>cache</tt> contains the cache for Unicode characters.
+     * The field {@code cache} contains the cache for Unicode characters.
      */
-    private static UnicodeChar[] cache = new UnicodeChar[CACHE_SIZE];
+    private static final UnicodeChar[] cache = new UnicodeChar[CACHE_SIZE];
 
     /**
-     * The field <tt>cacheMap</tt> contains the cache for Unicode characters
+     * The field {@code cacheMap} contains the cache for Unicode characters
      * with higher code points.
      */
-    private static WeakHashMap<Integer, UnicodeChar> cacheMap =
+    private static final WeakHashMap<Integer, UnicodeChar> cacheMap =
             new WeakHashMap<Integer, UnicodeChar>();
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 1L;
 
     /**
-     * The field <tt>BREAK_PERMITTED_HERE</tt> contains the optional break.
+     * The field {@code BREAK_PERMITTED_HERE} contains the optional break.
      */
     public static final UnicodeChar BREAK_PERMITTED_HERE = UnicodeChar
         .get(0x82);
 
     /**
-     * The field <tt>NEXT_LINE</tt> contains the next line control character.
+     * The field {@code NEXT_LINE} contains the next line control character.
      */
     public static final UnicodeChar NEXT_LINE = UnicodeChar.get(0x85);
 
     /**
-     * The field <tt>NO_BREAK_HERE</tt> contains the break inhibitor.
+     * The field {@code NO_BREAK_HERE} contains the break inhibitor.
      */
     public static final UnicodeChar NO_BREAK_HERE = UnicodeChar.get(0x83);
 
     /**
-     * The field <tt>NO_BREAK_SPACE</tt> contains the non-breakable space.
+     * The field {@code NO_BREAK_SPACE} contains the non-breakable space.
      */
     public static final UnicodeChar NO_BREAK_SPACE = UnicodeChar.get(0xa0);
 
     /**
-     * The constant <tt>SHY</tt> contains the soft hyphenation character.
+     * The constant {@code SHY} contains the soft hyphenation character.
      */
     public static final UnicodeChar SHY = UnicodeChar.get(0xad);
 
     /**
-     * The field <tt>SPACE</tt> contains the space control character.
+     * The field {@code SPACE} contains the space control character.
      */
     public static final UnicodeChar SPACE = UnicodeChar.get(0x20);
 
     /**
      * Creates a new object from a integer code point. This is a factory method
      * for Unicode characters. If the code point is out of range then
-     * <tt>null</tt> is returned.
+     * {@code null} is returned.
      * 
      * @param code the code point
      * 
@@ -149,10 +148,10 @@ public class UnicodeChar implements Serializable {
     }
 
     /**
-     * The field <tt>code</tt> contains the code point of the Unicode character
+     * The field {@code code} contains the code point of the Unicode character
      * (32 bit).
      */
-    private int code;
+    private final int code;
 
     /**
      * Creates a new object from an integer code point.
@@ -172,7 +171,7 @@ public class UnicodeChar implements Serializable {
     }
 
     /**
-     * Compares a <code>UnicodeChar</code> character with the value of this
+     * Compares a {@code UnicodeChar} character with the value of this
      * object. They are considered equal if the are both UnicodeChars and have
      * the same code.
      * <p>
@@ -182,8 +181,8 @@ public class UnicodeChar implements Serializable {
      * 
      * @param unicodeChar the character to compare
      * 
-     * @return <code>true</code> if the characters are equal, otherwise
-     *         <code>false</code>
+     * @return {@code true} if the characters are equal, otherwise
+     *         {@code false}
      */
     @Override
     public boolean equals(Object unicodeChar) {
@@ -238,8 +237,8 @@ public class UnicodeChar implements Serializable {
     /**
      * Test, if the code is a digit.
      * 
-     * @return <code>true</code>, if the code is a digit, otherwise
-     *         <code>false</code>
+     * @return {@code true}, if the code is a digit, otherwise
+     *         {@code false}
      */
     public boolean isDigit() {
 
@@ -249,8 +248,8 @@ public class UnicodeChar implements Serializable {
     /**
      * Test, if the character is a letter.
      * 
-     * @return <code>true</code>, if the code is a letter, otherwise
-     *         <code>false</code>
+     * @return {@code true}, if the code is a letter, otherwise
+     *         {@code false}
      */
     public boolean isLetter() {
 
@@ -260,8 +259,8 @@ public class UnicodeChar implements Serializable {
     /**
      * Test, if the code is printable.
      * 
-     * @return <code>true</code>, if the code is printable, otherwise
-     *         <code>false</code>
+     * @return {@code true}, if the code is printable, otherwise
+     *         {@code false}
      */
     public boolean isPrintable() {
 

@@ -27,12 +27,11 @@ import org.extex.exindex.core.type.raw.LocationReference;
  * This class represents an attribute group.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class AttributeGroup extends ArrayList<LocationReference> {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2008L;

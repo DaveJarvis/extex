@@ -17,7 +17,7 @@
  */
 /**
  * 
- *   This package contains a Lisp-like parser.
+ *   Contains a Lisp-like parser.
  * 
  *
  */

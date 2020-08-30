@@ -35,12 +35,11 @@ import org.junit.Test;
  * This is a test suite for {@link LaTeXMojo}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:7717 $
- */
+*/
 public class LaTeXMojoTest extends AbstractMojoTestCase {
 
     /**
-     * The field <tt>basedir</tt> contains the base directory.
+     * The field {@code basedir} contains the base directory.
      */
     private String basedir = getBasedir().replace('\\', '/');
 
@@ -117,7 +116,7 @@ public class LaTeXMojoTest extends AbstractMojoTestCase {
      * 
      * @param pom the name of the POM
      * @param content the content of the POM
-     * @param log the expected log content or <code>null</code> if no comparison
+     * @param log the expected log content or {@code null} if no comparison
      *        should be performed
      * 
      * @throws Exception in case of an error
@@ -217,7 +216,7 @@ public class LaTeXMojoTest extends AbstractMojoTestCase {
     }
 
     /**
-     * <testcase> The format must be one of the defined formats. </testcase>
+     *  The format must be one of the defined formats. 
      * 
      * @throws Exception in case of an error
      */
@@ -236,8 +235,8 @@ public class LaTeXMojoTest extends AbstractMojoTestCase {
     }
 
     /**
-     * <testcase> A master file needs to be given or an exception is raised.
-     * </testcase>
+     *  A master file needs to be given or an exception is raised.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -254,7 +253,7 @@ public class LaTeXMojoTest extends AbstractMojoTestCase {
     }
 
     /**
-     * <testcase> an illegal latexCommand leads to an error. </testcase>
+     *  an illegal latexCommand leads to an error. 
      * 
      * @throws Exception in case of an error
      */

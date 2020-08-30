@@ -16,8 +16,8 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the backend support for pages of the core engine of
-  * ??TeX*/
+ *Contains backend support for pages of the core engine of
+  * εχTeX*/
 
 package org.extex.engine.typesetter.page;
 

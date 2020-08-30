@@ -26,12 +26,11 @@ import org.extex.ocpware.exception.OcpException;
  * which is already defined.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class StateDefinedException extends OcpException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;

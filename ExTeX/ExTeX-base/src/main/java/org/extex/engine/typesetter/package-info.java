@@ -16,8 +16,8 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the typesetter support of the core engine of
-  * ??TeX*/
+ *Contains typesetter support of the core engine of
+  * εχTeX*/
 
 package org.extex.engine.typesetter;
 

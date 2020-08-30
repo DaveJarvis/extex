@@ -26,24 +26,23 @@ import java.io.OutputStream;
  * This is an abstract base class for DVI instructions.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractDviCode implements DviCode {
 
     /**
-     * The constant <tt>ONE_BYTE_MASK</tt> contains the bit mask for a single
+     * The constant {@code ONE_BYTE_MASK} contains the bit mask for a single
      * byte.
      */
     protected static final int ONE_BYTE_MASK = 0xff;
 
     /**
-     * The constant <tt>THREE_BYTE_MASK</tt> contains the bit mask for a triple
+     * The constant {@code THREE_BYTE_MASK} contains the bit mask for a triple
      * byte.
      */
     protected static final int THREE_BYTE_MASK = 0xffffff;
 
     /**
-     * The constant <tt>TWO_BYTE_MASK</tt> contains the bit mask for a double
+     * The constant {@code TWO_BYTE_MASK} contains the bit mask for a double
      * byte.
      */
     protected static final int TWO_BYTE_MASK = 0xffff;
@@ -84,7 +83,7 @@ public abstract class AbstractDviCode implements DviCode {
     }
 
     /**
-     * The field <tt>name</tt> contains the name of the dvi instruction.
+     * The field {@code name} contains the name of the dvi instruction.
      */
     private String name;
 

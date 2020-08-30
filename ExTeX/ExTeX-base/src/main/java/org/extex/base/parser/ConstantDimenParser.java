@@ -34,8 +34,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:5417 $
- */
+*/
 public final class ConstantDimenParser implements Parser<Dimen>, DimenParser {
 
 
@@ -46,13 +45,13 @@ public final class ConstantDimenParser implements Parser<Dimen>, DimenParser {
     /**
      * Creates a new object from a token stream.
      * 
-     * <doc type="syntax" name="dimen"> This method parses the following
+     * This method parses the following
      * syntactic entity:
      * 
      * <pre class="syntax">
      *    &lang;dimen&rang;
      *      &rarr; &lang;float&rang; &lang;dimen unit&rang;
-     *       |  &lang;float&rang; <tt>true</tt> &lang;dimen unit&rang;
+     *       |  &lang;float&rang; {@code true} &lang;dimen unit&rang;
      *       |  &lang;dimen variable&rang;
      *
      *    &lang;float&rang;
@@ -72,7 +71,6 @@ public final class ConstantDimenParser implements Parser<Dimen>, DimenParser {
      *      |  cc
      *      |  bp  </pre>
      * 
-     * </doc>
      * 
      * @param context the interpreter context
      * @param source the source for next tokens
@@ -90,10 +88,7 @@ public final class ConstantDimenParser implements Parser<Dimen>, DimenParser {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.Parser#parse(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Dimen parse(Context context, TokenSource source,
@@ -103,10 +98,7 @@ public final class ConstantDimenParser implements Parser<Dimen>, DimenParser {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.DimenParser#parseDimen(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Dimen parseDimen(Context context, TokenSource source,

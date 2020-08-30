@@ -33,25 +33,21 @@ import org.extex.exbib.bst2groovy.linker.LinkingCode;
  * This class implements the analyzer for option constants.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class OptionCompiler extends GIntegerConstant implements Compiler {
 
     /**
-     * The field <tt>init</tt> contains the initializer.
+     * The field {@code init} contains the initializer.
      */
     private String init;
 
     /**
-     * The field <tt>INIT</tt> contains the linking code.
+     * The field {@code INIT} contains the linking code.
      */
     private final LinkingCode initCode = new LinkingCode("init") {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GenericCode#print(org.extex.exbib.bst2groovy.io.CodeWriter,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         @Override
         public void print(CodeWriter writer) throws IOException {
@@ -62,7 +58,7 @@ public class OptionCompiler extends GIntegerConstant implements Compiler {
     };
 
     /**
-     * The field <tt>name</tt> contains the name.
+     * The field {@code name} contains the name.
      */
     private String name;
 
@@ -80,10 +76,7 @@ public class OptionCompiler extends GIntegerConstant implements Compiler {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryReference,
-     *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
+*      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */
@@ -95,10 +88,7 @@ public class OptionCompiler extends GIntegerConstant implements Compiler {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public void print(CodeWriter writer, String prefix) throws IOException {

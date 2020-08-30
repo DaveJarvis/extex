@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\catcode</tt>.
+ * This is a test suite for the primitive {@code \catcode}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
@@ -48,8 +47,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * needs a char. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * needs a char. 
      * 
      * @throws Exception in case of an error
      */
@@ -61,8 +60,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * needs a token. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * needs a token. 
      * 
      * @throws Exception in case of an error
      */
@@ -74,8 +73,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * needs a range for the value. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * needs a range for the value. 
      * 
      * @throws Exception in case of an error
      */
@@ -87,8 +86,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * needs a range for the value. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * needs a range for the value. 
      * 
      * @throws Exception in case of an error
      */
@@ -100,8 +99,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * needs a range for the value. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * needs a range for the value. 
      * 
      * @throws Exception in case of an error
      */
@@ -113,8 +112,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * takes a value of 0. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * takes a value of 0. 
      * 
      * @throws Exception in case of an error
      */
@@ -126,8 +125,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * takes a value of 1. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * takes a value of 1. 
      * 
      * @throws Exception in case of an error
      */
@@ -139,8 +138,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * takes a value of 2. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * takes a value of 2. 
      * 
      * @throws Exception in case of an error
      */
@@ -152,8 +151,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * takes a value of 3. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * takes a value of 3. 
      * 
      * @throws Exception in case of an error
      */
@@ -165,8 +164,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * takes a value of 4. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * takes a value of 4. 
      * 
      * @throws Exception in case of an error
      */
@@ -178,8 +177,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * takes a value of 5. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * takes a value of 5. 
      * 
      * @throws Exception in case of an error
      */
@@ -191,8 +190,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * takes a value of 6. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * takes a value of 6. 
      * 
      * @throws Exception in case of an error
      */
@@ -204,8 +203,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * takes a value of 7. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * takes a value of 7. 
      * 
      * @throws Exception in case of an error
      */
@@ -217,8 +216,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * takes a value of 8. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * takes a value of 8. 
      * 
      * @throws Exception in case of an error
      */
@@ -230,8 +229,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * takes a value of 9. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * takes a value of 9. 
      * 
      * @throws Exception in case of an error
      */
@@ -243,8 +242,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * takes a value of 10. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * takes a value of 10. 
      * 
      * @throws Exception in case of an error
      */
@@ -256,8 +255,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * takes a value of 11. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * takes a value of 11. 
      * 
      * @throws Exception in case of an error
      */
@@ -269,8 +268,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * takes a value of 12. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * takes a value of 12. 
      * 
      * @throws Exception in case of an error
      */
@@ -282,8 +281,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * takes a value of 13. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * takes a value of 13. 
      * 
      * @throws Exception in case of an error
      */
@@ -295,8 +294,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * takes a value of 14. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * takes a value of 14. 
      * 
      * @throws Exception in case of an error
      */
@@ -308,8 +307,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * takes a value of 15. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * takes a value of 15. 
      * 
      * @throws Exception in case of an error
      */
@@ -321,8 +320,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * is count convertible. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * is count convertible. 
      * 
      * @throws Exception in case of an error
      */
@@ -334,8 +333,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * respects \afterassignment. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * respects \afterassignment. 
      * 
      * @throws Exception in case of an error
      */
@@ -347,8 +346,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * respects \global. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * respects \global. 
      * 
      * @throws Exception in case of an error
      */
@@ -361,8 +360,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * respects \global. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * respects \global. 
      * 
      * @throws Exception in case of an error
      */
@@ -375,8 +374,8 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
-     * respects \globaldefs. </testcase>
+     * <testcase primitive="\catcode"> Test case checking that {@code \catcode}
+     * respects \globaldefs. 
      * 
      * @throws Exception in case of an error
      */

@@ -26,8 +26,7 @@ import org.junit.Test;
  * This is an abstract tester for a symbol primitive.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractOperatorTester extends AbstractMathTester {
 
     public AbstractOperatorTester() {
@@ -36,9 +35,8 @@ public abstract class AbstractOperatorTester extends AbstractMathTester {
     }
 
     /**
-     * <testcase> Test case checking that the primitive complains when the
-     * argument is missing. </testcase>
-     * 
+     * Test case checking that the primitive complains when the argument is missing
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -52,9 +50,8 @@ public abstract class AbstractOperatorTester extends AbstractMathTester {
     }
 
     /**
-     * <testcase> Test case checking that the primitive needs a defined control
-     * sequence as argument. </testcase>
-     * 
+     * Test case checking that the primitive needs a defined control sequence as argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -69,9 +66,8 @@ public abstract class AbstractOperatorTester extends AbstractMathTester {
     }
 
     /**
-     * <testcase> Test case checking that the primitive can take a character
-     * defined with <tt>\chardef</tt> as argument. </testcase>
-     * 
+     * Test case checking that the primitive can take a character defined with {@code \chardef} as argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -86,9 +82,8 @@ public abstract class AbstractOperatorTester extends AbstractMathTester {
     }
 
     /**
-     * <testcase> Test case checking that the primitive can take a character
-     * defined with <tt>\let</tt> as argument. </testcase>
-     * 
+     * Test case checking that the primitive can take a character defined with {@code \let} as argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -103,9 +98,8 @@ public abstract class AbstractOperatorTester extends AbstractMathTester {
     }
 
     /**
-     * <testcase> Test case checking that the primitive can take a character
-     * enclosed in braces as argument. </testcase>
-     * 
+     * Test case checking that the primitive can take a character enclosed in braces as argument
+* 
      * @throws Exception in case of an error
      */
     @Test

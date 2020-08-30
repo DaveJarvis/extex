@@ -53,8 +53,7 @@ import org.extex.exbib.editor.bst.BstEditor;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class BstNavigator extends ViewPart {
 
     /**
@@ -63,17 +62,17 @@ public class BstNavigator extends ViewPart {
     public static final String ID = BstNavigator.class.getName();
 
     /**
-     * The field <tt>viewer</tt> contains the ...
+     * The field {@code viewer} contains the ...
      */
     private TreeViewer viewer;
 
     /**
-     * The field <tt>drillDownAdapter</tt> contains the ...
+     * The field {@code drillDownAdapter} contains the ...
      */
     private DrillDownAdapter drillDownAdapter;
 
     /**
-     * The field <tt>refreshAction</tt> contains the ...
+     * The field {@code refreshAction} contains the ...
      */
     private Action refreshAction;
 

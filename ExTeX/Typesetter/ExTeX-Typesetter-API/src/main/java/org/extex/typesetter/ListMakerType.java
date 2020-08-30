@@ -23,14 +23,13 @@ package org.extex.typesetter;
  * This class provides a type-save encapsulation for list maker types.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ListMakerType {
 
     /**
-     * The field <tt>id</tt> contains the name of the type.
+     * The field {@code id} contains the name of the type.
      */
-    private String id;
+    private final String id;
 
     /**
      * Creates a new object.
@@ -42,12 +41,7 @@ public class ListMakerType {
         this.id = id;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return id;

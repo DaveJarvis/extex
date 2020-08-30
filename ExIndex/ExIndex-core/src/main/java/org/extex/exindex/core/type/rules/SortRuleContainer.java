@@ -26,8 +26,7 @@ import java.util.List;
  * This interface describes a container for sort rules.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface SortRuleContainer {
 
     /**
@@ -61,7 +60,7 @@ public interface SortRuleContainer {
      * 
      * @param level the level
      * 
-     * @return the rule set for the given level or <code>null</code> for none
+     * @return the rule set for the given level or {@code null} for none
      */
     SortRules lookupSortRules(Integer level);
 

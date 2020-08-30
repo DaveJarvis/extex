@@ -33,12 +33,11 @@ import org.junit.Test;
  * Test case for {@link TChar}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TCharTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -63,7 +62,7 @@ public class TCharTest {
     }
 
     /**
-     * <testcase> A character evaluates to itself. </testcase>
+     *  A character evaluates to itself.
      * 
      * @throws Exception in case of an error
      */
@@ -77,7 +76,7 @@ public class TCharTest {
     }
 
     /**
-     * <testcase> toString() works. </testcase>
+     *  toString() works.
      * 
      * @throws Exception in case of an error
      */
@@ -88,7 +87,7 @@ public class TCharTest {
     }
 
     /**
-     * <testcase> Visiting a char calls the correct method. </testcase>
+     *  Visiting a char calls the correct method.
      * 
      * @throws Exception in case of an error
      */

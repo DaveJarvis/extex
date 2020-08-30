@@ -23,11 +23,10 @@ import org.extex.test.NoFlagsPrimitiveTester;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\prevdepth</tt>.
+ * This is a test suite for the primitive {@code \prevdepth}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Prevdepth2Test extends NoFlagsPrimitiveTester {
 
     /**

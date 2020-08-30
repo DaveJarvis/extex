@@ -29,30 +29,29 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\relax</code>.
+ * This class provides an implementation for the primitive {@code \relax}.
  * 
- * <doc name="relax"> <h3>The Primitive <tt>\relax</tt></h3>
+ * <p>The Primitive {@code \relax}</p>
  * <p>
- * This primitive simply does nothing. It acts as a no-op for the <logo>T<span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> macro language. <tt>\relax</tt> is not even expandable. in
- * certain circumstances it might be treated as if it where expandable and the
- * expansion is empty.
+ * This primitive simply does nothing. It acts as a no-op for the TeX macro
+ * language. {@code \relax} is not even expandable. in certain circumstances
+ * it might be treated as if it where expandable and the expansion is empty.
  * </p>
  * <p>
- * <tt>\relax</tt> sometimes acts as terminating token. For instance when a
- * number is parsed <tt>\relax</tt> terminates the parsing even if the following
+ * {@code \relax} sometimes acts as terminating token. For instance when a
+ * number is parsed {@code \relax} terminates the parsing even if the following
  * token is a digit.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;relax&rang;
- *      &rarr; <tt>\relax</tt>  </pre>
+ *      &rarr; {@code \relax}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \relax  </pre>
@@ -60,16 +59,14 @@ import org.extex.typesetter.exception.TypesetterException;
  * <pre class="TeXSample">
  *    \the\count123\relax456  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Relax extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -84,10 +81,7 @@ public class Relax extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Code#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -101,10 +95,7 @@ public class Relax extends AbstractCode {
      * All instances of this class are treated as equal. This is needed for the
      * comparison (\ifx) of tokens defined via \csname.
      * 
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
+*/
     @Override
     public boolean equals(Object obj) {
 
@@ -115,10 +106,7 @@ public class Relax extends AbstractCode {
      * All instances of this class are treated as equal. Thus all receive the
      * same hash code.
      * 
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#hashCode()
-     */
+*/
     @Override
     public int hashCode() {
 

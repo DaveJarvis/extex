@@ -25,15 +25,14 @@ import java.util.List;
  * Path construction.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public abstract class T2PathConstruction extends T2Operator {
 
     /**
      * bytes
      */
-    private short[] bytes;
+    private final short[] bytes;
 
     /**
      * Create a new object
@@ -48,12 +47,7 @@ public abstract class T2PathConstruction extends T2Operator {
         bytes = convertStackaddID(stack, id);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#getBytes()
-     */
-    @Override
+@Override
     public short[] getBytes() {
 
         return bytes;

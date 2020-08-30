@@ -32,7 +32,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * font relative to the beginning of the 'glyf' table. Its purpose is to provide
  * quick access to the data for a particular character.
  * 
- * <table border="1"> <tbody>
+ *  <table> <caption>TBD</caption> <tbody>
  * <tr>
  * <td><b>Glyph Index</b></td>
  * <td><b>Offset</b></td>
@@ -73,9 +73,9 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </table>
  * 
  * <p>
- * <code>'loca'</code> short version
+ * {@code 'loca'} short version
  * </p>
- * <table border="1"> <tbody>
+ *  <table> <caption>TBD</caption> <tbody>
  * <tr>
  * <td><b>Type</b></td>
  * <td><b>Name</b></td>
@@ -92,10 +92,10 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </table>
  * 
  * <p>
- * <code>'loca'</code> long version
+ * {@code 'loca'} long version
  * </p>
  * 
- * <table border="1"> <tbody>
+ *  <table> <caption>TBD</caption> <tbody>
  * <tr>
  * <td><b>Type</b></td>
  * <td><b>Name</b></td>
@@ -112,8 +112,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TtfTableLOCA extends AbstractXtfTable
         implements
             XtfTable,
@@ -154,12 +153,7 @@ public class TtfTableLOCA extends AbstractXtfTable
         rar.readFully(buf);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.AbstractXtfTable#getInitOrder()
-     */
-    @Override
+@Override
     public int getInitOrder() {
 
         return 1;
@@ -179,12 +173,7 @@ public class TtfTableLOCA extends AbstractXtfTable
         return offsets[i] * factor;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
+public String getShortcut() {
 
         return "loca";
     }
@@ -199,12 +188,7 @@ public class TtfTableLOCA extends AbstractXtfTable
         return XtfReader.LOCA;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.AbstractXtfTable#init()
-     */
-    @Override
+@Override
     public void init() {
 
         TtfTableHEAD head = (TtfTableHEAD) getTableMap().get(XtfReader.HEAD);
@@ -238,10 +222,7 @@ public class TtfTableLOCA extends AbstractXtfTable
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

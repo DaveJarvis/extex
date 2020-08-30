@@ -23,32 +23,31 @@ package org.extex.exindex.core.type.attribute;
  * This class represents an attribute description.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6687 $
- */
+*/
 public class Attribute {
 
     /**
-     * The field <tt>alias</tt> contains the attribute alias.
+     * The field {@code alias} contains the attribute alias.
      */
     private String alias = null;
 
     /**
-     * The field <tt>drop</tt> contains the drop indicator.
+     * The field {@code drop} contains the drop indicator.
      */
     private boolean drop = false;
 
     /**
-     * The field <tt>name</tt> contains the name.
+     * The field {@code name} contains the name.
      */
     private final String name;
 
     /**
-     * The field <tt>ord</tt> contains the ordering.
+     * The field {@code ord} contains the ordering.
      */
     private final int ord;
 
     /**
-     * The field <tt>group</tt> contains the group number.
+     * The field {@code group} contains the group number.
      */
     private final int group;
 
@@ -136,12 +135,7 @@ public class Attribute {
         this.drop = drop;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         if (drop) {

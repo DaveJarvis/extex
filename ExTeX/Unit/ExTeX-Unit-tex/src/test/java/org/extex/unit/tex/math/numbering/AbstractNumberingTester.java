@@ -26,8 +26,7 @@ import org.junit.Test;
  * This is an abstract base class for numbering primitives.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public abstract class AbstractNumberingTester extends NoFlagsPrimitiveTester {
 
     public AbstractNumberingTester() {
@@ -36,10 +35,10 @@ public abstract class AbstractNumberingTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case checking that the primitive needs the display math mode.
      *  Vertical mode is not sufficient.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -53,10 +52,10 @@ public abstract class AbstractNumberingTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case checking that the primitive needs the display math mode.
      *  Horizontal mode is not sufficient.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -70,10 +69,10 @@ public abstract class AbstractNumberingTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case checking that the primitive needs the display math mode.
      *  Inline math mode is not sufficient.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -87,10 +86,10 @@ public abstract class AbstractNumberingTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case checking that the primitive can't be use together with
-     *  <tt>\eqno</tt>.
-     * </testcase>
+     *  {@code \eqno}.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -104,10 +103,10 @@ public abstract class AbstractNumberingTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case checking that the primitive can't be use together with
-     *  <tt>\leqno</tt>.
-     * </testcase>
+     *  {@code \leqno}.
+     *
      *
      * @throws Exception in case of an error
      */

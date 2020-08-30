@@ -27,17 +27,16 @@ import org.extex.typesetter.type.node.WhatsItNode;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4791 $
- */
+*/
 public class PdfRefObj extends WhatsItNode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>index</tt> contains the index of the object.
+     * The field {@code index} contains the index of the object.
      */
     private long index;
 

@@ -30,49 +30,47 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\shipout</code>
+ * This class provides an implementation for the primitive {@code \shipout}
  * .
  * 
- * <doc name="shipout"> <h3>The Primitive <tt>\shipout</tt></h3>
+ * <p>The Primitive {@code \shipout}</p>
  * <p>
- * The primitive <tt>\shipout</tt> takes a box and send the contents of the box
+ * The primitive {@code \shipout} takes a box and send the contents of the box
  * to the back-end. If the box is void then this primitives ignores it and does
  * not contact the back-end.
  * </p>
  * <p>
- * In addition the count register <tt>\deadcyles</tt> is reset to 0. This count
+ * In addition the count register {@code \deadcyles} is reset to 0. This count
  * register is used to break out of infinite loops when no material is shipped
  * out in the output routine.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;shipout&rang;
- *      &rarr; <tt>\shipout</tt> {@linkplain
+ *      &rarr; {@code \shipout} {@linkplain
  *        org.extex.interpreter.TokenSource#getBox(Flags,Context,Typesetter, org.extex.scanner.type.token.Token)
  *        &lang;box&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \shipout\box255  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Shipout extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * Creates a new object.
-     * 
      * @param token the initial token for the primitive
      */
     public Shipout(CodeToken token) {
@@ -80,13 +78,6 @@ public class Shipout extends AbstractCode {
         super(token);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
     @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {

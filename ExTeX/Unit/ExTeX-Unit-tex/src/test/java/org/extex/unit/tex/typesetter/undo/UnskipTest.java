@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>&#x5c;unskip</tt>.
+ * This is a test suite for the primitive {@code &#x5c;unskip}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class UnskipTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -49,7 +48,7 @@ public class UnskipTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="&#x5c;unskip"> Test case checking that
-     * <tt>&#x5c;unskip</tt> need some node in the current list. </testcase>
+     * {@code &#x5c;unskip} need some node in the current list. 
      * 
      * @throws Exception in case of an error
      */
@@ -65,7 +64,7 @@ public class UnskipTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="&#x5c;unskip"> Test case checking that
-     * <tt>&#x5c;unskip</tt> need some node in the current list. </testcase>
+     * {@code &#x5c;unskip} need some node in the current list. 
      * 
      * @throws Exception in case of an error
      */
@@ -81,7 +80,7 @@ public class UnskipTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="&#x5c;unskip"> Test case checking that
-     * <tt>&#x5c;unskip</tt> need some node in the current list. </testcase>
+     * {@code &#x5c;unskip} need some node in the current list. 
      * 
      * @throws Exception in case of an error
      */
@@ -97,8 +96,8 @@ public class UnskipTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="&#x5c;unskip"> Test case checking that
-     * <tt>&#x5c;unskip</tt> does not touch a char node at the end of the
-     * current list. </testcase>
+     * {@code &#x5c;unskip} does not touch a char node at the end of the
+     * current list. 
      * 
      * @throws Exception in case of an error
      */
@@ -117,8 +116,8 @@ public class UnskipTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="&#x5c;unskip"> Test case checking that
-     * <tt>&#x5c;unskip</tt> takes the last skip from the current list.
-     * </testcase>
+     * {@code &#x5c;unskip} takes the last skip from the current list.
+     * 
      * 
      * @throws Exception in case of an error
      */

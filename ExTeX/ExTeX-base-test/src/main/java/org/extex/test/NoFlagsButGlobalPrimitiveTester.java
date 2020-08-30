@@ -27,28 +27,27 @@ import org.junit.Test;
  * global flag lead to an error.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class NoFlagsButGlobalPrimitiveTester extends ExTeXLauncher {
 
     /**
-     * The field <tt>primitive</tt> contains the name of the primitive.
+     * The field {@code primitive} contains the name of the primitive.
      */
     private String primitive = "";
 
     /**
-     * The field <tt>arguments</tt> contains the additional arguments for the
+     * The field {@code arguments} contains the additional arguments for the
      * flag test.
      */
     private String arguments = "";
 
     /**
-     * The field <tt>prepare</tt> contains the preparation code.
+     * The field {@code prepare} contains the preparation code.
      */
     private String prepare = DEFINE_BRACES;
 
     /**
-     * The field <tt>out</tt> contains the prefix of the output message.
+     * The field {@code out} contains the prefix of the output message.
      */
     private String out = "";
 
@@ -72,9 +71,8 @@ public abstract class NoFlagsButGlobalPrimitiveTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that the <tt>\immediate</tt> flag leads
-     * to an error. </testcase>
-     * 
+     * Test case checking that the {@code \immediate} flag leads to an error
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -90,9 +88,8 @@ public abstract class NoFlagsButGlobalPrimitiveTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that the <tt>\long</tt> flag leads to an
-     * error. </testcase>
-     * 
+     * Test case checking that the {@code \long} flag leads to an error
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -108,9 +105,8 @@ public abstract class NoFlagsButGlobalPrimitiveTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that the <tt>\outer</tt> flag leads to an
-     * error. </testcase>
-     * 
+     * Test case checking that the {@code \outer} flag leads to an error
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -126,9 +122,8 @@ public abstract class NoFlagsButGlobalPrimitiveTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that the <tt>\protected</tt> flag leads
-     * to an error. </testcase>
-     * 
+     * Test case checking that the {@code \protected} flag leads to an error
+* 
      * @throws Exception in case of an error
      */
      @Test
@@ -138,7 +133,7 @@ public abstract class NoFlagsButGlobalPrimitiveTester extends ExTeXLauncher {
              //--- input code ---
              prepare + "\\protected\\" + primitive + arguments,
              //--- log message ---
-             out + "You can\'t use the prefix `\\protected\' "
+             out + "You can't use the prefix `\\protected' "
                  + "with the control sequence"
                  + (primitive.length() < 16 ? " " : "\n") + "\\"
                  + primitive );

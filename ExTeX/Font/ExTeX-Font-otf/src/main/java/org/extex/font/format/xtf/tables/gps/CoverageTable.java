@@ -56,8 +56,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public abstract class CoverageTable implements XMLWriterConvertible {
 
     /**
@@ -91,7 +90,7 @@ public abstract class CoverageTable implements XMLWriterConvertible {
     /**
      * The CoverageFormat.
      */
-    private int coverageFormat;
+    private final int coverageFormat;
 
     /**
      * Creates a new object.

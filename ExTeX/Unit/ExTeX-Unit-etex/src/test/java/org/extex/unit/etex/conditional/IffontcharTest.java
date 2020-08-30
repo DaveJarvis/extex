@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\iffontchar</tt>.
+ * This is a test suite for the primitive {@code \iffontchar}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class IffontcharTest extends ConditionalTester {
 
     /**
@@ -50,7 +49,7 @@ public class IffontcharTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\iffontchar"> Test case checking that
-     * <tt>\iffontchar</tt> needs an argument. </testcase>
+     * {@code \iffontchar} needs an argument.
      * 
      * @throws Exception in case of an error
      */
@@ -65,7 +64,7 @@ public class IffontcharTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\iffontchar"> Test case checking that
-     * <tt>\iffontchar</tt> needs a font argument. </testcase>
+     * {@code \iffontchar} needs a font argument.
      * 
      * @throws Exception in case of an error
      */
@@ -80,8 +79,8 @@ public class IffontcharTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\iffontchar"> Test case checking that
-     * <tt>\iffontchar</tt> needs a character token after the font argument.
-     * </testcase>
+     * {@code \iffontchar} needs a character token after the font argument.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -96,8 +95,8 @@ public class IffontcharTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\iffontchar"> Test case checking that
-     * <tt>\iffontchar</tt> needs a character number after the font argument.
-     * </testcase>
+     * {@code \iffontchar} needs a character number after the font argument.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -112,8 +111,8 @@ public class IffontcharTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\iffontchar"> Test case checking that
-     * <tt>\iffontchar</tt> needs a character number after the font argument.
-     * </testcase>
+     * {@code \iffontchar} needs a character number after the font argument.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -128,8 +127,8 @@ public class IffontcharTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\iffontchar"> Test case checking that
-     * <tt>\iffontchar</tt> expands the then branch for A in cmr10.
-     * </testcase>
+     * {@code \iffontchar} expands the then branch for A in cmr10.
+     *
      * 
      * @throws Exception in case of an error
      */

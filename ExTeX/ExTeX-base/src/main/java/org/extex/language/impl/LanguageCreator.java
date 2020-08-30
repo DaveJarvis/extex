@@ -28,8 +28,7 @@ import org.extex.language.hyphenation.exception.HyphenationException;
  * creating a new one.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4757 $
- */
+*/
 public interface LanguageCreator {
 
     /**

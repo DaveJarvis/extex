@@ -23,8 +23,7 @@ package org.extex.font.format.dvi.command;
  * DVI: w: move right
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class DviW extends DviCommand {
 
@@ -36,12 +35,12 @@ public class DviW extends DviCommand {
     /**
      * the value
      */
-    private int value;
+    private final int value;
 
     /**
      * the w0
      */
-    private boolean w0;
+    private final boolean w0;
 
     /**
      * Create a new object.
@@ -70,12 +69,7 @@ public class DviW extends DviCommand {
         w0 = w;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviCommand#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return new StringBuilder().append("w").append(getOpcode() - W0)

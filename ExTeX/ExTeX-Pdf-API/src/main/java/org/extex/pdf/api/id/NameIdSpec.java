@@ -23,18 +23,17 @@ package org.extex.pdf.api.id;
  * This class carries an id based on a name.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NameIdSpec extends IdSpec {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>name</tt> contains the name.
+     * The field {@code name} contains the name.
      */
     private String name;
 

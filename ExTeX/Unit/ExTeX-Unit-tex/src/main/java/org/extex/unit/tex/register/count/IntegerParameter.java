@@ -33,7 +33,7 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the count valued primitives like
- * <code>\day</code>. It sets the named count register to the value given, and
+ * {@code \day}. It sets the named count register to the value given, and
  * as a side effect all prefixes are zeroed.
  * 
  * <p>
@@ -46,20 +46,19 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4770 $
- */
+*/
 public class IntegerParameter extends CountPrimitive
         implements
             InitializableCode,
             Configurable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>key</tt> contains the key.
+     * The field {@code key} contains the key.
      */
     private String key;
 
@@ -125,10 +124,7 @@ public class IntegerParameter extends CountPrimitive
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.register.count.AbstractCount#init(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public void init(Context context, TokenSource source, Typesetter typesetter)

@@ -22,11 +22,10 @@ package org.extex.unit.tex.typesetter.insert;
 import org.extex.test.NoFlagsPrimitiveTester;
 
 /**
- * This is a test suite for the primitive <tt>\insert</tt>.
+ * This is a test suite for the primitive {@code \insert}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class InsertTest extends NoFlagsPrimitiveTester {
 
     /**

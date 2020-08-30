@@ -26,16 +26,14 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This class provides type-safe constants for the modes of a typesetter.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class Mode {
 
     /**
      * This inner class represents vertical modes.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
-     */
+    */
     private static class HorizontalMode extends Mode {
 
         /**
@@ -51,7 +49,7 @@ public abstract class Mode {
         /**
          * Check for a horizontal mode.
          *
-         * @return <code>true</code> since this is a horizontal modes
+         * @return {@code true} since this is a horizontal modes
          */
         @Override
         public final boolean isHmode() {
@@ -64,8 +62,7 @@ public abstract class Mode {
      * This inner class represents math modes.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
-     */
+    */
     private static class MathMode extends Mode {
 
         /**
@@ -81,7 +78,7 @@ public abstract class Mode {
         /**
          * Check for a math mode.
          *
-         * @return <code>true</code> since this is one of the math modes
+         * @return {@code true} since this is one of the math modes
          */
         @Override
         public final boolean isMath() {
@@ -94,8 +91,7 @@ public abstract class Mode {
      * This inner class represents vertical modes.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
-     */
+    */
     private static class VerticalMode extends Mode {
 
         /**
@@ -111,7 +107,7 @@ public abstract class Mode {
         /**
          * Check for a vertical mode.
          *
-         * @return <code>true</code> since this is one of the vertical modes
+         * @return {@code true} since this is one of the vertical modes
          */
         @Override
         public final boolean isVmode() {
@@ -121,53 +117,53 @@ public abstract class Mode {
     }
 
     /**
-     * The constant <tt>DISPLAYMATH</tt> contains the display math mode of
+     * The constant {@code DISPLAYMATH} contains the display math mode of
      * the typesetter.
      */
     public static final Mode DISPLAYMATH = new MathMode("Mode.DisplayMathMode");
 
     /**
-     * The constant <tt>HORIZONTAL</tt> contains the horizontal mode of the
+     * The constant {@code HORIZONTAL} contains the horizontal mode of the
      * typesetter.
      */
     public static final Mode HORIZONTAL = new HorizontalMode(
             "Mode.HorizontalMode");
 
     /**
-     * The constant <tt>INNER_VERTICAL</tt> contains the inner vertical mode of
+     * The constant {@code INNER_VERTICAL} contains the inner vertical mode of
      * the typesetter.
      */
     public static final Mode INNER_VERTICAL = new VerticalMode(
             "Mode.InnerVerticalMode");
 
     /**
-     * The constant <tt>MATH</tt> contains the math mode of the typesetter.
+     * The constant {@code MATH} contains the math mode of the typesetter.
      */
     public static final Mode MATH = new MathMode("Mode.MathMode");
 
     /**
-     * The constant <tt>RESTRICTED_HORIZONTAL</tt> contains the restricted
+     * The constant {@code RESTRICTED_HORIZONTAL} contains the restricted
      * horizontal mode of the typesetter.
      */
     public static final Mode RESTRICTED_HORIZONTAL = new HorizontalMode(
             "Mode.RestrictedHorizontalMode");
 
     /**
-     * The constant <tt>VERTICAL</tt> contains the vertical mode of the
+     * The constant {@code VERTICAL} contains the vertical mode of the
      * typesetter.
      */
     public static final Mode VERTICAL = new VerticalMode("Mode.VerticalMode");
 
     /**
-     * The field <tt>localizer</tt> contains the localizer.
+     * The field {@code localizer} contains the localizer.
      */
     private Localizer localizer = null;
 
     /**
-     * The field <tt>tag</tt> contains the key for the message (cf. i18n)
+     * The field {@code tag} contains the key for the message (cf. i18n)
      *  to be used as a short description of the mode.
      */
-    private String tag;
+    private final String tag;
 
     /**
      * Creates a new object.
@@ -199,7 +195,7 @@ public abstract class Mode {
     /**
      * Check for a horizontal mode.
      *
-     * @return <code>true</code> iff the mode is one of the horizontal modes
+     * @return {@code true} iff the mode is one of the horizontal modes
      */
     public boolean isHmode() {
 
@@ -209,7 +205,7 @@ public abstract class Mode {
     /**
      * Check for a math mode.
      *
-     * @return <code>true</code> iff the mode is one of the math modes
+     * @return {@code true} iff the mode is one of the math modes
      */
     public boolean isMath() {
 
@@ -219,7 +215,7 @@ public abstract class Mode {
     /**
      * Check for a vertical mode.
      *
-     * @return <code>true</code> iff the mode is one of the vertical modes
+     * @return {@code true} iff the mode is one of the vertical modes
      */
     public boolean isVmode() {
 

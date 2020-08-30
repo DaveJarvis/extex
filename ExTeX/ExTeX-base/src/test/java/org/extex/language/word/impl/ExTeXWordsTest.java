@@ -44,24 +44,23 @@ import org.junit.Test;
  * This is a test suite for ExTeXWords.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4805 $
- */
+*/
 public class ExTeXWordsTest {
 
     /**
-     * The field <tt>TOKENIZER</tt> contains the word tokenizer to test. The
+     * The field {@code TOKENIZER} contains the word tokenizer to test. The
      * word tokenizer is stateless. Thus a single instance suffices.
      */
     private static final WordTokenizer TOKENIZER = new ExTeXWords();
 
     /**
-     * The field <tt>NODE_FACTORY</tt> contains the node factory to use
+     * The field {@code NODE_FACTORY} contains the node factory to use
      * throughout the test cases.
      */
     private static final NodeFactory NODE_FACTORY = new SimpleNodeFactory();
 
     /**
-     * The field <tt>TC</tt> contains the typesetting context.
+     * The field {@code TC} contains the typesetting context.
      */
     private static final ModifiableTypesettingContext TC =
             new TypesettingContextImpl(new CMR10());
@@ -80,48 +79,48 @@ public class ExTeXWordsTest {
     }
 
     /**
-     * The field <tt>HYPHEN_NODE</tt> contains the hyphen node.
+     * The field {@code HYPHEN_NODE} contains the hyphen node.
      */
     private static final CharNode HYPHEN_NODE = (CharNode) NODE_FACTORY
         .getNode(TC, UnicodeChar.get('-'));
 
     /**
-     * The field <tt>UC_F</tt> contains the character f.
+     * The field {@code UC_F} contains the character f.
      */
     private static final UnicodeChar UC_F = UnicodeChar.get('f');
 
     /**
-     * The field <tt>UC_I</tt> contains the character i.
+     * The field {@code UC_I} contains the character i.
      */
     private static final UnicodeChar UC_I = UnicodeChar.get('i');
 
     /**
-     * The field <tt>UC_L</tt> contains the character l.
+     * The field {@code UC_L} contains the character l.
      */
     private static final UnicodeChar UC_L = UnicodeChar.get('l');
 
     /**
-     * The field <tt>UC_FF</tt> contains the ff ligature.
+     * The field {@code UC_FF} contains the ff ligature.
      */
     private static final UnicodeChar UC_FF = UnicodeChar.get('\013');
 
     /**
-     * The field <tt>UC_FI</tt> contains the fi ligature.
+     * The field {@code UC_FI} contains the fi ligature.
      */
     private static final UnicodeChar UC_FI = UnicodeChar.get('\014');
 
     /**
-     * The field <tt>UC_FL</tt> contains the fl ligature.
+     * The field {@code UC_FL} contains the fl ligature.
      */
     private static final UnicodeChar UC_FL = UnicodeChar.get('\015');
 
     /**
-     * The field <tt>UC_FFI</tt> contains the ffi ligature.
+     * The field {@code UC_FFI} contains the ffi ligature.
      */
     private static final UnicodeChar UC_FFI = UnicodeChar.get('\016');
 
     /**
-     * The field <tt>UC_FFL</tt> contains the ffl ligature.
+     * The field {@code UC_FFL} contains the ffl ligature.
      */
     private static final UnicodeChar UC_FFL = UnicodeChar.get('\017');
 
@@ -176,7 +175,7 @@ public class ExTeXWordsTest {
     }
 
     /**
-     * <testcase> Test that the empty spec is accepted. </testcase>
+     *  Test that the empty spec is accepted.
      * 
      * @throws Exception in case of an error
      */
@@ -189,7 +188,7 @@ public class ExTeXWordsTest {
     }
 
     /**
-     * <testcase> Test that the one element spec is accepted. </testcase>
+     *  Test that the one element spec is accepted.
      * 
      * @throws Exception in case of an error
      */
@@ -205,7 +204,7 @@ public class ExTeXWordsTest {
     }
 
     /**
-     * <testcase> Test that the one element spec is accepted. </testcase>
+     *  Test that the one element spec is accepted.
      * 
      * @throws Exception in case of an error
      */
@@ -220,7 +219,7 @@ public class ExTeXWordsTest {
     }
 
     /**
-     * <testcase> Test that the empty spec is accepted. </testcase>
+     *  Test that the empty spec is accepted.
      * 
      * @throws Exception in case of an error
      */
@@ -233,7 +232,7 @@ public class ExTeXWordsTest {
     }
 
     /**
-     * <testcase> Test that ... </testcase>
+     *  Test that ...
      * 
      * @throws Exception in case of an error
      */
@@ -249,7 +248,7 @@ public class ExTeXWordsTest {
     }
 
     /**
-     * <testcase> Test that ... </testcase>
+     *  Test that ...
      * 
      * @throws Exception in case of an error
      */
@@ -266,7 +265,7 @@ public class ExTeXWordsTest {
     }
 
     /**
-     * <testcase> Test that the empty spec is accepted. </testcase>
+     *  Test that the empty spec is accepted.
      * 
      * @throws Exception in case of an error
      */
@@ -279,7 +278,7 @@ public class ExTeXWordsTest {
     }
 
     /**
-     * <testcase> Test that ... </testcase>
+     *  Test that ...
      * 
      * @throws Exception in case of an error
      */
@@ -297,7 +296,7 @@ public class ExTeXWordsTest {
     }
 
     /**
-     * <testcase> Test that ... </testcase>
+     *  Test that ...
      * 
      * @throws Exception in case of an error
      */
@@ -313,7 +312,7 @@ public class ExTeXWordsTest {
     }
 
     /**
-     * <testcase> Test that ... </testcase>
+     *  Test that ...
      * 
      * @throws Exception in case of an error
      */
@@ -331,7 +330,7 @@ public class ExTeXWordsTest {
     }
 
     /**
-     * <testcase> Test that ... </testcase>
+     *  Test that ...
      * 
      * @throws Exception in case of an error
      */
@@ -351,7 +350,7 @@ public class ExTeXWordsTest {
     }
 
     /**
-     * <testcase> Test that ... </testcase>
+     *  Test that ...
      * 
      * @throws Exception in case of an error
      */

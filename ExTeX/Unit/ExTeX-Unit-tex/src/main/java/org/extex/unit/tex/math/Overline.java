@@ -33,37 +33,36 @@ import org.extex.typesetter.type.noad.OverlinedNoad;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\overline</code>.
+ * {@code \overline}.
  * 
- * <doc name="overline">
- * <h3>The Math Primitive <tt>\overline</tt></h3>
+ * <p>The Math Primitive {@code \overline}</p>
  * <p>
- * The math primitive <tt>\overline</tt> takes one argument and overlines it.
+ * The math primitive {@code \overline} takes one argument and overlines it.
  * The material to be overlined is typeset in math mode.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;overline&rang;
- *       &rarr; <tt>\overline</tt> &lang;math group&rang;  </pre>
+ *       &rarr; {@code \overline} &lang;math group&rang;  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \overline{abc} </pre>
  * 
- * </doc>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Overline extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -79,10 +78,7 @@ public class Overline extends AbstractMathCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

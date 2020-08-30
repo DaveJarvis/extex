@@ -38,8 +38,7 @@ import org.extex.resource.io.NamedInputStream;
  * tries to find it via its parent.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ResourceFinderImpl
         implements
             ResourceFinder,
@@ -48,25 +47,25 @@ public class ResourceFinderImpl
             InteractionAware {
 
     /**
-     * The field <tt>configuration</tt> contains the currently used
+     * The field {@code configuration} contains the currently used
      * configuration.
      */
     private Configuration configuration;
 
     /**
-     * The field <tt>logger</tt> contains the current logger or
-     * <code>null</code> if none has been set yet.
+     * The field {@code logger} contains the current logger or
+     * {@code null} if none has been set yet.
      */
     private Logger logger = null;
 
     /**
-     * The field <tt>parent</tt> contains the parent resource finder or
-     * <code>null</code> if none has been set yet.
+     * The field {@code parent} contains the parent resource finder or
+     * {@code null} if none has been set yet.
      */
     private ResourceFinder parent = null;
 
     /**
-     * The field <tt>provider</tt> contains the interaction provider.
+     * The field {@code provider} contains the interaction provider.
      */
     private InteractionIndicator provider = null;
 
@@ -108,12 +107,12 @@ public class ResourceFinderImpl
 
     /**
      * Find a resource which can be used for reading. If the search fails then
-     * <code>null</code> is returned.
+     * {@code null} is returned.
      * 
      * @param name the base name of the resource
      * @param type the type, i.e. the extension
      * 
-     * @return the file or <code>null</code> if none could be found
+     * @return the file or {@code null} if none could be found
      * 
      * @throws ConfigurationException in case of an exception
      * 
@@ -160,9 +159,9 @@ public class ResourceFinderImpl
 
     /**
      * Read a line of characters from the standard input stream. Leading spaces
-     * are ignored. At end of file <code>null</code> is returned.
+     * are ignored. At end of file {@code null} is returned.
      * 
-     * @return the line read or <code>null</code> to signal EOF
+     * @return the line read or {@code null} to signal EOF
      */
     private String readLine() {
 

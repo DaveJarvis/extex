@@ -26,8 +26,7 @@ import java.io.IOException;
  * This interface describes the capabilities for visiting sections.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface SectionVisitor {
 
     /**

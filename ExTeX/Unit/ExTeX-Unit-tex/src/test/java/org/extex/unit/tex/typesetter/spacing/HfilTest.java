@@ -22,11 +22,10 @@ package org.extex.unit.tex.typesetter.spacing;
 import org.extex.test.AbstractHfillTester;
 
 /**
- * This is a test suite for the primitive <tt>\hfil</tt>.
+ * This is a test suite for the primitive {@code \hfil}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class HfilTest extends AbstractHfillTester {
 
     public HfilTest() {

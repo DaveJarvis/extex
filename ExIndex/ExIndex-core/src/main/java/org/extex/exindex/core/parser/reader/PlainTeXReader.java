@@ -25,35 +25,30 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * This reader knows of certain plainTeX control sequences and translates them to the appropriate
- * characters. It is assumed that the category codes have their normal meaning.
- * 
- * 
- * <pre>
- * \aa --> &aring;
- * \AA --> &Aring;
- * \ss --> &szlig;
+ * This reader knows of certain plainTeX control sequences and translates
+ * them to the appropriate characters. It is assumed that the category codes
+ * have their normal meaning.
  *
- * \"a --> &auml;
- * \" a --> &auml;
- * \"{a} --> &auml;
+ * <pre>
+ * \aa --&gt; &aring;
+ * \AA --&gt; &Aring;
+ * \ss --&gt; &szlig;
+ *
+ * \"a --&gt; &auml;
+ * \" a --&gt; &auml;
+ * \"{a} --&gt; &auml;
  * </pre>
- * 
- * 
- * 
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class PlainTeXReader extends TeXReader {
 
     /**
-     * The field <tt>MAP</tt> contains the mapping for special control
+     * The field {@code MAP} contains the mapping for special control
      * sequences.
      */
-    private static final Map<String, String> MAP =
-            new HashMap<String, String>();
+    private static final Map<String, String> MAP = new HashMap<>();
+
     static {
         MAP.put("ss", "\u00DF");
         MAP.put("o", "\u00F8");
@@ -66,19 +61,17 @@ public class PlainTeXReader extends TeXReader {
     }
 
     /**
-     * The field <tt>buffer</tt> contains the line buffer.
+     * The field {@code buffer} contains the line buffer.
      */
     private final StringBuilder buffer = new StringBuilder();
 
     /**
-     * The field <tt>pointer</tt> contains the pointer to the next undelivered
+     * The field {@code pointer} contains the pointer to the next undelivered
      * buffer position.
      */
     private int pointer = 0;
 
     /**
-     * Creates a new object.
-     * 
      * @param resource the name of the resource for error messages
      * @param reader the reader
      */
@@ -89,7 +82,7 @@ public class PlainTeXReader extends TeXReader {
 
     /**
      * Append a character to the line buffer.
-     * 
+     *
      * @param c the character to append
      */
     protected void bufferAppend(char c) {
@@ -99,8 +92,8 @@ public class PlainTeXReader extends TeXReader {
 
     /**
      * Check that the buffer is not empty.
-     * 
-     * @return <code>true</code> iff the buffer is not empty
+     *
+     * @return {@code true} iff the buffer is not empty
      */
     protected boolean bufferIsNotEmpty() {
 
@@ -109,9 +102,9 @@ public class PlainTeXReader extends TeXReader {
 
     /**
      * Fill the line buffer.
-     * 
+     *
      * @return the EOF indicator
-     * 
+     *
      * @throws IOException in case of an I/O error
      */
     protected boolean fillBuffer() throws IOException {
@@ -134,9 +127,9 @@ public class PlainTeXReader extends TeXReader {
 
     /**
      * Continue filling the line buffer after a backslash has been encountered.
-     * 
+     *
      * @return th next character
-     * 
+     *
      * @throws IOException in case of an I/O error
      */
     protected int fillEsc() throws IOException {
@@ -151,17 +144,17 @@ public class PlainTeXReader extends TeXReader {
         switch (cc) {
             case '"':
                 a = "AEIOUaeouy";
-                t = "\u00C4\u00CB\u00CF\u00D6\u00DC" 
+                t = "\u00C4\u00CB\u00CF\u00D6\u00DC"
                         + "\u00E4\u00EB\u00F6\u00FC\u00FF";
                 break;
             case '\'':
                 a = "AEIOUYaeouy";
-                t = "\u00C1\u00C9\u00CD\u00D3\u00DA\u00DD" 
+                t = "\u00C1\u00C9\u00CD\u00D3\u00DA\u00DD"
                         + "\u00E1\u00E9\u00F3\u00FA\u00FD";
                 break;
             case '`':
                 a = "AEIOUaeiou";
-                t = "\u00C0\u00C8\u00CC\u00D2\u00D9" 
+                t = "\u00C0\u00C8\u00CC\u00D2\u00D9"
                         + "\u00E0\u00E8\u00ED\u00F2\u00F9";
                 break;
             case '^':
@@ -257,9 +250,9 @@ public class PlainTeXReader extends TeXReader {
 
     /**
      * Read a single character.
-     * 
+     *
      * @return the character read or -1
-     * 
+     *
      * @throws IOException in case of an error
      */
     protected int rawRead() throws IOException {
@@ -269,13 +262,13 @@ public class PlainTeXReader extends TeXReader {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.extex.exindex.core.parser.reader.TeXReader#read()
      */
     @Override
     public int read() throws IOException {
 
-        return (pointer >= buffer.length() && !fillBuffer()) 
+        return (pointer >= buffer.length() && !fillBuffer())
                 ? -1
                 : buffer.charAt(pointer++);
     }

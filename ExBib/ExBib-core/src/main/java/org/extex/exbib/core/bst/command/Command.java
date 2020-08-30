@@ -29,8 +29,7 @@ import org.extex.exbib.core.io.Locator;
  * This interface represents the top-level executable Commands of a BST file.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface Command {
 
     /**
@@ -47,16 +46,16 @@ public interface Command {
      * Getter for the locator of the command. Each command may have associated
      * an locator pointing to the source where this command has been read from.
      * 
-     * @return the locator or <code>null</code>
+     * @return the locator or {@code null}
      */
     Locator getLocator();
 
     /**
      * Getter for the Token value of the Command. Each Command may encapsulate a
      * Token value. This method provides access to it. If a Command does not
-     * have a value then <code>null</code> is returned.
+     * have a value then {@code null} is returned.
      * 
-     * @return the Token value or <code>null</code>
+     * @return the Token value or {@code null}
      */
     Token getValue();
 

@@ -24,18 +24,17 @@ package org.extex.exbib.core.db;
  * a {@link Value Value} named value.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class KeyValue {
 
     /**
-     * The field <tt>theKey</tt> contains the instance variable containing the
+     * The field {@code theKey} contains the instance variable containing the
      * key.
      */
     private final String theKey;
 
     /**
-     * The field <tt>theValue</tt> contains the instance variable containing the
+     * The field {@code theValue} contains the instance variable containing the
      * value.
      */
     private final Value theValue;

@@ -27,9 +27,7 @@ import java.io.Reader;
  * <p>
  * TeX translates ^^ notation into characters at a very early
  * stage of parsing. This behavior is imitated in this reader. In contrast to
- * <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X<logo> no category codes are involved.
+ * TeX no category codes are involved.
  * </p>
  * <p>
  * TeX defines the mapping of characters following ^^ according to
@@ -51,25 +49,27 @@ import java.io.Reader;
  * <p>
  * The following tables shows some examples of the ^^ notation.
  * </p>
- * <table>
+* <table>
+ * <caption>TBD</caption>
+
  * <tr>
- * <th>Input</th>
+* <th>Input</th>
  * <th>Code point</th>
  * <th>Explanation</th>
  * </tr>
  * <tr>
- * <td><tt>^^A</tt></td>
+ * <td>{@code ^^A}</td>
  * <td>1</td>
  * <td>The letter A has the code point 65 which gets subtracted 64 leading to 1.
  * </td>
  * </tr>
  * <tr>
- * <td><tt>^^01</tt></td>
+ * <td>{@code ^^01}</td>
  * <td>1</td>
  * <td>01 is interpreted as hex number which is 1.</td>
  * </tr>
  * <tr>
- * <td><tt>^^.</tt></td>
+ * <td>{@code ^^.}</td>
  * <td>110</td>
  * <td>The character . has the code point 56. This is less than 64 and 64 is
  * added. This results in 110 which happens to be the letter n.</td>
@@ -79,12 +79,11 @@ import java.io.Reader;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TeXReader extends ReaderLocator {
 
     /**
-     * The field <tt>save</tt> contains the saved character or -1 for none.
+     * The field {@code save} contains the saved character or -1 for none.
      */
     private int save = -1;
 
@@ -99,12 +98,7 @@ public class TeXReader extends ReaderLocator {
         super(resource, reader);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.FilterReader#read()
-     */
-    @Override
+@Override
     public int read() throws IOException {
 
         int c;
@@ -143,12 +137,7 @@ public class TeXReader extends ReaderLocator {
         return ret;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.Reader#read(char[], int, int)
-     */
-    @Override
+@Override
     public int read(char[] cbuf, int off, int len) throws IOException {
 
         int i = 0;
@@ -162,12 +151,7 @@ public class TeXReader extends ReaderLocator {
         return i;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.FilterReader#skip(long)
-     */
-    @Override
+@Override
     public long skip(long n) throws IOException {
 
         for (long i = 0; i < n; i++) {

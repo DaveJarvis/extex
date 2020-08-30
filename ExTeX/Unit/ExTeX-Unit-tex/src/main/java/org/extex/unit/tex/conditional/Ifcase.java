@@ -35,45 +35,45 @@ import org.extex.unit.base.conditional.Else;
 import org.extex.unit.base.conditional.Fi;
 
 /**
- * This class provides an implementation for the primitive <code>\ifcase</code>.
+ * This class provides an implementation for the primitive {@code \ifcase}.
  * 
- * <doc name="ifcase"> <h3>The Primitive <tt>\ifcase</tt></h3>
+ * <p>The Primitive {@code \ifcase}</p>
  * <p>
- * The primitive <tt>\ifcase</tt> provides a conditional switch on a numeric
+ * The primitive {@code \ifcase} provides a conditional switch on a numeric
  * value. The next tokens are used as a number. This number determines which
  * branch to expand. The first branch follows the number immediately. This
  * branch is associated to the number 0.
  * </p>
  * <p>
- * The primitive <tt>\or</tt> advances to the next branch. The primitive
- * <tt>\else</tt> starts the else branch. The else branch is used if no other
+ * The primitive {@code \or} advances to the next branch. The primitive
+ * {@code \else} starts the else branch. The else branch is used if no other
  * branch fits.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;ifcase&rang;
- *     &rarr; <tt>\ifcase</tt> {@linkplain
+ *     &rarr; {@code \ifcase} {@linkplain
  *        org.extex.base.parser.ConstantCountParser#scanInteger(Context,TokenSource,Typesetter)
- *        &lang;number&rang;}  &lang;cases&rang; <tt>\fi</tt>
+ *        &lang;number&rang;}  &lang;cases&rang; {@code \fi}
  *
  *    &lang;cases&rang;
  *     &rarr;
- *      |  &lang;branch text&rang; <tt>\else</tt> &lang;else text&rang;
- *      |  &lang;branch text&rang; <tt>\or</tt> &lang;cases&rang;  </pre>
+ *      |  &lang;branch text&rang; {@code \else} &lang;else text&rang;
+ *      |  &lang;branch text&rang; {@code \or} &lang;cases&rang;  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \ifcase\count0 a\or b\or c\else x\fi  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4439 $
- */
+*/
 public class Ifcase extends AbstractIf {
 
     /**
@@ -81,21 +81,21 @@ public class Ifcase extends AbstractIf {
      */
     private enum Tag {
         /**
-         * The constant <tt>OR</tt> contains the value indicating an \or.
+         * The constant {@code OR} contains the value indicating an \or.
          */
         OR,
         /**
-         * The constant <tt>ELSE</tt> contains the value indicating an \else.
+         * The constant {@code ELSE} contains the value indicating an \else.
          */
         ELSE,
         /**
-         * The constant <tt>FI</tt> contains the value indicating a \fi.
+         * The constant {@code FI} contains the value indicating a \fi.
          */
         FI;
     };
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2011L;
 
@@ -110,10 +110,7 @@ public class Ifcase extends AbstractIf {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.base.conditional.AbstractIf#conditional(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public boolean conditional(Context context, TokenSource source,
@@ -123,10 +120,7 @@ public class Ifcase extends AbstractIf {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.base.conditional.AbstractIf#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -160,10 +154,7 @@ public class Ifcase extends AbstractIf {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.base.conditional.AbstractIf#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -174,14 +165,14 @@ public class Ifcase extends AbstractIf {
     }
 
     /**
-     * Skip to the next matching <tt>\fi</tt> or <tt>\or</tt> Token counting the
-     * intermediate <tt>\if</tt> s and <tt>\fi</tt>s.
+     * Skip to the next matching {@code \fi} or {@code \or} Token counting the
+     * intermediate {@code \if} s and {@code \fi}s.
      * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * 
-     * @return <code>true</code> if a matching <tt>\or</tt> has been found;
-     *         otherwise return <code>false</code> if a matching <tt>\fi</tt>
+     * @return {@code true} if a matching {@code \or} has been found;
+     *         otherwise return {@code false} if a matching {@code \fi}
      *         has been found.
      * 
      * @throws HelpingException in case of an error

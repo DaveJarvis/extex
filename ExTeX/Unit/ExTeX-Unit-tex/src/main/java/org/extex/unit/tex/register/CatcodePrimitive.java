@@ -36,13 +36,13 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\catcode</code>
+ * This class provides an implementation for the primitive {@code \catcode}
  * .
  * 
- * <doc name="catcode"> <h3>The Primitive <tt>\catcode</tt></h3>
+ * <p>The Primitive {@code \catcode}</p>
  * <p>
- * The primitive <tt>\catcode</tt> can be used to influence the tokenizer of
- * ??TeX. This is done by assigning category codes to single
+ * The primitive {@code \catcode} can be used to influence the tokenizer of
+ * εχTeX. This is done by assigning category codes to single
  * characters. Whenever characters are read tokens are generated and passed on.
  * Those tokens carry the category code into the interpreter. The interpreter
  * considers always tokens, i.e. characters and category codes. Thus the same
@@ -50,18 +50,19 @@ import org.extex.typesetter.exception.TypesetterException;
  * </p>
  * <p>
  * The assignment of a catcode for a character is controlled by the prefix
- * primitive <tt>\global</tt> and the count parameter <tt>\globaldefs</tt>.
+ * primitive {@code \global} and the count parameter {@code \globaldefs}.
  * Usually the assignment is acting on the current group only. If the count
- * parameter <tt>\globaldefs</tt> is greater than 0 or the prefix
- * <tt>\global</tt> is given then the assignment is applied to all groups.
+ * parameter {@code \globaldefs} is greater than 0 or the prefix
+ * {@code \global} is given then the assignment is applied to all groups.
  * </p>
  * <p>
  * The following table contains the category codes with their meaning and the
  * mapping to numerical values.
  * </p>
- * <table format="lrp{.6\textwidth}">
+* <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td>ESCAPE</td>
+* <td>ESCAPE</td>
  * <td>0</td>
  * <td>This character code signals the beginning of an escape sequence. The
  * following letters are absorbed into the name. If the following token is not a
@@ -154,11 +155,12 @@ import org.extex.typesetter.exception.TypesetterException;
  * </tr>
  * </table>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;catcode&rang;
- *      &rarr; &lang;optional prefix&rang; <tt>\catcode</tt> {@linkplain
+ *      &rarr; &lang;optional prefix&rang; {@code \catcode} {@linkplain
  *          org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *          &lang;8-bit&nbsp;number&rang;} {@linkplain
  *          org.extex.interpreter.TokenSource#getOptionalEquals(Context)
@@ -170,7 +172,8 @@ import org.extex.typesetter.exception.TypesetterException;
  *      &rarr;
  *       |  &lang;global&rang; &lang;optional prefix&rang;  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \catcode `\%=12  </pre>
@@ -178,27 +181,26 @@ import org.extex.typesetter.exception.TypesetterException;
  * <pre class="TeXSample">
  *    \global\catcode `\%=11  </pre>
  * 
- * <h4><tt>\catcode</tt> as a Count Value</h4>
+ * <p>{@code \catcode} as a Count Value</p>
+
  * 
  * <p>
- * <tt>\catcode</tt> can be used wherever a count value is required.
+ * {@code \catcode} can be used wherever a count value is required.
  * </p>
  * 
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4770 $
- */
+*/
 public class CatcodePrimitive extends AbstractAssignment
         implements
             CountConvertible,
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -213,10 +215,7 @@ public class CatcodePrimitive extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -239,10 +238,7 @@ public class CatcodePrimitive extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertCount(Context context, TokenSource source,
@@ -255,10 +251,7 @@ public class CatcodePrimitive extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

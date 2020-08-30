@@ -22,11 +22,10 @@ package org.extex.unit.tex.macro;
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 
 /**
- * This is a test suite for the primitive <tt>\noexpand</tt>.
+ * This is a test suite for the primitive {@code \noexpand}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class NoexpandTest extends NoFlagsButGlobalPrimitiveTester {
 
 

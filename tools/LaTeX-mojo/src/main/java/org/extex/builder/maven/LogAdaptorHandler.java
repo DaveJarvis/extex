@@ -12,12 +12,11 @@ import org.apache.maven.plugin.logging.Log;
  * {@link Log}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class LogAdaptorHandler extends Handler {
 
     /**
-     * The field <tt>log</tt> contains the maven log.
+     * The field {@code log} contains the maven log.
      */
     private Log log;
 
@@ -31,30 +30,20 @@ public final class LogAdaptorHandler extends Handler {
         this.log = log;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.util.logging.Handler#close()
-     */
-    @Override
+@Override
     public void close() {
 
         // nothing to do
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.util.logging.Handler#flush()
-     */
-    @Override
+@Override
     public void flush() {
 
         // nothing to do
     }
 
     /**
-     * Publish a <tt>LogRecord</tt>. If the log level of the log record is less
+     * Publish a {@code LogRecord}. If the log level of the log record is less
      * than the log level of the handler then the record is discarded. The
      * mapping of the log levels is the following:
      * <dl>
@@ -68,10 +57,7 @@ public final class LogAdaptorHandler extends Handler {
      * <dd>are mapped to {@linkplain Log#debug(CharSequence) debug()}</dd>
      * </dl>
      * 
-     * {@inheritDoc}
-     * 
-     * @see java.util.logging.Handler#publish(java.util.logging.LogRecord)
-     */
+*/
     @Override
     public void publish(LogRecord record) {
 

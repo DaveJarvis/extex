@@ -1,25 +1,25 @@
 /*
  * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the definitions and implementations for the
+ *Contains definitions and implementations for the
  * psfonts.map-file.
- * <a name="psfontsmap" />
- * <h3>Fileformat</h3>
+ *
+ * <p>Fileformat</p>
  *
  * <p>Example:</p>
  *
@@ -31,16 +31,16 @@
  * </pre>
  *
  * <dl>
- *	<dt>cmb10</dt>
- *	<dd>The filebname of the font.</dd>
- *	<dt>CMB10</dt>
- *	<dd>The name of the font.</dd>
- *	<dt>&quot; TeXf7b6d320Encoding ReEncodeFont &quot;</dt>
- *	<dd>Encoding (optional)</dd>
- *	<dt>&lt;f7b6d320.enc</dt>
- *	<dd>The encodingfile for the font. (optional)</dd>
- *	<dt>&lt;cmb10.pfb</dt>
- *	<dd>The corespondig pfb-file. (optional)</dd>
+ * 	<dt>cmb10</dt>
+ * 	<dd>The filebname of the font.</dd>
+ * 	<dt>CMB10</dt>
+ * 	<dd>The name of the font.</dd>
+ * 	<dt>&quot; TeXf7b6d320Encoding ReEncodeFont &quot;</dt>
+ * 	<dd>Encoding (optional)</dd>
+ * 	<dt>&lt;f7b6d320.enc</dt>
+ * 	<dd>The encodingfile for the font. (optional)</dd>
+ * 	<dt>&lt;cmb10.pfb</dt>
+ * 	<dd>The corespondig pfb-file. (optional)</dd>
  * </dl>
  */
 

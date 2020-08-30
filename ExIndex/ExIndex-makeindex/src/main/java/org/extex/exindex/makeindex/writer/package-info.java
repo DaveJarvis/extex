@@ -17,7 +17,7 @@
  */
 /**
  * 
- *   This package contains writers for an index.
+ *   Contains writers for an index.
  * 
  *
  */

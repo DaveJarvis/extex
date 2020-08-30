@@ -32,8 +32,7 @@ import org.extex.exbib.core.io.Locator;
  * This is a derived class to differentiate options from normal integers.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TIntegerOption extends AbstractToken {
 
     /**
@@ -52,10 +51,7 @@ public class TIntegerOption extends AbstractToken {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.impl.TInteger#execute(org.extex.exbib.core.bst.BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibIllegalValueException {
@@ -68,10 +64,7 @@ public class TIntegerOption extends AbstractToken {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.impl.TInteger#visit(org.extex.exbib.core.bst.token.TokenVisitor,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visit(TokenVisitor visitor, Object... args)
             throws ExBibException {

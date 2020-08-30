@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains a basic implementation for a
+ * Contains a basic implementation for a
  * {@link org.extex.scanner.api.TokenStream TokenStream}.
  * This implementations adheres as much as possible to the TeX standard.
  */

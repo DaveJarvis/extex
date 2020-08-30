@@ -35,21 +35,15 @@ import org.apache.velocity.app.VelocityEngine;
  * This class encapsulates the templating engine.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TemplatingEngine implements LibReceiver {
 
     /**
-     * The field <tt>lib</tt> contains the libraries to be loaded.
+     * The field {@code lib} contains the libraries to be loaded.
      */
     private List<String> libraries = new ArrayList<String>();
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.sitebuilder.core.LibReceiver#lib(java.lang.String)
-     */
-    @Override
+@Override
     public void lib(String lib) {
 
         libraries.add(lib);

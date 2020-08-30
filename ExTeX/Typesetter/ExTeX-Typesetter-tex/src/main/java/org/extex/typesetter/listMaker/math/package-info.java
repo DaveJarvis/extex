@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains implementations for math list makers.
+ * Contains implementations for math list makers.
  */
 
 package org.extex.typesetter.listMaker.math;

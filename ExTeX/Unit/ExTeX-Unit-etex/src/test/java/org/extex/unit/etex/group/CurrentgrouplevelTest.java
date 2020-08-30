@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\currentgrouplevel</tt>.
+ * This is a test suite for the primitive {@code \currentgrouplevel}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class CurrentgrouplevelTest extends AbstractReadonlyCountRegisterTester {
 
     /**
@@ -50,7 +49,7 @@ public class CurrentgrouplevelTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentgrouplevel"> Test case checking that
-     * <tt>\currentgrouplevel</tt> inside a group returns 1. </testcase>
+     * {@code \currentgrouplevel} inside a group returns 1.
      * 
      * @throws Exception in case of an error
      */
@@ -65,8 +64,8 @@ public class CurrentgrouplevelTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentgrouplevel"> Test case checking that
-     * <tt>\currentgrouplevel</tt> inside a group in a group returns 2.
-     * </testcase>
+     * {@code \currentgrouplevel} inside a group in a group returns 2.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -81,7 +80,7 @@ public class CurrentgrouplevelTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentgrouplevel"> Test case checking that
-     * <tt>\currentgrouplevel</tt> is count convertible. </testcase>
+     * {@code \currentgrouplevel} is count convertible.
      * 
      * @throws Exception in case of an error
      */

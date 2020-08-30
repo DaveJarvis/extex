@@ -30,12 +30,11 @@ import static org.junit.Assert.assertNotEquals;
  * Test cases for tab mark tokens.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4756 $
- */
+*/
 public class TabMarkTokenTest extends TokenTester {
 
     /**
-     * The field <tt>token</tt> contains the reference token.
+     * The field {@code token} contains the reference token.
      */
     private static final Token token = new TabMarkToken( UnicodeChar.get( 'x'));
 
@@ -58,9 +57,7 @@ setText( "x");
 setStr( "alignment tab character x");
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testEqualsToken1() {
 
         Token t1 = new TabMarkToken(UnicodeChar.get(' '));

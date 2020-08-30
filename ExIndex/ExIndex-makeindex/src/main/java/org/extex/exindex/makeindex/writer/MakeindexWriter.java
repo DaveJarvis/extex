@@ -32,17 +32,16 @@ import org.extex.exindex.makeindex.pages.Pages;
  * This class is an index writer for the makeindex emulator.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6666 $
- */
+*/
 public class MakeindexWriter implements IndexWriter {
 
     /**
-     * The field <tt>params</tt> contains the parameters.
+     * The field {@code params} contains the parameters.
      */
     private final Parameters params;
 
     /**
-     * The field <tt>writer</tt> contains the writer.
+     * The field {@code writer} contains the writer.
      */
     private final LineBreakingWriter writer;
 
@@ -84,10 +83,7 @@ public class MakeindexWriter implements IndexWriter {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.makeindex.writer.IndexWriter#write(java.util.List,
-     *      java.util.logging.Logger, java.lang.String,
+*      java.util.logging.Logger, java.lang.String,
      *      org.extex.exindex.makeindex.pages.PageProcessor)
      */
     public int[] write(List<Entry> entries, Logger logger, String startPage,

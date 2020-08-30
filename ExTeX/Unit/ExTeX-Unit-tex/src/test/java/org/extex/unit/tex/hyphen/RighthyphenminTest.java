@@ -20,11 +20,10 @@
 package org.extex.unit.tex.hyphen;
 
 /**
- * This is a test suite for the primitive <tt>\righthyphenmin</tt>.
+ * This is a test suite for the primitive {@code \righthyphenmin}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class RighthyphenminTest extends AbstractHyphenminTester {
 
 

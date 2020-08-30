@@ -32,12 +32,11 @@ import org.extex.interpreter.expression.exception.UnsupportedException;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * 
- * @version $Revision: 4733 $
- */
+*/
 public class TGlue extends WideGlue implements EType {
 
     /**
-     * The field <tt>value</tt> contains the encapsulated value.
+     * The field {@code value} contains the encapsulated value.
      */
     private Glue value = new Glue();
 
@@ -61,35 +60,20 @@ public class TGlue extends WideGlue implements EType {
         value.set(val);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#add(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public EType add(EType t) {
 
         // TODO gene: add unimplemented
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#and(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public EType and(EType t) throws UnsupportedException {
 
         throw new UnsupportedException("&&", toString());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#divide(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public EType divide(EType t) throws CastException {
 
         if (t instanceof TCount) {
@@ -111,12 +95,7 @@ public class TGlue extends WideGlue implements EType {
         throw new CastException();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#eq(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public TBoolean eq(EType t) throws CastException {
 
         if (t instanceof TGlue) {
@@ -125,12 +104,7 @@ public class TGlue extends WideGlue implements EType {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#ge(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public TBoolean ge(EType t) throws CastException {
 
         if (!(t instanceof TGlue)) {
@@ -140,12 +114,7 @@ public class TGlue extends WideGlue implements EType {
         return new TBoolean(value.getLength().ge(x.getLength()));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#gt(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public TBoolean gt(EType t) throws CastException {
 
         if (!(t instanceof TGlue)) {
@@ -155,12 +124,7 @@ public class TGlue extends WideGlue implements EType {
         return new TBoolean(value.getLength().gt(x.getLength()));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#le(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public TBoolean le(EType t) throws CastException {
 
         if (!(t instanceof TGlue)) {
@@ -170,12 +134,7 @@ public class TGlue extends WideGlue implements EType {
         return new TBoolean(value.getLength().le(x.getLength()));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#lt(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public TBoolean lt(EType t) throws CastException {
 
         if (t instanceof TGlue) {
@@ -186,24 +145,14 @@ public class TGlue extends WideGlue implements EType {
         throw new CastException();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#multiply(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public EType multiply(EType t) {
 
         // TODO gene: multiply unimplemented
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#ne(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public TBoolean ne(EType t) throws CastException {
 
         if (t instanceof TGlue) {
@@ -213,46 +162,26 @@ public class TGlue extends WideGlue implements EType {
         throw new CastException();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#negate()
-     */
-    @Override
+@Override
     public EType negate() {
 
         value.negateLength();
         return this;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#not()
-     */
-    @Override
+@Override
     public EType not() throws UnsupportedException {
 
         throw new UnsupportedException("!", toString());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#or(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public EType or(EType t) throws UnsupportedException {
 
         throw new UnsupportedException("||", toString());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#set(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public EType set(EType t) throws CastException {
 
         if (t instanceof TGlue) {
@@ -262,12 +191,7 @@ public class TGlue extends WideGlue implements EType {
         throw new CastException();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#subtract(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public EType subtract(EType t) throws CastException {
 
         if (t instanceof TGlue) {
@@ -278,12 +202,7 @@ public class TGlue extends WideGlue implements EType {
         throw new CastException();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return LocalizerFactory.getLocalizer(TGlue.class).format("Format",

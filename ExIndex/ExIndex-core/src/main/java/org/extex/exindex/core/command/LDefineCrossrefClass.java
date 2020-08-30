@@ -29,12 +29,10 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to define a cross-reference class.
  * 
- * <doc type="exindex-command" command="define-crossref-class">
- * 
- * <h3>The Command <tt>define-crossref-class</tt></h3>
+ * <p>The Command {@code define-crossref-class}</p>
  * 
  * <p>
- * The command <tt>define-crossref-class</tt> can be used to define a
+ * The command {@code define-crossref-class} can be used to define a
  * cross-reference class.
  * </p>
  * 
@@ -65,16 +63,13 @@ import org.extex.exindex.lisp.type.value.LValue;
  * class can be marked as unverified. In this case dangling references are
  * silently consumed.
  * </p>
- * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LDefineCrossrefClass extends LFunction {
 
     /**
-     * The field <tt>container</tt> contains the container for classes.
+     * The field {@code container} contains the container for classes.
      */
     private final LocationClassContainer container;
 
@@ -104,7 +99,7 @@ public class LDefineCrossrefClass extends LFunction {
      * @param name the name
      * @param unverified the indicator for unverified classes
      * 
-     * @return <tt>null</tt>
+     * @return {@code null}
      * 
      * @throws LSettingConstantException should not happen
      */

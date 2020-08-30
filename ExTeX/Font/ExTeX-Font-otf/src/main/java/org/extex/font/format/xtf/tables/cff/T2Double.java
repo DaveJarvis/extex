@@ -40,8 +40,7 @@ import org.extex.util.file.random.RandomAccessR;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class T2Double extends T2Number {
 
@@ -78,7 +77,7 @@ public class T2Double extends T2Number {
     /**
      * the value
      */
-    private double value;
+    private final double value;
 
     /**
      * Create a new object.
@@ -127,45 +126,25 @@ public class T2Double extends T2Number {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#getBytes()
-     */
-    @Override
+@Override
     public short[] getBytes() {
 
         return bytes;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Number#getDouble()
-     */
-    @Override
+@Override
     public double getDouble() {
 
         return value;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Number#getInteger()
-     */
-    @Override
+@Override
     public int getInteger() {
 
         return (int) value;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#isDouble()
-     */
-    @Override
+@Override
     public boolean isDouble() {
 
         return true;
@@ -203,12 +182,7 @@ public class T2Double extends T2Number {
         return data;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return String.valueOf(value);

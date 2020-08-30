@@ -37,18 +37,17 @@ import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
  * configuration.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MultiConfiguration implements Configuration {
 
     /**
-     * The field <tt>configurations</tt> contains the internal array of
+     * The field {@code configurations} contains the internal array of
      * configurations.
      */
     private List<Configuration> configurations;
 
     /**
-     * The field <tt>loader</tt> contains the optional loader.
+     * The field {@code loader} contains the optional loader.
      */
     // private ConfigurationLoader loader = null;
     /**
@@ -69,10 +68,10 @@ public class MultiConfiguration implements Configuration {
      * 
      * @param key the tag name of the sub-configuration
      * 
-     * @return the sub-configuration or <code>null</code> if none is found
+     * @return the sub-configuration or {@code null} if none is found
      * 
      * @throws ConfigurationInvalidResourceException in case that the given
-     *         resource name is <code>null</code> or empty
+     *         resource name is {@code null} or empty
      * @throws ConfigurationNotFoundException in case that the named path does
      *         not lead to a resource
      * @throws ConfigurationSyntaxException in case that the resource contains
@@ -112,10 +111,7 @@ public class MultiConfiguration implements Configuration {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String,
-     *      java.lang.String)
+*      java.lang.String)
      */
     public Configuration findConfiguration(String key, String attribute)
             throws ConfigurationException {
@@ -145,7 +141,7 @@ public class MultiConfiguration implements Configuration {
      * 
      * @param name the tag name of the attribute
      * 
-     * @return the value of the attribute or <code>null</code> if such an
+     * @return the value of the attribute or {@code null} if such an
      *         attribute is not present
      * 
      * @see org.extex.framework.configuration.Configuration#getAttribute(java.lang.String)
@@ -161,12 +157,7 @@ public class MultiConfiguration implements Configuration {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String)
-     */
-    public Configuration getConfiguration(String key)
+public Configuration getConfiguration(String key)
             throws ConfigurationException {
 
         List<Configuration> v = new ArrayList<Configuration>();
@@ -189,10 +180,7 @@ public class MultiConfiguration implements Configuration {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String,
-     *      java.lang.String)
+*      java.lang.String)
      */
     public Configuration getConfiguration(String key, String attribute)
             throws ConfigurationException {
@@ -240,12 +228,7 @@ public class MultiConfiguration implements Configuration {
         return sb.toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configuration#getValue(java.lang.String)
-     */
-    public String getValue(String key) throws ConfigurationException {
+public String getValue(String key) throws ConfigurationException {
 
         for (Configuration c : configurations) {
             String val = c.getValue(key);
@@ -259,10 +242,7 @@ public class MultiConfiguration implements Configuration {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configuration#getValueAsInteger(java.lang.String,
-     *      int)
+*      int)
      */
     public int getValueAsInteger(String key, int defaultValue)
             throws ConfigurationException {
@@ -279,10 +259,7 @@ public class MultiConfiguration implements Configuration {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configuration#getValues(java.util.List,
-     *      java.lang.String)
+*      java.lang.String)
      */
     public void getValues(List<String> list, String key) {
 
@@ -291,24 +268,14 @@ public class MultiConfiguration implements Configuration {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
-     */
-    public List<String> getValues(String key) {
+public List<String> getValues(String key) {
 
         List<String> result = new ArrayList<String>();
         getValues(result, key);
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configuration#iterator()
-     */
-    public Iterator<Configuration> iterator() throws ConfigurationException {
+public Iterator<Configuration> iterator() throws ConfigurationException {
 
         return iterator(null);
     }
@@ -335,12 +302,7 @@ public class MultiConfiguration implements Configuration {
         return new MultiConfigurationIterator(cfg, key);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(org.extex.framework.configuration.ConfigurationLoader)
-     */
-    public void setConfigurationLoader(ConfigurationLoader loader) {
+public void setConfigurationLoader(ConfigurationLoader loader) {
 
         // this.loader = loader;
     }

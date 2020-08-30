@@ -32,27 +32,26 @@ import org.junit.Test;
  * Test suite for {@link CodepointIgnoreCaseSorter}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Sorter099Test {
 
     /**
-     * The field <tt>s</tt> contains the instance to be tested.
+     * The field {@code s} contains the instance to be tested.
      */
     private final CodepointIgnoreCaseSorter s = new CodepointIgnoreCaseSorter();
 
     /**
-     * The field <tt>a</tt> contains an entry.
+     * The field {@code a} contains an entry.
      */
     private Entry a;
 
     /**
-     * The field <tt>b</tt> contains another entry.
+     * The field {@code b} contains another entry.
      */
     private Entry b;
 
     /**
-     * The field <tt>c</tt> contains yet another entry.
+     * The field {@code c} contains yet another entry.
      */
     private Entry c;
 
@@ -73,7 +72,7 @@ public class Sorter099Test {
     }
 
     /**
-     * <testcase> Sorting an empty list results in an empty list. </testcase>
+     *  Sorting an empty list results in an empty list.
      * 
      * @throws Exception in case of an error
      */
@@ -86,8 +85,8 @@ public class Sorter099Test {
     }
 
     /**
-     * <testcase> Sorting a list with one element results in the same list.
-     * </testcase>
+     *  Sorting a list with one element results in the same list.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -102,9 +101,8 @@ public class Sorter099Test {
     }
 
     /**
-     * <testcase> Sorting a sorted list with two elements results in the same
-     * list. </testcase>
-     * 
+     * Sorting a sorted list with two elements results in the same list
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -120,9 +118,8 @@ public class Sorter099Test {
     }
 
     /**
-     * <testcase> Sorting an unsorted list with two elements results in the
-     * inverted list. </testcase>
-     * 
+     * Sorting an unsorted list with two elements results in the inverted list
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -138,9 +135,8 @@ public class Sorter099Test {
     }
 
     /**
-     * <testcase> Sorting a inversely sorted list with three elements results in
-     * the sorted list. </testcase>
-     * 
+     * Sorting a inversely sorted list with three elements results in the sorted list
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -158,9 +154,8 @@ public class Sorter099Test {
     }
 
     /**
-     * <testcase> Identical elements compare to equal if the sort key is not
-     * set. </testcase>
-     * 
+     * Identical elements compare to equal if the sort key is not set
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -170,7 +165,7 @@ public class Sorter099Test {
     }
 
     /**
-     * <testcase> a < b </testcase>
+     *  a < b
      * 
      * @throws Exception in case of an error
      */
@@ -181,8 +176,8 @@ public class Sorter099Test {
     }
 
     /**
-     * <testcase> Identical elements compare to equal if the sort key is set.
-     * </testcase>
+     *  Identical elements compare to equal if the sort key is set.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -194,7 +189,7 @@ public class Sorter099Test {
     }
 
     /**
-     * <testcase> a[ghi] < b </testcase>
+     *  a[ghi] < b
      * 
      * @throws Exception in case of an error
      */
@@ -206,7 +201,7 @@ public class Sorter099Test {
     }
 
     /**
-     * <testcase> b > a[ghi] </testcase>
+     *  b > a[ghi]
      * 
      * @throws Exception in case of an error
      */
@@ -218,7 +213,7 @@ public class Sorter099Test {
     }
 
     /**
-     * <testcase> a < b </testcase>
+     *  a < b
      * 
      * @throws Exception in case of an error
      */
@@ -229,7 +224,7 @@ public class Sorter099Test {
     }
 
     /**
-     * <testcase> "aa" < "ac". </testcase>
+     *  "aa" < "ac".
      * 
      * @throws Exception in case of an error
      */
@@ -242,7 +237,7 @@ public class Sorter099Test {
     }
 
     /**
-     * <testcase> "ac" > "aa". </testcase>
+     *  "ac" > "aa".
      * 
      * @throws Exception in case of an error
      */

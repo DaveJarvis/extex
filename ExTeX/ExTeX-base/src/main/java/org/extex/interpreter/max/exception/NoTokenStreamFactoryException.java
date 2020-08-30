@@ -26,17 +26,16 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * found.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4726 $
- */
+*/
 public class NoTokenStreamFactoryException extends ConfigurationException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>message</tt> contains the message of this exception.
+     * The field {@code message} contains the message of this exception.
      */
     private String message;
 

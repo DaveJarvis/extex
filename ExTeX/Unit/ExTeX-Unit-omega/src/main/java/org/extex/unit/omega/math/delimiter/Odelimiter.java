@@ -32,41 +32,40 @@ import org.extex.typesetter.type.math.MathDelimiter;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\odelimiter</code>.
+ * {@code \odelimiter}.
  * 
- * <doc name="odelimiter">
- * <h3>The Math Primitive <tt>\odelimiter</tt></h3>
+ * <p>The Math Primitive {@code \odelimiter}</p>
  * <p>
- * The math primitive <tt>\odelimiter</tt> can be used to insert a delimiter.
+ * The math primitive {@code \odelimiter} can be used to insert a delimiter.
  * Thus it is possible to bypass the definition of the delimiter code as
  * assigned to single characters.
  * </p>
  * TODO missing documentation
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * <p>
  * The formal description of this primitive is the following:
  * </p>
  * 
  * <pre class="syntax">
  *    &lang;odelimiter&rang;
- *       &rarr; <tt>\odelimiter</tt> &lang;delcode&rang; </pre>
+ *       &rarr; {@code \odelimiter} &lang;delcode&rang; </pre>
  * 
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \odelimiter "426830A </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Odelimiter extends AbstractOmegaDelimiter {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -82,10 +81,7 @@ public class Odelimiter extends AbstractOmegaDelimiter {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

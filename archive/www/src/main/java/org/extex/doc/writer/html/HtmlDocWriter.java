@@ -35,18 +35,17 @@ import org.extex.doc.writer.EntityHandler;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class HtmlDocWriter extends AbstractDocWriter implements DocWriter {
 
     /**
-     * The field <tt>ENTITIES</tt> contains the ...
+     * The field {@code ENTITIES} contains the ...
      */
     private static final Map<String, String> ENTITIES =
             new HashMap<String, String>();
 
     /**
-     * The field <tt>ENTITY_HANDLER</tt> contains the ...
+     * The field {@code ENTITY_HANDLER} contains the ...
      */
     private static final EntityHandler ENTITY_HANDLER = new EntityHandler() {
 
@@ -72,7 +71,7 @@ public class HtmlDocWriter extends AbstractDocWriter implements DocWriter {
     }
 
     /**
-     * The field <tt>loc</tt> contains the ...
+     * The field {@code loc} contains the ...
      */
     private Locale loc = Locale.ENGLISH;
 
@@ -84,12 +83,7 @@ public class HtmlDocWriter extends AbstractDocWriter implements DocWriter {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.doc.writer.DocWriter#execute(java.util.Map)
-     */
-    public void execute(Map<String, Doc> map) throws IOException {
+public void execute(Map<String, Doc> map) throws IOException {
 
         String lang = loc.getLanguage();
         copyTemplate(lang, "frameset.html", ENTITY_HANDLER);

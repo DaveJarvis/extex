@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\aftergroup</tt>.
+ * This is a test suite for the primitive {@code \aftergroup}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class AftergroupTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -49,7 +48,7 @@ public class AftergroupTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\aftergroup"> Test case checking that
-     * <tt>\aftergroup</tt> needs a token argument. </testcase>
+     * {@code \aftergroup} needs a token argument.
      * 
      * @throws Exception in case of an error
      */
@@ -64,8 +63,8 @@ public class AftergroupTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\aftergroup"> Test case checking that a
-     * <tt>\aftergroup</tt> token of type letter is shifted to the end of the
-     * group. </testcase>
+     * {@code \aftergroup} token of type letter is shifted to the end of the
+     * group.
      * 
      * @throws Exception in case of an error
      */
@@ -80,8 +79,8 @@ public class AftergroupTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\aftergroup"> Test case checking that a
-     * <tt>\aftergroup</tt> token of type control sequence is expanded after
-     * the end of the group. </testcase>
+     * {@code \aftergroup} token of type control sequence is expanded after
+     * the end of the group.
      * 
      * @throws Exception in case of an error
      */

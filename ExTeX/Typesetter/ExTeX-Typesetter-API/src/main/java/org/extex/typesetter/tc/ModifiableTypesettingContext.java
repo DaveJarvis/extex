@@ -28,8 +28,7 @@ import org.extex.typesetter.tc.font.Font;
  * appearance of glyphs or other nodes.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4399 $
- */
+*/
 public interface ModifiableTypesettingContext extends TypesettingContext {
 
     /**

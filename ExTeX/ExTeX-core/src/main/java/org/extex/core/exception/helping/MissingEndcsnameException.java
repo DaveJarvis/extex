@@ -22,17 +22,16 @@ package org.extex.core.exception.helping;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This exception is raised when a <tt>\csname</tt> without matching
- * <tt>\endcsname</tt> is encountered.
+ * This exception is raised when a {@code \csname} without matching
+ * {@code \endcsname} is encountered.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 
 public class MissingEndcsnameException extends HelpingException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2006L;
@@ -52,7 +51,7 @@ public class MissingEndcsnameException extends HelpingException {
      * Creates a localized description of this throwable. Subclasses may
      * override this method in order to produce a locale-specific message. For
      * subclasses that do not override this method, the default implementation
-     * returns the same result as <code>getMessage()</code>.
+     * returns the same result as {@code getMessage()}.
      * 
      * @return The localized description of this throwable.
      * 

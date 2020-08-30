@@ -20,11 +20,10 @@
 package org.extex.unit.tex.macro;
 
 /**
- * This is a test suite for the primitive <tt>\edef</tt>.
+ * This is a test suite for the primitive {@code \edef}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 2930 $
- */
+*/
 public class EdefTest extends AbstractXdefTester {
 
 

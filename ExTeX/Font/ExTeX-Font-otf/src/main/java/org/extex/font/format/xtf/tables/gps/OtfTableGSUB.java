@@ -34,7 +34,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * 
  * <p>
  * To access GSUB information, clients should use the following procedure:
- * <p>
+ * </p>
  * <ol>
  * <li>Locate the current script in the GSUB ScriptList table.</li>
  * <li>If the language system is known, search the script for the correct
@@ -50,8 +50,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </ol>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class OtfTableGSUB extends AbstractXtfSFLTable
         implements
             XtfTable,
@@ -72,12 +71,7 @@ public class OtfTableGSUB extends AbstractXtfSFLTable
         super(tablemap, de, rar);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
+public String getShortcut() {
 
         return "gsub";
     }
@@ -92,12 +86,7 @@ public class OtfTableGSUB extends AbstractXtfSFLTable
         return XtfReader.GSUB;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.gps.LookupTableFactory#lookupType(int)
-     */
-    public String lookupType(int type) {
+public String lookupType(int type) {
 
         if (type >= 1 && type < XtfLookup.LOOKUP_TYPE_NAMES_GSUB.length - 1) {
             return XtfLookup.LOOKUP_TYPE_NAMES_GSUB[type - 1];
@@ -106,10 +95,7 @@ public class OtfTableGSUB extends AbstractXtfSFLTable
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.gps.LookupTableFactory#read(org.extex.util.file.random.RandomAccessR,
-     *      int, int, int, org.extex.font.format.xtf.tables.XtfGlyphName)
+*      int, int, int, org.extex.font.format.xtf.tables.XtfGlyphName)
      */
     public XtfLookupTable read(RandomAccessR rar, int posOffset, int type,
             int offset, XtfGlyphName xtfGlyph) throws IOException {

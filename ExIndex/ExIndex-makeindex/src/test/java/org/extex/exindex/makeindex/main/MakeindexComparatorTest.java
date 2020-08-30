@@ -29,13 +29,12 @@ import static org.junit.Assert.assertTrue;
  * This is a test suite for MakeindexComparator.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 5432 $
- */
+*/
 public class MakeindexComparatorTest {
 
     /**
-     * <testcase> The compare() returns 0 for two arrays with empty strings.
-     * </testcase>
+     *  The compare() returns 0 for two arrays with empty strings.
+     *
      */
     @Test
     public void testCompare01() {
@@ -48,7 +47,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> The compare() returns 0 for two arrays with "x". </testcase>
+     *  The compare() returns 0 for two arrays with "x".
      */
     @Test
     public void testCompare02() {
@@ -61,8 +60,8 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> The compare() returns -1 for two arrays ["1"] and ["2"].
-     * </testcase>
+     *  The compare() returns -1 for two arrays ["1"] and ["2"].
+     *
      */
     @Test
     public void testCompare03() {
@@ -75,8 +74,8 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> The compare() returns 1 for two arrays ["2"] and ["1"].
-     * </testcase>
+     *  The compare() returns 1 for two arrays ["2"] and ["1"].
+     *
      */
     @Test
     public void testCompare04() {
@@ -89,8 +88,8 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> The compare() returns >0 for two arrays ["1"] and ["*"].
-     * </testcase>
+     *  The compare() returns >0 for two arrays ["1"] and ["*"].
+     *
      */
     @Test
     public void testCompare05() {
@@ -103,9 +102,8 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> The compare() returns -1 for two arrays with "x" and the
-     * second one with one additional element. </testcase>
-     */
+     * The compare() returns -1 for two arrays with "x" and the second one with one additional element
+*/
     @Test
     public void testCompare10() {
 
@@ -117,9 +115,8 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> The first argument of compareOne() may not be
-     * <code>null</code>. </testcase>
-     */
+     * The first argument of compareOne() may not be {@code null}
+*/
     @Test(expected = NullPointerException.class)
     public void testCompareOne01() {
 
@@ -127,9 +124,8 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> The second argument of compareOne() may not be
-     * <code>null</code>. </testcase>
-     */
+     * The second argument of compareOne() may not be {@code null}
+*/
     @Test(expected = NullPointerException.class)
     public void testCompareOne02() {
 
@@ -137,9 +133,8 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> The compareOne() returns 0 for two empty arrays and the index
-     * 0. </testcase>
-     */
+     * The compareOne() returns 0 for two empty arrays and the index 0
+*/
     @Test
     public void testCompareOne03() {
 
@@ -148,8 +143,8 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> The compareOne() orders an empty array before a longer array.
-     * </testcase>
+     *  The compareOne() orders an empty array before a longer array.
+     *
      */
     @Test
     public void testCompareOne11() {
@@ -159,8 +154,8 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> The compareOne() orders an empty array before a longer array.
-     * </testcase>
+     *  The compareOne() orders an empty array before a longer array.
+     *
      */
     @Test
     public void testCompareOne12() {
@@ -170,9 +165,8 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> The compareOne() returns 0 for two arrays with an empty
-     * string. </testcase>
-     */
+     * The compareOne() returns 0 for two arrays with an empty string
+*/
     @Test
     public void testCompareOne13() {
 
@@ -181,7 +175,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Numbers come before lower case letters. </testcase>
+     *  Numbers come before lower case letters.
      */
     @Test
     public void testCompareStrings01() {
@@ -190,7 +184,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Numbers come before lower case letters. </testcase>
+     *  Numbers come before lower case letters.
      */
     @Test
     public void testCompareStrings01s() {
@@ -199,7 +193,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Numbers come before upper case letters. </testcase>
+     *  Numbers come before upper case letters.
      */
     @Test
     public void testCompareStrings02() {
@@ -208,7 +202,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Numbers come before upper case letters. </testcase>
+     *  Numbers come before upper case letters.
      */
     @Test
     public void testCompareStrings02s() {
@@ -217,7 +211,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Empty strings compare to 0. </testcase>
+     *  Empty strings compare to 0.
      */
     @Test
     public void testCompareStringsEmpty1() {
@@ -226,7 +220,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Empty strings come before letters. </testcase>
+     *  Empty strings come before letters.
      */
     @Test
     public void testCompareStringsEmpty2() {
@@ -235,7 +229,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Empty strings come before letters. </testcase>
+     *  Empty strings come before letters.
      */
     @Test
     public void testCompareStringsEmpty2s() {
@@ -244,7 +238,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Empty strings come before digits. </testcase>
+     *  Empty strings come before digits.
      */
     @Test
     public void testCompareStringsEmpty3() {
@@ -253,7 +247,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Empty strings come before digits. </testcase>
+     *  Empty strings come before digits.
      */
     @Test
     public void testCompareStringsEmpty3s() {
@@ -262,7 +256,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Identical letters compare to 0. </testcase>
+     *  Identical letters compare to 0.
      */
     @Test
     public void testCompareStringsLetter1() {
@@ -271,7 +265,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Lower case letters come before upper case letters. </testcase>
+     *  Lower case letters come before upper case letters.
      */
     @Test
     public void testCompareStringsLetter2() {
@@ -280,7 +274,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Lower case letters come before upper case letters. </testcase>
+     *  Lower case letters come before upper case letters.
      */
     @Test
     public void testCompareStringsLetter2s() {
@@ -289,7 +283,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Numbers are compared numerically. </testcase>
+     *  Numbers are compared numerically.
      */
     @Test
     public void testCompareStringsNumber1() {
@@ -298,7 +292,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Numbers are compared numerically. </testcase>
+     *  Numbers are compared numerically.
      */
     @Test
     public void testCompareStringsNumber2() {
@@ -307,7 +301,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Numbers are compared numerically. </testcase>
+     *  Numbers are compared numerically.
      */
     @Test
     public void testCompareStringsNumber2s() {
@@ -316,7 +310,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Symbols come after numbers. </testcase>
+     *  Symbols come after numbers.
      */
     @Test
     public void testCompareStringsSymbol1() {
@@ -325,7 +319,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Symbols come after numbers. </testcase>
+     *  Symbols come after numbers.
      */
     @Test
     public void testCompareStringsSymbol1s() {
@@ -334,7 +328,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Symbols come after numbers. </testcase>
+     *  Symbols come after numbers.
      */
     @Test
     public void testCompareStringsSymbol2() {
@@ -343,7 +337,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Symbols come after numbers. </testcase>
+     *  Symbols come after numbers.
      */
     @Test
     public void testCompareStringsSymbol2s() {
@@ -352,7 +346,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Symbols come before letters. </testcase>
+     *  Symbols come before letters.
      */
     @Test
     public void testCompareStringsSymbol3() {
@@ -361,7 +355,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Symbols come before letters. </testcase>
+     *  Symbols come before letters.
      */
     @Test
     public void testCompareStringsSymbol3s() {
@@ -370,7 +364,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Symbols come before letters. </testcase>
+     *  Symbols come before letters.
      */
     @Test
     public void testCompareStringsSymbol4() {
@@ -379,7 +373,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Symbols come before letters. </testcase>
+     *  Symbols come before letters.
      */
     @Test
     public void testCompareStringsSymbol4s() {
@@ -388,7 +382,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Symbols are ordered according to their code point. </testcase>
+     *  Symbols are ordered according to their code point.
      */
     @Test
     public void testCompareStringsSymbol5() {
@@ -397,7 +391,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Symbols are ordered according to their code point. </testcase>
+     *  Symbols are ordered according to their code point.
      */
     @Test
     public void testCompareStringsSymbol6() {
@@ -406,7 +400,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Symbols are ordered according to their code point. </testcase>
+     *  Symbols are ordered according to their code point.
      */
     @Test
     public void testCompareStringsSymbol6s() {
@@ -415,7 +409,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Symbols are ordered according to their code point. </testcase>
+     *  Symbols are ordered according to their code point.
      */
     @Test
     public void testCompareStringsSymbol7() {
@@ -424,7 +418,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Symbols are ordered according to their code point. </testcase>
+     *  Symbols are ordered according to their code point.
      */
     @Test
     public void testCompareStringsSymbol7s() {
@@ -433,7 +427,7 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Comparisons are empty for new instances. </testcase>
+     *  Comparisons are empty for new instances.
      */
     @Test
     public void testGetComparisons1() {
@@ -442,8 +436,8 @@ public class MakeindexComparatorTest {
     }
 
     /**
-     * <testcase> Comparisons are empty for new instances after rest().
-     * </testcase>
+     *  Comparisons are empty for new instances after rest().
+     *
      */
     @Test
     public void testReset1() {

@@ -30,8 +30,7 @@ import org.extex.exbib.core.exceptions.ExBibFunctionExistsException;
  * the data read, i.e. a {@link org.extex.exbib.core.db.DB DB}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface Bibliography {
 
     /**
@@ -125,7 +124,7 @@ public interface Bibliography {
      * @param name the name
      * @param value the value
      * 
-     * @return <code>true</code> iff the option is known and has been set
+     * @return {@code true} iff the option is known and has been set
      * 
      * @throws ExBibIllegalValueException in case of an illegal value
      * @throws ExBibFunctionExistsException in case of a redefinition
@@ -140,7 +139,7 @@ public interface Bibliography {
      * @param name the name
      * @param value the value
      * 
-     * @return <code>true</code> iff the option is known and has been set
+     * @return {@code true} iff the option is known and has been set
      * 
      * @throws ExBibIllegalValueException in case of an illegal value
      * @throws ExBibFunctionExistsException in case of a redefinition

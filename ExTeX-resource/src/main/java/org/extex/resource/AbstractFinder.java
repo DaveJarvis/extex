@@ -33,53 +33,52 @@ import org.extex.framework.logger.LogEnabled;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractFinder implements LogEnabled, ResourceFinder {
 
     /**
-     * The constant <tt>ATTR_DEFAULT</tt> contains the attribute name for the
+     * The constant {@code ATTR_DEFAULT} contains the attribute name for the
      * default type.
      */
     protected static final String ATTR_DEFAULT = "default";
 
     /**
-     * The field <tt>ATTR_SKIP</tt> contains the attribute name for the skip
+     * The field {@code ATTR_SKIP} contains the attribute name for the skip
      * indicator.
      */
     protected static final String ATTR_SKIP = "skip";
 
     /**
-     * The constant <tt>ATTR_TRACE</tt> contains the attribute name for the
+     * The constant {@code ATTR_TRACE} contains the attribute name for the
      * tracing enabler.
      */
     protected static final String ATTR_TRACE = "trace";
 
     /**
-     * The constant <tt>EXTENSION_TAG</tt> contains the name of the tag to get
+     * The constant {@code EXTENSION_TAG} contains the name of the tag to get
      * the possible extensions.
      */
     protected static final String EXTENSION_TAG = "extension";
 
     /**
-     * The field <tt>bundle</tt> contains the resource bundle for messages.
+     * The field {@code bundle} contains the resource bundle for messages.
      */
     private ResourceBundle bundle = null;
 
     /**
-     * The field <tt>configuration</tt> contains the configuration object on
+     * The field {@code configuration} contains the configuration object on
      * which this resource finder is based.
      */
     private Configuration configuration;
 
     /**
-     * The field <tt>logger</tt> contains the logger to be used for tracing.
+     * The field {@code logger} contains the logger to be used for tracing.
      */
     private Logger logger = null;
 
     /**
-     * The field <tt>trace</tt> contains the indicator that tracing is
-     * required. This field is set to <code>true</code> according to the
+     * The field {@code trace} contains the indicator that tracing is
+     * required. This field is set to {@code true} according to the
      * configuration.
      */
     private boolean trace = false;
@@ -90,7 +89,7 @@ public abstract class AbstractFinder implements LogEnabled, ResourceFinder {
      * @param configuration the encapsulated configuration object
      * 
      * @throws ConfigurationMissingException in case of an error: The argument
-     *         configuration is <code>null</code>.
+     *         configuration is {@code null}.
      */
     public AbstractFinder(Configuration configuration)
             throws ConfigurationMissingException {

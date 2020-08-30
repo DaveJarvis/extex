@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains primitives for arithmetic operations on registers.
+ * Contains primitives for arithmetic operations on registers.
  */
 
 package org.extex.unit.tex.arithmetic;

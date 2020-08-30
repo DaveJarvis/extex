@@ -26,7 +26,7 @@ import org.extex.ant.latex.Settings;
 public class Makeindex implements Command {
 
     /**
-     * The field <tt>settings</tt> contains the task.
+     * The field {@code settings} contains the task.
      */
     private Settings settings;
 
@@ -40,12 +40,7 @@ public class Makeindex implements Command {
         this.settings = settings;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ant.latex.command.Command#execute(java.io.File)
-     */
-    public boolean execute(File artifact) {
+public boolean execute(File artifact) {
 
         settings.log(toString() + " " + artifact.getName() + "\n");
 
@@ -53,23 +48,13 @@ public class Makeindex implements Command {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ant.latex.command.Command#simulate(java.io.File)
-     */
-    public boolean simulate(File artifact) {
+public boolean simulate(File artifact) {
 
         settings.log(toString() + " " + artifact.getName() + "\n");
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return "makeindex";

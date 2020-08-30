@@ -43,10 +43,9 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\dump</code>.
+ * This class provides an implementation for the primitive {@code \dump}.
  * 
- * <doc name="dump">
- * <h3>The Primitive <tt>\dump</tt></h3>
+ * <p>The Primitive {@code \dump}</p>
  * <p>
  * The primitive writes out the current state of the interpreter to an format
  * file. This format file can be read back in to restore the saved state.
@@ -56,51 +55,51 @@ import org.extex.typesetter.exception.TypesetterException;
  * </p>
  * <p>
  * The name of the format file is derived from the job name. The extension
- * <tt>.fmt</tt> is attached to the job name.
+ * {@code .fmt} is attached to the job name.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;dump&rang;
- *       &rarr; <tt>\dump</tt>  </pre>
+ *       &rarr; {@code \dump}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \dump  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4441 $
- */
+*/
 public class Dump extends AbstractCode
         implements
             LogEnabled,
             OutputStreamConsumer {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The constant <tt>FORMAT_EXTENSION</tt> contains the extension for the
+     * The constant {@code FORMAT_EXTENSION} contains the extension for the
      * format file.
      */
     private static final String FORMAT_EXTENSION = "fmt";
 
     /**
-     * The field <tt>logger</tt> contains the target channel for the message.
+     * The field {@code logger} contains the target channel for the message.
      */
     private transient Logger logger = null;
 
     /**
-     * The field <tt>outFactory</tt> contains the output factory.
+     * The field {@code outFactory} contains the output factory.
      */
     private transient OutputStreamFactory outFactory;
 
@@ -128,10 +127,7 @@ public class Dump extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

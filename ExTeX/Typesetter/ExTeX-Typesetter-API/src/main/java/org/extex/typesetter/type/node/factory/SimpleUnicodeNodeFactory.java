@@ -31,8 +31,7 @@ import org.extex.typesetter.type.node.HorizontalListNode;
  * and virtual chars.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4763 $
- */
+*/
 public class SimpleUnicodeNodeFactory extends SimpleNodeFactory {
 
 
@@ -42,7 +41,7 @@ public class SimpleUnicodeNodeFactory extends SimpleNodeFactory {
 
     /**
      * Create a new instance for the node.
-     * If the character is not defined in the font given then <code>null</code>
+     * If the character is not defined in the font given then {@code null}
      * is returned instead.
      *
      * @param typesettingContext the typographic context for the node

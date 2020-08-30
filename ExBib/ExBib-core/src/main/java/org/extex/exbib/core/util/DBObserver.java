@@ -26,23 +26,22 @@ import java.util.logging.Logger;
  * Observer which counts the databases read and prints messages to a writer.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DBObserver implements Observer {
 
     /**
-     * The field <tt>logger</tt> contains the logger for the output produced.
+     * The field {@code logger} contains the logger for the output produced.
      */
     private final Logger logger;
 
     /**
-     * The field <tt>dbCount</tt> contains the counter for invocations of
+     * The field {@code dbCount} contains the counter for invocations of
      * update().
      */
     private int dbCount = 0;
 
     /**
-     * The field <tt>pattern</tt> contains the pattern for the messages.
+     * The field {@code pattern} contains the pattern for the messages.
      */
     private final String pattern;
 
@@ -59,10 +58,7 @@ public class DBObserver implements Observer {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.util.Observer#update(
-     *      org.extex.exbib.core.util.Observable, java.lang.Object)
+*      org.extex.exbib.core.util.Observable, java.lang.Object)
      */
     public void update(Observable source, Object db) {
 

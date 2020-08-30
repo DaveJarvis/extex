@@ -26,23 +26,22 @@ import org.junit.Test;
  * an error in each mode.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class NonExecuteTester extends ExTeXLauncher {
 
     /**
-     * The field <tt>primitive</tt> contains the name of the primitive.
+     * The field {@code primitive} contains the name of the primitive.
      */
-    private String primitive;
+    private final String primitive;
 
     /**
-     * The field <tt>arguments</tt> contains the additional arguments for the
+     * The field {@code arguments} contains the additional arguments for the
      * flag test.
      */
-    private String arguments;
+    private final String arguments;
 
     /**
-     * The field <tt>prepare</tt> contains the preparation code.
+     * The field {@code prepare} contains the preparation code.
      */
     private String prepare = DEFINE_CATCODES;
 
@@ -72,9 +71,8 @@ public abstract class NonExecuteTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the primitive can not be used in
-     * vertical mode. </testcase>
-     * 
+     * Test case showing that the primitive can not be used in vertical mode
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -87,9 +85,8 @@ public abstract class NonExecuteTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the primitive can not be used in inner
-     * vertical mode. </testcase>
-     * 
+     * Test case showing that the primitive can not be used in inner vertical mode
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -102,9 +99,8 @@ public abstract class NonExecuteTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the primitive can not be used in
-     * vertical mode. </testcase>
-     * 
+     * Test case showing that the primitive can not be used in vertical mode
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -117,9 +113,8 @@ public abstract class NonExecuteTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the primitive can not be used in
-     * restricted horizontal mode. </testcase>
-     * 
+     * Test case showing that the primitive can not be used in restricted horizontal mode
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -132,9 +127,8 @@ public abstract class NonExecuteTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the primitive can not be used in math
-     * mode. </testcase>
-     * 
+     * Test case showing that the primitive can not be used in math mode
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -147,9 +141,8 @@ public abstract class NonExecuteTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the primitive can not be used in
-     * display math mode. </testcase>
-     * 
+     * Test case showing that the primitive can not be used in display math mode
+* 
      * @throws Exception in case of an error
      */
     @Test

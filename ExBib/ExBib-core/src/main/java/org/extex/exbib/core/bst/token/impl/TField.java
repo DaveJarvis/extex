@@ -33,8 +33,7 @@ import org.extex.exbib.core.io.Locator;
  * external source.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TField extends AbstractToken {
 
     /**
@@ -49,10 +48,7 @@ public class TField extends AbstractToken {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.Token#execute(BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
@@ -76,10 +72,7 @@ public class TField extends AbstractToken {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.Token#visit(org.extex.exbib.core.bst.token.TokenVisitor,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visit(TokenVisitor visitor, Object... args)
             throws ExBibException {

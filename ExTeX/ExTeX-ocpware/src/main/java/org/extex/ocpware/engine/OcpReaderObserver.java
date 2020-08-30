@@ -24,8 +24,7 @@ package org.extex.ocpware.engine;
  * are invoked when a matching event is recognized.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface OcpReaderObserver {
 
     /**

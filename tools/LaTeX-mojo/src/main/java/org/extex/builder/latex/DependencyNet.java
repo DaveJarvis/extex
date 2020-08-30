@@ -38,43 +38,42 @@ import org.extex.builder.latex.exception.MakeException;
  * is that there exist exactly one target to be build.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DependencyNet implements State {
 
     /**
-     * The field <tt>map</tt> contains the mapping from names to the associated
+     * The field {@code map} contains the mapping from names to the associated
      * artifacts.
      */
     private Map<String, Artifact> map;
 
     /**
-     * The field <tt>parameters</tt> contains the parameters.
+     * The field {@code parameters} contains the parameters.
      */
     private Parameters parameters = new Parameters();
 
     /**
-     * The field <tt>logger</tt> contains the logger.
+     * The field {@code logger} contains the logger.
      */
     private Logger logger = Logger.getLogger(DependencyNet.class.getName());
 
     /**
-     * The field <tt>master</tt> contains the master.
+     * The field {@code master} contains the master.
      */
     private Artifact master = null;
 
     /**
-     * The field <tt>target</tt> contains the target.
+     * The field {@code target} contains the target.
      */
     private Artifact target = null;
 
     /**
-     * The field <tt>atLetter</tt> contains the indicator for the at catcode.
+     * The field {@code atLetter} contains the indicator for the at catcode.
      */
     private boolean atLetter = false;
 
     /**
-     * The field <tt>ANALYZER</tt> contains the analyzer.
+     * The field {@code ANALYZER} contains the analyzer.
      */
     private static final LaTeXAnalyzer LATEX_ANALYZER =
             new LaTeXMacroAnalyzer();
@@ -90,7 +89,7 @@ public class DependencyNet implements State {
      * 
      * @param a the artifact to add
      * 
-     * @return the old artifact stored under the same name or <code>null</code>
+     * @return the old artifact stored under the same name or {@code null}
      */
     public Artifact addArtifact(Artifact a) {
 
@@ -151,7 +150,7 @@ public class DependencyNet implements State {
      * 
      * @param file the file
      * 
-     * @return the artifact or <code>null</code> if none is defined
+     * @return the artifact or {@code null} if none is defined
      */
     public Artifact findArtifact(File file) {
 
@@ -288,7 +287,7 @@ public class DependencyNet implements State {
      * @param extensions the extensions
      * @param base the base file name
      * 
-     * @return the full file or <code>null</code>
+     * @return the full file or {@code null}
      */
     public File searchFile(String fileName, String[] extensions, File base) {
 
@@ -346,7 +345,7 @@ public class DependencyNet implements State {
      * {@link IllegalStateException} is thrown.
      * </p>
      * 
-     * @param file the master file; this can not be <code>null</code>
+     * @param file the master file; this can not be {@code null}
      * 
      * @throws MakeException in case of an error
      */

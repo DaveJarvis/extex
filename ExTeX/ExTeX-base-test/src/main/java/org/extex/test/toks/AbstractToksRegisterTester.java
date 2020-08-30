@@ -27,29 +27,28 @@ import org.junit.Test;
  * test cases common to all tokens registers.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4694 $
- */
+*/
 public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
 
     /**
-     * The field <tt>primitive</tt> contains the name of the primitive to
+     * The field {@code primitive} contains the name of the primitive to
      * test.
      */
-    private String primitive;
+    private final String primitive;
 
     /**
-     * The field <tt>invocation</tt> contains the concatenation of primitive
+     * The field {@code invocation} contains the concatenation of primitive
      * name and arguments.
      */
-    private String invocation;
+    private final String invocation;
 
     /**
-     * The field <tt>init</tt> contains the default value.
+     * The field {@code init} contains the default value.
      */
-    private String init;
+    private final String init;
 
     /**
-     * The field <tt>prepare</tt> contains the preparation code.
+     * The field {@code prepare} contains the preparation code.
      */
     private String prepare = DEFINE_BRACES;
 
@@ -83,8 +82,8 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the tokens register needs a parameter.
-     * </testcase>
+     *  Test case showing that the tokens register needs a parameter.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -99,9 +98,8 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the tokens register needs a complete
-     * parameter. </testcase>
-     * 
+     * Test case showing that the tokens register needs a complete parameter
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -115,9 +113,8 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment respects
-     * <tt>\afterassignment</tt>. </testcase>
-     * 
+     * Test case showing that an assignment respects {@code \afterassignment}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -131,9 +128,8 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant {abc} works
-     * when using an equal sign after the primitive name. </testcase>
-     * 
+     * Test case showing that an assignment of a constant {abc} works when using an equal sign after the primitive name
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -147,9 +143,8 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant {abc} works
-     * when using no equal sign after the primitive name. </testcase>
-     * 
+     * Test case showing that an assignment of a constant {abc} works when using no equal sign after the primitive name
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -163,9 +158,8 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant {a{b}c}
-     * works when using no equal sign after the primitive name. </testcase>
-     * 
+     * Test case showing that an assignment of a constant {a{b}c} works when using no equal sign after the primitive name
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -179,9 +173,8 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant {a#c}
-     * results in a#c when the catcode of # is OTHER. </testcase>
-     * 
+     * Test case showing that an assignment of a constant {a#c} results in a#c when the catcode of # is OTHER
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -195,9 +188,8 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant {a#c}
-     * results in a#c when the catcode of # is OTHER. </testcase>
-     * 
+     * Test case showing that an assignment of a constant {a#c} results in a#c when the catcode of # is OTHER
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -213,9 +205,8 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the primitive is defined and has its
-     * default value. </testcase>
-     * 
+     * Test case showing that the primitive is defined and has its default value
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -228,9 +219,8 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant 12.3mu
-     * works when using an equal sign after the primitive name. </testcase>
-     * 
+     * Test case showing that an assignment of a constant 12.3mu works when using an equal sign after the primitive name
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -245,9 +235,8 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant 12.3mu
-     * works when using no equal sign after the primitive name. </testcase>
-     * 
+     * Test case showing that an assignment of a constant 12.3mu works when using no equal sign after the primitive name
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -262,8 +251,8 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment respects grouping.
-     * </testcase>
+     *  Test case showing that an assignment respects grouping.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -278,9 +267,8 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the prefix <tt>\immediate</tt> is not
-     * applicable. </testcase>
-     * 
+     * Test case showing that the prefix {@code \immediate} is not applicable
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -294,9 +282,8 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the prefix <tt>\long</tt> is not
-     * applicable. </testcase>
-     * 
+     * Test case showing that the prefix {@code \long} is not applicable
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -310,9 +297,8 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the prefix <tt>\outer</tt> is not
-     * applicable. </testcase>
-     * 
+     * Test case showing that the prefix {@code \outer} is not applicable
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -326,9 +312,8 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the primitive is applicable to
-     * \showthe. </testcase>
-     * 
+     * Test case showing that the primitive is applicable to \showthe
+* 
      * @throws Exception in case of an error
      */
     @Test

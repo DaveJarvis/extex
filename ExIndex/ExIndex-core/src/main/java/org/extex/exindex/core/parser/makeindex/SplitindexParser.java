@@ -18,9 +18,6 @@
 
 package org.extex.exindex.core.parser.makeindex;
 
-import java.io.IOException;
-import java.io.Reader;
-
 import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.exception.RawIndexEofException;
 import org.extex.exindex.core.exception.RawIndexException;
@@ -28,18 +25,20 @@ import org.extex.exindex.core.exception.RawIndexMissingCharException;
 import org.extex.exindex.core.parser.reader.ReaderLocator;
 import org.extex.exindex.lisp.LInterpreter;
 
+import java.io.IOException;
+import java.io.Reader;
+
 /**
  * This parser is a reader for input in the form of the splitindex format and
  * some extensions of it.
  * 
- * <doc type="exindex-format" section="Splitindex Index Format">
- * 
- * <h2>The <logo>splitindex</logo> Raw Index Format</h2>
+*
+ * <h2>The  splitindex Raw Index Format</h2>
  * 
  * <p>
- * The raw index format for <logo>splitindex</logo> is used to parse the input
- * and acquire index data. <logo>splitindex</logo> is an extension of
- * <logo>makeindex</logo>. It has additionally an optional argument for the
+ * The raw index format for  splitindex is used to parse the input
+ * and acquire index data.  splitindex is an extension of
+ *  makeindex. It has additionally an optional argument for the
  * index. This makes it possible to have entries for several indices in one
  * file.
  * </p>
@@ -76,29 +75,31 @@ import org.extex.exindex.lisp.LInterpreter;
  * sent to an undefined index are dropped and will not show up in an output.
  * </p>
  * 
- * <h3>The Parameters</h3>
+ * <p>The Parameters</p>
  * 
  * <p>
- * The parsing of raw index entries in the <logo>makeindex</logo> format can be
+ * The parsing of raw index entries in the  makeindex format can be
  * controlled by a set of parameters. This makes the parser adaptable to a wider
  * range of applications.
  * </p>
  * <p>
  * The original need to introduce the parameters is the flexibility of
  * TeX. In TeX the category codes of characters can be redefined. Thus
- * <logo>makeindex</logo> needs to be able to adjust its behavior to cope with
+ *  makeindex needs to be able to adjust its behavior to cope with
  * such a situation.
  * </p>
  * <p>
  * The following table shows the parameters with their
- * <logo>&epsilon;&chi;Index</logo> name, its <logo>makeindex</logo> name and
+ *  &epsilon;&chi;Index name, its  makeindex name and
  * the default value.
  * </p>
  * 
- * <table>
+* <table>
+ * <caption>TBD</caption>
+
  * <tr>
- * <th><logo>&epsilon;&chi;Index</logo> parameter</th>
- * <th><logo>makeindex</logo> parameter</th>
+* <th> &epsilon;&chi;Index parameter</th>
+ * <th> makeindex parameter</th>
  * <th>Fallback</th>
  * <th>Type</th>
  * <th>Description</th>
@@ -106,14 +107,14 @@ import org.extex.exindex.lisp.LInterpreter;
  * <tr>
  * <td>makeindex:keyword</td>
  * <td>keyword</td>
- * <td><tt>\indexentry</tt></td>
+ * <td>{@code \indexentry}</td>
  * <td>string</td>
  * <td>This string starts an entry. Anything between entries is ignored.</td>
  * </tr>
  * <tr>
  * <td>makeindex:index-open</td>
  * <td></td>
- * <td><tt>[</tt></td>
+ * <td>{@code [}</td>
  * <td>character</td>
  * <td>This character opens the optional argument containing the index name. It
  * is terminated by the index-close character.</td>
@@ -121,7 +122,7 @@ import org.extex.exindex.lisp.LInterpreter;
  * <tr>
  * <td>makeindex:index-close</td>
  * <td></td>
- * <td><tt>]</tt></td>
+ * <td>{@code ]}</td>
  * <td>character</td>
  * <td>This character closes an argument which has been opened by the index-open
  * character.</td>
@@ -129,7 +130,7 @@ import org.extex.exindex.lisp.LInterpreter;
  * <tr>
  * <td>makeindex:arg-open</td>
  * <td>arg_open</td>
- * <td><tt>{</tt></td>
+ * <td>{@code {}</td>
  * <td>character</td>
  * <td>This character opens an argument. It is terminated by the arg-close
  * character.</td>
@@ -137,7 +138,7 @@ import org.extex.exindex.lisp.LInterpreter;
  * <tr>
  * <td>makeindex:arg-close</td>
  * <td>arg_close</td>
- * <td><tt>}</tt></td>
+ * <td>{@code }}</td>
  * <td>character</td>
  * <td>This character closes an argument which has been opened by the arg-open
  * character. The arg-open and arg-close characters have to be balanced before
@@ -147,42 +148,42 @@ import org.extex.exindex.lisp.LInterpreter;
  * <tr>
  * <td>makeindex:range-open</td>
  * <td>range_open</td>
- * <td><tt>(</tt></td>
+ * <td>{@code (}</td>
  * <td>character</td>
  * <td>This character indicates the start of a range.</td>
  * </tr>
  * <tr>
  * <td>makeindex:range-close</td>
  * <td>range_close</td>
- * <td><tt>)</tt></td>
+ * <td>{@code )}</td>
  * <td>character</td>
  * <td>This character indicates the end of a range.</td>
  * </tr>
  * <tr>
  * <td>makeindex:escape</td>
  * <td>escape</td>
- * <td><tt>"</tt></td>
+ * <td>{@code "}</td>
  * <td>character</td>
  * <td>This is the escape character.</td>
  * </tr>
  * <tr>
  * <td>makeindex:quote</td>
  * <td>quote</td>
- * <td><tt>\</tt></td>
+ * <td>{@code \}</td>
  * <td>character</td>
  * <td>This is the quote character</td>
  * </tr>
  * <tr>
  * <td>makeindex:encap</td>
  * <td>encap</td>
- * <td><tt>|</tt></td>
+ * <td>{@code |}</td>
  * <td>character</td>
  * <td>This character is the separator for the encapsulator.</td>
  * </tr>
  * <tr>
  * <td>makeindex:level</td>
  * <td>level</td>
- * <td><tt>!</tt></td>
+ * <td>{@code !}</td>
  * <td>character</td>
  * <td>This character is the level separator. A structured key is divided into
  * parts with this character.</td>
@@ -190,7 +191,7 @@ import org.extex.exindex.lisp.LInterpreter;
  * <tr>
  * <td>makeindex:actual</td>
  * <td>actual</td>
- * <td><tt>@</tt></td>
+ * <td>{@code @}</td>
  * <td>character</td>
  * <td>The actual character, separating the print representation from the key.</td>
  * </tr>
@@ -198,7 +199,7 @@ import org.extex.exindex.lisp.LInterpreter;
  * 
  * <p>
  * The following example shows how the default setting can be defined in a
- * <logo>&epsilon;&chi;Index</logo> style file.
+ *  &epsilon;&chi;Index style file.
  * </p>
  * 
  * <pre>
@@ -216,19 +217,19 @@ import org.extex.exindex.lisp.LInterpreter;
  *  (setq makeindex:index-open #\[)
  *  (setq makeindex:index-close #\[)   </pre>
  * 
- * <h3>Examples of Index Entries</h3>
+ * <p>Examples of Index Entries</p>
  * 
  * <p>
  * The following examples illustrate the index entries understood by the
- * <logo>splitindex</logo> raw index format.
+ *  splitindex raw index format.
  * </p>
  * 
  * <pre>
  * \indexentry{abc}{123}   </pre>
  * 
  * <p>
- * This example is the simple case of a main key <tt>abc</tt> and the page
- * reference <tt>123</tt>. The index used is the default index which is denoted
+ * This example is the simple case of a main key {@code abc} and the page
+ * reference {@code 123}. The index used is the default index which is denoted
  * by the empty string.
  * </p>
  * 
@@ -236,14 +237,14 @@ import org.extex.exindex.lisp.LInterpreter;
  * \indexentry{alpha@$\alpha$}{123}   </pre>
  * 
  * <p>
- * This example sorts as <tt>alpha</tt> and prints as &alpha;.
+ * This example sorts as {@code alpha} and prints as &alpha;.
  * </p>
  * 
  * <pre>
  * \indexentry{alpha@$\alpha$|textbf(}{123}   </pre>
  * 
  * <p>
- * This example shows an entry with the attribute <tt>textbf</tt> which is
+ * This example shows an entry with the attribute {@code textbf} which is
  * started here.
  * </p>
  * 
@@ -259,7 +260,7 @@ import org.extex.exindex.lisp.LInterpreter;
  * \indexentry[idx1]{abc}{123}   </pre>
  * 
  * <p>
- * This example shows an entry which is sent to the index <tt>idx1</tt>.
+ * This example shows an entry which is sent to the index {@code idx1}.
  * </p>
  * 
  * <pre>
@@ -267,7 +268,7 @@ import org.extex.exindex.lisp.LInterpreter;
  * 
  * <p>
  * This example shows an entry with separate print representation which is sent
- * to the index <tt>idx1</tt>.
+ * to the index {@code idx1}.
  * </p>
  * 
  * <pre>
@@ -275,7 +276,7 @@ import org.extex.exindex.lisp.LInterpreter;
  * 
  * <p>
  * This example shows an entry with print representation and attribute which is
- * sent to the index <tt>idx1</tt>.
+ * sent to the index {@code idx1}.
  * </p>
  * 
  * <pre>
@@ -283,24 +284,22 @@ import org.extex.exindex.lisp.LInterpreter;
  * 
  * <p>
  * This example shows a structured entry which is sent to the index
- * <tt>idx1</tt>.
+ * {@code idx1}.
  * </p>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 6763 $
- */
+*/
 public class SplitindexParser extends MakeindexParser {
 
     /**
-     * The field <tt>indexOpen</tt> contains the index open character.
+     * The field {@code indexOpen} contains the index open character.
      */
     private char indexOpen;
 
     /**
-     * The field <tt>indexClose</tt> contains the index close character.
+     * The field {@code indexClose} contains the index close character.
      */
     private char indexClose;
 
@@ -322,10 +321,14 @@ public class SplitindexParser extends MakeindexParser {
     }
 
     /**
+     * <p>
      * Gather the parameters from an interpreter. If the interpreter does not
      * have an appropriate value then a fallback is used. The following
-     * parameters are used by this parser: <br/>
+     * parameters are used by this parser:
+     * </p>
+     *
      * <table>
+     * <caption>TBD</caption>
      * <tr>
      * <th>Name</th>
      * <th>Fallback</th>
@@ -333,76 +336,76 @@ public class SplitindexParser extends MakeindexParser {
      * </tr>
      * <tr>
      * <td>makeindex:keyword</td>
-     * <td><tt>\indexentry</tt></td>
-     * <td>This string starts an entry. Anything between entries is ignored.</td>
+     * <td>{@code \indexentry}</td>
+     * <td>This string starts an entry. Anything between entries is ignored
+     * .</td>
      * </tr>
      * <tr>
      * <td>makeindex:index-open</td>
-     * <td><tt>{</tt></td>
+     * <td>{@code {}</td>
      * <td>This character opens an index argument. It is terminated by the
      * index-close character.</td>
      * </tr>
      * <tr>
      * <td>makeindex:index-close</td>
-     * <td><tt>}</tt></td>
+     * <td>{@code }}</td>
      * <td>This character closes an index argument which has been opened by the
      * index-open character.</td>
      * </tr>
      * <tr>
      * <td>makeindex:arg-open</td>
-     * <td><tt>{</tt></td>
+     * <td>{@code {}</td>
      * <td>This character opens an argument. It is terminated by the arg-close
      * character.</td>
      * </tr>
      * <tr>
      * <td>makeindex:arg-close</td>
-     * <td><tt>}</tt></td>
+     * <td>{@code }}</td>
      * <td>This character closes an argument which has been opened by the
      * arg-open character.</td>
      * </tr>
      * <tr>
      * <td>makeindex:range-open</td>
-     * <td><tt>(</tt></td>
+     * <td>{@code (}</td>
      * <td>This character indicates the start of a range.</td>
      * </tr>
      * <tr>
      * <td>makeindex:range-close</td>
-     * <td><tt>)</tt></td>
+     * <td>{@code )}</td>
      * <td>This character indicates the end of a range.</td>
      * </tr>
      * <tr>
      * <td>makeindex:escape</td>
-     * <td><tt>"</tt></td>
+     * <td>{@code "}</td>
      * <td>This is the escape character.</td>
      * </tr>
      * <tr>
      * <td>makeindex:quote</td>
-     * <td><tt>\</tt></td>
+     * <td>{@code \}</td>
      * <td>This is the quote character</td>
      * </tr>
      * <tr>
      * <td>makeindex:encap</td>
-     * <td><tt>|</tt></td>
+     * <td>{@code |}</td>
      * <td>This character is the separator for the encapsulator.</td>
      * </tr>
      * <tr>
      * <td>makeindex:level</td>
-     * <td><tt>!</tt></td>
+     * <td>{@code !}</td>
      * <td>This character is the level separator. A structured key is divided
      * into parts with this character.</td>
      * </tr>
      * <tr>
      * <td>makeindex:actual</td>
-     * <td><tt>@</tt></td>
+     * <td>{@code @}</td>
      * <td>The actual character, separating the print representation from the
      * key.</td>
      * </tr>
      * </table>
-     * 
+     *
      * @param interpreter the interpreter to query for the parameters
-     * 
      * @throws RawIndexException in case that the value from the interpreter has
-     *         the wrong type
+     *                           the wrong type
      */
     @Override
     public void configure(LInterpreter interpreter) throws RawIndexException {
@@ -413,7 +416,7 @@ public class SplitindexParser extends MakeindexParser {
     }
 
     /**
-     * Scan an argument enclosed in <tt>indexOpen</tt> and <tt>indexClose</tt>.
+     * Scan an argument enclosed in {@code indexOpen} and {@code indexClose}.
      * 
      * @return the argument found
      * 

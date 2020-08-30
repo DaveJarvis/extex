@@ -30,17 +30,16 @@ import org.extex.ocpware.type.OcpCode;
  * This class represents an arithmetic expression for a table reference.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public class TableRef extends ArithExpr {
 
     /**
-     * The field <tt>index</tt> contains the offset.
+     * The field {@code index} contains the offset.
      */
     private ArithExpr index;
 
     /**
-     * The field <tt>table</tt> contains the name of the table.
+     * The field {@code table} contains the name of the table.
      */
     private String table;
 
@@ -56,12 +55,7 @@ public class TableRef extends ArithExpr {
         this.index = n;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.compiler.arith.ArithExpr#outExpr( CompilerState)
-     */
-    @Override
+@Override
     void outExpr(CompilerState cs)
             throws IOException,
                 TableNotDefinedException,
@@ -72,12 +66,7 @@ public class TableRef extends ArithExpr {
         cs.putInstruction(OcpCode.OP_LOOKUP);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return table + "[" + index.toString() + "]";

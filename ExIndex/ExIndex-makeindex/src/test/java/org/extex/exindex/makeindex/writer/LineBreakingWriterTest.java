@@ -30,12 +30,11 @@ import org.junit.Test;
  * This is a test suite for a line breaking writer.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 5432 $
- */
+*/
 public class LineBreakingWriterTest {
 
     /**
-     * <testcase>No write operation leaves an empty output.</testcase>
+     * No write operation leaves an empty output.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -49,7 +48,7 @@ public class LineBreakingWriterTest {
     }
 
     /**
-     * <testcase>An empty string written leads to an empty output.</testcase>
+     * An empty string written leads to an empty output.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -64,7 +63,7 @@ public class LineBreakingWriterTest {
     }
 
     /**
-     * <testcase>A string without whitespace is passed through.</testcase>
+     * A string without whitespace is passed through.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -79,7 +78,7 @@ public class LineBreakingWriterTest {
     }
 
     /**
-     * <testcase>A string with white-space is passed through.</testcase>
+     * A string with white-space is passed through.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -94,8 +93,8 @@ public class LineBreakingWriterTest {
     }
 
     /**
-     * <testcase>A string with several white-spaces is passed
-     * through.</testcase>
+     * A string with several white-spaces is passed
+     * through.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -110,8 +109,8 @@ public class LineBreakingWriterTest {
     }
 
     /**
-     * <testcase>A string with several white-spaces is passed
-     * through.</testcase>
+     * A string with several white-spaces is passed
+     * through.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -126,7 +125,7 @@ public class LineBreakingWriterTest {
     }
 
     /**
-     * <testcase>A long string with several white-spaces is broken.</testcase>
+     * A long string with several white-spaces is broken.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -142,7 +141,7 @@ public class LineBreakingWriterTest {
     }
 
     /**
-     * <testcase>A long string with several white-spaces is broken.</testcase>
+     * A long string with several white-spaces is broken.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -158,8 +157,8 @@ public class LineBreakingWriterTest {
     }
 
     /**
-     * <testcase>A long string with several white-spaces and newline is
-     * broken.</testcase>
+     * A long string with several white-spaces and newline is
+     * broken.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -175,7 +174,7 @@ public class LineBreakingWriterTest {
     }
 
     /**
-     * <testcase>A long string with several white-spaces is broken.</testcase>
+     * A long string with several white-spaces is broken.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -192,7 +191,7 @@ public class LineBreakingWriterTest {
     }
 
     /**
-     * <testcase>A long string with several white-spaces is broken.</testcase>
+     * A long string with several white-spaces is broken.
      * 
      * @throws IOException in case of an I/O error
      */

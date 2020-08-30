@@ -39,17 +39,16 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\showthe</code>.
+ * This class provides an implementation for the primitive {@code \showthe}.
  * 
- * <doc name="showthe">
- * <h3>The Primitive <tt>\showthe</tt></h3>
+ * <p>The Primitive {@code \showthe}</p>
  * <p>
- * The primitive <tt>\showthe</tt> produces on the terminal and the error log
- * the exact result as the primitive <tt>\the</tt>. the tokens are preceded
+ * The primitive {@code \showthe} produces on the terminal and the error log
+ * the exact result as the primitive {@code \the}. the tokens are preceded
  * by a greater sign (&gt;) and followed by a period (.).
  * </p>
  * <p>
- * If the token following the primitive is not applicable to <tt>\the</tt>
+ * If the token following the primitive is not applicable to {@code \the}
  * then an error s raised.
  * </p>
  * <p>
@@ -57,38 +56,36 @@ import org.extex.typesetter.exception.TypesetterException;
  * primitive is. In doubt consult the documentation of the primitive.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;showthe&rang;
- *      &rarr; <tt>\showthe</tt> &lang;internal quantity&rang;  </pre>
+ *      &rarr; {@code \showthe} &lang;internal quantity&rang;  </pre>
  * 
- * <h4>Examples</h4>
- * 
+ * <p>Examples</p>
+ *
  * <pre class="TeXSample">
  *    \toks2={UTF-8}
  *    \showthe\toks2
- *    &rarr; > UTF-(.  </pre>
- * 
- * </doc>
- * 
+ *    &rarr; &gt; UTF-(.  </pre>
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Showthe extends AbstractCode implements LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>logger</tt> contains the target channel for the message.
+     * The field {@code logger} contains the target channel for the message.
      */
-    private transient Logger logger = null;
+    private transient Logger logger;
 
     /**
      * Creates a new object.
@@ -114,10 +111,7 @@ public class Showthe extends AbstractCode implements LogEnabled {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -130,7 +124,7 @@ public class Showthe extends AbstractCode implements LogEnabled {
 
             Code code = context.getCode((CodeToken) cs);
 
-            if (code != null && code instanceof Theable) {
+            if ( code instanceof Theable ) {
                 Tokens toks;
                 try {
                     toks = ((Theable) code).the(context, source, typesetter);

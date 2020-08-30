@@ -30,22 +30,21 @@ import org.extex.scanner.type.token.Token;
  * container with some getters.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class GroupInfoImpl implements GroupInfo {
 
     /**
-     * The field <tt>groupStart</tt> contains the group starting token.
+     * The field {@code groupStart} contains the group starting token.
      */
     private Token groupStart;
 
     /**
-     * The field <tt>groupType</tt> contains the group type.
+     * The field {@code groupType} contains the group type.
      */
     private GroupType groupType;
 
     /**
-     * The field <tt>locator</tt> contains the locator.
+     * The field {@code locator} contains the locator.
      */
     private Locator locator;
 

@@ -29,37 +29,32 @@ import org.extex.exbib.core.io.Locator;
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X built-in function <code>*</code>
+ * >e</span>X built-in function {@code *}
  * <p>
  * This function takes two string arguments from the stack and pushes the
  * concatenated string back to the stack. If not enough arguments are on the
  * stack or the arguments are no strings then an error is raised.
  * </p>
- * <img src="doc-files/concat.png"/>
+ * <img src="doc-files/concat.png" alt="concat">
  * <p>
- * The following example is taken from <tt>alpha.bst</tt>:
+ * The following example is taken from {@code alpha.bst}:
  * </p>
  * 
  * <pre>
  *   "there's a month but no year in " cite$ * warning$
  * </pre>
  * 
- * <hr />
+ * <hr>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X documentation:
- * <dt>
+ * <dt>BibTeX documentation</dt>
  * <dd>
- * 
+ * TBD
  * </dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Concat extends AbstractCode {
 
     /**
@@ -80,10 +75,7 @@ public class Concat extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {

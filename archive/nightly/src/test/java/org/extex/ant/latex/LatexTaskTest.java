@@ -26,12 +26,11 @@ import org.junit.Test;
 
 /**
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5413 $
- */
+*/
 public class LatexTaskTest extends TestCase {
 
     /**
-     * The constant <tt>VERBOSE</tt> contains the verbosity indicator.
+     * The constant {@code VERBOSE} contains the verbosity indicator.
      */
     private static final boolean VERBOSE = false;
 

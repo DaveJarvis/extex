@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the macro expansion engine and all supporting classes.
+ *Contains macro expansion engine and all supporting classes.
  */
 
 package org.extex.interpreter;

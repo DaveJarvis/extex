@@ -28,30 +28,26 @@ import org.extex.exbib.core.io.Locator;
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X built-in function <code>text.length$</code>
+ * >e</span>X built-in function {@code text.length$}
  * <p>
  * This function computes the length of a text. The length is the number of text
  * characters. Whitespace braces and brackets do not count as text characters. A
  * TeX control sequence counts as one character &ndash; no matter
  * how long the name may be.
  * </p>
- * <img src="doc-files/text.length.png"/>
+ * <img src="doc-files/text.length.png" alt="text.length">
  * <p>
- * The following example is taken from <tt>alpha.bst</tt>:
+ * The following example is taken from {@code alpha.bst}:
  * </p>
  * 
  * <pre>
  *   preamble$ text.length$
  * </pre>
  * 
- * <hr />
+ * <hr>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X documentation:
- * <dt>
+ * <dt>BibTeX documentation</dt>
  * <dd>Pops the top (string) literal, and pushes the number of text characters
  * it contains, where an accented character (more precisely, a ``special
  * character'', defined in Section&nbsp;4) counts as a single text character,
@@ -60,15 +56,14 @@ import org.extex.exbib.core.io.Locator;
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TextLength extends AbstractCode {
 
     /**
      * Compute the text length like the B<small>IB</small><span
      * style="margin-left: -0.15em;" >T</span><span style=
      * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
-     * >e</span>X built-in function <code>text.length$</code>.
+     * >e</span>X built-in function {@code text.length$}.
      * 
      * @param s the input string
      * 
@@ -125,10 +120,7 @@ public class TextLength extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)

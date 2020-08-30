@@ -46,11 +46,11 @@ package org.extex.typesetter.tex.paragraph;
  *  <i>total_demerits</i> is the minimum possible sum of demerits over all
  *  lines leading from the beginning of the paragraph to this breakpoint.
  * </li>
- * <ul>
+ * </ul>
  * <p>
  *  The value of <i>link(active)</i> points to the first active node on a
  *  linked list of all currently active nodes. This list is in order by
- *  <i>line_number<i>, except that nodes with <i>line_number &gt; easy_line</i>
+ *  <i>line_number</i>, except that nodes with <i>line_number &gt; easy_line</i>
  *  may be in any order relative to each other.
  * </p>
  *
@@ -74,36 +74,35 @@ package org.extex.typesetter.tex.paragraph;
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
  */
 public class ActiveNode {
 
     /**
-     * The field <tt>breakNode</tt> contains the associated passive node.
+     * The field {@code breakNode} contains the associated passive node.
      */
-    private PassiveNode breakNode;
+    private final PassiveNode breakNode;
 
     /**
-     * The field <tt>demerits</tt> contains the demerits for this break
+     * The field {@code demerits} contains the demerits for this break
      * point.
      */
-    private long demerits;
+    private final long demerits;
 
     /**
-     * The field <tt>fitness</tt> contains the fitness classification.
+     * The field {@code fitness} contains the fitness classification.
      */
-    private Fitness fitness;
+    private final Fitness fitness;
 
     /**
-     * The field <tt>hyphenated</tt> contains the indicator for hyphenation at
+     * The field {@code hyphenated} contains the indicator for hyphenation at
      * this break point.
      */
-    private boolean hyphenated;
+    private final boolean hyphenated;
 
     /**
-     * The field <tt>lineNumber</tt> contains the sequence number of the line.
+     * The field {@code lineNumber} contains the sequence number of the line.
      */
-    private int lineNumber;
+    private final int lineNumber;
 
     /**
      * Creates a new object.

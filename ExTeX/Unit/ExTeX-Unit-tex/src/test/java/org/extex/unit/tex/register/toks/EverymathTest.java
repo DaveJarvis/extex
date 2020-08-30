@@ -25,11 +25,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\everymath</tt>.
+ * This is a test suite for the primitive {@code \everymath}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class EverymathTest extends AbstractToksRegisterTester {
 
     /**
@@ -50,7 +49,7 @@ public class EverymathTest extends AbstractToksRegisterTester {
 
     /**
      * <testcase primitive="\everymath"> Test case showing that the token is
-     * absorbed if no math happens. </testcase>
+     * absorbed if no math happens.
      * 
      * @throws Exception in case of an error
      */
@@ -65,7 +64,7 @@ public class EverymathTest extends AbstractToksRegisterTester {
 
     /**
      * <testcase primitive="\everymath"> Test case showing that the token is
-     * absorbed if display math happens. </testcase>
+     * absorbed if display math happens.
      * 
      * @throws Exception in case of an error
      */
@@ -81,7 +80,7 @@ public class EverymathTest extends AbstractToksRegisterTester {
 
     /**
      * <testcase primitive="\everymath"> Test case showing that the token is
-     * inserted if inline math happens. </testcase>
+     * inserted if inline math happens.
      * 
      * @throws Exception in case of an error
      */

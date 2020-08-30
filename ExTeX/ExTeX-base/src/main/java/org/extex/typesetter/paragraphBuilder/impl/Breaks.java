@@ -23,18 +23,17 @@ package org.extex.typesetter.paragraphBuilder.impl;
  * This is a container for a list of break points and the associated penalty.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4483 $
- */
+*/
 class Breaks {
 
     /**
-     * The field <tt>penalty</tt> contains the accumulated penalty for the
+     * The field {@code penalty} contains the accumulated penalty for the
      * breaks contained.
      */
     private int penalty;
 
     /**
-     * The field <tt>points</tt> contains the array of break point actually
+     * The field {@code points} contains the array of break point actually
      * used.
      */
     private int[] points;

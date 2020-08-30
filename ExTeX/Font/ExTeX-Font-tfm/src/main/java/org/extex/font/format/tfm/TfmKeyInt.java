@@ -25,25 +25,24 @@ import java.io.Serializable;
  * TFM: key-value-container.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class TfmKeyInt implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 1L;
 
     /**
      * key.
      */
-    private int key;
+    private final int key;
 
     /**
      * int-value.
      */
-    private int val;
+    private final int val;
 
     /**
      * Create a new object.

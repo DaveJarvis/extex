@@ -27,23 +27,22 @@ import org.extex.cli.exception.UnknownOptionCliException;
  * This option stores a predefined value in the properties given.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NoArgPropertyOption extends NoArgOption {
 
     /**
-     * The field <tt>pname</tt> contains the name of the property.
+     * The field {@code pname} contains the name of the property.
      */
     private final String pname;
 
     /**
-     * The field <tt>properties</tt> contains the properties to store the
+     * The field {@code properties} contains the properties to store the
      * value in.
      */
     private final Properties properties;
 
     /**
-     * The field <tt>arg</tt> contains the value to store.
+     * The field {@code arg} contains the value to store.
      */
     private final String arg;
 
@@ -64,12 +63,7 @@ public class NoArgPropertyOption extends NoArgOption {
         this.arg = arg;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.cli.NoArgOption#run(java.lang.String)
-     */
-    @Override
+@Override
     protected int run(String a) throws UnknownOptionCliException {
 
         properties.setProperty(pname, arg);

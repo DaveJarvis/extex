@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains some state classes for compiling OCPs.
+ * Contains some state classes for compiling OCPs.
  */
 
 package org.extex.ocpware.compiler.state;

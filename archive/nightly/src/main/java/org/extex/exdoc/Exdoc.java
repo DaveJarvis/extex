@@ -28,8 +28,7 @@ import org.extex.exdoc.util.Traverser;
  * Collect the doc snippets from Java code and store them in XML files.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5413 $
- */
+*/
 public final class Exdoc {
 
     /**
@@ -43,7 +42,7 @@ public final class Exdoc {
     }
 
     /**
-     * The field <tt>logger</tt> contains the logger.
+     * The field {@code logger} contains the logger.
      */
     private Logger logger;
 

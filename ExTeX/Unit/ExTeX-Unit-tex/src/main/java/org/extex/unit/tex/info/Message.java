@@ -33,28 +33,30 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\message</code>
+ * This class provides an implementation for the primitive {@code \message}
  * .
  * 
- * <doc name="message"> <h3>The Primitive <tt>\message</tt></h3>
+ * <p>The Primitive {@code \message}</p>
  * <p>
- * The primitive <tt>\message</tt> takes as argument a list of tokens enclosed
+ * The primitive {@code \message} takes as argument a list of tokens enclosed
  * in braces and writes them to output stream and into the log file.
  * </p>
  * <p>
- * If the keywords <tt>to log</tt> are given then the message is written to the
+ * If the keywords {@code to log} are given then the message is written to the
  * log file only. This is an extension not present in TeX and friends.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;message&rang;
- *      &rarr; <tt>\message</tt> <tt>{</tt> &lang;unprotected tokens&rang; <tt>}</tt>
- *       |   <tt>\message</tt> <tt>to</tt> <tt>log</tt> <tt>{</tt> &lang;unprotected tokens&rang; <tt>}</tt>
+ *      &rarr; {@code \message} {@code {} &lang;unprotected tokens&rang; {@code }}
+ *       |   {@code \message} {@code to} {@code log} {@code {} &lang;unprotected tokens&rang; {@code }}
  *       </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \message{Hello World!}  </pre>
@@ -63,21 +65,19 @@ import org.extex.typesetter.exception.TypesetterException;
  *    \message to log {Hello World!}  </pre>
  * 
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Message extends AbstractCode implements LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>logger</tt> contains the target channel for the message.
+     * The field {@code logger} contains the target channel for the message.
      */
     private transient Logger logger = null;
 
@@ -104,10 +104,7 @@ public class Message extends AbstractCode implements LogEnabled {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

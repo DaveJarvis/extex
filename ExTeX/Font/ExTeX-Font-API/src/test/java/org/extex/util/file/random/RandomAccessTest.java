@@ -31,12 +31,11 @@ import org.junit.runner.JUnitCore;
  * Test cases for RandomAccessInputStream.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 5476 $
- */
+*/
 public class RandomAccessTest {
 
     /**
-     * The field <tt>SRC_FONT</tt>.
+     * The field {@code SRC_FONT}.
      */
     private static final String SRC_FONT =
             "../ExTeX-Font-API/src/font/Gara.ttf";

@@ -25,8 +25,7 @@ import org.junit.Test;
  * This is a test suite for \xdef-like primitives.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 2974 $
- */
+*/
 public abstract class AbstractXdefTester extends AbstractDefTester {
 
     /**
@@ -39,9 +38,8 @@ public abstract class AbstractXdefTester extends AbstractDefTester {
     }
 
     /**
-     * <testcase> Test case checking that macros (without arguments) are
-     * expanded at definition time. </testcase>
-     * 
+     * Test case checking that macros (without arguments) are expanded at definition time
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -55,9 +53,8 @@ public abstract class AbstractXdefTester extends AbstractDefTester {
     }
 
     /**
-     * <testcase> Test case checking that macros (with arguments) are expanded
-     * at definition time. </testcase>
-     * 
+     * Test case checking that macros (with arguments) are expanded at definition time
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -71,9 +68,8 @@ public abstract class AbstractXdefTester extends AbstractDefTester {
     }
 
     /**
-     * <testcase> Test case checking that macros are deeply expanded at
-     * definition time. </testcase>
-     * 
+     * Test case checking that macros are deeply expanded at definition time
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -88,8 +84,8 @@ public abstract class AbstractXdefTester extends AbstractDefTester {
     }
 
     /**
-     * <testcase> Test case checking that \noexpand prevent expansion of the
-     * following token </testcase>
+     *  Test case checking that \noexpand prevent expansion of the
+     * following token
      * 
      * @throws Exception in case of an error
      */

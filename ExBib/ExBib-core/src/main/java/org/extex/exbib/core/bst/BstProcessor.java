@@ -46,8 +46,7 @@ import org.extex.exbib.core.util.Observer;
  * >e</span>X programming language.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface BstProcessor extends Processor, Iterable<Command> {
 
     /**
@@ -61,14 +60,14 @@ public interface BstProcessor extends Processor, Iterable<Command> {
 
     /**
      * Define a new function if not already defined in the processor context. A
-     * function can be made undefined by specifying the code <code>null</code>
+     * function can be made undefined by specifying the code {@code null}
      * to it.
      * 
      * @param name the name of the function
      * @param body the Code associated with the function
      * @param locator The locator
      * @throws ExBibIllegalValueException in case that the name is
-     *         <code>null</code> or empty
+     *         {@code null} or empty
      * @throws ExBibFunctionExistsException in case that the named function
      *         already exists
      * @throws ExBibException just in case
@@ -87,7 +86,7 @@ public interface BstProcessor extends Processor, Iterable<Command> {
      * @param locator the locator
      * 
      * @throws ExBibIllegalValueException in case that the name is
-     *         <code>null</code> or empty
+     *         {@code null} or empty
      * @throws ExBibFunctionUndefinedException in case that the function isn't
      *         defined yet
      */
@@ -102,7 +101,7 @@ public interface BstProcessor extends Processor, Iterable<Command> {
      * @return the list of integers
      * 
      * @throws ExBibIllegalValueException in case that the name is
-     *         <code>null</code> or empty
+     *         {@code null} or empty
      * @throws ExBibFunctionExistsException in case that the named function
      *         already exists
      */
@@ -119,11 +118,11 @@ public interface BstProcessor extends Processor, Iterable<Command> {
 
     /**
      * Getter for function code. If the requested function is not defined then
-     * <code>null</code> is returned.
+     * {@code null} is returned.
      * 
      * @param name the name of the function
      * 
-     * @return the function definition or <code>null</code>
+     * @return the function definition or {@code null}
      */
     Code getFunction(String name);
 
@@ -146,7 +145,7 @@ public interface BstProcessor extends Processor, Iterable<Command> {
      * 
      * @param name the key
      * 
-     * @return the option value or <code>null</code>
+     * @return the option value or {@code null}
      */
     Token getOption(String name);
 
@@ -211,9 +210,9 @@ public interface BstProcessor extends Processor, Iterable<Command> {
 
     /**
      * Pop an element from the stack. If the stack is empty then
-     * <code>null</code> is returned.
+     * {@code null} is returned.
      * 
-     * @return the top of stack or <code>null</code>
+     * @return the top of stack or {@code null}
      */
     Token popUnchecked();
 
@@ -243,7 +242,7 @@ public interface BstProcessor extends Processor, Iterable<Command> {
      * @param locator the locator
      * 
      * @throws ExBibIllegalValueException in case that the name is
-     *         <code>null</code> or empty
+     *         {@code null} or empty
      * @throws ExBibFunctionExistsException in case that the named function
      *         already exists
      * @throws ExBibException just in case
@@ -273,7 +272,7 @@ public interface BstProcessor extends Processor, Iterable<Command> {
      * @param locator the locator
      * 
      * @throws ExBibIllegalValueException in case that the name is
-     *         <code>null</code> or empty
+     *         {@code null} or empty
      * @throws ExBibFunctionExistsException in case that the named function
      *         already exists
      * @throws ExBibException in case of an error
@@ -303,7 +302,7 @@ public interface BstProcessor extends Processor, Iterable<Command> {
      * @param locator the locator
      * 
      * @throws ExBibIllegalValueException in case that the name is
-     *         <code>null</code> or empty
+     *         {@code null} or empty
      * @throws ExBibFunctionExistsException in case that the named function
      *         already exists
      * @throws ExBibException just in case

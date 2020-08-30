@@ -34,14 +34,13 @@ import org.extex.typesetter.type.node.GlueNode;
  * with the translated glue value.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class GlueNoad extends AbstractNoad {
 
     /**
-     * The field <tt>muglue</tt> contains the glue.
+     * The field {@code muglue} contains the glue.
      */
-    private Muskip muglue;
+    private final Muskip muglue;
 
     /**
      * Creates a new object.

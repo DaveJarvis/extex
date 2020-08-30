@@ -30,12 +30,11 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to define the markup for the index.
  * 
- * <doc type="exindex-command" command="markup-index">
- * 
- * <h3>The Command <tt>markup-index</tt></h3>
+*
+ * <p>The Command {@code markup-index}</p>
  * 
  * <p>
- * The command <tt>markup-index</tt> can be used to specify the markup for the
+ * The command {@code markup-index} can be used to specify the markup for the
  * index as a whole.
  * </p>
  * 
@@ -56,7 +55,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </pre>
  * 
  * <p>
- * The arguments <tt>:open</tt> and <tt>:close</tt> contain the markup to be
+ * The arguments {@code :open} and {@code :close} contain the markup to be
  * inserted at the beginning and at the end of the index.
  * </p>
  * 
@@ -65,27 +64,29 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </pre>
  * 
  * <p>
- * The arguments <tt>:flat</tt>, <tt>:tree</tt>, and <tt>:hierdepth</tt> are
+ * The arguments {@code :flat}, {@code :tree}, and {@code :hierdepth} are
  * mutually exclusive. They determine how the index is structured. The argument
- * <tt>:flat</tt> suppresses any structuring. Keys of any depth are combined
+ * {@code :flat} suppresses any structuring. Keys of any depth are combined
  * into a single level. The result may look as follows:
  * </p>
- * <table>
+* <table>
+ * <caption>TBD</caption>
+
  * <tr>
- * <td>structure</td>
+* <td>structure</td>
  * <td>42&ndash;45</td>
  * </tr>
  * <tr>
  * <td>structure, tree</td>
- * <td align="right">42</td>
+ * <td>42</td>
  * </tr>
  * <tr>
  * <td>structure, tree, depth</td>
- * <td align="right">43</td>
+ * <td>43</td>
  * </tr>
  * <tr>
  * <td>structure, flat</td>
- * <td align="right">43</td>
+ * <td>43</td>
  * </tr>
  * </table>
  * 
@@ -94,25 +95,27 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </pre>
  * 
  * <p>
- * The argument <tt>:tree</tt> allows structuring to any depth. No keys are
+ * The argument {@code :tree} allows structuring to any depth. No keys are
  * combined into a single level. The result may look as follows:
  * </p>
- * <table>
+* <table>
+ * <caption>TBD</caption>
+
  * <tr>
- * <td>structure</td>
+* <td>structure</td>
  * <td>42&ndash;45</td>
  * </tr>
  * <tr>
  * <td>&nbsp;&nbsp;&nbsp;tree</td>
- * <td align="right">42</td>
+ * <td>42</td>
  * </tr>
  * <tr>
  * <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;depth</td>
- * <td align="right">43</td>
+ * <td>43</td>
  * </tr>
  * <tr>
  * <td>&nbsp;&nbsp;&nbsp;flat</td>
- * <td align="right">43</td>
+ * <td>43</td>
  * </tr>
  * </table>
  * 
@@ -121,45 +124,44 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </pre>
  * 
  * <p>
- * The argument <tt>:hierdepth</tt> allows structuring to the depth given as
+ * The argument {@code :hierdepth} allows structuring to the depth given as
  * argument. The keys are combined into a single level if the given depth is
  * exceeded. The result may look as follows:
  * </p>
- * <table>
+* <table>
+ * <caption>TBD</caption>
+
  * <tr>
- * <td>structure</td>
+* <td>structure</td>
  * <td>42&ndash;45</td>
  * </tr>
  * <tr>
  * <td>&nbsp;&nbsp;&nbsp;tree</td>
- * <td align="right">42</td>
+ * <td>42</td>
  * </tr>
  * <tr>
  * <td>&nbsp;&nbsp;&nbsp;tree, depth</td>
- * <td align="right">43</td>
+ * <td>43</td>
  * </tr>
  * <tr>
  * <td>&nbsp;&nbsp;&nbsp;flat</td>
- * <td align="right">43</td>
+ * <td>43</td>
  * </tr>
  * </table>
- * 
- * </doc>
- * 
- * <h3>Parameters</h3>
+ *
+ * <p>Parameters</p>
  * <p>
  * The parameters defined with this command are stored in the L system under the
- * key of the function name (i.e. <tt>markup-index</tt>).
+ * key of the function name (i.e. {@code markup-index}).
  * </p>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LMarkupIndex extends AbstractLAdapter {
 
     /**
-     * The field <tt>container</tt> contains the index.
+     * The field {@code container} contains the index.
      */
     private final IndexContainer container;
 
@@ -195,7 +197,7 @@ public class LMarkupIndex extends AbstractLAdapter {
      * @param tree the tree indicator
      * @param hierdepth the depth limit
      * 
-     * @return <tt>null</tt>
+     * @return {@code null}
      * 
      * @throws InconsistentFlagsException in case of an error
      * @throws LSettingConstantException should not happen

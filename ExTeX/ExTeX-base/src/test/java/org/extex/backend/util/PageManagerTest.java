@@ -30,8 +30,7 @@ import org.junit.runner.JUnitCore;
  * This class contains a test suite for the {@link PageManager}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4784 $
- */
+*/
 public class PageManagerTest {
 
     /**
@@ -68,7 +67,7 @@ public class PageManagerTest {
     }
 
     /**
-     * <testcase> Check that initially all pages are accepted. </testcase>
+     *  Check that initially all pages are accepted.
      */
     @Test
     public void testInit() {
@@ -77,8 +76,8 @@ public class PageManagerTest {
     }
 
     /**
-     * <testcase> Check that no pages are accepted for the empty specification.
-     * </testcase>
+     *  Check that no pages are accepted for the empty specification.
+     *
      */
     @Test
     public void testEmpty() {
@@ -87,8 +86,8 @@ public class PageManagerTest {
     }
 
     /**
-     * <testcase> Check that no pages are accepted for the empty specification.
-     * </testcase>
+     *  Check that no pages are accepted for the empty specification.
+     *
      */
     @Test
     public void testSpace() {
@@ -97,9 +96,8 @@ public class PageManagerTest {
     }
 
     /**
-     * <testcase> Check that only the page 1 is accepted if only this page is
-     * requested (single page number). </testcase>
-     */
+     * Check that only the page 1 is accepted if only this page is requested (single page number)
+*/
     @Test
     public void test1() {
 
@@ -107,9 +105,8 @@ public class PageManagerTest {
     }
 
     /**
-     * <testcase> Check that only the page 2 is accepted if only this page is
-     * requested (single page number). </testcase>
-     */
+     * Check that only the page 2 is accepted if only this page is requested (single page number)
+*/
     @Test
     public void test2() {
 
@@ -117,9 +114,8 @@ public class PageManagerTest {
     }
 
     /**
-     * <testcase> Check that only the page 1 is accepted if only this page is
-     * requested (single page number; two digits). </testcase>
-     */
+     * Check that only the page 1 is accepted if only this page is requested (single page number; two digits)
+*/
     @Test
     public void test3() {
 
@@ -127,9 +123,8 @@ public class PageManagerTest {
     }
 
     /**
-     * <testcase> Check that only the pages 1 and 3 is accepted if only this
-     * page is requested (comma operator). </testcase>
-     */
+     * Check that only the pages 1 and 3 is accepted if only this page is requested (comma operator)
+*/
     @Test
     public void test4() {
 
@@ -137,9 +132,8 @@ public class PageManagerTest {
     }
 
     /**
-     * <testcase> Check that all the pages up to 2 are accepted if only this
-     * page is requested (initial to operator). </testcase>
-     */
+     * Check that all the pages up to 2 are accepted if only this page is requested (initial to operator)
+*/
     @Test
     public void test5() {
 
@@ -147,9 +141,8 @@ public class PageManagerTest {
     }
 
     /**
-     * <testcase> Check that all the pages greater than 12 are accepted if only
-     * this page is requested (terminal to operator). </testcase>
-     */
+     * Check that all the pages greater than 12 are accepted if only this page is requested (terminal to operator)
+*/
     @Test
     public void test6() {
 
@@ -157,9 +150,8 @@ public class PageManagerTest {
     }
 
     /**
-     * <testcase> Check that all requested pages are accepted (complex
-     * combination). </testcase>
-     */
+     * Check that all requested pages are accepted (complex combination)
+*/
     @Test
     public void test10() {
 
@@ -167,9 +159,8 @@ public class PageManagerTest {
     }
 
     /**
-     * <testcase> Check that all requested pages are accepted (complex
-     * combination). </testcase>
-     */
+     * Check that all requested pages are accepted (complex combination)
+*/
     @Test
     public void test11() {
 

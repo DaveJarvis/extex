@@ -35,8 +35,7 @@ import org.extex.resource.ResourceFinder;
  * Factory for the Unicode to tex font mapping.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class U2tFactory {
 
     /**
@@ -60,13 +59,13 @@ public class U2tFactory {
     /**
      * Map for caching (u2t).
      */
-    private Map<String, Map<UnicodeChar, Integer>> cacheu2t =
+    private final Map<String, Map<UnicodeChar, Integer>> cacheu2t =
             new WeakHashMap<String, Map<UnicodeChar, Integer>>();
 
     /**
      * Map for caching (t2u).
      */
-    private Map<String, Map<Integer, UnicodeChar>> cachet2u =
+    private final Map<String, Map<Integer, UnicodeChar>> cachet2u =
             new WeakHashMap<String, Map<Integer, UnicodeChar>>();
 
     /**
@@ -77,12 +76,12 @@ public class U2tFactory {
     }
 
     /**
-     * Returns the t2u map, or <code>null</code>, if the property file is not
+     * Returns the t2u map, or {@code null}, if the property file is not
      * found.
      * 
      * @param name the name of the property.
      * @param finder the resource finder.
-     * @return the t2u map, or <code>null</code>, if the property file is not
+     * @return the t2u map, or {@code null}, if the property file is not
      *         found.
      * @throws IOException if a io error occurred.
      * @throws ConfigurationException from the configuration system.
@@ -123,12 +122,12 @@ public class U2tFactory {
     }
 
     /**
-     * Returns the u2t map, or <code>null</code>, if the property file is not
+     * Returns the u2t map, or {@code null}, if the property file is not
      * found.
      * 
      * @param name the name of the property.
      * @param finder the resource finder.
-     * @return the u2t map, or <code>null</code>, if the property file is not
+     * @return the u2t map, or {@code null}, if the property file is not
      *         found.
      * @throws IOException if a io error occurred.
      * @throws ConfigurationException from the configuration system.

@@ -30,8 +30,7 @@ import org.extex.interpreter.EditHandler;
  * location to the error stream.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4445 $
- */
+*/
 public class EditHandlerTeXImpl implements EditHandler {
 
 
@@ -45,7 +44,7 @@ public class EditHandlerTeXImpl implements EditHandler {
      * @param localizer the localizer to acquire texts from
      * @param locator the locator for the place to edit
      * 
-     * @return <code>true</code> iff the job can be continued
+     * @return {@code true} iff the job can be continued
      * 
      * @see org.extex.interpreter.EditHandler#edit(
      *      org.extex.framework.i18n.Localizer, org.extex.core.Locator)

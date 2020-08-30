@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains classes for representing the internal structures in a
+ * Contains classes for representing the internal structures in a
  * processor. Since they are really essential they are provided as classes and
  * not separated by interfaces and a factory.    
  *

@@ -56,35 +56,34 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:4399 $
- */
+*/
 public final class GlueComponentParser {
 
     /**
-     * The constant <tt>BP100_PER_IN</tt> contains the number of 100 big points
+     * The constant {@code BP100_PER_IN} contains the number of 100 big points
      * per inch.
      */
     private static final int BP100_PER_IN = 7200;
 
     /**
-     * The constant <tt>CM100_PER_IN</tt> contains the number of 100 centimeters
+     * The constant {@code CM100_PER_IN} contains the number of 100 centimeters
      * per inch.
      */
     private static final int CM100_PER_IN = 254;
 
     /**
-     * The constant <tt>MAX_ORDER</tt> contains the maximal allowed order.
+     * The constant {@code MAX_ORDER} contains the maximal allowed order.
      */
     private static final int MAX_ORDER = 4;
 
     /**
-     * The field <tt>POINT_PER_100_IN</tt> contains the conversion factor from
+     * The field {@code POINT_PER_100_IN} contains the conversion factor from
      * inch to point. The value contained is the number of points in 100 inch.
      */
     private static final int POINT_PER_100_IN = 7227;
 
     /**
-     * The constant <tt>PT_PER_PC</tt> contains the number of points per pica.
+     * The constant {@code PT_PER_PC} contains the number of points per pica.
      */
     private static final int PT_PER_PC = 12;
 
@@ -95,10 +94,10 @@ public final class GlueComponentParser {
      * @param context the interpreter context
      * @param source the source for the tokens to be read
      * @param typesetter the typesetter
-     * @param fixed if <code>true</code> then no glue order is allowed
+     * @param fixed if {@code true} then no glue order is allowed
      * @param value the value to encapsulate
      * 
-     * @return the value converted into a GlueComponent or <code>null</code> if
+     * @return the value converted into a GlueComponent or {@code null} if
      *         no suitable unit could be found
      * 
      * @throws HelpingException in case of an error
@@ -301,7 +300,7 @@ public final class GlueComponentParser {
      * @param context the interpreter context
      * @param source the source for the tokens to be read
      * @param typesetter the typesetter
-     * @param fixed if <code>true</code> then no glue order is allowed
+     * @param fixed if {@code true} then no glue order is allowed
      * 
      * @return a new instance with the value from the input stream
      * 

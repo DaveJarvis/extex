@@ -29,22 +29,21 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
  * the tree making up the program.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface GCode {
 
     /**
      * Determine the type of the expression. The unknown type is represented by
      * the constant {@link ReturnType#UNKNOWN}.
      * 
-     * @return the type which is never <code>null</code>
+     * @return the type which is never {@code null}
      */
     ReturnType getType();
 
     /**
      * Check whether the code has a side effect on the output writer.
      * 
-     * @return <code>true</code> iff something is written to the output writer
+     * @return {@code true} iff something is written to the output writer
      */
     boolean hasSideEffect();
 
@@ -52,7 +51,7 @@ public interface GCode {
      * Optimize this code. This optimization does involve the current node only.
      * See {@link #optimize(List, int)} for an optimization in the context.
      * 
-     * @return the optimized code which is never <code>null</code>
+     * @return the optimized code which is never {@code null}
      */
     GCode optimize();
 
@@ -64,7 +63,7 @@ public interface GCode {
      * @param index the current index
      * 
      * @return the next index of the element which should be optimized next.
-     *         This is usually the value <code>index + 1</code>
+     *         This is usually the value {@code index + 1}
      */
     int optimize(List<GCode> list, int index);
 
@@ -83,7 +82,7 @@ public interface GCode {
      * 
      * @param other the other code to unify with
      * 
-     * @return <code>true</code> upon success
+     * @return {@code true} upon success
      */
     boolean unify(GCode other);
 }

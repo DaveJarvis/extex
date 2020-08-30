@@ -32,37 +32,36 @@ import org.extex.typesetter.type.node.PenaltyNode;
 
 /**
  * This class provides an implementation for the primitive
- * <code>&#x5c;unpenalty</code>.
+ * {@code &#x5c;unpenalty}.
  * 
- * <doc name="unpenalty">
- * <h3>The Primitive <tt>&#x5c;unpenalty</tt></h3>
+ * <p>The Primitive {@code &#x5c;unpenalty}</p>
  * <p>
- * The primitive <tt>&#x5c;unpenalty</tt> inspects the current list and
+ * The primitive {@code &#x5c;unpenalty} inspects the current list and
  * removes the last node if it is a penalty node. Otherwise an error is raised.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;unpenalty&rang;
- *        &rarr; <tt>&#x5c;unpenalty</tt>  </pre>
+ *        &rarr; {@code &#x5c;unpenalty}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    &#x5c;unpenalty  </pre>
  * 
- * </doc>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Unpenalty extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -78,10 +77,7 @@ public class Unpenalty extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

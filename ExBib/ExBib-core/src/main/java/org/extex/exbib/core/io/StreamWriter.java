@@ -30,12 +30,11 @@ import java.io.UnsupportedEncodingException;
  * or a {@link java.io.File}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class StreamWriter implements Writer {
 
     /**
-     * The field <tt>writer</tt> contains the output writer.
+     * The field {@code writer} contains the output writer.
      */
     private java.io.Writer writer = null;
 

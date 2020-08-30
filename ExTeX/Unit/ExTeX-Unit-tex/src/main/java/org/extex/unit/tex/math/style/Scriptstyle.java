@@ -33,12 +33,11 @@ import org.extex.unit.tex.math.AbstractMathCode;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\scriptstyle</code>.
+ * {@code \scriptstyle}.
  * 
- * <doc name="scriptstyle">
- * <h3>The Math Primitive <tt>\scriptstyle</tt></h3>
+ * <p>The Math Primitive {@code \scriptstyle}</p>
  * <p>
- * The math primitive <tt>\scriptstyle</tt> arranges that the following
+ * The math primitive {@code \scriptstyle} arranges that the following
  * material in the current math group is typeset in script style regardless of
  * the style determined so far. This mean that for instance a sub-subscript can
  * be forced to be typeset in script style.
@@ -51,27 +50,27 @@ import org.extex.unit.tex.math.AbstractMathCode;
  * If used outside of math mode an error is raised.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;scriptstyle&rang;
- *       &rarr; <tt>\scriptstyle</tt>  </pre>
+ *       &rarr; {@code \scriptstyle}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \scriptstyle  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Scriptstyle extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -87,10 +86,7 @@ public class Scriptstyle extends AbstractMathCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

@@ -23,11 +23,10 @@ import org.extex.test.NoFlagsPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\meaning</tt>.
+ * This is a test suite for the primitive {@code \meaning}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class MeaningTest extends NoFlagsPrimitiveTester {
 
 
@@ -38,7 +37,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\meaning"> Test case checking that the
-     * <tt>\meaning</tt> of an undefined macro is reported. </testcase>
+     * {@code \meaning} of an undefined macro is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -53,7 +52,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\meaning"> Test case checking that the
-     * <tt>\meaning</tt> of \relax is reported. </testcase>
+     * {@code \meaning} of \relax is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -68,7 +67,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\meaning"> Test case checking that the
-     * <tt>\meaning</tt> of \meaning is reported. </testcase>
+     * {@code \meaning} of \meaning is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -83,8 +82,8 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\meaning"> Test case checking that the
-     * <tt>\meaning</tt> of an undefined active character is reported.
-     * </testcase>
+     * {@code \meaning} of an undefined active character is reported.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -99,7 +98,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\meaning"> Test case checking that the
-     * <tt>\meaning</tt> of a defined active character is reported. </testcase>
+     * {@code \meaning} of a defined active character is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -115,7 +114,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\meaning"> Test case checking that the
-     * <tt>\meaning</tt> of a defined active character is reported. </testcase>
+     * {@code \meaning} of a defined active character is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -131,7 +130,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\meaning"> Test case checking that the
-     * <tt>\meaning</tt> of a letter is reported. </testcase>
+     * {@code \meaning} of a letter is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -146,7 +145,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\meaning"> Test case checking that the
-     * <tt>\meaning</tt> of a macro parameter character is reported. </testcase>
+     * {@code \meaning} of a macro parameter character is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -161,7 +160,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\meaning"> Test case checking that the
-     * <tt>\meaning</tt> of a open-group character is reported. </testcase>
+     * {@code \meaning} of a open-group character is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -176,7 +175,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\meaning"> Test case checking that the
-     * <tt>\meaning</tt> of a letter is reported. </testcase>
+     * {@code \meaning} of a letter is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -191,7 +190,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\meaning"> Test case checking that the
-     * <tt>\meaning</tt> of a defined macro is reported. </testcase>
+     * {@code \meaning} of a defined macro is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -206,8 +205,8 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\meaning"> Test case checking that the
-     * <tt>\meaning</tt> of a defined macro with one parameter is reported.
-     * </testcase>
+     * {@code \meaning} of a defined macro with one parameter is reported.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -222,8 +221,8 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\meaning"> Test case checking that the
-     * <tt>\meaning</tt> of a defined macro with a complex parameter is
-     * reported. </testcase>
+     * {@code \meaning} of a defined macro with a complex parameter is
+     * reported.
      * 
      * @throws Exception in case of an error
      */
@@ -238,7 +237,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\meaning"> Test case checking that the
-     * <tt>\meaning</tt> of a begin-mat character is reported. </testcase>
+     * {@code \meaning} of a begin-mat character is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -253,7 +252,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\meaning"> Test case checking that the
-     * <tt>\meaning</tt> of a digit is reported. </testcase>
+     * {@code \meaning} of a digit is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -268,7 +267,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\meaning"> Test case checking that the
-     * <tt>\meaning</tt> of an integer parameter is reported. </testcase>
+     * {@code \meaning} of an integer parameter is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -283,7 +282,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\meaning"> Test case checking that the
-     * <tt>\meaning</tt> of a close group character is reported. </testcase>
+     * {@code \meaning} of a close group character is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -298,7 +297,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\meaning"> Test case checking that the
-     * <tt>\meaning</tt> of a subscript character is reported. </testcase>
+     * {@code \meaning} of a subscript character is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -313,7 +312,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\meaning"> Test case checking that the
-     * <tt>\meaning</tt> of a superscript character is reported. </testcase>
+     * {@code \meaning} of a superscript character is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -328,7 +327,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\meaning"> Test case checking that the
-     * <tt>\meaning</tt> of a alignment tab character is reported. </testcase>
+     * {@code \meaning} of a alignment tab character is reported.
      * 
      * @throws Exception in case of an error
      */

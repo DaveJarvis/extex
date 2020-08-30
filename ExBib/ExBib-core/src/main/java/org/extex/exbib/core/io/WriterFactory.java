@@ -32,7 +32,7 @@ import org.extex.framework.configuration.exception.ConfigurationUnsupportedEncod
  * This class provides some methods to get a new instance of some kind of
  * writer.
  * 
- * <h3>Configuration</h3>
+ *  Configuration
  * <p>
  * The configuration of the factory is passed on to the writer created. Thus is
  * can be used to influence their behavior.
@@ -50,12 +50,11 @@ import org.extex.framework.configuration.exception.ConfigurationUnsupportedEncod
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class WriterFactory extends AbstractFactory<Writer> {
 
     /**
-     * The field <tt>encoding</tt> contains the encoding to use for writing.
+     * The field {@code encoding} contains the encoding to use for writing.
      */
     private String encoding = null;
 
@@ -72,12 +71,7 @@ public class WriterFactory extends AbstractFactory<Writer> {
         super(config);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.AbstractFactory#configure(org.extex.framework.configuration.Configuration)
-     */
-    @Override
+@Override
     public void configure(Configuration configuration)
             throws ConfigurationException {
 
@@ -108,7 +102,7 @@ public class WriterFactory extends AbstractFactory<Writer> {
      * @param stream the PrintStream to write to
      * 
      * @return a new {@link StreamWriter} or a new {@link NullWriter} if the
-     *         stream is <code>null</code>
+     *         stream is {@code null}
      * 
      * @throws UnsupportedEncodingException in case of an unknown encoding
      * @throws ConfigurationException in case of an configuration error
@@ -133,7 +127,7 @@ public class WriterFactory extends AbstractFactory<Writer> {
      * @param file the name of the file to print to
      * 
      * @return a new {@link StreamWriter} or a new {@link NullWriter} if the
-     *         file is <code>null</code>
+     *         file is {@code null}
      * 
      * @throws IOException in case that the file could not be opened
      * @throws UnsupportedEncodingException in case of an unknown encoding
@@ -180,9 +174,9 @@ public class WriterFactory extends AbstractFactory<Writer> {
      * @param a the first writer
      * @param b the second writer
      * 
-     * @return a new multi writer if both writers are not <code>null</code>; one
-     *         of the writers if the other one is <code>null</code>; a new
-     *         {@link NullWriter} if both are <code>null</code>
+     * @return a new multi writer if both writers are not {@code null}; one
+     *         of the writers if the other one is {@code null}; a new
+     *         {@link NullWriter} if both are {@code null}
      * 
      * @throws UnsupportedEncodingException in case of an unknown encoding
      * @throws ConfigurationException in case of an configuration error
@@ -223,7 +217,7 @@ public class WriterFactory extends AbstractFactory<Writer> {
      * optional byte-order mark</dd>
      * </dl>
      * 
-     * @param encoding the encoding to set; it can be <code>null</code> to
+     * @param encoding the encoding to set; it can be {@code null} to
      *        indicate the platform default encoding
      * 
      * @throws UnsupportedEncodingException in case of an unsupported encoding

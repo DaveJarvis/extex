@@ -23,38 +23,22 @@ package org.extex.font.format.xtf.tables.cff;
  * Dummy number.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class T2DummyNumber extends T2Number {
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#getBytes()
-     */
-    @Override
+@Override
     public short[] getBytes() {
 
         return new short[]{};
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Number#getDouble()
-     */
-    @Override
+@Override
     public double getDouble() {
 
         return 0;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Number#getInteger()
-     */
-    @Override
+@Override
     public int getInteger() {
 
         return 0;

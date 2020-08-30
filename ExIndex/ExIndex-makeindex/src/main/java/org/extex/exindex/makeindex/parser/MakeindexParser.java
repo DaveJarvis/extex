@@ -41,8 +41,7 @@ import org.extex.exindex.makeindex.pages.PageRangeSingle;
  * This class provides a parser for a makeindex raw index file format.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6613 $
- */
+*/
 public class MakeindexParser implements Parser {
 
     /**
@@ -65,10 +64,7 @@ public class MakeindexParser implements Parser {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.makeindex.parser.Parser#load(java.io.Reader,
-     *      java.lang.String, org.extex.exindex.makeindex.Index, Collator)
+*      java.lang.String, org.extex.exindex.makeindex.Index, Collator)
      */
     public int[] load(Reader reader, String resource, Index index,
             Collator collator)
@@ -172,7 +168,7 @@ public class MakeindexParser implements Parser {
      * @param r the reader
      * @param keyword the keyword to read
      * 
-     * @return <code>true</code> iff the keyword has been found
+     * @return {@code true} iff the keyword has been found
      * 
      * @throws IOException in case of an I/O error
      */
@@ -195,7 +191,7 @@ public class MakeindexParser implements Parser {
      * 
      * @param key the key
      * @param actual the actual character
-     * @param collator the collator or <code>null</code>
+     * @param collator the collator or {@code null}
      * 
      * @return the display value
      */
@@ -250,7 +246,7 @@ public class MakeindexParser implements Parser {
      * @param key the key
      * @param display the display value
      * @param p the page
-     * @param encap the page encapsulator or <code>null</code> for none
+     * @param encap the page encapsulator or {@code null} for none
      * @param open the range open character
      * @param close the range close character
      */

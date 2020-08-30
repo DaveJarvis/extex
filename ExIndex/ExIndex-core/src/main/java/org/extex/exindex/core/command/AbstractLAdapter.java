@@ -31,12 +31,11 @@ import org.extex.exindex.lisp.type.function.LFunction;
  * L system.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class AbstractLAdapter extends LFunction {
 
     /**
-     * The field <tt>container</tt> contains the container for indices.
+     * The field {@code container} contains the container for indices.
      */
     private final IndexContainer container;
 
@@ -89,7 +88,7 @@ public class AbstractLAdapter extends LFunction {
      * 
      * @param name the name of the index
      * 
-     * @return <code>true</code> if the index is found and the set is
+     * @return {@code true} if the index is found and the set is
      *         successful
      */
     protected boolean setCurrentIndex(String name) {

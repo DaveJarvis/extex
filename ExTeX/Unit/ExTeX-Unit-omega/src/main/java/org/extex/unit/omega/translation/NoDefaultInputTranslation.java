@@ -32,41 +32,40 @@ import org.extex.unit.omega.mode.OmegaMode;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\noDefaultInputTranslation</code>.
+ * {@code \noDefaultInputTranslation}.
  * 
- * <doc name="noDefaultInputTranslation">
- * <h3>The Primitive <tt>\noDefaultInputTranslation</tt></h3>
+ * <p>The Primitive {@code \noDefaultInputTranslation}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;noDefaultInputTranslation&rang;
- *      &rarr; <tt>\noDefaultInputTranslation</tt> &lang;mode&rang;
+ *      &rarr; {@code \noDefaultInputTranslation} &lang;mode&rang;
  *
  *    &lang;mode&rang;
- *      &rarr; <tt>onebyte</tt>
- *        |  <tt>ebcdic</tt>
- *        |  <tt>twobyte</tt>
- *        |  <tt>twobyteLE</tt>    </pre>
+ *      &rarr; {@code onebyte}
+ *        |  {@code ebcdic}
+ *        |  {@code twobyte}
+ *        |  {@code twobyteLE}    </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *   \noDefaultInputTranslation onebyte </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4411 $
- */
+*/
 public class NoDefaultInputTranslation extends AbstractModeCode {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2006L;
@@ -82,10 +81,7 @@ public class NoDefaultInputTranslation extends AbstractModeCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

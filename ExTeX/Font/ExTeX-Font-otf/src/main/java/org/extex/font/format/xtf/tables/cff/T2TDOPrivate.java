@@ -38,8 +38,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class T2TDOPrivate extends T2TDOArray {
 
@@ -74,34 +73,19 @@ public class T2TDOPrivate extends T2TDOArray {
         super(stack, new short[]{CFF_PRIVATE});
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
-     */
-    @Override
+@Override
     public int getID() {
 
         return T2TopDICTOperator.TYPE_PRIVATE;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#getInitPrio()
-     */
-    @Override
+@Override
     public int getInitPrio() {
 
         return 10;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "private";
@@ -119,10 +103,7 @@ public class T2TDOPrivate extends T2TDOArray {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#init(org.extex.util.file.random.RandomAccessR,
-     *      org.extex.font.format.xtf.tables.OtfTableCFF, int,
+*      org.extex.font.format.xtf.tables.OtfTableCFF, int,
      *      org.extex.font.format.xtf.tables.cff.CffFont)
      */
     @Override
@@ -176,10 +157,7 @@ public class T2TDOPrivate extends T2TDOArray {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {

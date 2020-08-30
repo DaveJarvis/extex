@@ -61,8 +61,7 @@ import org.extex.util.file.random.RandomAccessR;
  * </ul>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public abstract class Tag {
 
     /**
@@ -86,7 +85,7 @@ public abstract class Tag {
      * Get a new Tag.
      * <p>
      * The tag can be a {@link ScriptTag}, a {@link FeatureTag}, a
-     * {@link LanguageSystemTag} or <code>null</code>, if not found.
+     * {@link LanguageSystemTag} or {@code null}, if not found.
      * </p>
      * 
      * @param name The name of the tag.
@@ -109,7 +108,7 @@ public abstract class Tag {
     /**
      * The tag name.
      */
-    private String tagname;
+    private final String tagname;
 
     /**
      * Creates a new object.
@@ -146,12 +145,7 @@ public abstract class Tag {
         return tagname;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return tagname;

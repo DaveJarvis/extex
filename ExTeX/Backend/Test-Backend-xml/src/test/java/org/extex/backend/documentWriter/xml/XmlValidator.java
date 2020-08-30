@@ -37,8 +37,7 @@ import org.xml.sax.InputSource;
  * Validator which compares the xml result from the {@link ExTeXLauncher}.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class XmlValidator implements Validator {
 
     /**
@@ -105,14 +104,11 @@ public class XmlValidator implements Validator {
     }
 
     /**
-     * Returns <code>true</code> if the given string is not <code>null</code>
+     * Returns {@code true} if the given string is not {@code null}
      * and if it is equal to the given result of the xpath result. Otherwise an
      * JUnit exception is raised.
      * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.test.Validator#validate(java.lang.String)
-     */
+*/
     public boolean validate(String s) {
 
         if (debug) {

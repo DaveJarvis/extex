@@ -23,14 +23,13 @@ package org.extex.backend.documentWriter.exception;
  * DocumentWriter: clodes channel.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class DocumentWriterClosedChannelException
         extends
             DocumentWriterIOException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 1L;

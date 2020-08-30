@@ -28,8 +28,7 @@ import java.io.OutputStream;
  * @see org.extex.backend.documentWriter.MultipleDocumentStream
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface SingleDocumentStream {
 
     /**

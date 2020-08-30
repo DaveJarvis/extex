@@ -43,46 +43,45 @@ import org.extex.unit.tex.math.util.MathCodeConvertible;
  * tries to ensure that the primitive is invoked in math mode only.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public abstract class AbstractTeXMathCode extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 24012007L;
 
     /**
-     * The field <tt>CLASS_OFFSET</tt> contains the offset for adjoining the
+     * The field {@code CLASS_OFFSET} contains the offset for adjoining the
      * math class.
      */
     private static final int CLASS_OFFSET = 12;
 
     /**
-     * The field <tt>SPECIAL_MATH_CODE</tt> contains the special math code.
+     * The field {@code SPECIAL_MATH_CODE} contains the special math code.
      */
     private static final int SPECIAL_MATH_CODE = 0x8000;
 
     /**
-     * The constant <tt>CHARACTER_MASK</tt> contains the mask for the character
+     * The constant {@code CHARACTER_MASK} contains the mask for the character
      * value in the TeX encoding.
      */
     private static final int CHARACTER_MASK = 0xff;
 
     /**
-     * The constant <tt>FAMILY_MASK</tt> contains the mask for the family in the
+     * The constant {@code FAMILY_MASK} contains the mask for the family in the
      * TeX encoding.
      */
     private static final int FAMILY_MASK = 0xf;
 
     /**
-     * The constant <tt>FAMILY_OFFSET</tt> contains the offset for the family in
+     * The constant {@code FAMILY_OFFSET} contains the offset for the family in
      * the TeX encoding.
      */
     private static final int FAMILY_OFFSET = 8;
 
     /**
-     * The field <tt>VISITOR</tt> contains the visitor for mapping a math class
+     * The field {@code VISITOR} contains the visitor for mapping a math class
      * to the integer representation used by TeX..
      */
     private static final MathClassVisitor<Integer, Object, Object> VISITOR =

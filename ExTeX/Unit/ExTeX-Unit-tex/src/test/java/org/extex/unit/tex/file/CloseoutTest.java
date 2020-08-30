@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\closeout</tt>.
+ * This is a test suite for the primitive {@code \closeout}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class CloseoutTest extends NoFlagsButImmediatePrimitiveTester {
 
     /**
@@ -49,7 +48,7 @@ public class CloseoutTest extends NoFlagsButImmediatePrimitiveTester {
 
     /**
      * <testcase primitive="\closeout"> Test case checking that a
-     * <tt>\closeout</tt> works on unopened file handles. </testcase>
+     * {@code \closeout} works on unopened file handles.
      * 
      * @throws Exception in case of an error
      */
@@ -64,7 +63,7 @@ public class CloseoutTest extends NoFlagsButImmediatePrimitiveTester {
 
     /**
      * <testcase primitive="\closeout"> Test case checking that a
-     * <tt>\closeout</tt> works on unopened file handles. </testcase>
+     * {@code \closeout} works on unopened file handles.
      * 
      * @throws Exception in case of an error
      */

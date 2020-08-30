@@ -35,18 +35,14 @@ import org.extex.typesetter.type.node.LigatureNode;
 import org.extex.typesetter.type.node.WhatsItNode;
 
 /**
- * This class tokenizes a list of nodes according to the rules of <logo>T<span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>.
+ * This class tokenizes a list of nodes according to the rules of TeX.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4784 $
- */
+*/
 public class TeXWords extends ExTeXWords implements WordTokenizer {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
@@ -126,10 +122,7 @@ public class TeXWords extends ExTeXWords implements WordTokenizer {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.language.word.WordTokenizer#findWord(org.extex.typesetter.type.NodeList,
-     *      int, org.extex.core.UnicodeCharList)
+*      int, org.extex.core.UnicodeCharList)
      */
     @Override
     public int findWord(NodeList nodes, int start, UnicodeCharList word)
@@ -154,10 +147,7 @@ public class TeXWords extends ExTeXWords implements WordTokenizer {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.language.word.WordTokenizer#normalize(org.extex.core.UnicodeCharList,
-     *      org.extex.typesetter.TypesetterOptions)
+*      org.extex.typesetter.TypesetterOptions)
      */
     @Override
     public UnicodeCharList normalize(UnicodeCharList word,

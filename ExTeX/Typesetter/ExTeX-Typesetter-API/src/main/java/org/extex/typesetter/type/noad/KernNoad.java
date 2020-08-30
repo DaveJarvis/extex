@@ -34,15 +34,14 @@ import org.extex.typesetter.type.node.ExplicitKernNode;
  * with the translated kerning value.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class KernNoad extends AbstractNoad {
 
     /**
-     * The field <tt>kern</tt> contains the kerning. A positive value means a
+     * The field {@code kern} contains the kerning. A positive value means a
      * right shift.
      */
-    private Mudimen kern;
+    private final Mudimen kern;
 
     /**
      * Creates a new object.

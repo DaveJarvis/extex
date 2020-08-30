@@ -51,8 +51,7 @@ import org.extex.exbib.editor.Activator;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class ArgumentsTab extends AbstractLaunchConfigurationTab {
 
     /**
@@ -62,69 +61,69 @@ public class ArgumentsTab extends AbstractLaunchConfigurationTab {
     }
 
     /**
-     * The field <tt>BST_LAUNCH_MIN_CROSSREF</tt> contains the ...
+     * The field {@code BST_LAUNCH_MIN_CROSSREF} contains the ...
      */
     private static final String BST_LAUNCH_MIN_CROSSREF =
             "bst.launch.min.crossref";
 
     /**
-     * The field <tt>BST_LAUNCH_TERSE</tt> contains the ...
+     * The field {@code BST_LAUNCH_TERSE} contains the ...
      */
     private static final String BST_LAUNCH_TERSE = "bst.launch.terse";
 
     /**
-     * The field <tt>BST_LAUNCH_AUX_FILE</tt> contains the ...
+     * The field {@code BST_LAUNCH_AUX_FILE} contains the ...
      */
     private static final String BST_LAUNCH_AUX_FILE = "bst.launch.aux.file";
 
     /**
-     * The field <tt>BST_LAUNCH_EXECUTABLE</tt> contains the ...
+     * The field {@code BST_LAUNCH_EXECUTABLE} contains the ...
      */
     private static final String BST_LAUNCH_EXECUTABLE = "bst.launch.executable";
 
     /**
-     * The field <tt>BST_LAUNCH_EXTERNAL</tt> contains the ...
+     * The field {@code BST_LAUNCH_EXTERNAL} contains the ...
      */
     private static final String BST_LAUNCH_EXTERNAL = "bst.launch.external";
 
     /**
-     * The field <tt>minCrossrefControl</tt> contains the ...
+     * The field {@code minCrossrefControl} contains the ...
      */
     private Text minCrossrefControl;
 
     /**
-     * The field <tt>terseControl</tt> contains the ...
+     * The field {@code terseControl} contains the ...
      */
     private Button terseControl;
 
     /**
-     * The field <tt>auxFileControl</tt> contains the ...
+     * The field {@code auxFileControl} contains the ...
      */
     private Text auxFileControl;
 
     /**
-     * The field <tt>exbibFlag</tt> contains the ...
+     * The field {@code exbibFlag} contains the ...
      */
     private Button exbibFlag;
 
     /**
-     * The field <tt>bibtexFlag</tt> contains the ...
+     * The field {@code bibtexFlag} contains the ...
      */
     private Button bibtexFlag;
 
     /**
-     * The field <tt>bibtexControl</tt> contains the ...
+     * The field {@code bibtexControl} contains the ...
      */
     private Combo bibtexControl;
 
     /**
-     * The field <tt>HFILL</tt> contains the ...
+     * The field {@code HFILL} contains the ...
      */
     private static final GridData HFILL =
             new GridData(GridData.FILL_HORIZONTAL);
 
     /**
-     * The field <tt>HFILL</tt> contains the ...
+     * The field {@code HFILL} contains the ...
      */
     private static final GridData HFILL2 =
             new GridData(GridData.FILL_HORIZONTAL);
@@ -134,37 +133,22 @@ public class ArgumentsTab extends AbstractLaunchConfigurationTab {
     }
 
     /**
-     * The field <tt>modifyListener</tt> contains the ...
+     * The field {@code modifyListener} contains the ...
      */
     private L modifyListener = new L() {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events.ModifyEvent)
-         */
-        public void modifyText(ModifyEvent evt) {
+    public void modifyText(ModifyEvent evt) {
 
             updateLaunchConfigurationDialog();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.swt.events.SelectionListener#widgetDefaultSelected(org.eclipse.swt.events.SelectionEvent)
-         */
-        @Override
+    @Override
         public void widgetDefaultSelected(SelectionEvent e) {
 
             
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.swt.events.SelectionListener#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-         */
-        @Override
+    @Override
         public void widgetSelected(SelectionEvent e) {
 
             updateLaunchConfigurationDialog();
@@ -172,16 +156,11 @@ public class ArgumentsTab extends AbstractLaunchConfigurationTab {
     };
 
     /**
-     * The field <tt>image</tt> contains the ...
+     * The field {@code image} contains the ...
      */
     private Image image = null;
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.debug.ui.ILaunchConfigurationTab#createControl(org.eclipse.swt.widgets.Composite)
-     */
-    @Override
+@Override
     public void createControl(Composite parent) {
 
         Composite page = new Composite(parent, SWT.NONE);
@@ -336,12 +315,7 @@ public class ArgumentsTab extends AbstractLaunchConfigurationTab {
         terseControl.addSelectionListener(modifyListener);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.debug.ui.AbstractLaunchConfigurationTab#dispose()
-     */
-    @Override
+@Override
     public void dispose() {
 
         if (image != null) {
@@ -397,12 +371,7 @@ public class ArgumentsTab extends AbstractLaunchConfigurationTab {
         return list.toArray(new String[list.size()]);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.debug.ui.AbstractLaunchConfigurationTab#getImage()
-     */
-    @Override
+@Override
     public Image getImage() {
 
         ImageDescriptor desc =
@@ -411,12 +380,7 @@ public class ArgumentsTab extends AbstractLaunchConfigurationTab {
         return image;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.debug.ui.ILaunchConfigurationTab#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "Arguments";
@@ -444,12 +408,7 @@ public class ArgumentsTab extends AbstractLaunchConfigurationTab {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.debug.ui.ILaunchConfigurationTab#performApply(org.eclipse.debug.core.ILaunchConfigurationWorkingCopy)
-     */
-    @Override
+@Override
     public void performApply(ILaunchConfigurationWorkingCopy configuration) {
 
         String s = minCrossrefControl.getText().replaceAll("[^0-9]", "");
@@ -467,12 +426,7 @@ public class ArgumentsTab extends AbstractLaunchConfigurationTab {
             .getText());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.debug.ui.ILaunchConfigurationTab#setDefaults(org.eclipse.debug.core.ILaunchConfigurationWorkingCopy)
-     */
-    @Override
+@Override
     public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
 
         configuration.setAttribute(BST_LAUNCH_MIN_CROSSREF, 2);

@@ -36,39 +36,39 @@ import org.extex.unit.omega.ocp.util.OcpUtil;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\InputTranslation</code>.
+ * {@code \InputTranslation}.
  * 
- * <doc name="InputTranslation"> <h3>The Primitive <tt>\InputTranslation</tt></h3>
+ * <p>The Primitive {@code \InputTranslation}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;InputTranslation&rang;
- *      &rarr; <tt>\InputTranslation</tt> &lang;in file&rang; &lang;ocp file name&rang;  </pre>
+ *      &rarr; {@code \InputTranslation} &lang;in file&rang; &lang;ocp file name&rang;  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  * \InputTranslation 4 myocp </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4411 $
- */
+*/
 public class InputTranslation extends AbstractModeCode implements ResourceAware {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>finder</tt> contains the resource finder.
+     * The field {@code finder} contains the resource finder.
      */
     private transient ResourceFinder finder;
 
@@ -83,10 +83,7 @@ public class InputTranslation extends AbstractModeCode implements ResourceAware 
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -107,12 +104,7 @@ public class InputTranslation extends AbstractModeCode implements ResourceAware 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
-     */
-    @Override
+@Override
     public void setResourceFinder(ResourceFinder resourceFinder) {
 
         this.finder = resourceFinder;

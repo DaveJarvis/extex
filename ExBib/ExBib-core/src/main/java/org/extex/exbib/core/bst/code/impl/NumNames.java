@@ -33,19 +33,19 @@ import org.extex.exbib.core.name.NameFactory;
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X built-in function <code>num.names$</code>
+ * >e</span>X built-in function {@code num.names$}
  * <p>
  * This function takes a string argument from the stack and treats it as a list
  * of names. It pushes the number of names in the list as integer to the stack.
  * </p>
  * <p>
- * The names are separated by the word <tt>and</tt>. This word has to be
+ * The names are separated by the word {@code and}. This word has to be
  * preceded and followed by whitespace characters. In addition this word has to
  * occur at brace level 0.
  * </p>
- * <img src="doc-files/num.names.png"/>
+ * <img src="doc-files/num.names.png" alt="num.names">
  * <p>
- * The following example is taken from <tt>alpha.bst</tt>:
+ * The following example is taken from {@code alpha.bst}:
  * </p>
  * 
  * <pre>
@@ -55,14 +55,10 @@ import org.extex.exbib.core.name.NameFactory;
  *   if$
  * </pre>
  * 
- * <hr />
+ * <hr>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X documentation:
- * <dt>
+ * <dt>BibTeX documentation</dt>
  * <dd>Pops the top (string) literal and pushes the number of names the string
  * represents---one plus the number of occurrences of the substring ``and''
  * (ignoring case differences) surrounded by non-null white-space at the top
@@ -70,8 +66,7 @@ import org.extex.exbib.core.name.NameFactory;
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NumNames extends AbstractCode {
 
     /**
@@ -131,10 +126,7 @@ public class NumNames extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {

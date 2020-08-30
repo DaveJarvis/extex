@@ -30,22 +30,21 @@ import org.extex.exbib.editor.Activator;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class LabelProvider extends BaseLabelProvider implements ILabelProvider {
 
     /**
-     * The field <tt>imgNoLeaves</tt> contains the ...
+     * The field {@code imgNoLeaves} contains the ...
      */
     private Image imgNoLeaves;
 
     /**
-     * The field <tt>imgIndexedNoLeaves</tt> contains the ...
+     * The field {@code imgIndexedNoLeaves} contains the ...
      */
     private Image imgIndexedNoLeaves;
 
     /**
-     * The field <tt>imgIndexed</tt> contains the ...
+     * The field {@code imgIndexed} contains the ...
      */
     private Image imgIndexed;
 
@@ -66,12 +65,7 @@ public class LabelProvider extends BaseLabelProvider implements ILabelProvider {
                     .createImage();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.IBaseLabelProvider#dispose()
-     */
-    @Override
+@Override
     public void dispose() {
 
         if (imgNoLeaves != null) {
@@ -89,12 +83,7 @@ public class LabelProvider extends BaseLabelProvider implements ILabelProvider {
         super.dispose();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ILabelProvider#getImage(java.lang.Object)
-     */
-    @Override
+@Override
     public Image getImage(Object element) {
 
         if (element instanceof ContentDirectory) {
@@ -118,22 +107,14 @@ public class LabelProvider extends BaseLabelProvider implements ILabelProvider {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ILabelProvider#getText(java.lang.Object)
-     */
-    @Override
+@Override
     public String getText(Object element) {
 
         return element.toString();
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.IBaseLabelProvider#isLabelProperty(java.lang.Object,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public boolean isLabelProperty(Object element, String property) {

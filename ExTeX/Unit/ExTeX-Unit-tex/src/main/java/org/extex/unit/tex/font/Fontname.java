@@ -38,29 +38,30 @@ import org.extex.typesetter.tc.font.Font;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\fontname</code>.
+ * {@code \fontname}.
  * 
- * <doc name="fontname">
- * <h3>The Primitive <tt>\fontname</tt></h3>
+ * <p>The Primitive {@code \fontname}</p>
  * <p>
- * The primitive <tt>\fontname</tt> can be used to retrieve the name of a
+ * The primitive {@code \fontname} can be used to retrieve the name of a
  * font. It takes a font specification as argument. It expands to the name of
  * the font. If this font is not loaded at its design size then the actual size
- * is appended after the tokens <tt> at </tt>. All tokens produced this way are
+ * is appended after the tokens {@code  at }. All tokens produced this way are
  * <i>other</i> tokens except of the spaces. This means that even the letters
  * are of category <i>other</i>.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;fontname&rang;
- *       &rarr; <tt>\fontname</tt> {@linkplain
+ *       &rarr; {@code \fontname} {@linkplain
  *          org.extex.interpreter.TokenSource#getFont(Context,CodeToken)
  *          &lang;font&rang;}  </pre>
  * 
- * <h4>Example</h4>
+ * <p>Example</p>
+
  * 
  * <pre class="TeXSample">
  *  \font\myFont=cmr12
@@ -74,16 +75,14 @@ import org.extex.typesetter.tc.font.Font;
  * &rArr; cmr12 at 24pt
  * </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:4431 $
- */
+*/
 public class Fontname extends AbstractCode implements ExpandableCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -99,10 +98,7 @@ public class Fontname extends AbstractCode implements ExpandableCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -134,10 +130,7 @@ public class Fontname extends AbstractCode implements ExpandableCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,

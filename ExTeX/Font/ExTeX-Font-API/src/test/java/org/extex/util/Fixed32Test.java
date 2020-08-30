@@ -29,8 +29,7 @@ import org.junit.runner.JUnitCore;
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Fixed32Test extends TestCase {
 
     /**

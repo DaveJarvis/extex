@@ -60,16 +60,16 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public abstract class ClassDefTable implements XMLWriterConvertible {
 
     /**
      * ClassDefTable for Format 1.
      * 
-     * <table border="1">
-     * <tr>
-     * <td><b>Type</b></td>
+     * <table>
+ * <caption>TBD</caption>
+ * <tr>
+* <td><b>Type</b></td>
      * <td><b>Name</b></td>
      * <td><b>Description</b></td>
      * </tr>
@@ -273,12 +273,7 @@ public abstract class ClassDefTable implements XMLWriterConvertible {
         return format;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    @Override
+@Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("classdef");

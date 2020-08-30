@@ -23,11 +23,10 @@ import org.extex.test.NoFlagsButProtectedPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\pdfstartlink</tt>.
+ * This is a test suite for the primitive {@code \pdfstartlink}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class PdfstartlinkTest extends NoFlagsButProtectedPrimitiveTester {
 
 
@@ -39,7 +38,7 @@ public class PdfstartlinkTest extends NoFlagsButProtectedPrimitiveTester {
 
     /**
      * <testcase primitive="\pdfstartlink"> Test case checking that ...
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -54,7 +53,7 @@ public class PdfstartlinkTest extends NoFlagsButProtectedPrimitiveTester {
 
     /**
      * <testcase primitive="\pdfstartlink"> Test case checking that ...
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -69,7 +68,7 @@ public class PdfstartlinkTest extends NoFlagsButProtectedPrimitiveTester {
 
     /**
      * <testcase primitive="\pdfstartlink"> Test case checking that ...
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -84,7 +83,7 @@ public class PdfstartlinkTest extends NoFlagsButProtectedPrimitiveTester {
 
     /**
      * <testcase primitive="\pdfstartlink"> Test case checking that ...
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */

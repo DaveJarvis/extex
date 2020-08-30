@@ -28,8 +28,7 @@ import java.io.Serializable;
  * additional directions are defined.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Direction implements Serializable {
 
     /**
@@ -38,34 +37,34 @@ public class Direction implements Serializable {
      */
     public enum Dir {
         /**
-         * The field <tt>B</tt> contains the direction component for
+         * The field {@code B} contains the direction component for
          * <i>bottom</i>.
          */
         B,
         /**
-         * The field <tt>L</tt> contains the direction component for
+         * The field {@code L} contains the direction component for
          * <i>left</i>.
          */
         L,
         /**
-         * The field <tt>R</tt> contains the direction component for
+         * The field {@code R} contains the direction component for
          * <i>right</i>.
          */
         R,
         /**
-         * The field <tt>T</tt> contains the direction component for <i>top</i>.
+         * The field {@code T} contains the direction component for <i>top</i>.
          */
         T
-    };
+    }
 
-    /**
-     * The constant <tt>LR</tt> contains the direction for left-to-right
+  /**
+     * The constant {@code LR} contains the direction for left-to-right
      * languages.
      */
     public static final Direction LR = new Direction() {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         protected static final long serialVersionUID = 2006L;
@@ -95,13 +94,13 @@ public class Direction implements Serializable {
     };
 
     /**
-     * The constant <tt>RL</tt> contains the direction for right-to-left
+     * The constant {@code RL} contains the direction for right-to-left
      * languages.
      */
     public static final Direction RL = new Direction() {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         protected static final long serialVersionUID = 2006L;
@@ -131,27 +130,27 @@ public class Direction implements Serializable {
     };
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
     /**
-     * The field <tt>beginningOfLine</tt> contains the direction at the
+     * The field {@code beginningOfLine} contains the direction at the
      * beginning of the line.
      */
-    private Dir beginningOfLine;
+    private final Dir beginningOfLine;
 
     /**
-     * The field <tt>beginningOfPage</tt> contains the direction at the
+     * The field {@code beginningOfPage} contains the direction at the
      * beginning of the page.
      */
-    private Dir beginningOfPage;
+    private final Dir beginningOfPage;
 
     /**
-     * The field <tt>topOfLine</tt> contains the direction at the top of the
+     * The field {@code topOfLine} contains the direction at the top of the
      * line.
      */
-    private Dir topOfLine;
+    private final Dir topOfLine;
 
     /**
      * Creates a new object.

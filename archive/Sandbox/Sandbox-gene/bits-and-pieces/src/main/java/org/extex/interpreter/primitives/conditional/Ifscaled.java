@@ -32,50 +32,49 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.conditional.AbstractIf;
 
 /**
- * This class provides an implementation for the primitive <code>\ifscaled</code>.
+ * This class provides an implementation for the primitive {@code \ifscaled}.
  *
- * <doc name="ifscaled">
- * <h3>The Primitive <tt>\ifscaled</tt></h3>
+ * <p>The Primitive {@code \ifscaled}</p>
  * <p>
- *  The primitive <tt>\ifscaled</tt> provides a conditional which compares two
+ *  The primitive {@code \ifscaled} provides a conditional which compares two
  *  numerical values. The comparison for equality, greater, and less are
  *  possible.
  * </p>
  *
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;ifscaled&rang;
- *      &rarr; <tt>\ifscaled</tt> {@linkplain
+ *      &rarr; {@code \ifscaled} {@linkplain
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;op&rang; {@linkplain
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
- *        &lang;number&rang;} &lang;true text&rang; <tt>\fi</tt>
- *      | <tt>\ifscaled</tt> {@linkplain
+ *        &lang;number&rang;} &lang;true text&rang; {@code \fi}
+ *      | {@code \ifscaled} {@linkplain
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;op&rang; {@linkplain
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
- *        &lang;number&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt>
+ *        &lang;number&rang;} &lang;true text&rang; {@code \else} &lang;false text&rang; {@code \fi}
  *
  *    &lang;op&rang;
  *      &rarr; [&lt;]
  *      | [=]
  *      | [&gt;]  </pre>
  *
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  *  <pre class="TeXSample">
  *    \ifscaled\count0&gt;42 abc \fi  </pre>
  *
- * </doc>
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4787 $
- */
+*/
 public class Ifscaled extends AbstractIf {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 

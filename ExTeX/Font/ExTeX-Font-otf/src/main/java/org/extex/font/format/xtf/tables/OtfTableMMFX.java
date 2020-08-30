@@ -30,8 +30,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * The 'MMFX'
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class OtfTableMMFX extends AbstractXtfTable
         implements
             XtfTable,
@@ -54,12 +53,7 @@ public class OtfTableMMFX extends AbstractXtfTable
         // incomplete
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
+public String getShortcut() {
 
         return "mmfx";
     }
@@ -75,10 +69,7 @@ public class OtfTableMMFX extends AbstractXtfTable
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

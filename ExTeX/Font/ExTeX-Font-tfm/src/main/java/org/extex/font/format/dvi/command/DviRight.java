@@ -23,8 +23,7 @@ package org.extex.font.format.dvi.command;
  * DVI: right
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class DviRight extends DviCommand {
 
@@ -36,7 +35,7 @@ public class DviRight extends DviCommand {
     /**
      * the value
      */
-    private int value;
+    private final int value;
 
     /**
      * Create a new object.
@@ -51,12 +50,7 @@ public class DviRight extends DviCommand {
         value = v;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviCommand#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return new StringBuilder("right").append(getOpcode() - RIGHT1 + 1)

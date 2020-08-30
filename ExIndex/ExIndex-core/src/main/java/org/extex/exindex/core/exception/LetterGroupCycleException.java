@@ -27,12 +27,11 @@ import org.extex.framework.i18n.LocalizerFactory;
  * encountered.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 6732 $
- */
+*/
 public class LetterGroupCycleException extends LException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2008L;

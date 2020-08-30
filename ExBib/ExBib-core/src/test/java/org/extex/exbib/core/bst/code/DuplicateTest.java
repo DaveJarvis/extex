@@ -36,15 +36,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>duplicate$</tt>.
+ * Test suite for {@code duplicate$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DuplicateTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -69,7 +68,7 @@ public class DuplicateTest {
     }
 
     /**
-     * <testcase> A integer can be duplicated. </testcase>
+     *  A integer can be duplicated.
      * 
      * @throws Exception in case of an error
      */
@@ -84,7 +83,7 @@ public class DuplicateTest {
     }
 
     /**
-     * <testcase> A string can be duplicated. </testcase>
+     *  A string can be duplicated.
      * 
      * @throws Exception in case of an error
      */
@@ -99,7 +98,7 @@ public class DuplicateTest {
     }
 
     /**
-     * <testcase> A char can be duplicated. </testcase>
+     *  A char can be duplicated.
      * 
      * @throws Exception in case of an error
      */
@@ -114,7 +113,7 @@ public class DuplicateTest {
     }
 
     /**
-     * <testcase> A literal can be duplicated. </testcase>
+     *  A literal can be duplicated.
      * 
      * @throws Exception in case of an error
      */
@@ -129,7 +128,7 @@ public class DuplicateTest {
     }
 
     /**
-     * <testcase> An empty stack leads to an error. </testcase>
+     *  An empty stack leads to an error.
      * 
      * @throws Exception in case of an error
      */

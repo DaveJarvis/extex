@@ -28,8 +28,7 @@ import org.extex.scanner.api.exception.ScannerException;
  * This interface describes a parser for LaTeX.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface LaTeXParser extends Memory {
 
     /**

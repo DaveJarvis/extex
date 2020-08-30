@@ -34,8 +34,7 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
  * This class represents a negation.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class Not extends GenericCode {
 
     /**
@@ -48,12 +47,7 @@ public final class Not extends GenericCode {
         super(ReturnType.INT, "!", code);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GenericCode#optimize()
-     */
-    @Override
+@Override
     public GCode optimize() {
 
         GCode code = getArg(0);
@@ -79,10 +73,7 @@ public final class Not extends GenericCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GenericCode#print(org.extex.exbib.bst2groovy.io.CodeWriter,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public void print(CodeWriter writer, String prefix) throws IOException {

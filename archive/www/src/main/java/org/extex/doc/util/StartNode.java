@@ -26,17 +26,16 @@ import java.util.Map;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class StartNode implements DocToken {
 
     /**
-     * The field <tt>name</tt> contains the ...
+     * The field {@code name} contains the ...
      */
     private String name;
 
     /**
-     * The field <tt>attributes</tt> contains the ...
+     * The field {@code attributes} contains the ...
      */
     private Map<String, String> attributes = new HashMap<String, String>();
 
@@ -61,12 +60,7 @@ public class StartNode implements DocToken {
         attributes.put(att, value);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();
@@ -84,12 +78,7 @@ public class StartNode implements DocToken {
         return sb.toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.doc.util.DocToken#visit(org.extex.doc.util.TokenVisitor)
-     */
-    public void visit(TokenVisitor visitor) {
+public void visit(TokenVisitor visitor) {
 
         visitor.visitStart(this);
     }

@@ -30,35 +30,35 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.typesetter.AbstractHorizontalCode;
 
 /**
- * This class provides an implementation for the primitive <code>\hss</code>.
+ * This class provides an implementation for the primitive {@code \hss}.
  * 
- * <doc name="hss"> <h3>The Primitive <tt>\hss</tt></h3>
+ * <p>The Primitive {@code \hss}</p>
  * <p>
- * The primitive <tt>\hss</tt> inserts glue at the current position which is
+ * The primitive {@code \hss} inserts glue at the current position which is
  * stretchable and shrinkable horizontally. The order of the glue is 1.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;hss&rang;
- *        &rarr; <tt>\hss</tt>  </pre>
+ *        &rarr; {@code \hss}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \hss  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Hss extends AbstractHorizontalCode implements HorizontalSkip {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -73,10 +73,7 @@ public class Hss extends AbstractHorizontalCode implements HorizontalSkip {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -88,10 +85,7 @@ public class Hss extends AbstractHorizontalCode implements HorizontalSkip {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.typesetter.spacing.HorizontalSkip#getGlue(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public FixedGlue getGlue(Context context, TokenSource source,

@@ -29,36 +29,35 @@ import org.extex.ocpware.exception.OcpException;
  * This exception class signals the occurrence of a syntax error.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SyntaxException extends OcpException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>expected</tt> contains the expected character or a
+     * The field {@code expected} contains the expected character or a
      * negative value for undefined.
      */
     private int expected;
 
     /**
-     * The field <tt>found</tt> contains the character found or a negative
+     * The field {@code found} contains the character found or a negative
      * value for undefined.
      */
     private int found;
 
     /**
-     * The field <tt>line</tt> contains the current line up to the last
+     * The field {@code line} contains the current line up to the last
      * character read.
      */
     private CharSequence line;
 
     /**
-     * The field <tt>lineno</tt> contains the number of the current line.
+     * The field {@code lineno} contains the number of the current line.
      */
     private int lineno;
 
@@ -117,12 +116,7 @@ public class SyntaxException extends OcpException {
         this.lineno = lineno;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Throwable#getLocalizedMessage()
-     */
-    @Override
+@Override
     public String getLocalizedMessage() {
 
         try {

@@ -44,8 +44,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class is a abstract base class for color primitives.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractColor extends AbstractAssignment
         implements
             ColorConvertible,
@@ -53,12 +52,12 @@ public abstract class AbstractColor extends AbstractAssignment
             Showable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2009L;
     /**
-     * The field <tt>theVisitor</tt> contains the color visitor for converting
+     * The field {@code theVisitor} contains the color visitor for converting
      * to a printable representation.
      */
     private static ColorVisitor theVisitor = new ColorVisitor() {

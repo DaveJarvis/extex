@@ -35,8 +35,7 @@ import org.extex.typesetter.Typesetter;
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface Loadable {
 
     /**

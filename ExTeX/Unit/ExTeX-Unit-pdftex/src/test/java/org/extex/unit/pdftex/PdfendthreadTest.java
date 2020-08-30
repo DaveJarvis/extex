@@ -22,11 +22,10 @@ package org.extex.unit.pdftex;
 import org.extex.test.NoFlagsButProtectedPrimitiveTester;
 
 /**
- * This is a test suite for the primitive <tt>\pdfendthread</tt>.
+ * This is a test suite for the primitive {@code \pdfendthread}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class PdfendthreadTest extends NoFlagsButProtectedPrimitiveTester {
 
 

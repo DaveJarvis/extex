@@ -32,7 +32,7 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X built-in function <code>int.to.chr$</code>
+ * >e</span>X built-in function {@code int.to.chr$}
  * <p>
  * This function takes an integer code point from the stack and translates it
  * into a single character sting containing the character associated to the code
@@ -49,53 +49,45 @@ import org.extex.framework.i18n.LocalizerFactory;
  * style="margin-left: -0.15em;" >T</span><span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X&nbsp;8 restrict the characters to 8~bit characters.
- * <logo>&epsilon;&chi;Bib</logo> has expanded the definition to 16~bit Unicode
- * characters. Thus in compatibility mode of <logo>&epsilon;&chi;Bib</logo> the
+ * ??Bib has expanded the definition to 16~bit Unicode
+ * characters. Thus in compatibility mode of ??Bib the
  * use of a number larger than 255 leads to an error. In
- * <logo>&epsilon;&chi;Bib</logo> native mode those numbers are treated
+ * ??Bib native mode those numbers are treated
  * correctly as larger Unicode code points.
  * </p>
- * <img src="doc-files/int.to.chr.png"/>
+ * <img src="doc-files/int.to.chr.png" alt="int.to.chr">
  * <p>
- * The following example is taken from <tt>alpha.bst</tt>:
+ * The following example is taken from {@code alpha.bst}:
  * </p>
  * 
  * <pre>
  *   #0 int.to.chr$
  * </pre>
  * 
- * <hr />
+ * <hr>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X documentation:
- * <dt>
+ * <dt>BibTeX documentation</dt>
  * <dd>Pops the top (integer) literal, interpreted as the ASCII integer value of
  * a single character, converts it to the corresponding single-character string,
  * and pushes this string.</dd>
  * </dl>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X web documentation:</dt>
- * <dd>The <code>built_in</code> function <code>int.to.chr$</code> pops the top
- * (integer) literal, interpreted as the <code>ASCII_code</code> of a single
+ * <dt>BibTeX web documentation:</dt>
+ * <dd>The {@code built_in} function {@code int.to.chr$} pops the top
+ * (integer) literal, interpreted as the {@code ASCII_code} of a single
  * character, converts it to the corresponding single-character string, and
  * pushes this string. If the literal isn't an appropriate integer, it complains
  * and pushes the null string.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class IntToChr099 extends AbstractCode {
 
     /**
-     * The field <tt>CHAR_MAX</tt> contains the maximum allowed character value.
+     * The field {@code CHAR_MAX} contains the maximum allowed character value.
      */
     private static final int CHAR_MAX = 255;
 
@@ -117,10 +109,7 @@ public class IntToChr099 extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)

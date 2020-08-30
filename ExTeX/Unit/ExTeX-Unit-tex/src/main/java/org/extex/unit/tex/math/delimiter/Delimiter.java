@@ -32,38 +32,37 @@ import org.extex.typesetter.type.math.MathDelimiter;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\delimiter</code>.
+ * {@code \delimiter}.
  * 
- * <doc name="delimiter">
- * <h3>The Math Primitive <tt>\delimiter</tt></h3>
+ * <p>The Math Primitive {@code \delimiter}</p>
  * <p>
- * The math primitive <tt>\delimiter</tt> can be used to insert a delimiter.
+ * The math primitive {@code \delimiter} can be used to insert a delimiter.
  * Thus it is possible to bypass the definition of the delimiter code as
  * assigned to single characters.
  * </p>
  * TODO missing documentation
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;delimiter&rang;
- *       &rarr; <tt>\delimiter</tt> &lang;delcode&rang; </pre>
+ *       &rarr; {@code \delimiter} &lang;delcode&rang; </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \delimiter "426830A </pre>
  * 
- * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Delimiter extends AbstractTeXDelimiter {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -79,10 +78,7 @@ public class Delimiter extends AbstractTeXDelimiter {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

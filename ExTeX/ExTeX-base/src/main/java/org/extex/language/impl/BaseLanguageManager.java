@@ -37,7 +37,7 @@ import org.extex.language.ligature.LigatureBuilder;
 import org.extex.language.word.WordTokenizer;
 
 /**
- * This class manages the <code>HyphenationTable</code>s. It is a container
+ * This class manages the {@code HyphenationTable}s. It is a container
  * which can be asked to provide an appropriate instance. This instance is
  * either taken from existing instances or a new instance is created.
  * 
@@ -52,20 +52,19 @@ import org.extex.language.word.WordTokenizer;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4757 $
- */
+*/
 public class BaseLanguageManager extends AbstractFactory<ModifiableLanguage>
         implements
             LanguageManager,
             Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2011L;
 
     /**
-     * The field <tt>tables</tt> contains the mapping from index to hyphenation
+     * The field {@code tables} contains the mapping from index to hyphenation
      * table.
      */
     private Map<String, Language> tables = new HashMap<String, Language>();
@@ -107,12 +106,7 @@ public class BaseLanguageManager extends AbstractFactory<ModifiableLanguage>
         return lang;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.language.LanguageManager#getLanguage(java.lang.String)
-     */
-    @Override
+@Override
     public Language getLanguage(String name) {
 
         Language table = tables.get(name);

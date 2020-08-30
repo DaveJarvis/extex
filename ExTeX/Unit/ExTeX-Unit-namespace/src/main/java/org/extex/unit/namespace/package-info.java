@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains primitives for namespaces.
+ * Contains primitives for namespaces.
  */
 
 package org.extex.unit.namespace;

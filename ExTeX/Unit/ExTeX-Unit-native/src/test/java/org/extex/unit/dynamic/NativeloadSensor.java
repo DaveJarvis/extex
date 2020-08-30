@@ -28,12 +28,11 @@ import org.extex.unit.dynamic.java.Loadable;
  * This class provides a sensor for the loading operation.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NativeloadSensor implements Loadable {
 
     /**
-     * The field <tt>sensed</tt> contains the indicator that somethng has been
+     * The field {@code sensed} contains the indicator that somethng has been
      * sensed.
      */
     private static boolean sensed = false;

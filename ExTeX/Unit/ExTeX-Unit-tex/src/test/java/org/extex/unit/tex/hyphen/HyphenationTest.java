@@ -24,11 +24,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\hyphenation</tt>.
+ * This is a test suite for the primitive {@code \hyphenation}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class HyphenationTest extends NoFlagsPrimitiveTester {
 
 
@@ -39,8 +38,8 @@ public class HyphenationTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\hyphenation">
-     *  Test case checking that <tt>\hyphenation</tt> ...
-     * </testcase>
+     *  Test case checking that {@code \hyphenation} ...
+     *
      *
      * @throws Exception in case of an error
      */
@@ -60,8 +59,8 @@ public class HyphenationTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\hyphenation">
-     *  Test case checking that <tt>\hyphenation</tt> ...
-     * </testcase>
+     *  Test case checking that {@code \hyphenation} ...
+     *
      *
      * @throws Exception in case of an error
      */

@@ -33,12 +33,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * numbered tokens registers.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public abstract class AbstractToks extends AbstractAssignment {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2009L;

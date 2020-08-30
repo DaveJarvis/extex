@@ -19,10 +19,10 @@
 
 package org.extex.font.format.xtf.tables.cff;
 
-import java.io.IOException;
-
 import org.extex.font.format.xtf.tables.OtfTableCFF;
 import org.extex.util.file.random.RandomAccessR;
+
+import java.io.IOException;
 
 /**
  * Number.
@@ -30,7 +30,7 @@ import org.extex.util.file.random.RandomAccessR;
  * <p>
  * Operand Encoding
  * </p>
- * <table border="1"> <thead>
+ * <table> <caption>TBD</caption> <thead>
  * <tr>
  * <td><b>Size</b></td>
  * <td><b>b0 range</b></td>
@@ -52,21 +52,21 @@ import org.extex.util.file.random.RandomAccessR;
  * </tr>
  * <tr>
  * <td>2</td>
- * 251 - 254</td>
+ * <td>251 - 254</td>
  * <td>-1131 - -108</td>
- * (b0 251)*256 b1 108</td>
+ * <td>(b0 251)*256 b1 108</td>
  * </tr>
  * <tr>
  * <td>3</td>
  * <td>28</td>
  * <td>-32768 -+32767</td>
- * <td> b1<<8|b2</td>
+ * <td> b1&lt;&lt;8|b2</td>
  * </tr>
  * <tr>
  * <td>5</td>
  * <td>29</td>
  * <td>-(2^31) - +(2^31-1)</td>
- * <td> b1<<24|b2<<16|b3<<8|b4</td>
+ * <td> b1&lt;&lt;24|b2&lt;&lt;16|b3&lt;&lt;8|b4</td>
  * </tr>
  * </table>
  * 
@@ -79,7 +79,7 @@ import org.extex.util.file.random.RandomAccessR;
  * <p>
  * Nibble Definitions
  * </p>
- * <table border="0"> <thead>
+ * <table> <caption>TBD</caption> <thead>
  * <tr>
  * <td><b>Nibble</b></td>
  * <td><b>Represents</b></td>
@@ -116,8 +116,7 @@ import org.extex.util.file.random.RandomAccessR;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public abstract class T2Number extends T2CharString {
 
@@ -179,13 +178,6 @@ public abstract class T2Number extends T2CharString {
      */
     public abstract int getInteger();
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#init(org.extex.util.file.random.RandomAccessR,
-     *      org.extex.font.format.xtf.tables.OtfTableCFF, int,
-     *      org.extex.font.format.xtf.tables.cff.CffFont)
-     */
     @Override
     public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset,
             CffFont cffFont) throws IOException {

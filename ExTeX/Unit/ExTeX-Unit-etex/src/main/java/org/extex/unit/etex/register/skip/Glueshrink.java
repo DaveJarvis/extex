@@ -36,43 +36,42 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\glueshrink</code>.
+ * {@code \glueshrink}.
  * 
- * <doc name="glueshrink">
- * <h3>The Primitive <tt>\glueshrink</tt></h3>
+ * <p>The Primitive {@code \glueshrink}</p>
  * <p>
- * The primitive <tt>\glueshrink</tt> translates a shrink part of a glue value
+ * The primitive {@code \glueshrink} translates a shrink part of a glue value
  * into a length. The shrink order is stripped and just the size is preserved.
  * The unit is changed to pt. For instance, if the value considered is 8pt minus
- * 1.23 fil then <tt>\glueshrink</tt> returns 1.23 pt.
+ * 1.23 fil then {@code \glueshrink} returns 1.23 pt.
  * </p>
  * <p>
- * The primitive <tt>\glueshrink</tt> can be used wherever a length is
- * expected. The primitive is also applicable to <tt>\the</tt>.
+ * The primitive {@code \glueshrink} can be used wherever a length is
+ * expected. The primitive is also applicable to {@code \the}.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;glueshrink&rang;
- *      &rarr; <tt>\glueshrink</tt> {@linkplain
+ *      &rarr; {@code \glueshrink} {@linkplain
  *        org.extex.interpreter.parser.GlueParser#parseGlue(
  *        org.extex.interpreter.context.Context,
  *        org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
  *        &lang;glue&rang;} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *   \glueshrink\skip1  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Glueshrink extends AbstractCode
         implements
             CountConvertible,
@@ -80,7 +79,7 @@ public class Glueshrink extends AbstractCode
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -96,10 +95,7 @@ public class Glueshrink extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -110,10 +106,7 @@ public class Glueshrink extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertDimen(Context context, TokenSource source,
@@ -124,10 +117,7 @@ public class Glueshrink extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

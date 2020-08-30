@@ -23,11 +23,10 @@ import org.extex.test.count.AbstractCountArrayTester;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\count</tt>.
+ * This is a test suite for the primitive {@code \count}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class CountTest extends AbstractCountArrayTester {
 
     /**

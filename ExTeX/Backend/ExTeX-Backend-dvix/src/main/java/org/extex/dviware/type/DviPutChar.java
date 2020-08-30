@@ -25,15 +25,14 @@ import java.io.OutputStream;
 import org.extex.dviware.Dvi;
 
 /**
- * This class represents the DVI instruction <tt>put_char</tt>.
+ * This class represents the DVI instruction {@code put_char}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DviPutChar extends AbstractDviCode {
 
     /**
-     * The field <tt>codePoint</tt> contains the code point of the character.
+     * The field {@code codePoint} contains the code point of the character.
      */
     private int codePoint;
 

@@ -33,12 +33,11 @@ import org.extex.unit.tex.math.util.MathCodeConvertible;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\omathchar</code>.
+ * {@code \omathchar}.
  * 
- * <doc name="omathchar">
- * <h3>The Math Primitive <tt>\omathchar</tt></h3>
+ * <p>The Math Primitive {@code \omathchar}</p>
  * <p>
- * The primitive <tt>\omathchar</tt> inserts a mathematical character
+ * The primitive {@code \omathchar} inserts a mathematical character
  * consisting of a math class and a character code inti the current math list.
  * This is supposed to work in math mode only.
  * </p>
@@ -46,31 +45,31 @@ import org.extex.unit.tex.math.util.MathCodeConvertible;
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;omathchar&rang;
- *       &rarr; <tt>\omathchar ...</tt>  </pre>
+ *       &rarr; {@code \omathchar ...}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \omathchar"041  </pre>
  *  <pre class="TeXSample">
  *    \omathchar{ordinary 0 `A}  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Omathchar extends AbstractOmegaMathCode
         implements
             MathCodeConvertible {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2006L;
@@ -86,10 +85,7 @@ public class Omathchar extends AbstractOmegaMathCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.math.util.MathCodeConvertible#convertMathCode(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public MathCode convertMathCode(Context context, TokenSource source,
@@ -99,10 +95,7 @@ public class Omathchar extends AbstractOmegaMathCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

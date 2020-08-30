@@ -25,56 +25,30 @@ import java.io.IOException;
  * action.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NullWriter implements Writer {
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#close()
-     */
-    public void close() {
+public void close() {
 
         // noop
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#flush()
-     */
-    public void flush() {
+public void flush() {
 
         // noop
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#print(java.lang.String[])
-     */
-    public void print(String... args) throws IOException {
+public void print(String... args) throws IOException {
 
         // noop
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println(java.lang.String[])
-     */
-    public void println(String... args) {
+public void println(String... args) {
 
         // noop
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#write(int)
-     */
-    public void write(int c) {
+public void write(int c) {
 
         // noop
     }

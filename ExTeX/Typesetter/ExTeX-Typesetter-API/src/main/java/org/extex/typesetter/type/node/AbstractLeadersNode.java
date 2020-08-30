@@ -29,35 +29,31 @@ import org.extex.typesetter.type.OrientedNode;
 
 /**
  * This node represents a leaders node as used by the primitives
- * <tt>\leaders</tt>, <tt>\cleaders</tt>, and <tt>\xleaders</tt>.
+ * {@code \leaders}, {@code \cleaders}, and {@code \xleaders}.
  * 
- * @see "<logo>T<span style=
- *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *      >e</span>X</logo> &ndash; The Program [149]"
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractLeadersNode extends AbstractExpandableNode
         implements
             SkipNode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>node</tt> contains the node to repeat or expand.
+     * The field {@code node} contains the node to repeat or expand.
      */
-    private Node node;
+    private final Node node;
 
     /**
      * Creates a new object.
      * 
      * @param node the node or node list to stretch or repeat; if the node is
-     *        <code>null</code> then it is treated like an empty list
+     *        {@code null} then it is treated like an empty list
      * @param glue the desired size
      */
     public AbstractLeadersNode(OrientedNode node, FixedGlue glue) {
@@ -75,10 +71,7 @@ public abstract class AbstractLeadersNode extends AbstractExpandableNode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractNode#atShipping(org.extex.typesetter.PageContext,
-     *      org.extex.typesetter.Typesetter, org.extex.core.dimen.FixedDimen,
+*      org.extex.typesetter.Typesetter, org.extex.core.dimen.FixedDimen,
      *      org.extex.core.dimen.FixedDimen)
      */
     @Override
@@ -153,11 +146,7 @@ public abstract class AbstractLeadersNode extends AbstractExpandableNode
      * @param prefix the prefix string inserted at the beginning of each line
      * @param breadth the breadth
      * @param depth the depth
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [190]"
-     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
+* @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
      *      java.lang.String, int, int)
      */
     @Override

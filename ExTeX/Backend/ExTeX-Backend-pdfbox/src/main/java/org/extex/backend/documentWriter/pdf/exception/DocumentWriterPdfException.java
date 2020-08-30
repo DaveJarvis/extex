@@ -25,12 +25,11 @@ import org.extex.backend.documentWriter.exception.DocumentWriterException;
  * DocumentWriter: Exception from the PDF-Document.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:4704 $
- */
+*/
 public class DocumentWriterPdfException extends DocumentWriterException {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field {@code serialVersionUID} ...
      */
     private static final long serialVersionUID = 1L;
 

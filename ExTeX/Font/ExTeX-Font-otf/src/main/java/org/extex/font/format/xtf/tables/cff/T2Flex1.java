@@ -28,64 +28,63 @@ import org.extex.util.xml.XMLStreamWriter;
  * flex1: dx1 dy1 dx2 dy2 dx3 dy3 dx4 dy4 dx5 dy5 d6 flex1 (12 37).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class T2Flex1 extends T2PathConstruction {
 
     /**
      * The d6.
      */
-    private T2Number d6;
+    private final T2Number d6;
 
     /**
      * The dx1.
      */
-    private T2Number dx1;
+    private final T2Number dx1;
 
     /**
      * The dx2.
      */
-    private T2Number dx2;
+    private final T2Number dx2;
 
     /**
      * The dx3.
      */
-    private T2Number dx3;
+    private final T2Number dx3;
 
     /**
      * The dx4.
      */
-    private T2Number dx4;
+    private final T2Number dx4;
 
     /**
      * The dx5.
      */
-    private T2Number dx5;
+    private final T2Number dx5;
 
     /**
      * The dy1.
      */
-    private T2Number dy1;
+    private final T2Number dy1;
 
     /**
      * The dy2.
      */
-    private T2Number dy2;
+    private final T2Number dy2;
 
     /**
      * The dy3.
      */
-    private T2Number dy3;
+    private final T2Number dy3;
 
     /**
      * The dy4.
      */
-    private T2Number dy4;
+    private final T2Number dy4;
 
     /**
      * The dy5.
      */
-    private T2Number dy5;
+    private final T2Number dy5;
 
     /**
      * Create a new object.
@@ -229,44 +228,26 @@ public class T2Flex1 extends T2PathConstruction {
         return dy5;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
-     */
-    @Override
+@Override
     public int getID() {
 
         return TYPE_FLEX1;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "flex1";
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getValue()
-     */
-    @Override
+@Override
     public Object getValue() {
 
         return null;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

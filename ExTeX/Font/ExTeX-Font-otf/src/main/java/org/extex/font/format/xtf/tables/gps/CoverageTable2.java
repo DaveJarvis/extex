@@ -19,11 +19,11 @@
 
 package org.extex.font.format.xtf.tables.gps;
 
-import java.io.IOException;
-
 import org.extex.font.format.xtf.tables.RangeRecord;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
+
+import java.io.IOException;
 
 /**
  * Coverage Format 2
@@ -45,7 +45,8 @@ import org.extex.util.xml.XMLStreamWriter;
  * <p>
  * CoverageFormat2 table: Range of glyphs
  * </p>
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
  * <td><b>Type</b></td>
  * <td><b>Name</b></td>
@@ -70,14 +71,13 @@ import org.extex.util.xml.XMLStreamWriter;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class CoverageTable2 extends CoverageTable {
 
     /**
      * The range record array.
      */
-    private RangeRecord[] rangeRecord;
+    private final RangeRecord[] rangeRecord;
 
     /**
      * Creates a new object.
@@ -109,10 +109,7 @@ public class CoverageTable2 extends CoverageTable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

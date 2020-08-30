@@ -42,12 +42,11 @@ public class FuncallObserver implements Observer {
      * The class Int provides an integer counter.
      * 
      * @author $Author$
-     * @version $Revision$
-     */
+    */
     private static class Int {
 
         /**
-         * The field <tt>value</tt> contains the integer value.
+         * The field {@code value} contains the integer value.
          */
         private int value = 0;
 
@@ -92,12 +91,12 @@ public class FuncallObserver implements Observer {
     }
 
     /**
-     * The field <tt>stat</tt> contains the map to store collected statistics.
+     * The field {@code stat} contains the map to store collected statistics.
      */
     private final Map<String, Int> stat = new HashMap<String, Int>();
 
     /**
-     * The field <tt>logger</tt> contains the logger for any output.
+     * The field {@code logger} contains the logger for any output.
      */
     private Logger logger = null;
 
@@ -135,10 +134,7 @@ public class FuncallObserver implements Observer {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.util.Observer#update(org.extex.exbib.core.util.Observable,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     @Override
     public void update(Observable source, Object o) {

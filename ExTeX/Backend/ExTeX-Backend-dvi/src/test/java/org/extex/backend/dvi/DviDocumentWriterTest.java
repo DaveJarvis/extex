@@ -51,11 +51,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * JUnit tests for class <code>DviDocumentWriter</code>.
+ * JUnit tests for class {@code DviDocumentWriter}.
  * 
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
- * @version $Revision:4458 $
- */
+*/
 public class DviDocumentWriterTest {
 
     /**
@@ -65,7 +64,7 @@ public class DviDocumentWriterTest {
     private class MockDocumentWriterOptions implements DocumentWriterOptions {
 
         /**
-         * The field <tt>magnification</tt> contains the magnification.
+         * The field {@code magnification} contains the magnification.
          */
         private long magnification = 1000;
 
@@ -74,42 +73,22 @@ public class DviDocumentWriterTest {
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.backend.documentWriter.DocumentWriterOptions#getCountOption(java.lang.String)
-         */
-        public FixedCount getCountOption(String count) {
+    public FixedCount getCountOption(String count) {
 
             return new MockFixedCount(0);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.backend.documentWriter.DocumentWriterOptions#getDimenOption(java.lang.String)
-         */
-        public FixedDimen getDimenOption(String dimen) {
+    public FixedDimen getDimenOption(String dimen) {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.backend.documentWriter.DocumentWriterOptions#getMagnification()
-         */
-        public long getMagnification() {
+    public long getMagnification() {
 
             return magnification;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.backend.documentWriter.DocumentWriterOptions#getTokensOption(java.lang.String)
-         */
-        public String getTokensOption(String name) {
+    public String getTokensOption(String name) {
 
             return null;
         }
@@ -131,7 +110,7 @@ public class DviDocumentWriterTest {
     private class MockFixedCount implements FixedCount {
 
         /**
-         * The field <tt>value</tt> contains the value.
+         * The field {@code value} contains the value.
          */
         private long value;
 
@@ -145,23 +124,13 @@ public class DviDocumentWriterTest {
             value = theValue;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.core.count.FixedCount#eq(org.extex.core.count.FixedCount)
-         */
-        public boolean eq(FixedCount count) {
+    public boolean eq(FixedCount count) {
 
             // TODO eq unimplemented
             return false;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.core.count.FixedCount#ge(org.extex.core.count.FixedCount)
-         */
-        public boolean ge(FixedCount count) {
+    public boolean ge(FixedCount count) {
 
             // TODO ge unimplemented
             return false;
@@ -179,56 +148,31 @@ public class DviDocumentWriterTest {
             return value;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.core.count.FixedCount#gt(org.extex.core.count.FixedCount)
-         */
-        public boolean gt(FixedCount count) {
+    public boolean gt(FixedCount count) {
 
             // TODO gt unimplemented
             return false;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.core.count.FixedCount#le(org.extex.core.count.FixedCount)
-         */
-        public boolean le(FixedCount count) {
+    public boolean le(FixedCount count) {
 
             // TODO le unimplemented
             return false;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.core.count.FixedCount#lt(org.extex.core.count.FixedCount)
-         */
-        public boolean lt(FixedCount count) {
+    public boolean lt(FixedCount count) {
 
             // TODO lt unimplemented
             return false;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.core.count.FixedCount#ne(org.extex.core.count.FixedCount)
-         */
-        public boolean ne(FixedCount count) {
+    public boolean ne(FixedCount count) {
 
             // TODO ne unimplemented
             return false;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.core.count.FixedCount#toString(StringBuilder)
-         */
-        public void toString(StringBuilder buffer) {
+    public void toString(StringBuilder buffer) {
 
             buffer.append(toString());
         }
@@ -245,33 +189,33 @@ public class DviDocumentWriterTest {
     }
 
     /**
-     * The field <tt>documentWriter</tt> contains the document writer.
+     * The field {@code documentWriter} contains the document writer.
      */
     private DocumentWriter documentWriter = null;
 
     /**
-     * The field <tt>nodeList</tt> contains the node list.
+     * The field {@code nodeList} contains the node list.
      */
     private NodeList nodeList = null;
 
     /**
-     * The field <tt>documentWriterOptions</tt> contains the document writer
+     * The field {@code documentWriterOptions} contains the document writer
      * options.
      */
     private MockDocumentWriterOptions documentWriterOptions = null;
 
     /**
-     * The field <tt>configuration</tt> contains the configuration.
+     * The field {@code configuration} contains the configuration.
      */
     private Configuration configuration = null;
 
     /**
-     * The field <tt>outputStream</tt> contains the output stream.
+     * The field {@code outputStream} contains the output stream.
      */
     private OutputStream outputStream = null;
 
     /**
-     * Creates a new <code>DviDocumentWriterTest</code> instance.
+     * Creates a new {@code DviDocumentWriterTest} instance.
      */
     public DviDocumentWriterTest() {
 
@@ -281,8 +225,8 @@ public class DviDocumentWriterTest {
      * The if DviDocumentWriter throws the exception, if the node is added to
      * the NodeList.
      * 
-     * @param node a <code>Node</code> value
-     * @param exception a <code>Class</code> value
+     * @param node a {@code Node} value
+     * @param exception a {@code Class} value
      * @throws Exception if an error occurs
      */
     private void checkException(Node node, Class<?> exception) throws Exception {

@@ -27,11 +27,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>mathdir</tt>.
+ * This is a test suite for the primitive {@code mathdir}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class MathdirTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
@@ -52,8 +51,8 @@ public class MathdirTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\mathdir"> Test case checking that <tt>\mathdir</tt>
-     * sets the math direction in the context. </testcase>
+     * <testcase primitive="\mathdir"> Test case checking that {@code \mathdir}
+     * sets the math direction in the context. 
      * 
      * @throws Exception in case of an error
      */
@@ -70,8 +69,8 @@ public class MathdirTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\mathdir"> Test case checking that <tt>\mathdir</tt>
-     * needs a direction as argument. </testcase>
+     * <testcase primitive="\mathdir"> Test case checking that {@code \mathdir}
+     * needs a direction as argument. 
      * 
      * @throws Exception in case of an error
      */
@@ -85,8 +84,8 @@ public class MathdirTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\mathdir"> Test case checking that <tt>\mathdir</tt>
-     * needs an argument. </testcase>
+     * <testcase primitive="\mathdir"> Test case checking that {@code \mathdir}
+     * needs an argument. 
      * 
      * @throws Exception in case of an error
      */

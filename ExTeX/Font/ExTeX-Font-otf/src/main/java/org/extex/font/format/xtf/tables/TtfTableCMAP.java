@@ -57,8 +57,9 @@ import org.extex.util.xml.XMLWriterConvertible;
  * subtable types have been introduced to provide better support for Unicode
  * text encoded using surrogates.
  * 
- * <table BORDER="1">
- * <tbody>
+ * <table>
+ * <caption>TBD</caption>
+* <tbody>
  * <tr>
  * <td><b>Type</b></td>
  * <td><b>Description</b></td>
@@ -70,15 +71,14 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </tr>
  * <tr>
  * <td>USHORT</td>
- * <td>Number of encoding tables, <I>n.</I></td>
+ * <td>Number of encoding tables, <i>n.</i></td>
  * </tr>
  * </table>
  * 
  * TODO incompelte
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TtfTableCMAP extends AbstractXtfTable
         implements
             XtfTable,
@@ -192,9 +192,10 @@ public class TtfTableCMAP extends AbstractXtfTable
      * It is the standard Apple character to glyph index mapping table.
      * </p>
      * 
-     * <table BORDER="1">
-     * <tbody>
-     * <tr>
+     * <table>
+ * <caption>TBD</caption>
+* <tbody>
+ * <tr>
      * <td><b>Type</b></td>
      * <td><b>Name</b></td>
      * <td><b>Description</b></td>
@@ -248,12 +249,7 @@ public class TtfTableCMAP extends AbstractXtfTable
             }
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.TtfTableCMAP.Format#mapCharCode(int)
-         */
-        @Override
+    @Override
         public int mapCharCode(int charCode) {
 
             if (0 <= charCode && charCode < glyphIdArray.length) {
@@ -262,12 +258,7 @@ public class TtfTableCMAP extends AbstractXtfTable
             return 0;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        @Override
+    @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("format");
@@ -291,9 +282,10 @@ public class TtfTableCMAP extends AbstractXtfTable
      * Format 10.0 is a bit like format 6, in that it defines a trimmed array
      * for a tight range of 32-bit character codes.
      * 
-     * <table border="1">
-     * <tbody>
-     * <tr>
+     * <table>
+ * <caption>TBD</caption>
+* <tbody>
+ * <tr>
      * <td>Type</td>
      * <td>Name</td>
      * <td>Description</td>
@@ -345,23 +337,13 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.TtfTableCMAP.Format#mapCharCode(int)
-         */
-        @Override
+    @Override
         public int mapCharCode(int charCode) {
 
             return 0;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        @Override
+    @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("format");
@@ -376,9 +358,10 @@ public class TtfTableCMAP extends AbstractXtfTable
      * Format 12.0 is a bit like format 4, in that it defines segments for
      * sparse representation in 4-byte character space.
      * 
-     * <table border="1">
-     * <tbody>
-     * <tr>
+     * <table>
+ * <caption>TBD</caption>
+* <tbody>
+ * <tr>
      * <td>Type</td>
      * <td>Name</td>
      * <td>Description</td>
@@ -420,23 +403,13 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.TtfTableCMAP.Format#mapCharCode(int)
-         */
-        @Override
+    @Override
         public int mapCharCode(int charCode) {
 
             return 0;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        @Override
+    @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("format");
@@ -460,9 +433,10 @@ public class TtfTableCMAP extends AbstractXtfTable
      * character.
      * </p>
      * 
-     * <table BORDER="1">
-     * <tbody>
-     * <tr>
+     * <table>
+ * <caption>TBD</caption>
+* <tbody>
+ * <tr>
      * <td><b>Type</b></td>
      * <td><b>Name</b></td>
      * <td><b>Description</b></td>
@@ -511,9 +485,10 @@ public class TtfTableCMAP extends AbstractXtfTable
      * A subHeader is structured as follows:
      * </p>
      * 
-     * <table BORDER="1">
-     * <tbody>
-     * <tr>
+     * <table>
+ * <caption>TBD</caption>
+* <tbody>
+ * <tr>
      * <td><b>Type</b></td>
      * <td><b>Name</b></td>
      * <td><b>Description</b></td>
@@ -581,23 +556,13 @@ public class TtfTableCMAP extends AbstractXtfTable
             super(TtfTableCMAP.FORMAT2, rar);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.TtfTableCMAP.Format#mapCharCode(int)
-         */
-        @Override
+    @Override
         public int mapCharCode(int charCode) {
 
             return 0;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        @Override
+    @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("format");
@@ -630,9 +595,10 @@ public class TtfTableCMAP extends AbstractXtfTable
      * 3. A variable-length array of glyph IDs (unsigned words).
      * </p>
      * 
-     * <table BORDER="1">
-     * <tbody>
-     * <tr>
+     * <table>
+ * <caption>TBD</caption>
+* <tbody>
+ * <tr>
      * <td><b>Type</b></td>
      * <td><b>Name</b></td>
      * <td><b>Description</b></td>
@@ -913,12 +879,7 @@ public class TtfTableCMAP extends AbstractXtfTable
             return startCode;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.TtfTableCMAP.Format#mapCharCode(int)
-         */
-        @Override
+    @Override
         public int mapCharCode(int charCode) {
 
             try {
@@ -942,12 +903,7 @@ public class TtfTableCMAP extends AbstractXtfTable
             return 0;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        @Override
+    @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("format");
@@ -997,9 +953,10 @@ public class TtfTableCMAP extends AbstractXtfTable
      * densely mapped (due to their multiple contiguous ranges) should use
      * Format 4.
      * 
-     * <table BORDER="1">
-     * <tbody>
-     * <tr>
+     * <table>
+ * <caption>TBD</caption>
+* <tbody>
+ * <tr>
      * <td><b>Type</b></td>
      * <td><b>Name</b></td>
      * <td><b>Description</b></td>
@@ -1063,23 +1020,13 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.TtfTableCMAP.Format#mapCharCode(int)
-         */
-        @Override
+    @Override
         public int mapCharCode(int charCode) {
 
             return 0;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        @Override
+    @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("format");
@@ -1103,9 +1050,10 @@ public class TtfTableCMAP extends AbstractXtfTable
      * 32-bit character code can be made by looking at the 16-bit value
      * directly, with no further information required.
      * 
-     * <table border="1">
-     * <tbody>
-     * <tr>
+     * <table>
+ * <caption>TBD</caption>
+* <tbody>
+ * <tr>
      * <td>Type</td>
      * <td>Name</td>
      * <td>Description</td>
@@ -1150,23 +1098,13 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.TtfTableCMAP.Format#mapCharCode(int)
-         */
-        @Override
+    @Override
         public int mapCharCode(int charCode) {
 
             return 0;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        @Override
+    @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("format");
@@ -1180,9 +1118,10 @@ public class TtfTableCMAP extends AbstractXtfTable
     /**
      * cmap index entry.
      * 
-     * <table BORDER="1">
-     * <tbody>
-     * <tr>
+     * <table>
+ * <caption>TBD</caption>
+* <tbody>
+ * <tr>
      * <td><b>Type</b></td>
      * <td><b>Description</b></td>
      * </tr>
@@ -1403,12 +1342,7 @@ public class TtfTableCMAP extends AbstractXtfTable
             return buf.toString();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        @Override
+    @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("indexentry");
@@ -2234,12 +2168,7 @@ public class TtfTableCMAP extends AbstractXtfTable
         return numTables;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
-     */
-    @Override
+@Override
     public String getShortcut() {
 
         return "cmap";
@@ -2266,12 +2195,7 @@ public class TtfTableCMAP extends AbstractXtfTable
         return version;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    @Override
+@Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writeStartElement(writer);

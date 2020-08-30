@@ -35,15 +35,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>num.names$</tt>.
+ * Test suite for {@code num.names$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NumNamesTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -84,7 +83,7 @@ public class NumNamesTest {
     }
 
     /**
-     * <testcase> A single name is correctly recognized.</testcase>
+     *  A single name is correctly recognized.
      * 
      * @throws Exception in case of an error
      */
@@ -95,7 +94,7 @@ public class NumNamesTest {
     }
 
     /**
-     * <testcase> A company should be enclosed in braces. </testcase>
+     *  A company should be enclosed in braces.
      * 
      * @throws Exception in case of an error
      */
@@ -106,7 +105,7 @@ public class NumNamesTest {
     }
 
     /**
-     * <testcase> The empty name has 0 names in it. </testcase>
+     *  The empty name has 0 names in it.
      * 
      * @throws Exception in case of an error
      */
@@ -117,7 +116,7 @@ public class NumNamesTest {
     }
 
     /**
-     * <testcase> num.names$ needs an argument on the stack. </testcase>
+     *  num.names$ needs an argument on the stack.
      * 
      * @throws Exception in case of an error
      */
@@ -128,7 +127,7 @@ public class NumNamesTest {
     }
 
     /**
-     * <testcase> A trailing "and" is ignored. </testcase>
+     *  A trailing "and" is ignored.
      * 
      * @throws Exception in case of an error
      */
@@ -139,7 +138,7 @@ public class NumNamesTest {
     }
 
     /**
-     * <testcase> A trailing "and " is ignored. </testcase>
+     *  A trailing "and " is ignored.
      * 
      * @throws Exception in case of an error
      */
@@ -150,7 +149,7 @@ public class NumNamesTest {
     }
 
     /**
-     * <testcase> An integer argument leads to an exception. </testcase>
+     *  An integer argument leads to an exception.
      * 
      * @throws Exception in case of an error
      */
@@ -162,7 +161,7 @@ public class NumNamesTest {
     }
 
     /**
-     * <testcase> "\tand " is recognized as separator. </testcase>
+     *  "\tand " is recognized as separator.
      * 
      * @throws Exception in case of an error
      */
@@ -173,7 +172,7 @@ public class NumNamesTest {
     }
 
     /**
-     * <testcase> " and " is recognized as separator. </testcase>
+     *  " and " is recognized as separator.
      * 
      * @throws Exception in case of an error
      */
@@ -184,7 +183,7 @@ public class NumNamesTest {
     }
 
     /**
-     * <testcase> "\tand\n" is recognized as separator. </testcase>
+     *  "\tand\n" is recognized as separator.
      * 
      * @throws Exception in case of an error
      */
@@ -195,7 +194,7 @@ public class NumNamesTest {
     }
 
     /**
-     * <testcase> " and " is recognized as separator. </testcase>
+     *  " and " is recognized as separator.
      * 
      * @throws Exception in case of an error
      */
@@ -206,7 +205,7 @@ public class NumNamesTest {
     }
 
     /**
-     * <testcase> "\tand " is recognized as separator. </testcase>
+     *  "\tand " is recognized as separator.
      * 
      * @throws Exception in case of an error
      */
@@ -217,7 +216,7 @@ public class NumNamesTest {
     }
 
     /**
-     * <testcase> " and\t" is recognized as separator. </testcase>
+     *  " and\t" is recognized as separator.
      * 
      * @throws Exception in case of an error
      */
@@ -228,7 +227,7 @@ public class NumNamesTest {
     }
 
     /**
-     * <testcase> "and" in a name is not recognized as separator. </testcase>
+     *  "and" in a name is not recognized as separator.
      * 
      * @throws Exception in case of an error
      */

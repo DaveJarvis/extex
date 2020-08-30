@@ -26,15 +26,11 @@ import org.eclipse.jface.viewers.ViewerFilter;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class Filter extends ViewerFilter {
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer,
-     *      java.lang.Object, java.lang.Object)
+*      java.lang.Object, java.lang.Object)
      */
     @Override
     public boolean select(Viewer viewer, Object parentElement, Object element) {

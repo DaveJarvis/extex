@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\hskip</tt>.
+ * This is a test suite for the primitive {@code \hskip}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class HskipTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -48,9 +47,9 @@ public class HskipTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\hskip"> Test case checking that <tt>\hskip</tt>
+     * <testcase primitive="\hskip"> Test case checking that {@code \hskip}
      * switches to horizontal mode and inserts a glue node with the appropriate
-     * value. </testcase>
+     * value.
      * 
      * @throws Exception in case of an error
      */
@@ -69,9 +68,9 @@ public class HskipTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\hskip"> Test case checking that <tt>\hskip</tt>
+     * <testcase primitive="\hskip"> Test case checking that {@code \hskip}
      * switches to horizontal mode and inserts a glue node with the appropriate
-     * value. </testcase>
+     * value.
      * 
      * @throws Exception in case of an error
      */
@@ -91,7 +90,7 @@ public class HskipTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\hskip"> Test case checking that a lonely
-     * <tt>\hskip</tt> is discarded. </testcase>
+     * {@code \hskip} is discarded.
      * 
      * @throws Exception in case of an error
      */

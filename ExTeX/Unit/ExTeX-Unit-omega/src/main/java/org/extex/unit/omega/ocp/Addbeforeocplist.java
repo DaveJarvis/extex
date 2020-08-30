@@ -33,38 +33,37 @@ import org.extex.unit.omega.ocp.util.OcpUtil;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\addbeforeocplist</code>.
+ * {@code \addbeforeocplist}.
  * 
- * <doc name="addbeforeocplist">
- * <h3>The Primitive <tt>\addbeforeocplist</tt></h3>
+ * <p>The Primitive {@code \addbeforeocplist}</p>
  * <p>
- * The primitive <tt>\addbeforeocplist</tt> can be used to build up an
- * &Omega;PC list. It is valid in the context of the primitive <tt>\ocplist</tt>
+ * The primitive {@code \addbeforeocplist} can be used to build up an
+ * &Omega;PC list. It is valid in the context of the primitive {@code \ocplist}
  * only.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;addbeforeocplist&rang;
- *      &rarr; <tt>\addbeforeocplist</tt> &lang;<i>float</i>&rang; &lang;<i>ocp register</i>&rang;  </pre>
+ *      &rarr; {@code \addbeforeocplist} &lang;<i>float</i>&rang; &lang;<i>ocp register</i>&rang;  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  * \addbeforeocplist 1.5 \myopc </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Addbeforeocplist extends AbstractOcplist {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
@@ -80,10 +79,7 @@ public class Addbeforeocplist extends AbstractOcplist {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.omega.ocp.util.OcplistConvertible#convertOcplist(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public OcpList convertOcplist(Context context, TokenSource source,

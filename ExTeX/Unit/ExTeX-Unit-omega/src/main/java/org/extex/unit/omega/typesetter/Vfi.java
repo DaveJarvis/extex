@@ -34,41 +34,41 @@ import org.extex.unit.tex.typesetter.AbstractVerticalCode;
 import org.extex.unit.tex.typesetter.spacing.VerticalSkip;
 
 /**
- * This class provides an implementation for the primitive <code>\vfi</code>.
+ * This class provides an implementation for the primitive {@code \vfi}.
  * 
- * <doc name="vfi"> <h3>The Primitive <tt>\vfi</tt></h3>
+ * <p>The Primitive {@code \vfi}</p>
  * <p>
- * The primitive <tt>\vfi</tt> inserts vertical glue into the current list. It
+ * The primitive {@code \vfi} inserts vertical glue into the current list. It
  * switches to vertical mode if necessary. The amount of glue inserted has the
  * natural height of 0pt and a stretchability of 1fi.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;vfi&rang;
- *        &rarr; <tt>\vfi</tt>  </pre>
+ *        &rarr; {@code \vfi}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \vfi  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Vfi extends AbstractVerticalCode implements VerticalSkip {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>FIL</tt> contains the amount of 1 fil.
+     * The field {@code FIL} contains the amount of 1 fil.
      */
     private static final Glue FI = new Glue(Dimen.ZERO, GlueComponent.ONE_FI,
         GlueComponent.ZERO);
@@ -84,10 +84,7 @@ public class Vfi extends AbstractVerticalCode implements VerticalSkip {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -101,10 +98,7 @@ public class Vfi extends AbstractVerticalCode implements VerticalSkip {
     /**
      * This method acquires a vertical glue.
      * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.typesetter.spacing.VerticalSkip#getGlue(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public FixedGlue getGlue(Context context, TokenSource source,

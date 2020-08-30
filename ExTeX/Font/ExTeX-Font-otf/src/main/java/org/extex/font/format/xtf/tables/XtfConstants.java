@@ -23,8 +23,7 @@ package org.extex.font.format.xtf.tables;
  * Constants for TTF/OTF.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public final class XtfConstants {
 

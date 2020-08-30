@@ -33,8 +33,7 @@ import org.extex.sitebuilder.core.SiteMapBuilder;
  * This is the command line interface to the site builder.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class SiteBuilderMain {
 
     public static final String HELP_INFO = "Arguments:\n"
@@ -42,38 +41,23 @@ public final class SiteBuilderMain {
             + "\t-resourceDirectory [dir]\n" + "\t-template [template file]";
 
     /**
-     * The field <tt>HANDLER</tt> contains the log handler.
+     * The field {@code HANDLER} contains the log handler.
      */
     private static final Handler HANDLER = new Handler() {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.util.logging.Handler#close()
-         */
-        @Override
+    @Override
         public void close() throws SecurityException {
 
             flush();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.util.logging.Handler#flush()
-         */
-        @Override
+    @Override
         public void flush() {
 
             System.err.flush();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.util.logging.Handler#publish(java.util.logging.LogRecord)
-         */
-        @Override
+    @Override
         public void publish(LogRecord record) {
 
             Level level = record.getLevel();

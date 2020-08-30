@@ -37,12 +37,11 @@ import org.apache.velocity.runtime.log.LogChute;
  * as templating engine.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SiteBuilder implements LibReceiver {
 
     /**
-     * The field <tt>levelMap</tt> contains the mapping from Velocity error
+     * The field {@code levelMap} contains the mapping from Velocity error
      * levels to those of the Java logger.
      */
     private static Map<Integer, Level> levelMap = new HashMap<Integer, Level>();
@@ -55,39 +54,39 @@ public class SiteBuilder implements LibReceiver {
     }
 
     /**
-     * The field <tt>bases</tt> contains the list of the base directories for
+     * The field {@code bases} contains the list of the base directories for
      * the files to be transformed.
      */
     private List<TreeBuilder> bases = new ArrayList<TreeBuilder>();
 
     /**
-     * The field <tt>target</tt> contains the target directory.
+     * The field {@code target} contains the target directory.
      */
     private File target = new File(DIR_TARGET + "/test-site");
 
     /**
-     * The field <tt>logger</tt> contains the logger.
+     * The field {@code logger} contains the logger.
      */
     private Logger logger;
 
     /**
-     * The field <tt>omit</tt> contains the list of files and directories to be
+     * The field {@code omit} contains the list of files and directories to be
      * omitted.
      */
     private List<String> omit = new ArrayList<String>();
 
     /**
-     * The field <tt>libraries</tt> contains the libraries to be loaded.
+     * The field {@code libraries} contains the libraries to be loaded.
      */
     private List<String> libraries = new ArrayList<String>();
 
     /**
-     * The field <tt>siteMapList</tt> contains the ...
+     * The field {@code siteMapList} contains the ...
      */
     private List<SiteMapBuilder> siteMapList = new ArrayList<SiteMapBuilder>();
 
     /**
-     * The field <tt>newsBuilderList</tt> contains the ...
+     * The field {@code newsBuilderList} contains the ...
      */
     private List<NewsBuilder> newsBuilderList = new ArrayList<NewsBuilder>();
 
@@ -179,7 +178,7 @@ public class SiteBuilder implements LibReceiver {
     /**
      * Adder for libs.
      * 
-     * @param lib the lib to add or <code>null</code>
+     * @param lib the lib to add or {@code null}
      * 
      * @throws ParseErrorException in case of an error
      * @throws ResourceNotFoundException in case of an error
@@ -203,7 +202,7 @@ public class SiteBuilder implements LibReceiver {
      * for future tree builders and immediately propagated to already registered
      * tree builders.
      * 
-     * @param omits the list of omit; a <code>null</code> list is silently
+     * @param omits the list of omit; a {@code null} list is silently
      *        ignored
      */
     public void omit(String omits) {

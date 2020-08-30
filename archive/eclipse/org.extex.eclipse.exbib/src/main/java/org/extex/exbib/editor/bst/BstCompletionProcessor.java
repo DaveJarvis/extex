@@ -37,17 +37,16 @@ import org.extex.exbib.editor.bst.model.BstModelNode;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class BstCompletionProcessor implements IContentAssistProcessor {
 
     /**
-     * The field <tt>model</tt> contains the ...
+     * The field {@code model} contains the ...
      */
     private final BstModel model;
 
     /**
-     * The field <tt>imageManager</tt> contains the ...
+     * The field {@code imageManager} contains the ...
      */
     private final ImageManager imageManager;
 
@@ -64,10 +63,7 @@ public class BstCompletionProcessor implements IContentAssistProcessor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.text.contentassist.IContentAssistProcessor#computeCompletionProposals(org.eclipse.jface.text.ITextViewer,
-     *      int)
+*      int)
      */
     @Override
     public ICompletionProposal[] computeCompletionProposals(ITextViewer viewer,
@@ -106,10 +102,7 @@ public class BstCompletionProcessor implements IContentAssistProcessor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.text.contentassist.IContentAssistProcessor#computeContextInformation(org.eclipse.jface.text.ITextViewer,
-     *      int)
+*      int)
      */
     @Override
     public IContextInformation[] computeContextInformation(ITextViewer viewer,
@@ -119,46 +112,26 @@ public class BstCompletionProcessor implements IContentAssistProcessor {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.text.contentassist.IContentAssistProcessor#getCompletionProposalAutoActivationCharacters()
-     */
-    @Override
+@Override
     public char[] getCompletionProposalAutoActivationCharacters() {
 
         return new char[]{'.'};
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.text.contentassist.IContentAssistProcessor#getContextInformationAutoActivationCharacters()
-     */
-    @Override
+@Override
     public char[] getContextInformationAutoActivationCharacters() {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.text.contentassist.IContentAssistProcessor#getContextInformationValidator()
-     */
-    @Override
+@Override
     public IContextInformationValidator getContextInformationValidator() {
 
         // TODO gene: getContextInformationValidator unimplemented
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.text.contentassist.IContentAssistProcessor#getErrorMessage()
-     */
-    @Override
+@Override
     public String getErrorMessage() {
 
         return null;

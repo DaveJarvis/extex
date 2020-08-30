@@ -16,12 +16,11 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the definitions and implementations for the DVI
- * handling in ??TeX.
+ *Contains definitions and implementations for the DVI
+ * handling in εχTeX.
  *
- * <a name="DVIformat" />
  * <h2>DVI Format</h2>
- * <p>Definition of DVI format taken from DVItype 3.4 and<br />
+ * <p>Definition of DVI format taken from DVItype 3.4 and<br>
  * &quot;The TUG DVI driver standards committee: <a
  *  href="doc-files/dvistd0.pdf">DVI driver standard, level 0</a>&quot;</p>
  */

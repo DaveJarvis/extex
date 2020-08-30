@@ -29,15 +29,14 @@ import org.extex.builder.latex.artifact.latex.LatexReader;
 import org.extex.builder.latex.artifact.latex.MacroWithArgs;
 
 /**
- * This class implements a handler for <code>&#x5c;usepackage</code>.
+ * This class implements a handler for {@code &#x5c;usepackage}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class UsePackage extends MacroWithArgs {
 
     /**
-     * The field <tt>PACKAGES</tt> contains the known packages.
+     * The field {@code PACKAGES} contains the known packages.
      */
     private static final String[] PACKAGES = new String[]{
             "12many", // 12many
@@ -1776,10 +1775,7 @@ public final class UsePackage extends MacroWithArgs {
             };
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.builder.latex.artifact.latex.MacroWithArgs#expand(org.extex.builder.latex.artifact.latex.LatexReader,
-     *      org.extex.builder.latex.DependencyNet,
+*      org.extex.builder.latex.DependencyNet,
      *      org.extex.builder.latex.artifact.Artifact, java.lang.String,
      *      java.lang.String)
      */

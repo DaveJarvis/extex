@@ -25,23 +25,22 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This is a base exception for Bst2Groovy.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Bst2GroovyException extends RuntimeException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2008L;
 
     /**
-     * The field <tt>tag</tt> contains the tag for the resource bundle.
+     * The field {@code tag} contains the tag for the resource bundle.
      */
     private String tag;
 
     /**
-     * The field <tt>arg</tt> contains the additional argument.
+     * The field {@code arg} contains the additional argument.
      */
     private String arg = "";
 
@@ -71,12 +70,7 @@ public class Bst2GroovyException extends RuntimeException {
         this.arg = arg;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.exception.ConfigurationException#getLocalizedMessage()
-     */
-    @Override
+@Override
     public String getLocalizedMessage() {
 
         Throwable cause = getCause();

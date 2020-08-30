@@ -22,11 +22,10 @@ package org.extex.unit.omega.math.delimiter;
 import org.extex.unit.tex.math.AbstractMathTester;
 
 /**
- * This is a test suite for the primitive <tt>\oradical</tt>.
+ * This is a test suite for the primitive {@code \oradical}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class OradicalTest extends AbstractMathTester {
 
 

@@ -25,8 +25,7 @@ import java.io.Reader;
  * Interface for a PL command.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- * 
+*
  */
 public interface PlCommand {
 

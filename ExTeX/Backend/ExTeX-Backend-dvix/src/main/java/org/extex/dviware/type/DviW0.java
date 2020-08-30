@@ -25,11 +25,10 @@ import java.io.OutputStream;
 import org.extex.dviware.Dvi;
 
 /**
- * This class represents the DVI instruction <tt>w0</tt>.
+ * This class represents the DVI instruction {@code w0}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DviW0 extends AbstractDviCode {
 
 

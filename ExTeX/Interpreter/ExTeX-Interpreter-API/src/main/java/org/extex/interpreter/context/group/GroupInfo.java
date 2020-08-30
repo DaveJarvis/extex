@@ -26,8 +26,7 @@ import org.extex.scanner.type.token.Token;
  * This interface provides access to the info for some group.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4492 $
- */
+*/
 public interface GroupInfo {
 
     /**

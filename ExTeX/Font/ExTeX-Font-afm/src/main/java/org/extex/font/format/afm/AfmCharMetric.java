@@ -29,13 +29,12 @@ import java.util.Map;
  * Class for the AFM CharMetric.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class AfmCharMetric implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 1L;
 
@@ -114,11 +113,11 @@ public class AfmCharMetric implements Serializable {
     }
 
     /**
-     * Returns a kerning pair for a letter, or <code>null</code>, if no
+     * Returns a kerning pair for a letter, or {@code null}, if no
      * kerning is found.
      * 
      * @param charpost The post character.
-     * @return Returns a kerning pair for a letter, or <code>null</code>, if
+     * @return Returns a kerning pair for a letter, or {@code null}, if
      *         no kerning is found.
      */
     public AfmKernPairs getAfmKernPair(String charpost) {
@@ -232,11 +231,11 @@ public class AfmCharMetric implements Serializable {
     }
 
     /**
-     * Returns the ligature for a letter or <code>null</code>, if no ligature
+     * Returns the ligature for a letter or {@code null}, if no ligature
      * found.
      * 
      * @param letter The letter.
-     * @return Returns the ligature for a letter or <code>null</code>, if no
+     * @return Returns the ligature for a letter or {@code null}, if no
      *         ligature found.
      */
     public String getLigature(String letter) {
@@ -287,7 +286,7 @@ public class AfmCharMetric implements Serializable {
     /**
      * Check, if the char has a kerning.
      * 
-     * @return Return <code>true</code>, if the char has a kerning.
+     * @return Return {@code true}, if the char has a kerning.
      */
     public boolean isKerning() {
 
@@ -300,7 +299,7 @@ public class AfmCharMetric implements Serializable {
     /**
      * Check, if the char has a ligature.
      * 
-     * @return Return <code>true</code>, if the char has a ligature.
+     * @return Return {@code true}, if the char has a ligature.
      */
     public boolean isLigatur() {
 

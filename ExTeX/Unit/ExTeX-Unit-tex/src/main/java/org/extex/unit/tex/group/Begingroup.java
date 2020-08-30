@@ -31,43 +31,42 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\begingroup</code>.
+ * {@code \begingroup}.
  * 
- * <doc name="begingroup">
- * <h3>The Primitive <tt>\begingroup</tt></h3>
+ * <p>The Primitive {@code \begingroup}</p>
  * <p>
- * The primitive <tt>\begingroup</tt> starts a new group. The new group
+ * The primitive {@code \begingroup} starts a new group. The new group
  * inherits all properties from the previous group.
  * </p>
  * <p>
  * The group is usually ended by a corresponding
- * {@link org.extex.unit.tex.group.Endgroup <tt>\endgroup</tt>}. If the job is
+ * {@link org.extex.unit.tex.group.Endgroup {@code \endgroup}}. If the job is
  * completed without encountering a proper
- * {@link org.extex.unit.tex.group.Endgroup <tt>\endgroup</tt>} then an error
+ * {@link org.extex.unit.tex.group.Endgroup {@code \endgroup}} then an error
  * is raised.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;begingroup&rang;
- *      &rarr; <tt>\begingroup</tt>  </pre>
+ *      &rarr; {@code \begingroup}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \begingroup 123 \endgroup  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Begingroup extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -83,10 +82,7 @@ public class Begingroup extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

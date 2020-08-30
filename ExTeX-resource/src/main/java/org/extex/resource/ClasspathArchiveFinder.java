@@ -75,33 +75,33 @@ import org.extex.resource.io.NamedInputStream;
  * Whenever a resource is sought its type is used to find the appropriate
  * parameters for the search. If the sub-configuration with the name of the type
  * exists then this sub-configuration is used. For instance if the resource
- * <tt>tex</tt> with the type <tt>fmt</tt> is sought then the sub-configuration
- * <tt>fmt</tt> determines how to find this file.
+ * {@code tex} with the type {@code fmt} is sought then the sub-configuration
+ * {@code fmt} determines how to find this file.
  * </p>
  * <p>
  * If no sub-configuration of the given type is present then the attribute
- * <tt>default</tt> is used to find the default sub-configuration. In the
- * example given above this default configuration is called <tt>default</tt>.
+ * {@code default} is used to find the default sub-configuration. In the
+ * example given above this default configuration is called {@code default}.
  * Nevertheless it would also be possible to point the default configuration to
- * another existing configuration. The attribute <tt>default</tt> is mandatory.
+ * another existing configuration. The attribute {@code default} is mandatory.
  * </p>
  * <p>
- * Each sub-configuration takes the tag <tt>extension</tt> in arbitrary number.
- * <tt>extension</tt> contains the extension appended after the resource name.
+ * Each sub-configuration takes the tag {@code extension} in arbitrary number.
+ * {@code extension} contains the extension appended after the resource name.
  * </p>
  * <p>
  * All combinations of resource name and extension are tried in turn. If one
  * combination leads to a readable input stream then it is used.
  * </p>
  * <p>
- * The attribute <tt>trace</tt> can be used to force a tracing of the actions in
+ * The attribute {@code trace} can be used to force a tracing of the actions in
  * the log file. The tracing is performed only if a logger is present when
  * needed. The tracing flag can be overwritten at run-time. The attribute
- * <tt>trace</tt> is optional.
+ * {@code trace} is optional.
  * </p>
  * <p>
- * The attribute <tt>toc</tt> determines the file to be used as index. The
- * default is <tt>toc.index</tt>. The attribute <tt>toc</tt> is optional. The
+ * The attribute {@code toc} determines the file to be used as index. The
+ * default is {@code toc.index}. The attribute {@code toc} is optional. The
  * contents of the index file is described below.
  * </p>
  * 
@@ -132,18 +132,17 @@ import org.extex.resource.io.NamedInputStream;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ClasspathArchiveFinder extends AbstractFinder {
 
     /**
-     * The constant <tt>DEFAULT_TOC_NAME</tt> contains the default name of the
+     * The constant {@code DEFAULT_TOC_NAME} contains the default name of the
      * index.
      */
     private static final String DEFAULT_TOC_NAME = "META-INF/toc.index";
 
     /**
-     * The field <tt>index</tt> contains the mapping from file names to.
+     * The field {@code index} contains the mapping from file names to.
      */
     private Map<String, URL> index = null;
 
@@ -162,12 +161,12 @@ public class ClasspathArchiveFinder extends AbstractFinder {
 
     /**
      * Find a resource which can be used for reading. If the search fails then
-     * <code>null</code> is returned.
+     * {@code null} is returned.
      * 
      * @param name the base name of the resource
      * @param type the type, i.e. the extension
      * 
-     * @return the file or <code>null</code> if none could be found
+     * @return the file or {@code null} if none could be found
      * 
      * @throws ConfigurationException in case of an exception
      * 

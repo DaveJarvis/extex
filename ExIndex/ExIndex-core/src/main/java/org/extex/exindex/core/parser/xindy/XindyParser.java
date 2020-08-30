@@ -44,8 +44,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This parser is a reader for input in the form of the xindy raw index format
  * and some extensions of it.
  * 
- * <doc type="exindex-format" section="xindy Raw Index Format">
- * 
+*
  * <h2>The Extended xindy Raw Index Format</h2>
  * <p>
  * The basic syntax is the Lisp syntax with the backslash character as escape
@@ -66,22 +65,22 @@ import org.extex.framework.i18n.LocalizerFactory;
  * the key, the attribute, and the location. They are described below.
  * </p>
  * 
- * <h3>The Index</h3>
+ * <p>The Index</p>
  * <p>
  * The index is the name of an index. The index entry is assigned to this index.
- * The default is the index <tt>default</tt>.
+ * The default is the index {@code default}.
  * </p>
  * <p>
  * The index is an extension compared to the xindy raw index format.
  * </p>
  * 
- * <h3>The Key</h3>
+ * <p>The Key</p>
  * <p>
  * The key consists of a pair made up of a list of sort key and print
  * representations. There are several ways to specify the key.
  * </p>
  * <p>
- * The key can be given with the <tt>:key</tt> flag. The argument following it
+ * The key can be given with the {@code :key} flag. The argument following it
  * is a list of strings to be stored as sort key. If nothing else is specified
  * then the argument list is also stored as print representation. This is shown
  * in the following example.
@@ -91,7 +90,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  *  (indexentry :key ("abc") :locref "123")   </pre>
  * 
  * <p>
- * If just a single string is given after the <tt>:key</tt> flag is treated as
+ * If just a single string is given after the {@code :key} flag is treated as
  * an abbreviation for a single element list containing it. This is an extension
  * of the xindy format.
  * </p>
@@ -102,14 +101,14 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * <p>
  * The key can be augmented with a different print representation which is given
- * with the flag <tt>:print</tt>. This can be seen in the following example.
+ * with the flag {@code :print}. This can be seen in the following example.
  * </p>
  * 
  * <pre>
  *  (indexentry :key ("alpha") :print ("$\alpha$") :locref "123")   </pre>
  * 
  * <p>
- * Again the value of the <tt>:print</tt> flag can be a single sting which
+ * Again the value of the {@code :print} flag can be a single sting which
  * serves as an abbreviation for the singleton list containing it. This is an
  * extension of the xindy format.
  * </p>
@@ -118,7 +117,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  *  (indexentry :key "alpha" :print "$\alpha$" :locref "123")   </pre>
  * 
  * <p>
- * Finally the flag <tt>:tkey</tt> can be used to specify the sort key and the
+ * Finally the flag {@code :tkey} can be used to specify the sort key and the
  * print value jointly. The argument is a list. This list can contain a list of
  * one or two elements. If only one element is given then this value &ndash;
  * which has to be a string &ndash; is used for both sort key and print
@@ -130,12 +129,12 @@ import org.extex.framework.i18n.LocalizerFactory;
  *  (indexentry :tkey (("symbol") ("alpha" "$\alpha$")) :locref "123")   </pre>
  * 
  * <p>
- * The elements of the argument list of <tt>:tkey</tt> can also be string in
+ * The elements of the argument list of {@code :tkey} can also be string in
  * this case it is used both for sort key and print value. This is an extension
  * of the xindy format.
  * </p>
  * 
- * <h3>The Attribute</h3>
+ * <p>The Attribute</p>
  * <p>
  * The attribute is an optional value which classifies the location. It is used
  * during markup to tag the location.
@@ -144,7 +143,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * The value of the attribute is a string which is used to select the markup.
  * </p>
  * 
- * <h3>The Reference</h3>
+ * <p>The Reference</p>
  * <p>
  * The reference is either a location reference or a cross reference.
  * </p>
@@ -157,13 +156,13 @@ import org.extex.framework.i18n.LocalizerFactory;
  *  (indexentry :key ("alpha" "$\alpha$") :locref "A-123")   </pre>
  * 
  * <p>
- * In addition the flags <tt>:open-range</tt> and <tt>:close-range</tt> can be
+ * In addition the flags {@code :open-range} and {@code :close-range} can be
  * used to signal that the entry corresponds to a range and is the beginning or
  * the end of such a range. Not both of them can be given in one entry.
  * </p>
  * <p>
  * The other type of reference is a cross reference. It refers to another entry
- * in the index. The flag <tt>:xref</tt> can be used to specify a cross
+ * in the index. The flag {@code :xref} can be used to specify a cross
  * reference. The argument is a list of strings denoting the referenced entry.
  * </p>
  * 
@@ -172,74 +171,72 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * <p>
  * As above an extension of the xindy format can be used by abbreviating a
- * singleton list as argument to the flag <tt>:xref</tt> by a single string.
+ * singleton list as argument to the flag {@code :xref} by a single string.
  * </p>
  * 
  * <pre>
  *  (indexentry :key ("alpha" "$\alpha$") :xref "greek")   </pre>
  * 
- * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class XindyParser extends LParser implements RawIndexParser {
 
     /**
-     * The constant <tt>ATTR</tt> contains the symbol for the attr flag.
+     * The constant {@code ATTR} contains the symbol for the attr flag.
      */
     private static final LSymbol ATTR = LSymbol.get(":attr");
 
     /**
-     * The constant <tt>CLOSE_RANGE</tt> contains the symbol for the close-range
+     * The constant {@code CLOSE_RANGE} contains the symbol for the close-range
      * flag.
      */
     private static final LSymbol CLOSE_RANGE = LSymbol.get(":close-range");
 
     /**
-     * The constant <tt>INDEX</tt> contains the symbol for the index flag.
+     * The constant {@code INDEX} contains the symbol for the index flag.
      */
     private static final LSymbol INDEX = LSymbol.get(":index");
 
     /**
-     * The constant <tt>INDEXENTRY</tt> contains the symbol for the index entry
+     * The constant {@code INDEXENTRY} contains the symbol for the index entry
      * head.
      */
     private static final LSymbol INDEXENTRY = LSymbol.get("indexentry");
 
     /**
-     * The constant <tt>KEY</tt> contains the symbol for the key flag.
+     * The constant {@code KEY} contains the symbol for the key flag.
      */
     private static final LSymbol KEY = LSymbol.get(":key");
 
     /**
-     * The constant <tt>LOCREF</tt> contains the symbol for the locref flag.
+     * The constant {@code LOCREF} contains the symbol for the locref flag.
      */
     private static final LSymbol LOCREF = LSymbol.get(":locref");
 
     /**
-     * The constant <tt>OPEN_RANGE</tt> contains the symbol for the open-range
+     * The constant {@code OPEN_RANGE} contains the symbol for the open-range
      * flag.
      */
     private static final LSymbol OPEN_RANGE = LSymbol.get(":open-range");
 
     /**
-     * The constant <tt>PRINT</tt> contains the symbol for the print flag.
+     * The constant {@code PRINT} contains the symbol for the print flag.
      */
     private static final LSymbol PRINT = LSymbol.get(":print");
 
     /**
-     * The constant <tt>TKEY</tt> contains the symbol for the tkey flag.
+     * The constant {@code TKEY} contains the symbol for the tkey flag.
      */
     private static final LSymbol TKEY = LSymbol.get(":tkey");
 
     /**
-     * The constant <tt>XREF</tt> contains the symbol for the xref flag.
+     * The constant {@code XREF} contains the symbol for the xref flag.
      */
     private static final LSymbol XREF = LSymbol.get(":xref");
 
     /**
-     * The field <tt>locator</tt> contains the locator.
+     * The field {@code locator} contains the locator.
      */
     private final ReaderLocator locator;
 
@@ -273,7 +270,7 @@ public class XindyParser extends LParser implements RawIndexParser {
      * Check that the argument is a LList and cast it.
      * 
      * @param value the value
-     * @param tag the name of the argument or <code>null</code>
+     * @param tag the name of the argument or {@code null}
      * 
      * @return the list
      * 
@@ -312,7 +309,7 @@ public class XindyParser extends LParser implements RawIndexParser {
     }
 
     /**
-     * Check that a value is <code>null</code> and otherwise raise an
+     * Check that a value is {@code null} and otherwise raise an
      * appropriate exception.
      * 
      * @param value the value
@@ -333,7 +330,7 @@ public class XindyParser extends LParser implements RawIndexParser {
      * Translate an LString to a String array.
      * 
      * @param tag the parameter name for error messages
-     * @param var the variable to check for not <code>null</code>
+     * @param var the variable to check for not {@code null}
      * @param value the list
      * 
      * @return the String array
@@ -357,7 +354,7 @@ public class XindyParser extends LParser implements RawIndexParser {
      * sting is interpreted as a one element list.
      * 
      * @param tag the parameter name for error messages
-     * @param var the variable to check for not <code>null</code>
+     * @param var the variable to check for not {@code null}
      * @param value the list
      * 
      * @return the String array
@@ -402,12 +399,7 @@ public class XindyParser extends LParser implements RawIndexParser {
         return LocalizerFactory.getLocalizer(getClass()).format(tag, args);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.parser.RawIndexParser#parse()
-     */
-    public RawIndexentry parse() throws IOException, RawIndexException {
+public RawIndexentry parse() throws IOException, RawIndexException {
 
         LValue term = read();
         if (term == null) {

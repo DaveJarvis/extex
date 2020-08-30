@@ -33,7 +33,7 @@ import org.extex.util.file.random.RandomAccessR;
  * of four bytes.
  * </p>
  * 
- * <table border="1"> <thead>
+ * <table> <caption>TBD</caption> <thead>
  * <tr>
  * <td>byte</td>
  * <td>description</td>
@@ -86,12 +86,12 @@ import org.extex.util.file.random.RandomAccessR;
  * </p>
  * <p>
  * If the very first instruction of a character's lig_kern program has
- * skip_byte>128, the program actually begins in location 256op_byte+remainder.
+ * skip_byte&gt;128, the program actually begins in location 256op_byte+remainder.
  * This feature allows access to large lig_kern arrays, because the first
- * instruction must otherwise appear in a location &lt> 255.
+ * instruction must otherwise appear in a location &lt; 255.
  * </p>
  * <p>
- * Any instruction with skip_byte>128 in the lig_kern array must have
+ * Any instruction with skip_byte&gt;128 in the lig_kern array must have
  * 256op_byte+remainder &lt; nl. If such an instruction is encountered during
  * normal program execution, it denotes an unconditional halt; no ligature
  * command is performed.
@@ -102,18 +102,17 @@ import org.extex.util.file.random.RandomAccessR;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class TfmLigKernArray implements /* PlFormat, */Serializable {
 
     /**
-     * Code for left boundary lig/kern program in <code>labels</code> table.
+     * Code for left boundary lig/kern program in {@code labels} table.
      */
     private static final int BOUNDARYLABEL = TfmCharInfoWord.NOCHARCODE;
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 1L;
 
@@ -129,7 +128,7 @@ public class TfmLigKernArray implements /* PlFormat, */Serializable {
 
     /**
      * Starting index of lig/kern program for invisible left boundary character
-     * or <code>NOINDEX</code> if there is no such program.
+     * or {@code NOINDEX} if there is no such program.
      */
     private int boundaryStart = TfmCharInfoWord.NOINDEX;
 
@@ -145,14 +144,14 @@ public class TfmLigKernArray implements /* PlFormat, */Serializable {
 
     /**
      * The associative table of lig/kern program starts in
-     * <code>ligAuxTab</code>.
+     * {@code ligAuxTab}.
      */
-    private TfmIndexMultimap labels = new TfmIndexMultimap();
+    private final TfmIndexMultimap labels = new TfmIndexMultimap();
 
     /**
      * the array.
      */
-    private TfmLigKernCommand[] ligkerncommand;
+    private final TfmLigKernCommand[] ligkerncommand;
 
     /**
      * Lig/kern programs in the final format.
@@ -178,7 +177,7 @@ public class TfmLigKernArray implements /* PlFormat, */Serializable {
      * Builds associative table labels which maps the character codes to
      * lig/kern program starting indexes in ligAuxTab for remapping later. It
      * also marks the starting instructions of lig/kern programs as active
-     * (using the <code>activity</code> field of LigKern). TFtoPL[67]
+     * (using the {@code activity} field of LigKern). TFtoPL[67]
      */
     private void buildLabels() {
 
@@ -199,7 +198,7 @@ public class TfmLigKernArray implements /* PlFormat, */Serializable {
     }
 
     /**
-     * Fills in the blank <code>ligKernTable</code> by the final version of
+     * Fills in the blank {@code ligKernTable} by the final version of
      * lig/kern instructions.
      */
     private void buildLigKernTable() {
@@ -465,7 +464,7 @@ public class TfmLigKernArray implements /* PlFormat, */Serializable {
      * Marks the lig/kern instructions which are really a part of some lig/kern
      * program (active), counts the final number of lig/kern instructions,
      * creates the blank final lig/kern table and checks for errors. Uses
-     * <code>activity</code> field of LigKern for marking the activity. It
+     * {@code activity} field of LigKern for marking the activity. It
      * supposes that the first instructions of programs are already marked
      * active. TFtoPL[70]
      */
@@ -494,11 +493,11 @@ public class TfmLigKernArray implements /* PlFormat, */Serializable {
 
     /**
      * Records the starting indexes of final lig/kern program in ligKernTable to
-     * auxiliary character information field <code>ligkernstart</code> of
-     * <code>AuxCharInfo</code>.
+     * auxiliary character information field {@code ligkernstart} of
+     * {@code AuxCharInfo}.
      * 
      * @param pos the position of currently processed instruction in original
-     *        tfm lig/kern table <code>ligAuxTab</code>.
+     *        tfm lig/kern table {@code ligAuxTab}.
      * @param start the position of corresponding instruction in final lig/kern
      *        table LigKernTable.
      */

@@ -27,8 +27,7 @@ import java.util.Set;
  * Map for a TTF/OTF table.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class XtfTableMap {
 
@@ -67,8 +66,8 @@ public class XtfTableMap {
      * Check, if the table contains the table.
      * 
      * @param key The key of the table.
-     * @return Returns <code>true</code>, if the map has the table, otherwise
-     *         <code>false</code>.
+     * @return Returns {@code true}, if the map has the table, otherwise
+     *         {@code false}.
      */
     public boolean containsKey(int key) {
 

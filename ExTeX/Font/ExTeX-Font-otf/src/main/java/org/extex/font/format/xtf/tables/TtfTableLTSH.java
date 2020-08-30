@@ -60,8 +60,8 @@ import org.extex.util.xml.XMLWriterConvertible;
  * requirement that, at and above the recorded threshold size, the glyph remain
  * linear in its scaling (i.e., not legal to set threshold at 55 ppem if glyph
  * becomes nonlinear again at 90 ppem). The format for the table is:
- * <p>
- * <table border="1"> <thead>
+ * </p>
+ * <table> <caption>TBD</caption> <thead>
  * <tr>
  * <td><b>Type</b></td>
  * <td><b>Name</b></td>
@@ -91,8 +91,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TtfTableLTSH extends AbstractXtfTable
         implements
             XtfTable,
@@ -144,12 +143,7 @@ public class TtfTableLTSH extends AbstractXtfTable
         return numGlyphs;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
+public String getShortcut() {
 
         return "ltsh";
     }
@@ -185,10 +179,7 @@ public class TtfTableLTSH extends AbstractXtfTable
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

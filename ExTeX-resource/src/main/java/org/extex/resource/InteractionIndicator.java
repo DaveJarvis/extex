@@ -24,14 +24,13 @@ package org.extex.resource;
  * current interaction mode..
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4726 $
- */
+*/
 public interface InteractionIndicator {
 
     /**
      * Getter for the interaction mode.
      *
-     * @return <code>true</code> iff interaction with the user is desirable
+     * @return {@code true} iff interaction with the user is desirable
      */
     boolean isInteractive();
 

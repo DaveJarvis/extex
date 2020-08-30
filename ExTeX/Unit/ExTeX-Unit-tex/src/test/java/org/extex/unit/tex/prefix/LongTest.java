@@ -25,11 +25,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\long</tt>.
+ * This is a test suite for the primitive {@code \long}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4306 $
- */
+*/
 public class LongTest extends PrefixTester {
 
     /**
@@ -50,7 +49,7 @@ public class LongTest extends PrefixTester {
 
     /**
      * <testcase primitive="\long"> Test case checking that \long sets the long
-     * flag. </testcase>
+     * flag.
      * 
      * @throws Exception in case of an error
      */
@@ -69,7 +68,7 @@ public class LongTest extends PrefixTester {
 
     /**
      * <testcase primitive="\long"> Test case checking that double
-     * <tt>\long</tt> has the same effect as one. </testcase>
+     * {@code \long} has the same effect as one.
      * 
      * @throws Exception in case of an error
      */
@@ -88,7 +87,7 @@ public class LongTest extends PrefixTester {
 
     /**
      * <testcase primitive="\long"> Test case checking that \long interacts with
-     * \outer. </testcase>
+     * \outer.
      * 
      * @throws Exception in case of an error
      */

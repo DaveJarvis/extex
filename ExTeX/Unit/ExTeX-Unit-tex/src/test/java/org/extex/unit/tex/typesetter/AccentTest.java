@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\accent</tt>.
+ * This is a test suite for the primitive {@code \accent}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class AccentTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -48,9 +47,8 @@ public class AccentTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that <tt>\accent</tt> does not work in
-     * math mode. </testcase>
-     * 
+     * Test case checking that {@code \accent} does not work in math mode
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -63,9 +61,8 @@ public class AccentTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that <tt>\accent</tt> does not work in
-     * display math mode. </testcase>
-     * 
+     * Test case checking that {@code \accent} does not work in display math mode
+* 
      * @throws Exception in case of an error
      */
     @Test

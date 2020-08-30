@@ -41,24 +41,23 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This class represents a raw cross reference.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6617 $
- */
+*/
 public class CrossReference implements Reference {
 
     /**
-     * The constant <tt>LOCALIZER</tt> contains the localizer for obtaining
+     * The constant {@code LOCALIZER} contains the localizer for obtaining
      * messages.
      */
     private static final Localizer LOCALIZER =
             LocalizerFactory.getLocalizer(CrossReference.class);
 
     /**
-     * The field <tt>layers</tt> contains the reference list.
+     * The field {@code layers} contains the reference list.
      */
     private final String[] layers;
 
     /**
-     * The field <tt>clazz</tt> contains the class name.
+     * The field {@code clazz} contains the class name.
      */
     private final String clazz;
 
@@ -75,10 +74,7 @@ public class CrossReference implements Reference {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.raw.Reference#check(
-     *      java.util.logging.Logger,
+*      java.util.logging.Logger,
      *      org.extex.exindex.core.type.raw.RawIndexentry, StructuredIndex,
      *      org.extex.exindex.core.type.LocationClassContainer, java.util.List,
      *      org.extex.exindex.core.type.attribute.AttributesContainer)
@@ -115,32 +111,17 @@ public class CrossReference implements Reference {
         return layers;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.raw.Reference#getLayer()
-     */
-    public String getLayer() {
+public String getLayer() {
 
         return clazz;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.raw.Reference#getLocation()
-     */
-    public String[] getLocation() {
+public String[] getLocation() {
 
         throw new UnsupportedOperationException();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();

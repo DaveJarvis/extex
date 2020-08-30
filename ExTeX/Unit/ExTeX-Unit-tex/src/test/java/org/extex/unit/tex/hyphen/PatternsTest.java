@@ -22,11 +22,10 @@ package org.extex.unit.tex.hyphen;
 import org.extex.test.NoFlagsPrimitiveTester;
 
 /**
- * This is a test suite for the primitive <tt>\patterns</tt>.
+ * This is a test suite for the primitive {@code \patterns}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class PatternsTest extends NoFlagsPrimitiveTester {
 
 

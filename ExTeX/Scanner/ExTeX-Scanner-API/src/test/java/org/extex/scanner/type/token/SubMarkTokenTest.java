@@ -30,12 +30,11 @@ import static org.junit.Assert.assertNotEquals;
  * Test cases for subscript mark tokens.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4756 $
- */
+*/
 public class SubMarkTokenTest extends TokenTester {
 
     /**
-     * The field <tt>t</tt> contains the reference token.
+     * The field {@code t} contains the reference token.
      */
     private static final Token token = new SubMarkToken( UnicodeChar.get( 'x'));
 
@@ -58,9 +57,7 @@ setText( "x");
 setStr( "subscript character x");
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testEqualsToken1() {
 
         Token t1 = new SubMarkToken(UnicodeChar.get(' '));

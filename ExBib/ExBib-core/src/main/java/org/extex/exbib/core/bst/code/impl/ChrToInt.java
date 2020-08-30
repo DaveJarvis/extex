@@ -31,7 +31,7 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X built-in function <code>char.to.int$</code>
+ * >e</span>X built-in function {@code char.to.int$}
  * <p>
  * This function translates a character to the corresponding integer code point.
  * It takes a string argument from the stack. This argument must contain exactly
@@ -45,44 +45,37 @@ import org.extex.framework.i18n.LocalizerFactory;
  * style="margin-left: -0.15em;" >T</span><span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X&nbsp;8 restrict the characters to 8~bit characters.
- * <logo>&epsilon;&chi;Bib</logo> has expanded the definition to 16~bit Unicode
+ * ??Bib has expanded the definition to 16~bit Unicode
  * characters.
  * </p>
- * <img src="doc-files/chr.to.int.png"/>
+ * <img src="doc-files/chr.to.int.png" alt="chr.to.int">
  * <p>
- * The following example is taken from <tt>alpha.bst</tt>:
+ * The following example is taken from {@code alpha.bst}:
  * </p>
  * 
  * <pre>
  *   "a" chr.to.int$
  * </pre>
  * 
- * <hr />
+ * <hr>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X documentation:</dt>
+ * <dt>BibTeX documentation:</dt>
  * <dd>Pops the top (string) literal, makes sure it's a single character,
  * converts it to the corresponding ASCII integer, and pushes this integer.</dd>
  * </dl>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X web documentation:</dt>
- * <dd>The <code>built_in</code> function <code>chr.to.int$</code> pops the top
+ * <dt>BibTeX web documentation:</dt>
+ * <dd>The {@code built_in} function {@code chr.to.int$} pops the top
  * (string) literal, makes sure it's a single character, converts it to the
- * corresponding <code>ASCII_code</code> integer, and pushes this integer. If
+ * corresponding {@code ASCII_code} integer, and pushes this integer. If
  * the literal isn't an appropriate string, it complains and pushes the integer
  * 0.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ChrToInt extends AbstractCode {
 
     /**
@@ -103,10 +96,7 @@ public class ChrToInt extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)

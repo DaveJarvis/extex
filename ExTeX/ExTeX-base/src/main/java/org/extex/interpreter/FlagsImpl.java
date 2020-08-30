@@ -27,32 +27,31 @@ import org.extex.framework.i18n.LocalizerFactory;
  * information to primitives.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4728 $
- */
+*/
 public class FlagsImpl implements Flags {
 
     /**
-     * The field <tt>globalP</tt> contains the global flag.
+     * The field {@code globalP} contains the global flag.
      */
     private boolean globalP = false;
 
     /**
-     * The field <tt>immediateP</tt> contains the immediate flag.
+     * The field {@code immediateP} contains the immediate flag.
      */
     private boolean immediateP = false;
 
     /**
-     * The field <tt>longP</tt> contains the long flag.
+     * The field {@code longP} contains the long flag.
      */
     private boolean longP = false;
 
     /**
-     * The field <tt>outerP</tt> contains the outer flag.
+     * The field {@code outerP} contains the outer flag.
      */
     private boolean outerP = false;
 
     /**
-     * The field <tt>protectedP</tt> contains the protected flag.
+     * The field {@code protectedP} contains the protected flag.
      */
     private boolean protectedP = false;
 
@@ -79,7 +78,7 @@ public class FlagsImpl implements Flags {
     }
 
     /**
-     * Setter for the global flag. The flag is reset to <code>false</code>.
+     * Setter for the global flag. The flag is reset to {@code false}.
      * 
      * @return the old value of the global flag
      * 
@@ -94,7 +93,7 @@ public class FlagsImpl implements Flags {
     }
 
     /**
-     * Setter for the immediate flag. The flag is reset to <code>false</code>.
+     * Setter for the immediate flag. The flag is reset to {@code false}.
      * 
      * @return the old value of the immediate flag
      * 
@@ -109,7 +108,7 @@ public class FlagsImpl implements Flags {
     }
 
     /**
-     * Setter for the long flag. The flag is reset to <code>false</code>.
+     * Setter for the long flag. The flag is reset to {@code false}.
      * 
      * @return the old value of the long flag
      * 
@@ -124,7 +123,7 @@ public class FlagsImpl implements Flags {
     }
 
     /**
-     * Setter for the outer flag. The flag is reset to <code>false</code>.
+     * Setter for the outer flag. The flag is reset to {@code false}.
      * 
      * @return the old value of the outer flag
      * 
@@ -139,7 +138,7 @@ public class FlagsImpl implements Flags {
     }
 
     /**
-     * Setter for the protected flag. The flag is reset to <code>false</code>.
+     * Setter for the protected flag. The flag is reset to {@code false}.
      * 
      * @return the old value of the protected flag
      * 
@@ -220,7 +219,7 @@ public class FlagsImpl implements Flags {
     /**
      * Test if all flags are cleared.
      * 
-     * @return <code>true</code> iff not all flags are cleared
+     * @return {@code true} iff not all flags are cleared
      * 
      * @see org.extex.interpreter.Flags#isDirty()
      */

@@ -26,8 +26,7 @@ package org.extex.font.format.xtf.tables.cff;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public final class T2ExpertEncoding {
 

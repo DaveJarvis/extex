@@ -31,12 +31,11 @@ import org.junit.runner.JUnitCore;
  * Test cases for superscript mark tokens.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4756 $
- */
+*/
 public class SupMarkTokenTest extends TokenTester {
 
     /**
-     * The field <tt>t</tt> contains the reference token.
+     * The field {@code t} contains the reference token.
      */
     private static final Token token = new SupMarkToken( UnicodeChar.get( 'x'));
 
@@ -59,9 +58,7 @@ setText( "x");
 setStr( "superscript character x");
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testEqualsToken1() {
 
         Token t1 = new SupMarkToken(UnicodeChar.get(' '));

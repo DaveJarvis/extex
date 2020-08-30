@@ -28,41 +28,40 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.conditional.AbstractIf;
 
 /**
- * This class provides an implementation for the primitive <code>\ifodd</code>.
+ * This class provides an implementation for the primitive {@code \ifodd}.
  * 
- * <doc name="ifodd">
- * <h3>The Primitive <tt>\ifodd</tt></h3>
+ * <p>The Primitive {@code \ifodd}</p>
  * <p>
  * The primitive takes one expanded integer argument. The conditional is true
  * iff the argument is odd.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;ifodd&rang;
- *      &rarr; <tt>\ifodd</tt> {@linkplain
+ *      &rarr; {@code \ifodd} {@linkplain
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
- *        &lang;number&rang;} &lang;true text&rang; <tt>\fi</tt>
- *      | <tt>\ifodd</tt> {@linkplain
+ *        &lang;number&rang;} &lang;true text&rang; {@code \fi}
+ *      | {@code \ifodd} {@linkplain
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
- *        &lang;number&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
+ *        &lang;number&rang;} &lang;true text&rang; {@code \else} &lang;false text&rang; {@code \fi} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \ifodd\count0 abc \fi  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4439 $
- */
+*/
 public class Ifodd extends AbstractIf {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -78,10 +77,7 @@ public class Ifodd extends AbstractIf {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.base.conditional.AbstractIf#conditional(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

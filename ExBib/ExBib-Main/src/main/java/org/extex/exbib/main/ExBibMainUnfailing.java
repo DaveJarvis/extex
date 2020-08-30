@@ -24,8 +24,7 @@ package org.extex.exbib.main;
  * System.exit().
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class ExBibMainUnfailing {
 
     /**

@@ -29,17 +29,16 @@ import org.extex.ant.latex.command.Command;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 5432 $
- */
+*/
 public class PatternRule extends Rule {
 
     /**
-     * The field <tt>pattern</tt> contains the pattern for matching.
+     * The field {@code pattern} contains the pattern for matching.
      */
     private Pattern pattern;
 
     /**
-     * The field <tt>sourcePattern</tt> contains the ...
+     * The field {@code sourcePattern} contains the ...
      */
     private String sourcePattern;
 

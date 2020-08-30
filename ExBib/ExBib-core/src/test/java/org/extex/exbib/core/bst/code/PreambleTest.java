@@ -36,20 +36,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>preamble$</tt>.
+ * Test suite for {@code preamble$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class PreambleTest {
 
     /**
-     * The field <tt>db</tt> contains the database.
+     * The field {@code db} contains the database.
      */
     private DB db = null;
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -76,7 +75,7 @@ public class PreambleTest {
     }
 
     /**
-     * <testcase> preamble$ can extract a block preamble. </testcase>
+     *  preamble$ can extract a block preamble.
      * 
      * @throws Exception in case of an error
      */
@@ -90,7 +89,7 @@ public class PreambleTest {
     }
 
     /**
-     * <testcase> initially the preamble is empty. </testcase>
+     *  initially the preamble is empty.
      * 
      * @throws Exception in case of an error
      */
@@ -103,7 +102,7 @@ public class PreambleTest {
     }
 
     /**
-     * <testcase> preamble$ can extract a numeric preamble. </testcase>
+     *  preamble$ can extract a numeric preamble.
      * 
      * @throws Exception in case of an error
      */
@@ -117,7 +116,7 @@ public class PreambleTest {
     }
 
     /**
-     * <testcase> preamble$ can extract a string preamble. </testcase>
+     *  preamble$ can extract a string preamble.
      * 
      * @throws Exception in case of an error
      */
@@ -131,7 +130,7 @@ public class PreambleTest {
     }
 
     /**
-     * <testcase> preamble$ can extract a combined preamble. </testcase>
+     *  preamble$ can extract a combined preamble.
      * 
      * @throws Exception in case of an error
      */

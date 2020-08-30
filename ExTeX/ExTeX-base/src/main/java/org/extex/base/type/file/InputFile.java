@@ -32,24 +32,23 @@ import org.extex.scanner.type.tokens.Tokens;
  * This class holds an input file from which tokens can be read.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4399 $
- */
+*/
 public class InputFile implements InFile {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>standardStream</tt> contains the indicator that the
+     * The field {@code standardStream} contains the indicator that the
      * current stream is the standard stream.
      */
     private boolean standardStream;
 
     /**
-     * The field <tt>stream</tt> contains the stream.
+     * The field {@code stream} contains the stream.
      */
     private transient TokenStream stream = null;
 
@@ -65,22 +64,12 @@ public class InputFile implements InFile {
         this.standardStream = isStandard;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.type.file.InFile#close()
-     */
-    public void close() {
+public void close() {
 
         stream = null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.type.file.InFile#isEof()
-     */
-    public boolean isEof() throws NoHelpException {
+public boolean isEof() throws NoHelpException {
 
         try {
             return (stream == null || stream.isEof());
@@ -89,41 +78,23 @@ public class InputFile implements InFile {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.type.file.InFile#isFileStream()
-     */
-    public boolean isFileStream() {
+public boolean isFileStream() {
 
         return stream != null && this.stream.isFileStream();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.type.file.InFile#isOpen()
-     */
-    public boolean isOpen() {
+public boolean isOpen() {
 
         return (stream != null);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.type.file.InFile#isStandardStream()
-     */
-    public boolean isStandardStream() {
+public boolean isStandardStream() {
 
         return this.standardStream;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.type.file.InFile#read(org.extex.scanner.type.token.TokenFactory,
-     *      org.extex.scanner.api.Tokenizer)
+*      org.extex.scanner.api.Tokenizer)
      */
     public Tokens read(TokenFactory factory, Tokenizer tokenizer)
             throws NoHelpException {

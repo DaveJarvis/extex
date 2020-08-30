@@ -43,33 +43,32 @@ import org.extex.exindex.lisp.type.value.LValue;
  * worlds is performed in this class.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class LFunction {
 
     /**
-     * The field <tt>flags</tt> contains the mapping of flag to specs.
+     * The field {@code flags} contains the mapping of flag to specs.
      */
     private final Map<String, Arg> flags = new HashMap<String, Arg>();
 
     /**
-     * The field <tt>index</tt> contains the mapping of flag to argument
+     * The field {@code index} contains the mapping of flag to argument
      * position.
      */
     private final Map<String, Integer> index = new HashMap<String, Integer>();
 
     /**
-     * The field <tt>method</tt> contains the evaluate method to invoke.
+     * The field {@code method} contains the evaluate method to invoke.
      */
     private final Method method;
 
     /**
-     * The field <tt>specs</tt> contains the specification of the arguments.
+     * The field {@code specs} contains the specification of the arguments.
      */
     private final Arg[] specs;
 
     /**
-     * The field <tt>name</tt> contains the name of the function for error
+     * The field {@code name} contains the name of the function for error
      * messages.
      */
     private final String name;
@@ -194,12 +193,7 @@ public abstract class LFunction {
         stream.print("...");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return "#" + name;

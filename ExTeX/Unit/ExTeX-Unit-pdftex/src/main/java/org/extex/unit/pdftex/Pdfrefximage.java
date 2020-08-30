@@ -30,37 +30,36 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\pdfrefximage</code>.
+ * {@code \pdfrefximage}.
  * 
- * <doc name="pdfrefximage">
- * <h3>The Primitive <tt>\pdfrefximage</tt></h3>
+ * <p>The Primitive {@code \pdfrefximage}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+ *
+ * <p>
  * The formal description of this primitive is the following:
+ * </p>
  * 
  * <pre class="syntax">
  *    &lang;pdfrefximage&rang;
- *       &rarr; <tt>\pdfrefximage</tt> {@linkplain
- *          org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
- *          &lang;number&rang;} </pre>
+ *       &rarr; {@code \pdfrefximage} &lang;number&rang;
+ * </pre>
  * 
- * <h4>Examples</h4>
- * 
+ * <p>Examples</p>
+ *
+ *
  * <pre class="TeXSample">
  *    \pdfrefximage 42  </pre>
- * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4791 $
- */
+*/
 public class Pdfrefximage extends AbstractPdftexCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -76,10 +75,7 @@ public class Pdfrefximage extends AbstractPdftexCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

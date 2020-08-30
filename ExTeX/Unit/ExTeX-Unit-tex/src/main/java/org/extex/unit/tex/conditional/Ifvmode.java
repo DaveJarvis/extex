@@ -28,38 +28,37 @@ import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.conditional.AbstractIf;
 
 /**
- * This class provides an implementation for the primitive <code>\ifvmode</code>.
+ * This class provides an implementation for the primitive {@code \ifvmode}.
  * 
- * <doc name="ifvmode">
- * <h3>The Primitive <tt>\ifvmode</tt></h3>
+ * <p>The Primitive {@code \ifvmode}</p>
  * <p>
  * The primitive does not take any further arguments. The conditional is true
  * iff the typesetter is in a vertical mode. This is either the internal
  * vertical mode or the vertical mode.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;ifvmode&rang;
- *      &rarr; <tt>\ifvmode</tt> &lang;true text&rang; <tt>\fi</tt>
- *      | <tt>\ifvmode</tt> &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
+ *      &rarr; {@code \ifvmode} &lang;true text&rang; {@code \fi}
+ *      | {@code \ifvmode} &lang;true text&rang; {@code \else} &lang;false text&rang; {@code \fi} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \ifvmode abc \fi  </pre>
  * 
- * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4439 $
- */
+*/
 public class Ifvmode extends AbstractIf {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -75,10 +74,7 @@ public class Ifvmode extends AbstractIf {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.base.conditional.AbstractIf#conditional(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

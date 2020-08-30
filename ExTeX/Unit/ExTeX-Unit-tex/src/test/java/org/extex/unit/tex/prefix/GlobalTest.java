@@ -25,11 +25,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\global</tt>.
+ * This is a test suite for the primitive {@code \global}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4306 $
- */
+*/
 public class GlobalTest extends PrefixTester {
 
     /**
@@ -50,7 +49,7 @@ public class GlobalTest extends PrefixTester {
 
     /**
      * <testcase primitive="\global"> Test case checking that double
-     * <tt>\global</tt> has the same effect as one. </testcase>
+     * {@code \global} has the same effect as one. 
      * 
      * @throws Exception in case of an error
      */
@@ -66,7 +65,7 @@ public class GlobalTest extends PrefixTester {
 
     /**
      * <testcase primitive="\global"> Test case checking that \global set the
-     * global flag. </testcase>
+     * global flag. 
      * 
      * @throws Exception in case of an error
      */
@@ -85,7 +84,7 @@ public class GlobalTest extends PrefixTester {
 
     /**
      * <testcase primitive="\global"> Test case checking that double
-     * <tt>\global</tt> has the same effect as one. </testcase>
+     * {@code \global} has the same effect as one. 
      * 
      * @throws Exception in case of an error
      */
@@ -104,7 +103,7 @@ public class GlobalTest extends PrefixTester {
 
     /**
      * <testcase primitive="\global"> Test case checking that \global can be
-     * combined with \long. </testcase>
+     * combined with \long. 
      * 
      * @throws Exception in case of an error
      */

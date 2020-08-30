@@ -40,8 +40,7 @@ import org.extex.interpreter.primitives.register.transform.Transform;
  * functions.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class ContextExtensionImpl extends ContextImpl
         implements
             Context,
@@ -49,7 +48,7 @@ public class ContextExtensionImpl extends ContextImpl
             Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the ...
+     * The field {@code serialVersionUID} contains the ...
      */
     private static final long serialVersionUID = 2006L;
 

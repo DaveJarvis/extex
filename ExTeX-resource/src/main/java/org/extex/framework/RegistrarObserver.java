@@ -24,8 +24,7 @@ package org.extex.framework;
  * which has just been reconstructed after deserialization.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface RegistrarObserver {
 
     /**

@@ -38,19 +38,18 @@ import org.extex.util.xml.XMLStreamWriter;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public abstract class T1DictDelta extends T1DictKey {
 
     /**
      * bytes
      */
-    private short[] bytes;
+    private final short[] bytes;
 
     /**
      * value
      */
-    private Integer[] value;
+    private final Integer[] value;
 
     /**
      * Create a new object.
@@ -78,23 +77,13 @@ public abstract class T1DictDelta extends T1DictKey {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#getBytes()
-     */
-    @Override
+@Override
     public short[] getBytes() {
 
         return bytes;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getValue()
-     */
-    @Override
+@Override
     public Object getValue() {
 
         return value;
@@ -103,7 +92,7 @@ public abstract class T1DictDelta extends T1DictKey {
     /**
      * Check, if the object is a array.
      * 
-     * @return Returns <code>true</code>, if the object is a array.
+     * @return Returns {@code true}, if the object is a array.
      */
     @Override
     public boolean isArray() {
@@ -111,12 +100,7 @@ public abstract class T1DictDelta extends T1DictKey {
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder buf = new StringBuilder();
@@ -126,12 +110,7 @@ public abstract class T1DictDelta extends T1DictKey {
         return buf.toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    @Override
+@Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());

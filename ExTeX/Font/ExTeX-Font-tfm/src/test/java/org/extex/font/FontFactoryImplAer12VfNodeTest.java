@@ -51,8 +51,7 @@ import static org.junit.Assert.*;
  * Test for the font factory (vf with creation nodes).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 @SuppressWarnings("OctalInteger")
 public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
 

@@ -28,35 +28,34 @@ import org.extex.exindex.makeindex.Entry;
  * This class provides a comparator for the sorting of makeindex entries.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 5432 $
- */
+*/
 public class MakeindexComparator implements Comparator<Entry> {
 
     /**
-     * The field <tt>NUMBER_PATTERN</tt> contains the pattern for numbers.
+     * The field {@code NUMBER_PATTERN} contains the pattern for numbers.
      */
     private static final Pattern NUMBER_PATTERN = Pattern.compile( "[0-9]+");
 
     /**
-     * The field <tt>comparisons</tt> contains the number of comparisons
+     * The field {@code comparisons} contains the number of comparisons
      * performed.
      */
     private long comparisons;
 
     /**
-     * The field <tt>EQUAL</tt> contains the value for the equal comparison
+     * The field {@code EQUAL} contains the value for the equal comparison
      * result.
      */
     private static final int EQUAL = 0;
 
     /**
-     * The field <tt>GREATER</tt> contains the value for the greater comparison
+     * The field {@code GREATER} contains the value for the greater comparison
      * result, i.e. the first parameter is greater than the second one.
      */
     private static final int GREATER = 1;
 
     /**
-     * The field <tt>LESS</tt> contains the value for the less comparison
+     * The field {@code LESS} contains the value for the less comparison
      * result, i.e. the first parameter is less than the second one.
      */
     private static final int LESS = -1;
@@ -185,7 +184,7 @@ public class MakeindexComparator implements Comparator<Entry> {
      * 
      * @param c the character
      * 
-     * @return <code>true</code> iff the character is a symbol
+     * @return {@code true} iff the character is a symbol
      */
     protected boolean issymbol(char c) {
 

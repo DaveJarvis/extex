@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\closein</tt>.
+ * This is a test suite for the primitive {@code \closein}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class CloseinTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
 
     /**
@@ -49,7 +48,7 @@ public class CloseinTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
 
     /**
      * <testcase primitive="\closein"> Test case checking that a
-     * <tt>\closein</tt> works on unopened file handles. </testcase>
+     * {@code \closein} works on unopened file handles.
      * 
      * @throws Exception in case of an error
      */

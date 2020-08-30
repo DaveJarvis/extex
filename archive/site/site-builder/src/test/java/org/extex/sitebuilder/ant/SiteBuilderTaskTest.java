@@ -33,12 +33,11 @@ import org.extex.sitebuilder.CleanupUtil;
  * 
  * <p>
  * <b>Note:</b> the {@link #run()} method creates a temporary Ant build file in
- * <tt>target/</tt>. Thus all path names are relative to this directory!
+ * {@code target/}. Thus all path names are relative to this directory!
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SiteBuilderTaskTest extends BuildFileTest {
 
     /**
@@ -88,7 +87,7 @@ public class SiteBuilderTaskTest extends BuildFileTest {
     }
 
     /**
-     * <testcase> An invocation with all possible flags succeeds. </testcase>
+     *  An invocation with all possible flags succeeds.
      * 
      * @throws Exception in case of an error
      */
@@ -129,7 +128,7 @@ public class SiteBuilderTaskTest extends BuildFileTest {
     }
 
     /**
-     * <testcase> An empty sitebuilder specification does no harm. </testcase>
+     *  An empty sitebuilder specification does no harm.
      * 
      * @throws Exception in case of an error
      */
@@ -143,7 +142,7 @@ public class SiteBuilderTaskTest extends BuildFileTest {
     }
 
     /**
-     * <testcase> An illegal base dir in a tree leads to an error. </testcase>
+     *  An illegal base dir in a tree leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -162,7 +161,7 @@ public class SiteBuilderTaskTest extends BuildFileTest {
     }
 
     /**
-     * <testcase> a missing base dir for a tree leads to an error. </testcase>
+     *  a missing base dir for a tree leads to an error.
      * 
      * @throws Exception in case of an error
      */

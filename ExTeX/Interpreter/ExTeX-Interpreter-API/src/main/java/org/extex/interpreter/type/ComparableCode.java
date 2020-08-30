@@ -28,8 +28,7 @@ import org.extex.scanner.type.token.Token;
  * binding of a token in a context.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface ComparableCode {
 
     /**
@@ -38,8 +37,8 @@ public interface ComparableCode {
      * @param token the token to compare to
      * @param context the interpreter context
      * 
-     * @return <code>true</code> iff the code is equivalent according to the
-     *         semantics of <code>\ifx</code>
+     * @return {@code true} iff the code is equivalent according to the
+     *         semantics of {@code \ifx}
      * 
      * @throws HelpingException in case of an error
      */

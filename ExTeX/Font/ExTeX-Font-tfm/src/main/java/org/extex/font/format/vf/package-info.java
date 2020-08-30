@@ -16,10 +16,9 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the definitions and implementations for the
- * VF-font-metric handling in ??TeX.
+ *Contains definitions and implementations for the
+ * VF-font-metric handling in εχTeX.
  *
- * <a name="VFformat" />
  * <h2>VF format</h2>
  *
  * <p>Definition of VF format taken from VFtoVP, Version 1.2</p>

@@ -19,8 +19,6 @@
 
 package org.extex.font.format.vf.command;
 
-import java.io.IOException;
-
 import org.extex.font.exception.FontException;
 import org.extex.font.format.tfm.TfmFixWord;
 import org.extex.framework.i18n.Localizer;
@@ -28,12 +26,14 @@ import org.extex.util.file.random.RandomAccessInputArray;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
+import java.io.IOException;
+
 /**
  * VfCommand: character packets
  * 
  * <p>
  * The preamble is followed by zero or more character packets, where each
- * character packet begins with a byte that is &lt;<243. Character packets have
+ * character packet begins with a byte that is &lt;243. Character packets have
  * two formats, one long and one short:
  * </p>
  * 
@@ -55,68 +55,67 @@ import org.extex.util.xml.XMLStreamWriter;
  * is pl!
  * </p>
  * <p>
- * Here <code>pl</code> denotes the packet length following the
- * <code>tfm</code> value; <code>cc</code> is the character code; and
- * <code>tfm</code> is the character width copied from the TFM file for this
+ * Here {@code pl} denotes the packet length following the
+ * {@code tfm} value; {@code cc} is the character code; and
+ * {@code tfm} is the character width copied from the TFM file for this
  * virtual font. There should be at most one character packet having any given
- * <code>cc</code> code.
+ * {@code cc} code.
  * </p>
  * <p>
- * The <code>dvi</code> bytes are a sequence of complete DVI commands,
- * properly nested with respect to <code>push</code> and <code>pop</code>.
- * All DVI operations are permitted except <code>bop</code>, <code>eop</code>,
- * and commands with opcodes &gt;=243. Font selection commands (<code>fnt_num0</code>
- * through <code>fnt4</code>) must refer to fonts defined in the preamble.
+ * The {@code dvi} bytes are a sequence of complete DVI commands,
+ * properly nested with respect to {@code push} and {@code pop}.
+ * All DVI operations are permitted except {@code bop}, {@code eop},
+ * and commands with opcodes &gt;=243. Font selection commands ({@code fnt_num0}
+ * through {@code fnt4}) must refer to fonts defined in the preamble.
  * </p>
  * <p>
  * Dimensions that appear in the DVI instructions are analogous to
- * <code>fix_word</code> quantities; i.e., they are integer multiples of 2^-20
+ * {@code fix_word} quantities; i.e., they are integer multiples of 2^-20
  * times the design size of the virtual font. For example, if the virtual font
  * has design size 10pt, the DVI command to move down 5pt would be a
- * <code>down</code> instruction with parameter 2^19. The virtual font itself
- * might be used at a different size, say 12pt; then that <code>down</code>
+ * {@code down} instruction with parameter 2^19. The virtual font itself
+ * might be used at a different size, say 12pt; then that {@code down}
  * instruction would move down 6pt instead. Each dimension must be less than
  * 2^24 in absolute value.
  * </p>
  * <p>
- * Device drivers processing VF files treat the sequences of <code>dvi</code>
+ * Device drivers processing VF files treat the sequences of {@code dvi}
  * bytes as subroutines or macros, implicitly enclosing them with
- * <code>push</code> and <code>pop</code>. Each subroutine begins with
- * <code>w=x=y=z=0</code>, and with current font <code>f</code> the number
+ * {@code push} and {@code pop}. Each subroutine begins with
+ * {@code w=x=y=z=0}, and with current font {@code f} the number
  * of the first-defined in the preamble (undefined if there's no such font).
- * After the <code>dvi</code> commands have been performed, the <code>h</code>
- * and <code>v</code> position registers of DVI format and the current font
- * <code>f</code> are restored to their former values; then, if the subroutine
- * has been invoked by a <code>set_char</code> or <code>set</code> command,
- * <code>h</code> is increased by the TFM width (properly scaled) - just as if
+ * After the {@code dvi} commands have been performed, the {@code h}
+ * and {@code v} position registers of DVI format and the current font
+ * {@code f} are restored to their former values; then, if the subroutine
+ * has been invoked by a {@code set_char} or {@code set} command,
+ * {@code h} is increased by the TFM width (properly scaled) - just as if
  * a simple character had been typeset.
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class VfCommandCharacterPackets extends VfCommand {
 
     /**
      * the character code (cc)
      */
-    private int charactercode;
+    private final int charactercode;
 
     /**
      * the dvi commands
      */
-    private byte[] dvi;
+    private final byte[] dvi;
 
     /**
      * the packet length (pl)
      */
-    private int packetlength;
+    private final int packetlength;
 
     /**
      * the character width (from tfm file) (tfm)
      */
-    private TfmFixWord width;
+    private final TfmFixWord width;
 
     /**
      * Creates a new object.
@@ -200,11 +199,6 @@ public class VfCommandCharacterPackets extends VfCommand {
         return width;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString() {
 
@@ -212,10 +206,7 @@ public class VfCommandCharacterPackets extends VfCommand {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

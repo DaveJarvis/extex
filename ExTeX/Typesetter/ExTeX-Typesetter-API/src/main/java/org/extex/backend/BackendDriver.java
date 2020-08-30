@@ -32,8 +32,7 @@ import org.extex.typesetter.type.page.Page;
  * This interface describes a back-end as extension to a DocumentWriter.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface BackendDriver {
 
     /**
@@ -68,8 +67,8 @@ public interface BackendDriver {
 
     /**
      * Getter for the extension associated with this kind of output. For
-     * instance <tt>pdf</tt> is the expected value for PDF files and
-     * <tt>dvi</tt> is the expected value for DVI files.
+     * instance {@code pdf} is the expected value for PDF files and
+     * {@code dvi} is the expected value for DVI files.
      * 
      * @return the appropriate extension for file names
      */

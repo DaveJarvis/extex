@@ -40,8 +40,7 @@ import org.extex.typesetter.type.node.VerticalListNode;
  * @see "TTP [687]"
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class OverlinedNoad extends AbstractNucleusNoad {
 
     /**

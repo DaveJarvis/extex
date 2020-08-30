@@ -28,23 +28,22 @@ import org.extex.exindex.core.type.page.PageReference;
  * This is a base class for page ranges.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class Pages {
 
     /**
-     * The field <tt>PAGE_PARAMS</tt> contains the default parameters for
+     * The field {@code PAGE_PARAMS} contains the default parameters for
      * displaying a page.
      */
     private static final String[] PAGE_PARAMS = {"\\", "{", "}", "--", ", "};
 
   /**
-     * The field <tt>from</tt> contains the star page.
+     * The field {@code from} contains the star page.
      */
     private PageReference from;
 
     /**
-     * The field <tt>encap</tt> contains the encapsulator or <code>null</code>
+     * The field {@code encap} contains the encapsulator or {@code null}
      * for none.
      */
     private final String encap;
@@ -53,7 +52,7 @@ public abstract class Pages {
      * Creates a new object.
      * 
      * @param from the start and end page
-     * @param encap the encapsulator or <code>null</code>
+     * @param encap the encapsulator or {@code null}
      */
     protected Pages(PageReference from, String encap) {
 
@@ -101,12 +100,7 @@ public abstract class Pages {
         this.from = from;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringWriter writer = new StringWriter();

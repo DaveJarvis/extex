@@ -22,8 +22,7 @@ package org.extex.exindex.core.type.page;
  * This is the abstract base class for pages.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractPage implements PageReference {
 
     /**
@@ -39,7 +38,7 @@ public abstract class AbstractPage implements PageReference {
      * </ul>
      * 
      * @param p the page specification
-     * @param encap the encapsulator, which might be <code>null</code>
+     * @param encap the encapsulator, which might be {@code null}
      * 
      * @return an appropriate instance of a page reference
      */
@@ -63,17 +62,17 @@ public abstract class AbstractPage implements PageReference {
     }
 
     /**
-     * The field <tt>enc</tt> contains the encapsulator.
+     * The field {@code enc} contains the encapsulator.
      */
     private final String enc;
 
     /**
-     * The field <tt>page</tt> contains the page number.
+     * The field {@code page} contains the page number.
      */
     private final String page;
 
     /**
-     * The field <tt>ord</tt> contains the ordinal number or -1 for none.
+     * The field {@code ord} contains the ordinal number or -1 for none.
      */
     private final int ord;
 
@@ -91,42 +90,22 @@ public abstract class AbstractPage implements PageReference {
         this.ord = ord;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.page.PageReference#getEncap()
-     */
-    public String getEncap() {
+public String getEncap() {
 
         return enc;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.page.PageReference#getOrd()
-     */
-    public int getOrd() {
+public int getOrd() {
 
         return ord;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.page.PageReference#getPage()
-     */
-    public String getPage() {
+public String getPage() {
 
         return page;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return page;

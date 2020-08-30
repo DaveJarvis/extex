@@ -45,8 +45,7 @@ import org.junit.Test;
  * This is a test suite for {@link BstReaderExtImpl}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BstReaderExtImplTest {
 
     /**
@@ -55,7 +54,7 @@ public class BstReaderExtImplTest {
     private static final class RF implements ResourceFinder {
 
         /**
-         * The field <tt>content</tt> contains the content.
+         * The field {@code content} contains the content.
          */
         private final String content;
 
@@ -69,21 +68,13 @@ public class BstReaderExtImplTest {
             this.content = content;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
-         */
-        public void enableTracing(boolean flag) {
+    public void enableTracing(boolean flag) {
 
 
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public NamedInputStream findResource(String name, String type)
                 throws ConfigurationException {

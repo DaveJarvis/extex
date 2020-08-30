@@ -27,24 +27,23 @@ import org.extex.core.dimen.FixedDimen;
  * Glue} which do not modify the value.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4726 $
- */
+*/
 public interface FixedGlue {
 
     /**
-     * The constant <tt>NORMAL_ORDER</tt> contains the value for the normal
+     * The constant {@code NORMAL_ORDER} contains the value for the normal
      * &ndash; immutable &ndash; order.
      */
     int NORMAL_ORDER = 0;
 
     /**
-     * The constant <tt>ZERO</tt> contains the value of width 0pt without any
+     * The constant {@code ZERO} contains the value of width 0pt without any
      * stretchablity or shrinkability.
      */
     FixedGlue ZERO = new Glue(0);
 
     /**
-     * The constant <tt>SS</tt> contains the glue for 0pt plus 1fil minus 1fil.
+     * The constant {@code SS} contains the glue for 0pt plus 1fil minus 1fil.
      */
     FixedGlue S_S = new Glue(Dimen.ZERO, GlueComponent.ONE_FIL,
         GlueComponent.ONE_FIL);
@@ -61,7 +60,7 @@ public interface FixedGlue {
      * 
      * @param glue the glue to compare with
      * 
-     * @return <code>true</code> iff they are different
+     * @return {@code true} iff they are different
      */
     boolean eq(FixedGlue glue);
 
@@ -97,7 +96,7 @@ public interface FixedGlue {
      * 
      * @param glue the glue to compare with
      * 
-     * @return <code>true</code> iff they are different
+     * @return {@code true} iff they are different
      */
     boolean ne(FixedGlue glue);
 
@@ -105,9 +104,6 @@ public interface FixedGlue {
      * Provide a string representation of this instance.
      * 
      * @return the string representation of this glue
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [178,177]"
      */
     String toString();
 

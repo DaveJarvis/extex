@@ -31,12 +31,11 @@ import org.junit.runner.JUnitCore;
  * This class provides the test cases for the letter tokens.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4756 $
- */
+*/
 public class LetterTokenTest extends TokenTester {
 
     /**
-     * The field <tt>t</tt> contains the reference token.
+     * The field {@code t} contains the reference token.
      */
     private static final Token t = new LetterToken( UnicodeChar.get( 'x'));
 
@@ -59,9 +58,7 @@ setText( "x");
 setStr( "the letter x");
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testEqualsToken1() {
 
         Token t1 = new LetterToken(UnicodeChar.get(' '));
@@ -69,45 +66,35 @@ setStr( "the letter x");
         assertFalse(t1.equals(t2));
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testToString2() {
 
         assertEquals("the letter ^^@",
             new LetterToken(UnicodeChar.get(0)).toString());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testToString3() {
 
         assertEquals("the letter ^^A",
             new LetterToken(UnicodeChar.get(1)).toString());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testToString4() {
 
         assertEquals("the letter ^^B",
             new LetterToken(UnicodeChar.get(2)).toString());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testToString5() {
 
         assertEquals("the letter ^^?",
             new LetterToken(UnicodeChar.get(127)).toString());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testToStringBuilder2() {
 
         StringBuilder sb = new StringBuilder();

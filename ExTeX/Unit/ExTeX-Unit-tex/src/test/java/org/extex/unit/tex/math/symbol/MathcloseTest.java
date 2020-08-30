@@ -23,11 +23,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\mathclose</tt>.
+ * This is a test suite for the primitive {@code \mathclose}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MathcloseTest extends AbstractOperatorTester {
 
     public MathcloseTest() {

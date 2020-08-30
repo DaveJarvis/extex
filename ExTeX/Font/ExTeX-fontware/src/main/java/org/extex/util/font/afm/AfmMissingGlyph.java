@@ -39,8 +39,7 @@ import org.extex.util.font.AbstractFontUtil;
  * Print the missing glyphs from a font.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class AfmMissingGlyph extends AbstractFontUtil {
 
     /**

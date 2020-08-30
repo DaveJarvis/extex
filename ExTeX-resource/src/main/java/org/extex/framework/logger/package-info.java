@@ -15,20 +15,17 @@
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
+
 /**
- * This package contains some classes and interfaces for dealing with
+ * Contains some classes and interfaces for dealing with
  * the logger for components.
  * 
- * <h3>Logging</h3>
- * 
  * <p>
- * The logging supported in thos framework is based on the Java logging.
+ * The logging supported in this framework is based on the Java logging.
  * Any component may request a logger by implementing the interface
  * {@link org.extex.framework.logger.LogEnabled LogEnabled}. In the
- * course of the life-cylce management the factory will pass a logger to
+ * course of the lifecycle management the factory will pass a logger to
  * the component requesting it.
  * </p>
  */
-
 package org.extex.framework.logger;
-

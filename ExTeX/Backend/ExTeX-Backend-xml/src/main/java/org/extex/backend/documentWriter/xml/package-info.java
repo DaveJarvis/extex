@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains a backend of ??TeX which dumps the information in
+ * Contains a backend of εχTeX which dumps the information in
  * a XML format.
  */
 

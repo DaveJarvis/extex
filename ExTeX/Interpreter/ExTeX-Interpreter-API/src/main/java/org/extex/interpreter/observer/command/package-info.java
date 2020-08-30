@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains definitions for the execute observer.
+ * Contains definitions for the execute observer.
  */
 
 package org.extex.interpreter.observer.command;

@@ -26,12 +26,11 @@ import org.extex.exbib.core.io.Locator;
  * been reached unexpectedly while reading a block.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ExBibEofInBlockException extends ExBibEofException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2008L;

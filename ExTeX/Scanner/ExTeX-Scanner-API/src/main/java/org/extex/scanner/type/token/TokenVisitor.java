@@ -23,13 +23,11 @@ package org.extex.scanner.type.token;
  * This interface describes the capabilities for a visitor class on the token
  * types. This interface is used to implement the visitor pattern.
  * 
- * 
  * @param <RET_TYPE> the return type
  * @param <ARG_TYPE> the argument type
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface TokenVisitor<RET_TYPE, ARG_TYPE> {
 
     /**
@@ -96,10 +94,7 @@ public interface TokenVisitor<RET_TYPE, ARG_TYPE> {
     RET_TYPE visitLetter(LetterToken token, ARG_TYPE arg) throws Exception;
 
     /**
-     * This visit method is invoked on a macro parameter token. In <logo>T<span
-     * style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> this normally is a #.
+     * This visit method is invoked on a macro parameter token. In TeX this normally is a #.
      * 
      * @param token the macro param token to visit
      * @param arg the first argument to pass
@@ -112,10 +107,7 @@ public interface TokenVisitor<RET_TYPE, ARG_TYPE> {
             throws Exception;
 
     /**
-     * This visit method is invoked on a math shift token. In <logo>T<span
-     * style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> this normally is a $.
+     * This visit method is invoked on a math shift token. In TeX this normally is a $.
      * 
      * @param token the math shift token to visit
      * @param arg the first argument to pass
@@ -189,7 +181,8 @@ public interface TokenVisitor<RET_TYPE, ARG_TYPE> {
     RET_TYPE visitSupMark(SupMarkToken token, ARG_TYPE arg) throws Exception;
 
     /**
-     * This visit method is invoked on a tab mark token. In TeX this normally is a &.
+     * This visit method is invoked on a tab mark token. In TeX this normally
+     * is an ampersand.
      * 
      * @param token the tab mark token to visit
      * @param arg the first argument to pass

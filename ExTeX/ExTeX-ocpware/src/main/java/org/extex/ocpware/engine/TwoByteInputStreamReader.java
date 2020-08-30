@@ -27,12 +27,11 @@ import java.io.Reader;
  * Reader for double bytes in high-endian order.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TwoByteInputStreamReader extends Reader {
 
     /**
-     * The field <tt>stream</tt> contains the stream to read bytes from.
+     * The field {@code stream} contains the stream to read bytes from.
      */
     private InputStream stream;
 
@@ -46,24 +45,14 @@ public class TwoByteInputStreamReader extends Reader {
         this.stream = stream;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.Reader#close()
-     */
-    @Override
+@Override
     public void close() throws IOException {
 
         stream.close();
         stream = null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.Reader#read(char[], int, int)
-     */
-    @Override
+@Override
     public int read(char[] cbuf, int off, int len) throws IOException {
 
         int n = 0;

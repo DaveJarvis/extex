@@ -17,7 +17,7 @@
  */
 /**
  * 
- *   This package contains the makeindex emulator.
+ *   Contains the makeindex emulator.
  * 
  *
  */

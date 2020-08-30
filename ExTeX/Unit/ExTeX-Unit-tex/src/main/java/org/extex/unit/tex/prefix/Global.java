@@ -28,14 +28,13 @@ import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 
 /**
- * This class provides an implementation for the primitive <code>\global</code>.
+ * This class provides an implementation for the primitive {@code \global}.
  * It does simply nothing, but as a side effect the prefix <i>GLOBAL</i> is
  * added to the prefixes.
  * 
- * <doc name="global">
- * <h3>The Prefix Primitive <tt>\global</tt></h3>
+ * <p>The Prefix Primitive {@code \global}</p>
  * <p>
- * The primitive <tt>\global</tt> is a prefix macro. It does not do anything
+ * The primitive {@code \global} is a prefix macro. It does not do anything
  * by its own but works in combination with a following primitive token only. If
  * the following token constitutes an assignment then the assignment is not
  * restricted to the current group but acts globally in all groups.
@@ -45,19 +44,21 @@ import org.extex.typesetter.Typesetter;
  * the global modifier is applicable then a warning might be raised.
  * </p>
  * <p>
- * Multiple <tt>\global</tt> prefixes act identical to a single one.
+ * Multiple {@code \global} prefixes act identical to a single one.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * <p>
  * The formal description of this primitive is the following:
  * </p>
  * 
  * <pre class="syntax">
  *   &lang;global&rang;
- *     &rarr; <tt>\global</tt>  </pre>
+ *     &rarr; {@code \global}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * <p>
  * The following example shows that two macros defined in a group. The first
  * macro falls back to its previous binding when the group is closed. The second
@@ -83,16 +84,14 @@ import org.extex.typesetter.Typesetter;
  *     \global\count2=45
  *   \endgroup  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Global extends AbstractCode implements PrefixCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -108,10 +107,7 @@ public class Global extends AbstractCode implements PrefixCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

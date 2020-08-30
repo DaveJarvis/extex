@@ -39,18 +39,17 @@ import org.extex.scanner.type.token.Token;
  * This class represents a \verb instruction.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Verb extends AbstractNode implements Macro {
 
     /**
-     * The field <tt>tokenizer</tt> contains the tokenizer to use for
+     * The field {@code tokenizer} contains the tokenizer to use for
      * categorizing characters.
      */
     class VerbTokenizer implements Tokenizer {
 
         /**
-         * The field <tt>c</tt> contains the end character.
+         * The field {@code c} contains the end character.
          */
         protected UnicodeChar c;
 
@@ -98,17 +97,17 @@ public class Verb extends AbstractNode implements Macro {
     };
 
     /**
-     * The field <tt>list</tt> contains the contents.
+     * The field {@code list} contains the contents.
      */
     private List<Token> list = new ArrayList<Token>();
 
     /**
-     * The field <tt>openToken</tt> contains the opening and closing token.
+     * The field {@code openToken} contains the opening and closing token.
      */
     private Token openToken;
 
     /**
-     * The field <tt>cmd</tt> contains the command.
+     * The field {@code cmd} contains the command.
      */
     private Token cmd;
 
@@ -142,7 +141,7 @@ public class Verb extends AbstractNode implements Macro {
      * 
      * @param n the node to add
      * 
-     * @return <code>true</code>
+     * @return {@code true}
      * 
      * @see java.util.List#add(java.lang.Object)
      */
@@ -152,10 +151,7 @@ public class Verb extends AbstractNode implements Macro {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Macro#parse(
-     *      org.extex.scanner.type.token.Token,
+*      org.extex.scanner.type.token.Token,
      *      org.extex.latexParser.impl.Parser)
      */
     public Node parse(Token token, Parser parser) throws ScannerException {
@@ -182,12 +178,7 @@ public class Verb extends AbstractNode implements Macro {
             .toText());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.api.Node#print(java.io.PrintStream)
-     */
-    public void print(PrintStream stream) {
+public void print(PrintStream stream) {
 
         stream.print(cmd.toText());
         stream.print(openToken.toText());
@@ -197,12 +188,7 @@ public class Verb extends AbstractNode implements Macro {
         stream.print(openToken.toText());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();

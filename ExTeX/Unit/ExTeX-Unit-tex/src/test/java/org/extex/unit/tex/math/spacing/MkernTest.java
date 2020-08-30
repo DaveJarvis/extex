@@ -24,11 +24,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\mkern</tt>.
+ * This is a test suite for the primitive {@code \mkern}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MkernTest extends AbstractMathTester {
 
 
@@ -40,7 +39,7 @@ public class MkernTest extends AbstractMathTester {
     /**
      * <testcase primitive="\mkern">
      *  Test case checking that ...
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */

@@ -34,15 +34,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>swap$</tt>.
+ * Test suite for {@code swap$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SwapTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -67,7 +66,7 @@ public class SwapTest {
     }
 
     /**
-     * <testcase> swap$ complains about an empty stack. </testcase>
+     *  swap$ complains about an empty stack.
      * 
      * @throws Exception in case of an error
      */
@@ -78,8 +77,8 @@ public class SwapTest {
     }
 
     /**
-     * <testcase> swap$ complains about a short stack of one integer.
-     * </testcase>
+     *  swap$ complains about a short stack of one integer.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -91,7 +90,7 @@ public class SwapTest {
     }
 
     /**
-     * <testcase> swap$ complains about a short stack of one string. </testcase>
+     *  swap$ complains about a short stack of one string.
      * 
      * @throws Exception in case of an error
      */
@@ -103,7 +102,7 @@ public class SwapTest {
     }
 
     /**
-     * <testcase> swap$ swaps two strings. </testcase>
+     *  swap$ swaps two strings.
      * 
      * @throws Exception in case of an error
      */
@@ -119,7 +118,7 @@ public class SwapTest {
     }
 
     /**
-     * <testcase> swap$ swaps two integers. </testcase>
+     *  swap$ swaps two integers.
      * 
      * @throws Exception in case of an error
      */
@@ -135,7 +134,7 @@ public class SwapTest {
     }
 
     /**
-     * <testcase> swap$ swaps two strings. </testcase>
+     *  swap$ swaps two strings.
      * 
      * @throws Exception in case of an error
      */

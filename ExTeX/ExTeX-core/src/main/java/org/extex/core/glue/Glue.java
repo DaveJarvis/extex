@@ -19,10 +19,10 @@
 
 package org.extex.core.glue;
 
-import java.io.Serializable;
-
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
+
+import java.io.Serializable;
 
 /**
  * This class provides the basic data type of a stretchable and shrinkable
@@ -30,29 +30,28 @@ import org.extex.core.dimen.FixedDimen;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:4399 $
- */
+*/
 public class Glue implements Serializable, FixedGlue {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>length</tt> contains the natural length of the glue.
+     * The field {@code length} contains the natural length of the glue.
      */
-    private Dimen length;
+    private final Dimen length;
 
     /**
-     * The field <tt>shrink</tt> contains the shrink specification.
+     * The field {@code shrink} contains the shrink specification.
      */
-    private GlueComponent shrink;
+    private final GlueComponent shrink;
 
     /**
-     * The field <tt>stretch</tt> contains the stretch specification.
+     * The field {@code stretch} contains the stretch specification.
      */
-    private GlueComponent stretch;
+    private final GlueComponent stretch;
 
     /**
      * Creates a new object with a zero length.
@@ -108,7 +107,7 @@ public class Glue implements Serializable, FixedGlue {
 
     /**
      * Creates a new object as copy of another glue. if the given glue is
-     * <code>null</code> then the new glue is initialized to the glue with
+     * {@code null} then the new glue is initialized to the glue with
      * length 0 and no strechability and shrinkability.
      * 
      * @param glue the glue to clone
@@ -180,9 +179,7 @@ public class Glue implements Serializable, FixedGlue {
      * 
      * @param glue the glue to compare with
      * 
-     * @return <code>true</code> iff they are the same
-     * 
-     * @see org.extex.core.glue.FixedGlue#eq(org.extex.core.glue.FixedGlue)
+     * @return {@code true} iff they are the same
      */
     @Override
     public boolean eq(FixedGlue glue) {
@@ -192,12 +189,12 @@ public class Glue implements Serializable, FixedGlue {
     }
 
     /**
-     * Compare this value with a given glue and return <code>true</code> iff the
+     * Compare this value with a given glue and return {@code true} iff the
      * current length is greater or equal than the given length.
      * 
      * @param x the value to compare to
      * 
-     * @return <code>true</code> iff the current length is greater or equal than
+     * @return {@code true} iff the current length is greater or equal than
      *         the given one
      */
     public boolean ge(FixedDimen x) {
@@ -211,8 +208,6 @@ public class Glue implements Serializable, FixedGlue {
      * glue.
      * 
      * @return the natural length
-     * 
-     * @see org.extex.core.glue.FixedGlue#getLength()
      */
     @Override
     public FixedDimen getLength() {
@@ -226,8 +221,6 @@ public class Glue implements Serializable, FixedGlue {
      * glue.
      * 
      * @return the shrink.
-     * 
-     * @see org.extex.core.glue.FixedGlue#getShrink()
      */
     @Override
     public FixedGlueComponent getShrink() {
@@ -241,8 +234,6 @@ public class Glue implements Serializable, FixedGlue {
      * glue.
      * 
      * @return the stretch.
-     * 
-     * @see org.extex.core.glue.FixedGlue#getStretch()
      */
     @Override
     public FixedGlueComponent getStretch() {
@@ -251,12 +242,12 @@ public class Glue implements Serializable, FixedGlue {
     }
 
     /**
-     * Compare this value with a given glue and return <code>true</code> iff the
+     * Compare this value with a given glue and return {@code true} iff the
      * current length is greater than the given length.
      * 
      * @param x the value to compare to
      * 
-     * @return <code>true</code> iff the current length is greater than the
+     * @return {@code true} iff the current length is greater than the
      *         given one
      */
     public boolean gt(FixedDimen x) {
@@ -265,12 +256,12 @@ public class Glue implements Serializable, FixedGlue {
     }
 
     /**
-     * Compare this value with a given glue and return <code>true</code> iff the
+     * Compare this value with a given glue and return {@code true} iff the
      * current length is less or equal than the given length.
      * 
      * @param x the value to compare to
      * 
-     * @return <code>true</code> iff the current length is less or equal than
+     * @return {@code true} iff the current length is less or equal than
      *         the given one
      */
     public boolean le(FixedDimen x) {
@@ -279,12 +270,12 @@ public class Glue implements Serializable, FixedGlue {
     }
 
     /**
-     * Compare this value with a given glue and return <code>true</code> iff the
+     * Compare this value with a given glue and return {@code true} iff the
      * current length is less than the given length.
      * 
      * @param x the value to compare to
      * 
-     * @return <code>true</code> iff the current length is less than the given
+     * @return {@code true} iff the current length is less than the given
      *         one
      */
     public boolean lt(FixedDimen x) {
@@ -347,11 +338,6 @@ public class Glue implements Serializable, FixedGlue {
         this.stretch.multiply(nom, denom);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.core.glue.FixedGlue#ne(org.extex.core.glue.FixedGlue)
-     */
     @Override
     public boolean ne(FixedGlue glue) {
 
@@ -364,7 +350,6 @@ public class Glue implements Serializable, FixedGlue {
      * 
      */
     public void negateLength() {
-
         this.length.negate();
     }
 
@@ -451,9 +436,6 @@ public class Glue implements Serializable, FixedGlue {
      * is exactly the string which would be produced by TeX to print the skip register.
      * 
      * @return the string representation of this glue
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [178,177]"
      */
     @Override
     public String toString() {

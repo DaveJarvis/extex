@@ -28,12 +28,11 @@ import org.junit.Test;
  * Test suite for built-ins.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BuiltinTest {
 
     /**
-     * The field <tt>DATA_DIR</tt> contains the directory containing database,
+     * The field {@code DATA_DIR} contains the directory containing database,
      * styles and results.
      */
     private static final String DATA_DIR = "src/test/resources/bibtex/builtin";
@@ -54,7 +53,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run test for add.period$. </testcase>
+     *  Run test for add.period$. 
      * 
      * @throws Exception in case of an error
      */
@@ -65,7 +64,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for call.type$. </testcase>
+     *  Run tests for call.type$. 
      * 
      * @throws Exception in case of an error
      */
@@ -76,7 +75,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for change.case$. </testcase>
+     *  Run tests for change.case$. 
      * 
      * @throws Exception in case of an error
      */
@@ -87,7 +86,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for chr.to.int$. </testcase>
+     *  Run tests for chr.to.int$. 
      * 
      * @throws Exception in case of an error
      */
@@ -98,7 +97,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for cite$. </testcase>
+     *  Run tests for cite$. 
      * 
      * @throws Exception in case of an error
      */
@@ -109,7 +108,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for concat$. </testcase>
+     *  Run tests for concat$. 
      * 
      * @throws Exception in case of an error
      */
@@ -120,7 +119,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for duplicate$. </testcase>
+     *  Run tests for duplicate$. 
      * 
      * @throws Exception in case of an error
      */
@@ -131,7 +130,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for empty$. </testcase>
+     *  Run tests for empty$. 
      * 
      * @throws Exception in case of an error
      */
@@ -142,7 +141,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for =$. </testcase>
+     *  Run tests for =$. 
      * 
      * @throws Exception in case of an error
      */
@@ -153,7 +152,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for format.names$. </testcase>
+     *  Run tests for format.names$. 
      * 
      * @throws Exception in case of an error
      */
@@ -165,7 +164,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for &gt;$. </testcase>
+     *  Run tests for &gt;$. 
      * 
      * @throws Exception in case of an error
      */
@@ -176,7 +175,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for if$. </testcase>
+     *  Run tests for if$. 
      * 
      * @throws Exception in case of an error
      */
@@ -187,7 +186,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for int.to.chr$. </testcase>
+     *  Run tests for int.to.chr$. 
      * 
      * @throws Exception in case of an error
      */
@@ -198,7 +197,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for int.to.str$. </testcase>
+     *  Run tests for int.to.str$. 
      * 
      * @throws Exception in case of an error
      */
@@ -209,7 +208,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for &lt;. </testcase>
+     *  Run tests for &lt;. 
      * 
      * @throws Exception in case of an error
      */
@@ -220,7 +219,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for -. </testcase>
+     *  Run tests for -. 
      * 
      * @throws Exception in case of an error
      */
@@ -231,7 +230,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for missing$. </testcase>
+     *  Run tests for missing$. 
      * 
      * @throws Exception in case of an error
      */
@@ -242,7 +241,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for newline$. </testcase>
+     *  Run tests for newline$. 
      * 
      * @throws Exception in case of an error
      */
@@ -253,7 +252,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for num.names$. </testcase>
+     *  Run tests for num.names$. 
      * 
      * @throws Exception in case of an error
      */
@@ -264,7 +263,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for plus$. </testcase>
+     *  Run tests for plus$. 
      * 
      * @throws Exception in case of an error
      */
@@ -275,7 +274,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for pop$. </testcase>
+     *  Run tests for pop$. 
      * 
      * @throws Exception in case of an error
      */
@@ -286,7 +285,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for preamble$. </testcase>
+     *  Run tests for preamble$. 
      * 
      * @throws Exception in case of an error
      */
@@ -297,7 +296,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for purify$. </testcase>
+     *  Run tests for purify$. 
      * 
      * @throws Exception in case of an error
      */
@@ -308,7 +307,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for quote$. </testcase>
+     *  Run tests for quote$. 
      * 
      * @throws Exception in case of an error
      */
@@ -319,7 +318,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for set$. </testcase>
+     *  Run tests for set$. 
      * 
      * @throws Exception in case of an error
      */
@@ -330,7 +329,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for skip$. </testcase>
+     *  Run tests for skip$. 
      * 
      * @throws Exception in case of an error
      */
@@ -341,7 +340,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for stack$. </testcase>
+     *  Run tests for stack$. 
      * 
      * @throws Exception in case of an error
      */
@@ -352,7 +351,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for substring$. </testcase>
+     *  Run tests for substring$. 
      * 
      * @throws Exception in case of an error
      */
@@ -363,7 +362,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for swap$. </testcase>
+     *  Run tests for swap$. 
      * 
      * @throws Exception in case of an error
      */
@@ -374,7 +373,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for text.length$. </testcase>
+     *  Run tests for text.length$. 
      * 
      * @throws Exception in case of an error
      */
@@ -385,7 +384,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for text.prefix$. </testcase>
+     *  Run tests for text.prefix$. 
      * 
      * @throws Exception in case of an error
      */
@@ -396,7 +395,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for top$. </testcase>
+     *  Run tests for top$. 
      * 
      * @throws Exception in case of an error
      */
@@ -407,7 +406,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for type$. </testcase>
+     *  Run tests for type$. 
      * 
      * @throws Exception in case of an error
      */
@@ -418,7 +417,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for warning$. </testcase>
+     *  Run tests for warning$. 
      * 
      * @throws Exception in case of an error
      */
@@ -429,7 +428,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for while$. </testcase>
+     *  Run tests for while$. 
      * 
      * @throws Exception in case of an error
      */
@@ -440,7 +439,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for width$. </testcase>
+     *  Run tests for width$. 
      * 
      * @throws Exception in case of an error
      */
@@ -452,7 +451,7 @@ public class BuiltinTest {
     }
 
     /**
-     * <testcase> Run tests for write$. </testcase>
+     *  Run tests for write$. 
      * 
      * @throws Exception in case of an error
      */

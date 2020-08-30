@@ -41,40 +41,39 @@ import org.extex.util.file.random.RandomAccessR;
  * </p>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class TfmExtensibleRecipe implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 1L;
 
     /**
      * bot.
      */
-    private short bot;
+    private final short bot;
 
     /**
      * the id.
      */
-    private int etid;
+    private final int etid;
 
     /**
      * mid.
      */
-    private short mid;
+    private final short mid;
 
     /**
      * rep.
      */
-    private short rep;
+    private final short rep;
 
     /**
      * top.
      */
-    private short top;
+    private final short top;
 
     /**
      * Create a new object.

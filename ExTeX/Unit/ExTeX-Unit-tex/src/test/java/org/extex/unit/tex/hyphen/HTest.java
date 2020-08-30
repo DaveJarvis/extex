@@ -26,8 +26,7 @@ import org.junit.Test;
  * This is a test suite for the hyphenation.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class HTest extends ExTeXLauncher {
 
 

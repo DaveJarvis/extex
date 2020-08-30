@@ -28,8 +28,7 @@ import org.extex.util.file.random.RandomAccessR;
  * Interface for a Lookup table factory.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public interface LookupTableFactory {
 
     /**
@@ -41,19 +40,19 @@ public interface LookupTableFactory {
     String lookupType(int type);
 
     /**
-     * Read the LookupTable or <code>null</code>, if not found.
+     * Read the LookupTable or {@code null}, if not found.
      * 
      * <p>
      * Type:
      * </p>
-     * <nl>
+     * <ul>
      * <li>1 - Single - Replace one glyph with one glyph</li>
      * <li>2 - Multiple - Replace one glyph with more than one glyph</li>
      * <li>3 - Alternate - Replace one glyph with one of many glyphs</li>
      * <li>4 - Ligature - Replace multiple glyphs with one glyph</li>
      * <li>5 - Context - Replace one or more glyphs in context</li>
      * <li>6 - Chaining - Context Replace one or more glyphs in chained context</li>
-     * </nl>
+     * </ul>
      * 
      * @param rar The input.
      * @param posOffset The offset of the pos table (GPOS, GSUB).

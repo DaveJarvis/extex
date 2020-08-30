@@ -34,8 +34,7 @@ import org.extex.scanner.type.token.TokenFactory;
  * This interface describes a parser and central memory for the LaTeX processor.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface Parser extends Locator, Memory {
 
     /**
@@ -53,7 +52,7 @@ public interface Parser extends Locator, Memory {
     /**
      * Get a token from the input stream.
      * 
-     * @return the token read or <code>null</code> at EOF
+     * @return the token read or {@code null} at EOF
      * 
      * @throws ScannerException in case of an error
      */
@@ -100,7 +99,7 @@ public interface Parser extends Locator, Memory {
      * 
      * @param end the optional end token
      * 
-     * @return the node found or <code>null</code> at EOF
+     * @return the node found or {@code null} at EOF
      * 
      * @throws ScannerException in case of an error
      */
@@ -132,14 +131,14 @@ public interface Parser extends Locator, Memory {
     /**
      * Look at the stack without modifying it.
      * 
-     * @return the top of stack or <code>null</code> if the stack is empty
+     * @return the top of stack or {@code null} if the stack is empty
      */
     GroupNode peek();
 
     /**
      * Take an element from the stack.
      * 
-     * @return the top of stack or <code>null</code> if the stack is empty
+     * @return the top of stack or {@code null} if the stack is empty
      */
     GroupNode pop();
 

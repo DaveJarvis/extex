@@ -25,11 +25,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\hbox</tt>.
+ * This is a test suite for the primitive {@code \hbox}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class HboxTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -49,8 +48,8 @@ public class HboxTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\hbox"> Test case checking that <tt>\hbox</tt> on
-     * the empty box works. </testcase>
+     * <testcase primitive="\hbox"> Test case checking that {@code \hbox} on
+     * the empty box works.
      * 
      * @throws Exception in case of an error
      */
@@ -63,8 +62,8 @@ public class HboxTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\hbox"> Test case checking that <tt>\hbox</tt> on a
-     * non-empty box works. </testcase>
+     * <testcase primitive="\hbox"> Test case checking that {@code \hbox} on a
+     * non-empty box works.
      * 
      * @throws Exception in case of an error
      */
@@ -78,7 +77,7 @@ public class HboxTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\hbox"> Test case checking that a missing left brace
-     * directly after the macro token leads to an error. </testcase>
+     * directly after the macro token leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -93,7 +92,7 @@ public class HboxTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\hbox"> Test case checking that a missing left brace
-     * after a "to" specification leads to an error. </testcase>
+     * after a "to" specification leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -108,7 +107,7 @@ public class HboxTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\hbox"> Test case checking that an outer macro in
-     * the preamble leads to an error. </testcase>
+     * the preamble leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -123,7 +122,7 @@ public class HboxTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\hbox"> Test case checking that a correct hbox
-     * passes its contents to the typesetter. </testcase>
+     * passes its contents to the typesetter.
      * 
      * @throws Exception in case of an error
      */
@@ -140,7 +139,7 @@ public class HboxTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\hbox"> Test case checking that an outer macro in
-     * the preamble leads to an error. </testcase>
+     * the preamble leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -154,7 +153,7 @@ public class HboxTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\hbox"> Test case checking that ... </testcase>
+     * <testcase primitive="\hbox"> Test case checking that ...
      * 
      * @throws Exception in case of an error
      */
@@ -170,7 +169,7 @@ public class HboxTest extends NoFlagsPrimitiveTester {
     /**
      * <testcase primitive="\hbox"> Test case checking that a hbox containing
      * "abc" in font cmtt12 has the width 18.52501pt. This value has been
-     * computed with TeX. </testcase>
+     * computed with TeX.
      * 
      * @throws Exception in case of an error
      */
@@ -187,7 +186,7 @@ public class HboxTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\hbox"> Test case checking that a hbox containing
-     * "abc" ... </testcase>
+     * "abc" ...
      * 
      * @throws Exception in case of an error
      */
@@ -205,7 +204,7 @@ public class HboxTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\hbox"> Test case checking that a hbox containing
-     * "abc" ... </testcase>
+     * "abc" ...
      * 
      * @throws Exception in case of an error
      */

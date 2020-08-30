@@ -27,17 +27,16 @@ import org.extex.cli.exception.MissingArgumentCliException;
  * This class represents a base class for options with a boolean parameter.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class BooleanOption extends Option {
 
     /**
-     * The field <tt>value</tt> contains the value.
+     * The field {@code value} contains the value.
      */
     private final boolean value;
 
     /**
-     * Creates a new object. The initial value is <code>true</code>.
+     * Creates a new object. The initial value is {@code true}.
      * 
      * @param tag the tag for the description of the option
      */
@@ -69,10 +68,7 @@ public abstract class BooleanOption extends Option {
     protected abstract int run(String a, boolean arg);
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.cli.Option#run(java.lang.String,
-     *      java.util.List)
+*      java.util.List)
      */
     @Override
     public int run(String a, List<String> arg)
@@ -82,10 +78,7 @@ public abstract class BooleanOption extends Option {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.cli.Option#run(java.lang.String,
-     *      java.lang.String, java.util.List)
+*      java.lang.String, java.util.List)
      */
     @Override
     public int run(String a, String firstArg, List<String> arg) {

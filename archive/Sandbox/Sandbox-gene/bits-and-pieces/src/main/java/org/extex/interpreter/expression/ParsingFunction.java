@@ -29,8 +29,7 @@ import org.extex.typesetter.Typesetter;
  * arguments from a token stream.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4787 $
- */
+*/
 public interface ParsingFunction {
 
     /**

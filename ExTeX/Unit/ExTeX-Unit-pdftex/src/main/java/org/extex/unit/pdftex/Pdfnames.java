@@ -30,37 +30,36 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\pdfnames</code>.
+ * {@code \pdfnames}.
  * 
- * <doc name="pdfnames">
- * <h3>The PDF Primitive <tt>\pdfnames</tt></h3>
+ * <p>The PDF Primitive {@code \pdfnames}</p>
  * <p>
- * This primitive inserts text into the PDF <tt>/Names</tt> array.
+ * This primitive inserts text into the PDF {@code /Names} array.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;pdfnames&rang;
- *       &rarr; <tt>\pdfnames</tt> {@linkplain
+ *       &rarr; {@code \pdfnames} {@linkplain
  *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,CodeToken)
  *          &lang;general text&rang;} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \pdfnames {...}  </pre>
  * 
- * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4791 $
- */
+*/
 public class Pdfnames extends AbstractPdftexCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -76,10 +75,7 @@ public class Pdfnames extends AbstractPdftexCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

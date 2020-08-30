@@ -39,8 +39,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * expression evaluator.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4787 $
- */
+*/
 public final class TDoubleParser implements ETypeParser {
 
 
@@ -57,7 +56,7 @@ public final class TDoubleParser implements ETypeParser {
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * 
-     * @return the converted value or <code>null</code> if the conversion could
+     * @return the converted value or {@code null} if the conversion could
      *         not be performed
      * 
      *         {@inheritDoc}
@@ -74,10 +73,7 @@ public final class TDoubleParser implements ETypeParser {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.ETypeParser#parse(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public EType parse(Context context, TokenSource source,
@@ -126,12 +122,7 @@ public final class TDoubleParser implements ETypeParser {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.ETypeParser#registered(org.extex.interpreter.expression.Evaluator)
-     */
-    @Override
+@Override
     public void registered(Evaluator evaluator) {
 
 
@@ -212,12 +203,7 @@ public final class TDoubleParser implements ETypeParser {
 
         evaluator.register("float", new UnaryFunction() {
 
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.interpreter.expression.UnaryFunction#apply(org.extex.interpreter.expression.EType)
-             */
-            @Override
+        @Override
             public EType apply(EType accumulator) throws HelpingException {
 
                 return new TDouble().set(accumulator);

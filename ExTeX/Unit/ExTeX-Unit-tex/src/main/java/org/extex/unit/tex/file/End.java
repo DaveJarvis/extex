@@ -29,38 +29,37 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\end</code>.
+ * This class provides an implementation for the primitive {@code \end}.
  * 
- * <doc name="end">
- * <h3>The Primitive <tt>\end</tt></h3>
+ * <p>The Primitive {@code \end}</p>
  * <p>
- * The primitive <tt>\end</tt> closes all input stream and discards all tokens
+ * The primitive {@code \end} closes all input stream and discards all tokens
  * which might be waiting to be read. This usually mean the end of the
  * processing of one document.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;end&rang;
- *       &rarr; <tt>\end</tt>  </pre>
+ *       &rarr; {@code \end}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \end  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4441 $
- */
+*/
 public class End extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -76,10 +75,7 @@ public class End extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

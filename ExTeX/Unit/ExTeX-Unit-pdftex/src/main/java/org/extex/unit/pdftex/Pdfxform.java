@@ -33,35 +33,34 @@ import org.extex.typesetter.type.NodeList;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\pdfxform</code>.
+ * {@code \pdfxform}.
  * 
- * <doc name="pdfxform">
- * <h3>The Primitive <tt>\pdfxform</tt></h3>
+ * <p>The Primitive {@code \pdfxform}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;pdfxform&rang;
- *       &rarr; <tt>\pdfxform</tt> ... </pre>
+ *       &rarr; {@code \pdfxform} ... </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \pdfxform 42  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4791 $
- */
+*/
 public class Pdfxform extends AbstractPdftexCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -77,10 +76,7 @@ public class Pdfxform extends AbstractPdftexCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

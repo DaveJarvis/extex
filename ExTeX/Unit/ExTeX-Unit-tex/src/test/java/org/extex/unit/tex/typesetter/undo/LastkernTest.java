@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\lastkern</tt>.
+ * This is a test suite for the primitive {@code \lastkern}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LastkernTest extends AbstractReadonlyDimenRegisterTester {
 
     /**
@@ -48,9 +47,8 @@ public class LastkernTest extends AbstractReadonlyDimenRegisterTester {
     }
 
     /**
-     * <testcase> Test case checking that <tt>\lastkern</tt> on an empty list
-     * returns 0pt. </testcase>
-     * 
+     * Test case checking that {@code \lastkern} on an empty list returns 0pt
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -66,8 +64,8 @@ public class LastkernTest extends AbstractReadonlyDimenRegisterTester {
     }
 
     /**
-     * <testcase> Test case checking that <tt>\lastkern</tt> is showable.
-     * </testcase>
+     *  Test case checking that {@code \lastkern} is showable.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -84,8 +82,8 @@ public class LastkernTest extends AbstractReadonlyDimenRegisterTester {
     }
 
     /**
-     * <testcase> Test case checking that \relax does not produce a node.
-     * </testcase>
+     *  Test case checking that \relax does not produce a node.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -102,9 +100,8 @@ public class LastkernTest extends AbstractReadonlyDimenRegisterTester {
     }
 
     /**
-     * <testcase> Test case checking that <tt>\lastkern</tt> returns 0pt if
-     * the last node is not a kern node. </testcase>
-     * 
+     * Test case checking that {@code \lastkern} returns 0pt if the last node is not a kern node
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -120,8 +117,8 @@ public class LastkernTest extends AbstractReadonlyDimenRegisterTester {
     }
 
     /**
-     * <testcase> Test case checking that <tt>\lastkern</tt> is a dimen value.
-     * </testcase>
+     *  Test case checking that {@code \lastkern} is a dimen value.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -138,9 +135,8 @@ public class LastkernTest extends AbstractReadonlyDimenRegisterTester {
     }
 
     /**
-     * <testcase> Test case checking that <tt>\lastkern</tt> is count
-     * convertible. </testcase>
-     * 
+     * Test case checking that {@code \lastkern} is count convertible
+* 
      * @throws Exception in case of an error
      */
     @Test

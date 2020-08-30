@@ -25,11 +25,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\immediate</tt>.
+ * This is a test suite for the primitive {@code \immediate}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4306 $
- */
+*/
 public class ImmediateTest extends PrefixTester {
 
     /**
@@ -50,7 +49,7 @@ public class ImmediateTest extends PrefixTester {
 
     /**
      * <testcase primitive="\immediate"> Test case checking that \immediate sets
-     * the immediate flag. </testcase>
+     * the immediate flag.
      * 
      * @throws Exception in case of an error
      */
@@ -69,7 +68,7 @@ public class ImmediateTest extends PrefixTester {
 
     /**
      * <testcase primitive="\immediate"> Test case checking that double
-     * <tt>\immediate</tt> has the same effect as one. </testcase>
+     * {@code \immediate} has the same effect as one.
      * 
      * @throws Exception in case of an error
      */
@@ -88,7 +87,7 @@ public class ImmediateTest extends PrefixTester {
 
     /**
      * <testcase primitive="\immediate"> Test case checking that immediate does
-     * not interfere with \long. </testcase>
+     * not interfere with \long.
      * 
      * @throws Exception in case of an error
      */

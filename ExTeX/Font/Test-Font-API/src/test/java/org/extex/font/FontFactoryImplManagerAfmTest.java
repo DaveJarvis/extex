@@ -37,8 +37,7 @@ import org.junit.Test;
  * Test for the font factory (manager).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class FontFactoryImplManagerAfmTest extends AbstractFontFactoryTester {
 
     /**

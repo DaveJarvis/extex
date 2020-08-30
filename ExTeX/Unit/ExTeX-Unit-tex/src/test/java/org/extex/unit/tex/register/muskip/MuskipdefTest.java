@@ -23,11 +23,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\muskipdef</tt>.
+ * This is a test suite for the primitive {@code \muskipdef}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MuskipdefTest extends AbstractMuskipRegisterTester {
 
     /**
@@ -48,8 +47,8 @@ public class MuskipdefTest extends AbstractMuskipRegisterTester {
 
     /**
      * <testcase primitive="\muskipdef"> Test case checking that
-     * <tt>\muskipdef</tt> creates a muskip assignable control sequence which
-     * is equivalent to the <tt>\muskip</tt>. </testcase>
+     * {@code \muskipdef} creates a muskip assignable control sequence which
+     * is equivalent to the {@code \muskip}.
      * 
      * @throws Exception in case of an error
      */
@@ -66,7 +65,7 @@ public class MuskipdefTest extends AbstractMuskipRegisterTester {
 
     /**
      * <testcase primitive="\muskipdef"> Test case checking that
-     * <tt>\muskipdef</tt> respects a group. </testcase>
+     * {@code \muskipdef} respects a group.
      * 
      * @throws Exception in case of an error
      */
@@ -81,7 +80,7 @@ public class MuskipdefTest extends AbstractMuskipRegisterTester {
 
     /**
      * <testcase primitive="\muskipdef"> Test case checking that
-     * <tt>\muskipdef</tt> respects a group. </testcase>
+     * {@code \muskipdef} respects a group.
      * 
      * @throws Exception in case of an error
      */

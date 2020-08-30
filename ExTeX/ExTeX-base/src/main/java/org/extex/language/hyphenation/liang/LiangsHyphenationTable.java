@@ -41,9 +41,9 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
 
 /**
  * This class stores the values for hyphenations and hyphenates words. It uses
- * Liang's algorithm as described in the TeXbook.
+ * Liang's algorithm as described in the TeX book.
  * 
- * <h2>Liang's Algorithm</h2>
+ * <p>Liang's Algorithm</p>
  * 
  * <p>
  * The hyphenation in TeX is based on Liang's thesis. This algorithm is based on
@@ -57,11 +57,11 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * optional hyphenation points.
  * </p>
  * <p>
- * Let us consider the pattern <tt>hyph</tt> this pattern has associated to it
- * the code <tt>00300</tt>. The first number corresponds to the position before
+ * Let us consider the pattern {@code hyph} this pattern has associated to it
+ * the code {@code 00300}. The first number corresponds to the position before
  * the letter h, the second number to the position before the letter p, and so
  * on. Thus this pattern indicates that a hyphenation point can be inserted
- * between y and p. This leads to <tt>hy\-ph</tt> if written explicitly in
+ * between y and p. This leads to {@code hy\-ph} if written explicitly in
  * TeX.
  * </p>
  * <p>
@@ -69,7 +69,9 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * hyphenation patterns of TeX for English. The character . denotes the beginning or the
  * end of a word. In the TeX patterns the word pattern and the hyphenation codes are
  * intermixed and the hyphenation codes 0 are left out.
+ * </p>
  * <table>
+ * <caption>TBD</caption>
  * <tr>
  * <td>Word pattern</td>
  * <td>Codes</td>
@@ -78,35 +80,35 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * <tr>
  * <td>ader.</td>
  * <td>005000</td>
- * <td><tt>ad5er. </tt></td>
+ * <td>{@code ad5er. }</td>
  * </tr>
  * <tr>
  * <td>.ach</td>
  * <td>00004</td>
- * <td><tt>.ach4  </tt></td>
+ * <td>{@code .ach4  }</td>
  * </tr>
  * <tr>
  * <td>sub</td>
  * <td>0043</td>
- * <td><tt>su4b3  </tt></td>
+ * <td>{@code su4b3  }</td>
  * </tr>
  * <tr>
  * <td>ty</td>
  * <td>100</td>
- * <td><tt>1ty    </tt></td>
+ * <td>{@code 1ty    }</td>
  * </tr>
  * <tr>
  * <td>type</td>
  * <td>00003</td>
- * <td><tt>type3  </tt></td>
+ * <td>{@code type3  }</td>
  * </tr>
  * <tr>
  * <td>pe.</td>
  * <td>4000</td>
- * <td><tt>pe.    </tt></td>
+ * <td>{@code pe.    }</td>
  * </tr>
  * </table>
- * </p>
+ *
  * <p>
  * To find all hyphenation points in a word all matching patterns have to be
  * superimposed. During this superposition the higher hyphenation codes overrule
@@ -116,7 +118,7 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * In the following figure the patterns for the word ``subtype'' are shown.
  * </p>
  * 
- * <pre>
+ * <pre>{@code
  *  <sub> </sub>s<sub> </sub>u<sub> </sub>b<sub> </sub>t<sub> </sub>y<sub> </sub>p<sub> </sub>e
  *  <sub>0</sub>s<sub>0</sub>u<sub>4</sub>b<sub>3</sub>
  *  <sub> </sub> <sub> </sub> <sub> </sub> <sub>1</sub>t<sub>0</sub>y<sub>0</sub>
@@ -124,42 +126,42 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  *  <sub> </sub> <sub> </sub> <sub> </sub> <sub> </sub> <sub> </sub> <sub>4</sub>p<sub>0</sub>e<sub>3</sub>.
  *  ---------------
  *  <sub>0</sub>s<sub>0</sub>u<sub>4</sub>b<sub>3</sub>t<sub>0</sub>y<sub>4</sub>p<sub>0</sub>e<sub>3</sub>
- * </pre>
+ * }</pre>
  * <p>
- * The superposition of all patterns leads to the result <tt>sub\-type\-</tt>.
- * Here two additional parameters come into play. <tt>\lefthyphenmin</tt>
+ * The superposition of all patterns leads to the result {@code sub\-type\-}.
+ * Here two additional parameters come into play. {@code \lefthyphenmin}
  * denotes the minimal number of characters before a hyphenation at the
- * beginning of a word and <tt>\righthyphenmin</tt> the corresponding length at
- * the end of a word. <tt>\lefthyphenmin</tt> is set to 2 and
- * <tt>\righthyphenmin</tt> to 3 for English in TeX. Thus the final hyphen is not considered.
+ * beginning of a word and {@code \righthyphenmin} the corresponding length at
+ * the end of a word. {@code \lefthyphenmin} is set to 2 and
+ * {@code \righthyphenmin} to 3 for English in TeX. Thus the final hyphen is
+ * not considered.
  * </p>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4784 $
- */
+*/
 public class LiangsHyphenationTable extends BaseHyphenationTable {
 
     /**
-     * The field <tt>BORDER</tt> contains the Unicode character internally used
+     * The field {@code BORDER} contains the Unicode character internally used
      * as a marker for the beginning and the end of the word.
      */
     private static final UnicodeChar BORDER = null;
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 20060305L;
 
     /**
-     * The field <tt>compressed</tt> contains the indicator that the hyphenation
+     * The field {@code compressed} contains the indicator that the hyphenation
      * table has been compressed. A compressed table can not be modified any
      * more.
      */
     private boolean compressed = false;
 
     /**
-     * The field <tt>patterns</tt> contains the tree of hyphenation patterns.
+     * The field {@code patterns} contains the tree of hyphenation patterns.
      */
     private HyphenTree patterns = new HyphenTree(new char[0]);
 
@@ -256,10 +258,7 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.language.hyphenation.Hyphenator#hyphenate(org.extex.typesetter.type.NodeList,
-     *      org.extex.typesetter.TypesetterOptions, org.extex.core.UnicodeChar,
+*      org.extex.typesetter.TypesetterOptions, org.extex.core.UnicodeChar,
      *      int, boolean, org.extex.typesetter.type.node.factory.NodeFactory)
      */
     @Override
@@ -296,10 +295,7 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.language.hyphenation.base.BaseHyphenationTable#hyphenateOne(org.extex.typesetter.type.NodeList,
-     *      org.extex.typesetter.TypesetterOptions, int,
+*      org.extex.typesetter.TypesetterOptions, int,
      *      org.extex.core.UnicodeCharList,
      *      org.extex.typesetter.type.node.CharNode)
      */

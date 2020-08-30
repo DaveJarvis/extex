@@ -17,7 +17,7 @@
  */
 /**
  * 
- *   This package contains parsers for an index.
+ *   Contains parsers for an index.
  * 
  *
  */

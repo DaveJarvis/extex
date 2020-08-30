@@ -30,8 +30,7 @@ import org.xml.sax.helpers.DefaultHandler;
  * Generic Handler.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class XmlHandler extends DefaultHandler {
 
     /**
@@ -42,12 +41,12 @@ public class XmlHandler extends DefaultHandler {
     /**
      * The list for the current element.
      */
-    private LinkedList<String> listElement = new LinkedList<String>();
+    private final LinkedList<String> listElement = new LinkedList<String>();
 
     /**
      * The list for the current text value.
      */
-    private LinkedList<String> listTextValue = new LinkedList<String>();
+    private final LinkedList<String> listTextValue = new LinkedList<String>();
 
     /**
      * Use the writer for the output.
@@ -212,8 +211,8 @@ public class XmlHandler extends DefaultHandler {
      * Check, if the element is parent of the current entry.
      * 
      * @param name The name of the parent.
-     * @return Returns <code>true</code>, if the element is parent of the
-     *         current element, otherwise <code>false</code>.
+     * @return Returns {@code true}, if the element is parent of the
+     *         current element, otherwise {@code false}.
      */
     public boolean hasParentElement(String name) {
 
@@ -229,7 +228,7 @@ public class XmlHandler extends DefaultHandler {
      * Check, if the parser is in the element.
      * 
      * @param name The name of the element.
-     * @return Returns <code>true</code>, if the parser parse the named element.
+     * @return Returns {@code true}, if the parser parse the named element.
      */
     public boolean isInElement(String name) {
 

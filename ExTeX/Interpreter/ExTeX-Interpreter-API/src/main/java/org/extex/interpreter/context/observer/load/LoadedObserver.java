@@ -31,8 +31,7 @@ import org.extex.typesetter.Typesetter;
  * loading of a context.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4399 $
- */
+*/
 public interface LoadedObserver extends Serializable {
 
     /**

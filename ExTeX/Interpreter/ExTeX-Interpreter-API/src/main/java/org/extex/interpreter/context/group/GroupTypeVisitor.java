@@ -26,8 +26,7 @@ package org.extex.interpreter.context.group;
  * @param <A> the argument type
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface GroupTypeVisitor<R, A> {
 
     /**

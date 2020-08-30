@@ -40,38 +40,25 @@ import org.extex.typesetter.type.OrientedNodeList;
  * width is reported.
  * </p>
  * <p>
- * 
- * </p>
- * <p>
  * The TeX definition of a hlist states that a box is not variable
  * neither in width nor in height. Thus this method is simply a noop.
  * </p>
- * 
- * 
- * @see "<logo>T<span style=
- *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *      >e</span>X</logo> &ndash; The Program [135]"
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4739 $
- */
+*/
 public class HorizontalListNode extends GenericNodeList
         implements
             OrientedNodeList {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object. The list is empty initially.
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [136]"
-     */
+*/
     public HorizontalListNode() {
 
     }
@@ -114,8 +101,8 @@ public class HorizontalListNode extends GenericNodeList
      * a value of 0 to insert the node before the first existing node and goes
      * up to the length of the list to insert the new node at the end.
      * <p>
-     * If the node is <code>null</code> then it is silently ignored. This means
-     * that a horizontal list will never contain <code>null</code> values.
+     * If the node is {@code null} then it is silently ignored. This means
+     * that a horizontal list will never contain {@code null} values.
      * </p>
      * 
      * @param index the position of insertion
@@ -142,8 +129,8 @@ public class HorizontalListNode extends GenericNodeList
      * Add a node to the node list. The other attributes (width, height, depth)
      * are not modified.
      * <p>
-     * If the node is <code>null</code> then it is silently ignored. This means
-     * that a horizontal list will never contain <code>null</code> values.
+     * If the node is {@code null} then it is silently ignored. This means
+     * that a horizontal list will never contain {@code null} values.
      * </p>
      * 
      * @param node the node to add
@@ -214,23 +201,13 @@ public class HorizontalListNode extends GenericNodeList
         hpack();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.OrientedNode#isHorizontal()
-     */
-    @Override
+@Override
     public boolean isHorizontal() {
 
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.GenericNodeList#remove(int)
-     */
-    @Override
+@Override
     public Node remove(int index) {
 
         Node node = super.remove(index);
@@ -284,15 +261,15 @@ public class HorizontalListNode extends GenericNodeList
      */
     private void removeAdjustHeight(FixedDimen h) {
 
-        Dimen x = new Dimen();
+        Dimen y = new Dimen();
         for (Node n : this) {
             FixedDimen nh = n.getNaturalHeight();
             if (h.eq(nh)) {
                 return;
             }
-            x.max(nh);
+            y.max(nh);
         }
-        setNaturalHeight(x);
+        setNaturalHeight(y);
     }
 
     /**

@@ -29,7 +29,7 @@ import org.extex.exbib.core.io.Locator;
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X built-in function <code>&lt;</code>
+ * >e</span>X built-in function {@code &lt;}
  * <p>
  * This function pops two numeric arguments from the stack and compares them. It
  * succeeds if the first argument is greater than the second argument. In case
@@ -39,9 +39,9 @@ import org.extex.exbib.core.io.Locator;
  * If the stack does not contain enough items or the arguments are not integers
  * then an error is raised.
  * </p>
- * <img src="doc-files/lt.png"/>
+ * <img src="doc-files/lt.png" alt="lt">
  * <p>
- * The following example is taken from <tt>alpha.bst</tt>:
+ * The following example is taken from {@code alpha.bst}:
  * </p>
  * 
  * <pre>
@@ -54,21 +54,16 @@ import org.extex.exbib.core.io.Locator;
  * }
  * </pre>
  * 
- * <hr />
+ * <hr>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X documentation:
- * <dt>
+ * <dt>BibTeX documentation</dt>
  * <dd>Pops the top two (integer) literals, compares them, and pushes the
  * integer 1 if the second is less than the first, 0 otherwise.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Lt extends AbstractCode {
 
     /**
@@ -89,10 +84,7 @@ public class Lt extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {

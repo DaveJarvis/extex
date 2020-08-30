@@ -25,11 +25,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\mathsurround</tt>.
+ * This is a test suite for the primitive {@code \mathsurround}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MathsurroundTest extends AbstractDimenRegisterTester {
 
     /**
@@ -49,9 +48,8 @@ public class MathsurroundTest extends AbstractDimenRegisterTester {
     }
 
     /**
-     * <testcase> Test case checking that <tt>\mathsurround</tt> is inserted
-     * before and after math. </testcase>
-     * 
+     * Test case checking that {@code \mathsurround} is inserted before and after math
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -69,9 +67,9 @@ public class MathsurroundTest extends AbstractDimenRegisterTester {
     }
 
     /**
-     * <testcase> Test case checking that <tt>\mathsurround</tt> is inserted
+     *  Test case checking that {@code \mathsurround} is inserted
      * before and after math &ndash; even when set within the math environment.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */

@@ -27,38 +27,34 @@ import org.extex.typesetter.type.NodeVisitor;
 /**
  * This node represents a glyph which can be broken if required.
  * 
- * @see "<logo>T<span style=
- *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *      >e</span>X</logo> &ndash; The Program [145]"
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4739 $
- */
+*/
 public class DiscretionaryNode extends AbstractNode implements Node {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>noBreak</tt> contains the Tokens to be inserted in case of
+     * The field {@code noBreak} contains the Tokens to be inserted in case of
      * no line breaking at this position.
      */
-    private NodeList noBreak;
+    private final NodeList noBreak;
 
     /**
-     * The field <tt>postBreak</tt> contains the Tokens to be inserted at the
+     * The field {@code postBreak} contains the Tokens to be inserted at the
      * beginning of the next line in case of a line breaking at this position.
      */
-    private NodeList postBreak;
+    private final NodeList postBreak;
 
     /**
-     * The field <tt>preBreak</tt> contains the Tokens to be inserted at the end
+     * The field {@code preBreak} contains the Tokens to be inserted at the end
      * of the line in case of a line breaking at this position.
      */
-    private NodeList preBreak;
+    private final NodeList preBreak;
 
     /**
      * Creates a new object.
@@ -116,11 +112,7 @@ public class DiscretionaryNode extends AbstractNode implements Node {
      * @param prefix the prefix for each new line
      * @param breadth the breadth
      * @param depth the depth
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [195]"
-     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
+* @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
      *      java.lang.String, int, int)
      */
     @Override

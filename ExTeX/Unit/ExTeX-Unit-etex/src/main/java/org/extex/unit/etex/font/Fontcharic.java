@@ -42,38 +42,37 @@ import org.extex.typesetter.tc.font.Font;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\fontcharic</code>.
+ * {@code \fontcharic}.
  * 
- * <doc name="fontcharic">
- * <h3>The Primitive <tt>\fontcharic</tt></h3>
+ * <p>The Primitive {@code \fontcharic}</p>
  * <p>
- * The primitive <tt>\fontcharic</tt> is a read-only dimen register which
+ * The primitive {@code \fontcharic} is a read-only dimen register which
  * corresponds to the italic correction of a character in a given font. If the
  * character is not defined in the font then 0pt is returned.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;fontcharic&rang;
- *       &rarr; <tt>\fontcharic</tt> {@linkplain
+ *       &rarr; {@code \fontcharic} {@linkplain
  *          org.extex.interpreter.TokenSource#getFont(Context,CodeToken)
  *          &lang;font&rang;} {@linkplain
  *          org.extex.interpreter.TokenSource#scanCharacterCode(Context,Typesetter,CodeToken)
  *          &lang;character code&rang;} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \fontcharic\tenrm `a  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Fontcharic extends AbstractCode
         implements
             ExpandableCode,
@@ -82,7 +81,7 @@ public class Fontcharic extends AbstractCode
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -98,10 +97,7 @@ public class Fontcharic extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -111,10 +107,7 @@ public class Fontcharic extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertDimen(Context context, TokenSource source,
@@ -124,10 +117,7 @@ public class Fontcharic extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,
@@ -165,10 +155,7 @@ public class Fontcharic extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

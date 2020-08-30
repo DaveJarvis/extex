@@ -27,8 +27,7 @@ import org.junit.runner.JUnitCore;
  * Test for the primitive &#5c;unless.
  * 
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
- * @version $Revision$
- */
+*/
 public class UnlessTest {
 
     /**
@@ -42,7 +41,7 @@ public class UnlessTest {
     }
 
     /**
-     * Test the primitive <tt>&#5c;unless</tt>.
+     * Test the primitive {@code &#5c;unless}.
      * 
      * @throws Exception in case of an error
      */

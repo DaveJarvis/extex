@@ -67,7 +67,7 @@ import org.extex.resource.ResourceFinderFactory;
  * This program can also be fed with an aux file. In this case it reads all
  * <small>BIB</small> files referenced and extracts only those entries cited.
  * The program takes care to recursively consider aux files included within the
- * aux file &ndash; usually produced by <tt>\include</tt>.
+ * aux file &ndash; usually produced by {@code \include}.
  * </p>
  * <p>
  * The following options are supported:
@@ -90,15 +90,15 @@ import org.extex.resource.ResourceFinderFactory;
  * <dt>--h[elp] | -? | -h</dt>
  * <dd>Show a short list of command line arguments.</dd>
  * <dt>--la[nguage] | -L &lang;language&rang;</dt>
- * <dd>Use the named language for message. <br/>
+ * <dd>Use the named language for message. <br>
  * The argument is a two-letter ISO code.</dd>
  * <dt>--loa[d] &lang;file&rang;</dt>
  * <dd>Additionally load settings from the file given.</dd>
  * <dt>--l[ogfile] | -l &lang;file&rang;</dt>
  * <dd>Send the output to the log file named instead of the default one.</dd>
  * <dt>--o[utfile] | --outp[ut] | -o &lang;file&rang;</dt>
- * <dd>Redirect the output to the file given. <br />
- * The file name <tt>-</tt> can be used to redirect to stdout <br />
+ * <dd>Redirect the output to the file given. <br>
+ * The file name {@code -} can be used to redirect to stdout <br>
  * The empty file name can be used to discard the output completely</dd>
  * <dt>--p[rogname] | --progr[am-name] | --program.[name] | -p
  * &lang;program&rang;</dt>
@@ -116,57 +116,56 @@ import org.extex.resource.ResourceFinderFactory;
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class ExBibUtilMain extends AbstractMain {
 
     /**
-     * The field <tt>LOG_EXTENSION</tt> contains the extension for the log file.
+     * The field {@code LOG_EXTENSION} contains the extension for the log file.
      */
     private static final String LOG_EXTENSION = ".blg";
 
     /**
-     * The field <tt>PROGNAME</tt> contains the name of the program.
+     * The field {@code PROGNAME} contains the name of the program.
      */
     private static final String PROGNAME = "exbibutil";
 
     /**
-     * The field <tt>VERSION</tt> contains the official version number.
+     * The field {@code VERSION} contains the official version number.
      */
     public static final String VERSION = "0.2";
 
     /**
-     * The field <tt>INCEPTION_YEAR</tt> contains the year the development has
+     * The field {@code INCEPTION_YEAR} contains the year the development has
      * been started. This is fixed to be 2002 and should not be altered.
      */
     private static final int INCEPTION_YEAR = 2002;
 
     /**
-     * The field <tt>PROP_BIB_ENCODING</tt> contains the name of the encoding
+     * The field {@code PROP_BIB_ENCODING} contains the name of the encoding
      * for bib files.
      */
     private static final String PROP_BIB_ENCODING = "exbib.bib.encoding";
 
     /**
-     * The field <tt>PROP_ENCODING</tt> contains the name of the property to
+     * The field {@code PROP_ENCODING} contains the name of the property to
      * carry the encoding.
      */
     public static final String PROP_ENCODING = "exbib.encoding";
 
     /**
-     * The field <tt>PROP_CONFIG</tt> contains the name of the property to carry
+     * The field {@code PROP_CONFIG} contains the name of the property to carry
      * the configuration.
      */
     public static final String PROP_CONFIG = "exbib.config";
 
     /**
-     * The field <tt>PROP_TYPE</tt> contains the name for the property for the
+     * The field {@code PROP_TYPE} contains the name for the property for the
      * printer type.
      */
     private static final String PROP_TYPE = "exbib.type";
 
     /**
-     * The field <tt>PROP_FILE</tt> contains the name for the property for the
+     * The field {@code PROP_FILE} contains the name for the property for the
      * aux file.
      */
     private static final String PROP_FILE = "exbib.file";
@@ -208,7 +207,7 @@ public final class ExBibUtilMain extends AbstractMain {
     }
 
     /**
-     * The field <tt>files</tt> contains the name of the files to start with.
+     * The field {@code files} contains the name of the files to start with.
      */
     private final List<String> files = new ArrayList<String>();
 
@@ -297,7 +296,7 @@ public final class ExBibUtilMain extends AbstractMain {
      * @param finder the resource finder
      * @param cfg the configuration
      * 
-     * @return the sorter; it can be <code>null</code> if none is required
+     * @return the sorter; it can be {@code null} if none is required
      */
     protected SorterFactory makeSorterFactory(ResourceFinder finder,
             Configuration cfg) {
@@ -316,7 +315,7 @@ public final class ExBibUtilMain extends AbstractMain {
      * @param finder the resource finder
      * @param container the bibliography
      * 
-     * @return <code>true</code> iff everything went through
+     * @return {@code true} iff everything went through
      * 
      * @throws IOException in case of an I/O error
      * @throws ConfigurationException in case of a configuration problem
@@ -343,12 +342,7 @@ public final class ExBibUtilMain extends AbstractMain {
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.main.AbstractMain#run()
-     */
-    @Override
+@Override
     protected int run() throws IOException {
 
         long time = System.currentTimeMillis();
@@ -452,12 +446,7 @@ public final class ExBibUtilMain extends AbstractMain {
         return EXIT_OK;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.main.AbstractMain#setFile(java.lang.String)
-     */
-    @Override
+@Override
     protected int setFile(String arg) {
 
         if (!"".equals(arg)) {

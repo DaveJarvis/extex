@@ -28,7 +28,7 @@ import org.extex.exbib.core.io.Locator;
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X built-in function <code>text.prefix$</code>
+ * >e</span>X built-in function {@code text.prefix$}
  * <p>
  * This function extracts a prefix of a certain length from a text. The length
  * is the number of character units. Special characters in braces are counted as
@@ -36,27 +36,23 @@ import org.extex.exbib.core.io.Locator;
  * provided automatically. Thus no unbalanced braces are contained in the result
  * of this function.
  * </p>
- * <img src="doc-files/text.prefix.png"/>
+ * <img src="doc-files/text.prefix.png" alt="text.prefix">
  * <p>
- * The following example is taken from <tt>alpha.bst</tt>:
+ * The following example is taken from {@code alpha.bst}:
  * </p>
  * 
  * <pre>
  *   key #3 text.prefix$
  * </pre>
  * 
- * <hr />
+ * <hr>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X documentation:
- * <dt>
+ * <dt>BibTeX documentation</dt>
  * <dd>Pops the top two literals (the integer literal <i>len</i> and a string
  * literal, in that order). It pushes the substring of the (at most) <i>len</i>
  * consecutive text characters starting from the beginning of the string. This
- * function is similar to <code>substring</code>, but this one considers a
+ * function is similar to {@code substring}, but this one considers a
  * ``special character'', even if it's missing its matching right brace, to be a
  * single text character (rather than however many ASCII characters it actually
  * comprises), and this function doesn't consider braces to be text characters;
@@ -64,15 +60,14 @@ import org.extex.exbib.core.io.Locator;
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TextPrefix extends AbstractCode {
 
     /**
      * Compute the text prefix like the B<small>IB</small><span
      * style="margin-left: -0.15em;" >T</span><span style=
      * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
-     * >e</span>X built-in function <code>text.prefix$</code>.
+     * >e</span>X built-in function {@code text.prefix$}.
      * 
      * @param s the input string
      * @param length the length of the prefix
@@ -137,10 +132,7 @@ public class TextPrefix extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {

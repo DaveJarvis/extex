@@ -31,12 +31,11 @@ import org.junit.Test;
  * This is a test suite for {@link ConfigurationIllegalAccessException}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ConfigurationIllegalAccessExceptionTest {
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetLocalizedMessage() {
@@ -49,7 +48,7 @@ public class ConfigurationIllegalAccessExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetLocalizer() {
@@ -61,7 +60,7 @@ public class ConfigurationIllegalAccessExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetMessage1() {
@@ -73,7 +72,7 @@ public class ConfigurationIllegalAccessExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetMessage2() {
@@ -85,7 +84,7 @@ public class ConfigurationIllegalAccessExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetSource1() {
@@ -97,7 +96,7 @@ public class ConfigurationIllegalAccessExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetSource2() {
@@ -109,7 +108,7 @@ public class ConfigurationIllegalAccessExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetText1() {
@@ -121,7 +120,7 @@ public class ConfigurationIllegalAccessExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetText2() {

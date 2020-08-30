@@ -40,30 +40,29 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This class represents an index entry in the structured index.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class IndexEntry {
 
     /**
-     * The field <tt>map</tt> contains the mapping from name to the associated
+     * The field {@code map} contains the mapping from name to the associated
      * entry.
      */
     private final Map<String, IndexEntry> map = new HashMap<String, IndexEntry>();
 
     /**
-     * The field <tt>group</tt> contains the mapping from name to location
+     * The field {@code group} contains the mapping from name to location
      * class groups.
      */
     private final Map<String, LocationClassGroup> groupMap =
             new HashMap<String, LocationClassGroup>();
 
     /**
-     * The field <tt>keywords</tt> contains the keywords.
+     * The field {@code keywords} contains the keywords.
      */
     private final String[] keywords;
 
     /**
-     * The field <tt>raw</tt> contains the raw index entry.
+     * The field {@code raw} contains the raw index entry.
      */
     private final RawIndexentry raw;
 
@@ -150,12 +149,7 @@ public class IndexEntry {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();

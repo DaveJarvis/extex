@@ -48,14 +48,13 @@ import org.junit.Test;
  * This is a test suite for {@link TField}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TField2Test {
 
     private static final String DIR_TARGET = "build";
 
     /**
-     * The field <tt>config</tt> contains the dummy configuration.
+     * The field {@code config} contains the dummy configuration.
      */
     private final Configuration config = new Configuration() {
 
@@ -155,7 +154,7 @@ public class TField2Test {
     };
 
     /**
-     * <testcase> An undefined field leads to an error.</testcase>
+     *  An undefined field leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -165,12 +164,7 @@ public class TField2Test {
         DB db = new DBImpl();
         db.setBibReaderFactory(new BibReaderFactory(config, null, null, null) {
 
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bibio.BibReaderFactory#newInstance(java.lang.String)
-             */
-            @Override
+        @Override
             public BibReader newInstance(String file)
                     throws ConfigurationException,
                         FileNotFoundException {

@@ -23,14 +23,13 @@ package org.extex.font.format.xtf.tables.cff;
  * Eight {@link T2Number},
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class T2EightNumber {
 
     /**
      * The value array.
      */
-    private T2Number[] val = new T2Number[8];
+    private final T2Number[] val = new T2Number[8];
 
     /**
      * Creates a new object.
@@ -89,12 +88,7 @@ public class T2EightNumber {
         val[idx] = t;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder buf = new StringBuilder();

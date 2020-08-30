@@ -33,23 +33,22 @@ import org.extex.scanner.type.Namespace;
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4399 $
- */
+*/
 public class ActiveCharacterToken extends AbstractToken implements CodeToken {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2011L;
 
     /**
-     * The constant <tt>HASH_FACTOR</tt> contains the factor used to construct
+     * The constant {@code HASH_FACTOR} contains the factor used to construct
      * the hash code.
      */
     private static final int HASH_FACTOR = 17;
 
     /**
-     * The field <tt>namespace</tt> contains the namespace for this token.
+     * The field {@code namespace} contains the namespace for this token.
      */
     private String namespace;
 
@@ -105,8 +104,8 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
      * Indicates whether some other object is "equal to" this one.
      * 
      * @param other the reference object with which to compare.
-     * @return <code>true</code> if this object is the same as the obj argument;
-     *         <code>false</code> otherwise.
+     * @return {@code true} if this object is the same as the obj argument;
+     *         {@code false} otherwise.
      * 
      * @see java.lang.Object#equals(java.lang.Object)
      */

@@ -25,11 +25,10 @@ import java.io.OutputStream;
 import org.extex.dviware.Dvi;
 
 /**
- * This class represents the DVI instruction <tt>y0</tt>.
+ * This class represents the DVI instruction {@code y0}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DviY0 extends AbstractDviCode {
 
 

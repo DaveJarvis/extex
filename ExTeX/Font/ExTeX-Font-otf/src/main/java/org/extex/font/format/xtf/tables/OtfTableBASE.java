@@ -19,12 +19,12 @@
 
 package org.extex.font.format.xtf.tables;
 
-import java.io.IOException;
-
 import org.extex.font.format.xtf.XtfReader;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
+
+import java.io.IOException;
 
 /**
  * The Baseline table (BASE) provides information used to align glyphs of
@@ -34,10 +34,10 @@ import org.extex.util.xml.XMLWriterConvertible;
  * script, language system, or feature in a font.
  * 
  * <p>
- * <img src="TTFTableBASE.png"/>
+ * <img src="TTFTableBASE.png" alt="table base">
  * </p>
  * 
- * <table border="1"> <thead>
+ * <table> <caption>TBD</caption> <thead>
  * <tr>
  * <td><b>Type</b></td>
  * <td><b>Name</b></td>
@@ -62,8 +62,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class OtfTableBASE extends AbstractXtfTable
         implements
             XtfTable,
@@ -72,7 +71,7 @@ public class OtfTableBASE extends AbstractXtfTable
     /**
      * Axis (vertical or horizontal)
      * 
-     * <table border="1"> <thead>
+     * <table> <caption>TBD</caption> <thead>
      * <tr>
      * <td><b>Type</b></td>
      * <td><b>Name</b></td>
@@ -174,10 +173,7 @@ public class OtfTableBASE extends AbstractXtfTable
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-         *      org.extex.util.xml.XMLStreamWriter)
+    *      org.extex.util.xml.XMLStreamWriter)
          */
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
@@ -218,10 +214,7 @@ public class OtfTableBASE extends AbstractXtfTable
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-         *      org.extex.util.xml.XMLStreamWriter)
+    *      org.extex.util.xml.XMLStreamWriter)
          */
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
@@ -304,12 +297,7 @@ public class OtfTableBASE extends AbstractXtfTable
         return horizontal;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
+public String getShortcut() {
 
         return "base";
     }
@@ -355,10 +343,7 @@ public class OtfTableBASE extends AbstractXtfTable
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

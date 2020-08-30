@@ -38,8 +38,7 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  * collating specification is taken from the configuration.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class RbcSorter
         implements
             Comparator<Entry>,
@@ -48,22 +47,17 @@ public class RbcSorter
             Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2008L;
 
     /**
-     * The field <tt>collator</tt> contains the collator.
+     * The field {@code collator} contains the collator.
      */
     private transient Collator collator = null;
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
-     */
-    public int compare(Entry a, Entry b) {
+public int compare(Entry a, Entry b) {
 
         String ka = a.getSortKey();
 
@@ -80,12 +74,7 @@ public class RbcSorter
         return collator.compare(ka, kb);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
-     */
-    public void configure(Configuration config) throws ConfigurationException {
+public void configure(Configuration config) throws ConfigurationException {
 
         String order = config.getValue();
 

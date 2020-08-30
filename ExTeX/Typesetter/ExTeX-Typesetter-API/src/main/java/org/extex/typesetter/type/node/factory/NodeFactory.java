@@ -28,13 +28,12 @@ import org.extex.typesetter.type.node.VirtualCharNode;
  * This interface describes a node factory.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public interface NodeFactory {
 
     /**
      * Create a new instance of a character node. If the character is not
-     * defined in the font given then <code>null</code> is returned instead.
+     * defined in the font given then {@code null} is returned instead.
      * <p>
      * If the character has some special meaning in Unicode then another node
      * might be returned.
@@ -49,7 +48,7 @@ public interface NodeFactory {
 
     /**
      * Create a new instance of a virtual character node. If the character is
-     * not defined in the font given then <code>null</code> is returned
+     * not defined in the font given then {@code null} is returned
      * instead.
      * <p>
      * If the character has some special meaning in Unicode then another node

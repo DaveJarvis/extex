@@ -48,8 +48,7 @@ import org.extex.typesetter.type.page.Page;
  * This back-end driver can be used to combine several components.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4728 $
- */
+*/
 public class BackendDriverImpl
         implements
             BackendDriver,
@@ -64,16 +63,10 @@ public class BackendDriverImpl
      * pipe.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision: 4728 $
-     */
+    */
     private class Counter implements PagePipe {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.backend.pageFilter.PagePipe#close()
-         */
-        public void close() throws BackendException {
+    public void close() throws BackendException {
 
             if (documentWriter == null) {
                 return;
@@ -89,10 +82,7 @@ public class BackendDriverImpl
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.backend.pageFilter.PagePipe#setOutput(
-         *      org.extex.backend.pageFilter.PagePipe)
+    *      org.extex.backend.pageFilter.PagePipe)
          */
         public void setOutput(PagePipe next) {
 
@@ -100,10 +90,7 @@ public class BackendDriverImpl
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.backend.pageFilter.PagePipe#setParameter(
-         *      java.lang.String, java.lang.String)
+    *      java.lang.String, java.lang.String)
          */
         public void setParameter(String name, String value) {
 
@@ -111,10 +98,7 @@ public class BackendDriverImpl
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.backend.pageFilter.PagePipe#shipout(
-         *      org.extex.typesetter.type.page.Page)
+    *      org.extex.typesetter.type.page.Page)
          */
         public void shipout(Page nodes) throws BackendException {
 
@@ -133,74 +117,74 @@ public class BackendDriverImpl
     }
 
     /**
-     * The field <tt>colorConverter</tt> contains the color converter.
+     * The field {@code colorConverter} contains the color converter.
      */
     private ColorConverter colorConverter;
 
     /**
-     * The field <tt>counter</tt> contains the counter page pipe which will
+     * The field {@code counter} contains the counter page pipe which will
      * always be placed at the end of the of the pipe.
      */
     private PagePipe counter = new Counter();
 
     /**
-     * The field <tt>documentWriter</tt> contains the document writer.
+     * The field {@code documentWriter} contains the document writer.
      */
     private DocumentWriter documentWriter = null;
 
     /**
-     * The field <tt>documentWriterFactory</tt> contains the factory for new
+     * The field {@code documentWriterFactory} contains the factory for new
      * document writers.
      */
     private DocumentWriterFactory documentWriterFactory;
 
     /**
-     * The field <tt>documentWriterType</tt> contains the type of the document
+     * The field {@code documentWriterType} contains the type of the document
      * writer to use.
      */
     private String documentWriterType = "?";
 
     /**
-     * The field <tt>finder</tt> contains the resource finder.
+     * The field {@code finder} contains the resource finder.
      */
     private ResourceFinder finder;
 
     /**
-     * The field <tt>fontFactory</tt> contains the font factory.
+     * The field {@code fontFactory} contains the font factory.
      */
     private CoreFontFactory fontFactory;
 
     /**
-     * The field <tt>pages</tt> contains the number of pages already sent to
+     * The field {@code pages} contains the number of pages already sent to
      * the document writer.
      */
     private int pages = 0;
 
     /**
-     * The field <tt>params</tt> contains the parameters to be passed to the
+     * The field {@code params} contains the parameters to be passed to the
      * document writer.
      */
     private Map<String, String> params = new HashMap<String, String>();
 
     /**
-     * The field <tt>pipeFirst</tt> contains the elements of the pipe.
+     * The field {@code pipeFirst} contains the elements of the pipe.
      */
     private PagePipe pipeFirst = counter;
 
     /**
-     * The field <tt>pipeLast</tt> contains the last item in the pipe.
+     * The field {@code pipeLast} contains the last item in the pipe.
      * Initially it is the counter. If the pipe is longer this value is the last
      * item before the counter.
      */
     private PagePipe pipeLast = counter;
 
     /**
-     * The field <tt>properties</tt> contains the properties.
+     * The field {@code properties} contains the properties.
      */
     private Properties properties;
 
     /**
-     * The field <tt>streamFactory</tt> contains the output stream factory.
+     * The field {@code streamFactory} contains the output stream factory.
      */
     private OutputStreamFactory streamFactory;
 
@@ -210,10 +194,7 @@ public class BackendDriverImpl
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.BackendDriver#add(
-     *      org.extex.backend.pageFilter.PagePipe)
+*      org.extex.backend.pageFilter.PagePipe)
      */
     public void add(PagePipe processor) {
 
@@ -228,12 +209,7 @@ public class BackendDriverImpl
         pipeLast = processor;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.BackendDriver#close()
-     */
-    public void close() throws BackendException {
+public void close() throws BackendException {
 
         pipeFirst.close();
 
@@ -249,12 +225,7 @@ public class BackendDriverImpl
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.BackendDriver#getDocumentWriter()
-     */
-    public DocumentWriter getDocumentWriter() throws DocumentWriterException {
+public DocumentWriter getDocumentWriter() throws DocumentWriterException {
 
         if (documentWriter == null) {
 
@@ -287,20 +258,15 @@ public class BackendDriverImpl
         return documentWriter;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.BackendDriver#getDocumentWriterType()
-     */
-    public String getDocumentWriterType() {
+public String getDocumentWriterType() {
 
         return documentWriterType;
     }
 
     /**
      * Getter for the extension associated with this kind of output. For
-     * instance <tt>pdf</tt> is the expected value for PDF files and
-     * <tt>dvi</tt> is the expected value for DVI files.
+     * instance {@code pdf} is the expected value for PDF files and
+     * {@code dvi} is the expected value for DVI files.
      * 
      * @return the appropriate extension for file names
      * 
@@ -323,21 +289,13 @@ public class BackendDriverImpl
         return pages;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.color.ColorAware#setColorConverter(org.extex.color.ColorConverter)
-     */
-    public void setColorConverter(ColorConverter converter) {
+public void setColorConverter(ColorConverter converter) {
 
         this.colorConverter = converter;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.BackendDriver#setDocumentWriterFactory(
-     *      org.extex.backend.documentWriter.DocumentWriterFactory)
+*      org.extex.backend.documentWriter.DocumentWriterFactory)
      */
     public void setDocumentWriterFactory(
             DocumentWriterFactory documentWriterFactory) {
@@ -345,12 +303,7 @@ public class BackendDriverImpl
         this.documentWriterFactory = documentWriterFactory;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.BackendDriver#setDocumentWriterType(java.lang.String)
-     */
-    public void setDocumentWriterType(String type)
+public void setDocumentWriterType(String type)
             throws BackendDocumentWriterDefinedException,
                 BackendUnknownDocumentWriterException {
 
@@ -369,12 +322,7 @@ public class BackendDriverImpl
         documentWriterType = type;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.FontAware#setFontFactory(org.extex.font.CoreFontFactory)
-     */
-    public void setFontFactory(CoreFontFactory factory) {
+public void setFontFactory(CoreFontFactory factory) {
 
         this.fontFactory = factory;
     }
@@ -417,21 +365,13 @@ public class BackendDriverImpl
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.PropertyAware#setProperties(java.util.Properties)
-     */
-    public void setProperties(Properties properties) {
+public void setProperties(Properties properties) {
 
         this.properties = properties;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.ResourceAware#setResourceFinder(
-     *      org.extex.resource.ResourceFinder)
+*      org.extex.resource.ResourceFinder)
      */
     public void setResourceFinder(ResourceFinder f) {
 
@@ -464,12 +404,7 @@ public class BackendDriverImpl
         return pages - n;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return documentWriterType;

@@ -34,49 +34,49 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\glueshrinkorder</code>.
+ * {@code \glueshrinkorder}.
  * 
- * <doc name="glueshrinkorder"> <h3>The Primitive <tt>\glueshrinkorder</tt></h3>
+ * <p>The Primitive {@code \glueshrinkorder}</p>
  * <p>
- * The primitive <tt>\glueshrinkorder</tt> determines the order of the glue
+ * The primitive {@code \glueshrinkorder} determines the order of the glue
  * shrink component of the following glue specification. A fixed,
  * non-stretchable glue returns the value 0. Glue with the order fi gives 1, fil
  * gives 2, fill gives 3, and filll gives 4.
  * </p>
  * <p>
  * Note that the glue specification of 1&nbsp;fi has been introduced by
- * <logo>Omega</logo>.
+ *  Omega.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;glueshrinkorder&rang;
- *      &rarr; <tt>\glueshrinkorder</tt> {@linkplain
+ *      &rarr; {@code \glueshrinkorder} {@linkplain
  *        org.extex.interpreter.parser.GlueParser#parseGlue(
  *        org.extex.interpreter.context.Context,
  *        org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
  *        &lang;glue&rang;} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *   \glueshrinkorder\skip1  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Oglueshrinkorder extends AbstractCode
         implements
             CountConvertible,
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -91,10 +91,7 @@ public class Oglueshrinkorder extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertCount(Context context, TokenSource source,
@@ -105,10 +102,7 @@ public class Oglueshrinkorder extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

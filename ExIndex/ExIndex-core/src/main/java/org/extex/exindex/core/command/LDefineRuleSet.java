@@ -41,12 +41,10 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This is the adapter for the L system to define a rule set.
  * 
- * <doc type="exindex-command" command="define-rule-set">
- * 
- * <h3>The Command <tt>define-rule-set</tt></h3>
+ * <p>The Command {@code define-rule-set}</p>
  * 
  * <p>
- * The command <tt>define-rule-set</tt> can be used to define a rule set.
+ * The command {@code define-rule-set} can be used to define a rule set.
  * </p>
  * 
  * <pre>
@@ -72,7 +70,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * <p>
  * The specification of a rule set can be contain an inherit instruction. This
- * instruction starts with the keyword <tt>:inherit-from</tt>. This keyword is
+ * instruction starts with the keyword {@code :inherit-from}. This keyword is
  * followed by a list of strings denoting rule set names. Those names need to be
  * defined. The definitions of those names are included at this place.
  * </p>
@@ -82,8 +80,8 @@ import org.extex.framework.i18n.LocalizerFactory;
  *     :inherit-from ("abc"))   </pre>
  * 
  * <p>
- * The example shows the definition of a rule set <tt>my-rule-set</tt>. It
- * contains all rules from the rule set <tt>abc</tt>.
+ * The example shows the definition of a rule set {@code my-rule-set}. It
+ * contains all rules from the rule set {@code abc}.
  * </p>
  * 
  * <pre>
@@ -91,7 +89,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * <p>
  * The other possibility for a specification is an explicit rule set. It is
- * stared with the keyword <tt>:rules</tt>. This keyword is followed by a list
+ * stared with the keyword {@code :rules}. This keyword is followed by a list
  * containing the rules.
  * </p>
  * 
@@ -109,62 +107,52 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <pre>
  *  (define-rule-set "my-rule-set"
  *     :rules (("abc" "def" )))   </pre>
- * 
- * <p>
- * </p>
- * 
+ *
+ * <br>
+ *
  * <pre>
  *  (define-rule-set "my-rule-set"
  *     :rules (("abcd" "defd" ))
  *     :inherit-from ("din5007")
  *     :rules (("abc" "def" )))   </pre>
- * 
- * <p>
- * </p>
- * 
- * TODO documentation incomplete
- * 
- * </doc>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LDefineRuleSet extends LFunction {
 
     /**
-     * The field <tt>RULES</tt> contains the symbol <tt>:rules</tt>.
+     * The field {@code RULES} contains the symbol {@code :rules}.
      */
     private static final LSymbol RULES = LSymbol.get(":rules");
 
     /**
-     * The field <tt>INHERIT_FROM</tt> contains the symbol
-     * <tt>:inherit-from</tt>.
+     * The field {@code INHERIT_FROM} contains the symbol
+     * {@code :inherit-from}.
      */
     private static final LSymbol INHERIT_FROM = LSymbol.get(":inherit-from");
 
     /**
-     * The field <tt>AGAIN</tt> contains the symbol <tt>:again</tt>.
+     * The field {@code AGAIN} contains the symbol {@code :again}.
      */
     private static final LSymbol AGAIN = LSymbol.get(":again");
 
     /**
-     * The field <tt>STRING</tt> contains the symbol <tt>:string</tt>.
+     * The field {@code STRING} contains the symbol {@code :string}.
      */
     private static final LSymbol STRING = LSymbol.get(":string");
 
     /**
-     * The field <tt>BREGEX</tt> contains the symbol <tt>:bregexp</tt>.
+     * The field {@code BREGEX} contains the symbol {@code :bregexp}.
      */
     private static final LSymbol BREGEX = LSymbol.get(":bregexp");
 
     /**
-     * The field <tt>EREGEX</tt> contains the symbol <tt>:eregexp</tt>.
+     * The field {@code EREGEX} contains the symbol {@code :eregexp}.
      */
     private static final LSymbol EREGEX = LSymbol.get(":eregexp");
 
     /**
-     * The field <tt>container</tt> contains the reference to the rule set
+     * The field {@code container} contains the reference to the rule set
      * container to store information in.
      */
     private final RuleSetContainer container;
@@ -279,7 +267,7 @@ public class LDefineRuleSet extends LFunction {
      * @param name the name of the rule set
      * @param args the arguments
      * 
-     * @return <tt>nil</tt>
+     * @return {@code nil}
      * 
      * @throws LException in case of an error
      */

@@ -51,18 +51,17 @@ import org.xml.sax.SAXException;
  * Extract doc tags from sources and translate them to LaTeX.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5413 $
- */
+*/
 public class ExDocTeX extends ExDocXml {
 
     /**
-     * The field <tt>ENTITY_MAP</tt> contains the mapping for entities.
+     * The field {@code ENTITY_MAP} contains the mapping for entities.
      */
     private static final Map<String, String> ENTITY_MAP =
             new HashMap<String, String>();
 
     /**
-     * The field <tt>XSLT</tt> contains the name of the XSLT file to use.
+     * The field {@code XSLT} contains the name of the XSLT file to use.
      */
     private static final String XSLT = "org/extex/exdoc/xslt/xml2tex.xsl";
 
@@ -332,12 +331,12 @@ public class ExDocTeX extends ExDocXml {
     }
 
     /**
-     * The field <tt>keys</tt> contains the ...
+     * The field {@code keys} contains the ...
      */
     private List<Key> keys = new ArrayList<Key>();
 
     /**
-     * The field <tt>transformer</tt> contains the xslt engine.
+     * The field {@code transformer} contains the xslt engine.
      */
     private Transformer transformer;
 
@@ -389,7 +388,7 @@ public class ExDocTeX extends ExDocXml {
     /**
      * Process the list of resources and authors.
      * 
-     * @param file the target file or <code>null</code>
+     * @param file the target file or {@code null}
      * @param authors the list of authors
      * 
      * @throws IOException in case of an I/O error
@@ -419,7 +418,7 @@ public class ExDocTeX extends ExDocXml {
     }
 
     /**
-     * Replace HTML entities of the form <tt>&amp;&lang;name&rang;;</tt> to
+     * Replace HTML entities of the form {@code &amp;&lang;name&rang;;} to
      * appropriate values.
      * 
      * @param content the content to transform

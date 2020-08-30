@@ -32,14 +32,13 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.file.AbstractFileCode;
 
 /**
- * This class provides an implementation for the primitive <tt>\input</tt>.
- * It uses the standard encoding (see token register <tt>\fileencoding</tt>
- * and <code>extex.encoding</code>.
+ * This class provides an implementation for the primitive {@code \input}.
+ * It uses the standard encoding (see token register {@code \fileencoding}
+ * and {@code extex.encoding}.
  * 
- * <doc name="input">
- * <h3>The Primitive <tt>\input</tt></h3>
+ * <p>The Primitive {@code \input}</p>
  * <p>
- * The primitive <tt>\input</tt> takes as argument one file name and opens
+ * The primitive {@code \input} takes as argument one file name and opens
  * this file for reading. The following tokens are taken from this input stream.
  * Thus the effect is as if the file contents where copied at the place of the
  * primitive.
@@ -49,47 +48,50 @@ import org.extex.unit.base.file.AbstractFileCode;
  * </p>
  * <p>
  * The primitive also makes provisions that the information in
- * <tt>\inputfilename</tt> and <tt>\inputlineno</tt> are set properly.
+ * {@code \inputfilename} and {@code \inputlineno} are set properly.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+ * <p>
  * The formal description of this primitive is the following:
- * 
+ * </p>
+ *
  * <pre class="syntax">
  *    &lang;input&rang;
- *       &rarr; <tt>\input</tt> &lang;file name&rang; </pre>
+ *       &rarr; {@code \input} &lang;file name&rang; </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * <p>
  * The traditional version of the file name parsing allows the following syntax:
- * 
+ * </p>
+ *
  * <pre class="TeXSample">
  *    \input file.name  </pre>
- * 
+ *
+ * <p>
  * If the parsing is not configured to be strict then the following syntax is
  * allowed as well:
- * 
+ * </p>
+ *
  * <pre class="TeXSample">
  *    \input{file.name}  </pre>
  * 
- * </p>
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4441 $
- */
+*/
 public class Input extends AbstractFileCode implements ExpandableCode {
 
     /**
-     * The field <tt>FILE_TYPE</tt> contains the file type to create an input
+     * The field {@code FILE_TYPE} contains the file type to create an input
      * stream for.
      */
     private static final String FILE_TYPE = "tex";
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -105,10 +107,7 @@ public class Input extends AbstractFileCode implements ExpandableCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -126,10 +125,7 @@ public class Input extends AbstractFileCode implements ExpandableCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,

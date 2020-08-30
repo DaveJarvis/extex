@@ -23,11 +23,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\ifvbox</tt>.
+ * This is a test suite for the primitive {@code \ifvbox}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class IfvboxTest extends ConditionalTester {
 
     /**
@@ -47,8 +46,8 @@ public class IfvboxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifvbox"> Test case checking that <tt>\ifvbox</tt>
-     * on an undefined box selects the else branch. </testcase>
+     * <testcase primitive="\ifvbox"> Test case checking that {@code \ifvbox}
+     * on an undefined box selects the else branch.
      * 
      * @throws Exception in case of an error
      */
@@ -62,9 +61,9 @@ public class IfvboxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifvbox"> Test case checking that <tt>\ifvbox</tt>
+     * <testcase primitive="\ifvbox"> Test case checking that {@code \ifvbox}
      * on an undefined box selects nothing if the else branch is missing.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -78,8 +77,8 @@ public class IfvboxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifvbox"> Test case checking that <tt>\ifvbox</tt>
-     * on an empty vbox selects the then branch. </testcase>
+     * <testcase primitive="\ifvbox"> Test case checking that {@code \ifvbox}
+     * on an empty vbox selects the then branch.
      * 
      * @throws Exception in case of an error
      */
@@ -94,8 +93,8 @@ public class IfvboxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifvbox"> Test case checking that <tt>\ifvbox</tt>
-     * on an empty hbox selects the else branch. </testcase>
+     * <testcase primitive="\ifvbox"> Test case checking that {@code \ifvbox}
+     * on an empty hbox selects the else branch.
      * 
      * @throws Exception in case of an error
      */

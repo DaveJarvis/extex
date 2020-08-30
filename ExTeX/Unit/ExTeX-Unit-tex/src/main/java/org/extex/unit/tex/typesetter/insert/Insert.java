@@ -33,35 +33,34 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.InsertionNode;
 
 /**
- * This class provides an implementation for the primitive <code>\insert</code>.
+ * This class provides an implementation for the primitive {@code \insert}.
  * 
- * <doc name="insert">
- * <h3>The Primitive <tt>\insert</tt></h3>
+ * <p>The Primitive {@code \insert}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;insert&rang;
- *       &rarr; <tt>\insert</tt>  </pre>
+ *       &rarr; {@code \insert}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \insert42{abc}  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Insert extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -77,10 +76,7 @@ public class Insert extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

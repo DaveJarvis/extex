@@ -34,8 +34,7 @@ import org.extex.scanner.api.Tokenizer;
  * This is the implementation of a group object with ExTeX-functions.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public interface GroupExtension extends Group, Tokenizer, Serializable {
 
     /**
@@ -51,7 +50,7 @@ public interface GroupExtension extends Group, Tokenizer, Serializable {
      * 
      * @param name the name of the real register
      * @param value the value of the real register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setReal(String name, Real value, boolean global);
@@ -83,7 +82,7 @@ public interface GroupExtension extends Group, Tokenizer, Serializable {
      * 
      * @param name the name of the register
      * @param value the value of the register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setBool(String name, Bool value, boolean global);
@@ -94,7 +93,7 @@ public interface GroupExtension extends Group, Tokenizer, Serializable {
      * first case the behavior of the numbered real registers is emulated. The
      * other case can be used to store special real values.
      * 
-     * As a default value <code>null</code> is returned.
+     * As a default value {@code null} is returned.
      * 
      * @param name the name of the register
      * 
@@ -115,7 +114,7 @@ public interface GroupExtension extends Group, Tokenizer, Serializable {
      * 
      * @param name the name of the register
      * @param value the value of the register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setPair(String name, Pair value, boolean global);
@@ -126,7 +125,7 @@ public interface GroupExtension extends Group, Tokenizer, Serializable {
      * first case the behavior of the numbered real registers is emulated. The
      * other case can be used to store special real values.
      * 
-     * As a default value <code>null</code> is returned.
+     * As a default value {@code null} is returned.
      * 
      * @param name the name of the register
      * @return the value of the register or its default
@@ -146,7 +145,7 @@ public interface GroupExtension extends Group, Tokenizer, Serializable {
      * 
      * @param name the name of the register
      * @param value the value of the register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setTransform(String name, Transform value, boolean global);
@@ -157,7 +156,7 @@ public interface GroupExtension extends Group, Tokenizer, Serializable {
      * the first case the behavior of the numbered real registers is emulated.
      * The other case can be used to store special real values.
      * 
-     * As a default value <code>null</code> is returned.
+     * As a default value {@code null} is returned.
      * 
      * @param name the name of the register
      * @return the value of the register or its default
@@ -177,7 +176,7 @@ public interface GroupExtension extends Group, Tokenizer, Serializable {
      * 
      * @param name the name of the register
      * @param value the value of the register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setHashToks(String name, HashToks value, boolean global);
@@ -188,7 +187,7 @@ public interface GroupExtension extends Group, Tokenizer, Serializable {
      * the first case the behavior of the numbered hash-toks registers is
      * emulated. The other case can be used to store special hash-toks values.
      * 
-     * As a default value <code>null</code> is returned.
+     * As a default value {@code null} is returned.
      * 
      * @param name the name of the register
      * @return the value of the register or its default

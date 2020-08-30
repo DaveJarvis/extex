@@ -30,52 +30,45 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.MarkNode;
 
 /**
- * This class provides an implementation for the primitive <code>\marks</code>.
+ * This class provides an implementation for the primitive {@code \marks}.
  * 
- * <doc name="marks"> <h3>The Primitive <tt>\marks</tt></h3>
+ * <p>The Primitive {@code \marks}</p>
  * <p>
- * The primitive <tt>\marks</tt> places a mark in the current list. The marks on
+ * The primitive {@code \marks} places a mark in the current list. The marks on
  * the last page can be retrieved when the page is mounted in the output
  * routine. The text stored within the mark is a list of tokens.
  * </p>
  * <p>
- * The marks can be classified with an identifier. In <logo>&epsilon;-T<span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> the identifier is a number. In <logo>&epsilon;&chi;T<span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> in addition arbitrary token lists can be used as
+ * The marks can be classified with an identifier. In ε-TeX the identifier is
+ * a number. In εχTeX in addition arbitrary token lists can be used as
  * identifier.
  * </p>
  * <p>
- * The <tt>\marks0</tt> is equivalent to <tt>\mark</tt>.
+ * The {@code \marks0} is equivalent to {@code \mark}.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;marks&rang;
- *      &rarr; <tt>\marks</tt> {@linkplain
+ *      &rarr; {@code \marks} {@linkplain
  *        org.extex.unit.tex.typesetter.mark.AbstractMarksCode#getKey(Context,TokenSource,Typesetter)
  *        &lang;mark name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *        &lang;tokens&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
  * 
  * <pre class="TeXSample">
  *    \marks123{abc}  </pre>
- * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Marks extends AbstractMarkCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -90,10 +83,7 @@ public class Marks extends AbstractMarkCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Code#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

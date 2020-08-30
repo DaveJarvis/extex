@@ -31,11 +31,10 @@ import org.extex.exbib.bst2groovy.linker.LinkContainer;
 import org.extex.exbib.bst2groovy.linker.LinkingCode;
 
 /**
- * This class implements the analyzer for the <code>call.type$</code> built-in.
+ * This class implements the analyzer for the {@code call.type$} built-in.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class CallTypeCompiler implements Compiler {
 
     /**
@@ -56,16 +55,11 @@ public class CallTypeCompiler implements Compiler {
     }
 
     /**
-     * The field <tt>CALL_TYPE</tt> contains the linker code.
+     * The field {@code CALL_TYPE} contains the linker code.
      */
     private static final LinkingCode CALL_TYPE = new LinkingCode("callType()") {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.linker.LinkingCode#print(org.extex.exbib.bst2groovy.io.CodeWriter)
-         */
-        @Override
+    @Override
         public void print(CodeWriter writer) throws IOException {
 
             writer.write("\n\tvoid callType(Entry entry) {",
@@ -83,10 +77,7 @@ public class CallTypeCompiler implements Compiler {
     };
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryReference,
-     *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
+*      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */

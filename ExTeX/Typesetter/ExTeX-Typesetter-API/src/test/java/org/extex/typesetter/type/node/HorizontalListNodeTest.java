@@ -39,12 +39,11 @@ import org.junit.runner.JUnitCore;
  * This is the test suite for a horizontal list node.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class HorizontalListNodeTest extends AbstractNodeListTester {
 
     /**
-     * The field <tt>visitor</tt> contains the visitor which does nothing.
+     * The field {@code visitor} contains the visitor which does nothing.
      */
     private static final NodeVisitor<Node, Boolean> VISITOR =
             new NodeVisitor<Node, Boolean>() {
@@ -200,34 +199,19 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
         (new JUnitCore()).run(HorizontalListNodeTest.class);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractNodeListTester#makeList()
-     */
-    @Override
+@Override
     protected NodeList makeList() {
 
         return new HorizontalListNode();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractNodeListTester#makeList()
-     */
-    @Override
+@Override
     protected NodeList makeList(Node node) {
 
         return new HorizontalListNode(node);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractNodeListTester#makeVisitor()
-     */
-    @Override
+@Override
     protected NodeVisitor<Node, Boolean> makeVisitor() {
 
         return VISITOR;

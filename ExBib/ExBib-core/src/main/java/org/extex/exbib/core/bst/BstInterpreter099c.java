@@ -70,8 +70,7 @@ import org.extex.exbib.core.io.Writer;
  * >e</span>X&nbsp;0.99c.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BstInterpreter099c extends BstInterpreterCore {
 
     /**

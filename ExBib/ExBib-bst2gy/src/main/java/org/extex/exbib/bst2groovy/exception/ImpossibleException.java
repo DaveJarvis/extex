@@ -23,12 +23,11 @@ package org.extex.exbib.bst2groovy.exception;
  * possible according to the preconditions in the program.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ImpossibleException extends Bst2GroovyException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2009L;

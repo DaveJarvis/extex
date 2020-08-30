@@ -23,11 +23,10 @@ import org.extex.test.NoFlagsPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\showtokens</tt>.
+ * This is a test suite for the primitive {@code \showtokens}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class ShowtokensTest extends NoFlagsPrimitiveTester {
 
 
@@ -39,7 +38,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showtokens"> Test case checking that
-     * <tt>\showtokens</tt> needs an argument. </testcase>
+     * {@code \showtokens} needs an argument.
      * 
      * @throws Exception in case of an error
      */
@@ -54,7 +53,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showtokens"> Test case checking that
-     * <tt>\showtokens</tt> needs a complete argument group. </testcase>
+     * {@code \showtokens} needs a complete argument group.
      * 
      * @throws Exception in case of an error
      */
@@ -69,7 +68,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showtokens"> Test case checking that
-     * <tt>\showtokens</tt> does not expand \relax. </testcase>
+     * {@code \showtokens} does not expand \relax.
      * 
      * @throws Exception in case of an error
      */
@@ -84,7 +83,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showtokens"> Test case checking that
-     * <tt>\showtokens</tt> does not expand \jobname. </testcase>
+     * {@code \showtokens} does not expand \jobname.
      * 
      * @throws Exception in case of an error
      */
@@ -99,7 +98,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showtokens"> Test case checking that
-     * <tt>\showtokens</tt> shows an undefined active character. </testcase>
+     * {@code \showtokens} shows an undefined active character.
      * 
      * @throws Exception in case of an error
      */
@@ -114,7 +113,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showtokens"> Test case checking that
-     * <tt>\showtokens</tt> doubles the macro param character. </testcase>
+     * {@code \showtokens} doubles the macro param character.
      * 
      * @throws Exception in case of an error
      */
@@ -129,7 +128,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showtokens"> Test case checking that
-     * <tt>\showtokens</tt> shows an subscript character. </testcase>
+     * {@code \showtokens} shows an subscript character.
      * 
      * @throws Exception in case of an error
      */
@@ -144,7 +143,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showtokens"> Test case checking that
-     * <tt>\showtokens</tt> shows an superscript character. </testcase>
+     * {@code \showtokens} shows an superscript character.
      * 
      * @throws Exception in case of an error
      */
@@ -159,8 +158,8 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showtokens"> Test case checking that
-     * <tt>\showtokens</tt> lets \expandafter do it's work before reading the
-     * token list. </testcase>
+     * {@code \showtokens} lets \expandafter do it's work before reading the
+     * token list.
      * 
      * @throws Exception in case of an error
      */
@@ -175,8 +174,8 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showtokens"> Test case checking that
-     * <tt>\showtokens</tt> complains if aargument group is missing.
-     * </testcase>
+     * {@code \showtokens} complains if aargument group is missing.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -191,8 +190,8 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showtokens"> Test case checking that
-     * <tt>\showtokens</tt> can take the tokens from a tokens register.
-     * </testcase>
+     * {@code \showtokens} can take the tokens from a tokens register.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -207,7 +206,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showtokens"> Test case checking that
-     * <tt>\showtokens</tt> shows embedded groups with braces. </testcase>
+     * {@code \showtokens} shows embedded groups with braces.
      * 
      * @throws Exception in case of an error
      */
@@ -222,7 +221,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showtokens"> Test case checking that
-     * <tt>\showtokens</tt> can be used in a macro. </testcase>
+     * {@code \showtokens} can be used in a macro.
      * 
      * @throws Exception in case of an error
      */
@@ -238,8 +237,8 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showtokens"> Test case checking that
-     * <tt>\showtokens</tt> preserves braces in an argument of the macr
-     * invocation. </testcase>
+     * {@code \showtokens} preserves braces in an argument of the macr
+     * invocation.
      * 
      * @throws Exception in case of an error
      */

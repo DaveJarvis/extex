@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\ignorevoid</tt>.
+ * This is a test suite for the primitive {@code \ignorevoid}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class IgnorevoidTest extends AbstractCountRegisterTester {
 
     /**
@@ -50,7 +49,7 @@ public class IgnorevoidTest extends AbstractCountRegisterTester {
 
     /**
      * <testcase primitive="\ignorevoid"> Test case checking that
-     * <tt>\ignorevoid</tt> is 0 initially. </testcase>
+     * {@code \ignorevoid} is 0 initially.
      * 
      * @throws Exception in case of an error
      */
@@ -66,8 +65,8 @@ public class IgnorevoidTest extends AbstractCountRegisterTester {
 
     /**
      * <testcase primitive="\ignorevoid"> Test case checking that if
-     * <tt>\ignorevoid</tt> is 0 then an undefined control sequence leads to
-     * an error. </testcase>
+     * {@code \ignorevoid} is 0 then an undefined control sequence leads to
+     * an error.
      * 
      * @throws Exception in case of an error
      */
@@ -83,8 +82,8 @@ public class IgnorevoidTest extends AbstractCountRegisterTester {
 
     /**
      * <testcase primitive="\ignorevoid"> Test case checking that if
-     * <tt>\ignorevoid</tt> is 0 then an undefined active character leads to
-     * an error. </testcase>
+     * {@code \ignorevoid} is 0 then an undefined active character leads to
+     * an error.
      * 
      * @throws Exception in case of an error
      */
@@ -100,8 +99,8 @@ public class IgnorevoidTest extends AbstractCountRegisterTester {
 
     /**
      * <testcase primitive="\ignorevoid"> Test case checking that if
-     * <tt>\ignorevoid</tt> is not 0 then an undefined control sequence is
-     * ignored. </testcase>
+     * {@code \ignorevoid} is not 0 then an undefined control sequence is
+     * ignored.
      * 
      * @throws Exception in case of an error
      */
@@ -117,8 +116,8 @@ public class IgnorevoidTest extends AbstractCountRegisterTester {
 
     /**
      * <testcase primitive="\ignorevoid"> Test case checking that if
-     * <tt>\ignorevoid</tt> is not 0 then an undefined control sequence is
-     * ignored. </testcase>
+     * {@code \ignorevoid} is not 0 then an undefined control sequence is
+     * ignored.
      * 
      * @throws Exception in case of an error
      */

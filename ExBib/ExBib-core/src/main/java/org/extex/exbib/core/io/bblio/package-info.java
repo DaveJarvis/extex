@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the classes for writing bbl files.
+ * Contains the classes for writing bbl files.
  * <p>
  * Mainly provisions are provided to perform line breaking and translation to 
  * appropriate character encodings.

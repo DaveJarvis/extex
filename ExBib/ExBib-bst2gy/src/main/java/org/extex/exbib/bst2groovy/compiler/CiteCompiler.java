@@ -27,11 +27,10 @@ import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
- * This class implements the analyzer for the <code>cite$</code> built-in.
+ * This class implements the analyzer for the {@code cite$} built-in.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class CiteCompiler implements Compiler {
 
     /**
@@ -52,10 +51,7 @@ public class CiteCompiler implements Compiler {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryReference,
-     *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
+*      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */

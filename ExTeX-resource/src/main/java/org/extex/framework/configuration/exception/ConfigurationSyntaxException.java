@@ -23,12 +23,11 @@ package org.extex.framework.configuration.exception;
  * This Exception is thrown when a configuration contains a syntax error.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ConfigurationSyntaxException extends ConfigurationException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     private static final long serialVersionUID = 2010L;
 
@@ -45,8 +44,8 @@ public class ConfigurationSyntaxException extends ConfigurationException {
 
     /**
      * Getter for the text prefix of this Exception. The text is taken from the
-     * resource bundle <tt>ConfigurationEception</tt> under the key
-     * <tt>ConfigurationSyntaxException.Text</tt>.
+     * resource bundle {@code ConfigurationEception} under the key
+     * {@code ConfigurationSyntaxException.Text}.
      * 
      * @return the text
      */

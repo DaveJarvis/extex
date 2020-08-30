@@ -25,8 +25,7 @@ import org.extex.core.exception.helping.HelpingException;
  * This interface describes a function object without any arguments.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface Function0 {
 
     /**

@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains parsers for ??TeX.
+ * Contains parsers for εχTeX.
  */
 
 package org.extex.base.parser;

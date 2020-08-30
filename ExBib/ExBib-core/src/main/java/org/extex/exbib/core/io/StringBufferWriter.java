@@ -25,12 +25,11 @@ import java.io.IOException;
  * This can be used to write messages into memory.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class StringBufferWriter implements Writer {
 
     /**
-     * The field <tt>buffer</tt> contains the target.
+     * The field {@code buffer} contains the target.
      */
     private StringBuffer buffer = null;
 
@@ -50,44 +49,24 @@ public class StringBufferWriter implements Writer {
         this.buffer = buffer;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#close()
-     */
-    public void close() {
+public void close() {
 
         
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#flush()
-     */
-    public void flush() {
+public void flush() {
 
         
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#print(java.lang.String[])
-     */
-    public void print(String... args) {
+public void print(String... args) {
 
         for (String s : args) {
             buffer.append(s);
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println(java.lang.String[])
-     */
-    public void println(String... args) {
+public void println(String... args) {
 
         for (String s : args) {
             buffer.append(s);
@@ -95,12 +74,7 @@ public class StringBufferWriter implements Writer {
         buffer.append("\n");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#write(int)
-     */
-    public void write(int c) throws IOException {
+public void write(int c) throws IOException {
 
         buffer.append(c);
     }

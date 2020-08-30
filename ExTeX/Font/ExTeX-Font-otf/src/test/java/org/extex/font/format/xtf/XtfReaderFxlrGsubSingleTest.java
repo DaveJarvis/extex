@@ -34,14 +34,13 @@ import java.io.IOException;
 import static org.junit.Assert.*;
 
 /**
- * Tests for the <code>XtfReader</code> with opentype files (GSUB-Single).
+ * Tests for the {@code XtfReader} with opentype files (GSUB-Single).
  * <p>
  * data from ttx
  * </p>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 @Ignore
 public class XtfReaderFxlrGsubSingleTest {
 

@@ -22,42 +22,41 @@ package org.extex.exbib.bst2groovy.parameters;
  * This class represents a parameter for bst2groovy.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Parameter {
 
     /**
-     * The field <tt>TRUE</tt> contains the boolean value true.
+     * The field {@code TRUE} contains the boolean value true.
      */
     public static final Parameter TRUE = new Parameter(true);
 
     /**
-     * The field <tt>FALSE</tt> contains the boolean value false.
+     * The field {@code FALSE} contains the boolean value false.
      */
     public static final Parameter FALSE = new Parameter(false);
 
     /**
-     * The field <tt>ZERO</tt> contains the numeric value zero.
+     * The field {@code ZERO} contains the numeric value zero.
      */
     public static final Parameter ZERO = new Parameter(0);
 
     /**
-     * The field <tt>EMPTY</tt> contains the string value for the empty string.
+     * The field {@code EMPTY} contains the string value for the empty string.
      */
     public static final Parameter EMPTY = new Parameter("");
 
     /**
-     * The field <tt>intValue</tt> contains the value.
+     * The field {@code intValue} contains the value.
      */
     private int intValue;
 
     /**
-     * The field <tt>value</tt> contains the value.
+     * The field {@code value} contains the value.
      */
     private String stringValue;
 
     /**
-     * The field <tt>booleanValue</tt> contains the value.
+     * The field {@code booleanValue} contains the value.
      */
     private boolean booleanValue;
 
@@ -120,12 +119,7 @@ public class Parameter {
         return intValue;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return stringValue;

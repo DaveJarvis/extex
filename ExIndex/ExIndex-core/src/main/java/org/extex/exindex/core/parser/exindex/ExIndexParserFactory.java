@@ -39,26 +39,22 @@ import org.extex.resource.ResourceFinder;
  * This class is a factory for raw index parsers.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ExIndexParserFactory implements RawIndexParserFactory {
 
     /**
-     * The field <tt>LOCALIZER</tt> contains the the localizer.
+     * The field {@code LOCALIZER} contains the the localizer.
      */
     private static final Localizer LOCALIZER =
             LocalizerFactory.getLocalizer(ExIndexParserFactory.class);
 
     /**
-     * The field <tt>finder</tt> contains the resource finder.
+     * The field {@code finder} contains the resource finder.
      */
     private ResourceFinder finder;
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.parser.RawIndexParserFactory#create(
-     *      java.lang.String, java.lang.String, Indexer)
+*      java.lang.String, java.lang.String, Indexer)
      */
     public RawIndexParser create(String resource, String charset,
             Indexer indexer) throws ParserException, IOException {
@@ -126,10 +122,7 @@ public class ExIndexParserFactory implements RawIndexParserFactory {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.parser.RawIndexParserFactory#setResourceFinder(
-     *      org.extex.resource.ResourceFinder)
+*      org.extex.resource.ResourceFinder)
      */
     public void setResourceFinder(ResourceFinder finder) {
 

@@ -33,12 +33,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * This is the abstract base class for actions in PDF.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4409 $
- */
+*/
 public abstract class ActionSpec implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2009L;

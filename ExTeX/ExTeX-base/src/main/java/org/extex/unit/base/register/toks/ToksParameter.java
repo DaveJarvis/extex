@@ -39,7 +39,7 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\toks</code>.
+ * This class provides an implementation for the primitive {@code \toks}.
  * It sets the numbered toks register to the value given, and as a side effect
  * all prefixes are zeroed.
  * 
@@ -51,8 +51,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
- * @version $Revision:4431 $
- */
+*/
 public class ToksParameter extends AbstractToks
         implements
             TokensConvertible,
@@ -61,7 +60,7 @@ public class ToksParameter extends AbstractToks
             Configurable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
@@ -82,7 +81,7 @@ public class ToksParameter extends AbstractToks
     }
 
     /**
-     * The field <tt>key</tt> contains the key.
+     * The field {@code key} contains the key.
      */
     private String key;
 
@@ -110,10 +109,7 @@ public class ToksParameter extends AbstractToks
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -148,10 +144,7 @@ public class ToksParameter extends AbstractToks
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens convertTokens(Context context, TokenSource source,
@@ -162,7 +155,7 @@ public class ToksParameter extends AbstractToks
     }
 
     /**
-     * Scan the tokens between <code>{</code> and <code>}</code> and store them
+     * Scan the tokens between {@code {} and {@code }} and store them
      * in the named tokens register.
      * 
      * @param prefix the prefix flags
@@ -181,10 +174,7 @@ public class ToksParameter extends AbstractToks
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.base.register.toks.AbstractToks#getKey(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     protected String getKey(Context context, TokenSource source,
@@ -197,10 +187,7 @@ public class ToksParameter extends AbstractToks
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.InitializableCode#init(org.extex.interpreter.context.Context,
-     *      TokenSource, Typesetter)
+*      TokenSource, Typesetter)
      */
     @Override
     public void init(Context context, TokenSource source, Typesetter typesetter)
@@ -219,12 +206,9 @@ public class ToksParameter extends AbstractToks
     }
 
     /**
-     * Return the register value as <code>Tokens</code> for <code>\the</code>.
+     * Return the register value as {@code Tokens} for {@code \the}.
      * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, Typesetter)
+*      org.extex.interpreter.TokenSource, Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

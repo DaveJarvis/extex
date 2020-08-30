@@ -37,8 +37,7 @@ import org.junit.runner.JUnitCore;
  * Test cases for the string implementation of a token stream.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TokenStreamStreamImplBufferedTest
         extends
             TokenStreamStringImplTest {
@@ -59,7 +58,7 @@ public class TokenStreamStreamImplBufferedTest
     }
 
     /**
-     * The field <tt>conf</tt> contains the configuration.
+     * The field {@code conf} contains the configuration.
      */
     private static final Configuration CONF = new MyConfiguration("16");
 
@@ -78,9 +77,8 @@ public class TokenStreamStreamImplBufferedTest
     }
 
     /**
-     * <testcase> This test case validates that an IOException is remapped into
-     * a Scanner Exception. </testcase>
-     * 
+     * This test case validates that an IOException is remapped into a Scanner Exception
+* 
      * @throws Exception in case of an error
      */
     @Test

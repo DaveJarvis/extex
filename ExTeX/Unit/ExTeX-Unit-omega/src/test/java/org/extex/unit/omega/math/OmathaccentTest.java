@@ -22,11 +22,10 @@ package org.extex.unit.omega.math;
 import org.extex.unit.tex.math.AbstractMathTester;
 
 /**
- * This is a test suite for the primitive <tt>\omathaccent</tt>.
+ * This is a test suite for the primitive {@code \omathaccent}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4627 $
- */
+*/
 public class OmathaccentTest extends AbstractMathTester {
 
 

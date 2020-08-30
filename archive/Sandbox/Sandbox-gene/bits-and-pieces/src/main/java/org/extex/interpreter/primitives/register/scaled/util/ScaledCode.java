@@ -44,8 +44,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * 
- * @version $Revision: 4787 $
- */
+*/
 public class ScaledCode extends AbstractAssignment
         implements
             ScaledConvertible,
@@ -55,12 +54,12 @@ public class ScaledCode extends AbstractAssignment
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 20060606L;
 
     /**
-     * The field <tt>value</tt> contains the encapsulated value. Unfortunately
+     * The field {@code value} contains the encapsulated value. Unfortunately
      * Java does not allow multiple inheritance. Thus we have to use delegation
      * instead.
      */
@@ -79,10 +78,7 @@ public class ScaledCode extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.code.Advanceable#advance(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -95,10 +91,7 @@ public class ScaledCode extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -111,10 +104,7 @@ public class ScaledCode extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.ScaledConvertible#convertScaled(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertScaled(Context context, TokenSource source,
@@ -124,10 +114,7 @@ public class ScaledCode extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.code.Divideable#divide(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -143,10 +130,7 @@ public class ScaledCode extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.code.Multiplyable#multiply(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -159,10 +143,7 @@ public class ScaledCode extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

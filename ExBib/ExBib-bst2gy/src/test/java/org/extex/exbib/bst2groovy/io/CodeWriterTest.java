@@ -29,8 +29,7 @@ import org.junit.Test;
  * This is a test suite for the code writer.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class CodeWriterTest {
 
     /**
@@ -53,7 +52,7 @@ public class CodeWriterTest {
     }
 
     /**
-     * <testcase> The empty string is just passed through. </testcase>
+     *  The empty string is just passed through.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -64,7 +63,7 @@ public class CodeWriterTest {
     }
 
     /**
-     * <testcase> A symbol "abc" is writeen unchanged. </testcase>
+     *  A symbol "abc" is writeen unchanged.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -75,7 +74,7 @@ public class CodeWriterTest {
     }
 
     /**
-     * <testcase> An embedded newline is written to the output. </testcase>
+     *  An embedded newline is written to the output.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -86,8 +85,8 @@ public class CodeWriterTest {
     }
 
     /**
-     * <testcase> Double embedded newlines in row are written to the output.
-     * </testcase>
+     *  Double embedded newlines in row are written to the output.
+     *
      * 
      * @throws IOException in case of an I/O error
      */
@@ -98,7 +97,7 @@ public class CodeWriterTest {
     }
 
     /**
-     * <testcase> A leading newline is discarded. </testcase>
+     *  A leading newline is discarded.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -109,8 +108,8 @@ public class CodeWriterTest {
     }
 
     /**
-     * <testcase> Triple embedded newlines in row are reduced to two newlines.
-     * </testcase>
+     *  Triple embedded newlines in row are reduced to two newlines.
+     *
      * 
      * @throws IOException in case of an I/O error
      */
@@ -121,7 +120,7 @@ public class CodeWriterTest {
     }
 
     /**
-     * <testcase> Tabs are expanded to spaces. </testcase>
+     *  Tabs are expanded to spaces.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -132,7 +131,7 @@ public class CodeWriterTest {
     }
 
     /**
-     * <testcase> Tabs are expanded to spaces. </testcase>
+     *  Tabs are expanded to spaces.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -143,7 +142,7 @@ public class CodeWriterTest {
     }
 
     /**
-     * <testcase> Tabs are expanded to spaces. </testcase>
+     *  Tabs are expanded to spaces.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -154,7 +153,7 @@ public class CodeWriterTest {
     }
 
     /**
-     * <testcase> Tabs are expanded to spaces. </testcase>
+     *  Tabs are expanded to spaces.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -171,7 +170,7 @@ public class CodeWriterTest {
     }
 
     /**
-     * <testcase> CR do not contribute to the column count. </testcase>
+     *  CR do not contribute to the column count.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -182,7 +181,7 @@ public class CodeWriterTest {
     }
 
     /**
-     * <testcase> nl() indents correctly. </testcase>
+     *  nl() indents correctly.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -199,7 +198,7 @@ public class CodeWriterTest {
     }
 
     /**
-     * <testcase> nl() produces a newlines. </testcase>
+     *  nl() produces a newlines.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -217,7 +216,7 @@ public class CodeWriterTest {
     }
 
     /**
-     * <testcase> nl() discards leading newlines. </testcase>
+     *  nl() discards leading newlines.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -235,7 +234,7 @@ public class CodeWriterTest {
     }
 
     /**
-     * <testcase> Multi-valued write works. </testcase>
+     *  Multi-valued write works.
      * 
      * @throws IOException in case of an I/O error
      */

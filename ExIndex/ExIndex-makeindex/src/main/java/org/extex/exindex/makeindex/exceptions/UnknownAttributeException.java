@@ -26,12 +26,11 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This exception signals that an unknown argument has been encountered.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class UnknownAttributeException extends IOException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
@@ -46,12 +45,7 @@ public class UnknownAttributeException extends IOException {
         super(message);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Throwable#getLocalizedMessage()
-     */
-    @Override
+@Override
     public String getLocalizedMessage() {
 
         return LocalizerFactory.getLocalizer(getClass()).format("Message",

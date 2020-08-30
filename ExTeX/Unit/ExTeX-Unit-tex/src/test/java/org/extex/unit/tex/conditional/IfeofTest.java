@@ -23,21 +23,20 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\ifeof</tt>.
+ * This is a test suite for the primitive {@code \ifeof}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class IfeofTest extends ConditionalTester {
 
     /**
-     * The field <tt>EMPTY_TEX</tt> contains the location of an empty file.
+     * The field {@code EMPTY_TEX} contains the location of an empty file.
      */
     private static final String EMPTY_TEX =
             "../ExTeX-Unit-tex/src/test/resources/tex/empty.tex";
 
     /**
-     * The field <tt>NON_EMPTY_TEX</tt> contains the location of an non-empty
+     * The field {@code NON_EMPTY_TEX} contains the location of an non-empty
      * file.
      */
     private static final String NON_EMPTY_TEX =
@@ -60,8 +59,8 @@ public class IfeofTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifeof"> Test case checking that <tt>\ifeof</tt>
-     * needs an argument. </testcase>
+     * <testcase primitive="\ifeof"> Test case checking that {@code \ifeof}
+     * needs an argument.
      * 
      * @throws Exception in case of an error
      */
@@ -75,8 +74,8 @@ public class IfeofTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifeof"> Test case checking that <tt>\ifeof</tt>
-     * needs a file descriptor (number). </testcase>
+     * <testcase primitive="\ifeof"> Test case checking that {@code \ifeof}
+     * needs a file descriptor (number).
      * 
      * @throws Exception in case of an error
      */
@@ -90,8 +89,8 @@ public class IfeofTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifeof"> Test case checking that <tt>\ifeof</tt>
-     * expands the then branch on an unused file descriptor. </testcase>
+     * <testcase primitive="\ifeof"> Test case checking that {@code \ifeof}
+     * expands the then branch on an unused file descriptor.
      * 
      * @throws Exception in case of an error
      */
@@ -105,9 +104,9 @@ public class IfeofTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifeof"> Test case checking that <tt>\ifeof</tt>
+     * <testcase primitive="\ifeof"> Test case checking that {@code \ifeof}
      * expands the then branch on a newly opened and empty file descriptor.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -122,9 +121,9 @@ public class IfeofTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifeof"> Test case checking that <tt>\ifeof</tt>
+     * <testcase primitive="\ifeof"> Test case checking that {@code \ifeof}
      * expands the then branch on a file descriptor for an empty file.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -140,9 +139,9 @@ public class IfeofTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifeof"> Test case checking that <tt>\ifeof</tt>
+     * <testcase primitive="\ifeof"> Test case checking that {@code \ifeof}
      * expands the else branch on a newly opened file descriptor for a non-empty
-     * file. </testcase>
+     * file.
      * 
      * @throws Exception in case of an error
      */

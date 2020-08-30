@@ -35,64 +35,55 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\advance</code>.
+ * This class provides an implementation for the primitive {@code \advance}.
  * 
- * <doc name="advance">
- * <h3>The Primitive <tt>\advance</tt></h3>
+ * <p>The Primitive {@code \advance}</p>
  * <p>
  * This primitive implements an assignment. The variable given as next tokens is
- * incremented by the quantity given after the optional <tt>by</tt>.
+ * incremented by the quantity given after the optional {@code by}.
  * </p>
  * <p>
- * The exact operation of <tt>\advance</tt> is determined by the quantity
- * following the <tt>\advance</tt> keyword.
+ * The exact operation of {@code \advance} is determined by the quantity
+ * following the {@code \advance} keyword.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *   &lang;advance&rang;
- *     &rarr; &lang;optional prefix&rang; <tt>\advance</tt> &lang;advancable&rang;
+ *     &rarr; &lang;optional prefix&rang; {@code \advance} &lang;advancable&rang;
  *
  *    &lang;optional prefix&rang;
  *      &rarr;
- *       |  <tt>\global</tt> &lang;optional prefix&rang;
+ *       |  {@code \global} &lang;optional prefix&rang;
  *
  *   &lang;advancable&rang;
- *     &rarr; &lang;integer variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
- *      org.extex.base.parser.ConstantCountParser#scanInteger(Context,TokenSource,Typesetter)
- *      &lang;number&rang;}
- *      |  &lang;dimen variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
- *        org.extex.core.dimen#Dimen(Context,TokenSource)
- *        &lang;dimen&rang;}
- *      |  &lang;glue variable&rang; &lang;optional <tt>by</tt>&rang; &lang;glue&rang;
- *      |  &lang;muglue variable&rang; &lang;optional <tt>by</tt>&rang; &lang;muglue&rang;
+ *     &rarr; &lang;integer variable&rang; &lang;optional {@code by}&rang; &lang;number&rang;
+ *      |  &lang;dimen variable&rang; &lang;optional {@code by}&rang; &lang;dimen&rang;
+ *      |  &lang;glue variable&rang; &lang;optional {@code by}&rang; &lang;glue&rang;
+ *      |  &lang;muglue variable&rang; &lang;optional {@code by}&rang; &lang;muglue&rang;
  *
- *   &lang;optional <tt>by</tt>&rang;
+ *   &lang;optional {@code by}&rang;
  *     &rarr; [by]
- *      |  {@linkplain org.extex.interpreter.TokenSource#skipSpace()
- *            &lang;optional spaces&rang;}
+ *      |  &lang;optional spaces&rang;
  *   </pre>
  * 
- * <h4>Examples</h4>
- * 
+ * <p>Examples</p>
+ *
  * <pre class="TeXSample">
  *    \advance\count12 345  </pre>
  *  <pre class="TeXSample">
  *    \advance\count12 by -345  </pre>
  * 
- * </doc>
- * 
- * 
  * @see org.extex.interpreter.type.code.Advanceable
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4408 $
- */
+*/
 public class Advance extends AbstractAssignment {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -108,10 +99,7 @@ public class Advance extends AbstractAssignment {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

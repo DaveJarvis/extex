@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\countdef</tt>.
+ * This is a test suite for the primitive {@code \countdef}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class CountdefTest extends AbstractCountRegisterTester {
 
     /**
@@ -49,8 +48,8 @@ public class CountdefTest extends AbstractCountRegisterTester {
 
     /**
      * <testcase primitive="\countdef"> Test case checking that
-     * <tt>\countdef</tt> creates a count assignable control sequence which is
-     * equivalent to the <tt>\count</tt>. </testcase>
+     * {@code \countdef} creates a count assignable control sequence which is
+     * equivalent to the {@code \count}. 
      * 
      * @throws Exception in case of an error
      */
@@ -66,7 +65,7 @@ public class CountdefTest extends AbstractCountRegisterTester {
 
     /**
      * <testcase primitive="\countdef"> Test case checking that
-     * <tt>\countdef</tt> respects a group. </testcase>
+     * {@code \countdef} respects a group. 
      * 
      * @throws Exception in case of an error
      */
@@ -81,7 +80,7 @@ public class CountdefTest extends AbstractCountRegisterTester {
 
     /**
      * <testcase primitive="\countdef"> Test case checking that
-     * <tt>\countdef</tt> respects a group. </testcase>
+     * {@code \countdef} respects a group. 
      * 
      * @throws Exception in case of an error
      */
@@ -97,7 +96,7 @@ public class CountdefTest extends AbstractCountRegisterTester {
 
     /**
      * <testcase primitive="\countdef"> Test case checking that
-     * <tt>\countdef</tt> respects <tt>\globaldefs</tt>. </testcase>
+     * {@code \countdef} respects {@code \globaldefs}. 
      * 
      * @throws Exception in case of an error
      */

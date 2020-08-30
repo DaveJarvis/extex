@@ -28,19 +28,18 @@ import org.extex.util.xml.XMLStreamWriter;
  * T2 dummy.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class T2Dummy extends T2Operator {
 
     /**
      * The command.
      */
-    private String cmd;
+    private final String cmd;
 
     /**
      * The values of the stack.
      */
-    private T2CharString[] cs;
+    private final T2CharString[] cs;
 
     /**
      * Create a new object.
@@ -63,66 +62,38 @@ public class T2Dummy extends T2Operator {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#getBytes()
-     */
-    @Override
+@Override
     public short[] getBytes() {
 
         return new short[0];
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
-     */
-    @Override
+@Override
     public int getID() {
 
         return -1;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "dummy";
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getValue()
-     */
-    @Override
+@Override
     public Object getValue() {
 
         return cs;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#toText()
-     */
-    @Override
+@Override
     public String toText() {
 
         return "dummy";
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

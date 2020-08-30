@@ -31,42 +31,41 @@ import org.extex.typesetter.type.noad.MathGlyph;
  * family and a character code.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MathCode implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2006L;
 
     /**
-     * The constant <tt>CHAR_MASK</tt> contains the mask for filtering a
+     * The constant {@code CHAR_MASK} contains the mask for filtering a
      * character code from an integer.
      */
     private static final int CHAR_MASK = 0xff;
 
     /**
-     * The field <tt>CLASS_SHIFT</tt> contains the shift value for the class.
+     * The field {@code CLASS_SHIFT} contains the shift value for the class.
      */
     private static final int CLASS_SHIFT = 12;
 
     /**
-     * The constant <tt>FAMILY_MASK</tt> contains the mask for filtering the
+     * The constant {@code FAMILY_MASK} contains the mask for filtering the
      * family from an integer.
      */
     private static final int FAMILY_MASK = 0xf;
 
     /**
-     * The field <tt>mathGlyph</tt> contains the glyph.
+     * The field {@code mathGlyph} contains the glyph.
      */
-    private MathGlyph mathGlyph;
+    private final MathGlyph mathGlyph;
 
     /**
-     * The field <tt>mathClass</tt> contains the class.
+     * The field {@code mathClass} contains the class.
      */
-    private MathClass mathClass;
+    private final MathClass mathClass;
 
     /**
      * Creates a new object.
@@ -125,12 +124,7 @@ public class MathCode implements Serializable {
         return this.mathGlyph;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return mathClass.toString() + " " + mathGlyph.toString();

@@ -46,17 +46,16 @@ import org.extex.cli.exception.NonNumericArgumentCliException;
  * </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NumberPropertyOption extends Option {
 
     /**
-     * The field <tt>pname</tt> contains the name of the property.
+     * The field {@code pname} contains the name of the property.
      */
     private final String pname;
 
     /**
-     * The field <tt>properties</tt> contains the properties to store the value
+     * The field {@code properties} contains the properties to store the value
      * in.
      */
     private final Properties properties;
@@ -75,12 +74,7 @@ public class NumberPropertyOption extends Option {
         this.properties = properties;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.cli.Option#run(java.lang.String, java.util.List)
-     */
-    @Override
+@Override
     public int run(String a, List<String> arg)
             throws MissingArgumentCliException,
                 NonNumericArgumentCliException {
@@ -92,10 +86,7 @@ public class NumberPropertyOption extends Option {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.cli.Option#run(java.lang.String, java.lang.String,
-     *      java.util.List)
+*      java.util.List)
      */
     @Override
     public int run(String a, String firstArg, List<String> arg)

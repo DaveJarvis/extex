@@ -42,50 +42,45 @@ import org.extex.core.dimen.FixedDimen;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:4399 $
- */
+*/
 public class GlueComponent extends GlueComponentConstant {
 
     /**
-     * The constant <tt>ONE</tt> contains the internal representation for 1pt.
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [101]"
-     */
+     * The constant {@code ONE} contains the internal representation for 1pt.
+*/
     public static final long ONE = 1 << 16;
 
     /**
-     * The constant <tt>MINUS_ONE_FIL</tt> contains the value of -1 fil.
+     * The constant {@code MINUS_ONE_FIL} contains the value of -1 fil.
      */
     public static final FixedGlueComponent MINUS_ONE_FIL =
             new GlueComponentConstant(-ONE, (byte) 2);
 
     /**
-     * The constant <tt>ONE_FI</tt> contains the value of 1 fi.
+     * The constant {@code ONE_FI} contains the value of 1 fi.
      */
     public static final FixedGlueComponent ONE_FI = new GlueComponentConstant(
         ONE, (byte) 1);
 
     /**
-     * The constant <tt>ONE_FIL</tt> contains the value of 1 fil.
+     * The constant {@code ONE_FIL} contains the value of 1 fil.
      */
     public static final FixedGlueComponent ONE_FIL = new GlueComponentConstant(
         ONE, (byte) 2);
 
     /**
-     * The constant <tt>ONE_FIL</tt> contains the value of 1 fill.
+     * The constant {@code ONE_FIL} contains the value of 1 fill.
      */
     public static final FixedGlueComponent ONE_FILL =
             new GlueComponentConstant(ONE, (byte) 3);
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
     /**
-     * The constant <tt>ZERO</tt> contains the non-stretchable and
+     * The constant {@code ZERO} contains the non-stretchable and
      * non-shrinkable value of 0&nbsp;pt.
      */
     public static final FixedGlueComponent ZERO = new GlueComponentConstant(0);

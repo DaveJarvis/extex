@@ -24,15 +24,14 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\openin</tt>.
+ * This is a test suite for the primitive {@code \openin}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class OpeninTest extends NoFlagsButImmediatePrimitiveTester {
 
     /**
-     * The constant <tt>EMPTY_TEX</tt> contains the location of an empty file.
+     * The constant {@code EMPTY_TEX} contains the location of an empty file.
      */
     private static final String EMPTY_TEX =
             "../ExTeX-Unit-tex/src/test/resources/tex/empty.tex";
@@ -55,7 +54,7 @@ public class OpeninTest extends NoFlagsButImmediatePrimitiveTester {
 
     /**
      * <testcase primitive="\openin"> Test case checking that a lonely
-     * <tt>\openin</tt> leads to an error. </testcase>
+     * {@code \openin} leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -70,7 +69,7 @@ public class OpeninTest extends NoFlagsButImmediatePrimitiveTester {
 
     /**
      * <testcase primitive="\openin"> Test case checking that a lonely
-     * <tt>\openin</tt> with an index leads to an error. </testcase>
+     * {@code \openin} with an index leads to an error.
      * 
      * @throws Exception in case of an error
      */

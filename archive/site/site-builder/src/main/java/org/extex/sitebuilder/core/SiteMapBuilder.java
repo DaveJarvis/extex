@@ -33,27 +33,26 @@ import org.apache.velocity.app.VelocityEngine;
  * This class is a creator for a site map.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SiteMapBuilder extends TemplatingEngine {
 
     /**
-     * The field <tt>logger</tt> contains the logger.
+     * The field {@code logger} contains the logger.
      */
     private Logger logger = Logger.getLogger(SiteMapBuilder.class.getName());
 
     /**
-     * The field <tt>template</tt> contains the template.
+     * The field {@code template} contains the template.
      */
     private String template = "org/extex/sitebuilder/sitemap.vm";
 
     /**
-     * The field <tt>output</tt> contains the output file.
+     * The field {@code output} contains the output file.
      */
     private File output = null;
 
     /**
-     * The field <tt>target</tt> contains the target directory.
+     * The field {@code target} contains the target directory.
      */
     private File target = null;
 

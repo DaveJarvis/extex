@@ -34,14 +34,13 @@ import org.extex.resource.ResourceAware;
  * This is a factory to deliver sorters.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SorterFactory extends AbstractFactory<Sorter>
         implements
             PropertyAware {
 
     /**
-     * The field <tt>properties</tt> contains the properties.
+     * The field {@code properties} contains the properties.
      */
     private Properties properties = null;
 
@@ -116,12 +115,7 @@ public class SorterFactory extends AbstractFactory<Sorter>
         return sorter;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.PropertyAware#setProperties(java.util.Properties)
-     */
-    @Override
+@Override
     public void setProperties(Properties properties) {
 
         this.properties = properties;

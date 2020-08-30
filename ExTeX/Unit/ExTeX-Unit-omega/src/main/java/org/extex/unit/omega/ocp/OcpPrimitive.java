@@ -33,52 +33,51 @@ import org.extex.unit.omega.ocp.util.Ocp;
 import org.extex.unit.omega.ocp.util.OcpUtil;
 
 /**
- * This class provides an implementation for the primitive <code>\ocp</code>.
+ * This class provides an implementation for the primitive {@code \ocp}.
  * 
- * <doc name="ocp">
- * <h3>The Primitive <tt>\ocp</tt></h3>
+ * <p>The Primitive {@code \ocp}</p>
  * <p>
- * The primitive <tt>\ocp</tt> can be used to define a control sequence which
+ * The primitive {@code \ocp} can be used to define a control sequence which
  * holds an &Omega;CP program.
  * </p>
  * <p>
  * This primitive is an assignment. This means that the value of
- * <tt>\globaldefs</tt> and <tt>\afterassignment</tt> are taken into
+ * {@code \globaldefs} and {@code \afterassignment} are taken into
  * account.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;ocp&rang;
- *      &rarr; &lang;prefix&rang; <tt>\ocp</tt> {@linkplain
+ *      &rarr; &lang;prefix&rang; {@code \ocp} {@linkplain
  *       org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *       &lang;control sequence&rang;}  {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} &lang;resource name&rang;  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  * \ocp\abc=def </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class OcpPrimitive extends AbstractAssignment implements ResourceAware {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>finder</tt> contains the resource finder.
+     * The field {@code finder} contains the resource finder.
      */
     private transient ResourceFinder finder;
 
@@ -93,10 +92,7 @@ public class OcpPrimitive extends AbstractAssignment implements ResourceAware {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

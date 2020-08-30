@@ -23,11 +23,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\muskip</tt>.
+ * This is a test suite for the primitive {@code \muskip}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MuskipTest extends AbstractMuskipRegisterTester {
 
     /**
@@ -47,8 +46,8 @@ public class MuskipTest extends AbstractMuskipRegisterTester {
     }
 
     /**
-     * <testcase primitive="\muskip"> Test case checking that <tt>\muskip</tt>
-     * needs mu as unit. </testcase>
+     * <testcase primitive="\muskip"> Test case checking that {@code \muskip}
+     * needs mu as unit.
      * 
      * @throws Exception in case of an error
      */
@@ -62,8 +61,8 @@ public class MuskipTest extends AbstractMuskipRegisterTester {
     }
 
     /**
-     * <testcase primitive="\muskip"> Test case checking that <tt>\muskip</tt>
-     * can parse a constant with integer number. </testcase>
+     * <testcase primitive="\muskip"> Test case checking that {@code \muskip}
+     * can parse a constant with integer number.
      * 
      * @throws Exception in case of an error
      */
@@ -77,8 +76,8 @@ public class MuskipTest extends AbstractMuskipRegisterTester {
     }
 
     /**
-     * <testcase primitive="\muskip"> Test case checking that <tt>\muskip</tt>
-     * can parse a constant with fraction number. </testcase>
+     * <testcase primitive="\muskip"> Test case checking that {@code \muskip}
+     * can parse a constant with fraction number.
      * 
      * @throws Exception in case of an error
      */
@@ -92,8 +91,8 @@ public class MuskipTest extends AbstractMuskipRegisterTester {
     }
 
     /**
-     * <testcase primitive="\muskip"> Test case checking that <tt>\muskip</tt>
-     * can parse a constant with negative fraction number. </testcase>
+     * <testcase primitive="\muskip"> Test case checking that {@code \muskip}
+     * can parse a constant with negative fraction number.
      * 
      * @throws Exception in case of an error
      */
@@ -107,8 +106,8 @@ public class MuskipTest extends AbstractMuskipRegisterTester {
     }
 
     /**
-     * <testcase primitive="\muskip"> Test case checking that <tt>\muskip</tt>
-     * can parse a constant with negative fraction number. </testcase>
+     * <testcase primitive="\muskip"> Test case checking that {@code \muskip}
+     * can parse a constant with negative fraction number.
      * 
      * @throws Exception in case of an error
      */
@@ -122,8 +121,8 @@ public class MuskipTest extends AbstractMuskipRegisterTester {
     }
 
     /**
-     * <testcase primitive="\muskip"> Test case checking that <tt>\muskip</tt>
-     * can parse a variable. </testcase>
+     * <testcase primitive="\muskip"> Test case checking that {@code \muskip}
+     * can parse a variable.
      * 
      * @throws Exception in case of an error
      */
@@ -138,8 +137,8 @@ public class MuskipTest extends AbstractMuskipRegisterTester {
     }
 
     /**
-     * <testcase primitive="\muskip"> Test case checking that <tt>\muskip</tt>
-     * can parse a ... </testcase>
+     * <testcase primitive="\muskip"> Test case checking that {@code \muskip}
+     * can parse a ...
      * 
      * @throws Exception in case of an error
      */
@@ -153,8 +152,8 @@ public class MuskipTest extends AbstractMuskipRegisterTester {
     }
 
     /**
-     * <testcase primitive="\muskip"> Test case checking that <tt>\muskip</tt>
-     * can advance its value. </testcase>
+     * <testcase primitive="\muskip"> Test case checking that {@code \muskip}
+     * can advance its value.
      * 
      * @throws Exception in case of an error
      */
@@ -168,8 +167,8 @@ public class MuskipTest extends AbstractMuskipRegisterTester {
     }
 
     /**
-     * <testcase primitive="\muskip"> Test case checking that <tt>\muskip</tt>
-     * can advance its value. </testcase>
+     * <testcase primitive="\muskip"> Test case checking that {@code \muskip}
+     * can advance its value.
      * 
      * @throws Exception in case of an error
      */
@@ -184,8 +183,8 @@ public class MuskipTest extends AbstractMuskipRegisterTester {
     }
 
     /**
-     * <testcase primitive="\muskip"> Test case checking that <tt>\muskip</tt>
-     * can divide its value. </testcase>
+     * <testcase primitive="\muskip"> Test case checking that {@code \muskip}
+     * can divide its value.
      * 
      * @throws Exception in case of an error
      */
@@ -199,8 +198,8 @@ public class MuskipTest extends AbstractMuskipRegisterTester {
     }
 
     /**
-     * <testcase primitive="\muskip"> Test case checking that <tt>\muskip</tt>
-     * can multiply its value. </testcase>
+     * <testcase primitive="\muskip"> Test case checking that {@code \muskip}
+     * can multiply its value.
      * 
      * @throws Exception in case of an error
      */

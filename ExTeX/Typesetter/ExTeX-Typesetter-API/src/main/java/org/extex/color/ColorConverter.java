@@ -35,56 +35,55 @@ import org.extex.color.model.RgbColor;
  * </p>
  * <p>
  *  A color converter can refuse to translate a given color. In this case the
- *  conversion method simply returns <code>null</code>. This enables us to
+ *  conversion method simply returns {@code null}. This enables us to
  *  define color converters which signal that a translation is not desirable
  *  &ndash; e.g. because the result might be poor.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5563 $
- */
+*/
 public interface ColorConverter {
 
     /**
      * Convert an arbitrary color to the CMYK model.
-     * If an conversion is not supported then <code>null</code> is returned.
+     * If an conversion is not supported then {@code null} is returned.
      *
      * @param color the color to convert
      *
-     * @return the corresponding color in the CMYK model or <code>null</code>
+     * @return the corresponding color in the CMYK model or {@code null}
      *  if a conversion is not supported.
      */
     CmykColor toCmyk(Color color);
 
     /**
      * Convert an arbitrary color to the RGB model.
-     * If an conversion is not supported then <code>null</code> is returned.
+     * If an conversion is not supported then {@code null} is returned.
      *
      * @param color the color to convert
      *
-     * @return the corresponding color in the RGB model or <code>null</code> if
+     * @return the corresponding color in the RGB model or {@code null} if
      *  a conversion is not supported.
      */
     GrayscaleColor toGrayscale(Color color);
 
     /**
      * Convert an arbitrary color to the HSV model.
-     * If an conversion is not supported then <code>null</code> is returned.
+     * If an conversion is not supported then {@code null} is returned.
      *
      * @param color the color to convert
      *
-     * @return the corresponding color in the HSV model or <code>null</code> if
+     * @return the corresponding color in the HSV model or {@code null} if
      *  a conversion is not supported.
      */
     HsvColor toHsv(Color color);
 
     /**
      * Convert an arbitrary color to the RGB model.
-     * If an conversion is not supported then <code>null</code> is returned.
+     * If an conversion is not supported then {@code null} is returned.
      *
      * @param color the color to convert
      *
-     * @return the corresponding color in the RGB model or <code>null</code> if
+     * @return the corresponding color in the RGB model or {@code null} if
      *  a conversion is not supported.
      */
     RgbColor toRgb(Color color);

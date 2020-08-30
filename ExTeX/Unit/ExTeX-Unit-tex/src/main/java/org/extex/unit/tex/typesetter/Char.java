@@ -33,12 +33,11 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.listMaker.TokenDelegateListMaker;
 
 /**
- * This class provides an implementation for the primitive <code>\char</code>.
+ * This class provides an implementation for the primitive {@code \char}.
  * 
- * <doc name="char">
- * <h3>The Primitive <tt>\char</tt></h3>
+ * <p>The Primitive {@code \char}</p>
  * <p>
- * The primitive <tt>\char</tt> provides access to any character in the
+ * The primitive {@code \char} provides access to any character in the
  * current font. The argument is the numeric value of the character. This value
  * can be any expanded expression resulting in a number of the proper range.
  * </p>
@@ -46,37 +45,37 @@ import org.extex.typesetter.listMaker.TokenDelegateListMaker;
  * If no proper argument is found then an error is raised.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;char&rang;
- *        &rarr; <tt>\char</tt> {@linkplain
+ *        &rarr; {@code \char} {@linkplain
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \char42
  *    \char\count1  </pre>
  * 
- * </doc>
  * 
  * <p>
  * Possible extension
+ * </p>
  * <ul>
  * <li>Take a group and interpret it as Unicode name.</li>
  * </ul>
- * </p>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Char extends AbstractCode implements ExpandableCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -92,10 +91,7 @@ public class Char extends AbstractCode implements ExpandableCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -106,10 +102,7 @@ public class Char extends AbstractCode implements ExpandableCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,

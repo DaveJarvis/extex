@@ -30,17 +30,16 @@ import org.extex.typesetter.tc.font.Font;
  * appearance of glyphs or other nodes.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4399 $
- */
+*/
 public class TypesettingContextImpl implements ModifiableTypesettingContext {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
     /**
-     * The field <tt>color</tt> contains the color to use.
+     * The field {@code color} contains the color to use.
      * The effect depends on the object to be colored.
      * For instance
      * <ul>
@@ -53,18 +52,18 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
     private Color color = ColorFactory.BLACK;
 
     /**
-     * The field <tt>direction</tt> contains the direction for advancing the
+     * The field {@code direction} contains the direction for advancing the
      * cursor. This is one of the constants in {@link Direction Direction}.
      */
     private Direction direction = Direction.LR;
 
     /**
-     * The field <tt>font</tt> contains the font to use.
+     * The field {@code font} contains the font to use.
      */
     private Font font;
 
     /**
-     * The field <tt>language</tt> contains the hyphenation table for the
+     * The field {@code language} contains the hyphenation table for the
      * current language.
      */
     private Language language;

@@ -41,7 +41,7 @@ import org.extex.scanner.type.tokens.Tokens;
  * <p>
  * In addition the visitor pattern is used to select the appropriate
  * instantiation method. The visit methods are not meant to be used externally.
- * They are purely internal. Despite their general definition the <tt>visit</tt>
+ * They are purely internal. Despite their general definition the {@code visit}
  * methods are in fact used in the following way:
  * </p>
  * 
@@ -56,93 +56,92 @@ import org.extex.scanner.type.tokens.Tokens;
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4738 $
- */
+*/
 public class TokenFactoryImpl
         implements
             TokenFactory,
             CatcodeVisitor<Token, String, UnicodeChar, String> {
 
     /**
-     * The field <tt>crToken</tt> contains the one and only cr token in the
+     * The field {@code crToken} contains the one and only cr token in the
      * system.
      */
     private static final Token CR_TOKEN = new CrToken(null);
 
     /**
-     * The field <tt>spaceToken</tt> contains the one and only space token in
+     * The field {@code spaceToken} contains the one and only space token in
      * the system.
      */
     private static final Token SPACE_TOKEN = new SpaceToken(null);
 
     /**
-     * The field <tt>activeCache</tt> contains the cache for active character
+     * The field {@code activeCache} contains the cache for active character
      * tokens.
      */
     private Map<String, Map<UnicodeChar, WeakReference<ActiveCharacterToken>>> activeCache =
             new HashMap<String, Map<UnicodeChar, WeakReference<ActiveCharacterToken>>>();
 
     /**
-     * The field <tt>csCache</tt> contains the cache for control sequence
+     * The field {@code csCache} contains the cache for control sequence
      * tokens.
      */
     private Map<String, Map<String, WeakReference<ControlSequenceToken>>> csCache =
             new HashMap<String, Map<String, WeakReference<ControlSequenceToken>>>();
 
     /**
-     * The field <tt>leftBraceCache</tt> contains the cache for left brace
+     * The field {@code leftBraceCache} contains the cache for left brace
      * tokens.
      */
     private Map<UnicodeChar, WeakReference<LeftBraceToken>> leftBraceCache =
             new HashMap<UnicodeChar, WeakReference<LeftBraceToken>>();
 
     /**
-     * The field <tt>letterCache</tt> contains the cache for letter tokens.
+     * The field {@code letterCache} contains the cache for letter tokens.
      */
     private Map<UnicodeChar, WeakReference<LetterToken>> letterCache =
             new HashMap<UnicodeChar, WeakReference<LetterToken>>();
 
     /**
-     * The field <tt>macroParamCache</tt> contains the cache for macro parameter
+     * The field {@code macroParamCache} contains the cache for macro parameter
      * tokens.
      */
     private Map<UnicodeChar, WeakReference<MacroParamToken>> macroParamCache =
             new HashMap<UnicodeChar, WeakReference<MacroParamToken>>();
 
     /**
-     * The field <tt>mathShiftCache</tt> contains the cache for math shift
+     * The field {@code mathShiftCache} contains the cache for math shift
      * tokens.
      */
     private Map<UnicodeChar, WeakReference<MathShiftToken>> mathShiftCache =
             new HashMap<UnicodeChar, WeakReference<MathShiftToken>>();
 
     /**
-     * The field <tt>otherCache</tt> contains the cache for other tokens.
+     * The field {@code otherCache} contains the cache for other tokens.
      */
     private Map<UnicodeChar, WeakReference<OtherToken>> otherCache =
             new HashMap<UnicodeChar, WeakReference<OtherToken>>();
 
     /**
-     * The field <tt>rightBraceCache</tt> contains the cache for right brace
+     * The field {@code rightBraceCache} contains the cache for right brace
      * tokens.
      */
     private Map<UnicodeChar, WeakReference<RightBraceToken>> rightBraceCache =
             new HashMap<UnicodeChar, WeakReference<RightBraceToken>>();
 
     /**
-     * The field <tt>subMarkCache</tt> contains the cache for sub mark tokens.
+     * The field {@code subMarkCache} contains the cache for sub mark tokens.
      */
     private Map<UnicodeChar, WeakReference<SubMarkToken>> subMarkCache =
             new HashMap<UnicodeChar, WeakReference<SubMarkToken>>();
 
     /**
-     * The field <tt>supMarkCache</tt> contains the cache for super mark tokens.
+     * The field {@code supMarkCache} contains the cache for super mark tokens.
      */
     private Map<UnicodeChar, WeakReference<SupMarkToken>> supMarkCache =
             new HashMap<UnicodeChar, WeakReference<SupMarkToken>>();
 
     /**
-     * The field <tt>tabMarkCache</tt> contains the cache for tab mark tokens.
+     * The field {@code tabMarkCache} contains the cache for tab mark tokens.
      */
     private Map<UnicodeChar, WeakReference<TabMarkToken>> tabMarkCache =
             new HashMap<UnicodeChar, WeakReference<TabMarkToken>>();
@@ -247,9 +246,9 @@ public class TokenFactoryImpl
     /**
      * Convert a character sequence to a list of tokens.
      * <p>
-     * Each character of the string is converted into a <code>OtherToken</code>
+     * Each character of the string is converted into a {@code OtherToken}
      * and added to the internal list. An exception is made for spaces which are
-     * converted into a <code>SpaceToken</code>.
+     * converted into a {@code SpaceToken}.
      * </p>
      * 
      * @param s the character sequence to translate to tokens
@@ -282,7 +281,7 @@ public class TokenFactoryImpl
     /**
      * Convert a long value into a list of tokens.
      * <p>
-     * Each character is converted into a <code>OtherToken</code> and added to
+     * Each character is converted into a {@code OtherToken} and added to
      * the internal list.
      * </p>
      * 
@@ -363,13 +362,13 @@ public class TokenFactoryImpl
     }
 
     /**
-     * Comments are ignored thus <code>null</code> is returned in any case.
+     * Comments are ignored thus {@code null} is returned in any case.
      * 
      * @param value the string value of the token
      * @param uchar the character value of the token
      * @param namespace the name space of the token
      * 
-     * @return <code>null</code>
+     * @return {@code null}
      * 
      * @see org.extex.scanner.type.CatcodeVisitor#visitComment(java.lang.Object,
      *      java.lang.Object, java.lang.Object)
@@ -450,11 +449,11 @@ public class TokenFactoryImpl
     /**
      * Ignored characters are simply ignored;-)
      * 
-     * @param value the string value token or <code>null</code>
+     * @param value the string value token or {@code null}
      * @param uchar the requested character code
      * @param namespace the third argument is ignored
      * 
-     * @return <code>null</code>
+     * @return {@code null}
      * 
      * @see org.extex.scanner.type.CatcodeVisitor#visitIgnore(java.lang.Object,
      *      java.lang.Object, java.lang.Object)
@@ -468,11 +467,11 @@ public class TokenFactoryImpl
     /**
      * Invalid characters are ignored; even without any error message.
      * 
-     * @param value the string value token or <code>null</code>
+     * @param value the string value token or {@code null}
      * @param uchar the requested character code
      * @param namespace the third argument is ignored
      * 
-     * @return <code>null</code>
+     * @return {@code null}
      * 
      * @see org.extex.scanner.type.CatcodeVisitor#visitInvalid(java.lang.Object,
      *      java.lang.Object, java.lang.Object)
@@ -724,7 +723,7 @@ public class TokenFactoryImpl
     /**
      * There is only one space token. It has the character code 32.
      * 
-     * @param value the string value token or <code>null</code>
+     * @param value the string value token or {@code null}
      * @param uchar the requested character code
      * @param namespace the third argument is ignored
      * 

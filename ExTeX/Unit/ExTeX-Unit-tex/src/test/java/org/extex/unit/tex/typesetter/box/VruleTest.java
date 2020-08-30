@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\vrule</tt>.
+ * This is a test suite for the primitive {@code \vrule}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class VruleTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -48,9 +47,9 @@ public class VruleTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\vrule"> Test case checking that <tt>\vrule</tt>
+     * <testcase primitive="\vrule"> Test case checking that {@code \vrule}
      * switches to vertical mode and inserts a glue node with the given value.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -66,9 +65,9 @@ public class VruleTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\vrule"> Test case checking that <tt>\vrule</tt>
+     * <testcase primitive="\vrule"> Test case checking that {@code \vrule}
      * switches to vertical mode and inserts a glue node with the given value.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -84,9 +83,9 @@ public class VruleTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\vrule"> Test case checking that <tt>\vrule</tt>
+     * <testcase primitive="\vrule"> Test case checking that {@code \vrule}
      * switches to vertical mode and inserts a glue node with the given value.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -102,9 +101,9 @@ public class VruleTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\vrule"> Test case checking that <tt>\vrule</tt>
+     * <testcase primitive="\vrule"> Test case checking that {@code \vrule}
      * switches to vertical mode and inserts a glue node with the given value.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */

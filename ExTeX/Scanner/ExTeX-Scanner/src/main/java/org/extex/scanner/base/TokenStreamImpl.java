@@ -44,20 +44,18 @@ import org.extex.scanner.type.token.TokenFactory;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:4725 $
- */
+*/
 public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream {
 
     /**
      * This is a type-safe class to represent state information.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision:4725 $
-     */
+    */
     private static final class State {
 
         /**
-         * The field <tt>name</tt> contains the print name of this state for
+         * The field {@code name} contains the print name of this state for
          * debugging.
          */
         private String name;
@@ -88,41 +86,41 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     }
 
     /**
-     * The constant <tt>CARET_LIMIT</tt> contains the threshold for the ^
+     * The constant {@code CARET_LIMIT} contains the threshold for the ^
      * notation.
      */
     protected static final int CARET_LIMIT = 0100; // 0100 = 64
 
     /**
-     * The constant <tt>CR</tt> contains the one and only CR character.
+     * The constant {@code CR} contains the one and only CR character.
      */
     private static final UnicodeChar CR = UnicodeChar.get(13);
 
     /**
-     * The constant <tt>MID_LINE</tt> contains the state for the processing in
+     * The constant {@code MID_LINE} contains the state for the processing in
      * the middle of a line.
      */
     protected static final State MID_LINE = new State("mid line");
 
     /**
-     * The constant <tt>NEW_LINE</tt> contains the state for the processing at
+     * The constant {@code NEW_LINE} contains the state for the processing at
      * the beginning of a new line.
      */
     protected static final State NEW_LINE = new State("new line");
 
     /**
-     * The constant <tt>SKIP_BLANKS</tt> contains the state for the processing
+     * The constant {@code SKIP_BLANKS} contains the state for the processing
      * when spaces are ignored.
      */
     protected static final State SKIP_BLANKS = new State("skip blanks");
 
     /**
-     * The field <tt>in</tt> contains the buffered reader for lines.
+     * The field {@code in} contains the buffered reader for lines.
      */
     private LineNumberReader in;
 
     /**
-     * The field <tt>line</tt> contains the current line of input.
+     * The field {@code line} contains the current line of input.
      */
     private String line = "";
 
@@ -133,23 +131,23 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     private int pointer = 1;
 
     /**
-     * The field <tt>saveChar</tt> contains the saved look-ahead character.
+     * The field {@code saveChar} contains the saved look-ahead character.
      */
     private UnicodeChar saveChar = null;
 
     /**
-     * The field <tt>source</tt> contains the description of the source for
+     * The field {@code source} contains the description of the source for
      * tokens.
      */
     private String source;
 
     /**
-     * The field <tt>state</tt> contains the current state of operation.
+     * The field {@code state} contains the current state of operation.
      */
     private State state = NEW_LINE;
 
     /**
-     * The field <tt>visitor</tt> contains the visitor to separate the cases
+     * The field {@code visitor} contains the visitor to separate the cases
      * according to the catcode.
      */
     private CatcodeVisitor<Token, TokenFactory, Tokenizer, UnicodeChar> visitor =
@@ -189,7 +187,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * @param tokenizer the second argument to pass
                  * @param uc the third argument to pass
                  * 
-                 * @return <code>null</code>
+                 * @return {@code null}
                  * 
                  * @see org.extex.scanner.type.CatcodeVisitor#visitComment(java.lang.Object,
                  *      java.lang.Object, java.lang.Object)
@@ -508,7 +506,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * @param uc the third argument is the UnicodeCharacer
                  * 
                  * @return a space token if in mid line mode or
-                 *         <code>null</code> otherwise
+                 *         {@code null} otherwise
                  * 
                  * @throws CatcodeException in case of an error
                  * 
@@ -633,7 +631,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     /**
      * Checks whether the pointer is at the end of line.
      * 
-     * @return <code>true</code> iff the next reading operation would try to
+     * @return {@code true} iff the next reading operation would try to
      *         refill the line buffer
      */
     protected boolean atEndofLine() {
@@ -697,7 +695,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      * </p>
      * 
      * @param tokenizer the classifier for characters
-     * @return the character or <code>null</code> if no character is available
+     * @return the character or {@code null} if no character is available
      * @throws ScannerException in the rare case that an IO Exception has
      *         occurred.
      */
@@ -760,7 +758,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      * @param factory the factory for new tokens
      * @param tokenizer the classifies for characters
      * 
-     * @return the next Token or <code>null</code>
+     * @return the next Token or {@code null}
      * @throws ScannerException in case of an error
      * 
      * @see org.extex.scanner.base.TokenStreamBaseImpl#getNext(org.extex.scanner.type.token.TokenFactory,
@@ -792,7 +790,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     /**
      * Get the next character from the input line.
      * 
-     * @return the next raw character or <code>null</code> if none is available.
+     * @return the next raw character or {@code null} if none is available.
      */
     protected UnicodeChar getRawChar() {
 
@@ -828,7 +826,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     /**
      * Check to see if a further token can be acquired from the token stream.
      * 
-     * @return <code>true</code> if the stream is at its end
+     * @return {@code true} if the stream is at its end
      * 
      * @throws ScannerException in case that an error has been encountered.
      *         Especially if an IO exceptions occurs it is delivered as chained
@@ -859,7 +857,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     /**
      * Check to see if the token stream is currently at the end of line.
      * 
-     * @return <code>true</code> if the stream is at end of line
+     * @return {@code true} if the stream is at end of line
      * 
      * @see org.extex.scanner.api.TokenStream#isEol()
      */
@@ -872,7 +870,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     /**
      * Get the next line from the input reader to be processed.
      * 
-     * @return <code>true</code> iff the next line could be acquired.
+     * @return {@code true} iff the next line could be acquired.
      * 
      * @throws ScannerException in case of some kind of IO error
      */

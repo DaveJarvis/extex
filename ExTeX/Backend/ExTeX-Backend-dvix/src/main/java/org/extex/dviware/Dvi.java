@@ -27,303 +27,302 @@ import java.io.InputStream;
  * This class provides a DVI parser.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Dvi {
 
     /**
-     * The field <tt>BOP</tt> contains the op-code for the BOP instruction.
+     * The field {@code BOP} contains the op-code for the BOP instruction.
      */
     public static final int BOP = 139;
 
     /**
-     * The field <tt>DOWN1</tt> contains the op-code for the DOWN1 instruction.
+     * The field {@code DOWN1} contains the op-code for the DOWN1 instruction.
      */
     public static final int DOWN1 = 157;
 
     /**
-     * The field <tt>DVI_ID</tt> contains the id of a dvi file.
+     * The field {@code DVI_ID} contains the id of a dvi file.
      */
     public static final int DVI_ID = 2;
 
     /**
-     * The field <tt>DVI_UNIT_DENOMINATOR</tt> contains the denominator for the
+     * The field {@code DVI_UNIT_DENOMINATOR} contains the denominator for the
      * dvi command.
      */
     public static final int DVI_UNIT_DENOMINATOR = 473628672;
 
     /**
-     * The field <tt>DVI_UNIT_NUMERATOR</tt> contains the numerator for the dvi
+     * The field {@code DVI_UNIT_NUMERATOR} contains the numerator for the dvi
      * command.
      */
     public static final int DVI_UNIT_NUMERATOR = 25400000;
 
     /**
-     * The field <tt>EOP</tt> contains the op-code for the EOP instruction.
+     * The field {@code EOP} contains the op-code for the EOP instruction.
      */
     public static final int EOP = 140;
 
     /**
-     * The field <tt>FNT_DEF1</tt> contains the op-code for the FNT_DEF1
+     * The field {@code FNT_DEF1} contains the op-code for the FNT_DEF1
      * instruction.
      */
     public static final int FNT_DEF1 = 243;
 
     /**
-     * The field <tt>FNT_DEF2</tt> contains the op-code for the FNT_DEF2
+     * The field {@code FNT_DEF2} contains the op-code for the FNT_DEF2
      * instruction.
      */
     public static final int FNT_DEF2 = 244;
 
     /**
-     * The field <tt>FNT_DEF3</tt> contains the op-code for the FNT_DEF3
+     * The field {@code FNT_DEF3} contains the op-code for the FNT_DEF3
      * instruction.
      */
     public static final int FNT_DEF3 = 245;
 
     /**
-     * The field <tt>FNT_DEF4</tt> contains the op-code for the FNT_DEF4
+     * The field {@code FNT_DEF4} contains the op-code for the FNT_DEF4
      * instruction.
      */
     public static final int FNT_DEF4 = 246;
 
     /**
-     * The field <tt>FNT_NUM_0</tt> contains the op-code for the lowest FNT
+     * The field {@code FNT_NUM_0} contains the op-code for the lowest FNT
      * instruction.
      */
     public static final int FNT_NUM_0 = 171;
 
     /**
-     * The field <tt>FNT1</tt> contains the op-code for the FNT1 instruction.
+     * The field {@code FNT1} contains the op-code for the FNT1 instruction.
      */
     public static final int FNT1 = 235;
 
     /**
-     * The field <tt>FNT2</tt> contains the op-code for the FNT2 instruction.
+     * The field {@code FNT2} contains the op-code for the FNT2 instruction.
      */
     public static final int FNT2 = 236;
 
     /**
-     * The field <tt>FNT3</tt> contains the op-code for the FNT3 instruction.
+     * The field {@code FNT3} contains the op-code for the FNT3 instruction.
      */
     public static final int FNT3 = 237;
 
     /**
-     * The field <tt>FNT4</tt> contains the op-code for the FNT4 instruction.
+     * The field {@code FNT4} contains the op-code for the FNT4 instruction.
      */
     public static final int FNT4 = 238;
 
     /**
-     * The field <tt>NOP</tt> contains the op-code for the NOP instruction.
+     * The field {@code NOP} contains the op-code for the NOP instruction.
      */
     public static final int NOP = 138;
 
     /**
-     * The field <tt>PADDING_BYTE</tt> contains the byte added at the end of the
+     * The field {@code PADDING_BYTE} contains the byte added at the end of the
      * stream to align the length to a multiple of four.
      */
     public static final int PADDING_BYTE = 223;
 
     /**
-     * The field <tt>POP</tt> contains the op-code for the POP instruction.
+     * The field {@code POP} contains the op-code for the POP instruction.
      */
     public static final int POP = 142;
 
     /**
-     * The field <tt>POST</tt> contains the op-code for the POST instruction.
+     * The field {@code POST} contains the op-code for the POST instruction.
      */
     public static final int POST = 248;
 
     /**
-     * The field <tt>POST_POST</tt> contains the op-code for the POST_POST
+     * The field {@code POST_POST} contains the op-code for the POST_POST
      * instruction.
      */
     public static final int POST_POST = 249;
 
     /**
-     * The field <tt>PRE</tt> contains the op-code for the PRE instruction.
+     * The field {@code PRE} contains the op-code for the PRE instruction.
      */
     public static final int PRE = 247;
 
     /**
-     * The field <tt>PUSH</tt> contains the op-code for the PUSH instruction.
+     * The field {@code PUSH} contains the op-code for the PUSH instruction.
      */
     public static final int PUSH = 141;
 
     /**
-     * The field <tt>PUT_CHAR1</tt> contains the op-code for the PUT_CHAR1
+     * The field {@code PUT_CHAR1} contains the op-code for the PUT_CHAR1
      * instruction.
      */
     public static final int PUT_CHAR1 = 133;
 
     /**
-     * The field <tt>PUT_CHAR2</tt> contains the op-code for the PUT_CHAR2
+     * The field {@code PUT_CHAR2} contains the op-code for the PUT_CHAR2
      * instruction.
      */
     public static final int PUT_CHAR2 = 134;
 
     /**
-     * The field <tt>PUT_CHAR3</tt> contains the op-code for the PUT_CHAR3
+     * The field {@code PUT_CHAR3} contains the op-code for the PUT_CHAR3
      * instruction.
      */
     public static final int PUT_CHAR3 = 135;
 
     /**
-     * The field <tt>PUT_CHAR4</tt> contains the op-code for the PUT_CHAR4
+     * The field {@code PUT_CHAR4} contains the op-code for the PUT_CHAR4
      * instruction.
      */
     public static final int PUT_CHAR4 = 136;
 
     /**
-     * The field <tt>PUT_RULE</tt> contains the op-code for the PUT_RULE
+     * The field {@code PUT_RULE} contains the op-code for the PUT_RULE
      * instruction.
      */
     public static final int PUT_RULE = 137;
 
     /**
-     * The field <tt>RIGHT1</tt> contains the op-code for the RIGHT1
+     * The field {@code RIGHT1} contains the op-code for the RIGHT1
      * instruction.
      */
     public static final int RIGHT1 = 143;
 
     /**
-     * The field <tt>RIGHT2</tt> contains the op-code for the RIGHT2
+     * The field {@code RIGHT2} contains the op-code for the RIGHT2
      * instruction.
      */
     public static final int RIGHT2 = 144;
 
     /**
-     * The field <tt>RIGHT3</tt> contains the op-code for the RIGHT3
+     * The field {@code RIGHT3} contains the op-code for the RIGHT3
      * instruction.
      */
     public static final int RIGHT3 = 145;
 
     /**
-     * The field <tt>RIGHT4</tt> contains the op-code for the RIGHT4
+     * The field {@code RIGHT4} contains the op-code for the RIGHT4
      * instruction.
      */
     public static final int RIGHT4 = 146;
 
     /**
-     * The field <tt>SET_CHAR_0</tt> contains the op-code for the SET_CHAR0
+     * The field {@code SET_CHAR_0} contains the op-code for the SET_CHAR0
      * instruction.
      */
     public static final int SET_CHAR_0 = 0x00;
 
     /**
-     * The field <tt>SET_CHAR127</tt> contains the op-code for the SET_CHAR127
+     * The field {@code SET_CHAR127} contains the op-code for the SET_CHAR127
      * instruction.
      */
     public static final int SET_CHAR127 = 0x7f;
 
     /**
-     * The field <tt>SET_RULE</tt> contains the op-code for the SET_RULE
+     * The field {@code SET_RULE} contains the op-code for the SET_RULE
      * instruction.
      */
     public static final int SET_RULE = 132;
 
     /**
-     * The field <tt>SET1</tt> contains the op-code for the SET1 instruction.
+     * The field {@code SET1} contains the op-code for the SET1 instruction.
      */
     public static final int SET1 = 128;
 
     /**
-     * The field <tt>SET2</tt> contains the op-code for the SET2 instruction.
+     * The field {@code SET2} contains the op-code for the SET2 instruction.
      */
     public static final int SET2 = 129;
 
     /**
-     * The field <tt>SET3</tt> contains the op-code for the SET3 instruction.
+     * The field {@code SET3} contains the op-code for the SET3 instruction.
      */
     public static final int SET3 = 130;
 
     /**
-     * The field <tt>SET4</tt> contains the op-code for the SET4 instruction.
+     * The field {@code SET4} contains the op-code for the SET4 instruction.
      */
     public static final int SET4 = 131;
 
     /**
-     * The field <tt>W0</tt> contains the op-code for the W0 instruction.
+     * The field {@code W0} contains the op-code for the W0 instruction.
      */
     public static final int W0 = 147;
 
     /**
-     * The field <tt>W1</tt> contains the op-code for the W1 instruction.
+     * The field {@code W1} contains the op-code for the W1 instruction.
      */
     public static final int W1 = 148;
 
     /**
-     * The field <tt>W2</tt> contains the op-code for the W2 instruction.
+     * The field {@code W2} contains the op-code for the W2 instruction.
      */
     public static final int W2 = 149;
 
     /**
-     * The field <tt>W3</tt> contains the op-code for the W3 instruction.
+     * The field {@code W3} contains the op-code for the W3 instruction.
      */
     public static final int W3 = 150;
 
     /**
-     * The field <tt>W4</tt> contains the op-code for the W4 instruction.
+     * The field {@code W4} contains the op-code for the W4 instruction.
      */
     public static final int W4 = 151;
 
     /**
-     * The field <tt>X0</tt> contains the op-code for the X0 instruction.
+     * The field {@code X0} contains the op-code for the X0 instruction.
      */
     public static final int X0 = 152;
 
     /**
-     * The field <tt>X1</tt> contains the op-code for the X1 instruction.
+     * The field {@code X1} contains the op-code for the X1 instruction.
      */
     public static final int X1 = 153;
 
     /**
-     * The field <tt>XXX1</tt> contains the op-code for the XXX1 instruction.
+     * The field {@code XXX1} contains the op-code for the XXX1 instruction.
      */
     public static final int XXX1 = 239;
 
     /**
-     * The field <tt>XXX2</tt> contains the op-code for the XXX2 instruction.
+     * The field {@code XXX2} contains the op-code for the XXX2 instruction.
      */
     public static final int XXX2 = 240;
 
     /**
-     * The field <tt>XXX3</tt> contains the op-code for the XXX3 instruction.
+     * The field {@code XXX3} contains the op-code for the XXX3 instruction.
      */
     public static final int XXX3 = 241;
 
     /**
-     * The field <tt>XXX4</tt> contains the op-code for the XXX4 instruction.
+     * The field {@code XXX4} contains the op-code for the XXX4 instruction.
      */
     public static final int XXX4 = 242;
 
     /**
-     * The field <tt>Y0</tt> contains the op-code for the Y0 instruction.
+     * The field {@code Y0} contains the op-code for the Y0 instruction.
      */
     public static final int Y0 = 161;
 
     /**
-     * The field <tt>Y1</tt> contains the op-code for the Y1 instruction.
+     * The field {@code Y1} contains the op-code for the Y1 instruction.
      */
     public static final int Y1 = 162;
 
     /**
-     * The field <tt>Z0</tt> contains the op-code for the Z0 instruction.
+     * The field {@code Z0} contains the op-code for the Z0 instruction.
      */
     public static final int Z0 = 166;
 
     /**
-     * The field <tt>Z1</tt> contains the op-code for the Z1 instruction.
+     * The field {@code Z1} contains the op-code for the Z1 instruction.
      */
     public static final int Z1 = 167;
 
     /**
-     * The field <tt>dvi</tt> contains the stream to read from.
+     * The field {@code dvi} contains the stream to read from.
      */
     private InputStream dvi;
 
     /**
-     * The field <tt>pointer</tt> contains the index of the current character.
+     * The field {@code pointer} contains the index of the current character.
      */
     private int pointer = 0;
 

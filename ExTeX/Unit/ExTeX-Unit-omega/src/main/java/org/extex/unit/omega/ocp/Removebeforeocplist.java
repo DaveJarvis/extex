@@ -33,38 +33,37 @@ import org.extex.unit.omega.ocp.util.OcpUtil;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\removebeforeocplist</code>.
+ * {@code \removebeforeocplist}.
  * 
- * <doc name="removebeforeocplist">
- * <h3>The Primitive <tt>\removebeforeocplist</tt></h3>
+ * <p>The Primitive {@code \removebeforeocplist}</p>
  * <p>
- * The primitive <tt>\removebeforeocplist</tt> can be used to build up an
- * &Omega;PC list. It is valid in the context of the primitive <tt>\ocplist</tt>
+ * The primitive {@code \removebeforeocplist} can be used to build up an
+ * &Omega;PC list. It is valid in the context of the primitive {@code \ocplist}
  * only.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;removebeforeocplist&rang;
- *      &rarr; <tt>\removebeforeocplist</tt> &lang;<i>float</i>&rang; &lang;<i>ocp register</i>&rang;  </pre>
+ *      &rarr; {@code \removebeforeocplist} &lang;<i>float</i>&rang; &lang;<i>ocp register</i>&rang;  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  * \removebeforeocplist  1.5 \myopc </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Removebeforeocplist extends AbstractOcplist {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
@@ -80,10 +79,7 @@ public class Removebeforeocplist extends AbstractOcplist {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.omega.ocp.util.OcplistConvertible#convertOcplist(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public OcpList convertOcplist(Context context, TokenSource source,

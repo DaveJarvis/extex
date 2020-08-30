@@ -44,8 +44,7 @@ import org.junit.Test;
  * Test suite for the configuration factory.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ConfigurationFactoryTest {
 
     /**
@@ -62,12 +61,7 @@ public class ConfigurationFactoryTest {
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
-         */
-        @Override
+    @Override
         public Configuration findConfiguration(String key)
                 throws ConfigurationInvalidResourceException,
                     ConfigurationNotFoundException,
@@ -78,10 +72,7 @@ public class ConfigurationFactoryTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         @Override
         public Configuration findConfiguration(String key, String attribute)
@@ -90,23 +81,13 @@ public class ConfigurationFactoryTest {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getAttribute(java.lang.String)
-         */
-        @Override
+    @Override
         public String getAttribute(String name) {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String)
-         */
-        @Override
+    @Override
         public Configuration getConfiguration(String key)
                 throws ConfigurationException {
 
@@ -114,10 +95,7 @@ public class ConfigurationFactoryTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         @Override
         public Configuration getConfiguration(String key, String attribute)
@@ -126,33 +104,20 @@ public class ConfigurationFactoryTest {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValue()
-         */
-        @Override
+    @Override
         public String getValue() throws ConfigurationException {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValue(java.lang.String)
-         */
-        @Override
+    @Override
         public String getValue(String key) throws ConfigurationException {
 
             return null;
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValueAsInteger(java.lang.String,
-         *      int)
+    *      int)
          */
         @Override
         public int getValueAsInteger(String key, int defaultValue)
@@ -162,56 +127,33 @@ public class ConfigurationFactoryTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValues(java.util.List,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         @Override
         public void getValues(List<String> list, String key) {
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
-         */
-        @Override
+    @Override
         public List<String> getValues(String key) {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#iterator()
-         */
-        @Override
+    @Override
         public Iterator<Configuration> iterator() throws ConfigurationException {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#iterator(java.lang.String)
-         */
-        @Override
+    @Override
         public Iterator<Configuration> iterator(String key)
                 throws ConfigurationException {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(org.extex.framework.configuration.ConfigurationLoader)
-         */
-        @Override
+    @Override
         public void setConfigurationLoader(ConfigurationLoader loader) {
 
         }
@@ -243,8 +185,8 @@ public class ConfigurationFactoryTest {
     }
 
     /**
-     * <testcase> Test that null leads to an appropriate error message.
-     * </testcase>
+     *  Test that null leads to an appropriate error message.
+     *
      */
     @Test(expected = ConfigurationInvalidResourceException.class)
     public void testNewInstance01() {
@@ -254,9 +196,8 @@ public class ConfigurationFactoryTest {
     }
 
     /**
-     * <testcase> Test that the empty string leads to an appropriate error
-     * message. </testcase>
-     */
+     * Test that the empty string leads to an appropriate error message
+*/
     @Test(expected = ConfigurationInvalidResourceException.class)
     public void testNewInstance02() {
 
@@ -265,9 +206,8 @@ public class ConfigurationFactoryTest {
     }
 
     /**
-     * <testcase> Test that an undefined configuration leads to an appropriate
-     * error message. </testcase>
-     */
+     * Test that an undefined configuration leads to an appropriate error message
+*/
     @Test(expected = ConfigurationNotFoundException.class)
     public void testNewInstance03() {
 
@@ -276,9 +216,8 @@ public class ConfigurationFactoryTest {
     }
 
     /**
-     * <testcase> Test that an invalid configuration leads to an appropriate
-     * error message. </testcase>
-     * 
+     * Test that an invalid configuration leads to an appropriate error message
+* 
      * Note: Redirecting the Error stream is necessary to get rid of irritating
      * messages on stderr.
      */
@@ -303,7 +242,7 @@ public class ConfigurationFactoryTest {
     }
 
     /**
-     * <testcase> Test that a valid configuration is loaded. </testcase>
+     *  Test that a valid configuration is loaded.
      * 
      * @throws ConfigurationException in case of an error
      */
@@ -320,7 +259,7 @@ public class ConfigurationFactoryTest {
     }
 
     /**
-     * <testcase> Test that a valid configuration is loaded. </testcase>
+     *  Test that a valid configuration is loaded.
      * 
      * @throws ConfigurationException in case of an error
      */
@@ -338,7 +277,7 @@ public class ConfigurationFactoryTest {
     }
 
     /**
-     * <testcase> Test that an invalid class name leads to an error. </testcase>
+     *  Test that an invalid class name leads to an error.
      * 
      * @throws ConfigurationException in case of an error
      */
@@ -351,7 +290,7 @@ public class ConfigurationFactoryTest {
     }
 
     /**
-     * <testcase> Test that an invalid class name leads to an error. </testcase>
+     *  Test that an invalid class name leads to an error.
      * 
      * @throws ConfigurationException in case of an error
      */
@@ -364,7 +303,7 @@ public class ConfigurationFactoryTest {
     }
 
     /**
-     * <testcase> Test that a valid configuration is loaded. </testcase>
+     *  Test that a valid configuration is loaded.
      * 
      * @throws ConfigurationException in case of an error
      */
@@ -377,7 +316,7 @@ public class ConfigurationFactoryTest {
     }
 
     /**
-     * <testcase> Test that an invalid class leads to an error. </testcase>
+     *  Test that an invalid class leads to an error.
      * 
      * @throws ConfigurationException in case of an error
      */
@@ -390,7 +329,7 @@ public class ConfigurationFactoryTest {
     }
 
     /**
-     * <testcase> Test that an invalid class leads to an error. </testcase>
+     *  Test that an invalid class leads to an error.
      * 
      * @throws ConfigurationException in case of an error
      */

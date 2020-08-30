@@ -28,45 +28,44 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\gdef</code>.
+ * This class provides an implementation for the primitive {@code \gdef}.
  * 
- * <doc name="gdef">
- * <h3>The Primitive <tt>\gdef</tt></h3>
+ * <p>The Primitive {@code \gdef}</p>
  * <p>
- * This primitive is an abbreviation for <tt>\global</tt><tt>\def</tt>.
- * Thus the description of <tt>\def</tt> can be consulted for details.
+ * This primitive is an abbreviation for {@code \global}{@code \def}.
+ * Thus the description of {@code \def} can be consulted for details.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;gdef&rang;
- *       &rarr; &lang;prefix&rang; <tt>\gdef</tt> {@linkplain
+ *       &rarr; &lang;prefix&rang; {@code \gdef} {@linkplain
  *         org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
- *         &lang;control sequence&rang;} &lang;parameter text&rang; <tt>{</tt> &lang;replacement text&rang; <tt>}</tt>
+ *         &lang;control sequence&rang;} &lang;parameter text&rang; {@code {} &lang;replacement text&rang; {@code }}
  *
  *    &lang;prefix&rang;
  *      &rarr;
- *       | <tt>\global</tt> &lang;prefix&rang;
- *       | <tt>\long</tt> &lang;prefix&rang;
- *       | <tt>\outer</tt> &lang;prefix&rang;
- *       | <tt>\proteced</tt> &lang;prefix&rang;</pre>
+ *       | {@code \global} &lang;prefix&rang;
+ *       | {@code \long} &lang;prefix&rang;
+ *       | {@code \outer} &lang;prefix&rang;
+ *       | {@code \proteced} &lang;prefix&rang;</pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \gdef#1{--#1--}  </pre>
  * 
- * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Gdef extends Def {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -82,10 +81,7 @@ public class Gdef extends Def {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.macro.Let#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

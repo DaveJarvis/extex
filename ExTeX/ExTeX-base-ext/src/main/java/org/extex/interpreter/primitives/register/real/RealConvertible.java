@@ -31,8 +31,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * real.
  * 
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public interface RealConvertible {
 
     /**

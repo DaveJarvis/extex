@@ -25,8 +25,7 @@ import org.junit.runners.Suite;
  * Run all tests.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 @RunWith(Suite.class)
 @Suite.SuiteClasses({AddPeriodTest.class,
         CallTypeTest.class,

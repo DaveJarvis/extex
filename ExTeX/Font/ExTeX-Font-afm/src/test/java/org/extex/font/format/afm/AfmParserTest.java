@@ -27,8 +27,7 @@ import junit.framework.TestCase;
  * Test for the afm parser.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 5464 $
- */
+*/
 public class AfmParserTest extends TestCase {
 
     /**

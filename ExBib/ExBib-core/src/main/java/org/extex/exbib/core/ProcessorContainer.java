@@ -50,8 +50,7 @@ import org.extex.resource.ResourceFinder;
  * This is a container for a named set of bibliographies.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ProcessorContainer
         implements
             Configurable,
@@ -64,12 +63,12 @@ public class ProcessorContainer
     private static class NamedObserver {
 
         /**
-         * The field <tt>name</tt> contains the name.
+         * The field {@code name} contains the name.
          */
         private final String name;
 
         /**
-         * The field <tt>observer</tt> contains the observer.
+         * The field {@code observer} contains the observer.
          */
         private final Observer observer;
 
@@ -108,64 +107,64 @@ public class ProcessorContainer
     }
 
     /**
-     * < The field <tt>obsList</tt> contains the observers.
+     * < The field {@code obsList} contains the observers.
      */
     private final List<NamedObserver> obsList = new ArrayList<NamedObserver>();
 
     /**
-     * The field <tt>dbObsList</tt> contains the observers.
+     * The field {@code dbObsList} contains the observers.
      */
     private final List<NamedObserver> dbObsList = new ArrayList<NamedObserver>();
 
     /**
-     * The field <tt>bibliographies</tt> contains the bibliographies.
+     * The field {@code bibliographies} contains the bibliographies.
      */
     private final Map<String, Processor> bibliographies =
             new HashMap<String, Processor>();
 
     /**
-     * The field <tt>dbFactory</tt> contains the database factory.
+     * The field {@code dbFactory} contains the database factory.
      */
     private DBFactory dbFactory;
 
     /**
-     * The field <tt>processorFactory</tt> contains the processor factory.
+     * The field {@code processorFactory} contains the processor factory.
      */
     private ProcessorFactory processorFactory;
 
     /**
-     * The field <tt>bibReaderFactory</tt> contains the bib reader factory.
+     * The field {@code bibReaderFactory} contains the bib reader factory.
      */
     private BibReaderFactory bibReaderFactory;
 
     /**
-     * The field <tt>minCrossrefs</tt> contains the <tt>min.crossrefs</tt>
+     * The field {@code minCrossrefs} contains the {@code min.crossrefs}
      * parameter for the database.
      */
     private int minCrossrefs = 2;
 
     /**
-     * The field <tt>fallback</tt> contains the default name for a processor.
+     * The field {@code fallback} contains the default name for a processor.
      */
     private String fallback;
 
     /**
-     * The field <tt>sorterFactory</tt> contains the sorterFactory.
+     * The field {@code sorterFactory} contains the sorterFactory.
      */
     private SorterFactory sorterFactory;
 
     /**
-     * The field <tt>logger</tt> contains the logger.
+     * The field {@code logger} contains the logger.
      */
     private final Logger logger;
 
     /**
-     * The field <tt>properties</tt> contains the properties.
+     * The field {@code properties} contains the properties.
      */
     private final Properties properties;
 
     /**
-     * The field <tt>finder</tt> contains the resource finder.
+     * The field {@code finder} contains the resource finder.
      */
     private ResourceFinder finder;
 
@@ -196,12 +195,7 @@ public class ProcessorContainer
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
-     */
-    public void configure(Configuration config) throws ConfigurationException {
+public void configure(Configuration config) throws ConfigurationException {
 
         fallback = config.getAttribute("fallback");
 
@@ -214,10 +208,10 @@ public class ProcessorContainer
      * Find or create a bibliography for a given key.
      * 
      * @param key the key for the bibliography to find; the value
-     *        <code>null</code> denotes the default bibliography
+     *        {@code null} denotes the default bibliography
      * 
      * @return the bibliography for the key. This is guaranteed to be not
-     *         <code>null</code>
+     *         {@code null}
      * 
      * @throws ExBibException in case of an error
      * @throws ConfigurationException in case of a configuration error
@@ -302,7 +296,7 @@ public class ProcessorContainer
      * 
      * @param key the key
      * 
-     * @return the bibliography or <code>null</code>
+     * @return the bibliography or {@code null}
      */
     public Processor getProcessor(String key) {
 
@@ -312,19 +306,14 @@ public class ProcessorContainer
     /**
      * Check whether the container is empty.
      * 
-     * @return <code>true</code> if the container is empty
+     * @return {@code true} if the container is empty
      */
     public boolean isEmpty() {
 
         return bibliographies.isEmpty();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Iterable#iterator()
-     */
-    public Iterator<String> iterator() {
+public Iterator<String> iterator() {
 
         return bibliographies.keySet().iterator();
     }
@@ -439,12 +428,7 @@ public class ProcessorContainer
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
-     */
-    public void setResourceFinder(ResourceFinder f) {
+public void setResourceFinder(ResourceFinder f) {
 
         this.finder = f;
     }
@@ -459,12 +443,7 @@ public class ProcessorContainer
         this.sorterFactory = sorterFactory;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return bibliographies.toString();

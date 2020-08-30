@@ -33,8 +33,7 @@ import org.extex.typesetter.type.page.Page;
  * This document writer produces Encapsulated Postscript documents.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class EpsWriter extends AbstractPostscriptWriter {
 
     /**

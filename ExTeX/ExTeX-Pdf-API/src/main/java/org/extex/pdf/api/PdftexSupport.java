@@ -30,20 +30,18 @@ import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.RuleNode;
 
 /**
- * This interface describes the methods needed for <logo>pdfT<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> support to make use of the special features of PDF.
+ * This interface describes the methods needed for pdfTeX support to make use
+ * of the special features of PDF.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface PdftexSupport {
 
     /**
      * Factory method to construct a PdfAnnotation node.
      * 
      * @param node the rule specification. Only the width height and depth are
-     *        relevant. Either of them can be <code>null</code>.
+     *        relevant. Either of them can be {@code null}.
      * @param annotation the annotation text
      * 
      * @return a PdfAnnotation node
@@ -56,7 +54,7 @@ public interface PdftexSupport {
     /**
      * Factory method to construct a PdfObject node.
      * 
-     * @param attr the attribute text. This can be <code>null</code>
+     * @param attr the attribute text. This can be {@code null}
      * @param isStream boolean indicator to signal that a stream object or file
      *        object is requested
      * @param text the object
@@ -71,7 +69,7 @@ public interface PdftexSupport {
     /**
      * Factory method to construct a PdfXForm node.
      * 
-     * @param attr the attribute text. This can be <code>null</code>
+     * @param attr the attribute text. This can be {@code null}
      * @param resources the resources specification
      * @param list the content
      * 
@@ -87,8 +85,8 @@ public interface PdftexSupport {
      * 
      * @param resource the resource specification
      * @param rule the rule specification. Only the width height and depth are
-     *        relevant. Either of them can be <code>null</code>.
-     * @param attr the attribute text. This can be <code>null</code>
+     *        relevant. Either of them can be {@code null}.
+     * @param attr the attribute text. This can be {@code null}
      * @param page the page number
      * @param immediate the indicator that the image should be put into the PDF
      *        output without waiting for a reference
@@ -105,13 +103,13 @@ public interface PdftexSupport {
      * 
      * @param text the text for the catalog
      * @param action the action specification. This parameter can be
-     *        <code>null</code>
+     *        {@code null}
      */
     void pdfcatalog(String text, ActionSpec action);
 
     /**
      * Retrieve the font name for a given font. For instance if a font is
-     * addressed as <tt>/F12</tt> then this method returns <tt>12</tt>.
+     * addressed as {@code /F12} then this method returns {@code 12}.
      * 
      * @param font the font to query
      * 
@@ -173,7 +171,7 @@ public interface PdftexSupport {
     long pdflastximage();
 
     /**
-     * This method inserts the text to <tt>/Names</tt> array.
+     * This method inserts the text to {@code /Names} array.
      * 
      * @param text the text to add
      */

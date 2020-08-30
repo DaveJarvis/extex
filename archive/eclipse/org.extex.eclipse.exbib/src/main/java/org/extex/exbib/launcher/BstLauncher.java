@@ -29,8 +29,7 @@ import org.eclipse.debug.core.model.LaunchConfigurationDelegate;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class BstLauncher extends LaunchConfigurationDelegate {
 
     /**

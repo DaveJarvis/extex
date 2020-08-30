@@ -17,7 +17,7 @@
  */
 /**
  * 
- *   This package contains types for functions.
+ *   Contains types for functions.
  * 
  *
  */

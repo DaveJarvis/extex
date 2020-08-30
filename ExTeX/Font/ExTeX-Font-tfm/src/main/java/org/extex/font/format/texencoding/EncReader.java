@@ -36,8 +36,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * @see <a href="package-summary.html#font-enc">font encoding file</a>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class EncReader implements Serializable {
 
@@ -57,16 +56,16 @@ public class EncReader implements Serializable {
     private Map<String, Integer> glyphlist = null;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated with
+     * The field {@code localizer} contains the localizer. It is initiated with
      * a localizer for the name of this class.
      */
-    private transient Localizer localizer = LocalizerFactory
+    private final transient Localizer localizer = LocalizerFactory
         .getLocalizer(EncReader.class);
 
     /**
      * encoding table.
      */
-    private String[] table;
+    private final String[] table;
 
     /**
      * Create a new object.

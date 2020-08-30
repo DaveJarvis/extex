@@ -57,8 +57,7 @@ import org.extex.typesetter.type.page.Page;
  * all glyphs and after this, the backend for the pdf creation is called.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TwoPassDocumentWriter
         implements
             DocumentWriter,
@@ -97,7 +96,7 @@ public class TwoPassDocumentWriter
     /**
      * The document writer options.
      */
-    private DocumentWriterOptions options;
+    private final DocumentWriterOptions options;
 
     /**
      * The resource finder.
@@ -105,10 +104,10 @@ public class TwoPassDocumentWriter
     private ResourceFinder finder;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated with
+     * The field {@code localizer} contains the localizer. It is initiated with
      * a localizer for the name of this class.
      */
-    private Localizer localizer = LocalizerFactory
+    private final Localizer localizer = LocalizerFactory
         .getLocalizer(TwoPassDocumentWriter.class);
 
     /**
@@ -129,12 +128,12 @@ public class TwoPassDocumentWriter
     /**
      * The list for the pages.
      */
-    private LinkedList<Page> pagelist = new LinkedList<Page>();
+    private final LinkedList<Page> pagelist = new LinkedList<Page>();
 
     /**
      * Map for the parameters.
      */
-    private Map<String, String> param = new HashMap<String, String>();
+    private final Map<String, String> param = new HashMap<String, String>();
 
     /**
      * the number of page which are shipped out.
@@ -149,7 +148,7 @@ public class TwoPassDocumentWriter
     /**
      * The configuration.
      */
-    private Configuration config;
+    private final Configuration config;
 
     /**
      * The extension.
@@ -179,12 +178,7 @@ public class TwoPassDocumentWriter
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#close()
-     */
-    @Override
+@Override
     public void close() throws GeneralException, IOException {
 
         createAfmEncodings();
@@ -202,12 +196,7 @@ public class TwoPassDocumentWriter
         target.close();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
-     */
-    @Override
+@Override
     public void configure(Configuration config) throws ConfigurationException {
 
         if (config != null) {
@@ -258,35 +247,20 @@ public class TwoPassDocumentWriter
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
-     */
-    @Override
+@Override
     public void enableLogging(Logger logger) {
 
         this.logger = logger;
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
-     */
-    @Override
+@Override
     public String getExtension() {
 
         return extension;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.FontAware#setFontFactory(org.extex.font.CoreFontFactory)
-     */
-    @Override
+@Override
     public void setFontFactory(CoreFontFactory factory) {
 
         corefactory = factory;
@@ -299,12 +273,7 @@ public class TwoPassDocumentWriter
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(java.io.OutputStream)
-     */
-    @Override
+@Override
     public void setOutputStream(OutputStream writer) {
 
         checkTarget();
@@ -315,10 +284,7 @@ public class TwoPassDocumentWriter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(java.lang.String,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public void setParameter(String name, String value) {
@@ -327,23 +293,13 @@ public class TwoPassDocumentWriter
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
-     */
-    @Override
+@Override
     public void setResourceFinder(ResourceFinder finder) {
 
         this.finder = finder;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#shipout(org.extex.typesetter.type.page.Page)
-     */
-    @Override
+@Override
     public int shipout(Page page) throws GeneralException, IOException {
 
         checkTarget();

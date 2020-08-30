@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\parshapeindent</tt>.
+ * This is a test suite for the primitive {@code \parshapeindent}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class ParshapeindentTest extends NonExecuteTester {
 
     /**
@@ -50,7 +49,7 @@ public class ParshapeindentTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapeindent"> Test case showing that
-     * <tt>\parshapeindent</tt> is applicable to <tt>\the</tt>. </testcase>
+     * {@code \parshapeindent} is applicable to {@code \the}.
      * 
      * @throws Exception in case of an error
      */
@@ -65,7 +64,7 @@ public class ParshapeindentTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapeindent"> Test case showing that
-     * <tt>\parshapeindent</tt> on a negative index returns 0pt. </testcase>
+     * {@code \parshapeindent} on a negative index returns 0pt.
      * 
      * @throws Exception in case of an error
      */
@@ -80,7 +79,7 @@ public class ParshapeindentTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapeindent"> Test case showing that
-     * \parshapeindent outside any parshape returns 0pt. </testcase>
+     * \parshapeindent outside any parshape returns 0pt.
      * 
      * @throws Exception in case of an error
      */
@@ -96,7 +95,7 @@ public class ParshapeindentTest extends NonExecuteTester {
     /**
      * <testcase primitive="\parshapeindent"> Test case showing that
      * \parshapeindent at index 0 on one pair returns the first value.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -112,7 +111,7 @@ public class ParshapeindentTest extends NonExecuteTester {
     /**
      * <testcase primitive="\parshapeindent"> Test case showing that
      * \parshapeindent at index 0 on two pairs returns the first value.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -128,7 +127,7 @@ public class ParshapeindentTest extends NonExecuteTester {
     /**
      * <testcase primitive="\parshapeindent"> Test case showing that
      * \parshapeindent at index 1 on two pairs returns the third value.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -143,7 +142,7 @@ public class ParshapeindentTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapeindent"> Test case showing that the last
-     * value is repeated. </testcase>
+     * value is repeated.
      * 
      * @throws Exception in case of an error
      */
@@ -158,7 +157,7 @@ public class ParshapeindentTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapeindent"> Test case showing that the last
-     * value is repeated. </testcase>
+     * value is repeated.
      * 
      * @throws Exception in case of an error
      */
@@ -173,7 +172,7 @@ public class ParshapeindentTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapeindent"> Test case showing that
-     * <tt>\parshapeindent</tt> is applicable to <tt>\the</tt>. </testcase>
+     * {@code \parshapeindent} is applicable to {@code \the}.
      * 
      * @throws Exception in case of an error
      */
@@ -188,7 +187,7 @@ public class ParshapeindentTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapeindent"> Test case showing that
-     * <tt>\parshapeindent</tt> on a negative index returns 0pt. </testcase>
+     * {@code \parshapeindent} on a negative index returns 0pt.
      * 
      * @throws Exception in case of an error
      */
@@ -204,7 +203,7 @@ public class ParshapeindentTest extends NonExecuteTester {
     /**
      * <testcase primitive="\parshapeindent"> Test case showing that
      * \parshapeindent at index 0 on no pair is assignable to a dimen register.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -220,7 +219,7 @@ public class ParshapeindentTest extends NonExecuteTester {
     /**
      * <testcase primitive="\parshapeindent"> Test case showing that
      * \parshapeindent at index 0 on one pair is assignable to a dimen register.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -237,7 +236,7 @@ public class ParshapeindentTest extends NonExecuteTester {
     /**
      * <testcase primitive="\parshapeindent"> Test case showing that
      * \parshapeindent at index 0 on two pairs is assignable to a dimen
-     * register. </testcase>
+     * register.
      * 
      * @throws Exception in case of an error
      */
@@ -254,7 +253,7 @@ public class ParshapeindentTest extends NonExecuteTester {
     /**
      * <testcase primitive="\parshapeindent"> Test case showing that
      * \parshapeindent at index 1 on two pairs is assignable to a dimen
-     * register. </testcase>
+     * register.
      * 
      * @throws Exception in case of an error
      */
@@ -270,7 +269,7 @@ public class ParshapeindentTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapeindent"> Test case showing that the last
-     * value is repeated. </testcase>
+     * value is repeated.
      * 
      * @throws Exception in case of an error
      */
@@ -286,7 +285,7 @@ public class ParshapeindentTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapeindent"> Test case showing that the last
-     * value is repeated. </testcase>
+     * value is repeated.
      * 
      * @throws Exception in case of an error
      */
@@ -302,7 +301,7 @@ public class ParshapeindentTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapeindent"> Test case showing that
-     * <tt>\parshapeindent</tt> is count-convertible. </testcase>
+     * {@code \parshapeindent} is count-convertible.
      * 
      * @throws Exception in case of an error
      */

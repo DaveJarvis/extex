@@ -29,46 +29,45 @@ import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.conditional.AbstractIf;
 
 /**
- * This class provides an implementation for the primitive <code>\ifcat</code>.
+ * This class provides an implementation for the primitive {@code \ifcat}.
  * 
- * <doc name="ifcat">
- * <h3>The Primitive <tt>\ifcat</tt></h3>
+ * <p>The Primitive {@code \ifcat}</p>
  * <p>
  * The primitive expands the tokens following it until two unexpandable tokens
  * are found. The conditional is true iff the category codes of the two tokens
  * agree.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;ifcat&rang;
- *     &rarr; <tt>\ifcat</tt> {@linkplain
+ *     &rarr; {@code \ifcat} {@linkplain
  *       org.extex.interpreter.TokenSource#getToken(Context)
  *       &lang;token<sub>1</sub>&rang;} {@linkplain
  *       org.extex.interpreter.TokenSource#getToken(Context)
- *       &lang;token<sub>2</sub>&rang;} &lang;true text&rang; <tt>\fi</tt>
- *     | <tt>\ifcat</tt> {@linkplain
+ *       &lang;token<sub>2</sub>&rang;} &lang;true text&rang; {@code \fi}
+ *     | {@code \ifcat} {@linkplain
  *       org.extex.interpreter.TokenSource#getToken(Context)
  *       &lang;token<sub>1</sub>&rang;} {@linkplain
  *       org.extex.interpreter.TokenSource#getToken(Context)
- *       &lang;token<sub>2</sub>&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
+ *       &lang;token<sub>2</sub>&rang;} &lang;true text&rang; {@code \else} &lang;false text&rang; {@code \fi} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \ifcat\a\x ok \fi  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4439 $
- */
+*/
 public class Ifcat extends AbstractIf {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -84,10 +83,7 @@ public class Ifcat extends AbstractIf {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.base.conditional.AbstractIf#conditional(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

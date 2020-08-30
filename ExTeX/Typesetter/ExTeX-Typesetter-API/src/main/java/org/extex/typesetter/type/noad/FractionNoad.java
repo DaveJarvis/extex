@@ -43,40 +43,39 @@ import org.extex.typesetter.type.node.VerticalListNode;
  * @see "TTP [683]"
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class FractionNoad extends AbstractNoad {
 
     /**
-     * The field <tt>denominator</tt> contains the denominator part.
+     * The field {@code denominator} contains the denominator part.
      */
-    private MathList denominator;
+    private final MathList denominator;
 
     /**
-     * The field <tt>leftDelimiter</tt> contains the left delimiter or
-     * <code>null</code> if none is set.
+     * The field {@code leftDelimiter} contains the left delimiter or
+     * {@code null} if none is set.
      */
-    private MathDelimiter leftDelimiter;
+    private final MathDelimiter leftDelimiter;
 
     /**
-     * The field <tt>numerator</tt> contains the numerator part.
+     * The field {@code numerator} contains the numerator part.
      */
-    private MathList numerator;
+    private final MathList numerator;
 
     /**
-     * The field <tt>tc</tt> contains the typesetting context.
+     * The field {@code tc} contains the typesetting context.
      */
-    private TypesettingContext tc;
+    private final TypesettingContext tc;
 
     /**
-     * The field <tt>rightDelimiter</tt> contains the right delimiter or
-     * <code>null</code> if none is set
+     * The field {@code rightDelimiter} contains the right delimiter or
+     * {@code null} if none is set
      */
-    private MathDelimiter rightDelimiter;
+    private final MathDelimiter rightDelimiter;
 
     /**
-     * The field <tt>thickness</tt> contains the thickness of the fraction rule.
-     * The value <code>null</code> indicates that the default rule thickness of
+     * The field {@code thickness} contains the thickness of the fraction rule.
+     * The value {@code null} indicates that the default rule thickness of
      * the current size should be used.
      */
     private FixedDimen thickness = null;
@@ -87,10 +86,10 @@ public class FractionNoad extends AbstractNoad {
      * @param denom the denominator
      * @param num the numerator
      * @param leftDelimiter the delimiter for the left side or
-     *  <code>null</code> for none
+     *  {@code null} for none
      * @param rightDelimiter the delimiter for the right side or
-     *  <code>null</code>  for none
-     * @param thickness the thickness of the rule or <code>null</code> for the
+     *  {@code null}  for none
+     * @param thickness the thickness of the rule or {@code null} for the
      *  default thickness
      * @param tc the typesetting context for the rule
      */

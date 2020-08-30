@@ -32,12 +32,11 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to define a letter group.
  * 
- * <doc type="exindex-command" command="define-letter-group">
- * 
- * <h3>The Command <tt>define-letter-group</tt></h3>
+*
+ * <p>The Command {@code define-letter-group}</p>
  * 
  * <p>
- * The command <tt>define-letter-group</tt> can be used to define a letter group
+ * The command {@code define-letter-group} can be used to define a letter group
  * or modify the attributes of an already defined letter group.
  * </p>
  * <p>
@@ -73,14 +72,14 @@ import org.extex.exindex.lisp.type.value.LValue;
  * mapped into this letter group. This means that the longest prefix which
  * matches at the beginning of the sort key determines the letter group to be
  * used. If no letter group is found then the letter group named
- * <tt>default</tt> is used.
+ * {@code default} is used.
  * </p>
  * 
  * <pre>
  *  (define-letter-group "A" :before "B")   </pre>
  * 
  * <p>
- * The parameter <tt>:before</tt> places a constraint on the order. This means
+ * The parameter {@code :before} places a constraint on the order. This means
  * that the letter group A has to precede the letter group B in any case. There
  * many also be some other letter groups in between.
  * </p>
@@ -89,7 +88,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  *  (define-letter-group "B" :after "A")   </pre>
  * 
  * <p>
- * The parameter <tt>:after</tt> places a constraint on the order. This means
+ * The parameter {@code :after} places a constraint on the order. This means
  * that the letter group B has to follow the letter group A in any case. There
  * many again be some other letter groups in between.
  * </p>
@@ -108,17 +107,15 @@ import org.extex.exindex.lisp.type.value.LValue;
  * honored.
  * </p>
  * 
- * </doc>
- * 
+ *
  * @see LDefineLetterGroups
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LDefineLetterGroup extends LFunction {
 
     /**
-     * The field <tt>container</tt> contains the the container to store the
+     * The field {@code container} contains the the container to store the
      * information in.
      */
     private final IndexContainer container;
@@ -151,9 +148,9 @@ public class LDefineLetterGroup extends LFunction {
      * @param name the name of the letter group and its main prefix
      * @param before optionally the name of a letter group going before this one
      * @param after optionally the name of a letter group going after this one
-     * @param prefixes
-     * 
-     * @return <tt>null</tt>
+     * @param prefixes TBD
+     *
+     * @return {@code null}
      * 
      * @throws LException in case of an error
      * @throws LSettingConstantException should not happen

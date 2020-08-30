@@ -39,14 +39,13 @@ import org.extex.exbib.editor.Activator;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class BstEditorPreferences extends FieldEditorPreferencePage
         implements
             IWorkbenchPreferencePage {
 
     /**
-     * The constant <tt>PREFERENCE_BASENAME</tt> contains the ...
+     * The constant {@code PREFERENCE_BASENAME} contains the ...
      */
     private static final String PREFERENCE_BASENAME =
             BstEditorPreferences.class.getName();
@@ -144,12 +143,7 @@ public class BstEditorPreferences extends FieldEditorPreferencePage
         super(FieldEditorPreferencePage.GRID);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.preference.FieldEditorPreferencePage#addField(org.eclipse.jface.preference.FieldEditor)
-     */
-    @Override
+@Override
     protected void addField(FieldEditor editor) {
 
         Assert.isNotNull(editor);
@@ -174,12 +168,7 @@ public class BstEditorPreferences extends FieldEditorPreferencePage
         return cfe;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.preference.FieldEditorPreferencePage#createFieldEditors()
-     */
-    @Override
+@Override
     protected void createFieldEditors() {
 
         addField(colorControl(getFieldEditorParent(), PREFERENCE_FG_COMMENT,
@@ -219,12 +208,7 @@ public class BstEditorPreferences extends FieldEditorPreferencePage
         addField(editor);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.preference.FieldEditorPreferencePage#dispose()
-     */
-    @Override
+@Override
     public void dispose() {
 
         for (FieldEditor editor : fields) {
@@ -234,12 +218,7 @@ public class BstEditorPreferences extends FieldEditorPreferencePage
         super.dispose();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.IWorkbenchPreferencePage#init(org.eclipse.ui.IWorkbench)
-     */
-    @Override
+@Override
     public void init(IWorkbench workbench) {
 
         setPreferenceStore(Activator.getDefault().getPreferenceStore());

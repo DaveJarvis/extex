@@ -38,8 +38,7 @@ import org.extex.util.file.random.RandomAccessR;
  * </p>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class TfmParamArray implements Serializable {
 
@@ -66,19 +65,19 @@ public class TfmParamArray implements Serializable {
             "SHRINK", "XHEIGHT", "QUAD", "EXTRASPACE"};
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field {@code serialVersionUID} ...
      */
     private static final long serialVersionUID = 1L;
 
     /**
      * the font type.
      */
-    private TfmFontType fonttpye;
+    private final TfmFontType fonttpye;
 
     /**
      * Map for the parameters.
      */
-    private Map<String, TfmFixWord> param;
+    private final Map<String, TfmFixWord> param;
 
     /**
      * Create a new object.
@@ -150,9 +149,9 @@ public class TfmParamArray implements Serializable {
     }
 
     /**
-     * Returns the parameter with the name <code>name</code>.
+     * Returns the parameter with the name {@code name}.
      * @param name  The name of the parameter.
-     * @return Returns the parameter with the name <code>name</code>.
+     * @return Returns the parameter with the name {@code name}.
      */
     public TfmFixWord getParam(String name) {
 

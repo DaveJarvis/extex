@@ -55,12 +55,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * program.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4411 $
- */
+*/
 public class Ocp implements Code, Showable, OcpConvertible, Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     protected static final long serialVersionUID = 2006;
@@ -71,7 +70,7 @@ public class Ocp implements Code, Showable, OcpConvertible, Serializable {
      * @param resource the name of the resource
      * @param finder the resource finder
      * 
-     * @return the OCP encountered or <code>null</code> if none is found
+     * @return the OCP encountered or {@code null} if none is found
      * 
      * @throws HelpingException in case of an error
      * @throws ConfigurationException in case of an configuration error
@@ -154,12 +153,12 @@ public class Ocp implements Code, Showable, OcpConvertible, Serializable {
     }
 
     /**
-     * The field <tt>name</tt> contains the name of the resource.
+     * The field {@code name} contains the name of the resource.
      */
     private String name;
 
     /**
-     * The field <tt>program</tt> contains the program contained in this
+     * The field {@code program} contains the program contained in this
      * instance.
      */
     private OcpProgram program;
@@ -179,10 +178,7 @@ public class Ocp implements Code, Showable, OcpConvertible, Serializable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.omega.ocp.util.OcpConvertible#convertOcp(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Ocp convertOcp(Context context, TokenSource source,
@@ -192,10 +188,7 @@ public class Ocp implements Code, Showable, OcpConvertible, Serializable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context, TokenSource source,
@@ -230,7 +223,7 @@ public class Ocp implements Code, Showable, OcpConvertible, Serializable {
      * This simple little method distinguishes the conditionals from the other
      * primitives. This is necessary for the processing of all \if* primitives.
      * 
-     * @return <code>true</code> iff this is some sort if <tt>\if</tt>.
+     * @return {@code true} iff this is some sort if {@code \if}.
      * 
      * @see org.extex.interpreter.type.Code#isIf()
      */
@@ -242,7 +235,7 @@ public class Ocp implements Code, Showable, OcpConvertible, Serializable {
     /**
      * Getter for the outer flag.
      * 
-     * @return <code>true</code> iff the code is defined outer.
+     * @return {@code true} iff the code is defined outer.
      * 
      * @see org.extex.interpreter.type.Code#isOuter()
      */
@@ -272,10 +265,7 @@ public class Ocp implements Code, Showable, OcpConvertible, Serializable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Showable#show(
-     *      org.extex.interpreter.context.Context)
+*      org.extex.interpreter.context.Context)
      */
     public Tokens show(Context context) throws HelpingException {
 

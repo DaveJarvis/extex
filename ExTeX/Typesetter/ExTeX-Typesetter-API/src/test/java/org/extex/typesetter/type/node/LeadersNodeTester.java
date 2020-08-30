@@ -35,12 +35,11 @@ import org.junit.Test;
  * This is a test suite for leaders notes.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class LeadersNodeTester {
 
     /**
-     * The field <tt>visitor</tt> contains the visitor.
+     * The field {@code visitor} contains the visitor.
      */
     private NodeVisitor<Node, Boolean> visitor =
             new NodeVisitor<Node, Boolean>() {
@@ -187,7 +186,7 @@ public abstract class LeadersNodeTester {
             FixedGlue glue);
 
     /**
-     * <testcase> ... </testcase>
+     *  ... 
      */
     @Test
     public final void testAtShippingError2h() {
@@ -203,7 +202,7 @@ public abstract class LeadersNodeTester {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ... 
      */
     @Test
     public final void testAtShippingError2v() {
@@ -219,7 +218,7 @@ public abstract class LeadersNodeTester {
     }
 
     /**
-     * <testcase> </testcase>
+     *  
      * 
      * @throws GeneralException in case of an error
      */
@@ -241,7 +240,7 @@ public abstract class LeadersNodeTester {
     }
 
     /**
-     * <testcase> </testcase>
+     *  
      * 
      * @throws GeneralException in case of an error
      */
@@ -263,7 +262,7 @@ public abstract class LeadersNodeTester {
     }
 
     /**
-     * <testcase> </testcase>
+     *  
      * 
      * @throws GeneralException in case of an error
      */
@@ -285,7 +284,7 @@ public abstract class LeadersNodeTester {
     }
 
     /**
-     * <testcase> </testcase>
+     *  
      * 
      * @throws GeneralException in case of an error
      */
@@ -307,7 +306,7 @@ public abstract class LeadersNodeTester {
     }
 
     /**
-     * <testcase>Test that null values act like en empty box. </testcase>
+     * Test that null values act like en empty box. 
      */
     @Test
     public final void testNullNull() {

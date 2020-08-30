@@ -22,16 +22,10 @@ package org.extex.exindex.makeindex.normalizer;
  * This is the default collator for <i>MakeIndex</i>.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6622 $
- */
+*/
 public class SpaceCollator implements Collator {
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.makeindex.normalizer.Collator#collate(java.lang.String)
-     */
-    public String collate(String in) {
+public String collate(String in) {
 
         return in.replaceAll("[ \t\n\r\f\b]+", " ");
     }

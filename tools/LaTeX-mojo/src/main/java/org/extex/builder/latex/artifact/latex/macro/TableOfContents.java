@@ -27,18 +27,14 @@ import org.extex.builder.latex.artifact.latex.LatexReader;
 import org.extex.builder.latex.artifact.latex.Macro;
 
 /**
- * This class implements a handler for <code>\tableofcontents</code>.
+ * This class implements a handler for {@code \tableofcontents}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class TableOfContents extends Macro {
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.builder.latex.artifact.latex.Macro#expand(org.extex.builder.latex.artifact.latex.LatexReader,
-     *      org.extex.builder.latex.DependencyNet, Artifact)
+*      org.extex.builder.latex.DependencyNet, Artifact)
      */
     @Override
     public void expand(LatexReader reader, DependencyNet net, Artifact artifact)

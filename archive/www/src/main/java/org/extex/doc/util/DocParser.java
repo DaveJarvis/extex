@@ -33,36 +33,35 @@ import java.util.regex.Pattern;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DocParser {
 
     /**
-     * The field <tt>COMMENT_START</tt> contains the pattern to recognize the
+     * The field {@code COMMENT_START} contains the pattern to recognize the
      * start of a JavaDoc comment.
      */
     private static Pattern COMMENT_START = Pattern.compile(".*/\\*\\*.*");
 
     /**
-     * The field <tt>COMMENT_END</tt> contains the pattern to recognize the
+     * The field {@code COMMENT_END} contains the pattern to recognize the
      * end of a JavaDoc comment.
      */
     private static Pattern COMMENT_END = Pattern.compile(".*\\*/.*");
 
     /**
-     * The field <tt>DOC_START</tt> contains the pattern to recognize the
+     * The field {@code DOC_START} contains the pattern to recognize the
      * start of a doc section.
      */
     private static Pattern DOC_START = Pattern.compile(".*(<doc[ >].*)");
 
     /**
-     * The field <tt>DOC_END</tt> contains the pattern to recognize the end of
+     * The field {@code DOC_END} contains the pattern to recognize the end of
      * a doc section.
      */
     private static Pattern DOC_END = Pattern.compile(".*</doc>.*");
 
     /**
-     * The field <tt>PACKAGE</tt> contains the pattern to recognize a package
+     * The field {@code PACKAGE} contains the pattern to recognize a package
      * declaration.
      */
     private static Pattern PACKAGE = Pattern.compile("package ([^;]*);");

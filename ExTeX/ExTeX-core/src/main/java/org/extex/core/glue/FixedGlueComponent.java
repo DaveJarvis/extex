@@ -25,8 +25,7 @@ package org.extex.core.glue;
  * the value.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4726 $
- */
+*/
 public interface FixedGlueComponent {
 
     /**
@@ -40,10 +39,10 @@ public interface FixedGlueComponent {
      * Compares the current instance with another GlueComponent for equality.
      * 
      * @param d the other GlueComponent to compare to. If this parameter is
-     *        <code>null</code> then the comparison fails.
+     *        {@code null} then the comparison fails.
      * 
-     * @return <code>true</code> iff <i>|this| == |d| and ord(this) ==
-     *         ord(d)</i>
+     * @return {@code true} iff |this| == |d| and ord(this) ==
+     *         ord(d)
      */
     boolean eq(FixedGlueComponent d);
 
@@ -52,7 +51,7 @@ public interface FixedGlueComponent {
      * 
      * @param d the other GlueComponent to compare to
      * 
-     * @return <code>true</code> iff this is greater or equal to d
+     * @return {@code true} iff this is greater or equal to d
      */
     boolean ge(FixedGlueComponent d);
 
@@ -75,8 +74,8 @@ public interface FixedGlueComponent {
      * 
      * @param d the other GlueComponent to compare to
      * 
-     * @return <code>true</code> iff <i>ord(this) == ord(d) && |this| &gt;
-     *         |d|</i> or <i>ord(this) &gt; ord(d)</i>
+      * @return {@code true} iff ord(this) == ord(d) &amp;&amp; |this| &gt;
+     *         |d| or ord(this) &gt; ord(d)
      */
     boolean gt(FixedGlueComponent d);
 
@@ -85,7 +84,7 @@ public interface FixedGlueComponent {
      * 
      * @param d the other GlueComponent to compare to
      * 
-     * @return <code>true</code> iff this is less or equal to d
+     * @return {@code true} iff this is less or equal to d
      */
     boolean le(FixedGlueComponent d);
 
@@ -94,8 +93,8 @@ public interface FixedGlueComponent {
      * 
      * @param d the other GlueComponent to compare to
      * 
-     * @return <code>true</code> iff <i>ord(this) == ord(d) && |this| &lt;
-     *         |d|</i> or <i>ord(this) &lt; ord(d)</i>
+      * @return {@code true} iff ord(this) == ord(d) &amp;&amp; |this| &lt;
+     *         |d| or ord(this) &lt; ord(d)
      */
     boolean lt(FixedGlueComponent d);
 
@@ -103,10 +102,10 @@ public interface FixedGlueComponent {
      * Compares the current instance with another GlueComponent for equality.
      * 
      * @param d the other GlueComponent to compare to. If this parameter is
-     *        <code>null</code> then the comparison fails.
+     *        {@code null} then the comparison fails.
      * 
-     * @return <code>false</code> iff <i>|this| == |d| and ord(this) ==
-     *         ord(d)</i>
+     * @return {@code false} iff |this| == |d| and ord(this) ==
+     *         ord(d)
      */
     boolean ne(FixedGlueComponent d);
 

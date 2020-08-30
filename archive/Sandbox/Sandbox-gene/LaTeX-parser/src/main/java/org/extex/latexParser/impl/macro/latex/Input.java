@@ -34,8 +34,7 @@ import org.extex.scanner.type.token.Token;
  * This class represents an \include instruction.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 7667 $
- */
+*/
 public class Input implements Macro {
 
     /**
@@ -49,10 +48,7 @@ public class Input implements Macro {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Macro#parse(org.extex.scanner.type.token.Token,
-     *      org.extex.latexParser.impl.Parser)
+*      org.extex.latexParser.impl.Parser)
      */
     public Node parse(Token token, Parser parser)
             throws ScannerException,

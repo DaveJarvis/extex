@@ -32,14 +32,13 @@ import static org.junit.Assert.*;
  * This is a test suite for ExIndex.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ExIndexTest {
 
     private static final String DIR_TARGET = "build";
 
     /**
-     * The field <tt>DEFAULT_LOG</tt> contains the default logging output.
+     * The field {@code DEFAULT_LOG} contains the default logging output.
      */
     private static final String DEFAULT_LOG =
             "Starting the processing phase.\n" + "Reading <stdin>.\n"

@@ -28,8 +28,7 @@ import org.extex.scanner.type.token.Token;
  * change of a code assignment for a macro or an active character.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4399 $
- */
+*/
 public interface CodeObserver {
 
     /**
@@ -39,7 +38,7 @@ public interface CodeObserver {
      * @param name the token containing the name of the changed entity.
      *  This is a macro or an active character.
      * @param value the new value assigned to the name. In case of
-     *  <code>null</code> the name is unbound.
+     *  {@code null} the name is unbound.
      *
      * @throws Exception in case of a problem
      */

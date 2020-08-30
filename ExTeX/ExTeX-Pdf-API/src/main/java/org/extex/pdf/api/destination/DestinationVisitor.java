@@ -23,8 +23,7 @@ package org.extex.pdf.api.destination;
  * This interface descries a visitor for destination types.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface DestinationVisitor {
 
     /**

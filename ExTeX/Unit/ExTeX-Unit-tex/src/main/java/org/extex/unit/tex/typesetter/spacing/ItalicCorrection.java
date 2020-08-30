@@ -36,36 +36,35 @@ import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.ExplicitKernNode;
 
 /**
- * This class provides an implementation for the primitive <code>\ </code>.
+ * This class provides an implementation for the primitive {@code \ }.
  * 
- * <doc name="/">
- * <h3>The Primitive <tt>\/</tt></h3>
+ * <p>The Primitive {@code \/}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;italic correction&rang;
- *        &rarr; <tt>\/</tt>  </pre>
+ *        &rarr; {@code \/}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    123\/456  </pre>
  * 
- * </doc>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class ItalicCorrection extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -81,10 +80,7 @@ public class ItalicCorrection extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

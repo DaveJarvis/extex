@@ -40,31 +40,22 @@ import org.extex.resource.io.NamedInputStream;
  * This is a utility class for the tests.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class SomeTestUtilities {
 
     /**
-     * The field <tt>DIRECT_FINDER</tt> contains the resource finder which takes
+     * The field {@code DIRECT_FINDER} contains the resource finder which takes
      * the name of the resource for its contents.
      */
     public static final ResourceFinder DIRECT_FINDER = new ResourceFinder() {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
-         */
-        public void enableTracing(boolean flag) {
+    public void enableTracing(boolean flag) {
 
             // nay
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public NamedInputStream findResource(String name, String type)
                 throws ConfigurationException {

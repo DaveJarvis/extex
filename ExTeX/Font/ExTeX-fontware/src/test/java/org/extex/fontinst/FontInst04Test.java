@@ -59,8 +59,7 @@ import org.junit.Test;
  * 
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class FontInst04Test extends ExTeXLauncher {
 
     /**
@@ -84,7 +83,7 @@ public class FontInst04Test extends ExTeXLauncher {
     private static final int _Y = _CAL.get(Calendar.YEAR);
 
     /**
-     * The field <tt>SEP</tt> contains the separator for properties.
+     * The field {@code SEP} contains the separator for properties.
      */
     private static final String SEP = System.getProperty("path.separator", ":");
 

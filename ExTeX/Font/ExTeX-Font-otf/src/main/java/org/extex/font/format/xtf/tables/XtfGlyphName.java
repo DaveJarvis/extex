@@ -23,8 +23,7 @@ package org.extex.font.format.xtf.tables;
  * Interface, to get the glyph name.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public interface XtfGlyphName {
 
     /**

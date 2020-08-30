@@ -29,8 +29,7 @@ import org.extex.core.dimen.FixedDimen;
  * inserted into an extension node.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public interface Extension extends Serializable {
 
     /**

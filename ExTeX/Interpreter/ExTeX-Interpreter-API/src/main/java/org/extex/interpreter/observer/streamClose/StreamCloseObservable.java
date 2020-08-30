@@ -24,8 +24,7 @@ package org.extex.interpreter.observer.streamClose;
  * close event on a token stream.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface StreamCloseObservable {
 
     /**

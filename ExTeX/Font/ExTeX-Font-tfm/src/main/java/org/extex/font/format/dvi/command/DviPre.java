@@ -23,35 +23,34 @@ package org.extex.font.format.dvi.command;
  * DVI: pre: Beginning of the preamble.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class DviPre extends DviCommand {
 
     /**
      * the comment
      */
-    private String comment;
+    private final String comment;
 
     /**
      * the den
      */
-    private int den;
+    private final int den;
 
     /**
      * the identifier
      */
-    private int identifier;
+    private final int identifier;
 
     /**
      * the mag
      */
-    private int mag;
+    private final int mag;
 
     /**
      * the num
      */
-    private int num;
+    private final int num;
 
     /**
      * Create a new object.
@@ -116,12 +115,7 @@ public class DviPre extends DviCommand {
         return mag;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviCommand#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "pre";

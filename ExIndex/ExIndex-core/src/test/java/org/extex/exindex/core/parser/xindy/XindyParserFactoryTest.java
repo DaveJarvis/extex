@@ -37,12 +37,11 @@ import org.junit.Test;
  * This is a test suite for {@link XindyParserFactory}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class XindyParserFactoryTest {
 
     /**
-     * The field <tt>EMPTY_RESOURCE_FINDER</tt> contains the resource finder
+     * The field {@code EMPTY_RESOURCE_FINDER} contains the resource finder
      * which returns an empty input stream.
      */
     private static final ResourceFinder EMPTY_RESOURCE_FINDER =
@@ -62,9 +61,9 @@ public class XindyParserFactoryTest {
             };
 
     /**
-     * <testcase> If the resource can not be found then <code>null</code> is
+     *  If the resource can not be found then {@code null} is
      * returned by {@link XindyParserFactory#create(String, String, Indexer)}.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -89,10 +88,10 @@ public class XindyParserFactoryTest {
     }
 
     /**
-     * <testcase> If the resource can be found then a {@link XindyParser} is
+     *  If the resource can be found then a {@link XindyParser} is
      * returned by {@link XindyParserFactory#create(String, String, Indexer)}
-     * when the default encoding is requested with <code>null</code> as
-     * encoding. </testcase>
+     * when the default encoding is requested with {@code null} as
+     * encoding.
      * 
      * @throws Exception in case of an error
      */
@@ -107,10 +106,10 @@ public class XindyParserFactoryTest {
     }
 
     /**
-     * <testcase> If the resource can be found then a {@link XindyParser} is
+     *  If the resource can be found then a {@link XindyParser} is
      * returned by {@link XindyParserFactory#create(String, String, Indexer)}
-     * when the default encoding is requested with <code>""</code> as
-     * encoding. </testcase>
+     * when the default encoding is requested with {@code ""} as
+     * encoding.
      * 
      * @throws Exception in case of an error
      */
@@ -125,10 +124,10 @@ public class XindyParserFactoryTest {
     }
 
     /**
-     * <testcase> If the resource can be found then a {@link XindyParser} is
+     *  If the resource can be found then a {@link XindyParser} is
      * returned by {@link XindyParserFactory#create(String, String, Indexer)}
      * when the default encoding is requested with an existing encoding (utf-8).
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -143,9 +142,9 @@ public class XindyParserFactoryTest {
     }
 
     /**
-     * <testcase> If the resource finder is not set then
+     *  If the resource finder is not set then
      * {@link XindyParserFactory#create(String, String, Indexer)} throws a
-     * {@link NullPointerException}. </testcase>
+     * {@link NullPointerException}.
      * 
      * @throws Exception in case of an error
      */
@@ -156,9 +155,9 @@ public class XindyParserFactoryTest {
     }
 
     /**
-     * <testcase> If the resource can be found and the encoding is unknown (xxx)
+     *  If the resource can be found and the encoding is unknown (xxx)
      * then an {@link UnsupportedEncodingException} is thrown by
-     * {@link XindyParserFactory#create(String, String, Indexer)}. </testcase>
+     * {@link XindyParserFactory#create(String, String, Indexer)}.
      * 
      * @throws Exception in case of an error
      */

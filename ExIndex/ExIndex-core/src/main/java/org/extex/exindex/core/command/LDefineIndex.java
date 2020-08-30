@@ -33,12 +33,11 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to define an index.
  * 
- * <doc type="exindex-command" command="define-index">
- * 
- * <h3>The Command <tt>define-index</tt></h3>
+*
+ * <p>The Command {@code define-index}</p>
  * 
  * <p>
- * The command <tt>define-index</tt> can be used to define an index. Initially
+ * The command {@code define-index} can be used to define an index. Initially
  * only the default index with the name "" exists. Any entries directed to
  * another index are silently discarded.
  * </p>
@@ -68,9 +67,9 @@ import org.extex.exindex.lisp.type.value.LValue;
  *  (define-index "abc" :merge-to "")  </pre>
  * 
  * <p>
- * The example above merges the index <tt>abc</tt> to the default index &ndash;
+ * The example above merges the index {@code abc} to the default index &ndash;
  * named with the empty name. This means that all entries sent to the index
- * <tt>abc</tt> end up in the default index.
+ * {@code abc} end up in the default index.
  * </p>
  * 
  * <pre>
@@ -78,7 +77,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * 
  * <p>
  * This trick can be used to free the default index from all index entries and
- * send them to the index named <tt>default</tt>. Thus only fallback settings
+ * send them to the index named {@code default}. Thus only fallback settings
  * remain in the index with the empty name.
  * </p>
  * 
@@ -86,17 +85,15 @@ import org.extex.exindex.lisp.type.value.LValue;
  *  (define-index "abc" :suffix ".ind")  </pre>
  * 
  * <p>
- * The example above declares the suffix for the the index <tt>abc</tt> to be
- * <tt>.ind</tt>. The default behavior is to use the name of the index preceded
+ * The example above declares the suffix for the the index {@code abc} to be
+ * {@code .ind}. The default behavior is to use the name of the index preceded
  * by a period as suffix.
  * </p>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 6728 $
- */
+*/
 public class LDefineIndex extends AbstractLAdapter {
 
     /**
@@ -128,7 +125,7 @@ public class LDefineIndex extends AbstractLAdapter {
      * @param mergeTo the name of the index to send the entries to
      * @param suffix the optional suffix
      * 
-     * @return <tt>nil</tt>
+     * @return {@code nil}
      * 
      * @throws LNonMatchingTypeException in case an argument is not a String
      * @throws LSettingConstantException should not happen

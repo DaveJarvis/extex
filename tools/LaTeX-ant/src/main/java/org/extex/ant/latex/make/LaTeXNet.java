@@ -23,8 +23,7 @@ package org.extex.ant.latex.make;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 5432 $
- */
+*/
 public class LaTeXNet extends Net {
 
     /**

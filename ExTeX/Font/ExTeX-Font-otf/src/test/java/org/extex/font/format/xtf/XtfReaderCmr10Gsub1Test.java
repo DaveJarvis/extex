@@ -34,11 +34,10 @@ import java.io.IOException;
 import static org.junit.Assert.*;
 
 /**
- * Tests for the <code>XtfReader</code> with cmr10.ttf (gsub).
+ * Tests for the {@code XtfReader} with cmr10.ttf (gsub).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class XtfReaderCmr10Gsub1Test {
 
     private final static String DIR_TARGET = "build";

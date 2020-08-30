@@ -35,8 +35,7 @@ import org.extex.resource.PropertyAware;
  * instance if they are present and required.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class InterpreterFactory extends AbstractFactory<Interpreter> {
 
     /**
@@ -56,7 +55,7 @@ public class InterpreterFactory extends AbstractFactory<Interpreter> {
 
     /**
      * Get a instance for the interface
-     * <tt>{@link org.extex.interpreter.Interpreter Interpreter}</tt>.
+     * {@code {@link org.extex.interpreter.Interpreter Interpreter}}.
      * 
      * @param properties the properties
      * @param outFactory the output stream factory

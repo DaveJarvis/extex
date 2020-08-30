@@ -25,16 +25,10 @@ import org.eclipse.jface.text.rules.IWhitespaceDetector;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class BstWhitespaceDetector implements IWhitespaceDetector {
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.text.rules.IWhitespaceDetector#isWhitespace(char)
-     */
-    public boolean isWhitespace(char c) {
+public boolean isWhitespace(char c) {
 
         return Character.isWhitespace(c);
     }

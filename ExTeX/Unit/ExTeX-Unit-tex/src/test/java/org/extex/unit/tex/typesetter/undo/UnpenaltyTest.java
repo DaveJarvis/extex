@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>&#x5c;unpenalty</tt>.
+ * This is a test suite for the primitive {@code &#x5c;unpenalty}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class UnpenaltyTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -49,8 +48,8 @@ public class UnpenaltyTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="&#x5c;unpenalty"> Test case checking that
-     * <tt>&#x5c;unpenalty</tt> need some node in the current list.
-     * </testcase>
+     * {@code &#x5c;unpenalty} need some node in the current list.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -66,8 +65,8 @@ public class UnpenaltyTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="&#x5c;unpenalty"> Test case checking that
-     * <tt>&#x5c;unpenalty</tt> need some node in the current list.
-     * </testcase>
+     * {@code &#x5c;unpenalty} need some node in the current list.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -83,8 +82,8 @@ public class UnpenaltyTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="&#x5c;unpenalty"> Test case checking that
-     * <tt>&#x5c;unpenalty</tt> does not touch a char node at the end of the
-     * current list. </testcase>
+     * {@code &#x5c;unpenalty} does not touch a char node at the end of the
+     * current list.
      * 
      * @throws Exception in case of an error
      */
@@ -103,8 +102,8 @@ public class UnpenaltyTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="&#x5c;unpenalty"> Test case checking that
-     * <tt>&#x5c;unpenalty</tt> takes the last penalty from the current list.
-     * </testcase>
+     * {@code &#x5c;unpenalty} takes the last penalty from the current list.
+     *
      * 
      * @throws Exception in case of an error
      */

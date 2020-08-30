@@ -40,41 +40,40 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>&#x5c;uppercase</code>.
+ * {@code &#x5c;uppercase}.
  * 
- * <doc name="uppercase">
- * <h3>The Primitive <tt>&#x5c;uppercase</tt></h3>
+ * <p>The Primitive {@code &#x5c;uppercase}</p>
  * <p>
- * The primitive <tt>&#x5c;uppercase</tt> takes as argument a token list in
+ * The primitive {@code &#x5c;uppercase} takes as argument a token list in
  * braces and translates all letters to their lowercase form. The translation
- * table is stored in <tt>&#x5c;uccode</tt>. Thus the translation can be
+ * table is stored in {@code &#x5c;uccode}. Thus the translation can be
  * modified freely.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;uppercase&rang;
- *        &rarr; <tt>&#x5c;uppercase</tt> {@linkplain
+ *        &rarr; {@code &#x5c;uppercase} {@linkplain
  *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *        &lang;tokens&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    &#x5c;uppercase {ABC}  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Uppercase extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -90,10 +89,7 @@ public class Uppercase extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

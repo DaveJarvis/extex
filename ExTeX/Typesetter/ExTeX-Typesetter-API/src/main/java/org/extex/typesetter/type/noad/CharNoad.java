@@ -44,19 +44,18 @@ import org.extex.typesetter.type.node.ImplicitKernNode;
  * This class provides a container for a mathematical character.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class CharNoad extends AbstractNoad {
 
     /**
-     * The field <tt>color</tt> contains the color.
+     * The field {@code color} contains the color.
      */
-    private Color color;
+    private final Color color;
 
     /**
-     * The field <tt>glyph</tt> contains the character representation.
+     * The field {@code glyph} contains the character representation.
      */
-    private MathGlyph glyph;
+    private final MathGlyph glyph;
 
     /**
      * Creates a new object.

@@ -25,11 +25,11 @@ import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\topmarks</code>.
+ * {@code \topmarks}.
  * 
- * <doc name="topmarks"> <h3>The Primitive <tt>\topmarks</tt></h3>
+ * <p>The Primitive {@code \topmarks}</p>
  * <p>
- * The primitive <tt>\topmarks</tt> provides access to the topmost mark of the
+ * The primitive {@code \topmarks} provides access to the topmost mark of the
  * given class encountered on the current page &ndash; when processing the page
  * in the output routine.
  * </p>
@@ -38,27 +38,27 @@ import org.extex.scanner.type.tokens.Tokens;
  * expected. The value is empty when no top mark of the class is available yet.
  * </p>
  * <p>
- * The primitive <tt>\topmark</tt> is an abbreviation for <tt>\topmarks0</tt>.
+ * The primitive {@code \topmark} is an abbreviation for {@code \topmarks0}.
  * </p>
  * <p>
- * The class of the top mark is determined when the <tt>\marks</tt> primitive is
+ * The class of the top mark is determined when the {@code \marks} primitive is
  * used to insert a mark into the current list. In TeX the class used to be a number in the range 0&ndash;255; the
- * limit has been raised in <logo>&epsilon;-T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> to 32767 and in ??TeX to allow any number or tokens value.
+ * limit has been raised in ε-TeX to 32767 and in εχTeX to allow any number or tokens value.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;topmarks&rang;
- *      &rarr; <tt>\topmarks</tt> {@linkplain
+ *      &rarr; {@code \topmarks} {@linkplain
  *        org.extex.unit.tex.typesetter.mark.AbstractMarksCode#getKey(
  *        org.extex.interpreter.context.Context,
  *        org.extex.interpreter.TokenSource,org.extex.typesetter.Typesetter)
  *        &lang;mark name&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \topmarks42  </pre>
@@ -72,15 +72,13 @@ import org.extex.scanner.type.tokens.Tokens;
  * <pre class="TeXSample">
  *    \toks0=\topmark3  </pre>
  * 
- * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Topmarks extends AbstractMarksCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 

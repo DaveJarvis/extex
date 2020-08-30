@@ -121,37 +121,33 @@ import org.extex.framework.configuration.ConfigurationFactory;
  * Partially evaluate a BST program to create an equivalent Groovy program.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
 
     /**
-     * The field <tt>comments</tt> contains the comments.
+     * The field {@code comments} contains the comments.
      */
     private StringBuilder comments = new StringBuilder();
 
     /**
-     * The field <tt>compilers</tt> contains the compilers for functions,
+     * The field {@code compilers} contains the compilers for functions,
      * fields, and variables.
      */
     private Map<String, Compiler> compilers = null;
 
     /**
-     * The field <tt>factory</tt> contains the factory for bst readers.
+     * The field {@code factory} contains the factory for bst readers.
      */
     private BstReaderFactory factory = null;
 
     /**
-     * The field <tt>evaluateTokenVisitor</tt> contains the token visitor for
+     * The field {@code evaluateTokenVisitor} contains the token visitor for
      * evaluation.
      */
     private TokenVisitor evaluateTokenVisitor = new TokenVisitor() {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitBlock(org.extex.exbib.core.bst.token.impl.TBlock,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitBlock(TBlock block, Object... args)
                 throws ExBibException {
@@ -164,10 +160,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitChar(org.extex.exbib.core.bst.token.impl.TChar,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitChar(TChar c, Object... args) {
 
@@ -175,10 +168,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitField(org.extex.exbib.core.bst.token.impl.TField,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitField(TField field, Object... args) {
 
@@ -186,10 +176,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitInteger(org.extex.exbib.core.bst.token.impl.TInteger,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitInteger(TInteger integer, Object... args) {
 
@@ -198,10 +185,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitIntegerOption(org.extex.exbib.core.bst.token.impl.TIntegerOption,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitIntegerOption(TIntegerOption option, Object... args) {
 
@@ -209,10 +193,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLiteral(org.extex.exbib.core.bst.token.impl.TLiteral,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitLiteral(TLiteral literal, Object... args)
                 throws ExBibException {
@@ -228,10 +209,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalInteger(org.extex.exbib.core.bst.token.impl.TLocalInteger,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitLocalInteger(TLocalInteger integer, Object... args) {
 
@@ -239,10 +217,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalLocator(org.extex.exbib.core.bst.token.impl.TLocalLocator,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitLocalLocator(TLocalLocator localLocator, Object[] args)
                 throws ExBibException {
@@ -251,10 +226,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalString(org.extex.exbib.core.bst.token.impl.TLocalString,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitLocalString(TLocalString string, Object... args) {
 
@@ -262,10 +234,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitQLiteral(org.extex.exbib.core.bst.token.impl.TQLiteral,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitQLiteral(TQLiteral qliteral, Object... args)
                 throws ExBibException {
@@ -281,10 +250,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitString(org.extex.exbib.core.bst.token.impl.TString,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitString(TString string, Object... args) {
 
@@ -293,10 +259,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitStringOption(org.extex.exbib.core.bst.token.impl.TStringOption,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitStringOption(TStringOption option, Object... args) {
 
@@ -304,10 +267,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitTokenList(org.extex.exbib.core.bst.token.impl.TokenList,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitTokenList(TokenList list, Object... args)
                 throws ExBibException {
@@ -321,17 +281,14 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     };
 
     /**
-     * The field <tt>evaluatePartiallyTokenVisitor</tt> contains the token
+     * The field {@code evaluatePartiallyTokenVisitor} contains the token
      * visitor for partial evaluation.
      */
     private final TokenVisitor evaluatePartiallyTokenVisitor =
             new TokenVisitor() {
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitBlock(org.extex.exbib.core.bst.token.impl.TBlock,
-                 *      java.lang.Object[])
+            *      java.lang.Object[])
                  */
                 public void visitBlock(TBlock block, Object... args) {
 
@@ -339,10 +296,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitChar(org.extex.exbib.core.bst.token.impl.TChar,
-                 *      java.lang.Object[])
+            *      java.lang.Object[])
                  */
                 public void visitChar(TChar c, Object... args) {
 
@@ -350,10 +304,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitField(org.extex.exbib.core.bst.token.impl.TField,
-                 *      java.lang.Object[])
+            *      java.lang.Object[])
                  */
                 public void visitField(TField field, Object... args) {
 
@@ -361,10 +312,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitInteger(org.extex.exbib.core.bst.token.impl.TInteger,
-                 *      java.lang.Object[])
+            *      java.lang.Object[])
                  */
                 public void visitInteger(TInteger integer, Object... args) {
 
@@ -373,10 +321,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitIntegerOption(org.extex.exbib.core.bst.token.impl.TIntegerOption,
-                 *      java.lang.Object[])
+            *      java.lang.Object[])
                  */
                 public void visitIntegerOption(TIntegerOption option,
                         Object... args) {
@@ -385,10 +330,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLiteral(org.extex.exbib.core.bst.token.impl.TLiteral,
-                 *      java.lang.Object[])
+            *      java.lang.Object[])
                  */
                 public void visitLiteral(TLiteral literal, Object... args)
                         throws ExBibException {
@@ -406,10 +348,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalInteger(org.extex.exbib.core.bst.token.impl.TLocalInteger,
-                 *      java.lang.Object[])
+            *      java.lang.Object[])
                  */
                 public void visitLocalInteger(TLocalInteger integer,
                         Object... args) {
@@ -418,10 +357,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalLocator(org.extex.exbib.core.bst.token.impl.TLocalLocator,
-                 *      java.lang.Object[])
+            *      java.lang.Object[])
                  */
                 public void visitLocalLocator(TLocalLocator localLocator,
                         Object[] args) throws ExBibException {
@@ -430,10 +366,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalString(org.extex.exbib.core.bst.token.impl.TLocalString,
-                 *      java.lang.Object[])
+            *      java.lang.Object[])
                  */
                 public void visitLocalString(TLocalString string,
                         Object... args) {
@@ -442,10 +375,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitQLiteral(org.extex.exbib.core.bst.token.impl.TQLiteral,
-                 *      java.lang.Object[])
+            *      java.lang.Object[])
                  */
                 public void visitQLiteral(TQLiteral qliteral, Object... args) {
 
@@ -453,10 +383,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitString(org.extex.exbib.core.bst.token.impl.TString,
-                 *      java.lang.Object[])
+            *      java.lang.Object[])
                  */
                 public void visitString(TString string, Object... args) {
 
@@ -465,10 +392,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitStringOption(org.extex.exbib.core.bst.token.impl.TStringOption,
-                 *      java.lang.Object[])
+            *      java.lang.Object[])
                  */
                 public void visitStringOption(TStringOption option,
                         Object... args) {
@@ -477,10 +401,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitTokenList(org.extex.exbib.core.bst.token.impl.TokenList,
-                 *      java.lang.Object[])
+            *      java.lang.Object[])
                  */
                 public void visitTokenList(TokenList list, Object... args)
                         throws ExBibException {
@@ -494,28 +415,28 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
             };
 
     /**
-     * The field <tt>functionList</tt> contains the list of functions.
+     * The field {@code functionList} contains the list of functions.
      */
     private List<GFunction> functionList = new ArrayList<GFunction>();
 
     /**
-     * The field <tt>linkData</tt> contains the data for linking.
+     * The field {@code linkData} contains the data for linking.
      */
     private LinkContainer linkData;
 
     /**
-     * The field <tt>types</tt> contains the supported types.
+     * The field {@code types} contains the supported types.
      */
     private Map<String, GFunction> types = new HashMap<String, GFunction>();
 
     /**
-     * The field <tt>parameters</tt> contains the parameters.
+     * The field {@code parameters} contains the parameters.
      */
     private Map<ParameterType, Parameter> parameters =
             new HashMap<ParameterType, Parameter>();
 
     /**
-     * The field <tt>varManager</tt> contains the variable manager.
+     * The field {@code varManager} contains the variable manager.
      */
     private VarManager varManager = new VarManager("v");
 
@@ -550,10 +471,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         compilers.put("quote$", new Compiler() {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryReference,
-             *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
+        *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
              *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
              *      org.extex.exbib.bst2groovy.linker.LinkContainer)
              */
@@ -600,10 +518,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.BstInterpreterCore#addFunction(java.lang.String,
-     *      org.extex.exbib.core.bst.code.Code, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.bst.code.Code, org.extex.exbib.core.io.Locator)
      */
     @Override
     public void addFunction(String name, Code code, Locator locator)
@@ -782,12 +697,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         reader.parse(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.processor.Evaluator#makeState(int)
-     */
-    public ProcessorState makeState(int size) {
+public ProcessorState makeState(int size) {
 
         return new ProcessorState(varManager, size);
     }
@@ -826,12 +736,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         parameters.put(type, value);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return "<" + getClass().getName().replaceAll(".*\\.", "") + ">";

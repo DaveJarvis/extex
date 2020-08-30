@@ -30,18 +30,14 @@ import org.extex.typesetter.type.OrientedNode;
 
 /**
  * This node represents an centered leaders node as used by the primitive
- * <tt>\cleaders</tt>.
+ * {@code \cleaders}.
  * 
- * @see "<logo>T<span style=
- *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *      >e</span>X</logo> &ndash; The Program [149]"
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class CenteredLeadersNode extends AbstractLeadersNode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -71,10 +67,7 @@ public class CenteredLeadersNode extends AbstractLeadersNode {
      * node to achieve the centering.
      * </p>
      * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillHorizontally(long,
-     *      org.extex.typesetter.type.Node, org.extex.core.dimen.FixedDimen,
+*      org.extex.typesetter.type.Node, org.extex.core.dimen.FixedDimen,
      *      org.extex.core.dimen.FixedDimen)
      */
     @Override
@@ -121,10 +114,7 @@ public class CenteredLeadersNode extends AbstractLeadersNode {
      * node to achieve the centering.
      * </p>
      * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillVertically(long,
-     *      org.extex.typesetter.type.Node, org.extex.core.dimen.FixedDimen,
+*      org.extex.typesetter.type.Node, org.extex.core.dimen.FixedDimen,
      *      org.extex.core.dimen.FixedDimen)
      */
     @Override
@@ -157,10 +147,7 @@ public class CenteredLeadersNode extends AbstractLeadersNode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
     public Object visit(NodeVisitor visitor, Object value)

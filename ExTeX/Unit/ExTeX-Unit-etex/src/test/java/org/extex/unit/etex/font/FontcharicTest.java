@@ -23,11 +23,10 @@ import org.extex.test.ExTeXLauncher;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\fontcharic</tt>.
+ * This is a test suite for the primitive {@code \fontcharic}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class FontcharicTest extends ExTeXLauncher {
 
 
@@ -38,7 +37,7 @@ public class FontcharicTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\fontcharic"> Test case checking that
-     * <tt>\fontcharic</tt> can not be used in vertical mode. </testcase>
+     * {@code \fontcharic} can not be used in vertical mode.
      * 
      * @throws Exception in case of an error
      */
@@ -53,7 +52,7 @@ public class FontcharicTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\fontcharic"> Test case checking that
-     * <tt>\fontcharic</tt> can not be used in vertical mode. </testcase>
+     * {@code \fontcharic} can not be used in vertical mode.
      * 
      * @throws Exception in case of an error
      */
@@ -68,7 +67,7 @@ public class FontcharicTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\fontcharic"> Test case checking that
-     * <tt>\fontcharic</tt> can not be used in vertical mode. </testcase>
+     * {@code \fontcharic} can not be used in vertical mode.
      * 
      * @throws Exception in case of an error
      */
@@ -83,7 +82,7 @@ public class FontcharicTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\fontcharic" checked="etex"> Test case checking that
-     * <tt>\fontcharic</tt> can not be used in vertical mode. </testcase>
+     * {@code \fontcharic} can not be used in vertical mode.
      * 
      * @throws Exception in case of an error
      */
@@ -98,7 +97,7 @@ public class FontcharicTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\fontcharic" checked="etex"> Test case checking that
-     * <tt>\fontcharic</tt> can not be used in vertical mode. </testcase>
+     * {@code \fontcharic} can not be used in vertical mode.
      * 
      * @throws Exception in case of an error
      */
@@ -113,7 +112,7 @@ public class FontcharicTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\fontcharic" checked="etex"> Test case checking that
-     * <tt>\fontcharic</tt> can not be used in vertical mode. </testcase>
+     * {@code \fontcharic} can not be used in vertical mode.
      * 
      * @throws Exception in case of an error
      */
@@ -128,7 +127,7 @@ public class FontcharicTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\fontcharic" checked="etex"> Test case checking that
-     * <tt>\fontcharic</tt> can not be used in vertical mode. </testcase>
+     * {@code \fontcharic} can not be used in vertical mode.
      * 
      * @throws Exception in case of an error
      */
@@ -144,7 +143,7 @@ public class FontcharicTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\fontcharic"> Test case checking that
-     * <tt>\fontcharic</tt> can not be used in vertical mode. </testcase>
+     * {@code \fontcharic} can not be used in vertical mode.
      * 
      * @throws Exception in case of an error
      */

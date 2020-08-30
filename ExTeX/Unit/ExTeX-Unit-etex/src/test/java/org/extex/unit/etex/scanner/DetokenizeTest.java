@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\detokenize</tt>.
+ * This is a test suite for the primitive {@code \detokenize}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class DetokenizeTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -50,7 +49,7 @@ public class DetokenizeTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\detokenize"> Test case checking that
-     * <tt>\detokenize</tt> needs an argument. </testcase>
+     * {@code \detokenize} needs an argument.
      * 
      * @throws Exception in case of an error
      */
@@ -65,7 +64,7 @@ public class DetokenizeTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\detokenize"> Test case checking that
-     * <tt>\detokenize</tt> consumes a letter. </testcase>
+     * {@code \detokenize} consumes a letter.
      * 
      * @throws Exception in case of an error
      */
@@ -80,7 +79,7 @@ public class DetokenizeTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\detokenize"> Test case checking that
-     * <tt>\detokenize</tt> consumes some letters. </testcase>
+     * {@code \detokenize} consumes some letters.
      * 
      * @throws Exception in case of an error
      */

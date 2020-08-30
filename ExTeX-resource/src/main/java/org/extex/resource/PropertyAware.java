@@ -26,8 +26,7 @@ import java.util.Properties;
  * configuration.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface PropertyAware {
 
     /**

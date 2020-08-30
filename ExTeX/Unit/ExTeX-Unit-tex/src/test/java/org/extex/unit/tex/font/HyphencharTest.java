@@ -22,11 +22,10 @@ package org.extex.unit.tex.font;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\hyphenchar</tt>.
+ * This is a test suite for the primitive {@code \hyphenchar}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class HyphencharTest extends FontcharTester {
 
     /**

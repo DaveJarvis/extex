@@ -34,12 +34,11 @@ import org.junit.Test;
  * Test case for {@link TInteger}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TIntegerTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -65,7 +64,7 @@ public class TIntegerTest {
     }
 
     /**
-     * <testcase> A positive number evaluates to itself. </testcase>
+     *  A positive number evaluates to itself.
      * 
      * @throws Exception in case of an error
      */
@@ -79,7 +78,7 @@ public class TIntegerTest {
     }
 
     /**
-     * <testcase> Zero evaluates to itself. </testcase>
+     *  Zero evaluates to itself.
      * 
      * @throws Exception in case of an error
      */
@@ -91,7 +90,7 @@ public class TIntegerTest {
     }
 
     /**
-     * <testcase> Zero evaluates to itself. </testcase>
+     *  Zero evaluates to itself.
      * 
      * @throws Exception in case of an error
      */
@@ -103,7 +102,7 @@ public class TIntegerTest {
     }
 
     /**
-     * <testcase> One evaluates to itself. </testcase>
+     *  One evaluates to itself.
      * 
      * @throws Exception in case of an error
      */
@@ -115,7 +114,7 @@ public class TIntegerTest {
     }
 
     /**
-     * <testcase> 123 evaluates to itself. </testcase>
+     *  123 evaluates to itself.
      * 
      * @throws Exception in case of an error
      */
@@ -127,7 +126,7 @@ public class TIntegerTest {
     }
 
     /**
-     * <testcase> 123 evaluates to itself. </testcase>
+     *  123 evaluates to itself.
      * 
      * @throws Exception in case of an error
      */
@@ -139,7 +138,7 @@ public class TIntegerTest {
     }
 
     /**
-     * <testcase> One evaluates to itself. </testcase>
+     *  One evaluates to itself.
      * 
      * @throws Exception in case of an error
      */
@@ -151,7 +150,7 @@ public class TIntegerTest {
     }
 
     /**
-     * <testcase> A negative number evaluates to itself. </testcase>
+     *  A negative number evaluates to itself.
      * 
      * @throws Exception in case of an error
      */
@@ -163,7 +162,7 @@ public class TIntegerTest {
     }
 
     /**
-     * <testcase> A negative number evaluates to itself. </testcase>
+     *  A negative number evaluates to itself.
      * 
      * @throws Exception in case of an error
      */
@@ -175,7 +174,7 @@ public class TIntegerTest {
     }
 
     /**
-     * <testcase> toString() works. </testcase>
+     *  toString() works.
      * 
      * @throws Exception in case of an error
      */
@@ -186,8 +185,8 @@ public class TIntegerTest {
     }
 
     /**
-     * <testcase> Visiting a negative number calls the correct method.
-     * </testcase>
+     *  Visiting a negative number calls the correct method.
+     *
      * 
      * @throws Exception in case of an error
      */

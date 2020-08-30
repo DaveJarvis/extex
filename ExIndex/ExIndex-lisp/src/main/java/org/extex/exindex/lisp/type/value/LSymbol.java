@@ -28,7 +28,7 @@ import java.util.WeakHashMap;
  * table and the contract guarantees that for any name only one symbol exists in
  * the system.
  * <p>
- * This means that symbols can be compared with <code>==</code>. The contract
+ * This means that symbols can be compared with {@code ==}. The contract
  * of the LSymbol ensures that two symbols which compare as the same are the
  * same and two symbols which fail to compare equal are different. This means
  * the comparison of the mere text is not necessary.
@@ -40,15 +40,14 @@ import java.util.WeakHashMap;
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class LSymbol implements LValue {
 
     /**
-     * The field <tt>symbolTable</tt> contains the symbol table.
+     * The field {@code symbolTable} contains the symbol table.
      */
-    private static final Map<String, LSymbol> symbolTable =
-            new WeakHashMap<String, LSymbol>();
+    private static final Map<String, LSymbol> SYMBOL_TABLE =
+        new WeakHashMap<>();
 
     /**
      * This is the factory method for symbols.
@@ -59,25 +58,25 @@ public final class LSymbol implements LValue {
      */
     public static synchronized LSymbol get(String value) {
 
-        LSymbol sym = symbolTable.get(value);
+        LSymbol sym = SYMBOL_TABLE.get( value);
         if (sym == null) {
             sym = new LSymbol(value);
             if (value != null && !"".equals(value) && value.charAt(0) == ':') {
                 sym.setMutable(false);
             }
-            symbolTable.put(value, sym);
+            SYMBOL_TABLE.put( value, sym);
         }
 
         return sym;
     }
 
     /**
-     * The field <tt>value</tt> contains the value.
+     * The field {@code value} contains the value.
      */
     private final String value;
 
     /**
-     * The field <tt>mutable</tt> contains the indicator for non-constants.
+     * The field {@code mutable} contains the indicator for non-constants.
      */
     private boolean mutable = true;
 
@@ -103,7 +102,7 @@ public final class LSymbol implements LValue {
     }
 
     /**
-     * Getter for the <code>mutable<code> property.
+     * Getter for the {@code mutable} property.
      * This is a boolean property indicating the modifiable symbols in an interpreter.
      * 
      * @return the mutable
@@ -113,11 +112,6 @@ public final class LSymbol implements LValue {
         return mutable;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
-     */
     public void print(PrintStream stream) {
 
         stream.print(value);
@@ -133,11 +127,6 @@ public final class LSymbol implements LValue {
         this.mutable = mutable;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString() {
 

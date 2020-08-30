@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains classes for parameter primitives.
+ * Contains classes for parameter primitives.
  */
 
 package org.extex.unit.tex.typesetter.parameter;

@@ -31,12 +31,11 @@ import org.extex.exindex.lisp.type.value.LValue;
  * This is the adapter for the L system to define rule set orientations and the
  * number of phases.
  * 
- * <doc type="exindex-command" command="define-sort-rule-orientations">
- * 
- * <h3>The Command <tt>define-sort-rule-orientations</tt></h3>
+*
+ * <p>The Command {@code define-sort-rule-orientations}</p>
  * 
  * <p>
- * The command <tt>define-sort-rule-orientations</tt> can be used to define the
+ * The command {@code define-sort-rule-orientations} can be used to define the
  * orientations and the number of passes for sorting.
  * </p>
  * 
@@ -70,16 +69,14 @@ import org.extex.exindex.lisp.type.value.LValue;
  * <pre>
  *  (define-sort-rule-orientations ("left-to-right" "right-to-left" "left-to-right")) </pre>
  * 
- * </doc>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LDefineSortRuleOrientations extends LFunction {
 
     /**
-     * The field <tt>container</tt> contains the container to store the
+     * The field {@code container} contains the container to store the
      * information in.
      */
     private final SortRuleContainer container;
@@ -108,7 +105,7 @@ public class LDefineSortRuleOrientations extends LFunction {
      * @param interpreter the interpreter
      * @param list the list of orientations
      * 
-     * @return <tt>nil</tt>
+     * @return {@code nil}
      * 
      * @throws LNonMatchingTypeException in case of an error
      */

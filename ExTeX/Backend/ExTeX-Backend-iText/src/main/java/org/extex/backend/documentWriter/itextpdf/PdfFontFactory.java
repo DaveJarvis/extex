@@ -38,8 +38,7 @@ import com.lowagie.text.pdf.BaseFont;
  * Factory for fonts to use it with iText.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class PdfFontFactory {
 
     /**
@@ -48,10 +47,10 @@ public class PdfFontFactory {
     private static WeakHashMap<String, BaseFont> fonts;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated with
+     * The field {@code localizer} contains the localizer. It is initiated with
      * a localizer for the name of this class.
      */
-    private static Localizer localizer = LocalizerFactory
+    private static final Localizer localizer = LocalizerFactory
         .getLocalizer(PdfFontFactory.class);
 
     /**
@@ -126,7 +125,7 @@ public class PdfFontFactory {
                     List<String[]> enclist = null;
                     // TODO gene: disabled to get it compile
                     // enclist = backendfont.getEncodingVectors();
-                    String enc[] = enclist.get(encpos);
+                    String[] enc = enclist.get( encpos);
                     if (enc != null) {
                         StringBuilder buf = new StringBuilder("# full");
                         GlyphName glyphName = GlyphName.getInstance();

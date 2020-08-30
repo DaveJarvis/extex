@@ -17,7 +17,7 @@
  */
 /**
  * 
- *   This package contains the data types for parsers of ExIndex.
+ *   Contains the data types for parsers of ExIndex.
  * 
  *
  */

@@ -28,8 +28,7 @@ import org.extex.exindex.lisp.builtin.Setq;
  * This class represents an LInterpreter with some predefined functions.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LEngine extends LInterpreter {
 
     /**

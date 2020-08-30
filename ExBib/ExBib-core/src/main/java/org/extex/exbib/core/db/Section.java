@@ -29,15 +29,12 @@ import org.extex.exbib.core.io.Writer;
 public enum Section {
 
     /**
-     * The field <tt>Preamble</tt> contains the preamble section.
+     * The field {@code Preamble} contains the preamble section.
      */
     Preamble {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.db.Section#visit(
-         *      org.extex.exbib.core.io.Writer,
+    *      org.extex.exbib.core.io.Writer,
          *      org.extex.exbib.core.db.SectionVisitor,
          *      org.extex.exbib.core.db.DB)
          */
@@ -49,15 +46,12 @@ public enum Section {
         }
     },
     /**
-     * The field <tt>Strings</tt> contains the strings section.
+     * The field {@code Strings} contains the strings section.
      */
     Strings {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.db.Section#visit(
-         *      org.extex.exbib.core.io.Writer,
+    *      org.extex.exbib.core.io.Writer,
          *      org.extex.exbib.core.db.SectionVisitor,
          *      org.extex.exbib.core.db.DB)
          */
@@ -69,15 +63,12 @@ public enum Section {
         }
     },
     /**
-     * The field <tt>Entries</tt> contains the entries section.
+     * The field {@code Entries} contains the entries section.
      */
     Entries {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.db.Section#visit(
-         *      org.extex.exbib.core.io.Writer,
+    *      org.extex.exbib.core.io.Writer,
          *      org.extex.exbib.core.db.SectionVisitor,
          *      org.extex.exbib.core.db.DB)
          */

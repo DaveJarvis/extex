@@ -28,18 +28,17 @@ import org.extex.typesetter.Typesetter;
  * code to be executing in the course of loading a unit.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class UnitInfo implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
     /**
-     * The field <tt>name</tt> contains the the name of the unit.
+     * The field {@code name} contains the the name of the unit.
      */
     private String name;
 

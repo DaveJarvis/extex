@@ -15,17 +15,16 @@ import org.extex.typesetter.tc.font.Font;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * 
- * @version $Revision:5555 $
- */
+*/
 public class MathFont implements Font {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the ...
+     * The field {@code serialVersionUID} contains the ...
      */
     private static final long serialVersionUID = 1L;
 
     /**
-     * The field <tt>font</tt> contains the encapsulated font.
+     * The field {@code font} contains the encapsulated font.
      */
     private Font font;
 
@@ -332,7 +331,7 @@ public class MathFont implements Font {
      * 
      * @param uc the character
      * 
-     * @return <code>true</code> iff the glyph is present
+     * @return {@code true} iff the glyph is present
      * 
      * @see org.extex.typesetter.tc.font.Font#hasGlyph(org.extex.core.UnicodeChar)
      */

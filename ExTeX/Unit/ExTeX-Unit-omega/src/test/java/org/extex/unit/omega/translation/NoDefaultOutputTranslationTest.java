@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\noDefaultOutputTranslation</tt>.
+ * This is a test suite for the primitive {@code \noDefaultOutputTranslation}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NoDefaultOutputTranslationTest
         extends
             NoFlagsButGlobalPrimitiveTester {
@@ -52,8 +51,8 @@ public class NoDefaultOutputTranslationTest
 
     /**
      * <testcase primitive="\noDefaultOutputTranslation"> Test case checking
-     * that <tt>\noDefaultOutputTranslation</tt> needs an argument.
-     * </testcase>
+     * that {@code \noDefaultOutputTranslation} needs an argument.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -68,8 +67,8 @@ public class NoDefaultOutputTranslationTest
 
     /**
      * <testcase primitive="\noDefaultOutputTranslation"> Test case checking
-     * that <tt>\noDefaultOutputTranslation</tt> needs a known input mode as
-     * argument. </testcase>
+     * that {@code \noDefaultOutputTranslation} needs a known input mode as
+     * argument. 
      * 
      * @throws Exception in case of an error
      */

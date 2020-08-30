@@ -24,12 +24,11 @@ import org.apache.maven.plugin.logging.Log;
  * This class is a test log which records the logging output in a buffer.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TLog implements Log {
 
     /**
-     * The field <tt>buffer</tt> contains the buffer.
+     * The field {@code buffer} contains the buffer.
      */
     private StringBuilder buffer;
 
@@ -43,22 +42,14 @@ public class TLog implements Log {
         this.buffer = buffer;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.apache.maven.plugin.logging.Log#debug(java.lang.CharSequence)
-     */
-    public void debug(CharSequence content) {
+public void debug(CharSequence content) {
 
         buffer.append("[debug] ");
         buffer.append(content);
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.apache.maven.plugin.logging.Log#debug(java.lang.CharSequence,
-     *      java.lang.Throwable)
+*      java.lang.Throwable)
      */
     public void debug(CharSequence content, Throwable error) {
 
@@ -69,24 +60,14 @@ public class TLog implements Log {
         buffer.append('\n');
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.apache.maven.plugin.logging.Log#debug(java.lang.Throwable)
-     */
-    public void debug(Throwable error) {
+public void debug(Throwable error) {
 
         buffer.append("[debug] ");
         buffer.append(error.toString());
         buffer.append('\n');
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.apache.maven.plugin.logging.Log#error(java.lang.CharSequence)
-     */
-    public void error(CharSequence content) {
+public void error(CharSequence content) {
 
         buffer.append("[error] ");
         buffer.append(content);
@@ -94,10 +75,7 @@ public class TLog implements Log {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.apache.maven.plugin.logging.Log#error(java.lang.CharSequence,
-     *      java.lang.Throwable)
+*      java.lang.Throwable)
      */
     public void error(CharSequence content, Throwable error) {
 
@@ -108,24 +86,14 @@ public class TLog implements Log {
         buffer.append('\n');
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.apache.maven.plugin.logging.Log#error(java.lang.Throwable)
-     */
-    public void error(Throwable error) {
+public void error(Throwable error) {
 
         buffer.append("[error] ");
         buffer.append(error.toString());
         buffer.append('\n');
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.apache.maven.plugin.logging.Log#info(java.lang.CharSequence)
-     */
-    public void info(CharSequence content) {
+public void info(CharSequence content) {
 
         buffer.append("[info] ");
         buffer.append(content);
@@ -133,10 +101,7 @@ public class TLog implements Log {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.apache.maven.plugin.logging.Log#info(java.lang.CharSequence,
-     *      java.lang.Throwable)
+*      java.lang.Throwable)
      */
     public void info(CharSequence content, Throwable error) {
 
@@ -147,64 +112,34 @@ public class TLog implements Log {
         buffer.append('\n');
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.apache.maven.plugin.logging.Log#info(java.lang.Throwable)
-     */
-    public void info(Throwable error) {
+public void info(Throwable error) {
 
         buffer.append("[info] ");
         buffer.append(error.toString());
         buffer.append('\n');
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.apache.maven.plugin.logging.Log#isDebugEnabled()
-     */
-    public boolean isDebugEnabled() {
+public boolean isDebugEnabled() {
 
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.apache.maven.plugin.logging.Log#isErrorEnabled()
-     */
-    public boolean isErrorEnabled() {
+public boolean isErrorEnabled() {
 
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.apache.maven.plugin.logging.Log#isInfoEnabled()
-     */
-    public boolean isInfoEnabled() {
+public boolean isInfoEnabled() {
 
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.apache.maven.plugin.logging.Log#isWarnEnabled()
-     */
-    public boolean isWarnEnabled() {
+public boolean isWarnEnabled() {
 
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.apache.maven.plugin.logging.Log#warn(java.lang.CharSequence)
-     */
-    public void warn(CharSequence content) {
+public void warn(CharSequence content) {
 
         buffer.append("[warning] ");
         buffer.append(content);
@@ -212,10 +147,7 @@ public class TLog implements Log {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.apache.maven.plugin.logging.Log#warn(java.lang.CharSequence,
-     *      java.lang.Throwable)
+*      java.lang.Throwable)
      */
     public void warn(CharSequence content, Throwable error) {
 
@@ -226,12 +158,7 @@ public class TLog implements Log {
         buffer.append('\n');
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.apache.maven.plugin.logging.Log#warn(java.lang.Throwable)
-     */
-    public void warn(Throwable error) {
+public void warn(Throwable error) {
 
         buffer.append("[warning] ");
         buffer.append(error.toString());

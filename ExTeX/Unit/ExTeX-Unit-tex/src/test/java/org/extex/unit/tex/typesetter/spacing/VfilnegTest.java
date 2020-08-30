@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\vfilneg</tt>.
+ * This is a test suite for the primitive {@code \vfilneg}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class VfilnegTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -48,8 +47,8 @@ public class VfilnegTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\vfilneg"> Test case checking that <tt>\vfilneg</tt>
-     * switches to vertical mode and inserts a glue node with 1fil. </testcase>
+     * <testcase primitive="\vfilneg"> Test case checking that {@code \vfilneg}
+     * switches to vertical mode and inserts a glue node with 1fil.
      * 
      * @throws Exception in case of an error
      */

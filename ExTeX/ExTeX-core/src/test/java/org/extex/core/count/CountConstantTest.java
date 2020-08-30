@@ -27,8 +27,7 @@ import org.junit.Test;
  * This is a test suite for the immutable count data type.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class CountConstantTest {
 
     /**

@@ -67,50 +67,34 @@ import org.extex.sitebuilder.core.SiteBuilder;
  *   &lt;/SiteBuilder&gt; </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SiteBuilderTask extends Task {
 
     /**
-     * The field <tt>builder</tt> contains the instance of the site builder.
+     * The field {@code builder} contains the instance of the site builder.
      * This is needed due to the limitation of Java not supporting multiple
      * inheritance.
      */
     private final SiteBuilder builder = new SiteBuilder();
 
     /**
-     * The field <tt>handler</tt> contains the log handler.
+     * The field {@code handler} contains the log handler.
      */
     private final Handler handler = new Handler() {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.util.logging.Handler#close()
-         */
-        @Override
+    @Override
         public void close() throws SecurityException {
 
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.util.logging.Handler#flush()
-         */
-        @Override
+    @Override
         public void flush() {
 
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.util.logging.Handler#publish(java.util.logging.LogRecord)
-         */
-        @Override
+    @Override
         public void publish(LogRecord record) {
 
             Level level = record.getLevel();
@@ -129,12 +113,12 @@ public class SiteBuilderTask extends Task {
     };
 
     /**
-     * The field <tt>omitList</tt> contains the omit container.
+     * The field {@code omitList} contains the omit container.
      */
     private List<OmitTag> omitList = new ArrayList<OmitTag>();
 
     /**
-     * The field <tt>libList</tt> contains the lib container.
+     * The field {@code libList} contains the lib container.
      */
     private List<LibTag> libList = new ArrayList<LibTag>();
 
@@ -192,12 +176,7 @@ public class SiteBuilderTask extends Task {
         return new TreeTag(builder.createTreeBuilder());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.apache.tools.ant.Task#execute()
-     */
-    @Override
+@Override
     public void execute() throws BuildException {
 
         Logger logger = builder.getLogger();

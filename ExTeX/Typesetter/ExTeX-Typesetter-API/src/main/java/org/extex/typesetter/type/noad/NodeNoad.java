@@ -34,17 +34,16 @@ import org.extex.typesetter.type.node.KernNode;
  * This noad contains a node which is passed through the math apparatus.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class NodeNoad implements Noad {
 
     /**
-     * The field <tt>node</tt> contains the encapsulated node.
+     * The field {@code node} contains the encapsulated node.
      */
-    private Node node;
+    private final Node node;
 
     /**
-     * The field <tt>spacingClass</tt> contains the spacing class.
+     * The field {@code spacingClass} contains the spacing class.
      */
     private MathSpacing spacingClass = MathSpacing.ORD; // gene: correct?
 
@@ -97,12 +96,7 @@ public class NodeNoad implements Noad {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.noad.Noad#setSpacingClass(org.extex.typesetter.type.noad.util.MathSpacing)
-     */
-    @Override
+@Override
     public void setSpacingClass(MathSpacing spacingClass) {
 
         this.spacingClass = spacingClass;

@@ -21,16 +21,15 @@ package org.extex.framework.configuration.exception;
 
 /**
  * This Exception is thrown when a configuration is requested with the path
- * <code>null</code>> or the empty string. Alternatively it can be used when
+ * {@code null} or the empty string. Alternatively it can be used when
  * some other kind of configuration information is missing.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ConfigurationIOException extends ConfigurationException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     private static final long serialVersionUID = 2010L;
 
@@ -46,8 +45,8 @@ public class ConfigurationIOException extends ConfigurationException {
 
     /**
      * Getter for the text prefix of this Exception. The text is taken from the
-     * resource bundle <tt>ConfigurationEception</tt> under the key
-     * <tt>ConfigurationIOException.Text</tt>.
+     * resource bundle {@code ConfigurationEception} under the key
+     * {@code ConfigurationIOException.Text}.
      * 
      * @return the text
      */

@@ -35,12 +35,11 @@ import org.extex.typesetter.tc.Direction.Dir;
  * This is the abstract base class for primitives acquiring a direction.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4411 $
- */
+*/
 public class AbstractDirCode extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 

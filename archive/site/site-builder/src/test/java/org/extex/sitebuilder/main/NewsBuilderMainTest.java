@@ -37,8 +37,7 @@ import org.junit.Test;
  * This is a test suite for the {@link NewsBuilderMain}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NewsBuilderMainTest {
 
     /**
@@ -69,7 +68,7 @@ public class NewsBuilderMainTest {
      * Run the news builder with a given command line.
      * 
      * @param args the command line arguments
-     * @param expected the output expected on stderr or <code>null</code> to
+     * @param expected the output expected on stderr or {@code null} to
      *        suppress the comparison
      * 
      * @return the exit code
@@ -91,9 +90,8 @@ public class NewsBuilderMainTest {
     }
 
     /**
-     * <testcase> A missing argument for the option <tt>-baseDirectory</tt> is
-     * recognized. </testcase>
-     * 
+     * A missing argument for the option {@code -baseDirectory} is recognized
+* 
      */
     @Test
     public void testBase01() {
@@ -103,9 +101,8 @@ public class NewsBuilderMainTest {
     }
 
     /**
-     * <testcase> A missing argument for the option <tt>-baseDirectory</tt> is
-     * recognized. </testcase>
-     * 
+     * A missing argument for the option {@code -baseDirectory} is recognized
+* 
      */
     @Test
     public void testBase02() {
@@ -115,7 +112,7 @@ public class NewsBuilderMainTest {
     }
 
     /**
-     * <testcase> An error is raised if base is not a file. </testcase>
+     *  An error is raised if base is not a file.
      * 
      */
     @Test
@@ -134,7 +131,7 @@ public class NewsBuilderMainTest {
     }
 
     /**
-     * <testcase> An error is raised if base is not a file. </testcase>
+     *  An error is raised if base is not a file.
      * 
      */
     @Test
@@ -153,7 +150,7 @@ public class NewsBuilderMainTest {
     }
 
     /**
-     * <testcase> An rss file is created if everything is all right. </testcase>
+     *  An rss file is created if everything is all right.
      * 
      * @throws IOException in case of an error
      * 
@@ -204,7 +201,7 @@ public class NewsBuilderMainTest {
     }
 
     /**
-     * <testcase> A unknown option leads to the help message. </testcase>
+     *  A unknown option leads to the help message.
      * 
      */
     @Test
@@ -215,8 +212,8 @@ public class NewsBuilderMainTest {
     }
 
     /**
-     * /** <testcase> A missing argument for the option <tt>-max</tt> is
-     * recognized. </testcase>
+     * /**  A missing argument for the option {@code -max} is
+     * recognized.
      * 
      */
     @Test
@@ -227,9 +224,8 @@ public class NewsBuilderMainTest {
     }
 
     /**
-     * <testcase> An invalid argument for the option <tt>-max</tt> is
-     * recognized. </testcase>
-     * 
+     * An invalid argument for the option {@code -max} is recognized
+* 
      */
     @Test
     public void testMax02() {
@@ -240,8 +236,8 @@ public class NewsBuilderMainTest {
     }
 
     /**
-     * <testcase> The max value determines the number of items in the RSS file.
-     * </testcase>
+     *  The max value determines the number of items in the RSS file.
+     *
      * 
      * @throws IOException in case of an error
      */
@@ -276,9 +272,8 @@ public class NewsBuilderMainTest {
     }
 
     /**
-     * <testcase> A missing argument for the option <tt>-output</tt> is
-     * recognized. </testcase>
-     * 
+     * A missing argument for the option {@code -output} is recognized
+* 
      */
     @Test
     public void testOutput01() {
@@ -288,7 +283,7 @@ public class NewsBuilderMainTest {
     }
 
     /**
-     * <testcase> The output can be redirected to another file. </testcase>
+     *  The output can be redirected to another file.
      * 
      * @throws IOException in case of an error
      */
@@ -309,9 +304,8 @@ public class NewsBuilderMainTest {
     }
 
     /**
-     * <testcase> A missing argument for the option <tt>-template</tt> is
-     * recognized. </testcase>
-     * 
+     * A missing argument for the option {@code -template} is recognized
+* 
      */
     @Test
     public void testTemplate01() {
@@ -323,9 +317,8 @@ public class NewsBuilderMainTest {
     }
 
     /**
-     * <testcase> A non-existent file for the option <tt>-template</tt> leads to
-     * an error. </testcase>
-     * 
+     * A non-existent file for the option {@code -template} leads to an error
+* 
      */
     @Test
     public void testTemplate02() {
@@ -334,7 +327,7 @@ public class NewsBuilderMainTest {
     }
 
     /**
-     * <testcase> A unknown option leads to the help message. </testcase>
+     *  A unknown option leads to the help message.
      * 
      */
     @Test

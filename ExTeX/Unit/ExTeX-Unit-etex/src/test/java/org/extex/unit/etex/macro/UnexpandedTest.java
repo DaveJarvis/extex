@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>&#005c;unexpanded</tt>.
+ * This is a test suite for the primitive {@code &#005c;unexpanded}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class UnexpandedTest extends ExTeXLauncher {
 
     /**
@@ -49,7 +48,7 @@ public class UnexpandedTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="&#005c;unexpanded"> Test case checking that
-     * <tt>&#005c;unexpanded</tt> needs an argument. </testcase>
+     * {@code &#005c;unexpanded} needs an argument.
      * 
      * @throws Exception in case of an error
      */
@@ -65,7 +64,7 @@ public class UnexpandedTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="&#005c;unexpanded"> Test case checking that
-     * <tt>&#005c;unexpanded</tt> needs a group argument. </testcase>
+     * {@code &#005c;unexpanded} needs a group argument.
      * 
      * @throws Exception in case of an error
      */
@@ -81,7 +80,7 @@ public class UnexpandedTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="&#005c;unexpanded"> Test case checking that
-     * <tt>&#005c;unexpanded</tt> sets the flag. </testcase>
+     * {@code &#005c;unexpanded} sets the flag.
      * 
      * @throws Exception in case of an error
      */

@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitives defined with <tt>\ocp</tt>.
+ * This is a test suite for the primitives defined with {@code \ocp}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class OcpTest extends ExTeXLauncher {
 
     /**
@@ -48,7 +47,7 @@ public class OcpTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that an OCP needs ... </testcase>
+     *  Test case checking that an OCP needs ...
      * 
      * @throws Exception in case of an error
      */
@@ -62,7 +61,7 @@ public class OcpTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that an OCP is showable. </testcase>
+     *  Test case checking that an OCP is showable.
      * 
      * @throws Exception in case of an error
      */

@@ -40,28 +40,27 @@ import org.extex.resource.ResourceFinder;
  * This parser factory arranges to use a filter if one is given.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class FilteringParserFactory extends XindyParserFactory {
 
     /**
-     * The field <tt>LOCALIZER</tt> contains the the localizer.
+     * The field {@code LOCALIZER} contains the the localizer.
      */
     private static final Localizer LOCALIZER =
             LocalizerFactory.getLocalizer(ExIndex.class);
 
     /**
-     * The field <tt>finder</tt> contains the resource finder.
+     * The field {@code finder} contains the resource finder.
      */
     private ResourceFinder finder;
 
     /**
-     * The field <tt>filter</tt> contains the name of the filter.
+     * The field {@code filter} contains the name of the filter.
      */
     private String filter = null;
 
     /**
-     * The field <tt>parser</tt> contains the name of the parser.
+     * The field {@code parser} contains the name of the parser.
      */
     private String parser = "xindy";
 
@@ -71,10 +70,7 @@ public class FilteringParserFactory extends XindyParserFactory {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.parser.RawIndexParserFactory#create(java.lang.String,
-     *      java.lang.String, Indexer)
+*      java.lang.String, Indexer)
      */
     @Override
     public RawIndexParser create(String resource, String charset,
@@ -215,12 +211,7 @@ public class FilteringParserFactory extends XindyParserFactory {
         this.parser = parser;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.parser.RawIndexParserFactory#setResourceFinder(org.extex.resource.ResourceFinder)
-     */
-    @Override
+@Override
     public void setResourceFinder(ResourceFinder finder) {
 
         this.finder = finder;

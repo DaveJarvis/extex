@@ -30,14 +30,13 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.HorizontalListNode;
 
 /**
- * This class provides an implementation for the primitive <code>\indent</code>.
+ * This class provides an implementation for the primitive {@code \indent}.
  * 
- * <doc name="indent">
- * <h3>The Primitive <tt>\indent</tt></h3>
+ * <p>The Primitive {@code \indent}</p>
  * <p>
- * The primitive <tt>\indent</tt> ensures that the further processing appears
+ * The primitive {@code \indent} ensures that the further processing appears
  * in horizontal mode and inserts horizontal spacing in the width of the dimen
- * register <tt>\parindent</tt>.
+ * register {@code \parindent}.
  * </p>
  * <p>
  * Note that the spacing is inserted in any case. Thus several successive
@@ -45,27 +44,27 @@ import org.extex.typesetter.type.node.HorizontalListNode;
  * paragraph.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;indent&rang;
- *       &rarr; <tt>\indent</tt>  </pre>
+ *       &rarr; {@code \indent}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \indent  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Indent extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -81,10 +80,7 @@ public class Indent extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

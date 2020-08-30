@@ -17,7 +17,7 @@
  */
 /**
  * 
- *   This package contains the definition and implementations for parsers of
+ *   Contains the definition and implementations for parsers of
  *   ExIndex.
  */
 

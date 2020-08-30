@@ -35,24 +35,22 @@ import org.extex.unit.base.conditional.AbstractIf;
 import org.extex.unit.tex.conditional.Ifcase;
 
 /**
- * This class provides an implementation for the primitive <code>\if</code>.
+ * This class provides an implementation for the primitive {@code \if}.
  * 
- * <doc name="unless"> <h3>The Primitive <tt>&#x005c;unless</tt></h3>
+ * <p>The Primitive {@code &#x005c;unless}</p>
  * <p>
- * <strong>Copied of the <logo>&epsilon;-T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> reference</strong>.
+ * <strong>Copied of the ε-TeX reference</strong>.
  * </p>
  * <p>
  * TeX has, by design, a rather sparse set of conditional
- * primitives: <tt>\ifeof</tt>, <tt>\ifodd</tt>, <tt>\ifvoid</tt>, etc., have no
+ * primitives: {@code \ifeof}, {@code \ifodd}, {@code \ifvoid}, etc., have no
  * complementary counterparts. Whilst this normally poses no problems since each
- * accepts both a <tt>\then</tt> (implicit) and an <tt>\else</tt> (explicit)
- * part, they fall down when used as the final <tt>\if</tt>... of a
- * <tt>\loop</tt> ... <tt>\if</tt> ... <tt>\repeat</tt> construct, since no
- * <tt>\else</tt> is allowed after the final <tt>\if</tt>....
- * <tt>&#x005c;unless</tt> allows the sense of all Boolean conditionals to be
- * inverted, and thus (for example) <tt>&#x005c;unless</tt> <tt>\ifeof</tt>
+ * accepts both a {@code \then} (implicit) and an {@code \else} (explicit)
+ * part, they fall down when used as the final {@code \if}... of a
+ * {@code \loop} ... {@code \if} ... {@code \repeat} construct, since no
+ * {@code \else} is allowed after the final {@code \if}....
+ * {@code &#x005c;unless} allows the sense of all Boolean conditionals to be
+ * inverted, and thus (for example) {@code &#x005c;unless} {@code \ifeof}
  * yields true iff end-of-file has not yet been reached.
  * </p>
  * <p>
@@ -63,21 +61,18 @@ import org.extex.unit.tex.conditional.Ifcase;
  * </p>
  * <p>
  * Examples:
- * 
+ * </p>
+ *
  * <pre class="TeXSample">
  *    &#x005c;unless\if\x\y not ok \fi  </pre>
- * 
- * </p>
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Unless extends AbstractCode implements ExpandableCode, PrefixCode {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for the
+     * The field {@code serialVersionUID} contains the version number for the
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -93,10 +88,7 @@ public class Unless extends AbstractCode implements ExpandableCode, PrefixCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -119,10 +111,7 @@ public class Unless extends AbstractCode implements ExpandableCode, PrefixCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,

@@ -32,8 +32,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * gathered from the input stream and build by the typesetter.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4399 $
- */
+*/
 public interface Boxable extends BoxOrRule {
 
     /**
@@ -43,7 +42,7 @@ public interface Boxable extends BoxOrRule {
      * @param source the source for new tokens
      * @param typesetter the typesetter to use
      * @param insert the token to insert either at the beginning of the box or
-     *        after the box has been gathered. If it is <code>null</code> then
+     *        after the box has been gathered. If it is {@code null} then
      *        nothing is inserted
      * 
      * @return an appropriate Box

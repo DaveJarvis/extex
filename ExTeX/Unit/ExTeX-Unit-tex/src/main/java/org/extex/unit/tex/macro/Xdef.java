@@ -28,45 +28,44 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\xdef</code>.
+ * This class provides an implementation for the primitive {@code \xdef}.
  * 
- * <doc name="xdef">
- * <h3>The Primitive <tt>\xdef</tt></h3>
+ * <p>The Primitive {@code \xdef}</p>
  * <p>
- * This primitive is an abbreviation for <tt>\global</tt><tt>\edef</tt>.
- * Thus the description of <tt>\edef</tt> can be consulted for details. TODO
+ * This primitive is an abbreviation for {@code \global}{@code \edef}.
+ * Thus the description of {@code \edef} can be consulted for details. TODO
  * missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;xdef&rang;
- *       &rarr; &lang;prefix&rang; <tt>\xdef</tt> {@linkplain
+ *       &rarr; &lang;prefix&rang; {@code \xdef} {@linkplain
  *         org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
- *         &lang;control sequence&rang;} &lang;parameter text&rang; <tt>{</tt> &lang;replacement text&rang; <tt>}</tt>
+ *         &lang;control sequence&rang;} &lang;parameter text&rang; {@code {} &lang;replacement text&rang; {@code }}
  *
  *    &lang;prefix&rang;
  *      &rarr;
- *       | <tt>\global</tt> &lang;prefix&rang;
- *       | <tt>\long</tt> &lang;prefix&rang;
- *       | <tt>\outer</tt> &lang;prefix&rang;</pre>
+ *       | {@code \global} &lang;prefix&rang;
+ *       | {@code \long} &lang;prefix&rang;
+ *       | {@code \outer} &lang;prefix&rang;</pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \xdef#1{--#1--}  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Xdef extends Edef {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -82,10 +81,7 @@ public class Xdef extends Edef {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.macro.Def#assign( org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

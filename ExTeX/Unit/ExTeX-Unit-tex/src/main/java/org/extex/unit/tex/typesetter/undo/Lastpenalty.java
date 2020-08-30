@@ -36,26 +36,21 @@ import org.extex.typesetter.type.node.PenaltyNode;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\lastpenalty</code>.
+ * {@code \lastpenalty}.
  * 
- * <doc name="lastpenalty">
- * <h3>The Primitive <tt>\lastpenalty</tt></h3>
+ * <p>The Primitive {@code \lastpenalty}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * <p>
  * Examples:
- * 
+ * </p>
+ *
  * <pre class="TeXSample">
  *    \count1=\lastpenalty  </pre>
  * 
- * </p>
- * </doc>
- * 
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Lastpenalty extends AbstractCode
         implements
             CountConvertible,
@@ -63,7 +58,7 @@ public class Lastpenalty extends AbstractCode
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -79,10 +74,7 @@ public class Lastpenalty extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -95,10 +87,7 @@ public class Lastpenalty extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertDimen(Context context, TokenSource source,
@@ -111,10 +100,7 @@ public class Lastpenalty extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

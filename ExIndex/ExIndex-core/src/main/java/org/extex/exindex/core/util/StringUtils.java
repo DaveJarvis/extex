@@ -26,8 +26,7 @@ import java.util.List;
  * This class provides some utilities for Strings and such.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class StringUtils {
 
     /**

@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the base hyphenation table implementation.
+ *Contains base hyphenation table implementation.
  */
 
 package org.extex.language.hyphenation.base;

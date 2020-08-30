@@ -35,34 +35,34 @@ import org.extex.unit.base.file.AbstractFileCode;
 import org.extex.unit.tex.file.nodes.WhatsItOpenNode;
 
 /**
- * This class provides an implementation for the primitive <code>\openout</code>.
+ * This class provides an implementation for the primitive {@code \openout}.
  * 
- * <doc name="openout">
- * <h3>The Primitive <tt>\openout</tt></h3>
+ * <p>The Primitive {@code \openout}</p>
  * <p>
- * The primitive <tt>\openout</tt> tries to open a file or other named
+ * The primitive {@code \openout} tries to open a file or other named
  * resource for writing. The reference is stored in a write register to be used
- * with {@link org.extex.unit.tex.file.Write <tt>\write</tt>}. If the opening
+ * with {@link org.extex.unit.tex.file.Write {@code \write}}. If the opening
  * fails then the write register is void.
  * </p>
  * <p>
  * The opening of a write register is delayed until the nodes are shipped out.
  * If the invocation is prefixed with
- * {@link org.extex.unit.tex.prefix.Immediate <tt>\immediate</tt>} then the
+ * {@link org.extex.unit.tex.prefix.Immediate {@code \immediate}} then the
  * resource is opened immediately.
  * </p>
  * <p>
- * The primitive <tt>\openout</tt> is not considered as assignment. Nor can it
- * be prefixed with <tt>\global</tt>. The definition of an output stream is
+ * The primitive {@code \openout} is not considered as assignment. Nor can it
+ * be prefixed with {@code \global}. The definition of an output stream is
  * always global.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;openout&rang;
- *      &rarr; &lang;optional prefix&rang; <tt>\openout</tt> {@linkplain
+ *      &rarr; &lang;optional prefix&rang; {@code \openout} {@linkplain
  *        org.extex.unit.base.file.AbstractFileCode#scanOutFileKey(Context,TokenSource,Typesetter)
  *        &lang;outfile&nbsp;name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
@@ -72,25 +72,24 @@ import org.extex.unit.tex.file.nodes.WhatsItOpenNode;
  *
  *    &lang;optional prefix&rang;
  *      &rarr;
- *       |  <tt>\immediate</tt> &lang;optional prefix&rang;  </pre>
+ *       |  {@code \immediate} &lang;optional prefix&rang;  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *  \immediate\openout3= abc.def
  *  \write3{Hi there!}
  *  \closeout3 </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4441 $
- */
+*/
 public class Openout extends AbstractFileCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -106,10 +105,7 @@ public class Openout extends AbstractFileCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

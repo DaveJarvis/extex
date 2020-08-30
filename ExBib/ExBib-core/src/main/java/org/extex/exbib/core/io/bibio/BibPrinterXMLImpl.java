@@ -38,8 +38,7 @@ import org.extex.exbib.core.io.Writer;
  * This class implements a writer for databases in XML format.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BibPrinterXMLImpl implements BibPrinter, ValueVisitor {
 
     /**
@@ -129,7 +128,7 @@ public class BibPrinterXMLImpl implements BibPrinter, ValueVisitor {
     }
 
     /**
-     * The field <tt>writer</tt> contains the output writer.
+     * The field {@code writer} contains the output writer.
      */
     private Writer writer = null;
 
@@ -188,10 +187,7 @@ public class BibPrinterXMLImpl implements BibPrinter, ValueVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.ValueVisitor#visitBlock(org.extex.exbib.core.db.VBlock,
-     *      org.extex.exbib.core.db.DB)
+*      org.extex.exbib.core.db.DB)
      */
     public void visitBlock(VBlock value, DB db) throws IOException {
 
@@ -199,10 +195,7 @@ public class BibPrinterXMLImpl implements BibPrinter, ValueVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.ValueVisitor#visitMacro(org.extex.exbib.core.db.VMacro,
-     *      org.extex.exbib.core.db.DB)
+*      org.extex.exbib.core.db.DB)
      */
     public void visitMacro(VMacro value, DB db) throws IOException {
 
@@ -211,10 +204,7 @@ public class BibPrinterXMLImpl implements BibPrinter, ValueVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.ValueVisitor#visitNumber(org.extex.exbib.core.db.VNumber,
-     *      org.extex.exbib.core.db.DB)
+*      org.extex.exbib.core.db.DB)
      */
     public void visitNumber(VNumber value, DB db) throws IOException {
 
@@ -222,10 +212,7 @@ public class BibPrinterXMLImpl implements BibPrinter, ValueVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.ValueVisitor#visitString(org.extex.exbib.core.db.VString,
-     *      org.extex.exbib.core.db.DB)
+*      org.extex.exbib.core.db.DB)
      */
     public void visitString(VString value, DB db) throws IOException {
 
@@ -233,10 +220,7 @@ public class BibPrinterXMLImpl implements BibPrinter, ValueVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.ValueVisitor#visitValue(org.extex.exbib.core.db.Value,
-     *      org.extex.exbib.core.db.DB)
+*      org.extex.exbib.core.db.DB)
      */
     public void visitValue(Value value, DB db) throws IOException {
 

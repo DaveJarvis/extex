@@ -32,8 +32,7 @@ import org.extex.ocpware.type.OcpCode;
  * This class represents a range of characters as left item.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public class DoubleLeft implements Left {
 
     /**
@@ -56,12 +55,12 @@ public class DoubleLeft implements Left {
     }
 
     /**
-     * The field <tt>from</tt> contains the lower bound.
+     * The field {@code from} contains the lower bound.
      */
     private int from;
 
     /**
-     * The field <tt>to</tt> contains the upper bound.
+     * The field {@code to} contains the upper bound.
      */
     private int to;
 
@@ -78,10 +77,7 @@ public class DoubleLeft implements Left {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.compiler.left.Left#genLeft(
-     *      org.extex.ocpware.compiler.parser.State, CompilerState)
+*      org.extex.ocpware.compiler.parser.State, CompilerState)
      */
     public List<Integer> genLeft(State state, CompilerState cs)
             throws IOException,
@@ -95,12 +91,7 @@ public class DoubleLeft implements Left {
         return holes;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();

@@ -23,12 +23,11 @@ package org.extex.exbib.editor.bst.model;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class Function extends Command {
 
     /**
-     * The field <tt>fct</tt> contains the ...
+     * The field {@code fct} contains the ...
      */
     private final FunctionCall fct;
 

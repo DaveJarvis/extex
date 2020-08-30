@@ -31,10 +31,9 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\ </code>.
+ * This class provides an implementation for the primitive {@code \ }.
  * 
- * <doc name=" ">
- * <h3>The Primitive <tt>\ </tt></h3>
+ * <p>The Primitive {@code \ }</p>
  * <p>
  * This primitive inserts an explicit space into the current list. This has an
  * effect in horizontal or restricted horizontal modes only. In other modes it
@@ -43,39 +42,39 @@ import org.extex.typesetter.exception.TypesetterException;
  * <p>
  * In contrast to a normal space it is not collapsed with adjacent spaces of
  * any kind. This means that several invocation in row add up extra space. 
- * This is not recommended. See the macro <tt>\hskip</tt> instead.
+ * This is not recommended. See the macro {@code \hskip} instead.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;space primitive&rang;
- *        &rarr; <tt>\ </tt>  </pre>
+ *        &rarr; {@code \ }  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    123\ 456  </pre>
  *  <pre class="TeXSample">
  *    123\ \  456  </pre>
  * 
- * </doc>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Space extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The constant <tt>SPACEFACTOR</tt> contains the spacefactor for the
+     * The constant {@code SPACEFACTOR} contains the spacefactor for the
      * space to add.
      */
     private static final FixedCount SPACEFACTOR = new CountConstant(1000);
@@ -91,10 +90,7 @@ public class Space extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

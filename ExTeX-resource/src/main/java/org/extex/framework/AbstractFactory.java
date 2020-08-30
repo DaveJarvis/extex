@@ -40,6 +40,7 @@ import org.extex.resource.ResourceFinder;
  * methods which should make it easy to create a custom factory.
  * <p>
  * The abstract factory supports utility events:
+ *
  * <ul>
  * <li>If the instantiated class implements the interface
  * {@link org.extex.framework.configuration.Configurable Configurable} then the
@@ -48,45 +49,40 @@ import org.extex.resource.ResourceFinder;
  * {@link org.extex.framework.logger.LogEnabled LogEnabled} then the associated
  * method is used to pass on the logger to the new instance.</li>
  * </ul>
- * </p>
- * 
- * <h2>Usage</h2>
+ *
+ * Usage
  * <p>
  * To make use of this base class create a derived class and provide a method
  * which creates a new instance. This method should make use of one of the
  * utility methods defined in this class. This is illustrated in the following
  * example:
  * </p>
- * 
- * <pre class="JavaSample">
- *  <b>class</b> MyFactory <b>extends</b> AbstractFactory<MyType> {
- *  
- *      <b>public</b> MyType newInstance() {
- *      
- *          <b>return</b> createInstance(MyType.class);
+ *
+ * <pre>{@code
+ *    public class MyFactory extends AbstractFactory<MyType> {
+ *      public MyType newInstance() {
+ *        return createInstance(MyType.class);
  *      }
- *  }
- * </pre>
- * <p>
+ *    }
+ * }</pre>
+ *
  * The class defined in this way is automatically {@link Configurable},
  * {@link LogEnabled}, and {@link ResourceAware}. Thus appropriate objects
  * should be passed in before a new instance is requested:
- * </p>
- * 
- * <pre class="JavaSample">
+ *
+ * <pre>{@code
  *     ...
- *     MyFactory factory = <b>new</b> MyFactory();
+ *     MyFactory factory = new MyFactory();
  *     factory.configure(theConfiguration);
  *     factory.enableLogging(theLogger);
  *     ...
  *     MyType t1 = factory.newInstance();
- * </pre>
+ * }</pre>
  * 
- * @param <TYPE> the type of the object delived by the factory
+ * @param <TYPE> the type of the object delivered by the factory
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractFactory<TYPE> extends AbstractConfigurable
         implements
             LogEnabled,
@@ -94,24 +90,24 @@ public abstract class AbstractFactory<TYPE> extends AbstractConfigurable
             RegistrarObserver {
 
     /**
-     * The constant <tt>CLASS_ATTRIBUTE</tt> contains the name of the attribute
+     * The constant {@code CLASS_ATTRIBUTE} contains the name of the attribute
      * used to get the class name.
      */
     protected static final String CLASS_ATTRIBUTE = "class";
 
     /**
-     * The constant <tt>SELECT_ATTRIBUTE</tt> contains the name of the attribute
+     * The constant {@code SELECT_ATTRIBUTE} contains the name of the attribute
      * used to get the default configuration.
      */
     protected static final String SELECT_ATTRIBUTE = "select";
 
     /**
      * Utility method to pass a logger to an object if it has a method to take
-     * it. If the logger is <code>null</code> then this method simply does
+     * it. If the logger is {@code null} then this method simply does
      * nothing.
      * 
      * @param instance the instance to pass the logger to
-     * @param logger the logger to pass. If the logger is <code>null</code> then
+     * @param logger the logger to pass. If the logger is {@code null} then
      *        nothing is done.
      */
     public static void enableLogging(Object instance, Logger logger) {
@@ -122,13 +118,13 @@ public abstract class AbstractFactory<TYPE> extends AbstractConfigurable
     }
 
     /**
-     * The field <tt>logger</tt> contains the logger to pass to the new
+     * The field {@code logger} contains the logger to pass to the new
      * instances created.
      */
     private Logger logger = null;
 
     /**
-     * The field <tt>resourceFinder</tt> contains the resource finder.
+     * The field {@code resourceFinder} contains the resource finder.
      */
     private ResourceFinder resourceFinder = null;
 
@@ -197,7 +193,7 @@ public abstract class AbstractFactory<TYPE> extends AbstractConfigurable
     /**
      * Get a new instance. This method selects one of the entries in the
      * configuration. The selection is done with the help of a type String. If
-     * the type is <code>null</code> or the empty string then the default from
+     * the type is {@code null} or the empty string then the default from
      * the configuration is used.
      * <p>
      * For the class given an appropriate constructor is sought. The following
@@ -343,7 +339,7 @@ public abstract class AbstractFactory<TYPE> extends AbstractConfigurable
 
     /**
      * Create a new instance for a given configuration. The name of the class to
-     * be instantiated is taken from the attribute <tt>class</tt> of the
+     * be instantiated is taken from the attribute {@code class} of the
      * configuration.
      * <p>
      * For the class given an appropriate constructor is sought. The following
@@ -448,7 +444,7 @@ public abstract class AbstractFactory<TYPE> extends AbstractConfigurable
     /**
      * Create a new instance for a given configuration with an additional
      * argument for the constructor. By specifying the class of the argument
-     * explicitly it is possible for the argument to be <code>null</code>.
+     * explicitly it is possible for the argument to be {@code null}.
      * <p>
      * For the class given an appropriate constructor is sought. The following
      * constellations are considered:
@@ -482,7 +478,7 @@ public abstract class AbstractFactory<TYPE> extends AbstractConfigurable
      * @param config the configuration to use
      * @param target the expected class or interface
      * @param argClass the class of the argument
-     * @param arg the argument or <code>null</code>
+     * @param arg the argument or {@code null}
      * 
      * @return a new instance
      * 
@@ -601,7 +597,7 @@ public abstract class AbstractFactory<TYPE> extends AbstractConfigurable
      * 
      * @param config the configuration to use
      * @param target the expected class or interface
-     * @param arg the constructor argument. It can not be <code>null</code>
+     * @param arg the constructor argument. It can not be {@code null}
      * 
      * @return a new instance
      * 
@@ -653,7 +649,7 @@ public abstract class AbstractFactory<TYPE> extends AbstractConfigurable
      * @param constructor the constructor to use
      * @param arg the only argument for the constructor
      * 
-     * @return a new instance or <code>null</code> if the constructor is not of
+     * @return a new instance or {@code null} if the constructor is not of
      *         a supported type
      * 
      * @throws InstantiationException in case of an instantiation error
@@ -692,7 +688,7 @@ public abstract class AbstractFactory<TYPE> extends AbstractConfigurable
      * @param arg1 the first argument for the constructor
      * @param arg2 the second argument for the constructor
      * 
-     * @return a new instance or <code>null</code> if the constructor is not of
+     * @return a new instance or {@code null} if the constructor is not of
      *         a supported type
      * 
      * @throws InstantiationException in case of an instantiation error
@@ -720,12 +716,7 @@ public abstract class AbstractFactory<TYPE> extends AbstractConfigurable
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
-     */
-    @Override
+@Override
     public void enableLogging(Logger theLogger) {
 
         this.logger = theLogger;
@@ -751,12 +742,7 @@ public abstract class AbstractFactory<TYPE> extends AbstractConfigurable
         return resourceFinder;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.RegistrarObserver#reconnect(java.lang.Object)
-     */
-    @Override
+@Override
     public Object reconnect(Object instance) throws RegistrarException {
 
         try {
@@ -773,12 +759,7 @@ public abstract class AbstractFactory<TYPE> extends AbstractConfigurable
         return instance;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
-     */
-    @Override
+@Override
     public void setResourceFinder(ResourceFinder finder) {
 
         this.resourceFinder = finder;

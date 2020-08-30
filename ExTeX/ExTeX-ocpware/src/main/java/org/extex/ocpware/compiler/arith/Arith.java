@@ -31,12 +31,11 @@ import org.extex.ocpware.type.OcpCode;
  * This class represents an arithmetic expression as a whole.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public class Arith implements Expr {
 
     /**
-     * The field <tt>expr</tt> contains the arithmetic expression.
+     * The field {@code expr} contains the arithmetic expression.
      */
     private ArithExpr expr;
 
@@ -51,10 +50,7 @@ public class Arith implements Expr {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.compiler.sexpression.Expr#outRight(
-     *      org.extex.ocpware.compiler.parser.CompilerState, boolean)
+*      org.extex.ocpware.compiler.parser.CompilerState, boolean)
      */
     public void outRight(CompilerState cs, boolean withOffset)
             throws IOException,
@@ -67,12 +63,7 @@ public class Arith implements Expr {
                 : OcpCode.OP_RIGHT_OUTPUT);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return "#(" + expr.toString() + ")";

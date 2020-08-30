@@ -68,24 +68,23 @@ import org.extex.unit.base.macro.LetCode;
  * </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public final class LoadUnit extends AbstractFactory<Code> {
 
     /**
-     * The field <tt>DEFINE_TAG</tt> contains the tag name used to find
+     * The field {@code DEFINE_TAG} contains the tag name used to find
      * definitions for primitives.
      */
     private static final String DEFINE_TAG = "define";
 
     /**
-     * The constant <tt>NAME_ATTRIBUTE</tt> contains the name of the attribute
+     * The constant {@code NAME_ATTRIBUTE} contains the name of the attribute
      * holding the name of the primitive to define.
      */
     private static final String NAME_ATTRIBUTE = "name";
 
     /**
-     * The field <tt>NAMESPACE_ATTRIBUTE</tt> contains the attribute name to
+     * The field {@code NAMESPACE_ATTRIBUTE} contains the attribute name to
      * find the name space for the new primitive.
      */
     private static final String NAMESPACE_ATTRIBUTE = "namespace";
@@ -93,7 +92,7 @@ public final class LoadUnit extends AbstractFactory<Code> {
     /**
      * Prepare the primitives according to their configuration. The given
      * configuration may contain sub-configurations with the name
-     * <tt>primitives</tt> which includes the definition of primitives. Those
+     * {@code primitives} which includes the definition of primitives. Those
      * primitives are defined no matter if they are already defined or not.
      * 
      * @param configuration the configuration
@@ -174,7 +173,7 @@ public final class LoadUnit extends AbstractFactory<Code> {
     }
 
     /**
-     * The field <tt>stringSource</tt> contains the reused object for string
+     * The field {@code stringSource} contains the reused object for string
      * parsing.
      */
     private StringSource stringSource = new StringSource();

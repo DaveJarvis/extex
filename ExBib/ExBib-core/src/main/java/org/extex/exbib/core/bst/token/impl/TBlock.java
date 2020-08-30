@@ -33,12 +33,11 @@ import org.extex.exbib.core.io.Locator;
  * This class represents a list of values.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TBlock extends AbstractToken implements Iterable<Token> {
 
     /**
-     * The field <tt>value</tt> contains the list of Tokens in the block.
+     * The field {@code value} contains the list of Tokens in the block.
      */
     private TokenList value = null;
 
@@ -78,23 +77,13 @@ public class TBlock extends AbstractToken implements Iterable<Token> {
         processor.push(value);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.Token#expand(org.extex.exbib.core.Processor)
-     */
-    @Override
+@Override
     public String expand(Processor processor) throws ExBibException {
 
         return value.expand(processor);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.AbstractToken#getString()
-     */
-    @Override
+@Override
     protected String getString() {
 
         return "{" + value.toString() + "}";
@@ -110,21 +99,13 @@ public class TBlock extends AbstractToken implements Iterable<Token> {
         return value;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Iterable#iterator()
-     */
-    public Iterator<Token> iterator() {
+public Iterator<Token> iterator() {
 
         return value.iterator();
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.Token#visit(org.extex.exbib.core.bst.token.TokenVisitor,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visit(TokenVisitor visitor, Object... args)
             throws ExBibException {

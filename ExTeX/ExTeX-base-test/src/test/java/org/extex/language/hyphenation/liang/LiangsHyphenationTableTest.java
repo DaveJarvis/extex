@@ -34,8 +34,7 @@ import org.junit.Test;
  * This class contains some test cases fro liang's hyphenation table.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4527 $
- */
+*/
 public class LiangsHyphenationTableTest {
 
     /**
@@ -69,7 +68,7 @@ public class LiangsHyphenationTableTest {
     }
 
     /**
-     * <testcase> TODO gene: missing JavaDoc </testcase>
+     *  TODO gene: missing JavaDoc
      * 
      * @throws Exception in case of an error
      */
@@ -90,7 +89,7 @@ public class LiangsHyphenationTableTest {
     }
 
     /**
-     * <testcase> TODO gene: missing JavaDoc </testcase>
+     *  TODO gene: missing JavaDoc
      * 
      * @throws Exception in case of an error
      */
@@ -115,7 +114,7 @@ public class LiangsHyphenationTableTest {
     }
 
     /**
-     * <testcase> TODO gene: missing JavaDoc </testcase>
+     *  TODO gene: missing JavaDoc
      * 
      * @throws Exception in case of an error
      */

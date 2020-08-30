@@ -31,8 +31,7 @@ import org.junit.Test;
  * This is a test suite for the class {@link Name}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NameTest {
 
     /**
@@ -65,7 +64,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -76,7 +75,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -87,7 +86,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -105,7 +104,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -123,7 +122,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -141,7 +140,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -169,7 +168,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -180,7 +179,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -191,7 +190,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -202,7 +201,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -213,7 +212,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -224,7 +223,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -235,7 +234,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -246,7 +245,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -257,7 +256,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -268,7 +267,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -279,7 +278,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -290,7 +289,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -301,7 +300,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -312,7 +311,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -323,7 +322,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -334,7 +333,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -345,7 +344,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -356,7 +355,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -367,7 +366,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -378,7 +377,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -389,7 +388,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -401,7 +400,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -414,7 +413,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -428,7 +427,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -442,7 +441,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -456,7 +455,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -470,7 +469,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -484,7 +483,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -495,7 +494,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -506,7 +505,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -517,7 +516,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -531,7 +530,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -543,7 +542,7 @@ public class NameTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */

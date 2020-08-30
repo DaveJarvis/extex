@@ -35,17 +35,13 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * node lists of the appropriate type and structure. The typesetter acts as
  * proxy. Most requests are simply forwarded to the current list maker.
  * 
- * @see "<logo>T<span style=
- *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *      >e</span>X</logo> &ndash; The Program [211]"
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public interface Typesetter extends ListMaker {
 
     /**
      * Clear the internal state about ship-outs. The ship-out mark is reset to
-     * <code>false</code>.
+     * {@code false}.
      * 
      * @see #isShipoutMark()
      */
@@ -83,7 +79,7 @@ public interface Typesetter extends ListMaker {
     /**
      * Getter for the current list maker.
      * 
-     * @return the top list maker or <code>null</code> if the stack is empty
+     * @return the top list maker or {@code null} if the stack is empty
      */
     ListMaker getListMaker();
 
@@ -106,10 +102,10 @@ public interface Typesetter extends ListMaker {
      * records whether or not the ship-out method has been called recently. This
      * method can be used to get the current state. The method
      * {@link #clearShipoutMark() clearShipoutMark()} can be used to reset the
-     * ship-out mark to <code>false</code>. Initially the ship-out mark is
-     * <code>false</code>.
+     * ship-out mark to {@code false}. Initially the ship-out mark is
+     * {@code false}.
      * 
-     * @return <code>true</code> iff there has been an invocation to the method
+     * @return {@code true} iff there has been an invocation to the method
      *         {@link #shipout(NodeList) shipout()} since the last clearing
      * @see #clearShipoutMark()
      */

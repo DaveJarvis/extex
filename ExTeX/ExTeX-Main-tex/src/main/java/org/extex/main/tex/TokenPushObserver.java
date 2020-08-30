@@ -28,12 +28,11 @@ import org.extex.scanner.type.token.Token;
  * Observer for the operation of pushing a token to the token stream.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4708 $
- */
+*/
 public class TokenPushObserver implements PushObserver {
 
     /**
-     * The field <tt>logger</tt> contains the logger for output
+     * The field {@code logger} contains the logger for output
      */
     private Logger logger;
 

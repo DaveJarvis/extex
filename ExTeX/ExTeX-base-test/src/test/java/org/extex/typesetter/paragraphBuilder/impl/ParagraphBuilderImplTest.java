@@ -45,16 +45,14 @@ import org.junit.runner.JUnitCore;
  * This is a test suite for the ParagraphBuilderImpl.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ParagraphBuilderImplTest {
 
     /**
      * Inner class for the typesetter options.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
-     */
+    */
     private static class MockOptions implements TypesetterOptions {
 
         /**
@@ -104,7 +102,7 @@ public class ParagraphBuilderImplTest {
          * 
          * @param name the name or the number of the register
          * 
-         * @return the named font register or <code>null</code> if none is set
+         * @return the named font register or {@code null} if none is set
          * 
          * @see org.extex.typesetter.TypesetterOptions#getFont(
          *      java.lang.String)
@@ -163,7 +161,7 @@ public class ParagraphBuilderImplTest {
         /**
          * Getter for the paragraph shape.
          * 
-         * @return the paragraph shape or <code>null</code> if no special
+         * @return the paragraph shape or {@code null} if no special
          *         shape is present
          * 
          * @see org.extex.typesetter.TypesetterOptions#getParshape()
@@ -224,10 +222,7 @@ public class ParagraphBuilderImplTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.TypesetterOptions#setCountOption(java.lang.String,
-         *      long)
+    *      long)
          */
         public void setCountOption(String name, long value) {
 
@@ -261,9 +256,9 @@ public class ParagraphBuilderImplTest {
     }
 
     /**
-     * <testcase>
+     *
      * TODO
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */

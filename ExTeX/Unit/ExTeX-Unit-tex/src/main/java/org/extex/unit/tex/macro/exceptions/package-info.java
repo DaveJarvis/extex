@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains utilities for the management of macros.
+ * Contains utilities for the management of macros.
  */
 
 package org.extex.unit.tex.macro.exceptions;

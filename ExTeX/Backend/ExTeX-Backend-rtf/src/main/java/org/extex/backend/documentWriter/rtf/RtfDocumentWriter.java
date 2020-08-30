@@ -64,8 +64,7 @@ import org.extex.typesetter.type.page.Page;
  * This class provides a base implementation of a RTF document writer.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class RtfDocumentWriter extends RtfDocument
         implements
             DocumentWriter,
@@ -74,50 +73,50 @@ public class RtfDocumentWriter extends RtfDocument
             Configurable {
 
     /**
-     * The field <tt>color</tt> contains the current text color index.
+     * The field {@code color} contains the current text color index.
      */
     private int color = 0;
 
     /**
-     * The field <tt>converter</tt> contains the converter to acquire a color
+     * The field {@code converter} contains the converter to acquire a color
      * in RGB mode.
      */
     private ColorConverter converter;
 
     /**
-     * The field <tt>extension</tt> contains the extension.
+     * The field {@code extension} contains the extension.
      */
     private String extension = "rtf";
 
     /**
-     * The field <tt>fontNo</tt> contains the font number currently active.
+     * The field {@code fontNo} contains the font number currently active.
      */
     private int fontNo = 0;
 
     /**
-     * The field <tt>fontSize</tt> contains the size of the current font in
+     * The field {@code fontSize} contains the size of the current font in
      * half points (= 1/7200 in). The RTF default is 12 points which is the
      * value 24.
      */
     private long fontSize = 24;
 
     /**
-     * The field <tt>posX</tt> contains the x position on the current page.
+     * The field {@code posX} contains the x position on the current page.
      */
     private long posX;
 
     /**
-     * The field <tt>posY</tt> contains the y position on the current page.
+     * The field {@code posY} contains the y position on the current page.
      */
     private long posY;
 
     /**
-     * The field <tt>stream</tt> contains the target.
+     * The field {@code stream} contains the target.
      */
     private OutputStream stream;
 
     /**
-     * The field <tt>visitor</tt> contains the visitor carrying the methods
+     * The field {@code visitor} contains the visitor carrying the methods
      * for translating nodes to RTF instructions.
      */
     private NodeVisitor<Boolean, Object> visitor =
@@ -129,22 +128,21 @@ public class RtfDocumentWriter extends RtfDocument
                  * 
                  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd
                  *         Neugebauer</a>
-                 * @version $Revision$
-                 */
+                */
                 class State {
 
                     /**
-                     * The field <tt>color</tt> contains the color index.
+                     * The field {@code color} contains the color index.
                      */
                     private int color;
 
                     /**
-                     * The field <tt>font</tt> contains the font index.
+                     * The field {@code font} contains the font index.
                      */
                     private int font;
 
                     /**
-                     * The field <tt>fontSize</tt> contains the font size.
+                     * The field {@code fontSize} contains the font size.
                      */
                     private long fontSize;
 
@@ -194,14 +192,14 @@ public class RtfDocumentWriter extends RtfDocument
                 }
 
                 /**
-                 * The field <tt>horizontal</tt> contains the indicator that
+                 * The field {@code horizontal} contains the indicator that
                  * the processing is in horizontal mode. Otherwise it is in
                  * vertical mode.
                  */
                 private boolean horizontal = true;
 
                 /**
-                 * The field <tt>stack</tt> contains the stack for RTF group
+                 * The field {@code stack} contains the stack for RTF group
                  * state information.
                  */
                 private Stack<State> stack = new Stack<State>();
@@ -601,10 +599,7 @@ public class RtfDocumentWriter extends RtfDocument
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see "TTP [618]"
-                 * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(
+            * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(
                  *      org.extex.typesetter.type.node.VerticalListNode,
                  *      java.lang.Object)
                  */
@@ -635,10 +630,7 @@ public class RtfDocumentWriter extends RtfDocument
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(
-                 *      org.extex.typesetter.type.node.VirtualCharNode,
+            *      org.extex.typesetter.type.node.VirtualCharNode,
                  *      java.lang.Object)
                  */
                 public Boolean visitVirtualChar(VirtualCharNode node,
@@ -648,10 +640,7 @@ public class RtfDocumentWriter extends RtfDocument
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(
-                 *      org.extex.typesetter.type.node.WhatsItNode,
+            *      org.extex.typesetter.type.node.WhatsItNode,
                  *      java.lang.Object)
                  */
                 public Boolean visitWhatsIt(WhatsItNode node, Object value)
@@ -682,22 +671,14 @@ public class RtfDocumentWriter extends RtfDocument
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#close()
-     */
-    public void close() throws GeneralException, IOException {
+public void close() throws GeneralException, IOException {
 
         write(stream);
         stream.close();
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(
-     *      org.extex.framework.configuration.Configuration)
+*      org.extex.framework.configuration.Configuration)
      */
     public void configure(Configuration config) {
 
@@ -709,8 +690,8 @@ public class RtfDocumentWriter extends RtfDocument
 
     /**
      * Getter for the extension associated with this kind of output. For
-     * instance <tt>pdf</tt> is the expected value for PDF files and
-     * <tt>dvi</tt> is the expected value for DVI files.
+     * instance {@code pdf} is the expected value for PDF files and
+     * {@code dvi} is the expected value for DVI files.
      * 
      * @return the appropriate extension for file names
      * 
@@ -770,10 +751,7 @@ public class RtfDocumentWriter extends RtfDocument
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
-     *      org.extex.typesetter.type.page.Page)
+*      org.extex.typesetter.type.page.Page)
      */
     public int shipout(Page page) throws GeneralException, IOException {
 

@@ -19,17 +19,17 @@
 
 package org.extex.font.format.xtf.tables;
 
-import java.io.IOException;
-
 import org.extex.font.format.xtf.XtfReader;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
 
+import java.io.IOException;
+
 /**
  * The 'maxp' table establishes the memory requirements for a font.
  * 
- * <table BORDER="1"> <tbody>
+ *  <table> <caption>TBD</caption> <tbody>
  * <tr>
  * <td><b>Type</b></td>
  * <td><b>Name</b></td>
@@ -98,7 +98,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td> Maximum stack depth 2.</td>
  * </tr>
  * <tr>
- * <td>USHORT</td><
+ * <td>USHORT</td>
  * <td>maxSizeOfInstructions</td>
  * <td> Maximum byte count for glyph instructions.</td>
  * </tr>
@@ -116,8 +116,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TtfTableMAXP extends AbstractXtfTable
         implements
             XtfTable,
@@ -126,77 +125,77 @@ public class TtfTableMAXP extends AbstractXtfTable
     /**
      * maxComponentDepth
      */
-    private int maxComponentDepth;
+    private final int maxComponentDepth;
 
     /**
      * maxComponentElements
      */
-    private int maxComponentElements;
+    private final int maxComponentElements;
 
     /**
      * maxCompositeContours
      */
-    private int maxCompositeContours;
+    private final int maxCompositeContours;
 
     /**
      * maxCompositePoints
      */
-    private int maxCompositePoints;
+    private final int maxCompositePoints;
 
     /**
      * maxContours
      */
-    private int maxContours;
+    private final int maxContours;
 
     /**
      * maxFunctionDefs
      */
-    private int maxFunctionDefs;
+    private final int maxFunctionDefs;
 
     /**
      * maxInstructionDefs
      */
-    private int maxInstructionDefs;
+    private final int maxInstructionDefs;
 
     /**
      * maxPoints
      */
-    private int maxPoints;
+    private final int maxPoints;
 
     /**
      * maxSizeOfInstructions
      */
-    private int maxSizeOfInstructions;
+    private final int maxSizeOfInstructions;
 
     /**
      * maxStackElements
      */
-    private int maxStackElements;
+    private final int maxStackElements;
 
     /**
      * maxStorage
      */
-    private int maxStorage;
+    private final int maxStorage;
 
     /**
      * maxTwilightPoints
      */
-    private int maxTwilightPoints;
+    private final int maxTwilightPoints;
 
     /**
      * maxZones
      */
-    private int maxZones;
+    private final int maxZones;
 
     /**
      * numGlyphs
      */
-    private int numGlyphs;
+    private final int numGlyphs;
 
     /**
      * version
      */
-    private int version;
+    private final int version;
 
     /**
      * Create a new object.
@@ -368,12 +367,7 @@ public class TtfTableMAXP extends AbstractXtfTable
         return numGlyphs;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
+public String getShortcut() {
 
         return "maxp";
     }
@@ -399,10 +393,7 @@ public class TtfTableMAXP extends AbstractXtfTable
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

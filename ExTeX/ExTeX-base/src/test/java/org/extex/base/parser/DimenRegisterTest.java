@@ -34,8 +34,7 @@ import org.junit.Test;
  * Test cases for dimen registers.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4766 $
- */
+*/
 public class DimenRegisterTest {
 
 

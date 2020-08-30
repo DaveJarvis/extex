@@ -26,8 +26,7 @@ import org.junit.Test;
  * Test for {@link PrintFormat}.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class PrintFormatTest extends ExTeXLauncher {
 
 
@@ -41,7 +40,7 @@ public class PrintFormatTest extends ExTeXLauncher {
      * 
      * Test with a count register.
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -61,7 +60,7 @@ public class PrintFormatTest extends ExTeXLauncher {
      * 
      * Test with a pair register.
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -81,7 +80,7 @@ public class PrintFormatTest extends ExTeXLauncher {
      * 
      * Test: 1.23456788 - 0.00 - 1.23
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -101,7 +100,7 @@ public class PrintFormatTest extends ExTeXLauncher {
      * 
      * Test: 1.23756788 - 0.00 - 1.24
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -121,7 +120,7 @@ public class PrintFormatTest extends ExTeXLauncher {
      * 
      * Test: 11.23756788 - 0.0000 - 11.2376
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */

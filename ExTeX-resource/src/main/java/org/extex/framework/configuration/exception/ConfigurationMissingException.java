@@ -21,21 +21,20 @@ package org.extex.framework.configuration.exception;
 
 /**
  * This Exception is thrown when a configuration is requested with the path
- * <code>null</code> or the empty string. Alternatively it can be used when some
+ * {@code null} or the empty string. Alternatively it can be used when some
  * other kind of configuration information is missing.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ConfigurationMissingException extends ConfigurationException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     private static final long serialVersionUID = 2010L;
 
     /**
-     * The field <tt>item</tt> contains the name of the missing item.
+     * The field {@code item} contains the name of the missing item.
      */
     private String item;
 
@@ -64,10 +63,10 @@ public class ConfigurationMissingException extends ConfigurationException {
 
     /**
      * Getter for the text prefix of this ConfigException. The text is taken
-     * from the resource bundle <tt>ConfigurationEception</tt> under the key
-     * <tt>ConfigurationMissingException.Text</tt> or
-     * <tt>ConfigurationMissingException.Text0</tt>. The latter is used if the
-     * item is <code>null</code>.
+     * from the resource bundle {@code ConfigurationEception} under the key
+     * {@code ConfigurationMissingException.Text} or
+     * {@code ConfigurationMissingException.Text0}. The latter is used if the
+     * item is {@code null}.
      * 
      * @return the text
      */

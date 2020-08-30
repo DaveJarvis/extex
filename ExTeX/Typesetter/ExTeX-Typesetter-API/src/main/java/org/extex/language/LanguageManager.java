@@ -24,7 +24,7 @@ import java.io.Serializable;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * This class manages the <code>HyphenationTable</code>s. It is a container
+ * This class manages the {@code HyphenationTable}s. It is a container
  * which can be asked to provide an appropriate instance. This instance is
  * either taken from existing instances or a new instance is created.
  * 
@@ -39,18 +39,17 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4737 $
- */
+*/
 public interface LanguageManager extends Serializable {
 
     /**
-     * Return the <code>Language</code> for a given name.
+     * Return the {@code Language} for a given name.
      * <p>
      * If there is no language present with the given name then a new one is
      * created or loaded.
      * </p>
      * <p>
-     * The index in TeX is the language number as <code>String</code>. This
+     * The index in TeX is the language number as {@code String}. This
      * implementation does not have this restriction. The name can be any
      * string.
      * </p>

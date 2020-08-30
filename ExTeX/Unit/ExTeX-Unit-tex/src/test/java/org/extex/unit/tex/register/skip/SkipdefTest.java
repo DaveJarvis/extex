@@ -23,11 +23,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\skipdef</tt>.
+ * This is a test suite for the primitive {@code \skipdef}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SkipdefTest extends AbstractSkipRegisterTester {
 
     /**
@@ -47,9 +46,9 @@ public class SkipdefTest extends AbstractSkipRegisterTester {
     }
 
     /**
-     * <testcase primitive="\skipdef"> Test case checking that <tt>\skipdef</tt>
+     * <testcase primitive="\skipdef"> Test case checking that {@code \skipdef}
      * creates a skip assignable control sequence which is equivalent to the
-     * <tt>\skip</tt>. </testcase>
+     * {@code \skip}.
      * 
      * @throws Exception in case of an error
      */
@@ -63,8 +62,8 @@ public class SkipdefTest extends AbstractSkipRegisterTester {
     }
 
     /**
-     * <testcase primitive="\skipdef"> Test case checking that <tt>\skipdef</tt>
-     * respects a group. </testcase>
+     * <testcase primitive="\skipdef"> Test case checking that {@code \skipdef}
+     * respects a group.
      * 
      * @throws Exception in case of an error
      */
@@ -78,8 +77,8 @@ public class SkipdefTest extends AbstractSkipRegisterTester {
     }
 
     /**
-     * <testcase primitive="\skipdef"> Test case checking that <tt>\skipdef</tt>
-     * respects a group. </testcase>
+     * <testcase primitive="\skipdef"> Test case checking that {@code \skipdef}
+     * respects a group.
      * 
      * @throws Exception in case of an error
      */
@@ -93,8 +92,8 @@ public class SkipdefTest extends AbstractSkipRegisterTester {
     }
 
     /**
-     * <testcase primitive="\skipdef"> Test case checking that <tt>\skipdef</tt>
-     * respects <tt>\globaldefs</tt>. </testcase>
+     * <testcase primitive="\skipdef"> Test case checking that {@code \skipdef}
+     * respects {@code \globaldefs}.
      * 
      * @throws Exception in case of an error
      */

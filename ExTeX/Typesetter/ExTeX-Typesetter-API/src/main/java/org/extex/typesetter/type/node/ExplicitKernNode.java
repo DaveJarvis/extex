@@ -34,19 +34,15 @@ import org.extex.typesetter.Discardable;
  * list, when its `width' denotes additional spacing in the vertical direction.
  * </p>
  * 
- * @see "<logo>T<span style=
- *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *      >e</span>X</logo> &ndash; The Program [155]"
  * @see org.extex.typesetter.type.node.ImplicitKernNode
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4739 $
- */
+*/
 public class ExplicitKernNode extends AbstractKernNode implements Discardable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 20060419L;
 
@@ -55,11 +51,7 @@ public class ExplicitKernNode extends AbstractKernNode implements Discardable {
      * 
      * @param kern the natural size
      * @param horizontal the indicator that the kern works horizontally
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [156]"
-     */
+*/
     public ExplicitKernNode(FixedDimen kern, boolean horizontal) {
 
         super(kern, horizontal);
@@ -92,11 +84,7 @@ public class ExplicitKernNode extends AbstractKernNode implements Discardable {
      * 
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [191]"
-     * @see org.extex.typesetter.type.Node#toText(StringBuilder,
+* @see org.extex.typesetter.type.Node#toText(StringBuilder,
      *      java.lang.String)
      */
     @Override

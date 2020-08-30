@@ -36,24 +36,23 @@ import org.extex.typesetter.tc.font.impl.NullFont;
  * {@link org.extex.typesetter.tc.TypesettingContext TypesettingContext}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4399 $
- */
+*/
 public class TypesettingContextFactory extends AbstractFactory<Object> {
 
     /**
-     * The constant <tt>CLASS_ATTRIBUTE</tt> contains the name of the attribute
+     * The constant {@code CLASS_ATTRIBUTE} contains the name of the attribute
      * used to extract the class name from the given configuration.
      */
     private static final String CLASS_ATTRIBUTE = "class";
 
     /**
-     * The field <tt>languageManager</tt> contains the language manager.
+     * The field {@code languageManager} contains the language manager.
      */
     private LanguageManager languageManager = null;
 
     /**
-     * The field <tt>theClass</tt> contains the class to instantiate. It is kept
-     * here to speed up the method <tt>{@link #newInstance() newInstance()}</tt>
+     * The field {@code theClass} contains the class to instantiate. It is kept
+     * here to speed up the method {@code {@link #newInstance() newInstance()}}
      * .
      */
     private Class<?> theClass;
@@ -65,7 +64,7 @@ public class TypesettingContextFactory extends AbstractFactory<Object> {
 
     /**
      * Configure the factory according to a given Configuration. The
-     * configuration must have the attribute <tt>class</tt> which names a fully
+     * configuration must have the attribute {@code class} which names a fully
      * qualified class name. This class is instantiated using its no-argument
      * constructor.
      * 
@@ -78,7 +77,7 @@ public class TypesettingContextFactory extends AbstractFactory<Object> {
      * @throws ConfigurationException in case of an error
      *         <ul>
      *         <li>ConfigurationMissingAttributeException in case that the
-     *         attribute <tt>CLASS_ATTRIBUTE</tt> is not set for the given
+     *         attribute {@code CLASS_ATTRIBUTE} is not set for the given
      *         configuration.</li>
      *         <li>ConfigurationInstantiationException in case that the
      *         instantiation of the given class causes a SecurityException.</li>

@@ -35,8 +35,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public abstract class XtfGSUBAlternateTable extends XtfLookupTable {
 
     /**
@@ -49,9 +48,10 @@ public abstract class XtfGSUBAlternateTable extends XtfLookupTable {
      * be in any order in the array.
      * </p>
      * 
-     * <table border="1">
-     * <tr>
-     * <td><b>Type</b></td>
+     * <table>
+ * <caption>TBD</caption>
+ * <tr>
+* <td><b>Type</b></td>
      * <td><b>Name</b></td>
      * <td><b>Description</b></td>
      * </tr>
@@ -72,7 +72,7 @@ public abstract class XtfGSUBAlternateTable extends XtfLookupTable {
         /**
          * The alternate glyphs.
          */
-        private int[] glyphs;
+        private final int[] glyphs;
 
         /**
          * Creates a new object.
@@ -108,9 +108,10 @@ public abstract class XtfGSUBAlternateTable extends XtfLookupTable {
     /**
      * AlternateSubstFormat1 subtable.
      * 
-     * <table border="1">
-     * <tr>
-     * <td><b>Type</b></td>
+     * <table>
+ * <caption>TBD</caption>
+ * <tr>
+* <td><b>Type</b></td>
      * <td><b>Name</b></td>
      * <td><b>Description</b></td>
      * </tr>
@@ -142,13 +143,13 @@ public abstract class XtfGSUBAlternateTable extends XtfLookupTable {
         /**
          * The alternate set.
          */
-        private AlternateSet[] alternateSet;
+        private final AlternateSet[] alternateSet;
 
         /**
          * The coverage.
          */
 
-        private XtfCoverage coverage;
+        private final XtfCoverage coverage;
 
         /**
          * Creates a new object.
@@ -181,12 +182,7 @@ public abstract class XtfGSUBAlternateTable extends XtfLookupTable {
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.gps.XtfGSUBAlternateTable#getSubGlyph()
-         */
-        @Override
+    @Override
         public String[][] getSubGlyph() {
 
             int[] glyphs = coverage.getGlyphs();
@@ -208,12 +204,7 @@ public abstract class XtfGSUBAlternateTable extends XtfLookupTable {
             return tmp;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        @Override
+    @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("alternatetable");

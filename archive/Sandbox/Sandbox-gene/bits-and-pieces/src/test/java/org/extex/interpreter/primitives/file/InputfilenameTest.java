@@ -23,11 +23,10 @@ import org.extex.test.NoFlagsPrimitiveTester;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\inputfilename</tt>.
+ * This is a test suite for the primitive {@code \inputfilename}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class InputfilenameTest extends NoFlagsPrimitiveTester {
 
     /**

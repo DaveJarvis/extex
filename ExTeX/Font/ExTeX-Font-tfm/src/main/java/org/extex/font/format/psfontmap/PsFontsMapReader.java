@@ -34,8 +34,7 @@ import org.extex.font.exception.FontException;
  * @see <a href="package-summary.html#psfontsmap">psfonts.map</a>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class PsFontsMapReader implements Serializable {
 
@@ -70,7 +69,7 @@ public class PsFontsMapReader implements Serializable {
     /**
      * Map for the font-data.
      */
-    private Map<String, PsFontEncoding> data;
+    private final Map<String, PsFontEncoding> data;
 
     /**
      * Create a new object.

@@ -28,8 +28,7 @@ import org.extex.util.file.random.RandomAccessR;
  * Integer.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class T2Integer extends T2Number {
 
@@ -136,56 +135,31 @@ public class T2Integer extends T2Number {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#getBytes()
-     */
-    @Override
+@Override
     public short[] getBytes() {
 
         return bytes;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Number#getDouble()
-     */
-    @Override
+@Override
     public double getDouble() {
 
         return value;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Number#getInteger()
-     */
-    @Override
+@Override
     public int getInteger() {
 
         return value;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#isInteger()
-     */
-    @Override
+@Override
     public boolean isInteger() {
 
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return String.valueOf(value);

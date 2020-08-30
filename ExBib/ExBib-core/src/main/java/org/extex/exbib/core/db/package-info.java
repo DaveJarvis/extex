@@ -15,11 +15,10 @@
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
+
 /**
- * This package contains the classes for the database of 
- * <logo>&epsilon;&chi;Bib</logo> and the entries stored in it.
- * 
- * <h2>The Database</h2>
+ * Contains the classes for the database of
+ * εχBib and the entries stored in it.
  * <p>
  *   The database can mainly be seen as a list of entries. There are several
  *   methods to get hold of the information. See the documentation of the
@@ -40,11 +39,8 @@
  *   The entries are the entities stored in a database.
  * </p>
  *   
- * <h2>The Value Hierarchy</h2>
+ * The Value Hierarchy
  * 
- * <img src="doc-files/Value-hierarchy.gif" align="right" />
- *  
+ * <img src="doc-files/Value-hierarchy.gif" alt="Value Hierarchy">
  */
-
 package org.extex.exbib.core.db;
-

@@ -25,11 +25,10 @@ import java.io.OutputStream;
 import org.extex.dviware.Dvi;
 
 /**
- * This class represents the DVI instruction <tt>eop</tt>.
+ * This class represents the DVI instruction {@code eop}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DviEop extends AbstractDviCode {
 
 

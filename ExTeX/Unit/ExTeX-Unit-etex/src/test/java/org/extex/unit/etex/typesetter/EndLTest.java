@@ -22,11 +22,10 @@ package org.extex.unit.etex.typesetter;
 import org.extex.test.NoFlagsPrimitiveTester;
 
 /**
- * This is a test suite for the primitive <tt>\endL</tt>.
+ * This is a test suite for the primitive {@code \endL}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class EndLTest extends NoFlagsPrimitiveTester {
 
 

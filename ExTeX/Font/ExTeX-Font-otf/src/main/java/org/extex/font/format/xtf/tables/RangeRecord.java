@@ -28,9 +28,10 @@ import org.extex.util.xml.XMLWriterConvertible;
 /**
  * Class for a range record.
  * 
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td><b>Type</b></td>
+* <td><b>Type</b></td>
  * <td><b>Name</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -52,24 +53,23 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class RangeRecord implements XMLWriterConvertible {
 
     /**
      * Last GlyphID in the range.
      */
-    private int end;
+    private final int end;
 
     /**
      * First GlyphID in the range.
      */
-    private int start;
+    private final int start;
 
     /**
      * Coverage Index of first GlyphID in range.
      */
-    private int startCoverageIndex;
+    private final int startCoverageIndex;
 
     /**
      * Creates a new object.

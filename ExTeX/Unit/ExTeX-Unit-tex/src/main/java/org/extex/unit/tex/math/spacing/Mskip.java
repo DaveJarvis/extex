@@ -32,36 +32,35 @@ import org.extex.typesetter.listMaker.math.NoadConsumer;
 import org.extex.unit.tex.math.AbstractMathCode;
 
 /**
- * This class provides an implementation for the primitive <code>\mskip</code>.
+ * This class provides an implementation for the primitive {@code \mskip}.
  * 
- * <doc name="mskip">
- * <h3>The Math Primitive <tt>\mskip</tt></h3>
+ * <p>The Math Primitive {@code \mskip}</p>
  * <p>
- * The math primitive <tt>\mskip</tt> inserts some glue in math mode. The
+ * The math primitive {@code \mskip} inserts some glue in math mode. The
  * amount of space to be inserted is measured in math units.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;mskip&rang;
- *       &rarr; <tt>\mskip</tt>  </pre>
+ *       &rarr; {@code \mskip}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \mskip 12mu plus 3mu minus 4 mu </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Mskip extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -77,10 +76,7 @@ public class Mskip extends AbstractMathCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

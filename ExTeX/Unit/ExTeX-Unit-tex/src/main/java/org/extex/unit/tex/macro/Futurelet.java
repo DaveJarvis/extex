@@ -31,22 +31,22 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\futurelet</code>.
+ * {@code \futurelet}.
  * 
- * <doc name="futurelet">
- * <h3>The Primitive <tt>\futurelet</tt></h3>
+ * <p>The Primitive {@code \futurelet}</p>
  * <p>
- * The primitive <tt>\futurelet</tt> lets a token to a control sequence while
+ * The primitive {@code \futurelet} lets a token to a control sequence while
  * keeping the token between the two out of sight. This means that this token is
  * stored away and reinserted after the let is complete.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;futurelet&rang;
- *      &rarr; <tt>\futurelet</tt> {@linkplain
+ *      &rarr; {@code \futurelet} {@linkplain
  *        org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *        &lang;control sequence&rang;} {@linkplain
  *       org.extex.interpreter.TokenSource#getToken(Context)
@@ -54,21 +54,20 @@ import org.extex.typesetter.exception.TypesetterException;
  *       org.extex.interpreter.TokenSource#getToken(Context)
  *       &lang;token&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \futurelet \aa\bb x  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Futurelet extends Let {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -84,10 +83,7 @@ public class Futurelet extends Let {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.macro.Let#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

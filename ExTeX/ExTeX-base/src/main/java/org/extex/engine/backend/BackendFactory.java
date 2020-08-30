@@ -72,12 +72,11 @@ import org.extex.resource.ResourceFinder;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4728 $
- */
+*/
 public class BackendFactory extends AbstractFactory<BackendDriver> {
 
     /**
-     * The field <tt>options</tt> contains the document writer options.
+     * The field {@code options} contains the document writer options.
      */
     private DocumentWriterOptions options;
 

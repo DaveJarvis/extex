@@ -28,8 +28,7 @@ import java.util.logging.LogRecord;
  * This class provides a means to format the log entries.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LogFormatter extends Formatter {
 
 

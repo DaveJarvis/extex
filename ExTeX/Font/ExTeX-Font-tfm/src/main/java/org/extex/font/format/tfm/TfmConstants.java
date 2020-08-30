@@ -23,8 +23,7 @@ package org.extex.font.format.tfm;
  * Constants for the TFM font.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class TfmConstants {
 

@@ -33,15 +33,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>cite$</tt>.
+ * Test suite for {@code cite$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class CiteTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -84,7 +83,7 @@ public class CiteTest {
     }
 
     /**
-     * <testcase> The casing of the key does not matter. </testcase>
+     *  The casing of the key does not matter. 
      * 
      * @throws Exception in case of an error
      */
@@ -95,7 +94,7 @@ public class CiteTest {
     }
 
     /**
-     * <testcase> The casing of the key does not matter. </testcase>
+     *  The casing of the key does not matter. 
      * 
      * @throws Exception in case of an error
      */
@@ -106,7 +105,7 @@ public class CiteTest {
     }
 
     /**
-     * <testcase> The casing of the key does not matter. </testcase>
+     *  The casing of the key does not matter. 
      * 
      * @throws Exception in case of an error
      */
@@ -117,7 +116,7 @@ public class CiteTest {
     }
 
     /**
-     * <testcase> The casing of the key does not matter. </testcase>
+     *  The casing of the key does not matter. 
      * 
      * @throws Exception in case of an error
      */
@@ -128,7 +127,7 @@ public class CiteTest {
     }
 
     /**
-     * <testcase> The casing of the key does not matter. </testcase>
+     *  The casing of the key does not matter. 
      * 
      * @throws Exception in case of an error
      */
@@ -139,7 +138,7 @@ public class CiteTest {
     }
 
     /**
-     * <testcase> The casing of the key does not matter. </testcase>
+     *  The casing of the key does not matter. 
      * 
      * @throws Exception in case of an error
      */
@@ -150,7 +149,7 @@ public class CiteTest {
     }
 
     /**
-     * <testcase> An unknown key remains unchanged. </testcase>
+     *  An unknown key remains unchanged. 
      * 
      * @throws Exception in case of an error
      */
@@ -161,7 +160,7 @@ public class CiteTest {
     }
 
     /**
-     * <testcase> An unknown key remains unchanged. </testcase>
+     *  An unknown key remains unchanged. 
      * 
      * @throws Exception in case of an error
      */
@@ -172,7 +171,7 @@ public class CiteTest {
     }
 
     /**
-     * <testcase> An unknown key remains unchanged. </testcase>
+     *  An unknown key remains unchanged. 
      * 
      * @throws Exception in case of an error
      */
@@ -183,7 +182,7 @@ public class CiteTest {
     }
 
     /**
-     * <testcase> A missing entry leads to an error.</testcase>
+     *  A missing entry leads to an error.
      * 
      * @throws Exception in case of an error
      */

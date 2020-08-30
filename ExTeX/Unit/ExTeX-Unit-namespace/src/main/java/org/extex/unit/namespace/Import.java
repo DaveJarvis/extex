@@ -33,49 +33,48 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.macro.Let;
 
 /**
- * This class provides an implementation for the primitive <code>\import</code>.
+ * This class provides an implementation for the primitive {@code \import}.
  *
- * <doc name="import">
- * <h3>The Primitive <tt>\import</tt></h3>
+ * <p>The Primitive {@code \import}</p>
  * <p>
- *  The primitive <tt>\import</tt> defines all control sequences exported from
+ *  The primitive {@code \import} defines all control sequences exported from
  *  the given name space into the current name space. Any definitions with the
  *  same name are overwritten.
  * </p>
  * <p>
  *  The definitions are usually performed local to the current group. If the
- *  prefix <tt>\global</tt> is given then the definition is made globally.
+ *  prefix {@code \global} is given then the definition is made globally.
  * </p>
  *
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;import&rang;
- *      &rarr; &lang;prefix&rang; <tt>\import</tt> {@linkplain
+ *      &rarr; &lang;prefix&rang; {@code \import} {@linkplain
  *      org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *      &lang;name space&rang;}
  *
  *    &lang;prefix&rang;
  *      &rarr;
- *      | <tt>\global</tt>  </pre>
+ *      | {@code \global}  </pre>
  *
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  *  <pre class="TeXSample">
  *    \import{de.dante.dtk}  </pre>
  *
- * </doc>
  *
  *
  * @see org.extex.unit.namespace.Export
  * @see org.extex.unit.namespace.Namespace
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Import extends Let {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 

@@ -48,17 +48,16 @@ import org.extex.typesetter.exception.TypesetterException;
  * </pre>
  * 
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class NamedTransform extends AbstractAssignment implements Theable {
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>key</tt> contains the reference key.
+     * The field {@code key} contains the reference key.
      */
     private String key;
 

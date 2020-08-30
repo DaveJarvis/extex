@@ -39,8 +39,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class contains utility methods.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4411 $
- */
+*/
 public final class OcpUtil {
 
 
@@ -52,7 +51,7 @@ public final class OcpUtil {
     /**
      * Scan an &Omega;CP file name.
      * 
-     * <doc type="syntax" name="filename"> This method parses the following
+     * This method parses the following
      * syntactic entity:
      * 
      * <pre class="syntax">
@@ -65,7 +64,6 @@ public final class OcpUtil {
      * <li>Otherwise tokens are read until a space token is encountered. </li>
      * </ul>
      * 
-     * </doc>
      * 
      * @param context the processing context
      * @param source the source for new tokens

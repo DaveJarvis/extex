@@ -28,44 +28,43 @@ import org.extex.util.xml.XMLStreamWriter;
  * rlinecurve: {dxa dya}+ dxb dyb dxc dyc dxd dyd rlinecurve (25).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class T2RlineCurve extends T2PathConstruction {
 
     /**
      * The dxb.
      */
-    private T2Number dxb;
+    private final T2Number dxb;
 
     /**
      * The dxc.
      */
-    private T2Number dxc;
+    private final T2Number dxc;
 
     /**
      * The dxd.
      */
-    private T2Number dxd;
+    private final T2Number dxd;
 
     /**
      * The dyb.
      */
-    private T2Number dyb;
+    private final T2Number dyb;
 
     /**
      * The dyc.
      */
-    private T2Number dyc;
+    private final T2Number dyc;
 
     /**
      * The dyd.
      */
-    private T2Number dyd;
+    private final T2Number dyd;
 
     /**
      * The pair values array.
      */
-    private T2PairNumber[] pair;
+    private final T2PairNumber[] pair;
 
     /**
      * Create a new object.
@@ -169,23 +168,13 @@ public class T2RlineCurve extends T2PathConstruction {
         return dyd;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
-     */
-    @Override
+@Override
     public int getID() {
 
         return TYPE_RLINECURVE;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "rlinecurve";
@@ -201,22 +190,14 @@ public class T2RlineCurve extends T2PathConstruction {
         return pair;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getValue()
-     */
-    @Override
+@Override
     public Object getValue() {
 
         return pair;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

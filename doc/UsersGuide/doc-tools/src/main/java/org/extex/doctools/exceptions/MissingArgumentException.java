@@ -25,12 +25,11 @@ import java.util.ResourceBundle;
  * This exception signals a missing argument.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MissingArgumentException extends Exception {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2008L;
@@ -45,12 +44,7 @@ public class MissingArgumentException extends Exception {
         super(message);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Throwable#getLocalizedMessage()
-     */
-    @Override
+@Override
     public String getLocalizedMessage() {
 
         ResourceBundle bundle = ResourceBundle.getBundle(getClass().getName());
@@ -59,12 +53,7 @@ public class MissingArgumentException extends Exception {
             .getMessage());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Throwable#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return getLocalizedMessage();

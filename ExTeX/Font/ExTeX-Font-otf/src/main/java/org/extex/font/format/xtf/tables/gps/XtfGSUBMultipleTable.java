@@ -29,8 +29,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * MultipleTable.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class XtfGSUBMultipleTable extends XtfLookupTable {
 
     /**
@@ -68,12 +67,7 @@ public class XtfGSUBMultipleTable extends XtfLookupTable {
         return new XtfGSUBMultipleTable(0, xtfGlyph);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("multipletable");
         writer.writeEndElement();

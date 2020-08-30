@@ -24,8 +24,7 @@ package org.extex.interpreter.context.observer.interaction;
  * interaction event.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface InteractionObservable {
 
     /**
@@ -36,7 +35,7 @@ public interface InteractionObservable {
      * <p>
      *  A single count register can be observed by giving a name of the count
      *  register to observe. Only changes to this register trigger the
-     *  notification. If this name is <code>null</code> the changes to all
+     *  notification. If this name is {@code null} the changes to all
      *  registers are reported to the observer.
      * </p>
      *

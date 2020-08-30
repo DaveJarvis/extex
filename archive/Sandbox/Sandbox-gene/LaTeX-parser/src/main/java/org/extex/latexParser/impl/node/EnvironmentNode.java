@@ -27,28 +27,27 @@ import org.extex.latexParser.api.Node;
  * This class represents an environment.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class EnvironmentNode extends GroupNode {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 1L;
 
     /**
-     * The field <tt>args</tt> contains the optional arguments.
+     * The field {@code args} contains the optional arguments.
      */
     private Node[] args;
 
     /**
-     * The field <tt>opt</tt> contains the optional argument.
+     * The field {@code opt} contains the optional argument.
      */
     private Node opt;
 
     /**
-     * The field <tt>name</tt> contains the name of the environment.
+     * The field {@code name} contains the name of the environment.
      */
     private String name;
 
@@ -56,7 +55,7 @@ public class EnvironmentNode extends GroupNode {
      * Creates a new object.
      * 
      * @param name the name of the environment
-     * @param opt the optional argument or <code>null</code>
+     * @param opt the optional argument or {@code null}
      * @param args the arguments
      * @param source the source of the environment
      * @param line the line number
@@ -81,12 +80,7 @@ public class EnvironmentNode extends GroupNode {
         return name;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.api.Node#print(java.io.PrintStream)
-     */
-    @Override
+@Override
     public void print(PrintStream stream) {
 
         if (name != null) {
@@ -114,23 +108,13 @@ public class EnvironmentNode extends GroupNode {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return toString(new StringBuilder()).toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.api.NodeList#toString(java.lang.StringBuilder)
-     */
-    @Override
+@Override
     public StringBuilder toString(StringBuilder sb) {
 
         if (name != null) {

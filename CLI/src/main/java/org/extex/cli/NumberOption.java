@@ -44,8 +44,7 @@ import org.extex.cli.exception.NonNumericArgumentCliException;
  * </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class NumberOption extends Option {
 
     /**
@@ -69,10 +68,7 @@ public abstract class NumberOption extends Option {
     protected abstract int run(String a, int arg);
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.cli.Option#run(java.lang.String,
-     *      java.util.List)
+*      java.util.List)
      */
     @Override
     public int run(String a, List<String> arg)
@@ -86,10 +82,7 @@ public abstract class NumberOption extends Option {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.cli.Option#run(java.lang.String,
-     *      java.lang.String, java.util.List)
+*      java.lang.String, java.util.List)
      */
     @Override
     public int run(String a, String firstArg, List<String> arg)

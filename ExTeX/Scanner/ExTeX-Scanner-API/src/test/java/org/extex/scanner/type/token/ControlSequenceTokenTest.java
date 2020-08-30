@@ -33,12 +33,11 @@ import org.junit.runner.JUnitCore;
  * Test cases for control sequence tokens.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4756 $
- */
+*/
 public class ControlSequenceTokenTest extends TokenTester {
 
     /**
-     * The field <tt>token</tt> contains the reference token.
+     * The field {@code token} contains the reference token.
      */
     private static final ControlSequenceToken token =
             new ControlSequenceToken(UnicodeChar.get('\\'), "x", "abc");
@@ -62,9 +61,7 @@ setText( "\\x");
 setStr( "the control sequence \\x");
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testCloneInDefaultNamespace0() {
 
         CodeToken x = token.cloneInDefaultNamespace();
@@ -74,9 +71,7 @@ setStr( "the control sequence \\x");
         assertEquals(token.getChar(), x.getChar());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testCloneInDefaultNamespace1() {
 
         CodeToken y = token.cloneInNamespace("");
@@ -85,9 +80,7 @@ setStr( "the control sequence \\x");
         assertTrue("the same", x == y);
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testCloneInNamespace0() {
 
         CodeToken x = token.cloneInNamespace(null);
@@ -95,9 +88,7 @@ setStr( "the control sequence \\x");
         assertEquals(x, token);
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testCloneInNamespace1() {
 
         CodeToken x = token.cloneInNamespace("abc");
@@ -105,9 +96,7 @@ setStr( "the control sequence \\x");
         assertEquals(x, token);
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testCloneInNamespace2() {
 
         CodeToken x = token.cloneInNamespace("xyz");
@@ -117,36 +106,28 @@ setStr( "the control sequence \\x");
         assertEquals(token.getChar(), x.getChar());
     }
 
-    /**
-     */
-    @Test
+@Test
     @Override
     public void testEq0() {
 
         assertFalse("", token.eq(Catcode.LETTER, "x"));
     }
 
-    /**
-     */
-    @Test
+@Test
     @Override
     public void testEq11() {
 
         assertFalse(token.eq(Catcode.OTHER, 'x'));
     }
 
-    /**
-     */
-    @Test
+@Test
     @Override
     public void testEq2() {
 
         assertFalse(token.eq(Catcode.OTHER, "x"));
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testEqualsToken1() {
 
         Token t1 = new ControlSequenceToken(UnicodeChar.get('\\'), " ", "");
@@ -154,9 +135,7 @@ setStr( "the control sequence \\x");
         assertFalse(t1.equals(t2));
     }
 
-    /**
-     */
-    @Test
+@Test
     @Override
     public void testGetChar0() {
 
@@ -165,25 +144,19 @@ setStr( "the control sequence \\x");
         assertEquals(92, x.getCodePoint());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testGetName1() {
 
         assertEquals("x", token.getName());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testGetNamespace1() {
 
         assertEquals("abc", token.getNamespace());
     }
 
-    /**
-     */
-    @Test
+@Test
     @Override
     public void testToTextString0() {
 

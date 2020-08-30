@@ -23,11 +23,10 @@ import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\colordef</tt>.
+ * This is a test suite for the primitive {@code \colordef}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
 
 
@@ -39,8 +38,8 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="colordef"> Test case checking that
-     * <tt>\colordef</tt> produces a control sequence which is showable.
-     * </testcase>
+     * {@code \colordef} produces a control sequence which is showable.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -55,7 +54,7 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="colordef"> Test case checking that
-     * <tt>\colordef</tt> can take as value a color variable. </testcase>
+     * {@code \colordef} can take as value a color variable.
      * 
      * @throws Exception in case of an error
      */
@@ -71,8 +70,8 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="colordef"> Test case checking that
-     * <tt>\colordef</tt> can take a value as color constant with an implicit
-     * RGB color model. </testcase>
+     * {@code \colordef} can take a value as color constant with an implicit
+     * RGB color model.
      * 
      * @throws Exception in case of an error
      */
@@ -87,8 +86,8 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="colordef"> Test case checking that
-     * <tt>\colordef</tt> can take a value as color constant with an explicit
-     * RGB color model. </testcase>
+     * {@code \colordef} can take a value as color constant with an explicit
+     * RGB color model.
      * 
      * @throws Exception in case of an error
      */
@@ -103,8 +102,8 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="colordef"> Test case checking that
-     * <tt>\colordef</tt> can take a value as color constant with an explicit
-     * gray scale color model. </testcase>
+     * {@code \colordef} can take a value as color constant with an explicit
+     * gray scale color model.
      * 
      * @throws Exception in case of an error
      */
@@ -119,8 +118,8 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="colordef"> Test case checking that
-     * <tt>\colordef</tt> can take a value as color constant with an explicit
-     * HSV color model. </testcase>
+     * {@code \colordef} can take a value as color constant with an explicit
+     * HSV color model.
      * 
      * @throws Exception in case of an error
      */
@@ -135,8 +134,8 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="colordef"> Test case checking that
-     * <tt>\colordef</tt> can take a value as color constant with an explicit
-     * CMYK color model. </testcase>
+     * {@code \colordef} can take a value as color constant with an explicit
+     * CMYK color model.
      * 
      * @throws Exception in case of an error
      */
@@ -152,7 +151,7 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="colordef"> Test case checking that
-     * <tt>\colordef</tt> neds an argument. </testcase>
+     * {@code \colordef} neds an argument.
      * 
      * @throws Exception in case of an error
      */
@@ -167,8 +166,8 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="colordef"> Test case checking that
-     * <tt>\colordef</tt> needs a control sequence as first argument.
-     * </testcase>
+     * {@code \colordef} needs a control sequence as first argument.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -183,8 +182,8 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="colordef"> Test case checking that
-     * <tt>\colordef</tt> needs a left brace after the control seqeunce.
-     * </testcase>
+     * {@code \colordef} needs a left brace after the control seqeunce.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -199,7 +198,7 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="colordef"> Test case checking that
-     * <tt>\colordef</tt> needs enough numbers in the braces. </testcase>
+     * {@code \colordef} needs enough numbers in the braces.
      * 
      * @throws Exception in case of an error
      */
@@ -214,8 +213,8 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="colordef"> Test case checking that
-     * <tt>\colordef</tt> complains about too large values for the color
-     * components. </testcase>
+     * {@code \colordef} complains about too large values for the color
+     * components.
      * 
      * @throws Exception in case of an error
      */

@@ -27,8 +27,7 @@ import org.junit.Test;
  * This is a test suite for OcpOmegaWriter2.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public class OcpOmegaWriter2Test extends WriterTester {
 
     /**

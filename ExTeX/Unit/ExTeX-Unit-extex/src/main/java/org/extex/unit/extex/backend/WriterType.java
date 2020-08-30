@@ -40,12 +40,11 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\writerType</code>.
+ * {@code \writerType}.
  * 
- * <doc name="writerType" extension="yes">
- * <h3>The Primitive <tt>\writerType</tt></h3>
+ * <p>The Primitive {@code \writerType}</p>
  * <p>
- * The primitive <tt>\writerType</tt> provides access to the type of the
+ * The primitive {@code \writerType} provides access to the type of the
  * document writer in use. The type is a sequence of letter, other, and space
  * tokens.
  * </p>
@@ -54,14 +53,16 @@ import org.extex.typesetter.exception.TypesetterException;
  * like a read only register.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;writerType&rang;
- *      &rarr; <tt>\writerType</tt>  </pre>
+ *      &rarr; {@code \writerType}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \writerType  </pre>
@@ -69,11 +70,9 @@ import org.extex.typesetter.exception.TypesetterException;
  * <p>
  * This invocation might expand to "dvi" or "ps".
  * </p>
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class WriterType extends AbstractCode
         implements
             ExpandableCode,
@@ -81,7 +80,7 @@ public class WriterType extends AbstractCode
             TokensConvertible {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -97,10 +96,7 @@ public class WriterType extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens convertTokens(Context context, TokenSource source,
@@ -115,10 +111,7 @@ public class WriterType extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -140,10 +133,7 @@ public class WriterType extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,
@@ -156,10 +146,7 @@ public class WriterType extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

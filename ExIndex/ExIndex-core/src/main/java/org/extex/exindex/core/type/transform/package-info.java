@@ -17,7 +17,7 @@
  */
 /**
  * 
- *   This package contains transformers.
+ *   Contains transformers.
  * 
  *
  */

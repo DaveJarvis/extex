@@ -35,53 +35,51 @@ import org.extex.typesetter.tc.font.impl.NullFont;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\nullfont</code>.
+ * {@code \nullfont}.
  * 
- * <doc name="nullfont">
- * <h3>The Primitive <tt>\nullfont</tt></h3>
+ * <p>The Primitive {@code \nullfont}</p>
  * <p>
- * The primitive <tt>\nullfont</tt> provides access to an internal font
+ * The primitive {@code \nullfont} provides access to an internal font
  * contain no characters at all. Thus any attempt to produce a typeset output
  * will not succeed. Nevertheless the font dimens can be read and written
  * freely.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;nullfont&rang;
- *      &rarr; <tt>\nullfont</tt>  </pre>
+ *      &rarr; {@code \nullfont}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \font123=\nullfont  </pre>
  * 
- * <h4>The</h4>
  * <p>
- * <tt>\nullfont</tt> produces the primitive name <tt>\nullfont</tt> when
- * applied to <tt>\the</tt> or <tt>\showthe</tt>.
+ * {@code \nullfont} produces the primitive name {@code \nullfont} when
+ * applied to {@code \the} or {@code \showthe}.
  * </p>
  * 
- * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class NullfontPrimitive extends AbstractCode
         implements
             FontConvertible,
             ComparableCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>nullFont</tt> contains the font encapsulated in this
+     * The field {@code nullFont} contains the font encapsulated in this
      * primitive.
      */
     private NullFont nullFont = new NullFont();
@@ -97,10 +95,7 @@ public class NullfontPrimitive extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ComparableCode#compare(
-     *      org.extex.scanner.type.token.Token,
+*      org.extex.scanner.type.token.Token,
      *      org.extex.interpreter.context.Context)
      */
     public boolean compare(Token token, Context context)
@@ -111,10 +106,7 @@ public class NullfontPrimitive extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.font.FontConvertible#convertFont(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Font convertFont(Context context, TokenSource source,
@@ -124,10 +116,7 @@ public class NullfontPrimitive extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

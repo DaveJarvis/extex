@@ -48,8 +48,7 @@ import org.extex.ocpware.type.OcpCode;
  * This class represents an expression.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Expression {
 
     /**
@@ -57,7 +56,7 @@ public class Expression {
      * 
      * @param s the input stream
      * 
-     * @return the left state or <code>null</code>
+     * @return the left state or {@code null}
      * 
      * @throws IOException in case of an I/O error
      * @throws SyntaxException in case of a syntax error
@@ -82,7 +81,7 @@ public class Expression {
      * 
      * @param s the input stream
      * 
-     * @return the right state or <code>null</code>
+     * @return the right state or {@code null}
      * 
      * @throws IOException in case of an I/O error
      * @throws SyntaxException in case of a syntax error
@@ -251,35 +250,35 @@ public class Expression {
     }
 
     /**
-     * The field <tt>leftState</tt> contains the left state or <code>null</code>
+     * The field {@code leftState} contains the left state or {@code null}
      * .
      */
     private String leftState;
 
     /**
-     * The field <tt>pushBack</tt> contains the optional list of push-back
+     * The field {@code pushBack} contains the optional list of push-back
      * expressions.
      */
     private List<Expr> pushBack;
 
     /**
-     * The field <tt>right</tt> contains the right item of the expression.
+     * The field {@code right} contains the right item of the expression.
      */
     private Right right;
 
     /**
-     * The field <tt>rightState</tt> contains the optional right state to switch
+     * The field {@code rightState} contains the optional right state to switch
      * to.
      */
     private RightState rightState;
 
     /**
-     * The field <tt>state</tt> contains the right state.
+     * The field {@code state} contains the right state.
      */
     private RightState state;
 
     /**
-     * The field <tt>totalLeft</tt> contains the total left list.
+     * The field {@code totalLeft} contains the total left list.
      */
     private List<Left> totalLeft;
 
@@ -493,12 +492,7 @@ public class Expression {
         this.totalLeft = totalLeft;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder("  ");

@@ -32,15 +32,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>quote$</tt>.
+ * Test suite for {@code quote$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class QuoteTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -65,7 +64,7 @@ public class QuoteTest {
     }
 
     /**
-     * <testcase> <tt>quote$</tt> pushes a quote character. </testcase>
+     *  {@code quote$} pushes a quote character.
      * 
      * @throws Exception in case of an error
      */

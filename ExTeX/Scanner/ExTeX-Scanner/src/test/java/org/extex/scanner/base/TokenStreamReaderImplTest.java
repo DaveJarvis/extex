@@ -29,8 +29,7 @@ import org.junit.runner.JUnitCore;
  * Test cases for the string implementation of a token stream.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TokenStreamReaderImplTest extends TokenStreamStringImplTest {
 
     /**

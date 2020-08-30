@@ -23,11 +23,10 @@ import org.extex.test.AbstractDimenRegisterTester;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\pagetotal</tt>.
+ * This is a test suite for the primitive {@code \pagetotal}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class PagetotalTest extends AbstractDimenRegisterTester {
 
     /**

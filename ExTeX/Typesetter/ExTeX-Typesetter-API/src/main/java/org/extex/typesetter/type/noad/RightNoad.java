@@ -36,19 +36,18 @@ import org.extex.typesetter.type.noad.util.MathContext;
  * @see "TTP [687]"
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class RightNoad extends AbstractNoad {
 
     /**
-     * The field <tt>delimiter</tt> contains the left delimiter.
+     * The field {@code delimiter} contains the left delimiter.
      */
-    private MathDelimiter delimiter;
+    private final MathDelimiter delimiter;
 
     /**
-     * The field <tt>noad</tt> contains the noad(s) on the left side.
+     * The field {@code noad} contains the noad(s) on the left side.
      */
-    private LeftNoad noad;
+    private final LeftNoad noad;
 
     /**
      * Creates a new object.

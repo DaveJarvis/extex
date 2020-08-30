@@ -27,17 +27,16 @@ import org.extex.cli.exception.UnknownOptionCliException;
  * This option takes a string argument and stores it in a property.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class StringPropertyOption extends StringOption {
 
     /**
-     * The field <tt>pname</tt> contains the name of the property.
+     * The field {@code pname} contains the name of the property.
      */
     private final String pname;
 
     /**
-     * The field <tt>properties</tt> contains the properties to store the
+     * The field {@code properties} contains the properties to store the
      * value in.
      */
     private final Properties properties;
@@ -57,10 +56,7 @@ public class StringPropertyOption extends StringOption {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.cli.StringOption#run(java.lang.String,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     protected int run(String a, String arg) throws UnknownOptionCliException {

@@ -40,12 +40,11 @@ import org.junit.Test;
  * This is a test suite for {@link MultiConfigurationIterator}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MultiConfigurationIteratorTest {
 
     /**
-     * The field <tt>CFG1</tt> contains the first base configuration.
+     * The field {@code CFG1} contains the first base configuration.
      */
     private static final Configuration CFG1 = new Configuration() {
 
@@ -186,7 +185,7 @@ public class MultiConfigurationIteratorTest {
     };
 
     /**
-     * The field <tt>mc1</tt> contains the multi-configuration with two
+     * The field {@code mc1} contains the multi-configuration with two
      * sub-configurations.
      */
     private MultiConfiguration mc2;

@@ -34,14 +34,13 @@ import org.extex.util.file.random.RandomAccessR;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public final class LanguageSystemTag extends Tag {
 
     /**
      * The map for the names.
      */
-    private static Map<String, LanguageSystemTag> map =
+    private static final Map<String, LanguageSystemTag> map =
             new HashMap<String, LanguageSystemTag>(400);
 
     /**
@@ -425,9 +424,9 @@ public final class LanguageSystemTag extends Tag {
         getInstance("ZND"); // Zande
         getInstance("ZUL"); // Zulu
 
-    };
+    }
 
-    /**
+  /**
      * Add a new language system tag.
      * 
      * @param rar The input.
@@ -466,8 +465,8 @@ public final class LanguageSystemTag extends Tag {
      * Check, if the name is in the language system tag list.
      * 
      * @param name The name of the language system tag.
-     * @return Returns <code>true</code>, if found, otherwise
-     *         <code>false</code>.
+     * @return Returns {@code true}, if found, otherwise
+     *         {@code false}.
      */
     public static boolean isInList(String name) {
 

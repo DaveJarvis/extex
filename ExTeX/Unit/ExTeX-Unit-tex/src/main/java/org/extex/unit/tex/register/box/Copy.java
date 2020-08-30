@@ -32,14 +32,13 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\copy</code>.
+ * This class provides an implementation for the primitive {@code \copy}.
  * 
- * <doc name="copy">
- * <h3>The Primitive <tt>\copy</tt></h3>
+ * <p>The Primitive {@code \copy}</p>
  * <p>
- * The primitive <tt>\copy</tt> inserts the contents of the named box register
+ * The primitive {@code \copy} inserts the contents of the named box register
  * at the current position. In contrast to the
- * {@link org.extex.unit.tex.register.box.BoxPrimitive <tt>\box</tt>} primitive
+ * {@link org.extex.unit.tex.register.box.BoxPrimitive {@code \box}} primitive
  * the box register is not cleared.
  * </p>
  * <p>
@@ -47,29 +46,29 @@ import org.extex.typesetter.exception.TypesetterException;
  * box contents is used for the assignment.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;copy&rang;
- *      &rarr; <tt>\copy</tt> {@linkplain
+ *      &rarr; {@code \copy} {@linkplain
  *        org.extex.unit.tex.register.box.Setbox#getKey(Context,TokenSource,Typesetter,CodeToken)
  *        &lang;box register name&rang;} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \copy42  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Copy extends AbstractCode implements Boxable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -85,10 +84,7 @@ public class Copy extends AbstractCode implements Boxable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -103,10 +99,7 @@ public class Copy extends AbstractCode implements Boxable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.register.box.BoxPrimitive#getBox(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */

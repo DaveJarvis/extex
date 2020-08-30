@@ -48,8 +48,7 @@ import org.extex.ocpware.type.OcpProgram;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public final class Otp2Ocp {
 
 

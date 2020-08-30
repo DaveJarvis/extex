@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\ocplist</tt>.
+ * This is a test suite for the primitive {@code \ocplist}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class OcplistPrimitiveTest extends ExTeXLauncher {
 
     /**
@@ -48,8 +47,8 @@ public class OcplistPrimitiveTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\ocplist"> Test case checking that <tt>\ocplist</tt>
-     * can not be used in a normal mode. </testcase>
+     * <testcase primitive="\ocplist"> Test case checking that {@code \ocplist}
+     * can not be used in a normal mode.
      * 
      * @throws Exception in case of an error
      */
@@ -63,8 +62,8 @@ public class OcplistPrimitiveTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\ocplist"> Test case checking that <tt>\ocplist</tt>
-     * \relax is no ocp list </testcase>
+     * <testcase primitive="\ocplist"> Test case checking that {@code \ocplist}
+     * \relax is no ocp list
      * 
      * @throws Exception in case of an error
      */

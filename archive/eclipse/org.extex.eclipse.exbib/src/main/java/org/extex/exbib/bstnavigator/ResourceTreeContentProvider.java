@@ -35,12 +35,11 @@ import org.extex.exbib.editor.Activator;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class ResourceTreeContentProvider implements ITreeContentProvider {
 
     /**
-     * The field <tt>invisibleRoot</tt> contains the root of all evil.
+     * The field {@code invisibleRoot} contains the root of all evil.
      */
     private TreeDirectory root;
 
@@ -100,21 +99,11 @@ public class ResourceTreeContentProvider implements ITreeContentProvider {
         return new String[]{"."};
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.IContentProvider#dispose()
-     */
-    public void dispose() {
+public void dispose() {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
-     */
-    public Object[] getChildren(Object parent) {
+public Object[] getChildren(Object parent) {
 
         if (parent instanceof TreeDirectory) {
             return ((TreeDirectory) parent).getChildren();
@@ -138,22 +127,12 @@ public class ResourceTreeContentProvider implements ITreeContentProvider {
         return getChildren(root);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
-     */
-    public Object[] getElements(Object parent) {
+public Object[] getElements(Object parent) {
 
         return getChildren(parent);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
-     */
-    public Object getParent(Object child) {
+public Object getParent(Object child) {
 
         if (child instanceof TreeNode) {
             return ((TreeNode) child).getParent();
@@ -161,12 +140,7 @@ public class ResourceTreeContentProvider implements ITreeContentProvider {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
-     */
-    public boolean hasChildren(Object parent) {
+public boolean hasChildren(Object parent) {
 
         return parent instanceof TreeDirectory
                 && ((TreeDirectory) parent).hasChildren();

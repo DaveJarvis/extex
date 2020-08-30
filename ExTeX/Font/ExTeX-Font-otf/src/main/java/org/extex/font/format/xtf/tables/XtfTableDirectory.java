@@ -19,21 +19,22 @@
 
 package org.extex.font.format.xtf.tables;
 
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Comparator;
-
 import org.extex.font.format.xtf.XtfReader;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
 
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Comparator;
+
 /**
  * Class for a TTF/OTF TableDirectory.
  * 
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <thead>
- * <tr>
+* <tr>
  * <td><b>Type</b></td>
  * <td><b>Name</b></td>
  * <td><b>Description</b></td>
@@ -67,14 +68,14 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class XtfTableDirectory implements XMLWriterConvertible {
 
     /**
      * Class for a TTF TableDirectory-Entry.
      * 
-     * <table border="1">
+     * <table>
+     * <caption>TBD</caption>
      * <thead>
      * <tr>
      * <td><b>Type</b></td>
@@ -109,22 +110,22 @@ public class XtfTableDirectory implements XMLWriterConvertible {
         /**
          * tag (ULONG)
          */
-        private int tag;
+        private final int tag;
 
         /**
          * checkSum (ULONG)
          */
-        private int checkSum;
+        private final int checkSum;
 
         /**
          * offset (ULONG)
          */
-        private int offset;
+        private final int offset;
 
         /**
          * length (ULONG)
          */
-        private int length;
+        private final int length;
 
         /**
          * shift 8
@@ -215,12 +216,7 @@ public class XtfTableDirectory implements XMLWriterConvertible {
             return buf.toString();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        @Override
+    @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("entry");
@@ -238,32 +234,32 @@ public class XtfTableDirectory implements XMLWriterConvertible {
     /**
      * Version (Fixed)
      */
-    private int version;
+    private final int version;
 
     /**
      * Number of tables (USHORT)
      */
-    private short numTables;
+    private final short numTables;
 
     /**
      * searchRange (USHORT)
      */
-    private short searchRange;
+    private final short searchRange;
 
     /**
      * entrySelector (USHORT)
      */
-    private short entrySelector;
+    private final short entrySelector;
 
     /**
      * rangeShift (USHORT)
      */
-    private short rangeShift;
+    private final short rangeShift;
 
     /**
      * entries
      */
-    private Entry[] entries;
+    private final Entry[] entries;
 
     /**
      * Create a new object.
@@ -388,12 +384,7 @@ public class XtfTableDirectory implements XMLWriterConvertible {
         return version;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    @Override
+@Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("tabledirectory");

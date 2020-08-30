@@ -30,14 +30,13 @@ import java.util.Map;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public final class FeatureTag extends Tag {
 
     /**
      * The map for the names.
      */
-    private static Map<String, FeatureTag> map =
+    private static final Map<String, FeatureTag> map =
             new HashMap<String, FeatureTag>(150);
 
     /**
@@ -169,9 +168,9 @@ public final class FeatureTag extends Tag {
         getInstance("vrt2"); // Vertical Alternates and Rotation
         getInstance("zero"); // Slashed Zero
 
-    };
+    }
 
-    /**
+  /**
      * Get a new feature tag.
      * 
      * @param name The name of the feature tag.
@@ -192,8 +191,8 @@ public final class FeatureTag extends Tag {
      * Check, if the name is in the feature tag list.
      * 
      * @param name The name of the feature tag.
-     * @return Returns <code>true</code>, if found, otherwise
-     *         <code>false</code>.
+     * @return Returns {@code true}, if found, otherwise
+     *         {@code false}.
      */
     public static boolean isInList(String name) {
 

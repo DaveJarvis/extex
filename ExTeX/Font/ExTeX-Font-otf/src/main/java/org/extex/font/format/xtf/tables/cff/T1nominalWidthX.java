@@ -26,8 +26,7 @@ import java.util.List;
  * nominalWidthX.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class T1nominalWidthX extends T1DictNumber {
 
     /**

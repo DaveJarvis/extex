@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains exception classes for Bst2Groovy.
+ * Contains exception classes for Bst2Groovy.
  *
  */
 

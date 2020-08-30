@@ -33,12 +33,11 @@ import org.extex.ocpware.compiler.parser.State;
  * This class represents a list of left items.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public class LeftList implements Left {
 
     /**
-     * The field <tt>list</tt> contains the list.
+     * The field {@code list} contains the list.
      */
     private List<Left> list;
 
@@ -53,10 +52,7 @@ public class LeftList implements Left {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.compiler.left.Left#genLeft(
-     *      org.extex.ocpware.compiler.parser.State, CompilerState)
+*      org.extex.ocpware.compiler.parser.State, CompilerState)
      */
     public List<Integer> genLeft(State state, CompilerState cs)
             throws AliasNotDefinedException,
@@ -72,12 +68,7 @@ public class LeftList implements Left {
         return holes;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();

@@ -39,31 +39,25 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\ht</code>.
+ * This class provides an implementation for the primitive {@code \ht}.
  * 
- * <doc name="ht"> <h3>The Primitive <tt>\ht</tt></h3>
+ * <p>The Primitive {@code \ht}</p>
  * <p>
- * The primitive <tt>\ht</tt> refers to the height of a box register. It can be
+ * The primitive {@code \ht} refers to the height of a box register. It can be
  * used in various contexts.
  * </p>
  * <p>
  * The formal description of this primitive is the following:
- * 
+ * </p>
+ *
  * <pre class="syntax">
  *    &lang;ht&rang;
- *      &rarr; <tt>\ht</tt> {@linkplain
- *        org.extex.unit.tex.register.box.Setbox#getKey(Context,TokenSource,Typesetter,CodeToken)
- *        &lang;box register name&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
- *        &lang;equals&rang;} {@linkplain
- *        org.extex.core.dimen#Dimen(Context,TokenSource)
- *        &lang;dimen&rang;}   </pre>
- * 
- * </p>
- * 
- * <h4>Examples</h4>
- * <p>
- * 
+ *      &rarr; {@code \ht}
+ *        &lang;box register name&rang;&lang;equals&rang; &lang;dimen&rang;
+ * </pre>
+ *
+ * <p>Examples</p>
+ *
  * <pre class="TeXSample">
  *    \ht42  </pre>
  * 
@@ -71,13 +65,8 @@ import org.extex.typesetter.exception.TypesetterException;
  *   \advance\dimen12 \ht0
  *   \ht12=123pt
  *  </pre>
- * 
- * </p>
- * </doc>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
  */
 public class Ht extends AbstractAssignment
         implements
@@ -87,7 +76,7 @@ public class Ht extends AbstractAssignment
             DimenConvertible {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -102,10 +91,7 @@ public class Ht extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -125,10 +111,7 @@ public class Ht extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertCount(Context context, TokenSource source,
@@ -138,10 +121,7 @@ public class Ht extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertDimen(Context context, TokenSource source,
@@ -153,10 +133,7 @@ public class Ht extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -167,10 +144,7 @@ public class Ht extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

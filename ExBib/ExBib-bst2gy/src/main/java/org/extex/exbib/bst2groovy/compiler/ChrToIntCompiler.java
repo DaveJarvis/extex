@@ -36,11 +36,10 @@ import org.extex.exbib.bst2groovy.linker.LinkContainer;
 import org.extex.exbib.bst2groovy.linker.LinkingCode;
 
 /**
- * This class implements the analyzer for the <code>chr.to.int$</code> built-in.
+ * This class implements the analyzer for the {@code chr.to.int$} built-in.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ChrToIntCompiler implements Compiler {
 
     /**
@@ -60,10 +59,7 @@ public class ChrToIntCompiler implements Compiler {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GenericCode#optimize(java.util.List,
-         *      int)
+    *      int)
          */
         @Override
         public int optimize(List<GCode> list, int index) {
@@ -84,17 +80,12 @@ public class ChrToIntCompiler implements Compiler {
     }
 
     /**
-     * The field <tt>CHR_TO_INT</tt> contains the linker code.
+     * The field {@code CHR_TO_INT} contains the linker code.
      */
     private static final LinkingCode CHR_TO_INT =
             new LinkingCode("chrToInt()") {
 
-                /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.exbib.bst2groovy.linker.LinkingCode#print(org.extex.exbib.bst2groovy.io.CodeWriter)
-                 */
-                @Override
+            @Override
                 public void print(CodeWriter writer) throws IOException {
 
                     writer
@@ -107,10 +98,7 @@ public class ChrToIntCompiler implements Compiler {
             };
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryReference,
-     *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
+*      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */

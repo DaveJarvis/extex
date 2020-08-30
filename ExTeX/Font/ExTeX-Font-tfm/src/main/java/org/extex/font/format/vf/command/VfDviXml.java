@@ -53,14 +53,13 @@ import org.extex.util.xml.XMLStreamWriter;
  * Convert the dvi values to xml for a virtual font.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class VfDviXml implements DviInterpreter, DviExecuteCommand {
 
     /**
      * The xml writer.
      */
-    private XMLStreamWriter writer;
+    private final XMLStreamWriter writer;
 
     /**
      * Creates a new object.
@@ -76,12 +75,7 @@ public class VfDviXml implements DviInterpreter, DviExecuteCommand {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.DviInterpreter#interpret(org.extex.util.file.random.RandomAccessR)
-     */
-    public void interpret(RandomAccessR rar) throws IOException, FontException {
+public void interpret(RandomAccessR rar) throws IOException, FontException {
 
         while (!rar.isEOF()) {
             DviCommand command = DviCommand.getNextCommand(rar);
@@ -165,10 +159,10 @@ public class VfDviXml implements DviInterpreter, DviExecuteCommand {
     }
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated
+     * The field {@code localizer} contains the localizer. It is initiated
      * with a localizer for the name of this class.
      */
-    private Localizer localizer = LocalizerFactory.getLocalizer(VfDviXml.class);
+    private final Localizer localizer = LocalizerFactory.getLocalizer( VfDviXml.class);
 
     /**
      * write the cmd to the writer.
@@ -182,12 +176,7 @@ public class VfDviXml implements DviInterpreter, DviExecuteCommand {
         writer.writeAttribute("opcode", cmd.getOpcode());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviChar)
-     */
-    public void execute(DviChar command) throws FontException {
+public void execute(DviChar command) throws FontException {
 
         try {
             write(command);
@@ -200,12 +189,7 @@ public class VfDviXml implements DviInterpreter, DviExecuteCommand {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviBOP)
-     */
-    public void execute(DviBOP command) throws FontException {
+public void execute(DviBOP command) throws FontException {
 
         try {
             write(command);
@@ -218,12 +202,7 @@ public class VfDviXml implements DviInterpreter, DviExecuteCommand {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviDown)
-     */
-    public void execute(DviDown command) throws FontException {
+public void execute(DviDown command) throws FontException {
 
         try {
             write(command);
@@ -236,12 +215,7 @@ public class VfDviXml implements DviInterpreter, DviExecuteCommand {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviEOP)
-     */
-    public void execute(DviEOP command) throws FontException {
+public void execute(DviEOP command) throws FontException {
 
         try {
             write(command);
@@ -254,12 +228,7 @@ public class VfDviXml implements DviInterpreter, DviExecuteCommand {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviFntDef)
-     */
-    public void execute(DviFntDef command) throws FontException {
+public void execute(DviFntDef command) throws FontException {
 
         try {
             write(command);
@@ -274,12 +243,7 @@ public class VfDviXml implements DviInterpreter, DviExecuteCommand {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviFntNum)
-     */
-    public void execute(DviFntNum command) throws FontException {
+public void execute(DviFntNum command) throws FontException {
 
         try {
             write(command);
@@ -292,12 +256,7 @@ public class VfDviXml implements DviInterpreter, DviExecuteCommand {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviPOP)
-     */
-    public void execute(DviPOP command) throws FontException {
+public void execute(DviPOP command) throws FontException {
 
         try {
             write(command);
@@ -310,12 +269,7 @@ public class VfDviXml implements DviInterpreter, DviExecuteCommand {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviNOP)
-     */
-    public void execute(DviNOP command) throws FontException {
+public void execute(DviNOP command) throws FontException {
 
         try {
             write(command);
@@ -328,12 +282,7 @@ public class VfDviXml implements DviInterpreter, DviExecuteCommand {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviPost)
-     */
-    public void execute(DviPost command) throws FontException {
+public void execute(DviPost command) throws FontException {
 
         try {
             write(command);
@@ -346,12 +295,7 @@ public class VfDviXml implements DviInterpreter, DviExecuteCommand {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviPostPost)
-     */
-    public void execute(DviPostPost command) throws FontException {
+public void execute(DviPostPost command) throws FontException {
 
         try {
             write(command);
@@ -364,12 +308,7 @@ public class VfDviXml implements DviInterpreter, DviExecuteCommand {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviPre)
-     */
-    public void execute(DviPre command) throws FontException {
+public void execute(DviPre command) throws FontException {
 
         try {
             write(command);
@@ -382,12 +321,7 @@ public class VfDviXml implements DviInterpreter, DviExecuteCommand {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviPush)
-     */
-    public void execute(DviPush command) throws FontException {
+public void execute(DviPush command) throws FontException {
 
         try {
             write(command);
@@ -400,12 +334,7 @@ public class VfDviXml implements DviInterpreter, DviExecuteCommand {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviRight)
-     */
-    public void execute(DviRight command) throws FontException {
+public void execute(DviRight command) throws FontException {
 
         try {
             write(command);
@@ -418,12 +347,7 @@ public class VfDviXml implements DviInterpreter, DviExecuteCommand {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviRule)
-     */
-    public void execute(DviRule command) throws FontException {
+public void execute(DviRule command) throws FontException {
 
         try {
             write(command);
@@ -437,12 +361,7 @@ public class VfDviXml implements DviInterpreter, DviExecuteCommand {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviW)
-     */
-    public void execute(DviW command) throws FontException {
+public void execute(DviW command) throws FontException {
 
         try {
             write(command);
@@ -455,12 +374,7 @@ public class VfDviXml implements DviInterpreter, DviExecuteCommand {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviX)
-     */
-    public void execute(DviX command) throws FontException {
+public void execute(DviX command) throws FontException {
 
         try {
             write(command);
@@ -473,12 +387,7 @@ public class VfDviXml implements DviInterpreter, DviExecuteCommand {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviXXX)
-     */
-    public void execute(DviXXX command) throws FontException {
+public void execute(DviXXX command) throws FontException {
 
         try {
             write(command);
@@ -491,12 +400,7 @@ public class VfDviXml implements DviInterpreter, DviExecuteCommand {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviY)
-     */
-    public void execute(DviY command) throws FontException {
+public void execute(DviY command) throws FontException {
 
         try {
             write(command);
@@ -509,12 +413,7 @@ public class VfDviXml implements DviInterpreter, DviExecuteCommand {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviZ)
-     */
-    public void execute(DviZ command) throws FontException {
+public void execute(DviZ command) throws FontException {
 
         try {
             write(command);

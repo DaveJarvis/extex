@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains primitives to alter the interaction mode.
+ * Contains primitives to alter the interaction mode.
  */
 
 package org.extex.unit.tex.interaction;

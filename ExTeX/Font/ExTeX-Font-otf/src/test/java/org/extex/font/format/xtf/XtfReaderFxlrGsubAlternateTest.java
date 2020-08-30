@@ -38,14 +38,13 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * Tests for the <code>XtfReader</code> with opentype files (GSUB-Alternate).
+ * Tests for the {@code XtfReader} with opentype files (GSUB-Alternate).
  * <p>
  * data from ttx
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 @Ignore
 public class XtfReaderFxlrGsubAlternateTest {
 

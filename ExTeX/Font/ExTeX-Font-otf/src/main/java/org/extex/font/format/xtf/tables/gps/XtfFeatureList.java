@@ -19,14 +19,14 @@
 
 package org.extex.font.format.xtf.tables.gps;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.extex.font.format.xtf.tables.tag.FeatureTag;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * List of Feature.
@@ -39,21 +39,22 @@ import org.extex.util.xml.XMLWriterConvertible;
  * tables (FeatureList) that enumerate all the features in a font. Features in a
  * particular FeatureList are not limited to any single script. A FeatureList
  * contains the entire list of either the GSUB or GPOS features that are used to
- * render the glyphs in all the scripts in the font. <br/>
+ * render the glyphs in all the scripts in the font. <br>
  * The FeatureList table enumerates features in an array of records
  * (FeatureRecord) and specifies the total number of features (FeatureCount).
  * Every feature must have a FeatureRecord, which consists of a FeatureTag that
  * identifies the feature and an offset to a Feature table (described next). The
- * FeatureRecord array is arranged alphabetically by FeatureTag names. <br/>
+ * FeatureRecord array is arranged alphabetically by FeatureTag names. <br>
  * Note: The values stored in the FeatureIndex array of a LangSys table are used
  * to locate records in the FeatureRecord array of a FeatureList table.
  * </p>
  * <p>
  * FeatureList table
  * </p>
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td><b>Type</b></td>
+* <td><b>Type</b></td>
  * <td><b>Name</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -70,13 +71,12 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </tr>
  * </table>
  * <p>
- * </p>
- * <p>
  * FeatureRecord
  * </p>
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td><b>Type</b></td>
+* <td><b>Type</b></td>
  * <td><b>Name</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -91,12 +91,9 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>Offset to Feature table-from beginning of FeatureList</td>
  * </tr>
  * </table>
- * <p>
- * </p>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class XtfFeatureList implements XMLWriterConvertible {
 
     /**
@@ -109,27 +106,27 @@ public class XtfFeatureList implements XMLWriterConvertible {
         /**
          * feature params
          */
-        private int featureParams;
+        private final int featureParams;
 
         /**
          * The index.
          */
-        private int idx;
+        private final int idx;
 
         /**
          * lookup count
          */
-        private int lookupCount;
+        private final int lookupCount;
 
         /**
          * lookup list index
          */
-        private int[] lookupListIndex;
+        private final int[] lookupListIndex;
 
         /**
          * The tag.
          */
-        private String tag;
+        private final String tag;
 
         /**
          * Create a new object
@@ -166,11 +163,11 @@ public class XtfFeatureList implements XMLWriterConvertible {
         }
 
         // /**
-        // * Returns the Lookup with the type or <code>null</code>, if not
+        // * Returns the Lookup with the type or {@code null}, if not
         // * found.
         // *
         // * @param type The type of the lookup.
-        // * @return Returns the Lookup with the type or <code>null</code>, if
+        // * @return Returns the Lookup with the type or {@code null}, if
         // * not found.
         // */
         // public XtfLookup getLookup(int type) {
@@ -259,12 +256,7 @@ public class XtfFeatureList implements XMLWriterConvertible {
             return buf.toString();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        @Override
+    @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("feature");
@@ -297,17 +289,17 @@ public class XtfFeatureList implements XMLWriterConvertible {
         /**
          * The index.
          */
-        private int idx;
+        private final int idx;
 
         /**
          * offset
          */
-        private int offset;
+        private final int offset;
 
         /**
          * tag
          */
-        private int tag;
+        private final int tag;
 
         /**
          * Create a new object
@@ -377,12 +369,7 @@ public class XtfFeatureList implements XMLWriterConvertible {
             return buf.toString();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        @Override
+    @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("record");
@@ -397,27 +384,27 @@ public class XtfFeatureList implements XMLWriterConvertible {
     /**
      * feature count
      */
-    private int featureCount;
+    private final int featureCount;
 
     /**
      * The map for the features (to improve the search in the list).
      */
-    private Map<String, Feature> featureMap;
+    private final Map<String, Feature> featureMap;
 
     /**
      * feature records
      */
-    private Record[] featureRecords;
+    private final Record[] featureRecords;
 
     /**
      * features
      */
-    private Feature[] features;
+    private final Feature[] features;
 
     /**
      * The gsub table.
      */
-    private AbstractXtfSFLTable gsub;
+    private final AbstractXtfSFLTable gsub;
 
     /**
      * Create a new object
@@ -452,7 +439,7 @@ public class XtfFeatureList implements XMLWriterConvertible {
      * Find a feature.
      * 
      * @param tag the tag
-     * @return Returns a feature or <code>null</code>, if not found.
+     * @return Returns a feature or {@code null}, if not found.
      */
     public Feature findFeature(FeatureTag tag) {
 
@@ -512,16 +499,11 @@ public class XtfFeatureList implements XMLWriterConvertible {
     public String toString() {
 
         StringBuilder buf = new StringBuilder("FeatureList\n");
-        buf.append("   feature count : " + String.valueOf(featureCount) + '\n');
+        buf.append("   feature count : " + featureCount + '\n');
         return buf.toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    @Override
+@Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("featurelist");

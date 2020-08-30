@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains primitives for the prefixes which can be used to
+ * Contains primitives for the prefixes which can be used to
  * modify the behaviour of other primitives.
  */
 

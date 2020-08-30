@@ -28,8 +28,7 @@ import org.extex.scanner.type.token.Token;
  * a macro is expanded.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public interface ExpandMacroObserver {
 
     /**
@@ -37,7 +36,7 @@ public interface ExpandMacroObserver {
      *
      * @param token the token to be expanded
      * @param code The code to which the token is expanded. This might be
-     *  <code>null</code> for undefined macros
+     *  {@code null} for undefined macros
      * @param locator the locator
      */
     void update(Token token, Code code, Locator locator);

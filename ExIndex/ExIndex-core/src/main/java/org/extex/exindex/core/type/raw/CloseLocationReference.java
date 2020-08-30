@@ -30,8 +30,7 @@ import org.extex.exindex.core.type.attribute.AttributesContainer;
  * This interface describes a close location specification.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6617 $
- */
+*/
 public class CloseLocationReference extends LocationReference {
 
     /**
@@ -46,10 +45,7 @@ public class CloseLocationReference extends LocationReference {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.raw.LocationReference#check(
-     *      java.util.logging.Logger,
+*      java.util.logging.Logger,
      *      org.extex.exindex.core.type.raw.RawIndexentry,
      *      StructuredIndex,
      *      org.extex.exindex.core.type.LocationClassContainer, java.util.List,

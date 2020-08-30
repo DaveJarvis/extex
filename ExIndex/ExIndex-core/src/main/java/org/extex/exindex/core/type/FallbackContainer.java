@@ -25,8 +25,7 @@ import org.extex.exindex.core.type.markup.Markup;
  * This interface describes the handling of several fallback scenarios.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface FallbackContainer {
 
     /**

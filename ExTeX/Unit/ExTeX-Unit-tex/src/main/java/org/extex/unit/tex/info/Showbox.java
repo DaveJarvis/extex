@@ -34,94 +34,94 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.register.box.Setbox;
 
 /**
- * This class provides an implementation for the primitive <code>\showbox</code>
+ * This class provides an implementation for the primitive {@code \showbox}
  * .
  * 
- * <doc name="showbox"> <h3>The Primitive <tt>\showbox</tt></h3>
+ * <p>The Primitive {@code \showbox}</p>
  * <p>
- * The primitive <tt>\showbox</tt> produces a listing of the box register given
+ * The primitive {@code \showbox} produces a listing of the box register given
  * as parameter. The listing is restricted in breadth and depth by the count
- * registers <tt>\showboxbreadth</tt> and <tt>\showboxdepth</tt> respectively.
+ * registers {@code \showboxbreadth} and {@code \showboxdepth} respectively.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;showbox&rang;
- *      &rarr; <tt>\showbox</tt> {@linkplain
+ *      &rarr; {@code \showbox} {@linkplain
  *        org.extex.unit.tex.register.box.Setbox#getKey(Context,TokenSource,Typesetter,CodeToken)
  *        &lang;box&nbsp;register&nbsp;name&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \showbox 1  </pre>
  * 
- * </doc>
+ *
  * 
- * 
- * <doc name="showboxbreadth" type="register"> <h3>The Count Parameter
- * <tt>\showboxbreadth</tt></h3>
+ * <p>The Count Parameter {@code \showboxbreadth}</p>
  * <p>
- * The count register <tt>\showboxbreadth</tt> contains the breadth to which the
- * box produced by <tt>\showbox</tt> should be presented.
+ * The count register {@code \showboxbreadth} contains the breadth to which the
+ * box produced by {@code \showbox} should be presented.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;showboxbreadth&rang;
- *      &rarr; <tt>\showboxbreadth</tt> {@linkplain
+ *      &rarr; {@code \showboxbreadth} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \showboxbreadth=16  </pre>
  * 
- * </doc>
+ *
  * 
- * 
- * <doc name="showboxdepth" type="register"> <h3>The Count Parameter
- * <tt>\showboxdepth</tt></h3>
+ * <p>The Count Parameter {@code \showboxdepth}</p>
  * <p>
- * The count register <tt>\showboxdepth</tt> contains the depth to which the box
- * produced by <tt>\showbox</tt> should be presented.
+ * The count register {@code \showboxdepth} contains the depth to which the box
+ * produced by {@code \showbox} should be presented.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;showboxdepth&rang;
- *      &rarr; <tt>\showboxdepth</tt> {@linkplain
+ *      &rarr; {@code \showboxdepth} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \showboxdepth=16  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Showbox extends AbstractCode implements LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>logger</tt> contains the target channel for the message.
+     * The field {@code logger} contains the target channel for the message.
      */
     private transient Logger logger = null;
 
@@ -149,10 +149,7 @@ public class Showbox extends AbstractCode implements LogEnabled {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

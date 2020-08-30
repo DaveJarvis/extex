@@ -29,7 +29,7 @@ import org.extex.exbib.core.io.Locator;
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X built-in function <code>type$</code>
+ * >e</span>X built-in function {@code type$}
  * <p>
  * If the function is executed in the context of a current entry the type of
  * this entry is pushed to the stack as a string. The type is always normalized
@@ -39,9 +39,9 @@ import org.extex.exbib.core.io.Locator;
  * If the function is executed outside the scope of a current entry then the
  * empty string is pushed to the stack.
  * </p>
- * <img src="doc-files/type.png"/>
+ * <img src="doc-files/type.png" alt="type">
  * <p>
- * The following example is taken from <tt>alpha.bst</tt>:
+ * The following example is taken from {@code alpha.bst}:
  * </p>
  * 
  * <pre>
@@ -50,21 +50,16 @@ import org.extex.exbib.core.io.Locator;
  *   or
  * </pre>
  * 
- * <hr />
+ * <hr>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X documentation:
- * <dt>
+ * <dt>BibTeX documentation</dt>
  * <dd>Pushes the current entry's type (book, article, etc.), but pushes the
  * null string if the type is either unknown or undefined.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Type extends AbstractCode {
 
     /**
@@ -85,10 +80,7 @@ public class Type extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {

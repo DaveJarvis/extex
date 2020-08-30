@@ -99,8 +99,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * Reader for a TrueType / OpenType font.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class XtfReader implements XMLWriterConvertible {
 
     /**
@@ -192,7 +191,7 @@ public class XtfReader implements XMLWriterConvertible {
     public static final int EBSC = 0x45425343;
 
     /**
-     * The field <tt>EXTEX_TRACE_FONT_FILES</tt>.
+     * The field {@code EXTEX_TRACE_FONT_FILES}.
      */
     public static final String EXTEX_TRACE_FONT_FILES =
             "extex.trace.font.files";
@@ -1109,7 +1108,7 @@ public class XtfReader implements XMLWriterConvertible {
      * @param glyphname The glyph name.
      * @param fontnumber The font number.
      * 
-     * @return Returns <code>true</code>, if the font has the glyph.
+     * @return Returns {@code true}, if the font has the glyph.
      */
     public boolean hasGlyph(String glyphname, int fontnumber) {
 
@@ -1129,7 +1128,7 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Returns the bounding box for the char by using the platform and encoding.
-     * If no char is found, <code>null</code> be returned.
+     * If no char is found, {@code null} be returned.
      * 
      * @param charCode The charCode.
      * @param fontnumber The font number.
@@ -1158,7 +1157,7 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Returns the glyph bounding box for the char by using the platform and
-     * encoding. If no char is found, <code>null</code> be returned.
+     * encoding. If no char is found, {@code null} be returned.
      * 
      * @param glypname The glyph name.
      * @param fontnumber The font number.
@@ -1190,7 +1189,7 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Returns the glyph name for the char by using the platform and encoding.
-     * If no char is found, <code>null</code> will be returned.
+     * If no char is found, {@code null} will be returned.
      * 
      * @param charCode The char code.
      * @param fontnumber The font number.
@@ -1256,7 +1255,7 @@ public class XtfReader implements XMLWriterConvertible {
      * @param charcodeLeft The left char code.
      * @param charcodeRigth The right char code.
      * @param feature The feature tag.
-     * @param language The language (<code>null</code> for default).
+     * @param language The language ({@code null} for default).
      * @param fontnumber The font number.
      * @param platformId The platform id.
      * @param encodingId The encoding id.

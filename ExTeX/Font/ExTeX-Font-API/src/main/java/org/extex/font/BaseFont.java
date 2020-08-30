@@ -23,8 +23,7 @@ package org.extex.font;
  * Interface for the font.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public interface BaseFont {
 
     /**

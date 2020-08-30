@@ -32,34 +32,34 @@ import org.extex.unit.omega.OmegaExtension;
 import org.extex.unit.omega.ocp.util.OcpList;
 
 /**
- * This class provides an implementation for the primitive <tt>\pushocplist</tt>
+ * This class provides an implementation for the primitive {@code \pushocplist}
  * .
  * 
- * <doc name="pushocplist"> <h3>The Primitive <tt>\pushocplist</tt></h3>
+ * <p>The Primitive {@code \pushocplist}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;pushocplist&rang;
- *      &rarr; <tt>\pushocplist</tt> ...  </pre>
+ *      &rarr; {@code \pushocplist} ...  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  * \pushocplist </pre>
  * 
- * </doc>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Pushocplist extends AbstractCode {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
@@ -75,10 +75,7 @@ public class Pushocplist extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

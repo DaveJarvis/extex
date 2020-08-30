@@ -23,8 +23,7 @@ package org.extex.font;
  * Interface for a back-end font.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public interface BackendFont {
 
     /**
@@ -42,44 +41,44 @@ public interface BackendFont {
     String getName();
 
     /**
-     * Returns the pfa data, or <code>null</code>, if not available. TODO mgn
+     * Returns the pfa data, or {@code null}, if not available. TODO mgn
      * raus
      * 
-     * @return Returns the pfa data, or <code>null</code>, if not available.
+     * @return Returns the pfa data, or {@code null}, if not available.
      */
     byte[] getPfa();
 
     /**
-     * Returns the pfb data, or <code>null</code>, if not available. TODO mgn
+     * Returns the pfb data, or {@code null}, if not available. TODO mgn
      * raus
      * 
-     * @return Returns the pfb data, or <code>null</code>, if not available.
+     * @return Returns the pfb data, or {@code null}, if not available.
      */
     byte[] getPfb();
 
     /**
-     * Returns the xtf data, or <code>null</code>, if not available. TODO mgn
+     * Returns the xtf data, or {@code null}, if not available. TODO mgn
      * raus
      * 
-     * @return Returns the xtf data, or <code>null</code>, if not available.
+     * @return Returns the xtf data, or {@code null}, if not available.
      */
     byte[] getXtf();
 
     /**
-     * Returns <code>true</code>, if the font is a type 1 font (with afm/pfb),
-     * otherwise <code>false</code>. TODO mgn raus
+     * Returns {@code true}, if the font is a type 1 font (with afm/pfb),
+     * otherwise {@code false}. TODO mgn raus
      * 
-     * @return Returns <code>true</code>, if the font is a type 1 font (with
-     *         afm/pfb), otherwise <code>false</code>.
+     * @return Returns {@code true}, if the font is a type 1 font (with
+     *         afm/pfb), otherwise {@code false}.
      */
     boolean isType1();
 
     /**
-     * Returns <code>true</code>, if the font is a ttf/otf font, otherwise
-     * <code>false</code>. TODO mgn raus
+     * Returns {@code true}, if the font is a ttf/otf font, otherwise
+     * {@code false}. TODO mgn raus
      * 
-     * @return Returns <code>true</code>, if the font is a ttf/otf font,
-     *         otherwise <code>false</code>.
+     * @return Returns {@code true}, if the font is a ttf/otf font,
+     *         otherwise {@code false}.
      */
     boolean isXtf();
 

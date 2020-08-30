@@ -32,7 +32,7 @@ import org.extex.util.file.random.RandomAccessR;
  * subsequent portions of the file. (12 x 16-bit interger) or (6 words x 32 bit)
  * </p>
  * 
- * <table border="1"> <thead>
+ * <table> <caption>TBD</caption> <thead>
  * <tr>
  * <td><b>name</b></td>
  * <td><b>description</b></td>
@@ -94,8 +94,7 @@ import org.extex.util.file.random.RandomAccessR;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TfmHeaderLengths implements Serializable {
 
     /**
@@ -109,7 +108,7 @@ public class TfmHeaderLengths implements Serializable {
     private static final int MAXCHARS = 255;
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 1L;
 

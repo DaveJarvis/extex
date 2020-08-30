@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\DefaultOutputMode</tt>.
+ * This is a test suite for the primitive {@code \DefaultOutputMode}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DefaultOutputModeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
@@ -50,7 +49,7 @@ public class DefaultOutputModeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\DefaultOutputMode"> Test case checking that
-     * <tt>\DefaultOutputMode</tt> works needs an argument. </testcase>
+     * {@code \DefaultOutputMode} works needs an argument.
      * 
      * @throws Exception in case of an error
      */
@@ -65,8 +64,8 @@ public class DefaultOutputModeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\DefaultOutputMode"> Test case checking that
-     * <tt>\DefaultOutputMode</tt> needs a known output mode as argument.
-     * </testcase>
+     * {@code \DefaultOutputMode} needs a known output mode as argument.
+     *
      * 
      * @throws Exception in case of an error
      */

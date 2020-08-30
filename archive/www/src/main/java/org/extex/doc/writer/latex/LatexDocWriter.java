@@ -28,8 +28,7 @@ import org.extex.doc.writer.DocWriter;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LatexDocWriter implements DocWriter {
 
     /**
@@ -40,23 +39,13 @@ public class LatexDocWriter implements DocWriter {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.doc.writer.DocWriter#execute(java.util.Map)
-     */
-    public void execute(Map<String, Doc> map) {
+public void execute(Map<String, Doc> map) {
 
         // TODO gene: execute unimplemented
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.doc.writer.DocWriter#setTarget(java.lang.String)
-     */
-    public void setTarget(String targetDir) {
+public void setTarget(String targetDir) {
 
         // TODO gene: setTarget unimplemented
 

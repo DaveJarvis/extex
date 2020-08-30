@@ -30,16 +30,15 @@ import java.util.List;
  * This class represents a compiled omega program.
  * 
  * 
- * <h3>The &Omega;CP File Format</h3>
+ * <p>The &Omega;CP File Format</p>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5975 $
- */
+*/
 public class OcpProgram implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
@@ -146,30 +145,30 @@ public class OcpProgram implements Serializable {
     }
 
     /**
-     * The field <tt>input</tt> contains the input parameter. The default is
+     * The field {@code input} contains the input parameter. The default is
      * 2.
      */
     private int input = 2;
 
     /**
-     * The field <tt>length</tt> contains the length for dumping. A negative
+     * The field {@code length} contains the length for dumping. A negative
      * value is used to indicate an undefined state.
      */
     private int length = -1;
 
     /**
-     * The field <tt>output</tt> contains the output parameter. The default is
+     * The field {@code output} contains the output parameter. The default is
      * 2.
      */
     private int output = 2;
 
     /**
-     * The field <tt>states</tt> contains the states.
+     * The field {@code states} contains the states.
      */
     private List<int[]> states = new ArrayList<int[]>();
 
     /**
-     * The field <tt>tables</tt> contains the tables.
+     * The field {@code tables} contains the tables.
      */
     private List<int[]> tables = new ArrayList<int[]>();
 

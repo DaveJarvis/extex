@@ -33,11 +33,11 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\box</code>.
+ * This class provides an implementation for the primitive {@code \box}.
  * 
- * <doc name="box"> <h3>The Primitive <tt>\box</tt></h3>
+ * <p>The Primitive {@code \box}</p>
  * <p>
- * The primitive <tt>\box</tt> inserts the contents of the named box register at
+ * The primitive {@code \box} inserts the contents of the named box register at
  * the current position. In addition the box register is cleared.
  * </p>
  * <p>
@@ -45,29 +45,29 @@ import org.extex.typesetter.exception.TypesetterException;
  * box is cleared and the former contents is used for the assignment.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;box&rang;
- *      &rarr; <tt>\box</tt> {@linkplain
+ *      &rarr; {@code \box} {@linkplain
  *        org.extex.unit.tex.register.box.Setbox#getKey(Context,TokenSource,Typesetter,CodeToken)
  *        &lang;box register name&rang;} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \box42  </pre>
  * 
- * </doc>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class BoxPrimitive extends AbstractCode implements Boxable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -82,10 +82,7 @@ public class BoxPrimitive extends AbstractCode implements Boxable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -101,10 +98,7 @@ public class BoxPrimitive extends AbstractCode implements Boxable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.box.Boxable#getBox(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
     @Override

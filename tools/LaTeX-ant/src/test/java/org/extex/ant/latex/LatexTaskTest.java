@@ -33,8 +33,7 @@ import org.apache.tools.ant.BuildFileTest;
  * This is a test suite for the LaTeX ant task.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 7598 $
- */
+*/
 public class LatexTaskTest extends BuildFileTest {
 
     private static final String DIR_TARGET = "build";

@@ -31,12 +31,11 @@ import org.extex.exbib.core.bst.token.Token;
  * This class wraps a token and acts like void code.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class CodeBlock implements GCode {
 
     /**
-     * The field <tt>t</tt> contains the token.
+     * The field {@code t} contains the token.
      */
     private Token t;
 
@@ -60,75 +59,42 @@ public class CodeBlock implements GCode {
         return t;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#getType()
-     */
-    public ReturnType getType() {
+public ReturnType getType() {
 
         return ReturnType.VOID;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#hasSideEffect()
-     */
-    @Override
+@Override
     public boolean hasSideEffect() {
 
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#optimize()
-     */
-    public GCode optimize() {
+public GCode optimize() {
 
         return this;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#optimize(java.util.List, int)
-     */
-    public int optimize(List<GCode> list, int index) {
+public int optimize(List<GCode> list, int index) {
 
         return index + 1;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
-     *      java.lang.String)
+*      java.lang.String)
      */
     public void print(CodeWriter writer, String prefix) throws IOException {
 
         throw new ImpossibleException(t.toString());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return t.toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#unify(org.extex.exbib.bst2groovy.data.GCode)
-     */
-    public boolean unify(GCode other) {
+public boolean unify(GCode other) {
 
         if (other instanceof Var) {
             return other.unify(this);

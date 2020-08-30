@@ -23,8 +23,7 @@ package org.extex.font.format.dvi.command;
  * DVI: fnt_num: set the font.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class DviFntNum extends DviCommand {
 
@@ -36,7 +35,7 @@ public class DviFntNum extends DviCommand {
     /**
      * the font
      */
-    private int font;
+    private final int font;
 
     /**
      * Create a new object.
@@ -61,12 +60,7 @@ public class DviFntNum extends DviCommand {
         return font;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviCommand#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         StringBuilder buf = new StringBuilder();

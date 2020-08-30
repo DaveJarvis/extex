@@ -32,12 +32,11 @@ import org.junit.Test;
  * This is a test suite for {@link DBImpl}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DBImplTest {
 
     /**
-     * <testcase> Check the initial settings. </testcase>
+     *  Check the initial settings.
      * 
      * @throws Exception in case of an error
      */
@@ -58,7 +57,7 @@ public class DBImplTest {
     }
 
     /**
-     * <testcase> Check registerObserver(). </testcase>
+     *  Check registerObserver().
      * 
      * @throws Exception in case of an error
      */
@@ -69,7 +68,7 @@ public class DBImplTest {
     }
 
     /**
-     * <testcase> Check registerObserver(). </testcase>
+     *  Check registerObserver().
      * 
      * @throws Exception in case of an error
      */
@@ -80,9 +79,8 @@ public class DBImplTest {
     }
 
     /**
-     * <testcase> Storing an alias leads to an error when the referenced entry
-     * is missing . </testcase>
-     * 
+     * Storing an alias leads to an error when the referenced entry is missing 
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = ExBibEntryUndefinedException.class)

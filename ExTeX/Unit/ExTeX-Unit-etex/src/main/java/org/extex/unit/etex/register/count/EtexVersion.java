@@ -31,15 +31,14 @@ import org.extex.unit.tex.register.count.AbstractReadonlyCount;
  * This abstract base class provides the methods an read only count primitive.
  * 
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
- * @version $Revision: 4732 $
- */
+*/
 
 public class EtexVersion extends AbstractReadonlyCount {
 
     // TODO: this is the same as in eTeX, put this in etex.xml (TE)
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the id for serialization.
+     * The field {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -60,10 +59,7 @@ public class EtexVersion extends AbstractReadonlyCount {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,

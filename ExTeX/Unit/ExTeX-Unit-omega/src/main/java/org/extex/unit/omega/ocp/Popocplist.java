@@ -32,35 +32,34 @@ import org.extex.unit.omega.ocp.util.OcpList;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\popocplist</code>.
+ * {@code \popocplist}.
  * 
- * <doc name="popocplist">
- * <h3>The Primitive <tt>\popocplist</tt></h3>
+ * <p>The Primitive {@code \popocplist}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;popocplist&rang;
- *      &rarr; <tt>\popocplist</tt>  </pre>
+ *      &rarr; {@code \popocplist}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  * \popocplist </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Popocplist extends AbstractCode {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
@@ -76,10 +75,7 @@ public class Popocplist extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

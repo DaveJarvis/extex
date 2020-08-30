@@ -23,12 +23,11 @@ package org.extex.backend.documentWriter.exception;
  * DocumentWriter: FontException.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class DocumentWriterFontException extends DocumentWriterException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 1L;

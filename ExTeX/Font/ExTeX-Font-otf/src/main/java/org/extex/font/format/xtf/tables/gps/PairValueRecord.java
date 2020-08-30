@@ -36,9 +36,10 @@ import org.extex.util.xml.XMLWriterConvertible;
  * similarly, if ValueFormat2 is 0, Value2 will be empty.
  * </p>
  * 
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td><b>Value</b></td>
+* <td><b>Value</b></td>
  * <td><b>Type</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -61,30 +62,29 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class PairValueRecord implements XMLWriterConvertible {
 
     /**
      * The index.
      */
-    private int idx;
+    private final int idx;
 
     /**
      * Positioning data for the first and second glyph.
      */
-    private PairValue pairValue;
+    private final PairValue pairValue;
 
     /**
      * GlyphID of second glyph in the pair-first glyph is listed in the Coverage
      * table.
      */
-    private int secondGlyph;
+    private final int secondGlyph;
 
     /**
      * The glyph name.
      */
-    private XtfGlyphName xtfGlyph;
+    private final XtfGlyphName xtfGlyph;
 
     /**
      * Creates a new object.
@@ -145,12 +145,7 @@ public class PairValueRecord implements XMLWriterConvertible {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("pairvaluerecord");
         writer.writeAttribute("ID", idx);

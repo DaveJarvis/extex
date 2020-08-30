@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains definitions for the stop observer.
+ * Contains definitions for the stop observer.
  */
 
 package org.extex.interpreter.observer.stop;

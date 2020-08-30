@@ -29,8 +29,7 @@ import org.extex.scanner.type.token.Token;
  * This class represents a \end{document} instruction.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class EndDocument extends GenericMacro {
 
     /**
@@ -43,12 +42,7 @@ public class EndDocument extends GenericMacro {
         super(spec);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Macro#parse( Token, Parser)
-     */
-    @Override
+@Override
     public Node parse(Token token, Parser parser) throws ScannerException {
 
         parser.closeFileStream();

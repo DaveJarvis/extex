@@ -25,11 +25,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * Test for the primitive <tt>jobname</tt>.
+ * Test for the primitive {@code jobname}.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class JobnameTest {
 
     /**

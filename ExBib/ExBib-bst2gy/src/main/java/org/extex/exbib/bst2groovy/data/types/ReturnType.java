@@ -22,32 +22,21 @@ package org.extex.exbib.bst2groovy.data.types;
  * This enumeration represents the return types in the target language.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public enum ReturnType {
 
     /**
-     * The field <tt>INT</tt> contains the indicator for an integer.
+     * The field {@code INT} contains the indicator for an integer.
      */
     INT {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.types.ReturnType#getArg()
-         */
-        @Override
+    @Override
         public String getArg() {
 
             return "0";
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.types.ReturnType#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return "int";
@@ -55,27 +44,17 @@ public enum ReturnType {
 
     },
     /**
-     * The field <tt>STRING</tt> contains the indicator for a String.
+     * The field {@code STRING} contains the indicator for a String.
      */
     STRING {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.types.ReturnType#getArg()
-         */
-        @Override
+    @Override
         public String getArg() {
 
             return "\"\"";
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.types.ReturnType#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return "String";
@@ -83,27 +62,17 @@ public enum ReturnType {
 
     },
     /**
-     * The field <tt>VOID</tt> contains the indicator for a procedure.
+     * The field {@code VOID} contains the indicator for a procedure.
      */
     VOID {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.types.ReturnType#getArg()
-         */
-        @Override
+    @Override
         public String getArg() {
 
             return "\"\"";
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.types.ReturnType#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return "void";
@@ -111,27 +80,17 @@ public enum ReturnType {
 
     },
     /**
-     * The field <tt>CODE</tt> contains the indicator for a definition.
+     * The field {@code CODE} contains the indicator for a definition.
      */
     CODE {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.types.ReturnType#getArg()
-         */
-        @Override
+    @Override
         public String getArg() {
 
             return "\"\"";
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.types.ReturnType#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return "def";
@@ -139,27 +98,17 @@ public enum ReturnType {
 
     },
     /**
-     * The field <tt>UNKNOWN</tt> contains the indicator for an unknown type.
+     * The field {@code UNKNOWN} contains the indicator for an unknown type.
      */
     UNKNOWN {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.types.ReturnType#getArg()
-         */
-        @Override
+    @Override
         public String getArg() {
 
             return "''";
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.types.ReturnType#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return "???";
@@ -167,28 +116,18 @@ public enum ReturnType {
 
     },
     /**
-     * The field <tt>MULTI</tt> contains the indicator for a multi-valued
+     * The field {@code MULTI} contains the indicator for a multi-valued
      * return.
      */
     MULTI {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.types.ReturnType#getArg()
-         */
-        @Override
+    @Override
         public String getArg() {
 
             return "[]";
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.types.ReturnType#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return "???";

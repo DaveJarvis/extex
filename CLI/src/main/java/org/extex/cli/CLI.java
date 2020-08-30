@@ -48,29 +48,28 @@ import org.extex.cli.exception.UnusedArgumentCliException;
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- *
+*
  * @deprecated Replace with a third-party annotation-based parser.
  */
 public class CLI {
 
     /**
-     * The field <tt>EXIT_FAIL</tt> contains the exit code for failure.
+     * The field {@code EXIT_FAIL} contains the exit code for failure.
      */
     public static final int EXIT_FAIL = -1;
 
     /**
-     * The field <tt>EXIT_OK</tt> contains the exit code for success.
+     * The field {@code EXIT_OK} contains the exit code for success.
      */
     public static final int EXIT_OK = 0;
 
     /**
-     * The field <tt>EXIT_CONTINUE</tt> contains the exit code for no exit.
+     * The field {@code EXIT_CONTINUE} contains the exit code for no exit.
      */
     public static final int EXIT_CONTINUE = Integer.MAX_VALUE;
 
     /**
-     * The field <tt>options</tt> contains the mapping from actual arguments to
+     * The field {@code options} contains the mapping from actual arguments to
      * closures for options.
      */
     private final Map<String, Option> options = new HashMap<String, Option>();
@@ -109,7 +108,7 @@ public class CLI {
      * </pre>
      * 
      * <p>
-     * The name <code>null</code> has a special meaning. It denotes the fallback
+     * The name {@code null} has a special meaning. It denotes the fallback
      * handler for any option not otherwise recognized. When declaring a default
      * handler any previously existing fallback handler is overwritten.
      * </p>
@@ -117,7 +116,7 @@ public class CLI {
      * @param name the name of the argument
      * @param opt the option handler
      * 
-     * @return <code>true</code> iff something has been registered
+     * @return {@code true} iff something has been registered
      */
     public boolean declareOption(String name, Option opt) {
 
@@ -145,17 +144,17 @@ public class CLI {
      * usage information.
      * 
      * @param bundle the resource bundle for the descriptions or
-     *        <code>null</code>
+     *        {@code null}
      * @param tagBefore the tag of the resource bundle entry to be inserted at
-     *        the beginning; it can be <code>null</code>; then nothing is
+     *        the beginning; it can be {@code null}; then nothing is
      *        inserted at the beginning
      * @param tagAfter the tag of the resource bundle entry to be inserted at
-     *        the end; it can be <code>null</code>; then nothing is inserted at
+     *        the end; it can be {@code null}; then nothing is inserted at
      *        the end
      * @param args additional arguments for the before and after text
      * 
      * @return the description or the empty string if the resource bundle is
-     *         <code>null</code>.
+     *         {@code null}.
      */
     public String describeOptions(ResourceBundle bundle, String tagBefore,
             String tagAfter, Object... args) {
@@ -232,7 +231,7 @@ public class CLI {
      * Declare an option for the argument given and one with a hyphen prefixed
      * for each name given.
      * 
-     * @param shortcut the character to be used as shortcut or <code>null</code>
+     * @param shortcut the character to be used as shortcut or {@code null}
      *        for none
      * @param name the name of the option
      * @param opt the option
@@ -268,7 +267,7 @@ public class CLI {
      * </p>
      * <p>
      * If no handler is found for the option name given then the handler for the
-     * key <code>null</code> is used as fallback &ndash; if it is defined.
+     * key {@code null} is used as fallback &ndash; if it is defined.
      * </p>
      * 
      * @param args the list of arguments

@@ -54,31 +54,30 @@ import org.extex.logging.LogFormatter;
  * This is an abstract base class for main programs.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractMain extends CLI {
 
     /**
-     * The field <tt>COPYING_RESOURCE</tt> contains the name of the resource for
+     * The field {@code COPYING_RESOURCE} contains the name of the resource for
      * the copyright file (in the jar).
      */
     private static final String COPYING_RESOURCE =
             "org/extex/exbib/main/COPYING";
 
     /**
-     * The field <tt>PROP_LANG</tt> contains the name of the property for the
+     * The field {@code PROP_LANG} contains the name of the property for the
      * language to use.
      */
     private static final String PROP_LANG = "language";
 
     /**
-     * The field <tt>PROP_LOGFILE</tt> contains the name of the property for the
+     * The field {@code PROP_LOGFILE} contains the name of the property for the
      * log file.
      */
     public static final String PROP_LOGFILE = "exbib.logfile";
 
     /**
-     * The field <tt>PROP_PROGNAME</tt> contains the name of the property from
+     * The field {@code PROP_PROGNAME} contains the name of the property from
      * which the name of the program is extracted.
      */
     public static final String PROP_PROGNAME = "program.name";
@@ -115,39 +114,39 @@ public abstract class AbstractMain extends CLI {
     }
 
     /**
-     * The field <tt>banner</tt> contains the indicator that the banner has
+     * The field {@code banner} contains the indicator that the banner has
      * already been printed.
      */
     private boolean banner = false;
 
     /**
-     * The field <tt>logger</tt> contains the logger.
+     * The field {@code logger} contains the logger.
      */
     private Logger logger;
 
     /**
-     * The field <tt>bundle</tt> contains the resource bundle for i18n.
+     * The field {@code bundle} contains the resource bundle for i18n.
      */
     private ResourceBundle bundle;
 
     /**
-     * The field <tt>version</tt> contains the version number.
+     * The field {@code version} contains the version number.
      */
     private final String version;
 
     /**
-     * The field <tt>inceptionYear</tt> contains the first year of development.
+     * The field {@code inceptionYear} contains the first year of development.
      */
     private final int inceptionYear;
 
     /**
-     * The field <tt>consoleHandler</tt> contains the console handler for log
+     * The field {@code consoleHandler} contains the console handler for log
      * messages. It can be used to modify the log level for the console.
      */
     private Handler consoleHandler;
 
     /**
-     * The field <tt>properties</tt> contains the settings for the program.
+     * The field {@code properties} contains the settings for the program.
      */
     private Properties properties = null;
 
@@ -470,7 +469,7 @@ public abstract class AbstractMain extends CLI {
      * 
      * @param key the property name
      * 
-     * @return the value of the named property or <code>null</code>
+     * @return the value of the named property or {@code null}
      */
     public String getProperty(String key) {
 
@@ -483,7 +482,7 @@ public abstract class AbstractMain extends CLI {
      * @param tag the resource tag
      * @param args the arguments to be inserted
      * 
-     * @return the exit code <code>-1</code>
+     * @return the exit code {@code -1}
      */
     protected int info(String tag, Object... args) {
 
@@ -495,7 +494,7 @@ public abstract class AbstractMain extends CLI {
      * 
      * @param file the file to consider
      * 
-     * @return <code>true</code> iff the file could be read
+     * @return {@code true} iff the file could be read
      * 
      * @throws IOException in case of an IO Error during the reading of the
      *         properties file
@@ -521,7 +520,7 @@ public abstract class AbstractMain extends CLI {
      * @param tag the resource tag
      * @param args the arguments to be inserted
      * 
-     * @return the exit code <code>1</code>
+     * @return the exit code {@code 1}
      */
     private int log(Level level, String tag, Object... args) {
 
@@ -539,7 +538,7 @@ public abstract class AbstractMain extends CLI {
      * @param tag the resource tag
      * @param args the arguments to be inserted
      * 
-     * @return the exit code <code>1</code>
+     * @return the exit code {@code 1}
      */
     protected int log(String tag, Object... args) {
 
@@ -549,7 +548,7 @@ public abstract class AbstractMain extends CLI {
     /**
      * Write the banner to the logger. The used log level is warning.
      * 
-     * @return the exit code <code>EXIT_FAILURE</code>
+     * @return the exit code {@code EXIT_FAILURE}
      */
     protected int logBanner() {
 
@@ -567,7 +566,7 @@ public abstract class AbstractMain extends CLI {
      * @param tag the resource tag of the message pattern
      * @param args the arguments
      * 
-     * @return the exit code <code>1</code>
+     * @return the exit code {@code 1}
      */
     public int logBanner(String tag, Object... args) {
 
@@ -582,7 +581,7 @@ public abstract class AbstractMain extends CLI {
      * Write the banner and the copyright to the logger. The used log level is
      * warning.
      * 
-     * @return the exit code <code>EXIT_FAIL</code>
+     * @return the exit code {@code EXIT_FAIL}
      */
     protected int logBannerCopyright() {
 
@@ -645,7 +644,7 @@ public abstract class AbstractMain extends CLI {
      * @param tag the resource tag for the format pattern
      * @param debug indicator whether or not to produce a printed stack trace
      * 
-     * @return the exit code <code>1</code>
+     * @return the exit code {@code 1}
      */
     protected int logException(Throwable e, String tag, boolean debug) {
 

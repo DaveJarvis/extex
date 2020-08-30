@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\box</tt>.
+ * This is a test suite for the primitive {@code \box}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BoxTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -48,8 +47,8 @@ public class BoxTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\box"> Test case checking that <tt>\box</tt> needs
-     * a key. </testcase>
+     * <testcase primitive="\box"> Test case checking that {@code \box} needs
+     * a key. 
      * 
      * @throws Exception in case of an error
      */

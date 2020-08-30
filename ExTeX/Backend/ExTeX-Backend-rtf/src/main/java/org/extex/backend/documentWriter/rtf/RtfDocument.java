@@ -37,54 +37,53 @@ import org.extex.typesetter.tc.font.Font;
  * This class provides a container for an RTF document.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class RtfDocument {
 
     /**
-     * The field <tt>author</tt> contains the name of the author.
+     * The field {@code author} contains the name of the author.
      */
     private String author = ".";
 
     /**
-     * The field <tt>buffer</tt> contains the buffer of the contents.
+     * The field {@code buffer} contains the buffer of the contents.
      */
     private ByteArrayOutputStream buffer = new ByteArrayOutputStream();
 
     /**
-     * The field <tt>colorMap</tt> contains the mapping from colors to an
+     * The field {@code colorMap} contains the mapping from colors to an
      * index.
      */
     private Map<Rgb8Color, Integer> colorMap =
             new HashMap<Rgb8Color, Integer>();
 
     /**
-     * The field <tt>colorTable</tt> contains the list of colors used.
+     * The field {@code colorTable} contains the list of colors used.
      */
     private List<Rgb8Color> colorTable = new ArrayList<Rgb8Color>();
 
     /**
-     * The field <tt>creator</tt> contains the name of the creating program.
+     * The field {@code creator} contains the name of the creating program.
      */
     private String creator = ".";
 
     /**
-     * The field <tt>fontMap</tt> contains the mapping from Fonts to an index.
+     * The field {@code fontMap} contains the mapping from Fonts to an index.
      */
     private Map<String, Integer> fontMap = new HashMap<String, Integer>();
 
     /**
-     * The field <tt>fontTable</tt> contains the table of fonts used.
+     * The field {@code fontTable} contains the table of fonts used.
      */
     private List<Font> fontTable = new ArrayList<Font>();
 
     /**
-     * The field <tt>pages</tt> contains the number of pages.
+     * The field {@code pages} contains the number of pages.
      */
     private int pages = 0;
 
     /**
-     * The field <tt>title</tt> contains the title of the document.
+     * The field {@code title} contains the title of the document.
      */
     private String title = ".";
 

@@ -30,17 +30,16 @@ import org.extex.exindex.makeindex.pages.PageProcessor;
  * This class is an indexer a la makeindex.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6731 $
- */
+*/
 public class Index {
 
     /**
-     * The field <tt>params</tt> contains the parameters.
+     * The field {@code params} contains the parameters.
      */
     private final Parameters params;
 
     /**
-     * The field <tt>content</tt> contains the mapping from key to lists of
+     * The field {@code content} contains the mapping from key to lists of
      * entries with this key.
      */
     private List<Entry> content = new ArrayList<Entry>();

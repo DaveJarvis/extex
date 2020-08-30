@@ -28,8 +28,7 @@ import org.extex.core.exception.helping.HelpingException;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public interface ContextCount {
 
     /**
@@ -37,16 +36,16 @@ public interface ContextCount {
      * registers are named, either with a number or an arbitrary string.
      * <p>
      * The numbered registers where limited to 256 in TeX. This restriction does not longer hold for
-     * ??TeX.
+     * εχTeX.
      * </p>
      * <p>
-     * The return value is guaranteed to be a valid object. <code>null</code>
+     * The return value is guaranteed to be a valid object. {@code null}
      * will never be returned.
      * </p>
      * 
      * @param name the name or number of the count register
      * 
-     * @return the count register or <code>null</code> if it is not defined
+     * @return the count register or {@code null} if it is not defined
      * 
      * @see #setCount(String, long, boolean)
      */
@@ -57,11 +56,11 @@ public interface ContextCount {
      * requested groups. Count registers are named, either with a number or an
      * arbitrary string. The numbered registers where limited to 256 in
      * TeX. This restriction does no longer hold for
-     * ??TeX.
+     * εχTeX.
      * 
      * @param name the name or the number of the register
      * @param value the new value of the register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @throws HelpingException in case of an error

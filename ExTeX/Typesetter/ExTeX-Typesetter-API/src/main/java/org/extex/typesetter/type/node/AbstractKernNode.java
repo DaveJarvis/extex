@@ -27,18 +27,14 @@ import org.extex.typesetter.type.NodeVisitor;
 /**
  * This class provides the same functionality as
  * {@link org.extex.typesetter.type.node.KernNode KernNode} but is
- * distinguishable for the sake of some fine differentiations in <logo>T<span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>.
+ * distinguishable for the sake of some fine differentiations in TeX.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public abstract class AbstractKernNode extends AbstractNode implements KernNode {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2009L;
@@ -65,11 +61,7 @@ public abstract class AbstractKernNode extends AbstractNode implements KernNode 
      * @param prefix the prefix string inserted at the beginning of each line
      * @param breadth the breadth
      * @param depth the depth
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [191]"
-     * @see org.extex.typesetter.type.Node#toString(StringBuilder,
+* @see org.extex.typesetter.type.Node#toString(StringBuilder,
      *      java.lang.String, int, int)
      */
     @Override

@@ -39,8 +39,7 @@ import javax.xml.transform.stream.StreamSource;
  * Transform a xml-file with a xslt-file.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public final class Transform {
 

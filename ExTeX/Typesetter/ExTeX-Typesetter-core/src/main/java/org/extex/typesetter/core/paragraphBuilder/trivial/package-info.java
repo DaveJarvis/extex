@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains an implementation of a paragraph builder for ??TeX.
+ * Contains an implementation of a paragraph builder for εχTeX.
  * This implementation is rather simple.
  */
 

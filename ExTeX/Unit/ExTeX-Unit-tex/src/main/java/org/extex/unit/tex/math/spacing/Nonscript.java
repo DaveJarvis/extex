@@ -33,36 +33,35 @@ import org.extex.unit.tex.math.AbstractMathCode;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\nonscript</code>.
+ * {@code \nonscript}.
  * 
- * <doc name="nonscript">
- * <h3>The Math Primitive <tt>\nonscript</tt></h3>
+ * <p>The Math Primitive {@code \nonscript}</p>
  * <p>
  * The primitive can be used in math modes only. It cancels following glue if
  * the current style is script style or scriptscript style.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;nonscript&rang;
- *       &rarr; <tt>\nonscript</tt>  </pre>
+ *       &rarr; {@code \nonscript}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \nonscript  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Nonscript extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -78,10 +77,7 @@ public class Nonscript extends AbstractMathCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

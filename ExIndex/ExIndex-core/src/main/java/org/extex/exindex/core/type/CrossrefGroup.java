@@ -33,19 +33,18 @@ import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
  * This class represents a cross-reference group.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class CrossrefGroup implements LocationClassGroup {
 
     /**
-     * The field <tt>map</tt> contains the mapping of layers to a
+     * The field {@code map} contains the mapping of layers to a
      * cross-reference.
      */
     private final Map<String[], CrossReference> map =
             new HashMap<String[], CrossReference>();
 
     /**
-     * The field <tt>clazz</tt> contains the class.
+     * The field {@code clazz} contains the class.
      */
     private final String clazz;
 
@@ -75,10 +74,7 @@ public class CrossrefGroup implements LocationClassGroup {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.LocationClassGroup#write(java.io.Writer,
-     *      org.extex.exindex.lisp.LInterpreter, MarkupContainer, boolean)
+*      org.extex.exindex.lisp.LInterpreter, MarkupContainer, boolean)
      */
     public void write(Writer writer, LInterpreter interpreter,
             MarkupContainer markupContainer, boolean trace)

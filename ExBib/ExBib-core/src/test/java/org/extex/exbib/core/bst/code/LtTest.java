@@ -35,15 +35,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>&lt;</tt>.
+ * Test suite for {@code &lt;}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LtTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -85,7 +84,7 @@ public class LtTest {
     }
 
     /**
-     * <testcase> A short stack leads to an error. </testcase>
+     *  A short stack leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -97,7 +96,7 @@ public class LtTest {
     }
 
     /**
-     * <testcase> An empty stack leads to an error. </testcase>
+     *  An empty stack leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -108,7 +107,7 @@ public class LtTest {
     }
 
     /**
-     * <testcase> Test 0 &lt; 0. </testcase>
+     *  Test 0 &lt; 0.
      * 
      * @throws Exception in case of an error
      */
@@ -119,7 +118,7 @@ public class LtTest {
     }
 
     /**
-     * <testcase> Test 1 &lt; 0. </testcase>
+     *  Test 1 &lt; 0.
      * 
      * @throws Exception in case of an error
      */
@@ -130,7 +129,7 @@ public class LtTest {
     }
 
     /**
-     * <testcase> Test 1 &lt; 1. </testcase>
+     *  Test 1 &lt; 1.
      * 
      * @throws Exception in case of an error
      */
@@ -141,7 +140,7 @@ public class LtTest {
     }
 
     /**
-     * <testcase> Test 1 &lt; 2. </testcase>
+     *  Test 1 &lt; 2.
      * 
      * @throws Exception in case of an error
      */
@@ -152,7 +151,7 @@ public class LtTest {
     }
 
     /**
-     * <testcase> Test 123 &lt; 123. </testcase>
+     *  Test 123 &lt; 123.
      * 
      * @throws Exception in case of an error
      */
@@ -163,7 +162,7 @@ public class LtTest {
     }
 
     /**
-     * <testcase> Test 123 &lt; -123. </testcase>
+     *  Test 123 &lt; -123.
      * 
      * @throws Exception in case of an error
      */
@@ -174,7 +173,7 @@ public class LtTest {
     }
 
     /**
-     * <testcase> Test 1 &lt; -1. </testcase>
+     *  Test 1 &lt; -1.
      * 
      * @throws Exception in case of an error
      */
@@ -185,7 +184,7 @@ public class LtTest {
     }
 
     /**
-     * <testcase> Test 2 &lt; 1. </testcase>
+     *  Test 2 &lt; 1.
      * 
      * @throws Exception in case of an error
      */
@@ -196,7 +195,7 @@ public class LtTest {
     }
 
     /**
-     * <testcase> Test 2 &lt; 2. </testcase>
+     *  Test 2 &lt; 2.
      * 
      * @throws Exception in case of an error
      */
@@ -207,7 +206,7 @@ public class LtTest {
     }
 
     /**
-     * <testcase> Test -123 &lt; 123. </testcase>
+     *  Test -123 &lt; 123.
      * 
      * @throws Exception in case of an error
      */
@@ -218,7 +217,7 @@ public class LtTest {
     }
 
     /**
-     * <testcase> Test -1 &lt; -2. </testcase>
+     *  Test -1 &lt; -2.
      * 
      * @throws Exception in case of an error
      */
@@ -228,7 +227,7 @@ public class LtTest {
     }
 
     /**
-     * <testcase> Test -2 &lt; -1. </testcase>
+     *  Test -2 &lt; -1.
      * 
      * @throws Exception in case of an error
      */
@@ -239,8 +238,8 @@ public class LtTest {
     }
 
     /**
-     * <testcase> A type error in the first argument leads to an error.
-     * </testcase>
+     *  A type error in the first argument leads to an error.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -253,8 +252,8 @@ public class LtTest {
     }
 
     /**
-     * <testcase> A type error in the second argument leads to an error.
-     * </testcase>
+     *  A type error in the second argument leads to an error.
+     *
      * 
      * @throws Exception in case of an error
      */

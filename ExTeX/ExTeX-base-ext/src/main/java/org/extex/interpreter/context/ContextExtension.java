@@ -54,7 +54,7 @@ public interface ContextExtension extends Serializable {
      * 
      * @param name the name or the number of the register
      * @param real the new value of the register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setReal(String name, Real real, boolean global);
@@ -66,7 +66,7 @@ public interface ContextExtension extends Serializable {
      * 
      * @param name the name or number of the real register
      * 
-     * @return the real register or <code>null</code> if it is not defined
+     * @return the real register or {@code null} if it is not defined
      */
     Real getReal(String name);
 
@@ -89,7 +89,7 @@ public interface ContextExtension extends Serializable {
      * 
      * @param name the name or the number of the register
      * @param value the new value of the register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setBool(String name, Bool value, boolean global);
@@ -100,7 +100,7 @@ public interface ContextExtension extends Serializable {
      * Bool registers are named, either with a number or an arbitrary string.
      * 
      * @param name the name or number of the register
-     * @return the bool register or <code>null</code> if it is not defined
+     * @return the bool register or {@code null} if it is not defined
      */
     Bool getBool(String name);
 
@@ -121,7 +121,7 @@ public interface ContextExtension extends Serializable {
      * 
      * @param name the name or the number of the register
      * @param value the new value of the register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setPair(String name, Pair value, boolean global);
@@ -132,7 +132,7 @@ public interface ContextExtension extends Serializable {
      * string.
      * 
      * @param name the name or number of the register
-     * @return the bool register or <code>null</code> if it is not defined
+     * @return the bool register or {@code null} if it is not defined
      */
     Pair getPair(String name);
 
@@ -155,7 +155,7 @@ public interface ContextExtension extends Serializable {
      * 
      * @param name the name or the number of the register
      * @param value the new value of the register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setTransform(String name, Transform value, boolean global);
@@ -167,7 +167,7 @@ public interface ContextExtension extends Serializable {
      * arbitrary string.
      * 
      * @param name the name or number of the register
-     * @return the bool register or <code>null</code> if it is not defined
+     * @return the bool register or {@code null} if it is not defined
      */
     Transform getTransform(String name);
 
@@ -190,7 +190,7 @@ public interface ContextExtension extends Serializable {
      * 
      * @param name the name or the number of the register
      * @param value the new value of the register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setHashToks(String name, HashToks value, boolean global);
@@ -202,7 +202,7 @@ public interface ContextExtension extends Serializable {
      * arbitrary string.
      * 
      * @param name the name or number of the register
-     * @return the bool register or <code>null</code> if it is not defined
+     * @return the bool register or {@code null} if it is not defined
      */
     HashToks getHashToks(String name);
 

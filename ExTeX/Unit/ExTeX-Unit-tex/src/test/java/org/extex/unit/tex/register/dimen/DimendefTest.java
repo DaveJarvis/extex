@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\dimendef</tt>.
+ * This is a test suite for the primitive {@code \dimendef}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DimendefTest extends AbstractDimenRegisterTester {
 
     /**
@@ -49,8 +48,8 @@ public class DimendefTest extends AbstractDimenRegisterTester {
 
     /**
      * <testcase primitive="\dimendef"> Test case checking that
-     * <tt>\dimendef</tt> creates a dimen assignable control sequence which is
-     * equivalent to the <tt>\dimen</tt>. </testcase>
+     * {@code \dimendef} creates a dimen assignable control sequence which is
+     * equivalent to the {@code \dimen}. 
      * 
      * @throws Exception in case of an error
      */
@@ -65,7 +64,7 @@ public class DimendefTest extends AbstractDimenRegisterTester {
 
     /**
      * <testcase primitive="\dimendef"> Test case checking that
-     * <tt>\dimendef</tt> respects a group. </testcase>
+     * {@code \dimendef} respects a group. 
      * 
      * @throws Exception in case of an error
      */
@@ -80,7 +79,7 @@ public class DimendefTest extends AbstractDimenRegisterTester {
 
     /**
      * <testcase primitive="\dimendef"> Test case checking that
-     * <tt>\dimendef</tt> respects a group. </testcase>
+     * {@code \dimendef} respects a group. 
      * 
      * @throws Exception in case of an error
      */
@@ -96,7 +95,7 @@ public class DimendefTest extends AbstractDimenRegisterTester {
 
     /**
      * <testcase primitive="\dimendef"> Test case checking that
-     * <tt>\dimendef</tt> respects <tt>\globaldefs</tt>. </testcase>
+     * {@code \dimendef} respects {@code \globaldefs}. 
      * 
      * @throws Exception in case of an error
      */
@@ -112,8 +111,8 @@ public class DimendefTest extends AbstractDimenRegisterTester {
 
     /**
      * <testcase primitive="\dimendef"> Test case checking that
-     * <tt>\dimendef</tt> produces a control sequence which is convertible
-     * into a count. </testcase>
+     * {@code \dimendef} produces a control sequence which is convertible
+     * into a count. 
      * 
      * @throws Exception in case of an error
      */

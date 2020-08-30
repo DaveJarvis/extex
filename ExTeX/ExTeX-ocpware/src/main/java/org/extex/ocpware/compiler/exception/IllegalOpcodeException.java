@@ -24,18 +24,17 @@ package org.extex.ocpware.compiler.exception;
  * encountered which is not defined.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class IllegalOpcodeException extends RuntimeException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>n</tt> contains the number encountered
+     * The field {@code n} contains the number encountered
      */
     private int n;
 
@@ -49,12 +48,7 @@ public class IllegalOpcodeException extends RuntimeException {
         this.n = n;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Throwable#getMessage()
-     */
-    @Override
+@Override
     public String getMessage() {
 
         return "Illegal opcode (" + Integer.toString(n) + ")";

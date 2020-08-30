@@ -42,12 +42,11 @@ import static org.junit.Assert.assertEquals;
  * This is a test suite for makeindex compatibility.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 6732 $
- */
+*/
 public class Makeindex1Test {
 
     /**
-     * The field <tt>FINDER</tt> contains the resource finder.
+     * The field {@code FINDER} contains the resource finder.
      */
     private static final ResourceFinder FINDER = new ResourceFinder() {
 
@@ -93,9 +92,8 @@ public class Makeindex1Test {
     }
 
     /**
-     * <testcase> Test that doc.ist can be read and the index from the users
-     * guide can be processed. </testcase>
-     * 
+     * Test that doc.ist can be read and the index from the users guide can be processed
+* 
      * @throws Exception in case of an error
      */
     @Test

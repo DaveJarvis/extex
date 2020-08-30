@@ -26,16 +26,14 @@ import java.util.List;
  * This class is a validator for page numbers.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class PageManager {
 
     /**
      * This interface describes a validator.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
-     */
+    */
     private interface Validator {
 
         /**
@@ -43,7 +41,7 @@ public class PageManager {
          *
          * @param page the page number to check
          *
-         * @return <code>true</code> iff the number is a valid page number.
+         * @return {@code true} iff the number is a valid page number.
          */
         boolean valid(int page);
     }
@@ -52,17 +50,16 @@ public class PageManager {
      * This class provides a container for a pair of integers.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
-     */
+    */
     private static class Range implements Validator {
 
         /**
-         * The field <tt>max</tt> contains the highest value.
+         * The field {@code max} contains the highest value.
          */
         private int max;
 
         /**
-         * The field <tt>min</tt> contains the lowest value.
+         * The field {@code min} contains the lowest value.
          */
         private int min;
 
@@ -83,7 +80,7 @@ public class PageManager {
          *
          * @param page the page number to check
          *
-         * @return <code>true</code> iff the number is contained in the range.
+         * @return {@code true} iff the number is contained in the range.
          */
         public boolean valid(int page) {
 
@@ -92,8 +89,8 @@ public class PageManager {
     }
 
     /**
-     * The field <tt>pages</tt> contains the list of validators. If the value is
-     * <code>null</code> then all pages are selected.
+     * The field {@code pages} contains the list of validators. If the value is
+     * {@code null} then all pages are selected.
      */
     private List<Range> pages = null;
 
@@ -235,7 +232,7 @@ public class PageManager {
      *
      * @param page the page number to check
      *
-     * @return <code>true</code> iff the page is in a selected range
+     * @return {@code true} iff the page is in a selected range
      */
     public boolean isSelected(int page) {
 

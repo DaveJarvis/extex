@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains support classes for the integer numbers.
+ * Contains support classes for the integer numbers.
  */
 
 package org.extex.unit.base.register.count;

@@ -19,20 +19,21 @@
 
 package org.extex.font.format.xtf.tables;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.extex.font.format.xtf.XtfReader;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * The 'kern' table contains the values that adjust the intercharacter spacing
  * for glyphs in a font.
  * 
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tbody>
  * <tr>
  * <td><b>Type</b></td>
@@ -49,13 +50,12 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <tr>
  * <td>uint32</td>
  * <td>nTables</td>
- * </td> The number of subtables included in the kerning table.</td>
+ * <td>The number of subtables included in the kerning table.</td>
  * </tr>
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TtfTableKERN extends AbstractXtfTable
         implements
             XtfTable,
@@ -69,17 +69,17 @@ public class TtfTableKERN extends AbstractXtfTable
         /**
          * left
          */
-        private int left;
+        private final int left;
 
         /**
          * right
          */
-        private int right;
+        private final int right;
 
         /**
          * value
          */
-        private short value;
+        private final short value;
 
         /**
          * Create a new object.
@@ -124,12 +124,7 @@ public class TtfTableKERN extends AbstractXtfTable
             return value;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        @Override
+    @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("kerningpair");
@@ -205,8 +200,9 @@ public class TtfTableKERN extends AbstractXtfTable
      * This is the only format that will be properly interpreted by Windows and
      * OS/2.
      * </p>
-     * 
-     * <table BORDER="1">
+     *
+     * <table>
+     * <caption>TBD</caption>
      * <tbody>
      * <tr>
      * <td><b>Type</b></td>
@@ -246,11 +242,12 @@ public class TtfTableKERN extends AbstractXtfTable
      * This is followed by the list of kerning pairs and values. Each has the
      * following format:
      * </p>
-     * 
-     * <table BORDER="1">
+     *
+     * <table>
+     * <caption>TBD</caption>
      * <tbody>
      * <tr>
-     * <b>Type</b></td>
+     * <td><b>Type</b></td>
      * <td><b>Field</b></td>
      * <td><b>Description</b></td>
      * </tr>
@@ -280,27 +277,27 @@ public class TtfTableKERN extends AbstractXtfTable
         /**
          * entry selector
          */
-        private int entrySelector;
+        private final int entrySelector;
 
         /**
          * kerning pairs
          */
-        private KerningPair[] kerningPairs;
+        private final KerningPair[] kerningPairs;
 
         /**
          * number of pairs
          */
-        private int nPairs;
+        private final int nPairs;
 
         /**
          * range shift
          */
-        private int rangeShift;
+        private final int rangeShift;
 
         /**
          * search range
          */
-        private int searchRange;
+        private final int searchRange;
 
         /**
          * Create a new object
@@ -332,23 +329,13 @@ public class TtfTableKERN extends AbstractXtfTable
             return entrySelector;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.TtfTableKERN.KernSubtable#getKerning(int)
-         */
-        @Override
+    @Override
         public KerningPair getKerning(int i) {
 
             return kerningPairs[i];
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.TtfTableKERN.KernSubtable#getKerningCount()
-         */
-        @Override
+    @Override
         public int getKerningCount() {
 
             return nPairs;
@@ -374,12 +361,7 @@ public class TtfTableKERN extends AbstractXtfTable
             return searchRange;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        @Override
+    @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("kernsubtable");
@@ -401,9 +383,10 @@ public class TtfTableKERN extends AbstractXtfTable
      * This subtable is a two-dimensional array of kerning values.
      * </p>
      * 
-     * <table BORDER="1">
-     * <tbody>
-     * <tr>
+     * <table>
+ * <caption>TBD</caption>
+* <tbody>
+ * <tr>
      * <td><b>Type</b></td>
      * <td><b>Field</b></td>
      * <td><b>Description</b></td>
@@ -436,14 +419,15 @@ public class TtfTableKERN extends AbstractXtfTable
      * Each class table has the following header:
      * </p>
      * 
-     * <table BORDER="1">
+     * <table>
+     * <caption>TBD</caption>
      * <tbody>
      * <tr>
      * <td><b>Type</b></td>
      * <td><b>Field</b></td>
      * <td><b>Description</b></td>
      * </tr>
-     * <tbody>
+     * </tbody>
      * <tr>
      * <td>USHORT</td>
      * <td>firstGlyph</td>
@@ -461,22 +445,22 @@ public class TtfTableKERN extends AbstractXtfTable
         /**
          * array
          */
-        private int array;
+        private final int array;
 
         /**
          * left class table
          */
-        private int leftClassTable;
+        private final int leftClassTable;
 
         /**
          * rigth class table
          */
-        private int rightClassTable;
+        private final int rightClassTable;
 
         /**
          * row width
          */
-        private int rowWidth;
+        private final int rowWidth;
 
         /**
          * Create a new object.
@@ -502,23 +486,13 @@ public class TtfTableKERN extends AbstractXtfTable
             return array;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.TtfTableKERN.KernSubtable#getKerning(int)
-         */
-        @Override
+    @Override
         public KerningPair getKerning(int i) {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.TtfTableKERN.KernSubtable#getKerningCount()
-         */
-        @Override
+    @Override
         public int getKerningCount() {
 
             return 0;
@@ -554,12 +528,7 @@ public class TtfTableKERN extends AbstractXtfTable
             return rowWidth;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        @Override
+    @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("kernsubtable");
@@ -574,22 +543,22 @@ public class TtfTableKERN extends AbstractXtfTable
     /**
      * The map for the entries.
      */
-    private Map<String, Integer> kernmap = new HashMap<String, Integer>();
+    private final Map<String, Integer> kernmap = new HashMap<String, Integer>();
 
     /**
      * number of tables
      */
-    private int nTables;
+    private final int nTables;
 
     /**
      * kerntables
      */
-    private KernSubtable[] tables;
+    private final KernSubtable[] tables;
 
     /**
      * version
      */
-    private int version;
+    private final int version;
 
     /**
      * Create a new object
@@ -664,12 +633,7 @@ public class TtfTableKERN extends AbstractXtfTable
     // -----------------------------------------
     // -----------------------------------------
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
-     */
-    @Override
+@Override
     public String getShortcut() {
 
         return "kern";
@@ -697,12 +661,7 @@ public class TtfTableKERN extends AbstractXtfTable
         return XtfReader.KERN;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    @Override
+@Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writeStartElement(writer);

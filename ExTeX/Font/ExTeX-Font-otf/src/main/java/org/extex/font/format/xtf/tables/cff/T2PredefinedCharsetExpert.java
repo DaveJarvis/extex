@@ -29,8 +29,7 @@ import java.util.Map;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public final class T2PredefinedCharsetExpert {
 
@@ -257,9 +256,9 @@ public final class T2PredefinedCharsetExpert {
         }
 
         return -1;
-    };
+    }
 
-    /**
+  /**
      * no instance
      */
     private T2PredefinedCharsetExpert() {

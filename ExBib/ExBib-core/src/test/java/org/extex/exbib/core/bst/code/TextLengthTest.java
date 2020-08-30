@@ -34,15 +34,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>text.length$</tt>.
+ * Test suite for {@code text.length$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TextLengthTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -83,7 +82,7 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> The "a" has length 1. </testcase>
+     *  The "a" has length 1.
      * 
      * @throws Exception in case of an error
      */
@@ -94,7 +93,7 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> The "a!" has length 2. </testcase>
+     *  The "a!" has length 2.
      * 
      * @throws Exception in case of an error
      */
@@ -105,7 +104,7 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> The "a!}" has length 2. </testcase>
+     *  The "a!}" has length 2.
      * 
      * @throws Exception in case of an error
      */
@@ -116,7 +115,7 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> The "a!}}" has length 2. </testcase>
+     *  The "a!}}" has length 2.
      * 
      * @throws Exception in case of an error
      */
@@ -127,7 +126,7 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> The "a!}}}" has length 2. </testcase>
+     *  The "a!}}}" has length 2.
      * 
      * @throws Exception in case of an error
      */
@@ -138,7 +137,7 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> The "a." has length 2. </testcase>
+     *  The "a." has length 2.
      * 
      * @throws Exception in case of an error
      */
@@ -149,7 +148,7 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> The "a.}" has length 2. </testcase>
+     *  The "a.}" has length 2.
      * 
      * @throws Exception in case of an error
      */
@@ -160,7 +159,7 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> The "a.}}" has length 2. </testcase>
+     *  The "a.}}" has length 2.
      * 
      * @throws Exception in case of an error
      */
@@ -171,7 +170,7 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> The "a.}}}" has length 2. </testcase>
+     *  The "a.}}}" has length 2.
      * 
      * @throws Exception in case of an error
      */
@@ -182,7 +181,7 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> The "ac!" has length 3. </testcase>
+     *  The "ac!" has length 3.
      * 
      * @throws Exception in case of an error
      */
@@ -193,7 +192,7 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> The "ac!}" has length 3. </testcase>
+     *  The "ac!}" has length 3.
      * 
      * @throws Exception in case of an error
      */
@@ -204,7 +203,7 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> The "ac!}}" has length 3. </testcase>
+     *  The "ac!}}" has length 3.
      * 
      * @throws Exception in case of an error
      */
@@ -215,7 +214,7 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> The "ac!}}}" has length 3. </testcase>
+     *  The "ac!}}}" has length 3.
      * 
      * @throws Exception in case of an error
      */
@@ -226,7 +225,7 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> The "ac." has length 3. </testcase>
+     *  The "ac." has length 3.
      * 
      * @throws Exception in case of an error
      */
@@ -237,7 +236,7 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> The "ac.}" has length 3. </testcase>
+     *  The "ac.}" has length 3.
      * 
      * @throws Exception in case of an error
      */
@@ -248,7 +247,7 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> The "ac.}}" has length 3. </testcase>
+     *  The "ac.}}" has length 3.
      * 
      * @throws Exception in case of an error
      */
@@ -259,7 +258,7 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> The "ac.}}" has length 3. </testcase>
+     *  The "ac.}}" has length 3.
      * 
      * @throws Exception in case of an error
      */
@@ -270,8 +269,8 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> The control sequence \" at level 0 has no influence.
-     * </testcase>
+     *  The control sequence \" at level 0 has no influence.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -282,9 +281,8 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> The argument of a control sequence \" at level 0 has no
-     * influence. </testcase>
-     * 
+     * The argument of a control sequence \" at level 0 has no influence
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -294,9 +292,8 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> The argument of a control sequence \" at level 0 has no
-     * influence. </testcase>
-     * 
+     * The argument of a control sequence \" at level 0 has no influence
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -306,9 +303,8 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> The argument of a control sequence \" at level 0 has no
-     * influence. </testcase>
-     * 
+     * The argument of a control sequence \" at level 0 has no influence
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -318,7 +314,7 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> The empty string has length 0. </testcase>
+     *  The empty string has length 0.
      * 
      * @throws Exception in case of an error
      */
@@ -329,7 +325,7 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> Braces and brackets do not count. </testcase>
+     *  Braces and brackets do not count.
      * 
      * @throws Exception in case of an error
      */
@@ -340,7 +336,7 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> The empty stack leads to an error. </testcase>
+     *  The empty stack leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -351,7 +347,7 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> The length of an integer is the number of digits. </testcase>
+     *  The length of an integer is the number of digits.
      * 
      * @throws Exception in case of an error
      */
@@ -365,7 +361,7 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> The backslash at the end does not count. </testcase>
+     *  The backslash at the end does not count.
      * 
      * @throws Exception in case of an error
      */
@@ -376,7 +372,7 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> A macro of length 1 counts as one character. </testcase>
+     *  A macro of length 1 counts as one character.
      * 
      * @throws Exception in case of an error
      */
@@ -387,7 +383,7 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> A macro of length 3 counts as one character. </testcase>
+     *  A macro of length 3 counts as one character.
      * 
      * @throws Exception in case of an error
      */
@@ -398,7 +394,7 @@ public class TextLengthTest {
     }
 
     /**
-     * <testcase> A macro of length 3 counts as one character. </testcase>
+     *  A macro of length 3 counts as one character.
      * 
      * @throws Exception in case of an error
      */

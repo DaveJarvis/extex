@@ -16,8 +16,8 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains primitives to deal with Java code from within
-  * ??TeX*/
+ * Contains primitives to deal with Java code from within
+  * εχTeX*/
 
 package org.extex.unit.dynamic.java;
 

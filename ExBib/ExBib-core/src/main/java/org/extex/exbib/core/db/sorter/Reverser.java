@@ -27,12 +27,11 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * This sorter reverses the order of an embedded sorter.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Reverser implements Sorter {
 
     /**
-     * The field <tt>sorter</tt> contains the embedded sorter.
+     * The field {@code sorter} contains the embedded sorter.
      */
     private final Sorter sorter;
 
@@ -46,12 +45,7 @@ public class Reverser implements Sorter {
         this.sorter = sorter;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.sorter.Sorter#sort(java.util.List)
-     */
-    public void sort(List<Entry> list) throws ConfigurationException {
+public void sort(List<Entry> list) throws ConfigurationException {
 
         sorter.sort(list);
     }

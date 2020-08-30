@@ -29,8 +29,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * This is the factory to provide an instance of a color converter.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ColorConverterFacory extends AbstractFactory<ColorConverter> {
 
     /**

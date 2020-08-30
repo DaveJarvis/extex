@@ -26,11 +26,10 @@ import org.extex.test.NoFlagsPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\jobname</tt>.
+ * This is a test suite for the primitive {@code \jobname}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class JobnameTest extends NoFlagsPrimitiveTester {
 
 
@@ -40,8 +39,8 @@ public class JobnameTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\jobname"> Test case checking that <tt>\jobname</tt>
-     * delivers a decent default value. </testcase>
+     * <testcase primitive="\jobname"> Test case checking that {@code \jobname}
+     * delivers a decent default value.
      * 
      * @throws Exception in case of an error
      */
@@ -55,8 +54,8 @@ public class JobnameTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\jobname"> Test case checking that <tt>\jobname</tt>
-     * can be set properly. </testcase>
+     * <testcase primitive="\jobname"> Test case checking that {@code \jobname}
+     * can be set properly.
      * 
      * @throws Exception in case of an error
      */

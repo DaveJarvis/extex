@@ -44,8 +44,7 @@ import org.extex.typesetter.Typesetter;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class PdftexUnitInfo extends UnitInfo
         implements
             Configurable,
@@ -57,12 +56,11 @@ public class PdftexUnitInfo extends UnitInfo
      * \pdfoutput is modified.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
-     */
+    */
     private final class Observer implements CountObserver {
 
         /**
-         * The field <tt>typesetter</tt> contains the typesetter.
+         * The field {@code typesetter} contains the typesetter.
          */
         private Typesetter typesetter;
 
@@ -78,10 +76,7 @@ public class PdftexUnitInfo extends UnitInfo
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.context.observer.count.CountObserver#receiveCountChange(
-         *      org.extex.interpreter.context.ContextInternals,
+    *      org.extex.interpreter.context.ContextInternals,
          *      java.lang.String, org.extex.core.count.Count)
          */
         public void receiveCountChange(ContextInternals ctx, String name,
@@ -107,28 +102,28 @@ public class PdftexUnitInfo extends UnitInfo
     }
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>context</tt> contains the interpreter context.
+     * The field {@code context} contains the interpreter context.
      */
     private transient Context context;
 
     /**
-     * The field <tt>modeMap</tt> contains the ...
+     * The field {@code modeMap} contains the ...
      */
     private Map<Long, String> modeMap = new HashMap<Long, String>();
 
     /**
-     * The field <tt>observer</tt> contains the count observer.
+     * The field {@code observer} contains the count observer.
      */
     private transient Observer observer = null;
 
     /**
-     * The field <tt>source</tt> contains the source for new tokens.
+     * The field {@code source} contains the source for new tokens.
      */
     private transient TokenSource source;
 
@@ -138,10 +133,7 @@ public class PdftexUnitInfo extends UnitInfo
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(
-     *      org.extex.framework.configuration.Configuration)
+*      org.extex.framework.configuration.Configuration)
      */
     public void configure(Configuration config) throws ConfigurationException {
 
@@ -155,10 +147,7 @@ public class PdftexUnitInfo extends UnitInfo
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.unit.Loader#load(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void load(Context ctx, TokenSource src, Typesetter typesetter)
@@ -171,7 +160,7 @@ public class PdftexUnitInfo extends UnitInfo
 
     /**
      * If all preconditions are fulfilled then register an observer for
-     * <tt>\pdfoutput</tt>.
+     * {@code \pdfoutput}.
      * 
      * @param typesetter the typesetter
      */
@@ -197,10 +186,7 @@ public class PdftexUnitInfo extends UnitInfo
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.observer.load.LoadedObserver#receiveLoaded(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public void receiveLoaded(Context ctx, TokenSource src,
@@ -212,10 +198,7 @@ public class PdftexUnitInfo extends UnitInfo
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.unit.UnitInfo#setTypesetter(
-     *      org.extex.typesetter.Typesetter)
+*      org.extex.typesetter.Typesetter)
      */
     @Override
     public void setTypesetter(Typesetter typesetter) {

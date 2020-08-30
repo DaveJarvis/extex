@@ -37,38 +37,39 @@ import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 
 /**
- * This class provides an implementation for the primitive <code>\vbox</code>.
+ * This class provides an implementation for the primitive {@code \vbox}.
  * 
- * <doc name="vbox">
- * <h3>The Primitive <tt>\vbox</tt></h3>
+ * <p>The Primitive {@code \vbox}</p>
  * <p>
- * The primitive <tt>\vbox</tt> constructs a box of vertical material. Any
+ * The primitive {@code \vbox} constructs a box of vertical material. Any
  * boxes added to the vertical box are put below the boxes already contained.
  * The reference point of the last box contained is used for the whole vertical
  * box. The height may be adjusted if requested.
  * </p>
  * <p>
- * The contents of the toks register <tt>\everyvbox</tt> is inserted at the
+ * The contents of the toks register {@code \everyvbox} is inserted at the
  * beginning of the vertical material of the box.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;vbox&rang;
- *      &rarr; <tt>\vbox</tt> &lang;box specification&rang; <tt>{</tt> &lang;vertical material&rang; <tt>}</tt>
+ *      &rarr; {@code \vbox} &lang;box specification&rang; {@code {} &lang;vertical material&rang; {@code }}
  *
  *    &lang;box specification&rang;
  *      &rarr;
- *         | <tt>to</tt> {@linkplain
+ *         | {@code to} {@linkplain
  *           org.extex.base.parser.ConstantDimenParser#parse(Context,TokenSource,Typesetter)
  *           &lang;rule dimension&rang;}
- *         | <tt>spread</tt> {@linkplain
+ *         | {@code spread} {@linkplain
  *           org.extex.base.parser.ConstantDimenParser#parse(Context,TokenSource,Typesetter)
  *           &lang;rule dimension&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \vbox{abc}  </pre>
@@ -77,41 +78,39 @@ import org.extex.typesetter.type.NodeList;
  *  <pre class="TeXSample">
  *    \vbox spread 12pt{abc}  </pre>
  * 
- * </doc>
- * 
- * <doc name="everyvbox">
- * <h3>The Tokens Parameter <tt>\everyvbox</tt></h3>
+ *
+ * <p>The Tokens Parameter {@code \everyvbox}</p>
  * <p>
- * The tokens parameter is used in <tt>\vbox</tt>. The tokens contained are
+ * The tokens parameter is used in {@code \vbox}. The tokens contained are
  * inserted at the beginning of the vertical material of the vbox.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;everyvbox&rang;
- *      &rarr; <tt>\everyvbox</tt> {@linkplain
+ *      &rarr; {@code \everyvbox} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *        &lang;tokens&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \everyvbox{\message{Hi there}}  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Vbox extends AbstractBoxPrimitive {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -127,10 +126,7 @@ public class Vbox extends AbstractBoxPrimitive {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.register.box.BoxPrimitive#getBox(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
@@ -170,7 +166,7 @@ public class Vbox extends AbstractBoxPrimitive {
      * Acquire a Box and adjust its height and depth according to the rules
      * required.
      * <p>
-     * For a <tt>\vbox</tt> the alignment takes the last box contained and
+     * For a {@code \vbox} the alignment takes the last box contained and
      * uses its reference point. The depth is preserved and the height is
      * adjusted if required.
      * </p>
@@ -179,7 +175,7 @@ public class Vbox extends AbstractBoxPrimitive {
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * @param startToken the token which started the group
-     * @param insert the token to insert at the beginning or <code>null</code>
+     * @param insert the token to insert at the beginning or {@code null}
      * 
      * @return the complete Box
      * 
@@ -209,7 +205,7 @@ public class Vbox extends AbstractBoxPrimitive {
 
     /**
      * Acquire a complete Box taking into account the tokens in
-     * <tt>\afterassignment</tt> and <tt>\everyvbox</tt>.
+     * {@code \afterassignment} and {@code \everyvbox}.
      * 
      * @param context the interpreter context
      * @param source the source for new tokens

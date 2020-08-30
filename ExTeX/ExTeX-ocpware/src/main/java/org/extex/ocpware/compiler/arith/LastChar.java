@@ -31,12 +31,11 @@ import org.extex.ocpware.type.OcpCode;
  * in the prefix relative to last.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public class LastChar extends ArithExpr implements Expr {
 
     /**
-     * The field <tt>n</tt> contains the offset of the reference.
+     * The field {@code n} contains the offset of the reference.
      */
     private int n;
 
@@ -50,22 +49,14 @@ public class LastChar extends ArithExpr implements Expr {
         this.n = n;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.compiler.arith.ArithExpr#outExpr( CompilerState)
-     */
-    @Override
+@Override
     void outExpr(CompilerState cs) throws IOException, ArgmentTooBigException {
 
         cs.putInstruction(OcpCode.OP_PUSH_LCHAR, n);
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.compiler.sexpression.Expr#outRight(
-     *      org.extex.ocpware.compiler.parser.CompilerState, boolean)
+*      org.extex.ocpware.compiler.parser.CompilerState, boolean)
      */
     public void outRight(CompilerState cs, boolean withOffset)
             throws IOException,
@@ -76,12 +67,7 @@ public class LastChar extends ArithExpr implements Expr {
                 : OcpCode.OP_RIGHT_LCHAR, n);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         if (n == 0) {

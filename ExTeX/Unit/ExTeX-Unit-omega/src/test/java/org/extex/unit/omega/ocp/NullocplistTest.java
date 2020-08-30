@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\nullocplist</tt>.
+ * This is a test suite for the primitive {@code \nullocplist}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NullocplistTest extends ExTeXLauncher {
 
     /**
@@ -49,7 +48,7 @@ public class NullocplistTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\nullocplist"> Test case checking that
-     * <tt>\nullocplist</tt> can not be used in a normal mode. </testcase>
+     * {@code \nullocplist} can not be used in a normal mode.
      * 
      * @throws Exception in case of an error
      */

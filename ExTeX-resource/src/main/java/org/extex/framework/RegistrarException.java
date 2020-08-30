@@ -25,12 +25,11 @@ import java.io.ObjectStreamException;
  * This exception is used when the loader detects some problem.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class RegistrarException extends ObjectStreamException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     private static final long serialVersionUID = 2006L;
 

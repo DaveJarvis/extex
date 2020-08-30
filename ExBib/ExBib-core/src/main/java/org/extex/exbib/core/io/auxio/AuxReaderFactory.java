@@ -29,20 +29,17 @@ import org.extex.resource.ResourceFinder;
  * {@link AuxReader AuxReader}.
  * <p>
  * The factory is controlled by a configuration. This configuration contains an
- * attribute <code>class</code>. This attribute holds the name of the class to
+ * attribute {@code class}. This attribute holds the name of the class to
  * be instantiated. Consider the following example of a configuration file:
- * 
+ * </p>
+ *
  * <pre>
  *   &lt;AuxReader
  *     class="org.extex.exbib.core.io.auxio.AuxReaderImpl"/&gt;
  * </pre>
- * 
- * </p>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class AuxReaderFactory extends AbstractFactory<AuxReader> {
 
     /**

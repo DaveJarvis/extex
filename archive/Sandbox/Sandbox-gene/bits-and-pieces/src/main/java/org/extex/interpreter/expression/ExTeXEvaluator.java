@@ -25,12 +25,11 @@ import org.extex.interpreter.expression.term.TDoubleParser;
 import org.extex.interpreter.expression.term.TGlueParser;
 
 /**
- * This evaluator registers the data types known in <logo>TeX</logo> and some
+ * This evaluator registers the data types known in  TeX and some
  * more.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4533 $
- */
+*/
 public class ExTeXEvaluator extends Evaluator {
 
     //    {

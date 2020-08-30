@@ -23,11 +23,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\ifcase</tt>.
+ * This is a test suite for the primitive {@code \ifcase}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class IfcaseTest extends ConditionalTester {
 
     /**
@@ -48,7 +47,7 @@ public class IfcaseTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcase"> Test case checking that the case 0 is hit
-     * if present. </testcase>
+     * if present. 
      * 
      * @throws Exception in case of an error
      */
@@ -63,7 +62,7 @@ public class IfcaseTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcase"> Test case checking that the case 0 is hit
-     * if present. </testcase>
+     * if present. 
      * 
      * @throws Exception in case of an error
      */
@@ -78,7 +77,7 @@ public class IfcaseTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcase"> Test case checking that the case 0 is hit
-     * if present. </testcase>
+     * if present. 
      * 
      * @throws Exception in case of an error
      */
@@ -93,7 +92,7 @@ public class IfcaseTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcase"> Test case checking that the case 0 is hit
-     * if present. </testcase>
+     * if present. 
      * 
      * @throws Exception in case of an error
      */
@@ -108,7 +107,7 @@ public class IfcaseTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcase"> Test case checking that the case 0 is hit
-     * if present. </testcase>
+     * if present. 
      * 
      * @throws Exception in case of an error
      */
@@ -123,7 +122,7 @@ public class IfcaseTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcase"> Test case checking that the case 0 is hit
-     * if present. </testcase>
+     * if present. 
      * 
      * @throws Exception in case of an error
      */
@@ -138,7 +137,7 @@ public class IfcaseTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcase"> Test case checking that the case 0 is hit
-     * if present. </testcase>
+     * if present. 
      * 
      * @throws Exception in case of an error
      */
@@ -153,7 +152,7 @@ public class IfcaseTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcase"> Test case checking that the case 2 is hit
-     * if present. </testcase>
+     * if present. 
      * 
      * @throws Exception in case of an error
      */
@@ -168,7 +167,7 @@ public class IfcaseTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcase"> Test case checking that the case 2 is hit
-     * if present. </testcase>
+     * if present. 
      * 
      * @throws Exception in case of an error
      */
@@ -183,7 +182,7 @@ public class IfcaseTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcase"> Test case checking that the case 12 hits
-     * the else case if present. </testcase>
+     * the else case if present. 
      * 
      * @throws Exception in case of an error
      */
@@ -198,7 +197,7 @@ public class IfcaseTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcase"> Test case checking that the case 12 hits
-     * nothing. </testcase>
+     * nothing. 
      * 
      * @throws Exception in case of an error
      */
@@ -213,7 +212,7 @@ public class IfcaseTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcase"> Test case checking that the case -1 hits
-     * the else case if present. </testcase>
+     * the else case if present. 
      * 
      * @throws Exception in case of an error
      */
@@ -228,7 +227,7 @@ public class IfcaseTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcase"> Test case checking that the case -1 hits
-     * the else case if present. </testcase>
+     * the else case if present. 
      * 
      * @throws Exception in case of an error
      */
@@ -243,7 +242,7 @@ public class IfcaseTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcase"> Test case checking that a negative value
-     * falls through to the default case. </testcase>
+     * falls through to the default case. 
      * 
      * @throws Exception in case of an error
      */
@@ -258,7 +257,7 @@ public class IfcaseTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcase"> Test case checking that a large value
-     * falls through to the default case. </testcase>
+     * falls through to the default case. 
      * 
      * @throws Exception in case of an error
      */
@@ -273,7 +272,7 @@ public class IfcaseTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcase"> Test case checking that a large value
-     * reduces to nothing if no default case is present. </testcase>
+     * reduces to nothing if no default case is present. 
      * 
      * @throws Exception in case of an error
      */
@@ -288,7 +287,7 @@ public class IfcaseTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcase"> Test case checking that a large value
-     * reduces to nothing if no default case is present. </testcase>
+     * reduces to nothing if no default case is present. 
      * 
      * @throws Exception in case of an error
      */
@@ -302,8 +301,8 @@ public class IfcaseTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifcase"> Test case checking that <tt>\ifcase</tt>
-     * is expandable. </testcase>
+     * <testcase primitive="\ifcase"> Test case checking that {@code \ifcase}
+     * is expandable. 
      * 
      * @throws Exception in case of an error
      */

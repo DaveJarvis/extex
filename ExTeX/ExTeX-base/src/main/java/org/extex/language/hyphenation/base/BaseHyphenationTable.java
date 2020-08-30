@@ -43,17 +43,16 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4142 $
- */
+*/
 public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * Create the name for the <code>HyphenationTable</code>.
+     * Create the name for the {@code HyphenationTable}.
      *
      * @param pattern the pattern
      * @param context the interpreter context
@@ -90,43 +89,43 @@ public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
     }
 
     /**
-     * The field <tt>exceptionMap</tt> contains the exception words for
+     * The field {@code exceptionMap} contains the exception words for
      * hyphenation.
      */
     private Map<UnicodeCharList, boolean[]> exceptionMap =
             new HashMap<UnicodeCharList, boolean[]>();
 
     /**
-     * The field <tt>hyphenating</tt> contains the indicator whether this
-     * hyphenation is active. If the value is <code>false</code> then no
+     * The field {@code hyphenating} contains the indicator whether this
+     * hyphenation is active. If the value is {@code false} then no
      * hyphenation points will be inserted.
      */
     private boolean hyphenating = true;
 
     /**
-     * The field <tt>lefthyphenmin</tt> contains the minimum distance from the
+     * The field {@code lefthyphenmin} contains the minimum distance from the
      * left side of a word before hyphenation is performed.
      */
     private long lefthyphenmin = 0;
 
     /**
-     * The field <tt>ligatureBuilder</tt> contains the ligature builder.
+     * The field {@code ligatureBuilder} contains the ligature builder.
      */
     private LigatureBuilder ligatureBuilder = null;
 
     /**
-     * The field <tt>name</tt> contains the name.
+     * The field {@code name} contains the name.
      */
     private String name = null;
 
     /**
-     * The field <tt>righthyphenmin</tt> contains the minimum distance from the
+     * The field {@code righthyphenmin} contains the minimum distance from the
      * right side of a word before hyphenation is performed.
      */
     private long righthyphenmin = 0;
 
     /**
-     * The field <tt>wordTokenizer</tt> contains the tokenizer to recognize
+     * The field {@code wordTokenizer} contains the tokenizer to recognize
      * words.
      */
     private WordTokenizer wordTokenizer = null;
@@ -272,7 +271,7 @@ public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
      * @param word the word to hyphenate
      * @param hyphenNode the node to use as hyphen
      *
-     * @return <code>true</code> iff the the word has been found
+     * @return {@code true} iff the the word has been found
      *
      * @throws HyphenationException in case of an error
      */

@@ -42,65 +42,67 @@ import java.util.logging.Logger;
 /**
  * This primitive provides a binding of a macro or active character to code in
  * some programming language. This code implements the primitive
- * <tt>\nativedef</tt>.
+ * {@code \nativedef}.
  * 
- * <doc name="nativedef"> <h3>The Primitive <tt>\nativedef</tt></h3>
+ * <p>The Primitive {@code \nativedef}</p>
  * <p>
- * The primitive <tt>\nativedef</tt> assigns a definition to a macro or active
- * character. This is done in a similar way as <tt>\def</tt> works. The
+ * The primitive {@code \nativedef} assigns a definition to a macro or active
+ * character. This is done in a similar way as {@code \def} works. The
  * difference is that the definition has to be provided in form of a Java class
  * which glues in native code.
  * </p>
  * 
- * <h4>Syntax</h4> The general form of this primitive is
+ * <p>Syntax</p>
+ The general form of this primitive is
  * 
  * <pre class="syntax">
  *    &lang;nativedef&rang;
- *      &rarr; <tt>\nativedef</tt> &lang;type&rang; {@linkplain org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
+ *      &rarr; {@code \nativedef} &lang;type&rang; {@linkplain org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  * &lang;control sequence&rang;} &lang;name&rang; </pre>
  * 
  * <p>
- * The <code>&lang;type&rang;</code> is any specification of a list of tokens
+ * The {@code &lang;type&rang;} is any specification of a list of tokens
  * like a constant list enclosed in braces or a token register. The value of
  * these tokens are taken and resolved via the configuration. This appropriate
  * class is loaded if needed and instantiated. The instance is bound as code to
  * the <i>&lang;control sequence&rang;</i>.
  * </p>
  * <p>
- * The <code>&lang;control sequence&rang;</code> is any macro or active
+ * The {@code &lang;control sequence&rang;} is any macro or active
  * character. If this token is missing or of the wrong type then an error is
  * raised.
  * </p>
  * <p>
- * The <code>&lang;name&rang;</code> is any specification of a list of tokens
+ * The {@code &lang;name&rang;} is any specification of a list of tokens
  * like a constant list enclosed in braces or a token register. The value of
  * these tokens are passed to the binding class to specify the target. For
  * instance the Java binding requires this to be name of the Java class
  * implementing the functionality.
  * </p>
  * <p>
- * The primitive <tt>\nativedef</tt> is local to the enclosing group as is
- * <tt>\def</tt>. And similar to <tt>\def</tt> the modifier <tt>\global</tt> can
+ * The primitive {@code \nativedef} is local to the enclosing group as is
+ * {@code \def}. And similar to {@code \def} the modifier {@code \global} can
  * be used to make the definition in all groups instead of the current group
  * only.
  * </p>
  * <p>
- * The primitive <tt>\nativedef</tt> also respects the count register
- * <tt>\globaldefs</tt> to enable general global assignment.
+ * The primitive {@code \nativedef} also respects the count register
+ * {@code \globaldefs} to enable general global assignment.
  * </p>
  * <p>
  * Since the primitive is classified as assignment the value of
- * <tt>\afterassignment</tt> is applied.
+ * {@code \afterassignment} is applied.
  * </p>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample"> 
  *   \nativedef{java}\x{my.primitive.MyPrimitive} </pre>
  * 
  * <p>
- * This example shows how the control sequence <tt>\x</tt> is bound to the Java
- * class <tt>my.primitive.MyPrimitive</tt>. This definition is local to the
+ * This example shows how the control sequence {@code \x} is bound to the Java
+ * class {@code my.primitive.MyPrimitive}. This definition is local to the
  * current group.
  * </p>
  * 
@@ -109,12 +111,13 @@ import java.util.logging.Logger;
  * </pre>
  * 
  * <p>
- * This example shows how the control sequence <tt>\x</tt> is bound to the Java
- * class <tt>my.primitive.MyPrimitive</tt>. This definition is performed
+ * This example shows how the control sequence {@code \x} is bound to the Java
+ * class {@code my.primitive.MyPrimitive}. This definition is performed
  * globally.
  * </p>
  * 
- * <h4>Configuration</h4>
+ * <p>Configuration</p>
+
  * <p>
  * The supported types are determined in the configuration of the unit which
  * defines the primitive. Here a mapping is specified assigning a binding class
@@ -141,12 +144,10 @@ import java.util.logging.Logger;
  * programming language.
  * </p>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NativeDef extends AbstractAssignment
         implements
             Configurable,
@@ -158,13 +159,12 @@ public class NativeDef extends AbstractAssignment
      * inheritance in Java.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
-     */
+    */
     protected static class Factory extends AbstractFactory<Definer> {
 
         /**
          * Create a new instance of the class given by the attribute
-         * <tt>class</tt> of the configuration.
+         * {@code class} of the configuration.
          * 
          * @return the Code loaded
          * @throws ConfigurationException in case of an error
@@ -176,17 +176,17 @@ public class NativeDef extends AbstractAssignment
     }
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>logger</tt> contains the logger to use.
+     * The field {@code logger} contains the logger to use.
      */
     private transient Logger logger;
 
     /**
-     * The field <tt>map</tt> contains the mapping from a symbolic name to a
+     * The field {@code map} contains the mapping from a symbolic name to a
      * configuration.
      */
     private final Map<String, Configuration> map = new HashMap<>();
@@ -202,10 +202,7 @@ public class NativeDef extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

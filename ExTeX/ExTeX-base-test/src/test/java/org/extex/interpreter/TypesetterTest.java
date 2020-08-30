@@ -29,8 +29,7 @@ import org.junit.Test;
  * This is a test suite for the typesetter.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4527 $
- */
+*/
 public class TypesetterTest extends ExTeXLauncher {
 
 
@@ -39,7 +38,7 @@ public class TypesetterTest extends ExTeXLauncher {
     }
 
     /**
-     * Test case checking that <tt>\accent</tt> does not work in math mode.
+     * Test case checking that {@code \accent} does not work in math mode.
      *
      * @throws Exception in case of an error
      */

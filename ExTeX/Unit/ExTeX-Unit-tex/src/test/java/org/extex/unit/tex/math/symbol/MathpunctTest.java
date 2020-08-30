@@ -20,11 +20,10 @@
 package org.extex.unit.tex.math.symbol;
 
 /**
- * This is a test suite for the primitive <tt>\mathpunct</tt>.
+ * This is a test suite for the primitive {@code \mathpunct}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MathpunctTest extends AbstractOperatorTester {
 
     public MathpunctTest() {

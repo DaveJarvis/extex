@@ -27,12 +27,11 @@ import org.extex.framework.i18n.LocalizerFactory;
  * been encountered.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class BadOutputModeException extends HelpingException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;

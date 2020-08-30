@@ -38,12 +38,11 @@ import org.extex.typesetter.type.node.LigatureNode;
  * font.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4784 $
- */
+*/
 public class LigatureBuilderImpl implements LigatureBuilder {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 1L;
 
@@ -59,7 +58,7 @@ public class LigatureBuilderImpl implements LigatureBuilder {
      * @param c2 the second character
      * @param f the current font
      *
-     * @return the ligature of c1 and c2 or <code>null</code> if none exists
+     * @return the ligature of c1 and c2 or {@code null} if none exists
      *
      * @see org.extex.language.ligature.LigatureBuilder#getLigature(
      *      org.extex.core.UnicodeChar,

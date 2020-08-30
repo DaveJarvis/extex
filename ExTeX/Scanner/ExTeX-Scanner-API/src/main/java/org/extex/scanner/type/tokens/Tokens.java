@@ -38,8 +38,7 @@ import java.util.List;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:4399 $
- */
+*/
 public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
 
     /**
@@ -48,7 +47,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
     public static final Tokens EMPTY = new ImmutableTokens();
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 20060415L;
 
@@ -106,12 +105,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
         tokens.clear();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
+@Override
     public boolean equals(Object object) {
 
         if (!(object instanceof Tokens)) {
@@ -136,7 +130,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
      * 
      * @param i the index for the token to get
      * 
-     * @return the i<sup>th</sup> token or <code>null</code> if i is out of
+     * @return the i<sup>th</sup> token or {@code null} if i is out of
      *         bounds
      */
     @Override
@@ -173,12 +167,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
         tokens.add(index, t);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Iterable#iterator()
-     */
-    @Override
+@Override
     public Iterator<Token> iterator() {
 
         return tokens.iterator();
@@ -199,7 +188,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
     /**
      * Remove the first token from the list and return it.
      * 
-     * @return the token taken from the front of the list or <code>null</code>
+     * @return the token taken from the front of the list or {@code null}
      *         if the list is empty
      */
     public Token pop() {
@@ -224,9 +213,9 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
 
     /**
      * Remove the last token from the list and return it. If the list is empty
-     * then <code>null</code> is returned.
+     * then {@code null} is returned.
      * 
-     * @return the first token or <code>null</code>
+     * @return the first token or {@code null}
      */
     public Token removeFirst() {
 
@@ -238,9 +227,9 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
 
     /**
      * Remove the last token from the list and return it. If the list is empty
-     * then <code>null</code> is returned.
+     * then {@code null} is returned.
      * 
-     * @return the last token or <code>null</code>
+     * @return the last token or {@code null}
      */
     public Token removeLast() {
 

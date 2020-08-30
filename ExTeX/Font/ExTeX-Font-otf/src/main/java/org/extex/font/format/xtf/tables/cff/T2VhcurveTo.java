@@ -29,8 +29,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * (30) : {dya dxb dyb dxc dxd dxe dye dyf}+ dxf? vhcurveto (30).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class T2VhcurveTo extends T2PathConstruction {
 
     /**
@@ -83,11 +82,7 @@ public class T2VhcurveTo extends T2PathConstruction {
 
         int n = stack.size();
         try {
-
-            type1 = true;
-            if (n % 8 == 0 || n % 8 == 1) {
-                type1 = false;
-            }
+            type1 = n % 8 != 0 && n % 8 != 1;
 
             if (type1) {
 
@@ -183,45 +178,25 @@ public class T2VhcurveTo extends T2PathConstruction {
         return eight;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
-     */
-    @Override
+@Override
     public int getID() {
 
         return TYPE_VHCURVETO;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "vhcurveto";
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getValue()
-     */
-    @Override
+@Override
     public Object getValue() {
 
         return eight;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#toText()
-     */
-    @Override
+@Override
     public String toText() {
 
         StringBuilder buf = new StringBuilder();
@@ -244,12 +219,7 @@ public class T2VhcurveTo extends T2PathConstruction {
         return buf.append(getName()).toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    @Override
+@Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());

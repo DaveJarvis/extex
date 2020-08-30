@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\vss</tt>.
+ * This is a test suite for the primitive {@code \vss}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class VssTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -48,8 +47,8 @@ public class VssTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\vss"> Test case checking that <tt>\vss</tt>
-     * switches to vertical mode and inserts a glue node with 1fil. </testcase>
+     * <testcase primitive="\vss"> Test case checking that {@code \vss}
+     * switches to vertical mode and inserts a glue node with 1fil.
      * 
      * @throws Exception in case of an error
      */

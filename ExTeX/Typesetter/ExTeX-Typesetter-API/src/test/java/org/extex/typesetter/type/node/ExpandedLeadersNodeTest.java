@@ -35,17 +35,16 @@ import org.junit.Test;
  * This is a test suite for expanded leaders nodes.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ExpandedLeadersNodeTest extends LeadersNodeTester {
 
     /**
-     * The field <tt>H_LIST</tt> contains the reference hlist.
+     * The field {@code H_LIST} contains the reference hlist.
      */
     private static final HorizontalListNode H_LIST = new HorizontalListNode();
 
     /**
-     * The field <tt>V_LIST</tt> contains the reference vlist.
+     * The field {@code V_LIST} contains the reference vlist.
      */
     private static final VerticalListNode V_LIST = new VerticalListNode();
 
@@ -59,10 +58,7 @@ public class ExpandedLeadersNodeTest extends LeadersNodeTester {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.LeadersNodeTester#makeNode(org.extex.typesetter.type.OrientedNode,
-     *      org.extex.core.glue.FixedGlue)
+*      org.extex.core.glue.FixedGlue)
      */
     @Override
     protected AbstractLeadersNode makeNode(OrientedNode node, FixedGlue glue) {
@@ -71,7 +67,7 @@ public class ExpandedLeadersNodeTest extends LeadersNodeTester {
     }
 
     /**
-     * <testcase>Not enough space left horizontally </testcase>
+     * Not enough space left horizontally 
      * 
      * @throws GeneralException in case of an error
      */
@@ -87,7 +83,7 @@ public class ExpandedLeadersNodeTest extends LeadersNodeTester {
     }
 
     /**
-     * <testcase>Exactly one instance fits horizontally </testcase>
+     * Exactly one instance fits horizontally 
      * 
      * @throws GeneralException in case of an error
      */
@@ -112,7 +108,7 @@ public class ExpandedLeadersNodeTest extends LeadersNodeTester {
     }
 
     /**
-     * <testcase>One instance plus some glue fits horizontally </testcase>
+     * One instance plus some glue fits horizontally 
      * 
      * @throws GeneralException in case of an error
      */
@@ -142,7 +138,7 @@ public class ExpandedLeadersNodeTest extends LeadersNodeTester {
     }
 
     /**
-     * <testcase>Exactly two instances fits horizontally </testcase>
+     * Exactly two instances fits horizontally 
      * 
      * @throws GeneralException in case of an error
      */
@@ -170,7 +166,7 @@ public class ExpandedLeadersNodeTest extends LeadersNodeTester {
     }
 
     /**
-     * <testcase>One instance plus some glue fits horizontally </testcase>
+     * One instance plus some glue fits horizontally 
      * 
      * @throws GeneralException in case of an error
      */
@@ -204,7 +200,7 @@ public class ExpandedLeadersNodeTest extends LeadersNodeTester {
     }
 
     /**
-     * <testcase>Not enough space left vertically </testcase>
+     * Not enough space left vertically 
      * 
      * @throws GeneralException in case of an error
      */
@@ -220,7 +216,7 @@ public class ExpandedLeadersNodeTest extends LeadersNodeTester {
     }
 
     /**
-     * <testcase>Exactly one instance fits vertically </testcase>
+     * Exactly one instance fits vertically 
      * 
      * @throws GeneralException in case of an error
      */
@@ -246,7 +242,7 @@ public class ExpandedLeadersNodeTest extends LeadersNodeTester {
     }
 
     /**
-     * <testcase>One instance plus some glue fits vertically </testcase>
+     * One instance plus some glue fits vertically 
      * 
      * @throws GeneralException in case of an error
      */
@@ -276,7 +272,7 @@ public class ExpandedLeadersNodeTest extends LeadersNodeTester {
     }
 
     /**
-     * <testcase>Exactly one instance fits vertically </testcase>
+     * Exactly one instance fits vertically 
      * 
      * @throws GeneralException in case of an error
      */
@@ -304,7 +300,7 @@ public class ExpandedLeadersNodeTest extends LeadersNodeTester {
     }
 
     /**
-     * <testcase>Two instances plus some glue fits vertically </testcase>
+     * Two instances plus some glue fits vertically 
      * 
      * @throws GeneralException in case of an error
      */

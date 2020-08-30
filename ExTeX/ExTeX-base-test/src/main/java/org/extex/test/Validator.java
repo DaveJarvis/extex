@@ -23,8 +23,7 @@ package org.extex.test;
  * This interface describes the capability to perform a validation.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface Validator {
 
     /**
@@ -32,7 +31,7 @@ public interface Validator {
      *
      * @param s the sting to be validated
      *
-     * @return <code>true</code> iff the validation is successful
+     * @return {@code true} iff the validation is successful
      */
     boolean validate(String s);
     

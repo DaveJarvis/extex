@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains some string expression classes for compiling OCPs.
+ * Contains some string expression classes for compiling OCPs.
  */
 
 package org.extex.ocpware.compiler.sexpression;

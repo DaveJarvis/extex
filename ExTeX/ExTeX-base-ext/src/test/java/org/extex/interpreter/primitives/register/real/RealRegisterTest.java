@@ -30,8 +30,7 @@ import org.junit.Test;
  * </p>
  * 
  * @author <a href="mailto:m.g.sn@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class RealRegisterTest extends ExTeXLauncher {
 
 
@@ -43,10 +42,10 @@ public class RealRegisterTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\realdef">
      * 
-     * Test case checking that <tt>\realdef</tt> creates a real assignable
-     * control sequence which is equivalent to the <tt>\real</tt>.
+     * Test case checking that {@code \realdef} creates a real assignable
+     * control sequence which is equivalent to the {@code \real}.
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -63,9 +62,9 @@ public class RealRegisterTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\realdef">
      * 
-     * Test case checking that <tt>\realdef</tt> respects a group.
+     * Test case checking that {@code \realdef} respects a group.
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -81,9 +80,9 @@ public class RealRegisterTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\realdef">
      * 
-     * Test case checking that <tt>\realdef</tt> respects a group.
+     * Test case checking that {@code \realdef} respects a group.
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -100,9 +99,9 @@ public class RealRegisterTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\realdef">
      * 
-     * Test case checking that <tt>\realdef</tt> respects a group.
+     * Test case checking that {@code \realdef} respects a group.
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -119,9 +118,9 @@ public class RealRegisterTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\realdef">
      * 
-     * Test case checking that <tt>\realdef</tt> respects <tt>\globaldefs</tt>.
+     * Test case checking that {@code \realdef} respects {@code \globaldefs}.
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */

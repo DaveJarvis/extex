@@ -23,17 +23,16 @@ package org.extex.exindex.makeindex.normalizer;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 5432 $
- */
+*/
 public class CollatorPipe implements Collator {
 
     /**
-     * The field <tt>c1</tt> contains the first collator.
+     * The field {@code c1} contains the first collator.
      */
     private final Collator c1;
 
     /**
-     * The field <tt>c2</tt> contains the second collator.
+     * The field {@code c2} contains the second collator.
      */
     private final Collator c2;
 
@@ -49,12 +48,7 @@ public class CollatorPipe implements Collator {
         this.c2 = c2;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.makeindex.normalizer.Collator#collate(java.lang.String)
-     */
-    @Override
+@Override
     public String collate(String s) {
 
         return c2.collate(c1.collate(s));

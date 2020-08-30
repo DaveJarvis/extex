@@ -22,11 +22,10 @@ package org.extex.unit.etex.math.delimiter;
 import org.extex.unit.tex.math.AbstractMathTester;
 
 /**
- * This is a test suite for the primitive <tt>\middle</tt>.
+ * This is a test suite for the primitive {@code \middle}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MiddleTest extends AbstractMathTester {
 
 

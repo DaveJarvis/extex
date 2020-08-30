@@ -52,17 +52,16 @@ import org.extex.resource.ResourceFinderFactory;
  * This is the main program for the BST to Groovy compiler.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Main extends CLI {
 
     /**
-     * The field <tt>PROGNAME</tt> contains the program name.
+     * The field {@code PROGNAME} contains the program name.
      */
     protected static final String PROGNAME = "bst2groovy";
 
     /**
-     * The field <tt>VERSION</tt> contains the version number.
+     * The field {@code VERSION} contains the version number.
      */
     protected static final String VERSION = "1.0";
 
@@ -119,55 +118,55 @@ public class Main extends CLI {
     }
 
     /**
-     * The field <tt>config</tt> contains the configuration for the finder.
+     * The field {@code config} contains the configuration for the finder.
      */
     private String config = "config/path/exbibFinder";
 
     /**
-     * The field <tt>out</tt> contains the output file name or <code>null</code>
+     * The field {@code out} contains the output file name or {@code null}
      * for stdout.
      */
     private String out = null;
 
     /**
-     * The field <tt>in</tt> contains the input file name or null for stdin..
+     * The field {@code in} contains the input file name or null for stdin..
      */
     private String in = null;
 
     /**
-     * The field <tt>logger</tt> contains the logger.
+     * The field {@code logger} contains the logger.
      */
     private Logger logger = makeLogger();
 
     /**
-     * The field <tt>traceFinder</tt> contains the indicator to trace the
+     * The field {@code traceFinder} contains the indicator to trace the
      * finder.
      */
     private boolean traceFinder = false;
 
     /**
-     * The field <tt>bundle</tt> contains the resource bundle for i18n.
+     * The field {@code bundle} contains the resource bundle for i18n.
      */
     private ResourceBundle bundle;
 
     /**
-     * The field <tt>banner</tt> contains the indicator that the banner has
+     * The field {@code banner} contains the indicator that the banner has
      * already been shown.
      */
     private boolean banner = false;
 
     /**
-     * The field <tt>optimizing</tt> contains the optimizing flag.
+     * The field {@code optimizing} contains the optimizing flag.
      */
     private boolean optimizing = true;
 
     /**
-     * The field <tt>verbose</tt> contains the indicator for the verbosity.
+     * The field {@code verbose} contains the indicator for the verbosity.
      */
     private boolean verbose = false;
 
     /**
-     * The field <tt>COPYING_RESOURCE</tt> contains the name of the resource for
+     * The field {@code COPYING_RESOURCE} contains the name of the resource for
      * the copyright file (in the jar).
      */
     private static final String COPYING_RESOURCE =
@@ -325,7 +324,7 @@ public class Main extends CLI {
      * @param tag the resource tag
      * @param args the arguments to be inserted
      * 
-     * @return the exit code <code>1</code>
+     * @return the exit code {@code 1}
      */
     private int log(Level level, String tag, Object... args) {
 
@@ -343,7 +342,7 @@ public class Main extends CLI {
      * 
      * @param level the log level
      * 
-     * @return the exit code <code>EXIT_FAILURE</code>
+     * @return the exit code {@code EXIT_FAILURE}
      */
     protected int logBanner(Level level) {
 
@@ -400,12 +399,7 @@ public class Main extends CLI {
         return CLI.EXIT_OK;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.cli.CLI#run(java.lang.String[])
-     */
-    @Override
+@Override
     public int run(String[] argv)
             throws UnknownOptionCliException,
                 MissingArgumentCliException,

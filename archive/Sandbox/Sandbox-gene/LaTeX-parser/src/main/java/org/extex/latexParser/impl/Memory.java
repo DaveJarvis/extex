@@ -27,8 +27,7 @@ import org.extex.scanner.api.exception.ScannerException;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * 
- * @version $Revision$
- */
+*/
 public interface Memory {
 
     /**
@@ -52,7 +51,7 @@ public interface Memory {
      * 
      * @param c the character
      * 
-     * @return the definition or <code>null</code>
+     * @return the definition or {@code null}
      */
     Macro getDefinition(char c);
 
@@ -61,7 +60,7 @@ public interface Memory {
      * 
      * @param name the name of the macro
      * 
-     * @return the definition or <code>null</code>
+     * @return the definition or {@code null}
      */
     Macro getDefinition(String name);
 
@@ -70,7 +69,7 @@ public interface Memory {
      * 
      * @param c the active character
      * 
-     * @return <code>true</code> iff the active character is defined
+     * @return {@code true} iff the active character is defined
      */
     boolean isDefined(char c);
 
@@ -79,7 +78,7 @@ public interface Memory {
      * 
      * @param name the name of the macro
      * 
-     * @return <code>true</code> iff the macro is defined
+     * @return {@code true} iff the macro is defined
      */
     boolean isDefined(String name);
 

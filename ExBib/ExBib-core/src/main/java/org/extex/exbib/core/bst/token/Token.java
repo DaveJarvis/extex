@@ -24,12 +24,11 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * A <code>Token</code> is the basic entity of which programs are made up.
- * Programs also handle <code>Token</code>s as their way to store information.
+ * A {@code Token} is the basic entity of which programs are made up.
+ * Programs also handle {@code Token}s as their way to store information.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface Token extends Code {
 
     /**
@@ -48,10 +47,10 @@ public interface Token extends Code {
     /**
      * Getter for the {@link org.extex.exbib.core.io.Locator Locator}. The
      * locator is a means to get information about where the token came from
-     * originally. If no such information is available then <code>null</code> is
+     * originally. If no such information is available then {@code null} is
      * returned.
      * 
-     * @return the locator or <code>null</code>
+     * @return the locator or {@code null}
      */
     Locator getLocator();
 
@@ -64,11 +63,11 @@ public interface Token extends Code {
     String getValue();
 
     /**
-     * Check whether the value has been set to <code>null</code> initially.
-     * Usually the value <code>null</code> is treated as empty string. This
+     * Check whether the value has been set to {@code null} initially.
+     * Usually the value {@code null} is treated as empty string. This
      * method is the only way to distinguish these two cases.
      * 
-     * @return <code>true</code> iff the value has been set to <code>null</code>
+     * @return {@code true} iff the value has been set to {@code null}
      */
     boolean isNull();
 

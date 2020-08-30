@@ -26,8 +26,7 @@ import java.io.IOException;
  * external source.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface ConfigurationLoader {
 
     /**

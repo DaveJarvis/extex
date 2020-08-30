@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\relax</tt>.
+ * This is a test suite for the primitive {@code \relax}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class RelaxTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -49,7 +48,7 @@ public class RelaxTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\relax"> Test case checking that a pure
-     * <tt>\relax</tt> has no effect. </testcase>
+     * {@code \relax} has no effect.
      * 
      * @throws Exception in case of an error
      */
@@ -64,7 +63,7 @@ public class RelaxTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\relax"> Test case checking that a pure
-     * <tt>\relax</tt> has no effect in the middle of a word. </testcase>
+     * {@code \relax} has no effect in the middle of a word.
      * 
      * @throws Exception in case of an error
      */
@@ -79,7 +78,7 @@ public class RelaxTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\relax"> Test case checking that a white-space after
-     * a <tt>\relax</tt> is ignored. </testcase>
+     * a {@code \relax} is ignored.
      * 
      * @throws Exception in case of an error
      */
@@ -94,7 +93,7 @@ public class RelaxTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\relax"> Test case checking that more white-space
-     * after a <tt>\relax</tt> is ignored. </testcase>
+     * after a {@code \relax} is ignored.
      * 
      * @throws Exception in case of an error
      */
@@ -109,7 +108,7 @@ public class RelaxTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\relax"> Test case checking that a comment after a
-     * <tt>\relax</tt> is ignored. </testcase>
+     * {@code \relax} is ignored.
      * 
      * @throws Exception in case of an error
      */

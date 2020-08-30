@@ -31,8 +31,7 @@ import org.extex.language.word.WordTokenizer;
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4446 $
- */
+*/
 public interface Language extends Hyphenator, LigatureBuilder, WordTokenizer {
 
     /**

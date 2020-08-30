@@ -35,35 +35,34 @@ import org.extex.resource.io.NamedInputStream;
  * This resource finder imitating the search strategy of Xindy.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SearchPath implements ResourceFinder {
 
     /**
-     * The field <tt>LOCLIZER</tt> contains the localizer.
+     * The field {@code LOCLIZER} contains the localizer.
      */
     private static final Localizer LOCLIZER =
             LocalizerFactory.getLocalizer(SearchPath.class);
 
     /**
-     * The field <tt>fallback</tt> contains the fallback resource finder.
+     * The field {@code fallback} contains the fallback resource finder.
      */
     private final ResourceFinder fallback;
 
     /**
-     * The field <tt>dirs</tt> contains the list of directories.
+     * The field {@code dirs} contains the list of directories.
      */
     private String[] dirs = new String[]{""};
 
     /**
-     * The field <tt>logger</tt> contains the logger for tracing.
+     * The field {@code logger} contains the logger for tracing.
      */
     private Logger logger = null;
 
     /**
      * Creates a new object.
      * 
-     * @param fallback the fallback resource finder; it can be <code>null</code>
+     * @param fallback the fallback resource finder; it can be {@code null}
      *        for none
      */
     public SearchPath(ResourceFinder fallback) {
@@ -71,21 +70,13 @@ public class SearchPath implements ResourceFinder {
         this.fallback = fallback;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
-     */
-    public void enableTracing(boolean flag) {
+public void enableTracing(boolean flag) {
 
         this.logger = (flag ? Logger.getLogger(getClass().getName()) : null);
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
-     *      java.lang.String)
+*      java.lang.String)
      */
     public NamedInputStream findResource(String name, String type)
             throws ConfigurationException {
@@ -157,7 +148,7 @@ public class SearchPath implements ResourceFinder {
     /**
      * Set the search path. The argument is a list of directories to be
      * prepended before the file name to be sought. These directories can either
-     * be absolute or relative. If a directory is <code>null</code> then the
+     * be absolute or relative. If a directory is {@code null} then the
      * fallback resources finder is used instead.
      * 
      * @param path the path

@@ -23,11 +23,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\mathop</tt>.
+ * This is a test suite for the primitive {@code \mathop}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MathopTest extends AbstractOperatorTester {
 
     public MathopTest() {

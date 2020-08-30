@@ -36,15 +36,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>int.to.chr$</tt>.
+ * Test suite for {@code int.to.chr$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class IntToChrTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -94,7 +93,7 @@ public class IntToChrTest {
     }
 
     /**
-     * <testcase> An empty stack leads to an error. </testcase>
+     *  An empty stack leads to an error. 
      * 
      * @throws Exception in case of an error
      */
@@ -105,7 +104,7 @@ public class IntToChrTest {
     }
 
     /**
-     * <testcase> Test the character 0. </testcase>
+     *  Test the character 0. 
      * 
      * @throws Exception in case of an error
      */
@@ -116,7 +115,7 @@ public class IntToChrTest {
     }
 
     /**
-     * <testcase> Test the character 123. </testcase>
+     *  Test the character 123. 
      * 
      * @throws Exception in case of an error
      */
@@ -127,7 +126,7 @@ public class IntToChrTest {
     }
 
     /**
-     * <testcase> Test the character 32. </testcase>
+     *  Test the character 32. 
      * 
      * @throws Exception in case of an error
      */
@@ -138,7 +137,7 @@ public class IntToChrTest {
     }
 
     /**
-     * <testcase> -1 is no character and leads to an error. </testcase>
+     *  -1 is no character and leads to an error. 
      * 
      * @throws Exception in case of an error
      */
@@ -149,7 +148,7 @@ public class IntToChrTest {
     }
 
     /**
-     * <testcase> A string argument leads to an error. </testcase>
+     *  A string argument leads to an error. 
      * 
      * @throws Exception in case of an error
      */

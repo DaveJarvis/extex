@@ -26,23 +26,22 @@ import java.io.Serializable;
  * effectively used somewhere in the invoked code.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class EntryReference implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2010L;
 
     /**
-     * The field <tt>name</tt> contains the the name of the entry.
+     * The field {@code name} contains the the name of the entry.
      */
     private String name;
 
     /**
-     * The field <tt>used</tt> contains the the indicator that the entry is
+     * The field {@code used} contains the the indicator that the entry is
      * used.
      */
     private boolean used = false;
@@ -88,12 +87,7 @@ public class EntryReference implements Serializable {
         return used;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return (used ? "*" : "-") + name;

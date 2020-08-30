@@ -37,32 +37,31 @@ import org.extex.typesetter.type.noad.util.MathSpacing;
  * large, and a small math glyph.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MathDelimiter implements Noad, Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>largeChar</tt> contains the code of the large character.
+     * The field {@code largeChar} contains the code of the large character.
      */
-    private MathGlyph largeChar;
+    private final MathGlyph largeChar;
 
     /**
-     * The field <tt>mathClass</tt> contains the class of this delimiter.
+     * The field {@code mathClass} contains the class of this delimiter.
      */
-    private MathClass mathClass;
+    private final MathClass mathClass;
 
     /**
-     * The field <tt>smallChar</tt> contains the code of the small character.
+     * The field {@code smallChar} contains the code of the small character.
      */
-    private MathGlyph smallChar;
+    private final MathGlyph smallChar;
 
     /**
-     * The field <tt>spaceingClass</tt> contains the spacing class.
+     * The field {@code spaceingClass} contains the spacing class.
      */
     private MathSpacing spacingClass = MathSpacing.UNDEF; // gene: correct?
 
@@ -150,12 +149,7 @@ public class MathDelimiter implements Noad, Serializable {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.noad.Noad#setSpacingClass(org.extex.typesetter.type.noad.util.MathSpacing)
-     */
-    @Override
+@Override
     public void setSpacingClass(MathSpacing spacingClass) {
 
         this.spacingClass = spacingClass;
@@ -234,10 +228,7 @@ public class MathDelimiter implements Noad, Serializable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.noad.Noad#typeset(org.extex.typesetter.type.noad.Noad,
-     *      org.extex.typesetter.type.noad.NoadList, int,
+*      org.extex.typesetter.type.noad.NoadList, int,
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
@@ -256,9 +247,9 @@ public class MathDelimiter implements Noad, Serializable {
      * @param list the list to add the nodes to. This list contains the Nodes
      *        previously typeset. Thus it can be used to look back
      * @param mathContext the context to consider
-     * @param height the target height. If <code>null</code> then the natural
+     * @param height the target height. If {@code null} then the natural
      *        height is used
-     * @param depth the target depth. If <code>null</code> then the natural
+     * @param depth the target depth. If {@code null} then the natural
      *        depth is used
      * 
      * @throws TypesetterException in case of a problem

@@ -39,12 +39,11 @@ import org.extex.unit.tex.table.util.PreambleItem;
  * This is the abstract base class for alignments.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public abstract class AbstractAlign extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -92,14 +91,14 @@ public abstract class AbstractAlign extends AbstractCode {
 
     /**
      * Parse an item of a preamble and add it to the given list. If the item is
-     * ended by a & then <code>true</code> is returned. If the item is ended
-     * by a <tt>\cr</tt> then <code>false</code> is returned.
+     * ended by a & then {@code true} is returned. If the item is ended
+     * by a {@code \cr} then {@code false} is returned.
      * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param preamble the list to add something to
      * 
-     * @return <code>true</code> iff the item has been ended by <tt>&</tt>.
+     * @return {@code true} iff the item has been ended by {@code &}.
      * 
      * @throws HelpingException in case of an error
      */

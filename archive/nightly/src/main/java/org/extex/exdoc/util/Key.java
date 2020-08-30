@@ -25,37 +25,36 @@ import java.util.Map;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5413 $
- */
+*/
 public class Key {
 
     /**
-     * The field <tt>theClass</tt> contains the ...
+     * The field {@code theClass} contains the ...
      */
     private String theClass;
 
     /**
-     * The field <tt>theMethod</tt> contains the ...
+     * The field {@code theMethod} contains the ...
      */
     private String theMethod;
 
     /**
-     * The field <tt>theName</tt> contains the ...
+     * The field {@code theName} contains the ...
      */
     private String theName;
 
     /**
-     * The field <tt>thePackage</tt> contains the ...
+     * The field {@code thePackage} contains the ...
      */
     private String thePackage;
 
     /**
-     * The field <tt>theType</tt> contains the ...
+     * The field {@code theType} contains the ...
      */
     private String theType;
 
     /**
-     * The field <tt>stringCache</tt> contains the ...
+     * The field {@code stringCache} contains the ...
      */
     private String stringCache = null;
 
@@ -73,12 +72,7 @@ public class Key {
         theType = a.get("type");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
+@Override
     public boolean equals(Object obj) {
 
         if (!(obj instanceof Key)) {
@@ -97,19 +91,14 @@ public class Key {
      * @param s the first string
      * @param t the second string
      * 
-     * @return <code>true</code> iff the arguments disagree
+     * @return {@code true} iff the arguments disagree
      */
     private boolean eq(String s, String t) {
 
         return (s == null ? t == null : s.equals(t));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
+@Override
     public int hashCode() {
 
         return theName.hashCode();

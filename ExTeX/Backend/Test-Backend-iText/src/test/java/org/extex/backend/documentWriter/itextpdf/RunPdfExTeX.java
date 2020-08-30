@@ -31,19 +31,18 @@ import org.extex.core.exception.helping.HelpingException;
  * run ExTeX with the pdf backend.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class RunPdfExTeX {
 
     /**
-     * The constant <tt>DEFINE_BRACES</tt> contains the definition of the
+     * The constant {@code DEFINE_BRACES} contains the definition of the
      * usual category codes for braces { and }.
      */
     public static final String DEFINE_BRACES =
             "\\catcode`\\{=1 " + "\\catcode`\\}=2\\relax ";
 
     /**
-     * The constant <tt>DEFINE_CATCODES</tt> contains the definition of the
+     * The constant {@code DEFINE_CATCODES} contains the definition of the
      * usual category codes for {, }, $, &, #, ^, _, and ^^10.
      */
     public static final String DEFINE_CATCODES =

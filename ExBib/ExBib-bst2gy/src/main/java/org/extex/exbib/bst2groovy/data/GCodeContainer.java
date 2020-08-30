@@ -31,32 +31,21 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
  * for target code itself.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class GCodeContainer extends ArrayList<GCode> implements GCode {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2009L;
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#getType()
-     */
-    public ReturnType getType() {
+public ReturnType getType() {
 
         return ReturnType.VOID;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#hasSideEffect()
-     */
-    @Override
+@Override
     public boolean hasSideEffect() {
 
         for (GCode code : this) {
@@ -67,12 +56,7 @@ public class GCodeContainer extends ArrayList<GCode> implements GCode {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#optimize()
-     */
-    public GCode optimize() {
+public GCode optimize() {
 
         for (int i = 0; i < size();) {
             GCode a = get(i);
@@ -95,12 +79,7 @@ public class GCodeContainer extends ArrayList<GCode> implements GCode {
         return this;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#optimize(java.util.List, int)
-     */
-    public int optimize(List<GCode> list, int index) {
+public int optimize(List<GCode> list, int index) {
 
         optimize();
         if (size() == 0) {
@@ -111,10 +90,7 @@ public class GCodeContainer extends ArrayList<GCode> implements GCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
-     *      java.lang.String)
+*      java.lang.String)
      */
     public void print(CodeWriter writer, String prefix) throws IOException {
 
@@ -123,12 +99,7 @@ public class GCodeContainer extends ArrayList<GCode> implements GCode {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.util.AbstractCollection#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder buffer = new StringBuilder();
@@ -140,12 +111,7 @@ public class GCodeContainer extends ArrayList<GCode> implements GCode {
         return buffer.toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#unify(org.extex.exbib.bst2groovy.data.GCode)
-     */
-    public boolean unify(GCode other) {
+public boolean unify(GCode other) {
 
         int size = size();
         if (other instanceof Var) {

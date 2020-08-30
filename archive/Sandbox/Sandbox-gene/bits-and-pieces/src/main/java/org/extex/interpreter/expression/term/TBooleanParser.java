@@ -36,8 +36,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * expression evaluator.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4787 $
- */
+*/
 public final class TBooleanParser implements ETypeParser {
 
 
@@ -54,7 +53,7 @@ public final class TBooleanParser implements ETypeParser {
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * 
-     * @return the converted value or <code>null</code> if the conversion could
+     * @return the converted value or {@code null} if the conversion could
      *         not be performed
      * 
      *         {@inheritDoc}
@@ -77,7 +76,7 @@ public final class TBooleanParser implements ETypeParser {
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * 
-     * @return the element inquired or <code>null</code> if none could be parsed
+     * @return the element inquired or {@code null} if none could be parsed
      * 
      *         {@inheritDoc}
      * 
@@ -110,12 +109,7 @@ public final class TBooleanParser implements ETypeParser {
 
         evaluator.register("boolean", new UnaryFunction() {
 
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.interpreter.expression.UnaryFunction#apply(org.extex.interpreter.expression.EType)
-             */
-            @Override
+        @Override
             public EType apply(EType accumulator) throws HelpingException {
 
                 return new TBoolean().set(accumulator);

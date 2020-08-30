@@ -25,11 +25,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\hrule</tt>.
+ * This is a test suite for the primitive {@code \hrule}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class HruleTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -49,9 +48,9 @@ public class HruleTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\hrule"> Test case checking that <tt>\hrule</tt>
+     * <testcase primitive="\hrule"> Test case checking that {@code \hrule}
      * switches to vertical mode and inserts a rule node. The default height is
-     * 0.4pt. </testcase>
+     * 0.4pt.
      * 
      * @throws Exception in case of an error
      */
@@ -67,9 +66,9 @@ public class HruleTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\hrule"> Test case checking that <tt>\hrule</tt>
+     * <testcase primitive="\hrule"> Test case checking that {@code \hrule}
      * switches to vertical mode and inserts a rule node of given height.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -85,9 +84,9 @@ public class HruleTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\hrule"> Test case checking that <tt>\hrule</tt>
+     * <testcase primitive="\hrule"> Test case checking that {@code \hrule}
      * switches to vertical mode and inserts a rule node of given height, width,
-     * and depth. </testcase>
+     * and depth.
      * 
      * @throws Exception in case of an error
      */
@@ -103,8 +102,8 @@ public class HruleTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\hrule"> Test case checking that <tt>\hrule</tt>
-     * ... </testcase>
+     * <testcase primitive="\hrule"> Test case checking that {@code \hrule}
+     * ...
      * 
      * @throws Exception in case of an error
      */

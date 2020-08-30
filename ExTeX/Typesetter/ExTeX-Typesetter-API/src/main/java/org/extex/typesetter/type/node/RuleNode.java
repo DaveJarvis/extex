@@ -29,30 +29,26 @@ import org.extex.typesetter.type.OrientedNode;
  * The rule node represents a rectangular area on the page filled with some
  * color.
  * 
- * @see "<logo>T<span style=
- *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *      >e</span>X</logo> &ndash; The Program [138]"
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4739 $
- */
+*/
 public class RuleNode extends AbstractNode implements OrientedNode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>context</tt> the typesetting context.
+     * The field {@code context} the typesetting context.
      */
-    private TypesettingContext context;
+    private final TypesettingContext context;
 
     /**
-     * The field <tt>horizontal</tt> contains the indicator that this is a
+     * The field {@code horizontal} contains the indicator that this is a
      * horizontal rule; otherwise it is a vertical rule.
      */
-    private boolean horizontal;
+    private final boolean horizontal;
 
     /**
      * Creates a new object.
@@ -63,11 +59,7 @@ public class RuleNode extends AbstractNode implements OrientedNode {
      * @param theContext the typesetting context
      * @param horizontal the indicator that this is a horizontal rule; otherwise
      *        it is a vertical rule
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [139]"
-     */
+*/
     public RuleNode(FixedDimen width, FixedDimen height, FixedDimen depth,
             TypesettingContext theContext, boolean horizontal) {
 
@@ -106,11 +98,7 @@ public class RuleNode extends AbstractNode implements OrientedNode {
      * @param prefix the prefix string inserted at the beginning of each line
      * @param breadth the breadth
      * @param depth the depth
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [187]"
-     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
+* @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
      *      java.lang.String, int, int)
      */
     @Override

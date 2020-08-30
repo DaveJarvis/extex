@@ -41,8 +41,7 @@ import org.junit.Test;
  * Test for the font factory.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
 
     /**

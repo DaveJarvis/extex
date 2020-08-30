@@ -26,12 +26,11 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This exception signals an unsupported operation in the evaluator.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4733 $
- */
+*/
 public class UnsupportedException extends HelpingException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the id for serialization.
+     * The field {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 20060628L;
 

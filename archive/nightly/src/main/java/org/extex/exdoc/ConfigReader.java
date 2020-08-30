@@ -48,17 +48,16 @@ import org.xml.sax.SAXException;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5413 $
- */
+*/
 public class ConfigReader {
 
     /**
-     * The constant <tt>CONFIG_EXTENSION</tt> contains the ...
+     * The constant {@code CONFIG_EXTENSION} contains the ...
      */
     private static final String CONFIG_EXTENSION = ".xml";
 
     /**
-     * The constant <tt>UNIT_EXTENSION</tt> contains the ...
+     * The constant {@code UNIT_EXTENSION} contains the ...
      */
     private static final String UNIT_EXTENSION = CONFIG_EXTENSION;
 
@@ -89,29 +88,29 @@ public class ConfigReader {
     }
 
     /**
-     * The field <tt>builder</tt> contains the document builder for parsing
+     * The field {@code builder} contains the document builder for parsing
      * the XML file.
      */
     private DocumentBuilder builder;
 
     /**
-     * The field <tt>component</tt> contains the ...
+     * The field {@code component} contains the ...
      */
     private List<String> component = new ArrayList<String>();
 
     /**
-     * The field <tt>configurations</tt> contains the ...
+     * The field {@code configurations} contains the ...
      */
     private List<ConfigurationInfo> configurations =
             new ArrayList<ConfigurationInfo>();
 
     /**
-     * The field <tt>logger</tt> contains the logger.
+     * The field {@code logger} contains the logger.
      */
     private Logger logger;
 
     /**
-     * The field <tt>units</tt> contains the ...
+     * The field {@code units} contains the ...
      */
     private List<UnitInfo> units = new ArrayList<UnitInfo>();
 

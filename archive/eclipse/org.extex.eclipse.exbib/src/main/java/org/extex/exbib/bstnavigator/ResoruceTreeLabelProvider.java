@@ -29,12 +29,11 @@ import org.extex.exbib.editor.Activator;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 class ResoruceTreeLabelProvider extends LabelProvider {
 
     /**
-     * The field <tt>img</tt> contains the ...
+     * The field {@code img} contains the ...
      */
     private Image imgNoLeaves;
 
@@ -59,12 +58,7 @@ class ResoruceTreeLabelProvider extends LabelProvider {
                     .createImage();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.BaseLabelProvider#dispose()
-     */
-    @Override
+@Override
     public void dispose() {
 
         if (imgNoLeaves != null) {
@@ -83,12 +77,7 @@ class ResoruceTreeLabelProvider extends LabelProvider {
         super.dispose();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.LabelProvider#getImage(java.lang.Object)
-     */
-    @Override
+@Override
     public Image getImage(Object object) {
 
         if (object instanceof TreeDirectory) {

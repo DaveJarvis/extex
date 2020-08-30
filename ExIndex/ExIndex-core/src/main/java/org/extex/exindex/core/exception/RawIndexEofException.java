@@ -26,12 +26,11 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This exception signals the unexpected end of file.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class RawIndexEofException extends RawIndexException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2008L;

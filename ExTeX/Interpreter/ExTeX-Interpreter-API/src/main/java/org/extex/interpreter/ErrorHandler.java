@@ -32,8 +32,7 @@ import org.extex.scanner.type.token.Token;
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public interface ErrorHandler {
 
     /**
@@ -44,7 +43,7 @@ public interface ErrorHandler {
      * @param source the token source
      * @param context the processor context
      *
-     * @return <code>true</code> iff the processing can continue
+     * @return {@code true} iff the processing can continue
      *
      * @throws HelpingException in case of en error
      */

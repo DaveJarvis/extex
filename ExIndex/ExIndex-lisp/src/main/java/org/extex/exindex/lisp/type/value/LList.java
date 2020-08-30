@@ -30,20 +30,16 @@ import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
  * This class is a node containing a list of arbitrary values.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LList implements LValue, Iterable<LValue> {
 
     /**
-     * The field <tt>NIL</tt> contains the unmodifiable empty list.
+     * The field {@code NIL} contains the unmodifiable empty list.
      */
     public static final LList NIL = new LList() {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exindex.lisp.type.value.LList#add(
-         *      org.extex.exindex.lisp.type.value.LValue)
+    *      org.extex.exindex.lisp.type.value.LValue)
          */
         @Override
         public boolean add(LValue o) {
@@ -51,12 +47,7 @@ public class LList implements LValue, Iterable<LValue> {
             throw new UnsupportedOperationException();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return "nil";
@@ -84,7 +75,7 @@ public class LList implements LValue, Iterable<LValue> {
     }
 
     /**
-     * The field <tt>content</tt> contains the content.
+     * The field {@code content} contains the content.
      */
     List<LValue> content = new ArrayList<LValue>();
 
@@ -105,7 +96,7 @@ public class LList implements LValue, Iterable<LValue> {
      * 
      * @param o the node
      * 
-     * @return <code>true</code>
+     * @return {@code true}
      */
     public boolean add(LValue o) {
 
@@ -125,7 +116,7 @@ public class LList implements LValue, Iterable<LValue> {
      * 
      * @param o the node to find
      * 
-     * @return <code>true</code> iff the element is found
+     * @return {@code true} iff the element is found
      */
     public boolean contains(Object o) {
 
@@ -150,29 +141,19 @@ public class LList implements LValue, Iterable<LValue> {
     /**
      * Check whether the list is empty.
      * 
-     * @return <code>true</code> iff the list does not contain any element
+     * @return {@code true} iff the list does not contain any element
      */
     public boolean isEmpty() {
 
         return content.isEmpty();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Iterable#iterator()
-     */
-    public Iterator<LValue> iterator() {
+public Iterator<LValue> iterator() {
 
         return content.iterator();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
-     */
-    public void print(PrintStream stream) {
+public void print(PrintStream stream) {
 
         stream.println(toString());
     }
@@ -199,12 +180,7 @@ public class LList implements LValue, Iterable<LValue> {
         return content.size();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         if (content.size() == 0) {

@@ -24,8 +24,7 @@ package org.extex.exindex.lisp.parser;
  * with line number.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface ResourceLocator {
 
     /**

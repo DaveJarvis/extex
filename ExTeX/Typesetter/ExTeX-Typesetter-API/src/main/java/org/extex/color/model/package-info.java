@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains implementing classes for different color models.
+ * Contains implementing classes for different color models.
  */
 
 package org.extex.color.model;

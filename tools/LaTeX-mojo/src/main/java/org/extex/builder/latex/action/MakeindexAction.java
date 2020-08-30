@@ -29,8 +29,7 @@ import org.extex.builder.latex.artifact.Artifact;
  * This action runs makeindex in one of its variants on the artifact.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:7717 $
- */
+*/
 public class MakeindexAction extends Action {
 
     /**
@@ -44,10 +43,7 @@ public class MakeindexAction extends Action {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.builder.latex.action.Action#makeCommandLine(org.extex.builder.latex.Parameters,
-     *      Artifact, Artifact, Logger)
+*      Artifact, Artifact, Logger)
      */
     @Override
     protected List<String> makeCommandLine(Parameters parameters,

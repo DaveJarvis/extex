@@ -24,18 +24,14 @@ import org.extex.core.dimen.FixedDimen;
 /**
  * This class provides the same functionality as
  * {@link org.extex.typesetter.type.node.KernNode KernNode} but is
- * distinguishable for the sake of some fine differentiations in <logo>T<span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>.
+ * distinguishable for the sake of some fine differentiations in TeX.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class ImplicitKernNode extends AbstractKernNode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 

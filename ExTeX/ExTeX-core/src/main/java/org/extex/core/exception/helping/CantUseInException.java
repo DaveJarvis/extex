@@ -26,16 +26,15 @@ import org.extex.framework.i18n.LocalizerFactory;
  * is not meant.
  * <p>
  *  The localization format is taken from the Localizer under the key
- *  <tt>TTP.CantUseIn</tt>.
+ *  {@code TTP.CantUseIn}.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4726 $
- */
+*/
 public class CantUseInException extends HelpingException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2006L;
 

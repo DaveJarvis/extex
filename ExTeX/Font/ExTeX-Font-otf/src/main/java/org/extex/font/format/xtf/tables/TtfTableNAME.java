@@ -19,19 +19,20 @@
 
 package org.extex.font.format.xtf.tables;
 
-import java.io.IOException;
-
 import org.extex.font.format.xtf.XtfReader;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
+
+import java.io.IOException;
 
 /**
  * The name table(tag name: 'name') allows you to include human-readable names
  * for features and settings, copyright notices, font names, style names, and
  * other information related to your font.
  * 
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tbody>
  * <tr>
  * <td><b>Type</b></td>
@@ -68,8 +69,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TtfTableNAME extends AbstractXtfTable
         implements
             XtfTable,
@@ -77,8 +77,9 @@ public class TtfTableNAME extends AbstractXtfTable
 
     /**
      * NameRecord.
-     * 
-     * <table BORDER="1">
+     *
+     * <table>
+     * <caption>TBD</caption>
      * <tbody>
      * <tr>
      * <td><b>Type</b></td>
@@ -90,7 +91,7 @@ public class TtfTableNAME extends AbstractXtfTable
      * <td>Platform ID.</td>
      * </tr>
      * <tr>
-     * <td>USHORT</td><
+     * <td>USHORT</td>
      * <td>Platform-specific encoding ID.</td>
      * </tr>
      * <tr>
@@ -103,7 +104,8 @@ public class TtfTableNAME extends AbstractXtfTable
      * </tr>
      * <tr>
      * <td>USHORT</td>
-     * <td>String length (in bytes).</td> /tr>
+     * <td>String length (in bytes).</td>
+     * </tr>
      * <tr>
      * <td>USHORT</td>
      * <td>String offset from start of storage area (in bytes).</td>
@@ -113,8 +115,9 @@ public class TtfTableNAME extends AbstractXtfTable
      * <p>
      * <b>Platform ID</b>
      * </p>
-     * 
-     * <table BORDER="1">
+     *
+     * <table>
+     * <caption>TBD</caption>
      * <tbody>
      * <tr>
      * <td><b>ID</b></td>
@@ -148,7 +151,8 @@ public class TtfTableNAME extends AbstractXtfTable
      * <b>Microsoft platform-specific encoding ID&rsquo;s (platform ID = 3)</b>
      * </p>
      * 
-     * <table BORDER="1">
+     * <table>
+     * <caption>TBD</caption>
      * <tbody>
      * <tr>
      * <td><b>Code</b></td>
@@ -166,27 +170,27 @@ public class TtfTableNAME extends AbstractXtfTable
      * </tr>
      * </table>
      */
-    public class NameRecord implements XMLWriterConvertible {
+    public static class NameRecord implements XMLWriterConvertible {
 
         /**
          * encodingId.
          */
-        private short encodingId;
+        private final short encodingId;
 
         /**
          * languageId.
          */
-        private short languageId;
+        private final short languageId;
 
         /**
          * nameId.
          */
-        private short nameId;
+        private final short nameId;
 
         /**
          * platformId.
          */
-        private short platformId;
+        private final short platformId;
 
         /**
          * record.
@@ -196,12 +200,12 @@ public class TtfTableNAME extends AbstractXtfTable
         /**
          * stringLength.
          */
-        private short stringLength;
+        private final short stringLength;
 
         /**
          * stringOffset.
          */
-        private short stringOffset;
+        private final short stringOffset;
 
         /**
          * Create a new object.
@@ -348,12 +352,7 @@ public class TtfTableNAME extends AbstractXtfTable
                 .append(record).append('\n').toString();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        @Override
+    @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("namerecord");
@@ -478,22 +477,22 @@ public class TtfTableNAME extends AbstractXtfTable
     /**
      * count.
      */
-    private short count;
+    private final short count;
 
     /**
      * format.
      */
-    private short format;
+    private final short format;
 
     /**
      * records.
      */
-    private NameRecord[] namerecords;
+    private final NameRecord[] namerecords;
 
     /**
      * stringOffset.
      */
-    private short stringOffset;
+    private final short stringOffset;
 
     /**
      * Create a new object.
@@ -516,7 +515,7 @@ public class TtfTableNAME extends AbstractXtfTable
         // Load the records, which contain the encoding information and string
         // offsets
         for (int i = 0; i < count; i++) {
-            namerecords[i] = new NameRecord(rar);
+            namerecords[i] = new NameRecord( rar );
         }
 
         // Now load the strings
@@ -529,12 +528,12 @@ public class TtfTableNAME extends AbstractXtfTable
      * Check, if a record for the platform exists.
      * 
      * @param platfromid The platform id.
-     * @return Returns <code>true</code>, if a record for the platform exists.
+     * @return Returns {@code true}, if a record for the platform exists.
      */
     public boolean existsPlatfrom(int platfromid) {
 
-        for (int i = 0; i < namerecords.length; i++) {
-            if (namerecords[i].getPlatformId() == platfromid) {
+        for( final NameRecord namerecord : namerecords ) {
+            if( namerecord.getPlatformId() == platfromid ) {
                 return true;
             }
         }
@@ -580,17 +579,17 @@ public class TtfTableNAME extends AbstractXtfTable
     public NameRecord[] getNameRecords(int platfromid) {
 
         int cnt = 0;
-        for (int i = 0; i < namerecords.length; i++) {
-            if (namerecords[i].getPlatformId() == platfromid) {
+        for( final NameRecord nameRecord : namerecords ) {
+            if( nameRecord.getPlatformId() == platfromid ) {
                 cnt++;
             }
         }
 
         NameRecord[] pltrec = new NameRecord[cnt];
         cnt = 0;
-        for (int i = 0; i < namerecords.length; i++) {
-            if (namerecords[i].getPlatformId() == platfromid) {
-                pltrec[cnt++] = namerecords[i];
+        for( final NameRecord namerecord : namerecords ) {
+            if( namerecord.getPlatformId() == platfromid ) {
+                pltrec[ cnt++ ] = namerecord;
             }
         }
         return pltrec;
@@ -641,19 +640,14 @@ public class TtfTableNAME extends AbstractXtfTable
 
         NameRecord[] rec = getNameRecords(platfromid);
 
-        for (int i = 0; i < rec.length; i++) {
-            if (rec[i].getNameId() == id) {
-                return rec[i].getRecordString();
+        for( final NameRecord nameRecord : rec ) {
+            if( nameRecord.getNameId() == id ) {
+                return nameRecord.getRecordString();
             }
         }
         return "???";
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
-     */
     @Override
     public String getShortcut() {
 
@@ -681,16 +675,6 @@ public class TtfTableNAME extends AbstractXtfTable
         return XtfReader.NAME;
     }
 
-    // ----------------------------------------
-    // ----------------------------------------
-    // ----------------------------------------
-    // ----------------------------------------
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
     @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

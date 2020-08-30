@@ -27,24 +27,23 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
  * This is an abstract base class for binary infix operators.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class BinaryInfix extends GenericCode {
 
     /**
-     * The field <tt>RELATION_LEVEL</tt> contains the level value to be used for
+     * The field {@code RELATION_LEVEL} contains the level value to be used for
      * relations.
      */
     public static final int RELATION_LEVEL = 700;
 
     /**
-     * The field <tt>FUNCTION_LEVEL</tt> contains the level value to be used for
+     * The field {@code FUNCTION_LEVEL} contains the level value to be used for
      * functions.
      */
     public static final int FUNCTION_LEVEL = 500;
 
     /**
-     * The field <tt>level</tt> contains the precedence.
+     * The field {@code level} contains the precedence.
      */
     private int level;
 
@@ -63,10 +62,7 @@ public abstract class BinaryInfix extends GenericCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public void print(CodeWriter writer, String prefix) throws IOException {

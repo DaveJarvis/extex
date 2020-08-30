@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains definition and implementation of a page builder.
+ * Contains definition and implementation of a page builder.
  */
 
 package org.extex.typesetter.pageBuilder;

@@ -34,12 +34,11 @@ import org.extex.typesetter.type.noad.Noad;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\mathchoice</code>.
+ * {@code \mathchoice}.
  * 
- * <doc name="mathchoice">
- * <h3>The Math Primitive <tt>\mathchoice</tt></h3>
+ * <p>The Math Primitive {@code \mathchoice}</p>
  * <p>
- * The math primitive <tt>\mathchoice</tt> provides a switch on the current
+ * The math primitive {@code \mathchoice} provides a switch on the current
  * style of math processing. The math processing is in one of the styles
  * <i>display</i>, <i>text</i>, <i>script</i>, and <i>scriptscript</i>. The
  * math styles influence the size of the typeset material and the spacing. The
@@ -60,27 +59,27 @@ import org.extex.typesetter.type.noad.Noad;
  * Outside the math mode the primitive raises an error.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;mathchoice&rang;
- *       &rarr; <tt>\mathchoice</tt> {&lang;display material&rang;}{&lang;text material&rang;}{&lang;script material&rang;}{&lang;scriptscript material&rang;} </pre>
+ *       &rarr; {@code \mathchoice} {&lang;display material&rang;}{&lang;text material&rang;}{&lang;script material&rang;}{&lang;scriptscript material&rang;} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \mathchoice{d}{t}{s}{ss}  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Mathchoice extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -96,10 +95,7 @@ public class Mathchoice extends AbstractMathCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

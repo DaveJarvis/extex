@@ -25,12 +25,11 @@ import java.util.ResourceBundle;
  * This exception signals a missing end tag.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MissingEndTagException extends SyntaxException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2008L;
@@ -46,12 +45,7 @@ public class MissingEndTagException extends SyntaxException {
         super(resource, tag);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Throwable#getLocalizedMessage()
-     */
-    @Override
+@Override
     public String getLocalizedMessage() {
 
         ResourceBundle bundle = ResourceBundle.getBundle(getClass().getName());
@@ -60,12 +54,7 @@ public class MissingEndTagException extends SyntaxException {
             super.getMessage());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Throwable#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return getLocalizedMessage();

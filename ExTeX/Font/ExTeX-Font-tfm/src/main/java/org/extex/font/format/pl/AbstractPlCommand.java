@@ -22,8 +22,7 @@ package org.extex.font.format.pl;
  * Abstract class for a pl command.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- * 
+*
  */
 public abstract class AbstractPlCommand implements PlCommand {
 
@@ -32,22 +31,12 @@ public abstract class AbstractPlCommand implements PlCommand {
      */
     protected String param;
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.pl.PlCommand#getParameter()
-     */
-    public String getParameter() {
+public String getParameter() {
 
         return param;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.pl.PlCommand#setParameter(java.lang.String)
-     */
-    public void setParameter(String p) {
+public void setParameter(String p) {
 
         param = p;
     }

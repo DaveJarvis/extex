@@ -24,8 +24,7 @@ package org.extex.color;
  * This class provides some utility functions for colors.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5563 $
- */
+*/
 public final class ColorUtil {
 
 
@@ -49,7 +48,7 @@ public final class ColorUtil {
     /**
      * Format the alpha value. If it is the default value then nothing is added
      * to the target string buffer. Otherwise the value in the range from 0.0
-     * to 1.0 preceded by <tt>alpha</tt> is added.
+     * to 1.0 preceded by {@code alpha} is added.
      *
      * @param sb the target string buffer
      * @param alpha the alpha value

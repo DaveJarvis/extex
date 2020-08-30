@@ -32,12 +32,10 @@ import org.extex.resource.ResourceFinder;
 /**
  * This is the adapter for the L system to parse a merge rule.
  * 
- * <doc type="exindex-command" command="searchpath">
- * 
- * <h3>The Command <tt>searchpath</tt></h3>
+ * <p>The Command {@code searchpath}</p>
  * 
  * <p>
- * The command <tt>searchpath</tt> can be used to manipulate the search path.
+ * The command {@code searchpath} can be used to manipulate the search path.
  * </p>
  * 
  * <pre>
@@ -53,26 +51,18 @@ import org.extex.resource.ResourceFinder;
  * <pre>
  *  (searchpath ".:/usr/local/lib/texmf/xindy:")
  * </pre>
- * 
- * <p>
- * 
- * </p>
+ *
+ * <br>
  * 
  * <pre>
  *  (searchpath ("." "/usr/local/lib/texmf/xindy" :default))
  * </pre>
- * 
- * <p>
- * 
- * </p>
- * 
+ *
+ * <br>
+ *
  * <pre>
  *  (searchpath ("." :last "/usr/local/lib/texmf/xindy" :default))
  * </pre>
- * 
- * <p>
- * 
- * </p>
  * 
  * <p>
  * If a path element starts with a tilde (~) then this character is replaced by
@@ -82,20 +72,18 @@ import org.extex.resource.ResourceFinder;
  * 
  * TODO documentation incomplete
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LSearchpath extends LFunction {
 
     /**
-     * The field <tt>FLAG_DEFAULT</tt> contains the flag :default.
+     * The field {@code FLAG_DEFAULT} contains the flag :default.
      */
     private static final LSymbol FLAG_DEFAULT = LSymbol.get(":default");
 
     /**
-     * The field <tt>FLAG_LAST</tt> contains the flag :last.
+     * The field {@code FLAG_LAST} contains the flag :last.
      */
     private static final LSymbol FLAG_LAST = LSymbol.get(":last");
 
@@ -121,7 +109,7 @@ public class LSearchpath extends LFunction {
      * @param interpreter the interpreter
      * @param value the value
      * 
-     * @return <tt>nil</tt>
+     * @return {@code nil}
      * 
      * @throws LNonMatchingTypeException in case of an error
      */

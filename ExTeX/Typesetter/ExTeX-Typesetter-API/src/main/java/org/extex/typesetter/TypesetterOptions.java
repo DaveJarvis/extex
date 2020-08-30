@@ -36,8 +36,7 @@ import org.extex.typesetter.tc.font.Font;
  * options.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4388 $
- */
+*/
 public interface TypesetterOptions {
 
     /**
@@ -63,7 +62,7 @@ public interface TypesetterOptions {
      *
      * @param name the name or the number of the register
      *
-     * @return the named font register or <code>null</code> if none is set
+     * @return the named font register or {@code null} if none is set
      */
     Font getFont(String name);
 
@@ -105,7 +104,7 @@ public interface TypesetterOptions {
     /**
      * Getter for the paragraph shape.
      *
-     * @return the paragraph shape or <code>null</code> if no special shape
+     * @return the paragraph shape or {@code null} if no special shape
      *   is present
      */
     ParagraphShape getParshape();

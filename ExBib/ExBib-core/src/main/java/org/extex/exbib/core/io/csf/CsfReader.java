@@ -54,15 +54,13 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </pre>
  * <p>
  * Four sections are currently supported: \lowupcase, \lowercase,
- * &#x5c;uppercase and \order. The syntax of the four supported sections is
+ * &#x5c;uppercase and {@code \order}. The syntax of the four supported sections is
  * summarized below.
  * </p>
  * <p>
  * 8-bit characters may be entered naturally, but to avoid problems with
  * character set translation or corruption, they can also be entered using the
- * T<span style= *
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * * >e</span>X-style portable notation for character codes, i.e. ^^XX, where XX
+ * TeX-style portable notation for character codes, i.e. ^^XX, where XX
  * is the hexadecimal value of the character code.
  * </p>
  * <p>
@@ -73,7 +71,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * The percent sign ('%') is used to introduce a trailing comment - it and all
  * remaining characters on a line are ignored. ^^25 has the same effect.
  * </p>
- * <h3>\lowupcase section</h3>
+ * <p>\lowupcase section</p>
  * <p>
  * The \lowupcase section of the CS file is used to define the lower /upper and
  * upper/lower case relationship of pairs of specified characters. It is only
@@ -86,26 +84,26 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * <pre>
  *    \lowupcase{
- *        &lang;LC<sub>1</sub>&rang; &lang;UC<sub>1</sub>&rang;   % Comment begins with a percent sign
- *        &lang;LC<sub>2</sub>&rang; &lang;UC<sub>2</sub>&rang;
+ *        &lang;LC_1&rang; &lang;UC_1&rang;   % Comment begins with a percent sign
+ *        &lang;LC_2&rang; &lang;UC_2&rang;
  *        ...
- *        &lang;LC<sub>n</sub>&rang; &lang;UC<sub>n</sub>&rang;
+ *        &lang;LC_n&rang; &lang;UC_n&rang;
  *    }
  * </pre>
  * <p>
- * Each &lang;LC<sub>n</sub>&rang; &lang;UC<sub>n</sub>&rang; pair of characters
- * defines that the upper case equivalent of &lang;LC<sub>n</sub>&rang; is
- * &lang;UC<sub>n</sub>&rang; <b>and</b> the lower case equivalent of
- * &lang;UC<sub>n</sub>&rang; is &lang;LC<sub>n</sub>&rang;.
+ * Each &lang;LC_n&rang; &lang;UC_n&rang; pair of characters
+ * defines that the upper case equivalent of &lang;LC_n&rang; is
+ * &lang;UC_n&rang; <b>and</b> the lower case equivalent of
+ * &lang;UC_n&rang; is &lang;LC_n&rang;.
  * </p>
  * <p>
  * 
  * You cannot redefine the lower or upper case equivalent of an ASCII character
- * (code &lt; 128), so all instances of &lang;LC<sub>n</sub>&rang; and
- * &lang;UC<sub>n</sub>&rang; (i.e. both sides of the relationship) must have
+ * (code &lt; 128), so all instances of &lang;LC_n&rang; and
+ * &lang;UC_n&rang; (i.e. both sides of the relationship) must have
  * codes &gt; 127.
  * </p>
- * <h3>\lowercase section</h3>
+ * <p>\lowercase section</p>
  * <p>
  * The \lowercase section of the CS file is used to define the lower case
  * equivalent of specified characters. It should normally only be used if the
@@ -117,23 +115,23 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * <pre>
  *    \lowercase{
- *        &lang;UC<sub>1</sub>&rang; &lang;LC<sub>1</sub>&rang;   % Comment begins with a percent sign
- *        &lang;UC<sub>2</sub>&rang; &lang;LC<sub>2</sub>&rang;
+ *        &lang;UC_1&rang; &lang;LC_1&rang;   % Comment begins with a percent sign
+ *        &lang;UC_2&rang; &lang;LC_2&rang;
  *        ...
- *        &lang;UC<sub>n</sub>&rang; &lang;LC<sub>n</sub>&rang;
+ *        &lang;UC_n&rang; &lang;LC_n&rang;
  *    }
  * </pre>
  * <p>
- * Each &lang;LC<sub>n</sub>&rang; &lang;UC<sub>n</sub>&rang; pair of characters
- * defines that the lower case equivalent of &lang;UC<sub>n</sub>&rang; is
- * &lang;LC<sub>n</sub>&rang;.
+ * Each &lang;LC_n&rang; &lang;UC_n&rang; pair of characters
+ * defines that the lower case equivalent of &lang;UC_n&rang; is
+ * &lang;LC_n&rang;.
  * </p>
  * <p>
  * You cannot redefine the lower case equivalent of an ASCII character (code
- * &lt; 128), so all instances of &lang;UC<sub>n</sub>&rang; (i.e. the left hand
+ * &lt; 128), so all instances of &lang;UC_n&rang; (i.e. the left hand
  * side of the relationship) must have codes &gt; 127.
  * </p>
- * <h3>&#x5c;uppercase section</h3>
+ * <p>&#x5c;uppercase section</p>
  * <p>
  * The &#x5c;uppercase section of the CS file is used to define the upper case
  * equivalent of specified characters. It should normally only be used if the
@@ -142,56 +140,58 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <p>
  * The syntax of the &#x5c;uppercase section is:
  * </p>
- * <re> &#x5c;uppercase{ &lang;LC<sub>1</sub>&rang; &lang;UC<sub>1</sub>&rang; %
- * Comment begins with a percent sign &lang;LC<sub>2</sub>&rang;
- * &lang;UC<sub>2</sub>&rang; ... &lang;LC<sub>n</sub>&rang;
- * &lang;UC<sub>n</sub>&rang; } </pre>
+ * <pre> &#x5c;uppercase{ &lang;LC_1&rang; &lang;UC_1&rang; %
+ * Comment begins with a percent sign &lang;LC_2&rang;
+ * &lang;UC_2&rang; ... &lang;LC_n&rang;
+ * &lang;UC_n&rang; } </pre>
  * <p>
- * Each &lang;LC<sub>n</sub>&rang; &lang;UC<sub>n</sub>&rang; pair of characters
- * defines that the upper case case equivalent of &lang;LC<sub>n</sub>&rang; is
- * &lang;UC<sub>n</sub>&rang;.
+ * Each &lang;LC_n&rang; &lang;UC_n&rang; pair of characters
+ * defines that the upper case case equivalent of &lang;LC_n&rang; is
+ * &lang;UC_n&rang;.
  * </p>
  * <p>
  * You cannot redefine the upper case equivalent of an ASCII character (code
- * &lt; 128), so all instances of &lang;LC<sub>n</sub>&rang; (i.e. the left hand
+ * &lt; 128), so all instances of &lang;LC_n&rang; (i.e. the left hand
  * side of the relationship) must have codes &gt; 127.
  * </p>
- * < <h3>\order section</h3>
  * <p>
- * The \order section of the CS file is used to define the order in which
+ * The {@code \order} section
+ * </p>
+ * <p>
+ * The {@code \order} section of the CS file is used to define the order in which
  * characters are sorted.
  * </p>
  * <p>
- * The syntax of the \order section is:
+ * The syntax of the {@code \order} section is:
  * </p>
  * 
  * <pre>
  *    \order{
- *        &lang;char<sub>1</sub>&rang;                % Comment begins with a percent sign
- *        &lang;char<sub>2</sub>&rang; &lang;char<sub>3</sub>&rang;       % whitespace between the chars
- *        &lang;char<sub>4</sub>&rang; - &lang;char<sub>5</sub>&rang;     % a hyphen between the chars
- *        &lang;char<sub>4</sub>&rang; _ &lang;char<sub>5</sub>&rang;     % an underscore between the chars
+ *        &lang;char_1&rang;                % Comment begins with a percent sign
+ *        &lang;char_2&rang; &lang;char_3&rang;       % whitespace between the chars
+ *        &lang;char_4&rang; - &lang;char_5&rang;     % a hyphen between the chars
+ *        &lang;char_4&rang; _ &lang;char_5&rang;     % an underscore between the chars
  *        ...
- *        &lang;char<sub>n</sub>&rang;
+ *        &lang;char_n&rang;
  *    }
  * </pre>
  * <p>
  * All characters on the same line are given the same sorting weight.
  * </p>
  * <p>
- * The construct &lang;char<sub>1</sub>&rang; &lang;underscore&rang;
- * &lang;char<sub>2</sub>&rang; is used to denote that all characters in the
- * range &lang;char<sub>1</sub>&rang; to &lang;char<sub>2</sub>&rang; should be
+ * The construct &lang;char_1&rang; &lang;underscore&rang;
+ * &lang;char_2&rang; is used to denote that all characters in the
+ * range &lang;char_1&rang; to &lang;char_2&rang; should be
  * given the same sorting weight. For example, "A _ Z" would cause all ASCII
  * upper case alphabetical characters to have the same sorting weight and would
  * be equivalent to placing all 26 characters on the same line.
  * </p>
  * <p>
- * The construct &lang;char<sub>1</sub>&rang; &lang;hyphen&rang;
- * &lang;char<sub>2</sub>&rang; is used to denote that all characters in the
- * range &lang;char<sub>1</sub>&rang; to &lang;char<sub>2</sub>&rang; should be
+ * The construct &lang;char_1&rang; &lang;hyphen&rang;
+ * &lang;char_2&rang; is used to denote that all characters in the
+ * range &lang;char_1&rang; to &lang;char_2&rang; should be
  * given an ascending set of sorting weights, starting with
- * &lang;char<sub>1</sub>&rang; and ending with &lang;char<sub>2</sub>&rang;.
+ * &lang;char_1&rang; and ending with &lang;char_2&rang;.
  * For example, "A - Z" would cause all upper case ASCII alphabetical characters
  * to be sorted in ascending order and would be equivalent to placing 'A' on the
  * first line, 'B' on the second, through to 'Z' on the 26<sup>th</sup> line.
@@ -201,14 +201,13 @@ import org.extex.framework.i18n.LocalizerFactory;
  * sorting weight than characters occurring later. When sorting alphabetically,
  * characters with the lowest weight come first.
  * 
- * All characters not in the \order section (including ASCII characters) are
+ * All characters not in the {@code \order} section (including ASCII characters) are
  * given the same very high sorting weight to ensure that they come last when
  * sorting alphabetically.
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class CsfReader {
 
     /**
@@ -216,15 +215,12 @@ public class CsfReader {
      */
     private enum Parser {
         /**
-         * The field <tt>LOWER</tt> contains the mode for \lowercase.
+         * The field {@code LOWER} contains the mode for \lowercase.
          */
         LOWER {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.csf.CsfReader.Parser#encounter(org.extex.exbib.core.io.csf.CsfSorter,
-             *      char, char)
+        *      char, char)
              */
             @Override
             void encounter(CsfSorter csf, char c, char d) {
@@ -233,15 +229,12 @@ public class CsfReader {
             }
         },
         /**
-         * The field <tt>UPPER</tt> contains the mode for &#x5c;uppercase.
+         * The field {@code UPPER} contains the mode for &#x5c;uppercase.
          */
         UPPER {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.csf.CsfReader.Parser#encounter(org.extex.exbib.core.io.csf.CsfSorter,
-             *      char, char)
+        *      char, char)
              */
             @Override
             void encounter(CsfSorter csf, char c, char d) {
@@ -250,15 +243,12 @@ public class CsfReader {
             }
         },
         /**
-         * The field <tt>LOW_UP</tt> contains the mode for \lowupcase.
+         * The field {@code LOW_UP} contains the mode for \lowupcase.
          */
         LOW_UP {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.csf.CsfReader.Parser#encounter(org.extex.exbib.core.io.csf.CsfSorter,
-             *      char, char)
+        *      char, char)
              */
             @Override
             void encounter(CsfSorter csf, char c, char d) {
@@ -432,7 +422,7 @@ public class CsfReader {
     }
 
     /**
-     * Parse an \order section.
+     * Parse an {@code \order} section.
      * 
      * @param csf the transport object
      * @param reader the reader to acquire characters from
@@ -498,16 +488,21 @@ public class CsfReader {
         Reader r = new BufferedReader(reader);
 
         for (String s = readToken(r); s != null; s = readToken(r)) {
-            if ("\\order".equals(s)) {
-                parseOrder(csf, r);
-            } else if ("\\uppercase".equals(s)) {
-                Parser.UPPER.parse(csf, r);
-            } else if ("\\lowercase".equals(s)) {
-                Parser.LOWER.parse(csf, r);
-            } else if ("\\lowupcase".equals(s)) {
-                Parser.LOW_UP.parse(csf, r);
-            } else {
-                throw makeException("unknown.section", s);
+            switch( s ) {
+                case "\\order":
+                    parseOrder( csf, r );
+                    break;
+                case "\\uppercase":
+                    Parser.UPPER.parse( csf, r );
+                    break;
+                case "\\lowercase":
+                    Parser.LOWER.parse( csf, r );
+                    break;
+                case "\\lowupcase":
+                    Parser.LOW_UP.parse( csf, r );
+                    break;
+                default:
+                    throw makeException( "unknown.section", s );
             }
         }
 
@@ -519,7 +514,7 @@ public class CsfReader {
      * 
      * @param reader the reader to get characters from
      * 
-     * @return the token found or <code>null</code> ON eof
+     * @return the token found or {@code null} ON eof
      * 
      * @throws IOException in case of an I/O error
      * @throws CsfException in case of an error

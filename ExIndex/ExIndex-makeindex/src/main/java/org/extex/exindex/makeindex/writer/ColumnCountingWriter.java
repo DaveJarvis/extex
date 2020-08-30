@@ -26,22 +26,21 @@ import java.io.Writer;
  * This writer keeps track of the current column.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 5432 $
- */
+*/
 public class ColumnCountingWriter extends Writer {
 
     /**
-     * The field <tt>tabSize</tt> contains the width of a tab.
+     * The field {@code tabSize} contains the width of a tab.
      */
     private final int tabSize = 8;
 
     /**
-     * The field <tt>writer</tt> contains the next writer.
+     * The field {@code writer} contains the next writer.
      */
     private final Writer writer;
 
     /**
-     * The field <tt>column</tt> contains the current column.
+     * The field {@code column} contains the current column.
      */
     private int column;
 
@@ -55,23 +54,13 @@ public class ColumnCountingWriter extends Writer {
         this.writer = writer;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.Writer#close()
-     */
-    @Override
+@Override
     public void close() throws IOException {
 
         writer.close();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.Writer#flush()
-     */
-    @Override
+@Override
     public void flush() throws IOException {
 
         writer.flush();
@@ -97,12 +86,7 @@ public class ColumnCountingWriter extends Writer {
         this.column = column;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.Writer#write(char[], int, int)
-     */
-    @Override
+@Override
     public void write(char[] cbuf, int off, int len) throws IOException {
 
         for (int i = off; i < off + len; i++) {

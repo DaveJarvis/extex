@@ -17,11 +17,10 @@
  */
 /**
  * 
- *   This package contains the ExIndex core. ExIndex is an index processor modeled
+ *   Contains the ExIndex core. ExIndex is an index processor modeled
  *   after the <a href="http://www.xindy.org">Xindy</a> index processor.
  * 
- *   <doc section="Overview">
- * 
+*
  *   <h2>Components and Data Flow</h2>  
  * 
  *   <p>
@@ -35,10 +34,10 @@
  *    system to include it into the final document.
  *   </p>  
  *   <div style="float:right;">
- *     <img src="doc-files/overview-diagram.png"/>
- *     <center>
+ *     <img src="doc-files/overview-diagram.png" alt="overview-diagram">
+ *
  *     Figure: Overview
- *     </center>
+ *
  *   </div>
  *   <p>
  *    This procedure is illustrated in the figure. This figure shows the source
@@ -54,19 +53,15 @@
  *    index.
  *   </p>  
  * 
- * 
- * 
- *   </doc>
- * 
- *   <doc section="Key Mapping">
- * 
+*
+*
  *   <h2>Key Mapping</h2>  
  * 
  *   <div style="float:right;">
- *     <img src="doc-files/key-mapping-diagram.png"/>
- *     <center>
+ *     <img src="doc-files/key-mapping-diagram.png" alt="key-mapping-diagram">
+ *
  *     Figure: Key Mapping
- *     </center>
+ *
  *   </div>
  *   <p>
  *    The index processor reads in data of a raw index entry. It needs to
@@ -83,17 +78,15 @@
  *   </p>
  * 
  * 
- *   </doc>
- * 
- *   <doc section="Inheritance of Parameters">
- * 
+*
+*
  *   <h2>Inheritance of Parameters</h2>  
  * 
  *   <div style="float:right;">
- *     <img src="doc-files/fallback-diagram.png"/>
- *     <center>
+ *     <img src="doc-files/fallback-diagram.png" alt="fallback-diagram">
+ *
  *     Figure: Inheritance of Parameters
- *     </center>
+ *
  *   </div>
  *   <p>
  *    Parameters are inherited in two dimensions. One dimension is within
@@ -118,8 +111,7 @@
  *   </p>
  * 
  * 
- *   </doc>
- * 
+*
  *
  */
 

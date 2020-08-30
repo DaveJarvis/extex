@@ -7,8 +7,7 @@ import org.extex.core.exception.helping.HelpingException;
  * This interface describes an operation object without any arguments.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4733 $
- */
+*/
 public interface ConstantFunction {
 
     /**

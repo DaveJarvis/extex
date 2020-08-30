@@ -32,58 +32,57 @@ import org.extex.scanner.type.token.Token;
  * output mode as defined by Omega.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4411 $
- */
+*/
 public abstract class AbstractModeCode extends AbstractCode {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2009L;
 
     /**
-     * The constant <tt>INPUT_MODE</tt> contains the key for the input mode.
+     * The constant {@code INPUT_MODE} contains the key for the input mode.
      */
     protected static final String DEFAULT_INPUT_MODE = "defaultInputMode";
 
     /**
-     * The constant <tt>DEFAULT_INPUT_TRANSLATION</tt> contains the key for
+     * The constant {@code DEFAULT_INPUT_TRANSLATION} contains the key for
      * the default input translation.
      */
     protected static final String DEFAULT_INPUT_TRANSLATION =
             "defaultInputTranslation.";
 
     /**
-     * The constant <tt>OUTPUT_MODE</tt> contains the key for the output mode.
+     * The constant {@code OUTPUT_MODE} contains the key for the output mode.
      */
     protected static final String DEFAULT_OUTPUT_MODE = "defaultOutputMode";
 
     /**
-     * The constant <tt>DEFAULT_OUTPUT_TRANSLATION</tt> contains the key for
+     * The constant {@code DEFAULT_OUTPUT_TRANSLATION} contains the key for
      * the default output translation.
      */
     protected static final String DEFAULT_OUTPUT_TRANSLATION =
             "defaultOutputTranslation.";
 
     /**
-     * The constant <tt>INPUT_MODE</tt> contains the key for the input mode.
+     * The constant {@code INPUT_MODE} contains the key for the input mode.
      */
     protected static final String INPUT_MODE = "inputMode";
 
     /**
-     * The constant <tt>INPUT_TRANSLATION</tt> contains the key for the input
+     * The constant {@code INPUT_TRANSLATION} contains the key for the input
      * translation.
      */
     protected static final String INPUT_TRANSLATION = "inputTranslation";
 
     /**
-     * The constant <tt>OUTPUT_MODE</tt> contains the key for the output mode.
+     * The constant {@code OUTPUT_MODE} contains the key for the output mode.
      */
     protected static final String OUTPUT_MODE = "outputMode";
 
     /**
-     * The constant <tt>OUTPUT_TRANSLATION</tt> contains the key for the
+     * The constant {@code OUTPUT_TRANSLATION} contains the key for the
      * output translation.
      */
     protected static final String OUTPUT_TRANSLATION = "outputTranslation";
@@ -132,7 +131,7 @@ public abstract class AbstractModeCode extends AbstractCode {
      * @param context the interpreter context
      * @param source the source for new tokens
      *
-     * @return the mode or <code>null</code> if none is found
+     * @return the mode or {@code null} if none is found
      *
      * @throws HelpingException in case of an error
      */

@@ -30,8 +30,7 @@ import org.junit.Test;
  * </p>
  * 
  * @author <a href="mailto:m.g.sn@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class HashRegisterTest extends ExTeXLauncher {
 
 
@@ -43,10 +42,10 @@ public class HashRegisterTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\booldef">
      * 
-     * Test case checking that <tt>\hashtoksdef</tt> creates a hashtoks
-     * assignable control sequence which is equivalent to the <tt>\hashtoks</tt>.
+     * Test case checking that {@code \hashtoksdef} creates a hashtoks
+     * assignable control sequence which is equivalent to the {@code \hashtoks}.
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -65,9 +64,9 @@ public class HashRegisterTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\hashtoksdef">
      * 
-     * Test case checking that <tt>\hashtoksdef</tt> respects a group.
+     * Test case checking that {@code \hashtoksdef} respects a group.
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -84,9 +83,9 @@ public class HashRegisterTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\hashtoksdef">
      * 
-     * Test case checking that <tt>\hashtoksdef</tt> respects a group.
+     * Test case checking that {@code \hashtoksdef} respects a group.
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -104,9 +103,9 @@ public class HashRegisterTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\hashtoksdef">
      * 
-     * Test case checking that <tt>\hashtoksdef</tt> respects a group.
+     * Test case checking that {@code \hashtoksdef} respects a group.
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -124,10 +123,10 @@ public class HashRegisterTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\hashtoksdef">
      * 
-     * Test case checking that <tt>\hashtoksdef</tt> respects
-     * <tt>\globaldefs</tt>.
+     * Test case checking that {@code \hashtoksdef} respects
+     * {@code \globaldefs}.
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */

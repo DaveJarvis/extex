@@ -61,16 +61,14 @@ import org.extex.unit.tex.macro.exceptions.EofInDefException;
  * This class provides an implementation for any macro code bound to a control
  * sequence or active character.
  * 
- * <doc name="macros" type="howto"> <h3>The Macro Code</h3>
+ *  <p>The Macro Code</p>
  * <p>
  * TODO missing documentation
  * </p>
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4408 $
- */
+*/
 public class MacroCode extends AbstractCode
         implements
             PrefixCode,
@@ -85,17 +83,17 @@ public class MacroCode extends AbstractCode
     private static class MacroTokenStream implements TokenStream {
 
         /**
-         * The field <tt>locator</tt> contains the locator.
+         * The field {@code locator} contains the locator.
          */
         private Locator locator;
 
         /**
-         * The field <tt>name</tt> contains the name of the primitive.
+         * The field {@code name} contains the name of the primitive.
          */
         private String name;
 
         /**
-         * The field <tt>tokens</tt> contains the tokens.
+         * The field {@code tokens} contains the tokens.
          */
         private Tokens tokens;
 
@@ -116,7 +114,7 @@ public class MacroCode extends AbstractCode
         /**
          * Close this stream if it is a file stream.
          * 
-         * @return <code>true</code> if the closing was successful
+         * @return {@code true} if the closing was successful
          * 
          * @see org.extex.scanner.api.TokenStream#closeFileStream()
          */
@@ -134,7 +132,7 @@ public class MacroCode extends AbstractCode
          * @param factory the token factory
          * @param tokenizer the tokenizer
          * 
-         * @return the next Token or <code>null</code> if no more tokens are
+         * @return the next Token or {@code null} if no more tokens are
          *         available
          * 
          * @throws ScannerException in case of an error
@@ -170,7 +168,7 @@ public class MacroCode extends AbstractCode
          * Check to see if a further token can be acquired from the token
          * stream.
          * 
-         * @return <code>true</code> if the stream is at its end
+         * @return {@code true} if the stream is at its end
          * 
          * @throws ScannerException in case that an error has been encountered.
          *         Especially if an IO exceptions occurs it is delivered as
@@ -187,7 +185,7 @@ public class MacroCode extends AbstractCode
         /**
          * Check to see if the token stream is currently at the end of line.
          * 
-         * @return <code>true</code> if the stream is at end of line
+         * @return {@code true} if the stream is at end of line
          * 
          * @throws ScannerException in case that an error has been encountered.
          *         Especially if an IO exceptions occurs it is delivered as
@@ -205,7 +203,7 @@ public class MacroCode extends AbstractCode
          * Check whether the current stream is associated with a file to read
          * from.
          * 
-         * @return <code>true</code> if the stream is a file stream
+         * @return {@code true} if the stream is a file stream
          * 
          * @see org.extex.scanner.api.TokenStream#isFileStream()
          */
@@ -216,8 +214,8 @@ public class MacroCode extends AbstractCode
         }
 
         /**
-         * Push back a token into the stream. If the token is <code>null</code>
-         * then nothing happens: a <code>null</code> token is not pushed!
+         * Push back a token into the stream. If the token is {@code null}
+         * then nothing happens: a {@code null} token is not pushed!
          * <p>
          * Note that it is up to the implementation to accept tokens not
          * produced with the token factory for push back. In general the
@@ -225,10 +223,7 @@ public class MacroCode extends AbstractCode
          * </p>
          * 
          * @param token the token to push back
-         * @see "<logo>T<span style=
-         *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-         *      >e</span>X</logo> &ndash; The Program [325]"
-         * 
+    *
          * @see org.extex.scanner.api.TokenStream#put(org.extex.scanner.type.token.Token)
          */
         @Override
@@ -237,12 +232,7 @@ public class MacroCode extends AbstractCode
             tokens.push(token);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return name + " -> " + locator.toString();
@@ -250,46 +240,46 @@ public class MacroCode extends AbstractCode
     }
 
     /**
-     * The constant <tt>NO_TOKENS</tt> contains the empty tokens array.
+     * The constant {@code NO_TOKENS} contains the empty tokens array.
      */
     private static final Tokens[] NO_TOKENS = new Tokens[0];
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2011L;
 
     /**
-     * The field <tt>body</tt> contains the tokens of the macro expansion text.
+     * The field {@code body} contains the tokens of the macro expansion text.
      */
     private Tokens body;
 
     /**
-     * The field <tt>logger</tt> contains the logger for debugging.
+     * The field {@code logger} contains the logger for debugging.
      */
     private transient Logger logger;
 
     /**
-     * The field <tt>notLong</tt> contains the negated <tt>\long</tt> flag. This
-     * field indicates that no macros <tt>\par</tt> are allowed in macro
+     * The field {@code notLong} contains the negated {@code \long} flag. This
+     * field indicates that no macros {@code \par} are allowed in macro
      * parameter values.
      */
     private boolean notLong;
 
     /**
-     * The field <tt>outerP</tt> contains the indicator for outer definitions.
+     * The field {@code outerP} contains the indicator for outer definitions.
      */
     private boolean outerP;
 
     /**
-     * The field <tt>pattern</tt> contains the specification for the argument
-     * matching. A value of <code>null</code> means that no argument are
+     * The field {@code pattern} contains the specification for the argument
+     * matching. A value of {@code null} means that no argument are
      * expected.
      */
     private MacroPattern pattern;
 
     /**
-     * The field <tt>tracer</tt> contains the observer for the argument parsing.
+     * The field {@code tracer} contains the observer for the argument parsing.
      */
     private final transient ArgumentMatchingObserver tracer =
             new ArgumentMatchingObserver() {
@@ -316,7 +306,7 @@ public class MacroCode extends AbstractCode
      * @param flags the flags controlling the behavior of the macro
      * @param notLong inverted indicator for the long macros
      * @param pattern the pattern for the acquiring of the arguments. The value
-     *        of <code>null</code> means that no arguments are expected
+     *        of {@code null} means that no arguments are expected
      * @param body the expansion text
      */
     public MacroCode(CodeToken token, Flags flags, boolean notLong,
@@ -334,13 +324,13 @@ public class MacroCode extends AbstractCode
     }
 
     /**
-     * Compare two patterns. This involves the treatment of <code>null</code>
+     * Compare two patterns. This involves the treatment of {@code null}
      * values which are equivalent to empty patterns.
      * 
      * @param p1 the first pattern
      * @param p2 the second pattern
      * 
-     * @return <code>true</code> iff the two patterns are equivalent
+     * @return {@code true} iff the two patterns are equivalent
      */
     private boolean compare(MacroPattern p1, MacroPattern p2) {
 
@@ -353,10 +343,7 @@ public class MacroCode extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ComparableCode#compare(org.extex.scanner.type.token.Token,
-     *      org.extex.interpreter.context.Context)
+*      org.extex.interpreter.context.Context)
      */
     @Override
     public boolean compare(Token token, Context context)
@@ -378,22 +365,14 @@ public class MacroCode extends AbstractCode
         && body.equals(macro.body));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
-     */
-    @Override
+@Override
     public void enableLogging(Logger log) {
 
         this.logger = log;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -452,10 +431,7 @@ public class MacroCode extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -483,7 +459,7 @@ public class MacroCode extends AbstractCode
     /**
      * Getter for the outer flag.
      * 
-     * @return <code>true</code> iff the code is defined outer.
+     * @return {@code true} iff the code is defined outer.
      * 
      * @see org.extex.interpreter.type.Code#isOuter()
      */
@@ -493,12 +469,7 @@ public class MacroCode extends AbstractCode
         return outerP;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Showable#show(org.extex.interpreter.context.Context)
-     */
-    @Override
+@Override
     public Tokens show(Context context) throws HelpingException {
 
         try {

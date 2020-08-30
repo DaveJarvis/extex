@@ -41,43 +41,42 @@ import org.extex.typesetter.type.NodeList;
 import org.extex.unit.tex.register.box.Setbox;
 
 /**
- * This class provides an implementation for the primitive <code>\vsplit</code>.
+ * This class provides an implementation for the primitive {@code \vsplit}.
  * 
- * <doc name="vsplit">
- * <h3>The Primitive <tt>\vsplit</tt></h3>
+ * <p>The Primitive {@code \vsplit}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;vsplit&rang;
- *       &rarr; <tt>\vsplit</tt> {@linkplain
+ *       &rarr; {@code \vsplit} {@linkplain
  *        org.extex.unit.tex.register.box.Setbox#getKey(Context,TokenSource,Typesetter,CodeToken)
  *        &lang;box register name&rang;} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \vsplit 2 to 123pt  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Vsplit extends AbstractCode implements Boxable, LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>logger</tt> contains the target channel for the message.
+     * The field {@code logger} contains the target channel for the message.
      */
     private transient Logger logger = null;
 
@@ -105,10 +104,7 @@ public class Vsplit extends AbstractCode implements Boxable, LogEnabled {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -120,10 +116,7 @@ public class Vsplit extends AbstractCode implements Boxable, LogEnabled {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.register.box.BoxPrimitive#getBox(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
@@ -137,7 +130,7 @@ public class Vsplit extends AbstractCode implements Boxable, LogEnabled {
     }
 
     /**
-     * Perform the operation of the primitive <tt>\vsplit</tt> and return the
+     * Perform the operation of the primitive {@code \vsplit} and return the
      * result as a NodeList.
      * 
      * @param context the interpreter context

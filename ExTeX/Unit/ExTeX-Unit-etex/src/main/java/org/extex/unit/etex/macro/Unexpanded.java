@@ -33,34 +33,32 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>&#x5c;unexpanded</code>.
+ * {@code &#x5c;unexpanded}.
  * 
- * <doc name="unexpanded">
- * <h3>The Primitive <tt>&#x5c;unexpanded</tt></h3>
+ * <p>The Primitive {@code &#x5c;unexpanded}</p>
  * <p>
- * The macro <tt>&#x5c;unexpanded</tt> ...
+ * The macro {@code &#x5c;unexpanded} ...
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;unexpanded&rang;
- *      &rarr; <tt>&#x5c;unexpanded</tt> ...  </pre>
+ *      &rarr; {@code &#x5c;unexpanded} ...  </pre>
  * 
  * <pre class="TeXSample">
  *   \message{abc&#x5c;unexpanded{\ifx}} </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Unexpanded extends AbstractCode implements ExpandableCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -76,10 +74,7 @@ public class Unexpanded extends AbstractCode implements ExpandableCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -95,10 +90,7 @@ public class Unexpanded extends AbstractCode implements ExpandableCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,

@@ -26,8 +26,7 @@ import java.util.List;
  * initialRandomSeed.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class T1initialRandomSeed extends T1DictNumber {
 
     /**

@@ -29,8 +29,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * This class describes an optional parameter with an argument.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class OptionalArgWithParameter extends Arg {
 
     /**
@@ -48,10 +47,7 @@ public class OptionalArgWithParameter extends Arg {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.lisp.type.function.Arg#parse(java.util.List, int,
-     *      java.lang.Object[], int)
+*      java.lang.Object[], int)
      */
     @Override
     public final int parse(List<LValue> args, int ai, Object[] arguments,

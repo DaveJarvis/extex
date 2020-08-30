@@ -31,8 +31,7 @@ import org.junit.runner.JUnitCore;
  * This is a test suite for the ligature management.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4527 $
- */
+*/
 public class LigatureTest extends ExTeXLauncher {
 
     /**
@@ -51,8 +50,8 @@ public class LigatureTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a ligature node is inserted.
-     * </testcase>
+     *  Test case checking that a ligature node is inserted.
+     *
      *
      * Ignored, possibly a font issue?
      * 

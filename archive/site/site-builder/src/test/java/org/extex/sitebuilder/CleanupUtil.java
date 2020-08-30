@@ -26,8 +26,7 @@ import java.io.IOException;
  * Utilities for cleanup.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class CleanupUtil {
 
     /**

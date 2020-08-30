@@ -34,22 +34,21 @@ import org.extex.scanner.type.token.Token;
  * file enclosed in braces.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class TraceCommandObserver implements CommandObserver {
 
     /**
-     * The field <tt>logger</tt> contains the logger for output
+     * The field {@code logger} contains the logger for output
      */
     private Logger logger;
 
     /**
-     * The field <tt>context</tt> contains the interpreter context.
+     * The field {@code context} contains the interpreter context.
      */
     private Context context;
 
     /**
-     * The field <tt>prefix</tt> contains the indicator that the last token
+     * The field {@code prefix} contains the indicator that the last token
      * encountered has been a prefix primitive. This is used to suppress the
      * following trace output in TeX compatibility mode.
      */
@@ -60,7 +59,7 @@ public class TraceCommandObserver implements CommandObserver {
      * 
      * @param theLogger the logger for potential output
      * @param context the interpreter context for access to
-     *        <tt>\tracingonline</tt>
+     *        {@code \tracingonline}
      */
     public TraceCommandObserver(Logger theLogger, Context context) {
 
@@ -70,7 +69,7 @@ public class TraceCommandObserver implements CommandObserver {
 
     /**
      * This method is meant to be invoked just before a token is executed. A
-     * token following a prefix code is ignored if <tt>\tracingcommands</tt> is
+     * token following a prefix code is ignored if {@code \tracingcommands} is
      * not positive.
      * 
      * @param token the token to be expanded

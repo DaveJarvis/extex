@@ -17,7 +17,7 @@
  */
 /**
  * 
- *   This package contains classes for rules in the ExIndex system.
+ *   Contains classes for rules in the ExIndex system.
  * 
  *
  */

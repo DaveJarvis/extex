@@ -31,17 +31,16 @@ import org.extex.ant.latex.MakeException;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 5432 $
- */
+*/
 public class Net {
 
     /**
-     * The field <tt>metaRules</tt> contains the implicit pattern rules.
+     * The field {@code metaRules} contains the implicit pattern rules.
      */
     private List<PatternRule> metaRules = new ArrayList<PatternRule>();
 
     /**
-     * The field <tt>rules</tt> contains the explicitly given rules for single
+     * The field {@code rules} contains the explicitly given rules for single
      * files.
      */
     private Map<File, Rule> rules = new HashMap<File, Rule>();

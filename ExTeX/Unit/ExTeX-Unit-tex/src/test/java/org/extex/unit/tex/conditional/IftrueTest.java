@@ -23,11 +23,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\iftrue</tt>.
+ * This is a test suite for the primitive {@code \iftrue}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class IftrueTest extends ConditionalTester {
 
     /**
@@ -47,8 +46,8 @@ public class IftrueTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\iftrue"> Test case checking that <tt>\iftrue</tt>
-     * selects the then branch. </testcase>
+     * <testcase primitive="\iftrue"> Test case checking that {@code \iftrue}
+     * selects the then branch.
      * 
      * @throws Exception in case of an error
      */
@@ -62,8 +61,8 @@ public class IftrueTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\iftrue"> Test case checking that <tt>\iftrue</tt>
-     * selects nothing if the else branch is missing. </testcase>
+     * <testcase primitive="\iftrue"> Test case checking that {@code \iftrue}
+     * selects nothing if the else branch is missing.
      * 
      * @throws Exception in case of an error
      */

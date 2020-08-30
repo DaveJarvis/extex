@@ -25,12 +25,11 @@ import java.util.ResourceBundle;
  * This class provides means to deal with messages to the user.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class Message {
 
     /**
-     * The field <tt>bundle</tt> contains the cached resource bundle.
+     * The field {@code bundle} contains the cached resource bundle.
      */
     private static ResourceBundle bundle;
 

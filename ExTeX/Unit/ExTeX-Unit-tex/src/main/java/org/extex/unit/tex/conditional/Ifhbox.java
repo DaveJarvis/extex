@@ -30,43 +30,42 @@ import org.extex.unit.base.conditional.AbstractIf;
 import org.extex.unit.tex.register.box.Setbox;
 
 /**
- * This class provides an implementation for the primitive <code>\ifhbox</code>.
+ * This class provides an implementation for the primitive {@code \ifhbox}.
  * 
- * <doc name="ifhbox">
- * <h3>The Primitive <tt>\ifhbox</tt></h3>
+ * <p>The Primitive {@code \ifhbox}</p>
  * <p>
  * The primitive takes one expanded integer argument. The conditional is true
  * iff the box denoted by the argument is a horizontal box.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;ifhbox&rang;
- *      &rarr; <tt>\ifhbox</tt> {@linkplain
+ *      &rarr; {@code \ifhbox} {@linkplain
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
- *        &lang;number&rang;} &lang;true text&rang; <tt>\fi</tt>
- *      | <tt>\ifhbox</tt> {@linkplain
+ *        &lang;number&rang;} &lang;true text&rang; {@code \fi}
+ *      | {@code \ifhbox} {@linkplain
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
- *        &lang;number&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
+ *        &lang;number&rang;} &lang;true text&rang; {@code \else} &lang;false text&rang; {@code \fi} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \ifhbox255 abc \fi  </pre>
  *  <pre class="TeXSample">
  *    \ifhbox\count120 abc \fi  </pre>
  * 
- * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4439 $
- */
+*/
 public class Ifhbox extends AbstractIf {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -82,10 +81,7 @@ public class Ifhbox extends AbstractIf {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.base.conditional.AbstractIf#conditional(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

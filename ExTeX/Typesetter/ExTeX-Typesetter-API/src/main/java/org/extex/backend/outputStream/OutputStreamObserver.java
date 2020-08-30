@@ -26,8 +26,7 @@ import java.io.OutputStream;
  * output stream to be delivered.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4492 $
- */
+*/
 public interface OutputStreamObserver {
 
     /**

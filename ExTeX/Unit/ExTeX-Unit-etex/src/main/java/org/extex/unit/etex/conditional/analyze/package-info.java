@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains primitives for analyzing conditionals.
+ * Contains primitives for analyzing conditionals.
  */
 
 package org.extex.unit.etex.conditional.analyze;

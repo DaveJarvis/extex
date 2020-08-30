@@ -25,17 +25,16 @@ import java.util.ArrayList;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5413 $
- */
+*/
 public class UnitInfo extends ArrayList<PrimitiveInfo> {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the ...
+     * The field {@code serialVersionUID} contains the ...
      */
     private static final long serialVersionUID = 1L;
 
     /**
-     * The field <tt>name</tt> contains the name of the unit.
+     * The field {@code name} contains the name of the unit.
      */
     private String name;
 

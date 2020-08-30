@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\integer</tt>.
+ * This is a test suite for the primitive {@code \integer}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
@@ -51,7 +50,7 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
     /**
      * <testcase primitive="\integer"> Test case showing that the control
      * sequence defined with \integer can be used after \the and \showthe.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -67,7 +66,7 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
     /**
      * <testcase primitive="\integer"> Test case showing that the control
      * sequence defined with \integer can be assigned to a count register.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -83,7 +82,7 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
     /**
      * <testcase primitive="\integer"> Test case showing that the control
      * sequence defined with \integer can be assigned a new constant value.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -99,7 +98,7 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
     /**
      * <testcase primitive="\integer"> Test case showing that the control
      * sequence defined with \integer can be assigned a new value from a count
-     * register. </testcase>
+     * register.
      * 
      * @throws Exception in case of an error
      */
@@ -114,7 +113,7 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\integer"> Test case showing that the control
-     * sequence defined with \integer can be advanced. </testcase>
+     * sequence defined with \integer can be advanced.
      * 
      * @throws Exception in case of an error
      */
@@ -129,7 +128,7 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\integer"> Test case showing that the control
-     * sequence defined with \integer can be multiplied. </testcase>
+     * sequence defined with \integer can be multiplied.
      * 
      * @throws Exception in case of an error
      */
@@ -144,7 +143,7 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\integer"> Test case showing that the control
-     * sequence defined with \integer can be divided. </testcase>
+     * sequence defined with \integer can be divided.
      * 
      * @throws Exception in case of an error
      */
@@ -160,7 +159,7 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
     /**
      * <testcase primitive="\integer"> Test case showing that the control
      * sequence defined with \integer does not respect groups in assignment.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -176,7 +175,7 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\integer"> Test case showing that the control
-     * sequence defined with \integer can be defined \global. </testcase>
+     * sequence defined with \integer can be defined \global.
      * 
      * @throws Exception in case of an error
      */
@@ -192,7 +191,7 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
     /**
      * <testcase primitive="\integer"> Test case showing that the control
      * sequence defined with \integer is not defined outside it's primary group.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */

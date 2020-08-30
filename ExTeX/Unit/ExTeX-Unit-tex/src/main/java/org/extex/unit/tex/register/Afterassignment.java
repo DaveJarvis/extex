@@ -31,27 +31,28 @@ import org.extex.typesetter.Typesetter;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\afterassignment</code>.
+ * {@code \afterassignment}.
  * 
- * <doc name="afterassignment">
- * <h3>The Primitive <tt>\afterassignment</tt></h3>
+ * <p>The Primitive {@code \afterassignment}</p>
  * <p>
- * The primitive <tt>\afterassignment</tt> registers the token to be inserted
+ * The primitive {@code \afterassignment} registers the token to be inserted
  * after the next assignment. Note that there is at most one token to be
  * inserted after the next assignment. Thus the primitive may overwrite any
  * previously registered token.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;afterassignment&rang;
- *      &rarr; <tt>\afterassignment</tt> {@linkplain
+ *      &rarr; {@code \afterassignment} {@linkplain
  *         org.extex.interpreter.TokenSource#getToken(Context)
  *         &lang;token&rang;} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \afterassignment\abc  </pre>
@@ -60,16 +61,14 @@ import org.extex.typesetter.Typesetter;
  *  <pre class="TeXSample">
  *    \afterassignment ~  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Afterassignment extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -85,10 +84,7 @@ public class Afterassignment extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

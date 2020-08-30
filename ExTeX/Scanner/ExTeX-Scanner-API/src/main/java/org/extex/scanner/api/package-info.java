@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the scanner for ??TeX. Its main purpose is to extract 
+ *Contains scanner for εχTeX. Its main purpose is to extract
  * tokens from an input stream. The input stream can one of several sources:
  * a token buffer, a string, a file or an arbitrary Reader.
  */

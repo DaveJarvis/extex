@@ -29,17 +29,16 @@ import org.extex.exbib.core.io.Locator;
  * are mandatory in the constructor and no setters are provided.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractCommand implements Command {
 
     /**
-     * The field <tt>locator</tt> contains the locator for the command.
+     * The field {@code locator} contains the locator for the command.
      */
     private Locator locator = null;
 
     /**
-     * The field <tt>value</tt> contains the value for the command.
+     * The field {@code value} contains the value for the command.
      */
     private Token value = null;
 
@@ -65,12 +64,7 @@ public abstract class AbstractCommand implements Command {
         return locator;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.command.Command#getValue()
-     */
-    public Token getValue() {
+public Token getValue() {
 
         return value;
     }

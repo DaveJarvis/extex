@@ -44,12 +44,11 @@ import org.extex.unit.base.register.CharCode;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\hyphenation</code>.
+ * {@code \hyphenation}.
  * 
- * <doc name="hyphenation">
- * <h3>The Primitive <tt>\hyphenation</tt></h3>
+ * <p>The Primitive {@code \hyphenation}</p>
  * <p>
- * The primitive <tt>\hyphenation</tt> can be used to add hyphenation
+ * The primitive {@code \hyphenation} can be used to add hyphenation
  * exceptions to the current language. The argument is a list of whitespace
  * separated words enclosed in braces. The hyphenation points are indicated by
  * including a hyphen character (-) at the appropriate places.
@@ -57,7 +56,7 @@ import org.extex.unit.base.register.CharCode;
  * <p>
  * When paragraph breaking needs to insert additional break points these
  * hyphenation points are translated into discretionaries. The exceptions
- * specified with the primitive <tt>\hyphenation</tt> have precedence before
+ * specified with the primitive {@code \hyphenation} have precedence before
  * the hyphenation points found with the help of hyphenation patterns.
  * </p>
  * <p>
@@ -66,28 +65,28 @@ import org.extex.unit.base.register.CharCode;
  * in a single word.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * 
  * <pre class="syntax">
  *    &lang;hyphenation&rang;
- *     &rarr; <tt>\hyphenation</tt> {...} </pre>
+ *     &rarr; {@code \hyphenation} {...} </pre>
  * 
- * <h4>Example:</h4>
+ * <p>Example:</p>
+
  * 
  * <pre class="TeXSample">
  *   \hyphenation{as-so-ciate as-so-ciates}  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4770 $
- */
+*/
 public class HyphenationPrimitive extends AbstractHyphenationCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -146,10 +145,7 @@ public class HyphenationPrimitive extends AbstractHyphenationCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -194,13 +190,13 @@ public class HyphenationPrimitive extends AbstractHyphenationCode {
      * <ul>
      * <li>a letter token, or</li>
      * <li>a other token, or</li>
-     * <li>a code token defined with <tt>\chardef</tt>.</li>
+     * <li>a code token defined with {@code \chardef}.</li>
      * </ul>
      * 
      * @param t the token to analyze
      * @param context the interpreter context
      * 
-     * @return <code>true</code> iff the token is
+     * @return {@code true} iff the token is
      * 
      * @throws HelpingException in case of an error
      */

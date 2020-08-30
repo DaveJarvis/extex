@@ -23,11 +23,10 @@ import org.extex.test.NoFlagsPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\ensureloaded</tt>.
+ * This is a test suite for the primitive {@code \ensureloaded}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class EnsureloadedTest extends NoFlagsPrimitiveTester {
 
 
@@ -39,8 +38,8 @@ public class EnsureloadedTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\ensureloaded"> Test case checking that
-     * <tt>\ensureloaded</tt> needs an argument; i.e. the end of file is
-     * reported as error. </testcase>
+     * {@code \ensureloaded} needs an argument; i.e. the end of file is
+     * reported as error.
      * 
      * @throws Exception in case of an error
      */
@@ -56,8 +55,8 @@ public class EnsureloadedTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\ensureloaded"> Test case checking that
-     * <tt>\ensureloaded</tt> can report the named unit as missing when it
-     * does not exist. </testcase>
+     * {@code \ensureloaded} can report the named unit as missing when it
+     * does not exist.
      * 
      * @throws Exception in case of an error
      */
@@ -73,7 +72,7 @@ public class EnsureloadedTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\ensureloaded"> Test case checking that
-     * <tt>\ensureloaded</tt> can load a named unit if it exists. </testcase>
+     * {@code \ensureloaded} can load a named unit if it exists.
      * 
      * @throws Exception in case of an error
      */
@@ -90,7 +89,7 @@ public class EnsureloadedTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\ensureloaded"> Test case checking that
-     * <tt>\ensureloaded</tt> can load a named unit if it exists. </testcase>
+     * {@code \ensureloaded} can load a named unit if it exists.
      * 
      * @throws Exception in case of an error
      */

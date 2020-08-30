@@ -30,17 +30,16 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
  * This class represents the setter for a local variable in the target language.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class AssignVar extends GenericCode {
 
     /**
-     * The field <tt>var</tt> contains the name of the local variable.
+     * The field {@code var} contains the name of the local variable.
      */
     private Var var;
 
     /**
-     * The field <tt>value</tt> contains the the new value.
+     * The field {@code value} contains the the new value.
      */
     private GCode value;
 
@@ -79,10 +78,7 @@ public class AssignVar extends GenericCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GenericCode#optimize(java.util.List,
-     *      int)
+*      int)
      */
     @Override
     public int optimize(List<GCode> list, int index) {
@@ -109,10 +105,7 @@ public class AssignVar extends GenericCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public void print(CodeWriter writer, String prefix) throws IOException {

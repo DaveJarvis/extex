@@ -29,17 +29,16 @@ import org.junit.runner.JUnitCore;
  * Test cases for the class HangingParagraphShape.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5952 $
- */
+*/
 public class HangingParagraphShapeTest {
 
     /**
-     * The constant <tt>INDENT</tt> contains the amount of indentation to use.
+     * The constant {@code INDENT} contains the amount of indentation to use.
      */
     private static final int INDENT = 1024;
 
     /**
-     * The constant <tt>RIGHT</tt> contains the right margin.
+     * The constant {@code RIGHT} contains the right margin.
      */
     private static final int RIGHT = 4096;
 

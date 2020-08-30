@@ -24,8 +24,7 @@ package org.extex.interpreter.context.observer.count;
  * expansion event.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface CountObservable {
 
     /**
@@ -36,7 +35,7 @@ public interface CountObservable {
      * <p>
      *  A single count register can be observed by giving a name of the count
      *  register to observe. Only changes to this register trigger the
-     *  notification. If this name is <code>null</code> the changes to all
+     *  notification. If this name is {@code null} the changes to all
      *  registers are reported to the observer.
      * </p>
      *
@@ -56,7 +55,7 @@ public interface CountObservable {
      *  observer for this register. If none is registered then nothing happens.
      * </p>
      * <p>
-     *  If this name is <code>null</code> then the observer for all registers
+     *  If this name is {@code null} then the observer for all registers
      *  is removed. Note that the observers for named registers are not
      *  effected. They have to be unregistered individually.
      * </p>

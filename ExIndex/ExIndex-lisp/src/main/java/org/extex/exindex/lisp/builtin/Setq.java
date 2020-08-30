@@ -29,11 +29,11 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * Set the binding of a symbol.
  * 
- * <doc command="setq">
- * <h3>The Command <tt>setq</tt></h3>
+ *
+ * <p>The Command {@code setq}</p>
  * 
  * <p>
- * The command <tt>setq</tt> can be used to assign a value to a symbol.
+ * The command {@code setq} can be used to assign a value to a symbol.
  * </p>
  * 
  * <pre>
@@ -47,12 +47,10 @@ import org.extex.exindex.lisp.type.value.LValue;
  * is set to the value.
  * </p>
  * 
- * </doc>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 6531 $
- */
+*/
 public class Setq extends LFunction {
 
     /**

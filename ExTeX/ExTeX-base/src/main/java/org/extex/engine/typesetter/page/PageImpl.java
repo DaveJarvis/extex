@@ -30,47 +30,46 @@ import org.extex.typesetter.type.page.Page;
  * contains additional administrative information.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4728 $
- */
+*/
 public class PageImpl implements Page {
 
     /**
-     * The field <tt>background</tt> contains the background color.
+     * The field {@code background} contains the background color.
      */
     private Color background = null;
 
     /**
-     * The field <tt>mediaHeight</tt> contains the height of the paper.
+     * The field {@code mediaHeight} contains the height of the paper.
      */
     private Dimen mediaHeight = new Dimen(
         Dimen.ONE_INCH.getValue() * 2970 / 254);
 
     /**
-     * The field <tt>mediaHOffset</tt> contains the horizontal offset of the
+     * The field {@code mediaHOffset} contains the horizontal offset of the
      * upper left corner of the contents on the page. In TeX this value is defined to be 1 in.
      */
     private Dimen mediaHOffset = new Dimen(Dimen.ONE_INCH);
 
     /**
-     * The field <tt>mediaVOffset</tt> contains the vertical offset of the upper
+     * The field {@code mediaVOffset} contains the vertical offset of the upper
      * left corner of the contents on the page. In TeX this value is defined to be 1 in.
      */
     private Dimen mediaVOffset = new Dimen(Dimen.ONE_INCH);
 
     /**
-     * The field <tt>mediaWidth</tt> contains the width of the physical paper.
+     * The field {@code mediaWidth} contains the width of the physical paper.
      */
     private Dimen mediaWidth =
             new Dimen(Dimen.ONE_INCH.getValue() * 2100 / 254);
 
     /**
-     * The field <tt>nodes</tt> contains the nodes describing the objects on the
+     * The field {@code nodes} contains the nodes describing the objects on the
      * page.
      */
     private NodeList nodes;
 
     /**
-     * The field <tt>pageNo</tt> contains the array of page number indicators.
+     * The field {@code pageNo} contains the array of page number indicators.
      */
     private FixedCount[] pageNo;
 

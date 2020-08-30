@@ -23,23 +23,22 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * TFMIndexMultimap can store and retrieve <code>int</code> values associated to
- * particular <code>int</code> key. There can be more values associated to the
+ * TFMIndexMultimap can store and retrieve {@code int} values associated to
+ * particular {@code int} key. There can be more values associated to the
  * same key. TFtoPL[63]
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TfmIndexMultimap implements Serializable {
 
     /**
-     * Class <code>Enum</code> provides the sequence of all values associated to
+     * Class {@code Enum} provides the sequence of all values associated to
      * particular key.
      */
     public final class Enum implements Serializable {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the version number for
+         * The field {@code serialVersionUID} contains the version number for
          * serialization.
          */
         private static final long serialVersionUID = 1L;
@@ -73,8 +72,8 @@ public class TfmIndexMultimap implements Serializable {
         /**
          * Tests if there is another associated value.
          * 
-         * @return Return <code>true</code> if next value is available,
-         *         otherwise <code>false</code>.
+         * @return Return {@code true} if next value is available,
+         *         otherwise {@code false}.
          */
         public boolean hasMore() {
 
@@ -93,14 +92,14 @@ public class TfmIndexMultimap implements Serializable {
     }
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 1L;
 
     /**
      * Internal storage of (key, value) pairs.
      */
-    private ArrayList<TfmKeyInt> data = new ArrayList<TfmKeyInt>();
+    private final ArrayList<TfmKeyInt> data = new ArrayList<TfmKeyInt>();
 
     /**
      * Create a new object.

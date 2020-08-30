@@ -32,8 +32,7 @@ import org.extex.core.UnicodeChar;
  * value.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public final class GlyphName {
 
@@ -58,9 +57,9 @@ public final class GlyphName {
     private static final int INITSIZE = 5000;
 
     /**
-     * Return the instance of <code>GlyphName</code>.
+     * Return the instance of {@code GlyphName}.
      * 
-     * @return Return the instance of <code>GlyphName</code>.
+     * @return Return the instance of {@code GlyphName}.
      * @throws IOException if an IO-error occurred.
      */
     public static GlyphName getInstance() throws IOException {
@@ -74,17 +73,17 @@ public final class GlyphName {
     /**
      * The glyph name map.
      */
-    private Map<String, UnicodeChar> glyphmap;
+    private final Map<String, UnicodeChar> glyphmap;
 
     /**
      * The Unicode map.
      */
-    private Map<UnicodeChar, String> unicodemap;
+    private final Map<UnicodeChar, String> unicodemap;
 
     /**
      * Create a new object.
      * 
-     * Read the <code>FILE</code> and parse it.
+     * Read the {@code FILE} and parse it.
      * 
      * @throws IOException if an IO-error occurred.
      */
@@ -118,10 +117,10 @@ public final class GlyphName {
     }
 
     /**
-     * Returns the name of the glyph, or <code>null</code>, if not found.
+     * Returns the name of the glyph, or {@code null}, if not found.
      * 
      * @param uc the Unicode char.
-     * @return the name of the glyph, or <code>null</code>, if not found.
+     * @return the name of the glyph, or {@code null}, if not found.
      */
     public String getGlyphname(UnicodeChar uc) {
 
@@ -129,12 +128,12 @@ public final class GlyphName {
     }
 
     /**
-     * Returns the <code>UnicodeChar</code> for the glyph name or
-     * <code>null</code>, if not found.
+     * Returns the {@code UnicodeChar} for the glyph name or
+     * {@code null}, if not found.
      * 
      * @param name The glyph name.
-     * @return Returns the <code>UnicodeChar</code> for the glyph name or
-     *         <code>null</code>, if not found.
+     * @return Returns the {@code UnicodeChar} for the glyph name or
+     *         {@code null}, if not found.
      */
     public UnicodeChar getUnicode(String name) {
 

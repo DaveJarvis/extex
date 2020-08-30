@@ -24,11 +24,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\delimiter</tt>.
+ * This is a test suite for the primitive {@code \delimiter}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DelimiterTest extends AbstractMathTester {
 
     public DelimiterTest() {
@@ -39,7 +38,7 @@ public class DelimiterTest extends AbstractMathTester {
 
     /**
      * <testcase primitive="delimiter"> Test case checking that \delimiter
-     * produces an adequate node construction. </testcase>
+     * produces an adequate node construction.
      * 
      * @throws Exception in case of an error
      */

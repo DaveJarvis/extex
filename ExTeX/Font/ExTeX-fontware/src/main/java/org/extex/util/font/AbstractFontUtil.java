@@ -35,8 +35,7 @@ import org.extex.logging.LogFormatter;
  * Abstract class for all font utilities.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:5594 $
- */
+*/
 public class AbstractFontUtil {
 
     /**
@@ -45,14 +44,14 @@ public class AbstractFontUtil {
     private Handler consoleHandler;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated with
+     * The field {@code localizer} contains the localizer. It is initiated with
      * a localizer for the name of this class.
      */
     private Localizer localizer = LocalizerFactory
         .getLocalizer(AbstractFontUtil.class);
 
     /**
-     * The field <tt>logger</tt> contains the logger currently in use.
+     * The field {@code logger} contains the logger currently in use.
      */
     private Logger logger;
 

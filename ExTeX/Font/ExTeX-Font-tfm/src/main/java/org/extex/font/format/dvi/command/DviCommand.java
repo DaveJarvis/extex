@@ -31,13 +31,12 @@ import org.extex.util.file.random.RandomAccessR;
  * Abstract class for all DVI commands.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public abstract class DviCommand {
 
     /**
-     * The length of <code>c</code> elements of the bob command.
+     * The length of {@code c} elements of the bob command.
      */
     public static final int BOP_LENGTH = 10;
 
@@ -47,12 +46,12 @@ public abstract class DviCommand {
     private static final DviReadCommand SETCHAR = new DviReadCommand() {
 
         /**
-         * set_char_0: Typeset character number 0 from font <code>f</code> such
-         * that the reference point of the character is at <code>(h,v)</code>.
-         * Then increase <code>h</code> by the width of that character. Note
+         * set_char_0: Typeset character number 0 from font {@code f} such
+         * that the reference point of the character is at {@code (h,v)}.
+         * Then increase {@code h} by the width of that character. Note
          * that a character may have zero or negative width, so one cannot be
-         * sure that <code>h</code> will advance after this command; but
-         * <code>h</code> usually does increase.
+         * sure that {@code h} will advance after this command; but
+         * {@code h} usually does increase.
          * 
          * 
          * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
@@ -81,7 +80,7 @@ public abstract class DviCommand {
 
         /**
          * fnt_num_1 through fnt_num_63 (opcodes 172 to 234): Set
-         * <code>f = 1</code>, ..., <code>f = 63</code>, respectively.
+         * {@code f = 1}, ..., {@code f = 63}, respectively.
          * 
          * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
          *      int, int)
@@ -107,10 +106,7 @@ public abstract class DviCommand {
         /**
          * undefined opcode
          * 
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
-         *      int, int)
+    *      int, int)
          */
         @Override
         public DviCommand read(final RandomAccessR rar, final int opcode,
@@ -126,18 +122,18 @@ public abstract class DviCommand {
      */
     private static final DviReadCommand[] OPCODEARRAY = {
             /**
-             * set_char_0: Typeset character number 0 from font <code>f</code>
+             * set_char_0: Typeset character number 0 from font {@code f}
              * such that the reference point of the character is at
-             * <code>(h,v)</code>. Then increase <code>h</code> by the width of
+             * {@code (h,v)}. Then increase {@code h} by the width of
              * that character. Note that a character may have zero or negative
-             * width, so one cannot be sure that <code>h</code> will advance
-             * after this command; but <code>h</code> usually does increase.
+             * width, so one cannot be sure that {@code h} will advance
+             * after this command; but {@code h} usually does increase.
              */
             SETCHAR, /* 0 */
 
             /**
              * set_char_1 through set_char_127 (opcodes 1 to 127): Do the
-             * operations of <code>set_char_0</code>; but use the character
+             * operations of {@code set_char_0}; but use the character
              * whose number matches the opcode, instead of character 0.
              */
             SETCHAR, /* 1 */
@@ -268,8 +264,8 @@ public abstract class DviCommand {
             SETCHAR, /* 126 */
             SETCHAR, /* 127 */
             /**
-             * set1 128, c[1]: Same as <code>set_char_0</code>, except that
-             * character number <code>c</code> is typeset. TeX82 uses this
+             * set1 128, c[1]: Same as {@code set_char_0}, except that
+             * character number {@code c} is typeset. TeX82 uses this
              * command for characters in the range 128 &lt;= c &lt; 256.
              */
             new DviReadCommand() {
@@ -289,13 +285,13 @@ public abstract class DviCommand {
             },
 
             /**
-             * set2 129, c[2]: Same as <code>set1</code>, except that
-             * <code>c</code> is two bytes long, so it is in the range 0 &lt;= c
+             * set2 129, c[2]: Same as {@code set1}, except that
+             * {@code c} is two bytes long, so it is in the range 0 &lt;= c
              * &lt; 65536. TeX82 never uses this command, which is intended for
              * processors that deal with oriental languages; but a DVI processor
              * should allow character codes greater than 255. The processor may
              * then assume that these characters have the same width as the
-             * character whose respective codes are <code>c mod 256</code>.
+             * character whose respective codes are {@code c mod 256}.
              */
             new DviReadCommand() {
 
@@ -313,7 +309,7 @@ public abstract class DviCommand {
                 }
             },
             /**
-             * set3 130, c[3]: Same as set1, except that <code>c</code> is three
+             * set3 130, c[3]: Same as set1, except that {@code c} is three
              * bytes long, so it can be as large as 2^24-1.
              */
             new DviReadCommand() {
@@ -332,8 +328,8 @@ public abstract class DviCommand {
                 }
             },
             /**
-             * set4 131, c[+4]: Same as <code>set1</code>, except that
-             * <code>c</code> is four bytes long, possibly even negative.
+             * set4 131, c[+4]: Same as {@code set1}, except that
+             * {@code c} is four bytes long, possibly even negative.
              * Imagine that.
              */
             new DviReadCommand() {
@@ -353,14 +349,14 @@ public abstract class DviCommand {
             },
             /**
              * set_rule 132, a[+4] b[+4]: Typeset a solid black rectangle of
-             * height <code>a</code> and width <code>b</code>, with its bottom
-             * left corner at <code>(h,v)</code>. Then set
-             * <code>h = h + b</code>. If either a &lt;= 0 or b &lt;= 0, nothing
+             * height {@code a} and width {@code b}, with its bottom
+             * left corner at {@code (h,v)}. Then set
+             * {@code h = h + b}. If either a &lt;= 0 or b &lt;= 0, nothing
              * should be typeset. Note that if b &lt; 0, the value of
-             * <code>h</code> will decrease even though nothing else happens.
+             * {@code h} will decrease even though nothing else happens.
              * Programs that typeset from DVI files should be careful to make
              * the rules line up carefully with digitized characters, as
-             * explained in connection with the <code>rule_pixels</code>
+             * explained in connection with the {@code rule_pixels}
              * subroutine below.
              */
             new DviReadCommand() {
@@ -379,9 +375,9 @@ public abstract class DviCommand {
                 }
             },
             /**
-             * put1 133, c[1]: Typeset character number <code>c</code> from font
-             * <code>f</code> such that the reference point of the character is
-             * at <code>(h,v)</code>. (The 'put' commands are exactly like the
+             * put1 133, c[1]: Typeset character number {@code c} from font
+             * {@code f} such that the reference point of the character is
+             * at {@code (h,v)}. (The 'put' commands are exactly like the
              * 'set' commands, except that they simply put out a character or a
              * rule without moving the reference point afterwards.)
              */
@@ -401,8 +397,8 @@ public abstract class DviCommand {
                 }
             },
             /**
-             * put2 134, c[2]: Same as <code>set2</code>, except that
-             * <code>h</code> is not changed.
+             * put2 134, c[2]: Same as {@code set2}, except that
+             * {@code h} is not changed.
              */
             new DviReadCommand() {
 
@@ -420,8 +416,8 @@ public abstract class DviCommand {
                 }
             },
             /**
-             * put3 135, c[3]: Same as <code>set3</code>, except that
-             * <code>h</code> is not changed.
+             * put3 135, c[3]: Same as {@code set3}, except that
+             * {@code h} is not changed.
              */
             new DviReadCommand() {
 
@@ -439,8 +435,8 @@ public abstract class DviCommand {
                 }
             },
             /**
-             * put4 136, c[+4]: Same as <code>set4</code>, except that
-             * <code>h</code> is not changed.
+             * put4 136, c[+4]: Same as {@code set4}, except that
+             * {@code h} is not changed.
              */
             new DviReadCommand() {
 
@@ -459,8 +455,8 @@ public abstract class DviCommand {
             },
 
             /**
-             * put_rule 137, a[+4] b[+4]: Same as <code>set_rule</code>, except
-             * that <code>h</code> is not changed.
+             * put_rule 137, a[+4] b[+4]: Same as {@code set_rule}, except
+             * that {@code h} is not changed.
              */
             new DviReadCommand() {
 
@@ -480,8 +476,8 @@ public abstract class DviCommand {
             },
 
             /**
-             * nop 138: No operation, do nothing. Any number of <code>nop</code>
-             * 's may occur between DVI commands, but a <code>nop</code> cannot
+             * nop 138: No operation, do nothing. Any number of {@code nop}
+             * 's may occur between DVI commands, but a {@code nop} cannot
              * be inserted between a command and its parameters or between two
              * parameters.
              */
@@ -503,15 +499,15 @@ public abstract class DviCommand {
 
             /**
              * bop 139, c_0[+4] c_1[+4] ... c_9[+4] p[+4]: Beginning of a page:
-             * Set <code>(h,v,w,x,y,z) = (0,0,0,0,0,0)</code> and set the stack
-             * empty. Set the current font <code>f</code> to an undefined value.
-             * The ten <code>c_i</code> parameters can be used to identify
+             * Set {@code (h,v,w,x,y,z) = (0,0,0,0,0,0)} and set the stack
+             * empty. Set the current font {@code f} to an undefined value.
+             * The ten {@code c_i} parameters can be used to identify
              * pages, if a user wants to print only part of a DVI file; TeX82
-             * gives them the values of <code>count0</code> ...
-             * <code>count9</code> at the time <code>shipout</code> was invoked
-             * for this page. The parameter <code>p</code> points to the
-             * previous <code>bop</code> command in the file, where the first
-             * <code>bop</code> has <code>p=-1</code>.
+             * gives them the values of {@code count0} ...
+             * {@code count9} at the time {@code shipout} was invoked
+             * for this page. The parameter {@code p} points to the
+             * previous {@code bop} command in the file, where the first
+             * {@code bop} has {@code p=-1}.
              */
             new DviReadCommand() {
 
@@ -536,7 +532,7 @@ public abstract class DviCommand {
 
             /**
              * eop 140: End of page: Print what you have read since the previous
-             * <code>bop</code>. At this point the stack should be empty.
+             * {@code bop}. At this point the stack should be empty.
              */
             new DviReadCommand() {
 
@@ -555,9 +551,9 @@ public abstract class DviCommand {
             },
 
             /**
-             * push 141: Push the current values of <code>(h,v,w,x,y,z)</code>
+             * push 141: Push the current values of {@code (h,v,w,x,y,z)}
              * onto the top of the stack; do not change any of these values.
-             * Note that <code>f</code> is not pushed.
+             * Note that {@code f} is not pushed.
              */
             new DviReadCommand() {
 
@@ -577,10 +573,10 @@ public abstract class DviCommand {
 
             /**
              * pop 142: Pop the top six values off of the stack and assign them
-             * to <code>(h,v,w,x,y,z)</code>. The number of pops should never
+             * to {@code (h,v,w,x,y,z)}. The number of pops should never
              * exceed the number of pushes, since it would be highly
              * embarrassing if the stack were empty at the time of a
-             * <code>pop</code> command.
+             * {@code pop} command.
              */
             new DviReadCommand() {
 
@@ -599,8 +595,8 @@ public abstract class DviCommand {
             },
 
             /**
-             * right1 143, b[+1]: Set <code>h = h + b</code>, i.e., move right
-             * <code>b</code> units. The parameter is a signed number in two's
+             * right1 143, b[+1]: Set {@code h = h + b}, i.e., move right
+             * {@code b} units. The parameter is a signed number in two's
              * complement notation, -128 &lt;= b &lt; 128; if b &lt; 0, the
              * reference point actually moves left.
              */
@@ -621,8 +617,8 @@ public abstract class DviCommand {
             },
 
             /**
-             * right2: 144, b[+2]: Same as <code>right1</code>, except that
-             * <code>b</code> is a two-byte quantity in the range -32768 &lt;= b
+             * right2: 144, b[+2]: Same as {@code right1}, except that
+             * {@code b} is a two-byte quantity in the range -32768 &lt;= b
              * &lt; 32768.
              */
             new DviReadCommand() {
@@ -642,8 +638,8 @@ public abstract class DviCommand {
             },
 
             /**
-             * right3 145, b[+3]: Same as <code>right1</code>, except that
-             * <code>b</code> is a three-byte quantity in the range -2^23 &lt;=
+             * right3 145, b[+3]: Same as {@code right1}, except that
+             * {@code b} is a three-byte quantity in the range -2^23 &lt;=
              * b &lt; 2^23.
              */
             new DviReadCommand() {
@@ -663,8 +659,8 @@ public abstract class DviCommand {
             },
 
             /**
-             * right4 146, b[+4]: Same as <code>right1</code>, except that
-             * <code>b</code> is a four-byte quantity in the range -2^31 &lt;= b
+             * right4 146, b[+4]: Same as {@code right1}, except that
+             * {@code b} is a four-byte quantity in the range -2^31 &lt;= b
              * &lt; 2^31.
              */
             new DviReadCommand() {
@@ -684,11 +680,11 @@ public abstract class DviCommand {
             },
 
             /**
-             * w0 147: Set <code>h = h + w</code>; i.e., move right
-             * <code>w</code> units. With luck, this parameterless command will
+             * w0 147: Set {@code h = h + w}; i.e., move right
+             * {@code w} units. With luck, this parameterless command will
              * usually suffice, because the same kind of motion will occur
              * several times in succession; the following commands explain how
-             * <code>w</code> gets particular values.
+             * {@code w} gets particular values.
              */
             new DviReadCommand() {
 
@@ -707,11 +703,11 @@ public abstract class DviCommand {
             },
 
             /**
-             * w1 148, b[+1]: Set <code>w = b</code> and <code>h = h + b</code>.
-             * The value of <code>b</code> is a signed quantity in two's
+             * w1 148, b[+1]: Set {@code w = b} and {@code h = h + b}.
+             * The value of {@code b} is a signed quantity in two's
              * complement notation, -128 &lt;= b /lt; 128. This command changes
-             * the current <code>w</code> spacing and moves right by
-             * <code>b</code>.
+             * the current {@code w} spacing and moves right by
+             * {@code b}.
              */
             new DviReadCommand() {
 
@@ -730,7 +726,7 @@ public abstract class DviCommand {
             },
 
             /**
-             * w2 149, b[+2]: Same as <code>w1</code>, but <code>b</code> is a
+             * w2 149, b[+2]: Same as {@code w1}, but {@code b} is a
              * two-byte-long parameter, -32768 &lt;= b &lt; 32768.
              */
             new DviReadCommand() {
@@ -750,7 +746,7 @@ public abstract class DviCommand {
             },
 
             /**
-             * w3 150, b[+3]: Same as <code>w1</code>, but <code>b</code> is a
+             * w3 150, b[+3]: Same as {@code w1}, but {@code b} is a
              * three-byte-long parameter, -2^23 &lt;= b &lt; 2^23.
              */
             new DviReadCommand() {
@@ -770,7 +766,7 @@ public abstract class DviCommand {
             },
 
             /**
-             * w4 151, b[+4]: Same as <code>w1</code>, but <code>b</code> is a
+             * w4 151, b[+4]: Same as {@code w1}, but {@code b} is a
              * four-byte-long parameter, -2^31 &lt;= b &lt; 2^31.
              */
             new DviReadCommand() {
@@ -790,10 +786,10 @@ public abstract class DviCommand {
             },
 
             /**
-             * x0 152: Set <code>h = h + x</code>; i.e., move right
-             * <code>x</code> units. The <code>x</code> commands are like the
-             * <code>w</code> commands except that they involve <code>x</code>
-             * instead of <code>w</code>.
+             * x0 152: Set {@code h = h + x}; i.e., move right
+             * {@code x} units. The {@code x} commands are like the
+             * {@code w} commands except that they involve {@code x}
+             * instead of {@code w}.
              */
             new DviReadCommand() {
 
@@ -812,11 +808,11 @@ public abstract class DviCommand {
             },
 
             /**
-             * x1 153, b[+1]: Set <code>x = b</code> and <code>h =  h + b</code>
-             * . The value of <code>b</code> is a signed quantity in two's
+             * x1 153, b[+1]: Set {@code x = b} and {@code h =  h + b}
+             * . The value of {@code b} is a signed quantity in two's
              * complement notation, -128 &lt;= b &lt; 128. This command changes
-             * the current <code>x</code> spacing and moves right by
-             * <code>b</code>.
+             * the current {@code x} spacing and moves right by
+             * {@code b}.
              */
             new DviReadCommand() {
 
@@ -835,7 +831,7 @@ public abstract class DviCommand {
             },
 
             /**
-             * x2 154, b[+2]: Same as <code>x1</code>, but <code>b</code> is a
+             * x2 154, b[+2]: Same as {@code x1}, but {@code b} is a
              * two-byte-long parameter, -32768 &lt;= b &lt; 32768.
              */
             new DviReadCommand() {
@@ -855,7 +851,7 @@ public abstract class DviCommand {
             },
 
             /**
-             * x3 155, b[+3]: Same as <code>x1</code>, but <code>b</code> is a
+             * x3 155, b[+3]: Same as {@code x1}, but {@code b} is a
              * three-byte-long parameter, -2^23 &lt;= b &lt; 2^23.
              */
             new DviReadCommand() {
@@ -875,7 +871,7 @@ public abstract class DviCommand {
             },
 
             /**
-             * x4 156, b[+4]: Same as <code>x1</code>, but <code>b</code> is a
+             * x4 156, b[+4]: Same as {@code x1}, but {@code b} is a
              * four-byte-long parameter, -2^31 &lt;= b /lt; 2^31.
              */
             new DviReadCommand() {
@@ -895,8 +891,8 @@ public abstract class DviCommand {
             },
 
             /**
-             * down1 157, a[+1]: Set <code>v = v + a</code>, i.e., move down
-             * <code>a</code> units. The parameter is a signed number in two's
+             * down1 157, a[+1]: Set {@code v = v + a}, i.e., move down
+             * {@code a} units. The parameter is a signed number in two's
              * complement notation, -128 &lt;= a &lt; 128; if a &lt; 0, the
              * reference point actually moves up.
              */
@@ -917,17 +913,14 @@ public abstract class DviCommand {
             },
 
             /**
-             * down2 158, a[+2]: Same as <code>down1</code>, except that
-             * <code>a</code> is a two-byte quantity in the range -32768 &lt;= a
+             * down2 158, a[+2]: Same as {@code down1}, except that
+             * {@code a} is a two-byte quantity in the range -32768 &lt;= a
              * &lt; 32768.
              */
             new DviReadCommand() {
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
-                 *      int, int)
+            *      int, int)
                  */
                 @Override
                 public DviCommand read(final RandomAccessR rar,
@@ -940,8 +933,8 @@ public abstract class DviCommand {
             },
 
             /**
-             * down3 159, a[+3]: Same as <code>down1</code>, except that
-             * <code>a</code> is a three-byte quantity in the range -2^23 &lt;=
+             * down3 159, a[+3]: Same as {@code down1}, except that
+             * {@code a} is a three-byte quantity in the range -2^23 &lt;=
              * a &lt; 2^23.
              */
             new DviReadCommand() {
@@ -961,8 +954,8 @@ public abstract class DviCommand {
             },
 
             /**
-             * down4 160, a[+4]: Same as <code>down1</code>, except that
-             * <code>a</code> is a four-byte quantity in the range -2^31 &lt;= a
+             * down4 160, a[+4]: Same as {@code down1}, except that
+             * {@code a} is a four-byte quantity in the range -2^31 &lt;= a
              * &lt; 2^31.
              */
             new DviReadCommand() {
@@ -982,11 +975,11 @@ public abstract class DviCommand {
             },
 
             /**
-             * y0 161: Set <code>v = v + y</code>; i.e., move down
-             * <code>y</code> units. With luck, this parameterless command will
+             * y0 161: Set {@code v = v + y}; i.e., move down
+             * {@code y} units. With luck, this parameterless command will
              * usually suffice, because the same kind of motion will occur
              * several times in succession; the following commands explain how
-             * <code>y</code> gets particular values.
+             * {@code y} gets particular values.
              */
             new DviReadCommand() {
 
@@ -1005,11 +998,11 @@ public abstract class DviCommand {
             },
 
             /**
-             * y1 162, a[+1]: Set <code>y = a</code> and <code>v = v + a</code>.
-             * The value of <code>a</code> is a signed quantity in two's
+             * y1 162, a[+1]: Set {@code y = a} and {@code v = v + a}.
+             * The value of {@code a} is a signed quantity in two's
              * complement notation, -128 &lt;= a &lt; 128. This command changes
-             * the current <code>y</code> spacing and moves down by
-             * <code>a</code>.
+             * the current {@code y} spacing and moves down by
+             * {@code a}.
              */
             new DviReadCommand() {
 
@@ -1028,7 +1021,7 @@ public abstract class DviCommand {
             },
 
             /**
-             * y2 163, a[+2]: Same as <code>y1</code>, but <code>a</code> is a
+             * y2 163, a[+2]: Same as {@code y1}, but {@code a} is a
              * two-byte-long parameter, -32768 &lt;= a &lt; 32768.
              */
             new DviReadCommand() {
@@ -1048,7 +1041,7 @@ public abstract class DviCommand {
             },
 
             /**
-             * y3 164, a[+3]: Same as <code>y1</code>, but <code>a</code> is a
+             * y3 164, a[+3]: Same as {@code y1}, but {@code a} is a
              * three-byte-long parameter, -2^23 &lt;= a &lt; 2^23.
              */
             new DviReadCommand() {
@@ -1068,7 +1061,7 @@ public abstract class DviCommand {
             },
 
             /**
-             * y4 165, a[+4]: Same as <code>y1</code>, but <code>a</code> is a
+             * y4 165, a[+4]: Same as {@code y1}, but {@code a} is a
              * four-byte-long parameter, -2^31 &lt;= a &lt; 2^31.
              */
             new DviReadCommand() {
@@ -1088,10 +1081,10 @@ public abstract class DviCommand {
             },
 
             /**
-             * z0 166: Set <code>v = v + z</code>; i.e., move down
-             * <code>z</code> units. The <code>z</code> commands are like the
-             * <code>y</code> commands except that they involve <code>z</code>
-             * instead of <code>y</code>.
+             * z0 166: Set {@code v = v + z}; i.e., move down
+             * {@code z} units. The {@code z} commands are like the
+             * {@code y} commands except that they involve {@code z}
+             * instead of {@code y}.
              */
             new DviReadCommand() {
 
@@ -1110,11 +1103,11 @@ public abstract class DviCommand {
             },
 
             /**
-             * z1 167, a[+1]: Set <code>z = a</code> and <code>v = v + a</code>.
-             * The value of <code>a</code> is a signed quantity in two's
+             * z1 167, a[+1]: Set {@code z = a} and {@code v = v + a}.
+             * The value of {@code a} is a signed quantity in two's
              * complement notation, -128 &lt;= a &lt; 128. This command changes
-             * the current <code>z</code> spacing and moves down by
-             * <code>a</code>.
+             * the current {@code z} spacing and moves down by
+             * {@code a}.
              */
             new DviReadCommand() {
 
@@ -1133,7 +1126,7 @@ public abstract class DviCommand {
             },
 
             /**
-             * z2 168, a[+2]: Same as <code>z1</code>, but <code>a</code> is a
+             * z2 168, a[+2]: Same as {@code z1}, but {@code a} is a
              * two-byte-long parameter, -32768 &lt;= a &lt; 32768.
              */
             new DviReadCommand() {
@@ -1153,7 +1146,7 @@ public abstract class DviCommand {
             },
 
             /**
-             * z3 169, a[+3]: Same as <code>z1</code>, but <code>a</code> is a
+             * z3 169, a[+3]: Same as {@code z1}, but {@code a} is a
              * three-byte-long parameter, -2^23 &lt;= a &lt; 2^23.
              */
             new DviReadCommand() {
@@ -1173,7 +1166,7 @@ public abstract class DviCommand {
             },
 
             /**
-             * z4 170, a[+4]: Same as <code>z1</code>, but <code>a</code> is a
+             * z4 170, a[+4]: Same as {@code z1}, but {@code a} is a
              * four-byte-long parameter, -2^31 &lt;= a &lt; 2^31.
              */
             new DviReadCommand() {
@@ -1193,8 +1186,8 @@ public abstract class DviCommand {
             },
 
             /**
-             * fnt_num_0 171: Set <code>f = 0</code>. Font 0 must previously
-             * have been defined by a <code>fnt_def</code> instruction.
+             * fnt_num_0 171: Set {@code f = 0}. Font 0 must previously
+             * have been defined by a {@code fnt_def} instruction.
              */
             new DviReadCommand() {
 
@@ -1214,7 +1207,7 @@ public abstract class DviCommand {
 
             /**
              * fnt_num_1 through fnt_num_63 (opcodes 172 to 234): Set
-             * <code>f = 1</code>, ..., <code>f = 63</code>, respectively.
+             * {@code f = 1}, ..., {@code f = 63}, respectively.
              */
             FNTNUM, /* 1 */FNTNUM, /* 2 */FNTNUM, /* 3 */FNTNUM, /* 4 */
             FNTNUM, /* 5 */FNTNUM, /* 6 */FNTNUM, /* 7 */FNTNUM, /* 8 */
@@ -1234,7 +1227,7 @@ public abstract class DviCommand {
             FNTNUM, /* 61 */FNTNUM, /* 62 */FNTNUM, /* 63 */
 
             /**
-             * fnt1 235, k[1]: Set <code>f = k</code>. TeX82 uses this command
+             * fnt1 235, k[1]: Set {@code f = k}. TeX82 uses this command
              * for font numbers in the range 64 &lt;= k &lt; 256.
              */
             new DviReadCommand() {
@@ -1254,8 +1247,8 @@ public abstract class DviCommand {
             },
 
             /**
-             * fnt2 236, k[2]: Same as <code>fnt1</code>, except that
-             * <code>k</code> is two bytes long, so it is in the range 0 &lt;= k
+             * fnt2 236, k[2]: Same as {@code fnt1}, except that
+             * {@code k} is two bytes long, so it is in the range 0 &lt;= k
              * &lt; 65536. TeX82 never generates this command, but large font
              * numbers may prove useful for specifications of color or texture,
              * or they may be used for special fonts that have fixed numbers in
@@ -1278,8 +1271,8 @@ public abstract class DviCommand {
             },
 
             /**
-             * fnt3 237, k[3]: Same as <code>fnt1</code>, except that
-             * <code>k</code> is three bytes long, so it can be as large as
+             * fnt3 237, k[3]: Same as {@code fnt1}, except that
+             * {@code k} is three bytes long, so it can be as large as
              * 2^24-1.
              */
             new DviReadCommand() {
@@ -1299,8 +1292,8 @@ public abstract class DviCommand {
             },
 
             /**
-             * fnt4 238, k[+4]: Same as <code>fnt1</code>, except that
-             * <code>k</code> is four bytes long; this is for the really big
+             * fnt4 238, k[+4]: Same as {@code fnt1}, except that
+             * {@code k} is four bytes long; this is for the really big
              * font numbers (and for the negative ones).
              */
             new DviReadCommand() {
@@ -1321,10 +1314,10 @@ public abstract class DviCommand {
 
             /**
              * xxx1 239, k[1] x[k]: This command is undefined in general; it
-             * functions as a <code>(k+2)</code>-byte <code>nop</code> unless
+             * functions as a {@code (k+2)}-byte {@code nop} unless
              * special DVI-reading programs are being used. TeX82 generates
-             * <code>xxx1</code> when a short enough <code>special</code>
-             * appears, setting <code>k</code> to the number of bytes being
+             * {@code xxx1} when a short enough {@code special}
+             * appears, setting {@code k} to the number of bytes being
              * sent. It is recommended that $x$ be a string having the form of a
              * keyword followed by possible parameters relevant to that keyword.
              */
@@ -1351,7 +1344,7 @@ public abstract class DviCommand {
             },
 
             /**
-             * xxx2 240, k[2] x[k]: Like <code>xxx1</code>, but 0 &lt;= k &lt;
+             * xxx2 240, k[2] x[k]: Like {@code xxx1}, but 0 &lt;= k &lt;
              * 65536.
              */
             new DviReadCommand() {
@@ -1377,7 +1370,7 @@ public abstract class DviCommand {
             },
 
             /**
-             * xxx3 241, k[3] x[k]: Like <code>xxx1</code>, but 0 &lt;= k &lt;
+             * xxx3 241, k[3] x[k]: Like {@code xxx1}, but 0 &lt;= k &lt;
              * 2^24.
              */
             new DviReadCommand() {
@@ -1403,9 +1396,9 @@ public abstract class DviCommand {
             },
 
             /**
-             * xxx4 242, k[4] x[k]: Like <code>xxx1</code>, but <code>k</code>
-             * can be ridiculously large. TeX82 uses <code>xxx4</code> when
-             * <code>xxx1</code> would be incorrect.
+             * xxx4 242, k[4] x[k]: Like {@code xxx1}, but {@code k}
+             * can be ridiculously large. TeX82 uses {@code xxx4} when
+             * {@code xxx1} would be incorrect.
              */
             new DviReadCommand() {
 
@@ -1431,26 +1424,26 @@ public abstract class DviCommand {
 
             /**
              * fnt_def1 243, k[1] c[4] s[4] d[4] a[1] l[1] n[a+l]: Define font
-             * <code>k</code>, where 0 &lt;= k &lt; 256; font definitions will
+             * {@code k}, where 0 &lt;= k &lt; 256; font definitions will
              * be explained shortly.
              * <p>
-             * The four-byte value <code>c</code> is the check sum.
+             * The four-byte value {@code c} is the check sum.
              * 
-             * Parameter <code>s</code> contains a fixed-point scale factor that
-             * is applied to the character widths in font <code>k</code>; font
+             * Parameter {@code s} contains a fixed-point scale factor that
+             * is applied to the character widths in font {@code k}; font
              * dimensions in TFM files and other font files are relative to this
              * quantity, which is always positive and less than 227. It is given
              * in the same units as the other dimensions of the DVI file.
              * 
-             * Parameter <code>d</code> is similar to <code>s</code>; it is the
-             * design size, and (like <code>s</code>) it is given in DVI units.
-             * Thus, font <code>k</code> is to be used at
-             * <code>mag * s / (1000 * d)</code> times its normal size.
+             * Parameter {@code d} is similar to {@code s}; it is the
+             * design size, and (like {@code s}) it is given in DVI units.
+             * Thus, font {@code k} is to be used at
+             * {@code mag * s / (1000 * d)} times its normal size.
              * 
              * The remaining part of a font definition gives the external name
-             * of the font, which is an ASCII string of length <code>a</code> +
-             * <code>l</code>. The number a is the length of the area or
-             * directory, and <code>l</code> is the length of the font name
+             * of the font, which is an ASCII string of length {@code a} +
+             * {@code l}. The number a is the length of the area or
+             * directory, and {@code l} is the length of the font name
              * itself; the standard local system font area is supposed to be
              * used when a = 0. The n field contains the area in its first a
              * bytes.
@@ -1490,7 +1483,7 @@ public abstract class DviCommand {
 
             /**
              * fnt_def2 244, k[2] c[4] s[4] d[4] a[1] l[1] n[a+l]: Define font
-             * <code>k</code>, where 0 &lt;= k &lt; 65536.
+             * {@code k}, where 0 &lt;= k &lt; 65536.
              */
             new DviReadCommand() {
 
@@ -1526,7 +1519,7 @@ public abstract class DviCommand {
 
             /**
              * fnt_def3 245, k[3] c[4] s[4] d[4] a[1] l[1] n[a+l]: Define font
-             * <code>k</code>, where 0 &lt;= k &lt; 2^24.
+             * {@code k}, where 0 &lt;= k &lt; 2^24.
              */
             new DviReadCommand() {
 
@@ -1562,7 +1555,7 @@ public abstract class DviCommand {
 
             /**
              * fnt_def4 246, k[+4] c[4] s[4] d[4] a[1] l[1] n[a+l]: Define font
-             * <code>k</code>, where -2^31 &lt;= k &lt; 2^31.
+             * {@code k}, where -2^31 &lt;= k &lt; 2^31.
              */
             new DviReadCommand() {
 
@@ -1600,27 +1593,27 @@ public abstract class DviCommand {
              * pre 247, i[1] num[4] den[4] mag[4] k[1] x[k]: Beginning of the
              * preamble; this must come at the very beginning of the file.
              * <p>
-             * The <code>i</code> byte identifies DVI format. The next two
-             * parameters, <code>num</code> and <code>den</code>, are positive
+             * The {@code i} byte identifies DVI format. The next two
+             * parameters, {@code num} and {@code den}, are positive
              * integers that define the units of measurement; they are the
              * numerator and denominator of a fraction by which all dimensions
              * in the DVI file could be multiplied in order to get lengths in
              * units of 10^-7 meters. (For example, there are exactly 7227 TeX
              * points in 254 centimeters, and TeX82 works with scaled points
              * where there are 2^16 sp in a point, so TeX82 sets num=25400000
-             * and den= 7227 * 2^16 =473628672.) The <code>mag</code> parameter
-             * is what TeX82 calls <code>mag</code>, i.e., 1000 times the
+             * and den= 7227 * 2^16 =473628672.) The {@code mag} parameter
+             * is what TeX82 calls {@code mag}, i.e., 1000 times the
              * desired magnification. The actual fraction by which dimensions
              * are multiplied is therefore mn/1000d. Note that if a TeX source
-             * document does not call for any <code>true</code> dimensions, and
-             * if you change it only by specifying a different <code>mag</code>
+             * document does not call for any {@code true} dimensions, and
+             * if you change it only by specifying a different {@code mag}
              * setting, the DVI file that TeX creates will be completely
              * unchanged except for the value of mag in the preamble and
              * postamble. (Fancy DVI-reading programs allow users to override
-             * the <code>mag</code> setting when a DVI file is being printed.)
-             * Finally, <code>k</code> and <code>x</code> allow the DVI writer
+             * the {@code mag} setting when a DVI file is being printed.)
+             * Finally, {@code k} and {@code x} allow the DVI writer
              * to include a comment, which is not interpreted further. The
-             * length of comment <code>x</code> is <code>k</code>, where 0 &lt;=
+             * length of comment {@code x} is {@code k}, where 0 &lt;=
              * k &lt; 256.
              * </p>
              */
@@ -1658,11 +1651,11 @@ public abstract class DviCommand {
              * </pre>
              * 
              * <p>
-             * Here <code>p</code> is a pointer to the final <code>bop</code> in
-             * the file. The next three parameters, <code>num</code>,
-             * <code>den</code>, and <code>mag</code>, are duplicates of the
+             * Here {@code p} is a pointer to the final {@code bop} in
+             * the file. The next three parameters, {@code num},
+             * {@code den}, and {@code mag}, are duplicates of the
              * quantities that appeared in the preamble. Parameters
-             * <code>l</code> and <code>u</code> give respectively the
+             * {@code l} and {@code u} give respectively the
              * height-plus-depth of the tallest page and the width of the widest
              * page, in the same units as other dimensions of the file. These
              * numbers might be used by a DVI-reading program to position
@@ -1673,19 +1666,19 @@ public abstract class DviCommand {
              * is unwise to design DVI-to-printer software that attempts
              * cleverly to center the output; a fixed position of the upper left
              * corner is easiest for users to understand and to work with.
-             * Therefore <code>l</code> and <code>u</code> are often ignored.
-             * Parameter <code>s</code> is the maximum stack depth (i.e., the
-             * largest excess of <code>push</code> commands over
-             * <code>pop</code> commands) needed to process this file. Then
-             * comes <code>t</code>, the total number of pages (<code>bop</code>
+             * Therefore {@code l} and {@code u} are often ignored.
+             * Parameter {@code s} is the maximum stack depth (i.e., the
+             * largest excess of {@code push} commands over
+             * {@code pop} commands) needed to process this file. Then
+             * comes {@code t}, the total number of pages ({@code bop}
              * commands) present.
              * </p>
              * <p>
              * The postamble continues with font definitions, which are any
-             * number of <code>fnt_def</code> commands as described above,
-             * possibly interspersed with <code>nop</code> commands. Each font
+             * number of {@code fnt_def} commands as described above,
+             * possibly interspersed with {@code nop} commands. Each font
              * number that is used in the DVI file must be defined exactly
-             * twice: Once before it is first selected by a <code>fnt</code>
+             * twice: Once before it is first selected by a {@code fnt}
              * command, and once in the postamble.
              * </p>
              */
@@ -1718,14 +1711,14 @@ public abstract class DviCommand {
              * post_post 249: Ending of the postamble.
              * <p>
              * The last part of the postamble, following the
-             * <code>post_post</code> byte that signifies the end of the font
-             * definitions, contains <code>q</code>, a pointer to the
-             * <code>post</code> command that started the postamble. An
-             * identification byte, <code>i</code>, comes next; this currently
+             * {@code post_post} byte that signifies the end of the font
+             * definitions, contains {@code q}, a pointer to the
+             * {@code post} command that started the postamble. An
+             * identification byte, {@code i}, comes next; this currently
              * equals 2, as in the preamble.
              * </p>
              * <p>
-             * The <code>i</code> byte is followed by four or more bytes that
+             * The {@code i} byte is followed by four or more bytes that
              * are all equal to the decimal number 223 (i.e., 337 in octal). TeX
              * puts out four to seven of these trailing bytes, until the total
              * length of the file is a multiple of four bytes, since this works
@@ -1852,10 +1845,10 @@ public abstract class DviCommand {
     }
 
     /**
-     * Reads the <code>DviPost</code> command.
+     * Reads the {@code DviPost} command.
      * 
      * @param rar the input
-     * @return Returns the <code>DviPost</code> command
+     * @return Returns the {@code DviPost} command
      * 
      * @throws IOException if an IO-error occurs.
      * @throws FontException if a font-error occurs.
@@ -1888,11 +1881,11 @@ public abstract class DviCommand {
     }
 
     /**
-     * Reads the <code>DviPre</code> command.
+     * Reads the {@code DviPre} command.
      * 
      * @param rar the input
      * 
-     * @return Returns the <code>DviPre</code> command
+     * @return Returns the {@code DviPre} command
      * 
      * @throws IOException if an IO-error occurs.
      * @throws FontException if a font-error occurs.
@@ -1915,12 +1908,12 @@ public abstract class DviCommand {
     /**
      * the opcode of the command
      */
-    private int opc;
+    private final int opc;
 
     /**
      * the start pointer (in the file) of the command
      */
-    private int startpointer;
+    private final int startpointer;
 
     /**
      * Create a new object.
@@ -1961,12 +1954,7 @@ public abstract class DviCommand {
         return startpointer;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return getName();

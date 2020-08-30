@@ -35,8 +35,7 @@ import org.extex.scanner.type.Catcode;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4738 $
- */
+*/
 public interface Token extends Serializable {
 
     /**
@@ -47,7 +46,7 @@ public interface Token extends Serializable {
      * @param cc the catcode
      * @param c the value
      * 
-     * @return <code>true</code> iff the tokens are equal
+     * @return {@code true} iff the tokens are equal
      */
     boolean eq(Catcode cc, char c);
 
@@ -59,7 +58,7 @@ public interface Token extends Serializable {
      * @param cc the catcode
      * @param s the value
      * 
-     * @return <code>true</code> iff the tokens are equal
+     * @return {@code true} iff the tokens are equal
      */
     boolean eq(Catcode cc, String s);
 
@@ -69,7 +68,7 @@ public interface Token extends Serializable {
      * 
      * @param c the value
      * 
-     * @return <code>true</code> iff the tokens are equal
+     * @return {@code true} iff the tokens are equal
      */
     boolean eq(char c);
 
@@ -79,7 +78,7 @@ public interface Token extends Serializable {
      * 
      * @param t the token to compare to
      * 
-     * @return <code>true</code> iff the tokens are equal
+     * @return {@code true} iff the tokens are equal
      */
     @Override
     boolean equals(Object t);
@@ -103,7 +102,7 @@ public interface Token extends Serializable {
      * 
      * @param cc the catcode to compare against
      * 
-     * @return <code>true</code> iff the category codes coincide
+     * @return {@code true} iff the category codes coincide
      */
     boolean isa(Catcode cc);
 

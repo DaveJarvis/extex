@@ -30,42 +30,41 @@ import org.extex.typesetter.listMaker.math.EqConsumer;
 import org.extex.unit.tex.math.AbstractMathCode;
 
 /**
- * This class provides an implementation for the primitive <code>\eqno</code>.
+ * This class provides an implementation for the primitive {@code \eqno}.
  * 
- * <doc name="eqno">
- * <h3>The Math Primitive <tt>\eqno</tt></h3>
+ * <p>The Math Primitive {@code \eqno}</p>
  * <p>
- * The math primitive <tt>\eqno</tt> arranges that the following material is
+ * The math primitive {@code \eqno} arranges that the following material is
  * typeset in math mode and placed on the right side of the preceding material.
  * </p>
  * <p>
  * The primitive can be used in display math mode only. If used in another mode
  * an error is raised. An error is also raised when more than one invocations
- * appear in one display math list or <tt>\eqno</tt> appears together with
- * <tt>\leqno</tt> in a display math list.
+ * appear in one display math list or {@code \eqno} appears together with
+ * {@code \leqno} in a display math list.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;eqno&rang;
- *       &rarr; <tt>\eqno</tt>  </pre>
+ *       &rarr; {@code \eqno}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    $$ 12 \eqno 34 $$ </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Eqno extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -81,10 +80,7 @@ public class Eqno extends AbstractMathCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

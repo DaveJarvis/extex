@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the observes for events in the stream context.
+ *Contains observes for events in the stream context.
  */
 
 package org.extex.scanner.stream.observer.reader;

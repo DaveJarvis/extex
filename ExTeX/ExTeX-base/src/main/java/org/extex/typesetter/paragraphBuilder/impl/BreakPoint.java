@@ -28,13 +28,12 @@ import org.extex.core.glue.WideGlue;
  * @see "TTP [819]"
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4728 $
- */
+*/
 public class BreakPoint {
 
     /**
-     * The field <tt>fitness</tt> contains the fitness for the break point.
-     * If this field is <code>null</code> then this break point is not
+     * The field {@code fitness} contains the fitness for the break point.
+     * If this field is {@code null} then this break point is not
      * active.
      * <p>
      * When a list of break points has been constructed, the active flag marks
@@ -45,26 +44,26 @@ public class BreakPoint {
     private Fitness fitness = null;
 
     /**
-     * The field <tt>penalty</tt> contains the penalty associated to the
+     * The field {@code penalty} contains the penalty associated to the
      * break point.
      */
     private int penalty;
 
     /**
-     * The field <tt>pointWidth</tt> contains the width to be added in case
+     * The field {@code pointWidth} contains the width to be added in case
      * that this break point is not active.
      */
     private FixedGlue pointWidth;
 
     /**
-     * The field <tt>position</tt> contains the pointer to the first material
+     * The field {@code position} contains the pointer to the first material
      * in the new line. This material might be skipped. Thus in fact the pointer
      * indicates the material not contained in the previous line.
      */
     private int position;
 
     /**
-     * The field <tt>width</tt> contains the width of the line from the
+     * The field {@code width} contains the width of the line from the
      * previous break point to this one.
      */
     private FixedGlue width;
@@ -89,7 +88,7 @@ public class BreakPoint {
     /**
      * Getter for fitness.
      * The fitness is one of the fitness classes defined in Fitness.
-     * The fitness is <code>null</code> for break points which are not active.
+     * The fitness is {@code null} for break points which are not active.
      *
      * @return the fitness.
      */

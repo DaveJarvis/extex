@@ -53,8 +53,7 @@ import org.xml.sax.SAXException;
  * Collect the doc snippets from Java code and store them in XML files.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5413 $
- */
+*/
 public class ExDocXml extends Traverser {
 
     /**
@@ -76,35 +75,35 @@ public class ExDocXml extends Traverser {
     }
 
     /**
-     * The field <tt>authorsFile</tt> contains the file for the primitives.
+     * The field {@code authorsFile} contains the file for the primitives.
      */
     private String authorsFile = "authors";
 
     /**
-     * The field <tt>collecting</tt> contains the indicator that the first
+     * The field {@code collecting} contains the indicator that the first
      * phase is currently active.
      */
     private boolean collecting;
 
     /**
-     * The field <tt>keys</tt> contains the mapping from short form
+     * The field {@code keys} contains the mapping from short form
      * (package.class_method) to a long form including the name. This is only
      * valid after the collecting pass has been finished.
      */
     private Map<String, Key> keys = new HashMap<String, Key>();
 
     /**
-     * The field <tt>primitives</tt> contains the ...
+     * The field {@code primitives} contains the ...
      */
     private List<PrimitiveInfo> primitives = new ArrayList<PrimitiveInfo>();
 
     /**
-     * The field <tt>primitivesFile</tt> contains the file for the primitives.
+     * The field {@code primitivesFile} contains the file for the primitives.
      */
     private String primitivesFile = "primitives";
 
     /**
-     * The field <tt>units</tt> contains the ...
+     * The field {@code units} contains the ...
      */
     private List<UnitInfo> units = new ArrayList<UnitInfo>();
 
@@ -246,8 +245,8 @@ public class ExDocXml extends Traverser {
      * TODO gene: missing JavaDoc
      * 
      * @param content the content to resolve the links in
-     * @param start the name of the link, i.e. <tt>{&#64;link</tt> or
-     *        <tt>{&#64;linkplain</tt>
+     * @param start the name of the link, i.e. {@code {&#64;link} or
+     *        {@code {&#64;linkplain}
      * @param startTag the additional tag to insert at the start
      * @param endTag the additional tag to insert at the end
      * @param k the name of resource where the original text came from
@@ -318,10 +317,7 @@ public class ExDocXml extends Traverser {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exdoc.util.Traverser#runOption(java.lang.String,
-     *      java.lang.String[], int)
+*      java.lang.String[], int)
      */
     @Override
     protected int runOption(String arg, String[] args, int i) throws Exception {
@@ -450,7 +446,7 @@ public class ExDocXml extends Traverser {
     /**
      * Process the list of resources and authors.
      * 
-     * @param file the target file base name or <code>null</code>
+     * @param file the target file base name or {@code null}
      * @param authors the list of authors
      * 
      * @throws IOException in case of an I/O error
@@ -492,7 +488,7 @@ public class ExDocXml extends Traverser {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param file the target file base name or <code>null</code>
+     * @param file the target file base name or {@code null}
      * @param list the list of primitives
      * 
      * @throws IOException in case of an I/O error

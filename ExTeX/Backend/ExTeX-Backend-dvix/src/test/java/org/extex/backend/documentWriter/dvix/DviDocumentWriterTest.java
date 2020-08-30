@@ -41,21 +41,17 @@ import org.junit.Test;
  * This is a test suite for the dvi document writer.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DviDocumentWriterTest {
 
     /**
-     * The field <tt>OPTIONS</tt> contains the dummy options.
+     * The field {@code OPTIONS} contains the dummy options.
      */
     private static final DocumentWriterOptions OPTIONS =
             new DocumentWriterOptions() {
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.backend.documentWriter.DocumentWriterOptions#getCountOption(
-                 *      java.lang.String)
+            *      java.lang.String)
                  */
                 public FixedCount getCountOption(String name) {
 
@@ -70,31 +66,20 @@ public class DviDocumentWriterTest {
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.backend.documentWriter.DocumentWriterOptions#getDimenOption(
-                 *      java.lang.String)
+            *      java.lang.String)
                  */
                 public FixedDimen getDimenOption(String name) {
 
                     return null;
                 }
 
-                /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.backend.documentWriter.DocumentWriterOptions#getMagnification()
-                 */
-                public long getMagnification() {
+            public long getMagnification() {
 
                     return 1000;
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.backend.documentWriter.DocumentWriterOptions#getTokensOption(
-                 *      java.lang.String)
+            *      java.lang.String)
                  */
                 public String getTokensOption(String name) {
 

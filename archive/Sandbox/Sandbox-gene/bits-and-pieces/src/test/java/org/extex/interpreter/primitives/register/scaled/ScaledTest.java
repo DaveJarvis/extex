@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\countdef</tt>.
+ * This is a test suite for the primitive {@code \countdef}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ScaledTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
@@ -48,8 +47,8 @@ public class ScaledTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\scaled"> Test case checking that <tt>\scaled</tt>
-     * creates a ... </testcase>
+     * <testcase primitive="\scaled"> Test case checking that {@code \scaled}
+     * creates a ...
      * 
      * @throws Exception in case of an error
      */
@@ -64,8 +63,8 @@ public class ScaledTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\scaled"> Test case checking that <tt>\scaled</tt>
-     * creates a ... </testcase>
+     * <testcase primitive="\scaled"> Test case checking that {@code \scaled}
+     * creates a ...
      * 
      * @throws Exception in case of an error
      */
@@ -80,8 +79,8 @@ public class ScaledTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\scaled"> Test case checking that <tt>\scaled</tt>
-     * creates a ... </testcase>
+     * <testcase primitive="\scaled"> Test case checking that {@code \scaled}
+     * creates a ...
      * 
      * @throws Exception in case of an error
      */
@@ -96,8 +95,8 @@ public class ScaledTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\scaled"> Test case checking that <tt>\scaled</tt>
-     * creates a ... </testcase>
+     * <testcase primitive="\scaled"> Test case checking that {@code \scaled}
+     * creates a ...
      * 
      * @throws Exception in case of an error
      */
@@ -112,8 +111,8 @@ public class ScaledTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\scaled"> Test case checking that <tt>\scaled</tt>
-     * creates a ... </testcase>
+     * <testcase primitive="\scaled"> Test case checking that {@code \scaled}
+     * creates a ...
      * 
      * @throws Exception in case of an error
      */
@@ -128,8 +127,8 @@ public class ScaledTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\scaled"> Test case checking that <tt>\scaled</tt>
-     * creates a ... </testcase>
+     * <testcase primitive="\scaled"> Test case checking that {@code \scaled}
+     * creates a ...
      * 
      * @throws Exception in case of an error
      */
@@ -144,8 +143,8 @@ public class ScaledTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\scaled"> Test case checking that <tt>\scaled</tt>
-     * creates a ... </testcase>
+     * <testcase primitive="\scaled"> Test case checking that {@code \scaled}
+     * creates a ...
      * 
      * @throws Exception in case of an error
      */
@@ -160,8 +159,8 @@ public class ScaledTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\scaled"> Test case checking that <tt>\scaled</tt>
-     * creates a ... </testcase>
+     * <testcase primitive="\scaled"> Test case checking that {@code \scaled}
+     * creates a ...
      * 
      * @throws Exception in case of an error
      */
@@ -176,8 +175,8 @@ public class ScaledTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\scaled"> Test case checking that <tt>\scaled</tt>
-     * creates a ... </testcase>
+     * <testcase primitive="\scaled"> Test case checking that {@code \scaled}
+     * creates a ...
      * 
      * @throws Exception in case of an error
      */
@@ -192,8 +191,8 @@ public class ScaledTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\scaled"> Test case checking that <tt>\scaled</tt>
-     * creates a ... </testcase>
+     * <testcase primitive="\scaled"> Test case checking that {@code \scaled}
+     * creates a ...
      * 
      * @throws Exception in case of an error
      */
@@ -208,8 +207,8 @@ public class ScaledTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\scaled"> Test case checking that <tt>\scaled</tt>
-     * creates a ... </testcase>
+     * <testcase primitive="\scaled"> Test case checking that {@code \scaled}
+     * creates a ...
      * 
      * @throws Exception in case of an error
      */
@@ -224,8 +223,8 @@ public class ScaledTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\scaled"> Test case checking that <tt>\scaled</tt>
-     * creates a ... </testcase>
+     * <testcase primitive="\scaled"> Test case checking that {@code \scaled}
+     * creates a ...
      * 
      * @throws Exception in case of an error
      */
@@ -240,8 +239,8 @@ public class ScaledTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\scaled"> Test case checking that <tt>\scaled</tt>
-     * creates a ... </testcase>
+     * <testcase primitive="\scaled"> Test case checking that {@code \scaled}
+     * creates a ...
      * 
      * @throws Exception in case of an error
      */
@@ -256,8 +255,8 @@ public class ScaledTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\scaled"> Test case checking that <tt>\scaled</tt>
-     * creates a ... </testcase>
+     * <testcase primitive="\scaled"> Test case checking that {@code \scaled}
+     * creates a ...
      * 
      * @throws Exception in case of an error
      */
@@ -272,8 +271,8 @@ public class ScaledTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\scaled"> Test case checking that <tt>\scaled</tt>
-     * creates a ... </testcase>
+     * <testcase primitive="\scaled"> Test case checking that {@code \scaled}
+     * creates a ...
      * 
      * @throws Exception in case of an error
      */
@@ -288,8 +287,8 @@ public class ScaledTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\scaled"> Test case checking that <tt>\scaled</tt>
-     * creates a ... </testcase>
+     * <testcase primitive="\scaled"> Test case checking that {@code \scaled}
+     * creates a ...
      * 
      * @throws Exception in case of an error
      */
@@ -304,8 +303,8 @@ public class ScaledTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\scaled"> Test case checking that <tt>\scaled</tt>
-     * creates a ... </testcase>
+     * <testcase primitive="\scaled"> Test case checking that {@code \scaled}
+     * creates a ...
      * 
      * @throws Exception in case of an error
      */

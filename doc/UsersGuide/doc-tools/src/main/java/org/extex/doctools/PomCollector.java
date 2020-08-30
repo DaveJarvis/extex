@@ -48,28 +48,27 @@ import org.xml.sax.SAXException;
  * This class contains the main program to collect the POMs in a set of base
  * directories.
  * <p>
- * Usage: <tt>java org.extex.doctools.PomCollector </tt><i>&lt;options&gt;
+ * Usage: {@code java org.extex.doctools.PomCollector }<i>&lt;options&gt;
  * bases</i>
  * </p>
  * <p>
  * The following options are supported:
  * </p>
  * <dl>
- * <dt><tt>- &lt;base&gt;</tt></dt>
+ * <dt>{@code - &lt;base&gt;}</dt>
  * <dd>Use this argument as base name &ndash; even when it looks like an option.
  * </dd>
- * <dt><tt>-o[utput] &lt;file&gt;</tt></dt>
+ * <dt>{@code -o[utput] &lt;file&gt;}</dt>
  * <dd>Use this argument as output file name.</dd>
- * <dt><tt>-om[it] &lt;name&gt;</tt></dt>
+ * <dt>{@code -om[it] &lt;name&gt;}</dt>
  * <dd>Add the argument to the list of omitted files and directories.</dd>
- * <dt><tt>-x[sl] &lt;xsl file&gt;</tt></dt>
+ * <dt>{@code -x[sl] &lt;xsl file&gt;}</dt>
  * <dd>Name the XSL resource for processing the collected POMs. The XSL file is
  * sought on the classpath.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class PomCollector {
 
     /**
@@ -103,42 +102,37 @@ public class PomCollector {
     }
 
     /**
-     * The field <tt>bases</tt> contains the list of base directories to
+     * The field {@code bases} contains the list of base directories to
      * consider.
      */
     private List<String> bases = new ArrayList<String>();
 
     /**
-     * The field <tt>output</tt> contains the output file name or
-     * <code>null</code> for stdout.
+     * The field {@code output} contains the output file name or
+     * {@code null} for stdout.
      */
     private String output = null;
 
     /**
-     * The field <tt>omit</tt> contains the list of omitted files and
+     * The field {@code omit} contains the list of omitted files and
      * directories.
      */
     private List<String> omit = new ArrayList<String>();
 
     /**
-     * The field <tt>DIR_FILTER</tt> contains the filter to select only
+     * The field {@code DIR_FILTER} contains the filter to select only
      * directories.
      */
     private static final FileFilter DIR_FILTER = new FileFilter() {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.io.FileFilter#accept(java.io.File)
-         */
-        public boolean accept(File f) {
+    public boolean accept(File f) {
 
             return f.isDirectory();
         }
     };
 
     /**
-     * The field <tt>xslt</tt> contains the name of the xslt resource.
+     * The field {@code xslt} contains the name of the xslt resource.
      */
     private String xslt =
             PomCollector.class.getName().replace('.', '/') + ".xsl";
@@ -382,7 +376,7 @@ public class PomCollector {
 
     /**
      * Setter for the output. The empty string and the string containing a '-'
-     * only are treated as <code>null</code>.
+     * only are treated as {@code null}.
      * 
      * @param output the output to set
      */

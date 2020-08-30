@@ -34,12 +34,11 @@ import org.junit.Test;
  * This is a test suite for the dependency net.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BuilderTest {
 
     /**
-     * <testcase> The empty net prints nothing. </testcase>
+     *  The empty net prints nothing.
      */
     @Test
     public void test1() {
@@ -51,7 +50,7 @@ public class BuilderTest {
     }
 
     /**
-     * <testcase> A net with just one artifact prints this artifact. </testcase>
+     *  A net with just one artifact prints this artifact.
      * 
      * @throws Exception in case of an error
      */
@@ -68,9 +67,8 @@ public class BuilderTest {
     }
 
     /**
-     * <testcase> A net with an artifact with a cyclic dependency prints the
-     * artifact and the dependency. </testcase>
-     * 
+     * A net with an artifact with a cyclic dependency prints the artifact and the dependency
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -88,7 +86,7 @@ public class BuilderTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      * @throws Exception in case of an error
      */
@@ -108,7 +106,7 @@ public class BuilderTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      * @throws Exception in case of an error
      */
@@ -132,7 +130,7 @@ public class BuilderTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      * @throws Exception in case of an error
      */

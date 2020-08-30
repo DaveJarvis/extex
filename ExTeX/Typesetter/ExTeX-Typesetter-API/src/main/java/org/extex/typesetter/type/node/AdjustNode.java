@@ -28,25 +28,21 @@ import org.extex.typesetter.type.NodeVisitor;
  * The adjust node is used to insert material which should be pushed out the
  * enclosing vertical list.
  * 
- * @see "<logo>T<span style=
- *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *      >e</span>X</logo> &ndash; The Program [142]"
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4739 $
- */
+*/
 public class AdjustNode extends AbstractNode implements Node {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>nodes</tt> contains the list of nodes contained.
+     * The field {@code nodes} contains the list of nodes contained.
      */
-    private NodeList nodes;
+    private final NodeList nodes;
 
     /**
      * Creates a new object.
@@ -77,11 +73,7 @@ public class AdjustNode extends AbstractNode implements Node {
      * @param prefix the prefix string inserted at the beginning of each line
      * @param breadth the breadth
      * @param depth the depth
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [197]"
-     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
+* @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
      *      java.lang.String, int, int)
      */
     @Override

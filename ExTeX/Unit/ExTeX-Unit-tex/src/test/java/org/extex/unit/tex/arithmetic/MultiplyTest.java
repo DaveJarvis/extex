@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\multiply</tt>.
+ * This is a test suite for the primitive {@code \multiply}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
@@ -49,7 +48,7 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\multiply"> Test case checking that
-     * <tt>\advance</tt> needs one arguments. </testcase>
+     * {@code \advance} needs one arguments.
      * 
      * @throws Exception in case of an error
      */
@@ -64,8 +63,8 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\multiply"> Test case checking that
-     * <tt>\multiply</tt> needs a defined control sequence as first argument.
-     * </testcase>
+     * {@code \multiply} needs a defined control sequence as first argument.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -80,7 +79,7 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\multiply"> Test case checking that
-     * <tt>\multiply</tt> on a letter leads to an error. </testcase>
+     * {@code \multiply} on a letter leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -95,7 +94,7 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\multiply"> Test case checking that
-     * <tt>\multiply</tt> on a other token leads to an error. </testcase>
+     * {@code \multiply} on a other token leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -110,8 +109,8 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\multiply"> Test case checking that
-     * <tt>\multiply</tt> on a macro parameter token leads to an error.
-     * </testcase>
+     * {@code \multiply} on a macro parameter token leads to an error.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -126,8 +125,8 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\multiply"> Test case checking that
-     * <tt>\multiply</tt> on a non-multipliable primitive (\\relax) leads to
-     * an error. </testcase>
+     * {@code \multiply} on a non-multipliable primitive (\\relax) leads to
+     * an error.
      * 
      * @throws Exception in case of an error
      */
@@ -142,7 +141,7 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\multiply"> Test case checking that
-     * <tt>\multiply</tt> on a count register name works. </testcase>
+     * {@code \multiply} on a count register name works.
      * 
      * @throws Exception in case of an error
      */
@@ -157,8 +156,8 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\multiply"> Test case checking that
-     * <tt>\multiply</tt> on a count register name works with the global flag.
-     * </testcase>
+     * {@code \multiply} on a count register name works with the global flag.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -175,7 +174,7 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\multiply"> Test case checking that
-     * <tt>\multiply</tt> on a dimen register name works. </testcase>
+     * {@code \multiply} on a dimen register name works.
      * 
      * @throws Exception in case of an error
      */
@@ -190,8 +189,8 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\multiply"> Test case checking that
-     * <tt>\multiply</tt> on a dimen register name works with the global flag.
-     * </testcase>
+     * {@code \multiply} on a dimen register name works with the global flag.
+     *
      * 
      * @throws Exception in case of an error
      */

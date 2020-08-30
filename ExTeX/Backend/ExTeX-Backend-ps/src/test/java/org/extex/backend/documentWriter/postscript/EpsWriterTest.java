@@ -46,8 +46,7 @@ import org.junit.Test;
  * This is the test suite for the EPS writer.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class EpsWriterTest {
 
     /**
@@ -80,21 +79,18 @@ public class EpsWriterTest {
     }
 
     /**
-     * The field <tt>pages</tt> contains the list of collected pages.
+     * The field {@code pages} contains the list of collected pages.
      */
     private List<ByteArrayOutputStream> pages =
             new ArrayList<ByteArrayOutputStream>();
 
     /**
-     * The field <tt>osf</tt> contains the output stream factory.
+     * The field {@code osf} contains the output stream factory.
      */
     private OutputStreamFactory osf = new OutputStreamFactory() {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.backend.outputStream.OutputStreamFactory#getOutputStream(
-         *      java.lang.String, java.lang.String)
+    *      java.lang.String, java.lang.String)
          */
         public OutputStream getOutputStream(String name, String type)
                 throws DocumentWriterException {
@@ -105,10 +101,7 @@ public class EpsWriterTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.backend.outputStream.OutputStreamFactory#register(
-         *      org.extex.backend.outputStream.OutputStreamObserver)
+    *      org.extex.backend.outputStream.OutputStreamObserver)
          */
         public void register(OutputStreamObserver observer) {
 
@@ -116,10 +109,7 @@ public class EpsWriterTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.backend.outputStream.OutputStreamFactory#setExtension(
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public void setExtension(String extension) {
 

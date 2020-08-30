@@ -34,12 +34,11 @@ import org.extex.ocpware.type.OcpCode;
  * Here &lang;state&rang; denotes the symbolic name of a state.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public class StateChange implements RightState {
 
     /**
-     * The field <tt>state</tt> contains the state.
+     * The field {@code state} contains the state.
      */
     private String state;
 
@@ -54,10 +53,7 @@ public class StateChange implements RightState {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.compiler.state.RightState#compile(
-     *      org.extex.ocpware.compiler.parser.CompilerState, boolean)
+*      org.extex.ocpware.compiler.parser.CompilerState, boolean)
      */
     public void compile(CompilerState cs, boolean withOffset)
             throws IOException,
@@ -66,12 +62,7 @@ public class StateChange implements RightState {
         cs.putInstruction(OcpCode.OP_STATE_CHANGE, cs.lookupState(state));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return "<" + state + ">";

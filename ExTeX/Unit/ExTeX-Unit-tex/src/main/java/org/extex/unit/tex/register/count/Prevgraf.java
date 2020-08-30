@@ -30,36 +30,33 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\prevgraf</code>.
+ * {@code \prevgraf}.
  * 
- * <doc name="prevgraf"> <h3>The Primitive <tt>\prevgraf</tt></h3>
+ * <p>The Primitive {@code \prevgraf}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * <p>
  * The formal description of this primitive is the following:
- * 
+ * </p>
+ *
  * <pre class="syntax">
  *    &lang;prevgraf&rang;
- *       &rarr; <tt>\prevgraf</tt>  </pre>
+ *       &rarr; {@code \prevgraf}  </pre>
  * 
- * </p>
  * <p>
  * Examples:
- * 
+ * </p>
+ *
  * <pre class="TeXSample">
  *    \prevgraf  </pre>
- * 
- * </p>
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Prevgraf extends CountPrimitive {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -74,10 +71,7 @@ public class Prevgraf extends CountPrimitive {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.register.count.CountPrimitive#advance(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -98,10 +92,7 @@ public class Prevgraf extends CountPrimitive {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.register.count.CountPrimitive#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -120,10 +111,7 @@ public class Prevgraf extends CountPrimitive {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.register.count.CountPrimitive#divide(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -168,10 +156,7 @@ public class Prevgraf extends CountPrimitive {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.register.count.CountPrimitive#multiply(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

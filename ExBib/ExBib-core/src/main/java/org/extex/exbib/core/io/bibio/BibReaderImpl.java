@@ -33,18 +33,10 @@ import org.extex.exbib.core.io.Locator;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * This is a reader for B<small>IB</small><span style="margin-left: -0.15em;"
- * >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X files. It extends the reader for the B<small>IB</small><span
- * style="margin-left: -0.15em;" >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X 0.99c format. The constructions supported roughly approximate the
- * features announced for B<small>IB</small><span style="margin-left: -0.15em;"
- * >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X 1.0 (which has net been published at the time of this writing
- * &ndash; and probably never will).
+ * This is a reader for BibTeX files. It extends the reader for the BibTeX 0
+ * .99c format. The constructions supported roughly approximate the
+ * features announced for BibTeX 1.0 (which has net been published at the
+ * time of this writing &ndash; and probably never will be).
  * <p>
  * The following constructs are supported:
  * </p>
@@ -54,7 +46,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <li>{@literal @modify}</li>
  * </ul>
  * 
- * <h3>The {@literal @alias} Instruction</h3>
+ * The {@literal @alias} Instruction
  * 
  * <p>
  * Define an alias for an existing entry. It has a new key and inherits all
@@ -66,8 +58,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * {@literal @alias}{abc=xyz}
  * </pre>
  * 
- * 
- * <h3>The {@literal @include} Instruction</h3>
+ * The {@literal @include} Instructions
  * 
  * <p>
  * Include the named resource as if its contents where at the place of the
@@ -77,35 +68,27 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <pre>
  * {@literal @include}{some_resource}
  * </pre>
- * 
- * 
- * 
- * <h3>The {@literal @modify} Instruction</h3>
- * 
- * <p>
- * </p>
+ *
+ * The {@literal @modify} Instruction
  * 
  * <pre>
  * {@literal @modify}{abc,
  *         title={The Title}}
  * </pre>
  * 
- * 
- * <h3>The {@literal @comment} Instruction</h3>
+ * The {@literal @comment} Instruction
  * 
  * <p>
  * The {@literal @comment} is modified to take an argument in braces. Whatever
  * contained in this argument is ignored.
  * </p>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BibReaderImpl extends BibReader099Impl {
 
     /**
-     * The field <tt>filenamePattern</tt> contains the pattern for file names.
+     * The field {@code filenamePattern} contains the pattern for file names.
      */
     private static final Pattern filenamePattern = Pattern.compile( "[^{}]*");
 
@@ -137,7 +120,7 @@ public class BibReaderImpl extends BibReader099Impl {
      *       . . .
      *     }
      *   }
-     * </pre
+     * </pre>
      * 
      * @param tag the name of the item encountered. This String has been
      *        converted to lower case already.
@@ -146,7 +129,7 @@ public class BibReaderImpl extends BibReader099Impl {
      *        depending in the opening brace
      * @param locator the locator
      * 
-     * @return <code>true</code> iff the item is special and has been handled
+     * @return {@code true} iff the item is special and has been handled
      *         successfully.
      * 
      * @throws ExBibException in case of an syntax error
@@ -210,10 +193,7 @@ public class BibReaderImpl extends BibReader099Impl {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.bibio.BibReader099Impl#handleComment(java.lang.StringBuilder,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     protected void handleComment(StringBuilder comment, String tag)

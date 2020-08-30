@@ -27,16 +27,15 @@ import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This observer is meant for keeping the current typesetting context in sync
- * with the registers <tt>\language</tt> and <tt>\lang</tt>.
+ * with the registers {@code \language} and {@code \lang}.
  * <p>
- * The tokens register <tt>\lang</tt> is considered first. Only if this
- * register is not set or it is empty then the count register <tt>\language</tt>
+ * The tokens register {@code \lang} is considered first. Only if this
+ * register is not set or it is empty then the count register {@code \language}
  * is taken into account.
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4728 $
- */
+*/
 public class LanguageObserver implements CountObserver, TokensObserver {
 
 

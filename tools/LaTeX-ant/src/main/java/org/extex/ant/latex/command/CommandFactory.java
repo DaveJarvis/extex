@@ -25,8 +25,7 @@ import org.extex.ant.latex.Settings;
  * This factory provides the different commands used to process a document.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 5432 $
- */
+*/
 public class CommandFactory {
 
     /**
@@ -34,15 +33,15 @@ public class CommandFactory {
      */
     public enum Type {
         /**
-         * The field <tt>LATEX</tt> contains the value for the latex command.
+         * The field {@code LATEX} contains the value for the latex command.
          */
         LATEX,
         /**
-         * The field <tt>BIBTEX</tt> contains the value for the bibtex command.
+         * The field {@code BIBTEX} contains the value for the bibtex command.
          */
         BIBTEX,
         /**
-         * The field <tt>MAKEINDEX</tt> contains the value for the makeindex
+         * The field {@code MAKEINDEX} contains the value for the makeindex
          * command.
          */
         MAKEINDEX
@@ -54,7 +53,7 @@ public class CommandFactory {
      * @param type the type of the command requested
      * @param settings the settings used to initialize the command
      * 
-     * @return the command. It can not be <code>null</code>
+     * @return the command. It can not be {@code null}
      * 
      * @throws RuntimeException in case of an illegal type
      */

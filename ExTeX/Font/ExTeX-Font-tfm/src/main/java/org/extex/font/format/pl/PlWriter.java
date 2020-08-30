@@ -35,8 +35,7 @@ import org.extex.font.format.tfm.TfmFixWord;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class PlWriter extends PrintWriter {
 
     /**
@@ -130,10 +129,10 @@ public class PlWriter extends PrintWriter {
 
     /**
      * Prints symbolic representation of character code. If the character code
-     * represents printable character and the member <code>octChars</code> is
-     * <code>false</code> then it prints <code>C</code> prefix folowed by
+     * represents printable character and the member {@code octChars} is
+     * {@code false} then it prints {@code C} prefix folowed by
      * the character. Otherwise it prints the octal representation (with
-     * <code>O</code> prefix).
+     * {@code O} prefix).
      * 
      * @param c the character code to be printed.
      * @return Return this, reference for subsequent printing.
@@ -175,7 +174,7 @@ public class PlWriter extends PrintWriter {
     }
 
     /**
-     * Prints <code>D</code> prefix and decimal number.
+     * Prints {@code D} prefix and decimal number.
      * 
      * @param i the number to be printed.
      * @return Return this, reference for subsequent printing.
@@ -186,7 +185,7 @@ public class PlWriter extends PrintWriter {
     }
 
     /**
-     * Prints <code>F</code> prefix and Xerox face code. The code is printed
+     * Prints {@code F} prefix and Xerox face code. The code is printed
      * in the three character slope/weight/expansion form or in octal if the
      * symbolic form cannot be found.
      * 
@@ -226,7 +225,7 @@ public class PlWriter extends PrintWriter {
     }
 
     /**
-     * Prints <code>O</code> prefix and octal number.
+     * Prints {@code O} prefix and octal number.
      * 
      * @param i the number to be printed.
      * @return Return this, reference for subsequent printing.
@@ -237,7 +236,7 @@ public class PlWriter extends PrintWriter {
     }
 
     /**
-     * Prints <code>R</code> prefix and real number.
+     * Prints {@code R} prefix and real number.
      * 
      * @param d the real number.
      * @return Return this, reference for subsequent printing.
@@ -248,7 +247,7 @@ public class PlWriter extends PrintWriter {
     }
 
     /**
-     * Prints <code>R</code> prefix and real number.
+     * Prints {@code R} prefix and real number.
      * 
      * @param o the object which represents the real number.
      * @return Return this, reference for subsequent printing.

@@ -28,18 +28,17 @@ import org.extex.framework.i18n.LocalizerFactory;
  * operation.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class RegistrarFontNotFoundException extends RegistrarException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 24012007L;
 
     /**
-     * The field <tt>key</tt> contains the font key which caused the problem.
+     * The field {@code key} contains the font key which caused the problem.
      */
     private FontKey key;
 
@@ -68,7 +67,7 @@ public class RegistrarFontNotFoundException extends RegistrarException {
      * Subclasses may override this method in order to produce a
      * locale-specific message.  For subclasses that do not override this
      * method, the default implementation returns the same result as
-     * <code>getMessage()</code>.
+     * {@code getMessage()}.
      *
      * @return  The localized description of this throwable.
      *

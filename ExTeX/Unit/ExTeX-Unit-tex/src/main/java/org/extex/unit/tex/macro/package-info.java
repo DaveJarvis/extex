@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains primitives for the management of macros. This means the 
+ * Contains primitives for the management of macros. This means the 
  * definition and execution of macros on the level of 
  * {@link org.extex.scanner.type.tokens.Tokens Tokens}.
  */

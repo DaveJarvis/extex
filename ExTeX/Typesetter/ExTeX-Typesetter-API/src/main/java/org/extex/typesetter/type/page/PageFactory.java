@@ -28,8 +28,7 @@ import org.extex.typesetter.type.NodeList;
  * This class provides a factory for page instances.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4399 $
- */
+*/
 public interface PageFactory {
 
     /**
@@ -39,7 +38,7 @@ public interface PageFactory {
      * @param context the interpreter context
      * @param typesetter the typesetter
      *
-     * @return the new instance or <code>null</code> if the page would be
+     * @return the new instance or {@code null} if the page would be
      *         empty
      *
      * @throws GeneralException in case of an error

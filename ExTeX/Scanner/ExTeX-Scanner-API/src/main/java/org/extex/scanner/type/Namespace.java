@@ -24,70 +24,69 @@ package org.extex.scanner.type;
  * is supposed to be instantiated.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class Namespace {
 
     /**
-     * The constant <tt>DEFAULT_NAMESPACE</tt> contains the name of the default
+     * The constant {@code DEFAULT_NAMESPACE} contains the name of the default
      * name space.
      */
     public static final String DEFAULT_NAMESPACE = "";
 
     /**
-     * The constant <tt>SYSTEM_NAMESPACE</tt> contains the name of the system
+     * The constant {@code SYSTEM_NAMESPACE} contains the name of the system
      * name space.
      */
     public static final String SYSTEM_NAMESPACE = "system";
 
     /**
-     * The constant <tt>SUPPORT_NAMESPACE_BOX</tt> contains the flag indicating
+     * The constant {@code SUPPORT_NAMESPACE_BOX} contains the flag indicating
      * whether or not the name space should be used for box registers.
      */
     public static final boolean SUPPORT_NAMESPACE_BOX = false;
 
     /**
-     * The constant <tt>SUPPORT_NAMESPACE_COUNT</tt> contains the flag
+     * The constant {@code SUPPORT_NAMESPACE_COUNT} contains the flag
      * indicating whether or not the name space should be used for count
      * registers.
      */
     public static final boolean SUPPORT_NAMESPACE_COUNT = false;
 
     /**
-     * The constant <tt>SUPPORT_NAMESPACE_DEF</tt> contains the indicator that
+     * The constant {@code SUPPORT_NAMESPACE_DEF} contains the indicator that
      * name spaces should be honored. In this case the look-up for Code is also
      * performed in the default name space if not found in the current one.
      */
     public static final boolean SUPPORT_NAMESPACE_DEF = true;
 
     /**
-     * The constant <tt>SUPPORT_NAMESPACE_DIMEN</tt> contains the flag
+     * The constant {@code SUPPORT_NAMESPACE_DIMEN} contains the flag
      * indicating whether or not the name space should be used for dimen
      * registers.
      */
     public static final boolean SUPPORT_NAMESPACE_DIMEN = false;
 
     /**
-     * The constant <tt>SUPPORT_NAMESPACE_FONT</tt> contains the flag indicating
+     * The constant {@code SUPPORT_NAMESPACE_FONT} contains the flag indicating
      * whether or not the name space should be used for font registers.
      */
     public static final boolean SUPPORT_NAMESPACE_FONT = false;
 
     /**
-     * The constant <tt>SUPPORT_NAMESPACE_MUSKIP</tt> contains the flag
+     * The constant {@code SUPPORT_NAMESPACE_MUSKIP} contains the flag
      * indicating whether or not the name space should be used for muskip
      * registers.
      */
     public static final boolean SUPPORT_NAMESPACE_MUSKIP = false;
 
     /**
-     * The constant <tt>SUPPORT_NAMESPACE_SKIP</tt> contains the flag indicating
+     * The constant {@code SUPPORT_NAMESPACE_SKIP} contains the flag indicating
      * whether or not the name space should be used for skip registers.
      */
     public static final boolean SUPPORT_NAMESPACE_SKIP = false;
 
     /**
-     * The constant <tt>SUPPORT_NAMESPACE_TOKS</tt> contains the flag indicating
+     * The constant {@code SUPPORT_NAMESPACE_TOKS} contains the flag indicating
      * whether or not the name space should be used for tokens registers.
      */
     public static final boolean SUPPORT_NAMESPACE_TOKS = false;

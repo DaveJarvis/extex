@@ -44,7 +44,7 @@ import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 
 /**
- * This class manages the <code>Language</code>s. It is a container which can be
+ * This class manages the {@code Language}s. It is a container which can be
  * asked to provide an appropriate instance. This instance is either taken from
  * existing instances or a new instance is created. Since at the time of
  * creation it can not be decided whether a new one should be used or an
@@ -69,8 +69,7 @@ import org.extex.resource.ResourceFinder;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4784 $
- */
+*/
 public class LoadingLanguageManager extends BaseLanguageManager
         implements
             LanguageCreator,
@@ -78,37 +77,37 @@ public class LoadingLanguageManager extends BaseLanguageManager
             OutputStreamConsumer {
 
     /**
-     * The constant <tt>NON_LOADABLE_LANGUAGE_PATTERN</tt> contains the patter
+     * The constant {@code NON_LOADABLE_LANGUAGE_PATTERN} contains the patter
      * to detect languages which should not be handled via external resources.
      * Currently this value detects purely numerical names.
      */
     private static final String NON_LOADABLE_LANGUAGE_PATTERN = "^\\d*$";
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2011L;
 
     /**
-     * The field <tt>TABLE_EXTENSION</tt> contains the extension for language
+     * The field {@code TABLE_EXTENSION} contains the extension for language
      * files.
      */
     private static final String TABLE_EXTENSION = "lfm";
 
     /**
-     * The constant <tt>VERSION</tt> contains the version id to be written into
+     * The constant {@code VERSION} contains the version id to be written into
      * the external file.
      */
     private static final String VERSION = "1.0";
 
     /**
-     * The field <tt>finder</tt> contains the resource finder to search for
+     * The field {@code finder} contains the resource finder to search for
      * language files.
      */
     private transient ResourceFinder finder;
 
     /**
-     * The field <tt>outFactory</tt> contains the output stream factory.
+     * The field {@code outFactory} contains the output stream factory.
      */
     private transient OutputStreamFactory outFactory = null;
 
@@ -266,7 +265,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * @param name the name of the table
      * @param value the table itself
      * 
-     * @return <code>true</code> iff the table has been saved
+     * @return {@code true} iff the table has been saved
      * 
      * @throws IOException in case of an IO error
      * @throws DocumentWriterException in case of an error

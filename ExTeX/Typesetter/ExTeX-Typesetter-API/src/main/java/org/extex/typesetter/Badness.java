@@ -23,26 +23,23 @@ package org.extex.typesetter;
  * This class provides some static methods to deal with badness values.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class Badness {
 
     /**
-     * The constant <tt>EJECT_PENALTY</tt> contains the penalty which forces a
+     * The constant {@code EJECT_PENALTY} contains the penalty which forces a
      * line break. This is an equivalent to -&infin;.
      */
     public static final int EJECT_PENALTY = -10000;
 
     /**
-     * The constant <tt>INF_BAD</tt> contains the value for infinite badness.
+     * The constant {@code INF_BAD} contains the value for infinite badness.
      * This is an equivalent to &infin;.
-     * 
-     * @see "TTP [108]"
      */
     public static final int INF_BAD = 10000;
 
     /**
-     * The constant <tt>INF_BAD</tt> contains the value for infinite penalty.
+     * The constant {@code INF_BAD} contains the value for infinite penalty.
      * This is an equivalent to &infin;.
      */
     public static final int INF_PENALTY = 10000;
@@ -50,21 +47,20 @@ public final class Badness {
     /**
      * Compute the badness.
      * 
-     * <i>
      * <p>
      * 108. The next subroutine is used to compute the badness of glue, when a
      * total t is supposed to be made from amounts that sum to s. According to
      * The TeXbook, the badness of this situation is
-     * 100(t/s)<sup>3</sup>; however, badness is simply a heuristic, so we need
+     * 100(t/s)³; however, badness is simply a heuristic, so we need
      * not squeeze out the last drop of accuracy when computing it. All we
      * really want is an approximation that has similar properties.
      * </p>
      * <p>
      * The actual method used to compute the badness is easier to read from the
      * program than to describe in words. It produces an integer value that is a
-     * reasonably close approximation to 100(t/s)<sup>3</sup>, and all
+     * reasonably close approximation to 100(t/s)³, and all
      * implementations of TeX should use precisely this method. Any badness of
-     * 2<sup>13</sup> or more is treated as infinitely bad, and represented by
+     * 2¹³ or more is treated as infinitely bad, and represented by
      * 10000.
      * </p>
      * <p>
@@ -84,26 +80,22 @@ public final class Badness {
      * 
      * <pre>
      *   function badness(t,s:scaled): halfword; {compute badness, given t &ge; 0}
-     *    var r: integer; {approximation to &alpha;t/s, where &alpha;<sup>3</sup> &asymp; 100&sdot;2<sup>18</sup>}
+     *    var r: integer; {approximation to &alpha;t/s, where &alpha;³ &asymp; 100&sdot;2¹⁸}
      *  begin if t=0 then badness &larr; 0
      *    else if s &le; 0 then badness &larr; inf_bad
-     *     else begin if t &le; 7230584 then r &larr; (t * 297) div s {297<sup>3</sup> = 99.94 &times; 2<sup>18</sup>}
+     *     else begin if t &le; 7230584 then r &larr; (t * 297) div s {297³ = 99.94 &times; 2¹⁸}
      *      else if s &ge; 1663497 then r &larr; t div (s div 297)
      *       else r &larr; t;
-     *     if r&gt;1290 then badness &larr; inf_bad {1290<sup>3</sup>&lt;2<sup>31</sup>&lt;1291<sup>3</sup>}
+     *     if r&gt;1290 then badness &larr; inf_bad {1290³&lt;2³¹&lt;1291³}
      *      else badness &larr; (r*r*r+'400000) div '1000000;
-     *     end ; {that was r<sup>3</sup>/2<sup>18</sup>, rounded to the nearest integer}
+     *     end ; {that was r³/2¹⁸, rounded to the nearest integer}
      *  end ;
      * </pre>
-     * 
-     * </i>
-     * 
-     * @param total total given total >= 0
+     *
+     * @param total total given total &gt;= 0
      * @param sum sum
      * 
      * @return the computed badness
-     * 
-     * @see "TTP [108]"
      */
     public static int badness(long total, long sum) {
 
@@ -127,10 +119,6 @@ public final class Badness {
         // that was r^3/2^18, rounded to the nearest integer
     }
 
-
     private Badness() {
-
-        // not needed
     }
-
 }

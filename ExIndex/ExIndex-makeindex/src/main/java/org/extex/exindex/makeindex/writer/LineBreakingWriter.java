@@ -27,37 +27,36 @@ import java.io.Writer;
  * longer lines.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 5432 $
- */
+*/
 public class LineBreakingWriter extends Writer {
 
     /**
-     * The field <tt>buffer</tt> contains the intermediary buffer.
+     * The field {@code buffer} contains the intermediary buffer.
      */
     private final StringBuilder buffer = new StringBuilder();
 
     /**
-     * The field <tt>w</tt> contains the target writer.
+     * The field {@code w} contains the target writer.
      */
     private final Writer w;
 
     /**
-     * The field <tt>column</tt> contains the current column.
+     * The field {@code column} contains the current column.
      */
     private int column = 0;
 
     /**
-     * The field <tt>sep</tt> contains the separator.
+     * The field {@code sep} contains the separator.
      */
     private final String sep;
 
     /**
-     * The field <tt>in</tt> contains the width of sep.
+     * The field {@code in} contains the width of sep.
      */
     private final int in;
 
     /**
-     * The field <tt>lineLength</tt> contains the desired line length.
+     * The field {@code lineLength} contains the desired line length.
      */
     private final int lineLength;
 
@@ -78,12 +77,7 @@ public class LineBreakingWriter extends Writer {
         this.in = indent;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.Writer#close()
-     */
-    @Override
+@Override
     public void close() throws IOException {
 
         propagate();
@@ -91,12 +85,7 @@ public class LineBreakingWriter extends Writer {
         w.close();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.Writer#flush()
-     */
-    @Override
+@Override
     public void flush() throws IOException {
 
         int length = buffer.length();
@@ -125,12 +114,7 @@ public class LineBreakingWriter extends Writer {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.Writer#write(char[], int, int)
-     */
-    @Override
+@Override
     public void write(char[] cbuf, int off, int len) throws IOException {
 
         for (int i = off; i < off + len; i++) {

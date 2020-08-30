@@ -58,94 +58,95 @@ import org.extex.unit.tex.conditional.Ifx;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\currentiftype</code>.
+ * {@code \currentiftype}.
  * 
- * <doc name="currentiftype"> <h3>The Primitive <tt>\currentiftype</tt></h3>
+ * <p>The Primitive {@code \currentiftype}</p>
  * <p>
- * The primitive <tt>\currentiftype</tt> is an internal count register. It
+ * The primitive {@code \currentiftype} is an internal count register. It
  * returns an indication of the conditional currently in use. If no conditional
- * is active then <tt>0</tt> is returned. The following table lists the return
+ * is active then {@code 0} is returned. The following table lists the return
  * values for the different types of conditionals:
  * </p>
- * <table format="ll">
+* <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td><tt>/if</tt></td>
+* <td>{@code /if}</td>
  * <td>1</td>
  * </tr>
  * <tr>
- * <td><tt>/ifcat</tt></td>
+ * <td>{@code /ifcat}</td>
  * <td>2</td>
  * </tr>
  * <tr>
- * <td><tt>/ifnum</tt></td>
+ * <td>{@code /ifnum}</td>
  * <td>3</td>
  * </tr>
  * <tr>
- * <td><tt>/ifdim</tt></td>
+ * <td>{@code /ifdim}</td>
  * <td>4</td>
  * </tr>
  * <tr>
- * <td><tt>/ifodd</tt></td>
+ * <td>{@code /ifodd}</td>
  * <td>5</td>
  * </tr>
  * <tr>
- * <td><tt>/ifvmode</tt></td>
+ * <td>{@code /ifvmode}</td>
  * <td>6</td>
  * </tr>
  * <tr>
- * <td><tt>/ifhmode</tt></td>
+ * <td>{@code /ifhmode}</td>
  * <td>7</td>
  * </tr>
  * <tr>
- * <td><tt>/ifmmode</tt></td>
+ * <td>{@code /ifmmode}</td>
  * <td>8</td>
  * </tr>
  * <tr>
- * <td><tt>/ifinner</tt></td>
+ * <td>{@code /ifinner}</td>
  * <td>9</td>
  * </tr>
  * <tr>
- * <td><tt>/ifvoid</tt></td>
+ * <td>{@code /ifvoid}</td>
  * <td>10</td>
  * </tr>
  * <tr>
- * <td><tt>/ifhbox</tt></td>
+ * <td>{@code /ifhbox}</td>
  * <td>11</td>
  * </tr>
  * <tr>
- * <td><tt>/ifvbox</tt></td>
+ * <td>{@code /ifvbox}</td>
  * <td>12</td>
  * </tr>
  * <tr>
- * <td><tt>/ifx</tt></td>
+ * <td>{@code /ifx}</td>
  * <td>13</td>
  * </tr>
  * <tr>
- * <td><tt>/ifeof</tt></td>
+ * <td>{@code /ifeof}</td>
  * <td>14</td>
  * </tr>
  * <tr>
- * <td><tt>/iftrue</tt></td>
+ * <td>{@code /iftrue}</td>
  * <td>15</td>
  * </tr>
  * <tr>
- * <td><tt>/iffalse</tt></td>
+ * <td>{@code /iffalse}</td>
  * <td>16</td>
  * </tr>
  * <tr>
- * <td><tt>/ifcase</tt></td>
+ * <td>{@code /ifcase}</td>
  * <td>17</td>
  * </tr>
  * <tr>
- * <td><tt>/ifdefined</tt></td>
+ * <td>{@code /ifdefined}</td>
  * <td>18</td>
  * </tr>
  * <tr>
- * <td><tt>/ifcsname</tt></td>
+ * <td>{@code /ifcsname}</td>
  * <td>19</td>
  * </tr>
  * <tr>
- * <td><tt>/iffontchar</tt></td>
+ * <td>{@code /iffontchar}</td>
  * <td>20</td>
  * </tr>
  * </table>
@@ -154,40 +155,40 @@ import org.extex.unit.tex.conditional.Ifx;
  * the else branch.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * <p>
  * The formal description of this primitive is the following:
  * </p>
  * 
  * <pre class="syntax">
  *    &lang;currentiftype&rang;
- *     &rarr; <tt>\currentiftype</tt> </pre>
+ *     &rarr; {@code \currentiftype} </pre>
  * 
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \count0=\currentiftype  </pre>
  * 
- * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4435 $
- */
+*/
 public class Currentiftype extends AbstractCode
         implements
             CountConvertible,
             Theable {
 
     /**
-     * The field <tt>map</tt> contains the map from \if implementations to long
+     * The field {@code map} contains the map from \if implementations to long
      * values.
      */
     private static final Map<Class<?>, Count> MAP =
             new HashMap<Class<?>, Count>();
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
@@ -225,10 +226,7 @@ public class Currentiftype extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertCount(Context context, TokenSource source,
@@ -244,10 +242,7 @@ public class Currentiftype extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

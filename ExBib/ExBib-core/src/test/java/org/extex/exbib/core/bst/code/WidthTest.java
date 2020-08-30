@@ -32,25 +32,24 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>width$</tt>.
+ * Test suite for {@code width$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class WidthTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
     /**
-     * The field <tt>err</tt> contains the error output.
+     * The field {@code err} contains the error output.
      */
     private final StringBuffer err = new StringBuffer();
 
     /**
-     * The field <tt>out</tt> contains the standard output.
+     * The field {@code out} contains the standard output.
      */
     private final StringBuffer out = new StringBuffer();
 
@@ -93,7 +92,7 @@ public class WidthTest {
     }
 
     /**
-     * <testcase> Test "ae". </testcase>
+     *  Test "ae".
      * 
      * @throws Exception in case of an error
      */
@@ -104,7 +103,7 @@ public class WidthTest {
     }
 
     /**
-     * <testcase> Test "\AE". </testcase>
+     *  Test "\AE".
      * 
      * @throws Exception in case of an error
      */
@@ -115,7 +114,7 @@ public class WidthTest {
     }
 
     /**
-     * <testcase> Test "oe". </testcase>
+     *  Test "oe".
      * 
      * @throws Exception in case of an error
      */
@@ -126,7 +125,7 @@ public class WidthTest {
     }
 
     /**
-     * <testcase> Test "\OE". </testcase>
+     *  Test "\OE".
      * 
      * @throws Exception in case of an error
      */
@@ -137,7 +136,7 @@ public class WidthTest {
     }
 
     /**
-     * <testcase> Test "\singleletter". </testcase>
+     *  Test "\singleletter".
      * 
      * @throws Exception in case of an error
      */
@@ -148,7 +147,7 @@ public class WidthTest {
     }
 
     /**
-     * <testcase> Test ".\singleletter.". </testcase>
+     *  Test ".\singleletter.".
      * 
      * @throws Exception in case of an error
      */
@@ -159,7 +158,7 @@ public class WidthTest {
     }
 
     /**
-     * <testcase> Test "OX{\\singleletter{stoc}}83b". </testcase>
+     *  Test "OX{\\singleletter{stoc}}83b".
      * 
      * @throws Exception in case of an error
      */
@@ -170,7 +169,7 @@ public class WidthTest {
     }
 
     /**
-     * <testcase> Test "OX{\\singleletter{stoc}}83b". </testcase>
+     *  Test "OX{\\singleletter{stoc}}83b".
      * 
      * @throws Exception in case of an error
      */
@@ -181,7 +180,7 @@ public class WidthTest {
     }
 
     /**
-     * <testcase> Test "OXstoc83b". </testcase>
+     *  Test "OXstoc83b".
      * 
      * @throws Exception in case of an error
      */
@@ -192,7 +191,7 @@ public class WidthTest {
     }
 
     /**
-     * <testcase> Test "\AE". </testcase>
+     *  Test "\AE".
      * 
      * @throws Exception in case of an error
      */
@@ -203,7 +202,7 @@ public class WidthTest {
     }
 
     /**
-     * <testcase> Test "abc". </testcase>
+     *  Test "abc".
      * 
      * @throws Exception in case of an error
      */
@@ -214,7 +213,7 @@ public class WidthTest {
     }
 
     /**
-     * <testcase> Test lowercase letters. </testcase>
+     *  Test lowercase letters.
      * 
      * @throws Exception in case of an error
      */
@@ -225,7 +224,7 @@ public class WidthTest {
     }
 
     /**
-     * <testcase> Test ".,-=)(/&%$\u00a7!". </testcase>
+     *  Test ".,-=)(/&%$\u00a7!".
      * 
      * @throws Exception in case of an error
      */
@@ -236,7 +235,7 @@ public class WidthTest {
     }
 
     /**
-     * <testcase> Test "{}". </testcase>
+     *  Test "{}".
      * 
      * @throws Exception in case of an error
      */
@@ -247,7 +246,7 @@ public class WidthTest {
     }
 
     /**
-     * <testcase> Test "AA". </testcase>
+     *  Test "AA".
      * 
      * @throws Exception in case of an error
      */
@@ -258,7 +257,7 @@ public class WidthTest {
     }
 
     /**
-     * <testcase> Test "\AA". </testcase>
+     *  Test "\AA".
      * 
      * @throws Exception in case of an error
      */
@@ -269,7 +268,7 @@ public class WidthTest {
     }
 
     /**
-     * <testcase> Test "ss". </testcase>
+     *  Test "ss".
      * 
      * @throws Exception in case of an error
      */
@@ -280,7 +279,7 @@ public class WidthTest {
     }
 
     /**
-     * <testcase> Test "\ss". </testcase>
+     *  Test "\ss".
      * 
      * @throws Exception in case of an error
      */

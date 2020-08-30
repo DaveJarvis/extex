@@ -29,14 +29,12 @@ import org.junit.Test;
  * This is a test class for {@link Locator}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LocatorTest {
 
     /**
-     * <testcase> Test that the constructor with three arguments store the
-     * values properly. </testcase>
-     */
+     * Test that the constructor with three arguments store the values properly
+*/
     @Test
     public void test1() {
 
@@ -47,9 +45,8 @@ public class LocatorTest {
     }
 
     /**
-     * <testcase> Test that the constructor with two arguments store the values
-     * properly. </testcase>
-     */
+     * Test that the constructor with two arguments store the values properly
+*/
     @Test
     public void test2() {
 
@@ -60,9 +57,8 @@ public class LocatorTest {
     }
 
     /**
-     * <testcase> Test that toString() produces the proper message for the
-     * German locale. </testcase>
-     */
+     * Test that toString() produces the proper message for the German locale
+*/
     @Test
     public void testToString1de() {
 
@@ -72,9 +68,8 @@ public class LocatorTest {
     }
 
     /**
-     * <testcase> Test that toString() produces the proper message for the
-     * English locale. </testcase>
-     */
+     * Test that toString() produces the proper message for the English locale
+*/
     @Test
     public void testToString1en() {
 

@@ -35,33 +35,32 @@ import org.extex.typesetter.type.node.WhatsItNode;
  * This WhatsIt node which opens an out file at shipping.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class WhatsItOpenNode extends WhatsItNode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>encoding</tt> contains the proposed encoding.
+     * The field {@code encoding} contains the proposed encoding.
      */
     private String encoding;
 
     /**
-     * The field <tt>file</tt> contains the output file.
+     * The field {@code file} contains the output file.
      */
     private OutFile file;
 
     /**
-     * The field <tt>key</tt> contains the reference key.
+     * The field {@code key} contains the reference key.
      */
     private String key;
 
     /**
-     * The field <tt>factory</tt> contains the token stream factory.
+     * The field {@code factory} contains the token stream factory.
      */
     private transient TokenStreamFactory factory = null;
 
@@ -70,7 +69,7 @@ public class WhatsItOpenNode extends WhatsItNode {
      * 
      * @param theKey the key of the file to open
      * @param outFile the out file to open
-     * @param encoding the proposed encoding if can be <code>null</code> to
+     * @param encoding the proposed encoding if can be {@code null} to
      *        propose nothing
      * @param factory the token stream factory
      */
@@ -84,10 +83,7 @@ public class WhatsItOpenNode extends WhatsItNode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractNode#atShipping(
-     *      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
+*      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
      *      org.extex.core.dimen.FixedDimen, org.extex.core.dimen.FixedDimen)
      */
     @Override

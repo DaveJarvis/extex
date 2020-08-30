@@ -28,44 +28,42 @@ import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.conditional.AbstractIf;
 
 /**
- * This class provides an implementation for the primitive <code>\if</code>.
+ * This class provides an implementation for the primitive {@code \if}.
  * 
- * <doc name="ifdefined"> <h3>The Primitive <tt>&#x005c;unless</tt></h3>
+ * <p>The Primitive {@code &#x005c;unless}</p>
  * 
  * <p>
- * <strong>Copied from the <logo>&epsilon;-T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> reference</strong>:
+ * <strong>Copied from the ε-TeX reference</strong>:
  * </p>
  * <p>
- * <i> similar in effect to <tt>&#x005c;unless</tt> <tt>\ifx</tt>
- * <tt>&#x005c;undefined</tt>, but does not require <tt>&#x005c;undefined</tt>
+ * <i> similar in effect to {@code &#x005c;unless} {@code \ifx}
+ * {@code &#x005c;undefined}, but does not require {@code &#x005c;undefined}
  * to actually be undefined, since no explicit comparison is made with any
  * particular control sequence. </i>
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;ifdefined&rang;
- *      &rarr; <tt>\ifdefined</tt> &lang;true text&rang; <tt>\else</tt>&lang;false text&rang;<tt>\fi</tt>
- *       |  <tt>\ifdefined</tt> &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt>  </pre>
+ *      &rarr; {@code \ifdefined} &lang;true text&rang; {@code \else}&lang;false text&rang;{@code \fi}
+ *       |  {@code \ifdefined} &lang;true text&rang; {@code \else} &lang;false text&rang; {@code \fi}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *   &#x005c;ifdefined\TESTNAME\else not\fi defined  </pre>
  * 
- * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Ifdefined extends AbstractIf {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -80,10 +78,7 @@ public class Ifdefined extends AbstractIf {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.base.conditional.AbstractIf#conditional(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public boolean conditional(Context context, TokenSource source,

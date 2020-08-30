@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\advance</tt>.
+ * This is a test suite for the primitive {@code \advance}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class AdvanceTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
@@ -48,8 +47,8 @@ public class AdvanceTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\advance"> Test case checking that <tt>\advance</tt>
-     * needs one arguments. </testcase>
+     * <testcase primitive="\advance"> Test case checking that {@code \advance}
+     * needs one arguments.
      * 
      * @throws Exception in case of an error
      */
@@ -63,8 +62,8 @@ public class AdvanceTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\advance"> Test case checking that <tt>\advance</tt>
-     * needs a defined control sequence as first argument. </testcase>
+     * <testcase primitive="\advance"> Test case checking that {@code \advance}
+     * needs a defined control sequence as first argument.
      * 
      * @throws Exception in case of an error
      */
@@ -78,8 +77,8 @@ public class AdvanceTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\advance"> Test case checking that <tt>\advance</tt>
-     * on a letter leads to an error. </testcase>
+     * <testcase primitive="\advance"> Test case checking that {@code \advance}
+     * on a letter leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -93,8 +92,8 @@ public class AdvanceTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\advance"> Test case checking that <tt>\advance</tt>
-     * on a other token leads to an error. </testcase>
+     * <testcase primitive="\advance"> Test case checking that {@code \advance}
+     * on a other token leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -108,8 +107,8 @@ public class AdvanceTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\advance"> Test case checking that <tt>\advance</tt>
-     * on a macro parameter token leads to an error. </testcase>
+     * <testcase primitive="\advance"> Test case checking that {@code \advance}
+     * on a macro parameter token leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -123,8 +122,8 @@ public class AdvanceTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\advance"> Test case checking that <tt>\advance</tt>
-     * on a non-advancable primitive (\\relax) leads to an error. </testcase>
+     * <testcase primitive="\advance"> Test case checking that {@code \advance}
+     * on a non-advancable primitive (\\relax) leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -138,8 +137,8 @@ public class AdvanceTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\advance"> Test case checking that <tt>\advance</tt>
-     * on a count register name works. </testcase>
+     * <testcase primitive="\advance"> Test case checking that {@code \advance}
+     * on a count register name works.
      * 
      * @throws Exception in case of an error
      */
@@ -153,8 +152,8 @@ public class AdvanceTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\advance"> Test case checking that <tt>\advance</tt>
-     * on a count register name works with a global flag. </testcase>
+     * <testcase primitive="\advance"> Test case checking that {@code \advance}
+     * on a count register name works with a global flag.
      * 
      * @throws Exception in case of an error
      */
@@ -170,8 +169,8 @@ public class AdvanceTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\advance"> Test case checking that <tt>\advance</tt>
-     * on a dimen register name works. </testcase>
+     * <testcase primitive="\advance"> Test case checking that {@code \advance}
+     * on a dimen register name works.
      * 
      * @throws Exception in case of an error
      */
@@ -186,8 +185,8 @@ public class AdvanceTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\advance"> Test case checking that <tt>\advance</tt>
-     * on a dimen register name works with a global flag. </testcase>
+     * <testcase primitive="\advance"> Test case checking that {@code \advance}
+     * on a dimen register name works with a global flag.
      * 
      * @throws Exception in case of an error
      */

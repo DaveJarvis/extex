@@ -22,11 +22,10 @@ package org.extex.unit.tex.math.style;
 import org.extex.unit.tex.math.AbstractMathTester;
 
 /**
- * This is a test suite for the primitive <tt>\displaystyle</tt>.
+ * This is a test suite for the primitive {@code \displaystyle}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DisplaystyleTest extends AbstractMathTester {
 
 

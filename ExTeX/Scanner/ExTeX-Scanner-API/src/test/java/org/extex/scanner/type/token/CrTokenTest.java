@@ -33,12 +33,11 @@ import org.junit.runner.JUnitCore;
  * Test cases for CR tokens.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4756 $
- */
+*/
 public class CrTokenTest extends TokenTester {
 
     /**
-     * The field <tt>t</tt> contains the reference token.
+     * The field {@code t} contains the reference token.
      */
     private static final CrToken token = new CrToken( null);
 
@@ -81,9 +80,7 @@ setStr( "end of alignment template");
         assertFalse(token.toString(), token.eq('x'));
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testEqualsToken1() {
 
         Token t1 = new CrToken(null);
@@ -91,35 +88,27 @@ setStr( "end of alignment template");
         assertFalse(t1.equals(t2));
     }
 
-    /**
-     */
-    @Test
+@Test
     @Override
     public void testGetChar0() {
 
         assertNull(token.getChar());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testToText3() {
 
         assertEquals("", token.toText(UnicodeChar.get(65)));
     }
 
-    /**
-     */
-    @Test
+@Test
     @Override
     public void testToTextString0() {
 
         assertEquals("", token.toText(null));
     }
 
-    /**
-     */
-    @Test
+@Test
     @Override
     public void testToTextString1() {
 

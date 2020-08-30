@@ -32,41 +32,40 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\aftergroup</code>.
+ * {@code \aftergroup}.
  * 
- * <doc name="aftergroup">
- * <h3>The Primitive <tt>\aftergroup</tt></h3>
+ * <p>The Primitive {@code \aftergroup}</p>
  * <p>
  * This primitive takes the next token and saves it. The saved token will be
  * inserted after the current group has been closed. If several tokens are saved
  * then they will be inserted in the same sequence as they are saved.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *   &lang;aftergroup&rang;
- *     &rarr; <tt>\aftergroup</tt> {@linkplain
+ *     &rarr; {@code \aftergroup} {@linkplain
  *       org.extex.interpreter.TokenSource#getToken(Context)
  *       &lang;token&rang;}   </pre>
  * 
- * <h4>Example:</h4>
+ * <p>Example:</p>
+
  * 
  * <pre class="TeXSample">
  *    {\aftergroup~ xyz}  </pre>
  *  <pre class="TeXSample">
  *    {\aftergroup\a\aftergroup\b xyz}  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Aftergroup extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -82,10 +81,7 @@ public class Aftergroup extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

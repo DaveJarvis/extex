@@ -32,11 +32,10 @@ import org.extex.exbib.bst2groovy.linker.LinkContainer;
 import org.extex.exbib.bst2groovy.linker.LinkingCode;
 
 /**
- * This class implements the analyzer for the <code>add.period$</code> built-in.
+ * This class implements the analyzer for the {@code add.period$} built-in.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class AddPeriodCompiler implements Compiler {
 
     /**
@@ -57,17 +56,14 @@ public class AddPeriodCompiler implements Compiler {
     }
 
     /**
-     * The field <tt>ADD_PERIOD</tt> contains the code for the add_period
+     * The field {@code ADD_PERIOD} contains the code for the add_period
      * method.
      */
     private static final LinkingCode ADD_PERIOD =
             new LinkingCode("addPeriod()") {
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
-                 *      java.lang.String)
+            *      java.lang.String)
                  */
                 @Override
                 public void print(CodeWriter writer) throws IOException {
@@ -81,10 +77,7 @@ public class AddPeriodCompiler implements Compiler {
             };
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryReference,
-     *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
+*      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */

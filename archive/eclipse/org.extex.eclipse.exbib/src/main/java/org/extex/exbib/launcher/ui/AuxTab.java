@@ -37,39 +37,38 @@ import org.eclipse.swt.widgets.Text;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class AuxTab extends AbstractLaunchConfigurationTab {
 
     /**
-     * The constant <tt>HFILL</tt> contains the specification for an
+     * The constant {@code HFILL} contains the specification for an
      * horizontally fillable element.
      */
     private static final GridData HFILL =
             new GridData(GridData.FILL_HORIZONTAL);
 
     /**
-     * The field <tt>style</tt> contains the ...
+     * The field {@code style} contains the ...
      */
     private Text style;
 
     /**
-     * The field <tt>cites</tt> contains the list of cites.
+     * The field {@code cites} contains the list of cites.
      */
     private List cites;
 
     /**
-     * The field <tt>allCheckButton</tt> contains the ...
+     * The field {@code allCheckButton} contains the ...
      */
     private Button allCheckButton;
 
     /**
-     * The field <tt>inputs</tt> contains the ...
+     * The field {@code inputs} contains the ...
      */
     private List inputs;
 
     /**
-     * The field <tt>BST_LAUNCH_STYLE</tt> contains the ...
+     * The field {@code BST_LAUNCH_STYLE} contains the ...
      */
     private static final String BST_LAUNCH_STYLE = "bst.launch.style";
 
@@ -112,12 +111,7 @@ public class AuxTab extends AbstractLaunchConfigurationTab {
         b.setLayoutData(HFILL);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.debug.ui.ILaunchConfigurationTab#createControl(org.eclipse.swt.widgets.Composite)
-     */
-    @Override
+@Override
     public void createControl(Composite parent) {
 
         Composite page = new Composite(parent, SWT.NONE);
@@ -170,23 +164,13 @@ public class AuxTab extends AbstractLaunchConfigurationTab {
         style.setLayoutData(HFILL);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.debug.ui.ILaunchConfigurationTab#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "Aux";
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.debug.ui.ILaunchConfigurationTab#initializeFrom(org.eclipse.debug.core.ILaunchConfiguration)
-     */
-    @Override
+@Override
     public void initializeFrom(ILaunchConfiguration configuration) {
 
         try {
@@ -197,23 +181,13 @@ public class AuxTab extends AbstractLaunchConfigurationTab {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.debug.ui.ILaunchConfigurationTab#performApply(org.eclipse.debug.core.ILaunchConfigurationWorkingCopy)
-     */
-    @Override
+@Override
     public void performApply(ILaunchConfigurationWorkingCopy configuration) {
 
         configuration.setAttribute(BST_LAUNCH_STYLE, style.getText());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.debug.ui.ILaunchConfigurationTab#setDefaults(org.eclipse.debug.core.ILaunchConfigurationWorkingCopy)
-     */
-    @Override
+@Override
     public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
 
         configuration.setAttribute(BST_LAUNCH_STYLE, "");

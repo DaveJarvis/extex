@@ -32,15 +32,14 @@ import org.extex.typesetter.type.noad.util.MathContext;
  * @see "TTP [???]"
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class MathList extends AbstractNoad {
 
     /**
-     * The field <tt>list</tt> is the container for the elements of this node
+     * The field {@code list} is the container for the elements of this node
      * list.
      */
-    private NoadList nucleus = new NoadList();
+    private final NoadList nucleus = new NoadList();
 
     /**
      * Creates a new object without any items.
@@ -62,8 +61,8 @@ public class MathList extends AbstractNoad {
     /**
      * Test whether the node list is empty.
      * 
-     * @return <code>true</code>, if the list is empty, otherwise
-     *         <code>false</code>.
+     * @return {@code true}, if the list is empty, otherwise
+     *         {@code false}.
      */
     public boolean empty() {
 
@@ -75,7 +74,7 @@ public class MathList extends AbstractNoad {
      * 
      * @param index the position
      * 
-     * @return the node at position <i>index</i> of <code>null</code> if index
+     * @return the node at position <i>index</i> of {@code null} if index
      *         is out of bounds
      */
     public Noad get(int index) {
@@ -86,7 +85,7 @@ public class MathList extends AbstractNoad {
     /**
      * Getter for the last noad previously stored.
      * 
-     * @return the last noad or <code>null</code> if none is available
+     * @return the last noad or {@code null} if none is available
      */
     public Noad getLastNoad() {
 
@@ -106,9 +105,9 @@ public class MathList extends AbstractNoad {
     }
 
     /**
-     * Return the size of the <code>MathList</code>.
+     * Return the size of the {@code MathList}.
      * 
-     * @return the size of the <code>MathList</code>
+     * @return the size of the {@code MathList}
      */
     public int size() {
 

@@ -36,37 +36,36 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\detokenize</code>.
+ * {@code \detokenize}.
  *
- * <doc name="detokenize">
- * <h3>The Primitive <tt>\detokenize</tt></h3>
+ * <p>The Primitive {@code \detokenize}</p>
  * <p>
- *  The primitive <tt>\detokenize</tt> ...
+ *  The primitive {@code \detokenize} ...
  * </p>
  * <p>
  *  TODO missing documentation
  * </p>
  *
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;detokenize&rang;
- *      &rarr; <tt>\detokenize</tt> </pre>
+ *      &rarr; {@code \detokenize} </pre>
  *
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  *  <pre class="TeXSample">
  *    \detokenize...  </pre>
  *
- * </doc>
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4435 $
- */
+*/
 public class Detokenize extends AbstractCode implements ExpandableCode {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the id for serialization.
+     * The field {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 

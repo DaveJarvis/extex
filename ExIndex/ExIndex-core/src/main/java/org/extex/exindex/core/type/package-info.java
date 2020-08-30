@@ -17,10 +17,10 @@
  */
 /**
  * 
- *   This package contains definition for types.
+ *   Contains definition for types.
  * 
  *   <div style="float:right;">
- *     <img src="doc-files/classes.png"/>
+ *     <img src="doc-files/classes.png" alt="classes">
  *   </div>
  * 
  *

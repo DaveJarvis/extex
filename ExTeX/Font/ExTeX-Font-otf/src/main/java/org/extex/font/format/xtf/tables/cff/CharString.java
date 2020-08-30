@@ -31,8 +31,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * Container for each char string.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class CharString implements XMLWriterConvertible {
 
     /**
@@ -83,7 +82,7 @@ public class CharString implements XMLWriterConvertible {
     /**
      * The t2 operators.
      */
-    private List<T2Operator> t2Ops = new ArrayList<T2Operator>();
+    private final List<T2Operator> t2Ops = new ArrayList<T2Operator>();
 
     /**
      * The width.
@@ -299,7 +298,7 @@ public class CharString implements XMLWriterConvertible {
     }
 
     /**
-     * @return Returns <code>true</code>, if no t2ops exits.
+     * @return Returns {@code true}, if no t2ops exits.
      * @see java.util.List#isEmpty()
      */
     public boolean isEmpty() {
@@ -386,12 +385,7 @@ public class CharString implements XMLWriterConvertible {
         return t2Ops.size();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder buf = new StringBuilder();
@@ -403,12 +397,7 @@ public class CharString implements XMLWriterConvertible {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    @Override
+@Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("chars");

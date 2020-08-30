@@ -16,24 +16,22 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains ??TeX &ndash; an implementation of a
+ * Contains εχTeX &ndash; an implementation of a
  * typesetting engine based on the concepts of TeX. The following
- * figure gives a impression of the top-level components of ??TeX.
+ * figure gives a impression of the top-level components of εχTeX.
  *
  * <div class="Figure">
- *  <img src="doc-files/components.png" width="90%"/>
- *  <br />
- *  <caption>The top-level components of ??TeX</caption>
+ *  <img src="doc-files/components.png" alt="components">
+ *  <br>
+ *  <span>The top-level components of εχTeX</span>
  * </div>
  *
  * <dl>
- *  <dt><b>Main</b></dt>
+ *  <dt>Main</dt>
  *  <dd>
  *   <p>
  *    The Main component encapsulates everything necessary to run
- *    <logo>&epsilon;&chi;T<span style=
- *    "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *    >e</span>X</logo> from the command line. This includes the evaluation
+ *    εχTeX from the command line. This includes the evaluation
  *    of the command line arguments as well as handling the interaction with
  *    the user &ndash; e.g. in case of an error. The remaining components
  *    should not know anything about were the input is coming from or where
@@ -43,20 +41,18 @@
  *    This component is located in the package Main.
  *   </p>
  *  </dd>
- *  <dt><b>ExTeX</b></dt>
+ *  <dt>εχTeX</dt>
  *  <dd>
  *   <p>
  *    The component called <b>ExTeX</b> is in fact just the glue which
  *    ties together all other components. It constitutes the entry
- *    point for any client using the <logo>&epsilon;&chi;T<span style=
- *    "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *    >e</span>X</logo> functionality.
+ *    point for any client using the εχTeX functionality.
  *   </p>
  *   <p>
  *    This component is located in this package.
  *   </p>
  *  </dd>
- *  <dt><b>Input Subsystem</b></dt>
+ *  <dt>Input Subsystem</dt>
  *  <dd>
  *   <p>
  *    The component called <b>Input Subsystem</b> provides everything
@@ -68,13 +64,11 @@
  *    This component is located in the package Interpreter.
  *   </p>
  *  </dd>
- *  <dt><b>Interpreter Subsystem</b></dt>
+ *  <dt>Interpreter Subsystem</dt>
  *  <dd>
  *   <p>
  *    The component called <b>Interpreter Subsystem</b> provides an
- *    interpreter for the <logo>T<span style=
- *    "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *    >e</span>X</logo> language. This includes an
+ *    interpreter for the TeX language. This includes an
  *    engine to parse instructions &ndash; based on the tokens passed in
  *    from the input subsystem &ndash; and evaluate them.
  *   </p>
@@ -82,7 +76,7 @@
  *    This component is located in the package Interpreter.
  *   </p>
  *  </dd>
- *  <dt><b>Typesetting Subsystem</b></dt>
+ *  <dt>Typesetting Subsystem</dt>
  *  <dd>
  *   <p>
  *    The component called <b>Typesetting Subsystem</b> provides the
@@ -94,7 +88,7 @@
  *    This component is located in the package Typesetter.
  *   </p>
  *  </dd>
- *  <dt><b>Font Subsystem</b></dt>
+ *  <dt>Font Subsystem</dt>
  *  <dd>
  *   <p>
  *    The component called <b>Font Subsystem</b> provides means to deal
@@ -106,14 +100,12 @@
  *    This component is located in the package Font.
  *   </p>
  *  </dd>
- *  <dt><b>Backend Subsystem</b></dt>
+ *  <dt>Backend Subsystem</dt>
  *  <dd>
  *   <p>
  *    The component called <b>Backend Subsystem</b> provides means to
  *    translate the page description into an external format. The only
- *    format known by <logo>T<span style=
- *    "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *    >e</span>X</logo> is supported as well as some
+ *    format known by TeX is supported as well as some
  *    others. This translation might involve some post-processing on the
  *    level of pages. For instance the selection or re-arranging of
  *    pages can be accomplished here.
@@ -122,7 +114,7 @@
  *    This component is located in the package Backend.
  *   </p>
  *  </dd>
- *  <dt><b>Framework</b></dt>
+ *  <dt>Framework</dt>
  *  <dd>
  *   <p>
  *    The component called <b>Framework</b> is in fact not a component

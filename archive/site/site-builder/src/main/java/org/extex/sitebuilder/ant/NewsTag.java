@@ -40,12 +40,11 @@ import org.extex.sitebuilder.core.NewsBuilder;
  *    template="<i>template file</i>" /&gt; </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NewsTag {
 
     /**
-     * The field <tt>builder</tt> contains the encapsulated news builder.
+     * The field {@code builder} contains the encapsulated news builder.
      */
     private NewsBuilder builder;
 

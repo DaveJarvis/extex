@@ -29,8 +29,7 @@ import org.extex.typesetter.type.NodeList;
  * access to additional parameters.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public interface Page {
 
     /**

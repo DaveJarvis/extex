@@ -34,13 +34,8 @@ import org.extex.typesetter.type.NodeList;
 /**
  * This interface describes the capabilities of a list maker.
  * 
- * @see "<logo>T<span style=
- *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *      >e</span>X</logo> &ndash; The Program [211]"
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4404 $
- */
+*/
 public interface ListMaker {
 
     /**
@@ -83,7 +78,7 @@ public interface ListMaker {
      * 
      * @param typesettingContext the typesetting context for the space
      * @param spacefactor the space factor to use for this space or
-     *        <code>null</code> to indicate that the default space factor should
+     *        {@code null} to indicate that the default space factor should
      *        be used.
      * 
      * @throws TypesetterException in case of an error
@@ -123,7 +118,7 @@ public interface ListMaker {
     /**
      * Access the last node on the list.
      * 
-     * @return the last node in the current list or <code>null</code> if the
+     * @return the last node in the current list or {@code null} if the
      *         list is empty
      */
     Node getLastNode();
@@ -211,7 +206,7 @@ public interface ListMaker {
                 InvalidSpacefactorException;
 
     /**
-     * Print the status for <tt>\showlists</tt>.
+     * Print the status for {@code \showlists}.
      * 
      * @param sb the target buffer
      * @param depth the depth of the list display

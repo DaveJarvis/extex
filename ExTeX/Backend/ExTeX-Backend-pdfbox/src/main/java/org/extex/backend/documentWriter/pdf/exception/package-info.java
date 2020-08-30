@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the exceptions of the pdf backend. 
+ *Contains exceptions of the pdf backend.
  */
 
 package org.extex.backend.documentWriter.pdf.exception;

@@ -24,11 +24,10 @@ import org.extex.test.PrefixTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\protected</tt>.
+ * This is a test suite for the primitive {@code \protected}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4306 $
- */
+*/
 public class ProtectedTest extends PrefixTester {
 
 
@@ -40,7 +39,7 @@ public class ProtectedTest extends PrefixTester {
 
     /**
      * <testcase primitive="\protected"> Test case checking that
-     * <tt>\protected</tt> sets the flag. </testcase>
+     * {@code \protected} sets the flag. 
      * 
      * @throws Exception in case of an error
      */
@@ -58,7 +57,7 @@ public class ProtectedTest extends PrefixTester {
 
     /**
      * <testcase primitive="\protected"> Test case checking that double
-     * <tt>\protected</tt> has the same effect as one. </testcase>
+     * {@code \protected} has the same effect as one. 
      * 
      * @throws Exception in case of an error
      */
@@ -76,7 +75,7 @@ public class ProtectedTest extends PrefixTester {
 
     /**
      * <testcase primitive="\protected"> Test case checking that
-     * <tt>\protected</tt> does not interfere with \long. </testcase>
+     * {@code \protected} does not interfere with \long. 
      * 
      * @throws Exception in case of an error
      */
@@ -94,8 +93,8 @@ public class ProtectedTest extends PrefixTester {
 
     /**
      * <testcase primitive="\protected"> Test case checking that
-     * <tt>\protected</tt> can not be used before a begin-group character.
-     * </testcase>
+     * {@code \protected} can not be used before a begin-group character.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -107,8 +106,8 @@ public class ProtectedTest extends PrefixTester {
 
     /**
      * <testcase primitive="\protected"> Test case checking that
-     * <tt>\protected</tt> can not be used before an end-group character.
-     * </testcase>
+     * {@code \protected} can not be used before an end-group character.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -120,7 +119,7 @@ public class ProtectedTest extends PrefixTester {
 
     /**
      * <testcase primitive="\protected"> Test case checking that
-     * <tt>\protected</tt> can not be used before a letter. </testcase>
+     * {@code \protected} can not be used before a letter. 
      * 
      * @throws Exception in case of an error
      */
@@ -132,8 +131,8 @@ public class ProtectedTest extends PrefixTester {
 
     /**
      * <testcase primitive="\protected"> Test case checking that
-     * <tt>\protected</tt> can not be used before a math shift character.
-     * </testcase>
+     * {@code \protected} can not be used before a math shift character.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -145,8 +144,8 @@ public class ProtectedTest extends PrefixTester {
 
     /**
      * <testcase primitive="\protected"> Test case checking that
-     * <tt>\protected</tt> can not be used before an other character.
-     * </testcase>
+     * {@code \protected} can not be used before an other character.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -158,8 +157,8 @@ public class ProtectedTest extends PrefixTester {
 
     /**
      * <testcase primitive="\protected"> Test case checking that
-     * <tt>\protected</tt> can not be used before a subscript character.
-     * </testcase>
+     * {@code \protected} can not be used before a subscript character.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -171,8 +170,8 @@ public class ProtectedTest extends PrefixTester {
 
     /**
      * <testcase primitive="\protected"> Test case checking that
-     * <tt>\protected</tt> can not be used before a superscript character.
-     * </testcase>
+     * {@code \protected} can not be used before a superscript character.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -184,8 +183,8 @@ public class ProtectedTest extends PrefixTester {
 
     /**
      * <testcase primitive="\protected"> Test case checking that
-     * <tt>\protected</tt> can not be used before an alignment tab character.
-     * </testcase>
+     * {@code \protected} can not be used before an alignment tab character.
+     * 
      * 
      * @throws Exception in case of an error
      */

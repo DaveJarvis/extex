@@ -30,18 +30,17 @@ import org.extex.ocpware.compiler.exception.SyntaxException;
  * entities.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public class ParserStream extends PushbackInputStream {
 
     /**
-     * The field <tt>line</tt> contains the characters encountered on the
+     * The field {@code line} contains the characters encountered on the
      * current line so far.
      */
     private StringBuilder line = new StringBuilder();
 
     /**
-     * The field <tt>lineno</tt> contains the number of the current line.
+     * The field {@code lineno} contains the number of the current line.
      */
     private int lineno = 1;
 
@@ -279,12 +278,7 @@ public class ParserStream extends PushbackInputStream {
         return sb.toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.PushbackInputStream#read()
-     */
-    @Override
+@Override
     public int read() throws IOException {
 
         if (in == null) {
@@ -328,23 +322,13 @@ public class ParserStream extends PushbackInputStream {
         return c;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return Integer.toString(lineno) + ":" + line;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.PushbackInputStream#unread(int)
-     */
-    @Override
+@Override
     public void unread(int b) throws IOException {
 
         int len = line.length();

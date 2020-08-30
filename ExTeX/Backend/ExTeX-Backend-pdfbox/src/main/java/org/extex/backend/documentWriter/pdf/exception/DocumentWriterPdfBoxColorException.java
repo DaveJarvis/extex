@@ -24,15 +24,14 @@ package org.extex.backend.documentWriter.pdf.exception;
  * It is use, if a error occurs, when the color is set in the pdf content.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:4704 $
- */
+*/
 
 public class DocumentWriterPdfBoxColorException
         extends
             DocumentWriterPdfException {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field {@code serialVersionUID} ...
      */
     private static final long serialVersionUID = 1L;
 

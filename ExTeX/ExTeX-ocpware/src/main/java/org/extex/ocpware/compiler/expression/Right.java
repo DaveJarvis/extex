@@ -32,12 +32,11 @@ import org.extex.ocpware.compiler.sexpression.Expr;
  * This class represents a list of expressions.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Right {
 
     /**
-     * The field <tt>right</tt> contains the list of expressions.
+     * The field {@code right} contains the list of expressions.
      */
     private List<Expr> right;
 
@@ -75,12 +74,7 @@ public class Right {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder(" => ");

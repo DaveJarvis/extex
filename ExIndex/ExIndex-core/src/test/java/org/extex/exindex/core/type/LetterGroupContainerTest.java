@@ -32,12 +32,11 @@ import org.junit.Test;
  * This is a test suite for the {@link LetterGroupContainer}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LetterGroupContainerTest {
 
     /**
-     * <testcase> A letter group container can be instantiated. </testcase>
+     *  A letter group container can be instantiated.
      * 
      * @throws Exception in case of an error
      */
@@ -49,7 +48,7 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> sorted() returns the empty list for an empty container.</testcase>
+     *  sorted() returns the empty list for an empty container.
      * 
      * @throws Exception in case of an error
      */
@@ -63,8 +62,8 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> sorted() returns the list with one elements for an container
-     * with one element.</testcase>
+     *  sorted() returns the list with one elements for an container
+     * with one element.
      * 
      * @throws Exception in case of an error
      */
@@ -79,8 +78,8 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> sorted() throws an exception if a loop of length 1 is
-     * contained in the container.</testcase>
+     *  sorted() throws an exception if a loop of length 1 is
+     * contained in the container.
      * 
      * @throws Exception in case of an error
      */
@@ -94,8 +93,8 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> sorted() throws an exception if a loop of length 2 is
-     * contained in the container.</testcase>
+     *  sorted() throws an exception if a loop of length 2 is
+     * contained in the container.
      * 
      * @throws Exception in case of an error
      */
@@ -111,8 +110,8 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> sorted() throws an exception if a loop of length 3 is
-     * contained in the container.</testcase>
+     *  sorted() throws an exception if a loop of length 3 is
+     * contained in the container.
      * 
      * @throws Exception in case of an error
      */
@@ -130,8 +129,8 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> sorted() returns a list with all elements if no constraint on
-     * the order is given for a container with two elements.</testcase>
+     *  sorted() returns a list with all elements if no constraint on
+     * the order is given for a container with two elements.
      * 
      * @throws Exception in case of an error
      */
@@ -149,8 +148,8 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> sorted() returns a properly sorted list with all elements for
-     * two elements with a constraint in the container.</testcase>
+     *  sorted() returns a properly sorted list with all elements for
+     * two elements with a constraint in the container.
      * 
      * @throws Exception in case of an error
      */
@@ -169,8 +168,8 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> sorted() returns a list with all elements if no constraint on
-     * the order is given. Even if the elements are defined in reverse order.</testcase>
+     *  sorted() returns a list with all elements if no constraint on
+     * the order is given. Even if the elements are defined in reverse order.
      * 
      * @throws Exception in case of an error
      */
@@ -189,8 +188,8 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> sorted() returns a list with all elements if no constraint on
-     * the order is given. Another variant.</testcase>
+     *  sorted() returns a list with all elements if no constraint on
+     * the order is given. Another variant.
      * 
      * @throws Exception in case of an error
      */
@@ -209,8 +208,8 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> sorted() returns a list with all elements if no constraint on
-     * the order is given for a container with three elements.</testcase>
+     *  sorted() returns a list with all elements if no constraint on
+     * the order is given for a container with three elements.
      * 
      * @throws Exception in case of an error
      */
@@ -230,8 +229,8 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> sorted() returns a list with all elements if one constraint on
-     * the order is given for a container with three elements.</testcase>
+     *  sorted() returns a list with all elements if one constraint on
+     * the order is given for a container with three elements.
      * 
      * @throws Exception in case of an error
      */
@@ -252,8 +251,8 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> sorted() returns a properly sorted list with all elements if
-     * two constraint on the order is given for a container with three elements.</testcase>
+     *  sorted() returns a properly sorted list with all elements if
+     * two constraint on the order is given for a container with three elements.
      * 
      * @throws Exception in case of an error
      */
@@ -275,9 +274,9 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> sorted() returns a properly sorted list with all elements if
+     *  sorted() returns a properly sorted list with all elements if
      * two constraint on the order is given for a container with three elements.
-     * Another variant.</testcase>
+     * Another variant.
      * 
      * @throws Exception in case of an error
      */
@@ -299,9 +298,9 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> sorted() returns a properly sorted list with all elements if
+     *  sorted() returns a properly sorted list with all elements if
      * two constraint on the order is given for a container with three elements.
-     * One more variant.</testcase>
+     * One more variant.
      * 
      * @throws Exception in case of an error
      */
@@ -324,7 +323,7 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> defineLetterGroup() can not be applied after sorted().</testcase>
+     *  defineLetterGroup() can not be applied after sorted().
      * 
      * @throws Exception in case of an error
      */
@@ -338,7 +337,7 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> ...</testcase>
+     *  ...
      * 
      * @throws Exception in case of an error
      */

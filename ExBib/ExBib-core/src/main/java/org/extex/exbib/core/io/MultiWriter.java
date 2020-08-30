@@ -28,17 +28,16 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * This writer is a means to print something to two writers.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MultiWriter implements Writer, Configurable {
 
     /**
-     * The field <tt>w1</tt> contains the first writer.
+     * The field {@code w1} contains the first writer.
      */
     private final Writer w1;
 
     /**
-     * The field <tt>w2</tt> contains the second writer.
+     * The field {@code w2} contains the second writer.
      */
     private final Writer w2;
 
@@ -54,23 +53,13 @@ public class MultiWriter implements Writer, Configurable {
         w2 = b;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#close()
-     */
-    public void close() throws IOException {
+public void close() throws IOException {
 
         w1.close();
         w2.close();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
-     */
-    public void configure(Configuration config) throws ConfigurationException {
+public void configure(Configuration config) throws ConfigurationException {
 
         if (w1 instanceof Configurable) {
             ((Configurable) w1).configure(config);
@@ -80,45 +69,25 @@ public class MultiWriter implements Writer, Configurable {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#flush()
-     */
-    public void flush() throws IOException {
+public void flush() throws IOException {
 
         w1.flush();
         w2.flush();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#print(java.lang.String[])
-     */
-    public void print(String... args) throws IOException {
+public void print(String... args) throws IOException {
 
         w1.print(args);
         w2.print(args);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println(java.lang.String[])
-     */
-    public void println(String... args) throws IOException {
+public void println(String... args) throws IOException {
 
         w1.println(args);
         w2.println(args);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#write(int)
-     */
-    public void write(int c) throws IOException {
+public void write(int c) throws IOException {
 
         w1.write(c);
         w2.write(c);

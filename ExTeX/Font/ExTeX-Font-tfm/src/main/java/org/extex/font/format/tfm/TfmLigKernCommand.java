@@ -19,15 +19,16 @@
 
 package org.extex.font.format.tfm;
 
+import org.extex.util.file.random.RandomAccessR;
+
 import java.io.IOException;
 import java.io.Serializable;
-
-import org.extex.util.file.random.RandomAccessR;
 
 /**
  * Class for a lig_kern_command.
  *
- * <table border="1">
+ * <table>
+ *   <caption>TBD</caption>
  *   <thead>
  *     <tr><td>byte</td><td>description</td></tr>
  *   </thead>
@@ -50,8 +51,7 @@ import org.extex.util.file.random.RandomAccessR;
  * </p>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class TfmLigKernCommand implements Serializable {
 
@@ -61,7 +61,7 @@ public class TfmLigKernCommand implements Serializable {
     public static final class Activity implements Serializable {
 
         /**
-         * The field <tt>serialVersionUID</tt> ...
+         * The field {@code serialVersionUID} ...
          */
         private static final long serialVersionUID = 1L;
 
@@ -72,7 +72,7 @@ public class TfmLigKernCommand implements Serializable {
     }
 
     /**
-     * The value of <code>activity</code> field which means that this
+     * The value of {@code activity} field which means that this
      * lig/kern instruction is a part of lig/kern program for some
      * character.
      */
@@ -89,13 +89,13 @@ public class TfmLigKernCommand implements Serializable {
     private static final short KERNFLAG = 128;
 
     /**
-     * The value of <code>activity</code> field which means that this is
+     * The value of {@code activity} field which means that this is
      * restart instruction or the boundary information which was processed.
      */
     public static final Activity PASSTHROUGH = new Activity();
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 1L;
 
@@ -106,7 +106,7 @@ public class TfmLigKernCommand implements Serializable {
     private static final short STOPFLAG = 128;
 
     /**
-     * The value of <code>activity</code> field which means that this
+     * The value of {@code activity} field which means that this
      * lig/kern instruction is not a part of lig/kern program for any
      * character.
      */
@@ -120,7 +120,7 @@ public class TfmLigKernCommand implements Serializable {
     /**
      * the lig/kern id.
      */
-    private int lkid;
+    private final int lkid;
 
     /**
      * the nextchar.
@@ -130,7 +130,7 @@ public class TfmLigKernCommand implements Serializable {
     /**
      * the opbyte.
      */
-    private byte opbyte;
+    private final byte opbyte;
 
     /**
      * the remainder.
@@ -217,7 +217,7 @@ public class TfmLigKernCommand implements Serializable {
      * Gives the index to the kern table from tfm file for kerning
      * instruction.
      *
-     * @return Returns the index to the <code>kernTable</code>.
+     * @return Returns the index to the {@code kernTable}.
      */
     public int kernIndex() {
 
@@ -228,7 +228,7 @@ public class TfmLigKernCommand implements Serializable {
      * Tells whether the current character should be left in place when
      * executing this ligature instructions.
      *
-     * @return Returns <code>true</code> if the current character should be left.
+     * @return Returns {@code true} if the current character should be left.
      */
     public boolean leaveLeft() {
 
@@ -239,7 +239,7 @@ public class TfmLigKernCommand implements Serializable {
      * Tells whether the next character should be left in place when
      * executing this ligature instructions.
      *
-     * @return Returns <code>true</code> if the next character should be left.
+     * @return Returns {@code true} if the next character should be left.
      */
     public boolean leaveRight() {
 
@@ -271,7 +271,7 @@ public class TfmLigKernCommand implements Serializable {
      * about boundary.
      * (it must be also first or last in the lig/kern table).
      *
-     * @return Return <code>true</code> if it contains boundary information.
+     * @return Return {@code true} if it contains boundary information.
      */
     public boolean meansBoundary() {
 
@@ -281,7 +281,7 @@ public class TfmLigKernCommand implements Serializable {
     /**
      * Tells whether this LigKern is a kerning instruction.
      *
-     * @return Returns <code>true</code> for kerning instruction.
+     * @return Returns {@code true} for kerning instruction.
      */
     public boolean meansKern() {
 
@@ -293,7 +293,7 @@ public class TfmLigKernCommand implements Serializable {
      * start of a lig/kern program to some other instruction
      * (it must be also the first instruction of some lig/kern program).
      *
-     * @return Return <code>true</code> if it is a restart instruction.
+     * @return Return {@code true} if it is a restart instruction.
      */
     public boolean meansRestart() {
 
@@ -304,7 +304,7 @@ public class TfmLigKernCommand implements Serializable {
      * Tells whether this LigKern is the last instruction
      * of a lig/kern program.
      *
-     * @return Return <code>true</code> if this is the last
+     * @return Return {@code true} if this is the last
      *         instruction of a lig/kern program.
      */
     public boolean meansStop() {
@@ -327,7 +327,7 @@ public class TfmLigKernCommand implements Serializable {
      * Tells the position of the next lig/kern program instruction given
      * the position of this LigKern in the lig/kern table.
      * @param pos   the pos
-     * @return Returns index to the <code>ligAuxTab</code>
+     * @return Returns index to the {@code ligAuxTab}
      *         of the next lig/kern instruction.
      */
     public int nextIndex(int pos) {
@@ -388,7 +388,7 @@ public class TfmLigKernCommand implements Serializable {
     /**
      * Forces this LigKern to have particular value of nextchar.
      *
-     * @param c     the forced value of >nextchar.
+     * @param c the forced value of nextchar.
      */
     public void setNextChar(int c) {
 

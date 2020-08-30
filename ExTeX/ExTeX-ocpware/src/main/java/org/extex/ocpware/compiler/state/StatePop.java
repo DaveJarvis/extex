@@ -31,8 +31,7 @@ import org.extex.ocpware.type.OcpCode;
  *  &lt;pop:&gt;   </pre>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public class StatePop implements RightState {
 
     /**
@@ -44,10 +43,7 @@ public class StatePop implements RightState {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.compiler.state.RightState#compile(
-     *      org.extex.ocpware.compiler.parser.CompilerState, boolean)
+*      org.extex.ocpware.compiler.parser.CompilerState, boolean)
      */
     public void compile(CompilerState cs, boolean withOffset) throws IOException {
 

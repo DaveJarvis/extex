@@ -33,8 +33,7 @@ import org.extex.exbib.core.io.Locator;
  * This class represents a literal token which corresponds to a macro.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TLiteral extends AbstractToken {
 
     /**
@@ -44,7 +43,7 @@ public class TLiteral extends AbstractToken {
      * @param value the literal value
      * 
      * @throws ExBibEmptyFunctionNameException in case that the given value is
-     *         <code>null</code> or the empty string
+     *         {@code null} or the empty string
      */
     public TLiteral(String value, Locator locator)
             throws ExBibEmptyFunctionNameException {
@@ -62,10 +61,10 @@ public class TLiteral extends AbstractToken {
      * thrown.
      * 
      * @param processor the processor context
-     * @param entry the current entry or <code>null</code>
+     * @param entry the current entry or {@code null}
      * @param locator the locator
      * 
-     * @throws ExBibException in case that something else goes wrong, especially<br />
+     * @throws ExBibException in case that something else goes wrong, especially<br>
      *         ExBibFunctionUndefinedException in case that the function named
      *         in this object is not defined
      * 
@@ -92,10 +91,7 @@ public class TLiteral extends AbstractToken {
      * The expansion of a Literal is the value of the macro stored under this
      * name. If the macro is not defined then it expands to the empty string.
      * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.Token#expand(org.extex.exbib.core.Processor)
-     */
+*/
     @Override
     public String expand(Processor processor) {
 
@@ -104,10 +100,7 @@ public class TLiteral extends AbstractToken {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.Token#visit(org.extex.exbib.core.bst.token.TokenVisitor,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     @Override
     public void visit(TokenVisitor visitor, Object... args)

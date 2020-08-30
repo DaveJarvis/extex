@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains primitives defined in Omega.
+ * Contains primitives defined in Omega.
  */
 
 package org.extex.unit.omega.ocp;

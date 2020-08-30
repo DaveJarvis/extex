@@ -32,12 +32,11 @@ import org.extex.exbib.core.db.Entry;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class CodepointSorter implements Comparator<Entry>, Sorter, Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2008L;
@@ -46,10 +45,7 @@ public class CodepointSorter implements Comparator<Entry>, Sorter, Serializable 
      * Provide a Comparator which just uses the appropriate keys and compares
      * them without respect to the case.
      * 
-     * {@inheritDoc}
-     * 
-     * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
-     */
+*/
     public int compare(Entry a, Entry b) {
 
         String ka = a.getSortKey();

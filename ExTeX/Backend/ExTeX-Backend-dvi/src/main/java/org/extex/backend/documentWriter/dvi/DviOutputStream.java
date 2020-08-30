@@ -30,8 +30,7 @@ import org.extex.core.exception.GeneralException;
  * This class provides the methods to write to the dvi-Stream.
  *
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
- * @version $Revision:4704 $
- */
+*/
 public class DviOutputStream {
 
     /**
@@ -92,7 +91,7 @@ public class DviOutputStream {
     /**
      * Creates a new  instance.
      *
-     * @param theOutputStream <code>OutputStream</code> for dvi file
+     * @param theOutputStream {@code OutputStream} for dvi file
      */
     public DviOutputStream(OutputStream theOutputStream) {
 

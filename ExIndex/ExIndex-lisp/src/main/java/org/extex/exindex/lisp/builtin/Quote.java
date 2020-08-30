@@ -29,8 +29,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * not evaluated but left unchanged.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Quote extends LFunction {
 
     /**

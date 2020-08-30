@@ -23,29 +23,28 @@ import org.junit.Test;
 
 /**
  * This class is an abstract base class for test suited containing some test
- * cases to verify that the prefixes <tt>\global</tt>, <tt>\long</tt>, and
- * <tt>\outer</tt> lead to an error.
+ * cases to verify that the prefixes {@code \global}, {@code \long}, and
+ * {@code \outer} lead to an error.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class NoFlagsButImmediateAndProtectedPrimitiveTester
         extends
             ExTeXLauncher {
 
     /**
-     * The field <tt>primitive</tt> contains the name of the primitive.
+     * The field {@code primitive} contains the name of the primitive.
      */
-    private String primitive;
+    private final String primitive;
 
     /**
-     * The field <tt>args</tt> contains the additional arguments for the flag
+     * The field {@code args} contains the additional arguments for the flag
      * test.
      */
-    private String args;
+    private final String args;
 
     /**
-     * The field <tt>prepare</tt> contains the prepare code.
+     * The field {@code prepare} contains the prepare code.
      */
     private String prepare = "";
 
@@ -78,9 +77,8 @@ public abstract class NoFlagsButImmediateAndProtectedPrimitiveTester
     }
 
     /**
-     * <testcase> Test case checking that the <tt>\global</tt> flag leads to
-     * an error. </testcase>
-     * 
+     * Test case checking that the {@code \global} flag leads to an error
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -89,14 +87,14 @@ public abstract class NoFlagsButImmediateAndProtectedPrimitiveTester
         assertFailure(// --- input code ---
             DEFINE_CATCODES + prepare + "\\global\\" + primitive + args,
             // --- log message ---
-            "You can\'t use the prefix `\\global\' with the control sequence \\"
+                      "You can't use the prefix `\\global' with the control " +
+                          "sequence \\"
                     + primitive);
     }
 
     /**
-     * <testcase> Test case checking that the <tt>\long</tt> flag leads to an
-     * error. </testcase>
-     * 
+     * Test case checking that the {@code \long} flag leads to an error
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -105,14 +103,14 @@ public abstract class NoFlagsButImmediateAndProtectedPrimitiveTester
         assertFailure(// --- input code ---
             DEFINE_CATCODES + prepare + "\\long\\" + primitive + args,
             // --- log message ---
-            "You can\'t use the prefix `\\long\' with the control sequence \\"
+                      "You can't use the prefix `\\long' with the control " +
+                          "sequence \\"
                     + primitive);
     }
 
     /**
-     * <testcase> Test case checking that the <tt>\outer</tt> flag leads to an
-     * error. </testcase>
-     * 
+     * Test case checking that the {@code \outer} flag leads to an error
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -121,7 +119,8 @@ public abstract class NoFlagsButImmediateAndProtectedPrimitiveTester
         assertFailure(// --- input code ---
             DEFINE_CATCODES + prepare + "\\outer\\" + primitive + args,
             // --- log message ---
-            "You can\'t use the prefix `\\outer\' with the control sequence \\"
+                      "You can't use the prefix `\\outer' with the control " +
+                          "sequence \\"
                     + primitive);
     }
 

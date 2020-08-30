@@ -32,8 +32,7 @@ import junit.framework.TestCase;
  * Test for XMLStreamWriter.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 5476 $
- */
+*/
 public class XMLStreamWriterTest extends TestCase {
 
     /**

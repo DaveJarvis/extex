@@ -32,14 +32,13 @@ import org.extex.font.FontKey;
  * Class for the info of used fonts and characters.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class ManagerInfo implements Iterable<BackendCharacter> {
 
     /**
      * The List for the characters.
      */
-    private List<BackendCharacter> backendCharacterList =
+    private final List<BackendCharacter> backendCharacterList =
             new ArrayList<BackendCharacter>();
 
     /**
@@ -50,12 +49,12 @@ public class ManagerInfo implements Iterable<BackendCharacter> {
     /**
      * The font key.
      */
-    private FontKey fontKey;
+    private final FontKey fontKey;
 
     /**
      * The {@link BackendFontManager} for this info.
      */
-    private BackendFontManager manager;
+    private final BackendFontManager manager;
 
     /**
      * Creates a new object.

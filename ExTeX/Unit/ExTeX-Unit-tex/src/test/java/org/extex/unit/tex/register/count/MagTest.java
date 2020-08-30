@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\mag</tt>.
+ * This is a test suite for the primitive {@code \mag}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class MagTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
 
     /**
@@ -48,8 +47,8 @@ public class MagTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\mag"> Test case checking that <tt>\mag</tt> has
-     * initially the value 1000. </testcase>
+     * <testcase primitive="\mag"> Test case checking that {@code \mag} has
+     * initially the value 1000.
      * 
      * @throws Exception in case of an error
      */
@@ -63,8 +62,8 @@ public class MagTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\mag"> Test case checking that <tt>\mag</tt> can
-     * be assigned a positive value. </testcase>
+     * <testcase primitive="\mag"> Test case checking that {@code \mag} can
+     * be assigned a positive value.
      * 
      * @throws Exception in case of an error
      */
@@ -78,8 +77,8 @@ public class MagTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\mag"> Test case checking that <tt>\mag</tt> can
-     * be assigned a positive value. </testcase>
+     * <testcase primitive="\mag"> Test case checking that {@code \mag} can
+     * be assigned a positive value.
      * 
      * @throws Exception in case of an error
      */
@@ -93,8 +92,8 @@ public class MagTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\mag"> Test case checking that <tt>\mag</tt> can
-     * not be assigned 0. </testcase>
+     * <testcase primitive="\mag"> Test case checking that {@code \mag} can
+     * not be assigned 0.
      * 
      * @throws Exception in case of an error
      */
@@ -108,8 +107,8 @@ public class MagTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\mag"> Test case checking that <tt>\mag</tt> can
-     * not be assigned a negative value. </testcase>
+     * <testcase primitive="\mag"> Test case checking that {@code \mag} can
+     * not be assigned a negative value.
      * 
      * @throws Exception in case of an error
      */
@@ -123,8 +122,8 @@ public class MagTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\mag"> Test case checking that <tt>\mag</tt> can
-     * not be assigned twice with different values. </testcase>
+     * <testcase primitive="\mag"> Test case checking that {@code \mag} can
+     * not be assigned twice with different values.
      * 
      * @throws Exception in case of an error
      */
@@ -139,8 +138,8 @@ public class MagTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\mag"> Test case checking that <tt>\mag</tt> can
-     * be assigned twice if the value is the same. </testcase>
+     * <testcase primitive="\mag"> Test case checking that {@code \mag} can
+     * be assigned twice if the value is the same.
      * 
      * @throws Exception in case of an error
      */

@@ -30,8 +30,7 @@ import org.extex.exindex.makeindex.normalizer.Collator;
  * This interface describes a parser.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6613 $
- */
+*/
 public interface Parser {
 
     /**
@@ -45,8 +44,8 @@ public interface Parser {
      * @return a pair of number or read records and number of rejected entries
      * 
      * @throws IOException in case of an I/O error
-     * @throws RawIndexEofException
-     * @throws RawIndexMissingCharException
+     * @throws RawIndexEofException TODO
+     * @throws RawIndexMissingCharException TODO
      */
     int[] load(Reader reader, String resource, Index index, Collator collator)
             throws IOException,

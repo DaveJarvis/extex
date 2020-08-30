@@ -26,27 +26,26 @@ import java.io.Writer;
  * replaced by an appropriate number of spaces on the fly.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class CodeWriter extends Writer {
 
     /**
-     * The field <tt>writer</tt> contains the wrapped writer.
+     * The field {@code writer} contains the wrapped writer.
      */
     private Writer writer;
 
     /**
-     * The field <tt>tabSize</tt> contains the number of spaces for indentation.
+     * The field {@code tabSize} contains the number of spaces for indentation.
      */
     private int tabSize = 2;
 
     /**
-     * The field <tt>column</tt> contains the counter for the current column.
+     * The field {@code column} contains the counter for the current column.
      */
     private int column = 0;
 
     /**
-     * The field <tt>inLine</tt> contains the number of newline characters
+     * The field {@code inLine} contains the number of newline characters
      * already encountered. Initially it is 3 to suppress leading newlines.
      */
     private int inLine = 3;
@@ -61,23 +60,13 @@ public class CodeWriter extends Writer {
         this.writer = writer;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.Writer#close()
-     */
-    @Override
+@Override
     public void close() throws IOException {
 
         writer.close();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.Writer#flush()
-     */
-    @Override
+@Override
     public void flush() throws IOException {
 
         writer.flush();
@@ -125,12 +114,7 @@ public class CodeWriter extends Writer {
         this.tabSize = tabSize;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.Writer#write(char[], int, int)
-     */
-    @Override
+@Override
     public void write(char[] cbuf, int offset, int length) throws IOException {
 
         int off = offset;

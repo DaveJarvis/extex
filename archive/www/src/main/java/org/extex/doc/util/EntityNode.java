@@ -23,12 +23,11 @@ package org.extex.doc.util;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class EntityNode implements DocToken {
 
     /**
-     * The field <tt>name</tt> contains the ...
+     * The field {@code name} contains the ...
      */
     private String name;
 
@@ -42,23 +41,13 @@ public class EntityNode implements DocToken {
         this.name = name;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return "&" + name + ";";
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.doc.util.DocToken#visit(org.extex.doc.util.TokenVisitor)
-     */
-    public void visit(TokenVisitor visitor) {
+public void visit(TokenVisitor visitor) {
 
         visitor.visitEntity(name);
     }

@@ -30,22 +30,21 @@ import org.extex.scanner.type.token.OtherToken;
  * This class represents an optional argument group.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class OptGroupNode extends AbstractNode {
 
     /**
-     * The field <tt>list</tt> contains the main nodes contained.
+     * The field {@code list} contains the main nodes contained.
      */
     private List<Node> list = new ArrayList<Node>();
 
     /**
-     * The field <tt>openToken</tt> contains the open token.
+     * The field {@code openToken} contains the open token.
      */
     private OtherToken openToken;
 
     /**
-     * The field <tt>closeToken</tt> contains the close token.
+     * The field {@code closeToken} contains the close token.
      */
     private OtherToken closeToken;
 
@@ -67,7 +66,7 @@ public class OptGroupNode extends AbstractNode {
      * 
      * @param n the node to add
      * 
-     * @return <code>true</code>
+     * @return {@code true}
      * 
      * @see java.util.List#add(java.lang.Object)
      */
@@ -86,12 +85,7 @@ public class OptGroupNode extends AbstractNode {
         closeToken = t;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.api.Node#print(java.io.PrintStream)
-     */
-    public void print(PrintStream stream) {
+public void print(PrintStream stream) {
 
         stream.print(openToken.toText());
         for (Node n : list) {
@@ -100,12 +94,7 @@ public class OptGroupNode extends AbstractNode {
         stream.print(closeToken.toText());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();

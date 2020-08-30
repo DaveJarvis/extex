@@ -29,22 +29,21 @@ import org.extex.typesetter.type.node.WhatsItNode;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4791 $
- */
+*/
 public class PdfDest extends WhatsItNode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>id</tt> contains the id.
+     * The field {@code id} contains the id.
      */
     private IdSpec id;
 
     /**
-     * The field <tt>type</tt> contains the destination type.
+     * The field {@code type} contains the destination type.
      */
     private DestType type;
 

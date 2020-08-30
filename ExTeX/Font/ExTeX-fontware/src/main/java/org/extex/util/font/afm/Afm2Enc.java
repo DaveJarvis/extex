@@ -46,8 +46,7 @@ import org.extex.util.font.AbstractFontUtil;
  * Create encoding vectors from a afm file.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class Afm2Enc extends AbstractFontUtil {
 
     /**
@@ -135,8 +134,7 @@ public class Afm2Enc extends AbstractFontUtil {
      * number.
      * 
      * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
-     * @version $Revision$
-     */
+    */
     public class EncGlpyh {
 
         /**
@@ -582,7 +580,7 @@ public class Afm2Enc extends AbstractFontUtil {
      * 
      * @param filechar The file char
      * @param na The name.
-     * @param encw The <code>EncWriter</code>.
+     * @param encw The {@code EncWriter}.
      * @throws IOException if an IO-error occurred.
      */
     private void writeEncW(char filechar, String na, EncWriter encw)

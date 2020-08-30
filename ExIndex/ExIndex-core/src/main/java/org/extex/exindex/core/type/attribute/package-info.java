@@ -17,7 +17,7 @@
  */
 /**
  * 
- *   This package contains definition and implementations for attributes.
+ *   Contains definition and implementations for attributes.
  * 
  *
  */

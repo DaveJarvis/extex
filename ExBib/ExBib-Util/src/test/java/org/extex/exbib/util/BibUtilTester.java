@@ -36,8 +36,7 @@ import org.extex.cli.CLI;
  * This is a tester for {@link ExBibUtilMain}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BibUtilTester {
 
     /**
@@ -45,26 +44,26 @@ public class BibUtilTester {
      */
     public enum Check {
         /**
-         * The field <tt>NONE</tt> contains the do not compare.
+         * The field {@code NONE} contains the do not compare.
          */
         NONE,
         /**
-         * The field <tt>EQ</tt> contains the compare for equality.
+         * The field {@code EQ} contains the compare for equality.
          */
         EQ,
         /**
-         * The field <tt>START</tt> contains the compare an initial segment.
+         * The field {@code START} contains the compare an initial segment.
          */
         START,
         /**
-         * The field <tt>REGEX</tt> contains the compare against a regular
+         * The field {@code REGEX} contains the compare against a regular
          * expression.
          */
         REGEX
     }
 
   /**
-     * The field <tt>YEAR</tt> contains the current year as four-digit string.
+     * The field {@code YEAR} contains the current year as four-digit string.
      * This might not be accurate for a long running test started just before
      * the end of the year.
      */
@@ -72,13 +71,13 @@ public class BibUtilTester {
         .get(Calendar.YEAR));
 
     /**
-     * The field <tt>BANNER</tt> contains the default banner.
+     * The field {@code BANNER} contains the default banner.
      */
     public static final String BANNER = "This is exbibutil, Version "
             + ExBibUtilMain.VERSION + "\n";
 
     /**
-     * The field <tt>BANNER_DE</tt> contains the default banner.
+     * The field {@code BANNER_DE} contains the default banner.
      */
     public static final String BANNER_DE = "Dies ist exbibutil, Version "
             + ExBibUtilMain.VERSION + "\n";
@@ -116,7 +115,7 @@ public class BibUtilTester {
 
     /**
      * Run the command line test. The bib file is written temporarily in the
-     * current directory under the name <i>basename</i><tt>.bib</tt>. The
+     * current directory under the name <i>basename</i>{@code .bib}. The
      * contents can be given as argument.
      * 
      * @param basename the base name of the files to prepare and use

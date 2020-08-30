@@ -44,10 +44,10 @@ import org.extex.typesetter.Typesetter;
 /**
  * This class provides the setup for the unit <b>tex</b>.
  * 
- * <h3>Tracing</h3>
+ * <p>Tracing</p>
  * <p>
  * Tracing is TeX is controlled by some count registers. The implementation
- * in ??TeX is based on observers. In the first stage a
+ * in εχTeX is based on observers. In the first stage a
  * {@link org.extex.interpreter.context.observer.count.CountObserver
  * CountObserver} for the controlling count is registered. In this observer the
  * observer for the real event is registered if this as not been done before and
@@ -60,30 +60,25 @@ import org.extex.typesetter.Typesetter;
  * performance overhead.
  * </p>
  * 
- * <doc name="tracingonline" type="register"> <h3>The Count Parameter
- * <tt>\tracingonline</tt></h3>
+ * <p>The Count Parameter {@code \tracingonline}</p>
  * <p>
- * This count register <tt>\tracingonline</tt> determines whether the tracing
+ * This count register {@code \tracingonline} determines whether the tracing
  * should go into the log file only or put on the standard output stream as
  * well. If the value is less than 1 then the tracing goes to the log file only.
  * Otherwise logging is duplicated to the console as well.
  * </p>
- * </doc>
- * 
- * <doc name="tracingcommands" type="register"> <h3>The Parameter
- * <tt>\tracingcommands</tt></h3>
+ *
+ * <p>The Parameter {@code \tracingcommands}</p>
  * <p>
  * This count register determines whether the execution of commands should be
  * traced. If the value is less or equal than 0 then no tracing is performed. If
  * the value is greater than 0 then the tokens are logged before they are
  * executed.
  * </p>
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class TexUnitInfo extends UnitInfo
         implements
             Configurable,
@@ -95,12 +90,11 @@ public class TexUnitInfo extends UnitInfo
      * Observer to reestablish a trace commands observer after loading.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
-     */
+    */
     private final class Observer implements CountObserver {
 
         /**
-         * The field <tt>source</tt> contains the token source.
+         * The field {@code source} contains the token source.
          */
         private transient TokenSource source = null;
 
@@ -115,10 +109,7 @@ public class TexUnitInfo extends UnitInfo
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.context.observer.count.CountObserver#receiveCountChange(org.extex.interpreter.context.ContextInternals,
-         *      java.lang.String, org.extex.core.count.Count)
+    *      java.lang.String, org.extex.core.count.Count)
          */
         public void receiveCountChange(ContextInternals context, String name,
                 Count value) throws Exception {
@@ -133,47 +124,47 @@ public class TexUnitInfo extends UnitInfo
     }
 
     /**
-     * The constant <tt>LOG_FILE</tt> contains the key for the log file.
+     * The constant {@code LOG_FILE} contains the key for the log file.
      */
     private static final String LOG_FILE = "-1";
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>SYSTEM</tt> contains the key for the system execute
+     * The field {@code SYSTEM} contains the key for the system execute
      * (\write18).
      */
     private static final String SYSTEM = "18";
 
     /**
-     * The field <tt>TRACING_COMMANDS</tt> contains the name of the count
+     * The field {@code TRACING_COMMANDS} contains the name of the count
      * register controlling the activation of command tracing.
      */
     private static final String TRACING_COMMANDS = "tracingcommands";
 
     /**
-     * The field <tt>USER_AND_LOG</tt> contains the key for the user trace and
+     * The field {@code USER_AND_LOG} contains the key for the user trace and
      * log file.
      */
     private static final String USER_AND_LOG = "17";
 
     /**
-     * The field <tt>logger</tt> contains the local reference to the logger.
+     * The field {@code logger} contains the local reference to the logger.
      */
     private transient Logger logger;
 
     /**
-     * The field <tt>notRegistered</tt> contains the indicator that the observer
+     * The field {@code notRegistered} contains the indicator that the observer
      * for command events as not been registered yet.
      */
     private transient boolean notRegistered = true;
 
     /**
-     * The field <tt>write18</tt> contains the indicator that the ancient
+     * The field {@code write18} contains the indicator that the ancient
      * \write18 feature of TeX should be enabled.
      */
     private boolean write18 = false;
@@ -185,12 +176,7 @@ public class TexUnitInfo extends UnitInfo
         notRegistered = true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
-     */
-    public void configure(Configuration config) throws ConfigurationException {
+public void configure(Configuration config) throws ConfigurationException {
 
         String a = config.getAttribute("write18");
         write18 = (a != null && Boolean.getBoolean(a));
@@ -209,10 +195,7 @@ public class TexUnitInfo extends UnitInfo
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.unit.Loader#load(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void load(Context context, TokenSource source, Typesetter typesetter)
             throws HelpingException {
@@ -233,10 +216,7 @@ public class TexUnitInfo extends UnitInfo
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.observer.load.LoadedObserver#receiveLoaded(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, Typesetter)
+*      org.extex.interpreter.TokenSource, Typesetter)
      */
     public void receiveLoaded(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException {

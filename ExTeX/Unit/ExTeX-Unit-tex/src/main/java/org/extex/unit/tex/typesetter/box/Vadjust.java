@@ -34,35 +34,34 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.AdjustNode;
 
 /**
- * This class provides an implementation for the primitive <code>\vadjust</code>.
+ * This class provides an implementation for the primitive {@code \vadjust}.
  * 
- * <doc name="vadjust">
- * <h3>The Primitive <tt>\vadjust</tt></h3>
+ * <p>The Primitive {@code \vadjust}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;vadjust&rang;
- *       &rarr; <tt>\vadjust</tt> ... </pre>
+ *       &rarr; {@code \vadjust} ... </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \vadjust{\kern2pt}  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Vadjust extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -78,10 +77,7 @@ public class Vadjust extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

@@ -25,26 +25,25 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This exception is raised when a bad character code is encountered.
  * <p>
  *  The localization format is taken from the Localizer under the key
- *  <tt>TTP.BadChar</tt>.
+ *  {@code TTP.BadChar}.
  * </p>
  * <p>
  *  The format receives one argument which contains the character code.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BadCharacterException extends HelpingException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
     /**
-     * The field <tt>cc</tt> contains the invalid character.
+     * The field {@code cc} contains the invalid character.
      */
-    private long cc;
+    private final long cc;
 
     /**
      * Creates a new object.

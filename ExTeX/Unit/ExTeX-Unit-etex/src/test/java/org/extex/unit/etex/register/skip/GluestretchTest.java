@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\gluestretch</tt>.
+ * This is a test suite for the primitive {@code \gluestretch}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class GluestretchTest extends ExTeXLauncher {
 
     /**
@@ -48,9 +47,8 @@ public class GluestretchTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that <tt>\gluestretch</tt> can not be used
-     * to assign something to it. </testcase>
-     * 
+     * Test case showing that {@code \gluestretch} can not be used to assign something to it
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -63,9 +61,9 @@ public class GluestretchTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that <tt>\gluestretch</tt> extracts the
-     * correct value. In addition it shows that <tt>\gluestretch</tt> is
-     * applicable to <tt>\the</tt>. </testcase>
+     *  Test case showing that {@code \gluestretch} extracts the
+     * correct value. In addition it shows that {@code \gluestretch} is
+     * applicable to {@code \the}. 
      * 
      * @throws Exception in case of an error
      */
@@ -80,9 +78,9 @@ public class GluestretchTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that <tt>\gluestretch</tt> extracts the
-     * correct value. In addition it shows that <tt>\gluestretch</tt> is
-     * assignable to a dimen register. </testcase>
+     *  Test case showing that {@code \gluestretch} extracts the
+     * correct value. In addition it shows that {@code \gluestretch} is
+     * assignable to a dimen register. 
      * 
      * @throws Exception in case of an error
      */
@@ -97,9 +95,9 @@ public class GluestretchTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that <tt>\gluestretch</tt> extracts the
-     * correct value. In addition it shows that <tt>\gluestretch</tt> is
-     * assignable to a count register. </testcase>
+     *  Test case showing that {@code \gluestretch} extracts the
+     * correct value. In addition it shows that {@code \gluestretch} is
+     * assignable to a count register. 
      * 
      * @throws Exception in case of an error
      */
@@ -114,9 +112,9 @@ public class GluestretchTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that <tt>\gluestretch</tt> extracts the
+     *  Test case showing that {@code \gluestretch} extracts the
      * correct value from an infinite glue. In addition it shows that
-     * <tt>\gluestretch</tt> is applicable to <tt>\the</tt>. </testcase>
+     * {@code \gluestretch} is applicable to {@code \the}. 
      * 
      * @throws Exception in case of an error
      */

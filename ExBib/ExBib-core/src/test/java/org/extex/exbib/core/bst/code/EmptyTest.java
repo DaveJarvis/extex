@@ -38,25 +38,24 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>empty$</tt>.
+ * Test suite for {@code empty$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class EmptyTest {
 
     /**
-     * The field <tt>db</tt> contains the database.
+     * The field {@code db} contains the database.
      */
     private DB db = null;
 
     /**
-     * The field <tt>entry</tt> contains an entry.
+     * The field {@code entry} contains an entry.
      */
     private Entry entry;
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -101,7 +100,7 @@ public class EmptyTest {
     }
 
     /**
-     * <testcase> The empty stack leads to an error. <testcase>
+     *  The empty stack leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -112,7 +111,7 @@ public class EmptyTest {
     }
 
     /**
-     * <testcase> A non-string (Integer) argument leads to an error. <testcase>
+     *  A non-string (Integer) argument leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -124,7 +123,7 @@ public class EmptyTest {
     }
 
     /**
-     * <testcase> A longer string ist not empty. <testcase>
+     *  A longer string ist not empty.
      * 
      * @throws Exception in case of an error
      */
@@ -135,7 +134,7 @@ public class EmptyTest {
     }
 
     /**
-     * <testcase> A one-letter string is not empty. <testcase>
+     *  A one-letter string is not empty.
      * 
      * @throws Exception in case of an error
      */
@@ -146,7 +145,7 @@ public class EmptyTest {
     }
 
     /**
-     * <testcase> A one-character string is not empty. <testcase>
+     *  A one-character string is not empty.
      * 
      * @throws Exception in case of an error
      */
@@ -157,7 +156,7 @@ public class EmptyTest {
     }
 
     /**
-     * <testcase> A one-digit string is not empty. <testcase>
+     *  A one-digit string is not empty.
      * 
      * @throws Exception in case of an error
      */
@@ -168,7 +167,7 @@ public class EmptyTest {
     }
 
     /**
-     * <testcase> A <code>null</code> is empty. <testcase>
+     *  A {@code null} is empty.
      * 
      * @throws Exception in case of an error
      */
@@ -179,7 +178,7 @@ public class EmptyTest {
     }
 
     /**
-     * <testcase> The empty string is empty. <testcase>
+     *  The empty string is empty.
      * 
      * @throws Exception in case of an error
      */
@@ -190,7 +189,7 @@ public class EmptyTest {
     }
 
     /**
-     * <testcase> A space-only string is empty. <testcase>
+     *  A space-only string is empty.
      * 
      * @throws Exception in case of an error
      */
@@ -201,7 +200,7 @@ public class EmptyTest {
     }
 
     /**
-     * <testcase> A tab-only string is empty. <testcase>
+     *  A tab-only string is empty.
      * 
      * @throws Exception in case of an error
      */
@@ -212,7 +211,7 @@ public class EmptyTest {
     }
 
     /**
-     * <testcase> A multi-space string is empty. <testcase>
+     *  A multi-space string is empty.
      * 
      * @throws Exception in case of an error
      */
@@ -223,7 +222,7 @@ public class EmptyTest {
     }
 
     /**
-     * <testcase> A multi-whitespace string is empty. <testcase>
+     *  A multi-whitespace string is empty.
      * 
      * @throws Exception in case of an error
      */
@@ -234,7 +233,7 @@ public class EmptyTest {
     }
 
     /**
-     * <testcase> A multi-whitespace string is empty. <testcase>
+     *  A multi-whitespace string is empty.
      * 
      * @throws Exception in case of an error
      */

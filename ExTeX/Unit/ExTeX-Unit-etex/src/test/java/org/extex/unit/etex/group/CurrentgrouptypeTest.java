@@ -25,11 +25,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\currentgrouptype</tt>.
+ * This is a test suite for the primitive {@code \currentgrouptype}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
@@ -51,9 +50,9 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentgrouptype">
-     *  Test case checking that <tt>\currentgrouptype</tt> outside any group
+     *  Test case checking that {@code \currentgrouptype} outside any group
      *  returns 0.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -68,9 +67,9 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentgrouptype">
-     *  Test case checking that <tt>\currentgrouptype</tt> inside a group
+     *  Test case checking that {@code \currentgrouptype} inside a group
      *  returns 1.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -85,9 +84,9 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentgrouptype">
-     *  Test case checking that <tt>\currentgrouptype</tt> inside a group
+     *  Test case checking that {@code \currentgrouptype} inside a group
      *  returns 1.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -102,9 +101,9 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentgrouptype">
-     *  Test case checking that <tt>\currentgrouptype</tt> inside a group
+     *  Test case checking that {@code \currentgrouptype} inside a group
      *  returns 1.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -119,9 +118,9 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentgrouptype">
-     *  Test case checking that <tt>\currentgrouptype</tt> inside a vbox
+     *  Test case checking that {@code \currentgrouptype} inside a vbox
      *  in a group returns 4.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -137,9 +136,9 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentgrouptype">
-     *  Test case checking that <tt>\currentgrouptype</tt> inside a group
+     *  Test case checking that {@code \currentgrouptype} inside a group
      *  returns 1.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -154,9 +153,9 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentgrouptype">
-     *  Test case checking that <tt>\currentgrouptype</tt> inside a vcenter
+     *  Test case checking that {@code \currentgrouptype} inside a vcenter
      *  in a group returns 12.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -175,9 +174,9 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentgrouptype">
-     *  Test case checking that <tt>\currentgrouptype</tt> inside a group
+     *  Test case checking that {@code \currentgrouptype} inside a group
      *  in a group returns 2.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */

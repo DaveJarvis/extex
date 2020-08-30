@@ -40,37 +40,36 @@ import org.extex.exbib.editor.bst.scanner.BstScanner;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class BstEditorConfiguration extends SourceViewerConfiguration {
 
     /**
-     * The field <tt>doubleClickStrategy</tt> contains the ...
+     * The field {@code doubleClickStrategy} contains the ...
      */
     private BstDoubleClickStrategy doubleClickStrategy;
 
     /**
-     * The field <tt>scanner</tt> contains the ...
+     * The field {@code scanner} contains the ...
      */
     private BstScanner scanner;
 
     /**
-     * The field <tt>tagScanner</tt> contains the ...
+     * The field {@code tagScanner} contains the ...
      */
     private BstCodeScanner codeScanner;
 
     /**
-     * The field <tt>colorManager</tt> contains the color manager.
+     * The field {@code colorManager} contains the color manager.
      */
     private ColorManager colorManager;
 
     /**
-     * The field <tt>model</tt> contains the ...
+     * The field {@code model} contains the ...
      */
     private final BstModel model;
 
     /**
-     * The field <tt>imageManager</tt> contains the ...
+     * The field {@code imageManager} contains the ...
      */
     private final ImageManager imageManager;
 
@@ -110,12 +109,7 @@ public class BstEditorConfiguration extends SourceViewerConfiguration {
         return scanner;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.text.source.SourceViewerConfiguration#getConfiguredContentTypes(org.eclipse.jface.text.source.ISourceViewer)
-     */
-    @Override
+@Override
     public String[] getConfiguredContentTypes(ISourceViewer sourceViewer) {
 
         return new String[]{IDocument.DEFAULT_CONTENT_TYPE,
@@ -123,12 +117,7 @@ public class BstEditorConfiguration extends SourceViewerConfiguration {
                 BstPartitionScanner.BST_CODE};
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.text.source.SourceViewerConfiguration#getContentAssistant(org.eclipse.jface.text.source.ISourceViewer)
-     */
-    @Override
+@Override
     public IContentAssistant getContentAssistant(ISourceViewer sourceViewer) {
 
         ContentAssistant assistant = new ContentAssistant();
@@ -138,10 +127,7 @@ public class BstEditorConfiguration extends SourceViewerConfiguration {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.text.source.SourceViewerConfiguration#getDoubleClickStrategy(org.eclipse.jface.text.source.ISourceViewer,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public ITextDoubleClickStrategy getDoubleClickStrategy(
@@ -153,12 +139,7 @@ public class BstEditorConfiguration extends SourceViewerConfiguration {
         return doubleClickStrategy;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.text.source.SourceViewerConfiguration#getPresentationReconciler(org.eclipse.jface.text.source.ISourceViewer)
-     */
-    @Override
+@Override
     public IPresentationReconciler getPresentationReconciler(
             ISourceViewer sourceViewer) {
 
@@ -183,10 +164,7 @@ public class BstEditorConfiguration extends SourceViewerConfiguration {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.text.source.SourceViewerConfiguration#getTextHover(org.eclipse.jface.text.source.ISourceViewer,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public ITextHover getTextHover(ISourceViewer sourceViewer,

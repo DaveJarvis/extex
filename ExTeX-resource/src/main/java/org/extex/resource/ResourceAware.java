@@ -23,8 +23,7 @@ package org.extex.resource;
  * This interface descries the ability to receive a RsourceFinder.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface ResourceAware {
 
     /**

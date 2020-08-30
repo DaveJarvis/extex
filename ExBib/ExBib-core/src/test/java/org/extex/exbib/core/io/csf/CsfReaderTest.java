@@ -32,12 +32,11 @@ import org.junit.Test;
  * This is a test suite for a {@link CsfReader}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class CsfReaderTest {
 
     /**
-     * The field <tt>READER</tt> contains the reader to test.
+     * The field {@code READER} contains the reader to test.
      */
     private static final CsfReader READER = new CsfReader();
 
@@ -118,7 +117,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The empty file is ok. </testcase>
+     *  The empty file is ok.
      * 
      * @throws Exception in case of an error
      */
@@ -129,7 +128,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The empty file is ok. </testcase>
+     *  The empty file is ok.
      * 
      * @throws Exception in case of an error
      */
@@ -140,7 +139,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The empty file is ok. </testcase>
+     *  The empty file is ok.
      * 
      * @throws Exception in case of an error
      */
@@ -151,7 +150,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The empty file with comments is ok. </testcase>
+     *  The empty file with comments is ok.
      * 
      * @throws Exception in case of an error
      */
@@ -162,7 +161,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The empty file with comments is ok. </testcase>
+     *  The empty file with comments is ok.
      * 
      * @throws Exception in case of an error
      */
@@ -173,7 +172,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> An unknown section leads to an error. </testcase>
+     *  An unknown section leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -184,7 +183,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> A missing section leads to an error. </testcase>
+     *  A missing section leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -195,7 +194,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The empty \lowercase section is ok. </testcase>
+     *  The empty \lowercase section is ok.
      * 
      * @throws Exception in case of an error
      */
@@ -206,7 +205,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The empty \lowercase section is ok. </testcase>
+     *  The empty \lowercase section is ok.
      * 
      * @throws Exception in case of an error
      */
@@ -217,7 +216,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \lowercase section with one entry is ok. </testcase>
+     *  The \lowercase section with one entry is ok.
      * 
      * @throws Exception in case of an error
      */
@@ -229,8 +228,8 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \lowercase section with one entry is ok. ^^ Notation is
-     * accepted.</testcase>
+     *  The \lowercase section with one entry is ok. ^^ Notation is
+     * accepted.
      * 
      * @throws Exception in case of an error
      */
@@ -242,8 +241,8 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \lowercase section with one entry is ok. ^^ Notation is
-     * accepted.</testcase>
+     *  The \lowercase section with one entry is ok. ^^ Notation is
+     * accepted.
      * 
      * @throws Exception in case of an error
      */
@@ -255,8 +254,8 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \lowercase section with one entry is ok. ^^ Notation is
-     * accepted.</testcase>
+     *  The \lowercase section with one entry is ok. ^^ Notation is
+     * accepted.
      * 
      * @throws Exception in case of an error
      */
@@ -268,8 +267,8 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \lowercase section with one entry is ok. ^^ Notation is
-     * accepted.</testcase>
+     *  The \lowercase section with one entry is ok. ^^ Notation is
+     * accepted.
      * 
      * @throws Exception in case of an error
      */
@@ -281,8 +280,8 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \lowercase section with one entry is ok. ^^ Notation is
-     * accepted.</testcase>
+     *  The \lowercase section with one entry is ok. ^^ Notation is
+     * accepted.
      * 
      * @throws Exception in case of an error
      */
@@ -294,7 +293,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> Invalid ^^ Notation leads to an error.</testcase>
+     *  Invalid ^^ Notation leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -305,7 +304,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> Invalid ^^ Notation leads to an error.</testcase>
+     *  Invalid ^^ Notation leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -316,7 +315,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> Invalid ^^ Notation leads to an error.</testcase>
+     *  Invalid ^^ Notation leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -327,7 +326,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \lowercase section needs a block. </testcase>
+     *  The \lowercase section needs a block.
      * 
      * @throws Exception in case of an error
      */
@@ -338,7 +337,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \lowercase section needs a block. </testcase>
+     *  The \lowercase section needs a block.
      * 
      * @throws Exception in case of an error
      */
@@ -349,7 +348,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \lowercase section needs a block. </testcase>
+     *  The \lowercase section needs a block.
      * 
      * @throws Exception in case of an error
      */
@@ -360,7 +359,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \lowercase section needs a block. </testcase>
+     *  The \lowercase section needs a block.
      * 
      * @throws Exception in case of an error
      */
@@ -371,7 +370,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The empty \lowupcase section is ok. </testcase>
+     *  The empty \lowupcase section is ok.
      * 
      * @throws Exception in case of an error
      */
@@ -382,7 +381,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The empty \lowupcase section is ok. </testcase>
+     *  The empty \lowupcase section is ok.
      * 
      * @throws Exception in case of an error
      */
@@ -393,7 +392,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \lowupcase section with one entry is ok. </testcase>
+     *  The \lowupcase section with one entry is ok.
      * 
      * @throws Exception in case of an error
      */
@@ -409,7 +408,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \lowupcase section needs a block. </testcase>
+     *  The \lowupcase section needs a block.
      * 
      * @throws Exception in case of an error
      */
@@ -420,7 +419,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \lowupcase section needs a block. </testcase>
+     *  The \lowupcase section needs a block.
      * 
      * @throws Exception in case of an error
      */
@@ -431,7 +430,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \lowupcase section needs a block. </testcase>
+     *  The \lowupcase section needs a block.
      * 
      * @throws Exception in case of an error
      */
@@ -442,7 +441,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \lowupcase section needs a block. </testcase>
+     *  The \lowupcase section needs a block.
      * 
      * @throws Exception in case of an error
      */
@@ -453,7 +452,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The empty \order section is ok. </testcase>
+     *  The empty \order section is ok.
      * 
      * @throws Exception in case of an error
      */
@@ -464,7 +463,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The empty \order section is ok. </testcase>
+     *  The empty \order section is ok.
      * 
      * @throws Exception in case of an error
      */
@@ -475,7 +474,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The empty \order section is ok. </testcase>
+     *  The empty \order section is ok.
      * 
      * @throws Exception in case of an error
      */
@@ -486,7 +485,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \order section is ok. </testcase>
+     *  The \order section is ok.
      * 
      * @throws Exception in case of an error
      */
@@ -498,7 +497,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \order section is ok. </testcase>
+     *  The \order section is ok.
      * 
      * @throws Exception in case of an error
      */
@@ -510,7 +509,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \order section needs a block. </testcase>
+     *  The \order section needs a block.
      * 
      * @throws Exception in case of an error
      */
@@ -521,7 +520,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \order section needs a block. </testcase>
+     *  The \order section needs a block.
      * 
      * @throws Exception in case of an error
      */
@@ -533,7 +532,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \order section needs a block. </testcase>
+     *  The \order section needs a block.
      * 
      * @throws Exception in case of an error
      */
@@ -544,7 +543,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \order section needs a block. </testcase>
+     *  The \order section needs a block.
      * 
      * @throws Exception in case of an error
      */
@@ -555,7 +554,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \order section needs to be complete. </testcase>
+     *  The \order section needs to be complete.
      * 
      * @throws Exception in case of an error
      */
@@ -566,7 +565,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \order section needs to be complete. </testcase>
+     *  The \order section needs to be complete.
      * 
      * @throws Exception in case of an error
      */
@@ -577,7 +576,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \order section is ok. </testcase>
+     *  The \order section is ok.
      * 
      * @throws Exception in case of an error
      */
@@ -589,7 +588,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \order section is ok. </testcase>
+     *  The \order section is ok.
      * 
      * @throws Exception in case of an error
      */
@@ -601,7 +600,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The empty \ uppercase section is ok. </testcase>
+     *  The empty \ uppercase section is ok.
      * 
      * @throws Exception in case of an error
      */
@@ -613,7 +612,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The empty \ uppercase section is ok. </testcase>
+     *  The empty \ uppercase section is ok.
      * 
      * @throws Exception in case of an error
      */
@@ -625,7 +624,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The empty \ uppercase section is ok. </testcase>
+     *  The empty \ uppercase section is ok.
      * 
      * @throws Exception in case of an error
      */
@@ -637,7 +636,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \ uppercase section is ok. </testcase>
+     *  The \ uppercase section is ok.
      * 
      * @throws Exception in case of an error
      */
@@ -649,7 +648,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \ uppercase section is ok. </testcase>
+     *  The \ uppercase section is ok.
      * 
      * @throws Exception in case of an error
      */
@@ -661,7 +660,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \ upeprcase section needs a block. </testcase>
+     *  The \ upeprcase section needs a block.
      * 
      * @throws Exception in case of an error
      */
@@ -672,7 +671,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \ uppercase section needs a block. </testcase>
+     *  The \ uppercase section needs a block.
      * 
      * @throws Exception in case of an error
      */
@@ -683,7 +682,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \ uppercase section needs a block. </testcase>
+     *  The \ uppercase section needs a block.
      * 
      * @throws Exception in case of an error
      */
@@ -694,7 +693,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \ uppercase section needs a block. </testcase>
+     *  The \ uppercase section needs a block.
      * 
      * @throws Exception in case of an error
      */
@@ -705,7 +704,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \ uppercase section needs to be complete. </testcase>
+     *  The \ uppercase section needs to be complete.
      * 
      * @throws Exception in case of an error
      */
@@ -716,7 +715,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \ uppercase section needs to be complete. </testcase>
+     *  The \ uppercase section needs to be complete.
      * 
      * @throws Exception in case of an error
      */
@@ -727,7 +726,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \ uppercase section needs to be complete. </testcase>
+     *  The \ uppercase section needs to be complete.
      * 
      * @throws Exception in case of an error
      */
@@ -738,7 +737,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \ uppercase section needs to be complete. </testcase>
+     *  The \ uppercase section needs to be complete.
      * 
      * @throws Exception in case of an error
      */

@@ -36,8 +36,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ContextFactory extends AbstractFactory<Context> {
 
     /**
@@ -58,7 +57,7 @@ public class ContextFactory extends AbstractFactory<Context> {
     /**
      * Get an instance of a context. This method selects one of the entries in
      * the configuration. The selection is done with the help of a type String.
-     * If the type is <code>null</code> or the empty string then the default
+     * If the type is {@code null} or the empty string then the default
      * from the configuration is used.
      * 
      * @param type the type to use

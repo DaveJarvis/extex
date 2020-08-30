@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the core data types for fonts in ??TeX.
+ *Contains core data types for fonts in εχTeX.
  */
 
 package org.extex.font;

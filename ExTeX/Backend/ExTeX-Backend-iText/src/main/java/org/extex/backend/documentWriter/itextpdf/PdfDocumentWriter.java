@@ -55,8 +55,7 @@ import com.lowagie.text.pdf.PdfWriter;
  * Implementation of a pdf document writer with iText.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class PdfDocumentWriter
         implements
             DocumentWriter,
@@ -66,10 +65,10 @@ public class PdfDocumentWriter
             FontAware/* ,PdftexSupport */{
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated with
+     * The field {@code localizer} contains the localizer. It is initiated with
      * a localizer for the name of this class.
      */
-    private Localizer localizer = LocalizerFactory
+    private final Localizer localizer = LocalizerFactory
         .getLocalizer(PdfDocumentWriter.class);
 
     /**
@@ -90,7 +89,7 @@ public class PdfDocumentWriter
     /**
      * Map for the parameters.
      */
-    private Map<String, String> param = new HashMap<String, String>();
+    private final Map<String, String> param = new HashMap<String, String>();
 
     /**
      * The pdf document.
@@ -115,7 +114,7 @@ public class PdfDocumentWriter
     /**
      * The document writer options.
      */
-    private DocumentWriterOptions options;
+    private final DocumentWriterOptions options;
 
     /**
      * The logger.
@@ -134,12 +133,7 @@ public class PdfDocumentWriter
         configure(config);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#close()
-     */
-    @Override
+@Override
     public void close() throws GeneralException, IOException {
 
         if (out != null) {
@@ -154,12 +148,7 @@ public class PdfDocumentWriter
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
-     */
-    @Override
+@Override
     public void configure(Configuration config) throws ConfigurationException {
 
         if (config != null) {
@@ -168,24 +157,14 @@ public class PdfDocumentWriter
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
-     */
-    @Override
+@Override
     public void enableLogging(Logger logger) {
 
         this.logger = logger;
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
-     */
-    @Override
+@Override
     public String getExtension() {
 
         return "pdf";
@@ -202,12 +181,7 @@ public class PdfDocumentWriter
         nodevisitor.setPageSize(PageSize.A4);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.FontAware#setFontFactory(org.extex.font.CoreFontFactory)
-     */
-    @Override
+@Override
     public void setFontFactory(CoreFontFactory factory) {
 
         corefactory = factory;
@@ -219,12 +193,7 @@ public class PdfDocumentWriter
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(java.io.OutputStream)
-     */
-    @Override
+@Override
     public void setOutputStream(OutputStream writer) {
 
         out = writer;
@@ -232,10 +201,7 @@ public class PdfDocumentWriter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(java.lang.String,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public void setParameter(String name, String value) {
@@ -244,12 +210,7 @@ public class PdfDocumentWriter
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#shipout(org.extex.typesetter.type.page.Page)
-     */
-    @Override
+@Override
     public int shipout(Page page) throws GeneralException, IOException {
 
         try {

@@ -34,34 +34,35 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\hbox</code>.
+ * This class provides an implementation for the primitive {@code \hbox}.
  * 
- * <doc name="hbox">
- * <h3>The Primitive <tt>\hbox</tt></h3>
+ * <p>The Primitive {@code \hbox}</p>
  * <p>
- * The primitive <tt>\hbox</tt> takes arguments enclosed in braces and
+ * The primitive {@code \hbox} takes arguments enclosed in braces and
  * typesets this contents in horizontal mode. If a width is given then the
  * horizontal box is spread to this width. Otherwise the horizontal box has the
  * natural width of its contents.
  * </p>
  * <p>
- * The contents of the tokens register <tt>\everyhbox</tt> is inserted at the
+ * The contents of the tokens register {@code \everyhbox} is inserted at the
  * beginning of the horizontal material of the box.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;hbox&rang;
- *      &rarr; <tt>\hbox</tt> &lang;box specification&rang; <tt>{</tt> &lang;horizontal material&rang; <tt>}</tt>
+ *      &rarr; {@code \hbox} &lang;box specification&rang; {@code {} &lang;horizontal material&rang; {@code }}
  *
  *    &lang;box specification&rang;
  *      &rarr;
- *       |  <tt>to</tt> &lang;rule dimension&rang;
- *       |  <tt>spread</tt> &lang;rule dimension&rang;  </pre>
+ *       |  {@code to} &lang;rule dimension&rang;
+ *       |  {@code spread} &lang;rule dimension&rang;  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \hbox{abc}  </pre>
@@ -70,42 +71,40 @@ import org.extex.typesetter.exception.TypesetterException;
  *  <pre class="TeXSample">
  *    \hbox spread 12pt{abc}  </pre>
  * 
- * </doc>
+ *
  * 
- * 
- * <doc name="everyhbox">
- * <h3>The Tokens Parameter <tt>\everyhbox</tt></h3>
+ * <p>The Tokens Parameter {@code \everyhbox}</p>
  * <p>
- * The tokens parameter is used in <tt>/hbox</tt>. The tokens contained are
+ * The tokens parameter is used in {@code /hbox}. The tokens contained are
  * inserted at the beginning of the horizontal material of the horizontal box.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;everyhbox&rang;
- *      &rarr; <tt>\everyhbox</tt> {@linkplain
+ *      &rarr; {@code \everyhbox} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *        &lang;tokens&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \everyhbox{\message{Hi there}}  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Hbox extends AbstractBoxPrimitive {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -121,10 +120,7 @@ public class Hbox extends AbstractBoxPrimitive {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.box.Boxable#getBox(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
@@ -164,14 +160,14 @@ public class Hbox extends AbstractBoxPrimitive {
 
     /**
      * Acquire a complete Box taking into account the tokens in
-     * <tt>\afterassignment</tt> and <tt>\everyhbox</tt>.
+     * {@code \afterassignment} and {@code \everyhbox}.
      * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * @param startToken the token which started the group
      * @param ins the token to insert either at the beginning of the box or
-     *        after the box has been gathered. If it is <code>null</code> then
+     *        after the box has been gathered. If it is {@code null} then
      *        nothing is inserted
      * @param groupType the group type
      * 

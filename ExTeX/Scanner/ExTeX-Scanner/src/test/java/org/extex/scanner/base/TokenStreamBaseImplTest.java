@@ -35,8 +35,7 @@ import org.junit.Test;
  * Test suite for TokenStreamBaseImpl.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TokenStreamBaseImplTest {
 
 
@@ -45,9 +44,8 @@ public class TokenStreamBaseImplTest {
     }
 
     /**
-     * <testcase> This test case validates that closeFileStream() succeeds on an
-     * empty file stream. </testcase>
-     */
+     * This test case validates that closeFileStream() succeeds on an empty file stream
+*/
     @Test
     public void testCloseFileStream1() {
 
@@ -55,9 +53,8 @@ public class TokenStreamBaseImplTest {
     }
 
     /**
-     * <testcase> This test case validates that closeFileStream() fails on an
-     * empty non-file stream. </testcase>
-     */
+     * This test case validates that closeFileStream() fails on an empty non-file stream
+*/
     @Test
     public void testCloseFileStream11() {
 
@@ -65,9 +62,8 @@ public class TokenStreamBaseImplTest {
     }
 
     /**
-     * <testcase> This test case validates that closeFileStream() discards any
-     * remaining characters. </testcase>
-     * 
+     * This test case validates that closeFileStream() discards any remaining characters
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -82,9 +78,8 @@ public class TokenStreamBaseImplTest {
     }
 
     /**
-     * <testcase> This test case validates that closeFileStream() discards any
-     * remaining characters. </testcase>
-     * 
+     * This test case validates that closeFileStream() discards any remaining characters
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -99,9 +94,8 @@ public class TokenStreamBaseImplTest {
     }
 
     /**
-     * <testcase> This test case validates that get() returns <code>null</code>
-     * on en empty stream. </testcase>
-     * 
+     * This test case validates that get() returns {@code null} on en empty stream
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -113,9 +107,8 @@ public class TokenStreamBaseImplTest {
     }
 
     /**
-     * <testcase> This test case validates that getLocator() returns an locator
-     * pointing initially to the line 0. </testcase>
-     */
+     * This test case validates that getLocator() returns an locator pointing initially to the line 0
+*/
     @Test
     public void testGetLocator() {
 
@@ -127,9 +120,8 @@ public class TokenStreamBaseImplTest {
     }
 
     /**
-     * <testcase> This test case validates that an empty stream reports isEof()
-     * as <code>true</code>. </testcase>
-     * 
+     * This test case validates that an empty stream reports isEof() as {@code true}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -139,9 +131,9 @@ public class TokenStreamBaseImplTest {
     }
 
     /**
-     * <testcase> This test case validates that a non-empty stream reports
-     * isEof() as <code>false</code> which changes when the token has been
-     * retrieved. </testcase>
+     *  This test case validates that a non-empty stream reports
+     * isEof() as {@code false} which changes when the token has been
+     * retrieved.
      * 
      * @throws Exception in case of an error
      */
@@ -158,9 +150,8 @@ public class TokenStreamBaseImplTest {
     }
 
     /**
-     * <testcase> This test case validates that an empty stream reports isEol()
-     * as <code>true</code>. </testcase>
-     * 
+     * This test case validates that an empty stream reports isEol() as {@code true}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -170,9 +161,9 @@ public class TokenStreamBaseImplTest {
     }
 
     /**
-     * <testcase> This test case validates that a non-empty stream reports
-     * isEol() as <code>false</code> which changes when the token has been
-     * retrieved. </testcase>
+     *  This test case validates that a non-empty stream reports
+     * isEol() as {@code false} which changes when the token has been
+     * retrieved.
      * 
      * @throws Exception in case of an error
      */
@@ -186,9 +177,8 @@ public class TokenStreamBaseImplTest {
     }
 
     /**
-     * <testcase> This test case validates that the boolean constructor flag
-     * indicates a file stream (positive case). </testcase>
-     */
+     * This test case validates that the boolean constructor flag indicates a file stream (positive case)
+*/
     @Test
     public void testIsFileStream1() {
 
@@ -196,9 +186,8 @@ public class TokenStreamBaseImplTest {
     }
 
     /**
-     * <testcase> This test case validates that the boolean constructor flag
-     * indicates a file stream (negative case). </testcase>
-     */
+     * This test case validates that the boolean constructor flag indicates a file stream (negative case)
+*/
     @Test
     public void testIsFileStream2() {
 
@@ -206,9 +195,8 @@ public class TokenStreamBaseImplTest {
     }
 
     /**
-     * <testcase> This test case validates that put() puts a single token back
-     * into the stream. </testcase>
-     * 
+     * This test case validates that put() puts a single token back into the stream
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -226,9 +214,8 @@ public class TokenStreamBaseImplTest {
     }
 
     /**
-     * <testcase> This test case validates that put() puts several tokens back
-     * into the stream. </testcase>
-     * 
+     * This test case validates that put() puts several tokens back into the stream
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -251,9 +238,8 @@ public class TokenStreamBaseImplTest {
     }
 
     /**
-     * <testcase> This test case validates that skipSpaces() does not harm a
-     * letter token. </testcase>
-     * 
+     * This test case validates that skipSpaces() does not harm a letter token
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -271,9 +257,8 @@ public class TokenStreamBaseImplTest {
     }
 
     /**
-     * <testcase> This test case validates that skipSpaces() forces the deletion
-     * of a space token. </testcase>
-     * 
+     * This test case validates that skipSpaces() forces the deletion of a space token
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -294,9 +279,8 @@ public class TokenStreamBaseImplTest {
     }
 
     /**
-     * <testcase> This test case validates that skipSpaces() forces the deletion
-     * of multiple space token. </testcase>
-     * 
+     * This test case validates that skipSpaces() forces the deletion of multiple space token
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -319,9 +303,8 @@ public class TokenStreamBaseImplTest {
     }
 
     /**
-     * <testcase> This test case validates that the constructor injects a token
-     * list with one element. </testcase>
-     * 
+     * This test case validates that the constructor injects a token list with one element
+* 
      * @throws Exception in case of an error
      */
     @Test

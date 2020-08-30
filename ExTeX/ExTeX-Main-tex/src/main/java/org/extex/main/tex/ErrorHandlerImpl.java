@@ -49,40 +49,36 @@ import org.extex.scanner.type.token.Token;
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
 
     /**
-     * The field <tt>ENABLE_DEBUG</tt> contains the indicator for turning on the
+     * The field {@code ENABLE_DEBUG} contains the indicator for turning on the
      * debugging emulation.
      */
     private static final boolean ENABLE_DEBUG = false;
 
     /**
-     * The constant <tt>NL</tt> contains the String with the newline character,
+     * The constant {@code NL} contains the String with the newline character,
      * since it is needed several times.
      */
     protected static final String NL = "\n";
 
     /**
-     * The field <tt>editHandler</tt> contains the handler to be invoked upon a
+     * The field {@code editHandler} contains the handler to be invoked upon a
      * request to edit a file.
      */
     private EditHandler editHandler = null;
 
     /**
-     * The field <tt>iv</tt> contains the interaction visitor with the different
+     * The field {@code iv} contains the interaction visitor with the different
      * behavior for the different interaction modes.
      */
     private InteractionVisitor<TokenSource, Context, GeneralException> iv =
             new InteractionVisitor<TokenSource, Context, GeneralException>() {
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.interpreter.interaction.InteractionVisitor#visitBatchmode(java.lang.Object,
-                 *      java.lang.Object, java.lang.Object)
+            *      java.lang.Object, java.lang.Object)
                  */
                 @Override
                 public boolean visitBatchmode(TokenSource source,
@@ -93,10 +89,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.interpreter.interaction.InteractionVisitor#visitErrorstopmode(java.lang.Object,
-                 *      java.lang.Object, java.lang.Object)
+            *      java.lang.Object, java.lang.Object)
                  */
                 @Override
                 public boolean visitErrorstopmode(TokenSource source,
@@ -235,10 +228,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.interpreter.interaction.InteractionVisitor#visitNonstopmode(java.lang.Object,
-                 *      java.lang.Object, java.lang.Object)
+            *      java.lang.Object, java.lang.Object)
                  */
                 @Override
                 public boolean visitNonstopmode(TokenSource source,
@@ -249,10 +239,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.interpreter.interaction.InteractionVisitor#visitScrollmode(java.lang.Object,
-                 *      java.lang.Object, java.lang.Object)
+            *      java.lang.Object, java.lang.Object)
                  */
                 @Override
                 public boolean visitScrollmode(TokenSource source,
@@ -265,12 +252,12 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
             };
 
     /**
-     * The field <tt>localizer</tt> contains the localizer.
+     * The field {@code localizer} contains the localizer.
      */
     private Localizer localizer = LocalizerFactory.getLocalizer(getClass());
 
     /**
-     * The field <tt>logger</tt> contains the logger to write a protocol of the
+     * The field {@code logger} contains the logger to write a protocol of the
      * interaction to. Note that the error has already been logged when this
      * handler is invoked. Thus only additional logging output should be
      * produced in this class.
@@ -282,12 +269,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
-     */
-    @Override
+@Override
     public void enableLogging(Logger theLogger) {
 
         this.logger = theLogger;
@@ -340,10 +322,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.ErrorHandler#handleError(org.extex.core.exception.GeneralException,
-     *      org.extex.scanner.type.token.Token,
+*      org.extex.scanner.type.token.Token,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.interpreter.context.Context)
      */
@@ -368,7 +347,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
      * 
      * @param prompt the prompt to display
      * 
-     * @return the line read or <code>null</code> to signal EOF
+     * @return the line read or {@code null} to signal EOF
      * 
      * @throws HelpingException in case of EOF on terminal
      */
@@ -400,12 +379,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
         throw new HelpingException(localizer, "TTP.EOFonTerm");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.ErrorHandler#setEditHandler(org.extex.interpreter.EditHandler)
-     */
-    @Override
+@Override
     public void setEditHandler(EditHandler editHandler) {
 
         this.editHandler = editHandler;

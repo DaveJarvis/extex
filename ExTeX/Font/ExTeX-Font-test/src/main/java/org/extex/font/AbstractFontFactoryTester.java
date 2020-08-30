@@ -35,8 +35,7 @@ import org.extex.resource.ResourceFinderFactory;
  * Test for the font factory.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractFontFactoryTester {
 
     /**

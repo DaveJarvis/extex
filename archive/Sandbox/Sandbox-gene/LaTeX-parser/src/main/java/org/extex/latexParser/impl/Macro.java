@@ -29,8 +29,7 @@ import org.extex.scanner.type.token.Token;
  * This interface describes a parser for a macro or active character.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface Macro {
 
     /**

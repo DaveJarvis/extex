@@ -83,8 +83,7 @@ import org.extex.typesetter.type.page.Page;
  * This class provides a base implementation of a DVI document writer.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4457 $
- */
+*/
 public class DviDocumentWriter
         implements
             DocumentWriter,
@@ -93,119 +92,119 @@ public class DviDocumentWriter
             Configurable {
 
     /**
-     * The constant <tt>MAX_4_BYTE</tt> contains the maximal value of a signed
+     * The constant {@code MAX_4_BYTE} contains the maximal value of a signed
      * 4-byte value.
      */
     private static final int MAX_4_BYTE = 0x7fffffff;
 
     /**
-     * The field <tt>MINUTES_PER_OUR</tt> contains the number of minutes per
+     * The field {@code MINUTES_PER_OUR} contains the number of minutes per
      * hour.
      */
     private static final int MINUTES_PER_OUR = 60;
 
     /**
-     * The field <tt>bopPointer</tt> contains the pointer to the last BOP.
+     * The field {@code bopPointer} contains the pointer to the last BOP.
      */
     private int bopPointer = -1;
 
     /**
-     * The field <tt>converter</tt> contains the color converter to use.
+     * The field {@code converter} contains the color converter to use.
      */
     private ColorConverter colorConverter = null;
 
     /**
-     * The field <tt>colorSpecials</tt> contains the indicator whether or not
+     * The field {@code colorSpecials} contains the indicator whether or not
      * to include color specials.
      */
     private boolean colorSpecials = false;
 
     /**
-     * The field <tt>dviH</tt> contains the h value of the DVI interpreter.
+     * The field {@code dviH} contains the h value of the DVI interpreter.
      */
     private int dviH;
 
     /**
-     * The field <tt>dviStack</tt> contains the stack of the DVI interpreter.
+     * The field {@code dviStack} contains the stack of the DVI interpreter.
      */
     private final Stack<int[]> dviStack = new Stack<int[]>();
 
     /**
-     * The field <tt>dviV</tt> contains the v value of the DVI interpreter.
+     * The field {@code dviV} contains the v value of the DVI interpreter.
      */
     private int dviV;
 
     /**
-     * The field <tt>dviW</tt> contains the w value of the DVI interpreter.
+     * The field {@code dviW} contains the w value of the DVI interpreter.
      */
     private int dviW;
 
     /**
-     * The field <tt>dviX</tt> contains the x value of the DVI interpreter.
+     * The field {@code dviX} contains the x value of the DVI interpreter.
      */
     private int dviX;
 
     /**
-     * The field <tt>dviY</tt> contains the y value of the DVI interpreter.
+     * The field {@code dviY} contains the y value of the DVI interpreter.
      */
     private int dviY;
 
     /**
-     * The field <tt>dviZ</tt> contains the z value of the DVI interpreter.
+     * The field {@code dviZ} contains the z value of the DVI interpreter.
      */
     private int dviZ;
 
     /**
-     * The field <tt>extension</tt> contains the extension.
+     * The field {@code extension} contains the extension.
      */
     private String extension = "dvi";
 
     /**
-     * The field <tt>fontIndex</tt> contains the font number currently active.
+     * The field {@code fontIndex} contains the font number currently active.
      */
     private int fontIndex;
 
     /**
-     * The field <tt>notInitialized</tt> contains the indicator that the
+     * The field {@code notInitialized} contains the indicator that the
      * preamble still needs to be written.
      */
     private boolean notInitialized = true;
 
     /**
-     * The field <tt>options</tt> contains the options to use.
+     * The field {@code options} contains the options to use.
      */
     private final DocumentWriterOptions options;
 
     /**
-     * The field <tt>pointer</tt> contains the index of the next byte to be
+     * The field {@code pointer} contains the index of the next byte to be
      * written.
      */
     private int pointer = 0;
 
     /**
-     * The field <tt>postamble</tt> contains the postamble carrying the font
+     * The field {@code postamble} contains the postamble carrying the font
      * list.
      */
     private DviPostamble postamble;
 
     /**
-     * The field <tt>stacksize</tt> contains the maximum depth of the stack
+     * The field {@code stacksize} contains the maximum depth of the stack
      * needed to process all push and pop instructions.
      */
     private int stacksize = 1;
 
     /**
-     * The field <tt>stream</tt> contains the target.
+     * The field {@code stream} contains the target.
      */
     private OutputStream stream;
 
     /**
-     * The field <tt>textColor</tt> contains the current text color.
+     * The field {@code textColor} contains the current text color.
      */
     private Color textColor;
 
     /**
-     * The field <tt>visitor</tt> contains the visitor carrying the methods
+     * The field {@code visitor} contains the visitor carrying the methods
      * for translating nodes to DVI instructions.
      * <p>
      * Each node visited can assume that the reference point is positioned
@@ -214,7 +213,7 @@ public class DviDocumentWriter
      * reference point.
      * </p>
      * <p>
-     * If the return value is <code>null</code> then the processing has been
+     * If the return value is {@code null} then the processing has been
      * performed successfully. Otherwise the node should be ignored.
      * </p>
      */
@@ -222,7 +221,7 @@ public class DviDocumentWriter
             new NodeVisitor<Boolean, List<DviCode>>() {
 
                 /**
-                 * The field <tt>horizontal</tt> contains the indicator that
+                 * The field {@code horizontal} contains the indicator that
                  * the processing is in horizontal mode. Otherwise it is in
                  * vertical mode.
                  */
@@ -733,8 +732,8 @@ public class DviDocumentWriter
 
     /**
      * Getter for the extension associated with this kind of output. For
-     * instance <tt>pdf</tt> is the expected value for PDF files and
-     * <tt>dvi</tt> is the expected value for DVI files.
+     * instance {@code pdf} is the expected value for PDF files and
+     * {@code dvi} is the expected value for DVI files.
      *
      * @return the appropriate extension for file names
      *

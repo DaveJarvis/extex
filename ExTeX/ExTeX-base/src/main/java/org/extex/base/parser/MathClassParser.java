@@ -38,12 +38,11 @@ import org.extex.typesetter.type.math.MathClass;
  * This class provides the parser for math classes.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4399 $
- */
+*/
 public class MathClassParser implements Parser<MathClass>, Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;

@@ -38,21 +38,20 @@ import org.extex.ocpware.type.OcpCode;
  * <pre class="syntax">
  *    &lang;arith expression&rang;
  *      &rarr; &lang;n&rang;
- *       | <tt>\</tt>&lang;n&rang;
- *       | <tt>\$</tt>
- *       | <tt>\($-</tt>&lang;n&rang;<tt>)</tt>
- *       | &lang;arith expression&rang; <tt>+</tt> &lang;arith expression&rang;
- *       | &lang;arith expression&rang; <tt>-</tt> &lang;arith expression&rang;
- *       | &lang;arith expression&rang; <tt>*</tt> &lang;arith expression&rang;
- *       | &lang;arith expression&rang; <tt>div:</tt> &lang;arith expression&rang;
- *       | &lang;arith expression&rang; <tt>mod:</tt> &lang;arith expression&rang;
- *       | &lang;id&rang;<tt>[</tt>&lang;arith expression&rang;<tt>]</tt>
- *       | <tt>(</tt>&lang;arith expression&rang;<tt>)</tt>  </pre>
+ *       | {@code \}&lang;n&rang;
+ *       | {@code \$}
+ *       | {@code \($-}&lang;n&rang;{@code )}
+ *       | &lang;arith expression&rang; {@code +} &lang;arith expression&rang;
+ *       | &lang;arith expression&rang; {@code -} &lang;arith expression&rang;
+ *       | &lang;arith expression&rang; {@code *} &lang;arith expression&rang;
+ *       | &lang;arith expression&rang; {@code div:} &lang;arith expression&rang;
+ *       | &lang;arith expression&rang; {@code mod:} &lang;arith expression&rang;
+ *       | &lang;id&rang;{@code [}&lang;arith expression&rang;{@code ]}
+ *       | {@code (}&lang;arith expression&rang;{@code )}  </pre>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public abstract class ArithExpr {
 
     /**
@@ -61,15 +60,12 @@ public abstract class ArithExpr {
     private enum Op {
 
         /**
-         * The field <tt>MINUS</tt> contains the subtraction.
+         * The field {@code MINUS} contains the subtraction.
          */
         MINUS {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.ocpware.compiler.arith.ArithExpr.Op#eval(
-             *      org.extex.ocpware.compiler.arith.ArithExpr,
+        *      org.extex.ocpware.compiler.arith.ArithExpr,
              *      org.extex.ocpware.compiler.arith.ArithExpr)
              */
             @Override
@@ -80,15 +76,12 @@ public abstract class ArithExpr {
         },
 
         /**
-         * The field <tt>PLUS</tt> contains the addition.
+         * The field {@code PLUS} contains the addition.
          */
         PLUS {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.ocpware.compiler.arith.ArithExpr.Op#eval(
-             *      org.extex.ocpware.compiler.arith.ArithExpr,
+        *      org.extex.ocpware.compiler.arith.ArithExpr,
              *      org.extex.ocpware.compiler.arith.ArithExpr)
              */
             @Override

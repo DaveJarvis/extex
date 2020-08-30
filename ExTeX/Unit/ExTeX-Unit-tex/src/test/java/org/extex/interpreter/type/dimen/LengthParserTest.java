@@ -34,14 +34,12 @@ import org.junit.Test;
  * This is a test suite for the for the parser of data type Dimen.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LengthParserTest extends ExTeXLauncher {
 
     /**
-     * <testcase> Test case showing that abs on a positive value results in this
-     * value. </testcase>
-     * 
+     * Test case showing that abs on a positive value results in this value
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -54,9 +52,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that abs on a negative value results in the
-     * negated value. </testcase>
-     * 
+     * Test case showing that abs on a negative value results in the negated value
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -69,8 +66,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that abs() needs a closing brace.
-     * </testcase>
+     *  Test case showing that abs() needs a closing brace.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -82,9 +79,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a dimen variable incremented by a
-     * fraction is parsed. </testcase>
-     * 
+     * Test case showing that a dimen variable incremented by a fraction is parsed
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -97,9 +93,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a fraction incremented by a dimen
-     * variable is parsed. </testcase>
-     * 
+     * Test case showing that a fraction incremented by a dimen variable is parsed
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -112,8 +107,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a successive addition is parsed.
-     * </testcase>
+     *  Test case showing that a successive addition is parsed.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -127,9 +122,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that values of differnt order can not be
-     * added. </testcase>
-     * 
+     * Test case showing that values of differnt order can not be added
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -140,8 +134,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that cos needs a scalar argument.
-     * </testcase>
+     *  Test case showing that cos needs a scalar argument.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -153,7 +147,7 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that cos(0) = 1. </testcase>
+     *  Test case showing that cos(0) = 1. 
      * 
      * @throws Exception in case of an error
      */
@@ -166,7 +160,7 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that cos(pi/2) = 0. </testcase>
+     *  Test case showing that cos(pi/2) = 0. 
      * 
      * @throws Exception in case of an error
      */
@@ -179,7 +173,7 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a count variable is parsed. </testcase>
+     *  Test case showing that a count variable is parsed. 
      * 
      * @throws Exception in case of an error
      */
@@ -193,9 +187,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a dimen constant divided by zero leads
-     * to an error. </testcase>
-     * 
+     * Test case showing that a dimen constant divided by zero leads to an error
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -206,7 +199,7 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that 2pt*2pt/1pt=4pt. </testcase>
+     *  Test case showing that 2pt*2pt/1pt=4pt. 
      * 
      * @throws Exception in case of an error
      */
@@ -220,7 +213,7 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that 4pt/2 = 2pt. </testcase>
+     *  Test case showing that 4pt/2 = 2pt. 
      * 
      * @throws Exception in case of an error
      */
@@ -233,9 +226,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a dimen variable divided by zero leads
-     * to an error. </testcase>
-     * 
+     * Test case showing that a dimen variable divided by zero leads to an error
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -247,8 +239,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that unmatched parentheses are recognized.
-     * </testcase>
+     *  Test case showing that unmatched parentheses are recognized.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -260,8 +252,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that unmatched parentheses are recognized.
-     * </testcase>
+     *  Test case showing that unmatched parentheses are recognized.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -273,9 +265,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that unmatched parentheses at EOF is
-     * recognized. </testcase>
-     * 
+     * Test case showing that unmatched parentheses at EOF is recognized
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -286,8 +277,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that min() needs a closing brace.
-     * </testcase>
+     *  Test case showing that min() needs a closing brace.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -299,8 +290,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that min() needs a closing brace.
-     * </testcase>
+     *  Test case showing that min() needs a closing brace.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -311,8 +302,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that expansion during the parsing works.
-     * </testcase>
+     *  Test case showing that expansion during the parsing works.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -327,9 +318,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an expression needs a proper
-     * expression. </testcase>
-     * 
+     * Test case showing that an expression needs a proper expression
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -340,8 +330,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an expression needs a closing brace.
-     * </testcase>
+     *  Test case showing that an expression needs a closing brace.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -353,8 +343,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an expression needs a closing brace.
-     * </testcase>
+     *  Test case showing that an expression needs a closing brace.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -366,8 +356,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that undefined function is recognized.
-     * </testcase>
+     *  Test case showing that undefined function is recognized.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -379,8 +369,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that max on one dimen results in this value.
-     * </testcase>
+     *  Test case showing that max on one dimen results in this value.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -394,8 +384,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that max() on three dimens works.
-     * </testcase>
+     *  Test case showing that max() on three dimens works.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -408,7 +398,7 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that max on dimen works. </testcase>
+     *  Test case showing that max on dimen works. 
      * 
      * @throws Exception in case of an error
      */
@@ -421,8 +411,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the function max needs arguments.
-     * </testcase>
+     *  Test case showing that the function max needs arguments.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -434,8 +424,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that incompatible units lead to an error.
-     * </testcase>
+     *  Test case showing that incompatible units lead to an error.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -447,8 +437,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that max needs an argument parenthesis.
-     * </testcase>
+     *  Test case showing that max needs an argument parenthesis.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -460,8 +450,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that max needs an argument parenthesis.
-     * </testcase>
+     *  Test case showing that max needs an argument parenthesis.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -473,9 +463,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that min() on a single value returns this
-     * value. </testcase>
-     * 
+     * Test case showing that min() on a single value returns this value
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -488,7 +477,7 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that min on three dimens works. </testcase>
+     *  Test case showing that min on three dimens works. 
      * 
      * @throws Exception in case of an error
      */
@@ -501,8 +490,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that min() in three dimens works.
-     * </testcase>
+     *  Test case showing that min() in three dimens works.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -515,8 +504,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the function min() needs an argument.
-     * </testcase>
+     *  Test case showing that the function min() needs an argument.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -528,9 +517,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that min on number and dimen leads to an
-     * error. </testcase>
-     * 
+     * Test case showing that min on number and dimen leads to an error
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -541,8 +529,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that negation of a variable is parsed.
-     * </testcase>
+     *  Test case showing that negation of a variable is parsed.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -556,9 +544,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that double negation of a variable is
-     * parsed. </testcase>
-     * 
+     * Test case showing that double negation of a variable is parsed
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -571,9 +558,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a integer multiplied dimen variable is
-     * parsed. </testcase>
-     * 
+     * Test case showing that a integer multiplied dimen variable is parsed
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -586,9 +572,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a dimen variable multiplied by an
-     * integer is parsed. </testcase>
-     * 
+     * Test case showing that a dimen variable multiplied by an integer is parsed
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -601,9 +586,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a fraction multiplied dimen variable is
-     * parsed. </testcase>
-     * 
+     * Test case showing that a fraction multiplied dimen variable is parsed
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -616,9 +600,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a dimen variable multiplied by a
-     * fraction is parsed. </testcase>
-     * 
+     * Test case showing that a dimen variable multiplied by a fraction is parsed
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -631,8 +614,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the function pi() is parsed.
-     * </testcase>
+     *  Test case showing that the function pi() is parsed.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -645,9 +628,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a positive sign of a variable is
-     * parsed. </testcase>
-     * 
+     * Test case showing that a positive sign of a variable is parsed
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -660,9 +642,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that double positive sign of a variable is
-     * parsed. </testcase>
-     * 
+     * Test case showing that double positive sign of a variable is parsed
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -675,7 +656,7 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that 0pt is parsed. </testcase>
+     *  Test case showing that 0pt is parsed. 
      * 
      * @throws Exception in case of an error
      */
@@ -687,9 +668,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a positive number with fraction is
-     * parsed. </testcase>
-     * 
+     * Test case showing that a positive number with fraction is parsed
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -700,9 +680,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a negative number with fraction is
-     * parsed. </testcase>
-     * 
+     * Test case showing that a negative number with fraction is parsed
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -713,8 +692,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a positive fraction number is parsed.
-     * </testcase>
+     *  Test case showing that a positive fraction number is parsed.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -726,8 +705,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a negative fraction number is parsed.
-     * </testcase>
+     *  Test case showing that a negative fraction number is parsed.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -739,8 +718,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a registered function is called.
-     * </testcase>
+     *  Test case showing that a registered function is called.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -762,8 +741,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a registered function is called.
-     * </testcase>
+     *  Test case showing that a registered function is called.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -786,9 +765,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a binary function needs a comma as
-     * argument separator. </testcase>
-     * 
+     * Test case showing that a binary function needs a comma as argument separator
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -809,9 +787,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a binary function needs a comma as
-     * argument separator. </testcase>
-     * 
+     * Test case showing that a binary function needs a comma as argument separator
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -831,7 +808,7 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that sgn(0) = 0. </testcase>
+     *  Test case showing that sgn(0) = 0. 
      * 
      * @throws Exception in case of an error
      */
@@ -844,7 +821,7 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that sgn(10) = 1. </testcase>
+     *  Test case showing that sgn(10) = 1. 
      * 
      * @throws Exception in case of an error
      */
@@ -857,7 +834,7 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that sgn(-10) = -1. </testcase>
+     *  Test case showing that sgn(-10) = -1. 
      * 
      * @throws Exception in case of an error
      */
@@ -870,8 +847,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that sin needs a scalar argument.
-     * </testcase>
+     *  Test case showing that sin needs a scalar argument.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -883,7 +860,7 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that sin(0) = 0. </testcase>
+     *  Test case showing that sin(0) = 0. 
      * 
      * @throws Exception in case of an error
      */
@@ -896,7 +873,7 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that sin(pi/2) = 1. </testcase>
+     *  Test case showing that sin(pi/2) = 1. 
      * 
      * @throws Exception in case of an error
      */
@@ -909,9 +886,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a dimen variable subtracted by a
-     * fraction is parsed. </testcase>
-     * 
+     * Test case showing that a dimen variable subtracted by a fraction is parsed
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -924,9 +900,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a dimen variable subtracted by a
-     * fraction is parsed. </testcase>
-     * 
+     * Test case showing that a dimen variable subtracted by a fraction is parsed
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -939,9 +914,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that numbers with different orders can not
-     * be subtracted. </testcase>
-     * 
+     * Test case showing that numbers with different orders can not be subtracted
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -952,9 +926,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that numbers with different orders can not
-     * be subtracted. </testcase>
-     * 
+     * Test case showing that numbers with different orders can not be subtracted
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -965,8 +938,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that tan needs a scalar argument.
-     * </testcase>
+     *  Test case showing that tan needs a scalar argument.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -978,7 +951,7 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that tan(0) = 0. </testcase>
+     *  Test case showing that tan(0) = 0. 
      * 
      * @throws Exception in case of an error
      */
@@ -991,7 +964,7 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a complex formula works. </testcase>
+     *  Test case showing that a complex formula works. 
      * 
      * @throws Exception in case of an error
      */
@@ -1005,7 +978,7 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that dimens need a unit. </testcase>
+     *  Test case showing that dimens need a unit. 
      * 
      * @throws Exception in case of an error
      */
@@ -1018,9 +991,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a unit of pt^{-1} can not be assigned
-     * to a dimen register. </testcase>
-     * 
+     * Test case showing that a unit of pt^{-1} can not be assigned to a dimen register
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1032,9 +1004,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a value with unit pt^2 can not be
-     * assigned to a dimen register. </testcase>
-     * 
+     * Test case showing that a value with unit pt^2 can not be assigned to a dimen register
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1045,9 +1016,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a value with dimension pt^3 can not be
-     * assigned to a dimen. </testcase>
-     * 
+     * Test case showing that a value with dimension pt^3 can not be assigned to a dimen
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1058,7 +1028,7 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a dimen variable is parsed. </testcase>
+     *  Test case showing that a dimen variable is parsed. 
      * 
      * @throws Exception in case of an error
      */
@@ -1072,8 +1042,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a negated dimen variable is parsed.
-     * </testcase>
+     *  Test case showing that a negated dimen variable is parsed.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -1087,9 +1057,8 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a double negated dimen variable is
-     * parsed. </testcase>
-     * 
+     * Test case showing that a double negated dimen variable is parsed
+* 
      * @throws Exception in case of an error
      */
     @Test

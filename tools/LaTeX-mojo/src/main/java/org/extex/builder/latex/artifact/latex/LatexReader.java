@@ -27,12 +27,11 @@ import java.io.Reader;
  * class="la">a</span>T<span class="e">e</span>X files.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LatexReader extends PushbackReader {
 
     /**
-     * The field <tt>state</tt> contains the processor state.
+     * The field {@code state} contains the processor state.
      */
     private State state;
 

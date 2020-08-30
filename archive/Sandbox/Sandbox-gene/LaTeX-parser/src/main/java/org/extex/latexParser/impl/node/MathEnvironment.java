@@ -27,33 +27,32 @@ import org.extex.scanner.type.token.Token;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MathEnvironment extends EnvironmentNode {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 1L;
 
     /**
-     * The field <tt>start</tt> contains the first start token.
+     * The field {@code start} contains the first start token.
      */
     private Token start;
 
     /**
-     * The field <tt>end</tt> contains the end start token.
+     * The field {@code end} contains the end start token.
      */
     private Token end;
 
     /**
-     * The field <tt>start2</tt> contains the optional second start token.
+     * The field {@code start2} contains the optional second start token.
      */
     private Token start2;
 
     /**
-     * The field <tt>end2</tt> contains the optional second end token.
+     * The field {@code end2} contains the optional second end token.
      */
     private Token end2;
 
@@ -78,10 +77,7 @@ public class MathEnvironment extends EnvironmentNode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.node.EnvironmentNode#print(
-     *      java.io.PrintStream)
+*      java.io.PrintStream)
      */
     @Override
     public void print(PrintStream stream) {
@@ -97,12 +93,7 @@ public class MathEnvironment extends EnvironmentNode {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.node.EnvironmentNode#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();
@@ -111,10 +102,7 @@ public class MathEnvironment extends EnvironmentNode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.node.EnvironmentNode#toString(
-     *      java.lang.StringBuilder)
+*      java.lang.StringBuilder)
      */
     @Override
     public StringBuilder toString(StringBuilder sb) {

@@ -33,44 +33,38 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.RuleNode;
 
 /**
- * This class provides an implementation for the primitive <code>\hrule</code>.
+ * This class provides an implementation for the primitive {@code \hrule}.
  * 
- * <doc name="hrule"> <h3>The Primitive <tt>\hrule</tt></h3>
+ * <p>The Primitive {@code \hrule}</p>
  * <p>
  * This primitive produces a horizontal rule. This is a rectangular area of
  * specified dimensions. If not overwritten the width and depth are 0pt and the
  * height is 0.4&nbsp;pt (26214&nbsp;sp).
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;hrule&rang;
- *        &rarr; <tt>\hrule</tt> &lang;rule specification&rang;
+ *        &rarr; {@code \hrule} &lang;rule specification&rang;
  *
  *    &lang;rule specification&rang;
- *        &rarr; {@linkplain
- *            org.extex.interpreter.TokenSource#skipSpace()
- *            &lang;optional&nbsp;spaces&rang;}
+ *        &rarr;  &lang;optional&nbsp;spaces&rang;
  *         |  &lang;rule dimension&rang; &lang;rule specification&rang;
  *
  *    &lang;rule dimension&rang;
- *        &rarr; <tt>width</tt> {@linkplain
- *        org.extex.core.dimen#Dimen(Context,TokenSource)
- *        &lang;dimen&rang;}
- *         |  <tt>height</tt> {@linkplain
- *        org.extex.core.dimen#Dimen(Context,TokenSource)
- *        &lang;dimen&rang;}
- *         |  <tt>depth</tt> {@linkplain
- *        org.extex.core.dimen#Dimen(Context,TokenSource)
- *        &lang;dimen&rang;}   </pre>
+ *        &rarr; {@code width} &lang;dimen&rang;
+ *         |  {@code height} &lang;dimen&rang;
+ *         |  {@code depth} &lang;dimen&rang;
+ * </pre>
  * 
  * <p>
  * The color from the typographic context is taken as foreground color for the
  * rule. The default color is black.
  * </p>
- * <h4>Examples</h4>
- * 
+ * <p>Examples</p>
+ *
  * <pre class="TeXSample">
  *    \hrule  </pre>
  * 
@@ -79,22 +73,18 @@ import org.extex.typesetter.type.node.RuleNode;
  * 
  * <pre class="TeXSample">
  *    \hrule width 2pt depth 3mm height \dimen4  </pre>
- * 
- * </doc>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Hrule extends AbstractCode implements RuleConvertible {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The constant <tt>DEFAULT_RULE</tt> contains the equivalent to 0.4pt.
+     * The constant {@code DEFAULT_RULE} contains the equivalent to 0.4pt.
      */
     private static final long DEFAULT_RULE = 26214;
 
@@ -109,10 +99,7 @@ public class Hrule extends AbstractCode implements RuleConvertible {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -123,10 +110,7 @@ public class Hrule extends AbstractCode implements RuleConvertible {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.box.RuleConvertible#getRule(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public RuleNode getRule(Context context, TokenSource source,

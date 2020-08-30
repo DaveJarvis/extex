@@ -26,8 +26,7 @@ import java.util.List;
  * T2: hstem y dy {dya dyb}* hstem (1).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class T2Hstem extends T2HintCmd {
 
     /**
@@ -43,23 +42,13 @@ public class T2Hstem extends T2HintCmd {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
-     */
-    @Override
+@Override
     public int getID() {
 
         return TYPE_HSTEM;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "hstem";

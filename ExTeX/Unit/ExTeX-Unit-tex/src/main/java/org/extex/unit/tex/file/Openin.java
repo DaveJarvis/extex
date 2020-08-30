@@ -33,16 +33,15 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.file.AbstractFileCode;
 
 /**
- * This class provides an implementation for the primitive <code>\openin</code>.
+ * This class provides an implementation for the primitive {@code \openin}.
  * 
- * <doc name="openin">
- * <h3>The Primitive <tt>\openin</tt></h3>
+ * <p>The Primitive {@code \openin}</p>
  * <p>
- * The primitive <tt>\openin</tt> tries to open a file or other named resource
+ * The primitive {@code \openin} tries to open a file or other named resource
  * for reading. The reference is stored in a read register to be used with
- * {@link org.extex.unit.tex.file.Read <tt>\read</tt>}. If the opening fails
+ * {@link org.extex.unit.tex.file.Read {@code \read}}. If the opening fails
  * then the read register is void. This can be checked with the primitive
- * {@link org.extex.unit.tex.conditional.Ifeof <tt>\ifeof</tt>}.
+ * {@link org.extex.unit.tex.conditional.Ifeof {@code \ifeof}}.
  * </p>
  * <p>
  * The assignment to a read register is always global. The opening is always
@@ -50,16 +49,17 @@ import org.extex.unit.base.file.AbstractFileCode;
  * </p>
  * <p>
  * The stream should be closed with
- * {@link org.extex.unit.tex.file.Closein <tt>\closein</tt>} when not needed any
+ * {@link org.extex.unit.tex.file.Closein {@code \closein}} when not needed any
  * more.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;openin&rang;
- *      &rarr; <tt>\openin</tt>  {@linkplain
+ *      &rarr; {@code \openin}  {@linkplain
  *        org.extex.unit.base.file.AbstractFileCode#scanInFileKey(Context,TokenSource,Typesetter)
  *        &lang;infile&nbsp;name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
@@ -67,29 +67,28 @@ import org.extex.unit.base.file.AbstractFileCode;
  *        org.extex.unit.base.file.AbstractFileCode#scanFileName(Context,TokenSource)
  *        &lang;file name&rang;}   </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *  \openin3= abc.def
  *  \read3 to \line
  *  \closein3 </pre>
  * 
- * </doc>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4441 $
- */
+*/
 public class Openin extends AbstractFileCode {
 
     /**
-     * The field <tt>FILE_TYPE</tt> contains the file type to create an input
+     * The field {@code FILE_TYPE} contains the file type to create an input
      * stream for.
      */
     private static final String FILE_TYPE = "tex";
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -105,10 +104,7 @@ public class Openin extends AbstractFileCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

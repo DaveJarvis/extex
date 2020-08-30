@@ -54,14 +54,13 @@ import org.extex.typesetter.exception.TypesetterException;
  * value.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4726 $
- */
+*/
 public final class LengthParser {
 
     /**
-     * The field <tt>ASSIGN</tt> contains the operation to assign the second
+     * The field {@code ASSIGN} contains the operation to assign the second
      * argument to the first one and return it. The way this class is used
-     * ensures that the first argument is always <code>null</code>. Thus simply
+     * ensures that the first argument is always {@code null}. Thus simply
      * a copy of the second argument is returned.
      */
     private static final Function2 ASSIGN = new Function2() {
@@ -78,15 +77,15 @@ public final class LengthParser {
     };
 
     /**
-     * The field <tt>functions</tt> contains the function object attached to a
+     * The field {@code functions} contains the function object attached to a
      * function name.
      */
     private static Map<String, Object> functions =
             new HashMap<String, Object>();
 
     /**
-     * The field <tt>MINUS</tt> contains the subtracter. The way this class is
-     * used ensures that both arguments are never <code>null</code>.
+     * The field {@code MINUS} contains the subtracter. The way this class is
+     * used ensures that both arguments are never {@code null}.
      */
     private static final Function2 MINUS = new Function2() {
 
@@ -110,8 +109,8 @@ public final class LengthParser {
     };
 
     /**
-     * The field <tt>PLUS</tt> contains the adder. The way this class is used
-     * ensures that both arguments are never <code>null</code>.
+     * The field {@code PLUS} contains the adder. The way this class is used
+     * ensures that both arguments are never {@code null}.
      */
     private static final Function2 PLUS = new Function2() {
 
@@ -194,10 +193,7 @@ public final class LengthParser {
             /**
              * Compute the minimum of an arbitrary number of arguments.
              * 
-             * {@inheritDoc}
-             * 
-             * @see org.extex.base.parser.dimen.Function#apply(org.extex.interpreter.context.Context,
-             *      org.extex.interpreter.TokenSource,
+        *      org.extex.interpreter.TokenSource,
              *      org.extex.typesetter.Typesetter)
              */
             @Override
@@ -402,7 +398,7 @@ public final class LengthParser {
      * @param typesetter the typesetter
      * 
      * @return the accumulator the accumulator to receive the result or
-     *         <code>null</code> for an undefined value
+     *         {@code null} for an undefined value
      * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
@@ -605,7 +601,7 @@ public final class LengthParser {
      * @param name the name of the function
      * @param function the function
      * 
-     * @return the previously registered function or <code>null</code> for none
+     * @return the previously registered function or {@code null} for none
      */
     public static Object register(String name, Function function) {
 
@@ -618,7 +614,7 @@ public final class LengthParser {
      * @param name the name of the function
      * @param function the function
      * 
-     * @return the previously registered function or <code>null</code> for none
+     * @return the previously registered function or {@code null} for none
      */
     public static Object register(String name, Function0 function) {
 
@@ -631,7 +627,7 @@ public final class LengthParser {
      * @param name the name of the function
      * @param function the function
      * 
-     * @return the previously registered function or <code>null</code> for none
+     * @return the previously registered function or {@code null} for none
      */
     public static Object register(String name, Function1 function) {
 
@@ -644,7 +640,7 @@ public final class LengthParser {
      * @param name the name of the function
      * @param function the function
      * 
-     * @return the previously registered function or <code>null</code> for none
+     * @return the previously registered function or {@code null} for none
      */
     public static Object register(String name, Function2 function) {
 
@@ -656,7 +652,7 @@ public final class LengthParser {
      * 
      * @param name the name of the function
      * 
-     * @return the previously registered function or <code>null</code> for none
+     * @return the previously registered function or {@code null} for none
      */
     public static Object unregister(String name) {
 

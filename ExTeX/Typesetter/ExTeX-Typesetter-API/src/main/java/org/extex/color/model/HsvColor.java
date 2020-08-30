@@ -29,38 +29,37 @@ import org.extex.core.exception.GeneralException;
  * channel.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4446 $
- */
+*/
 public class HsvColor implements Color {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 1L;
 
     /**
-     * The field <tt>hue</tt> contains the hue value of the color.
+     * The field {@code hue} contains the hue value of the color.
      * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
      */
-    private int hue;
+    private final int hue;
 
     /**
-     * The field <tt>saturation</tt> contains the saturation value of the color.
+     * The field {@code saturation} contains the saturation value of the color.
      * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
      */
-    private int saturation;
+    private final int saturation;
 
     /**
-     * The field <tt>value</tt> contains the value value of the color.
+     * The field {@code value} contains the value value of the color.
      * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
      */
-    private int value;
+    private final int value;
 
     /**
-     * The field <tt>alpha</tt> contains the alpha channel of the color.
+     * The field {@code alpha} contains the alpha channel of the color.
      * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
      */
-    private int alpha;
+    private final int alpha;
 
     /**
      * Creates a new object.
@@ -89,8 +88,8 @@ public class HsvColor implements Color {
      * Indicates whether some other object is "equal to" this one.
      *
      * @param   obj   the reference object with which to compare.
-     * @return  <code>true</code> if this object is the same as the obj
-     *          argument; <code>false</code> otherwise.
+     * @return  {@code true} if this object is the same as the obj
+     *          argument; {@code false} otherwise.
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */

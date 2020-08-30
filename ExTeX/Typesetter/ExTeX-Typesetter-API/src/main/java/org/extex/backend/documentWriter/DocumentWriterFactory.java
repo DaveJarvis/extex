@@ -58,18 +58,17 @@ import org.extex.framework.configuration.exception.ConfigurationNotFoundExceptio
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5563 $
- */
+*/
 public class DocumentWriterFactory extends AbstractFactory<DocumentWriter> {
 
     /**
-     * The field <tt>defaultType</tt> contains the default type from the
+     * The field {@code defaultType} contains the default type from the
      * configuration.
      */
-    private String defaultType;
+    private final String defaultType;
 
     /**
-     * The field <tt>options</tt> contains the options.
+     * The field {@code options} contains the options.
      */
     private DocumentWriterOptions options;
 
@@ -98,7 +97,7 @@ public class DocumentWriterFactory extends AbstractFactory<DocumentWriter> {
      * 
      * @param type the document writer type
      * 
-     * @return <code>true</code> iff a configuration exists
+     * @return {@code true} iff a configuration exists
      * 
      * @throws ConfigurationException in case of an error; especially if the
      *         configuration is not found

@@ -33,11 +33,10 @@ import org.extex.exbib.bst2groovy.linker.LinkContainer;
 import org.extex.exbib.bst2groovy.linker.LinkingCode;
 
 /**
- * This class implements the analyzer for the <code>empty$</code> built-in.
+ * This class implements the analyzer for the {@code empty$} built-in.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class EmptyCompiler implements Compiler {
 
     /**
@@ -59,15 +58,12 @@ public class EmptyCompiler implements Compiler {
     }
 
     /**
-     * The field <tt>IS_EMPTY</tt> contains the code for the is_empty method.
+     * The field {@code IS_EMPTY} contains the code for the is_empty method.
      */
     private static final LinkingCode IS_EMPTY = new LinkingCode("isEmpty()") {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         @Override
         public void print(CodeWriter writer) throws IOException {
@@ -79,10 +75,7 @@ public class EmptyCompiler implements Compiler {
     };
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryReference,
-     *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
+*      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */

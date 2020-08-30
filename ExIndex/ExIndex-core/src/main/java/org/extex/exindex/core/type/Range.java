@@ -36,22 +36,21 @@ import org.extex.exindex.lisp.type.value.LValue;
  * @see LMarkupRange
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Range implements Location {
 
     /**
-     * The field <tt>from</tt> contains the starting location.
+     * The field {@code from} contains the starting location.
      */
     private final LocationReference from;
 
     /**
-     * The field <tt>to</tt> contains the terminating location.
+     * The field {@code to} contains the terminating location.
      */
     private final LocationReference to;
 
     /**
-     * The field <tt>clazz</tt> contains the the current class.
+     * The field {@code clazz} contains the the current class.
      */
     private final String clazz;
 
@@ -70,10 +69,7 @@ public class Range implements Location {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.Location#write(java.io.Writer,
-     *      org.extex.exindex.lisp.LInterpreter, MarkupContainer, boolean)
+*      org.extex.exindex.lisp.LInterpreter, MarkupContainer, boolean)
      */
     public void write(Writer writer, LInterpreter interpreter,
             MarkupContainer markupContainer, boolean trace)

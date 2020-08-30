@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains type definitions for the pages and supporting classes.
+ * Contains type definitions for the pages and supporting classes.
  */
 
 package org.extex.typesetter.type.page;

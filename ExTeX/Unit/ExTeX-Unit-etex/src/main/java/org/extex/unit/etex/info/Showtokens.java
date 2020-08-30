@@ -43,46 +43,45 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\showtokens</code>.
+ * {@code \showtokens}.
  * 
- * <doc name="showtokens">
- * <h3>The Primitive <tt>\showtokens</tt></h3>
+ * <p>The Primitive {@code \showtokens}</p>
  * <p>
- * The primitive <tt>\showtokens</tt> shows some tokens on the log stream. This
+ * The primitive {@code \showtokens} shows some tokens on the log stream. This
  * is meant for diagnostic and debugging purposes.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;showtokens&rang;
- *       &rarr; <tt>\showtokens</tt> {@linkplain
+ *       &rarr; {@code \showtokens} {@linkplain
  *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *        &lang;tokens&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \showtokens {1234}  </pre>
  *  <pre class="TeXSample">
  *    \showtokens \expandafter{\jobname}  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Showtokens extends AbstractCode implements LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>logger</tt> contains the target channel for the message.
+     * The field {@code logger} contains the target channel for the message.
      */
     private transient Logger logger = null;
 
@@ -110,10 +109,7 @@ public class Showtokens extends AbstractCode implements LogEnabled {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

@@ -96,64 +96,61 @@ import java.util.logging.Logger;
 
 /**
  * This is a reference implementation for a <b>MA</b>cro e<b>X</b>pander. The
- * macro expander is the core engine driving ??TeX.
- * 
- * 
- * <doc name="ignorevoid" type="register"> <h3>The Count Parameter
- * <tt>\ignorevoid</tt></h3>
+ * macro expander is the core engine driving εχTeX.
+ *
+ * <p>The Count Parameter {@code \ignorevoid}</p>
  * <p>
- * The count register <tt>\ignorevoid</tt> determines how an undefined active
+ * The count register {@code \ignorevoid} determines how an undefined active
  * character or control sequence is encountered. If the value is greater than 0
  * then undefined code is ignored. Otherwise it leads to an error message.
  * </p>
  * <p>
- * This count parameter has been introduced by ??TeX.
+ * This count parameter has been introduced by εχTeX.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
- * 
+ * <p>Syntax</p>
+ * <p>
+ * The formal description of this primitive is the following:
+ * </p>
  * <pre class="syntax">
  *    &lang;ignorevoid&rang;
- *      &rarr; <tt>\ignorevoid</tt> {@linkplain
+ *      &rarr; {@code \ignorevoid} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
  * 
  * <pre class="TeXSample">
  *    \ignorevoid=1  </pre>
  * 
- * </doc>
- * 
- * <doc name="everyjob" type="register"> <h3>The Tokens Parameter
- * <tt>\everyjob</tt></h3>
+ *
+ * <p>The Tokens Parameter {@code \everyjob}</p>
  * <p>
- * The tokens register <tt>\everyjob</tt> contains the tokens to be inserted at
+ * The tokens register {@code \everyjob} contains the tokens to be inserted at
  * the beginning of every job.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
- * 
+ * <p>Syntax</p>
+ *
+ * <p>
+ * The formal description of this primitive is the following:
+ * </p>
  * <pre class="syntax">
  *    &lang;everyjob&rang;
- *       &rarr; <tt>\everyjob</tt> {@linkplain
+ *       &rarr; {@code \everyjob} {@linkplain
  *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *        &lang;tokens&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
  * 
  * <pre class="TeXSample">
  *    \everyjob={\message{Hello world.}}  </pre>
  * 
- * </doc>
- * 
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:4408 $
- */
+*/
 public abstract class Max
         implements
             Interpreter,
@@ -169,38 +166,38 @@ public abstract class Max
             OutputStreamConsumer {
 
     /**
-     * The field <tt>CONTEXT_TAG</tt> contains the name of the tag for the
+     * The field {@code CONTEXT_TAG} contains the name of the tag for the
      * configuration of the context.
      */
     private static final String CONTEXT_TAG = "Context";
 
     /**
-     * The field <tt>LANGUAGE_TAG</tt> contains the name of the tag for the
+     * The field {@code LANGUAGE_TAG} contains the name of the tag for the
      * configuration of the language manager.
      */
     private static final String LANGUAGE_TAG = "Language";
 
     /**
-     * The constant <tt>MAX_ERRORS_DEFAULT</tt> contains the default value for
+     * The constant {@code MAX_ERRORS_DEFAULT} contains the default value for
      * maximal allowed number of errors after which the
-     * ??TeX run is terminated automatically.
+     * εχTeX run is terminated automatically.
      */
     private static final int MAX_ERRORS_DEFAULT = 100;
 
     /**
-     * The constant <tt>MINUTES_PER_HOUR</tt> contains the number of minutes per
+     * The constant {@code MINUTES_PER_HOUR} contains the number of minutes per
      * hour.
      */
     private static final int MINUTES_PER_HOUR = 60;
 
     /**
-     * The field <tt>configuration</tt> contains the configuration for this
+     * The field {@code configuration} contains the configuration for this
      * interpreter.
      */
     private Configuration configuration;
 
     /**
-     * The field <tt>context</tt> contains the processing context. Here nearly
+     * The field {@code context} contains the processing context. Here nearly
      * all relevant information can be found.
      */
     private Context context;
@@ -212,18 +209,18 @@ public abstract class Max
     private ErrorHandler errorHandler;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer to use.
+     * The field {@code localizer} contains the localizer to use.
      */
     private Localizer localizer;
 
     /**
-     * The field <tt>logger</tt> contains the logger or <code>null</code> if
+     * The field {@code logger} contains the logger or {@code null} if
      * none has been set yet.
      */
     private Logger logger;
 
     /**
-     * The field <tt>maxErrors</tt> contains the number of errors after which
+     * The field {@code maxErrors} contains the number of errors after which
      * the run is terminated. This value can be overwritten in the
      * configuration.
      */
@@ -251,7 +248,7 @@ public abstract class Max
     private ExpandObserver observersExpand;
 
     /**
-     * The field <tt>observersLoad</tt> contains the observer list for the
+     * The field {@code observersLoad} contains the observer list for the
      * observers which are registered to receive a notification when a format is
      * loaded.
      */
@@ -264,21 +261,21 @@ public abstract class Max
     private ExpandMacroObserver observersMacro;
 
     /**
-     * The field <tt>observersStart</tt> contains the observer list for the
+     * The field {@code observersStart} contains the observer list for the
      * observers which are registered to receive a notification when the
      * execution is started.
      */
     private StartObserver observersStart;
 
     /**
-     * The field <tt>observersStop</tt> contains the observer list for the
+     * The field {@code observersStop} contains the observer list for the
      * observers which are registered to receive a notification when the
      * execution is finished.
      */
     private StopObserver observersStop;
 
     /**
-     * The field <tt>outFactory</tt> contains the output factory.
+     * The field {@code outFactory} contains the output factory.
      */
     private OutputStreamFactory outFactory;
 
@@ -288,7 +285,7 @@ public abstract class Max
     private final Flags prefix;
 
     /**
-     * The field <tt>tokenExpander</tt> contains the token visitor for
+     * The field {@code tokenExpander} contains the token visitor for
      * expansion.
      */
     private final TokenVisitor<Token, TokenSource> tokenExpander =
@@ -556,7 +553,7 @@ public abstract class Max
             };
 
     /**
-     * The field <tt>typesetter</tt> contains the typesetter for handling
+     * The field {@code typesetter} contains the typesetter for handling
      * "left-over" material.
      */
     private Typesetter typesetter = null;
@@ -653,10 +650,7 @@ public abstract class Max
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.TokenSource#execute(org.extex.scanner.type.token.Token,
-     *      Context, Typesetter)
+*      Context, Typesetter)
      */
     @Override
     public void execute(Token token, Context theContext,
@@ -674,12 +668,7 @@ public abstract class Max
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.TokenSource#executeGroup()
-     */
-    @Override
+@Override
     public void executeGroup() throws HelpingException {
 
         Switch b = new Switch(true);
@@ -725,10 +714,7 @@ public abstract class Max
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.TokenSource#expand(org.extex.scanner.type.token.Token,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.typesetter.Typesetter)
      */
     @Override
@@ -840,12 +826,7 @@ public abstract class Max
         return t;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.max.Moritz#getContext()
-     */
-    @Override
+@Override
     public Context getContext() {
 
         return context;
@@ -853,7 +834,7 @@ public abstract class Max
 
     /**
      * Getter for the error handler. The error handler might not be set. In this
-     * case <code>null</code> is returned.
+     * case {@code null} is returned.
      * 
      * @return the error handler currently registered
      */
@@ -967,9 +948,9 @@ public abstract class Max
     /**
      * Initialize the date and time related primitives.
      * 
-     * <doc name="day" type="register"> <h3>The Count Parameter <tt>\day</tt></h3>
+     *  <p>The Count Parameter {@code \day}</p>
      * <p>
-     * The count parameter <tt>\day</tt> is set automatically at the start of a
+     * The count parameter {@code \day} is set automatically at the start of a
      * job to the day of the current date. Thus it always is initialized to a
      * value in the range of 1 to 31.
      * </p>
@@ -983,28 +964,28 @@ public abstract class Max
      * value is overwritten when the format file is read back in.
      * </p>
      * 
-     * <h4>Syntax</h4> The formal description of this primitive is the
+     * <p>Syntax</p>
+ The formal description of this primitive is the
      * following:
      * 
      * <pre class="syntax">
      *    &lang;day&rang;
-     *      &rarr; <tt>\day</tt> {@linkplain
+     *      &rarr; {@code \day} {@linkplain
      *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
      *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
      * 
-     * <h4>Examples</h4>
+     * <p>Examples</p>
+
      * 
      * <pre class="TeXSample">
      *    \the\day  </pre>
      * 
-     * </doc>
-     * 
-     * <doc name="month" type="register"> <h3>The Count Parameter
-     * <tt>\month</tt></h3>
+     *
+     * <p>The Count Parameter {@code \month}</p>
      * <p>
-     * The count parameter <tt>\month</tt> is set automatically at the start of
+     * The count parameter {@code \month} is set automatically at the start of
      * a job to the month of the current date. Thus it always is initialized to
      * a value in the range of 1 to 12.
      * </p>
@@ -1018,27 +999,28 @@ public abstract class Max
      * value is overwritten when the format file is read back in.
      * </p>
      * 
-     * <h4>Syntax</h4> The formal description of this primitive is the
+     * <p>Syntax</p>
+ The formal description of this primitive is the
      * following:
      * 
      * <pre class="syntax">
      *    &lang;month&rang;
-     *      &rarr; <tt>\month</tt> {@linkplain
+     *      &rarr; {@code \month} {@linkplain
      *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
      *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
      * 
-     * <h4>Examples</h4>
+     * <p>Examples</p>
+
      * 
      * <pre class="TeXSample">
      *    \the\month  </pre>
      * 
-     * </doc>
-     * 
-     * <doc name="year" type="register"> <h3>The Count Parameter <tt>\year</tt></h3>
+     *
+     *  <p>The Count Parameter {@code \year}</p>
      * <p>
-     * The count parameter <tt>\year</tt> is set automatically at the start of a
+     * The count parameter {@code \year} is set automatically at the start of a
      * job to the year of the current date.
      * </p>
      * <p>
@@ -1051,27 +1033,28 @@ public abstract class Max
      * value is overwritten when the format file is read back in.
      * </p>
      * 
-     * <h4>Syntax</h4> The formal description of this primitive is the
+     * <p>Syntax</p>
+ The formal description of this primitive is the
      * following:
      * 
      * <pre class="syntax">
      *    &lang;year&rang;
-     *      &rarr; <tt>\year</tt> {@linkplain
+     *      &rarr; {@code \year} {@linkplain
      *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
      *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
      * 
-     * <h4>Examples</h4>
+     * <p>Examples</p>
+
      * 
      * <pre class="TeXSample">
      *    \the\year  </pre>
      * 
-     * </doc>
-     * 
-     * <doc name="time" type="register"> <h3>The Count Parameter <tt>\time</tt></h3>
+     *
+     *  <p>The Count Parameter {@code \time}</p>
      * <p>
-     * The count parameter <tt>\time</tt> is set automatically at the start of a
+     * The count parameter {@code \time} is set automatically at the start of a
      * job to the time of the current date. The time is the number of minutes
      * since 0:00. Thus you can extract the current hour by dividing it by 60
      * and the current minute by computing the remainder modulo 60.
@@ -1086,18 +1069,20 @@ public abstract class Max
      * value is overwritten when the format file is read back in.
      * </p>
      * 
-     * <h4>Syntax</h4> The formal description of this primitive is the
+     * <p>Syntax</p>
+ The formal description of this primitive is the
      * following:
      * 
      * <pre class="syntax">
      *    &lang;time&rang;
-     *      &rarr; <tt>\time</tt> {@linkplain
+     *      &rarr; {@code \time} {@linkplain
      *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
      *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
      * 
-     * <h4>Examples</h4>
+     * <p>Examples</p>
+
      * 
      * <pre class="TeXSample">
      *    {\count0=\time
@@ -1108,11 +1093,7 @@ public abstract class Max
      *     \the\count0<i>% here \count0 contains the minute</i>
      *    }<i>%</i>  </pre>
      * 
-     * </doc>
-     * 
-     * @param calendar the time and date when <logo>&epsilon;&chi;T<span style=
-     *        "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *        >e</span>X</logo> has been started
+     * @param calendar the date and time when TeX has been started
      * 
      * @throws HelpingException in case of an error
      */
@@ -1294,12 +1275,7 @@ public abstract class Max
                 ExpandObserverList.register(observersExpand, observer);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.observer.load.LoadObservable#registerObserver(org.extex.interpreter.observer.load.LoadObserver)
-     */
-    @Override
+@Override
     public void registerObserver(LoadObserver observer) {
 
         observersLoad = LoadObserverList.register(observersLoad, observer);
@@ -1341,12 +1317,7 @@ public abstract class Max
         throw new UnusedPrefixException(context.esc(cause), token.toString());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.Interpreter#run()
-     */
-    @Override
+@Override
     public void run() throws HelpingException, TypesetterException {
 
         if (typesetter == null) {
@@ -1402,11 +1373,6 @@ public abstract class Max
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.Interpreter#run(org.extex.scanner.api.TokenStream)
-     */
     @Override
     public void run(TokenStream stream)
             throws HelpingException,
@@ -1416,11 +1382,6 @@ public abstract class Max
         run();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.Interpreter#setContext(org.extex.interpreter.context.Context)
-     */
     @Override
     public Context setContext(Context context) {
 
@@ -1430,7 +1391,7 @@ public abstract class Max
     }
 
     /**
-     * Setter for the error handler. The value of <code>null</code> can be used
+     * Setter for the error handler. The value of {@code null} can be used
      * to delete the error handler currently set.
      * 
      * @param handler the new error handler
@@ -1519,7 +1480,7 @@ public abstract class Max
      * @param token the first argument to pass is the token to expand.
      * @param ignore the second argument is ignored
      * 
-     * @return <code>null</code>
+     * @return {@code null}
      * 
      * @throws Exception in case of an error
      * @throws ConfigurationException in case of an configuration error
@@ -1555,7 +1516,7 @@ public abstract class Max
      * @param token the first argument to pass is the token to expand.
      * @param ignore the second argument is ignored
      * 
-     * @return <code>null</code>
+     * @return {@code null}
      * 
      * @throws Exception in case of an error
      * 
@@ -1574,18 +1535,16 @@ public abstract class Max
     }
 
     /**
-     * This visit method is invoked on an escape token. In TeX this normally means a control sequence.
+     * This visit method is invoked on an escape token. In TeX this normally
+     * means a control sequence.
      * 
      * @param token the first argument to pass is the token to expand.
      * @param ignore the second argument is ignored
      * 
-     * @return <code>null</code>
+     * @return {@code null}
      * 
      * @throws Exception in case of an error
      * @throws ConfigurationException in case of an configuration error
-     * 
-     * @see org.extex.scanner.type.token.TokenVisitor#visitEscape(org.extex.scanner.type.token.ControlSequenceToken,
-     *      java.lang.Object)
      */
     @Override
     public Object visitEscape(ControlSequenceToken token, Object ignore)
@@ -1617,16 +1576,10 @@ public abstract class Max
      * @param token the first argument to pass is the token to expand.
      * @param ignore the second argument is ignored
      * 
-     * @return <code>null</code>
+     * @return {@code null}
      * 
      * @throws Exception in case of an error
      * @throws ConfigurationException in case of an configuration error
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [1063]"
-     * @see org.extex.scanner.type.token.TokenVisitor#visitLeftBrace(org.extex.scanner.type.token.LeftBraceToken,
-     *      java.lang.Object)
      */
     @Override
     public Object visitLeftBrace(LeftBraceToken token, Object ignore)
@@ -1647,12 +1600,9 @@ public abstract class Max
      * @param token the first argument to pass is the token to expand.
      * @param ignore the second argument is ignored
      * 
-     * @return <code>null</code>
+     * @return {@code null}
      * 
      * @throws Exception in case of an error
-     * 
-     * @see org.extex.scanner.type.token.TokenVisitor#visitLetter(org.extex.scanner.type.token.LetterToken,
-     *      java.lang.Object)
      */
     @Override
     public Object visitLetter(LetterToken token, Object ignore)
@@ -1677,20 +1627,15 @@ public abstract class Max
     }
 
     /**
-     * This visit method is invoked on a macro parameter token. In <logo>T<span
-     * style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> this normally is a <tt>#</tt>.
+     * This visit method is invoked on a macro parameter token. In TeX this
+     * normally is a {@code #}.
      * 
      * @param token the first argument to pass is the token to expand.
      * @param ignore the second argument is ignored
      * 
-     * @return <code>null</code>
+     * @return {@code null}
      * 
      * @throws GeneralException in case of an error
-     * 
-     * @see org.extex.scanner.type.token.TokenVisitor#visitMacroParam(org.extex.scanner.type.token.MacroParamToken,
-     *      java.lang.Object)
      */
     @Override
     public Object visitMacroParam(MacroParamToken token, Object ignore)
@@ -1701,25 +1646,16 @@ public abstract class Max
     }
 
     /**
-     * This visit method is invoked on a math shift token. In <logo>T<span
-     * style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> this normally is a <tt>$</tt>.
-     * 
+     * This visit method is invoked on a math shift token. In TeX this
+     * normally is a {@code $}.
      * 
      * @param token the first argument to pass is the token to expand.
      * @param ignore the second argument is ignored
      * 
-     * @return <code>null</code>
+     * @return {@code null}
      * 
      * @throws Exception in case of an error
      * @throws ConfigurationException in case of an configuration error
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [1137]"
-     * @see org.extex.scanner.type.token.TokenVisitor#visitMathShift(org.extex.scanner.type.token.MathShiftToken,
-     *      java.lang.Object)
      */
     @Override
     public Object visitMathShift(MathShiftToken token, Object ignore)
@@ -1740,7 +1676,7 @@ public abstract class Max
      * @param token the first argument to pass is the token to expand.
      * @param ignore the second argument is ignored
      * 
-     * @return <code>null</code>
+     * @return {@code null}
      * 
      * @throws Exception in case of an error
      * 
@@ -1766,15 +1702,9 @@ public abstract class Max
      * @param token the first argument to pass is the token to expand.
      * @param ignore the second argument is ignored
      * 
-     * @return <code>null</code>
+     * @return {@code null}
      * 
      * @throws Exception in case of an error
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [1067]"
-     * @see org.extex.scanner.type.token.TokenVisitor#visitRightBrace(org.extex.scanner.type.token.RightBraceToken,
-     *      java.lang.Object)
      */
     @Override
     public Object visitRightBrace(RightBraceToken token, Object ignore)
@@ -1796,13 +1726,10 @@ public abstract class Max
      * @param token the first argument to pass is the token to expand.
      * @param ignore the second argument is ignored
      * 
-     * @return <code>null</code>
+     * @return {@code null}
      * 
      * @throws GeneralException in case of an error
      * @throws ConfigurationException in case of an configuration error
-     * 
-     * @see org.extex.scanner.type.token.TokenVisitor#visitSpace(org.extex.scanner.type.token.SpaceToken,
-     *      java.lang.Object)
      */
     @Override
     public Object visitSpace(SpaceToken token, Object ignore)
@@ -1818,12 +1745,12 @@ public abstract class Max
     }
 
     /**
-     * This visit method is invoked on a sub mark token. In TeX this normally is a <tt>_</tt>.
+     * This visit method is invoked on a sub mark token. In TeX this normally is a {@code _}.
      * 
      * @param token the first argument to pass is the token to expand.
      * @param ignore the second argument is ignored
      * 
-     * @return <code>null</code>
+     * @return {@code null}
      * 
      * @throws Exception in case of an error
      * 
@@ -1853,17 +1780,15 @@ public abstract class Max
     }
 
     /**
-     * This visit method is invoked on a sup mark token. In TeX this normally is a <tt>^</tt>.
+     * This visit method is invoked on a sup mark token. In TeX this normally is a {@code ^}.
      * 
      * @param token the first argument to pass is the token to expand.
      * @param ignore the second argument is ignored
      * 
-     * @return <code>null</code>
+     * @return {@code null}
      * 
      * @throws Exception in case of an error
      * 
-     * @see org.extex.scanner.type.token.TokenVisitor#visitSupMark(org.extex.scanner.type.token.SupMarkToken,
-     *      java.lang.Object)
      */
     @Override
     public Object visitSupMark(SupMarkToken token, Object ignore)
@@ -1888,18 +1813,15 @@ public abstract class Max
     }
 
     /**
-     * This visit method is invoked on a tab mark token. In TeX this normally is a <tt>&amp;</tt>.
+     * This visit method is invoked on a tab mark token. In TeX this normally is a {@code &amp;}.
      * 
      * @param token the first argument to pass is the token to expand.
      * @param ignore the second argument is ignored
      * 
-     * @return <code>null</code>
+     * @return {@code null}
      * 
      * @throws Exception in case of an error
      * @throws ConfigurationException in case of an configuration error
-     * 
-     * @see org.extex.scanner.type.token.TokenVisitor#visitTabMark(org.extex.scanner.type.token.TabMarkToken,
-     *      java.lang.Object)
      */
     @Override
     public Object visitTabMark(TabMarkToken token, Object ignore)

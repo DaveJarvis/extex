@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains exceptions of general interest.
+ * Contains exceptions of general interest.
  */
 
 package org.extex.core.exception;

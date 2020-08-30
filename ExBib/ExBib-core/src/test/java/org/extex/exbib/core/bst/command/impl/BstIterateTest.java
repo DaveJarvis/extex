@@ -30,12 +30,11 @@ import org.junit.Test;
  * This is a test suite for {@link BstIterate}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BstIterateTest {
 
     /**
-     * <testcase> Check that a null token leads to an error.</testcase>
+     *  Check that a null token leads to an error.
      * 
      * @throws ExBibException in case of an error
      */

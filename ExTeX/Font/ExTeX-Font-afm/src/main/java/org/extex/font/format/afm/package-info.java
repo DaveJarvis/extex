@@ -16,13 +16,8 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the definitions and implementations for the AFM
- * (Type1) font handling in ??TeX.
- *
- * <a name="AFMformat" />
- * <h2>AFM format</h2>
- *
+ *Contains definitions and implementations for the AFM
+ * (Type1) font handling in εχTeX.
  */
-
 package org.extex.font.format.afm;
 

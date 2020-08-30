@@ -29,25 +29,24 @@ import org.extex.typesetter.type.NodeVisitor;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4739 $
- */
+*/
 public class SpaceNode extends GlueNode implements Node {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
     /**
-     * The field <tt>DEVELOP</tt> contains the indicator that part of the code
+     * The field {@code DEVELOP} contains the indicator that part of the code
      * is used in the development version.
      */
     private static final boolean DEVELOP = true;
 
     /**
-     * The field <tt>size</tt> contains the width of the space to insert.
+     * The field {@code size} contains the width of the space to insert.
      */
-    private FixedGlue size;
+    private final FixedGlue size;
 
     /**
      * Creates a new object.
@@ -103,10 +102,7 @@ public class SpaceNode extends GlueNode implements Node {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.GlueNode#visit(org.extex.typesetter.type.NodeVisitor,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     @Override
     @SuppressWarnings({"unchecked", "rawtypes"})

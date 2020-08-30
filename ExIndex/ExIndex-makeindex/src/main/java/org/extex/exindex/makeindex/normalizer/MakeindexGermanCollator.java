@@ -22,16 +22,10 @@ package org.extex.exindex.makeindex.normalizer;
  * This collator maps the German special letters to their ASCII counterparts.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6622 $
- */
+*/
 public class MakeindexGermanCollator implements Collator {
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.makeindex.normalizer.Collator#collate(java.lang.String)
-     */
-    public String collate(String in) {
+public String collate(String in) {
 
         return in
 

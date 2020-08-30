@@ -26,20 +26,19 @@ import org.extex.dviware.Dvi;
 import org.extex.typesetter.tc.font.Font;
 
 /**
- * This class represents the DVI instruction <tt>fnt_def</tt>.
+ * This class represents the DVI instruction {@code fnt_def}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4704 $
- */
+*/
 public class DviFntDef extends AbstractDviCode {
 
     /**
-     * The field <tt>font</tt> contains the associated font.
+     * The field {@code font} contains the associated font.
      */
     private Font font;
 
     /**
-     * The field <tt>index</tt> contains the number of the font in the font
+     * The field {@code index} contains the number of the font in the font
      * table.
      */
     private int index;

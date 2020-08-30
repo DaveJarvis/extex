@@ -41,8 +41,7 @@ import org.extex.typesetter.tc.font.Font;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:4431 $
- */
+*/
 public class FontCode extends AbstractCode
         implements
             FontConvertible,
@@ -50,13 +49,13 @@ public class FontCode extends AbstractCode
             ComparableCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>font</tt> contains the font enclosed in this code.
+     * The field {@code font} contains the font enclosed in this code.
      */
     private Font font;
 
@@ -73,10 +72,7 @@ public class FontCode extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ComparableCode#compare(
-     *      org.extex.scanner.type.token.Token,
+*      org.extex.scanner.type.token.Token,
      *      org.extex.interpreter.context.Context)
      */
     public boolean compare(Token token, Context context)
@@ -95,10 +91,7 @@ public class FontCode extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.font.FontConvertible#convertFont(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Font convertFont(Context context, TokenSource source,
@@ -108,10 +101,7 @@ public class FontCode extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -122,10 +112,7 @@ public class FontCode extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

@@ -32,15 +32,14 @@ import org.junit.Test;
  * This is a test suite for the {@link SiteBuilderMain}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SiteBuilderMainTest {
 
     /**
      * Run the news builder with a given command line.
      * 
      * @param args the command line arguments
-     * @param expected the output expected on stderr or <code>null</code> to
+     * @param expected the output expected on stderr or {@code null} to
      *        suppress the comparison
      * 
      * @return the exit code
@@ -62,7 +61,7 @@ public class SiteBuilderMainTest {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     *  TODO
      * 
      */
     @Test
@@ -86,9 +85,8 @@ public class SiteBuilderMainTest {
     }
 
     /**
-     * <testcase> A missing argument for the option <tt>-baseDirectory</tt> is
-     * recognized. </testcase>
-     * 
+     * A missing argument for the option {@code -baseDirectory} is recognized
+* 
      */
     @Test
     public void testBase01() {
@@ -98,9 +96,8 @@ public class SiteBuilderMainTest {
     }
 
     /**
-     * <testcase> A missing argument for the option <tt>-baseDirectory</tt> is
-     * recognized. </testcase>
-     * 
+     * A missing argument for the option {@code -baseDirectory} is recognized
+* 
      */
     @Test
     public void testBase02() {
@@ -110,7 +107,7 @@ public class SiteBuilderMainTest {
     }
 
     /**
-     * <testcase> An error is raised if base is not a file. </testcase>
+     *  An error is raised if base is not a file.
      * 
      */
     @Test
@@ -120,7 +117,7 @@ public class SiteBuilderMainTest {
     }
 
     /**
-     * <testcase> A unknown option leads to the help message. </testcase>
+     *  A unknown option leads to the help message.
      * 
      */
     @Test
@@ -131,9 +128,8 @@ public class SiteBuilderMainTest {
     }
 
     /**
-     * <testcase> A missing argument for the option <tt>-library</tt> is
-     * recognized. </testcase>
-     * 
+     * A missing argument for the option {@code -library} is recognized
+* 
      */
     @Test
     public void testLibrary01() {
@@ -144,9 +140,8 @@ public class SiteBuilderMainTest {
     }
 
     /**
-     * <testcase> A missing argument for the option <tt>-omit</tt> is
-     * recognized. </testcase>
-     * 
+     * A missing argument for the option {@code -omit} is recognized
+* 
      */
     @Test
     public void testOmit01() {
@@ -156,9 +151,8 @@ public class SiteBuilderMainTest {
     }
 
     /**
-     * <testcase> A missing argument for the option <tt>-output</tt> is
-     * recognized. </testcase>
-     * 
+     * A missing argument for the option {@code -output} is recognized
+* 
      */
     @Test
     public void testOutput01() {
@@ -168,9 +162,8 @@ public class SiteBuilderMainTest {
     }
 
     /**
-     * <testcase> A missing argument for the option <tt>-sitemap</tt> is
-     * recognized. </testcase>
-     * 
+     * A missing argument for the option {@code -sitemap} is recognized
+* 
      */
     @Test
     public void testSitemap01() {
@@ -181,7 +174,7 @@ public class SiteBuilderMainTest {
     }
 
     /**
-     * <testcase> A unknown option leads to the help message. </testcase>
+     *  A unknown option leads to the help message.
      * 
      */
     @Test

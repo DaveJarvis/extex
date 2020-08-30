@@ -38,8 +38,7 @@ import org.w3c.dom.Node;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DocMaker extends DocParser {
 
     /**
@@ -47,7 +46,7 @@ public class DocMaker extends DocParser {
      */
     enum Output {
         /**
-         * The field <tt>LATEX</tt> contains the ...
+         * The field {@code LATEX} contains the ...
          */
         LATEX {
 
@@ -58,7 +57,7 @@ public class DocMaker extends DocParser {
             }
         },
         /**
-         * The field <tt>HTML</tt> contains the ...
+         * The field {@code HTML} contains the ...
          */
         HTML {
 
@@ -69,7 +68,7 @@ public class DocMaker extends DocParser {
             }
         },
         /**
-         * The field <tt>VALIDATE</tt> contains the empty method.
+         * The field {@code VALIDATE} contains the empty method.
          */
         VALIDATE {
 
@@ -91,7 +90,7 @@ public class DocMaker extends DocParser {
             }
         },
         /**
-         * The field <tt>TRACE</tt> contains the tracer.
+         * The field {@code TRACE} contains the tracer.
          */
         TRACE {
 
@@ -186,37 +185,37 @@ public class DocMaker extends DocParser {
     }
 
     /**
-     * The field <tt>output</tt> contains the output mode.
+     * The field {@code output} contains the output mode.
      */
     private Output output = Output.TRACE;
 
     /**
-     * The field <tt>path</tt> contains the directories to analyze.
+     * The field {@code path} contains the directories to analyze.
      */
     private List<String> path = new ArrayList<String>();
 
     /**
-     * The field <tt>verbose</tt> contains the indicator for verbosity.
+     * The field {@code verbose} contains the indicator for verbosity.
      */
     private boolean verbose = false;
 
     /**
-     * The field <tt>srcDir</tt> contains the source directory.
+     * The field {@code srcDir} contains the source directory.
      */
     private String srcDir = "src/main/java";
 
     /**
-     * The field <tt>configDir</tt> contains the configuration directory.
+     * The field {@code configDir} contains the configuration directory.
      */
     private String configDir = "src/main/resources/config";
 
     /**
-     * The field <tt>unitDir</tt> contains the unit directory.
+     * The field {@code unitDir} contains the unit directory.
      */
     private String unitDir = "src/main/resources/config/unit";
 
     /**
-     * The field <tt>targetDir</tt> contains the target directory.
+     * The field {@code targetDir} contains the target directory.
      */
     private String targetDir = ".";
 

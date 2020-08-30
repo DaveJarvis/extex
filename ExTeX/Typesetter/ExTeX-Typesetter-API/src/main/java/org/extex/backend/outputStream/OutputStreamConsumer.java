@@ -24,8 +24,7 @@ package org.extex.backend.outputStream;
  * This interface describes a consumer of an output stream factory.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface OutputStreamConsumer {
 
     /**

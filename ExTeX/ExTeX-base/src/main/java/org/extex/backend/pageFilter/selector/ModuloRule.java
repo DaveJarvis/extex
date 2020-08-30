@@ -24,17 +24,16 @@ package org.extex.backend.pageFilter.selector;
  * certain divider.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 class ModuloRule implements Rule {
 
     /**
-     * The field <tt>mod</tt> contains the divider.
+     * The field {@code mod} contains the divider.
      */
     private int mod;
 
     /**
-     * The field <tt>rem</tt> contains the remainder.
+     * The field {@code rem} contains the remainder.
      */
     private int rem;
 
@@ -55,7 +54,7 @@ class ModuloRule implements Rule {
      *
      * @param value the number to check
      *
-     * @return <code>true</code> iff the number is covered
+     * @return {@code true} iff the number is covered
      *
      * @see org.extex.backend.pageFilter.selector.Rule#check(int)
      */

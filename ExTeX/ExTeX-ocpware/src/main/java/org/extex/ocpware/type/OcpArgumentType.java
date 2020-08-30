@@ -23,27 +23,26 @@ package org.extex.ocpware.type;
  * This enumeration provides the types for an argument.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public enum OcpArgumentType {
 
     /**
-     * The field <tt>NUMBER</tt> contains an indicator for a number. The
+     * The field {@code NUMBER} contains an indicator for a number. The
      * corresponding argument is a number.
      */
     NUMBER,
     /**
-     * The field <tt>CHARACTER</tt> contains an indicator for a character
+     * The field {@code CHARACTER} contains an indicator for a character
      * code.
      */
     CHARACTER,
     /**
-     * The field <tt>LABEL</tt> contains the indicator for a label; i.e. a
+     * The field {@code LABEL} contains the indicator for a label; i.e. a
      * jump destination.
      */
     LABEL,
     /**
-     * The field <tt>STATE</tt> contains an indicator for a state index.
+     * The field {@code STATE} contains an indicator for a state index.
      */
     STATE;
     

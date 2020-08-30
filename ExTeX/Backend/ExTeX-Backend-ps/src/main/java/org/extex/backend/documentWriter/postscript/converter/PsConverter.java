@@ -32,8 +32,7 @@ import org.extex.typesetter.type.page.Page;
  * code.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface PsConverter {
 
     /**

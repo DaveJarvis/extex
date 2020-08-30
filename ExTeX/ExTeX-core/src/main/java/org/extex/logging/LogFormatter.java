@@ -30,18 +30,17 @@ import java.util.logging.LogRecord;
  * is honored.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LogFormatter extends Formatter {
 
     /**
-     * The constant <tt>LINE_LENGTH</tt> contains the target line length for
+     * The constant {@code LINE_LENGTH} contains the target line length for
      * line breaking in the log file.
      */
     private static final int LINE_LENGTH = 80;
 
     /**
-     * The field <tt>col</tt> contains the current column for the next
+     * The field {@code col} contains the current column for the next
      * output character.
      */
     private int col;

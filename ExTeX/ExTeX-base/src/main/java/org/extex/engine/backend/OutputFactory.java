@@ -45,8 +45,7 @@ import org.extex.framework.logger.LogEnabled;
  * configuration.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4728 $
- */
+*/
 public class OutputFactory extends AbstractConfigurable
         implements
             LogEnabled,
@@ -56,12 +55,11 @@ public class OutputFactory extends AbstractConfigurable
      * This class provides a mutable Integer.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision: 4728 $
-     */
+    */
     private static class Int {
 
         /**
-         * The field <tt>value</tt> contains the encapsulated value.
+         * The field {@code value} contains the encapsulated value.
          */
         private int value;
 
@@ -87,56 +85,56 @@ public class OutputFactory extends AbstractConfigurable
     }
 
     /**
-     * The field <tt>FORMAT_ATTRIBUTE</tt> contains the name of the attribute to
+     * The field {@code FORMAT_ATTRIBUTE} contains the name of the attribute to
      * get the format for the file name from.
      */
     private static final String FORMAT_ATTRIBUTE = "format";
 
     /**
-     * The constant <tt>PATH_TAG</tt> contains the name of the tag to specify
+     * The constant {@code PATH_TAG} contains the name of the tag to specify
      * the path.
      */
     private static final String PATH_TAG = "path";
 
     /**
-     * The field <tt>basename</tt> contains the base name for all file names.
+     * The field {@code basename} contains the base name for all file names.
      */
     private String basename;
 
     /**
-     * The field <tt>continuousNumbering</tt> contains the indicator for
+     * The field {@code continuousNumbering} contains the indicator for
      * omitting the special treatment of the first stream.
      */
     private boolean continuousNumbering = false;
 
     /**
-     * The field <tt>countMap</tt> contains the internal counter for file names.
+     * The field {@code countMap} contains the internal counter for file names.
      */
     private Map<String, Int> countMap = new HashMap<String, Int>();
 
     /**
-     * The field <tt>defaultExtension</tt> contains the default extension.
+     * The field {@code defaultExtension} contains the default extension.
      */
     private String defaultExtension = null;
 
     /**
-     * The field <tt>defaultStream</tt> contains the default output stream to be
+     * The field {@code defaultStream} contains the default output stream to be
      * delivered to the first request for an output stream of the default type.
      */
     private OutputStream defaultStream = null;
 
     /**
-     * The field <tt>handlers</tt> contains the registered handlers.
+     * The field {@code handlers} contains the registered handlers.
      */
     private Map<String, OutputFactory> handlers = null;
 
     /**
-     * The field <tt>observers</tt> contains the list of registered observers.
+     * The field {@code observers} contains the list of registered observers.
      */
     private List<OutputStreamObserver> observers = null;
 
     /**
-     * The field <tt>outputDirectories</tt> contains the list of output
+     * The field {@code outputDirectories} contains the list of output
      * directories. The list is tried first to last.
      */
     private String[] outputDirectories;
@@ -153,12 +151,7 @@ public class OutputFactory extends AbstractConfigurable
         this.basename = basename;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
-     */
-    @Override
+@Override
     public void enableLogging(Logger logger) {
 
         // TODO not used yet
@@ -171,7 +164,7 @@ public class OutputFactory extends AbstractConfigurable
      * @param name the name of the file to open
      * @param type the type of the file
      * 
-     * @return a stream for the output or <code>null</code> if none could be
+     * @return a stream for the output or {@code null} if none could be
      *         opened.
      * 
      * @throws DocumentWriterException in case of an error
@@ -200,7 +193,7 @@ public class OutputFactory extends AbstractConfigurable
      * @param name the name of the file to open
      * @param type the type of the file
      * 
-     * @return a stream for the output or <code>null</code> if none could be
+     * @return a stream for the output or {@code null} if none could be
      *         opened.
      * 
      * @throws DocumentWriterException in case of an error
@@ -284,11 +277,11 @@ public class OutputFactory extends AbstractConfigurable
     /**
      * This method tries to open a new output stream.
      * 
-     * @param dir the directory or <code>null</code>
+     * @param dir the directory or {@code null}
      * @param filename the file name
      * @param isDefault the indicator whether the file should be saved
      * 
-     * @return the output stream or <code>null</code>
+     * @return the output stream or {@code null}
      */
     protected OutputStream openOutputStream(String dir, String filename,
             boolean isDefault) {
@@ -359,7 +352,7 @@ public class OutputFactory extends AbstractConfigurable
 
     /**
      * Setter for the default extension. The default extension is used when the
-     * type specified is <code>null</code>.
+     * type specified is {@code null}.
      * 
      * @param extension the default extension
      * 

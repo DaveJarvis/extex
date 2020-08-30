@@ -96,9 +96,10 @@ import org.extex.util.xml.XMLWriterConvertible;
  * PairPosFormat1 subtable: Adjustments for glyph pairs
  * </p>
  * 
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td><b>Value</b></td>
+* <td><b>Value</b></td>
  * <td><b>Type</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -138,9 +139,8 @@ import org.extex.util.xml.XMLWriterConvertible;
  * subtable-ordered by Coverage Index</td>
  * </tr>
  * </table>
- * <p>
- * </p>
- * 
+ * <br>
+*
  * <p>
  * A PairSet table enumerates all the glyph pairs that begin with a covered
  * glyph. An array of PairValueRecords (PairValueRecord) contains one record for
@@ -153,9 +153,10 @@ import org.extex.util.xml.XMLWriterConvertible;
  * PairSet table
  * </p>
  * 
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td><b>Value</b></td>
+* <td><b>Value</b></td>
  * <td><b>Type</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -171,9 +172,8 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>Array of PairValueRecords-ordered by GlyphID of the second glyph</td>
  * </tr>
  * </table>
- * <p>
- * </p>
- * 
+ * <br>
+*
  * <p>
  * A PairValueRecord specifies the second glyph in a pair (SecondGlyph) and
  * defines a ValueRecord for each glyph (Value1 and Value2). If ValueFormat1 is
@@ -185,9 +185,10 @@ import org.extex.util.xml.XMLWriterConvertible;
  * PairValueRecord
  * </p>
  * 
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td><b>Value</b></td>
+* <td><b>Value</b></td>
  * <td><b>Type</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -208,9 +209,8 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>Positioning data for the second glyph in the pair</td>
  * </tr>
  * </table>
- * <p>
- * </p>
- * 
+ * <br>
+*
  * <p>
  * Pair Positioning Adjustment: Format 2
  * </p>
@@ -277,9 +277,10 @@ import org.extex.util.xml.XMLWriterConvertible;
  * PairPosFormat2 subtable: Class pair adjustment
  * </p>
  * 
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td><b>Value</b></td>
+* <td><b>Value</b></td>
  * <td><b>Type</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -333,9 +334,8 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>Array of Class1 records-ordered by Class1</td>
  * </tr>
  * </table>
- * <p>
- * </p>
- * 
+ * <br>
+*
  * 
  * <p>
  * Each Class1Record contains an array of Class2Records (Class2Record), which
@@ -347,7 +347,8 @@ import org.extex.util.xml.XMLWriterConvertible;
  * Class1Record
  * </p>
  * 
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
  * <td><b>Value</b></td>
  * <td><b>Type</b></td>
@@ -359,9 +360,8 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>Array of Class2 records-ordered by Class2</td>
  * </tr>
  * </table>
- * <p>
- * </p>
- * 
+ * <br>
+ *
  * <p>
  * A Class2Record consists of two ValueRecords, one for the first glyph in a
  * class pair (Value1) and one for the second glyph (Value2). If the PairPos
@@ -373,7 +373,8 @@ import org.extex.util.xml.XMLWriterConvertible;
  * Class2Record
  * </p>
  * 
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
  * <td><b>Value</b></td>
  * <td><b>Type</b></td>
@@ -390,13 +391,11 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>Positioning for second glyph-empty if ValueFormat2 = 0</td>
  * </tr>
  * </table>
- * <p>
- * </p>
- * 
+ * <br>
+*
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public abstract class XtfGPOSPairTable extends XtfLookupTable {
 
     /**
@@ -409,7 +408,7 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
         /**
          * The pairset table.
          */
-        private PairSetTable[] pairSetTables;
+        private final PairSetTable[] pairSetTables;
 
         /**
          * Create a new object.
@@ -447,10 +446,7 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.gps.XtfGPOSPairTable#getPairValue(int,
-         *      int)
+    *      int)
          */
         @Override
         public PairValue getPairValue(int firstGlyph, int secondGlyph) {
@@ -468,12 +464,7 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("pairtable");
             writer.writeAttribute("format", getFormat());
@@ -500,17 +491,17 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
         /**
          * Array of Class1 records-ordered by Class1.
          */
-        private Class1Record[] class1RecordArray;
+        private final Class1Record[] class1RecordArray;
 
         /**
          * ClassDefTable 1.
          */
-        private ClassDefTable classDef1;
+        private final ClassDefTable classDef1;
 
         /**
          * ClassDefTable 1.
          */
-        private ClassDefTable classDef2;
+        private final ClassDefTable classDef2;
 
         /**
          * Create a new object.
@@ -559,11 +550,11 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
         }
 
         /**
-         * Returns the {@link Class1Record} or <code>null</code>, if not
+         * Returns the {@link Class1Record} or {@code null}, if not
          * found.
          * 
          * @param cl The class index.
-         * @return Returns the {@link Class1Record} or <code>null</code>, if
+         * @return Returns the {@link Class1Record} or {@code null}, if
          *         not found.
          */
         private Class1Record getClass1Record(int cl) {
@@ -605,10 +596,7 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.gps.XtfGPOSPairTable#getPairValue(int,
-         *      int)
+    *      int)
          */
         @Override
         public PairValue getPairValue(int firstGlyph, int secondGlyph) {
@@ -627,12 +615,7 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("pairtable");
             writer.writeAttribute("format", getFormat());

@@ -34,12 +34,11 @@ import org.extex.typesetter.tc.font.ModifiableFont;
  * from a format which needs it.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class FontInjector implements RegistrarObserver {
 
     /**
-     * The field <tt>factory</tt> contains the font factory to use for
+     * The field {@code factory} contains the font factory to use for
      * reconnecting the font.
      */
     private CoreFontFactory factory;

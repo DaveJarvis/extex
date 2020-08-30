@@ -28,8 +28,7 @@ import org.extex.language.word.WordTokenizer;
  * a {@link org.extex.language.ligature.LigatureBuilder LigatureBuilder}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4737 $
- */
+*/
 public interface ModifiableLanguage extends Language {
 
     /**

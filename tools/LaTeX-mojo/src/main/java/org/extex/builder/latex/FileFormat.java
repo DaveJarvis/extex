@@ -28,20 +28,16 @@ import org.extex.builder.latex.artifact.Artifact;
  * This enumeration lists all supported file formats for the output.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public enum FileFormat {
 
     /**
-     * The field <tt>DVI</tt> contains the value for the DVI file format.
+     * The field {@code DVI} contains the value for the DVI file format.
      */
     DVI {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.builder.latex.FileFormat#makeTarget(java.io.File,
-         *      java.lang.String, DependencyNet)
+    *      java.lang.String, DependencyNet)
          */
         @Override
         Artifact makeTarget(File directory, String name, DependencyNet net)
@@ -50,12 +46,7 @@ public enum FileFormat {
             return make(directory, name, ".dvi", net);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Enum#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return "dvi";
@@ -63,15 +54,12 @@ public enum FileFormat {
     },
 
     /**
-     * The field <tt>PDF</tt> contains the value for the PDF file format.
+     * The field {@code PDF} contains the value for the PDF file format.
      */
     PDF {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.builder.latex.FileFormat#makeTarget(java.io.File,
-         *      java.lang.String, DependencyNet)
+    *      java.lang.String, DependencyNet)
          */
         @Override
         Artifact makeTarget(File directory, String name, DependencyNet net)
@@ -80,12 +68,7 @@ public enum FileFormat {
             return make(directory, name, ".pdf", net);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Enum#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return "pdf";
@@ -93,15 +76,12 @@ public enum FileFormat {
     },
 
     /**
-     * The field <tt>PS</tt> contains the value for the PS file format.
+     * The field {@code PS} contains the value for the PS file format.
      */
     PS {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.builder.latex.FileFormat#makeTarget(java.io.File,
-         *      java.lang.String, DependencyNet)
+    *      java.lang.String, DependencyNet)
          */
         @Override
         Artifact makeTarget(File directory, String name, DependencyNet net)
@@ -110,12 +90,7 @@ public enum FileFormat {
             return make(directory, name, ".ps", net);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Enum#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return "ps";

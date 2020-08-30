@@ -36,8 +36,7 @@ import org.junit.Test;
  * This is a test suite for the token factory implementation.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TokenFactoryImplTest {
 
     /**
@@ -145,7 +144,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -157,7 +156,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -170,7 +169,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -190,7 +189,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -209,7 +208,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -222,7 +221,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -235,7 +234,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> There is no COMMENT token. </testcase>
+     *  There is no COMMENT token.
      * 
      * @throws Exception in case of an error
      */
@@ -248,7 +247,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -265,7 +264,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -276,7 +275,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -287,7 +286,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -303,7 +302,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -315,7 +314,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -327,7 +326,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -339,7 +338,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -351,7 +350,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -363,7 +362,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -375,7 +374,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -392,7 +391,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -404,7 +403,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -416,7 +415,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -428,7 +427,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -441,7 +440,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -454,7 +453,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -467,7 +466,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -480,7 +479,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -493,7 +492,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -505,7 +504,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -523,7 +522,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -543,7 +542,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> There is no IGNORE token. </testcase>
+     *  There is no IGNORE token.
      * 
      * @throws Exception in case of an error
      */
@@ -556,7 +555,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> There is no INVALID token. </testcase>
+     *  There is no INVALID token.
      * 
      * @throws Exception in case of an error
      */
@@ -569,7 +568,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -581,7 +580,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -593,8 +592,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> An empty string for the character code leads to an error when
-     * creating a Leftbrace token.</testcase>
+     *  An empty string for the character code leads to an error when
+     * creating a Leftbrace token.
      * 
      * @throws Exception in case of an error
      */
@@ -605,9 +604,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> A long string for the character code leads to an error when
-     * creating a Leftbrace token. </testcase>
-     * 
+     * A long string for the character code leads to an error when creating a Leftbrace token
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = CatcodeWrongLengthException.class)
@@ -617,9 +615,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> A null string leads to an error when creating a Leftbrace
-     * token. </testcase>
-     * 
+     * A null string leads to an error when creating a Leftbrace token
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = CatcodeException.class)
@@ -629,7 +626,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -642,7 +639,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -655,7 +652,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -667,7 +664,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -679,8 +676,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> Letter tokens are identical for the same parameters.
-     * </testcase>
+     *  Letter tokens are identical for the same parameters.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -695,8 +692,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> An empty string for the character code leads to an error when
-     * creating a letter token.</testcase>
+     *  An empty string for the character code leads to an error when
+     * creating a letter token.
      * 
      * @throws Exception in case of an error
      */
@@ -707,9 +704,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> A long string for the character code leads to an error when
-     * creating a letter token. </testcase>
-     * 
+     * A long string for the character code leads to an error when creating a letter token
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = CatcodeWrongLengthException.class)
@@ -719,7 +715,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -731,7 +727,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -743,8 +739,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> An empty string for the character code leads to an error when
-     * creating a macroparam token.</testcase>
+     *  An empty string for the character code leads to an error when
+     * creating a macroparam token.
      * 
      * @throws Exception in case of an error
      */
@@ -755,9 +751,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> A long string for the character code leads to an error when
-     * creating a macroparam token. </testcase>
-     * 
+     * A long string for the character code leads to an error when creating a macroparam token
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = CatcodeWrongLengthException.class)
@@ -767,9 +762,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> A null string leads to an error when creating a macroparam
-     * token. </testcase>
-     * 
+     * A null string leads to an error when creating a macroparam token
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = CatcodeException.class)
@@ -779,7 +773,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -791,7 +785,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -803,8 +797,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> An empty string for the character code leads to an error when
-     * creating a mathshift token.</testcase>
+     *  An empty string for the character code leads to an error when
+     * creating a mathshift token.
      * 
      * @throws Exception in case of an error
      */
@@ -815,9 +809,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> A long string for the character code leads to an error when
-     * creating a mathshift token. </testcase>
-     * 
+     * A long string for the character code leads to an error when creating a mathshift token
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = CatcodeWrongLengthException.class)
@@ -827,9 +820,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> A null string leads to an error when creating a mathshift
-     * token. </testcase>
-     * 
+     * A null string leads to an error when creating a mathshift token
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = CatcodeException.class)
@@ -839,7 +831,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -851,7 +843,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -863,8 +855,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> An empty string for the character code leads to an error when
-     * creating a Other token.</testcase>
+     *  An empty string for the character code leads to an error when
+     * creating a Other token.
      * 
      * @throws Exception in case of an error
      */
@@ -875,9 +867,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> A long string for the character code leads to an error when
-     * creating a Other token. </testcase>
-     * 
+     * A long string for the character code leads to an error when creating a Other token
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = CatcodeWrongLengthException.class)
@@ -887,8 +878,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> A null string leads to an error when creating a Other token.
-     * </testcase>
+     *  A null string leads to an error when creating a Other token.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -899,7 +890,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -911,7 +902,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -923,8 +914,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> An empty string for the character code leads to an error when
-     * creating a Rightbrace token.</testcase>
+     *  An empty string for the character code leads to an error when
+     * creating a Rightbrace token.
      * 
      * @throws Exception in case of an error
      */
@@ -935,9 +926,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> A long string for the character code leads to an error when
-     * creating a Rightbrace token. </testcase>
-     * 
+     * A long string for the character code leads to an error when creating a Rightbrace token
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = CatcodeWrongLengthException.class)
@@ -947,9 +937,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> A null string leads to an error when creating a Rightbrace
-     * token. </testcase>
-     * 
+     * A null string leads to an error when creating a Rightbrace token
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = CatcodeException.class)
@@ -959,7 +948,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -977,7 +966,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> There is only one SPACE token. </testcase>
+     *  There is only one SPACE token.
      * 
      * @throws Exception in case of an error
      */
@@ -994,7 +983,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> There is only one SPACE token. </testcase>
+     *  There is only one SPACE token.
      * 
      * @throws Exception in case of an error
      */
@@ -1013,7 +1002,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1025,7 +1014,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1037,8 +1026,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> An empty string for the character code leads to an error when
-     * creating a Submark token.</testcase>
+     *  An empty string for the character code leads to an error when
+     * creating a Submark token.
      * 
      * @throws Exception in case of an error
      */
@@ -1049,9 +1038,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> A long string for the character code leads to an error when
-     * creating a Submark token. </testcase>
-     * 
+     * A long string for the character code leads to an error when creating a Submark token
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = CatcodeWrongLengthException.class)
@@ -1061,8 +1049,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> A null string leads to an error when creating a Submark token.
-     * </testcase>
+     *  A null string leads to an error when creating a Submark token.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1073,7 +1061,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1085,7 +1073,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1097,8 +1085,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> An empty string for the character code leads to an error when
-     * creating a Supmark token.</testcase>
+     *  An empty string for the character code leads to an error when
+     * creating a Supmark token.
      * 
      * @throws Exception in case of an error
      */
@@ -1109,9 +1097,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> A long string for the character code leads to an error when
-     * creating a Supmark token. </testcase>
-     * 
+     * A long string for the character code leads to an error when creating a Supmark token
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = CatcodeWrongLengthException.class)
@@ -1121,8 +1108,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> A null string leads to an error when creating a Supmark token.
-     * </testcase>
+     *  A null string leads to an error when creating a Supmark token.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1133,7 +1120,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1145,7 +1132,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1157,8 +1144,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> An empty string for the character code leads to an error when
-     * creating a Tabmark token.</testcase>
+     *  An empty string for the character code leads to an error when
+     * creating a Tabmark token.
      * 
      * @throws Exception in case of an error
      */
@@ -1169,9 +1156,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> A long string for the character code leads to an error when
-     * creating a Tabmark token. </testcase>
-     * 
+     * A long string for the character code leads to an error when creating a Tabmark token
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = CatcodeWrongLengthException.class)
@@ -1181,8 +1167,8 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> A null string leads to an error when creating a Tabmark token.
-     * </testcase>
+     *  A null string leads to an error when creating a Tabmark token.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1193,7 +1179,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1207,7 +1193,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1221,7 +1207,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1236,7 +1222,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1251,7 +1237,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws CatcodeException in case of an error
      */
@@ -1266,7 +1252,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws CatcodeException in case of an error
      */
@@ -1281,7 +1267,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws CatcodeException in case of an error
      */
@@ -1296,7 +1282,7 @@ public class TokenFactoryImplTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws CatcodeException in case of an error
      */

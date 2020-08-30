@@ -29,12 +29,11 @@ import org.junit.Test;
  * This is a test suite for the page implementation.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class PageImplTest {
 
     /**
-     * <testcase> The default color is undefined. </testcase>
+     *  The default color is undefined.
      */
     @Test
     public final void testGetColor() {
@@ -43,7 +42,7 @@ public class PageImplTest {
     }
 
     /**
-     * <testcase> The default media height is 845.0467pt. </testcase>
+     *  The default media height is 845.0467pt.
      */
     @Test
     public final void testGetMediaHeight() {
@@ -54,8 +53,8 @@ public class PageImplTest {
     }
 
     /**
-     * <testcase> The default media horizontal offset is 1in=72.27pt.
-     * </testcase>
+     *  The default media horizontal offset is 1in=72.27pt.
+     *
      */
     @Test
     public final void testGetMediaHOffset() {
@@ -66,7 +65,7 @@ public class PageImplTest {
     }
 
     /**
-     * <testcase> The default media vertical offset is 1in=72.27pt. </testcase>
+     *  The default media vertical offset is 1in=72.27pt.
      */
     @Test
     public final void testGetMediaVOffset() {

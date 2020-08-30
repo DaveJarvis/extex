@@ -25,8 +25,7 @@ package org.extex.resource;
  * input name. This is done by delegating the request to the parent finder.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface RecursiveFinder {
 
     /**

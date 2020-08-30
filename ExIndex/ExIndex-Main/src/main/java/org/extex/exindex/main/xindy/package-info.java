@@ -17,7 +17,7 @@
  */
 /**
  * 
- *   This package contains adapters for the xindy emulation.
+ *   Contains adapters for the xindy emulation.
  * 
  *
  */

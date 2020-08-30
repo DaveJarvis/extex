@@ -23,11 +23,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\ifx</tt>.
+ * This is a test suite for the primitive {@code \ifx}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class IfxTest extends ConditionalTester {
 
     /**
@@ -47,8 +46,8 @@ public class IfxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
-     * complains at end of line. </testcase>
+     * <testcase primitive="\ifx"> Test case checking that {@code \ifx}
+     * complains at end of line.
      * 
      * @throws Exception in case of an error
      */
@@ -62,8 +61,8 @@ public class IfxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
-     * recognized identical letters. </testcase>
+     * <testcase primitive="\ifx"> Test case checking that {@code \ifx}
+     * recognized identical letters.
      * 
      * @throws Exception in case of an error
      */
@@ -77,8 +76,8 @@ public class IfxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
-     * recognized different letters as differnt. </testcase>
+     * <testcase primitive="\ifx"> Test case checking that {@code \ifx}
+     * recognized different letters as differnt.
      * 
      * @throws Exception in case of an error
      */
@@ -92,9 +91,9 @@ public class IfxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
+     * <testcase primitive="\ifx"> Test case checking that {@code \ifx}
      * classifies different undefined control sequences as identical.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -108,9 +107,9 @@ public class IfxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
+     * <testcase primitive="\ifx"> Test case checking that {@code \ifx}
      * classifies an undefined control sequences as identical to itself.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -124,9 +123,9 @@ public class IfxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
-     * classifies an undefined control sequences as different to <tt>\relax</tt>.
-     * </testcase>
+     * <testcase primitive="\ifx"> Test case checking that {@code \ifx}
+     * classifies an undefined control sequences as different to {@code \relax}.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -140,9 +139,9 @@ public class IfxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
+     * <testcase primitive="\ifx"> Test case checking that {@code \ifx}
      * classifies an undefined control sequences as identical to one let to an
-     * undefined control sequence. </testcase>
+     * undefined control sequence.
      * 
      * @throws Exception in case of an error
      */
@@ -156,9 +155,9 @@ public class IfxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
+     * <testcase primitive="\ifx"> Test case checking that {@code \ifx}
      * classifies a let control sequences as identical to the original meaning.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -172,9 +171,9 @@ public class IfxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
+     * <testcase primitive="\ifx"> Test case checking that {@code \ifx}
      * classifies a let control sequences as identical to the original meaning.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -188,9 +187,9 @@ public class IfxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
-     * classifies a control sequence defined with <tt>\csname</tt> as
-     * identical to <tt>\relax</tt>. </testcase>
+     * <testcase primitive="\ifx"> Test case checking that {@code \ifx}
+     * classifies a control sequence defined with {@code \csname} as
+     * identical to {@code \relax}.
      * 
      * @throws Exception in case of an error
      */
@@ -204,16 +203,16 @@ public class IfxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
-     * reproduces the example from the TeXbook. </testcase>
+     * <testcase primitive="\ifx"> Test case checking that {@code \ifx}
+     * reproduces the example from the TeXbook.
      * 
      * <p>
-     * For example, after `<tt>\def\a{\c}</tt> <tt>\def\b{\d}</tt>
-     *  <tt>\def\c{\e}</tt> <tt>\def\d{\e}</tt> <tt>\def\e{A}</tt>',
-     * an <tt>\ifx</tt> test will find <tt>\c</tt> and <tt>\d</tt> equal,
-     * but not <tt>\a</tt> and <tt>\b</tt>, nor <tt>\d</tt> and
-     * <tt>\e</tt>, nor any other combinations of <tt>\a</tt>, <tt>\b</tt>,
-     * <tt>\c</tt>, <tt>\d</tt>, <tt>\e</tt>.
+     * For example, after `{@code \def\a{\c}} {@code \def\b{\d}}
+     *  {@code \def\c{\e}} {@code \def\d{\e}} {@code \def\e{A}}',
+     * an {@code \ifx} test will find {@code \c} and {@code \d} equal,
+     * but not {@code \a} and {@code \b}, nor {@code \d} and
+     * {@code \e}, nor any other combinations of {@code \a}, {@code \b},
+     * {@code \c}, {@code \d}, {@code \e}.
      * <p>
      * 
      * @throws Exception in case of an error
@@ -239,8 +238,8 @@ public class IfxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
-     * recognizes identical fonts. </testcase>
+     * <testcase primitive="\ifx"> Test case checking that {@code \ifx}
+     * recognizes identical fonts.
      * 
      * @throws Exception in case of an error
      */
@@ -254,9 +253,9 @@ public class IfxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
+     * <testcase primitive="\ifx"> Test case checking that {@code \ifx}
      * compares a font against an undefined control sequence as false.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -270,9 +269,9 @@ public class IfxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
+     * <testcase primitive="\ifx"> Test case checking that {@code \ifx}
      * compares two fonts mapping to the same external font as different.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -287,8 +286,8 @@ public class IfxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
-     * compares a font and an alias via \let as equal. </testcase>
+     * <testcase primitive="\ifx"> Test case checking that {@code \ifx}
+     * compares a font and an alias via \let as equal.
      * 
      * @throws Exception in case of an error
      */
@@ -303,8 +302,8 @@ public class IfxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
-     * compares a letter against \relax as different. </testcase>
+     * <testcase primitive="\ifx"> Test case checking that {@code \ifx}
+     * compares a letter against \relax as different.
      * 
      * @throws Exception in case of an error
      */
@@ -318,8 +317,8 @@ public class IfxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
-     * compares a letter against a defined macro as different. </testcase>
+     * <testcase primitive="\ifx"> Test case checking that {@code \ifx}
+     * compares a letter against a defined macro as different.
      * 
      * @throws Exception in case of an error
      */
@@ -333,8 +332,8 @@ public class IfxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
-     * compares a defined macro against \relax as different. </testcase>
+     * <testcase primitive="\ifx"> Test case checking that {@code \ifx}
+     * compares a defined macro against \relax as different.
      * 
      * @throws Exception in case of an error
      */
@@ -349,8 +348,8 @@ public class IfxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
-     * compares two undefined macros as equal. </testcase>
+     * <testcase primitive="\ifx"> Test case checking that {@code \ifx}
+     * compares two undefined macros as equal.
      * 
      * @throws Exception in case of an error
      */

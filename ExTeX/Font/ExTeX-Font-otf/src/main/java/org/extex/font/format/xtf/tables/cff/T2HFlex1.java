@@ -28,54 +28,53 @@ import org.extex.util.xml.XMLStreamWriter;
  * hflex1: dx1 dy1 dx2 dy2 dx3 dx4 dx5 dy5 dx6 hflex1 (12 36).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class T2HFlex1 extends T2PathConstruction {
 
     /**
      * The dx1.
      */
-    private T2Number dx1;
+    private final T2Number dx1;
 
     /**
      * The dx2.
      */
-    private T2Number dx2;
+    private final T2Number dx2;
 
     /**
      * The dx3.
      */
-    private T2Number dx3;
+    private final T2Number dx3;
 
     /**
      * The dx4.
      */
-    private T2Number dx4;
+    private final T2Number dx4;
 
     /**
      * The dx5.
      */
-    private T2Number dx5;
+    private final T2Number dx5;
 
     /**
      * The dx6.
      */
-    private T2Number dx6;
+    private final T2Number dx6;
 
     /**
      * The dy1.
      */
-    private T2Number dy1;
+    private final T2Number dy1;
 
     /**
      * The dy2.
      */
-    private T2Number dy2;
+    private final T2Number dy2;
 
     /**
      * The dy5.
      */
-    private T2Number dy5;
+    private final T2Number dy5;
 
     /**
      * Create a new object.
@@ -197,44 +196,26 @@ public class T2HFlex1 extends T2PathConstruction {
         return dy5;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
-     */
-    @Override
+@Override
     public int getID() {
 
         return TYPE_HFLEX1;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "hflex1";
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getValue()
-     */
-    @Override
+@Override
     public Object getValue() {
 
         return null;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

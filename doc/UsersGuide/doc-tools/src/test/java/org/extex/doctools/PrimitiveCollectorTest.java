@@ -30,8 +30,7 @@ import org.junit.Test;
  * This is a test suite for the doc collector.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class PrimitiveCollectorTest {
 
     private static final String DIR_TARGET = "build";

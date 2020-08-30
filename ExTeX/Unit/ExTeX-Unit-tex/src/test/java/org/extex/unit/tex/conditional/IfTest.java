@@ -49,15 +49,14 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\if</tt>.
+ * This is a test suite for the primitive {@code \if}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class IfTest extends ConditionalTester {
 
     /**
-     * The field <tt>X_SOURCE</tt> contains the mock token source.
+     * The field {@code X_SOURCE} contains the mock token source.
      */
     private static final TokenSource X_SOURCE = new TokenSource() {
 
@@ -135,10 +134,7 @@ public class IfTest extends ConditionalTester {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.TokenSource#expand(org.extex.scanner.type.token.Token,
-         *      org.extex.interpreter.context.Context,
+    *      org.extex.interpreter.context.Context,
          *      org.extex.typesetter.Typesetter)
          */
         @Override
@@ -171,7 +167,7 @@ public class IfTest extends ConditionalTester {
          * @param context the interpreter context
          * @param typesetter the typesetter to use
          * @param insert the token to insert either at the beginning of the box
-         *        or after the box has been gathered. If it is <code>null</code>
+         *        or after the box has been gathered. If it is {@code null}
          *        then nothing is inserted
          * 
          * @return the box gathered
@@ -191,7 +187,7 @@ public class IfTest extends ConditionalTester {
          * Get the next token from the token stream and check that it is a
          * control sequence or active character. At the end of all input streams
          * the control sequence "inaccessible" is inserted and an exception is
-         * thrown. Thus this method will never return <code>null</code>.
+         * thrown. Thus this method will never return {@code null}.
          * 
          * @param context the interpreter context
          * @param typesetter the typesetter
@@ -209,10 +205,7 @@ public class IfTest extends ConditionalTester {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.TokenSource#getFont(org.extex.interpreter.context.Context,
-         *      CodeToken)
+    *      CodeToken)
          */
         @Override
         public Font getFont(Context context, CodeToken primitive)
@@ -222,10 +215,7 @@ public class IfTest extends ConditionalTester {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.TokenSource#getKeyword(org.extex.interpreter.context.Context,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         @Override
         public boolean getKeyword(Context context, String keyword) {
@@ -237,7 +227,7 @@ public class IfTest extends ConditionalTester {
          * Getter for the token just previously read from the token source. This
          * is something like a look-back function.
          * 
-         * @return the last token or <code>null</code> if not available
+         * @return the last token or {@code null} if not available
          * 
          * @see org.extex.interpreter.TokenSource#getLastToken()
          */
@@ -268,7 +258,7 @@ public class IfTest extends ConditionalTester {
          * 
          * @param context the interpreter context
          * 
-         * @return the next non-space token or <code>null</code> at EOF
+         * @return the next non-space token or {@code null} at EOF
          * 
          * @see org.extex.interpreter.TokenSource#getNonSpace(org.extex.interpreter.context.Context)
          */
@@ -292,12 +282,7 @@ public class IfTest extends ConditionalTester {
             
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.TokenSource#getToken(org.extex.interpreter.context.Context)
-         */
-        @Override
+    @Override
         public Token getToken(Context context) throws HelpingException {
 
             try {
@@ -309,14 +294,14 @@ public class IfTest extends ConditionalTester {
         }
 
         /**
-         * Get the next tokens form the input streams between <code>{</code> and
-         * <code>}</code>.
+         * Get the next tokens form the input streams between {@code {} and
+         * {@code }}.
          * 
          * @param context the interpreter context
          * @param source the source for new tokens
          * @param typesetter the typesetter
          * 
-         * @return the next tokens or <code>null</code>
+         * @return the next tokens or {@code null}
          * 
          * @see org.extex.interpreter.TokenSource#getTokens(org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
@@ -344,10 +329,7 @@ public class IfTest extends ConditionalTester {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.TokenSource#parse(java.lang.Class,
-         *      org.extex.interpreter.context.Context,
+    *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
          *      org.extex.typesetter.Typesetter)
          */
@@ -362,10 +344,7 @@ public class IfTest extends ConditionalTester {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.parser.DimenParser#parseDimen(org.extex.interpreter.context.Context,
-         *      org.extex.interpreter.TokenSource,
+    *      org.extex.interpreter.TokenSource,
          *      org.extex.typesetter.Typesetter)
          */
         @Override
@@ -376,10 +355,7 @@ public class IfTest extends ConditionalTester {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.parser.GlueParser#parseGlue(org.extex.interpreter.context.Context,
-         *      org.extex.interpreter.TokenSource,
+    *      org.extex.interpreter.TokenSource,
          *      org.extex.typesetter.Typesetter)
          */
         @Override
@@ -390,10 +366,7 @@ public class IfTest extends ConditionalTester {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.parser.CountParser#parseInteger(org.extex.interpreter.context.Context,
-         *      org.extex.interpreter.TokenSource,
+    *      org.extex.interpreter.TokenSource,
          *      org.extex.typesetter.Typesetter)
          */
         @Override
@@ -404,10 +377,7 @@ public class IfTest extends ConditionalTester {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.parser.CountParser#parseNumber(org.extex.interpreter.context.Context,
-         *      org.extex.interpreter.TokenSource,
+    *      org.extex.interpreter.TokenSource,
          *      org.extex.typesetter.Typesetter)
          */
         @Override
@@ -444,12 +414,7 @@ public class IfTest extends ConditionalTester {
             
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.TokenSource#push(org.extex.scanner.type.tokens.Tokens)
-         */
-        @Override
+    @Override
         public void push(Tokens tokens) {
 
             
@@ -464,7 +429,7 @@ public class IfTest extends ConditionalTester {
 
         /**
          * Scan the input stream for tokens making up a character code, this is
-         * a sequence of digits with category code <tt>OTHER</tt>. The number
+         * a sequence of digits with category code {@code OTHER}. The number
          * can be preceded by optional white space. Alternate representations
          * for an character code exist.
          * 
@@ -492,7 +457,7 @@ public class IfTest extends ConditionalTester {
          * 
          * @param context the interpreter context
          * 
-         * @return the next non-space token or <code>null</code> at EOF
+         * @return the next non-space token or {@code null} at EOF
          * 
          * @see org.extex.interpreter.TokenSource#scanNonSpace(org.extex.interpreter.context.Context)
          */
@@ -504,7 +469,7 @@ public class IfTest extends ConditionalTester {
 
         /**
          * Scan the input streams for an entity to denote a register name. Upon
-         * EOF <code>null</code> is returned.
+         * EOF {@code null} is returned.
          * 
          * @param context the interpreter context
          * @param source the source for new tokens
@@ -526,12 +491,7 @@ public class IfTest extends ConditionalTester {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.TokenSource#scanToken(org.extex.interpreter.context.Context)
-         */
-        @Override
+    @Override
         public Token scanToken(Context context)
                 throws HelpingException,
                     TypesetterException {
@@ -541,18 +501,18 @@ public class IfTest extends ConditionalTester {
 
         /**
          * Get the next expanded token form the input streams between
-         * <code>{</code> and <code>}</code>.
+         * {@code {} and {@code }}.
          * 
          * @param context the interpreter context
          * @param primitive the name of the invoking primitive for error
          *        handling
          * @param reportUndefined indicator that an undefined control sequence
          *        leads to an exception. This parameter is effective only if
-         *        ignoreUndefined is <code>false</code>
+         *        ignoreUndefined is {@code false}
          * @param ignoreUndefined indicator that an undefined control sequence
-         *        should be treated as <tt>\relax</tt>
+         *        should be treated as {@code \relax}
          * 
-         * @return the next tokens or <code>null</code>
+         * @return the next tokens or {@code null}
          * 
          * @see org.extex.interpreter.TokenSource#scanTokens(org.extex.interpreter.context.Context,
          *      boolean, boolean, CodeToken)
@@ -567,14 +527,14 @@ public class IfTest extends ConditionalTester {
 
         /**
          * Get the next expanded token form the input streams between a left
-         * brace character (usually <code>{</code>) and a right brace character
-         * (usually <code>}</code>) and convert it to a <code>String</code>.
+         * brace character (usually {@code {}) and a right brace character
+         * (usually {@code }}) and convert it to a {@code String}.
          * 
          * @param context the interpreter context
          * @param primitive the name of the invoking primitive for error
          *        handling
          * 
-         * @return the next tokens as <code>String</code> or <code>null</code>
+         * @return the next tokens as {@code String} or {@code null}
          * 
          * @see org.extex.interpreter.TokenSource#scanTokensAsString(org.extex.interpreter.context.Context,
          *      CodeToken)
@@ -588,9 +548,9 @@ public class IfTest extends ConditionalTester {
 
         /**
          * Get the next expanded token form the input streams between
-         * <code>{</code> and <code>}</code>. If the current input stream is at
+         * {@code {} and {@code }}. If the current input stream is at
          * its end then the next one on the streamStack is used until a token
-         * could be read. If all stream are at the end then <code>null</code> is
+         * could be read. If all stream are at the end then {@code null} is
          * returned.
          * 
          * @param context the interpreter context
@@ -598,11 +558,11 @@ public class IfTest extends ConditionalTester {
          *        handling
          * @param reportUndefined indicator that an undefined control sequence
          *        leads to an exception. This parameter is effective only if
-         *        ignoreUndefined is <code>false</code>
+         *        ignoreUndefined is {@code false}
          * @param ignoreUndefined indicator that an undefined control sequence
-         *        should be treated as <tt>\relax</tt>
+         *        should be treated as {@code \relax}
          * 
-         * @return the next tokens or <code>null</code>
+         * @return the next tokens or {@code null}
          * 
          * @see org.extex.interpreter.TokenSource#scanUnprotectedTokens(org.extex.interpreter.context.Context,
          *      boolean, boolean, CodeToken)
@@ -661,8 +621,8 @@ public class IfTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> on two
-     * identical letters evaluates the then branch. </testcase>
+     * <testcase primitive="\if"> Test case checking that {@code \if} on two
+     * identical letters evaluates the then branch.
      * 
      * @throws Exception in case of an error
      */
@@ -676,8 +636,8 @@ public class IfTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> on two
-     * different letters evaluates the else branch. </testcase>
+     * <testcase primitive="\if"> Test case checking that {@code \if} on two
+     * different letters evaluates the else branch.
      * 
      * @throws Exception in case of an error
      */
@@ -691,9 +651,9 @@ public class IfTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> a letter
+     * <testcase primitive="\if"> Test case checking that {@code \if} a letter
      * and a macro containing just this letter evaluates the then branch.
-     * </testcase>
+     *
      * 
      * The TeXbook
      * 
@@ -710,9 +670,9 @@ public class IfTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> a macro
+     * <testcase primitive="\if"> Test case checking that {@code \if} a macro
      * containing just a letter and this letter evaluates the then branch.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -727,8 +687,8 @@ public class IfTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> on a
-     * macro and a let character evaluates the then branch. </testcase>
+     * <testcase primitive="\if"> Test case checking that {@code \if} on a
+     * macro and a let character evaluates the then branch.
      * 
      * @throws Exception in case of an error
      */
@@ -743,9 +703,9 @@ public class IfTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> on a let
+     * <testcase primitive="\if"> Test case checking that {@code \if} on a let
      * character and a macro containing this character evaluates the then
-     * branch. </testcase>
+     * branch.
      * 
      * @throws Exception in case of an error
      */
@@ -760,9 +720,9 @@ public class IfTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> on two
+     * <testcase primitive="\if"> Test case checking that {@code \if} on two
      * macros bound to different characters evaluates the else branch.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -777,8 +737,8 @@ public class IfTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> on a
-     * macro and a primitive evaluates the else branch. </testcase>
+     * <testcase primitive="\if"> Test case checking that {@code \if} on a
+     * macro and a primitive evaluates the else branch.
      * 
      * @throws Exception in case of an error
      */
@@ -793,8 +753,8 @@ public class IfTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> on two
-     * different primitives evaluates the then branch. </testcase>
+     * <testcase primitive="\if"> Test case checking that {@code \if} on two
+     * different primitives evaluates the then branch.
      * 
      * @throws Exception in case of an error
      */
@@ -809,8 +769,8 @@ public class IfTest extends ConditionalTester {
     }
 
     /**
-     * <testcase> Test case checking that <tt>conditional()</tt> works.
-     * </testcase>
+     *  Test case checking that {@code conditional()} works.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -825,8 +785,8 @@ public class IfTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> needs
-     * something to follow. </testcase>
+     * <testcase primitive="\if"> Test case checking that {@code \if} needs
+     * something to follow.
      * 
      * @throws Exception in case of an error
      */
@@ -840,8 +800,8 @@ public class IfTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> needs two
-     * arguments to follow. </testcase>
+     * <testcase primitive="\if"> Test case checking that {@code \if} needs two
+     * arguments to follow.
      * 
      * @throws Exception in case of an error
      */

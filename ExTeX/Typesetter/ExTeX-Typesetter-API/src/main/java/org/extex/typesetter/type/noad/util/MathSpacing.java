@@ -32,101 +32,94 @@ import org.extex.typesetter.type.node.GlueNode;
  * Thus utility class contains some constants which describe the spacing between
  * elements in math typesetting.
  * 
- * <doc name="thinmuskip" type="register">
- * <h3>The Muskip Parameter <tt>\thinmuskip</tt></h3>
+ * <p>The Muskip Parameter {@code \thinmuskip}</p>
  * <p>
- * The muskip parameter <tt>\thinmuskip</tt> determines the amount of spacing
+ * The muskip parameter {@code \thinmuskip} determines the amount of spacing
  * to be inserted where a thin skip is required.
  * </p>
- * </doc>
  * 
- * <doc name="medmuskip" type="register">
- * <h3>The Muskip Parameter <tt>\medmuskip</tt></h3>
+ * <p>The Muskip Parameter {@code \medmuskip}</p>
  * <p>
- * The muskip parameter <tt>\medmuskip</tt> determines the amount of spacing
+ * The muskip parameter {@code \medmuskip} determines the amount of spacing
  * to be inserted where a medium skip is required.
  * </p>
- * </doc>
  * 
- * <doc name="thickmuskip" type="register">
- * <h3>The Muskip Parameter <tt>\thickmuskip</tt></h3>
+ * <p>The Muskip Parameter {@code \thickmuskip}</p>
  * <p>
- * The muskip parameter <tt>\thickmuskip</tt> determines the amount of spacing
+ * The muskip parameter {@code \thickmuskip} determines the amount of spacing
  * to be inserted where a thick skip is required.
  * </p>
- * </doc>
  * 
  * 
  * @see "TTP [764]"
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public final class MathSpacing implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>BIN</tt> contains the spacing class for binary operators.
+     * The field {@code BIN} contains the spacing class for binary operators.
      */
     public static final MathSpacing BIN = new MathSpacing(2, "33**3**3");
 
     /**
-     * The field <tt>CLOSE</tt> contains the spacing class for closing.
+     * The field {@code CLOSE} contains the spacing class for closing.
      */
     public static final MathSpacing CLOSE = new MathSpacing(5, "02340001");
 
     /**
-     * The field <tt>INNER</tt> contains the spacing class for inner math.
+     * The field {@code INNER} contains the spacing class for inner math.
      */
     public static final MathSpacing INNER = new MathSpacing(7, "12341011");
 
     /**
-     * The field <tt>OP</tt> contains the spacing class for operators.
+     * The field {@code OP} contains the spacing class for operators.
      */
     public static final MathSpacing OP = new MathSpacing(1, "22*40001");
 
     /**
-     * The field <tt>OPEN</tt> contains the spacing class for opening.
+     * The field {@code OPEN} contains the spacing class for opening.
      */
     public static final MathSpacing OPEN = new MathSpacing(4, "00*00000");
 
     /**
-     * The field <tt>ORD</tt> contains the spacing class for ordinary
+     * The field {@code ORD} contains the spacing class for ordinary
      * characters.
      */
     public static final MathSpacing ORD = new MathSpacing(0, "02340001");
 
     /**
-     * The field <tt>PUNCT</tt> contains the spacing class for punctation
+     * The field {@code PUNCT} contains the spacing class for punctation
      * marks.
      */
     public static final MathSpacing PUNCT = new MathSpacing(6, "11*11111");
 
     /**
-     * The field <tt>REL</tt> contains the spacing class for relation symbols.
+     * The field {@code REL} contains the spacing class for relation symbols.
      */
     public static final MathSpacing REL = new MathSpacing(3, "44*04004");
 
     /**
-     * The field <tt>UNDEF</tt> contains the undefined spacing class.
+     * The field {@code UNDEF} contains the undefined spacing class.
      */
     public static final MathSpacing UNDEF = new MathSpacing(-1, null);
 
     /**
-     * The field <tt>id</tt> contains the internal id.
+     * The field {@code id} contains the internal id.
      */
-    private int id;
+    private final int id;
 
     /**
-     * The field <tt>spec</tt> contains the specification to determine the
+     * The field {@code spec} contains the specification to determine the
      * actual distance to be inserted.
      */
-    private String spec;
+    private final String spec;
 
     /**
      * Creates a new object.

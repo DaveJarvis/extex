@@ -28,8 +28,7 @@ import org.extex.scanner.type.tokens.Tokens;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public interface ContextTokens {
 
     /**
@@ -37,7 +36,7 @@ public interface ContextTokens {
      * register. Tokens registers are named, either with a number or an
      * arbitrary string. The numbered registers where limited to 256 in
      * TeX. This restriction does no longer hold for
-     * ??TeX.
+     * εχTeX.
      * 
      * @param name the name or number of the token register
      * 
@@ -53,11 +52,11 @@ public interface ContextTokens {
      * register. Tokens registers are named, either with a number or an
      * arbitrary string. The numbered registers where limited to 256 in
      * TeX. This restriction does no longer hold for
-     * ??TeX.
+     * εχTeX.
      * 
      * @param name the name or number of the token register
      * 
-     * @return the token register or <code>null</code> if it is not defined
+     * @return the token register or {@code null} if it is not defined
      * 
      * @see #getToks(String)
      * @see #setToks(String, Tokens, boolean)
@@ -69,11 +68,11 @@ public interface ContextTokens {
      * register in the specified groups. Tokens registers are named, either with
      * a number or an arbitrary string. The numbered registers where limited to
      * 256 in TeX. This restriction does no longer hold for
-     * ??TeX.
+     * εχTeX.
      * 
      * @param name the name or the number of the register
      * @param toks the new value of the register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @throws HelpingException in case of a problem in an observer

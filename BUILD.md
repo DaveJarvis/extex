@@ -16,7 +16,7 @@ requires the following software packages:
 Compiling εχTeX
 -------------------------------------------
 
-Compile the entirety of εχTeX from the `extex` directory as follows:
+Compile all of εχTeX from the `extex` directory as follows:
 
     gradle clean build
 
@@ -38,6 +38,18 @@ These sub-projects can be compiled independently using:
 
     gradle clean build
 
+Compiling Javadocs
+-------------------------------------------
+
+Build and aggregate the εχTeX API Javadocs from the
+`extex` directory into `build/docs/javadoc` as follows: 
+
+    gradle aggregateJavadocs 
+
+Alternatively, build individual component Javadocs as follows:
+
+    gradle javadoc
+
 Testing εχTeX
 -------------------------------------------
 
@@ -45,7 +57,6 @@ Run the unit tests as follows:
 
     gradle test
 
-Unit tests must always succeed. Failing unit tests
-indicate where the development is incomplete; such tests
-must be annotated using `@Ignore`, until the tests are fixed
-to pass.
+Unit tests must always succeed. Failing unit tests indicate
+where the development is incomplete; such tests must be
+annotated using `@Ignore`, until the tests are corrected.

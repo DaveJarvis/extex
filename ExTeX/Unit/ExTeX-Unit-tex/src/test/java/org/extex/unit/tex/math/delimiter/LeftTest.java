@@ -24,11 +24,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\left</tt>.
+ * This is a test suite for the primitive {@code \left}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LeftTest extends AbstractMathTester {
 
 
@@ -38,9 +37,9 @@ public class LeftTest extends AbstractMathTester {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that <tt>\left</tt> needs a delimiter.
-     * </testcase>
+     * 
+     *  Test case checking that {@code \left} needs a delimiter.
+     * 
      *
      * @throws Exception in case of an error
      */
@@ -55,9 +54,9 @@ public class LeftTest extends AbstractMathTester {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that <tt>\left</tt> needs closing <tt>\right</tt>.
-     * </testcase>
+     * 
+     *  Test case checking that {@code \left} needs closing {@code \right}.
+     * 
      *
      * @throws Exception in case of an error
      */
@@ -72,9 +71,9 @@ public class LeftTest extends AbstractMathTester {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that <tt>\left</tt> needs closing <tt>\right</tt>.
-     * </testcase>
+     * 
+     *  Test case checking that {@code \left} needs closing {@code \right}.
+     * 
      *
      * @throws Exception in case of an error
      */
@@ -89,9 +88,9 @@ public class LeftTest extends AbstractMathTester {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that <tt>\left</tt> needs closing <tt>\right</tt>.
-     * </testcase>
+     * 
+     *  Test case checking that {@code \left} needs closing {@code \right}.
+     * 
      *
      * @throws Exception in case of an error
      */

@@ -48,18 +48,14 @@ import org.extex.typesetter.type.math.MathDelimiter;
 
 /**
  * This is the implementation of a group object. A group is the container for
- * all data which might have group local values. In contrast to <logo>T<span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> the groups are organized as linked objects. A new group
+ * all data which might have group local values. In contrast to TeX the groups are organized as linked objects. A new group
  * contains just the values which have local definitions. Thus the opening and
  * closing of groups are rather fast. The access to the value might be slow when
  * many groups have to be passed to find the one containing the value.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4770 $
- */
+*/
 public interface Group extends Tokenizer, Serializable {
 
     /**
@@ -87,11 +83,11 @@ public interface Group extends Tokenizer, Serializable {
      * Getter for the {@link org.extex.interpreter.type.box.Box box}register.
      * Count registers are named, either with a number or an arbitrary string.
      * The numbered registers where limited to 256 in TeX. This restriction does no longer hold for
-     * ??TeX.
+     * εχTeX.
      * 
      * @param name the name or number of the count register
      * 
-     * @return the count register or <code>null</code> if it is not defined
+     * @return the count register or {@code null} if it is not defined
      */
     Box getBox(String name);
 
@@ -109,7 +105,7 @@ public interface Group extends Tokenizer, Serializable {
      * 
      * @param token the name of the active character or macro
      * 
-     * @return the code associated to the name or <code>null</code> if none is
+     * @return the code associated to the name or {@code null} if none is
      *         defined yet
      */
     Code getCode(CodeToken token);
@@ -342,7 +338,7 @@ public interface Group extends Tokenizer, Serializable {
      * 
      * @param name the name of the toks register
      * 
-     * @return the value of the toks register or <code>null</code> if none is
+     * @return the value of the toks register or {@code null} if none is
      *         defined
      */
     Tokens getToksOrNull(String name);
@@ -383,11 +379,11 @@ public interface Group extends Tokenizer, Serializable {
      * all requested groups. Count registers are named, either with a number or
      * an arbitrary string. The numbered registers where limited to 256 in
      * TeX. This restriction does no longer hold for
-     * ??TeX.
+     * εχTeX.
      * 
      * @param name the name or the number of the register
      * @param value the new value of the register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setBox(String name, Box value, boolean global);
@@ -397,7 +393,7 @@ public interface Group extends Tokenizer, Serializable {
      * 
      * @param c the character
      * @param code the catcode
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setCatcode(UnicodeChar c, Catcode code, boolean global);
@@ -408,7 +404,7 @@ public interface Group extends Tokenizer, Serializable {
      * @param token the name of the active character, i.e. a single letter
      *        string
      * @param code the new code
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setCode(Token token, Code code, boolean global);
@@ -418,7 +414,7 @@ public interface Group extends Tokenizer, Serializable {
      * 
      * @param name the name of the count register
      * @param value the value of the count register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setCount(String name, Count value, boolean global);
@@ -428,7 +424,7 @@ public interface Group extends Tokenizer, Serializable {
      * 
      * @param uc the character to set the delcode for
      * @param code the new delcode
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setDelcode(UnicodeChar uc, MathDelimiter code, boolean global);
@@ -438,7 +434,7 @@ public interface Group extends Tokenizer, Serializable {
      * 
      * @param name the name of the count register
      * @param value the value of the count register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setDimen(String name, Dimen value, boolean global);
@@ -448,7 +444,7 @@ public interface Group extends Tokenizer, Serializable {
      * 
      * @param name the name of the font
      * @param font the new font
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setFont(String name, Font font, boolean global);
@@ -458,7 +454,7 @@ public interface Group extends Tokenizer, Serializable {
      * 
      * @param name the name of the boolean
      * @param value the truth value
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setIf(String name, boolean value, boolean global);
@@ -468,7 +464,7 @@ public interface Group extends Tokenizer, Serializable {
      * 
      * @param name the name of the input file
      * @param file the input file specification
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setInFile(String name, InFile file, boolean global);
@@ -479,7 +475,7 @@ public interface Group extends Tokenizer, Serializable {
      * 
      * @param uc upper case character
      * @param lc lower case equivalent
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setLccode(UnicodeChar uc, UnicodeChar lc, boolean global);
@@ -496,7 +492,7 @@ public interface Group extends Tokenizer, Serializable {
      * 
      * @param uc the character to set the math code for
      * @param code the new math code
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setMathcode(UnicodeChar uc, MathCode code, boolean global);
@@ -506,7 +502,7 @@ public interface Group extends Tokenizer, Serializable {
      * 
      * @param name the name of the register
      * @param value the value of the register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setMuskip(String name, Muskip value, boolean global);
@@ -515,7 +511,7 @@ public interface Group extends Tokenizer, Serializable {
      * Setter for the name space.
      * 
      * @param namespace the new name space
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setNamespace(String namespace, boolean global);
@@ -525,7 +521,7 @@ public interface Group extends Tokenizer, Serializable {
      * 
      * @param name the name of the output file
      * @param file the output file specification
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setOutFile(String name, OutFile file, boolean global);
@@ -535,7 +531,7 @@ public interface Group extends Tokenizer, Serializable {
      * 
      * @param uc the character to set the space factor code for
      * @param code the new space factor code
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setSfcode(UnicodeChar uc, Count code, boolean global);
@@ -545,7 +541,7 @@ public interface Group extends Tokenizer, Serializable {
      * 
      * @param name the name of the count register
      * @param value the value of the count register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setSkip(String name, Glue value, boolean global);
@@ -569,7 +565,7 @@ public interface Group extends Tokenizer, Serializable {
      * 
      * @param name the name of the toks register
      * @param value the value of the toks register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setToks(String name, Tokens value, boolean global);
@@ -585,7 +581,7 @@ public interface Group extends Tokenizer, Serializable {
      * Setter for the typesetting context in the specified groups.
      * 
      * @param context the new typesetting context
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setTypesettingContext(TypesettingContext context, boolean global);
@@ -596,7 +592,7 @@ public interface Group extends Tokenizer, Serializable {
      * 
      * @param lc lower case character
      * @param uc uppercase equivalent
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setUccode(UnicodeChar lc, UnicodeChar uc, boolean global);
@@ -608,7 +604,7 @@ public interface Group extends Tokenizer, Serializable {
      * @param key the key of the object
      * 
      * @return the object stored for the extension under the given key or
-     *         <code>null</code> if none is there
+     *         {@code null} if none is there
      */
     Object get(Object extension, Object key);
 

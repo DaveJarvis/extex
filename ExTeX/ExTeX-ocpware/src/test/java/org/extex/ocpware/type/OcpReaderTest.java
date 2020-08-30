@@ -46,12 +46,11 @@ import org.junit.Test;
  * This is a test suite for the OcpReader.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class OcpReaderTest {
 
     /**
-     * The field <tt>buffer</tt> contains the buffer for transporting
+     * The field {@code buffer} contains the buffer for transporting
      * information from a visitor out.
      */
     private StringBuilder buffer = new StringBuilder();

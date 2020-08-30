@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains some exceptions for the interpreter max.
+ * Contains some exceptions for the interpreter max.
  */
 
 package org.extex.interpreter.max.exception;

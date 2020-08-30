@@ -23,21 +23,20 @@ package org.extex.ocpware.type;
  * This enumeration names the &Omega;CP modes.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public enum OcpMode {
 
     /**
-     * The field <tt>ONE_BYTE</tt> contains the value for one byte.
+     * The field {@code ONE_BYTE} contains the value for one byte.
      */
     ONE_BYTE,
     /**
-     * The field <tt>TWO_BYTES</tt> contains the value for two-byte higher
+     * The field {@code TWO_BYTES} contains the value for two-byte higher
      * endian.
      */
     TWO_BYTES,
     /**
-     * The field <tt>TWO_BYTES_LE</tt> contains the value for two-byte lower
+     * The field {@code TWO_BYTES_LE} contains the value for two-byte lower
      * endian
      */
     TWO_BYTES_LE

@@ -27,17 +27,16 @@ import org.extex.typesetter.type.node.WhatsItNode;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4791 $
- */
+*/
 public class PdfAnnotation extends WhatsItNode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
-     * The field <tt>text</tt> contains the text to pass to the back-end driver.
+     * The field {@code text} contains the text to pass to the back-end driver.
      */
     private String text;
 

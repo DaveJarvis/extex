@@ -28,19 +28,18 @@ import org.extex.core.dimen.Dimen;
  * units (mu).
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4399 $
- */
+*/
 public class Mudimen implements Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>length</tt> contains the the natural length.
+     * The field {@code length} contains the the natural length.
      */
-    private Dimen length = new Dimen(0);
+    private final Dimen length = new Dimen( 0);
 
     /**
      * Creates a new object. All components are 0.
@@ -82,7 +81,7 @@ public class Mudimen implements Serializable {
     /**
      * Check for a zero value.
      * 
-     * @return <code>true</code> iff the length is zero
+     * @return {@code true} iff the length is zero
      */
     public boolean isZero() {
 
@@ -107,10 +106,7 @@ public class Mudimen implements Serializable {
      * Return the string representation of the instance.
      * 
      * @return the string representation of this glue
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [???]"
-     */
+*/
     @Override
     public String toString() {
 

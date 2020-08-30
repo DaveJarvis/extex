@@ -25,15 +25,14 @@ import java.io.OutputStream;
 import org.extex.dviware.Dvi;
 
 /**
- * This class represents the DVI instruction <tt>y</tt>.
+ * This class represents the DVI instruction {@code y}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DviY extends AbstractDviCode {
 
     /**
-     * The field <tt>value</tt> contains the value.
+     * The field {@code value} contains the value.
      */
     private int value;
 

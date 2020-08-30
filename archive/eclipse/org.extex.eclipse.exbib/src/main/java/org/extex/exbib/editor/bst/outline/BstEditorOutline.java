@@ -46,31 +46,20 @@ import org.extex.exbib.editor.bst.model.BstModelNode;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class BstEditorOutline extends ContentOutlinePage {
 
     /**
-     * The field <tt>contentProvider</tt> contains the content provider.
+     * The field {@code contentProvider} contains the content provider.
      */
     private ITreeContentProvider contentProvider = new ITreeContentProvider() {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.IContentProvider#dispose()
-         */
-        @Override
+    @Override
         public void dispose() {
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
-         */
-        @Override
+    @Override
         public Object[] getChildren(Object input) {
 
             if (input instanceof BstModel) {
@@ -81,12 +70,7 @@ public class BstEditorOutline extends ContentOutlinePage {
             return new Object[]{};
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
-         */
-        @Override
+    @Override
         public Object[] getElements(Object input) {
 
             if (input instanceof BstModel) {
@@ -97,12 +81,7 @@ public class BstEditorOutline extends ContentOutlinePage {
             return new Object[]{};
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
-         */
-        @Override
+    @Override
         public Object getParent(Object element) {
 
             if (element instanceof BstModelNode) {
@@ -111,12 +90,7 @@ public class BstEditorOutline extends ContentOutlinePage {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
-         */
-        @Override
+    @Override
         public boolean hasChildren(Object input) {
 
             if (input instanceof BstModel) {
@@ -128,10 +102,7 @@ public class BstEditorOutline extends ContentOutlinePage {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer,
-         *      java.lang.Object, java.lang.Object)
+    *      java.lang.Object, java.lang.Object)
          */
         @Override
         public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
@@ -142,21 +113,16 @@ public class BstEditorOutline extends ContentOutlinePage {
     };
 
     /**
-     * The field <tt>labelProvider</tt> contains the label provider.
+     * The field {@code labelProvider} contains the label provider.
      */
     private ILabelProvider labelProvider = new LabelProvider() {
 
         /**
-         * The field <tt>imageMap</tt> contains the image map.
+         * The field {@code imageMap} contains the image map.
          */
         private Map<String, Image> imageMap = new HashMap<String, Image>();
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.BaseLabelProvider#dispose()
-         */
-        @Override
+    @Override
         public void dispose() {
 
             for (Image image : imageMap.values()) {
@@ -165,12 +131,7 @@ public class BstEditorOutline extends ContentOutlinePage {
             super.dispose();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.LabelProvider#getImage(java.lang.Object)
-         */
-        @Override
+    @Override
         public Image getImage(Object element) {
 
             String name = element.getClass().getSimpleName();
@@ -187,12 +148,7 @@ public class BstEditorOutline extends ContentOutlinePage {
             return image;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.LabelProvider#getText(java.lang.Object)
-         */
-        @Override
+    @Override
         public String getText(Object element) {
 
             return element.toString();
@@ -201,12 +157,12 @@ public class BstEditorOutline extends ContentOutlinePage {
     };
 
     /**
-     * The field <tt>bstEditor</tt> contains the ...
+     * The field {@code bstEditor} contains the ...
      */
     private BstEditor bstEditor;
 
     /**
-     * The field <tt>listener</tt> contains the ...
+     * The field {@code listener} contains the ...
      */
     private ISelectionChangedListener listener =
             new ISelectionChangedListener() {
@@ -248,12 +204,7 @@ public class BstEditorOutline extends ContentOutlinePage {
         addSelectionChangedListener(listener);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.part.IPage#createControl(org.eclipse.swt.widgets.Composite)
-     */
-    @Override
+@Override
     public void createControl(Composite parent) {
 
         super.createControl(parent);

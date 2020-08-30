@@ -41,8 +41,7 @@ import org.junit.Test;
  * This class is a test suite for {@link BblWriterFactory}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BblWriterFactoryTest {
 
     private static final String DIR_TARGET = "build";
@@ -106,7 +105,7 @@ public class BblWriterFactoryTest {
     }
 
     /**
-     * The field <tt>CFG</tt> contains the configuration.
+     * The field {@code CFG} contains the configuration.
      */
     private static final Configuration CFG = new Configuration() {
 
@@ -270,25 +269,25 @@ public class BblWriterFactoryTest {
     };
 
     /**
-     * The field <tt>dis</tt> contains the indicator that discarded output has
+     * The field {@code dis} contains the indicator that discarded output has
      * been recognized.
      */
     private boolean dis;
 
     /**
-     * The field <tt>out</tt> contains the indicator that file output has been
+     * The field {@code out} contains the indicator that file output has been
      * recognized
      */
     private boolean out;
 
     /**
-     * The field <tt>std</tt> contains the indicator that standard output has
+     * The field {@code std} contains the indicator that standard output has
      * been recognized
      */
     private boolean std;
 
     /**
-     * <testcase> Test that a new instance can be obtained. </testcase>
+     *  Test that a new instance can be obtained.
      *
      * @throws Exception in case of an error
      */
@@ -301,9 +300,8 @@ public class BblWriterFactoryTest {
     }
 
     /**
-     * <testcase> Test that the discarded notifier is triggered and none of the
-     * others when invoked with null as argument. </testcase>
-     *
+     * Test that the discarded notifier is triggered and none of the others when invoked with null as argument
+*
      * @throws Exception in case of an error
      */
     @Test
@@ -321,9 +319,8 @@ public class BblWriterFactoryTest {
     }
 
     /**
-     * <testcase> Test that the discarded notifier is triggered and none of the
-     * others when invoked with the empty string as argument. </testcase>
-     *
+     * Test that the discarded notifier is triggered and none of the others when invoked with the empty string as argument
+*
      * @throws Exception in case of an error
      */
     @Test
@@ -341,9 +338,8 @@ public class BblWriterFactoryTest {
     }
 
     /**
-     * <testcase> Test that the stdout notifier is triggered and none of the
-     * others when invoked with the string "-" as argument. </testcase>
-     *
+     * Test that the stdout notifier is triggered and none of the others when invoked with the string "-" as argument
+*
      * @throws Exception in case of an error
      */
     @Test
@@ -361,9 +357,8 @@ public class BblWriterFactoryTest {
     }
 
     /**
-     * <testcase> Test that the stdout notifier is triggered and none of the
-     * others when invoked with the string "-" as argument. </testcase>
-     *
+     * Test that the stdout notifier is triggered and none of the others when invoked with the string "-" as argument
+*
      * @throws Exception in case of an error
      */
     @Test

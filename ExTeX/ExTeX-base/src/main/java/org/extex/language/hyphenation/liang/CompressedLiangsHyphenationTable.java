@@ -26,16 +26,15 @@ import java.util.Map;
 
 /**
  * This class implements Liang's algorithm for hyphenation with a compressed
- * hyphenation tree. Thê hyphenation tree is compressed when the object is
+ * hyphenation tree. The hyphenation tree is compressed when the object is
  * serialized. Afterwards no more patterns can be added.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class CompressedLiangsHyphenationTable extends LiangsHyphenationTable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2011L;
 
@@ -73,7 +72,7 @@ public class CompressedLiangsHyphenationTable extends LiangsHyphenationTable {
     private void writeObject(ObjectOutputStream out) throws IOException {
 
         if (!isCompressed()) {
-            compress(getPatterns(), new HashMap<char[], char[]>());
+            compress(getPatterns(), new HashMap<>());
             setCompressed();
         }
         out.defaultWriteObject();

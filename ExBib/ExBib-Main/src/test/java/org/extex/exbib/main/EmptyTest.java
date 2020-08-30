@@ -27,12 +27,11 @@ import org.junit.Test;
  * Test suite for the empty tests.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class EmptyTest {
 
     /**
-     * The field <tt>DATA_DIR</tt> contains the directory containing database,
+     * The field {@code DATA_DIR} contains the directory containing database,
      * styles and results.
      */
     private static final String DATA_DIR = "src/test/resources/bibtex/empty";
@@ -53,7 +52,7 @@ public class EmptyTest {
     }
 
     /**
-     * <testcase> Run test empty_1. </testcase>
+     *  Run test empty_1.
      * 
      * @throws Exception in case of an error
      */
@@ -64,7 +63,7 @@ public class EmptyTest {
     }
 
     /**
-     * <testcase> Run test empty_2. </testcase>
+     *  Run test empty_2.
      * 
      * @throws Exception in case of an error
      */

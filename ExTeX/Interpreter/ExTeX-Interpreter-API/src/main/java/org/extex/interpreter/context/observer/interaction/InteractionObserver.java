@@ -27,8 +27,7 @@ import org.extex.interpreter.interaction.Interaction;
  * change of the interaction mode.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4399 $
- */
+*/
 public interface InteractionObserver {
 
     /**

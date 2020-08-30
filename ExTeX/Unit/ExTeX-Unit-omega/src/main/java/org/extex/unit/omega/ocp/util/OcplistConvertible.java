@@ -29,8 +29,7 @@ import org.extex.typesetter.Typesetter;
  * &Omega;PC list.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4411 $
- */
+*/
 public interface OcplistConvertible {
 
     /**

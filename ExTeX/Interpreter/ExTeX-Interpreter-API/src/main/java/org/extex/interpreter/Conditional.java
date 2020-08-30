@@ -26,39 +26,38 @@ import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.token.CodeToken;
 
 /**
- * This class represents a conditional for a normal <tt>\if \else \fi</tt>
- * construct. It records which <tt>\if</tt> has initiated it and where this has
+ * This class represents a conditional for a normal {@code \if \else \fi}
+ * construct. It records which {@code \if} has initiated it and where this has
  * happened.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5563 $
- */
+*/
 public class Conditional implements Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 1L;
 
     /**
-     * The field <tt>branch</tt> contains the branch indicator.
+     * The field {@code branch} contains the branch indicator.
      */
     private long branch;
 
     /**
-     * The field <tt>locator</tt> contains the locator to the position of the
-     * opening <tt>\if</tt>.
+     * The field {@code locator} contains the locator to the position of the
+     * opening {@code \if}.
      */
     private Locator locator;
 
     /**
-     * The field <tt>neg</tt> contains the indicator that the conditional has
+     * The field {@code neg} contains the indicator that the conditional has
      * been negated.
      */
     private boolean neg;
 
     /**
-     * The field <tt>primitive</tt> contains the name of the primitive which
+     * The field {@code primitive} contains the name of the primitive which
      * has lead to this conditional.
      */
     private Code primitive;
@@ -68,7 +67,7 @@ public class Conditional implements Serializable {
      *
      * @param locator the locator
      * @param primitive the primitive which started this conditional
-     * @param branch <code>true</code> iff the then branch is taken
+     * @param branch {@code true} iff the then branch is taken
      * @param neg indicator that the conditional has been negated
      */
     public Conditional(Locator locator, Code primitive,
@@ -92,7 +91,7 @@ public class Conditional implements Serializable {
 
     /**
      * Getter for the locator of this conditional.
-     * The locator points to the initiating <tt>\if</tt>.
+     * The locator points to the initiating {@code \if}.
      *
      * @return the locator
      */
@@ -123,8 +122,8 @@ public class Conditional implements Serializable {
 
     /**
      * Getter for the value of the conditional.
-     * If it has the value <code>true</code> then the conditional is one of the
-     * if-then-else constructs. Otherwise it is a <tt>\ifcase</tt> construction.
+     * If it has the value {@code true} then the conditional is one of the
+     * if-then-else constructs. Otherwise it is a {@code \ifcase} construction.
      *
      * @return the value
      */

@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains some utility classes and interfaces of general nature.
+ * Contains some utility classes and interfaces of general nature.
  * <p>
  * This package should be reorganized whenever it should start to be 
  * over-populated.

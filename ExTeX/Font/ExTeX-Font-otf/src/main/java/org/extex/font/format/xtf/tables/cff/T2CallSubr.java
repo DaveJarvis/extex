@@ -33,14 +33,13 @@ import org.extex.util.xml.XMLStreamWriter;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class T2CallSubr extends T2Subroutine {
 
     /**
      * subroutine index.
      */
-    private T2Number subr;
+    private final T2Number subr;
 
     /**
      * Create a new object.
@@ -64,23 +63,13 @@ public class T2CallSubr extends T2Subroutine {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
-     */
-    @Override
+@Override
     public int getID() {
 
         return TYPE_CALLSUBR;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "callsubr";
@@ -96,35 +85,20 @@ public class T2CallSubr extends T2Subroutine {
         return subr;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getValue()
-     */
-    @Override
+@Override
     public Object getValue() {
 
         return subr;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#toText()
-     */
-    @Override
+@Override
     public String toText() {
 
         return new StringBuilder(subr.toString()).append(' ').append(getName())
             .toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    @Override
+@Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());

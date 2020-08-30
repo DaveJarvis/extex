@@ -46,8 +46,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public abstract class XtfGPOSSingleTable extends XtfLookupTable {
 
     /**
@@ -82,9 +81,10 @@ public abstract class XtfGPOSSingleTable extends XtfLookupTable {
      * SinglePosFormat1 subtable: Single positioning value
      * </p>
      * 
-     * <table border="1">
-     * <tr>
-     * <td><b>Value</b></td>
+     * <table>
+ * <caption>TBD</caption>
+ * <tr>
+* <td><b>Value</b></td>
      * <td><b>Type</b></td>
      * <td><b>Description</b></td>
      * </tr>
@@ -118,13 +118,13 @@ public abstract class XtfGPOSSingleTable extends XtfLookupTable {
         /**
          * Defines the types of data in the ValueRecord.
          */
-        private int valueFormat;
+        private final int valueFormat;
 
         /**
          * Defines positioning value(s)-applied to all glyphs in the Coverage
          * table
          */
-        private ValueRecord valueRecord;
+        private final ValueRecord valueRecord;
 
         /**
          * Create a new object.
@@ -151,12 +151,7 @@ public abstract class XtfGPOSSingleTable extends XtfLookupTable {
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.gps.XtfGPOSSingleTable#getValueRecord(int)
-         */
-        @Override
+    @Override
         public ValueRecord getValueRecord(int glyph) {
 
             int coverageIndex = coverage.findGlyph(glyph);
@@ -166,12 +161,7 @@ public abstract class XtfGPOSSingleTable extends XtfLookupTable {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("singletable");
             writer.writeAttribute("format", getFormat());
@@ -220,21 +210,22 @@ public abstract class XtfGPOSSingleTable extends XtfLookupTable {
      * ValueRecords. In addition, the Format 2 subtable includes:
      * </p>
      * 
-     * <nl>
+     * <ul>
      * <li>A count of the ValueRecords (ValueCount). One ValueRecord is defined
      * for each glyph in the Coverage table.</li>
      * <li>An array of ValueRecords that specify positioning values (Value).
      * Because the array follows the Coverage Index order, the first ValueRecord
      * applies to the first glyph listed in the Coverage table, and so on.</li>
-     * </nl>
+     * </ul>
      * 
      * <p>
      * SinglePosFormat2 subtable: Array of positioning values
      * </p>
      * 
-     * <table border="1">
-     * <tr>
-     * <td><b>Value</b></td>
+     * <table>
+ * <caption>TBD</caption>
+ * <tr>
+* <td><b>Value</b></td>
      * <td><b>Type</b></td>
      * <td><b>Description</b></td>
      * </tr>
@@ -272,12 +263,12 @@ public abstract class XtfGPOSSingleTable extends XtfLookupTable {
         /**
          * Defines the types of data in the ValueRecord.
          */
-        private int valueFormat;
+        private final int valueFormat;
 
         /**
          * Array of ValueRecords-positioning values applied to glyphs.
          */
-        private ValueRecord[] valueRecordArray;
+        private final ValueRecord[] valueRecordArray;
 
         /**
          * Create a new object.
@@ -322,12 +313,7 @@ public abstract class XtfGPOSSingleTable extends XtfLookupTable {
             return valueFormat;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.gps.XtfGPOSSingleTable#getValueRecord(int)
-         */
-        @Override
+    @Override
         public ValueRecord getValueRecord(int glyph) {
 
             // TODO mgn: getValueRecord unimplemented
@@ -344,12 +330,7 @@ public abstract class XtfGPOSSingleTable extends XtfLookupTable {
             return valueRecordArray;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("singletable");
             writer.writeAttribute("format", getFormat());
@@ -431,7 +412,7 @@ public abstract class XtfGPOSSingleTable extends XtfLookupTable {
      * 
      * @param glyph The glyph.
      * @return Returns the {@link ValueRecord} for the glyph or
-     *         <code>null</code>, if not found.
+     *         {@code null}, if not found.
      */
     public abstract ValueRecord getValueRecord(int glyph);
 

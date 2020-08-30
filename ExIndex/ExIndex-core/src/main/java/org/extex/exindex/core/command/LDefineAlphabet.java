@@ -32,11 +32,10 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to define an alphabet.
  * 
- * <doc type="exindex-command" command="define-alphabet"> <h3>The Command
- * <tt>define-alphabet</tt></h3>
+ * <p>The Command {@code define-alphabet}</p>
  * 
  * <p>
- * The command <tt>define-alphabet</tt> can be used to define an alphabet.
+ * The command {@code define-alphabet} can be used to define an alphabet.
  * </p>
  * 
  * <pre>
@@ -58,15 +57,13 @@ import org.extex.exindex.lisp.type.value.LValue;
  * The example above defines a new alphabet with the five letters.
  * </p>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LDefineAlphabet extends LFunction {
 
     /**
-     * The field <tt>container</tt> contains the container for alphabets.
+     * The field {@code container} contains the container for alphabets.
      */
     private final AlphabetContainer container;
 
@@ -95,7 +92,7 @@ public class LDefineAlphabet extends LFunction {
      * @param name the name of the alphabet
      * @param list the list of symbols
      * 
-     * @return <tt>nil</tt>
+     * @return {@code nil}
      * 
      * @throws LNonMatchingTypeException in case an argument is not a String
      * @throws LSettingConstantException should not happen

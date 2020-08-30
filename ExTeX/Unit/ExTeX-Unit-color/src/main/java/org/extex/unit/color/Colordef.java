@@ -31,11 +31,11 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\colordef</code>.
+ * {@code \colordef}.
  * 
- * <doc name="colordef"> <h3>The Primitive <tt>\colordef</tt></h3>
+ * <p>The Primitive {@code \colordef}</p>
  * <p>
- * The primitive <tt>\colordef</tt> defines a color variable and assigns it to a
+ * The primitive {@code \colordef} defines a color variable and assigns it to a
  * control sequence. The color is initialized with a given color &ndash; either
  * a color constant or a color variable.
  * </p>
@@ -43,12 +43,12 @@ import org.extex.typesetter.exception.TypesetterException;
  * The control sequence can later be used wherever a color is expected.
  * </p>
  * <p>
- * The primitive <tt>\colordef</tt> constitutes an assignment. Thus the count
- * register <tt>\globaldefs</tt> and the token register
- * <tt>\afterassignment</tt> interact with it as for each assignment.
+ * The primitive {@code \colordef} constitutes an assignment. Thus the count
+ * register {@code \globaldefs} and the token register
+ * {@code \afterassignment} interact with it as for each assignment.
  * </p>
  * <p>
- * The primitive can be prefixed with the <tt>\global</tt> flag. In this case
+ * The primitive can be prefixed with the {@code \global} flag. In this case
  * the definition is performed globally. Otherwise the control sequence holds
  * the color value in the current group only. It is reset to the previous value
  * when the group is ended.
@@ -57,59 +57,56 @@ import org.extex.typesetter.exception.TypesetterException;
  * The color variable can be manipulated by assigning new colors to it. The
  * assignment is accomplished by specifying the new value after an optional
  * equals sign. Note that the assignment can not be prefixed by a
- * <tt>\global</tt> modifier since the scope has already been specified in the
- * declaration with <tt>\colordef</tt>.
+ * {@code \global} modifier since the scope has already been specified in the
+ * declaration with {@code \colordef}.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;colordef&rang;
- *      &rarr; &lang;optional prefix&rang; <tt>\colordef</tt> {@linkplain
+ *      &rarr; &lang;optional prefix&rang; {@code \colordef} {@linkplain
  *       org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *       &lang;control sequence&rang;} &lang;color&rang;
  *
  *    &lang;optional prefix&rang;
  *      &rarr;
- *       |  <tt>\global</tt>   </pre>
+ *       |  {@code \global}   </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \colordef\col alpha .1234 rgb {.2 .3 .4}  </pre>
  * 
- * <p>
- * </p>
- * 
+ * <br>
+*
  * <pre class="TeXSample">
  *    \global\colordef\col\color  </pre>
  * 
- * <p>
- * </p>
- * 
- * </doc>
- * 
+ * <br>
+*
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Colordef extends AbstractAssignment {
 
     /**
      * This class carries a color value for storing it as code in the context.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
-     */
+    */
     private static class ColorCode extends AbstractColor {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the version number for
+         * The field {@code serialVersionUID} contains the version number for
          * serialization.
          */
         protected static final long serialVersionUID = 20060528L;
 
         /**
-         * The field <tt>color</tt> contains the color.
+         * The field {@code color} contains the color.
          */
         private Color color;
 
@@ -126,10 +123,7 @@ public class Colordef extends AbstractAssignment {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-         *      org.extex.interpreter.context.Context,
+    *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
          *      org.extex.typesetter.Typesetter)
          */
@@ -144,10 +138,7 @@ public class Colordef extends AbstractAssignment {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.type.color.ColorConvertible#convertColor(org.extex.interpreter.context.Context,
-         *      org.extex.interpreter.TokenSource,
+    *      org.extex.interpreter.TokenSource,
          *      org.extex.typesetter.Typesetter)
          */
         @Override
@@ -160,7 +151,7 @@ public class Colordef extends AbstractAssignment {
     }
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -176,10 +167,7 @@ public class Colordef extends AbstractAssignment {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

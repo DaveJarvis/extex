@@ -23,10 +23,10 @@ package org.extex.interpreter;
  * This interface describes a set of named flags.
  *
  * <p>
- * The flags correspond largely to the prefix macros like <tt>\global</tt>
+ * The flags correspond largely to the prefix macros like {@code \global}
  * The following flags are known:
  * </p>
- * <table>
+ * <table> <caption>TBD</caption>
  *  <tr>
  *   <th>Flag</th>
  *   <th>Macro</th>
@@ -34,46 +34,45 @@ package org.extex.interpreter;
  *  </tr>
  *  <tr>
  *   <td><b>global</b></td>
- *   <td><tt>\global</tt></td>
- *   <td>The global flag controls the scope of assignments like <tt>\def</tt>s.
+ *   <td>{@code \global}</td>
+ *   <td>The global flag controls the scope of assignments like {@code \def}s.
  *   </td>
  *  </tr>
  *  <tr>
  *   <td><b>immediate</b></td>
- *   <td><tt>\immediate</tt></td>
+ *   <td>{@code \immediate}</td>
  *   <td>The immediate flag controls the delay of writing operations. This is
- *    used in <tt>\write</tt> and friends.
+ *    used in {@code \write} and friends.
  *   </td>
  *  </tr>
  *  <tr>
  *   <td><b>long</b></td>
- *   <td><tt>\long</tt></td>
+ *   <td>{@code \long}</td>
  *   <td>The long flag controls the matching of macro parameters.
  *   </td>
  *  </tr>
  *  <tr>
  *   <td><b>outer</b></td>
- *   <td><tt>\outer</tt></td>
+ *   <td>{@code \outer}</td>
  *   <td>The outer flag controls that the macro can not be used at places where
  *    tokens are absorbed at high speed.
  *   </td>
  *  </tr>
  *  <tr>
  *   <td><b>protected</b></td>
- *   <td><tt>\protected</tt></td>
+ *   <td>{@code \protected}</td>
  *   <td>The protected flag controls the expansion of the macro when the
- *    argument for <tt>\edef</tt> and friends is expanded.
+ *    argument for {@code \edef} and friends is expanded.
  *   </td>
  *  </tr>
  * </table>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5563 $
- */
+*/
 public interface Flags {
 
     /**
-     * The constant <tt>NONE</tt> contains an instance where no flags are set.
+     * The constant {@code NONE} contains an instance where no flags are set.
      * Beware of changing this instance!
      */
     Flags NONE = new Flags() {
@@ -261,7 +260,7 @@ public interface Flags {
     void clear();
 
     /**
-     * Setter for the global flag. The flag is reset to <code>false</code>.
+     * Setter for the global flag. The flag is reset to {@code false}.
      *
      * @return the old value of the global flag
      *
@@ -272,7 +271,7 @@ public interface Flags {
     boolean clearGlobal();
 
     /**
-     * Setter for the immediate flag. The flag is reset to <code>false</code>.
+     * Setter for the immediate flag. The flag is reset to {@code false}.
      *
      * @return the old value of the immediate flag
      *
@@ -282,7 +281,7 @@ public interface Flags {
     boolean clearImmediate();
 
     /**
-     * Setter for the long flag. The flag is reset to <code>false</code>.
+     * Setter for the long flag. The flag is reset to {@code false}.
      *
      * @return the old value of the long flag
      *
@@ -292,7 +291,7 @@ public interface Flags {
     boolean clearLong();
 
     /**
-     * Setter for the outer flag. The flag is reset to <code>false</code>.
+     * Setter for the outer flag. The flag is reset to {@code false}.
      *
      * @return the old value of the outer flag
      *
@@ -302,7 +301,7 @@ public interface Flags {
     boolean clearOuter();
 
     /**
-     * Setter for the protected flag. The flag is reset to <code>false</code>.
+     * Setter for the protected flag. The flag is reset to {@code false}.
      *
      * @return the old value of the protected flag
      *
@@ -328,7 +327,7 @@ public interface Flags {
     /**
      * Test if all flags are cleared.
      *
-     * @return <code>true</code> iff not all flags are cleared
+     * @return {@code true} iff not all flags are cleared
      */
     boolean isDirty();
 
@@ -391,7 +390,7 @@ public interface Flags {
     void set(Flags flags);
 
     /**
-     * Setter for the global flag. The flag is set to <code>true</code>.
+     * Setter for the global flag. The flag is set to {@code true}.
      *
      * @see #clearGlobal()
      * @see #isGlobal()
@@ -400,7 +399,7 @@ public interface Flags {
     void setGlobal();
 
     /**
-     * Setter for the global flag. The flag is set to <code>true</code>.
+     * Setter for the global flag. The flag is set to {@code true}.
      *
      * @param value the new value for the global flag
      *
@@ -411,7 +410,7 @@ public interface Flags {
     void setGlobal(boolean value);
 
     /**
-     * Setter for the immediate flag. The flag is set to <code>true</code>.
+     * Setter for the immediate flag. The flag is set to {@code true}.
      *
      * @see #clearImmediate()
      * @see #isImmediate()
@@ -419,7 +418,7 @@ public interface Flags {
     void setImmediate();
 
     /**
-     * Setter for the long flag. The flag is set to <code>true</code>.
+     * Setter for the long flag. The flag is set to {@code true}.
      *
      * @see #clearLong()
      * @see #isLong()
@@ -427,7 +426,7 @@ public interface Flags {
     void setLong();
 
     /**
-     * Setter for the outer flag. The flag is set to <code>true</code>.
+     * Setter for the outer flag. The flag is set to {@code true}.
      *
      * @see #clearOuter()
      * @see #isOuter()
@@ -435,7 +434,7 @@ public interface Flags {
     void setOuter();
 
     /**
-     * Setter for the protected flag. The flag is set to <code>true</code>.
+     * Setter for the protected flag. The flag is set to {@code true}.
      *
      * @see #clearProtected()
      * @see #isProtected()

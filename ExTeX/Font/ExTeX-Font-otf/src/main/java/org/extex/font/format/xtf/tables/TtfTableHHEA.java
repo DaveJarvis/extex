@@ -31,7 +31,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * are written horizontally, that is, either left to right or right to left.
  * This table contains information that is general to the font as a whole.
  * 
- * <table BORDER="1"> <tbody>
+ *  <table> <caption>TBD</caption> <tbody>
  * <tr>
  * <td><b>Type</b></td>
  * <td><b>Name</b></td>
@@ -53,11 +53,11 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>Descender</td>
  * <td>Typographic descent.</td>
  * </tr>
- * <tr>FWord</td>
+ * <tr>
+ * <td>FWord</td>
  * <td>LineGap</td>
- * <td> Typographic line gap. Negative LineGap values are treated as zero <BR>
- * in Windows 3.1, System 6, and <BR>
- * System 7.</td>
+ * <td> Typographic line gap. Negative LineGap values are treated as zero<br>
+ * in Windows 3.1, System 6, and System 7.</td>
  * </tr>
  * <tr>
  * <td>uFWord</td>
@@ -81,7 +81,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>Max(lsb + (xMax - xMin)).</td>
  * </tr>
  * <tr>
- * <td>SHORT</td><
+ * <td>SHORT</td>
  * <td>caretSlopeRise</td>
  * <td> Used to calculate the slope of the cursor (rise/run); 1 for vertical.</td>
  * </tr>
@@ -129,8 +129,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TtfTableHHEA extends AbstractXtfTable
         implements
             XtfTable,
@@ -139,87 +138,87 @@ public class TtfTableHHEA extends AbstractXtfTable
     /**
      * advance width max
      */
-    private short advanceWidthMax;
+    private final short advanceWidthMax;
 
     /**
      * ascender
      */
-    private short ascender;
+    private final short ascender;
 
     /**
      * caret slope rise
      */
-    private short caretSlopeRise;
+    private final short caretSlopeRise;
 
     /**
      * caret slope run
      */
-    private short caretSlopeRun;
+    private final short caretSlopeRun;
 
     /**
      * descender
      */
-    private short descender;
+    private final short descender;
 
     /**
      * line gap
      */
-    private short lineGap;
+    private final short lineGap;
 
     /**
      * metrix data format
      */
-    private short metricDataFormat;
+    private final short metricDataFormat;
 
     /**
      * min left side bearing
      */
-    private short minLeftSideBearing;
+    private final short minLeftSideBearing;
 
     /**
      * min right side bearing
      */
-    private short minRightSideBearing;
+    private final short minRightSideBearing;
 
     /**
      * number of horizontal metrics
      */
-    private short numberOfHMetrics;
+    private final short numberOfHMetrics;
 
     /**
      * reserved 0
      */
-    private short reserved0;
+    private final short reserved0;
 
     /**
      * reserved 1
      */
-    private short reserved1;
+    private final short reserved1;
 
     /**
      * reserved 2
      */
-    private short reserved2;
+    private final short reserved2;
 
     /**
      * reserved 3
      */
-    private short reserved3;
+    private final short reserved3;
 
     /**
      * reserved 4
      */
-    private short reserved4;
+    private final short reserved4;
 
     /**
      * version
      */
-    private int version;
+    private final int version;
 
     /**
      * max extent
      */
-    private short xMaxExtent;
+    private final short xMaxExtent;
 
     /**
      * Create a new object
@@ -353,12 +352,7 @@ public class TtfTableHHEA extends AbstractXtfTable
         return numberOfHMetrics;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
+public String getShortcut() {
 
         return "hhea";
     }
@@ -394,10 +388,7 @@ public class TtfTableHHEA extends AbstractXtfTable
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

@@ -31,25 +31,24 @@ import org.extex.scanner.type.Catcode;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4738 $
- */
+*/
 public abstract class AbstractToken implements Token, Serializable {
 
     /**
-     * The constant <tt>HASH_FACTOR</tt> contains the factor used to construct
+     * The constant {@code HASH_FACTOR} contains the factor used to construct
      * the hash code.
      */
     private static final int HASH_FACTOR = 17;
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 24012007L;
 
     /**
-     * The field <tt>uniCode</tt> contains the Unicode character assigned to
-     * this token. Note that <code>null</code> is a legal value.
+     * The field {@code uniCode} contains the Unicode character assigned to
+     * this token. Note that {@code null} is a legal value.
      */
     private UnicodeChar character;
 
@@ -71,7 +70,7 @@ public abstract class AbstractToken implements Token, Serializable {
      * @param cc the catcode
      * @param c the value
      * 
-     * @return <code>true</code> iff the tokens are equal
+     * @return {@code true} iff the tokens are equal
      * 
      * @see org.extex.scanner.type.token.Token#eq(
      *      org.extex.scanner.type.Catcode, char)
@@ -89,7 +88,7 @@ public abstract class AbstractToken implements Token, Serializable {
      * @param cc the catcode
      * @param s the value
      * 
-     * @return <code>true</code> iff the tokens are equal
+     * @return {@code true} iff the tokens are equal
      * 
      * @see org.extex.scanner.type.token.Token#eq(
      *      org.extex.scanner.type.Catcode, java.lang.String)
@@ -106,7 +105,7 @@ public abstract class AbstractToken implements Token, Serializable {
      * 
      * @param c the value
      * 
-     * @return <code>true</code> iff the tokens are equal
+     * @return {@code true} iff the tokens are equal
      * 
      * @see org.extex.scanner.type.token.Token#eq(char)
      */
@@ -121,8 +120,8 @@ public abstract class AbstractToken implements Token, Serializable {
      * Indicates whether some other object is "equal to" this one.
      * 
      * @param t the reference token with which to compare.
-     * @return <code>true</code> if this object is the same as the obj
-     *         argument; <code>false</code> otherwise.
+     * @return {@code true} if this object is the same as the obj
+     *         argument; {@code false} otherwise.
      * 
      * @see java.lang.Object#equals(java.lang.Object)
      */
@@ -184,7 +183,7 @@ public abstract class AbstractToken implements Token, Serializable {
      * 
      * @param cc the catcode to compare against
      * 
-     * @return <code>true</code> iff the catcodes coincide
+     * @return {@code true} iff the catcodes coincide
      * 
      * @see org.extex.scanner.type.token.Token#isa(
      *      org.extex.scanner.type.Catcode)

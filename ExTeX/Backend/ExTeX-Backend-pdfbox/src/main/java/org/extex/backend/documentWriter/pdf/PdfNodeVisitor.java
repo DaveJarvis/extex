@@ -63,8 +63,7 @@ import org.pdfbox.pdmodel.font.PDType1Font;
  * PDF NodeVisitor.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
 

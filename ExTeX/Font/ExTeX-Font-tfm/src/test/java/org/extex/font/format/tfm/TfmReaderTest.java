@@ -33,8 +33,7 @@ import org.junit.Test;
  * Test cases for the {@link TfmReader}.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TfmReaderTest {
 
     /**

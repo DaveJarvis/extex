@@ -31,24 +31,22 @@ import org.extex.resource.ResourceFinder;
  * {@link BibReader BibReader}.
  * <p>
  * The factory is controlled by a configuration. This configuration contains an
- * attribute <code>class</code>. This attribute holds the name of the class to
+ * attribute {@code class}. This attribute holds the name of the class to
  * be instantiated. Consider the following example of a configuration file:
- * 
+ * </p>
+ *
  * <pre>
  *   &lt;BibReader
  *       class="org.extex.exbib.core.io.bibio.BibReader099Impl"/&gt;
  * </pre>
- * 
- * </p>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BibReaderFactory extends AbstractFactory<BibReader> {
 
     /**
-     * The field <tt>encoding</tt> contains the encoding the encoding for
-     * reading or <code>null</code> for the platform default.
+     * The field {@code encoding} contains the encoding the encoding for
+     * reading or {@code null} for the platform default.
      */
     private String encoding;
 
@@ -57,8 +55,8 @@ public class BibReaderFactory extends AbstractFactory<BibReader> {
      * 
      * @param configuration the configuration
      * @param finder the resource finder
-     * @param enc the required encoding or <code>null</code>
-     * @param encFallback the fallback encoding or <code>null</code>
+     * @param enc the required encoding or {@code null}
+     * @param encFallback the fallback encoding or {@code null}
      */
     public BibReaderFactory(Configuration configuration, ResourceFinder finder,
             String enc, String encFallback) {

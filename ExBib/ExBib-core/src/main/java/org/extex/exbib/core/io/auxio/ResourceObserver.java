@@ -23,8 +23,7 @@ package org.extex.exbib.core.io.auxio;
  * This observer is triggered when a resource has been opened.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface ResourceObserver {
 
     /**

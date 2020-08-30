@@ -34,12 +34,11 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to use a rule set.
  * 
- * <doc type="exindex-command" command="use-rule-set">
- * 
- * <h3>The Command <tt>use-rule-set</tt></h3>
+*
+ * <p>The Command {@code use-rule-set}</p>
  * 
  * <p>
- * The command <tt>use-rule-set</tt> can be used to add a sort rule. This
+ * The command {@code use-rule-set} can be used to add a sort rule. This
  * command honors the current index. This means that the sort rule is attached
  * to the current index.
  * </p>
@@ -59,16 +58,14 @@ import org.extex.exindex.lisp.type.value.LValue;
  * 
  * TODO documentation incomplete
  * 
- * </doc>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LUseRuleSet extends LFunction {
 
     /**
-     * The field <tt>container</tt> contains the container of rule sets.
+     * The field {@code container} contains the container of rule sets.
      */
     private final IndexContainer container;
 
@@ -98,7 +95,7 @@ public class LUseRuleSet extends LFunction {
      * @param phase the phase
      * @param ruleList the list of rules
      * 
-     * @return <tt>nil</tt>
+     * @return {@code nil}
      * 
      * @throws LNonMatchingTypeException in case of an error
      * @throws UnknownAttributeException in case of an error

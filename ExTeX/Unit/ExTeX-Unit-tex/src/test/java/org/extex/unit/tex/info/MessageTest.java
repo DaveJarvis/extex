@@ -23,11 +23,10 @@ import org.extex.test.NoFlagsPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\message</tt>.
+ * This is a test suite for the primitive {@code \message}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class MessageTest extends NoFlagsPrimitiveTester {
 
 
@@ -38,7 +37,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\message"> Test case checking that \message prints
-     * its plain argument. </testcase>
+     * its plain argument. 
      * 
      * @throws Exception in case of an error
      */
@@ -54,7 +53,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\message"> Test case checking that \message expands
-     * macros in the argument. </testcase>
+     * macros in the argument. 
      * 
      * @throws Exception in case of an error
      */
@@ -70,7 +69,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\message"> Test case checking that \message prints
-     * its plain argument. </testcase>
+     * its plain argument. 
      * 
      * @throws Exception in case of an error
      */
@@ -86,7 +85,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\message"> Test case checking that \message prints
-     * its plain argument. </testcase>
+     * its plain argument. 
      * 
      * @throws Exception in case of an error
      */
@@ -102,7 +101,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\message"> Test case checking that \message prints
-     * its plain argument. </testcase>
+     * its plain argument. 
      * 
      * @throws Exception in case of an error
      */
@@ -118,7 +117,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\message"> Test case checking that \message
-     * complains about undefined control sequences as argument. </testcase>
+     * complains about undefined control sequences as argument. 
      * 
      * @throws Exception in case of an error
      */
@@ -134,7 +133,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
     /**
      * <testcase primitive="\message"> Test case checking that \message
      * complains about undefined control sequences embedded in the argument.
-     * </testcase>
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -149,7 +148,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\message"> Test case checking that \message on
-     * embedded primitives works. </testcase>
+     * embedded primitives works. 
      * 
      * @throws Exception in case of an error
      */
@@ -164,7 +163,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\message"> Test case checking that \message on
-     * embedded primitives works. </testcase>
+     * embedded primitives works. 
      * 
      * @throws Exception in case of an error
      */
@@ -179,7 +178,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\message"> Test case checking that \message can be
-     * redirected. </testcase>
+     * redirected. 
      * 
      * @throws Exception in case of an error
      */
@@ -194,7 +193,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\message"> Test case checking that \message needs an
-     * argument for <tt>to</tt>. </testcase>
+     * argument for {@code to}. 
      * 
      * @throws Exception in case of an error
      */
@@ -209,7 +208,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\message"> Test case checking that \message in
-     * default mode complains about an undefined control sequence. </testcase>
+     * default mode complains about an undefined control sequence. 
      * 
      * @throws Exception in case of an error
      */
@@ -223,9 +222,9 @@ public class MessageTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\message"> Test case checking that <tt>\message</tt>
+     * <testcase primitive="\message"> Test case checking that {@code \message}
      * results in an error message, if the following token is not a left brace.
-     * </testcase>
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -239,9 +238,9 @@ public class MessageTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\message"> Test case checking that <tt>\message</tt>
+     * <testcase primitive="\message"> Test case checking that {@code \message}
      * results in an error message, if the following token is not a left brace.
-     * </testcase>
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -256,7 +255,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
 
     // /**
     // * <testcase primitive="\message"> Test case checking that \message . . .
-    // * </testcase>
+    // * 
     // *
     // * @throws Exception in case of an error
     // */

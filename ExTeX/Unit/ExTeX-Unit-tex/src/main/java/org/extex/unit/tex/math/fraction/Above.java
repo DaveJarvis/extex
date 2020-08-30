@@ -32,49 +32,45 @@ import org.extex.typesetter.listMaker.math.NoadConsumer;
 import org.extex.unit.tex.math.AbstractMathCode;
 
 /**
- * This class provides an implementation for the primitive <code>\above</code>.
+ * This class provides an implementation for the primitive {@code \above}.
  * 
- * <doc name="above">
- * <h3>The Math Primitive <tt>\above</tt></h3>
+ * <p>The Math Primitive {@code \above}</p>
  * <p>
- * The math primitive <tt>\above</tt> arranges that the material in the math
+ * The math primitive {@code \above} arranges that the material in the math
  * group before it is typeset above the material after the primitive. The two
  * parts are separated by a line of the width given. If the width is less than
  * 0pt then no rule is drawn but the given height is left blank.
  * </p>
  * <p>
- * If several primitives of type <tt>\above</tt>, <tt>\abovewithdelims</tt>,
- * <tt>\atop</tt>, <tt>\atopwithdelims</tt>, <tt>\over</tt>, or
- * <tt>\overwithdelims</tt> are encountered in the same math group then the
+ * If several primitives of type {@code \above}, {@code \abovewithdelims},
+ * {@code \atop}, {@code \atopwithdelims}, {@code \over}, or
+ * {@code \overwithdelims} are encountered in the same math group then the
  * result is ambiguous and an error is raised.
  * </p>
  * <p>
  * If the primitive is used outside of math mode then an error is raised.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+ *
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;above&rang;
- *       &rarr; &lang;math material&rang; <tt>\above</tt> {@linkplain
- *        org.extex.core.dimen#Dimen(org.extex.interpreter.context.Context,org.extex.interpreter.TokenSource)
- *        &lang;dimen&rang;} &lang;math material&rang; </pre>
+ *       &rarr; &lang;math material&rang; {@code \above} &lang;dimen&rang; &lang;math material&rang;
+ * </pre>
  * 
- * <h4>Examples</h4>
- * 
+ * <p>Examples</p>
+ *
  * <pre class="TeXSample">
  *    {a \above.1pt b}  </pre>
  * 
- * </doc>
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Above extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -90,10 +86,7 @@ public class Above extends AbstractMathCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

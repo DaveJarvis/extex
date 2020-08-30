@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains primitives to handle files in unit <tt>etex</tt>.
+ * Contains primitives to handle files in unit {@code etex}.
  */
 
 package org.extex.unit.etex.file;

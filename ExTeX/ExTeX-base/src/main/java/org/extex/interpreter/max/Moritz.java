@@ -91,15 +91,13 @@ import java.util.Map;
  * mostly hidden.
  * 
  * <p>
- * This class is the companion to Max. (The name is a joke for friends of
- * Wilhelm Busch)
+ * This class is the companion to {@link Max}; its name is a joke for friends of
+ * Wilhelm Busch.
  * </p>
- * 
- * 
- * <doc name="maxRegister" type="register"> <h3>The Integer Register
- * <tt>\maxRegister</tt></h3>
+ *
+ * <p>The Integer Register {@code \maxRegister}</p>
  * <p>
- * The integer register <tt>\maxRegister</tt> controls the scanning of register
+ * The integer register {@code \maxRegister} controls the scanning of register
  * names. The following interpretation for the values is used:
  * </p>
  * <ul>
@@ -112,28 +110,22 @@ import java.util.Map;
  * </ul>
  * 
  * <p>
- * The integer register <tt>\max.register</tt> is not affected by grouping. This
+ * The integer register {@code \max.register} is not affected by grouping. This
  * means that any assignment is always global.
  * </p>
  * <p>
- * The primitive <tt>\maxRegister</tt> is usually defined in the name space
- * <tt>system</tt>. Thus you have to take special means to access it.
+ * The primitive {@code \maxRegister} is usually defined in the name space
+ * {@code system}. Thus you have to take special means to access it.
  * </p>
  * 
- * <h4>Examples</h4>
- * <p>
- * </p>
- * 
+ * <p>Examples</p>
+ *
  * <pre class="TeXSample">
  *   {\namespace{system}\maxRegister=1024}  </pre>
- * 
- * </doc>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:4408 $
- */
+*/
 public class Moritz extends Max
         implements
             TokenSource,
@@ -147,33 +139,33 @@ public class Moritz extends Max
             OpenReaderObservable {
 
     /**
-     * The constant <tt>MAX_CHAR_CODE</tt> contains the maximum value for a
+     * The constant {@code MAX_CHAR_CODE} contains the maximum value for a
      * character code. In original TeX this value would be 255.
      */
     private static final long MAX_CHAR_CODE = Long.MAX_VALUE;
 
     /**
-     * The field <tt>countParser</tt> contains the parser for number quantities.
+     * The field {@code countParser} contains the parser for number quantities.
      */
     private CountParser countParser;
 
     /**
-     * The field <tt>dimenParser</tt> contains the parser for length quantities.
+     * The field {@code dimenParser} contains the parser for length quantities.
      */
     private DimenParser dimenParser;
 
     /**
-     * The field <tt>glueParser</tt> contains the parser for glue quantities.
+     * The field {@code glueParser} contains the parser for glue quantities.
      */
     private GlueParser glueParser;
 
     /**
-     * The field <tt>lastToken</tt> contains the last token read.
+     * The field {@code lastToken} contains the last token read.
      */
     private Token lastToken ;
 
     /**
-     * The field <tt>maxRegister</tt> contains the indicator for the max
+     * The field {@code maxRegister} contains the indicator for the max
      * register value. Positive values are interpreted literally. Negative
      * values have a special meaning indicating that arbitrary token lists are
      * allowed in addition to arbitrary numbers.
@@ -181,21 +173,21 @@ public class Moritz extends Max
     private IntegerCode maxRegister = new IntegerCode(null, 255);
 
     /**
-     * The field <tt>observersCloseStream</tt> contains the observer list is
+     * The field {@code observersCloseStream} contains the observer list is
      * used for the observers which are registered to receive notifications when
      * a stream is closed.
      */
     private StreamCloseObserverList observersCloseStream ;
 
     /**
-     * The field <tt>observersEOF</tt> contains the observer list is used for
+     * The field {@code observersEOF} contains the observer list is used for
      * the observers which are registered to receive a notification when all
-     * streams are at their end. The argument is always <code>null</code>.
+     * streams are at their end. The argument is always {@code null}.
      */
     private EofObserver observersEOF ;
 
     /**
-     * The field <tt>observersPop</tt> contains the observer list is used for
+     * The field {@code observersPop} contains the observer list is used for
      * the observers which are registered to receive a notification when a new
      * token is about to be delivered. The argument is the token to be
      * delivered.
@@ -203,7 +195,7 @@ public class Moritz extends Max
     private PopObserver observersPop ;
 
     /**
-     * The field <tt>observersPush</tt> contains the observer list is used for
+     * The field {@code observersPush} contains the observer list is used for
      * the observers which are registered to receive a notification when a new
      * token is pushed back to the input stream. The argument is the token to be
      * pushed.
@@ -211,33 +203,33 @@ public class Moritz extends Max
     private PushObserver observersPush ;
 
     /**
-     * The field <tt>parsers</tt> contains the list of registered parsers.
+     * The field {@code parsers} contains the list of registered parsers.
      */
     @SuppressWarnings("rawtypes")
     private final Map<Class, Parser> parsers = new HashMap<>();
 
     /**
-     * The field <tt>skipSpaces</tt> contains the indicator that space tokens
+     * The field {@code skipSpaces} contains the indicator that space tokens
      * should be discarded before the next token is delivered.
      */
     private boolean skipSpaces = false;
 
     /**
-     * The field <tt>stream</tt> contains the current stream to read tokens
+     * The field {@code stream} contains the current stream to read tokens
      * from. For efficiency this stream is kept in a variable instead of
      * accessing the streamStack each time it is needed.
      */
     private TokenStream stream ;
 
     /**
-     * The field <tt>streamStack</tt> contains the stack of streams to read from
+     * The field {@code streamStack} contains the stack of streams to read from
      * &ndash; except of the current one which is stored in the variable
-     * <code>stream</code>.
+     * {@code stream}.
      */
     private final ArrayList<TokenStream> streamStack = new ArrayList<>();
 
     /**
-     * The field <tt>tokenStreamFactory</tt> contains the factory for new token
+     * The field {@code tokenStreamFactory} contains the factory for new token
      * streams.
      */
     private TokenStreamFactory tokenStreamFactory = null;
@@ -295,12 +287,7 @@ public class Moritz extends Max
         this.stream = theStream;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.TokenSource#closeAllStreams(org.extex.interpreter.context.Context)
-     */
-    @Override
+@Override
     public void closeAllStreams(Context context) throws HelpingException {
 
         while (stream != null) {
@@ -308,12 +295,7 @@ public class Moritz extends Max
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.TokenSource#closeNextFileStream(org.extex.interpreter.context.Context)
-     */
-    @Override
+@Override
     public void closeNextFileStream(Context context) throws HelpingException {
 
         while (stream != null) {
@@ -326,39 +308,39 @@ public class Moritz extends Max
     /**
      * Close the topmost stream and pop another one to the top if one is left.
      * If the closed stream has been a file stream then the tokens from the
-     * tokens register <tt>everyeof</tt> are inserted into the token stream.
+     * tokens register {@code everyeof} are inserted into the token stream.
      * 
-     * <doc name="everyeof" type="register"> <h3>The Tokens Parameter
-     * <tt>\everyeof</tt></h3>
-     * <p>
-     * The tokens parameter <tt>\everyeof</tt> is used whenever a file is
+     *  <p>The Tokens Parameter {@code \everyeof}</p>
+* <p>
+     * The tokens parameter {@code \everyeof} is used whenever a file is
      * closed. in this case the tokens contained in this parameter are inserted
      * into the current input stream. Thus thus tokens are processed before the
      * expansion continues to look for any other tokens from other sources.
      * </p>
      * 
      * 
-     * <h4>Syntax</h4> The formal description of this primitive is the
+     * <p>Syntax</p>
+ The formal description of this primitive is the
      * following:
      * 
      * <pre class="syntax">
      *    &lang;everyeof&rang;
-     *      &rarr; <tt>\everyeof</tt> {@linkplain
+     *      &rarr; {@code \everyeof} {@linkplain
      *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
      *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
      *        &lang;tokens&rang;}  </pre>
      * 
-     * <h4>Examples</h4>
+     * <p>Examples</p>
+
      * 
      * <pre class="TeXSample">
      *    \everyeof={\message{bye bye}}  </pre>
      * 
-     * </doc>
-     * 
+     *
      * @param context the interpreter context
      * 
-     * @return <code>true</code> iff the closed file has been a file stream
+     * @return {@code true} iff the closed file has been a file stream
      * 
      * @throws HelpingException in case of an error
      */
@@ -386,7 +368,7 @@ public class Moritz extends Max
      * @param context the interpreter context
      * @param typesetter the typesetter to use
      * @param insert the token to insert either at the beginning of the box or
-     *        after the box has been gathered. If it is <code>null</code> then
+     *        after the box has been gathered. If it is {@code null} then
      *        nothing is inserted
      * 
      * @return the box gathered
@@ -427,7 +409,7 @@ public class Moritz extends Max
      * Get the next token from the token stream and check that it is a control
      * sequence or active character. At the end of all input streams the control
      * sequence "inaccessible" is inserted and an exception is thrown. Thus this
-     * method will never return <code>null</code>.
+     * method will never return {@code null}.
      * 
      * @param context the interpreter context
      * @param typesetter the typesetter
@@ -467,10 +449,7 @@ public class Moritz extends Max
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.TokenSource#getFont(org.extex.interpreter.context.Context,
-     *      CodeToken)
+*      CodeToken)
      */
     @Override
     public Font getFont(Context context, CodeToken primitive)
@@ -500,13 +479,13 @@ public class Moritz extends Max
     /**
      * Scan the expanded token stream for a sequence of letter tokens. If all
      * tokens are found then they are removed from the input stream and
-     * <code>true</code> is returned. Otherwise all tokens are left in the input
-     * stream and <code>false</code> is returned.
+     * {@code true} is returned. Otherwise all tokens are left in the input
+     * stream and {@code false} is returned.
      * 
      * @param context the interpreter context
      * @param s the tokens to scan
      * 
-     * @return <code>true</code> iff the tokens could have been successfully
+     * @return {@code true} iff the tokens could have been successfully
      *         removed from the input stream
      * 
      * @throws HelpingException in case that no number is found or the end of
@@ -526,13 +505,13 @@ public class Moritz extends Max
 
     /**
      * Scans the input token stream for a given sequence of tokens. Those tokens
-     * may have the category codes <tt>LETTER</tt> or <tt>OTHER</tt>.
+     * may have the category codes {@code LETTER} or {@code OTHER}.
      * 
      * @param context the interpreter context
      * @param s the string to use as reference
      * @param i the index in s to start working at
      * 
-     * @return <code>true</code> iff the keyword has been found
+     * @return {@code true} iff the keyword has been found
      * 
      * @throws HelpingException in case of an error
      */
@@ -555,34 +534,19 @@ public class Moritz extends Max
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.TokenSource#getLastToken()
-     */
-    @Override
+@Override
     public Token getLastToken() {
 
         return lastToken;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.TokenSource#getLocator()
-     */
-    @Override
+@Override
     public Locator getLocator() {
 
         return stream == null ? null : stream.getLocator();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.TokenSource#getNonSpace(org.extex.interpreter.context.Context)
-     */
-    @Override
+@Override
     public Token getNonSpace(Context context) throws HelpingException {
 
         skipSpaces = true;
@@ -744,7 +708,7 @@ public class Moritz extends Max
     /**
      * Get the next token from the input streams. If the current input stream is
      * at its end then the next one on the streamStack is used until a token
-     * could be read. If all stream are at the end then <code>null</code> is
+     * could be read. If all stream are at the end then {@code null} is
      * returned.
      * <p>
      * Whenever a file stream is closed then the tokens from the stream are
@@ -753,7 +717,7 @@ public class Moritz extends Max
      * 
      * @param context the interpreter context
      * 
-     * @return the next token or <code>null</code>
+     * @return the next token or {@code null}
      * 
      * @throws HelpingException in case of an error
      * 
@@ -797,10 +761,7 @@ public class Moritz extends Max
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.TokenSource#getTokens(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens getTokens(Context context, TokenSource source,
@@ -852,10 +813,7 @@ public class Moritz extends Max
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.TokenSource#parse(java.lang.Class,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -871,10 +829,7 @@ public class Moritz extends Max
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.DimenParser#parseDimen(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Dimen parseDimen(Context context, TokenSource source,
@@ -884,10 +839,7 @@ public class Moritz extends Max
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.GlueParser#parseGlue(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Glue parseGlue(Context context, TokenSource source,
@@ -897,10 +849,7 @@ public class Moritz extends Max
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountParser#parseInteger(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long parseInteger(Context context, TokenSource source,
@@ -910,10 +859,7 @@ public class Moritz extends Max
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountParser#parseNumber(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long parseNumber(Context context, TokenSource source,
@@ -922,12 +868,7 @@ public class Moritz extends Max
         return countParser.parseNumber(context, source, typesetter);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.TokenSource#push(org.extex.scanner.type.token.Token)
-     */
-    @Override
+@Override
     public void push(Token token) throws HelpingException {
 
         if (token == null) {
@@ -943,12 +884,7 @@ public class Moritz extends Max
         stream.put(token);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.TokenSource#push(org.extex.scanner.type.token.Token[])
-     */
-    @Override
+@Override
     public void push(Token[] tokens) throws HelpingException {
 
         if (stream == null) {
@@ -965,12 +901,7 @@ public class Moritz extends Max
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.TokenSource#push(org.extex.scanner.type.tokens.Tokens)
-     */
-    @Override
+@Override
     public void push(Tokens tokens) throws HelpingException {
 
         if (tokens == null || tokens.length() == 0) {
@@ -1010,10 +941,7 @@ public class Moritz extends Max
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.TokenSource#register(java.lang.Class,
-     *      org.extex.interpreter.parser.Parser)
+*      org.extex.interpreter.parser.Parser)
      */
     @Override
     @SuppressWarnings("rawtypes")
@@ -1136,10 +1064,7 @@ public class Moritz extends Max
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.TokenSource#scanCharacterCode(org.extex.interpreter.context.Context,
-     *      org.extex.typesetter.Typesetter, CodeToken)
+*      org.extex.typesetter.Typesetter, CodeToken)
      */
     @Override
     public UnicodeChar scanCharacterCode(Context context,
@@ -1172,12 +1097,7 @@ public class Moritz extends Max
         return UnicodeChar.get((int) cc);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.TokenSource#scanNonSpace(org.extex.interpreter.context.Context)
-     */
-    @Override
+@Override
     public Token scanNonSpace(Context context)
             throws HelpingException,
                 TypesetterException {
@@ -1192,10 +1112,7 @@ public class Moritz extends Max
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.TokenSource#scanRegisterName(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      CodeToken)
      */
     @Override
@@ -1228,12 +1145,7 @@ public class Moritz extends Max
         return Long.toString(registerNumber);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.TokenSource#scanToken(org.extex.interpreter.context.Context)
-     */
-    @Override
+@Override
     public Token scanToken(Context context)
             throws HelpingException,
                 TypesetterException {
@@ -1242,10 +1154,7 @@ public class Moritz extends Max
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.TokenSource#scanTokens(org.extex.interpreter.context.Context,
-     *      boolean, boolean, org.extex.scanner.type.token.CodeToken)
+*      boolean, boolean, org.extex.scanner.type.token.CodeToken)
      */
     @Override
     public Tokens scanTokens(Context context, boolean reportUndefined,
@@ -1305,10 +1214,7 @@ public class Moritz extends Max
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.TokenSource#scanTokensAsString(org.extex.interpreter.context.Context,
-     *      CodeToken)
+*      CodeToken)
      */
     @Override
     public String scanTokensAsString(Context context, CodeToken primitive)
@@ -1323,10 +1229,7 @@ public class Moritz extends Max
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.TokenSource#scanUnprotectedTokens(org.extex.interpreter.context.Context,
-     *      boolean, boolean, CodeToken)
+*      boolean, boolean, CodeToken)
      */
     @Override
     public Tokens scanUnprotectedTokens(Context context,
@@ -1401,12 +1304,7 @@ public class Moritz extends Max
         skipSpaces = true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
         final Locator locator = getLocator();
         return locator == null ? "" : locator.toString();

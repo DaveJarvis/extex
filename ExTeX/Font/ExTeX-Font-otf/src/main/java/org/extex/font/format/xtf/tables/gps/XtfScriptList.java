@@ -19,12 +19,6 @@
 
 package org.extex.font.format.xtf.tables.gps;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.extex.font.format.xtf.tables.tag.FeatureTag;
 import org.extex.font.format.xtf.tables.tag.LanguageSystemTag;
 import org.extex.font.format.xtf.tables.tag.ScriptTag;
@@ -32,13 +26,20 @@ import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * ScriptList.
  * 
  * <p>
  * ScriptList table
  * </p>
- * <table border="1" >
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
  * <td><b>Type</b></td>
  * <td><b>Name</b></td>
@@ -57,11 +58,12 @@ import org.extex.util.xml.XMLWriterConvertible;
  * -listed alphabetically by ScriptTag</td>
  * </tr>
  * </table>
- * <br/>
+ * <br>
  * <p>
  * ScriptRecord
  * </p>
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
  * <td><b>Type</b></td>
  * <td><b>Name</b></td>
@@ -78,7 +80,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>Offset to Script table-from beginning of ScriptList</td>
  * </tr>
  * </table>
- * <br/>
+ * <br>
  * <p>
  * Script Table and Language System Record
  * </p>
@@ -86,7 +88,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * A Script table identifies each language system that defines how to use the
  * glyphs in a script for a particular language. It also references a default
  * language system that defines how to use the script's glyphs in the absence of
- * language-specific knowledge.<br/>
+ * language-specific knowledge.<br>
  * A Script table begins with an offset to the Default Language System table
  * (DefaultLangSys), which defines the set of features that regulate the default
  * behavior of the script. Next, Language System Count (LangSysCount) defines
@@ -94,15 +96,16 @@ import org.extex.util.xml.XMLWriterConvertible;
  * script. In addition, an array of Language System Records (LangSysRecord)
  * defines each language system (excluding the default) with an identification
  * tag (LangSysTag) and an offset to a Language System table (LangSys). The
- * LangSysRecord array stores the records alphabetically by LangSysTag.<br/>
+ * LangSysRecord array stores the records alphabetically by LangSysTag.<br>
  * If no language-specific script behavior is defined, the LangSysCount is set
- * to zero (0), and no LangSysRecords are allocated. <br/>
+ * to zero (0), and no LangSysRecords are allocated. <br>
  * <p>
  * ScriptList table
  * </p>
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td><b>Type</b></td>
+* <td><b>Type</b></td>
  * <td><b>Name</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -121,29 +124,29 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class XtfScriptList implements XMLWriterConvertible {
 
     /**
      * The class for a langsys.
      */
+    @SuppressWarnings("unused")
     public class LangSys implements XMLWriterConvertible {
 
         /**
          * feature count
          */
-        private int featureCount;
+        private final int featureCount;
 
         /**
          * The list of the feature index.
          */
-        private List<Integer> featureIndexList;
+        private final List<Integer> featureIndexList;
 
         /**
          * The map of the feature index.
          */
-        private Map<Integer, Integer> featureIndexMap;
+        private final Map<Integer, Integer> featureIndexMap;
 
         /**
          * The map of the feature with the name.
@@ -153,17 +156,17 @@ public class XtfScriptList implements XMLWriterConvertible {
         /**
          * The index. The value '-1' means the defaultLang.
          */
-        private int index;
+        private final int index;
 
         /**
          * lookup order
          */
-        private int lookupOrder;
+        private final int lookupOrder;
 
         /**
          * reg feature index
          */
-        private int reqFeatureIndex;
+        private final int reqFeatureIndex;
 
         /**
          * Create a new object
@@ -178,8 +181,8 @@ public class XtfScriptList implements XMLWriterConvertible {
             lookupOrder = rar.readUnsignedShort();
             reqFeatureIndex = rar.readUnsignedShort();
             featureCount = rar.readUnsignedShort();
-            featureIndexList = new ArrayList<Integer>(featureCount);
-            featureIndexMap = new HashMap<Integer, Integer>(featureCount);
+            featureIndexList = new ArrayList<>( featureCount );
+            featureIndexMap = new HashMap<>( featureCount );
             for (int i = 0; i < featureCount; i++) {
                 int value = rar.readUnsignedShort();
                 featureIndexList.add(value);
@@ -199,7 +202,8 @@ public class XtfScriptList implements XMLWriterConvertible {
 
         /**
          * Returns the featureIndex.
-         * 
+         *
+         * @param idx TODO
          * @return Returns the featureIndex.
          */
         public int getFeatureIndex(int idx) {
@@ -226,7 +230,7 @@ public class XtfScriptList implements XMLWriterConvertible {
         public int getFeatureTag(FeatureTag featureName) {
 
             if (featureTagMap == null) {
-                featureTagMap = new HashMap<String, Integer>();
+                featureTagMap = new HashMap<>();
                 for (Integer ii : featureIndexList) {
                     String key = gsub.getFeatureTag(ii);
                     Integer value = featureIndexList.get(ii);
@@ -235,7 +239,7 @@ public class XtfScriptList implements XMLWriterConvertible {
             }
             Integer intval = featureTagMap.get(featureName.getTag());
             if (intval != null) {
-                return intval.intValue();
+                return intval;
             }
             return -1;
         }
@@ -270,12 +274,12 @@ public class XtfScriptList implements XMLWriterConvertible {
          * Check, if is a feature index.
          * 
          * @param n the index
-         * @return Returns <code>true</code>, if is a feature index, otherwise
-         *         <code>false</code>
+         * @return Returns {@code true}, if is a feature index, otherwise
+         *         {@code false}
          */
         public boolean isFeatureIndexed(int n) {
 
-            return featureIndexMap.get(n) != null ? true : false;
+            return featureIndexMap.get( n ) != null;
         }
 
         /**
@@ -295,12 +299,7 @@ public class XtfScriptList implements XMLWriterConvertible {
             return buf.toString();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        @Override
+    @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("langsys");
@@ -314,7 +313,7 @@ public class XtfScriptList implements XMLWriterConvertible {
                 writer.writeAttribute("id", i);
                 writer.writeAttribute("feature", fil.intValue());
                 writer.writeAttribute("featuretag",
-                    gsub.getFeatureTag(fil.intValue()));
+                    gsub.getFeatureTag( fil ));
                 writer.writeEndElement();
             }
             writer.writeEndElement();
@@ -324,22 +323,22 @@ public class XtfScriptList implements XMLWriterConvertible {
     /**
      * The class for a langsysrecord.
      */
-    public class LangSysRecord implements XMLWriterConvertible {
+    public static class LangSysRecord implements XMLWriterConvertible {
 
         /**
          * The index.
          */
-        private int index;
+        private final int index;
 
         /**
          * offset
          */
-        private int offset;
+        private final int offset;
 
         /**
          * tag
          */
-        private int tag;
+        private final int tag;
 
         /**
          * Create a new object
@@ -401,12 +400,7 @@ public class XtfScriptList implements XMLWriterConvertible {
             return buf.toString();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        @Override
+    @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("langsysrecord");
@@ -421,22 +415,22 @@ public class XtfScriptList implements XMLWriterConvertible {
     /**
      * The class for a Record.
      */
-    public class Record implements XMLWriterConvertible {
+    public static class Record implements XMLWriterConvertible {
 
         /**
          * offset
          */
-        private int offset;
+        private final int offset;
 
         /**
          * The record index.
          */
-        private int recIndex;
+        private final int recIndex;
 
         /**
          * tag
          */
-        private int tag;
+        private final int tag;
 
         /**
          * Create a new object
@@ -498,12 +492,7 @@ public class XtfScriptList implements XMLWriterConvertible {
             return buf.toString();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        @Override
+    @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("record");
@@ -529,7 +518,7 @@ public class XtfScriptList implements XMLWriterConvertible {
         /**
          * defaultLangSysOffset
          */
-        private int defaultLangSysOffset;
+        private final int defaultLangSysOffset;
 
         /**
          * langsys
@@ -539,7 +528,7 @@ public class XtfScriptList implements XMLWriterConvertible {
         /**
          * LangSysCount
          */
-        private int langSysCount;
+        private final int langSysCount;
 
         /**
          * LangSysRecord
@@ -549,7 +538,7 @@ public class XtfScriptList implements XMLWriterConvertible {
         /**
          * The index of the script.
          */
-        private int scriptIndex;
+        private final int scriptIndex;
 
         /**
          * Create a new object
@@ -570,7 +559,7 @@ public class XtfScriptList implements XMLWriterConvertible {
             if (langSysCount > 0) {
                 langSysRecords = new LangSysRecord[langSysCount];
                 for (int i = 0; i < langSysCount; i++) {
-                    langSysRecords[i] = new LangSysRecord(rar, i);
+                    langSysRecords[i] = new LangSysRecord( rar, i );
                 }
             }
 
@@ -683,12 +672,7 @@ public class XtfScriptList implements XMLWriterConvertible {
             return buf.toString();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        @Override
+    @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("script");
@@ -742,26 +726,25 @@ public class XtfScriptList implements XMLWriterConvertible {
      */
     public static String tag2String(int tag) {
 
-        return new StringBuilder().append((char) ((tag >> 24) & 0xff))
-            .append((char) ((tag >> 16) & 0xff))
-            .append((char) ((tag >> 8) & 0xff)).append((char) ((tag) & 0xff))
-            .toString();
+        return String.valueOf( (char) ((tag >> 24) & 0xff) ) +
+            (char) ((tag >> 16) & 0xff) +
+            (char) ((tag >> 8) & 0xff) + (char) ((tag) & 0xff);
     }
 
     /**
      * The gsub table.
      */
-    private AbstractXtfSFLTable gsub;
+    private final AbstractXtfSFLTable gsub;
 
     /**
      * The list of the records.
      */
-    private List<Record> recordList;
+    private final List<Record> recordList;
 
     /**
      * The map for the records (to improve the search in the list).
      */
-    private Map<Integer, Record> recordMap;
+    private final Map<Integer, Record> recordMap;
 
     /**
      * script count
@@ -771,12 +754,12 @@ public class XtfScriptList implements XMLWriterConvertible {
     /**
      * The list of the scripts.
      */
-    private List<Script> scriptList;
+    private final List<Script> scriptList;
 
     /**
      * The map of the scripts (to improve the search in the list).
      */
-    private Map<String, Script> scriptMap;
+    private final Map<String, Script> scriptMap;
 
     /**
      * Create a new object
@@ -793,13 +776,13 @@ public class XtfScriptList implements XMLWriterConvertible {
         rar.seek(offset);
 
         scriptCount = rar.readUnsignedShort();
-        recordList = new ArrayList<Record>(scriptCount);
-        recordMap = new HashMap<Integer, Record>(scriptCount);
-        scriptList = new ArrayList<Script>(scriptCount);
-        scriptMap = new HashMap<String, Script>(scriptCount);
+        recordList = new ArrayList<>( scriptCount );
+        recordMap = new HashMap<>( scriptCount );
+        scriptList = new ArrayList<>( scriptCount );
+        scriptMap = new HashMap<>( scriptCount );
 
         for (int i = 0; i < scriptCount; i++) {
-            Record record = new Record(rar, i);
+            Record record = new Record( rar, i );
             recordList.add(record);
             recordMap.put(record.getRecIndex(), record);
         }
@@ -812,11 +795,11 @@ public class XtfScriptList implements XMLWriterConvertible {
     }
 
     /**
-     * Find the LangSys in a script or <code>null</code>, if not found.
+     * Find the LangSys in a script or {@code null}, if not found.
      * 
      * @param tag The Tag for the script.
      * @param language The language.
-     * @return Find the LangSys in a script or <code>null</code>, if not found.
+     * @return Find the LangSys in a script or {@code null}, if not found.
      */
     public LangSys findLangSys(ScriptTag tag, LanguageSystemTag language) {
 
@@ -830,7 +813,7 @@ public class XtfScriptList implements XMLWriterConvertible {
     /**
      * Find a script.
      * <p>
-     * If no one is found, the 'DFLT' script is returned or <code>null</code>,
+     * If no one is found, the 'DFLT' script is returned or {@code null},
      * if the default script not exists.
      * </p>
      * 
@@ -891,7 +874,7 @@ public class XtfScriptList implements XMLWriterConvertible {
     public String toString() {
 
         StringBuilder buf = new StringBuilder("ScriptList\n");
-        buf.append("   count : " + String.valueOf(scriptCount) + '\n');
+        buf.append("   count : " + scriptCount + '\n');
         for (int i = 0; i < getCount(); i++) {
             buf.append(getRecord(i).toString());
         }
@@ -901,11 +884,6 @@ public class XtfScriptList implements XMLWriterConvertible {
         return buf.toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
     @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

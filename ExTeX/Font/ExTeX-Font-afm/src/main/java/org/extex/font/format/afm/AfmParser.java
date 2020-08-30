@@ -33,8 +33,7 @@ import java.util.*;
  * Parse a afm file.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 @SuppressWarnings("unused")
 public class AfmParser implements Serializable, XMLWriterConvertible {
@@ -55,7 +54,7 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     private static final int BUFFERSIZE = 0xffff;
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 1L;
 
@@ -88,7 +87,7 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     private final AfmHeader header;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated with
+     * The field {@code localizer} contains the localizer. It is initiated with
      * a localizer for the name of this class.
      */
     private final Localizer localizer = LocalizerFactory
@@ -809,7 +808,7 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * Remove all ',' in the string, if the string is <code>null</code>, a empty
+     * Remove all ',' in the string, if the string is {@code null}, a empty
      * string is returned.
      * 
      * @param s the string

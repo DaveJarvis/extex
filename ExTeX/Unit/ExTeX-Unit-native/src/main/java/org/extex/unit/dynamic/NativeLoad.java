@@ -19,11 +19,6 @@
 
 package org.extex.unit.dynamic;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.logging.Logger;
-
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.EofInToksException;
 import org.extex.core.exception.helping.HelpingException;
@@ -40,36 +35,44 @@ import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.logging.Logger;
+
 /**
  * This primitive initiates the loading of native code and implements the
- * primitive <tt>\nativeload</tt>.
+ * primitive {@code \nativeload}.
  * 
- * <doc name="nativeload"> <h3>The Primitive <tt>\nativeload</tt></h3>
+ * <p>The Primitive {@code \nativeload}</p>
  * <p>
- * The primitive <tt>\nativeload</tt> loads some native language code. As
+ * The primitive {@code \nativeload} loads some native language code. As
  * parameter the type of the native extension and a specification of the loader
  * to be used are given.
  * </p>
  * <p>
  * With this method it is possible to load larger extensions of
- * ??TeX in one junk. There is no need to declare each single macro
- * with <tt>\def</tt>. It is even possible to define extension macros in other
+ * εχTeX in one junk. There is no need to declare each single macro
+ * with {@code \def}. It is even possible to define extension macros in other
  * programming languages than the TeX language.
  * </p>
  * 
- * <h4>Syntax</h4> The general form of this primitive is
+ * <p>Syntax</p>
+ * <p>
+ * The general form of this primitive is
+ * </p>
  * 
  * <pre class="syntax"> 
  *    &lang;nativeload&rang;
- *      &rarr; <tt>\nativeload</tt> &lang;type&rang; &lang;tokens&rang; </pre>
+ *      &rarr; {@code \nativeload} &lang;type&rang; &lang;tokens&rang; </pre>
  * 
  * <p>
- * The <code>&lang;type&rang;</code> is any specification of a list of tokens
+ * The {@code &lang;type&rang;} is any specification of a list of tokens
  * like a constant list enclosed in braces or a token register. The value of
  * these tokens are taken and resolved via the configuration.
  * </p>
  * <p>
- * The <code>&lang;tokens&rang;</code> is any specification of a list of tokens
+ * The {@code &lang;tokens&rang;} is any specification of a list of tokens
  * like a constant list enclosed in braces or a tokens register. For the Java
  * loader the value of these tokens are taken and interpreted as the name of a
  * Java class. This class is loaded if needed, instantiated, and its method
@@ -78,7 +81,8 @@ import org.extex.typesetter.exception.TypesetterException;
  * visible.
  * </p>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * <p>
  * The following example illustrates the use of this primitive:
  * </p>
@@ -90,7 +94,8 @@ import org.extex.typesetter.exception.TypesetterException;
  * For the loading of the Java class it is necessary that this Java class
  * implements the interface {@link org.extex.unit.dynamic.java.Loadable
  * Loadable}.
- * 
+ * </p>
+ *
  * <pre class="JavaSample">
  * <b>package</b> my.package;
  * 
@@ -112,10 +117,9 @@ import org.extex.typesetter.exception.TypesetterException;
  *             <i>// implement the initialization code here</i>
  *     }
  * } </pre>
- * 
- * </p>
- * 
- * <h4>Configuration</h4>
+ *
+ * <p>Configuration</p>
+
  * <p>
  * The supported types are determined in the configuration of the unit which
  * defines the primitive. Here a mapping is specified assigning a binding class
@@ -142,29 +146,25 @@ import org.extex.typesetter.exception.TypesetterException;
  * programming language.
  * </p>
  * 
- * </doc>
- * 
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NativeLoad extends AbstractCode
         implements
             Configurable,
             LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>logger</tt> contains the logger to use.
+     * The field {@code logger} contains the logger to use.
      */
     private transient Logger logger = null;
 
     /**
-     * The field <tt>map</tt> contains the mapping from a symbolic name to a
+     * The field {@code map} contains the mapping from a symbolic name to a
      * configuration.
      */
     private Map<String, Configuration> map =
@@ -211,10 +211,7 @@ public class NativeLoad extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

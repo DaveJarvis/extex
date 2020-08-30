@@ -32,18 +32,14 @@ import org.extex.exbib.editor.bst.model.BstModel;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class BstLaunchShortcut implements ILaunchShortcut {
 
     private interface IType {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.debug.ui.ILaunchShortcut#launch(org.eclipse.ui.IEditorPart,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public void launch(IEditorPart editor, String mode) {
@@ -56,10 +52,7 @@ public class BstLaunchShortcut implements ILaunchShortcut {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.debug.ui.ILaunchShortcut#launch(org.eclipse.jface.viewers.ISelection,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public void launch(ISelection selection, String mode) {

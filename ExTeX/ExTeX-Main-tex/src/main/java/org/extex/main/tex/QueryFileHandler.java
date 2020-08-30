@@ -28,8 +28,7 @@ import java.util.logging.Logger;
  * This usually involves the querying the user for the information is some way.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface QueryFileHandler {
 
     /**
@@ -38,7 +37,7 @@ public interface QueryFileHandler {
      * @param logger the logger stream for output messages
      * @param properties the properties
      *
-     * @return the file name or <code>null</code> if none has been given
+     * @return the file name or {@code null} if none has been given
      */
     String query(Logger logger, Properties properties);
 

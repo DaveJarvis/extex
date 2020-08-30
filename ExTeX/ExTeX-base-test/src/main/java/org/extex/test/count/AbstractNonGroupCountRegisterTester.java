@@ -27,32 +27,31 @@ import org.junit.Test;
  * test cases common to all count registers.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher {
 
     /**
-     * The field <tt>primitive</tt> contains the name of the primitive to
+     * The field {@code primitive} contains the name of the primitive to
      * test.
      */
-    private String primitive;
+    private final String primitive;
 
     /**
-     * The field <tt>invocation</tt> contains the concatenation of primitive
+     * The field {@code invocation} contains the concatenation of primitive
      * name and arguments.
      */
-    private String invocation;
+    private final String invocation;
 
     /**
-     * The field <tt>init</tt> contains the default value.
+     * The field {@code init} contains the default value.
      */
-    private String init;
+    private final String init;
 
     /**
-     * The field <tt>prepare</tt> contains the prefix to be prepended before
+     * The field {@code prepare} contains the prefix to be prepended before
      * the code for the primitive.
      */
-    private String prepare;
+    private final String prepare;
 
     /**
      * Creates a new object.
@@ -90,9 +89,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that the prefix <tt>\immediate</tt> is not
-     * applicable. </testcase>
-     * 
+     * Test case showing that the prefix {@code \immediate} is not applicable
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -106,9 +104,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that the prefix <tt>\long</tt> is not
-     * applicable. </testcase>
-     * 
+     * Test case showing that the prefix {@code \long} is not applicable
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -122,9 +119,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that the prefix <tt>\outer</tt> is not
-     * applicable. </testcase>
-     * 
+     * Test case showing that the prefix {@code \outer} is not applicable
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -138,9 +134,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that the primitive is defined and its
-     * default value is 0. </testcase>
-     * 
+     * Test case showing that the primitive is defined and its default value is 0
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -153,9 +148,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant 123 works
-     * when using an equal sign after the primitive name. </testcase>
-     * 
+     * Test case showing that an assignment of a constant 123 works when using an equal sign after the primitive name
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -168,9 +162,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant 123 works
-     * when using no equal sign after the primitive name. </testcase>
-     * 
+     * Test case showing that an assignment of a constant 123 works when using no equal sign after the primitive name
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -183,9 +176,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant -123 works
-     * when using an equal sign after the primitive name. </testcase>
-     * 
+     * Test case showing that an assignment of a constant -123 works when using an equal sign after the primitive name
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -199,9 +191,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant -123 works
-     * when using no equal sign after the primitive name. </testcase>
-     * 
+     * Test case showing that an assignment of a constant -123 works when using no equal sign after the primitive name
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -214,9 +205,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant -123 works
-     * when using <tt>\globaldefs</tt>. </testcase>
-     * 
+     * Test case showing that an assignment of a constant -123 works when using {@code \globaldefs}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -230,9 +220,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an assignment respects
-     * <tt>\\afterassignment</tt>. </testcase>
-     * 
+     * Test case showing that an assignment respects {@code \\afterassignment}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -246,8 +235,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that the value is count convertible.
-     * </testcase>
+     *  Test case showing that the value is count convertible.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -262,9 +251,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant 123 works
-     * when using an equal sign after the primitive name. </testcase>
-     * 
+     * Test case showing that an assignment of a constant 123 works when using an equal sign after the primitive name
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -278,9 +266,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant 123 works
-     * when using no equal sign after the primitive name. </testcase>
-     * 
+     * Test case showing that an assignment of a constant 123 works when using no equal sign after the primitive name
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -294,9 +281,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an advancement by the constant 12
-     * works. </testcase>
-     * 
+     * Test case showing that an advancement by the constant 12 works
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -310,9 +296,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an advancement by the constant 12 works
-     * when using the keyword <tt>by</tt>. </testcase>
-     * 
+     * Test case showing that an advancement by the constant 12 works when using the keyword {@code by}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -326,9 +311,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an advancement by the constant -12
-     * works. </testcase>
-     * 
+     * Test case showing that an advancement by the constant -12 works
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -342,9 +326,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an advancement by the constant -12
-     * works when using the keyword <tt>by</tt>. </testcase>
-     * 
+     * Test case showing that an advancement by the constant -12 works when using the keyword {@code by}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -358,9 +341,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an advancement by the constant -123
-     * works when using <tt>\globaldefs</tt>. </testcase>
-     * 
+     * Test case showing that an advancement by the constant -123 works when using {@code \globaldefs}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -374,9 +356,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an assignment respects
-     * <tt>\\afterassignment</tt>. </testcase>
-     * 
+     * Test case showing that an assignment respects {@code \\afterassignment}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -391,9 +372,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an multiplication with the constant 0
-     * works. </testcase>
-     * 
+     * Test case showing that an multiplication with the constant 0 works
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -408,9 +388,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an multiplication with the constant 12
-     * works. </testcase>
-     * 
+     * Test case showing that an multiplication with the constant 12 works
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -424,9 +403,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an multiplication with the constant 12
-     * works when using the keyword <tt>by</tt>. </testcase>
-     * 
+     * Test case showing that an multiplication with the constant 12 works when using the keyword {@code by}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -440,9 +418,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an multiplication by the constant -12
-     * works. </testcase>
-     * 
+     * Test case showing that an multiplication by the constant -12 works
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -456,9 +433,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an multiplication by the constant -12
-     * works when using the keyword <tt>by</tt>. </testcase>
-     * 
+     * Test case showing that an multiplication by the constant -12 works when using the keyword {@code by}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -472,9 +448,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that a multiplication by a constant -123
-     * works when using <tt>\globaldefs</tt>. </testcase>
-     * 
+     * Test case showing that a multiplication by a constant -123 works when using {@code \globaldefs}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -489,9 +464,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an assignment respects
-     * <tt>\\afterassignment</tt>. </testcase>
-     * 
+     * Test case showing that an assignment respects {@code \\afterassignment}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -506,8 +480,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an division by the constant 12 works.
-     * </testcase>
+     *  Test case showing that an division by the constant 12 works.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -523,8 +497,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an division by the constant 12 works.
-     * </testcase>
+     *  Test case showing that an division by the constant 12 works.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -539,9 +513,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an division by the constant 12 works
-     * when using the keyword <tt>by</tt>. </testcase>
-     * 
+     * Test case showing that an division by the constant 12 works when using the keyword {@code by}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -555,9 +528,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an multiplication by the constant -12
-     * works. </testcase>
-     * 
+     * Test case showing that an multiplication by the constant -12 works
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -571,9 +543,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an multiplication by the constant -12
-     * works when using the keyword <tt>by</tt>. </testcase>
-     * 
+     * Test case showing that an multiplication by the constant -12 works when using the keyword {@code by}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -587,9 +558,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that a division by a constant -123 works
-     * when using <tt>\globaldefs</tt>. </testcase>
-     * 
+     * Test case showing that a division by a constant -123 works when using {@code \globaldefs}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -604,9 +574,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that an assignment respects
-     * <tt>\\afterassignment</tt>. </testcase>
-     * 
+     * Test case showing that an assignment respects {@code \\afterassignment}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -620,9 +589,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case showing that division by the constant -12 works when
-     * using the keyword <tt>by</tt>. </testcase>
-     * 
+     * Test case showing that division by the constant -12 works when using the keyword {@code by}
+* 
      * @throws Exception in case of an error
      */
     @Test

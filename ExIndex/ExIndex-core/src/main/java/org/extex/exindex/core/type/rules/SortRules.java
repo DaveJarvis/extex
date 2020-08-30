@@ -26,18 +26,17 @@ import java.util.ArrayList;
  * This class provides a container for sort rules.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SortRules extends ArrayList<Rule> {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>ascending</tt> contains the indicator for ascending
+     * The field {@code ascending} contains the indicator for ascending
      * order; the opposite is descending order.
      */
     private boolean ascending = true;

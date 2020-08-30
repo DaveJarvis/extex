@@ -25,15 +25,14 @@ import java.io.OutputStream;
 import org.extex.dviware.Dvi;
 
 /**
- * This class represents the DVI instruction <tt>right</tt>.
+ * This class represents the DVI instruction {@code right}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DviRight extends AbstractDviCode {
 
     /**
-     * The field <tt>dist</tt> contains the the distance to move rightwards.
+     * The field {@code dist} contains the the distance to move rightwards.
      */
     private int dist;
 

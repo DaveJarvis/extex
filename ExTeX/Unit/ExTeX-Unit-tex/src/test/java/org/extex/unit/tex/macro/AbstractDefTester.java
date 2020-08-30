@@ -31,12 +31,11 @@ import org.junit.Test;
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public abstract class AbstractDefTester extends ExTeXLauncher {
 
     /**
-     * The field <tt>primitive</tt> contains the name of the def.
+     * The field {@code primitive} contains the name of the def.
      */
     private String def;
 
@@ -50,8 +49,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that \\immediate leads to an error
-     * </testcase>
+     *  Test case checking that \\immediate leads to an error
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -66,9 +65,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a simple definition of a control
-     * sequence without parameters works. </testcase>
-     * 
+     * Test case checking that a simple definition of a control sequence without parameters works
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -81,9 +79,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a simple definition of an active
-     * character without parameters works. </testcase>
-     * 
+     * Test case checking that a simple definition of an active character without parameters works
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -97,8 +94,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that long is an accepted prefix.
-     * </testcase>
+     *  Test case checking that long is an accepted prefix.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -112,9 +109,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that along definition accepts a \par in the
-     * replacement text. </testcase>
-     * 
+     * Test case checking that along definition accepts a \par in the replacement text
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -128,9 +124,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a single argument works for a single
-     * token parameter. </testcase>
-     * 
+     * Test case checking that a single argument works for a single token parameter
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -144,9 +139,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a single argument works for a
-     * parameter block with one token. </testcase>
-     * 
+     * Test case checking that a single argument works for a parameter block with one token
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -160,9 +154,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a single argument works for a
-     * parameter block with two tokens. </testcase>
-     * 
+     * Test case checking that a single argument works for a parameter block with two tokens
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -176,7 +169,7 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that two arguments are parsed. </testcase>
+     *  Test case checking that two arguments are parsed.
      * 
      * @throws Exception in case of an error
      */
@@ -191,9 +184,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a single argument with delimiter works
-     * for a parameter block with one token. </testcase>
-     * 
+     * Test case checking that a single argument with delimiter works for a parameter block with one token
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -207,9 +199,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a single argument with delimiter works
-     * for a parameter block which contains the delimiter. </testcase>
-     * 
+     * Test case checking that a single argument with delimiter works for a parameter block which contains the delimiter
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -223,9 +214,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that an additional closing brace is
-     * reported as error. </testcase>
-     * 
+     * Test case checking that an additional closing brace is reported as error
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -239,9 +229,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a double hash is consumed in the
-     * replacement text. </testcase>
-     * 
+     * Test case checking that a double hash is consumed in the replacement text
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -254,9 +243,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that macro param character in the
-     * replacement text leads to an error. </testcase>
-     * 
+     * Test case checking that macro param character in the replacement text leads to an error
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -269,9 +257,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a final hash requires a left brace
-     * upon invocation: failure case. </testcase>
-     * 
+     * Test case checking that a final hash requires a left brace upon invocation: failure case
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -285,9 +272,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a final hash requires a left brace
-     * upon invocation: success case. </testcase>
-     * 
+     * Test case checking that a final hash requires a left brace upon invocation: success case
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -301,9 +287,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that the macro parameters must be numbered
-     * consecutively. </testcase>
-     * 
+     * Test case checking that the macro parameters must be numbered consecutively
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -316,9 +301,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a macro parameter character must be
-     * followed by a number. </testcase>
-     * 
+     * Test case checking that a macro parameter character must be followed by a number
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -331,9 +315,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a closing brace after the control
-     * sequence token leads to an error. </testcase>
-     * 
+     * Test case checking that a closing brace after the control sequence token leads to an error
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -346,9 +329,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that an outer control sequence leads to an
-     * error in the pattern of a macro. </testcase>
-     * 
+     * Test case checking that an outer control sequence leads to an error in the pattern of a macro
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -362,9 +344,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that an eof in the pattern of the
-     * definition of a macro is recognized. </testcase>
-     * 
+     * Test case checking that an eof in the pattern of the definition of a macro is recognized
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -377,9 +358,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that an eof in the replacement text of the
-     * definition of a macro is recognized. </testcase>
-     * 
+     * Test case checking that an eof in the replacement text of the definition of a macro is recognized
+* 
      * @throws Exception in case of an error
      */
     @Test

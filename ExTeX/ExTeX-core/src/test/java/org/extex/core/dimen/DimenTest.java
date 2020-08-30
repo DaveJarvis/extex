@@ -28,12 +28,11 @@ import org.junit.Test;
  * This is a test suite for the data type Dimen.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4728 $
- */
+*/
 public class DimenTest {
 
     /**
-     * The constant <tt>INITIAL</tt> contains the initial value which should be
+     * The constant {@code INITIAL} contains the initial value which should be
      * some strange value not related to anything else in some test case.
      */
     private static final int INITIAL = -111;
@@ -467,7 +466,7 @@ public class DimenTest {
     }
 
     /**
-     * The field <tt>STRING</tt> contains the mapping from scaled points to the
+     * The field {@code STRING} contains the mapping from scaled points to the
      * printed representation in pt as computed by TeX.
      */
     private static final String[] STRING = {

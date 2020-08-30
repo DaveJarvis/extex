@@ -33,45 +33,43 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\else</code>.
+ * This class provides an implementation for the primitive {@code \else}.
  * 
- * <doc name="else">
- * <h3>The Primitive <tt>\else</tt></h3>
+ * <p>The Primitive {@code \else}</p>
  * <p>
- * The primitive <tt>\else</tt> can appear in the context of a conditional. It
+ * The primitive {@code \else} can appear in the context of a conditional. It
  * terminates the preceding branch and starts the next one.
  * </p>
  * <p>
- * The primitive <tt>\else</tt> can not be used alone. It always comes in
- * conjunction with a conditional. A isolated <tt>\else</tt> leads immediately
+ * The primitive {@code \else} can not be used alone. It always comes in
+ * conjunction with a conditional. A isolated {@code \else} leads immediately
  * to an error.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;else&rang;
- *      &rarr; <tt>\else</tt>  </pre>
+ *      &rarr; {@code \else}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \ifnum 1&lt;2\else no\fi  </pre>
  * 
- * </doc>
+ *
  * 
- * 
- * Note:<br />
- * This primitive is <emph>not</emph> expandable!
+ * <strong>Note:</strong> This primitive is <em>not</em> expandable!
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4439 $
- */
+*/
 public class Else extends AbstractCode implements PrefixCode, ExpandableCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -95,10 +93,7 @@ public class Else extends AbstractCode implements PrefixCode, ExpandableCode {
      * conditional stack is already empty then an exception is raised.
      * </p>
      * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -115,10 +110,7 @@ public class Else extends AbstractCode implements PrefixCode, ExpandableCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,

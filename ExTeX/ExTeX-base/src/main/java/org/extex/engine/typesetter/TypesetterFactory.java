@@ -41,14 +41,15 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * {@link org.extex.framework.AbstractFactory AbstractFactory}. Among them the
  * support for configuration and logging.
  * 
- * <h3>Configuration</h3>
+ *  Configuration
  * 
  * <p>
  * Mainly the configuration needs to specify which class to use for the
  * Typesetter. The configuration provides a mapping from a type name to the
  * sub-configuration to be used. The name of the class is given as the argument
- * <tt>class</tt> of the sub-configuration as shown below.
- * 
+ * {@code class} of the sub-configuration as shown below.
+ * </p>
+ *
  * <pre>
  *   &lt;Typesetter default="TeX"&gt;
  *     &lt;TeX class="org.extex.typesetter.impl.TypesetterImpl"
@@ -68,7 +69,6 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  *   &lt;/Typesetter&gt;
  *  </pre>
  * 
- * </p>
  * <p>
  * The named class need to implement the interface
  * {@link org.extex.typesetter.Typesetter Typesetter}. If this interface is not
@@ -88,8 +88,7 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4404 $
- */
+*/
 public class TypesetterFactory extends AbstractFactory<Object> {
 
 
@@ -124,7 +123,7 @@ public class TypesetterFactory extends AbstractFactory<Object> {
 
     /**
      * Make a new page builder according to the specification in the
-     * configuration. The sub-configuration <code>PageBuilder</code> is used to
+     * configuration. The sub-configuration {@code PageBuilder} is used to
      * determine the requested properties.
      * 
      * @param config the configuration to use
@@ -152,7 +151,7 @@ public class TypesetterFactory extends AbstractFactory<Object> {
 
     /**
      * Make a new paragraph builder according to the specification in the
-     * configuration. The sub-configuration <code>ParagraphBuilder</code> is
+     * configuration. The sub-configuration {@code ParagraphBuilder} is
      * used to determine the requested properties.
      * 
      * @param config the configuration to use

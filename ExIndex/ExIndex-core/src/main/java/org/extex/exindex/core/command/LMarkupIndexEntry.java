@@ -28,12 +28,11 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to define the markup for an index entry.
  * 
- * <doc type="exindex-command" command="markup-index-entry">
- * 
- * <h3>The Command <tt>markup-index-entry</tt></h3>
+*
+ * <p>The Command {@code markup-index-entry}</p>
  * 
  * <p>
- * The command <tt>markup-index-entry</tt> can be used to specify the markup for
+ * The command {@code markup-index-entry} can be used to specify the markup for
  * index entries.
  * </p>
  * 
@@ -52,7 +51,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  *  (markup-index-entry :open "\\begingroup " :close "\\endgroup ")   </pre>
  * 
  * <p>
- * The arguments <tt>:open</tt> and <tt>:close</tt> take a parameter each. They
+ * The arguments {@code :open} and {@code :close} take a parameter each. They
  * denote the opening and closing string for an index entry.
  * </p>
  * 
@@ -60,23 +59,21 @@ import org.extex.exindex.lisp.type.value.LValue;
  *  (markup-index-entry :close "\\par " :depth 2)   </pre>
  * 
  * <p>
- * The argument <tt>:depth</tt> specified for which depth the rule should be
+ * The argument {@code :depth} specified for which depth the rule should be
  * applied. If no depth is given the markup is applied for all levels which do
  * not have a markup set. This means that such a command sets the default
  * values.
  * </p>
  * 
- * </doc>
- * 
- * <h3>Parameters</h3>
+ *
+ * <p>Parameters</p>
  * <p>
  * The parameters defined with this command are stored in the L system under the
- * key of the function name (i.e. <tt>markup-indexentry</tt>).
+ * key of the function name (i.e. {@code markup-indexentry}).
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LMarkupIndexEntry extends AbstractLAdapter {
 
     /**
@@ -106,7 +103,7 @@ public class LMarkupIndexEntry extends AbstractLAdapter {
      * @param close the close string
      * @param depth the depth or null if none has been given
      * 
-     * @return <tt>null</tt>
+     * @return {@code null}
      * 
      * @throws LSettingConstantException should not happen
      * @throws LNonMatchingTypeException in case of an error

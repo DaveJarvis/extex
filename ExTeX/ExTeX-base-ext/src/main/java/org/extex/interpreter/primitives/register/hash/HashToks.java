@@ -36,12 +36,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * A Hash for Tokens.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class HashToks implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 1L;
 
@@ -57,8 +56,8 @@ public class HashToks implements Serializable {
     }
 
     /**
-     * Creates a new object. get the <code>TokenSource</code> for a
-     * <code>HashToks</code> (noexpand).
+     * Creates a new object. get the {@code TokenSource} for a
+     * {@code HashToks} (noexpand).
      * 
      * @param context the context
      * @param source the token source
@@ -108,7 +107,7 @@ public class HashToks implements Serializable {
      * Contains the key
      * 
      * @param key the key
-     * @return <code>true</code> if the key exists, otherwise <code>false</code>
+     * @return {@code true} if the key exists, otherwise {@code false}
      */
     public boolean containsKey(String key) {
 
@@ -152,9 +151,9 @@ public class HashToks implements Serializable {
     }
 
     /**
-     * Return the value as <code>String</code>
+     * Return the value as {@code String}
      * 
-     * @return the value as <code>String</code>
+     * @return the value as {@code String}
      */
     @Override
     public String toString() {

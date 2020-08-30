@@ -55,65 +55,64 @@ import org.extex.ocpware.type.OcpProgram;
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public final class CompilerState {
 
     /**
-     * The constant <tt>INITIAL</tt> contains the symbolic name for the initial
+     * The constant {@code INITIAL} contains the symbolic name for the initial
      * state.
      */
     private static final String INITIAL = "INITIAL";
 
     /**
-     * The field <tt>aliases</tt> contains the aliases.
+     * The field {@code aliases} contains the aliases.
      */
     private Map<String, Left> aliases = new HashMap<String, Left>();
 
     /**
-     * The field <tt>currentState</tt> contains the current state.
+     * The field {@code currentState} contains the current state.
      */
     private State currentState;
 
     /**
-     * The field <tt>currentStateIndex</tt> contains the current state.
+     * The field {@code currentStateIndex} contains the current state.
      */
     private int currentStateIndex = 0;
 
     /**
-     * The field <tt>expressions</tt> contains the list of expressions.
+     * The field {@code expressions} contains the list of expressions.
      */
     private List<Expression> expressions;
 
     /**
-     * The field <tt>in</tt> contains the number of bytes in the input stream.
+     * The field {@code in} contains the number of bytes in the input stream.
      * The default is 2.
      */
     private int in = 2;
 
     /**
-     * The field <tt>states</tt> contains the list of states.
+     * The field {@code states} contains the list of states.
      */
     private Map<String, Integer> namedStates = new HashMap<String, Integer>();
 
     /**
-     * The field <tt>states</tt> contains the list of states.
+     * The field {@code states} contains the list of states.
      */
     private Map<String, Integer> namedTables = new HashMap<String, Integer>();
 
     /**
-     * The field <tt>out</tt> contains the number of bytes in the output stream.
+     * The field {@code out} contains the number of bytes in the output stream.
      * The default is 2.
      */
     private int out = 2;
 
     /**
-     * The field <tt>states</tt> contains the list of states.
+     * The field {@code states} contains the list of states.
      */
     private List<State> states = new ArrayList<State>();
 
     /**
-     * The field <tt>tables</tt> contains the list of tables.
+     * The field {@code tables} contains the list of tables.
      */
     private Map<String, Table> tables = new HashMap<String, Table>();
 
@@ -647,12 +646,7 @@ public final class CompilerState {
         states.add(new State());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();

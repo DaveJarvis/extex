@@ -26,12 +26,11 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
  * This code is added to the linking container.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class LinkingCode implements Comparable<LinkingCode> {
 
     /**
-     * The field <tt>key</tt> contains the key for sorting.
+     * The field {@code key} contains the key for sorting.
      */
     private String key;
 
@@ -45,12 +44,7 @@ public abstract class LinkingCode implements Comparable<LinkingCode> {
         this.key = key;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Comparable#compareTo(java.lang.Object)
-     */
-    @Override
+@Override
     public int compareTo(LinkingCode o) {
 
         return key.compareTo(o.key);

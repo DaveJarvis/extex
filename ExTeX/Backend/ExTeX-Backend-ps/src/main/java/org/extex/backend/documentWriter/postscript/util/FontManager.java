@@ -37,41 +37,40 @@ import org.extex.typesetter.tc.font.Font;
  * The font manager keeps track of the fonts and characters used.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class FontManager implements Iterable<ManagerInfo> {
 
     /**
-     * The field <tt>currentFont</tt> contains the font encountered most
+     * The field {@code currentFont} contains the font encountered most
      * recently.
      */
     private BackendFont currentFont = null;
 
     /**
-     * The field <tt>fntNo</tt> contains the next number to be used for a font
+     * The field {@code fntNo} contains the next number to be used for a font
      * changing macro number.
      */
     private int fntNo = 1;
 
     /**
-     * The field <tt>fonts</tt> contains the registered fonts and characters.
+     * The field {@code fonts} contains the registered fonts and characters.
      */
     // private Map<Font, Map<UnicodeChar, UnicodeChar>> fonts =
     // new HashMap<Font, Map<UnicodeChar, UnicodeChar>>();
     /**
-     * The field <tt>manager</tt> contains the encapsulated back-end font
+     * The field {@code manager} contains the encapsulated back-end font
      * manager.
      */
     private BackendFontManager manager;
 
     /**
-     * The field <tt>texdict</tt> contains the definition of font changing
+     * The field {@code texdict} contains the definition of font changing
      * functions.
      */
     private StringBuilder texdict = null;
 
     /**
-     * The field <tt>recognizedCharId</tt> contains the most recently
+     * The field {@code recognizedCharId} contains the most recently
      * recognized back-end character.
      */
     private BackendCharacter recognizedCharId = null;
@@ -93,7 +92,7 @@ public class FontManager implements Iterable<ManagerInfo> {
      * @param font the font which is used
      * @param c the character in the font which is used
      * 
-     * @return <code>true</code> iff the font is not the one previously
+     * @return {@code true} iff the font is not the one previously
      *         reported
      * 
      * @throws GeneralException in case of an error
@@ -140,7 +139,7 @@ public class FontManager implements Iterable<ManagerInfo> {
 
     /**
      * Get the most recently recognized back-end character. This might be
-     * <code>null</code> if the character is not defined in the font.
+     * {@code null} if the character is not defined in the font.
      * 
      * @return the back-end character
      * 

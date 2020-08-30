@@ -30,28 +30,27 @@ import java.util.Map;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class BstModel {
 
     /**
-     * The field <tt>map</tt> contains the mapping from name to the named
+     * The field {@code map} contains the mapping from name to the named
      * entity.
      */
     private Map<String, BstModelNode> map;
 
     /**
-     * The field <tt>list</tt> contains the ...
+     * The field {@code list} contains the ...
      */
     private List<BstModelNode> list;
 
     /**
-     * The field <tt>array</tt> contains the ...
+     * The field {@code array} contains the ...
      */
     private BstModelNode[] array = null;
 
     /**
-     * The field <tt>COMPERATOR</tt> contains the ...
+     * The field {@code COMPERATOR} contains the ...
      */
     private final static Comparator<BstModelNode> COMPERATOR =
             new Comparator<BstModelNode>() {

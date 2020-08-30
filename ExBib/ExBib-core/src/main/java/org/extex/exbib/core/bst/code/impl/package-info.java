@@ -16,14 +16,14 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the classes for the built-in functions of
+ * Contains the classes for the built-in functions of
  * the processor.
  * <p>
  *   Built-in functions are implemented as classes which are
  *   characterized as follows:
  * </p>
  * <ul>
- *   <li>They have a method <code>execute()</code> which performs the actions
+ *   <li>They have a method {@code execute()} which performs the actions
  *     required.
  *   </li>
  *   <li>They have a constructor which takes a String argument which is the name
@@ -36,17 +36,15 @@
  * </p>
  * <p>
  *   The functions are either integrated in the processor statically like in 
- *   <code>{@link org.extex.exbib.core.bst.BstInterpreter099c BstInterpreter099c}</code>.
+ *   {@code {@link org.extex.exbib.core.bst.BstInterpreter099c BstInterpreter099c}}.
  *   Alternatively they can be loaded dynamically according to a configuration
- *   file like in <code>{@link org.extex.exbib.core.bst.BstInterpreter BstInterpreter}</code>.
+ *   file like in {@code {@link org.extex.exbib.core.bst.BstInterpreter BstInterpreter}}.
  * </p>
  *
- * <h2>Dependencies of the functions and implementations</h2>
  *
- * <table 
- * style="border-top-width:3px;border-bottom-width:3px;border-top-style:solid;border-bottom-style:solid;font-family:helvetica;font-size:9pt;margin-left:2pt;margin-right:2pt"
- * align="center">
- *   <tr style="border-bottom-width:2px;border-bottom-stlye:solid;">
+ * <table> <caption>TBD</caption>
+ *   <caption>Dependencies of the functions and implementations</caption>
+ *   <tr>
  *     <th>Function Name</th>
  *     <th>Class</th>
  *     <th>Braces</th>
@@ -56,267 +54,267 @@
  *     <th>Western</th>
  *   </tr>
  *   <tr>
- *     <td><tt>add.period$</tt></td>
- *     <td><tt>AddPeriod</tt></td>
+ *     <td>{@code add.period$}</td>
+ *     <td>{@code AddPeriod}</td>
  *     <td>ignore right braces</td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>call.type$</tt></td>
- *     <td><tt>CallType</tt></td>
+ *     <td>{@code call.type$}</td>
+ *     <td>{@code CallType}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>change.case$</tt></td>
- *     <td><tt>ChangeCase</tt></td>
+ *     <td>{@code change.case$}</td>
+ *     <td>{@code ChangeCase}</td>
  *     <td>Consider brace level</td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>chr.to.int$</tt></td>
- *     <td><tt>ChrToInt</tt></td>
+ *     <td>{@code chr.to.int$}</td>
+ *     <td>{@code ChrToInt}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>cite$</tt></td>
- *     <td><tt>Cite</tt></td>
+ *     <td>{@code cite$}</td>
+ *     <td>{@code Cite}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>*</tt></td>
- *     <td><tt>Concat</tt></td>
+ *     <td>{@code *}</td>
+ *     <td>{@code Concat}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>duplicate$</tt></td>
- *     <td><tt>Duplicate</tt></td>
+ *     <td>{@code duplicate$}</td>
+ *     <td>{@code Duplicate}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>empty$</tt></td>
- *     <td><tt>Empty</tt></td>
+ *     <td>{@code empty$}</td>
+ *     <td>{@code Empty}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>=</tt></td>
- *     <td><tt>Eq</tt></td>
+ *     <td>{@code =}</td>
+ *     <td>{@code Eq}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>format.name$</tt></td>
- *     <td><tt>FormatName</tt></td>
+ *     <td>{@code format.name$}</td>
+ *     <td>{@code FormatName}</td>
  *     <td>Consider brace level</td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>format.name$</tt></td>
- *     <td><tt>FormatName099</tt></td>
+ *     <td>{@code format.name$}</td>
+ *     <td>{@code FormatName099}</td>
  *     <td>Consider brace level</td>
  *     <td></td>
  *     <td>Knows tie</td>
  *   </tr>
  *   <tr>
- *     <td><tt>&gt;</tt></td>
- *     <td><tt>Gt</tt></td>
+ *     <td>{@code &gt;}</td>
+ *     <td>{@code Gt}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>if$</tt></td>
- *     <td><tt>If</tt></td>
+ *     <td>{@code if$}</td>
+ *     <td>{@code If}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>int.to.chr$</tt></td>
- *     <td><tt>IntToChr</tt></td>
+ *     <td>{@code int.to.chr$}</td>
+ *     <td>{@code IntToChr}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>int.to.str$</tt></td>
- *     <td><tt>IntToStr</tt></td>
+ *     <td>{@code int.to.str$}</td>
+ *     <td>{@code IntToStr}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>&lt;</tt></td>
- *     <td><tt>Lt</tt></td>
+ *     <td>{@code &lt;}</td>
+ *     <td>{@code Lt}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>-</tt></td>
- *     <td><tt>Minus</tt></td>
+ *     <td>{@code -}</td>
+ *     <td>{@code Minus}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>missing$</tt></td>
- *     <td><tt>Missing</tt></td>
+ *     <td>{@code missing$}</td>
+ *     <td>{@code Missing}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>newline$</tt></td>
- *     <td><tt>Newline</tt></td>
+ *     <td>{@code newline$}</td>
+ *     <td>{@code Newline}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>num.names$</tt></td>
- *     <td><tt>NumNames</tt></td>
+ *     <td>{@code num.names$}</td>
+ *     <td>{@code NumNames}</td>
  *     <td>Consider brace level</td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>+</tt></td>
- *     <td><tt>Plus</tt></td>
+ *     <td>{@code +}</td>
+ *     <td>{@code Plus}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>pop$</tt></td>
- *     <td><tt>Pop</tt></td>
+ *     <td>{@code pop$}</td>
+ *     <td>{@code Pop}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>preamble$</tt></td>
- *     <td><tt>Preamble</tt></td>
+ *     <td>{@code preamble$}</td>
+ *     <td>{@code Preamble}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>purify$</tt></td>
- *     <td><tt>Purify</tt></td>
+ *     <td>{@code purify$}</td>
+ *     <td>{@code Purify}</td>
  *     <td>Consider brace level</td>
  *     <td>Knows special characters</td>
  *     <td>*</td>
  *   </tr>
  *   <tr>
- *     <td><tt>quote$</tt></td>
- *     <td><tt>Quote</tt></td>
+ *     <td>{@code quote$}</td>
+ *     <td>{@code Quote}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>:=</tt></td>
- *     <td><tt>Set</tt></td>
+ *     <td>{@code :=}</td>
+ *     <td>{@code Set}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>skip$</tt></td>
- *     <td><tt>Skip</tt></td>
+ *     <td>{@code skip$}</td>
+ *     <td>{@code Skip}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>stack$</tt></td>
- *     <td><tt>Stack</tt></td>
+ *     <td>{@code stack$}</td>
+ *     <td>{@code Stack}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>substring$</tt></td>
- *     <td><tt>Substring</tt></td>
+ *     <td>{@code substring$}</td>
+ *     <td>{@code Substring}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>swap$</tt></td>
- *     <td><tt>Swap</tt></td>
+ *     <td>{@code swap$}</td>
+ *     <td>{@code Swap}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>text.length$</tt></td>
- *     <td><tt>TextLength</tt></td>
+ *     <td>{@code text.length$}</td>
+ *     <td>{@code TextLength}</td>
  *     <td>Ignore braces</td>
  *     <td>Knows special characters</td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>text.prefix$</tt></td>
- *     <td><tt>TextPrefix</tt></td>
+ *     <td>{@code text.prefix$}</td>
+ *     <td>{@code TextPrefix}</td>
  *     <td>Consoder brace level</td>
  *     <td>Knows special charcters</td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>Top$</tt></td>
- *     <td><tt>Top</tt></td>
+ *     <td>{@code Top$}</td>
+ *     <td>{@code Top}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>type$</tt></td>
- *     <td><tt>Type</tt></td>
+ *     <td>{@code type$}</td>
+ *     <td>{@code Type}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>warning$</tt></td>
- *     <td><tt>Warning</tt></td>
+ *     <td>{@code warning$}</td>
+ *     <td>{@code Warning}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>while$</tt></td>
- *     <td><tt>While</tt></td>
+ *     <td>{@code while$}</td>
+ *     <td>{@code While}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>
  *   </tr>
  *   <tr>
- *     <td><tt>width$</tt></td>
- *     <td><tt>Width</tt></td>
+ *     <td>{@code width$}</td>
+ *     <td>{@code Width}</td>
  *     <td>Sometimes ignores braces</td>
  *     <td>Knows special characters</td>
  *     <td>ASCII only</td>
  *   </tr>
  *   <tr>
- *     <td><tt>write$</tt></td>
- *     <td><tt>Write</tt></td>
+ *     <td>{@code write$}</td>
+ *     <td>{@code Write}</td>
  *     <td></td>
  *     <td></td>
  *     <td></td>

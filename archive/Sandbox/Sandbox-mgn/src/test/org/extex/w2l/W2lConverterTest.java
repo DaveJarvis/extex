@@ -30,11 +30,10 @@ import java.io.UnsupportedEncodingException;
 import junit.framework.TestCase;
 
 /**
- * Test cases for <code>W2lConverter</code>.
+ * Test cases for {@code W2lConverter}.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class W2lConverterTest extends TestCase {
 
     /**

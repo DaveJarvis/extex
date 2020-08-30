@@ -31,32 +31,31 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.typesetter.box.AbstractBoxPrimitive;
 
 /**
- * This class provides an implementation for the primitive <code>\raise</code>.
+ * This class provides an implementation for the primitive {@code \raise}.
  * 
- * <doc name="raise">
- * <h3>The Primitive <tt>\raise</tt></h3>
+ * <p>The Primitive {@code \raise}</p>
  * <p>
- * The primitive <tt>\raise</tt> takes a box and a length and shifts up the
+ * The primitive {@code \raise} takes a box and a length and shifts up the
  * amount specified by the length. If the length is negative then the shift is
  * done downwards.
  * </p>
  * <p>
- * The primitive <tt>\lower</tt> is the counterpart to
- * {@link org.extex.unit.tex.typesetter.displace.Lower <tt>\lower</tt>}.
+ * The primitive {@code \lower} is the counterpart to
+ * {@link org.extex.unit.tex.typesetter.displace.Lower {@code \lower}}.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;raise&rang;
- *      &rarr; <tt>\raise</tt> {@linkplain
- *        org.extex.core.dimen#Dimen(Context,TokenSource)
- *        &lang;dimen&rang;} {@linkplain
+ *      &rarr; {@code \raise} &lang;dimen&rang; {@linkplain
  *        org.extex.interpreter.TokenSource#getBox(org.extex.interpreter.Flags,Context,Typesetter,Token)
  *        &lang;box&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \raise 2em \hbox{abc}  </pre>
@@ -65,16 +64,14 @@ import org.extex.unit.tex.typesetter.box.AbstractBoxPrimitive;
  *  <pre class="TeXSample">
  *    \raise 2mm \hbox spread 12pt {abc}  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Raise extends AbstractBoxPrimitive {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;

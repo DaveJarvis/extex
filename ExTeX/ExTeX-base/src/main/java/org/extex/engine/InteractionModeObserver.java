@@ -31,12 +31,11 @@ import org.extex.interpreter.interaction.Interaction;
  * logger. Thus it is guaranteed that only the appropriate messages are shown.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4445 $
- */
+*/
 public class InteractionModeObserver implements InteractionObserver {
 
     /**
-     * The field <tt>handler</tt> contains the
+     * The field {@code handler} contains the
      * {@link java.util.logging.Handler Handler} at which the logging should be
      * directed.
      */

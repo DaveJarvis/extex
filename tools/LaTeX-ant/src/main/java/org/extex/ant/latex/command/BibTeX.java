@@ -32,12 +32,11 @@ import org.extex.ant.latex.Settings;
  * >e</span>X to process the bibliography.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 5432 $
- */
+*/
 public class BibTeX implements Command {
 
     /**
-     * The field <tt>settings</tt> contains the settings.
+     * The field {@code settings} contains the settings.
      */
     private Settings settings;
 
@@ -51,12 +50,7 @@ public class BibTeX implements Command {
         this.settings = settings;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ant.latex.command.Command#execute(java.io.File)
-     */
-    public boolean execute(File artifact) {
+public boolean execute(File artifact) {
 
         settings.log(toString() + " " + artifact.getName() + "\n");
 
@@ -93,23 +87,13 @@ public class BibTeX implements Command {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ant.latex.command.Command#simulate(java.io.File)
-     */
-    public boolean simulate(File artifact) {
+public boolean simulate(File artifact) {
 
         settings.log(toString() + " " + artifact.getName() + "\n");
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return "bibtex";

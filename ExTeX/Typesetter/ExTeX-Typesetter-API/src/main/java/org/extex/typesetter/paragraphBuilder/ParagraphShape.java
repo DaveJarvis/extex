@@ -30,22 +30,21 @@ import org.extex.core.dimen.FixedDimen;
  * This class defines an arbitrary paragraph shape.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class ParagraphShape implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>points</tt> contains the list of reference points for
+     * The field {@code points} contains the list of reference points for
      * the parshape. There are always two consecutive points for the left and
      * the right margin.
      */
-    private List<FixedDimen> points = new ArrayList<FixedDimen>();
+    private final List<FixedDimen> points = new ArrayList<FixedDimen>();
 
 
     public ParagraphShape() {

@@ -34,21 +34,22 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.macro.LetCode;
 
 /**
- * This class provides an implementation for the primitive <code>\let</code>.
+ * This class provides an implementation for the primitive {@code \let}.
  * 
- * <doc name="let"> <h3>The Primitive <tt>\let</tt></h3>
+ * <p>The Primitive {@code \let}</p>
  * <p>
- * The primitive <tt>\let</tt> defined a control sequence or active character.
+ * The primitive {@code \let} defined a control sequence or active character.
  * The value is taken from the meaning of another token. If the token is a
  * control sequence or active character then the meaning is used. If the other
  * definition is changed the newly defined binding remains intact.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;let&rang;
- *      &rarr; <tt>\let</tt> {@linkplain
+ *      &rarr; {@code \let} {@linkplain
  *        org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *        &lang;control sequence&rang;} {@linkplain
  *      org.extex.interpreter.TokenSource#getOptionalEquals(Context)
@@ -56,33 +57,32 @@ import org.extex.unit.base.macro.LetCode;
  *       org.extex.interpreter.TokenSource#getToken(Context)
  *       &lang;token&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \let\a=\b  </pre>
  * 
- * </doc>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Let extends AbstractAssignment {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
      * Assign a new meaning to a control sequence. This is the core of the
-     * primitive <code>\let</code>.
+     * primitive {@code \let}.
      * 
      * @param prefix the flags to consider
      * @param context the processor context
      * @param cs the control sequence token to bind
      * @param t the new meaning of the control sequence token. If this parameter
-     *        is <code>null</code> then an exception is thrown.
+     *        is {@code null} then an exception is thrown.
      * 
      * @throws HelpingException in case of an error
      */
@@ -107,10 +107,7 @@ public class Let extends AbstractAssignment {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.macro.Let#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

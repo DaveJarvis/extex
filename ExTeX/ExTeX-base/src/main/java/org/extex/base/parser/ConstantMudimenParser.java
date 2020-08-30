@@ -37,12 +37,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class provides a parser for math units (mu).
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4399 $
- */
+*/
 public class ConstantMudimenParser implements Parser<Mudimen> {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -85,19 +84,18 @@ public class ConstantMudimenParser implements Parser<Mudimen> {
 
     /**
      * Creates a new object and fills it from a token stream.
-     * 
-     * <doc type="syntax" name="mudimen"> This method parses the following
-     * syntactic entity:
+     *
+     * This method parses the following syntactic entity:
      * 
      * <pre class="syntax">
      *    &lang;mudimen&rang;
-     *      &rarr; &lang;float&rang; <tt>mu</tt>
+     *      &rarr; &lang;float&rang; {@code mu}
      *       |  &lang;mudimen variable&rang;
      * </pre>
      * 
      * The value of &lang;mudimen&rang; is either a floating point number
-     * followed by the unit <tt>mu</tt> or a variable value resulting in a
-     * mudimen value. </doc>
+     * followed by the unit {@code mu} or a variable value resulting in a
+     * mudimen value.
      * 
      * @param context the processor context
      * @param source the source for new tokens
@@ -107,12 +105,6 @@ public class ConstantMudimenParser implements Parser<Mudimen> {
      * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
-     * 
-     * 
-     *         {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.Parser#parse(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Mudimen parse(Context context, TokenSource source,

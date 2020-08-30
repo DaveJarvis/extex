@@ -17,7 +17,7 @@
  */
 /**
  * 
- *   This package contains general utilities.
+ *   Contains general utilities.
  * 
  *
  */

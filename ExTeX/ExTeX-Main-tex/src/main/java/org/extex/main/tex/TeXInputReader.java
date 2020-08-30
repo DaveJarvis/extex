@@ -30,32 +30,31 @@ import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.Interpreter;
 
 /**
- * This Reader gets the characters from <tt>System.in</tt> but presents a
+ * This Reader gets the characters from {@code System.in} but presents a
  * prompt before each line of input.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4445 $
- */
+*/
 public class TeXInputReader extends Reader {
 
     /**
-     * The field <tt>logger</tt> contains the logger to write output to.
+     * The field {@code logger} contains the logger to write output to.
      */
     private Logger logger;
 
     /**
-     * The field <tt>prompt</tt> contains the cached prompt to be shown before
+     * The field {@code prompt} contains the cached prompt to be shown before
      * each line of input.
      */
     private String prompt;
 
     /**
-     * The field <tt>reader</tt> contains the reader to do the real job.
+     * The field {@code reader} contains the reader to do the real job.
      */
     private Reader reader;
 
     /**
-     * The field <tt>showPrompt</tt> contains the indicator that the prompt
+     * The field {@code showPrompt} contains the indicator that the prompt
      * needs to be shown next time.
      */
     private boolean showPrompt = true;

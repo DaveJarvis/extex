@@ -54,22 +54,22 @@ import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.tc.font.impl.FontImpl;
 
 /**
- * This class provides an implementation for the primitive <code>\font</code>.
+ * This class provides an implementation for the primitive {@code \font}.
  * 
- * <doc name="font"> <h3>The Primitive <tt>\font</tt></h3>
+ * <p>The Primitive {@code \font}</p>
  * <p>
- * The primitive <tt>\font</tt> can be used to load a font with some specified
+ * The primitive {@code \font} can be used to load a font with some specified
  * properties and assign it to a control sequence. The primary option is the
  * specification of a size for the font. If no size is given then the font is
  * loaded at its design size.
  * </p>
  * <p>
- * An exact size can be specified with the <tt>at</tt> keyword. The dimension
+ * An exact size can be specified with the {@code at} keyword. The dimension
  * following this keyword determines the size of the font.
  * </p>
  * <p>
  * The design size can be multiplied by a scale factor. This scale factor is
- * given as number after the keyword <tt>scaled</tt>. The value given is 1000
+ * given as number after the keyword {@code scaled}. The value given is 1000
  * times the scale factor to be used.
  * </p>
  * TODO missing documentation of the extensions
@@ -77,40 +77,34 @@ import org.extex.typesetter.tc.font.impl.FontImpl;
  * This primitive is an assignment.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;font&rang;
- *      &rarr; &lang;prefix&rang; <tt>\font</tt> {@linkplain
- *       org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
- *       &lang;control sequence&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
- *        &lang;equals&rang;} &lang;font name&rang; &lang;options&rang;
+ *      &rarr; &lang;prefix&rang; {@code \font} &lang;control sequence&rang; &lang;equals&rang; &lang;font name&rang; &lang;options&rang;
  *
  *    &lang;prefix&rang;
  *      &rarr;
- *       |  <tt>\global</tt>
+ *       |  {@code \global}
  *
  *    &lang;options&rang;
  *      &rarr; &lang;option&rang;
  *       |  &lang;option&rang; &lang;options&rang;
  *
  *    &lang;option&rang;
- *      &rarr; [scaled] {@linkplain
- *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
- *        &lang;number&rang;}
- *       | [at] {@linkplain
- *           org.extex.core.dimen#Dimen(org.extex.interpreter.context.Context,org.extex.interpreter.TokenSource)
- *           &lang;size&rang;}
+ *      &rarr; [scaled] &lang;number&rang;
+ *       | [at] &lang;size&rang;
  *       | [noligatures]
  *       | [nokerning]
  *       | [letterspaced]  </pre>
  * 
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * <p>
  * In the following example the font cmr12 is loaded at its design size. The
- * macro <tt>\myfont</tt> is bound to this font.
+ * macro {@code \myfont} is bound to this font.
  * </p>
  * 
  * <pre class="TeXSample">
@@ -118,7 +112,7 @@ import org.extex.typesetter.tc.font.impl.FontImpl;
  * 
  * <p>
  * In the following example the font cmr12 is loaded at the size 15pt. The macro
- * <tt>\myfont</tt> is bound to this font.
+ * {@code \myfont} is bound to this font.
  * </p>
  * 
  * <pre class="TeXSample">
@@ -127,7 +121,7 @@ import org.extex.typesetter.tc.font.impl.FontImpl;
  * <p>
  * In the following example the font cmr12 is loaded at the double design size.
  * The scale factor 2000 is divided by 1000 to get the effective scaling factor.
- * The macro <tt>\magnifiedfiverm</tt> is bound to this font.
+ * The macro {@code \magnifiedfiverm} is bound to this font.
  * </p>
  * 
  * <pre class="TeXSample">
@@ -135,16 +129,15 @@ import org.extex.typesetter.tc.font.impl.FontImpl;
  * 
  * <p>
  * In the following example the font cmr10 is loaded at the size of 12 true pt.
- * The macro <tt>\second</tt> is bound to this font.
+ * The macro {@code \second} is bound to this font.
  * </p>
  * 
  * <pre class="TeXSample">
  *   \font\second=cmr10 at 12truept  </pre>
  * 
- * </doc>
+ *
  * 
- * 
- * <h3>Possible Extension</h3>
+ * <p>Possible Extension</p>
  * <p>
  * Example
  * </p>
@@ -158,26 +151,25 @@ import org.extex.typesetter.tc.font.impl.FontImpl;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:4431 $
- */
+*/
 public class FontPrimitive extends AbstractAssignment
         implements
             FontConvertible,
             LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>DEBUG</tt> contains the indicator that debug output is
+     * The field {@code DEBUG} contains the indicator that debug output is
      * desirable.
      */
     private static final boolean DEBUG = true;
 
     /**
-     * The field <tt>logger</tt> contains the logger for debug output.
+     * The field {@code logger} contains the logger for debug output.
      */
     private transient Logger logger = null;
 
@@ -192,10 +184,7 @@ public class FontPrimitive extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -293,10 +282,7 @@ public class FontPrimitive extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.font.FontConvertible#convertFont(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Font convertFont(Context context, TokenSource source,
@@ -348,7 +334,7 @@ public class FontPrimitive extends AbstractAssignment
     }
 
     /**
-     * Scan the file name until a <code>SpaceToken</code> is found.
+     * Scan the file name until a {@code SpaceToken} is found.
      * 
      * @param context the interpreter context
      * @param source the source for new tokens

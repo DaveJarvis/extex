@@ -31,12 +31,11 @@ import org.junit.Test;
  * This is a test suite for {@link ConfigurationInvalidResourceException}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ConfigurationInvalidResourceExceptionTest {
 
     /**
-     * <testcase> ... </testcase>
+     *  ... 
      */
     @Test
     public void testGetLocalizedMessage() {
@@ -50,7 +49,7 @@ public class ConfigurationInvalidResourceExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ... 
      */
     @Test
     public void testGetLocalizer() {
@@ -62,7 +61,7 @@ public class ConfigurationInvalidResourceExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ... 
      */
     @Test
     public void testGetMessage() {
@@ -74,7 +73,7 @@ public class ConfigurationInvalidResourceExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ... 
      */
     @Test
     public void testGetSource() {
@@ -86,7 +85,7 @@ public class ConfigurationInvalidResourceExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ... 
      */
     @Test
     public void testGetText() {

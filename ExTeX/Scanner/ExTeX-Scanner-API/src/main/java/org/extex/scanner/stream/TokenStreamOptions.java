@@ -27,8 +27,7 @@ import org.extex.scanner.type.tokens.FixedTokens;
  * options.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface TokenStreamOptions {
 
     /**

@@ -31,12 +31,12 @@ import java.io.Serializable;
 public class CountConstant implements FixedCount, Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>value</tt> contains the value of the count register. Note:
+     * The field {@code value} contains the value of the count register. Note:
      * This variable is protected to avoid that the derived class Count has to
      * excessively use getters and setters.
      */
@@ -68,22 +68,12 @@ public class CountConstant implements FixedCount, Serializable {
         this.value = 0;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.core.count.FixedCount#eq(org.extex.core.count.FixedCount)
-     */
-    public boolean eq(FixedCount count) {
+public boolean eq(FixedCount count) {
 
         return count.getValue() == value;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.core.count.FixedCount#ge(org.extex.core.count.FixedCount)
-     */
-    public boolean ge(FixedCount count) {
+public boolean ge(FixedCount count) {
 
         return value >= count.getValue();
     }
@@ -98,42 +88,22 @@ public class CountConstant implements FixedCount, Serializable {
         return value;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.core.count.FixedCount#gt(org.extex.core.count.FixedCount)
-     */
-    public boolean gt(FixedCount count) {
+public boolean gt(FixedCount count) {
 
         return value > count.getValue();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.core.count.FixedCount#le(org.extex.core.count.FixedCount)
-     */
-    public boolean le(FixedCount count) {
+public boolean le(FixedCount count) {
 
         return value <= count.getValue();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.core.count.FixedCount#lt(org.extex.core.count.FixedCount)
-     */
-    public boolean lt(FixedCount count) {
+public boolean lt(FixedCount count) {
 
         return value < count.getValue();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.core.count.FixedCount#ne(org.extex.core.count.FixedCount)
-     */
-    public boolean ne(FixedCount count) {
+public boolean ne(FixedCount count) {
 
         return value != count.getValue();
     }

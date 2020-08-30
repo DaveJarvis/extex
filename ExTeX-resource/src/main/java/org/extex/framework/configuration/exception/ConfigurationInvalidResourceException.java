@@ -21,17 +21,16 @@ package org.extex.framework.configuration.exception;
 
 /**
  * This Exception is thrown when a configuration is requested with the path
- * <code>null</code>> or the empty string.
+ * {@code null} or the empty string.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ConfigurationInvalidResourceException
         extends
             ConfigurationException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     private static final long serialVersionUID = 1L;
 
@@ -46,8 +45,8 @@ public class ConfigurationInvalidResourceException
 
     /**
      * Getter for the text prefix of this ConfigException.
-     * The text is taken from the resource bundle <tt>ConfigurationEception</tt>
-     * under the key <tt>ConfigurationInvalidResourceException.Text</tt>.
+     * The text is taken from the resource bundle {@code ConfigurationEception}
+     * under the key {@code ConfigurationInvalidResourceException.Text}.
      *
      * @return the text
      */

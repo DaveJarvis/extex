@@ -23,11 +23,10 @@ import org.extex.test.AbstractDimenRegisterTester;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\pagefillstretch</tt>.
+ * This is a test suite for the primitive {@code \pagefillstretch}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class PagefillstretchTest extends AbstractDimenRegisterTester {
 
     /**

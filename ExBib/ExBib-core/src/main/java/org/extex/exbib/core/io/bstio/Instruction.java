@@ -27,8 +27,7 @@ import org.extex.exbib.core.io.Locator;
  * This interface describes an instruction.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface Instruction {
 
     /**

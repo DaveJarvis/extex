@@ -32,8 +32,7 @@ import org.extex.util.file.random.RandomAccessR;
  *      Adobe Technical Note #5177: Type 2 Charstring Format</a>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public abstract class T2CharString {
 
@@ -411,7 +410,7 @@ public abstract class T2CharString {
     /**
      * Check, if the object is a array.
      * 
-     * @return Returns <code>true</code>, if the object is a array.
+     * @return Returns {@code true}, if the object is a array.
      */
     public boolean isArray() {
 
@@ -421,7 +420,7 @@ public abstract class T2CharString {
     /**
      * Check, if the object is a boolean.
      * 
-     * @return Returns <code>true</code>, if the object is a boolean.
+     * @return Returns {@code true}, if the object is a boolean.
      */
     public boolean isBoolean() {
 
@@ -431,7 +430,7 @@ public abstract class T2CharString {
     /**
      * Check, if the object is a double.
      * 
-     * @return Returns <code>true</code>, if the object is a double.
+     * @return Returns {@code true}, if the object is a double.
      */
     public boolean isDouble() {
 
@@ -441,7 +440,7 @@ public abstract class T2CharString {
     /**
      * Check, if the object is an escape-marker.
      * 
-     * @return Returns <code>true</code>, if the object is an escape-marker.
+     * @return Returns {@code true}, if the object is an escape-marker.
      */
     public boolean isEscape() {
 
@@ -451,7 +450,7 @@ public abstract class T2CharString {
     /**
      * Check, if the object is a integer.
      * 
-     * @return Returns <code>true</code>, if the object is a integer.
+     * @return Returns {@code true}, if the object is a integer.
      */
     public boolean isInteger() {
 
@@ -461,7 +460,7 @@ public abstract class T2CharString {
     /**
      * Check, if the object is an operator.
      * 
-     * @return Returns <code>true</code>, if the object is an operator.
+     * @return Returns {@code true}, if the object is an operator.
      */
     public boolean isOperator() {
 
@@ -471,7 +470,7 @@ public abstract class T2CharString {
     /**
      * Check, if the object is a Top DICT operator.
      * 
-     * @return Returns <code>true</code>, if the object is a Top DICT
+     * @return Returns {@code true}, if the object is a Top DICT
      *         operator.
      */
     public boolean isTopDICTOperator() {

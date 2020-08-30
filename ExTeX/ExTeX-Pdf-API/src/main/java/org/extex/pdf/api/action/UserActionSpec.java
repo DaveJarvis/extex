@@ -30,12 +30,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class represents a user action of PDF.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4409 $
- */
+*/
 public class UserActionSpec extends ActionSpec {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
@@ -62,7 +61,7 @@ public class UserActionSpec extends ActionSpec {
     }
 
     /**
-     * The field <tt>user</tt> contains the name of the user.
+     * The field {@code user} contains the name of the user.
      */
     private String user;
 

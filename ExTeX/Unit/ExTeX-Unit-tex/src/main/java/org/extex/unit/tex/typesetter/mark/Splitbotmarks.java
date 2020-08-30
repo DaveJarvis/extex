@@ -25,41 +25,40 @@ import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\splitbotmarks</code>.
+ * {@code \splitbotmarks}.
  * 
- * <doc name="splitbotmarks">
- * <h3>The Primitive <tt>\splitbotmarks</tt></h3>
+ * <p>The Primitive {@code \splitbotmarks}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;splibotmarks&rang;
- *      &rarr; <tt>\splitbotmarks</tt> {@linkplain
+ *      &rarr; {@code \splitbotmarks} {@linkplain
  *        org.extex.unit.tex.typesetter.mark.AbstractMarksCode#getKey(
  *        org.extex.interpreter.context.Context,
  *        org.extex.interpreter.TokenSource,org.extex.typesetter.Typesetter)
  *        &lang;mark name&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \splitbotmarks42  </pre>
  *  <pre class="TeXSample">
  *    \splitbotmarks\count0  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Splitbotmarks extends AbstractMarksCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;

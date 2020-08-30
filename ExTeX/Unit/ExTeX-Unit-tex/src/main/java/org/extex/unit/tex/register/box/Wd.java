@@ -39,37 +39,29 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\wd</code>.
+ * This class provides an implementation for the primitive {@code \wd}.
  * 
- * <doc name="wd">
- * <h3>The Primitive <tt>\wd</tt></h3>
+ * <p>The Primitive {@code \wd}</p>
  * <p>
- * The primitive <tt>\wd</tt> refers to the width of a box register. It can be
+ * The primitive {@code \wd} refers to the width of a box register. It can be
  * used in various contexts.
  * </p>
  * <p>
  * The formal description of this primitive is the following:
- * 
+ * </p>
+ *
  * <pre class="syntax">
  *    &lang;wd&rang;
- *      &rarr; <tt>\wd</tt> {@linkplain
- *        org.extex.unit.tex.register.box.Setbox#getKey(Context,TokenSource,Typesetter,CodeToken)
- *        &lang;box register name&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
- *        &lang;equals&rang;} {@linkplain
- *        org.extex.core.dimen#Dimen(Context,TokenSource)
- *        &lang;dimen&rang;} </pre>
+ *      &rarr; {@code \wd}
+ *        &lang;box register name&rang; &lang;equals&rang; &lang;dimen&rang;
+ * </pre>
  * 
- * </p>
  * <p>
  * Examples:
- * 
+ * </p>
+ *
  * <pre class="TeXSample">
  *    \wd42  </pre>
- * 
- * </p>
- * </doc>
- * 
  * 
  * <pre>
  *  \advance\dimen12 \wd0
@@ -77,8 +69,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Wd extends AbstractAssignment
         implements
             ExpandableCode,
@@ -87,7 +78,7 @@ public class Wd extends AbstractAssignment
             DimenConvertible {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -103,10 +94,7 @@ public class Wd extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -126,10 +114,7 @@ public class Wd extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -139,10 +124,7 @@ public class Wd extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertDimen(Context context, TokenSource source,
@@ -154,10 +136,7 @@ public class Wd extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,
@@ -167,10 +146,7 @@ public class Wd extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

@@ -83,11 +83,8 @@ import org.extex.scanner.stream.observer.file.OpenFileObservable;
 import org.extex.scanner.stream.observer.file.OpenFileObserver;
 
 /**
- * This is the command line interface to ??TeX. It does all the horrible details necessary to interact
- * with the user of the command line in nearly the same way as <logo>T<span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> does.
+ * This is the command line interface to εχTeX. It does all the horrible details necessary to interact
+ * with the user of the command line in nearly the same way as TeX does.
  * <p>
  * The command line interface provides the following features:
  * </p>
@@ -97,7 +94,7 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * <li>Interacting with the user in case on an error</li>
  * </ul>
  * 
- * <doc type="cli"> <h3>??TeX: Command Line Usage</h3>
+ * <p>εχTeX: Command Line Usage</p>
  * 
  * <p>
  * This program is normally used through a wrapper which performs all necessary
@@ -107,7 +104,7 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * href="#invocation">Direct Java Invocation</a>.
  * </p>
  * <p>
- * This program &ndash; called <tt>extex</tt> here &ndash; has in its simplest
+ * This program &ndash; called {@code extex} here &ndash; has in its simplest
  * form of invocation one parameter. This parameter is the name of the file to
  * process:
  * </p>
@@ -134,29 +131,29 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * </p>
  * 
  * <dl>
- * <dt><tt>&lang;code&rang;</tt></dt>
- * <dd>This parameter contains ??TeX code to be executed directly. The execution is performed
+ * <dt>{@code &lang;code&rang;}</dt>
+ * <dd>This parameter contains εχTeX code to be executed directly. The execution is performed
  * after any code specified in an input file. on the command line the code has
  * to start with a backslash. This restriction does not hold for the property
  * settings.</dd>
- * <dd>Property: <tt><a href="#extex.code">extex.code</a></tt></dd>
+ * <dd>Property: {@code <a href="#extex.code">extex.code</a>}</dd>
  * 
- * <dt><tt>&lang;file&rang;</tt></dt>
+ * <dt>{@code &lang;file&rang;}</dt>
  * <dd>This parameter contains the file to read from. A file name may not start
- * with a backslash or an ampersand. It has no default.<br />
+ * with a backslash or an ampersand. It has no default.<br>
  * Any arguments after the file name are treated as code to be executed when the
  * file has been processed.</dd>
- * <dd>Property: <a href="#extex.file"><tt>extex.file</tt></a></dd>
+ * <dd>Property: <a href="#extex.file">{@code extex.file}</a></dd>
  * 
- * <dt><tt>-- &lang;file&rang;</tt></dt>
+ * <dt>{@code -- &lang;file&rang;}</dt>
  * <dd>This parameter contains the file to read from. A file name may start with
- * any character since it is protected by the prefix <tt>--</tt>. The file name
- * has no default.<br />
+ * any character since it is protected by the prefix {@code --}. The file name
+ * has no default.<br>
  * Any arguments after the file name are treated as code to be executed when the
  * file has been processed.</dd>
- * <dd>Property: <a href="#extex.file"><tt>extex.file</tt></a></dd>
+ * <dd>Property: <a href="#extex.file">{@code extex.file}</a></dd>
  * 
- * <dt><tt>--&lang;property&rang; &lang;value&rang;</tt></dt>
+ * <dt>{@code --&lang;property&rang; &lang;value&rang;}</dt>
  * <dd>
  * <p>
  * The properties mentioned throughout this description can be set directly. It
@@ -165,164 +162,165 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * user settings.
  * </p>
  * <p>
- * For instance the properties <tt>user.name</tt> and <tt>java.version</tt> are
+ * For instance the properties {@code user.name} and {@code java.version} are
  * used at some places, but can not by set on the command line by other means.
  * </p>
  * <p>
  * Example: The following invocations are identical:
- * 
+ * </p>
+ *
  * <pre>
  *      extex --extex.file=abc
  *      extex --extex.file abc
  *      extex -- abc
  *      extex abc </pre>
- * 
- * </p>
  * </dd>
  * 
- * <dt><a name="-configuration"/><tt>-configuration &lang;resource&rang;</tt> <br />
- * <tt>-configuration=&lang;resource&rang;</tt></dt>
+ * <dt>{@code -configuration &lang;resource&rang;} <br>
+ * {@code -configuration=&lang;resource&rang;}</dt>
  * <dd>This parameter contains the name of the configuration resource to use.
  * This configuration resource is sought on the class path.</dd>
- * <dd>Property: <tt><a href="#extex.config">extex.config</a></tt></dd>
+ * <dd>Property: {@code <a href="#extex.config">extex.config</a>}</dd>
  * 
- * <dt><a name="-copyright"/><tt>-copyright</tt></dt>
+ * <dt>{@code -copyright}</dt>
  * <dd>This command line option produces a copyright notice on the standard
  * output stream and terminates the program afterwards.</dd>
  * 
- * <dt><tt>&amp;&lang;format&rang;</tt></dt>
- * <dt><a name="-fmt"/><tt>-fmt &lang;format&rang;</tt></dt>
+ * <dt>{@code &amp;&lang;format&rang;}</dt>
+ * <dt>{@code -fmt &lang;format&rang;}</dt>
  * <dd>This parameter contains the name of the format to read. An empty string
  * denotes that no format should be read. This is the default.</dd>
- * <dd>Property: <tt><a href="#extex.format">extex.format</a></tt></dd>
+ * <dd>Property: {@code <a href="#extex.format">extex.format</a>}</dd>
  * 
- * <dt><a name="-debug"/><tt>-debug &lang;spec&rang;</tt><br />
- * <tt>-debug=&lang;spec&rang;</tt></dt>
+ * <dt>{@code -debug &lang;spec&rang;}<br>
+ * {@code -debug=&lang;spec&rang;}</dt>
  * <dd>This command line parameter can be used to instruct the program to
  * produce debugging output of several kinds. The specification &lang;spec&rang;
  * is interpreted left to right. Each character is interpreted according to the
  * following table:
- * <table>
- * <th>
- * <td>Spec</td>
- * Description
- * <td></td>
- * <td>See</td></th>
+ * <table> <caption>TBD</caption>
+ * <thead>
  * <tr>
- * <td><tt>F</tt></td>
+ * <th>Spec</th>
+ * <th>Description</th>
+ * <th>See</th>
+ * </tr>
+ * </thead>
+ * <tr>
+ * <td>{@code F}</td>
  * <td>This specifier contains the indicator whether or not to trace the
  * searching for input files.</td>
- * <td><tt><a href="#extex.trace.input.files">extex.trace.input.files</a></tt></td>
+ * <td>{@code <a href="#extex.trace.input.files">extex.trace.input.files</a>}</td>
  * </tr>
  * <tr>
- * <td><tt>f</tt></td>
+ * <td>{@code f}</td>
  * <td>This specifier contains the indicator whether or not to trace the
  * searching for font files.</td>
- * <td><tt><a href="#extex.trace.font.files">extex.trace.font.files</a></tt></td>
+ * <td>{@code <a href="#extex.trace.font.files">extex.trace.font.files</a>}</td>
  * </tr>
  * <tr>
- * <td><tt>M</tt></td>
+ * <td>{@code M}</td>
  * <td>This specifier contains the indicator whether or not to trace the
  * execution of macros.</td>
- * <td><tt><a href="#extex.trace.macros">extex.trace.macros</a></tt></td>
+ * <td>{@code <a href="#extex.trace.macros">extex.trace.macros</a>}</td>
  * </tr>
  * <tr>
- * <td><tt>T</tt></td>
+ * <td>{@code T}</td>
  * <td>This specifier contains the indicator whether or not to trace the work of
  * the tokenizer.</td>
- * <td><tt><a href="#extex.trace.tokenizer">extex.trace.tokenizer</a></tt></td>
+ * <td>{@code <a href="#extex.trace.tokenizer">extex.trace.tokenizer</a>}</td>
  * </tr>
  * </table>
  * </dd>
  * 
- * <dt><a name="-halt"/><tt>-halt-on-error</tt></dt>
+ * <dt>{@code -halt-on-error}</dt>
  * <dd>This parameter contains the indicator whether the processing should halt
  * after the first error has been encountered.</dd>
- * <dd>Property: <tt><a href="#extex.halt.on.error">extex.halt.on.error</a></tt>
+ * <dd>Property: {@code <a href="#extex.halt.on.error">extex.halt.on.error</a>}
  * </dd>
  * 
- * <dt><a name="-help"/><tt>-help</tt></dt>
+ * <dt>{@code -help}</dt>
  * <dd>This command line option produces a short usage description on the
  * standard output stream and terminates the program afterwards.</dd>
  * 
- * <dt><a name="-ini"/><tt>-ini</tt></dt>
- * <dd>If set to <code>true</code> then the attempt to load a format with the
+ * <dt>{@code -ini}</dt>
+ * <dd>If set to {@code true} then the attempt to load a format with the
  * name derived from the program name is omitted.</dd>
- * <dd>Property: <tt><a href="#extex.ini">extex.ini</a></tt></dd>
+ * <dd>Property: {@code <a href="#extex.ini">extex.ini</a>}</dd>
  * 
- * <dt><a name="-interaction"/><tt>-interaction &lang;mode&rang;</tt> <br />
- * <tt>-interaction=&lang;mode&rang;</tt></dt>
+ * <dt>{@code -interaction &lang;mode&rang;} <br>
+ * {@code -interaction=&lang;mode&rang;}</dt>
  * <dd>This parameter contains the interaction mode. Possible values are the
  * numbers 0..3 and the symbolic names batchmode (0), nonstopmode (1),
  * scrollmode (2), and errorstopmode (3). The symbolic names can be abbreviated
  * up to at least one character.</dd>
- * <dd>Property: <tt><a href="#extex.interaction">extex.interaction</a></tt></dd>
+ * <dd>Property: {@code <a href="#extex.interaction">extex.interaction</a>}</dd>
  * 
- * <dt><a name="-job"/><tt>-job-name &lang;name&rang;</tt><br />
- * <tt>-job-name=&lang;name&rang;</tt><br />
- * <tt>-jobname &lang;name&rang;</tt><br />
- * <tt>-jobname=&lang;name&rang;</tt></dt>
+ * <dt>{@code -job-name &lang;name&rang;}<br>
+ * {@code -job-name=&lang;name&rang;}<br>
+ * {@code -jobname &lang;name&rang;}<br>
+ * {@code -jobname=&lang;name&rang;}</dt>
  * <dd>This parameter contains the name of the job. It is overwritten if a file
  * is given to read from. In this case the base name of the input file is used
  * instead.</dd>
- * <dd>Property: <tt><a href="#extex.jobname">extex.jobname</a></tt></dd>
+ * <dd>Property: {@code <a href="#extex.jobname">extex.jobname</a>}</dd>
  * 
- * <dt><a name="-language"/><tt>-language &lang;language&rang;</tt><br />
- * <tt>-language=&lang;language&rang;</tt></dt>
+ * <dt>{@code -language &lang;language&rang;}<br>
+ * {@code -language=&lang;language&rang;}</dt>
  * <dd>This parameter contains the name of the locale to be used for the
  * messages.</dd>
- * <dd>Property: <tt><a href="#extex.lang">extex.lang</a></tt></dd>
+ * <dd>Property: {@code <a href="#extex.lang">extex.lang</a>}</dd>
  * 
- * <dt><a name="-output"/><tt>-output &lang;format&rang;</tt><br />
- * <tt>-output=&lang;format&rang;</tt></dt>
+ * <dt>{@code -output &lang;format&rang;}<br>
+ * {@code -output=&lang;format&rang;}</dt>
  * <dd>This parameter contains the output format. This logical name is resolved
- * via the configuration. Reasonable values are <tt>dvi</tt>, <tt>ps</tt>, and
- * <tt>pdf</tt>.</dd>
- * <dd>Property: <tt><a href="#extex.output">extex.output</a></tt></dd>
+ * via the configuration. Reasonable values are {@code dvi}, {@code ps}, and
+ * {@code pdf}.</dd>
+ * <dd>Property: {@code <a href="#extex.output">extex.output</a>}</dd>
  * 
- * <dt><a name="-outputdir"/><tt>-output-directory &lang;directory&rang;</tt><br />
- * <tt>-output-directory=&lang;directory&rang;</tt><br />
- * <tt>-texoutputs &lang;directory&rang;</tt><br />
- * <tt>-texoutputs=&lang;directory&rang;</tt></dt>
+ * <dt>{@code -output-directory &lang;directory&rang;}<br>
+ * {@code -output-directory=&lang;directory&rang;}<br>
+ * {@code -texoutputs &lang;directory&rang;}<br>
+ * {@code -texoutputs=&lang;directory&rang;}</dt>
  * <dd>This parameter contains the output directory. The normal output files are
  * tried to place there. If this fails a fallback is tried additionally.</dd>
- * <dd>Property: <tt><a href="#tex.output.dir">tex.output.dir</a></tt></dd>
+ * <dd>Property: {@code <a href="#tex.output.dir">tex.output.dir</a>}</dd>
  * 
- * <dt><a name="-parse-first-line"/><tt>-parse-first-line</tt></dt>
+ * <dt>{@code -parse-first-line}</dt>
  * <dd>This parameter can be used to force the parsing of the first line of the
  * input file.</dd>
  * <dd>Property:
- * <tt><a href="#extex.parse.first.line">extex.parse.first.line</a></tt></dd>
+ * {@code <a href="#extex.parse.first.line">extex.parse.first.line</a>}</dd>
  * 
- * <dt><a name="-progname"/><tt>-progname &lang;name&rang;</tt><br />
- * <tt>-progname=&lang;name&rang;</tt></dt>
+ * <dt>{@code -progname &lang;name&rang;}<br>
+ * {@code -progname=&lang;name&rang;}</dt>
  * <dd>This parameter can be used to overrule the name of the program shown in
  * the banner and the version information.</dd>
- * <dd>Property: <tt><a href="#extex.progname">extex.progname</a></tt></dd>
+ * <dd>Property: {@code <a href="#extex.progname">extex.progname</a>}</dd>
  * 
- * <dt><a name="-recorder"/><tt>-recorder</tt><br />
- * <tt>-recorder=&lang;file name&rang;</tt></dt>
+ * <dt>{@code -recorder}<br>
+ * {@code -recorder=&lang;file name&rang;}</dt>
  * <dd>This parameter can be used to activate the file name recorder. If the
  * file name recorder is active then all files opened during the run are
  * collected and written to a file. The file name used is the jobname with the
- * extension <tt>.fls</tt> appended. If the second form of invocation is used
+ * extension {@code .fls} appended. If the second form of invocation is used
  * then the file name can be given.</dd>
- * <dd>Property: <tt><a href="#tex.recorder">tex.recorder</a></tt></dd>
+ * <dd>Property: {@code <a href="#tex.recorder">tex.recorder</a>}</dd>
  * 
- * <dt><a name="-texinputs"/><tt>-texinputs &lang;path&rang;</tt><br />
- * <tt>-texinputs=&lang;path&rang;</tt></dt>
+ * <dt>{@code -texinputs &lang;path&rang;}<br>
+ * {@code -texinputs=&lang;path&rang;}</dt>
  * <dd>This parameter contains the additional directories for searching
- * ??TeX input files.</dd>
- * <dd>Property: <tt><a href="#extex.texinputs">extex.texinputs</a></tt></dd>
+ * εχTeX input files.</dd>
+ * <dd>Property: {@code <a href="#extex.texinputs">extex.texinputs</a>}</dd>
  * 
- * <dt><a name="-texmfoutputs"/><tt>-texmfoutputs &lang;dir&rang;</tt><br />
- * <tt>-texmfoutputs=&lang;dir&rang;</tt></dt>
+ * <dt>{@code -texmfoutputs &lang;dir&rang;}<br>
+ * {@code -texmfoutputs=&lang;dir&rang;}</dt>
  * <dd>This parameter contains the name of the property for the fallback if the
  * output directory fails to be writable.</dd>
  * <dd>Property:
- * <tt><a href="#tex.output.dir.fallback">tex.output.dir.fallback</a></tt></dd>
+ * {@code <a href="#tex.output.dir.fallback">tex.output.dir.fallback</a>}</dd>
  * 
- * <dt><a name="-version"/><tt>-version</tt></dt>
+ * <dt>{@code -version}</dt>
  * <dd>This command line parameter forces that the version information is
  * written to standard output and the program is terminated.</dd>
  * </dl>
@@ -330,7 +328,8 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * <p>
  * Command line parameters can be abbreviated up to a unique prefix &ndash; and
  * sometimes even more. Thus the following invocations are equivalent:
- * 
+ * </p>
+ *
  * <pre class="CLIsyntax">
  *   extex -v
  *   extex -ve
@@ -339,46 +338,43 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  *   extex -versi
  *   extex -versio
  *   extex -version  </pre>
+ *
  * 
- * </p>
- * 
- * 
- * <a name="first-line"/> <h3>First Line Parsing</h3>
+ * <p>First Line Parsing</p>
  * 
  * <p>
  * The feature of first line parsing can be enabled with the command line option
- * <tt>-parse-first-line</tt> and the property <tt>extex.parse.first.line</tt>.
+ * {@code -parse-first-line} and the property {@code extex.parse.first.line}.
  * </p>
  * <p>
  * If the feature is enabled then the first line of the first input file is
- * parsed. If this line starts with <tt>%&amp;</tt> then the next characters up
+ * parsed. If this line starts with {@code %&amp;} then the next characters up
  * to a white-space are taken as format name to be loaded. The remaining
  * characters up to the newline characters are ignored.
  * </p>
  * <p>
  * The first line is simply passed to the interpreter if it does not start with
- * <tt>%&amp;</tt>.
+ * {@code %&amp;}.
  * </p>
  * <p>
  * The following sample shows a first line which pre-loads the format
- * <tt>latex</tt>.
+ * {@code latex}.
  * </p>
  * 
  * <pre class="TeX">
  *  %&amp;latex some comment
  * </pre>
- * 
- * 
- * <a name="settings"/> <h3>Settings and Command Line Parameters</h3>
+ *
+ * <p>Settings and Command Line Parameters</p>
  * 
  * <p>
  * Settings can be stored in properties files. Those settings are the fallback
  * values if no corresponding command line arguments are found.
  * </p>
  * <p>
- * The properties are stored in a file named <tt>.extex</tt>. It is sought in
+ * The properties are stored in a file named {@code .extex}. It is sought in
  * the users home directory. This determined by the system property
- * <tt>user.home</tt>. Afterwards it is sought in the current directory. The
+ * {@code user.home}. Afterwards it is sought in the current directory. The
  * local settings of a directory overwrite the user's setting. The user's
  * setting overwrite the compiled in defaults
  * </p>
@@ -386,166 +382,166 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * The following properties are recognized:
  * </p>
  * <dl>
- * <dt><a name="extex.code"/><tt>extex.code</tt></dt>
- * <dd>This parameter contains ??TeX code to be executed directly. The execution is performed
+ * <dt>{@code extex.code}</dt>
+ * <dd>This parameter contains εχTeX code to be executed directly. The execution is performed
  * after any code specified in an input file. on the command line the code has
  * to start with a backslash. This restriction does not hold for the property
  * settings.</dd>
- * <dd>Command line: <tt>&lang;code&rang;</tt></dd>
+ * <dd>Command line: {@code &lang;code&rang;}</dd>
  * 
- * <dt><a name="extex.color.converter"/><tt>extex.color.converter</tt></dt>
+ * <dt>{@code extex.color.converter}</dt>
  * <dd>This parameter contains the name of the configuration resource to use for
  * the color converter.</dd>
- * <dd>Default: <tt></tt></dd>
+ * <dd>Default: {@code }</dd>
  * 
- * <dt><a name="extex.config"/><tt>extex.config</tt></dt>
+ * <dt>{@code extex.config}</dt>
  * <dd>This parameter contains the name of the configuration resource to use.
  * This configuration resource is sought on the class path.</dd>
  * <dd>Command line: <a href="#-configuration">
- * <tt>-configuration &lang;resource&rang;</tt></a></dd>
- * <dd>Default: <tt>extex.xml</tt></dd>
+ * {@code -configuration &lang;resource&rang;}</a></dd>
+ * <dd>Default: {@code extex.xml}</dd>
  * 
- * <dt><a name="extex.encoding"/><tt>extex.encoding</tt></dt>
+ * <dt>{@code extex.encoding}</dt>
  * <dd>This parameter contains the name of the property for the standard
  * encoding to use.</dd>
- * <dd>Default: <tt>ISO-8859-1</tt></dd>
+ * <dd>Default: {@code ISO-8859-1}</dd>
  * 
- * <dt><a name="extex.error.handler"/><tt>extex.error.handler</tt></dt>
+ * <dt>{@code extex.error.handler}</dt>
  * <dd>This parameter contains the logical name of the error handler.</dd>
  * 
- * <dt><a name="extex.error.handler"/><tt>extex.error.handler</tt></dt>
+ * <dt>{@code extex.error.handler}</dt>
  * <dd>This parameter contains the logical name of the error handler.</dd>
  * 
- * <dt><a name="extex.fonts"/><tt>extex.fonts</tt></dt>
+ * <dt>{@code extex.fonts}</dt>
  * <dd>This parameter contains the name of the property indicating where to find
  * font files. The value is a path similar to extex.texinputs.</dd>
  * 
- * <dt><a name="extex.halt.on.error"/><tt>extex.halt.on.error</tt></dt>
+ * <dt>{@code extex.halt.on.error}</dt>
  * <dd>This parameter contains the name of the property indicating whether the
  * processing should stop after the first error.</dd>
- * <dd>Command line: <a href="#-halt"><tt>-halt-on-error</tt></a></dd>
+ * <dd>Command line: <a href="#-halt">{@code -halt-on-error}</a></dd>
  * 
- * <dt><a name="extex.file"/><tt>extex.file</tt></dt>
+ * <dt>{@code extex.file}</dt>
  * <dd>This parameter contains the file to read from. It has no default</dd>
- * <dd>Command line: <a href="#-lang"><tt>&lang;file&rang;</tt></a></dd>
+ * <dd>Command line: <a href="#-lang">{@code &lang;file&rang;}</a></dd>
  * 
- * <dt><a name="extex.format"/><tt>extex.format</tt></dt>
+ * <dt>{@code extex.format}</dt>
  * <dd>This parameter contains the name of the format to read. An empty string
  * denotes that no format should be read. This is the default.</dd>
- * <dd>Command line: <a href="#-fmt"><tt>-fmt &lang;format&rang;</tt></a></dd>
+ * <dd>Command line: <a href="#-fmt">{@code -fmt &lang;format&rang;}</a></dd>
  * 
- * <dt><a name="extex.ini"/><tt>extex.ini</tt></dt>
- * <dd>If set to <code>true</code> then act as initex. This command line option
- * is defined for compatibility to TeX only. In ??TeX it has no effect at all.</dd>
- * <dd>Command line: <a href="#-ini"><tt>-ini</tt></a></dd>
+ * <dt>{@code extex.ini}</dt>
+ * <dd>If set to {@code true} then act as initex. This command line option
+ * is defined for compatibility to TeX only. In εχTeX it has no effect at all.</dd>
+ * <dd>Command line: <a href="#-ini">{@code -ini}</a></dd>
  * 
- * <dt><a name="extex.interaction"/><tt>extex.interaction</tt></dt>
+ * <dt>{@code extex.interaction}</dt>
  * <dd>This parameter contains the interaction mode. possible values are the
  * numbers 0..3 and the symbolic names batchmode (0), nonstopmode (1),
  * scrollmode (2), and errorstopmode (3).</dd>
  * <dd>Command line: <a href="#-interaction">
- * <tt>-interaction &lang;mode&rang;</tt></a></dd>
- * <dd>Default: <tt>3</tt></dd>
+ * {@code -interaction &lang;mode&rang;}</a></dd>
+ * <dd>Default: {@code 3}</dd>
  * 
- * <dt><a name="extex.jobname"/><tt>extex.jobname</tt></dt>
+ * <dt>{@code extex.jobname}</dt>
  * <dd>This parameter contains the name of the job. It is overwritten if a file
  * is given to read from. In this case the base name of the input file is used
  * instead.</dd>
- * <dd>Command line:<a href="#-job"> <tt>-job-name &lang;name&rang;</tt></a><br />
- * <tt>-jobname &lang;name&rang;</tt><br />
- * <tt>-job-name=&lang;name&rang;</tt><br />
- * <tt>-jobname=&lang;name&rang;</tt></dd>
- * <dd>Default: <tt>texput</tt></dd>
+ * <dd>Command line:<a href="#-job"> {@code -job-name &lang;name&rang;}</a><br>
+ * {@code -jobname &lang;name&rang;}<br>
+ * {@code -job-name=&lang;name&rang;}<br>
+ * {@code -jobname=&lang;name&rang;}</dd>
+ * <dd>Default: {@code texput}</dd>
  * 
- * <dt><a name="extex.jobnameMaster"/><tt>extex.jobnameMaster</tt></dt>
+ * <dt>{@code extex.jobnameMaster}</dt>
  * <dd>This parameter contains the name of the job to be used with high
  * priority.</dd>
- * <dd>Default: <tt>texput</tt></dd>
+ * <dd>Default: {@code texput}</dd>
  * 
- * <dt><a name="extex.lang"/><tt>extex.lang</tt></dt>
+ * <dt>{@code extex.lang}</dt>
  * <dd>This parameter contains the name of the locale to be used for the
  * messages.</dd>
  * <dd>Command line: <a href="#-language">
- * <tt>-language &lang;language&rang;</tt></a></dd>
+ * {@code -language &lang;language&rang;}</a></dd>
  * 
- * <dt><a name="extex.nobanner"/><tt>extex.nobanner</tt></dt>
+ * <dt>{@code extex.nobanner}</dt>
  * <dd>This parameter contains a boolean indicating that the banner should be
  * suppressed.</dd>
  * 
- * <dt><a name="extex.output"/><tt>extex.output</tt></dt>
+ * <dt>{@code extex.output}</dt>
  * <dd>This parameter contains the output format. This logical name is resolved
  * via the configuration.</dd>
- * <dd>Command line: <a href="#-output"><tt>-output &lang;format&rang;</tt></a></dd>
- * <dd>Default: <tt>pdf</tt></dd>
+ * <dd>Command line: <a href="#-output">{@code -output &lang;format&rang;}</a></dd>
+ * <dd>Default: {@code pdf}</dd>
  * 
- * <dt><a name="tex.output.dir"/><tt>tex.output.dir</tt></dt>
+ * <dt>{@code tex.output.dir}</dt>
  * <dd>This parameter contains the directory where output files should be
  * created. If the directory fails to be writable then a fallback is tried
  * instead.</dd>
- * <dd>Command line: <a href="#-texoutputs"><tt>-texoutputs &lang;dir&rang;</tt>
+ * <dd>Command line: <a href="#-texoutputs">{@code -texoutputs &lang;dir&rang;}
  * </a></dd>
  * <dd>Default: <i>none</i></dd>
  * 
- * <dt><a name="tex.output.dir.fallback"/><tt>tex.output.dir.fallback</tt></dt>
+ * <dt>{@code tex.output.dir.fallback}</dt>
  * <dd>This parameter contains the name of the property for the fallback if the
  * output directory fails to be writable.</dd>
  * <dd>Command line: <a href="#-texmfoutputs">
- * <tt>-texmfoutputs &lang;dir&rang;</tt></a></dd>
+ * {@code -texmfoutputs &lang;dir&rang;}</a></dd>
  * 
- * <dt><a name="extex.paper"/><tt>extex.paper</tt></dt>
+ * <dt>{@code extex.paper}</dt>
  * <dd>This parameter contains the default size of the paper. It can be one of
- * the symbolic names defined in <tt>paper/paper.xml</tt>. Otherwise the value
+ * the symbolic names defined in {@code paper/paper.xml}. Otherwise the value
  * is interpreted as a pair of width and height separated by a space.</dd>
  * 
- * <dt><a name="extex.parse.first.line"/><tt>extex.parse.first.line</tt></dt>
+ * <dt>{@code extex.parse.first.line}</dt>
  * <dd>This boolean parameter controls whether the first line of the input file
- * should be parsed. If it is <code>true</code> and the first line starts with
- * <tt>%&amp;</tt> then the following characters up to a white-space character
+ * should be parsed. If it is {@code true} and the first line starts with
+ * {@code %&amp;} then the following characters up to a white-space character
  * are taken as the name of a format to be loaded.</dd>
  * 
- * <dt><a name="extex.progname"/><tt>extex.progname</tt></dt>
+ * <dt>{@code extex.progname}</dt>
  * <dd>This parameter can be used to overrule the name of the program shown in
  * the banner and the version information.</dd>
- * <dd>Command line: <a href="#-progname"><tt>-progname</tt></a></dd>
- * <dd>Default: <tt>ExTeX</tt></dd>
+ * <dd>Command line: <a href="#-progname">{@code -progname}</a></dd>
+ * <dd>Default: {@code ExTeX}</dd>
  * 
- * <dt><a name="tex.recorder"/><tt>tex.recorder</tt></dt>
+ * <dt>{@code tex.recorder}</dt>
  * <dd>This parameter can be used to activate the file name recorder. If the
  * file name recorder is active then all files opened during the run are
  * collected and written to a file. The file name is stored in this parameter.
- * If the file name is <code>null</code> the no file is written. If the file
+ * If the file name is {@code null} the no file is written. If the file
  * name is empty then the output is written to the standard output stream.
  * Otherwise the file name is opened fro writing.</dd>
- * <dd>Command line: <a href="#-recorder"><tt>-recorder</tt></a></dd>
+ * <dd>Command line: <a href="#-recorder">{@code -recorder}</a></dd>
  * <dd>Default: none</dd>
  * 
- * <dt><a name="extex.texinputs"/><tt>extex.texinputs</tt></dt>
+ * <dt>{@code extex.texinputs}</dt>
  * <dd>This parameter contains the additional directories for searching TeX
  * input files.</dd>
- * <dd>Command line: <a href="#-texinputs"><tt>-texinputs &lang;path&rang;</tt>
+ * <dd>Command line: <a href="#-texinputs">{@code -texinputs &lang;path&rang;}
  * </a></dd>
  * 
- * <dt><a name="extex.token.stream"/><tt>extex.token.stream</tt></dt>
+ * <dt>{@code extex.token.stream}</dt>
  * <dd>This string parameter contains the logical name of the configuration to
  * use for the token stream.</dd>
  * 
- * <dt><a name="extex.trace.input.files"/><tt>extex.trace.input.files</tt></dt>
+ * <dt>{@code extex.trace.input.files}</dt>
  * <dd>This boolean parameter contains the indicator whether or not to trace the
  * search for input files.</dd>
  * 
- * <dt><a name="extex.trace.font.files"/><tt>extex.trace.font.files</tt></dt>
+ * <dt>{@code extex.trace.font.files}</dt>
  * <dd>This boolean parameter contains the indicator whether or not to trace the
  * search for font files.</dd>
  * 
- * <dt><a name="extex.trace.macros"/><tt>extex.trace.macros</tt></dt>
+ * <dt>{@code extex.trace.macros}</dt>
  * <dd>This boolean parameter contains the indicator whether or not to trace the
  * execution of macros.</dd>
  * 
- * <dt><a name="extex.trace.tokenizer"/><tt>extex.trace.tokenizer</tt></dt>
+ * <dt>{@code extex.trace.tokenizer}</dt>
  * <dd>This boolean parameter contains the indicator whether or not to trace the
  * work of the tokenizer.</dd>
  * 
- * <dt><a name="extex.typesetter"/><tt>extex.typesetter</tt></dt>
+ * <dt>{@code extex.typesetter}</dt>
  * <dd>This parameter contains the name of the typesetter to use. If it is not
  * set then the default from the configuration file is used.</dd>
  * </dl>
@@ -559,23 +555,23 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * 
  * 
  * 
- * <a name="invocation"/> <h3>Direct Java Invocation</h3>
+ *  <p>Direct Java Invocation</p>
  * 
  * <p>
  * The direct invocation of the Java needs some settings to be preset. These
- * settings are needed for ??TeX to run properly. The following premises are needed:
+ * settings are needed for εχTeX to run properly. The following premises are needed:
  * </p>
  * <ul>
  * <li>Java needs to be installed (see section <a
- * href="#installation">Installation</a>. The program <tt>java</tt> is assumed
+ * href="#installation">Installation</a>. The program {@code java} is assumed
  * to be on the path of executables.</li>
  * <li>Java must be configured to find the jar files from the
- * ??TeX distribution. This can be accomplished by setting the
- * environment variable <tt>CLASSPATH</tt> or <tt>JAVA_HOME</tt>. See the
+ * εχTeX distribution. This can be accomplished by setting the
+ * environment variable {@code CLASSPATH} or {@code JAVA_HOME}. See the
  * documentation of your Java system for details.</li>
  * </ul>
  * <p>
- * Now ??TeX can be invoked with the same parameters described above:
+ * Now εχTeX can be invoked with the same parameters described above:
  * </p>
  * 
  * <pre class="CLIsyntax">
@@ -584,30 +580,27 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * <p>
  * The result should be the same as the invocation of the wrapper.
  * </p>
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * 
- * @version $Revision$
- */
+*/
 public class TeX extends ExTeX {
 
     /**
      * This inner class contains the open file observer.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
-     */
+    */
     private final class Observer implements OpenFileObserver {
 
         /**
-         * The field <tt>finder</tt> contains the resource finder.
+         * The field {@code finder} contains the resource finder.
          */
         private ResourceFinder finder;
 
         /**
-         * The field <tt>first</tt> contains the indicator of the first visit.
+         * The field {@code first} contains the indicator of the first visit.
          */
         private boolean first = true;
 
@@ -679,33 +672,33 @@ public class TeX extends ExTeX {
     }
 
     /**
-     * The constant <tt>COPYRIGHT_YEAR</tt> contains the starting year of
+     * The constant {@code COPYRIGHT_YEAR} contains the starting year of
      * development for the copyright message. This number is fixed to be the
      * year 2003 and should not be modified.
      */
     private static final int COPYRIGHT_YEAR = 2003;
 
     /**
-     * The field <tt>DOT_EXTEX</tt> contains the name of the user properties
+     * The field {@code DOT_EXTEX} contains the name of the user properties
      * file. This file contains property settings which are read when
-     * ??TeX is started.
+     * εχTeX is started.
      */
     private static final String DOT_EXTEX = ".extex";
 
     /**
-     * The constant <tt>EXIT_INTERNAL_ERROR</tt> contains the exit code for
+     * The constant {@code EXIT_INTERNAL_ERROR} contains the exit code for
      * internal errors.
      */
     protected static final int EXIT_INTERNAL_ERROR = -1;
 
     /**
-     * The constant <tt>EXIT_OK</tt> contains the exit code of the program for
+     * The constant {@code EXIT_OK} contains the exit code of the program for
      * the success case.
      */
     protected static final int EXIT_OK = 0;
 
     /**
-     * The constant <tt>PAGE_KEYS</tt> contains the resoruce keys to report
+     * The constant {@code PAGE_KEYS} contains the resoruce keys to report
      * pages and file.
      */
     private static final String[] PAGE_KEYS = new String[]{"ExTeX.NoPages",
@@ -713,33 +706,33 @@ public class TeX extends ExTeX {
             "ExTeX.File.Pages"};
 
     /**
-     * The field <tt>PROP_OUTPUTDIR</tt> contains the name of the property where
+     * The field {@code PROP_OUTPUTDIR} contains the name of the property where
      * the directory where output files should be created.
      */
     private static final String PROP_OUTPUT_DIR = "tex.output.dir";
 
     /**
-     * The field <tt>PROP_OUTPUTDIR_FALLBACK</tt> contains the name of the for
+     * The field {@code PROP_OUTPUTDIR_FALLBACK} contains the name of the for
      * the fallback if the output directory fails to be writable.
      */
     private static final String PROP_OUTPUT_DIR_FALLBACK =
             "tex.output.dir.fallback";
 
     /**
-     * The field <tt>PROP_PARSE_FIRST_LINE</tt> contains the name of the
+     * The field {@code PROP_PARSE_FIRST_LINE} contains the name of the
      * property to enable the parsing of the first line of the file.
      */
     private static final String PROP_PARSE_FIRST_LINE =
             "extex.parse.first.line";
 
     /**
-     * The field <tt>PROP_RECORDER</tt> contains the name of the property to
+     * The field {@code PROP_RECORDER} contains the name of the property to
      * control the recorder.
      */
     private static final String PROP_RECORDER = "tex.recorder";
 
     /**
-     * The constant <tt>TRACE_MAP</tt> contains the mapping from single
+     * The constant {@code TRACE_MAP} contains the mapping from single
      * characters to tracing property names.
      */
     private static final Map<String, String> TRACE_MAP =
@@ -755,15 +748,15 @@ public class TeX extends ExTeX {
 
     /**
      * This is the main method which is invoked to run the whole engine from the
-     * command line. It creates a new ??TeX object and invokes
-     * <tt>{@link #run(java.lang.String[]) run()}</tt> on it.
+     * command line. It creates a new εχTeX object and invokes
+     * {@code {@link #run(java.lang.String[]) run()}} on it.
      * <p>
      * The return value is used as the exit status.
      * </p>
      * <p>
      * The properties to be used are taken from the
-     * <tt>{@link java.lang.System#getProperties() System.properties}</tt> and
-     * the user's properties in the file <tt>.extex</tt>. The user properties
+     * {@code {@link java.lang.System#getProperties() System.properties}} and
+     * the user's properties in the file {@code .extex}. The user properties
      * are loaded both from the users home directory and the current directory.
      * Finally the properties can be overwritten on the command line.
      * </p>
@@ -777,16 +770,16 @@ public class TeX extends ExTeX {
 
     /**
      * This is the main method which is invoked to run the whole engine from the
-     * command line. It creates a new ??TeX object and invokes
-     * <tt>{@link #run(java.lang.String[]) run()}</tt> on it.
+     * command line. It creates a new εχTeX object and invokes
+     * {@code {@link #run(java.lang.String[]) run()}} on it.
      * <p>
      * The return value is the exit status. The value 0 indicates an successful
      * run.
      * </p>
      * <p>
      * The properties to be used are taken from the
-     * <tt>{@link java.lang.System#getProperties() System.properties}</tt> and
-     * the user's properties in the file <tt>.extex</tt>. The user properties
+     * {@code {@link java.lang.System#getProperties() System.properties}} and
+     * the user's properties in the file {@code .extex}. The user properties
      * are loaded both from the users home directory and the current directory.
      * Finally the properties can be overwritten on the command line.
      * </p>
@@ -818,25 +811,25 @@ public class TeX extends ExTeX {
     }
 
     /**
-     * The field <tt>fileRecorder</tt> contains the observer used to record all
+     * The field {@code fileRecorder} contains the observer used to record all
      * opened files.
      */
     private FileRecorder fileRecorder = null;;
 
     /**
-     * The field <tt>interpreter</tt> contains the interpreter. This is an
+     * The field {@code interpreter} contains the interpreter. This is an
      * intermediate variable used to transport the interpreter to places where
      * it is needed.
      */
     private Interpreter interpreter;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer.
+     * The field {@code localizer} contains the localizer.
      */
     private Localizer localizer = LocalizerFactory.getLocalizer(TeX.class);
 
     /**
-     * The field <tt>observers</tt> contains the observers.
+     * The field {@code observers} contains the observers.
      * <p>
      * NOTE: if weak references are used then the instances have to be kept in
      * some variables to avoid that the garbage collector does its work.
@@ -845,26 +838,26 @@ public class TeX extends ExTeX {
     private List<Object> observers = new ArrayList<Object>();
 
     /**
-     * The field <tt>primaryFile</tt> contains the name of the first file read.
+     * The field {@code primaryFile} contains the name of the first file read.
      * This name determines he name of the log file etc.
      */
     private String primaryFile = null;
 
     /**
-     * The field <tt>queryFileHandler</tt> contains the instance of the handler
+     * The field {@code queryFileHandler} contains the instance of the handler
      * to ask for a file name if none is given.
      */
     private QueryFileHandler queryFileHandler = new QueryFileHandlerTeXImpl();
 
     /**
      * Creates a new object and initializes the properties from given properties
-     * and possibly from a user's properties in the file <tt>.extex</tt>. The
+     * and possibly from a user's properties in the file {@code .extex}. The
      * user properties are loaded from the users home directory and the current
      * directory.
      * 
      * @param theProperties the properties to consider
      * @param dotFile the name of the local configuration file. In the case that
-     *        this value is <code>null</code> no user properties will be
+     *        this value is {@code null} no user properties will be
      *        considered.
      * 
      * @throws HelpingException in case of an invalid interaction mode
@@ -947,10 +940,7 @@ public class TeX extends ExTeX {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ExTeX#initializeStreams(org.extex.interpreter.Interpreter,
-     *      java.util.Properties)
+*      java.util.Properties)
      */
     @Override
     protected boolean initializeStreams(Interpreter interpreter,
@@ -1053,10 +1043,7 @@ public class TeX extends ExTeX {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ExTeX#makeInterpreter(org.extex.framework.configuration.Configuration,
-     *      org.extex.backend.outputStream.OutputStreamFactory,
+*      org.extex.backend.outputStream.OutputStreamFactory,
      *      org.extex.resource.ResourceFinder, java.lang.String)
      */
     @Override
@@ -1156,7 +1143,7 @@ public class TeX extends ExTeX {
      * 
      * @param arg the name of the resource to load
      * 
-     * @return <code>true</code> iff the resource has been loaded successfully
+     * @return {@code true} iff the resource has been loaded successfully
      * 
      * @throws IOException just in case
      */
@@ -1206,8 +1193,8 @@ public class TeX extends ExTeX {
 
     /**
      * This method provides access to the whole functionality of
-     * ??TeX on the command line. The exception is that this method
-     * does not call <code>{@link System#exit(int) System.exit()}</code> but
+     * εχTeX on the command line. The exception is that this method
+     * does not call {@code {@link System#exit(int) System.exit()}} but
      * returns the exit status as result.
      * 
      * @param args the list of command line arguments
@@ -1650,14 +1637,14 @@ public class TeX extends ExTeX {
     }
 
     /**
-     * Parse a command line parameter of the form <i>key</i><tt>=</tt>
+     * Parse a command line parameter of the form <i>key</i>{@code =}
      * <i>value</i> and assign the value to a property with a given name.
      * 
      * @param name the command line parameter in its longest form
      * @param tag the name of the property
      * @param value the command line parameter including the value
      * 
-     * @return <code>true</code> iff the syntax is correct and the value of the
+     * @return {@code true} iff the syntax is correct and the value of the
      *         property has been set
      */
     private boolean set(String name, String tag, String value) {
@@ -1679,7 +1666,7 @@ public class TeX extends ExTeX {
      * @param arguments the list of arguments
      * @param position the starting index
      * 
-     * @return <code>true</code> iff the syntax is correct and the value of the
+     * @return {@code true} iff the syntax is correct and the value of the
      *         property has been set
      * 
      * @throws MainMissingArgumentException in case of an error
@@ -1700,7 +1687,7 @@ public class TeX extends ExTeX {
     /**
      * Setter for the input file name.
      * 
-     * @param name the name of the input file. If it is <code>null</code> then
+     * @param name the name of the input file. If it is {@code null} then
      *        the values are reset to the initial state
      */
     private void setInputFileName(String name) {

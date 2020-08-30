@@ -30,8 +30,7 @@ import org.extex.typesetter.type.math.MathCode;
  * This interface describes a primitive which can deliver a MathCode.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public interface MathCodeConvertible {
 
     /**

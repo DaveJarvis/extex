@@ -32,15 +32,14 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to define letter groups.
  * 
- * <doc type="exindex-command" command="define-letter-groups">
- * 
- * <h3>The Command <tt>define-letter-groups</tt></h3>
+*
+ * <p>The Command {@code define-letter-groups}</p>
  * 
  * <p>
- * The command <tt>define-letter-groups</tt> can be used to define a set of
+ * The command {@code define-letter-groups} can be used to define a set of
  * letter groups with an order in one batch. This command provides an
  * abbreviation of several invocations of the command
- * <tt>define-letter-group</tt>. Thus the major concepts can be found there.
+ * {@code define-letter-group}. Thus the major concepts can be found there.
  * </p>
  * 
  * <pre>
@@ -49,7 +48,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * <p>
  * The command has one arguments which is described now. The argument is a list
  * of strings. Those strings are the names of the letter groups. The order of
- * the list is translated into corresponding <tt>:after</tt> declarations.
+ * the list is translated into corresponding {@code :after} declarations.
  * </p>
  * 
  * <pre>
@@ -65,17 +64,15 @@ import org.extex.exindex.lisp.type.value.LValue;
  *  (define-letter-group "C" :after "B")
  *  (define-letter-group "D" :after "C")   </pre>
  * 
- * </doc>
- * 
+ *
  * @see LDefineLetterGroup
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LDefineLetterGroups extends LFunction {
 
     /**
-     * The field <tt>container</tt> contains the letter group container.
+     * The field {@code container} contains the letter group container.
      */
     private final IndexContainer container;
 
@@ -103,7 +100,7 @@ public class LDefineLetterGroups extends LFunction {
      * @param interpreter the interpreter
      * @param list the list of letter group names
      * 
-     * @return <tt>null</tt>
+     * @return {@code null}
      * 
      * @throws LNonMatchingTypeException in case of an error
      * @throws LException should not happen

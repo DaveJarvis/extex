@@ -30,35 +30,34 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.omega.ocp.util.OcpList;
 
 /**
- * This class provides an implementation for the primitive <code>\ocplist</code>.
+ * This class provides an implementation for the primitive {@code \ocplist}.
  * 
- * <doc name="ocplist">
- * <h3>The Primitive <tt>\ocplist</tt></h3>
+ * <p>The Primitive {@code \ocplist}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;ocplist&rang;
- *      &rarr; <tt>\ocplist</tt> ...  </pre>
+ *      &rarr; {@code \ocplist} ...  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  * \ocplist \nullocplist </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class OcplistPrimitive extends AbstractAssignment {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
@@ -74,10 +73,7 @@ public class OcplistPrimitive extends AbstractAssignment {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

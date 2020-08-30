@@ -33,14 +33,13 @@ import org.extex.typesetter.type.Node;
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4739 $
- */
+*/
 public class CachingNodeFactory extends SimpleNodeFactory {
 
     /**
-     * The field <tt>cache</tt> contains the cache for previously created nodes.
+     * The field {@code cache} contains the cache for previously created nodes.
      */
-    private Map<TypesettingContext, Map<UnicodeChar, Node>> cache;
+    private final Map<TypesettingContext, Map<UnicodeChar, Node>> cache;
 
 
     public CachingNodeFactory() {
@@ -50,7 +49,7 @@ public class CachingNodeFactory extends SimpleNodeFactory {
 
     /**
      * Create a new instance for the node.
-     * If the character is not defined in the font given then <code>null</code>
+     * If the character is not defined in the font given then {@code null}
      * is returned instead.
      *
      * @param typesettingContext the typographic context for the node

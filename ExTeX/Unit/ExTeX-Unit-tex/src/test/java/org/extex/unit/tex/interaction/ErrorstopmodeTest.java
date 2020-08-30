@@ -28,11 +28,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\errorstopmode</tt>.
+ * This is a test suite for the primitive {@code \errorstopmode}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class ErrorstopmodeTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -54,7 +53,7 @@ public class ErrorstopmodeTest extends NoFlagsPrimitiveTester {
     /**
      * <testcase primitive="\errorstopmode">
      *  Test case checking that errorstop mode is reported as 0.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -72,7 +71,7 @@ public class ErrorstopmodeTest extends NoFlagsPrimitiveTester {
     /**
      * <testcase primitive="\errorstopmode">
      *  Test case checking that errorstop mode is always global.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */

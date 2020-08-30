@@ -31,8 +31,7 @@ import org.extex.exbib.bst2groovy.linker.LinkContainer;
  * This class implements the analyzer for a field integer reader.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class GetLocalIntegerCompiler implements Compiler {
 
     /**
@@ -55,7 +54,7 @@ public class GetLocalIntegerCompiler implements Compiler {
     }
 
     /**
-     * The field <tt>name</tt> contains the name of the variable.
+     * The field {@code name} contains the name of the variable.
      */
     private String name;
 
@@ -70,10 +69,7 @@ public class GetLocalIntegerCompiler implements Compiler {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryReference,
-     *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
+*      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */

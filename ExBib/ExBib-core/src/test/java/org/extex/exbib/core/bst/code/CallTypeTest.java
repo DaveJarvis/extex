@@ -35,33 +35,29 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>call.type$</tt>.
+ * Test suite for {@code call.type$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class CallTypeTest implements Code {
 
     /**
-     * The field <tt>executed</tt> contains the executed flag.
+     * The field {@code executed} contains the executed flag.
      */
     private boolean executed = false;
 
     /**
-     * The field <tt>db</tt> contains the database.
+     * The field {@code db} contains the database.
      */
     private DB db = null;
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.Code#execute(BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
@@ -69,22 +65,12 @@ public class CallTypeTest implements Code {
         executed = true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.Code#getName()
-     */
-    public String getName() {
+public String getName() {
 
         return "";
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.Code#setName(java.lang.String)
-     */
-    public void setName(String name) {
+public void setName(String name) {
 
         // 
     }
@@ -113,7 +99,7 @@ public class CallTypeTest implements Code {
     }
 
     /**
-     * <testcase> call.type$ invokes an appropriate function. </testcase>
+     *  call.type$ invokes an appropriate function. 
      * 
      * @throws Exception in case of an error
      */
@@ -129,8 +115,8 @@ public class CallTypeTest implements Code {
     }
 
     /**
-     * <testcase> call.type$ invokes an appropriate function ignoring case.
-     * </testcase>
+     *  call.type$ invokes an appropriate function ignoring case.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -146,8 +132,8 @@ public class CallTypeTest implements Code {
     }
 
     /**
-     * <testcase> call.type$ invokes an appropriate function ignoring case.
-     * </testcase>
+     *  call.type$ invokes an appropriate function ignoring case.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -163,7 +149,7 @@ public class CallTypeTest implements Code {
     }
 
     /**
-     * <testcase> call.type$ invokes an appropriate function. </testcase>
+     *  call.type$ invokes an appropriate function. 
      * 
      * @throws Exception in case of an error
      */
@@ -184,7 +170,7 @@ public class CallTypeTest implements Code {
     }
 
     /**
-     * <testcase> call.type$ invokes an appropriate function. </testcase>
+     *  call.type$ invokes an appropriate function. 
      * 
      * @throws Exception in case of an error
      */

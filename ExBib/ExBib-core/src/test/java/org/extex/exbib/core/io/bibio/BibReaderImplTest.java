@@ -45,8 +45,7 @@ import org.junit.Test;
  * This is a test suite for {@link BibReaderImpl}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BibReaderImplTest extends BibReaderTester {
 
 
@@ -55,12 +54,7 @@ public class BibReaderImplTest extends BibReaderTester {
         super(false);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.bibio.BibReaderTester#makeTestInstance()
-     */
-    @Override
+@Override
     protected BibReader makeTestInstance() {
 
         return new BibReaderImpl();
@@ -90,7 +84,7 @@ public class BibReaderImplTest extends BibReaderTester {
     }
 
     /**
-     * <testcase> {@code alias} needs a parameter. </testcase>
+     *  {@code alias} needs a parameter.
      * 
      * @throws Exception in case of an error
      */
@@ -101,7 +95,7 @@ public class BibReaderImplTest extends BibReaderTester {
     }
 
     /**
-     * <testcase> {@code alias} stores an alias. </testcase>
+     *  {@code alias} stores an alias.
      * 
      * @throws Exception in case of an error
      */
@@ -111,7 +105,7 @@ public class BibReaderImplTest extends BibReaderTester {
         TestDB db = new TestDB() {
 
             /**
-             * The field <tt>visited</tt> contains the entry if an alias has
+             * The field {@code visited} contains the entry if an alias has
              * been defined.
              */
             private Entry visited = null;
@@ -136,7 +130,7 @@ public class BibReaderImplTest extends BibReaderTester {
     }
 
     /**
-     * <testcase> {@code alias} stores an alias. </testcase>
+     *  {@code alias} stores an alias.
      * 
      * @throws Exception in case of an error
      */
@@ -146,7 +140,7 @@ public class BibReaderImplTest extends BibReaderTester {
         TestDB db = new TestDB() {
 
             /**
-             * The field <tt>visited</tt> contains the entry if an alias has
+             * The field {@code visited} contains the entry if an alias has
              * been defined.
              */
             private Entry visited = null;
@@ -171,9 +165,8 @@ public class BibReaderImplTest extends BibReaderTester {
     }
 
     /**
-     * <testcase> The empty input is accepted and does not require anything to
-     * be stored in the database. </testcase>
-     * 
+     * The empty input is accepted and does not require anything to be stored in the database
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -181,12 +174,7 @@ public class BibReaderImplTest extends BibReaderTester {
 
         runTest("abc @comment{@abc} def", new TestDB() {
 
-            /**
-             * {@inheritDoc}
-             * 
-             * @see BibReaderImplTest.TestDB#storeComment( java.lang.String)
-             */
-            @Override
+        @Override
             public void storeComment(String comment) {
 
                 assertEquals("abc @comment{@abc} def", comment);
@@ -196,7 +184,7 @@ public class BibReaderImplTest extends BibReaderTester {
     }
 
     /**
-     * <testcase> {@code include} needs a parameter. </testcase>
+     *  {@code include} needs a parameter.
      * 
      * @throws Exception in case of an error
      */
@@ -207,7 +195,7 @@ public class BibReaderImplTest extends BibReaderTester {
     }
 
     /**
-     * <testcase> {@code include} needs a parameter. </testcase>
+     *  {@code include} needs a parameter.
      * 
      * @throws Exception in case of an error
      */
@@ -217,10 +205,7 @@ public class BibReaderImplTest extends BibReaderTester {
         runTest("@include{}", new TestDB() {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bibio.BibReaderTester.TestDB#load(
-             *      java.lang.String, java.util.Map)
+        *      java.lang.String, java.util.Map)
              */
             @Override
             public List<String> load(String file, Map<String, String> citation)
@@ -235,7 +220,7 @@ public class BibReaderImplTest extends BibReaderTester {
     }
 
     /**
-     * <testcase> {@code include} needs a parameter. </testcase>
+     *  {@code include} needs a parameter.
      * 
      * @throws Exception in case of an error
      */
@@ -245,10 +230,7 @@ public class BibReaderImplTest extends BibReaderTester {
         runTest("@include{abc}", new TestDB() {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bibio.BibReaderTester.TestDB#load(
-             *      java.lang.String, java.util.Map)
+        *      java.lang.String, java.util.Map)
              */
             @Override
             public List<String> load(String file, Map<String, String> citation)
@@ -263,7 +245,7 @@ public class BibReaderImplTest extends BibReaderTester {
     }
 
     /**
-     * <testcase> {@code modify} needs a parameter. </testcase>
+     *  {@code modify} needs a parameter.
      * 
      * @throws Exception in case of an error
      */
@@ -274,7 +256,7 @@ public class BibReaderImplTest extends BibReaderTester {
     }
 
     /**
-     * <testcase> {@code modify} needs a parameter. </testcase>
+     *  {@code modify} needs a parameter.
      * 
      * @throws Exception in case of an error
      */
@@ -285,7 +267,7 @@ public class BibReaderImplTest extends BibReaderTester {
     }
 
     /**
-     * <testcase> {@code modify} needs a parameter. </testcase>
+     *  {@code modify} needs a parameter.
      * 
      * @throws Exception in case of an error
      */
@@ -296,9 +278,8 @@ public class BibReaderImplTest extends BibReaderTester {
     }
 
     /**
-     * <testcase> {@code modify} needs a parameter which names an existing
-     * entry. </testcase>
-     * 
+     * {@code modify} needs a parameter which names an existing entry
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = ExBibMissingEntryException.class)
@@ -308,8 +289,8 @@ public class BibReaderImplTest extends BibReaderTester {
     }
 
     /**
-     * <testcase> {@code modify} needs a parameter which names an existing
-     * entry. Nothing else is needed.</testcase>
+     *  {@code modify} needs a parameter which names an existing
+     * entry. Nothing else is needed.
      * 
      * @throws Exception in case of an error
      */
@@ -319,10 +300,7 @@ public class BibReaderImplTest extends BibReaderTester {
         runTest("@modify{abc}", new TestDB() {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bibio.BibReaderTester.TestDB#getEntry(
-             *      java.lang.String)
+        *      java.lang.String)
              */
             @Override
             public Entry getEntry(String key) {
@@ -333,8 +311,8 @@ public class BibReaderImplTest extends BibReaderTester {
     }
 
     /**
-     * <testcase> {@code modify} needs a parameter which names an existing
-     * entry. Nothing else is needed.</testcase>
+     *  {@code modify} needs a parameter which names an existing
+     * entry. Nothing else is needed.
      * 
      * @throws Exception in case of an error
      */
@@ -344,10 +322,7 @@ public class BibReaderImplTest extends BibReaderTester {
         runTest("@modify(abc)", new TestDB() {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bibio.BibReaderTester.TestDB#getEntry(
-             *      java.lang.String)
+        *      java.lang.String)
              */
             @Override
             public Entry getEntry(String key) {
@@ -358,8 +333,8 @@ public class BibReaderImplTest extends BibReaderTester {
     }
 
     /**
-     * <testcase> {@code modify} needs to be closed by the same type of brace
-     * that opened it.</testcase>
+     *  {@code modify} needs to be closed by the same type of brace
+     * that opened it.
      * 
      * @throws Exception in case of an error
      */
@@ -369,10 +344,7 @@ public class BibReaderImplTest extends BibReaderTester {
         runTest("@modify{abc)", new TestDB() {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bibio.BibReaderTester.TestDB#getEntry(
-             *      java.lang.String)
+        *      java.lang.String)
              */
             @Override
             public Entry getEntry(String key) {
@@ -383,8 +355,8 @@ public class BibReaderImplTest extends BibReaderTester {
     }
 
     /**
-     * <testcase> {@code modify} needs to be closed by the same type of brace
-     * that opened it.</testcase>
+     *  {@code modify} needs to be closed by the same type of brace
+     * that opened it.
      * 
      * @throws Exception in case of an error
      */
@@ -394,10 +366,7 @@ public class BibReaderImplTest extends BibReaderTester {
         runTest("@modify{abc  ", new TestDB() {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bibio.BibReaderTester.TestDB#getEntry(
-             *      java.lang.String)
+        *      java.lang.String)
              */
             @Override
             public Entry getEntry(String key) {
@@ -408,7 +377,7 @@ public class BibReaderImplTest extends BibReaderTester {
     }
 
     /**
-     * <testcase> {@code modify} works.</testcase>
+     *  {@code modify} works.
      * 
      * @throws Exception in case of an error
      */
@@ -418,15 +387,12 @@ public class BibReaderImplTest extends BibReaderTester {
         TestDB db = new TestDB() {
 
             /**
-             * The field <tt>entry</tt> contains the entry.
+             * The field {@code entry} contains the entry.
              */
             private final Entry entry = new Entry( null);
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bibio.BibReaderTester.TestDB#getEntry(
-             *      java.lang.String)
+        *      java.lang.String)
              */
             @Override
             public Entry getEntry(String key) {
@@ -439,7 +405,7 @@ public class BibReaderImplTest extends BibReaderTester {
     }
 
     /**
-     * <testcase> {@code modify} works.</testcase>
+     *  {@code modify} works.
      * 
      * @throws Exception in case of an error
      */
@@ -449,15 +415,12 @@ public class BibReaderImplTest extends BibReaderTester {
         TestDB db = new TestDB() {
 
             /**
-             * The field <tt>entry</tt> contains the entry.
+             * The field {@code entry} contains the entry.
              */
             private final Entry entry = new Entry( null);
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bibio.BibReaderTester.TestDB#getEntry(
-             *      java.lang.String)
+        *      java.lang.String)
              */
             @Override
             public Entry getEntry(String key) {

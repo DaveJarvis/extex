@@ -27,28 +27,27 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This exception signals that two conflicting flags have been encountered.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class InconsistentFlagsException extends LException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>locator</tt> contains the resource locator.
+     * The field {@code locator} contains the resource locator.
      */
     private final ResourceLocator locator;
 
     /**
-     * The field <tt>flag1</tt> contains the first flag.
+     * The field {@code flag1} contains the first flag.
      */
     private final String flag1;
 
     /**
-     * The field <tt>flag2</tt> contains the second flag.
+     * The field {@code flag2} contains the second flag.
      */
     private final String flag2;
 
@@ -68,12 +67,7 @@ public class InconsistentFlagsException extends LException {
         this.flag2 = flag2;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Throwable#getLocalizedMessage()
-     */
-    @Override
+@Override
     public String getLocalizedMessage() {
 
         if (locator != null) {

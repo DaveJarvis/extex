@@ -33,37 +33,36 @@ import org.extex.unit.tex.register.box.Setbox;
 
 /**
  * This class provides an implementation for the primitive
- * <code>&#x5c;unvbox</code>.
+ * {@code &#x5c;unvbox}.
  * 
- * <doc name="unvbox">
- * <h3>The Primitive <tt>&#x5c;unvbox</tt></h3>
+ * <p>The Primitive {@code &#x5c;unvbox}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;unvbox&rang;
- *       &rarr; <tt>&#x5c;unvbox</tt> {@linkplain
+ *       &rarr; {@code &#x5c;unvbox} {@linkplain
  *          org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *          &lang;8-bit&nbsp;number&rang;} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    &#x5c;unvbox42  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Unvbox extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -79,10 +78,7 @@ public class Unvbox extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

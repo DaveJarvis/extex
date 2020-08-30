@@ -36,20 +36,19 @@ import org.extex.util.file.random.RandomAccessR;
  * </p>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class TfmWidthArray implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field {@code serialVersionUID} ...
      */
     private static final long serialVersionUID = 1L;
 
     /**
      * the width table.
      */
-    private TfmFixWord[] table;
+    private final TfmFixWord[] table;
 
     /**
      * Create a new object.

@@ -26,13 +26,12 @@ import org.junit.Test;
  * This is a test suite for the scanner routines.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * <testcase > This test case checks that the parser can decode a single
-     * digit number. </testcase>
+     * digit number.
      * 
      * @throws Exception in case of an error
      */
@@ -47,7 +46,7 @@ public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * <testcase > This test case checks that the parser can decode a negative
-     * number. </testcase>
+     * number.
      * 
      * @throws Exception in case of an error
      */
@@ -62,7 +61,7 @@ public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * <testcase > This test case checks that the parser can decode a number
-     * with two minus signs in front. </testcase>
+     * with two minus signs in front.
      * 
      * @throws Exception in case of an error
      */
@@ -77,7 +76,7 @@ public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * <testcase > This test case checks that the parser can decode a number
-     * with three minus signs in front. </testcase>
+     * with three minus signs in front.
      * 
      * @throws Exception in case of an error
      */
@@ -92,7 +91,7 @@ public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * <testcase > This test case checks that the parser can decode a two digit
-     * number. </testcase>
+     * number.
      * 
      * @throws Exception in case of an error
      */
@@ -107,7 +106,7 @@ public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * <testcase > This test case checks that the parser can decode a positive
-     * number with a single <tt>+</tt> sign. </testcase>
+     * number with a single {@code +} sign.
      * 
      * @throws Exception in case of an error
      */
@@ -122,7 +121,7 @@ public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * <testcase > This test case checks that the parser can decode a number
-     * with two plus signs in front. </testcase>
+     * with two plus signs in front.
      * 
      * @throws Exception in case of an error
      */
@@ -137,7 +136,7 @@ public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * <testcase > This test case checks that the parser can decode a number
-     * with three plus signs in front. </testcase>
+     * with three plus signs in front.
      * 
      * @throws Exception in case of an error
      */
@@ -152,7 +151,7 @@ public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * <testcase > This test case checks that the parser can decode a three
-     * digit number. </testcase>
+     * digit number.
      * 
      * @throws Exception in case of an error
      */
@@ -167,7 +166,7 @@ public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * <testcase > This test case checks that the parser can decode a negative
-     * number with mixed signs. </testcase>
+     * number with mixed signs.
      * 
      * @throws Exception in case of an error
      */
@@ -182,7 +181,7 @@ public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * <testcase > This test case checks that the parser can decode a negative
-     * number with mixed signs. </testcase>
+     * number with mixed signs.
      * 
      * @throws Exception in case of an error
      */
@@ -197,7 +196,7 @@ public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * <testcase > This test case checks that the parser can decode a number
-     * with two minus signs and a plus sign in front. </testcase>
+     * with two minus signs and a plus sign in front.
      * 
      * @throws Exception in case of an error
      */
@@ -212,7 +211,7 @@ public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * <testcase > This test case checks that the parser can decode a number
-     * with two minus signs and two plus signs in front. </testcase>
+     * with two minus signs and two plus signs in front.
      * 
      * @throws Exception in case of an error
      */
@@ -227,7 +226,7 @@ public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * <testcase > This test case checks that the parser can decode a number
-     * with three minus signs and two plus signsin front. </testcase>
+     * with three minus signs and two plus signsin front.
      * 
      * @throws Exception in case of an error
      */
@@ -242,7 +241,7 @@ public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * <testcase > This test case checks that the parser also takes a space as
-     * terminator. </testcase>
+     * terminator.
      * 
      * @throws Exception in case of an error
      */
@@ -257,7 +256,7 @@ public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * <testcase > This test case checks that the parser expands macros on the
-     * way. </testcase>
+     * way.
      * 
      * @throws Exception in case of an error
      */
@@ -273,7 +272,7 @@ public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * <testcase > This test case checks that the parser expands macros on the
-     * way. </testcase>
+     * way.
      * 
      * @throws Exception in case of an error
      */
@@ -289,7 +288,7 @@ public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * <testcase > This test case checks that the parser expands macros on the
-     * way. </testcase>
+     * way.
      * 
      * @throws Exception in case of an error
      */
@@ -305,7 +304,7 @@ public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * <testcase > This test case checks that the parser expands macros on the
-     * way. </testcase>
+     * way.
      * 
      * @throws Exception in case of an error
      */
@@ -321,7 +320,7 @@ public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * <testcase > This test case checks that the parser expands macros on the
-     * way. </testcase>
+     * way.
      * 
      * @throws Exception in case of an error
      */
@@ -337,7 +336,7 @@ public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * <testcase > This test case checks that the parser expands macros on the
-     * way. </testcase>
+     * way.
      * 
      * @throws Exception in case of an error
      */
@@ -354,7 +353,7 @@ public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * <testcase > This test case checks that the parser expands macros on the
-     * way. </testcase>
+     * way.
      * 
      * @throws Exception in case of an error
      */
@@ -371,7 +370,7 @@ public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * <testcase > This test case checks that the parser accepts hex numbers.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -386,7 +385,7 @@ public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * <testcase > This test case checks that the parser accepts octal numbers.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -401,7 +400,7 @@ public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * <testcase > This test case checks that the parser accepts octal numbers.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */

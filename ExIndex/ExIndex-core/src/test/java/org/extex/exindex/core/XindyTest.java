@@ -25,12 +25,11 @@ import org.junit.Test;
  * This is a test suite for xindy compatibility.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class XindyTest {
 
     /**
-     * <testcase> Test that makeidx.xdy can be read </testcase>
+     *  Test that makeidx.xdy can be read
      * 
      * @throws Exception in case of an error
      */

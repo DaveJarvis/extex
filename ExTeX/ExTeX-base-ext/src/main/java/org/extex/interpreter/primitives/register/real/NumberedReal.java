@@ -27,7 +27,7 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\real</code>.
+ * This class provides an implementation for the primitive {@code \real}.
  * It sets the named real register to the value given, and as a side effect all
  * prefixes are zeroed.
  * 
@@ -47,12 +47,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * </pre>
  * 
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class NumberedReal extends NamedReal {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
@@ -70,10 +69,7 @@ public class NumberedReal extends NamedReal {
     /**
      * Return the key (the number) for the register.
      * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.primitives.register.real.NamedReal#getKey(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

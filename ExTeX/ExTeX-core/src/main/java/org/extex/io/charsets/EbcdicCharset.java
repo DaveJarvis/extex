@@ -27,12 +27,11 @@ import java.nio.charset.CharsetEncoder;
  * This is the definition of character set for the EBCDIC encoding.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class EbcdicCharset extends Charset {
 
     /**
-     * The field <tt>CODES</tt> contains the table of codes.
+     * The field {@code CODES} contains the table of codes.
      */
     public static final char[] CODES = {
             /* 00 */0,
@@ -293,12 +292,12 @@ public class EbcdicCharset extends Charset {
                     /* FF */0};
 
     /**
-     * The field <tt>decoder</tt> contains the decoder.
+     * The field {@code decoder} contains the decoder.
      */
     private CharsetDecoder decoder = null;
 
     /**
-     * The field <tt>encoder</tt> contains the encoder.
+     * The field {@code encoder} contains the encoder.
      */
     private TableEncoder encoder = null;
 
@@ -308,24 +307,14 @@ public class EbcdicCharset extends Charset {
         super("EBCDIC", new String[]{"EBCDIC-500", "EBCDIC-US"});
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.nio.charset.Charset#contains(java.nio.charset.Charset)
-     */
-    @Override
+@Override
     public boolean contains(Charset cs) {
 
         // TODO gene: contains unimplemented
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.nio.charset.Charset#newDecoder()
-     */
-    @Override
+@Override
     public CharsetDecoder newDecoder() {
 
         if (decoder == null) {
@@ -334,12 +323,7 @@ public class EbcdicCharset extends Charset {
         return decoder;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.nio.charset.Charset#newEncoder()
-     */
-    @Override
+@Override
     public CharsetEncoder newEncoder() {
 
         if (encoder == null) {

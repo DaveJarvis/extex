@@ -31,36 +31,36 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.typesetter.AbstractHorizontalCode;
 
 /**
- * This class provides an implementation for the primitive <code>\hskip</code>.
+ * This class provides an implementation for the primitive {@code \hskip}.
  * 
- * <doc name="hskip"> <h3>The Primitive <tt>\hskip</tt></h3>
+ * <p>The Primitive {@code \hskip}</p>
  * <p>
- * The primitive <tt>\hskip</tt> inserts the given amount of glue into the
+ * The primitive {@code \hskip} inserts the given amount of glue into the
  * typesetter. If the typesetter is not in a horizontal mode then it is switched
  * to horizontal mode first.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;hskip&rang;
- *        &rarr; <tt>\hskip</tt> &lang;Glue&rang;  </pre>
+ *        &rarr; {@code \hskip} &lang;Glue&rang;  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \hskip 1em plus 1pt minus 1pt  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Hskip extends AbstractHorizontalCode implements HorizontalSkip {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -75,10 +75,7 @@ public class Hskip extends AbstractHorizontalCode implements HorizontalSkip {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -91,10 +88,7 @@ public class Hskip extends AbstractHorizontalCode implements HorizontalSkip {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.typesetter.spacing.HorizontalSkip#getGlue(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public FixedGlue getGlue(Context context, TokenSource source,

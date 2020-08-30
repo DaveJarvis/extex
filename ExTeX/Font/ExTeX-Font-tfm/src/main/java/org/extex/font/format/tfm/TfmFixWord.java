@@ -34,8 +34,7 @@ import org.extex.core.dimen.FixedDimen;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TfmFixWord implements Serializable {
 
     /**
@@ -69,7 +68,7 @@ public class TfmFixWord implements Serializable {
     public static final int POINTSHIFT = 20;
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 1L;
 
@@ -222,8 +221,8 @@ public class TfmFixWord implements Serializable {
      * less than.
      * 
      * @param num the value to compare
-     * @return <code>true</code>, if the internal values is lesser, otherwise
-     *         <code>false</code>
+     * @return {@code true}, if the internal values is lesser, otherwise
+     *         {@code false}
      */
     public boolean lessThan(int num) {
 
@@ -234,8 +233,8 @@ public class TfmFixWord implements Serializable {
      * more than.
      * 
      * @param num the value to compare
-     * @return <code>true</code>, if the internal values are more, otherwise
-     *         <code>false</code>
+     * @return {@code true}, if the internal values are more, otherwise
+     *         {@code false}
      */
     public boolean moreThan(int num) {
 

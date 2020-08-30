@@ -58,8 +58,7 @@ import org.extex.typesetter.type.NodeList;
  * code. Here some utility methods of general nature are collected.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractPostscriptWriter
         implements
             DocumentWriter,
@@ -70,67 +69,67 @@ public abstract class AbstractPostscriptWriter
             ColorAware {
 
     /**
-     * The constant <tt>COMMENT</tt> contains two percent signs as start of a
+     * The constant {@code COMMENT} contains two percent signs as start of a
      * comment.
      */
     protected static final byte[] COMMENT = new byte[]{'%', '%'};
 
     /**
-     * The field <tt>DF</tt> contains the formatter for the date.
+     * The field {@code DF} contains the formatter for the date.
      */
     protected static final DateFormat DF =
             new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 
     /**
-     * The field <tt>boxed</tt> contains the indicator whether the box-only
+     * The field {@code boxed} contains the indicator whether the box-only
      * converter should be used.
      */
     private boolean boxed;
 
     /**
-     * The field <tt>colorConverter</tt> contains the color converter as set
+     * The field {@code colorConverter} contains the color converter as set
      * from the managing instance.
      */
     private ColorConverter colorConverter = null;
 
     /**
-     * The field <tt>converter</tt> contains the cached PostScript converter.
+     * The field {@code converter} contains the cached PostScript converter.
      */
     private PsConverter converter = null;
 
     /**
-     * The field <tt>extension</tt> contains the extension.
+     * The field {@code extension} contains the extension.
      */
     private String extension;
 
     /**
-     * The field <tt>finder</tt> contains the resource finder as set from the
+     * The field {@code finder} contains the resource finder as set from the
      * managing instance.
      */
     private ResourceFinder finder = null;
 
     /**
-     * The field <tt>fontFactory</tt> contains the font factory.
+     * The field {@code fontFactory} contains the font factory.
      */
     private CoreFontFactory fontFactory;
 
     /**
-     * The field <tt>fontManager</tt> contains the font manager.
+     * The field {@code fontManager} contains the font manager.
      */
     private FontManager fontManager;
 
     /**
-     * The field <tt>headerManager</tt> contains the header manager.
+     * The field {@code headerManager} contains the header manager.
      */
     private HeaderManager headerManager = new HeaderManager();
 
     /**
-     * The field <tt>parameter</tt> contains the map for parameters.
+     * The field {@code parameter} contains the map for parameters.
      */
     private Map<String, String> parameter = new HashMap<String, String>();
 
     /**
-     * The field <tt>writerFactory</tt> contains the output stream factory.
+     * The field {@code writerFactory} contains the output stream factory.
      */
     private OutputStreamFactory writerFactory;
 
@@ -197,8 +196,8 @@ public abstract class AbstractPostscriptWriter
 
     /**
      * Getter for the extension associated with this kind of output. For
-     * instance <tt>pdf</tt> is the expected value for PDF files and
-     * <tt>dvi</tt> is the expected value for DVI files.
+     * instance {@code pdf} is the expected value for PDF files and
+     * {@code dvi} is the expected value for DVI files.
      * 
      * @return the appropriate extension for file names
      * 
@@ -234,7 +233,7 @@ public abstract class AbstractPostscriptWriter
      * 
      * @param name the name of the parameter
      * 
-     * @return the value of the parameter or <code>null</code> if none exists
+     * @return the value of the parameter or {@code null} if none exists
      */
     protected String getParameter(String name) {
 
@@ -279,12 +278,7 @@ public abstract class AbstractPostscriptWriter
         this.extension = extension;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.FontAware#setFontFactory(org.extex.font.CoreFontFactory)
-     */
-    public void setFontFactory(CoreFontFactory factory) {
+public void setFontFactory(CoreFontFactory factory) {
 
         this.fontFactory = factory;
 
@@ -311,27 +305,27 @@ public abstract class AbstractPostscriptWriter
      * Setter for a named parameter. Parameters are a general mechanism to
      * influence the behavior of the document writer. Any parameter not known by
      * the document writer has to be ignored.
+     *
      * <p>
      * This document writer uses the following parameters:
+     * </p>
+     *
      * <dl>
      * <dt>Creator</dt>
      * <dd>This is the identifier of the creating component. The default value
-     * is <tt>ExTeX-Backend-ps</tt>. </dd>
+     * is {@code ExTeX-Backend-ps}. </dd>
      * <dt>Title</dt>
      * <dd>This is the title of the document. The default is empty. </dd>
      * <dt>PageOrder</dt>
      * <dd>This parameter denotes the order in which pages are contained. The
-     * default is <tt>Ascend</tt>. It denotes ascending order of pages.
-     * Alternately the value <tt>Descend</tt> can e used to denote descending
-     * order. Any other value is silently interpreted to be the same as Ascend</dd>
+     * default is {@code Ascend}. It denotes ascending order of pages.
+     * Alternately the value {@code Descend} can e used to denote descending
+     * order. Any other value is silently interpreted to be the same as
+     * Ascend</dd>
      * </dl>
-     * </p>
-     * 
-     * @param name the name of the parameter
+     *
+     * @param name  the name of the parameter
      * @param value the value of the parameter
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(
-     *      java.lang.String, java.lang.String)
      */
     public void setParameter(String name, String value) {
 
@@ -418,7 +412,7 @@ public abstract class AbstractPostscriptWriter
 
     /**
      * Write a meta comment according to the Document Structuring Conventions
-     * containing the <tt>DocumentFonts</tt>.
+     * containing the {@code DocumentFonts}.
      * 
      * @param stream the target stream to write to
      * @param fontManager the font manager to ask for the fonts

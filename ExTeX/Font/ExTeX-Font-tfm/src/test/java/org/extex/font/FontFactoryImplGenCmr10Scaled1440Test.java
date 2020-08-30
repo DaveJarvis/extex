@@ -43,8 +43,7 @@ import org.junit.Test;
  * Test for the font factory (with font cmr10).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class FontFactoryImplGenCmr10Scaled1440Test
         extends
             AbstractFontFactoryTester {

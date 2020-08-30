@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains classes for dest spec.
+ * Contains classes for dest spec.
  */
 
 package org.extex.pdf.api.destination;

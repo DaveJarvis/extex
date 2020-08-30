@@ -47,7 +47,7 @@ import org.extex.ocpware.writer.OcpWriter;
  * </pre>
  * 
  * The <i>outfile</i> is optional and defaults to the input file with the
- * suffix <tt>.otp</tt> deleted and <tt>.ocp</tt> appended.
+ * suffix {@code .otp} deleted and {@code .ocp} appended.
  * 
  * <p>
  * The following options are recognized:
@@ -65,8 +65,7 @@ import org.extex.ocpware.writer.OcpWriter;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public final class OutOcp {
 
 

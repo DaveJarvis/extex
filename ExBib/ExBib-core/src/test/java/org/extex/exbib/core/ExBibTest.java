@@ -43,8 +43,7 @@ import org.junit.Test;
  * This is a test suite for {@link ExBib}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ExBibTest {
     
     private final static String DIR_TARGET = "build";
@@ -65,7 +64,7 @@ public class ExBibTest {
     }
 
     /**
-     * The field <tt>trace</tt> contains the tracing flag.
+     * The field {@code trace} contains the tracing flag.
      */
     private final boolean trace = false;
 
@@ -100,7 +99,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> Run plain.bst on xampl.bib </testcase>
+     *  Run plain.bst on xampl.bib 
      * 
      * @throws Exception in case of an error
      */
@@ -134,7 +133,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> Run plain on xampl and test the SEARCH flag. </testcase>
+     *  Run plain on xampl and test the SEARCH flag. 
      * 
      * @throws Exception in case of an error
      */
@@ -164,7 +163,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> Run plain on xampl and test the SEARCH flag. </testcase>
+     *  Run plain on xampl and test the SEARCH flag. 
      * 
      * @throws Exception in case of an error
      */
@@ -176,7 +175,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> No aux file leads to an error. </testcase>
+     *  No aux file leads to an error. 
      * 
      * @throws Exception in case of an error
      */
@@ -188,7 +187,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> An non-existent aux file leads to an error. </testcase>
+     *  An non-existent aux file leads to an error. 
      * 
      * @throws Exception in case of an error
      */
@@ -204,7 +203,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> A missing configuration leads to an error. </testcase>
+     *  A missing configuration leads to an error. 
      * 
      * @throws Exception in case of an error
      */
@@ -218,7 +217,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> Debug with an undefined value leads to an error. </testcase>
+     *  Debug with an undefined value leads to an error. 
      * 
      * @throws Exception in case of an error
      */
@@ -230,7 +229,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> Debug with "all" works. </testcase>
+     *  Debug with "all" works. 
      * 
      * @throws Exception in case of an error
      */
@@ -245,7 +244,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> Debug with "none" works. </testcase>
+     *  Debug with "none" works. 
      * 
      * @throws Exception in case of an error
      */
@@ -260,7 +259,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> Debug with "none" works. </testcase>
+     *  Debug with "none" works. 
      * 
      * @throws Exception in case of an error
      */
@@ -279,7 +278,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> An undefined bst file leads to an error. </testcase>
+     *  An undefined bst file leads to an error. 
      * 
      * @throws Exception in case of an error
      */
@@ -305,7 +304,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> If a file is not found then run() fails. </testcase>
+     *  If a file is not found then run() fails. 
      * 
      * @throws Exception in case of an error
      */
@@ -318,7 +317,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ... 
      * 
      * @throws Exception in case of an error
      */
@@ -347,7 +346,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> setFile() interacts with the properties. </testcase>
+     *  setFile() interacts with the properties. 
      * 
      * @throws Exception in case of an error
      */
@@ -361,7 +360,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ... 
      * 
      * @throws Exception in case of an error
      */
@@ -390,7 +389,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ... 
      * 
      * @throws Exception in case of an error
      */
@@ -416,7 +415,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ... 
      * 
      * @throws Exception in case of an error
      */
@@ -445,7 +444,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> setFile() interacts with the properties. </testcase>
+     *  setFile() interacts with the properties. 
      * 
      * @throws Exception in case of an error
      */
@@ -458,7 +457,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> setFile() interacts with the properties. </testcase>
+     *  setFile() interacts with the properties. 
      * 
      * @throws Exception in case of an error
      */
@@ -471,7 +470,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> setFile() interacts with the properties. </testcase>
+     *  setFile() interacts with the properties. 
      * 
      * @throws Exception in case of an error
      */
@@ -485,7 +484,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ... 
      * 
      * @throws Exception in case of an error
      */
@@ -497,7 +496,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> Run plain on xampl and test the TRACE flag. </testcase>
+     *  Run plain on xampl and test the TRACE flag. 
      * 
      * @throws Exception in case of an error
      */
@@ -527,7 +526,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> Validation test: missing all special macros. </testcase>
+     *  Validation test: missing all special macros. 
      * 
      * @throws Exception in case of an error
      */
@@ -549,7 +548,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> Validation test: missing \citation. </testcase>
+     *  Validation test: missing \citation. 
      * 
      * @throws Exception in case of an error
      */
@@ -572,7 +571,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> Validation test: missing \bibstyle. </testcase>
+     *  Validation test: missing \bibstyle. 
      * 
      * @throws Exception in case of an error
      */
@@ -595,7 +594,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> Validation test: missing \bibdata. </testcase>
+     *  Validation test: missing \bibdata. 
      * 
      * @throws Exception in case of an error
      */

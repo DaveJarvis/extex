@@ -30,15 +30,14 @@ import org.extex.util.xml.XMLStreamWriter;
  * Abstract class for all SID-values.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public abstract class T2TDOSID extends T2TopDICTOperator {
 
     /**
      * bytes
      */
-    private short[] bytes;
+    private final short[] bytes;
 
     /**
      * The string for the SID.
@@ -48,7 +47,7 @@ public abstract class T2TDOSID extends T2TopDICTOperator {
     /**
      * value
      */
-    private int value;
+    private final int value;
 
     /**
      * Create a new object.
@@ -66,12 +65,7 @@ public abstract class T2TDOSID extends T2TopDICTOperator {
         bytes = convertStackaddID(stack, id);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#getBytes()
-     */
-    @Override
+@Override
     public short[] getBytes() {
 
         return bytes;
@@ -87,22 +81,14 @@ public abstract class T2TDOSID extends T2TopDICTOperator {
         return value;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getValue()
-     */
-    @Override
+@Override
     public Object getValue() {
 
         return sidstring;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#init(org.extex.util.file.random.RandomAccessR,
-     *      org.extex.font.format.xtf.tables.OtfTableCFF, int,
+*      org.extex.font.format.xtf.tables.OtfTableCFF, int,
      *      org.extex.font.format.xtf.tables.cff.CffFont)
      */
     @Override
@@ -112,22 +98,14 @@ public abstract class T2TDOSID extends T2TopDICTOperator {
         sidstring = cff.getStringIndex(getSID());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return String.valueOf(value);
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

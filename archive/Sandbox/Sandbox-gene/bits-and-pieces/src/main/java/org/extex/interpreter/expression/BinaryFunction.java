@@ -25,8 +25,7 @@ import org.extex.core.exception.helping.HelpingException;
  * This interface describes a binary operation.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4733 $
- */
+*/
 interface BinaryFunction {
 
     /**

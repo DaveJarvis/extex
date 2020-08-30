@@ -44,8 +44,7 @@ import org.junit.Test;
  * This is a test suite for the UriFinder.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class UrlFinderTest {
 
     /**
@@ -54,49 +53,29 @@ public class UrlFinderTest {
     private class LoggingHandler extends Handler {
 
         /**
-         * The field <tt>buffer</tt> contains the collected messages.
+         * The field {@code buffer} contains the collected messages.
          */
         private final StringBuilder buffer = new StringBuilder();
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.util.logging.Handler#close()
-         */
-        @Override
+    @Override
         public void close() throws SecurityException {
 
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.util.logging.Handler#flush()
-         */
-        @Override
+    @Override
         public void flush() {
 
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.util.logging.Handler#publish(java.util.logging.LogRecord)
-         */
-        @Override
+    @Override
         public void publish(LogRecord record) {
 
             buffer.append(record.getMessage());
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return buffer.toString();
@@ -105,26 +84,18 @@ public class UrlFinderTest {
     }
 
     /**
-     * The constant <tt>CFG</tt> contains the configuration.
+     * The constant {@code CFG} contains the configuration.
      */
     private static final Configuration CFG = new Configuration() {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
-         */
-        @Override
+    @Override
         public Configuration findConfiguration(String key) {
 
             return this;
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         @Override
         public Configuration findConfiguration(String key, String attribute)
@@ -133,12 +104,7 @@ public class UrlFinderTest {
             return this;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getAttribute(java.lang.String)
-         */
-        @Override
+    @Override
         public String getAttribute(String name) {
 
             if ("default".equals(name)) {
@@ -148,12 +114,7 @@ public class UrlFinderTest {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String)
-         */
-        @Override
+    @Override
         public Configuration getConfiguration(String key)
                 throws ConfigurationException {
 
@@ -161,10 +122,7 @@ public class UrlFinderTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         @Override
         public Configuration getConfiguration(String key, String attribute)
@@ -173,33 +131,20 @@ public class UrlFinderTest {
             return this;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValue()
-         */
-        @Override
+    @Override
         public String getValue() throws ConfigurationException {
 
             return "";
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValue(java.lang.String)
-         */
-        @Override
+    @Override
         public String getValue(String key) throws ConfigurationException {
 
             return null;
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValueAsInteger(java.lang.String,
-         *      int)
+    *      int)
          */
         @Override
         public int getValueAsInteger(String key, int defaultValue)
@@ -209,10 +154,7 @@ public class UrlFinderTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValues(java.util.List,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         @Override
         public void getValues(List<String> list, String key) {
@@ -220,12 +162,7 @@ public class UrlFinderTest {
             // not needed
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
-         */
-        @Override
+    @Override
         public List<String> getValues(String key) {
 
             if ("extension".equals(key)) {
@@ -237,12 +174,7 @@ public class UrlFinderTest {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#iterator()
-         */
-        @Override
+    @Override
         public Iterator<Configuration> iterator() throws ConfigurationException {
 
             ArrayList<Configuration> list = new ArrayList<Configuration>();
@@ -250,12 +182,7 @@ public class UrlFinderTest {
             return list.iterator();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#iterator(java.lang.String)
-         */
-        @Override
+    @Override
         public Iterator<Configuration> iterator(String key)
                 throws ConfigurationException {
 
@@ -264,12 +191,7 @@ public class UrlFinderTest {
             return list.iterator();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(org.extex.framework.configuration.ConfigurationLoader)
-         */
-        @Override
+    @Override
         public void setConfigurationLoader(ConfigurationLoader loader) {
 
             // noop
@@ -278,8 +200,8 @@ public class UrlFinderTest {
     };
 
     /**
-     * <testcase> Test that a <code>null</code> configuration leads to an error.
-     * </testcase>
+     *  Test that a {@code null} configuration leads to an error.
+     *
      * 
      */
     @Test(expected = ConfigurationMissingException.class)
@@ -289,7 +211,7 @@ public class UrlFinderTest {
     }
 
     /**
-     * <testcase> Test an unknown protocol. </testcase>
+     *  Test an unknown protocol.
      * 
      */
     @Test
@@ -325,7 +247,7 @@ public class UrlFinderTest {
     }
 
     /**
-     * <testcase> Test that the google home page can be accessed. </testcase>
+     *  Test that the google home page can be accessed.
      * 
      * @throws IOException in case of an error
      */

@@ -29,8 +29,7 @@ package org.extex.scanner.type;
  * @param <ARG3> the type of the third argument
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5563 $
- */
+*/
 public interface CatcodeVisitor<RET, ARG1, ARG2, ARG3> {
 
     /**
@@ -138,10 +137,7 @@ public interface CatcodeVisitor<RET, ARG1, ARG2, ARG3> {
     RET visitLetter(ARG1 arg1, ARG2 arg2, ARG3 arg3) throws Exception;
 
     /**
-     * This visit method is invoked on a macro parameter token. In <logo>T<span
-     * style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> this normally is a #.
+     * This visit method is invoked on a macro parameter token. In TeX this normally is a #.
      * 
      * @param arg1 the first argument to pass
      * @param arg2 the second argument to pass
@@ -154,10 +150,7 @@ public interface CatcodeVisitor<RET, ARG1, ARG2, ARG3> {
     RET visitMacroParam(ARG1 arg1, ARG2 arg2, ARG3 arg3) throws Exception;
 
     /**
-     * This visit method is invoked on a math shift token. In <logo>T<span
-     * style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> this normally is a $.
+     * This visit method is invoked on a math shift token. In TeX this normally is a $.
      * 
      * @param arg1 the first argument to pass
      * @param arg2 the second argument to pass

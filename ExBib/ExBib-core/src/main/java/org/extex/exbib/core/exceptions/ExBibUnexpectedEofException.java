@@ -27,26 +27,25 @@ import org.extex.framework.i18n.Localizer;
  * or some String has been detected.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ExBibUnexpectedEofException extends ExBibSyntaxException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2008L;
 
     /**
-     * The field <tt>expected</tt> contains the expected characters or
-     * <code>null</code> for none.
+     * The field {@code expected} contains the expected characters or
+     * {@code null} for none.
      */
     private final String expected;
 
     /**
      * Create a new object.
      * 
-     * @param found the found entity; it can be <code>null</code> for EOF
+     * @param found the found entity; it can be {@code null} for EOF
      * @param expected the expected characters
      * @param locator the locator
      */
@@ -57,12 +56,7 @@ public class ExBibUnexpectedEofException extends ExBibSyntaxException {
         this.expected = expected;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.exceptions.ExBibException#getLocalizedMessage()
-     */
-    @Override
+@Override
     public String getLocalizedMessage() {
 
         String found = super.getMessage();

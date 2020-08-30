@@ -27,23 +27,22 @@ import java.io.Serializable;
  * are provides as constants defined in this class.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class OmegaMode implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the id for serialization.
+     * The field {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
     /**
-     * The constant <tt>ONEBYTE</tt> contains the mode for a single byte stream.
+     * The constant {@code ONEBYTE} contains the mode for a single byte stream.
      * The encoding is more or less a variant of ASCII.
      */
     public static final OmegaMode ONEBYTE = new OmegaMode() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the id for serialization.
+         * The field {@code serialVersionUID} contains the id for serialization.
          */
         protected static final long serialVersionUID = 2006L;
 
@@ -75,13 +74,13 @@ public class OmegaMode implements Serializable {
     };
 
     /**
-     * The constant <tt>EBCDIC</tt> contains the mode for a single byte stream.
+     * The constant {@code EBCDIC} contains the mode for a single byte stream.
      * The encoding is more or less a variant of EBCDIC.
      */
     public static final OmegaMode EBCDIC = new OmegaMode() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the id for serialization.
+         * The field {@code serialVersionUID} contains the id for serialization.
          */
         protected static final long serialVersionUID = 2006L;
 
@@ -113,14 +112,14 @@ public class OmegaMode implements Serializable {
     };
 
     /**
-     * The constant <tt>TWOBYTE</tt> contains the mode for a double byte stream.
+     * The constant {@code TWOBYTE} contains the mode for a double byte stream.
      * The encoding is more or less a variant of Unicode with the higher
      * endian byte first.
      */
     public static final OmegaMode TWOBYTE = new OmegaMode() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the id for serialization.
+         * The field {@code serialVersionUID} contains the id for serialization.
          */
         protected static final long serialVersionUID = 2006L;
 
@@ -152,14 +151,14 @@ public class OmegaMode implements Serializable {
     };
 
     /**
-     * The constant <tt>TWOBYTE_LE</tt> contains the mode for a double byte
+     * The constant {@code TWOBYTE_LE} contains the mode for a double byte
      * stream. The encoding is more or less a variant of Unicode with the lower
      * endian byte first.
      */
     public static final OmegaMode TWOBYTE_LE = new OmegaMode() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the id for serialization.
+         * The field {@code serialVersionUID} contains the id for serialization.
          */
         protected static final long serialVersionUID = 2006L;
 

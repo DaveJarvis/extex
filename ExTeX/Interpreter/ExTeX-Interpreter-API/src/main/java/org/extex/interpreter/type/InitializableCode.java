@@ -30,8 +30,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * This is a life-cycle feature.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface InitializableCode {
 
     /**

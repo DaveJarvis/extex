@@ -24,8 +24,7 @@ package org.extex.interpreter.observer.start;
  * start event.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface StartObservable {
 
     /**

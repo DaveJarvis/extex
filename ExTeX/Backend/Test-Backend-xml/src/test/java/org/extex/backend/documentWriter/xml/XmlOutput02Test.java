@@ -31,8 +31,7 @@ import org.junit.Test;
  * Test for the xml backend (ttf).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class XmlOutput02Test extends ExTeXLauncher {
 
     /**

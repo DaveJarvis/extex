@@ -38,66 +38,65 @@ import org.extex.unit.tex.macro.util.MacroCode;
 import org.extex.unit.tex.macro.util.MacroPattern;
 
 /**
- * This class provides an implementation for the primitive <code>\read</code>.
+ * This class provides an implementation for the primitive {@code \read}.
  * 
- * <doc name="read">
- * <h3>The Primitive <tt>\read</tt></h3>
+ * <p>The Primitive {@code \read}</p>
  * <p>
- * The primitive <tt>\read</tt> read a line of text from the given input
+ * The primitive {@code \read} read a line of text from the given input
  * stream into a control sequence. The input stream should be opened with
- * {@linkplain org.extex.unit.tex.file.Openin <tt>\openin</tt>}. If a stream
+ * {@linkplain org.extex.unit.tex.file.Openin {@code \openin}}. If a stream
  * name is used which has not been opened or has already been closed then the
  * default input stream is used instead.
  * </p>
  * <p>
  * The primitive can be prefixed with
- * {@linkplain org.extex.unit.tex.prefix.Global <tt>\global</tt>}. In this case
+ * {@linkplain org.extex.unit.tex.prefix.Global {@code \global}}. In this case
  * the assignment to the control sequence is global instead of the default of
  * assigning it locally to the current group.
  * </p>
  * <p>
  * The primitive implements an assignment. Thus the definition of
- * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> are honored.
+ * {@code \afterassignment} and {@code \globaldefs} are honored.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;read&rang;
- *      &rarr; &lang;optional prefix&rang;<tt>\read</tt> {@linkplain
+ *      &rarr; &lang;optional prefix&rang;{@code \read} {@linkplain
  *        org.extex.unit.base.file.AbstractFileCode#scanInFileKey(Context,TokenSource,Typesetter)
- *        &lang;infile&nbsp;name&rang;} <tt>to</tt> {@linkplain
+ *        &lang;infile&nbsp;name&rang;} {@code to} {@linkplain
  *        org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *        &lang;control sequence&rang;}
  *
  *    &lang;optional prefix&rang;
  *      &rarr;
- *       |  <tt>\global</tt> &lang;optional prefix&rang;  </pre>
+ *       |  {@code \global} &lang;optional prefix&rang;  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *   \openin3= abc.def
  *   \read3 to \line
  *   \closein3 </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4441 $
- */
+*/
 public class Read extends AbstractAssignment implements LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>logger</tt> contains the target channel for the message.
+     * The field {@code logger} contains the target channel for the message.
      */
     private transient Logger logger = null;
 
@@ -112,10 +111,7 @@ public class Read extends AbstractAssignment implements LogEnabled {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

@@ -25,8 +25,7 @@ import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
  * This is the test class for the TeX paragraph builder.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TeXParagraphBuilderTest extends AbstractParagraphBuilderTester {
 
     /**

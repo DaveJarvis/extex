@@ -33,40 +33,39 @@ import org.extex.unit.tex.macro.Csname;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\ifcsname</code>.
+ * {@code \ifcsname}.
  * 
- * <doc name="ifcsname">
- * <h3>The Primitive <tt>\ifcsname</tt></h3>
+ * <p>The Primitive {@code \ifcsname}</p>
  * <p>
- * The primitive <tt>\ifcsname</tt> checks if a certain control sequence is
+ * The primitive {@code \ifcsname} checks if a certain control sequence is
  * defined. For this purpose it collects tokens in the same way as
- * <tt>\csname</tt> does until <tt>\endcsname</tt> is encountered. It does
+ * {@code \csname} does until {@code \endcsname} is encountered. It does
  * not define the control sequence if it is not defined.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;ifcsname&rang;
- *      &rarr; <tt>\ifcsname</tt> ... <tt>\endcsname</tt> &lang;true text&rang; <tt>\fi</tt>
- *       |  <tt>\ifcsname</tt> ... <tt>\endcsname</tt> &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt>  </pre>
+ *      &rarr; {@code \ifcsname} ... {@code \endcsname} &lang;true text&rang; {@code \fi}
+ *       |  {@code \ifcsname} ... {@code \endcsname} &lang;true text&rang; {@code \else} &lang;false text&rang; {@code \fi}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *     \ifcsname def\endcsname ok\fi  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Ifcsname extends AbstractIf {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -82,10 +81,7 @@ public class Ifcsname extends AbstractIf {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.base.conditional.AbstractIf#conditional(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

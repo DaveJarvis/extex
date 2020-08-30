@@ -32,24 +32,21 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * {@link BblWriter}.
  * <p>
  * The factory is controlled by a configuration. This configuration contains an
- * attribute <code>class</code>. This attribute holds the name of the class to
+ * attribute {@code class}. This attribute holds the name of the class to
  * be instantiated. Consider the following example of a configuration file:
+ * </p>
  * 
  * <pre>
  *   &lt;BblWriter
  *       class="org.extex.exbib.core.io.bblio.BblWriterImpl"/&gt;
  * </pre>
  * 
- * </p>
- * 
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BblWriterFactory extends AbstractFactory<BblWriter> {
 
     /**
-     * The field <tt>writerFactory</tt> contains the writer factory.
+     * The field {@code writerFactory} contains the writer factory.
      */
     private final WriterFactory writerFactory;
 

@@ -29,27 +29,26 @@ import org.extex.typesetter.type.node.WhatsItNode;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4791 $
- */
+*/
 public class PdfStartLink extends WhatsItNode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>action</tt> contains the action specification.
+     * The field {@code action} contains the action specification.
      */
     private ActionSpec action;
 
     /**
-     * The field <tt>attr</tt> contains the attribute string.
+     * The field {@code attr} contains the attribute string.
      */
     private String attr;
 
     /**
-     * The field <tt>rule</tt> contains the rule.
+     * The field {@code rule} contains the rule.
      */
     private RuleNode rule;
 
@@ -57,7 +56,7 @@ public class PdfStartLink extends WhatsItNode {
      * Creates a new object.
      * 
      * @param rule the rule
-     * @param attr the attribute string. This can be <code>null</code>.
+     * @param attr the attribute string. This can be {@code null}.
      * @param action the action specification
      */
     public PdfStartLink(RuleNode rule, String attr, ActionSpec action) {

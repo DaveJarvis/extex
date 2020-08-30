@@ -16,11 +16,11 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the backends of ??TeX which are responsible for writing the constructed pages to
+ *Contains backends of εχTeX which are responsible for writing the constructed pages to
  * an appropriate file. For instance a PDF writer and a PostScript writer are
  * located in a sub-package.
  *
- * <h3>Writing a DocumentWriter</h3>
+ * <p>Writing a DocumentWriter</p>
  * <p>
  *  To write a document writer you start to create a class which
  *  implements the interface {@link
@@ -35,7 +35,8 @@
  *  MultipleDocumentStream}.
  * </p>
  *
- * <h4>Output Streams</h4>
+ * <p>Output Streams</p>
+
  * <p>
  *  The decoupling of the actual output stream and the writing of the
  *  document is necessary to relief the document writer from the task
@@ -67,7 +68,8 @@
  *  a little bit easier to use.
  * </p>
  *
- * <h4>Configuration</h4>
+ * <p>Configuration</p>
+
  * <p>
  *  The document writer can implement the interface {@link
  *  org.extex.framework.configuration.Configurable Configurable}.
@@ -81,7 +83,8 @@
  *  the document writer at startup.
  * </p>
  *
- * <h4>Logging</h4>
+ * <p>Logging</p>
+
  * <p>
  *  The document writer can implement the interface {@link
  *  org.extex.framework.logger.LogEnabled LogEnabled}. In this case
@@ -90,14 +93,16 @@
  *  file.
  * </p>
  *
- * <h4>Color</h4>
+ * <p>Color</p>
+
  * <p>
  *  The document writer can implement the interface {@link
  *  org.extex.color.ColorAware ColorAware}. In this case a color
  *  converter is passed to the document writer.
  * </p>
  *
- * <h4>Resource Access</h4>
+ * <p>Resource Access</p>
+
  * <p>
  *  The document writer can implement the interface {@link
  *  org.extex.resource.ResourceAware ResourceAware}. In this

@@ -29,8 +29,7 @@ import java.io.Serializable;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TfmFontType implements Serializable {
 
     /**
@@ -39,7 +38,7 @@ public class TfmFontType implements Serializable {
     private static final class Type implements Serializable {
 
         /**
-         * The field <tt>serialVersionUID</tt> ...
+         * The field {@code serialVersionUID} ...
          */
         private static final long serialVersionUID = 1L;
 
@@ -65,7 +64,7 @@ public class TfmFontType implements Serializable {
     public static final Type OTHER = new Type();
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 1L;
 
@@ -82,7 +81,7 @@ public class TfmFontType implements Serializable {
     /**
      * the type.
      */
-    private Type type;
+    private final Type type;
 
     /**
      * Create a new object.

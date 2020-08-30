@@ -41,12 +41,11 @@ import org.junit.Test;
  * This is a test suite for {@link BstPrinterImpl}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BstPrinterImplTest {
 
     /**
-     * The field <tt>RESULT_1</tt> contains the result for test case 1.
+     * The field {@code RESULT_1} contains the result for test case 1.
      */
     private static final String RESULT_1 =
             "ENTRY {\n"

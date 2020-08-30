@@ -30,8 +30,7 @@ import org.junit.Test;
  * Test suite for the exception.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ErrorLimitExceptionTest {
 
     /**

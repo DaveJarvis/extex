@@ -29,31 +29,29 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This is a interface to mark those classes which are able to divide something.
  *
- * <doc type="howto" name="divide">
- * <h3>Extending <tt>\divide</tt></h3>
+ *
+ * <p>Extending {@code \divide}</p>
  * <p>
- *  The primitive <tt>\divide</tt> is designed to be expanded. It is fairly
+ *  The primitive {@code \divide} is designed to be expanded. It is fairly
  *  simple to write a dividable primitive. The associated code simply has to
- *  implement the interface <tt>Divideable</tt>. Whenever <tt>\divide</tt>
+ *  implement the interface {@code Divideable}. Whenever {@code \divide}
  *  is encountered immediately followed by a token which has the proper code
- *  associated, the method <tt>divide</tt> is invoked. It is up to this
+ *  associated, the method {@code divide} is invoked. It is up to this
  *  method to gather further arguments and perform the division.
  * </p>
  * <p>
  *  With this interface the division is in fact tied to the implementing
- *  code and not to the primitive <tt>\divide</tt>. Each primitive can be
- *  made aware for division without touching the code for <tt>\divide</tt>.
+ *  code and not to the primitive {@code \divide}. Each primitive can be
+ *  made aware for division without touching the code for {@code \divide}.
  * </p>
- * </doc>
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4399 $
- */
+*/
 public interface Divideable {
 
     /**
-     * This method is called when the macro <tt>\divide</tt> has been seen.
+     * This method is called when the macro {@code \divide} has been seen.
      * It performs the remaining tasks for the expansion.
      *
      * @param prefix the prefix for the command

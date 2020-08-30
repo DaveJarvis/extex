@@ -23,11 +23,10 @@ import org.extex.test.NoFlagsButImmediateAndProtectedPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\pdfthread</tt>.
+ * This is a test suite for the primitive {@code \pdfthread}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class PdfthreadTest
         extends
             NoFlagsButImmediateAndProtectedPrimitiveTester {
@@ -40,7 +39,7 @@ public class PdfthreadTest
     }
 
     /**
-     * <testcase primitive="\pdfthread"> Test case checking that ... </testcase>
+     * <testcase primitive="\pdfthread"> Test case checking that ...
      * 
      * @throws Exception in case of an error
      */

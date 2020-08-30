@@ -44,20 +44,19 @@ import org.extex.unit.base.file.AbstractFileCode;
 import org.extex.unit.tex.file.nodes.WhatsItWriteNode;
 
 /**
- * This class provides an implementation for the primitive <code>\write</code>.
+ * This class provides an implementation for the primitive {@code \write}.
  * 
- * <doc name="write">
- * <h3>The Primitive <tt>\write</tt></h3>
+ * <p>The Primitive {@code \write}</p>
  * <p>
- * The primitive <tt>\write</tt> can be used to write some text to an output
+ * The primitive {@code \write} can be used to write some text to an output
  * stream. There are two modes of operation: Either the writing is delayed until
  * the page is shipped or the writing is performed immediately. The default mode
- * of operation is the delayed writing. The prefix <tt>\immediate</tt> can be
+ * of operation is the delayed writing. The prefix {@code \immediate} can be
  * used to switch to the immediate writing.
  * </p>
  * <p>
- * The first argument to <tt>\write</tt> is the stream. It is usually opened
- * with <tt>\openin</tt>. If the stream has not been opened this way or has
+ * The first argument to {@code \write} is the stream. It is usually opened
+ * with {@code \openin}. If the stream has not been opened this way or has
  * been closed in the mean time then the result is written to the console and
  * the log file.
  * </p>
@@ -68,54 +67,54 @@ import org.extex.unit.tex.file.nodes.WhatsItWriteNode;
  * case of delayed writing.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;write&rang;
- *      &rarr; &lang;modifier&rang; <tt>\write</tt> {@linkplain
+ *      &rarr; &lang;modifier&rang; {@code \write} {@linkplain
  *        org.extex.unit.base.file.AbstractFileCode#scanOutFileKey(Context,TokenSource,Typesetter)
  *        &lang;outfile&nbsp;name&rang;} {@link TokenSource#getToken(Context)
  *        &lang;replacement&nbsp;text&rang;}
  *
  *    &lang;modifier&rang;
  *      &rarr;
- *       |  <tt>\immediate</tt> &lang;modifier&rang;  </pre>
+ *       |  {@code \immediate} &lang;modifier&rang;  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  * \immediate\openout3= abc.def
  * \write3{Hi there!}
  * \closeout3 </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4441 $
- */
+*/
 public class Write extends AbstractCode implements TokensWriter, LogEnabled {
 
     /**
-     * The constant <tt>LOG_FILE</tt> contains the key for the log file.
+     * The constant {@code LOG_FILE} contains the key for the log file.
      */
     private static final String LOG_FILE = "-1";
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>USER_AND_LOG</tt> contains the key for the user trace and
+     * The field {@code USER_AND_LOG} contains the key for the user trace and
      * log file.
      */
     private static final String USER_AND_LOG = "17";
 
     /**
-     * The field <tt>logger</tt> contains the target channel for the message.
+     * The field {@code logger} contains the target channel for the message.
      */
     private transient Logger logger = null;
 
@@ -143,10 +142,7 @@ public class Write extends AbstractCode implements TokensWriter, LogEnabled {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -192,10 +188,7 @@ public class Write extends AbstractCode implements TokensWriter, LogEnabled {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.TokensWriter#write(java.lang.String,
-     *      org.extex.scanner.type.tokens.Tokens,
+*      org.extex.scanner.type.tokens.Tokens,
      *      org.extex.interpreter.context.Context)
      */
     public OutFile write(String key, Tokens toks, Context context)

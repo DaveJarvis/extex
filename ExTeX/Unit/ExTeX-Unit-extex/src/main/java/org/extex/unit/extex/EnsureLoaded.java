@@ -43,26 +43,28 @@ import java.util.logging.Logger;
 
 /**
  * This primitive initiates the loading of native code and implements the
- * primitive <tt>\ensureloaded</tt>.
+ * primitive {@code \ensureloaded}.
  * 
- * <doc name="ensureloaded"> <h3>The Primitive <tt>\ensureloaded</tt></h3>
+ * <p>The Primitive {@code \ensureloaded}</p>
  * <p>
- * The primitive <tt>\ensureloaded</tt> dynamically requests that a unit of
- * ??TeX is loaded.
+ * The primitive {@code \ensureloaded} dynamically requests that a unit of
+ * εχTeX is loaded.
  * </p>
  * <p>
  * A unit consists of primitives and some initializing actions.
  * </p>
  * 
- * <h4>Syntax</h4> The general form of this primitive is
+ * <p>Syntax</p>
+ The general form of this primitive is
  * 
  * <pre class="syntax">
  *   &lang;ensureloaded&rang;
- *       &rarr; <tt>\ensureloaded</tt> {@linkplain
+ *       &rarr; {@code \ensureloaded} {@linkplain
  *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *        &lang;tokens&rang;} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \ensureloaded{etex}  </pre>
@@ -70,12 +72,10 @@ import java.util.logging.Logger;
  * <pre class="TeXSample">
  *    \ensureloaded\toks0  </pre>
  * 
- * </doc>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class EnsureLoaded extends AbstractCode
         implements
             OutputStreamConsumer,
@@ -83,28 +83,28 @@ public class EnsureLoaded extends AbstractCode
             ResourceAware {
 
     /**
-     * The constant <tt>CONFIG_UNIT</tt> contains the prefix for the path of the
+     * The constant {@code CONFIG_UNIT} contains the prefix for the path of the
      * configuration.
      */
     private static final String CONFIG_UNIT = "config/unit/";
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>logger</tt> contains the logger to use.
+     * The field {@code logger} contains the logger to use.
      */
     private transient Logger logger = null;
 
     /**
-     * The field <tt>outFactory</tt> contains the output factory.
+     * The field {@code outFactory} contains the output factory.
      */
     private transient OutputStreamFactory outFactory;
 
     /**
-     * The field <tt>finder</tt> contains the resource finder.
+     * The field {@code finder} contains the resource finder.
      */
     private transient ResourceFinder finder;
 
@@ -132,10 +132,7 @@ public class EnsureLoaded extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -172,12 +169,7 @@ public class EnsureLoaded extends AbstractCode
         this.outFactory = factory;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
-     */
-    @Override
+@Override
     public void setResourceFinder(ResourceFinder resourceFinder) {
 
         this.finder = resourceFinder;

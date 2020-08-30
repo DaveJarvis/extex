@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\gluetomu</tt>.
+ * This is a test suite for the primitive {@code \gluetomu}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class GluetomuTest extends NonExecuteTester {
 
     /**
@@ -49,9 +48,8 @@ public class GluetomuTest extends NonExecuteTester {
     }
 
     /**
-     * <testcase> Test case showing that a constant in points translates
-     * identical to mu. </testcase>
-     * 
+     * Test case showing that a constant in points translates identical to mu
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -65,8 +63,8 @@ public class GluetomuTest extends NonExecuteTester {
     }
 
     /**
-     * <testcase> Test case showing that \gluetomu can be applied to \show.
-     * </testcase>
+     *  Test case showing that \gluetomu can be applied to \show.
+     *
      * 
      * @throws Exception in case of an error
      */

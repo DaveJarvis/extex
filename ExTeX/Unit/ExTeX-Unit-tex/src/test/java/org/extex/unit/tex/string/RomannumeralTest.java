@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\romannumeral</tt>.
+ * This is a test suite for the primitive {@code \romannumeral}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -49,8 +48,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on a count with the value 2 gives <tt>ii</tt>.
-     * </testcase>
+     * {@code \romannumeral} on a count with the value 2 gives {@code ii}.
+     *
      * 
      * @throws Exception in case of an error
      * 
@@ -63,7 +62,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on -1 gives the empty token list. </testcase>
+     * {@code \romannumeral} on -1 gives the empty token list.
      * 
      * @throws Exception in case of an error
      */
@@ -75,7 +74,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 0 gives the empty token list. </testcase>
+     * {@code \romannumeral} on 0 gives the empty token list.
      * 
      * @throws Exception in case of an error
      */
@@ -87,7 +86,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 1 gives <tt>i</tt>. </testcase>
+     * {@code \romannumeral} on 1 gives {@code i}.
      * 
      * @throws Exception in case of an error
      */
@@ -99,7 +98,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 2 gives <tt>ii</tt>. </testcase>
+     * {@code \romannumeral} on 2 gives {@code ii}.
      * 
      * @throws Exception in case of an error
      */
@@ -111,7 +110,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 3 gives <tt>iii</tt>. </testcase>
+     * {@code \romannumeral} on 3 gives {@code iii}.
      * 
      * @throws Exception in case of an error
      */
@@ -123,7 +122,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 4 gives <tt>iv</tt>. </testcase>
+     * {@code \romannumeral} on 4 gives {@code iv}.
      * 
      * @throws Exception in case of an error
      */
@@ -135,7 +134,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 5 gives <tt>v</tt>. </testcase>
+     * {@code \romannumeral} on 5 gives {@code v}.
      * 
      * @throws Exception in case of an error
      */
@@ -147,7 +146,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 6 gives <tt>vi</tt>. </testcase>
+     * {@code \romannumeral} on 6 gives {@code vi}.
      * 
      * @throws Exception in case of an error
      */
@@ -159,7 +158,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 7 gives <tt>vii</tt>. </testcase>
+     * {@code \romannumeral} on 7 gives {@code vii}.
      * 
      * @throws Exception in case of an error
      */
@@ -171,7 +170,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 8 gives <tt>viii</tt>. </testcase>
+     * {@code \romannumeral} on 8 gives {@code viii}.
      * 
      * @throws Exception in case of an error
      */
@@ -183,7 +182,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 9 gives <tt>ix</tt>. </testcase>
+     * {@code \romannumeral} on 9 gives {@code ix}.
      * 
      * @throws Exception in case of an error
      */
@@ -195,7 +194,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 10 gives <tt>x</tt>. </testcase>
+     * {@code \romannumeral} on 10 gives {@code x}.
      * 
      * @throws Exception in case of an error
      */
@@ -207,7 +206,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 11 gives <tt>xi</tt>. </testcase>
+     * {@code \romannumeral} on 11 gives {@code xi}.
      * 
      * @throws Exception in case of an error
      */
@@ -219,7 +218,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 12 gives <tt>xii</tt>. </testcase>
+     * {@code \romannumeral} on 12 gives {@code xii}.
      * 
      * @throws Exception in case of an error
      */
@@ -231,7 +230,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 13 gives <tt>xiii</tt>. </testcase>
+     * {@code \romannumeral} on 13 gives {@code xiii}.
      * 
      * @throws Exception in case of an error
      */
@@ -243,7 +242,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 14 gives <tt>xiv</tt>. </testcase>
+     * {@code \romannumeral} on 14 gives {@code xiv}.
      * 
      * @throws Exception in case of an error
      */
@@ -255,7 +254,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 15 gives <tt>xv</tt>. </testcase>
+     * {@code \romannumeral} on 15 gives {@code xv}.
      * 
      * @throws Exception in case of an error
      */
@@ -267,7 +266,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 49 gives <tt>xlix</tt>. </testcase>
+     * {@code \romannumeral} on 49 gives {@code xlix}.
      * 
      * @throws Exception in case of an error
      */
@@ -279,7 +278,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 50 gives <tt>l</tt>. </testcase>
+     * {@code \romannumeral} on 50 gives {@code l}.
      * 
      * @throws Exception in case of an error
      */
@@ -291,7 +290,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 51 gives <tt>li</tt>. </testcase>
+     * {@code \romannumeral} on 51 gives {@code li}.
      * 
      * @throws Exception in case of an error
      */
@@ -303,7 +302,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 99 gives <tt>xcix</tt>. </testcase>
+     * {@code \romannumeral} on 99 gives {@code xcix}.
      * 
      * @throws Exception in case of an error
      */
@@ -315,7 +314,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 100 gives <tt>c</tt>. </testcase>
+     * {@code \romannumeral} on 100 gives {@code c}.
      * 
      * @throws Exception in case of an error
      */
@@ -327,7 +326,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 101 gives <tt>ci</tt>. </testcase>
+     * {@code \romannumeral} on 101 gives {@code ci}.
      * 
      * @throws Exception in case of an error
      */
@@ -339,7 +338,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 499 gives <tt>cdxcix</tt>. </testcase>
+     * {@code \romannumeral} on 499 gives {@code cdxcix}.
      * 
      * @throws Exception in case of an error
      */
@@ -351,7 +350,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 500 gives <tt>d</tt>. </testcase>
+     * {@code \romannumeral} on 500 gives {@code d}.
      * 
      * @throws Exception in case of an error
      */
@@ -363,7 +362,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 501 gives <tt>di</tt>. </testcase>
+     * {@code \romannumeral} on 501 gives {@code di}.
      * 
      * @throws Exception in case of an error
      */
@@ -375,7 +374,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 999 gives <tt>cmxcix</tt>. </testcase>
+     * {@code \romannumeral} on 999 gives {@code cmxcix}.
      * 
      * @throws Exception in case of an error
      */
@@ -387,7 +386,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 1000 gives <tt>m</tt>. </testcase>
+     * {@code \romannumeral} on 1000 gives {@code m}.
      * 
      * @throws Exception in case of an error
      */
@@ -399,7 +398,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 1001 gives <tt>mi</tt>. </testcase>
+     * {@code \romannumeral} on 1001 gives {@code mi}.
      * 
      * @throws Exception in case of an error
      */
@@ -411,7 +410,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 1999 gives <tt>mcmxcix</tt>. </testcase>
+     * {@code \romannumeral} on 1999 gives {@code mcmxcix}.
      * 
      * @throws Exception in case of an error
      */
@@ -423,7 +422,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 2000 gives <tt>mm</tt>. </testcase>
+     * {@code \romannumeral} on 2000 gives {@code mm}.
      * 
      * @throws Exception in case of an error
      */
@@ -435,7 +434,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 3001 gives <tt>mmmi</tt>. </testcase>
+     * {@code \romannumeral} on 3001 gives {@code mmmi}.
      * 
      * @throws Exception in case of an error
      */
@@ -447,7 +446,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 4001 gives <tt>mmmmi</tt>. </testcase>
+     * {@code \romannumeral} on 4001 gives {@code mmmmi}.
      * 
      * @throws Exception in case of an error
      */
@@ -459,7 +458,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 5001 gives <tt>mmmmmi</tt>. </testcase>
+     * {@code \romannumeral} on 5001 gives {@code mmmmmi}.
      * 
      * @throws Exception in case of an error
      */
@@ -471,7 +470,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\romannumeral"> Test case checking that
-     * <tt>\romannumeral</tt> on 6001 gives <tt>mmmmmmi</tt>. </testcase>
+     * {@code \romannumeral} on 6001 gives {@code mmmmmmi}.
      * 
      * @throws Exception in case of an error
      */

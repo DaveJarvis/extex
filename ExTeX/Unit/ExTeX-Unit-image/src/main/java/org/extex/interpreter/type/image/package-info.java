@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains classes and implementations dealing with images.
+ * Contains classes and implementations dealing with images.
  */
 
 package org.extex.interpreter.type.image;

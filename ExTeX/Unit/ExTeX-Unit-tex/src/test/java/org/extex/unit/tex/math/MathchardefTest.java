@@ -23,11 +23,10 @@ import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\mathchardef</tt>.
+ * This is a test suite for the primitive {@code \mathchardef}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
 
@@ -38,8 +37,8 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathchardef"> Test case checking that a character
-     * defined with <tt>\mathchardef</tt> is applicable in math mode only.
-     * </testcase>
+     * defined with {@code \mathchardef} is applicable in math mode only.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -56,7 +55,7 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathchardef"> Test case checking that a math char
-     * of -1 is not accepted. </testcase>
+     * of -1 is not accepted. 
      * 
      * @throws Exception in case of an error
      */
@@ -72,7 +71,7 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathchardef"> Test case checking that a math char
-     * of 32769 is not accepted. </testcase>
+     * of 32769 is not accepted. 
      * 
      * @throws Exception in case of an error
      */
@@ -88,7 +87,7 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathchardef"> Test case checking that a correct
-     * value is accepted. </testcase>
+     * value is accepted. 
      * 
      * @throws Exception in case of an error
      */
@@ -106,7 +105,7 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathchardef"> Test case checking that
-     * <tt>\mathchardef</tt> can be used to define an alias. </testcase>
+     * {@code \mathchardef} can be used to define an alias. 
      * 
      * @throws Exception in case of an error
      */
@@ -124,8 +123,8 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathchardef"> Test case checking that
-     * <tt>\mathchardef</tt> defines a control sequence which is convertible
-     * into a count register. </testcase>
+     * {@code \mathchardef} defines a control sequence which is convertible
+     * into a count register. 
      * 
      * @throws Exception in case of an error
      */
@@ -142,7 +141,7 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathchardef"> Test case checking that
-     * <tt>\mathchardef</tt> can define an active character. </testcase>
+     * {@code \mathchardef} can define an active character. 
      * 
      * @throws Exception in case of an error
      */
@@ -159,8 +158,8 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathchardef"> Test case checking that
-     * <tt>\mathchardef</tt> defines a control sequence which is applicable to
-     * \the. </testcase>
+     * {@code \mathchardef} defines a control sequence which is applicable to
+     * \the. 
      * 
      * @throws Exception in case of an error
      */
@@ -177,7 +176,7 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathchardef"> Test case checking that
-     * <tt>\mathchardef</tt> respects groups. </testcase>
+     * {@code \mathchardef} respects groups. 
      * 
      * @throws Exception in case of an error
      */
@@ -194,7 +193,7 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathchardef"> Test case checking that
-     * <tt>\mathchardef</tt> respects groups. </testcase>
+     * {@code \mathchardef} respects groups. 
      * 
      * @throws Exception in case of an error
      */
@@ -211,8 +210,8 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathchardef"> Test case checking that
-     * <tt>\mathchardef</tt> accepts an extended syntax with a symbolic name.
-     * </testcase>
+     * {@code \mathchardef} accepts an extended syntax with a symbolic name.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -229,8 +228,8 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathchardef"> Test case checking that
-     * <tt>\mathchardef</tt> accepts an extended syntax with a numeric class.
-     * </testcase>
+     * {@code \mathchardef} accepts an extended syntax with a numeric class.
+     * 
      * 
      * @throws Exception in case of an error
      */

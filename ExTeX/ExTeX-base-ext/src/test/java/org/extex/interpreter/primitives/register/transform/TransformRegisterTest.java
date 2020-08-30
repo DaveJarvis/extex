@@ -30,8 +30,7 @@ import org.junit.Test;
  * </p>
  * 
  * @author <a href="mailto:m.g.sn@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TransformRegisterTest extends ExTeXLauncher {
 
 
@@ -43,11 +42,11 @@ public class TransformRegisterTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\transformdef">
      * 
-     * Test case checking that <tt>\transformdef</tt> creates a transform
+     * Test case checking that {@code \transformdef} creates a transform
      * assignable control sequence which is equivalent to the
-     * <tt>\transform</tt>.
+     * {@code \transform}.
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -65,9 +64,9 @@ public class TransformRegisterTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\transformdef">
      * 
-     * Test case checking that <tt>\transformdef</tt> respects a group.
+     * Test case checking that {@code \transformdef} respects a group.
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -83,9 +82,9 @@ public class TransformRegisterTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\transformdef">
      * 
-     * Test case checking that <tt>\transformdef</tt> respects a group.
+     * Test case checking that {@code \transformdef} respects a group.
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -102,9 +101,9 @@ public class TransformRegisterTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\transformdef">
      * 
-     * Test case checking that <tt>\transformdef</tt> respects a group.
+     * Test case checking that {@code \transformdef} respects a group.
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -121,10 +120,10 @@ public class TransformRegisterTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\transformdef">
      * 
-     * Test case checking that <tt>\transformdef</tt> respects
-     * <tt>\globaldefs</tt>.
+     * Test case checking that {@code \transformdef} respects
+     * {@code \globaldefs}.
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */

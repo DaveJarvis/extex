@@ -32,11 +32,10 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
- * This class implements the analyzer for the <code>*</code> built-in.
+ * This class implements the analyzer for the {@code *} built-in.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ConcatCompiler implements Compiler {
 
     /**
@@ -56,12 +55,7 @@ public class ConcatCompiler implements Compiler {
             super(ReturnType.STRING, "++", a, b);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GenericCode#optimize()
-         */
-        @Override
+    @Override
         public GCode optimize() {
 
             GCode a = getArg(0).optimize();
@@ -81,10 +75,7 @@ public class ConcatCompiler implements Compiler {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         @Override
         public void print(CodeWriter writer, String prefix) throws IOException {
@@ -96,10 +87,7 @@ public class ConcatCompiler implements Compiler {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryReference,
-     *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
+*      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */

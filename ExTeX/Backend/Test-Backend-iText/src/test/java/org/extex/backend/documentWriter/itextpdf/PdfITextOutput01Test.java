@@ -32,8 +32,7 @@ import org.junit.Test;
  * Test for the xml backend.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class PdfITextOutput01Test extends ExTeXLauncher {
 
     /**

@@ -39,13 +39,13 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\mag</code>. It
+ * This class provides an implementation for the primitive {@code \mag}. It
  * sets the named count register to the value given, and as a side effect all
  * prefixes are zeroed.
  * 
- * <doc name="mag"> <h3>The Primitive <tt>\mag</tt></h3>
+ * <p>The Primitive {@code \mag}</p>
  * <p>
- * The primitive <tt>\mag</tt> provides a means to set the magnification factor
+ * The primitive {@code \mag} provides a means to set the magnification factor
  * for the current document. The primitive acts like a normal count register.
  * The magnification factor is given in multiples of 1000. This means that the
  * default value 1000 corresponds to an unmagnified output.
@@ -61,15 +61,16 @@ import org.extex.typesetter.exception.TypesetterException;
  * The magnification can only changed once at the beginning of a run.
  * </p>
  * <p>
- * An attempt to assign a non-positive number to <tt>\mag</tt> leads to an
+ * An attempt to assign a non-positive number to {@code \mag} leads to an
  * error.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;mag&rang;
- *      &rarr; &lang;optional prefix&rang; <tt>\mag</tt> {@linkplain
+ *      &rarr; &lang;optional prefix&rang; {@code \mag} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
@@ -77,15 +78,15 @@ import org.extex.typesetter.exception.TypesetterException;
  *
  *    &lang;optional prefix&rang;
  *      &rarr;
- *       |  <tt>\global</tt>
- *       |  <tt>\immediate</tt>  </pre>
+ *       |  {@code \global}
+ *       |  {@code \immediate}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \mag=1600  </pre>
  * 
- * </doc>
  * 
  * @see org.extex.interpreter.type.code.Advanceable
  * @see org.extex.interpreter.type.code.Divideable
@@ -93,8 +94,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * @see org.extex.interpreter.type.Theable
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Mag extends AbstractCount
         implements
             ExpandableCode,
@@ -105,7 +105,7 @@ public class Mag extends AbstractCount
             CountConvertible {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -120,10 +120,7 @@ public class Mag extends AbstractCount
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.code.Advanceable#advance(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -139,10 +136,7 @@ public class Mag extends AbstractCount
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -156,10 +150,7 @@ public class Mag extends AbstractCount
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertCount(Context context, TokenSource source,
@@ -169,10 +160,7 @@ public class Mag extends AbstractCount
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.code.Divideable#divide(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -192,10 +180,7 @@ public class Mag extends AbstractCount
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -211,10 +196,7 @@ public class Mag extends AbstractCount
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.register.count.AbstractCount#init(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public void init(Context context, TokenSource source, Typesetter typesetter)
@@ -234,10 +216,7 @@ public class Mag extends AbstractCount
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.code.Multiplyable#multiply(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -252,10 +231,7 @@ public class Mag extends AbstractCount
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

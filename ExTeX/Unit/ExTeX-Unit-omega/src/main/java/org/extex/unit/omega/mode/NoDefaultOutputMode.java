@@ -29,35 +29,34 @@ import org.extex.unit.omega.OmegaExtension;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\noDefaultOutputMode</code>.
+ * {@code \noDefaultOutputMode}.
  * 
- * <doc name="noDefaultOutputMode">
- * <h3>The Primitive <tt>\write</tt></h3>
+ * <p>The Primitive {@code \write}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;noDefaultOutputMode&rang;
  *      &rarr; ...  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  * \noDefaultOutputMode </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4411 $
- */
+*/
 public class NoDefaultOutputMode extends AbstractModeCode {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -73,10 +72,7 @@ public class NoDefaultOutputMode extends AbstractModeCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

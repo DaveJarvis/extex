@@ -23,11 +23,10 @@ import org.extex.test.ExTeXLauncher;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\expandafter</tt>.
+ * This is a test suite for the primitive {@code \expandafter}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class ExpandafterTest extends ExTeXLauncher {
 
 
@@ -37,8 +36,8 @@ public class ExpandafterTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\expandafter">
-     *  Test case checking that <tt>\expandafter</tt> exchanges two letters.
-     * </testcase>
+     *  Test case checking that {@code \expandafter} exchanges two letters.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -53,8 +52,8 @@ public class ExpandafterTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\expandafter">
-     *  Test case checking that <tt>\expandafter</tt> exchanges two letters.
-     * </testcase>
+     *  Test case checking that {@code \expandafter} exchanges two letters.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -69,8 +68,8 @@ public class ExpandafterTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\expandafter">
-     *  Test case checking that <tt>\expandafter</tt> passes on <tt>\global</tt>.
-     * </testcase>
+     *  Test case checking that {@code \expandafter} passes on {@code \global}.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -86,9 +85,9 @@ public class ExpandafterTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\expandafter">
-     *  Test case checking that <tt>\expandafter</tt> can expand the second
+     *  Test case checking that {@code \expandafter} can expand the second
      *  token.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */

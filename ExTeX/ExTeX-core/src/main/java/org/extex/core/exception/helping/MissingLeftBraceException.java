@@ -25,16 +25,15 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This exception is raised when an arithmetic overflow has been encountered.
  * <p>
  *  The localization format is taken from the Localizer under the key
- *  <tt>TTP.ArithmeticOverflow</tt>.
+ *  {@code TTP.ArithmeticOverflow}.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MissingLeftBraceException extends HelpingException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2006L;
 

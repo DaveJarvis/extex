@@ -29,8 +29,7 @@ import org.extex.scanner.type.token.CodeToken;
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public interface ContextCode {
 
     /**
@@ -57,7 +56,7 @@ public interface ContextCode {
      *
      * @param t the Token to set the code for
      * @param code the code for the token
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *            groups; otherwise the current group is affected only
      *
      * @throws HelpingException in case of an error

@@ -24,8 +24,7 @@ package org.extex.interpreter.observer.error;
  * has been encountered.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface ErrorObserver {
 
     /**

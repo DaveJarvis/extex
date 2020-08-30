@@ -30,8 +30,7 @@ import org.junit.runner.JUnitCore;
  * This class is a test suite for the expression evaluator.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4733 $
- */
+*/
 public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
 
     /**
@@ -44,19 +43,14 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
         (new JUnitCore()).run(ExTeXEvaluatorTest.class);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.TeXEvaluatorTest#getInstanceForTest()
-     */
-    @Override
+@Override
     protected Evaluator getInstanceForTest() {
 
         return new ExTeXEvaluator();
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */
@@ -70,7 +64,7 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */
@@ -84,7 +78,7 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */
@@ -98,7 +92,7 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */
@@ -112,7 +106,7 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */
@@ -126,7 +120,7 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */
@@ -140,7 +134,7 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */
@@ -154,7 +148,7 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */
@@ -168,7 +162,7 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */
@@ -182,7 +176,7 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */
@@ -196,7 +190,7 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */
@@ -210,7 +204,7 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */
@@ -224,7 +218,7 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */
@@ -238,7 +232,7 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */
@@ -252,7 +246,7 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */
@@ -266,7 +260,7 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */
@@ -280,7 +274,7 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */
@@ -294,7 +288,7 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */
@@ -308,7 +302,7 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */

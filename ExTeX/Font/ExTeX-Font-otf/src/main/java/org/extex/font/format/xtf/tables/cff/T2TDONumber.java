@@ -28,20 +28,19 @@ import org.extex.util.xml.XMLStreamWriter;
  * Abstract class for all number-values.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public abstract class T2TDONumber extends T2TopDICTOperator {
 
     /**
      * bytes
      */
-    private short[] bytes;
+    private final short[] bytes;
 
     /**
      * value
      */
-    private T2Number value;
+    private final T2Number value;
 
 
     protected T2TDONumber() {
@@ -118,7 +117,7 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
     /**
      * Check, if the object is a double.
      * 
-     * @return Returns <code>true</code>, if the object is a double.
+     * @return Returns {@code true}, if the object is a double.
      */
     @Override
     public boolean isDouble() {
@@ -129,7 +128,7 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
     /**
      * Check, if the object is an integer.
      * 
-     * @return Returns <code>true</code>, if the object is a integer.
+     * @return Returns {@code true}, if the object is a integer.
      */
     @Override
     public boolean isInteger() {
@@ -137,23 +136,13 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
         return value.isInteger();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return value.toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());
         writer.writeAttribute("value", value);

@@ -37,8 +37,7 @@ import org.xml.sax.helpers.DefaultHandler;
  * Create LaTeX-Macros from the XML file (only structure).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class Xml2LaTeXMacros {
 
@@ -143,10 +142,7 @@ public class Xml2LaTeXMacros {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.xml.sax.helpers.DefaultHandler#startElement(
-         *      java.lang.String, java.lang.String, java.lang.String,
+    *      java.lang.String, java.lang.String, java.lang.String,
          *      org.xml.sax.Attributes)
          */
         public void startElement(String uri, String localName, String qName,
@@ -165,10 +161,7 @@ public class Xml2LaTeXMacros {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.xml.sax.helpers.DefaultHandler#endElement( java.lang.String,
-         *      java.lang.String, java.lang.String)
+    *      java.lang.String, java.lang.String)
          */
         public void endElement(String uri, String localName, String qName)
                 throws SAXException {
@@ -199,12 +192,7 @@ public class Xml2LaTeXMacros {
             }
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.xml.sax.helpers.DefaultHandler#endDocument()
-         */
-        public void endDocument() throws SAXException {
+    public void endDocument() throws SAXException {
 
             super.endDocument();
             level--;
@@ -212,12 +200,7 @@ public class Xml2LaTeXMacros {
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.xml.sax.helpers.DefaultHandler#startDocument()
-         */
-        public void startDocument() throws SAXException {
+    public void startDocument() throws SAXException {
 
             super.startDocument();
             out.println("\\begin{xmldocument}%");

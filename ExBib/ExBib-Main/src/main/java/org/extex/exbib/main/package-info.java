@@ -17,7 +17,7 @@
  */
 /**
  * This is the top-level package for command line interfaces to 
- * <logo>&epsilon;&chi;Bib</logo>.
+ * ??Bib.
  *
  */
 

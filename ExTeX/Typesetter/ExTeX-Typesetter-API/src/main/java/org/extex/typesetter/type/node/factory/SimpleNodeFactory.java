@@ -32,8 +32,7 @@ import org.extex.typesetter.type.node.VirtualCharNode;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4739 $
- */
+*/
 public class SimpleNodeFactory implements NodeFactory {
 
 
@@ -43,7 +42,7 @@ public class SimpleNodeFactory implements NodeFactory {
 
     /**
      * Create a new instance for the node. If the character is not defined in
-     * the font given then <code>null</code> is returned instead.
+     * the font given then {@code null} is returned instead.
      * 
      * @param typesettingContext the typographic context for the node
      * @param uc the Unicode character
@@ -68,10 +67,7 @@ public class SimpleNodeFactory implements NodeFactory {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.factory.NodeFactory#getVirtualCharNode(org.extex.typesetter.tc.TypesettingContext,
-     *      org.extex.core.UnicodeChar)
+*      org.extex.core.UnicodeChar)
      */
     public VirtualCharNode getVirtualCharNode(
             TypesettingContext typesettingContext, UnicodeChar uc) {

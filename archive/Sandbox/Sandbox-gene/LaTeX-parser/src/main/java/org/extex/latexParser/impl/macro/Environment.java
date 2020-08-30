@@ -28,8 +28,7 @@ import org.extex.scanner.type.token.Token;
  * This class represents a \begin... instruction.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Environment extends GenericMacro {
 
     /**
@@ -42,12 +41,7 @@ public class Environment extends GenericMacro {
         super(spec);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Macro#parse( Token, Parser)
-     */
-    @Override
+@Override
     public Node parse(Token token, Parser parser) throws ScannerException {
 
         return super.parse(token, parser);

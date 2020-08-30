@@ -31,36 +31,36 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.typesetter.AbstractVerticalCode;
 
 /**
- * This class provides an implementation for the primitive <code>\vskip</code>.
+ * This class provides an implementation for the primitive {@code \vskip}.
  * 
- * <doc name="vskip"> <h3>The Primitive <tt>\vskip</tt></h3>
+ * <p>The Primitive {@code \vskip}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *     &lang;vskip&rang;
- *         &rarr; <tt>\vskip</tt> &lang;Glue&rang;
+ *         &rarr; {@code \vskip} &lang;Glue&rang;
  * </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *     \vskip 1em plus 1pt minus 1pt
  * </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Vskip extends AbstractVerticalCode implements VerticalSkip {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -75,10 +75,7 @@ public class Vskip extends AbstractVerticalCode implements VerticalSkip {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -94,10 +91,7 @@ public class Vskip extends AbstractVerticalCode implements VerticalSkip {
     /**
      * This method acquires a vertical glue.
      * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.typesetter.spacing.VerticalSkip#getGlue(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public FixedGlue getGlue(Context context, TokenSource source,

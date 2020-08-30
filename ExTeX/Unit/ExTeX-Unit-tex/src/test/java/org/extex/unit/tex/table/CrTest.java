@@ -23,11 +23,10 @@ import org.extex.test.NoFlagsPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\cr</tt>.
+ * This is a test suite for the primitive {@code \cr}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class CrTest extends NoFlagsPrimitiveTester {
 
     public CrTest() {
@@ -38,9 +37,9 @@ public class CrTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\cr">
-     *  Test case checking that <tt>\cr</tt> outside of an alignment context
+     *  Test case checking that {@code \cr} outside of an alignment context
      *  produces an error.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */

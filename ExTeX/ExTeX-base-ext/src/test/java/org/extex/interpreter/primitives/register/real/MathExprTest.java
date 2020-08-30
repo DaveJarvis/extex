@@ -30,8 +30,7 @@ import org.junit.Test;
  * </p>
  * 
  * @author <a href="mailto:m.g.sn@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class MathExprTest extends ExTeXLauncher {
 
 
@@ -45,7 +44,7 @@ public class MathExprTest extends ExTeXLauncher {
      * 
      * Test case: expr(2*7)
      * 
-     * </testcase>
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -64,7 +63,7 @@ public class MathExprTest extends ExTeXLauncher {
      * 
      * Test case: expr(2*sin(0.5))
      * 
-     * </testcase>
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -83,7 +82,7 @@ public class MathExprTest extends ExTeXLauncher {
      * 
      * Test case: expr(2/x)
      * 
-     * </testcase>
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -101,7 +100,7 @@ public class MathExprTest extends ExTeXLauncher {
      * 
      * Test case: expr(2+3/0)
      * 
-     * </testcase>
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -120,7 +119,7 @@ public class MathExprTest extends ExTeXLauncher {
      * 
      * Test case: expr(4+)
      * 
-     * </testcase>
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -138,7 +137,7 @@ public class MathExprTest extends ExTeXLauncher {
      * 
      * Test case: expr(abs(-1))
      * 
-     * </testcase>
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -157,7 +156,7 @@ public class MathExprTest extends ExTeXLauncher {
      * 
      * Test case: expr(3 kleiner 3)
      * 
-     * </testcase>
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -176,7 +175,7 @@ public class MathExprTest extends ExTeXLauncher {
      * 
      * Test case: expr(3 kleiner 4)
      * 
-     * </testcase>
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -195,7 +194,7 @@ public class MathExprTest extends ExTeXLauncher {
      * 
      * Test case:
      * 
-     * </testcase>
+     * 
      * 
      * @throws Exception in case of an error
      */

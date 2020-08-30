@@ -25,8 +25,7 @@ import org.apache.tools.ant.Task;
  * This is the Ant adaptor for the DocMaker.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DocMakerTask extends Task {
 
     /**

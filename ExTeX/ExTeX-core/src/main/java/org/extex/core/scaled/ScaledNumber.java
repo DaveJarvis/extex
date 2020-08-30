@@ -23,16 +23,11 @@ package org.extex.core.scaled;
  * This class provides a fixed point number.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4404 $
- */
+*/
 public class ScaledNumber {
 
     /**
-     * The constant <tt>ONE</tt> contains the internal representation for 1pt.
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [101]"
+     * The constant {@code ONE} contains the internal representation for 1pt.
      */
     public static final long ONE = 1 << 16;
 
@@ -84,7 +79,7 @@ public class ScaledNumber {
     }
 
     /**
-     * The field <tt>value</tt> contains the value.
+     * The field {@code value} contains the value.
      */
     private long value;
 
@@ -141,9 +136,9 @@ public class ScaledNumber {
      * Compares the current instance with another ScaledNumber for equality.
      * 
      * @param d the other ScaledNumber to compare to. If this parameter is
-     *        <code>null</code> then the comparison fails.
+     *        {@code null} then the comparison fails.
      * 
-     * @return <code>true</code> iff <i>|this| == |d|</i>
+     * @return {@code true} iff |this| == |d|
      */
     public boolean eq(ScaledNumber d) {
 
@@ -155,7 +150,7 @@ public class ScaledNumber {
      * 
      * @param d the other ScaledNumber to compare to
      * 
-     * @return <code>true</code> iff this is greater or equal to d
+     * @return {@code true} iff this is greater or equal to d
      */
     public boolean ge(ScaledNumber d) {
 
@@ -177,7 +172,7 @@ public class ScaledNumber {
      * 
      * @param d the other ScaledNumber to compare to
      * 
-     * @return <code>true</code> iff this is less or equal to d
+     * @return {@code true} iff this is less or equal to d
      */
     public boolean le(ScaledNumber d) {
 
@@ -189,7 +184,7 @@ public class ScaledNumber {
      * 
      * @param d the other ScaledNumber to compare to
      * 
-     * @return <code>true</code> iff |this| &lt; |d|</i>
+     * @return {@code true} iff |this| &lt; |d|
      */
     public boolean lt(ScaledNumber d) {
 

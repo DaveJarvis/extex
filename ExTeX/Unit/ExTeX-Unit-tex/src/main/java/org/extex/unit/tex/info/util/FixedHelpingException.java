@@ -33,23 +33,22 @@ import org.extex.core.exception.helping.HelpingException;
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class FixedHelpingException extends HelpingException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
-     * The field <tt>help</tt> contains the string which is shown if further
+     * The field {@code help} contains the string which is shown if further
      * help is requested.
      */
     private String help;
 
     /**
-     * The field <tt>message</tt> contains the message. We need to keep it here
+     * The field {@code message} contains the message. We need to keep it here
      * since the parent class does not provide writing access to the message of
      * the underlying Exception.
      */

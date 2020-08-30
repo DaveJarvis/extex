@@ -26,12 +26,11 @@ import java.util.List;
  * This class provides an ordered list of {@link Observer Observers}s.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ObserverList implements Observer {
 
     /**
-     * The field <tt>list</tt> contains the internal list of observers.
+     * The field {@code list} contains the internal list of observers.
      */
     private final List<Observer> list = new ArrayList<Observer>();
 
@@ -58,10 +57,7 @@ public class ObserverList implements Observer {
      * The update methods of all contained observers are invoked in turn with
      * the same arguments.
      * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.util.Observer#update(org.extex.exbib.core.util.Observable,java.lang.Object)
-     */
+*/
     @Override
     public void update(Observable source, Object object) {
 

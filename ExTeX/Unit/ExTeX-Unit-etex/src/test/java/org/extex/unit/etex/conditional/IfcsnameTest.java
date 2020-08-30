@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\ifcsname</tt>.
+ * This is a test suite for the primitive {@code \ifcsname}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class IfcsnameTest extends ConditionalTester {
 
     /**
@@ -50,7 +49,7 @@ public class IfcsnameTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcsname"> Test case checking that
-     * <tt>\ifcsname</tt> needs some more tokens to follow. </testcase>
+     * {@code \ifcsname} needs some more tokens to follow. 
      * 
      * @throws Exception in case of an error
      */
@@ -65,7 +64,7 @@ public class IfcsnameTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcsname"> Test case checking that
-     * <tt>\ifcsname</tt> needs a matching \endcsname. </testcase>
+     * {@code \ifcsname} needs a matching \endcsname. 
      * 
      * @throws Exception in case of an error
      */
@@ -80,7 +79,7 @@ public class IfcsnameTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcsname"> Test case checking that
-     * <tt>\ifcsname</tt> needs a matching \endcsname. </testcase>
+     * {@code \ifcsname} needs a matching \endcsname. 
      * 
      * @throws Exception in case of an error
      */
@@ -95,7 +94,7 @@ public class IfcsnameTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcsname"> Test case checking that
-     * <tt>\ifcsname</tt> on relax expands the then branch. </testcase>
+     * {@code \ifcsname} on relax expands the then branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -110,7 +109,7 @@ public class IfcsnameTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcsname"> Test case checking that
-     * <tt>\ifcsname</tt> on par expands the then branch. </testcase>
+     * {@code \ifcsname} on par expands the then branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -125,7 +124,7 @@ public class IfcsnameTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcsname"> Test case checking that
-     * <tt>\ifcsname</tt> expands macros on the fly. </testcase>
+     * {@code \ifcsname} expands macros on the fly. 
      * 
      * @throws Exception in case of an error
      */
@@ -141,7 +140,7 @@ public class IfcsnameTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcsname"> Test case checking that
-     * <tt>\ifcsname</tt> expands macros on the fly. </testcase>
+     * {@code \ifcsname} expands macros on the fly. 
      * 
      * @throws Exception in case of an error
      */
@@ -157,7 +156,7 @@ public class IfcsnameTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcsname"> Test case checking that
-     * <tt>\ifcsname</tt> ignores embedded spaces. </testcase>
+     * {@code \ifcsname} ignores embedded spaces. 
      * 
      * @throws Exception in case of an error
      */
@@ -173,8 +172,8 @@ public class IfcsnameTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcsname"> Test case checking that
-     * <tt>\ifcsname</tt> on an undefined control sequence expands the else
-     * branch. </testcase>
+     * {@code \ifcsname} on an undefined control sequence expands the else
+     * branch. 
      * 
      * @throws Exception in case of an error
      */

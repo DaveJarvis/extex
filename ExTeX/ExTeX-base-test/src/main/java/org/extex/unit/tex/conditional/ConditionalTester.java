@@ -26,23 +26,22 @@ import org.junit.Test;
  * This is a test class for conditional primitives.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class ConditionalTester extends ExTeXLauncher {
 
     /**
-     * The field <tt>primitive</tt> contains the name of the primitive to be
+     * The field {@code primitive} contains the name of the primitive to be
      * tested.
      */
-    private String primitive;
+    private final String primitive;
 
     /**
-     * The field <tt>arguments</tt> contains arguments for the primitive.
+     * The field {@code arguments} contains arguments for the primitive.
      */
-    private String arguments;
+    private final String arguments;
 
     /**
-     * The field <tt>init</tt> contains the initializing code.
+     * The field {@code init} contains the initializing code.
      */
     private String init = "";
 

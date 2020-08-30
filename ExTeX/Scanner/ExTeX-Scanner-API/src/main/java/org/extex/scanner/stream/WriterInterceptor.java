@@ -27,8 +27,7 @@ import java.io.Writer;
  * pipe manner.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5563 $
- */
+*/
 public interface WriterInterceptor {
 
     /**
@@ -38,7 +37,7 @@ public interface WriterInterceptor {
      * 
      * @param writer the writer to add some processing unit to
      * 
-     * @return the new writer. This value should never be <code>null</code>.
+     * @return the new writer. This value should never be {@code null}.
      */
     Writer pipe(Writer writer);
 

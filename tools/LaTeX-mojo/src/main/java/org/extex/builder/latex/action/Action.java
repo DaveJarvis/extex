@@ -35,17 +35,16 @@ import org.extex.builder.latex.exception.MakeException;
  * This action runs a command on the artifact.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class Action {
 
     /**
-     * The field <tt>artifact</tt> contains the artifact to run the command on.
+     * The field {@code artifact} contains the artifact to run the command on.
      */
     private final Artifact artifact;
 
     /**
-     * The field <tt>name</tt> contains the name.
+     * The field {@code name} contains the name.
      */
     private final String name;
 
@@ -71,7 +70,7 @@ public abstract class Action {
      * @param simulate the indicator whether or not to really execute the
      *        commands
      * 
-     * @return <code>true</code> iff something has been changed
+     * @return {@code true} iff something has been changed
      * 
      * @throws MakeException in case of an error
      */
@@ -173,7 +172,7 @@ public abstract class Action {
      * @param t the artifact to be made
      * @param logger the logger
      * 
-     * @return the command line; if the command line is <code>null</code> then
+     * @return the command line; if the command line is {@code null} then
      *         no attempt is made to run a program
      * 
      * @throws MakeException in case of an I/O error
@@ -193,12 +192,7 @@ public abstract class Action {
         w.println(toString());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return name + " " + artifact.toString();

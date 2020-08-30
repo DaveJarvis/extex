@@ -29,44 +29,43 @@ import org.extex.typesetter.Typesetter;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\protected</code>.
+ * {@code \protected}.
  * It does simply nothing, but as a side effect the prefix <i>PROTECTED</i> is
  * added to the prefixes.
  *
- * <doc name="protected" extension="yes">
- * <h3>The Prefix Primitive <tt>\protected</tt></h3>
+ * <p>The Prefix Primitive {@code \protected}</p>
  * <p>
- *  The primitive <tt>\protected</tt> is a prefix modifying the operation of a
+ *  The primitive {@code \protected} is a prefix modifying the operation of a
  *  following primitive. If the immediately following token denotes another
  *  prefix primitives then the functionality is accumulated. This means that
  *  the next non-prefix primitive is modified by any directly preceding prefix
  *  primitives.
  * </p>
  * <p>
- *  Multiple <tt>\protected</tt> prefixes act identical to a single one.
+ *  Multiple {@code \protected} prefixes act identical to a single one.
  * </p>
  *
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * <p>
  *  The formal description of this primitive is the following:
  * </p>
  *  <pre class="syntax">
  *    &lang;protected&rang;
- *      &rarr; <tt>\protected</tt>  </pre>
+ *      &rarr; {@code \protected}  </pre>
  *
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  *  <pre class="TeXSample">
  *    \protected\def\abc{123}  </pre>
  *
- * </doc>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Protected extends AbstractCode implements PrefixCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 

@@ -33,8 +33,7 @@ import org.extex.core.exception.ImpossibleException;
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BasicColorConverter implements ColorConverter {
 
 
@@ -43,7 +42,7 @@ public class BasicColorConverter implements ColorConverter {
     }
 
     /**
-     * The field <tt>CMYK_CONVERTER</tt> contains the converter for colors to
+     * The field {@code CMYK_CONVERTER} contains the converter for colors to
      * the CMYK model.
      */
     private static final ColorVisitor CMYK_CONVERTER = new ColorVisitor() {
@@ -105,7 +104,7 @@ public class BasicColorConverter implements ColorConverter {
     };
 
     /**
-     * The field <tt>GRAY_CONVERTER</tt> contains the converter for colors to
+     * The field {@code GRAY_CONVERTER} contains the converter for colors to
      * the gray-scale model.
      */
     private static final ColorVisitor GRAY_CONVERTER = new ColorVisitor() {
@@ -158,7 +157,7 @@ public class BasicColorConverter implements ColorConverter {
     };
 
     /**
-     * The field <tt>RGB_CONVERTER</tt> contains the converter for colors to
+     * The field {@code RGB_CONVERTER} contains the converter for colors to
      * the RGB model.
      */
     private static final ColorVisitor RGB_CONVERTER = new ColorVisitor() {
@@ -225,7 +224,7 @@ public class BasicColorConverter implements ColorConverter {
     };
 
     /**
-     * The field <tt>HSV_CONVERTER</tt> contains the converter for colors to
+     * The field {@code HSV_CONVERTER} contains the converter for colors to
      * the HSV model.
      */
     private static final ColorVisitor HSV_CONVERTER = new ColorVisitor() {
@@ -277,11 +276,11 @@ public class BasicColorConverter implements ColorConverter {
 
     /**
      * Convert an arbitrary color to the CMYK model.
-     * If an conversion is not supported then <code>null</code> is returned.
+     * If an conversion is not supported then {@code null} is returned.
      *
      * @param color the color to convert
      *
-     * @return the corresponding color in the CMYK model or <code>null</code>
+     * @return the corresponding color in the CMYK model or {@code null}
      *  if a conversion is not supported.
      *
      * @see org.extex.color.ColorConverter#toCmyk(
@@ -298,11 +297,11 @@ public class BasicColorConverter implements ColorConverter {
 
     /**
      * Convert an arbitrary color to the gray-scale model.
-     * If an conversion is not supported then <code>null</code> is returned.
+     * If an conversion is not supported then {@code null} is returned.
      *
      * @param color the color to convert
      *
-     * @return the corresponding color in the RGB model or <code>null</code> if
+     * @return the corresponding color in the RGB model or {@code null} if
      *  a conversion is not supported.
      *
      * @see org.extex.color.ColorConverter#toGrayscale(
@@ -319,11 +318,11 @@ public class BasicColorConverter implements ColorConverter {
 
     /**
      * Convert an arbitrary color to the HSV model.
-     * If an conversion is not supported then <code>null</code> is returned.
+     * If an conversion is not supported then {@code null} is returned.
      *
      * @param color the color to convert
      *
-     * @return the corresponding color in the HSV model or <code>null</code> if
+     * @return the corresponding color in the HSV model or {@code null} if
      *  a conversion is not supported.
      *
      * @see org.extex.color.ColorConverter#toHsv(
@@ -340,11 +339,11 @@ public class BasicColorConverter implements ColorConverter {
 
     /**
      * Convert an arbitrary color to the RGB model.
-     * If an conversion is not supported then <code>null</code> is returned.
+     * If an conversion is not supported then {@code null} is returned.
      *
      * @param color the color to convert
      *
-     * @return the corresponding color in the RGB model or <code>null</code> if
+     * @return the corresponding color in the RGB model or {@code null} if
      *  a conversion is not supported.
      *
      * @see org.extex.color.ColorConverter#toRgb(

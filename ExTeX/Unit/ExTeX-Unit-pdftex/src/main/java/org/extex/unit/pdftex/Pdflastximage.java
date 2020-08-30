@@ -34,37 +34,37 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\pdflastximage</code>.
+ * {@code \pdflastximage}.
  * 
- * <doc name="pdflastximage"> <h3>The PDF Primitive <tt>\pdflastximage</tt></h3>
+ * <p>The PDF Primitive {@code \pdflastximage}</p>
  * <p>
  * This primitive provides a read-only count register containing the number of
  * the last ximage. If none is present then 0 is returned.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;pdflastximage&rang;
- *       &rarr; <tt>\pdflastximage</tt>  </pre>
+ *       &rarr; {@code \pdflastximage}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \count0=\pdflastximage  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4791 $
- */
+*/
 public class Pdflastximage extends AbstractPdftexCode
         implements
             Theable,
             CountConvertible {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2011L;
 
@@ -79,10 +79,7 @@ public class Pdflastximage extends AbstractPdftexCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertCount(Context context, TokenSource source,
@@ -123,10 +120,7 @@ public class Pdflastximage extends AbstractPdftexCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

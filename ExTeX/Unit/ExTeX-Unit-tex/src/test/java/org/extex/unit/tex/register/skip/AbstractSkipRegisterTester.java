@@ -28,29 +28,28 @@ import org.junit.Test;
  * test cases common to all skip registers.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
 
     /**
-     * The field <tt>primitive</tt> contains the name of the primitive to
+     * The field {@code primitive} contains the name of the primitive to
      * test.
      */
     private String primitive;
 
     /**
-     * The field <tt>invocation</tt> contains the concatenation of primitive
+     * The field {@code invocation} contains the concatenation of primitive
      * name and arguments.
      */
     private String invocation;
 
     /**
-     * The field <tt>init</tt> contains the default value.
+     * The field {@code init} contains the default value.
      */
     private String init;
 
     /**
-     * The field <tt>prepare</tt> contains the the preparation code inserted
+     * The field {@code prepare} contains the the preparation code inserted
      * before each test.
      */
     private String prepare = "";
@@ -84,9 +83,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the prefix <tt>\immediate</tt> is not
-     * applicable. </testcase>
-     * 
+     * Test case showing that the prefix {@code \immediate} is not applicable
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -100,9 +98,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the prefix <tt>\immediate</tt> is not
-     * applicable. </testcase>
-     * 
+     * Test case showing that the prefix {@code \immediate} is not applicable
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -117,9 +114,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the prefix <tt>\long</tt> is not
-     * applicable. </testcase>
-     * 
+     * Test case showing that the prefix {@code \long} is not applicable
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -133,9 +129,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the prefix <tt>\outer</tt> is not
-     * applicable. </testcase>
-     * 
+     * Test case showing that the prefix {@code \outer} is not applicable
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -149,9 +144,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the primitive is defined and has its
-     * default value. </testcase>
-     * 
+     * Test case showing that the primitive is defined and has its default value
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -164,9 +158,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the primitive is applicable to
-     * \showthe. </testcase>
-     * 
+     * Test case showing that the primitive is applicable to \showthe
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -179,9 +172,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant 12.3pt
-     * works when using an equal sign after the primitive name. </testcase>
-     * 
+     * Test case showing that an assignment of a constant 12.3pt works when using an equal sign after the primitive name
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -196,9 +188,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant 12.3pt
-     * works when using no equal sign after the primitive name. </testcase>
-     * 
+     * Test case showing that an assignment of a constant 12.3pt works when using no equal sign after the primitive name
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -213,9 +204,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant -12.3pt
-     * works when using an equal sign after the primitive name. </testcase>
-     * 
+     * Test case showing that an assignment of a constant -12.3pt works when using an equal sign after the primitive name
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -230,9 +220,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant -12.3pt
-     * works when using no equal sign after the primitive name. </testcase>
-     * 
+     * Test case showing that an assignment of a constant -12.3pt works when using no equal sign after the primitive name
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -247,9 +236,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant -12.3pt
-     * works when using <tt>\globaldefs</tt>. </testcase>
-     * 
+     * Test case showing that an assignment of a constant -12.3pt works when using {@code \globaldefs}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -264,9 +252,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a flexible unit is not
-     * allowed in the first component. </testcase>
-     * 
+     * Test case showing that an assignment of a flexible unit is not allowed in the first component
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -280,9 +267,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant 1.2fil
-     * works. </testcase>
-     * 
+     * Test case showing that an assignment of a constant 1.2fil works
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -296,9 +282,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant 1.2fill
-     * works. </testcase>
-     * 
+     * Test case showing that an assignment of a constant 1.2fill works
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -312,9 +297,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant 1.2filll
-     * works. </testcase>
-     * 
+     * Test case showing that an assignment of a constant 1.2filll works
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -328,9 +312,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant 1.2fil
-     * works. </testcase>
-     * 
+     * Test case showing that an assignment of a constant 1.2fil works
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -344,9 +327,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant 1.2fill
-     * works. </testcase>
-     * 
+     * Test case showing that an assignment of a constant 1.2fill works
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -360,9 +342,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant 1.2filll
-     * works. </testcase>
-     * 
+     * Test case showing that an assignment of a constant 1.2filll works
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -376,9 +357,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant 1.2mm
-     * works. </testcase>
-     * 
+     * Test case showing that an assignment of a constant 1.2mm works
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -393,9 +373,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment respects
-     * <tt>\\afterassignment</tt>. </testcase>
-     * 
+     * Test case showing that an assignment respects {@code \\afterassignment}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -413,8 +392,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the value is dimen convertible.
-     * </testcase>
+     *  Test case showing that the value is dimen convertible.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -430,8 +409,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the value is count convertible.
-     * </testcase>
+     *  Test case showing that the value is count convertible.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -447,8 +426,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment respects grouping.
-     * </testcase>
+     *  Test case showing that an assignment respects grouping.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -464,9 +443,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant 12.3pt
-     * works when using an equal sign after the primitive name. </testcase>
-     * 
+     * Test case showing that an assignment of a constant 12.3pt works when using an equal sign after the primitive name
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -481,9 +459,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant 12.3pt
-     * works when using no equal sign after the primitive name. </testcase>
-     * 
+     * Test case showing that an assignment of a constant 12.3pt works when using no equal sign after the primitive name
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -498,9 +475,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an advancement by the constant 12pt
-     * works. </testcase>
-     * 
+     * Test case showing that an advancement by the constant 12pt works
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -515,9 +491,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an advancement by the constant 12pt
-     * works when using the keyword <tt>by</tt>. </testcase>
-     * 
+     * Test case showing that an advancement by the constant 12pt works when using the keyword {@code by}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -532,9 +507,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an advancement by the constant -12pt
-     * works. </testcase>
-     * 
+     * Test case showing that an advancement by the constant -12pt works
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -549,9 +523,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an advancement by the constant -12pt
-     * works when using the keyword <tt>by</tt>. </testcase>
-     * 
+     * Test case showing that an advancement by the constant -12pt works when using the keyword {@code by}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -566,9 +539,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an advancement by the constant -12.3pt
-     * works when using <tt>\globaldefs</tt>. </testcase>
-     * 
+     * Test case showing that an advancement by the constant -12.3pt works when using {@code \globaldefs}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -583,9 +555,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment respects
-     * <tt>\\afterassignment</tt>. </testcase>
-     * 
+     * Test case showing that an assignment respects {@code \\afterassignment}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -605,8 +576,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an advancing respects grouping.
-     * </testcase>
+     *  Test case showing that an advancing respects grouping.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -622,9 +593,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an multiplication with the constant 0
-     * works. </testcase>
-     * 
+     * Test case showing that an multiplication with the constant 0 works
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -639,9 +609,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an multiplication with the constant 12
-     * works. </testcase>
-     * 
+     * Test case showing that an multiplication with the constant 12 works
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -656,9 +625,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an multiplication with the constant 12
-     * works when using the keyword <tt>by</tt>. </testcase>
-     * 
+     * Test case showing that an multiplication with the constant 12 works when using the keyword {@code by}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -673,9 +641,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an multiplication by the constant -12
-     * works. </testcase>
-     * 
+     * Test case showing that an multiplication by the constant -12 works
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -690,9 +657,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an multiplication by the constant -12
-     * works when using the keyword <tt>by</tt>. </testcase>
-     * 
+     * Test case showing that an multiplication by the constant -12 works when using the keyword {@code by}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -707,9 +673,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a multiplication by a constant -12.3pt
-     * works when using <tt>\globaldefs</tt>. </testcase>
-     * 
+     * Test case showing that a multiplication by a constant -12.3pt works when using {@code \globaldefs}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -725,9 +690,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment respects
-     * <tt>\\afterassignment</tt>. </testcase>
-     * 
+     * Test case showing that an assignment respects {@code \\afterassignment}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -742,8 +706,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that multiplication respects grouping.
-     * </testcase>
+     *  Test case showing that multiplication respects grouping.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -759,8 +723,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an division by the constant 12 works.
-     * </testcase>
+     *  Test case showing that an division by the constant 12 works.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -776,8 +740,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an division by the constant 12 works.
-     * </testcase>
+     *  Test case showing that an division by the constant 12 works.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -793,9 +757,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an division by the constant 12 works
-     * when using the keyword <tt>by</tt>. </testcase>
-     * 
+     * Test case showing that an division by the constant 12 works when using the keyword {@code by}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -810,9 +773,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an multiplication by the constant -12
-     * works. </testcase>
-     * 
+     * Test case showing that an multiplication by the constant -12 works
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -827,9 +789,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an multiplication by the constant -12
-     * works when using the keyword <tt>by</tt>. </testcase>
-     * 
+     * Test case showing that an multiplication by the constant -12 works when using the keyword {@code by}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -844,9 +805,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that a division by a constant -12.3pt works
-     * when using <tt>\globaldefs</tt>. </testcase>
-     * 
+     * Test case showing that a division by a constant -12.3pt works when using {@code \globaldefs}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -861,9 +821,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment respects
-     * <tt>\\afterassignment</tt>. </testcase>
-     * 
+     * Test case showing that an assignment respects {@code \\afterassignment}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -877,9 +836,8 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that division by the constant -12 works when
-     * using the keyword <tt>by</tt>. </testcase>
-     * 
+     * Test case showing that division by the constant -12 works when using the keyword {@code by}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -894,7 +852,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that division respects grouping. </testcase>
+     *  Test case showing that division respects grouping.
      * 
      * @throws Exception in case of an error
      */

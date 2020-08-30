@@ -38,32 +38,30 @@ import java.util.List;
  * This class provides a token source which is fed from a string.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4408 $
- */
+*/
 public class StringSource extends Moritz {
 
     /**
      * This Token stream is fed from a CharSequence.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision:4408 $
-     */
+    */
     private static class TStream implements TokenStream {
 
         /**
-         * The field <tt>cs</tt> contains the char sequence containing the
+         * The field {@code cs} contains the char sequence containing the
          * chars to read.
          */
         private final CharSequence cs;
 
         /**
-         * The field <tt>next</tt> contains the pointer to the next char to
+         * The field {@code next} contains the pointer to the next char to
          * read.
          */
         private int next = 0;
 
         /**
-         * The field <tt>stack</tt> contains the stack for pushed tokens.
+         * The field {@code stack} contains the stack for pushed tokens.
          */
         private final List<Token> stack = new ArrayList<>();
 
@@ -80,7 +78,7 @@ public class StringSource extends Moritz {
         /**
          * Close this stream if it is a file stream.
          * 
-         * @return <code>true</code> if the closing was successful
+         * @return {@code true} if the closing was successful
          * 
          * @see org.extex.scanner.api.TokenStream#closeFileStream()
          */
@@ -98,7 +96,7 @@ public class StringSource extends Moritz {
          * @param factory the token factory
          * @param tokenizer the tokenizer
          * 
-         * @return the next Token or <code>null</code> if no more tokens are
+         * @return the next Token or {@code null} if no more tokens are
          *         available
          * 
          * @throws ScannerException in case of an error
@@ -142,7 +140,7 @@ public class StringSource extends Moritz {
          * Check to see if a further token can be acquired from the token
          * stream.
          * 
-         * @return <code>true</code> if the stream is at its end
+         * @return {@code true} if the stream is at its end
          */
         public boolean isEof() {
             return next >= cs.length();
@@ -151,7 +149,7 @@ public class StringSource extends Moritz {
         /**
          * Check to see if the token stream is currently at the end of line.
          * 
-         * @return <code>true</code> if the stream is at end of line
+         * @return {@code true} if the stream is at end of line
          */
         public boolean isEol() {
             return isEof();
@@ -161,7 +159,7 @@ public class StringSource extends Moritz {
          * Check whether the current stream is associated with a file to read
          * from.
          * 
-         * @return <code>true</code> if the stream is a file stream
+         * @return {@code true} if the stream is a file stream
          * 
          * @see org.extex.scanner.api.TokenStream#isFileStream()
          */
@@ -171,8 +169,8 @@ public class StringSource extends Moritz {
         }
 
         /**
-         * Push back a token into the stream. If the token is <code>null</code>
-         * then nothing happens: a <code>null</code> token is not pushed!
+         * Push back a token into the stream. If the token is {@code null}
+         * then nothing happens: a {@code null} token is not pushed!
          * <p>
          * Note that it is up to the implementation to accept tokens not
          * produced with the token factory for push back. In general the

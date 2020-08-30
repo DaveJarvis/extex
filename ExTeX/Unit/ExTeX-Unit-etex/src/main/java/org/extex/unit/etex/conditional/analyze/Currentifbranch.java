@@ -34,55 +34,55 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\currentifbranch</code>.
+ * {@code \currentifbranch}.
  * 
- * <doc name="currentifbranch"> <h3>The Primitive <tt>\currentifbranch</tt></h3>
+ * <p>The Primitive {@code \currentifbranch}</p>
  * <p>
- * The primitive <tt>\currentifbranch</tt> is an integer quantity which provides
+ * The primitive {@code \currentifbranch} is an integer quantity which provides
  * the information in which branch of the enclosing conditional. The value is
  * determined by the following rules:
  * </p>
  * <ul>
  * <li>If the then branch of the enclosing is active then the value is
- * <tt>1</tt>.</li>
+ * {@code 1}.</li>
  * <li>If the else branch of the enclosing is active then the value is
- * <tt>-1</tt>.</li>
- * <li>If the enclosing conditional is <tt>\ifcase</tt> then the value is the
- * number selecting the current case for normal cases and <tt>-1</tt> for the
+ * {@code -1}.</li>
+ * <li>If the enclosing conditional is {@code \ifcase} then the value is the
+ * number selecting the current case for normal cases and {@code -1} for the
  * else case.</li>
- * <li>If there is no enclosing conditional then the value is <tt>0</tt>.</li>
+ * <li>If there is no enclosing conditional then the value is {@code 0}.</li>
  * </ul>
  * <p>
- * The primitive <tt>\currentifbranch</tt> is a read-only quantity. an attempt
+ * The primitive {@code \currentifbranch} is a read-only quantity. an attempt
  * to use this primitive in a horizontal or vertical mode results in an error.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * <p>
  * The formal description of this primitive is the following:
  * </p>
  * 
  * <pre class="syntax">
  *    &lang;currentifbranch&rang;
- *     &rarr; <tt>\currentifbranch</tt> </pre>
+ *     &rarr; {@code \currentifbranch} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \count0=\currentifbranch  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4435 $
- */
+*/
 public class Currentifbranch extends AbstractCode
         implements
             CountConvertible,
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -97,10 +97,7 @@ public class Currentifbranch extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertCount(Context context, TokenSource source,
@@ -111,10 +108,7 @@ public class Currentifbranch extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

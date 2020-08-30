@@ -25,11 +25,10 @@ import java.io.OutputStream;
 import org.extex.dviware.Dvi;
 
 /**
- * This class represents the DVI instruction <tt>push</tt>.
+ * This class represents the DVI instruction {@code push}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DviPush extends AbstractDviCode {
 
 

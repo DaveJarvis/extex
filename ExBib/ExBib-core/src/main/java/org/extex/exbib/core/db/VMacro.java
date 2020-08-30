@@ -31,8 +31,7 @@ import java.io.IOException;
  * <pre>abc.def-ghi</pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class VMacro extends AbstractValueItem {
 
     /**
@@ -49,10 +48,7 @@ public class VMacro extends AbstractValueItem {
      * The value of a Macro expands to the concatenation of all constituents,
      * where undefined items are expanded to the empty string.
      * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.AbstractValueItem#expand(java.lang.StringBuilder,
-     *      org.extex.exbib.core.db.DB)
+*      org.extex.exbib.core.db.DB)
      */
     @Override
     public void expand(StringBuilder sb, DB db) {

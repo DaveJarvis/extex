@@ -36,35 +36,34 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.table.util.PreambleItem;
 
 /**
- * This class provides an implementation for the primitive <code>\valign</code>.
+ * This class provides an implementation for the primitive {@code \valign}.
  * 
- * <doc name="valign">
- * <h3>The Primitive <tt>\valign</tt></h3>
+ * <p>The Primitive {@code \valign}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;valign&rang;
- *       &rarr; <tt>\valign</tt>  </pre>
+ *       &rarr; {@code \valign}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \valign  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Valign extends AbstractAlign {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -83,7 +82,7 @@ public class Valign extends AbstractAlign {
      * Use the preamble to assemble a new line.
      * 
      * @param preamble the list of preamble items to use
-     * @param height the target height or <code>null</code> for the natural
+     * @param height the target height or {@code null} for the natural
      *        height
      * @param context the interpreter context
      * @param source the source for new tokens
@@ -100,10 +99,7 @@ public class Valign extends AbstractAlign {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

@@ -53,16 +53,14 @@ import org.extex.scanner.type.token.Token;
  * Load a format file and print it in a reasonable form.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4603 $
- */
+*/
 public final class FormatPrinter {
 
     /**
      * This interface describes a function object for printing a data type.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision:4603 $
-     */
+    */
     protected interface PrintRoutine {
 
         /**
@@ -75,31 +73,31 @@ public final class FormatPrinter {
     };
 
     /**
-     * The field <tt>deep</tt> contains the indicator for a deep dump.
+     * The field {@code deep} contains the indicator for a deep dump.
      */
     private static boolean deep = true;
 
     /**
-     * The field <tt>listLimit</tt> contains the limit to restrict the printing
+     * The field {@code listLimit} contains the limit to restrict the printing
      * of lists.
      */
     private static int listLimit = Integer.MAX_VALUE;
 
     /**
-     * The field <tt>mapLimit</tt> contains the limit to restrict the printing
+     * The field {@code mapLimit} contains the limit to restrict the printing
      * of map.
      */
     private static int mapLimit = Integer.MAX_VALUE;
 
     /**
-     * The field <tt>printerMap</tt> contains the mapping from class name to
+     * The field {@code printerMap} contains the mapping from class name to
      * printing routine.
      */
     private static Map<Class<?>, PrintRoutine> printerMap =
             new HashMap<Class<?>, PrintRoutine>();
 
     /**
-     * The field <tt>verbose</tt> contains the verbosity indicator.
+     * The field {@code verbose} contains the verbosity indicator.
      */
     private static boolean verbose = false;
 

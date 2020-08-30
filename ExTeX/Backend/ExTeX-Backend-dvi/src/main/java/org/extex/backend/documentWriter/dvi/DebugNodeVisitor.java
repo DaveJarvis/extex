@@ -53,8 +53,7 @@ import org.extex.typesetter.type.node.WhatsItNode;
  * This is a implementation of a NodeVisitor for debugging.
  * 
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
- * @version $Revision:4704 $
- */
+*/
 public class DebugNodeVisitor implements InspectableNodeVisitor {
 
     /**
@@ -63,14 +62,14 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     private InspectableNodeVisitor nodeVisitor = null;
 
     /**
-     * The field <tt>printStream</tt> contains the print stream.
+     * The field {@code printStream} contains the print stream.
      */
     private PrintStream printStream = System.out;
 
     /**
      * Creates a new instance.
      * 
-     * @param visitor <code>InspectableNodeVisitor</code> to inspect
+     * @param visitor {@code InspectableNodeVisitor} to inspect
      */
     public DebugNodeVisitor(InspectableNodeVisitor visitor) {
 
@@ -79,7 +78,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     }
 
     /**
-     * Append information about a value to a <code>StringBuilder</code>.
+     * Append information about a value to a {@code StringBuilder}.
      * 
      * @param buffer for appending information
      * @param value more information is added if this is a Node-object
@@ -116,7 +115,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     /**
      * Write the debug message.
      * 
-     * @param mesg a <code>String</code>
+     * @param mesg a {@code String}
      * @param node value for additional information
      * @param value value for additional information
      */
@@ -135,7 +134,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     /**
      * Visitor for nested nodes.
      * 
-     * @param visitor a <code>NodeVisitor</code> value
+     * @param visitor a {@code NodeVisitor} value
      * @see InspectableNodeVisitor#setVisitor(org.extex.typesetter.type.NodeVisitor)
      */
     @Override
@@ -149,7 +148,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      */
 
     /**
-     * Call the <code>visitAdjust</code> to inspect.
+     * Call the {@code visitAdjust} to inspect.
      * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
@@ -167,7 +166,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     }
 
     /**
-     * Call the <code>visitAfterMath</code> to inspect.
+     * Call the {@code visitAfterMath} to inspect.
      * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
@@ -185,7 +184,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     }
 
     /**
-     * Call the <code>visitAlignedLeaders</code> to inspect.
+     * Call the {@code visitAlignedLeaders} to inspect.
      * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
@@ -203,7 +202,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     }
 
     /**
-     * Call the <code>visitBeforeMath</code> to inspect.
+     * Call the {@code visitBeforeMath} to inspect.
      * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
@@ -221,7 +220,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     }
 
     /**
-     * Call the <code>visitCenteredLeaders</code> to inspect.
+     * Call the {@code visitCenteredLeaders} to inspect.
      * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
@@ -239,7 +238,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     }
 
     /**
-     * Call the <code>visitChar</code> to inspect.
+     * Call the {@code visitChar} to inspect.
      * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
@@ -256,7 +255,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     }
 
     /**
-     * Call the <code>visitDiscretionary</code> to inspect.
+     * Call the {@code visitDiscretionary} to inspect.
      * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
@@ -274,7 +273,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     }
 
     /**
-     * Call the <code>visitExpandedLeaders</code> to inspect.
+     * Call the {@code visitExpandedLeaders} to inspect.
      * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
@@ -292,7 +291,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     }
 
     /**
-     * Call the <code>visitGlue</code> to inspect.
+     * Call the {@code visitGlue} to inspect.
      * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
@@ -309,7 +308,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     }
 
     /**
-     * Call the <code>visitHorizontalList</code> to inspect.
+     * Call the {@code visitHorizontalList} to inspect.
      * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
@@ -327,7 +326,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     }
 
     /**
-     * Call the <code>visitInsertion</code> to inspect.
+     * Call the {@code visitInsertion} to inspect.
      * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
@@ -345,7 +344,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     }
 
     /**
-     * Call the <code>visitKern</code> to inspect.
+     * Call the {@code visitKern} to inspect.
      * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
@@ -362,7 +361,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     }
 
     /**
-     * Call the <code>visitLigature</code> to inspect.
+     * Call the {@code visitLigature} to inspect.
      * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
@@ -380,7 +379,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     }
 
     /**
-     * Call the <code>visitMark</code> to inspect.
+     * Call the {@code visitMark} to inspect.
      * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
@@ -397,7 +396,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     }
 
     /**
-     * Call the <code>visitPenalty</code> to inspect.
+     * Call the {@code visitPenalty} to inspect.
      * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
@@ -415,7 +414,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     }
 
     /**
-     * Call the <code>visitRule</code> to inspect.
+     * Call the {@code visitRule} to inspect.
      * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
@@ -432,7 +431,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     }
 
     /**
-     * Call the <code>visitSpace</code> to inspect.
+     * Call the {@code visitSpace} to inspect.
      * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
@@ -449,7 +448,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     }
 
     /**
-     * Call the <code>visitVerticalList</code> to inspect.
+     * Call the {@code visitVerticalList} to inspect.
      * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
@@ -479,7 +478,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     }
 
     /**
-     * Call the <code>visitWhatsIt</code> to inspect.
+     * Call the {@code visitWhatsIt} to inspect.
      * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor

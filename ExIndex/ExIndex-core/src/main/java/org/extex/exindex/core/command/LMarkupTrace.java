@@ -31,12 +31,11 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to trace the markup.
  * 
- * <doc type="exindex-command" command="markup-trace">
- * 
- * <h3>The Command <tt>markup-trace</tt></h3>
+*
+ * <p>The Command {@code markup-trace}</p>
  * 
  * <p>
- * The command <tt>markup-trace</tt> can be used to control the tracing of the
+ * The command {@code markup-trace} can be used to control the tracing of the
  * markup. The tracing acts globally and can not be customized on an per index
  * base.
  * </p>
@@ -56,7 +55,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  *  (markup-trace :on)   </pre>
  * 
  * <p>
- * The tracing is initially off. With the argument <tt>:on</tt> it can be turned
+ * The tracing is initially off. With the argument {@code :on} it can be turned
  * on. When the tracing is on the description of the markup is printed on the
  * output stream in addition to the contents of the structured index.
  * </p>
@@ -65,18 +64,18 @@ import org.extex.exindex.lisp.type.value.LValue;
  *  (markup-trace :on :open "&gt;" :close "&lt;")   </pre>
  * 
  * <p>
- * The arguments <tt>:open</tt> and <tt>:close</tt> can be used to specify the
+ * The arguments {@code :open} and {@code :close} can be used to specify the
  * strings which should precede and follow the symbolic name. The default for
- * <tt>:open</tt> is <tt>&lt;</tt> and the default for <tt>:close</tt> is
- * <tt>&gt;</tt>.
+ * {@code :open} is {@code &lt;} and the default for {@code :close} is
+ * {@code &gt;}.
  * </p>
  * 
  * <pre>
  *  (markup-trace :on :open "%  &lt;" :close "&gt;~n")   </pre>
  * 
  * <p>
- * To neutralize the effect on the processed output <tt>:open</tt> and
- * <tt>:close</tt> can be defined to include the tracing information as comment
+ * To neutralize the effect on the processed output {@code :open} and
+ * {@code :close} can be defined to include the tracing information as comment
  * into the generated sources of the structured index.
  * </p>
  * 
@@ -91,9 +90,8 @@ import org.extex.exindex.lisp.type.value.LValue;
  *   &lt;LETTER-GROUP-LIST:CLOSE&gt;
  * &lt;INDEX:CLOSE&gt;   </pre>
  * 
- * </doc>
  * 
- * <h3>Parameters</h3>
+ * <p>Parameters</p>
  * <p>
  * The parameters defined with this command are stored in the L system.
  * </p>
@@ -109,12 +107,11 @@ import org.extex.exindex.lisp.type.value.LValue;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LMarkupTrace extends LFunction {
 
     /**
-     * The field <tt>container</tt> contains the container for indices.
+     * The field {@code container} contains the container for indices.
      */
     private final IndexContainer container;
 
@@ -146,7 +143,7 @@ public class LMarkupTrace extends LFunction {
      * @param open the opening markup
      * @param close the closing markup
      * 
-     * @return <tt>null</tt>
+     * @return {@code null}
      * 
      * @throws LSettingConstantException should not happen
      */

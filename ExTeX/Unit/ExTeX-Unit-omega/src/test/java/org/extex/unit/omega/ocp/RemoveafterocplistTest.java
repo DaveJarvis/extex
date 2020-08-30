@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\removeafterocplist</tt>.
+ * This is a test suite for the primitive {@code \removeafterocplist}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class RemoveafterocplistTest extends ExTeXLauncher {
 
     /**
@@ -49,8 +48,8 @@ public class RemoveafterocplistTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\removeafterocplist"> Test case checking that
-     * <tt>\removeafterocplist</tt> can not be used in a normal mode.
-     * </testcase>
+     * {@code \removeafterocplist} can not be used in a normal mode.
+     *
      * 
      * @throws Exception in case of an error
      */

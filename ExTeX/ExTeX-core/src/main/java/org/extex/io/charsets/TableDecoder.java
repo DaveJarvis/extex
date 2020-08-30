@@ -29,12 +29,11 @@ import java.nio.charset.CoderResult;
  * This class provides a table-based {@link CharsetDecoder}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TableDecoder extends CharsetDecoder {
 
     /**
-     * The field <tt>table</tt> contains the table.
+     * The field {@code table} contains the table.
      */
     private final char[] table;
 

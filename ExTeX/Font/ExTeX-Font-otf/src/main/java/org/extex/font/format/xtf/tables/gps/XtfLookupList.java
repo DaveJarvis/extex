@@ -19,12 +19,12 @@
 
 package org.extex.font.format.xtf.tables.gps;
 
-import java.io.IOException;
-
 import org.extex.font.format.xtf.tables.XtfGlyphName;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
+
+import java.io.IOException;
 
 /**
  * List for all LookupTables.
@@ -42,9 +42,10 @@ import org.extex.util.xml.XMLWriterConvertible;
  * total number of Lookup table offsets in the array.
  * </p>
  * 
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td><b>Type</b></td>
+* <td><b>Type</b></td>
  * <td><b>Name</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -59,35 +60,31 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>Array of offsets to Lookup tables-from beginning of LookupList -zero
  * based (first lookup is Lookup index = 0)</td>
  * </tr>
- * </td>
  * </table>
- * <p>
- * </p>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class XtfLookupList implements XMLWriterConvertible {
 
     /**
      * lookup count
      */
-    private int lookupCount;
+    private final int lookupCount;
 
     /**
      * lookupFactory
      */
-    private LookupTableFactory lookupFactory;
+    private final LookupTableFactory lookupFactory;
 
     /**
      * lookup offsets
      */
-    private int[] lookupOffsets;
+    private final int[] lookupOffsets;
 
     /**
      * lookups
      */
-    private XtfLookup[] lookups;
+    private final XtfLookup[] lookups;
 
     /**
      * Create a new object
@@ -119,7 +116,7 @@ public class XtfLookupList implements XMLWriterConvertible {
     }
 
     /**
-     * Returns the lookup od <code>null</code>, if not exists.
+     * Returns the lookup od {@code null}, if not exists.
      * 
      * @param index The index.
      * @return Returns the lookup.
@@ -193,12 +190,7 @@ public class XtfLookupList implements XMLWriterConvertible {
         return buf.toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    @Override
+@Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("lookuplist");

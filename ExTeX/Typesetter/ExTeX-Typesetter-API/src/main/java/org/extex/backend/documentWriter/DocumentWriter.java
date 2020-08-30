@@ -30,14 +30,13 @@ import org.extex.typesetter.type.page.Page;
  * after the production of the output.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5563 $
- */
+*/
 public interface DocumentWriter {
 
     /**
      * Getter for the extension associated with this kind of output. For
-     * instance <tt>pdf</tt> is the expected value for PDF files and
-     * <tt>dvi</tt> is the expected value for DVI files.
+     * instance {@code pdf} is the expected value for PDF files and
+     * {@code dvi} is the expected value for DVI files.
      *
      * @return the appropriate extension for file names
      */
@@ -50,7 +49,7 @@ public interface DocumentWriter {
      * properly filled. Thus all information should be present to place the
      * ink on the paper.
      * <p>
-     * If the page is <code>null</code> then no page has to be shipped and 0
+     * If the page is {@code null} then no page has to be shipped and 0
      * has to be returned.
      * </p>
      *

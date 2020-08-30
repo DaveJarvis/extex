@@ -35,23 +35,22 @@ import org.extex.typesetter.type.node.WhatsItNode;
  * This WhatsIt node closes an out file on shipping.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class WhatsItCloseNode extends WhatsItNode implements LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>key</tt> contains the key of the output file to close.
+     * The field {@code key} contains the key of the output file to close.
      */
     private String key;
 
     /**
-     * The field <tt>logger</tt> contains the logger to use.
+     * The field {@code logger} contains the logger to use.
      */
     private transient Logger logger = null;
 
@@ -66,10 +65,7 @@ public class WhatsItCloseNode extends WhatsItNode implements LogEnabled {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractNode#atShipping(
-     *      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
+*      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
      *      org.extex.core.dimen.FixedDimen, org.extex.core.dimen.FixedDimen)
      */
     @Override

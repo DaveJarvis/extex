@@ -23,11 +23,10 @@ import org.extex.test.count.AbstractCountRegisterTester;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\hbadness</tt>.
+ * This is a test suite for the primitive {@code \hbadness}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class HbadnessTest extends AbstractCountRegisterTester {
 
     /**

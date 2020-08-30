@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains classes and interfaces for the interaction mode.
+ * Contains classes and interfaces for the interaction mode.
  */
 
 package org.extex.interpreter.interaction;

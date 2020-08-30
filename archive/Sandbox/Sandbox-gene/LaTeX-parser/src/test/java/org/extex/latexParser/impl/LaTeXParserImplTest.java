@@ -39,20 +39,18 @@ import org.junit.Test;
  * This is a test suite for the LaTeX parser implementation.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LaTeXParserImplTest {
 
     /**
      * This class is a log handler which stores the log record in a buffer.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
-     */
+    */
     private static final class MyHandler extends Handler {
 
         /**
-         * The field <tt>sb</tt> contains the buffer.
+         * The field {@code sb} contains the buffer.
          */
         private StringBuilder sb;
 
@@ -66,34 +64,19 @@ public class LaTeXParserImplTest {
             this.sb = sb;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.util.logging.Handler#close()
-         */
-        @Override
+    @Override
         public void close() {
 
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.util.logging.Handler#flush()
-         */
-        @Override
+    @Override
         public void flush() {
 
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.util.logging.Handler#publish(java.util.logging.LogRecord)
-         */
-        @Override
+    @Override
         public void publish(LogRecord record) {
 
             sb.append(record.getMessage());

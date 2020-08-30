@@ -40,12 +40,11 @@ import org.junit.Test;
  * This is a test suite for {@link TLiteral}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TLiteralTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -71,7 +70,7 @@ public class TLiteralTest {
     }
 
     /**
-     * <testcase> A Literal can nor have an <code>null</code> name. </testcase>
+     *  A Literal can nor have an {@code null} name.
      * 
      * @throws Exception in case of an error
      */
@@ -82,7 +81,7 @@ public class TLiteralTest {
     }
 
     /**
-     * <testcase> A Literal can nor have an empty name. </testcase>
+     *  A Literal can nor have an empty name.
      * 
      * @throws Exception in case of an error
      */
@@ -93,9 +92,8 @@ public class TLiteralTest {
     }
 
     /**
-     * <testcase> A Literal executes to an exception if the function is
-     * undefined. </testcase>
-     * 
+     * A Literal executes to an exception if the function is undefined
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = ExBibFunctionUndefinedException.class)
@@ -106,7 +104,7 @@ public class TLiteralTest {
     }
 
     /**
-     * <testcase> A Literal executes to itself. </testcase>
+     *  A Literal executes to itself.
      * 
      * @throws Exception in case of an error
      */
@@ -123,8 +121,8 @@ public class TLiteralTest {
     }
 
     /**
-     * <testcase> A Literal for an undefined macro expands to the empty string.
-     * </testcase>
+     *  A Literal for an undefined macro expands to the empty string.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -139,8 +137,8 @@ public class TLiteralTest {
     }
 
     /**
-     * <testcase> A Literal for an defined macro expands to the macro value.
-     * </testcase>
+     *  A Literal for an defined macro expands to the macro value.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -156,7 +154,7 @@ public class TLiteralTest {
     }
 
     /**
-     * <testcase> toString() works. </testcase>
+     *  toString() works.
      * 
      * @throws Exception in case of an error
      */
@@ -167,7 +165,7 @@ public class TLiteralTest {
     }
 
     /**
-     * <testcase> The token visitor invokes the correct method. </testcase>
+     *  The token visitor invokes the correct method.
      * 
      * @throws Exception in case of an error
      */

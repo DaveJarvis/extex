@@ -24,16 +24,15 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * This is an abstract test suite for the primitives <tt>\hyphenchar</tt> and
- * <tt>\skewchar</tt>.
+ * This is an abstract test suite for the primitives {@code \hyphenchar} and
+ * {@code \skewchar}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class FontcharTester extends NoFlagsPrimitiveTester {
 
     /**
-     * The field <tt>def</tt> contains the default value.
+     * The field {@code def} contains the default value.
      */
     private String def = "";
 
@@ -46,8 +45,8 @@ public abstract class FontcharTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that an end of file leads to an error.
-     * </testcase>
+     *  Test case checking that an end of file leads to an error.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -61,8 +60,8 @@ public abstract class FontcharTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that an end of file leads to an error.
-     * </testcase>
+     *  Test case checking that an end of file leads to an error.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -76,8 +75,8 @@ public abstract class FontcharTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that the primitive needs a second argument.
-     * </testcase>
+     *  Test case checking that the primitive needs a second argument.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -92,9 +91,8 @@ public abstract class FontcharTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that the primitive needs a second argument
-     * after an =. </testcase>
-     * 
+     * Test case checking that the primitive needs a second argument after an =
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -108,8 +106,8 @@ public abstract class FontcharTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that an end of file leads to an error.
-     * </testcase>
+     *  Test case checking that an end of file leads to an error.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -123,9 +121,8 @@ public abstract class FontcharTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that a missing font identifier leads to an
-     * error. </testcase>
-     * 
+     * Test case checking that a missing font identifier leads to an error
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -138,9 +135,8 @@ public abstract class FontcharTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that a missing font identifier leads to an
-     * error. </testcase>
-     * 
+     * Test case checking that a missing font identifier leads to an error
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -153,9 +149,8 @@ public abstract class FontcharTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that a correct value is produced when the
-     * hyphen char is not preset for \nullfont. </testcase>
-     * 
+     * Test case checking that a correct value is produced when the hyphen char is not preset for \nullfont
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -168,9 +163,8 @@ public abstract class FontcharTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that a correct value is produced when the
-     * hyphen char is set to 123 for \nullfont. </testcase>
-     * 
+     * Test case checking that a correct value is produced when the hyphen char is set to 123 for \nullfont
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -184,9 +178,8 @@ public abstract class FontcharTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that a correct value is produced when the
-     * hyphen char is set to undefined for \nullfont. </testcase>
-     * 
+     * Test case checking that a correct value is produced when the hyphen char is set to undefined for \nullfont
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -200,9 +193,8 @@ public abstract class FontcharTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that \hyphenchar is countconvertible for
-     * \nullfont. </testcase>
-     * 
+     * Test case checking that \hyphenchar is countconvertible for \nullfont
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -217,9 +209,8 @@ public abstract class FontcharTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that a correct value is produced when the
-     * hyphen char is not preset for a loaded \font. </testcase>
-     * 
+     * Test case checking that a correct value is produced when the hyphen char is not preset for a loaded \font
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -233,9 +224,8 @@ public abstract class FontcharTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that a correct value is produced when the
-     * hyphen char is set to 123 for a loaded \font. </testcase>
-     * 
+     * Test case checking that a correct value is produced when the hyphen char is set to 123 for a loaded \font
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -250,9 +240,8 @@ public abstract class FontcharTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that a correct value is produced when the
-     * hyphen char is set to undefined for a loaded \font. </testcase>
-     * 
+     * Test case checking that a correct value is produced when the hyphen char is set to undefined for a loaded \font
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -267,9 +256,8 @@ public abstract class FontcharTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that \hyphenchar is countconvertible for a
-     * loaded \font. </testcase>
-     * 
+     * Test case checking that \hyphenchar is countconvertible for a loaded \font
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -285,9 +273,8 @@ public abstract class FontcharTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that \hyphenchar is countconvertible for a
-     * loaded \font. </testcase>
-     * 
+     * Test case checking that \hyphenchar is countconvertible for a loaded \font
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -303,9 +290,8 @@ public abstract class FontcharTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that \hyphenchar is theable for a loaded
-     * \font. </testcase>
-     * 
+     * Test case checking that \hyphenchar is theable for a loaded \font
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -320,9 +306,8 @@ public abstract class FontcharTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that \hyphenchar is theable for a loaded
-     * \font. </testcase>
-     * 
+     * Test case checking that \hyphenchar is theable for a loaded \font
+* 
      * @throws Exception in case of an error
      */
     @Test

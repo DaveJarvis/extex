@@ -25,8 +25,7 @@ import java.io.Serializable;
  * This interface describes the capabilities of an image.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4619 $
- */
+*/
 public interface Image extends Serializable {
 
     // not yet

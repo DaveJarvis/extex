@@ -29,21 +29,17 @@ import org.extex.typesetter.type.math.MathDelimiter;
  * This class is a factory for CharNoades.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class NoadFactory {
 
     /**
-     * The constant <tt>VISITOR</tt> contains the math class visitor.
+     * The constant {@code VISITOR} contains the math class visitor.
      */
     private static final MathClassVisitor<Noad, Noad, TypesettingContext> VISITOR =
             new MathClassVisitor<Noad, Noad, TypesettingContext>() {
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.interpreter.type.math.MathClassVisitor#visitBinary(
-                 *      java.lang.Object, java.lang.Object)
+            *      java.lang.Object, java.lang.Object)
                  */
                 public Noad visitBinary(Noad noad, TypesettingContext arg) {
 
@@ -51,10 +47,7 @@ public class NoadFactory {
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.interpreter.type.math.MathClassVisitor#visitClosing(
-                 *      java.lang.Object, java.lang.Object)
+            *      java.lang.Object, java.lang.Object)
                  */
                 public Noad visitClosing(Noad noad, TypesettingContext arg) {
 
@@ -62,10 +55,7 @@ public class NoadFactory {
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.interpreter.type.math.MathClassVisitor#visitLarge(
-                 *      java.lang.Object, java.lang.Object)
+            *      java.lang.Object, java.lang.Object)
                  */
                 public Noad visitLarge(Noad noad, TypesettingContext arg) {
 
@@ -78,10 +68,7 @@ public class NoadFactory {
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.interpreter.type.math.MathClassVisitor#visitOpening(
-                 *      java.lang.Object, java.lang.Object)
+            *      java.lang.Object, java.lang.Object)
                  */
                 public Noad visitOpening(Noad noad, TypesettingContext arg) {
 
@@ -89,10 +76,7 @@ public class NoadFactory {
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.interpreter.type.math.MathClassVisitor#visitOrdinary(
-                 *      java.lang.Object, java.lang.Object)
+            *      java.lang.Object, java.lang.Object)
                  */
                 public Noad visitOrdinary(Noad noad, TypesettingContext arg) {
 
@@ -100,10 +84,7 @@ public class NoadFactory {
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.interpreter.type.math.MathClassVisitor#visitPunctation(
-                 *      java.lang.Object, java.lang.Object)
+            *      java.lang.Object, java.lang.Object)
                  */
                 public Noad visitPunctation(Noad noad, TypesettingContext arg) {
 
@@ -111,10 +92,7 @@ public class NoadFactory {
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.interpreter.type.math.MathClassVisitor#visitRelation(
-                 *      java.lang.Object, java.lang.Object)
+            *      java.lang.Object, java.lang.Object)
                  */
                 public Noad visitRelation(Noad noad, TypesettingContext arg) {
 
@@ -122,10 +100,7 @@ public class NoadFactory {
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.interpreter.type.math.MathClassVisitor#visitVariable(
-                 *      java.lang.Object, java.lang.Object)
+            *      java.lang.Object, java.lang.Object)
                  */
                 public Noad visitVariable(Noad noad, TypesettingContext arg) {
 

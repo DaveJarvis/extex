@@ -38,13 +38,12 @@ import org.extex.exbib.bst2groovy.linker.LinkContainer;
 /**
  * This class represents a function.
  * <p>
- * A function <code>f(a,b,c)</code> is the result of translating the code
- * <code>a b c f</code>. This means that the top of stack is the last argument.
+ * A function {@code f(a,b,c)} is the result of translating the code
+ * {@code a b c f}. This means that the top of stack is the last argument.
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class GFunction extends GCodeContainer implements Compiler {
 
     /**
@@ -56,7 +55,7 @@ public class GFunction extends GCodeContainer implements Compiler {
          * Creates a new object.
          * 
          * @param type the return type
-         * @param entryName the name of the entry to use or <code>null</code>
+         * @param entryName the name of the entry to use or {@code null}
          * @param args the arguments
          */
         public Call(ReturnType type, String entryName, GCode[] args) {
@@ -66,13 +65,13 @@ public class GFunction extends GCodeContainer implements Compiler {
     }
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2009L;
 
     /**
-     * The field <tt>translationMap</tt> contains the already mapped names.
+     * The field {@code translationMap} contains the already mapped names.
      */
     private static Map<String, String> translationMap = makeTranslationMap();
 
@@ -180,27 +179,27 @@ public class GFunction extends GCodeContainer implements Compiler {
     }
 
     /**
-     * The field <tt>name</tt> contains the method name.
+     * The field {@code name} contains the method name.
      */
     private String name;
 
     /**
-     * The field <tt>useCount</tt> contains the use count.
+     * The field {@code useCount} contains the use count.
      */
     private int useCount = 0;
 
     /**
-     * The field <tt>returnValue</tt> contains the return value.
+     * The field {@code returnValue} contains the return value.
      */
     private ReturnType returnType;
 
     /**
-     * The field <tt>parameters</tt> contains the parameters.
+     * The field {@code parameters} contains the parameters.
      */
     private List<Var> parameters;
 
     /**
-     * The field <tt>entry</tt> contains the the entry.
+     * The field {@code entry} contains the the entry.
      */
     private EntryReference entry;
 
@@ -232,10 +231,7 @@ public class GFunction extends GCodeContainer implements Compiler {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryReference,
-     *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
+*      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */
@@ -289,12 +285,7 @@ public class GFunction extends GCodeContainer implements Compiler {
         return parameters;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#getType()
-     */
-    @Override
+@Override
     public ReturnType getType() {
 
         return returnType;
@@ -321,10 +312,7 @@ public class GFunction extends GCodeContainer implements Compiler {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public void print(CodeWriter writer, String prefix) throws IOException {
@@ -348,23 +336,13 @@ public class GFunction extends GCodeContainer implements Compiler {
         writer.write(prefix, "}\n");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return "<" + name + ">";
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#unify(org.extex.exbib.bst2groovy.data.GCode)
-     */
-    @Override
+@Override
     public boolean unify(GCode other) {
 
         if (other instanceof Var) {

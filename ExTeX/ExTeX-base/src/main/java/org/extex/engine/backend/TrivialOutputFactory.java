@@ -36,18 +36,17 @@ import org.extex.backend.outputStream.OutputStreamObserver;
  * in the current directory.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4728 $
- */
+*/
 public class TrivialOutputFactory implements OutputStreamFactory {
 
     /**
-     * The field <tt>extension</tt> contains the default extension used when
-     * type is <code>null</code>.
+     * The field {@code extension} contains the default extension used when
+     * type is {@code null}.
      */
     private String extension = null;
 
     /**
-     * The field <tt>observers</tt> contains the list of registered observers.
+     * The field {@code observers} contains the list of registered observers.
      */
     private List<OutputStreamObserver> observers = null;
 
@@ -57,10 +56,7 @@ public class TrivialOutputFactory implements OutputStreamFactory {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.outputStream.OutputStreamFactory#getOutputStream(
-     *      java.lang.String, java.lang.String)
+*      java.lang.String, java.lang.String)
      */
     public OutputStream getOutputStream(String name, String type)
             throws DocumentWriterException {
@@ -84,10 +80,7 @@ public class TrivialOutputFactory implements OutputStreamFactory {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.outputStream.OutputStreamFactory#register(
-     *      org.extex.backend.outputStream.OutputStreamObserver)
+*      org.extex.backend.outputStream.OutputStreamObserver)
      */
     public void register(OutputStreamObserver observer) {
 
@@ -98,10 +91,7 @@ public class TrivialOutputFactory implements OutputStreamFactory {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.outputStream.OutputStreamFactory#setExtension(
-     *      java.lang.String)
+*      java.lang.String)
      */
     public void setExtension(String extension) {
 

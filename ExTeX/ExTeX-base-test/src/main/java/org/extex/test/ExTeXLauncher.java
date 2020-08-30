@@ -62,9 +62,9 @@ import static org.junit.Assert.*;
  * <dl>
  * <dt>extex.launcher.loglevel</dt>
  * <dd>This property sets the log level of the logger in effect. It takes
- * symbolic (String) names of the log levels: <tt>config</tt>, <tt>info</tt>,
- * <tt>warning</tt>, <tt>severe</tt>, <tt>fine</tt>, <tt>finer</tt>,
- * <tt>finest</tt></dd>
+ * symbolic (String) names of the log levels: {@code config}, {@code info},
+ * {@code warning}, {@code severe}, {@code fine}, {@code finer},
+ * {@code finest}</dd>
  * 
  * <dt>extex.launcher.verbose</dt>
  * <dd>This property is a boolean value which indicates that the code to be run
@@ -80,8 +80,7 @@ import static org.junit.Assert.*;
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 @SuppressWarnings("unused")
 public abstract class ExTeXLauncher {
 
@@ -89,13 +88,12 @@ public abstract class ExTeXLauncher {
      * Inner class for the error handler.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
-     */
+    */
     @SuppressWarnings("RedundantThrows")
     private static class EHandler implements ErrorHandler {
 
         /**
-         * The field <tt>logger</tt> contains the target logger.
+         * The field {@code logger} contains the target logger.
          */
         private final Logger logger;
 
@@ -125,15 +123,15 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * The constant <tt>DEFINE_BRACES</tt> contains the definition of the usual
+     * The constant {@code DEFINE_BRACES} contains the definition of the usual
      * category codes for braces { and }.
      */
     public static final String DEFINE_BRACES = "\\catcode`\\{=1 "
             + "\\catcode`\\}=2\\relax ";
 
     /**
-     * The constant <tt>DEFINE_CATCODES</tt> contains the definition of the
-     * usual category codes for {, }, $, &, #, ^, _, and ^^10.
+     * The constant {@code DEFINE_CATCODES} contains the definition of the
+     * usual category codes for {@code { } $ & # ^ _ ^^10}.
      */
     public static final String DEFINE_CATCODES = "\\catcode`\\{=1 "
             + "\\catcode`\\}=2 " + "\\catcode`\\$=3 " + "\\catcode`\\&=4 "
@@ -141,36 +139,36 @@ public abstract class ExTeXLauncher {
             + "\\catcode`\\^^I=10 ";
 
     /**
-     * The constant <tt>DEFINE_HASH</tt> contains the definition of the category
+     * The constant {@code DEFINE_HASH} contains the definition of the category
      * code for #.
      */
     public static final String DEFINE_HASH = "\\catcode`\\#=6 ";
 
     /**
-     * The constant <tt>DEFINE_MATH</tt> contains the definition of the catcode
+     * The constant {@code DEFINE_MATH} contains the definition of the catcode
      * for math shift $.
      */
     public static final String DEFINE_MATH = "\\catcode`\\$=3 ";
 
     /**
-     * The constant <tt>DEFINE_TILDE</tt> contains the definition of the
+     * The constant {@code DEFINE_TILDE} contains the definition of the
      * category code for ~.
      */
     public static final String DEFINE_TILDE = "\\catcode`\\~=13 ";
 
     /**
-     * The field <tt>levelMap</tt> contains the mapping for debug levels from
+     * The field {@code levelMap} contains the mapping for debug levels from
      * String representation to Level values.
      */
     private static final Map<String, Level> LEVEL_MAP = new HashMap<>();
 
     /**
-     * The field <tt>SEP</tt> contains the separator for properties.
+     * The field {@code SEP} contains the separator for properties.
      */
     private static final String SEP = System.getProperty("path.separator", ":");
 
     /**
-     * The constant <tt>TERM</tt> contains the terminating string for output.
+     * The constant {@code TERM} contains the terminating string for output.
      */
     public static final String TERM = "\n\n";
 
@@ -187,12 +185,12 @@ public abstract class ExTeXLauncher {
     /**
      * Set some properties to default values. The properties set are:
      * <dl>
-     * <dt><tt>extex.output</tt></dt>
-     * <dd>Preset to <tt>test-plain</tt></dd>
-     * <dt><tt>extex.interaction</tt></dt>
-     * <dd>Preset to <tt>batchmode</tt></dd>
-     * <dt><tt>extex.fonts</tt></dt>
-     * <dd>Preset to <tt>src/font</tt></dd>
+     * <dt>{@code extex.output}</dt>
+     * <dd>Preset to {@code test-plain}</dd>
+     * <dt>{@code extex.interaction}</dt>
+     * <dd>Preset to {@code batchmode}</dd>
+     * <dt>{@code extex.fonts}</dt>
+     * <dd>Preset to {@code src/font}</dd>
      * </dl>
      * 
      * @param properties the properties to adapt
@@ -228,34 +226,34 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * The field <tt>config</tt> contains the name of the configuration to use.
+     * The field {@code config} contains the name of the configuration to use.
      */
     private String config = "base-test.xml";
 
     /**
-     * The field <tt>defaultLog</tt> contains the default log output unless
+     * The field {@code defaultLog} contains the default log output unless
      * specified explicitly.
      */
     private String defaultLog = "";
 
     /**
-     * The field <tt>err</tt> contains the error stream for reporting.
+     * The field {@code err} contains the error stream for reporting.
      */
     private final PrintStream err = System.err;
 
     /**
-     * The field <tt>props</tt> contains the merged properties from the system
-     * properties and the properties loaded from <tt>.extex-test</tt>.
+     * The field {@code props} contains the merged properties from the system
+     * properties and the properties loaded from {@code .extex-test}.
      */
     private Properties props = null;
 
     /**
-     * The field <tt>setHsize</tt> contains the indicator to use a wider hsize.
+     * The field {@code setHsize} contains the indicator to use a wider hsize.
      */
     private boolean setHsize = true;
 
     /**
-     * The field <tt>trace</tt> contains the indicator for tracing.
+     * The field {@code trace} contains the indicator for tracing.
      */
     private boolean trace = false;
 
@@ -266,13 +264,13 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * Run some code through <tt>Interpreter</tt> which is expected to fail.
+     * Run some code through {@code Interpreter} which is expected to fail.
      * 
      * @param properties the properties to modify
      * @param code the code to expand
      * @param log the expected output on the log stream
      * 
-     * @return a new instance of the <tt>Interpreter</tt> class which has been
+     * @return a new instance of the {@code Interpreter} class which has been
      *         used for the test run. This object can be inspected in additional
      *         asserts.
      * 
@@ -285,12 +283,12 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * Run some code through <tt>Interpreter</tt> which is expected to fail.
+     * Run some code through {@code Interpreter} which is expected to fail.
      * 
      * @param code the code to expand
      * @param log the expected output on the log stream
      * 
-     * @return a new instance of the <tt>Interpreter</tt> class which has been
+     * @return a new instance of the {@code Interpreter} class which has been
      *         used for the test run. This object can be inspected in additional
      *         asserts.
      * 
@@ -302,14 +300,14 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * Run some code through ??TeX.
+     * Run some code through εχTeX.
      * 
      * @param properties the properties to start with
      * @param code the code to expand
      * @param log the expected output on the log stream
      * @param expect the expected output on the output stream
      * 
-     * @return a new instance of the <tt>Interpreter</tt> class which has been
+     * @return a new instance of the {@code Interpreter} class which has been
      *         used for the test run. This object can be inspected in additional
      *         asserts.
      * 
@@ -327,15 +325,15 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * Run some code through ??TeX.
+     * Run some code through εχTeX.
      * 
      * @param properties the properties to start with
      * @param code the code to expand
-     * @param logValidator the validator for the log stream or <code>null</code>
+     * @param logValidator the validator for the log stream or {@code null}
      * @param outputValidator the validator for the output stream or
-     *        <code>null</code>
+     *        {@code null}
      * 
-     * @return a new instance of the <tt>Interpreter</tt> class which has been
+     * @return a new instance of the {@code Interpreter} class which has been
      *         used for the test run. This object can be inspected in additional
      *         asserts.
      * 
@@ -479,13 +477,13 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * Run some code through ??TeX.
+     * Run some code through εχTeX.
      * 
      * @param code the code to expand
      * @param log the expected output on the log stream
      * @param expect the expected output on the output stream
      * 
-     * @return a new instance of the <tt>Interpreter</tt> class which has been
+     * @return a new instance of the {@code Interpreter} class which has been
      *         used for the test run. This object can be inspected in additional
      *         asserts.
      * 
@@ -498,13 +496,13 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * Run some code through ??TeX.
+     * Run some code through εχTeX.
      * 
      * @param properties the properties to modify
      * @param code the code to expand
      * @param expect the expected output on the output stream
      * 
-     * @return a new instance of the <tt>Interpreter</tt> class which has been
+     * @return a new instance of the {@code Interpreter} class which has been
      *         used for the test run. This object can be inspected in additional
      *         asserts.
      * 
@@ -517,12 +515,12 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * Run some code through ??TeX.
+     * Run some code through εχTeX.
      * 
      * @param code the code to expand
      * @param expect the expected output on the output stream
      * 
-     * @return a new instance of the <tt>Interpreter</tt> class which has been
+     * @return a new instance of the {@code Interpreter} class which has been
      *         used for the test run. This object can be inspected in additional
      *         asserts.
      * 
@@ -623,7 +621,7 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * Run ??TeX on a file.
+     * Run εχTeX on a file.
      * 
      * @param file the name of the file to read from
      * 
@@ -637,7 +635,7 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * Run ??TeX on a file.
+     * Run εχTeX on a file.
      * 
      * @param file the name of the file to read from
      * @param properties properties to start with

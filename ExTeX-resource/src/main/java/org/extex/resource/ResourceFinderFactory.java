@@ -36,12 +36,11 @@ import org.extex.framework.logger.LogEnabled;
  * This class provides a factory for ResourceFinders.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ResourceFinderFactory {
 
     /**
-     * The constant <tt>CLASS_ATTRIBUTE</tt> contains the name of the
+     * The constant {@code CLASS_ATTRIBUTE} contains the name of the
      * attribute containing the class name.
      */
     private static final String CLASS_ATTRIBUTE = "class";

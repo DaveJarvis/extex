@@ -51,12 +51,11 @@ import org.extex.scanner.type.tokens.Tokens;
  * This class holds an output file onto which tokens can be written.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5563 $
- */
+*/
 public class OutputFile implements OutFile {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -69,10 +68,7 @@ public class OutputFile implements OutFile {
             new TokenVisitor<Object, Writer>() {
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.scanner.type.token.TokenVisitor#visitActive(
-                 *      org.extex.scanner.type.token.ActiveCharacterToken,
+            *      org.extex.scanner.type.token.ActiveCharacterToken,
                  *      java.lang.Object)
                  */
                 public Object visitActive(ActiveCharacterToken token, Writer w)
@@ -230,13 +226,13 @@ public class OutputFile implements OutFile {
             };
 
     /**
-     * The field <tt>file</tt> contains the file assigned to this instance. If
-     * the value is <code>null</code> then it can never be opened.
+     * The field {@code file} contains the file assigned to this instance. If
+     * the value is {@code null} then it can never be opened.
      */
     private File file;
 
     /**
-     * The field <tt>writer</tt> contains the real writer assigned to this
+     * The field {@code writer} contains the real writer assigned to this
      * instance.
      */
     private transient Writer writer = null;
@@ -270,19 +266,14 @@ public class OutputFile implements OutFile {
     /**
      * Check whether the output file is open.
      * 
-     * @return <code>true</code> iff the instance is open
+     * @return {@code true} iff the instance is open
      */
     public boolean isOpen() {
 
         return (null != writer);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.type.file.OutFile#newline()
-     */
-    public void newline() throws IOException {
+public void newline() throws IOException {
 
         if (writer != null) {
             writer.write('\n');
@@ -292,10 +283,7 @@ public class OutputFile implements OutFile {
     /**
      * Open the current file.
      * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.type.file.OutFile#open(java.lang.String,
-     *      java.lang.String, TokenStreamFactory)
+*      java.lang.String, TokenStreamFactory)
      */
     public void open(String key, String encoding, TokenStreamFactory factory)
             throws UnsupportedEncodingException {

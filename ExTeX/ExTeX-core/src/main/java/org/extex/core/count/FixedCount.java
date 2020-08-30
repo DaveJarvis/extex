@@ -24,8 +24,7 @@ package org.extex.core.count;
  * Count} which do not modify the value.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4399 $
- */
+*/
 public interface FixedCount {
 
     /**
@@ -33,7 +32,7 @@ public interface FixedCount {
      * 
      * @param count the count to compare to
      * 
-     * @return <code>true</code> iff count has an equal value to the current one
+     * @return {@code true} iff count has an equal value to the current one
      */
     boolean eq(FixedCount count);
 
@@ -42,7 +41,7 @@ public interface FixedCount {
      * 
      * @param count the count to compare to
      * 
-     * @return <code>true</code> iff count has an value greater or equal to the
+     * @return {@code true} iff count has an value greater or equal to the
      *         current one
      */
     boolean ge(FixedCount count);
@@ -59,7 +58,7 @@ public interface FixedCount {
      * 
      * @param count the count to compare to
      * 
-     * @return <code>true</code> iff count has an value greater than the current
+     * @return {@code true} iff count has an value greater than the current
      *         one
      */
     boolean gt(FixedCount count);
@@ -69,7 +68,7 @@ public interface FixedCount {
      * 
      * @param count the count to compare to
      * 
-     * @return <code>true</code> iff count has an value less or equal to the
+     * @return {@code true} iff count has an value less or equal to the
      *         current one
      */
     boolean le(FixedCount count);
@@ -79,7 +78,7 @@ public interface FixedCount {
      * 
      * @param count the count to compare to
      * 
-     * @return <code>true</code> iff count has an value less than the current
+     * @return {@code true} iff count has an value less than the current
      *         one
      */
     boolean lt(FixedCount count);
@@ -89,7 +88,7 @@ public interface FixedCount {
      * 
      * @param count the count to compare to
      * 
-     * @return <code>true</code> iff count has an value not equal to the current
+     * @return {@code true} iff count has an value not equal to the current
      *         one
      */
     boolean ne(FixedCount count);

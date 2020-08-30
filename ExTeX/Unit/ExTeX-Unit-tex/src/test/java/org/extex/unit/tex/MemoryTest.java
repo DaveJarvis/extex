@@ -34,8 +34,7 @@ import org.junit.runner.JUnitCore;
  * This is a test suite for expansion.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MemoryTest extends ExTeXLauncher {
 
     /**
@@ -54,9 +53,8 @@ public class MemoryTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that an infinite recursion throws an
-     * {@link OutOfMemoryError}. </testcase>
-     * 
+     * Test case checking that an infinite recursion throws an {@link OutOfMemoryError}
+* 
      * @throws Exception in case of an error
      */
     @Test

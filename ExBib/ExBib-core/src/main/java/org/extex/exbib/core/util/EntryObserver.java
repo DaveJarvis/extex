@@ -29,17 +29,16 @@ import org.extex.framework.i18n.LocalizerFactory;
  * Observer which checks that new entries have associated methods in the bst.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class EntryObserver implements Observer {
 
     /**
-     * The field <tt>processor</tt> contains the saved processor context.
+     * The field {@code processor} contains the saved processor context.
      */
     private final Processor processor;
 
     /**
-     * The field <tt>logger</tt> contains the logger for output.
+     * The field {@code logger} contains the logger for output.
      */
     private final Logger logger;
 
@@ -69,10 +68,7 @@ public class EntryObserver implements Observer {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.util.Observer#update(org.extex.exbib.core.util.Observable,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     public void update(Observable source, Object o) {
 

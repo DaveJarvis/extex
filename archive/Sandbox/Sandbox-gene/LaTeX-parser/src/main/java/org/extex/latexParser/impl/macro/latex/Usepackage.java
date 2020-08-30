@@ -38,22 +38,21 @@ import org.extex.scanner.type.token.Token;
  * This class represents a \ usepackage instruction.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Usepackage extends AbstractNode implements Macro {
 
     /**
-     * The field <tt>opt</tt> contains the optional arguments.
+     * The field {@code opt} contains the optional arguments.
      */
     private Node opt;
 
     /**
-     * The field <tt>name</tt> contains the name of the packages.
+     * The field {@code name} contains the name of the packages.
      */
     private String name;
 
     /**
-     * The field <tt>token</tt> contains the token.
+     * The field {@code token} contains the token.
      */
     private Token token;
 
@@ -86,10 +85,7 @@ public class Usepackage extends AbstractNode implements Macro {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Macro#parse(
-     *      org.extex.scanner.type.token.Token,
+*      org.extex.scanner.type.token.Token,
      *      org.extex.latexParser.impl.Parser)
      */
     public Node parse(Token token, Parser parser)
@@ -124,12 +120,7 @@ public class Usepackage extends AbstractNode implements Macro {
             .getLineno());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.api.Node#print(java.io.PrintStream)
-     */
-    public void print(PrintStream stream) {
+public void print(PrintStream stream) {
 
         stream.print(token.toText());
         if (opt != null) {

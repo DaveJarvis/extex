@@ -26,23 +26,22 @@ import java.util.ArrayList;
  * This class represents a list of nodes.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NodeList extends ArrayList<Node> implements Node {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 1L;
 
     /**
-     * The field <tt>source</tt> contains the source the tokens are read from.
+     * The field {@code source} contains the source the tokens are read from.
      */
     private String source;
 
     /**
-     * The field <tt>line</tt> contains the line number of the start.
+     * The field {@code line} contains the line number of the start.
      */
     private int line;
 
@@ -67,12 +66,7 @@ public class NodeList extends ArrayList<Node> implements Node {
         this.line = line;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.api.Node#getLineNumber()
-     */
-    public int getLineNumber() {
+public int getLineNumber() {
 
         return line;
     }
@@ -87,24 +81,14 @@ public class NodeList extends ArrayList<Node> implements Node {
         return source;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.api.Node#print(java.io.PrintStream)
-     */
-    public void print(PrintStream stream) {
+public void print(PrintStream stream) {
 
         for (Node n : this) {
             n.print(stream);
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return toString(new StringBuilder()).toString();

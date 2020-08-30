@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains compilers for single pieces of code. Each built-in
+ * Contains compilers for single pieces of code. Each built-in
  * instruction for the bst interpreter is represented as a compiler class 
  * implementing the interface {@link org.extex.exbib.bst2groovy.Compiler}.
  *

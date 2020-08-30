@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains primitives for the manipulation of strings.
+ * Contains primitives for the manipulation of strings.
  */
 
 package org.extex.unit.tex.string;

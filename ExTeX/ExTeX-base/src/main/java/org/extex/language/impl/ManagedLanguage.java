@@ -26,8 +26,7 @@ import org.extex.language.Language;
  * which has a creator assigned.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4757 $
- */
+*/
 public interface ManagedLanguage extends Language {
 
     /**

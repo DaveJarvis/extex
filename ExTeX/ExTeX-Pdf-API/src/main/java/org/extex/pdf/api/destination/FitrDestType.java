@@ -26,18 +26,17 @@ import org.extex.typesetter.type.node.RuleNode;
  * This is the fitr destination type for PDF.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4791 $
- */
+*/
 public class FitrDestType extends DestType {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>rule</tt> contains the rule specification.
+     * The field {@code rule} contains the rule specification.
      */
     private RuleNode rule;
 
@@ -54,7 +53,7 @@ public class FitrDestType extends DestType {
     /**
      * Getter for rule. The rule carries the width height, and depth. Nothing
      * else. And even those parameters are optional; they might be
-     * <code>null</code>.
+     * {@code null}.
      * 
      * @return the rule
      */

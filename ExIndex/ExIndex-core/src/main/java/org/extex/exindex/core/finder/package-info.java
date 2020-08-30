@@ -17,7 +17,7 @@
  */
 /**
  * 
- * This package contains the resource finder for the ExIndex core.
+ * Contains the resource finder for the ExIndex core.
  * 
  *
  */

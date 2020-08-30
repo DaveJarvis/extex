@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\toks</tt>.
+ * This is a test suite for the primitive {@code \toks}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class ToksTest extends AbstractToksRegisterTester {
 
     /**
@@ -49,7 +48,7 @@ public class ToksTest extends AbstractToksRegisterTester {
 
     /**
      * <testcase primitive="\toks"> Test case checking that the assignment of a
-     * tokens register works. </testcase>
+     * tokens register works.
      * 
      * @throws Exception in case of an error
      */

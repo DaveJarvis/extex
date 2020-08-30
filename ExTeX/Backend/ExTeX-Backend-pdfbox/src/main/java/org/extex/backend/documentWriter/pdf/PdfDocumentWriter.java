@@ -58,8 +58,7 @@ import org.pdfbox.pdmodel.edit.PDPageContentStream;
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:Rolf.Niepraschk@ptb.de">Rolf Niepraschk</a>
- * @version $Revision$
- */
+*/
 public class PdfDocumentWriter
         implements
             PdftexSupport,
@@ -149,12 +148,7 @@ public class PdfDocumentWriter
         // }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#close()
-     */
-    @Override
+@Override
     public void close() throws DocumentWriterException {
 
         if (out != null) {
@@ -177,10 +171,7 @@ public class PdfDocumentWriter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#getAnnotation(org.extex.typesetter.type.node.RuleNode,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public PdfAnnotation getAnnotation(RuleNode node, String annotation)
@@ -190,22 +181,14 @@ public class PdfDocumentWriter
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
-     */
-    @Override
+@Override
     public String getExtension() {
 
         return "pdf";
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#getObject(java.lang.String, boolean,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public PdfObject getObject(String attr, boolean isStream, String text)
@@ -216,10 +199,7 @@ public class PdfDocumentWriter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#getXForm(java.lang.String,
-     *      java.lang.String, org.extex.typesetter.type.NodeList)
+*      java.lang.String, org.extex.typesetter.type.NodeList)
      */
     @Override
     public PdfXForm getXForm(String attr, String resources, NodeList list)
@@ -230,10 +210,7 @@ public class PdfDocumentWriter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#getXImage(java.lang.String,
-     *      org.extex.typesetter.type.node.RuleNode, java.lang.String, long,
+*      org.extex.typesetter.type.node.RuleNode, java.lang.String, long,
      *      boolean)
      */
     @Override
@@ -245,10 +222,7 @@ public class PdfDocumentWriter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdfcatalog(java.lang.String,
-     *      org.extex.pdf.api.action.ActionSpec)
+*      org.extex.pdf.api.action.ActionSpec)
      */
     @Override
     public void pdfcatalog(String text, ActionSpec action) {
@@ -257,24 +231,14 @@ public class PdfDocumentWriter
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdffontname(org.extex.typesetter.tc.font.Font)
-     */
-    @Override
+@Override
     public String pdffontname(Font font) {
 
         // TODO pdffontname unimplemented
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdffontobjnum(org.extex.typesetter.tc.font.Font)
-     */
-    @Override
+@Override
     public long pdffontobjnum(Font font) {
 
         // TODO pdffontobjnum unimplemented
@@ -282,10 +246,7 @@ public class PdfDocumentWriter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdfincludechars(org.extex.typesetter.tc.font.Font,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public void pdfincludechars(Font font, String text) {
@@ -294,72 +255,42 @@ public class PdfDocumentWriter
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdfinfo(java.lang.String)
-     */
-    @Override
+@Override
     public void pdfinfo(String text) {
 
         // TODO pdfinfo unimplemented
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdflastannot()
-     */
-    @Override
+@Override
     public long pdflastannot() {
 
         // TODO pdflastannot unimplemented
         return 0;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdflastobj()
-     */
-    @Override
+@Override
     public long pdflastobj() {
 
         // TODO pdflastobj unimplemented
         return 0;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdflastxform()
-     */
-    @Override
+@Override
     public long pdflastxform() {
 
         // TODO pdflastxform unimplemented
         return 0;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdflastximage()
-     */
-    @Override
+@Override
     public long pdflastximage() {
 
         // TODO pdflastximage unimplemented
         return 0;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdfnames(java.lang.String)
-     */
-    @Override
+@Override
     public void pdfnames(String text) {
 
         // TODO pdfnames unimplemented
@@ -367,10 +298,7 @@ public class PdfDocumentWriter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdfoutline(org.extex.pdf.api.action.ActionSpec,
-     *      long, java.lang.String)
+*      long, java.lang.String)
      */
     @Override
     public void pdfoutline(ActionSpec action, long count, String text) {
@@ -379,22 +307,14 @@ public class PdfDocumentWriter
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(java.io.OutputStream)
-     */
-    @Override
+@Override
     public void setOutputStream(OutputStream outStream) {
 
         out = outStream;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(java.lang.String,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public void setParameter(String name, String value) {
@@ -402,12 +322,7 @@ public class PdfDocumentWriter
         param.put(name, value);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#shipout(org.extex.typesetter.type.page.Page)
-     */
-    @Override
+@Override
     public int shipout(Page p) throws DocumentWriterException {
 
         NodeList nodes = p.getNodes();

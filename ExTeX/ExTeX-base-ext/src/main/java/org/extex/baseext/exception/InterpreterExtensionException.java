@@ -28,12 +28,11 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class InterpreterExtensionException extends HelpingException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;

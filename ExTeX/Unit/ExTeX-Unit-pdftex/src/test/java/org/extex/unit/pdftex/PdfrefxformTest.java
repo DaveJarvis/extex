@@ -23,11 +23,10 @@ import org.extex.test.NoFlagsButProtectedPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\pdfrefxform</tt>.
+ * This is a test suite for the primitive {@code \pdfrefxform}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class PdfrefxformTest extends NoFlagsButProtectedPrimitiveTester {
 
 
@@ -39,7 +38,7 @@ public class PdfrefxformTest extends NoFlagsButProtectedPrimitiveTester {
 
     /**
      * <testcase primitive="\pdfrefxform"> Test case checking that ...
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */

@@ -32,12 +32,11 @@ import org.junit.runner.JUnitCore;
  * Tests for the macro parameter tokens.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4756 $
- */
+*/
 public class MacroParamTokenTest extends TokenTester {
 
     /**
-     * The field <tt>t</tt> contains the reference token.
+     * The field {@code t} contains the reference token.
      */
     private static final Token t = new MacroParamToken( UnicodeChar.get( 'x'));
 
@@ -60,43 +59,33 @@ setText( "x");
 setStr( "macro parameter character x");
     }
 
-    /**
-     */
-    @Test
+@Test
     @Override
     public void testEq10() {
 
         assertTrue(t.eq(Catcode.MACROPARAM, 'x'));
     }
 
-    /**
-     */
-    @Test
+@Test
     @Override
     public void testEq11() {
 
         assertFalse(t.eq(Catcode.LETTER, 'x'));
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testEqChar0() {
 
         assertTrue(t.eq('x'));
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testEqualschar1() {
 
         assertFalse(t.eq('.'));
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testEqualsToken1() {
 
         Token t1 = new MacroParamToken(UnicodeChar.get(' '));
@@ -104,9 +93,7 @@ setStr( "macro parameter character x");
         assertFalse(t1.equals(t2));
     }
 
-    /**
-     */
-    @Test
+@Test
     @Override
     public void testToText0() {
 

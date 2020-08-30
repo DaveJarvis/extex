@@ -18,15 +18,6 @@
 
 package org.extex.exbib.core.bst;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Stack;
-import java.util.logging.Logger;
-
 import org.extex.exbib.core.bst.code.Code;
 import org.extex.exbib.core.bst.code.MacroCode;
 import org.extex.exbib.core.bst.command.Command;
@@ -34,20 +25,9 @@ import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
 import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.TokenFactory;
-import org.extex.exbib.core.bst.token.impl.TField;
-import org.extex.exbib.core.bst.token.impl.TInteger;
-import org.extex.exbib.core.bst.token.impl.TLocalInteger;
-import org.extex.exbib.core.bst.token.impl.TLocalString;
-import org.extex.exbib.core.bst.token.impl.TString;
-import org.extex.exbib.core.bst.token.impl.TokenList;
+import org.extex.exbib.core.bst.token.impl.*;
 import org.extex.exbib.core.db.DB;
-import org.extex.exbib.core.exceptions.ExBibException;
-import org.extex.exbib.core.exceptions.ExBibFunctionExistsException;
-import org.extex.exbib.core.exceptions.ExBibFunctionUndefinedException;
-import org.extex.exbib.core.exceptions.ExBibImpossibleException;
-import org.extex.exbib.core.exceptions.ExBibIoException;
-import org.extex.exbib.core.exceptions.ExBibMissingNumberException;
-import org.extex.exbib.core.exceptions.ExBibMissingStringException;
+import org.extex.exbib.core.exceptions.*;
 import org.extex.exbib.core.io.Locator;
 import org.extex.exbib.core.io.Writer;
 import org.extex.exbib.core.io.bstio.BstReaderFactory;
@@ -61,19 +41,23 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
 import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 
+import java.io.IOException;
+import java.util.*;
+import java.util.logging.Logger;
+
 /**
  * This is the core implementation of an interpreter for the
- * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X language.
+ * BibTeX language.
  * <p>
  * The core implementation contains the full functionality of an interpreter.
  * But not functions, strings, integers etc are predefined. Thus usually this
  * class should be used as a base class where derived classes take care of those
  * definitions.
  * </p>
- * 
- * <h3>The Stack</h3>
+ *
+ * <p>
+ * The Stack
+ * </p>
  * <p>
  * The interpreter implements a stack based language. All communication to
  * functions is performed via the stack. The arguments of method invocations can
@@ -85,25 +69,25 @@ import org.extex.resource.ResourceFinder;
  * is {@link Code}.
  * </p>
  * 
- * <h3>The Strings</h3>
+ * <p>The Strings</p>
  * <p>
  * The interpreter can keep string valued variables. They are accessed with a
  * name which is also a {@link String}.
  * </p>
  * 
- * <h3>The Integers</h3>
+ * <p>The Integers</p>
  * <p>
  * The interpreter can keep integer valued variables. They are accessed with a
  * name which is a {@link String}.
  * </p>
  * 
- * <h3>The Entry Stings</h3>
+ * <p>The Entry Strings</p>
  * 
- * <h3>The Entry Integers</h3>
+ * <p>The Entry Integers</p>
  * 
- * <h3>The Database</h3>
+ * <p>The Database</p>
  * 
- * <h3>The Observers</h3>
+ * <p>The Observers</p>
  * <p>
  * Several operations in the interpreter can trigger an observer when the
  * corresponding event occurs. Thus client programs can register a handler to be
@@ -111,8 +95,7 @@ import org.extex.resource.ResourceFinder;
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BstInterpreterCore extends BibliographyCore
         implements
             BstProcessor,
@@ -121,98 +104,98 @@ public class BstInterpreterCore extends BibliographyCore
             FunctionContainer {
 
     /**
-     * The field <tt>MAX_NUMBER</tt> contains the maximum number to be used as
+     * The field {@code MAX_NUMBER} contains the maximum number to be used as
      * default for various paremeters.
      */
     private static final int MAX_NUMBER = 0x7fff;
 
     /**
-     * The field <tt>commands</tt> contains the list of commands to process.
+     * The field {@code commands} contains the list of commands to process.
      */
     private List<Command> commands;
 
     /**
-     * The field <tt>configuration</tt> contains the configuration.
+     * The field {@code configuration} contains the configuration.
      */
     private Configuration configuration;
 
     /**
-     * The field <tt>finder</tt> contains the resource finder.
+     * The field {@code finder} contains the resource finder.
      */
     private ResourceFinder finder;
 
     /**
-     * The field <tt>functions</tt> contains the mapping from the name to the
+     * The field {@code functions} contains the mapping from the name to the
      * code for functions.
      */
     private Map<String, Code> functions;
 
     /**
-     * The field <tt>addFunctionObservers</tt> contains the list of observers
+     * The field {@code addFunctionObservers} contains the list of observers
      * triggered when functions are added.
      */
     private final ObserverList addFunctionObservers = new ObserverList();
 
     /**
-     * The field <tt>changeFunctionObservers</tt> contains the list of observers
+     * The field {@code changeFunctionObservers} contains the list of observers
      * triggered when functions are changed.
      */
     private final ObserverList changeFunctionObservers = new ObserverList();
 
     /**
-     * The field <tt>popObservers</tt> contains the list of observers triggered
+     * The field {@code popObservers} contains the list of observers triggered
      * when a Token is popped.
      */
     private final ObserverList popObservers = new ObserverList();
 
     /**
-     * The field <tt>pushObservers</tt> contains the list of observers triggered
+     * The field {@code pushObservers} contains the list of observers triggered
      * when a token is pushed.
      */
     private final ObserverList pushObservers = new ObserverList();
 
     /**
-     * The field <tt>runObservers</tt> contains the list of observers triggered
+     * The field {@code runObservers} contains the list of observers triggered
      * when processing a command.
      */
     private final ObserverList runObservers = new ObserverList();
 
     /**
-     * The field <tt>stepObservers</tt> contains the list of observers triggered
+     * The field {@code stepObservers} contains the list of observers triggered
      * by the execution of one step.
      */
     private final ObserverList stepObservers = new ObserverList();
 
     /**
-     * The field <tt>theEntryIntegers</tt> contains the list of local integers.
+     * The field {@code theEntryIntegers} contains the list of local integers.
      */
     private List<String> theEntryIntegers;
 
     /**
-     * The field <tt>theEntryStrings</tt> contains the list of local strings.
+     * The field {@code theEntryStrings} contains the list of local strings.
      */
     private List<String> theEntryStrings;
 
     /**
-     * The field <tt>theIntegers</tt> contains the list of integers.
+     * The field {@code theIntegers} contains the list of integers.
      */
     private List<String> theIntegers;
 
     /**
-     * The field <tt>theStrings</tt> contains the list of strings.
+     * The field {@code theStrings} contains the list of strings.
      */
     private List<String> theStrings;
 
     /**
-     * The field <tt>literalStack</tt> contains the stack which is the central
+     * The field {@code literalStack} contains the stack which is the central
      * data structure for the execution of a program.
      */
-    private final Stack<Token> literalStack = new Stack<Token>();
+    private final Stack<Token> literalStack = new Stack<>();
 
     /**
-     * The field <tt>outWriter</tt> contains the output writer.
+     * The field {@code outWriter} contains the output writer.
      */
-    private Writer outWriter = null;
+    private Writer outWriter;
 
     /**
      * This is an obsolete constant denoting the maximum size of an entry. The
@@ -227,7 +210,7 @@ public class BstInterpreterCore extends BibliographyCore
     private int globalMax = MAX_NUMBER;
 
     /**
-     * The field <tt>warnings</tt> contains the number of warnings.
+     * The field {@code warnings} contains the number of warnings.
      */
     private long warnings = 0;
 
@@ -249,9 +232,9 @@ public class BstInterpreterCore extends BibliographyCore
      * 
      * @param db The database associated with this processor.
      * @param out This argument is a writer which receives the normal output. It
-     *        is an object implementing the interface <code>Writer</code>.
+     *        is an object implementing the interface {@code Writer}.
      * @param log This argument is a writer which receives the logging output.
-     *        It is an object implementing the interface <code>Writer</code>.
+     *        It is an object implementing the interface {@code Writer}.
      * 
      * @throws ExBibImpossibleException if an programming error has been
      *         detected
@@ -260,7 +243,7 @@ public class BstInterpreterCore extends BibliographyCore
             throws ExBibImpossibleException {
 
         super(db, log);
-        functions = new HashMap<String, Code>();
+        functions = new HashMap<>();
         this.outWriter = out;
 
         reset();
@@ -278,12 +261,6 @@ public class BstInterpreterCore extends BibliographyCore
         commands.add(command);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.FunctionContainer#addFunction(java.lang.String,
-     *      org.extex.exbib.core.bst.code.Code, org.extex.exbib.core.io.Locator)
-     */
     public void addFunction(String name, Code body, Locator locator)
             throws
         ExBibException {
@@ -302,12 +279,6 @@ public class BstInterpreterCore extends BibliographyCore
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.FunctionContainer#changeFunction(java.lang.String,
-     *      org.extex.exbib.core.bst.code.Code, org.extex.exbib.core.io.Locator)
-     */
     public void changeFunction(String name, Code body, Locator locator)
             throws ExBibIllegalValueException,
                 ExBibFunctionUndefinedException {
@@ -379,21 +350,11 @@ public class BstInterpreterCore extends BibliographyCore
         return configuration;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.BstProcessor#getEntryIntegers()
-     */
     public List<String> getEntryIntegers() {
 
         return theEntryIntegers;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.BstProcessor#getEntryStrings()
-     */
     public List<String> getEntryStrings() {
 
         return theEntryStrings;
@@ -409,24 +370,14 @@ public class BstInterpreterCore extends BibliographyCore
         return finder;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.FunctionContainer#getFunction(java.lang.String)
-     */
     public Code getFunction(String name) {
 
         return (functions.get(name));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.FunctionContainer#getFunctionNames()
-     */
     public List<String> getFunctionNames() {
 
-        List<String> sl = new ArrayList<String>();
+        List<String> sl = new ArrayList<>();
 
         for (String name : functions.keySet()) {
             Code code = getFunction(name);
@@ -439,31 +390,16 @@ public class BstInterpreterCore extends BibliographyCore
         return sl;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.BstProcessor#getIntegers()
-     */
     public List<String> getIntegers() {
 
         return theIntegers;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.Processor#getMacroNames()
-     */
     public List<String> getMacroNames() {
 
         return getDB().getMacroNames();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.Processor#getNumberOfWarnings()
-     */
     public long getNumberOfWarnings() {
 
         return warnings;
@@ -479,21 +415,11 @@ public class BstInterpreterCore extends BibliographyCore
         return outWriter;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.BstProcessor#getStrings()
-     */
     public List<String> getStrings() {
 
         return theStrings;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.Processor#isKnown(java.lang.String)
-     */
     public boolean isKnown(String type) {
 
         return (null != getFunction(type));
@@ -514,7 +440,7 @@ public class BstInterpreterCore extends BibliographyCore
      * thrown.
      * 
      * <p>
-     * The observers for <code>pop</code> are notified. They receive the token
+     * The observers for {@code pop} are notified. They receive the token
      * as argument.
      * </p>
      * 
@@ -541,7 +467,7 @@ public class BstInterpreterCore extends BibliographyCore
      * element isn't an integer then an error condition is raised.
      * 
      * <p>
-     * The observers for <code>pop</code> are notified. They receive the token
+     * The observers for {@code pop} are notified. They receive the token
      * as argument.
      * </p>
      * 
@@ -551,10 +477,6 @@ public class BstInterpreterCore extends BibliographyCore
      * 
      * @throws ExBibStackEmptyException in case that no element is left to pop
      * @throws ExBibMissingNumberException in case that no integer is found
-     * 
-     *         {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.BstProcessor#popInteger(org.extex.exbib.core.io.Locator)
      */
     public TInteger popInteger(Locator locator)
             throws ExBibStackEmptyException,
@@ -578,7 +500,7 @@ public class BstInterpreterCore extends BibliographyCore
      * element isn't an string then an error condition is raised.
      * 
      * <p>
-     * The observers for <code>pop</code> are notified. They receive the token
+     * The observers for {@code pop} are notified. They receive the token
      * as argument.
      * </p>
      * 
@@ -612,25 +534,20 @@ public class BstInterpreterCore extends BibliographyCore
 
     /**
      * Pop an element from the stack. If the stack is empty then
-     * <code>null</code> is returned.
+     * {@code null} is returned.
      * 
      * <p>
-     * The observers for <code>pop</code> are notified if something is popped
+     * The observers for {@code pop} are notified if something is popped
      * from the stack. In this case they receive the token as argument.
      * </p>
      * 
-     * @return the top of the stack or <code>null</code>
+     * @return the top of the stack or {@code null}
      */
     public Token popUnchecked() {
 
         return (literalStack.empty() ? null : literalStack.pop());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.Processor#process(org.extex.exbib.core.io.Writer)
-     */
     public long process(Writer writer) throws ExBibException {
 
         if (configuration == null) {
@@ -660,7 +577,7 @@ public class BstInterpreterCore extends BibliographyCore
      * Push the given token onto the stack.
      * 
      * <p>
-     * The observers for <code>push</code> are notified. They receive the token
+     * The observers for {@code push} are notified. They receive the token
      * as argument.
      * </p>
      * 
@@ -672,12 +589,6 @@ public class BstInterpreterCore extends BibliographyCore
         pushObservers.update(this, token);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.util.Observable#registerObserver(java.lang.String,
-     *      org.extex.exbib.core.util.Observer)
-     */
     @Override
     public void registerObserver(String name, Observer observer)
             throws NotObservableException {
@@ -699,11 +610,6 @@ public class BstInterpreterCore extends BibliographyCore
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.Bibliography#reset()
-     */
     @Override
     public void reset() {
 
@@ -713,13 +619,13 @@ public class BstInterpreterCore extends BibliographyCore
         entryMax = MAX_NUMBER;
         globalMax = MAX_NUMBER;
 
-        theEntryIntegers = new ArrayList<String>();
-        theEntryStrings = new ArrayList<String>();
-        theIntegers = new ArrayList<String>();
-        theStrings = new ArrayList<String>();
-        commands = new ArrayList<Command>();
+        theEntryIntegers = new ArrayList<>();
+        theEntryStrings = new ArrayList<>();
+        theIntegers = new ArrayList<>();
+        theStrings = new ArrayList<>();
+        commands = new ArrayList<>();
         if (functions == null) {
-            functions = new HashMap<String, Code>();
+            functions = new HashMap<>();
         }
         try {
             addFunction("sort.key$", new TLocalString("sort.key$", locator),
@@ -733,12 +639,6 @@ public class BstInterpreterCore extends BibliographyCore
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.BstProcessor#setEntries(java.util.List,
-     *      org.extex.exbib.core.io.Locator)
-     */
     public void setEntries(List<String> entries, Locator locator)
             throws ExBibException {
 
@@ -748,12 +648,6 @@ public class BstInterpreterCore extends BibliographyCore
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.BstProcessor#setEntryIntegers(java.util.List,
-     *      org.extex.exbib.core.io.Locator)
-     */
     public void setEntryIntegers(List<String> integers, Locator locator)
             throws ExBibException {
 
@@ -763,12 +657,6 @@ public class BstInterpreterCore extends BibliographyCore
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.BstProcessor#setEntryStrings(java.util.List,
-     *      org.extex.exbib.core.io.Locator)
-     */
     public void setEntryStrings(List<String> strings, Locator locator)
             throws ExBibException {
 
@@ -778,12 +666,6 @@ public class BstInterpreterCore extends BibliographyCore
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.BstProcessor#setIntegers(org.extex.exbib.core.bst.token.impl.TokenList,
-     *      org.extex.exbib.core.io.Locator)
-     */
     public void setIntegers(TokenList list, Locator locator)
             throws ExBibException {
 
@@ -805,22 +687,11 @@ public class BstInterpreterCore extends BibliographyCore
         outWriter = writer;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
-     */
     public void setResourceFinder(ResourceFinder f) {
 
         this.finder = f;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.BstProcessor#setStrings(org.extex.exbib.core.bst.token.impl.TokenList,
-     *      org.extex.exbib.core.io.Locator)
-     */
     public void setStrings(TokenList list, Locator locator)
             throws ExBibException {
 
@@ -832,21 +703,11 @@ public class BstInterpreterCore extends BibliographyCore
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.BstProcessor#step(java.lang.Object)
-     */
     public void step(Object obj) {
 
         stepObservers.update(this, obj);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.Processor#warning(java.lang.String)
-     */
     @Override
     public void warning(String message) {
 

@@ -43,7 +43,7 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This class represents a structured index as a whole.
  * 
- * <div style="float:right;"> <img src="doc-files/classes.png"/> <br />
+ * <div style="float:right;"> <img src="doc-files/classes.png" alt="classes"> <br>
  * Figure: The structure </div>
  * 
  * <p>
@@ -57,8 +57,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class StructuredIndex extends LetterGroupContainer
         implements
             AttributesContainer,
@@ -67,76 +66,76 @@ public class StructuredIndex extends LetterGroupContainer
             MarkupContainer {
 
     /**
-     * The field <tt>name</tt> contains the name.
+     * The field {@code name} contains the name.
      */
     private final String name;
 
     /**
-     * The field <tt>fallback</tt> contains the container for fallback values.
+     * The field {@code fallback} contains the container for fallback values.
      */
     private final FallbackContainer fallback;
 
     /**
-     * The field <tt>depth</tt> contains the hierarchy depth; i.e. 0 for flat
+     * The field {@code depth} contains the hierarchy depth; i.e. 0 for flat
      * and Integer.MAX_VALUE for tree, or anything on between.
      */
     private int depth = Integer.MAX_VALUE;
 
     /**
-     * The field <tt>sortRulesMap</tt> contains the mapping from names to sort
+     * The field {@code sortRulesMap} contains the mapping from names to sort
      * rules.
      */
     private final Map<Integer, SortRules> sortRulesMap =
             new HashMap<Integer, SortRules>();
 
     /**
-     * The field <tt>mergeRules</tt> contains the list of merge rules.
+     * The field {@code mergeRules} contains the list of merge rules.
      */
     private final List<Rule> mergeRules = new ArrayList<Rule>();
 
     /**
-     * The field <tt>attributeMap</tt> contains the attributes.
+     * The field {@code attributeMap} contains the attributes.
      */
     private final Map<String, Attribute> attributeMap =
             new HashMap<String, Attribute>();
 
     /**
-     * The field <tt>dropped</tt> contains the indicator to drop the index.
+     * The field {@code dropped} contains the indicator to drop the index.
      */
     private boolean dropped = false;
 
     /**
-     * The field <tt>markup</tt> contains the mapping from name to markup.
+     * The field {@code markup} contains the mapping from name to markup.
      */
     private final Map<String, Markup> markup = new HashMap<String, Markup>();
 
     /**
-     * The field <tt>alias</tt> contains the alias for this index. If it is
-     * not <code>null</code> then all entries should be stored there.
+     * The field {@code alias} contains the alias for this index. If it is
+     * not {@code null} then all entries should be stored there.
      */
     private StructuredIndex alias = null;
 
     /**
-     * The field <tt>locationClassMap</tt> contains the mapping from names to
+     * The field {@code locationClassMap} contains the mapping from names to
      * location classes.
      */
     private final Map<String, LocationClass> locationClassMap =
             new HashMap<String, LocationClass>();
 
     /**
-     * The field <tt>locationClasses</tt> contains the list of classes already
+     * The field {@code locationClasses} contains the list of classes already
      * defined.
      */
     private List<LocationClass> locationClasses =
             new ArrayList<LocationClass>();
 
     /**
-     * The field <tt>suffix</tt> contains the suffix parameter.
+     * The field {@code suffix} contains the suffix parameter.
      */
     private String suffix = ".";
 
     /**
-     * The field <tt>entryIndex</tt> contains the mapping from key to Boolean
+     * The field {@code entryIndex} contains the mapping from key to Boolean
      * to check that a key is in use.
      */
     private final Map<String[], Boolean> entryIndex =
@@ -146,7 +145,7 @@ public class StructuredIndex extends LetterGroupContainer
      * Creates a new object.
      * 
      * @param name the name of the index; "" for the default; this value is not
-     *        <code>null</code>
+     *        {@code null}
      * @param fallback the container for fallback values
      */
     public StructuredIndex(String name, FallbackContainer fallback) {
@@ -159,10 +158,7 @@ public class StructuredIndex extends LetterGroupContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.LocationClassContainer#addLocationClass(
-     *      java.lang.String,
+*      java.lang.String,
      *      org.extex.exindex.core.type.alphabet.LocationClass)
      */
     public boolean addLocationClass(String className,
@@ -192,10 +188,7 @@ public class StructuredIndex extends LetterGroupContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.rules.SortRuleContainer#addSortRule(
-     *      Integer, org.extex.exindex.core.type.rules.Rule)
+*      Integer, org.extex.exindex.core.type.rules.Rule)
      */
     public void addSortRule(Integer level, Rule rule) {
 
@@ -208,10 +201,7 @@ public class StructuredIndex extends LetterGroupContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.rules.SortRuleContainer#addSortRules(
-     *      Integer, java.util.List)
+*      Integer, java.util.List)
      */
     public void addSortRules(Integer level, List<Rule> ruleList) {
 
@@ -294,10 +284,7 @@ public class StructuredIndex extends LetterGroupContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.MarkupContainer#getMarkup(
-     *      java.lang.String)
+*      java.lang.String)
      */
     public Markup getMarkup(String markupName) {
 
@@ -333,10 +320,7 @@ public class StructuredIndex extends LetterGroupContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.attribute.AttributesContainer#isAttributeDefined(
-     *      java.lang.String)
+*      java.lang.String)
      */
     public boolean isAttributeDefined(String attribute) {
 
@@ -354,10 +338,7 @@ public class StructuredIndex extends LetterGroupContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.attribute.AttributesContainer#lookupAttribute(
-     *      java.lang.String)
+*      java.lang.String)
      */
     public Attribute lookupAttribute(String attribute) {
 
@@ -365,10 +346,7 @@ public class StructuredIndex extends LetterGroupContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.LocationClassContainer#lookupLocationClass(
-     *      java.lang.String)
+*      java.lang.String)
      */
     public LocationClass lookupLocationClass(String locationClassName) {
 
@@ -376,10 +354,7 @@ public class StructuredIndex extends LetterGroupContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.rules.SortRuleContainer#lookupOrCreateSortRule(
-     *      Integer)
+*      Integer)
      */
     public SortRules lookupOrCreateSortRule(Integer level) {
 
@@ -392,10 +367,7 @@ public class StructuredIndex extends LetterGroupContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.rules.SortRuleContainer#lookupSortRules(
-     *      Integer)
+*      Integer)
      */
     public SortRules lookupSortRules(Integer level) {
 
@@ -403,10 +375,7 @@ public class StructuredIndex extends LetterGroupContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.LocationClassContainer#makePageReference(
-     *      java.lang.String, String)
+*      java.lang.String, String)
      */
     public PageReference makePageReference(String encap, String page) {
 
@@ -420,10 +389,7 @@ public class StructuredIndex extends LetterGroupContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.LocationClassContainer#orderLocationClasses(
-     *      java.lang.String[])
+*      java.lang.String[])
      */
     public void orderLocationClasses(String[] list) throws LException {
 
@@ -475,10 +441,7 @@ public class StructuredIndex extends LetterGroupContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.MarkupContainer#setMarkup(
-     *      java.lang.String, org.extex.exindex.core.type.markup.Markup)
+*      java.lang.String, org.extex.exindex.core.type.markup.Markup)
      */
     public void setMarkup(String markupName, Markup m) {
 
@@ -495,12 +458,7 @@ public class StructuredIndex extends LetterGroupContainer
         this.suffix = suffix;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.rules.SortRuleContainer#sortRuleSize()
-     */
-    public int sortRuleSize() {
+public int sortRuleSize() {
 
         return sortRulesMap.size();
     }
@@ -538,12 +496,7 @@ public class StructuredIndex extends LetterGroupContainer
         entryIndex.put(entry.getMainKey(), Boolean.TRUE);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return "index[" + name + "]";

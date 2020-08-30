@@ -41,29 +41,28 @@ import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
  * This class represents a letter group.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LetterGroup {
 
     /**
-     * The field <tt>map</tt> contains the mapping from name to index entry.
+     * The field {@code map} contains the mapping from name to index entry.
      */
     private final Map<String, IndexEntry> map = new HashMap<String, IndexEntry>();
 
     /**
-     * The field <tt>after</tt> contains the the letter groups preceding this
+     * The field {@code after} contains the the letter groups preceding this
      * one.
      */
     private final List<LetterGroup> after = new ArrayList<LetterGroup>();
 
     /**
-     * The field <tt>before</tt> contains the letter groups following this
+     * The field {@code before} contains the letter groups following this
      * one. This value is cleared after the collecting phase.
      */
     private final List<LetterGroup> before = new ArrayList<LetterGroup>();
 
     /**
-     * The field <tt>name</tt> contains the name of the letter group.
+     * The field {@code name} contains the name of the letter group.
      */
     private final String name;
 
@@ -120,10 +119,10 @@ public class LetterGroup {
     }
 
     /**
-     * Get an arbitrary element from the before list or <code>null</code> if
+     * Get an arbitrary element from the before list or {@code null} if
      * this list is empty.
      * 
-     * @return an arbitrary element from the before list or <code>null</code>
+     * @return an arbitrary element from the before list or {@code null}
      *         if this list is empty
      */
     public LetterGroup getSomeAfter() {
@@ -135,10 +134,10 @@ public class LetterGroup {
     }
 
     /**
-     * Get an arbitrary element from the before list or <code>null</code> if
+     * Get an arbitrary element from the before list or {@code null} if
      * this list is empty.
      * 
-     * @return an arbitrary element from the before list or <code>null</code>
+     * @return an arbitrary element from the before list or {@code null}
      *         if this list is empty
      */
     public LetterGroup getSomeBefore() {
@@ -152,7 +151,7 @@ public class LetterGroup {
     /**
      * Check whether some elements are contained.
      * 
-     * @return <code>true</code> iff the letter group does not contain
+     * @return {@code true} iff the letter group does not contain
      *         elements
      * @see java.util.List#isEmpty()
      */
@@ -163,12 +162,12 @@ public class LetterGroup {
 
     /**
      * Check that a certain markup position is present. This means that the
-     * value is not <code>null</code> and not the empty string.
+     * value is not {@code null} and not the empty string.
      * 
      * @param markup the markup
      * @param pos the position
      * 
-     * @return <code>true</code> iff the markup is not empty
+     * @return {@code true} iff the markup is not empty
      */
     private boolean markupIsNotEmpty(MarkupTransform markup, Position pos) {
 
@@ -207,12 +206,7 @@ public class LetterGroup {
         entry.store(sortKey, 1, depth, raw);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.util.AbstractCollection#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return name + ": " + super.toString();
@@ -220,7 +214,7 @@ public class LetterGroup {
 
     /**
      * Check that there is only one after group and return it. If there are none
-     * or more than one then return <code>null</code>
+     * or more than one then return {@code null}
      * 
      * @return the unique after group or null
      */
@@ -237,7 +231,7 @@ public class LetterGroup {
      * @param markupContainer the container for markup information
      * @param trace the indicator for tracing
      * 
-     * @return <code>true</code> iff something has been written
+     * @return {@code true} iff something has been written
      * 
      * @throws IOException in case of an I/O error
      * @throws LNonMatchingTypeException in case of an error

@@ -30,40 +30,39 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\muexpr</code>.
+ * This class provides an implementation for the primitive {@code \muexpr}.
  * 
- * <doc name="muexpr">
- * <h3>The Primitive <tt>\muexpr</tt></h3>
+ * <p>The Primitive {@code \muexpr}</p>
  * <p>
- * The primitive <tt>\muexpr</tt> evaluates an expression which results in a
+ * The primitive {@code \muexpr} evaluates an expression which results in a
  * mu value.
  * </p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;muexpr&rang;
- *      &rarr; <tt>\muexpr</tt> </pre>
+ *      &rarr; {@code \muexpr} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \muexpr  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Muexpr extends AbstractCode implements MuskipConvertible {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
@@ -79,10 +78,7 @@ public class Muexpr extends AbstractCode implements MuskipConvertible {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.MuskipConvertible#convertMuskip(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Muskip convertMuskip(Context context, TokenSource source,

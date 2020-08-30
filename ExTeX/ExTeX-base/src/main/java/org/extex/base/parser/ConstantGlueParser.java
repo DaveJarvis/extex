@@ -40,20 +40,17 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:4399 $
- */
+*/
 public class ConstantGlueParser implements Parser<Glue>, GlueParser {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object by parsing a token source.
-     * 
-     * <doc type="syntax" name="glue">
      * 
      * <pre class="syntax">
      *   &lang;glue&rang;
@@ -76,8 +73,7 @@ public class ConstantGlueParser implements Parser<Glue>, GlueParser {
      * TODO gene: documentation incomplete
      * </p>
      * 
-     * </doc>
-     * 
+     *
      * 
      * @param source the source to read new tokens from
      * @param context the processing context
@@ -134,10 +130,7 @@ public class ConstantGlueParser implements Parser<Glue>, GlueParser {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.Parser#parse(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Glue parse(Context context, TokenSource source, Typesetter typesetter)
@@ -148,10 +141,7 @@ public class ConstantGlueParser implements Parser<Glue>, GlueParser {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.GlueParser#parseGlue(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Glue parseGlue(Context context, TokenSource source,

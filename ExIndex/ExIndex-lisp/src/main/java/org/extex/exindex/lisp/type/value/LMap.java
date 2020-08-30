@@ -27,12 +27,11 @@ import java.util.Map;
  * This class provides a map for the L system.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LMap implements LValue {
 
     /**
-     * The field <tt>array</tt> contains the content.
+     * The field {@code array} contains the content.
      */
     private final Map<LValue, LValue> map = new HashMap<LValue, LValue>();
 
@@ -43,11 +42,11 @@ public class LMap implements LValue {
 
     /**
      * Get an element at a certain position. If the position is empty then
-     * <tt>nil</tt> is returned.
+     * {@code nil} is returned.
      * 
      * @param key the key
      * 
-     * @return the specified element or <tt>nil</tt>
+     * @return the specified element or {@code nil}
      */
     public LValue get(LValue key) {
 
@@ -58,12 +57,7 @@ public class LMap implements LValue {
         return value;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
-     */
-    public void print(PrintStream stream) {
+public void print(PrintStream stream) {
 
         boolean first = true;
         stream.print("#{");

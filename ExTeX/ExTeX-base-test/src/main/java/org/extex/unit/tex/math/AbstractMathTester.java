@@ -26,12 +26,11 @@ import org.junit.Test;
  * This is an abstract base class for testing math primitives.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public abstract class AbstractMathTester extends NoFlagsPrimitiveTester {
 
     /**
-     * The field <tt>DEFINE_MATH_FONTS</tt> contains the definition for the
+     * The field {@code DEFINE_MATH_FONTS} contains the definition for the
      * required fonts.
      */
     public static final String DEFINE_MATH_FONTS =
@@ -46,13 +45,13 @@ public abstract class AbstractMathTester extends NoFlagsPrimitiveTester {
                     + "\\font\\f cmmi5 \\scriptscriptfont1=\\f ";
 
     /**
-     * The field <tt>primitive</tt> contains the name of the primitive to
+     * The field {@code primitive} contains the name of the primitive to
      * test.
      */
     private String primitive;
 
     /**
-     * The field <tt>arguments</tt> contains the arguments for the primitive
+     * The field {@code arguments} contains the arguments for the primitive
      * invocation.
      */
     private String arguments;
@@ -78,9 +77,8 @@ public abstract class AbstractMathTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that the primitive needs the math mode.
-     * Vertical mode is not enough. </testcase>
-     *
+     * Test case checking that the primitive needs the math mode. Vertical mode is not enough
+*
      * @throws Exception in case of an error
      */
     @Test
@@ -92,9 +90,8 @@ public abstract class AbstractMathTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that the primitive needs the math mode.
-     * Horizontal mode is not enough. </testcase>
-     *
+     * Test case checking that the primitive needs the math mode. Horizontal mode is not enough
+*
      * @throws Exception in case of an error
      */
     @Test

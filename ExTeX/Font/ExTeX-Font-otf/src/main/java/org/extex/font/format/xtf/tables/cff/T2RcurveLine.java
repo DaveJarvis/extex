@@ -28,24 +28,23 @@ import org.extex.util.xml.XMLStreamWriter;
  * rcurveline: {dxa dya dxb dyb dxc dyc}+ dxd dyd rcurveline (24).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class T2RcurveLine extends T2PathConstruction {
 
     /**
      * The dxd.
      */
-    private T2Number dxd;
+    private final T2Number dxd;
 
     /**
      * The dyd.
      */
-    private T2Number dyd;
+    private final T2Number dyd;
 
     /**
      * The six values array.
      */
-    private T2SixNumber[] eight;
+    private final T2SixNumber[] eight;
 
     /**
      * Create a new object.
@@ -110,45 +109,25 @@ public class T2RcurveLine extends T2PathConstruction {
         return eight;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
-     */
-    @Override
+@Override
     public int getID() {
 
         return TYPE_RCURVELINE;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "rcurveline";
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getValue()
-     */
-    @Override
+@Override
     public Object getValue() {
 
         return eight;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#toText()
-     */
-    @Override
+@Override
     public String toText() {
 
         StringBuilder buf = new StringBuilder();
@@ -162,12 +141,7 @@ public class T2RcurveLine extends T2PathConstruction {
         return buf.toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    @Override
+@Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());

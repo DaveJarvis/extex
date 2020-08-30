@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains some support classes for groups.
+ * Contains some support classes for groups.
  */
 
 package org.extex.interpreter.context.group;

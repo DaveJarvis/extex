@@ -27,8 +27,7 @@ import java.io.OutputStream;
  * units in a pipe manner.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5563 $
- */
+*/
 public interface OutputStreamInterceptor {
 
     /**
@@ -39,7 +38,7 @@ public interface OutputStreamInterceptor {
      * @param stream the stream to add some processing unit to
      * 
      * @return the new output stream. This value should never be
-     *         <code>null</code>.
+     *         {@code null}.
      */
     OutputStream pipe(OutputStream stream);
 

@@ -25,11 +25,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\fontdimen</tt>.
+ * This is a test suite for the primitive {@code \fontdimen}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class FontdimenTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -50,7 +49,7 @@ public class FontdimenTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\fontdimen"> Test case checking that \fontdimen
-     * needs an argument. </testcase>
+     * needs an argument.
      * 
      * @throws Exception in case of an error
      */
@@ -65,7 +64,7 @@ public class FontdimenTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\fontdimen"> Test case checking that \fontdimen
-     * needs an argument. </testcase>
+     * needs an argument.
      * 
      * @throws Exception in case of an error
      */
@@ -80,7 +79,7 @@ public class FontdimenTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\fontdimen"> Test case checking that \fontdimen on
-     * unset keys returns 0 pt. </testcase>
+     * unset keys returns 0 pt.
      * 
      * @throws Exception in case of an error
      */
@@ -95,7 +94,7 @@ public class FontdimenTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\fontdimen"> Test case checking that \fontdimen on
-     * unset keys returns 0 pt. </testcase>
+     * unset keys returns 0 pt.
      * 
      * @throws Exception in case of an error
      */
@@ -110,7 +109,7 @@ public class FontdimenTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\fontdimen"> Test case checking that \fontdimen can
-     * be set and read back for \nullfont. </testcase>
+     * be set and read back for \nullfont.
      * 
      * @throws Exception in case of an error
      */
@@ -126,7 +125,7 @@ public class FontdimenTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\fontdimen"> Test case checking that \fontdimen can
-     * be set and read back for cmtt12. </testcase>
+     * be set and read back for cmtt12.
      * 
      * @throws Exception in case of an error
      */
@@ -143,7 +142,7 @@ public class FontdimenTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\fontdimen"> Test case checking that \fontdimen is
-     * an assignment. </testcase>
+     * an assignment.
      * 
      * @throws Exception in case of an error
      */

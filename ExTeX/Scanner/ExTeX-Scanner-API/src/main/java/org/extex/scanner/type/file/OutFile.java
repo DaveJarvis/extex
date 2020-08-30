@@ -31,8 +31,7 @@ import org.extex.scanner.type.tokens.Tokens;
  * This class holds an output file onto which tokens can be written.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface OutFile extends Serializable {
 
     /**
@@ -45,7 +44,7 @@ public interface OutFile extends Serializable {
     /**
      * Check whether the output file is open.
      * 
-     * @return <code>true</code> iff the instance is open
+     * @return {@code true} iff the instance is open
      */
     boolean isOpen();
 
@@ -53,7 +52,7 @@ public interface OutFile extends Serializable {
      * Open the current file.
      *
      * @param key the key
-     * @param encoding the encoding or <code>null</code> for the default
+     * @param encoding the encoding or {@code null} for the default
      *        encoding
      * @param factory the token stream factory
      * 
@@ -74,7 +73,7 @@ public interface OutFile extends Serializable {
      * 
      * @param toks tokens to write
      * 
-     * @return <code>true</code> iff the writing was successful 
+     * @return {@code true} iff the writing was successful 
      * 
      * @throws HelpingException in case of an error
      * @throws IOException in case of an IO error

@@ -87,9 +87,10 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <p>
  * LookupType Enumeration table for glyph positioning
  * </p>
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td><b>Value</b></td>
+* <td><b>Value</b></td>
  * <td><b>Type</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -191,9 +192,10 @@ import org.extex.util.xml.XMLWriterConvertible;
  * initially set to 1.0 (0x00010000) and offsets to three tables: ScriptList,
  * FeatureList, and LookupList.
  * </p>
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td><b>Value</b></td>
+* <td><b>Value</b></td>
  * <td><b>Type</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -220,8 +222,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class OtfTableGPOS extends AbstractXtfSFLTable
         implements
             XtfTable,
@@ -242,12 +243,7 @@ public class OtfTableGPOS extends AbstractXtfSFLTable
         super(tablemap, de, rar);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
+public String getShortcut() {
 
         return "gpos";
     }
@@ -262,12 +258,7 @@ public class OtfTableGPOS extends AbstractXtfSFLTable
         return XtfReader.GPOS;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.gps.LookupTableFactory#lookupType(int)
-     */
-    public String lookupType(int type) {
+public String lookupType(int type) {
 
         if (type >= 1 && type < XtfLookup.LOOKUP_TYPE_NAMES_GPOS.length - 1) {
             return XtfLookup.LOOKUP_TYPE_NAMES_GPOS[type - 1];
@@ -276,10 +267,7 @@ public class OtfTableGPOS extends AbstractXtfSFLTable
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.gps.LookupTableFactory#read(org.extex.util.file.random.RandomAccessR,
-     *      int, int, int, org.extex.font.format.xtf.tables.XtfGlyphName)
+*      int, int, int, org.extex.font.format.xtf.tables.XtfGlyphName)
      */
     public XtfLookupTable read(RandomAccessR rar, int posOffset, int type,
             int offset, XtfGlyphName xtfGlyph) throws IOException {

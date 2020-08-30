@@ -29,9 +29,9 @@ import org.extex.exbib.core.exceptions.ExBibFileNotFoundException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * This class represents a <tt>READ</tt> command.
+ * This class represents a {@code READ} command.
  * <p>
- * The <tt>read</tt> command read entries into the database. The database is
+ * The {@code read} command read entries into the database. The database is
  * empty before the read command is encountered. The list of entries is ordered
  * according to the order they are encountered.
  * </p>
@@ -42,8 +42,7 @@ import org.extex.exbib.core.io.Locator;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BstRead extends AbstractCommand {
 
     /**
@@ -57,10 +56,7 @@ public class BstRead extends AbstractCommand {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.command.Command#execute(BstProcessor,
-     *      org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Locator locator)
             throws ExBibException {
@@ -84,10 +80,7 @@ public class BstRead extends AbstractCommand {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.command.Command#visit(org.extex.exbib.core.bst.command.CommandVisitor,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visit(CommandVisitor visitor, Object... args)
             throws IOException,

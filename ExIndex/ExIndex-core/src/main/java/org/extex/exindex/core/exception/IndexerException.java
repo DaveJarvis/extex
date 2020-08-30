@@ -28,18 +28,17 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This exception signals that an error in the indexer has been encountered.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 6631 $
- */
+*/
 public class IndexerException extends LException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>locator</tt> contains the name and line of the resource.
+     * The field {@code locator} contains the name and line of the resource.
      */
     private final ResourceLocator locator;
 
@@ -66,12 +65,7 @@ public class IndexerException extends LException {
         this.locator = locator;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Throwable#getLocalizedMessage()
-     */
-    @Override
+@Override
     public String getLocalizedMessage() {
 
         String message = getMessage();

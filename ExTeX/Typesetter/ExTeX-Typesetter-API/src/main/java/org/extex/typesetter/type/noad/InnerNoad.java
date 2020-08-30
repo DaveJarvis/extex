@@ -35,8 +35,7 @@ import org.extex.typesetter.type.noad.util.MathSpacing;
  * @see "TTP [682]"
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class InnerNoad extends AbstractNucleusNoad {
 
     /**

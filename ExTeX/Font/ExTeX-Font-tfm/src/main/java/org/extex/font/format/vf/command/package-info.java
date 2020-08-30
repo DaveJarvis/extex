@@ -16,8 +16,8 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the definitions and implementations for the
- * VF-commands handling in ??TeX.
+ *Contains definitions and implementations for the
+ * VF-commands handling in εχTeX.
  */
 
 package org.extex.font.format.vf.command;

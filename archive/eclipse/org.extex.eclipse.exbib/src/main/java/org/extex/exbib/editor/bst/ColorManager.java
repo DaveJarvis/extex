@@ -31,12 +31,11 @@ import org.extex.exbib.editor.Activator;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class ColorManager {
 
     /**
-     * The field <tt>colorTable</tt> contains the ...
+     * The field {@code colorTable} contains the ...
      */
     protected Map<String, Color> colorTable = new HashMap<String, Color>();
 

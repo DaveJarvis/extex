@@ -29,12 +29,11 @@ import org.extex.exindex.lisp.type.value.LValue;
  * This is the adapter for the L system to define the markup for an attribute
  * group.
  * 
- * <doc type="exindex-command" command="markup-attribute-group">
- * 
- * <h3>The Command <tt>markup-attribute-group</tt></h3>
+*
+ * <p>The Command {@code markup-attribute-group}</p>
  * 
  * <p>
- * The command <tt>markup-attribute-group</tt> can be used to specify the markup
+ * The command {@code markup-attribute-group} can be used to specify the markup
  * for attribute groups.
  * </p>
  * 
@@ -54,18 +53,16 @@ import org.extex.exindex.lisp.type.value.LValue;
  * 
  * TODO documentation incomplete
  * 
- * </doc>
  * 
- * <h3>Parameters</h3>
+ * <p>Parameters</p>
  * <p>
  * The parameters defined with this command are stored in the L system under the
- * key of the function name (i.e. <tt>markup-attribute-group</tt>).
+ * key of the function name (i.e. {@code markup-attribute-group}).
  * </p>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LMarkupAttributeGroup extends AbstractLAdapter {
 
     /**
@@ -97,7 +94,7 @@ public class LMarkupAttributeGroup extends AbstractLAdapter {
      * @param sep the separator
      * @param group the group
      * 
-     * @return <tt>null</tt>
+     * @return {@code null}
      * 
      * @throws LSettingConstantException should not happen
      * @throws LNonMatchingTypeException in case of an error

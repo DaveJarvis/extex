@@ -28,8 +28,7 @@ import org.extex.util.file.random.RandomAccessR;
  * Interface for a DVI interpreter.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public interface DviInterpreter {
 
     /**

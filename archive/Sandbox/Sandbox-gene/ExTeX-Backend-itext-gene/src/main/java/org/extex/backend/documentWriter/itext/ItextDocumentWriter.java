@@ -69,8 +69,7 @@ import com.lowagie.text.pdf.PdfWriter;
  * writer.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 5854 $
- */
+*/
 public class ItextDocumentWriter
         implements
             DocumentWriter,
@@ -79,43 +78,43 @@ public class ItextDocumentWriter
             Configurable {
 
     /**
-     * The field <tt>converter</tt> contains the converter to acquire a color
+     * The field {@code converter} contains the converter to acquire a color
      * in RGB mode.
      */
     private ColorConverter converter;
 
     /**
-     * The field <tt>document</tt> contains the ...
+     * The field {@code document} contains the ...
      */
     private Document document = null;
 
     /**
-     * The field <tt>options</tt> contains the options to use.
+     * The field {@code options} contains the options to use.
      */
     private DocumentWriterOptions options;
 
     /**
-     * The field <tt>parameter</tt> contains the parameters.
+     * The field {@code parameter} contains the parameters.
      */
     private Map<String, String> parameter = new HashMap<String, String>();
 
     /**
-     * The field <tt>posX</tt> contains the x position on the current page.
+     * The field {@code posX} contains the x position on the current page.
      */
     private long posX;
 
     /**
-     * The field <tt>posY</tt> contains the y position on the current page.
+     * The field {@code posY} contains the y position on the current page.
      */
     private long posY;
 
     /**
-     * The field <tt>stream</tt> contains the target.
+     * The field {@code stream} contains the target.
      */
     private OutputStream stream;
 
     /**
-     * The field <tt>visitor</tt> contains the visitor carrying the methods
+     * The field {@code visitor} contains the visitor carrying the methods
      * for translating nodes to RTF instructions.
      */
     private NodeVisitor<Boolean, Object> visitor =
@@ -127,22 +126,21 @@ public class ItextDocumentWriter
                  * 
                  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd
                  *         Neugebauer</a>
-                 * @version $Revision: 5854 $
-                 */
+                */
                 class State {
 
                     /**
-                     * The field <tt>color</tt> contains the color index.
+                     * The field {@code color} contains the color index.
                      */
                     private int color;
 
                     /**
-                     * The field <tt>font</tt> contains the font index.
+                     * The field {@code font} contains the font index.
                      */
                     private int font;
 
                     /**
-                     * The field <tt>fontSize</tt> contains the font size.
+                     * The field {@code fontSize} contains the font size.
                      */
                     private long fontSize;
 
@@ -193,14 +191,14 @@ public class ItextDocumentWriter
                 }
 
                 /**
-                 * The field <tt>horizontal</tt> contains the indicator that
+                 * The field {@code horizontal} contains the indicator that
                  * the processing is in horizontal mode. Otherwise it is in
                  * vertical mode.
                  */
                 private boolean horizontal = true;
 
                 /**
-                 * The field <tt>stack</tt> contains the stack for RTF group
+                 * The field {@code stack} contains the stack for RTF group
                  * state information.
                  */
                 private Stack<State> stack = new Stack<State>();
@@ -551,10 +549,7 @@ public class ItextDocumentWriter
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see "TTP [618]"
-                 * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(
+            * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(
                  *      org.extex.typesetter.type.node.VerticalListNode,
                  *      java.lang.Object)
                  */
@@ -585,10 +580,7 @@ public class ItextDocumentWriter
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(
-                 *      org.extex.typesetter.type.node.VirtualCharNode,
+            *      org.extex.typesetter.type.node.VirtualCharNode,
                  *      java.lang.Object)
                  */
                 public Boolean visitVirtualChar(VirtualCharNode node,
@@ -598,10 +590,7 @@ public class ItextDocumentWriter
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(
-                 *      org.extex.typesetter.type.node.WhatsItNode,
+            *      org.extex.typesetter.type.node.WhatsItNode,
                  *      java.lang.Object)
                  */
                 public Boolean visitWhatsIt(WhatsItNode node, Object value)
@@ -634,12 +623,7 @@ public class ItextDocumentWriter
         this.options = options;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#close()
-     */
-    public void close() throws GeneralException, IOException {
+public void close() throws GeneralException, IOException {
 
         if (document != null) {
             document.close();
@@ -647,10 +631,7 @@ public class ItextDocumentWriter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(
-     *      org.extex.framework.configuration.Configuration)
+*      org.extex.framework.configuration.Configuration)
      */
     public void configure(Configuration config) {
 
@@ -659,8 +640,8 @@ public class ItextDocumentWriter
 
     /**
      * Getter for the extension associated with this kind of output. For
-     * instance <tt>pdf</tt> is the expected value for PDF files and
-     * <tt>dvi</tt> is the expected value for DVI files.
+     * instance {@code pdf} is the expected value for PDF files and
+     * {@code dvi} is the expected value for DVI files.
      * 
      * @return the appropriate extension for file names
      * 

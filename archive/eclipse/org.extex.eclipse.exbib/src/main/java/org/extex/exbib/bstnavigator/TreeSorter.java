@@ -25,16 +25,10 @@ import org.eclipse.jface.viewers.ViewerSorter;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 class TreeSorter extends ViewerSorter {
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ViewerComparator#category(java.lang.Object)
-     */
-    @Override
+@Override
     public int category(Object element) {
 
         if (element instanceof TreeDirectory) {

@@ -26,8 +26,7 @@ import org.extex.interpreter.Interpreter;
  * the engine is stopping.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4728 $
- */
+*/
 public interface StopObserver {
 
     /**

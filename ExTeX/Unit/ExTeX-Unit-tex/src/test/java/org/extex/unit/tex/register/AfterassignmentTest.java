@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\afterassignment</tt>.
+ * This is a test suite for the primitive {@code \afterassignment}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class AfterassignmentTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -49,7 +48,7 @@ public class AfterassignmentTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\afterassignment"> Test case checking that
-     * <tt>\afterassignment</tt> needs a token. </testcase>
+     * {@code \afterassignment} needs a token.
      * 
      * @throws Exception in case of an error
      */

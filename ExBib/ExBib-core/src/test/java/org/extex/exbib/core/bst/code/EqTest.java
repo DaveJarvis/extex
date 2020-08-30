@@ -36,30 +36,29 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>eq$</tt>.
+ * Test suite for {@code eq$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class EqTest {
 
     /**
-     * The field <tt>INT_MINUS_123</tt> contains -123.
+     * The field {@code INT_MINUS_123} contains -123.
      */
     private static final TInteger INT_MINUS_123 = new TInteger(-123, null);
 
     /**
-     * The field <tt>INT_12</tt> contains 12.
+     * The field {@code INT_12} contains 12.
      */
     private static final TInteger INT_12 = new TInteger(12, null);
 
     /**
-     * The field <tt>INT_123</tt> contains 123.
+     * The field {@code INT_123} contains 123.
      */
     private static final TInteger INT_123 = new TInteger(123, null);
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -102,7 +101,7 @@ public class EqTest {
     }
 
     /**
-     * <testcase> An empty stack leads to an error. </testcase>
+     *  An empty stack leads to an error. 
      * 
      * @throws Exception in case of an error
      */
@@ -113,7 +112,7 @@ public class EqTest {
     }
 
     /**
-     * <testcase> Identical numbers compare as equal. </testcase>
+     *  Identical numbers compare as equal. 
      * 
      * @throws Exception in case of an error
      */
@@ -124,7 +123,7 @@ public class EqTest {
     }
 
     /**
-     * <testcase> Identical negative numbers compare as equal. </testcase>
+     *  Identical negative numbers compare as equal. 
      * 
      * @throws Exception in case of an error
      */
@@ -135,7 +134,7 @@ public class EqTest {
     }
 
     /**
-     * <testcase> Identical numbers (0) compare as equal. </testcase>
+     *  Identical numbers (0) compare as equal. 
      * 
      * @throws Exception in case of an error
      */
@@ -146,7 +145,7 @@ public class EqTest {
     }
 
     /**
-     * <testcase> Different numbers compare as not equal. </testcase>
+     *  Different numbers compare as not equal. 
      * 
      * @throws Exception in case of an error
      */
@@ -157,7 +156,7 @@ public class EqTest {
     }
 
     /**
-     * <testcase> Different numbers compare as not equal. </testcase>
+     *  Different numbers compare as not equal. 
      * 
      * @throws Exception in case of an error
      */
@@ -168,7 +167,7 @@ public class EqTest {
     }
 
     /**
-     * <testcase> Equal numbers (-1) compare as equal. </testcase>
+     *  Equal numbers (-1) compare as equal. 
      * 
      * @throws Exception in case of an error
      */
@@ -179,7 +178,7 @@ public class EqTest {
     }
 
     /**
-     * <testcase> Different numbers compare as not equal. </testcase>
+     *  Different numbers compare as not equal. 
      * 
      * @throws Exception in case of an error
      */
@@ -190,7 +189,7 @@ public class EqTest {
     }
 
     /**
-     * <testcase> Different numbers compare as not equal. </testcase>
+     *  Different numbers compare as not equal. 
      * 
      * @throws Exception in case of an error
      */
@@ -201,7 +200,7 @@ public class EqTest {
     }
 
     /**
-     * <testcase> Identical strings compare as equal. </testcase>
+     *  Identical strings compare as equal. 
      * 
      * @throws Exception in case of an error
      */
@@ -212,7 +211,7 @@ public class EqTest {
     }
 
     /**
-     * <testcase> Identical empty strings compare as equal. </testcase>
+     *  Identical empty strings compare as equal. 
      * 
      * @throws Exception in case of an error
      */
@@ -223,7 +222,7 @@ public class EqTest {
     }
 
     /**
-     * <testcase> Different strings compare as not equal. </testcase>
+     *  Different strings compare as not equal. 
      * 
      * @throws Exception in case of an error
      */
@@ -234,7 +233,7 @@ public class EqTest {
     }
 
     /**
-     * <testcase> Different strings compare as not equal. </testcase>
+     *  Different strings compare as not equal. 
      * 
      * @throws Exception in case of an error
      */
@@ -245,7 +244,7 @@ public class EqTest {
     }
 
     /**
-     * <testcase> Different strings compare as not equal. </testcase>
+     *  Different strings compare as not equal. 
      * 
      * @throws Exception in case of an error
      */
@@ -256,7 +255,7 @@ public class EqTest {
     }
 
     /**
-     * <testcase> Different strings compare as not equal. </testcase>
+     *  Different strings compare as not equal. 
      * 
      * @throws Exception in case of an error
      */
@@ -267,7 +266,7 @@ public class EqTest {
     }
 
     /**
-     * <testcase> Different strings compare as not equal. </testcase>
+     *  Different strings compare as not equal. 
      * 
      * @throws Exception in case of an error
      */
@@ -278,7 +277,7 @@ public class EqTest {
     }
 
     /**
-     * <testcase> A short stack leads to an error. </testcase>
+     *  A short stack leads to an error. 
      * 
      * @throws Exception in case of an error
      */

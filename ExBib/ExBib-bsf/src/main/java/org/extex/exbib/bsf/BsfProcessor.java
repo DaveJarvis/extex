@@ -48,33 +48,32 @@ import static java.nio.charset.StandardCharsets.UTF_8;
  * This class provides a plug-in replacement for a bibliography processor. It is
  * based on the Bean Scripting Framework (BSF). Thus all programming languages
  * for which BSF bindings exist can be used as extension language for writing
- * <logo>&epsilon;&chi;Bib</logo> style files.
+ * εχBib style files.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BsfProcessor extends BibliographyCore
         implements
             Processor,
             ResourceAware {
 
     /**
-     * The field <tt>outWriter</tt> contains the output writer.
+     * The field {@code outWriter} contains the output writer.
      */
     private Writer outWriter;
 
     /**
-     * The field <tt>warnings</tt> contains the number of warnings.
+     * The field {@code warnings} contains the number of warnings.
      */
     private long warnings;
 
     /**
-     * The field <tt>script</tt> contains the name of the scripting language.
+     * The field {@code script} contains the name of the scripting language.
      */
     private String script;
 
     /**
-     * The field <tt>finder</tt> contains the resource finder.
+     * The field {@code finder} contains the resource finder.
      */
     private ResourceFinder finder;
 

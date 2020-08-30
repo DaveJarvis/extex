@@ -23,11 +23,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\ifnum</tt>.
+ * This is a test suite for the primitive {@code \ifnum}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class IfnumTest extends ConditionalTester {
 
     /**
@@ -47,8 +46,8 @@ public class IfnumTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
-     * needs an argument. </testcase>
+     * <testcase primitive="\ifnum"> Test case checking that {@code \ifnum}
+     * needs an argument.
      * 
      * @throws Exception in case of an error
      */
@@ -62,8 +61,8 @@ public class IfnumTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
-     * needs an operator after the first argument. </testcase>
+     * <testcase primitive="\ifnum"> Test case checking that {@code \ifnum}
+     * needs an operator after the first argument.
      * 
      * @throws Exception in case of an error
      */
@@ -77,8 +76,8 @@ public class IfnumTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
-     * complains if no valid operator is given. </testcase>
+     * <testcase primitive="\ifnum"> Test case checking that {@code \ifnum}
+     * complains if no valid operator is given.
      * 
      * @throws Exception in case of an error
      */
@@ -92,8 +91,8 @@ public class IfnumTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
-     * on \verb|0<1| selects the then branch. </testcase>
+     * <testcase primitive="\ifnum"> Test case checking that {@code \ifnum}
+     * on \verb|0<1| selects the then branch.
      * 
      * @throws Exception in case of an error
      */
@@ -107,8 +106,8 @@ public class IfnumTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
-     * on \verb|1<1| selects the else branch. </testcase>
+     * <testcase primitive="\ifnum"> Test case checking that {@code \ifnum}
+     * on \verb|1<1| selects the else branch.
      * 
      * @throws Exception in case of an error
      */
@@ -122,8 +121,8 @@ public class IfnumTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
-     * on \verb|2<1| selects the else branch. </testcase>
+     * <testcase primitive="\ifnum"> Test case checking that {@code \ifnum}
+     * on \verb|2<1| selects the else branch.
      * 
      * @throws Exception in case of an error
      */
@@ -137,8 +136,8 @@ public class IfnumTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
-     * on \verb|0=1| selects the else branch. </testcase>
+     * <testcase primitive="\ifnum"> Test case checking that {@code \ifnum}
+     * on \verb|0=1| selects the else branch.
      * 
      * @throws Exception in case of an error
      */
@@ -152,8 +151,8 @@ public class IfnumTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
-     * on \verb|1=1| selects the then branch. </testcase>
+     * <testcase primitive="\ifnum"> Test case checking that {@code \ifnum}
+     * on \verb|1=1| selects the then branch.
      * 
      * @throws Exception in case of an error
      */
@@ -167,8 +166,8 @@ public class IfnumTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
-     * on \verb|2=1| selects the else branch. </testcase>
+     * <testcase primitive="\ifnum"> Test case checking that {@code \ifnum}
+     * on \verb|2=1| selects the else branch.
      * 
      * @throws Exception in case of an error
      */
@@ -182,8 +181,8 @@ public class IfnumTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
-     * on \verb|0>1| selects the else branch. </testcase>
+     * <testcase primitive="\ifnum"> Test case checking that {@code \ifnum}
+     * on \verb|0>1| selects the else branch.
      * 
      * @throws Exception in case of an error
      */
@@ -197,8 +196,8 @@ public class IfnumTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
-     * on \verb|1>1| selects the else branch. </testcase>
+     * <testcase primitive="\ifnum"> Test case checking that {@code \ifnum}
+     * on \verb|1>1| selects the else branch.
      * 
      * @throws Exception in case of an error
      */
@@ -212,8 +211,8 @@ public class IfnumTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
-     * on \verb|2>1| selects the then branch. </testcase>
+     * <testcase primitive="\ifnum"> Test case checking that {@code \ifnum}
+     * on \verb|2>1| selects the then branch.
      * 
      * @throws Exception in case of an error
      */
@@ -227,8 +226,8 @@ public class IfnumTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
-     * works in an expand context </testcase>
+     * <testcase primitive="\ifnum"> Test case checking that {@code \ifnum}
+     * works in an expand context
      * 
      * @throws Exception in case of an error
      */
@@ -242,8 +241,8 @@ public class IfnumTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
-     * works in an expand context </testcase>
+     * <testcase primitive="\ifnum"> Test case checking that {@code \ifnum}
+     * works in an expand context
      * 
      * @throws Exception in case of an error
      */
@@ -257,8 +256,8 @@ public class IfnumTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
-     * works in an expand context </testcase>
+     * <testcase primitive="\ifnum"> Test case checking that {@code \ifnum}
+     * works in an expand context
      * 
      * @throws Exception in case of an error
      */
@@ -272,8 +271,8 @@ public class IfnumTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
-     * complains about an outer macro when skipping tokens. </testcase>
+     * <testcase primitive="\ifnum"> Test case checking that {@code \ifnum}
+     * complains about an outer macro when skipping tokens.
      * 
      * @throws Exception in case of an error
      */

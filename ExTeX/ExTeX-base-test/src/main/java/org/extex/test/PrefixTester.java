@@ -27,15 +27,14 @@ import org.junit.Test;
  * This is a test suite for the prefix primitives.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public abstract class PrefixTester extends ExTeXLauncher {
 
     /**
-     * The field <tt>primitive</tt> contains the name of the primitive to be
+     * The field {@code primitive} contains the name of the primitive to be
      * tested.
      */
-    private String primitive;
+    private final String primitive;
 
     /**
      * Constructor for PrefixTester.
@@ -47,7 +46,7 @@ public abstract class PrefixTester extends ExTeXLauncher {
     }
 
     /**
-     * construct the properties with the unit <tt>showprefix</tt> added.
+     * construct the properties with the unit {@code showprefix} added.
      *
      * @return the properties
      */
@@ -59,9 +58,9 @@ public abstract class PrefixTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case checking that the prefix before a letter leads to an error.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -71,13 +70,13 @@ public abstract class PrefixTester extends ExTeXLauncher {
         assertFailure(//--- input code ---
             "\\" + primitive + " a",
             //--- log message ---
-            "You can\'t use the prefix `\\" + primitive + "' with the letter a");
+                      "You can't use the prefix `\\" + primitive + "' with the letter a");
     }
 
     /**
-     * <testcase>
+     *
      *  Test case checking that the prefix before a digit leads to an error.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -87,15 +86,15 @@ public abstract class PrefixTester extends ExTeXLauncher {
         assertFailure(//--- input code ---
             "\\" + primitive + " 1",
             //--- log message ---
-            "You can\'t use the prefix `\\" + primitive
+                      "You can't use the prefix `\\" + primitive
                     + "' with the character 1");
     }
 
     /**
-     * <testcase>
+     *
      *  Test case checking that the prefix before a left brace
      *  leads to an error.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -105,15 +104,15 @@ public abstract class PrefixTester extends ExTeXLauncher {
         assertFailure(//--- input code ---
             DEFINE_CATCODES + "\\" + primitive + " {",
             //--- log message ---
-            "You can\'t use the prefix `\\" + primitive
+                      "You can't use the prefix `\\" + primitive
                     + "' with begin-group character {");
     }
 
     /**
-     * <testcase>
+     *
      *  Test case checking that the prefix before a right brace
      *  leads to an error.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -123,15 +122,15 @@ public abstract class PrefixTester extends ExTeXLauncher {
         assertFailure(//--- input code ---
             DEFINE_CATCODES + "{\\" + primitive + " }",
             //--- log message ---
-            "You can\'t use the prefix `\\" + primitive
+                      "You can't use the prefix `\\" + primitive
                     + "' with end-group character }");
     }
 
     /**
-     * <testcase>
+     *
      *  Test case checking that the prefix before a math shift
      *  leads to an error.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -141,15 +140,15 @@ public abstract class PrefixTester extends ExTeXLauncher {
         assertFailure(//--- input code ---
             DEFINE_CATCODES + "\\" + primitive + " $ ",
             //--- log message ---
-            "You can\'t use the prefix `\\" + primitive
+                      "You can't use the prefix `\\" + primitive
                     + "' with math shift character $");
     }
 
     /**
-     * <testcase>
+     *
      *  Test case checking that the prefix before an alignment tab
      *  leads to an error.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -159,15 +158,15 @@ public abstract class PrefixTester extends ExTeXLauncher {
         assertFailure(//--- input code ---
             DEFINE_CATCODES + "\\" + primitive + " &",
             //--- log message ---
-            "You can\'t use the prefix `\\" + primitive
+                      "You can't use the prefix `\\" + primitive
                     + "' with alignment tab character &");
     }
 
     /**
-     * <testcase>
+     *
      *  Test case checking that the prefix before a subscript mark
      *  leads to an error.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -177,15 +176,15 @@ public abstract class PrefixTester extends ExTeXLauncher {
         assertFailure(//--- input code ---
             DEFINE_CATCODES + "$\\" + primitive + " _",
             //--- log message ---
-            "You can\'t use the prefix `\\" + primitive
+                      "You can't use the prefix `\\" + primitive
                     + "' with subscript character _");
     }
 
     /**
-     * <testcase>
+     *
      *  Test case checking that the prefix before a superscript mark
      *  leads to an error.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -195,7 +194,7 @@ public abstract class PrefixTester extends ExTeXLauncher {
         assertFailure(//--- input code ---
             DEFINE_CATCODES + "$\\" + primitive + " ^",
             //--- log message ---
-            "You can\'t use the prefix `\\" + primitive
+                      "You can't use the prefix `\\" + primitive
                     + "' with superscript character ^");
     }
 

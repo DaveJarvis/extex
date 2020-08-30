@@ -28,12 +28,11 @@ import org.extex.core.exception.GeneralException;
  * channel.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface Color extends Serializable {
 
     /**
-     * The constant <tt>MAX_VALUE</tt> contains the maximal values for all
+     * The constant {@code MAX_VALUE} contains the maximal values for all
      * channels.
      */
     int MAX_VALUE = 0xffff;
@@ -51,7 +50,7 @@ public interface Color extends Serializable {
      *
      * @param other the other object to compare to
      *
-     * @return <code>true</code> iff the color system is identical and the
+     * @return {@code true} iff the color system is identical and the
      *  colors are the same
      */
     boolean equals(Object other);

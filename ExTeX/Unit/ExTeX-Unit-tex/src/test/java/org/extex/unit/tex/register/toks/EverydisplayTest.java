@@ -25,11 +25,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\everydisplay</tt>.
+ * This is a test suite for the primitive {@code \everydisplay}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class EverydisplayTest extends AbstractToksRegisterTester {
 
     /**
@@ -50,7 +49,7 @@ public class EverydisplayTest extends AbstractToksRegisterTester {
 
     /**
      * <testcase primitive="\everydisplay"> Test case showing that the token is
-     * absorbed if no math happens. </testcase>
+     * absorbed if no math happens.
      * 
      * @throws Exception in case of an error
      */
@@ -65,7 +64,7 @@ public class EverydisplayTest extends AbstractToksRegisterTester {
 
     /**
      * <testcase primitive="\everydisplay"> Test case showing that the token is
-     * absorbed if inline math happens. </testcase>
+     * absorbed if inline math happens.
      * 
      * @throws Exception in case of an error
      */
@@ -81,7 +80,7 @@ public class EverydisplayTest extends AbstractToksRegisterTester {
 
     /**
      * <testcase primitive="\everydisplay"> Test case showing that the token is
-     * inserted if display math happens. </testcase>
+     * inserted if display math happens.
      * 
      * @throws Exception in case of an error
      */

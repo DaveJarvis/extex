@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the stream definitions and implementations supported 
+ *Contains stream definitions and implementations supported
  * for the scanner. The main task is performed by the TokenStreamFactory which
  * selects the appropriate implementation.
  */

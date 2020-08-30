@@ -32,8 +32,7 @@ import org.extex.ocpware.type.OcpCode;
  * This class represents a reference to the end of the sequence.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public class EndLeft implements Left {
 
 
@@ -42,10 +41,7 @@ public class EndLeft implements Left {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.compiler.left.Left#genLeft(
-     *      org.extex.ocpware.compiler.parser.State, CompilerState)
+*      org.extex.ocpware.compiler.parser.State, CompilerState)
      */
     public List<Integer> genLeft(State state, CompilerState cs)
             throws IOException,
@@ -61,12 +57,7 @@ public class EndLeft implements Left {
         return holes;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return "end:";

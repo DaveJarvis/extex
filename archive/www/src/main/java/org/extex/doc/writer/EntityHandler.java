@@ -27,8 +27,7 @@ import java.io.UnsupportedEncodingException;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface EntityHandler {
 
     /**
@@ -37,7 +36,7 @@ public interface EntityHandler {
      * @param s
      * @param out
      * 
-     * @return <code>true</code> iff the entity has been processed
+     * @return {@code true} iff the entity has been processed
      * 
      * @throws IOException in case of an I/O error
      * @throws UnsupportedEncodingException

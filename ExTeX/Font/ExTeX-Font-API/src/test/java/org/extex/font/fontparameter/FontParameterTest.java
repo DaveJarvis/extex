@@ -32,8 +32,7 @@ import org.junit.Test;
  * Test for FontParameterTest.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class FontParameterTest {
 
     /**

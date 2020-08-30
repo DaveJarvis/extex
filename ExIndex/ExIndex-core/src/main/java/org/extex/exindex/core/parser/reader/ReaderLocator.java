@@ -33,7 +33,7 @@ import org.extex.exindex.lisp.parser.ResourceLocator;
 public class ReaderLocator extends LineNumberReader implements ResourceLocator {
 
     /**
-     * The field <tt>resource</tt> contains the name of the resource.
+     * The field {@code resource} contains the name of the resource.
      */
     private final String resource;
 
@@ -62,12 +62,7 @@ public class ReaderLocator extends LineNumberReader implements ResourceLocator {
         this.resource = resource;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.lisp.parser.ResourceLocator#getResource()
-     */
-    public String getResource() {
+public String getResource() {
 
         return resource;
     }

@@ -16,8 +16,8 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the definitions of a paragraph builder for
- * ??TeX and some implementations.
+ *Contains definitions of a paragraph builder for
+ * εχTeX and some implementations.
  */
 
 package org.extex.typesetter.paragraphBuilder;

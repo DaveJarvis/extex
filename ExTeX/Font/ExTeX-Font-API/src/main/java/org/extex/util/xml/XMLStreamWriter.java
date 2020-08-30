@@ -36,8 +36,7 @@ import java.util.Locale;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class XMLStreamWriter {
 
     /**
@@ -58,12 +57,12 @@ public class XMLStreamWriter {
             /**
              * The element.
              */
-            private String element;
+            private final String element;
 
             /**
              * The name space.
              */
-            private String namespace;
+            private final String namespace;
 
             /**
              * Create a new object.
@@ -134,7 +133,7 @@ public class XMLStreamWriter {
         /**
          * The stack.
          */
-        private LinkedList<Values> istack = new LinkedList<Values>();
+        private final LinkedList<Values> istack = new LinkedList<Values>();
 
         /**
          * Add a element.
@@ -180,7 +179,7 @@ public class XMLStreamWriter {
         /**
          * Check, if the element is in append mode.
          * 
-         * @return Returns <code>true</code>, if the elements have children or
+         * @return Returns {@code true}, if the elements have children or
          *         text.
          */
         public boolean isAppend() {
@@ -265,7 +264,7 @@ public class XMLStreamWriter {
     /**
      * The encoding.
      */
-    private String encoding;
+    private final String encoding;
 
     /**
      * Indent string.
@@ -285,7 +284,7 @@ public class XMLStreamWriter {
     /**
      * The writer for the output.
      */
-    private Writer out;
+    private final Writer out;
 
     /**
      * The public id (doctype).
@@ -305,7 +304,7 @@ public class XMLStreamWriter {
     /**
      * The stack for the elements.
      */
-    private Stack stack = new Stack();
+    private final Stack stack = new Stack();
 
     /**
      * The system id (doctpye).

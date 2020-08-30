@@ -28,14 +28,13 @@ import org.extex.util.xml.XMLStreamWriter;
  * hmoveto: dx1 hmoveto (22).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class T2HMoveTo extends T2PathConstruction {
 
     /**
      * dx.
      */
-    private T2Number dx;
+    private final T2Number dx;
 
     /**
      * The width (optional).
@@ -79,34 +78,19 @@ public class T2HMoveTo extends T2PathConstruction {
         return dx;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
-     */
-    @Override
+@Override
     public int getID() {
 
         return TYPE_HMOVETO;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "hmoveto";
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getValue()
-     */
-    @Override
+@Override
     public Object getValue() {
 
         T2Number[] arr = new T2Number[1];
@@ -114,12 +98,7 @@ public class T2HMoveTo extends T2PathConstruction {
         return arr;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#toText()
-     */
-    @Override
+@Override
     public String toText() {
 
         StringBuilder buf = new StringBuilder();
@@ -133,12 +112,7 @@ public class T2HMoveTo extends T2PathConstruction {
         return buf.append(getName()).toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    @Override
+@Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());

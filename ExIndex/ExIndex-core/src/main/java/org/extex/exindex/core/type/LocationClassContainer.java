@@ -28,8 +28,7 @@ import org.extex.exindex.lisp.exception.LException;
  * class from a container.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface LocationClassContainer {
 
     /**
@@ -39,7 +38,7 @@ public interface LocationClassContainer {
      * @param name the name
      * @param locationClass the location class
      * 
-     * @return <code>true</code> iff the location class is new and has been
+     * @return {@code true} iff the location class is new and has been
      *         defined
      */
     boolean addLocationClass(String name, LocationClass locationClass);
@@ -49,7 +48,7 @@ public interface LocationClassContainer {
      * 
      * @param name the name
      * 
-     * @return the location class or <code>null</code>
+     * @return the location class or {@code null}
      */
     LocationClass lookupLocationClass(String name);
 

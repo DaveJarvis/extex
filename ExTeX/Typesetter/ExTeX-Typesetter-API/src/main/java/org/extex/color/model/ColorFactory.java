@@ -27,17 +27,16 @@ import org.extex.color.Color;
  * methods are implemented as static methods.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class ColorFactory {
 
     /**
-     * The constant <tt>BLACK</tt> contains the color black.
+     * The constant {@code BLACK} contains the color black.
      */
     public static final Color BLACK = new GrayscaleColor(0, 0);
 
     /**
-     * The constant <tt>WHITE</tt> contains the color white.
+     * The constant {@code WHITE} contains the color white.
      */
     public static final Color WHITE = new GrayscaleColor(Color.MAX_VALUE, 0);
 

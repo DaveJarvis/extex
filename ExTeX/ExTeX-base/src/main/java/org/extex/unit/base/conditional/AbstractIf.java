@@ -47,15 +47,14 @@ import org.extex.typesetter.exception.TypesetterException;
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4045 $
- */
+*/
 public abstract class AbstractIf extends AbstractCode
         implements
             ExpandableCode,
             PrefixCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 24012007L;
 
@@ -70,8 +69,8 @@ public abstract class AbstractIf extends AbstractCode
     }
 
     /**
-     * Skip to the next matching <tt>\fi</tt> or <tt>\else</tt> Token counting
-     * the intermediate <tt>\if</tt>s and <tt>\fi</tt>s.
+     * Skip to the next matching {@code \fi} or {@code \else} Token counting
+     * the intermediate {@code \if}s and {@code \fi}s.
      * 
      * <p>
      * This method implements the absorption of tokens at high speed.
@@ -81,8 +80,8 @@ public abstract class AbstractIf extends AbstractCode
      * @param source the source for new tokens
      * @param primitive the name of the invoking primitive
      * 
-     * @return <code>true</code> if a matching <tt>\else</tt> has been found;
-     *         otherwise return <code>false</code> if a matching <tt>\fi</tt>
+     * @return {@code true} if a matching {@code \else} has been found;
+     *         otherwise return {@code false} if a matching {@code \fi}
      *         has been found
      * 
      * @throws HelpingException in case of en error
@@ -136,7 +135,7 @@ public abstract class AbstractIf extends AbstractCode
 
     /**
      * This method computes the boolean value of the conditional. If the result
-     * is <code>true</code> then the then branch is expanded and the else branch
+     * is {@code true} then the then branch is expanded and the else branch
      * is skipped. Otherwise the then branch is skipped and the else branch is
      * expanded.
      * 
@@ -154,10 +153,7 @@ public abstract class AbstractIf extends AbstractCode
             Typesetter typesetter) throws HelpingException, TypesetterException;
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -172,10 +168,7 @@ public abstract class AbstractIf extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -190,14 +183,11 @@ public abstract class AbstractIf extends AbstractCode
     }
 
     /**
-     * The ifs are characterized by the return value <code>true</code> of this
+     * The ifs are characterized by the return value {@code true} of this
      * method. Thus the overwritten method returning the constant is provided in
      * this abstract base class.
      * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Code#isIf()
-     */
+*/
     @Override
     public boolean isIf() {
 

@@ -37,18 +37,18 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.Relax;
 
 /**
- * This class provides an implementation for the primitive <code>\numexpr</code>
+ * This class provides an implementation for the primitive {@code \numexpr}
  * .
  * 
- * <doc name="numexpr"> <h3>The Primitive <tt>\numexpr</tt></h3>
+ * <p>The Primitive {@code \numexpr}</p>
  * <p>
- * The primitive <tt>\numexpr</tt> provides a means to use a inline way of
+ * The primitive {@code \numexpr} provides a means to use a inline way of
  * writing mathematical expressions to be evaluated. Mathematical expressions
- * can be evaluated in ??TeX using <tt>\advance</tt>, <tt>\multiply</tt>, and
- * <tt>\divide</tt>. Nevertheless those primitives result in an assignment. This
- * is not the case for <tt>\numexpr</tt>. Here the intermediate results are not
+ * can be evaluated in εχTeX using {@code \advance}, {@code \multiply}, and
+ * {@code \divide}. Nevertheless those primitives result in an assignment. This
+ * is not the case for {@code \numexpr}. Here the intermediate results are not
  * stored in count registers but kept internally. Also the application of
- * <tt>\afterassignment</tt> and <tt>\tracingassigns</tt> is suppressed.
+ * {@code \afterassignment} and {@code \tracingassigns} is suppressed.
  * </p>
  * <p>
  * The mathematical expression to be evaluated can be made up of the basic
@@ -61,35 +61,37 @@ import org.extex.unit.base.Relax;
  * The expression is terminated at the first token which can not be part of an
  * expression. For instance a letter may signal the end of the expression. If
  * the expression should terminate without a proper token following it, the
- * token <tt>\relax</tt> can be used to signal the end of the expression. This
- * <tt>\relax</tt> token is silently consumed by <tt>\numexpr</tt>.
+ * token {@code \relax} can be used to signal the end of the expression. This
+ * {@code \relax} token is silently consumed by {@code \numexpr}.
  * </p>
  * <p>
- * The primitive <tt>\numexpr</tt> can be used in any place where a number is
+ * The primitive {@code \numexpr} can be used in any place where a number is
  * required. This includes assignments to count registers and comparisons.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;numexpr&rang;
- *      &rarr; <tt>\numexpr</tt> &lang;expr&rang; <tt>\relax</tt>
- *      |   <tt>\numexpr</tt> &lang;expr&rang;
+ *      &rarr; {@code \numexpr} &lang;expr&rang; {@code \relax}
+ *      |   {@code \numexpr} &lang;expr&rang;
  *
  *    &lang;expr&rang;
  *      &rarr; &lang;number&rang;
  *      |   &lang;operand&rang;
- *      |   &lang;expr&rang; <tt>+</tt> &lang;expr&rang;
- *      |   &lang;expr&rang; <tt>-</tt> &lang;expr&rang;
- *      |   &lang;expr&rang; <tt>*</tt> &lang;expr&rang;
- *      |   &lang;expr&rang; <tt>/</tt> &lang;expr&rang;
+ *      |   &lang;expr&rang; {@code +} &lang;expr&rang;
+ *      |   &lang;expr&rang; {@code -} &lang;expr&rang;
+ *      |   &lang;expr&rang; {@code *} &lang;expr&rang;
+ *      |   &lang;expr&rang; {@code /} &lang;expr&rang;
  *
  *    &lang;operand&rang;
  *      &rarr; &lang;number&rang;
- *      |   <tt>-</tt> &lang;expr&rang;
- *      |   <tt>(</tt> &lang;expr&rang; <tt>)</tt>   </pre>
+ *      |   {@code -} &lang;expr&rang;
+ *      |   {@code (} &lang;expr&rang; {@code )}   </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *   \count1=\numexpr 23 \relax </pre>
@@ -106,11 +108,9 @@ import org.extex.unit.base.Relax;
  * <pre class="TeXSample">
  *   \count1=\numexpr 2*-\count0  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Numexpr extends AbstractCode implements CountConvertible, Theable {
 
     /**
@@ -135,10 +135,7 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
     private static final class Minus implements BinOp {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.unit.etex.register.count.Numexpr.BinOp#apply(long,
-         *      long)
+    *      long)
          */
         @Override
         public long apply(long arg1, long arg2) {
@@ -153,10 +150,7 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
     private static final class Plus implements BinOp {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.unit.etex.register.count.Numexpr.BinOp#apply(long,
-         *      long)
+    *      long)
          */
         @Override
         public long apply(long arg1, long arg2) {
@@ -171,10 +165,7 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
     private static final class Second implements BinOp {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.unit.etex.register.count.Numexpr.BinOp#apply(long,
-         *      long)
+    *      long)
          */
         @Override
         public long apply(long arg1, long arg2) {
@@ -184,23 +175,23 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
     }
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>SECOND</tt> contains the operation to select the second
+     * The field {@code SECOND} contains the operation to select the second
      * argument.
      */
     private static final BinOp SECOND = new Second();
 
     /**
-     * The field <tt>PLUS</tt> contains the adder.
+     * The field {@code PLUS} contains the adder.
      */
     private static final BinOp PLUS = new Plus();
 
     /**
-     * The field <tt>MINUS</tt> contains the subtractor.
+     * The field {@code MINUS} contains the subtractor.
      */
     private static final BinOp MINUS = new Minus();
 
@@ -215,10 +206,7 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertCount(Context context, TokenSource source,
@@ -325,10 +313,7 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

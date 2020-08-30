@@ -34,35 +34,34 @@ import org.extex.typesetter.type.noad.Noad;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\omathaccent</code>.
+ * {@code \omathaccent}.
  * 
- * <doc name="omathaccent">
- * <h3>The Math Primitive <tt>\omathaccent</tt></h3>
+ * <p>The Math Primitive {@code \omathaccent}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;omathaccent&rang;
- *       &rarr; <tt>\omathaccent</tt>  </pre>
+ *       &rarr; {@code \omathaccent}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \omathaccent ... </pre>
  * 
- * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Omathaccent extends AbstractOmegaMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2006L;
@@ -78,10 +77,7 @@ public class Omathaccent extends AbstractOmegaMathCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

@@ -44,8 +44,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * </pre>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class MathSqrt extends AbstractMath
         implements
             Theable,
@@ -53,7 +52,7 @@ public class MathSqrt extends AbstractMath
             CountConvertible {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
@@ -70,10 +69,7 @@ public class MathSqrt extends AbstractMath
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.primitives.register.real.AbstractMath#calculate(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

@@ -74,22 +74,21 @@ import org.extex.typesetter.type.math.MathDelimiter;
  * classes.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4491 $
- */
+*/
 public class MockContext implements Context, TypesetterOptions {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>tc</tt> contains the typesetting context.
+     * The field {@code tc} contains the typesetting context.
      */
     private TypesettingContext tc = new TypesettingContextImpl();
 
     /**
-     * The field <tt>tokenFactory</tt> contains the token factory.
+     * The field {@code tokenFactory} contains the token factory.
      */
     private transient TokenFactory tokenFactory = new TokenFactoryImpl();
 
@@ -126,12 +125,7 @@ public class MockContext implements Context, TypesetterOptions {
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextGroup#afterGroup(org.extex.scanner.type.token.Token)
-     */
-    @Override
+@Override
     public void afterGroup(Token t) {
 
         throw new RuntimeException("unimplemented");
@@ -149,10 +143,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextGroup#closeGroup(org.extex.typesetter.Typesetter,
-     *      org.extex.interpreter.TokenSource)
+*      org.extex.interpreter.TokenSource)
      */
     @Override
     public void closeGroup(Typesetter typesetter, TokenSource source) {
@@ -160,44 +151,26 @@ public class MockContext implements Context, TypesetterOptions {
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#esc(java.lang.String)
-     */
-    @Override
+@Override
     public String esc(String name) {
 
         return "\\" + name;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#esc(org.extex.scanner.type.token.Token)
-     */
-    @Override
+@Override
     public String esc(Token token) {
 
         return token.toText();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#escapechar()
-     */
-    @Override
+@Override
     public UnicodeChar escapechar() {
 
         return UnicodeChar.get('\\');
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#get(java.lang.Object,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     @Override
     public Object get(Object extension, Object key) {
@@ -205,45 +178,25 @@ public class MockContext implements Context, TypesetterOptions {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getAfterassignment()
-     */
-    @Override
+@Override
     public Token getAfterassignment() {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextMark#getBottomMark(java.lang.Object)
-     */
-    @Override
+@Override
     public Tokens getBottomMark(Object name) {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getBox(java.lang.String)
-     */
-    @Override
+@Override
     public Box getBox(String name) {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.api.Tokenizer#getCatcode(org.extex.core.UnicodeChar)
-     */
-    @Override
+@Override
     public Catcode getCatcode(UnicodeChar c) {
 
         if (c.isLetter()) {
@@ -263,484 +216,266 @@ public class MockContext implements Context, TypesetterOptions {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextCode#getCode(org.extex.scanner.type.token.CodeToken)
-     */
-    @Override
+@Override
     public Code getCode(CodeToken t) {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getConditional()
-     */
-    @Override
+@Override
     public Conditional getConditional() {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextCount#getCount(java.lang.String)
-     */
-    @Override
+@Override
     public Count getCount(String name) {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.TypesetterOptions#getCountOption(java.lang.String)
-     */
-    @Override
+@Override
     public FixedCount getCountOption(String name) {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getDelcode(org.extex.core.UnicodeChar)
-     */
-    @Override
+@Override
     public MathDelimiter getDelcode(UnicodeChar c) {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextDimen#getDimen(java.lang.String)
-     */
-    @Override
+@Override
     public Dimen getDimen(String name) {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.TypesetterOptions#getDimenOption(java.lang.String)
-     */
-    @Override
+@Override
     public FixedDimen getDimenOption(String name) {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextErrorCount#getErrorCount()
-     */
-    @Override
+@Override
     public int getErrorCount() {
 
         return 0;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextMark#getFirstMark(java.lang.Object)
-     */
-    @Override
+@Override
     public Tokens getFirstMark(Object name) {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextFont#getFont(java.lang.String)
-     */
-    @Override
+@Override
     public Font getFont(String name) {
 
         return tc.getFont();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextFont#getFontFactory()
-     */
-    @Override
+@Override
     public CoreFontFactory getFontFactory() {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getGlue(java.lang.String)
-     */
-    @Override
+@Override
     public Glue getGlue(String name) {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.TypesetterOptions#getGlueOption(java.lang.String)
-     */
-    @Override
+@Override
     public FixedGlue getGlueOption(String name) {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextGroup#getGroupInfos()
-     */
-    @Override
+@Override
     public GroupInfo[] getGroupInfos() {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextGroup#getGroupLevel()
-     */
-    @Override
+@Override
     public long getGroupLevel() {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextGroup#getGroupType()
-     */
-    @Override
+@Override
     public GroupType getGroupType() {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getId()
-     */
-    @Override
+@Override
     public String getId() {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getIfLevel()
-     */
-    @Override
+@Override
     public long getIfLevel() {
 
         return 0;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextFile#getInFile(java.lang.String)
-     */
-    @Override
+@Override
     public InFile getInFile(String name) {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getInteraction()
-     */
-    @Override
+@Override
     public Interaction getInteraction() {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getLanguage(java.lang.String)
-     */
-    @Override
+@Override
     public Language getLanguage(String language) throws HelpingException {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getLanguageManager()
-     */
-    @Override
+@Override
     public LanguageManager getLanguageManager() {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getLccode(org.extex.core.UnicodeChar)
-     */
-    @Override
+@Override
     public UnicodeChar getLccode(UnicodeChar uc) {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getMagnification()
-     */
-    @Override
+@Override
     public long getMagnification() {
 
         return 1000;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getMathcode(org.extex.core.UnicodeChar)
-     */
-    @Override
+@Override
     public MathCode getMathcode(UnicodeChar uc) {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getMuskip(java.lang.String)
-     */
-    @Override
+@Override
     public Muskip getMuskip(String name) {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.api.Tokenizer#getNamespace()
-     */
-    @Override
+@Override
     public String getNamespace() {
 
         return Namespace.DEFAULT_NAMESPACE;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextFile#getOutFile(java.lang.String)
-     */
-    @Override
+@Override
     public OutFile getOutFile(String name) {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getParshape()
-     */
-    @Override
+@Override
     public ParagraphShape getParshape() {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getSfcode(org.extex.core.UnicodeChar)
-     */
-    @Override
+@Override
     public FixedCount getSfcode(UnicodeChar uc) {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextMark#getSplitBottomMark(java.lang.Object)
-     */
-    @Override
+@Override
     public Tokens getSplitBottomMark(Object name) {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextMark#getSplitFirstMark(java.lang.Object)
-     */
-    @Override
+@Override
     public Tokens getSplitFirstMark(Object name) {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getStandardTokenStream()
-     */
-    @Override
+@Override
     public TokenStream getStandardTokenStream() {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getTokenFactory()
-     */
-    @Override
+@Override
     public TokenFactory getTokenFactory() {
 
         return tokenFactory;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getTokenizer()
-     */
-    @Override
+@Override
     public Tokenizer getTokenizer() {
 
         return this;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextTokens#getToks(java.lang.String)
-     */
-    @Override
+@Override
     public Tokens getToks(String name) {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextTokens#getToksOrNull(java.lang.String)
-     */
-    @Override
+@Override
     public Tokens getToksOrNull(String name) {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextMark#getTopMark(java.lang.Object)
-     */
-    @Override
+@Override
     public Tokens getTopMark(Object name) {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getTypesettingContext()
-     */
-    @Override
+@Override
     public TypesettingContext getTypesettingContext() {
 
         return tc;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.TypesetterOptions#getTypesettingContextFactory()
-     */
-    @Override
+@Override
     public TypesettingContextFactory getTypesettingContextFactory() {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getUccode(org.extex.core.UnicodeChar)
-     */
-    @Override
+@Override
     public UnicodeChar getUccode(UnicodeChar lc) {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextErrorCount#incrementErrorCount()
-     */
-    @Override
+@Override
     public int incrementErrorCount() {
 
         return 0;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextGroup#isGlobalGroup()
-     */
-    @Override
+@Override
     public boolean isGlobalGroup() {
 
         return false;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextGroup#openGroup(org.extex.interpreter.context.group.GroupType,
-     *      org.extex.core.Locator, org.extex.scanner.type.token.Token)
+*      org.extex.core.Locator, org.extex.scanner.type.token.Token)
      */
     @Override
     public void openGroup(GroupType id, Locator locator, Token start)
@@ -750,33 +485,20 @@ public class MockContext implements Context, TypesetterOptions {
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#popConditional()
-     */
-    @Override
+@Override
     public Conditional popConditional() throws HelpingException {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#popDirection()
-     */
-    @Override
+@Override
     public Direction popDirection() {
 
         throw new RuntimeException("unimplemented");
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#pushConditional(org.extex.core.Locator,
-     *      boolean, org.extex.interpreter.type.Code, long, boolean)
+*      boolean, org.extex.interpreter.type.Code, long, boolean)
      */
     @Override
     public void pushConditional(Locator locator, boolean value, Code primitive,
@@ -785,22 +507,14 @@ public class MockContext implements Context, TypesetterOptions {
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#pushDirection(org.extex.typesetter.tc.Direction)
-     */
-    @Override
+@Override
     public void pushDirection(Direction dir) {
 
         throw new RuntimeException("unimplemented");
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#set(org.extex.color.Color,
-     *      boolean)
+*      boolean)
      */
     @Override
     public void set(Color color, boolean global) throws ConfigurationException {
@@ -809,10 +523,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#set(org.extex.typesetter.tc.Direction,
-     *      boolean)
+*      boolean)
      */
     @Override
     public void set(Direction direction, boolean global) {
@@ -821,10 +532,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#set(org.extex.typesetter.tc.font.Font,
-     *      boolean)
+*      boolean)
      */
     @Override
     public void set(Font font, boolean global) {
@@ -833,10 +541,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#set(org.extex.language.Language,
-     *      boolean)
+*      boolean)
      */
     @Override
     public void set(Language language, boolean global) {
@@ -845,10 +550,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#set(java.lang.Object,
-     *      java.lang.Object, java.lang.Object, boolean)
+*      java.lang.Object, java.lang.Object, boolean)
      */
     @Override
     public void set(Object extension, Object key, Object value, boolean global) {
@@ -857,10 +559,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#set(org.extex.typesetter.tc.TypesettingContext,
-     *      boolean)
+*      boolean)
      */
     @Override
     public void set(TypesettingContext context, boolean global) {
@@ -868,22 +567,14 @@ public class MockContext implements Context, TypesetterOptions {
         tc = context;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#setAfterassignment(org.extex.scanner.type.token.Token)
-     */
-    @Override
+@Override
     public void setAfterassignment(Token token) {
 
         throw new RuntimeException("unimplemented");
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#setBox(java.lang.String,
-     *      org.extex.interpreter.type.box.Box, boolean)
+*      org.extex.interpreter.type.box.Box, boolean)
      */
     @Override
     public void setBox(String name, Box value, boolean global) {
@@ -892,10 +583,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#setCatcode(org.extex.core.UnicodeChar,
-     *      org.extex.scanner.type.Catcode, boolean)
+*      org.extex.scanner.type.Catcode, boolean)
      */
     @Override
     public void setCatcode(UnicodeChar c, Catcode cc, boolean global) {
@@ -904,10 +592,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextCode#setCode(org.extex.scanner.type.token.CodeToken,
-     *      org.extex.interpreter.type.Code, boolean)
+*      org.extex.interpreter.type.Code, boolean)
      */
     @Override
     public void setCode(CodeToken t, Code code, boolean global) {
@@ -916,10 +601,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextCount#setCount(java.lang.String,
-     *      long, boolean)
+*      long, boolean)
      */
     @Override
     public void setCount(String name, long value, boolean global)
@@ -929,10 +611,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.TypesetterOptions#setCountOption(java.lang.String,
-     *      long)
+*      long)
      */
     @Override
     public void setCountOption(String name, long value) {
@@ -941,10 +620,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#setDelcode(org.extex.core.UnicodeChar,
-     *      MathDelimiter, boolean)
+*      MathDelimiter, boolean)
      */
     @Override
     public void setDelcode(UnicodeChar c, MathDelimiter delimiter,
@@ -954,10 +630,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextDimen#setDimen(java.lang.String,
-     *      org.extex.core.dimen.Dimen, boolean)
+*      org.extex.core.dimen.Dimen, boolean)
      */
     @Override
     public void setDimen(String name, Dimen value, boolean global)
@@ -967,10 +640,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextDimen#setDimen(java.lang.String,
-     *      long, boolean)
+*      long, boolean)
      */
     @Override
     public void setDimen(String name, long value, boolean global) {
@@ -979,10 +649,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextFont#setFont(java.lang.String,
-     *      org.extex.typesetter.tc.font.Font, boolean)
+*      org.extex.typesetter.tc.font.Font, boolean)
      */
     @Override
     public void setFont(String name, Font font, boolean global) {
@@ -990,22 +657,14 @@ public class MockContext implements Context, TypesetterOptions {
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextFont#setFontFactory(org.extex.font.CoreFontFactory)
-     */
-    @Override
+@Override
     public void setFontFactory(CoreFontFactory fontFactory) {
 
         throw new RuntimeException("unimplemented");
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#setGlue(java.lang.String,
-     *      org.extex.core.glue.Glue, boolean)
+*      org.extex.core.glue.Glue, boolean)
      */
     @Override
     public void setGlue(String name, Glue value, boolean global)
@@ -1014,22 +673,14 @@ public class MockContext implements Context, TypesetterOptions {
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#setId(java.lang.String)
-     */
-    @Override
+@Override
     public void setId(String id) {
 
         throw new RuntimeException("unimplemented");
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextFile#setInFile(java.lang.String,
-     *      org.extex.scanner.type.file.InFile, boolean)
+*      org.extex.scanner.type.file.InFile, boolean)
      */
     @Override
     public void setInFile(String name, InFile file, boolean global) {
@@ -1037,33 +688,20 @@ public class MockContext implements Context, TypesetterOptions {
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextInteraction#setInteraction(org.extex.interpreter.interaction.Interaction)
-     */
-    @Override
+@Override
     public void setInteraction(Interaction interaction) throws HelpingException {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#setLanguageManager(org.extex.language.LanguageManager)
-     */
-    @Override
+@Override
     public void setLanguageManager(LanguageManager manager) {
 
         throw new RuntimeException("unimplemented");
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#setLccode(org.extex.core.UnicodeChar,
-     *      org.extex.core.UnicodeChar, boolean)
+*      org.extex.core.UnicodeChar, boolean)
      */
     @Override
     public void setLccode(UnicodeChar uc, UnicodeChar lc, boolean global) {
@@ -1072,10 +710,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#setMagnification(long,
-     *      boolean)
+*      boolean)
      */
     @Override
     public void setMagnification(long mag, boolean lock)
@@ -1085,10 +720,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextMark#setMark(java.lang.Object,
-     *      org.extex.scanner.type.tokens.Tokens)
+*      org.extex.scanner.type.tokens.Tokens)
      */
     @Override
     public void setMark(Object name, Tokens mark) {
@@ -1097,10 +729,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#setMathcode(org.extex.core.UnicodeChar,
-     *      MathCode, boolean)
+*      MathCode, boolean)
      */
     @Override
     public void setMathcode(UnicodeChar uc, MathCode code, boolean global) {
@@ -1109,10 +738,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#setMuskip(java.lang.String,
-     *      org.extex.core.muskip.Muskip, boolean)
+*      org.extex.core.muskip.Muskip, boolean)
      */
     @Override
     public void setMuskip(String name, Muskip value, boolean global) {
@@ -1121,10 +747,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#setNamespace(java.lang.String,
-     *      boolean)
+*      boolean)
      */
     @Override
     public void setNamespace(String namespace, boolean global) {
@@ -1133,10 +756,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextFile#setOutFile(java.lang.String,
-     *      org.extex.scanner.type.file.OutFile, boolean)
+*      org.extex.scanner.type.file.OutFile, boolean)
      */
     @Override
     public void setOutFile(String name, OutFile file, boolean global) {
@@ -1144,22 +764,14 @@ public class MockContext implements Context, TypesetterOptions {
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#setParshape(org.extex.typesetter.paragraphBuilder.ParagraphShape)
-     */
-    @Override
+@Override
     public void setParshape(ParagraphShape shape) {
 
         throw new RuntimeException("unimplemented");
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#setSfcode(org.extex.core.UnicodeChar,
-     *      org.extex.core.count.Count, boolean)
+*      org.extex.core.count.Count, boolean)
      */
     @Override
     public void setSfcode(UnicodeChar uc, Count code, boolean global) {
@@ -1168,10 +780,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextMark#setSplitMark(java.lang.Object,
-     *      org.extex.scanner.type.tokens.Tokens)
+*      org.extex.scanner.type.tokens.Tokens)
      */
     @Override
     public void setSplitMark(Object name, Tokens mark) {
@@ -1179,33 +788,20 @@ public class MockContext implements Context, TypesetterOptions {
         // not needed
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#setStandardTokenStream(org.extex.scanner.api.TokenStream)
-     */
-    @Override
+@Override
     public void setStandardTokenStream(TokenStream standardTokenStream) {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#setTokenFactory(org.extex.scanner.type.token.TokenFactory)
-     */
-    @Override
+@Override
     public void setTokenFactory(TokenFactory factory) {
 
         tokenFactory = factory;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextTokens#setToks(java.lang.String,
-     *      org.extex.scanner.type.tokens.Tokens, boolean)
+*      org.extex.scanner.type.tokens.Tokens, boolean)
      */
     @Override
     public void setToks(String name, Tokens toks, boolean global)
@@ -1215,10 +811,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#setUccode(org.extex.core.UnicodeChar,
-     *      org.extex.core.UnicodeChar, boolean)
+*      org.extex.core.UnicodeChar, boolean)
      */
     @Override
     public void setUccode(UnicodeChar lc, UnicodeChar uc, boolean global) {
@@ -1226,23 +819,13 @@ public class MockContext implements Context, TypesetterOptions {
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#startMarks()
-     */
-    @Override
+@Override
     public void startMarks() {
 
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#unitIterator()
-     */
-    @Override
+@Override
     public Iterator<UnitInfo> unitIterator() {
 
         return null;

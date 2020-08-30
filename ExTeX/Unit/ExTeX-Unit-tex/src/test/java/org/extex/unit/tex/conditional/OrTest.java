@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\or</tt>.
+ * This is a test suite for the primitive {@code \or}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class OrTest extends ExTeXLauncher {
 
     /**
@@ -47,8 +46,8 @@ public class OrTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\or"> Test case checking that a lonely <tt>\or</tt>
-     * leads to an error. </testcase>
+     * <testcase primitive="\or"> Test case checking that a lonely {@code \or}
+     * leads to an error. 
      * 
      * @throws Exception in case of an error
      */
@@ -63,7 +62,7 @@ public class OrTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\or"> Test case checking that \or terminates a case.
-     * </testcase>
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -77,8 +76,8 @@ public class OrTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\or"> Test case checking that a lonely <tt>\or</tt>
-     * leads to an error. </testcase>
+     * <testcase primitive="\or"> Test case checking that a lonely {@code \or}
+     * leads to an error. 
      * 
      * @throws Exception in case of an error
      */

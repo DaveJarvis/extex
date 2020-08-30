@@ -38,12 +38,11 @@ import org.extex.sitebuilder.core.SiteMapBuilder;
  *    template="<i>template file</i>" /&gt; </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SiteMapTag {
 
     /**
-     * The field <tt>builder</tt> contains the builder.
+     * The field {@code builder} contains the builder.
      */
     private SiteMapBuilder builder;
 

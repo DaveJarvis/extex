@@ -30,35 +30,34 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.listMaker.AlignmentList;
 
 /**
- * This class provides an implementation for the primitive <code>\crcr</code>.
+ * This class provides an implementation for the primitive {@code \crcr}.
  * 
- * <doc name="crcr">
- * <h3>The Primitive <tt>\crcr</tt></h3>
+ * <p>The Primitive {@code \crcr}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;crcr&rang;
- *       &rarr; <tt>\crcr</tt>  </pre>
+ *       &rarr; {@code \crcr}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \crcr  </pre>
  * 
- * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Crcr extends Cr {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -74,10 +73,7 @@ public class Crcr extends Cr {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.table.Cr#execute( org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

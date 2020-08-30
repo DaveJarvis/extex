@@ -30,12 +30,11 @@ import static org.junit.Assert.*;
  * Test class for ActiveCharacterToken.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4756 $
- */
+*/
 public class ActiveCharacterTokenTest extends TokenTester {
 
     /**
-     * The field <tt>token</tt> contains the reference token
+     * The field {@code token} contains the reference token
      */
     private static final ActiveCharacterToken token =
             new ActiveCharacterToken(UnicodeChar.get('x'), "abc");
@@ -59,9 +58,7 @@ setText( "x");
 setStr( "the active character x");
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testCloneInDefaultNamespace0() {
 
         CodeToken x = token.cloneInDefaultNamespace();
@@ -71,9 +68,7 @@ setStr( "the active character x");
         assertEquals(token.getChar(), x.getChar());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testCloneInDefaultNamespace1() {
 
         CodeToken y = token.cloneInNamespace("");
@@ -82,9 +77,7 @@ setStr( "the active character x");
         assertSame( "the same", x, y );
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testCloneInNamespace0() {
 
         CodeToken x = token.cloneInNamespace(null);
@@ -92,9 +85,7 @@ setStr( "the active character x");
         assertEquals(x, token);
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testCloneInNamespace1() {
 
         CodeToken x = token.cloneInNamespace("abc");
@@ -102,9 +93,7 @@ setStr( "the active character x");
         assertEquals(x, token);
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testCloneInNamespace2() {
 
         CodeToken x = token.cloneInNamespace("xyz");
@@ -114,26 +103,20 @@ setStr( "the active character x");
         assertEquals(token.getChar(), x.getChar());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testEqualsToken1() {
 
         Token t2 = new OtherToken(UnicodeChar.get('x'));
         assertNotEquals( token, t2 );
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testGetName1() {
 
         assertEquals("", token.getName());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testGetNamespace1() {
 
         assertEquals("abc", token.getNamespace());

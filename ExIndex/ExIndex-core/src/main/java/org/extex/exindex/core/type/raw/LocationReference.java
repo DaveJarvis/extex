@@ -38,17 +38,16 @@ import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
  * This interface describes a location specification.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6617 $
- */
+*/
 public class LocationReference implements Reference, Location {
 
     /**
-     * The field <tt>location</tt> contains the location.
+     * The field {@code location} contains the location.
      */
     private final String layer;
 
     /**
-     * The field <tt>location</tt> contains the location.
+     * The field {@code location} contains the location.
      */
     private final String[] location;
 
@@ -65,10 +64,7 @@ public class LocationReference implements Reference, Location {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.raw.Reference#check(java.util.logging.Logger,
-     *      org.extex.exindex.core.type.raw.RawIndexentry, StructuredIndex,
+*      org.extex.exindex.core.type.raw.RawIndexentry, StructuredIndex,
      *      org.extex.exindex.core.type.LocationClassContainer, java.util.List,
      *      org.extex.exindex.core.type.attribute.AttributesContainer)
      */
@@ -88,12 +84,7 @@ public class LocationReference implements Reference, Location {
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.raw.Reference#getLayer()
-     */
-    public String getLayer() {
+public String getLayer() {
 
         return layer;
     }
@@ -108,12 +99,7 @@ public class LocationReference implements Reference, Location {
         return location;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();
@@ -130,10 +116,7 @@ public class LocationReference implements Reference, Location {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.Location#write(java.io.Writer,
-     *      org.extex.exindex.lisp.LInterpreter, MarkupContainer, boolean)
+*      org.extex.exindex.lisp.LInterpreter, MarkupContainer, boolean)
      */
     public void write(Writer writer, LInterpreter interpreter,
             MarkupContainer markupContainer, boolean trace)

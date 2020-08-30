@@ -29,12 +29,11 @@ package org.extex.core;
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5417 $
- */
+*/
 public class Switch {
 
     /**
-     * The field <tt>value</tt> contains the encapsulated boolean value.
+     * The field {@code value} contains the encapsulated boolean value.
      */
     private boolean value;
 
@@ -68,12 +67,7 @@ public class Switch {
         this.value = on;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return this.value ? "on" : "off";

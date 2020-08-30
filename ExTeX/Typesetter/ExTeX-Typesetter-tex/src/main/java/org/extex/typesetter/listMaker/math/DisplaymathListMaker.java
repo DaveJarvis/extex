@@ -41,71 +41,70 @@ import org.extex.typesetter.type.node.HorizontalListNode;
 /**
  * This is the list maker for the display math formulae.
  * 
- * <doc name="everydisplayend" type="register"> <h3>The Tokens Parameter
- * <tt>\everydisplayend</tt></h3>
+ * <p>The Tokens Parameter {@code \everydisplayend}</p>
  * <p>
- * The tokens parameter <tt>\everydisplayend</tt> contains a list of tokens
+ * The tokens parameter {@code \everydisplayend} contains a list of tokens
  * which is inserted at the end of display math. Those tokens take effect just
  * before the math mode is ended but after any tokens given explicitly.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;everydisplayend&rang;
- *      &rarr; <tt>\everydisplayend</tt> {@linkplain
+ *      &rarr; {@code \everydisplayend} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,org.extex.typesetter.Typesetter)
  *        &lang;tokens&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \everydisplayend={\,}  </pre>
  * 
- * </doc>
- * 
- * <doc name="everydisplay" type="register"> <h3>The Tokens Parameter
- * <tt>\everydisplay</tt></h3>
+ *
+ * <p>The Tokens Parameter {@code \everydisplay}</p>
  * <p>
- * The tokens parameter <tt>\everydisplay</tt> contains a list of tokens which
+ * The tokens parameter {@code \everydisplay} contains a list of tokens which
  * is inserted at the beginning of display math. Those tokens take effect after
  * the math mode has been entered but before any tokens given explicitly.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;everydisplay&rang;
- *      &rarr; <tt>\everydisplay</tt> {@linkplain
+ *      &rarr; {@code \everydisplay} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,org.extex.typesetter.Typesetter)
  *        &lang;tokens&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \everydisplay={\,}  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4496 $
- */
+*/
 public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
 
     /**
-     * The field <tt>eqno</tt> contains the math list for the equation number.
-     * It is <code>null</code> if no equation number is set.
+     * The field {@code eqno} contains the math list for the equation number.
+     * It is {@code null} if no equation number is set.
      */
     private MathList eqno = null;
 
     /**
-     * The field <tt>leq</tt> contains the indicator for the side of the
-     * equation number. A value of <code>true</code> indicates an equation
+     * The field {@code leq} contains the indicator for the side of the
+     * equation number. A value of {@code true} indicates an equation
      * number on the left side.
      */
     private boolean leq = false;
@@ -121,12 +120,7 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
         super(manager, locator);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#complete(TypesetterOptions)
-     */
-    @Override
+@Override
     public NodeList complete(TypesetterOptions context)
             throws TypesetterException {
 
@@ -163,22 +157,14 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
         return list;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#getMode()
-     */
-    @Override
+@Override
     public Mode getMode() {
 
         return Mode.DISPLAYMATH;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.math.MathListMaker#mathShift(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
+*      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
     @Override
@@ -207,12 +193,7 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
         getManager().endParagraph();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.math.EqConsumer#switchToNumber(boolean)
-     */
-    @Override
+@Override
     public void switchToNumber(boolean left) throws CantUseInException {
 
         if (eqno != null) {

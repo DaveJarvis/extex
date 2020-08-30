@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitives defined with <tt>\ocplist</tt>.
+ * This is a test suite for the primitives defined with {@code \ocplist}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class OcplistTest extends ExTeXLauncher {
 
     /**
@@ -48,7 +47,7 @@ public class OcplistTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that an OCP list needs ... </testcase>
+     *  Test case checking that an OCP list needs ...
      * 
      * @throws Exception in case of an error
      */
@@ -62,7 +61,7 @@ public class OcplistTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that an OCP list needs ... </testcase>
+     *  Test case checking that an OCP list needs ...
      * 
      * @throws Exception in case of an error
      */

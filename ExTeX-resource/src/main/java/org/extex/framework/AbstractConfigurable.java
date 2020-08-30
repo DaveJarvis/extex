@@ -30,12 +30,11 @@ import org.extex.framework.configuration.exception.ConfigurationMissingException
  * This is an abstract base class for all classes carrying a configuration.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class AbstractConfigurable implements Configurable {
 
     /**
-     * The constant <tt>DEFAULT_ATTRIBUTE</tt> contains the name of the
+     * The constant {@code DEFAULT_ATTRIBUTE} contains the name of the
      * attribute used to get the default configuration.
      */
     protected static final String DEFAULT_ATTRIBUTE = "default";
@@ -46,7 +45,7 @@ public class AbstractConfigurable implements Configurable {
      * 
      * @param instance the instance to configure
      * @param configuration the configuration to use. If this parameter is
-     *        <code>null</code> then it is not passed to the instance.
+     *        {@code null} then it is not passed to the instance.
      * 
      * @throws ConfigurationException in case of an error
      */
@@ -59,7 +58,7 @@ public class AbstractConfigurable implements Configurable {
     }
 
     /**
-     * The field <tt>configuration</tt> contains the configuration of the
+     * The field {@code configuration} contains the configuration of the
      * factory which is also passed to the new instances.
      */
     private Configuration configuration;
@@ -91,7 +90,7 @@ public class AbstractConfigurable implements Configurable {
 
     /**
      * Select a sub-configuration with a given name. If this does not exist then
-     * the attribute <tt>default</tt> is used to find an alternative.
+     * the attribute {@code default} is used to find an alternative.
      * 
      * @param type the tag name for the sub-configuration to find
      * 

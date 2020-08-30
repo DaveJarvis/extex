@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\parshapelength</tt>.
+ * This is a test suite for the primitive {@code \parshapelength}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class ParshapelengthTest extends NonExecuteTester {
 
     /**
@@ -50,7 +49,7 @@ public class ParshapelengthTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapelength"> Test case showing that
-     * <tt>\parshapelength</tt> is applicable to <tt>\the</tt>. </testcase>
+     * {@code \parshapelength} is applicable to {@code \the}.
      * 
      * @throws Exception in case of an error
      */
@@ -65,7 +64,7 @@ public class ParshapelengthTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapelength"> Test case showing that
-     * <tt>\parshapelength</tt> on a negative index returns 0pt. </testcase>
+     * {@code \parshapelength} on a negative index returns 0pt.
      * 
      * @throws Exception in case of an error
      */
@@ -80,7 +79,7 @@ public class ParshapelengthTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapelength"> Test case showing that
-     * <tt>\parshapelength</tt> on a large index returns 0pt. </testcase>
+     * {@code \parshapelength} on a large index returns 0pt.
      * 
      * @throws Exception in case of an error
      */
@@ -95,7 +94,7 @@ public class ParshapelengthTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapelength"> Test case showing that the length
-     * of the first and only existing pair is read. </testcase>
+     * of the first and only existing pair is read.
      * 
      * @throws Exception in case of an error
      */
@@ -110,7 +109,7 @@ public class ParshapelengthTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapelength"> Test case showing that the length
-     * of the first existing pair of two is read. </testcase>
+     * of the first existing pair of two is read.
      * 
      * @throws Exception in case of an error
      */
@@ -125,7 +124,7 @@ public class ParshapelengthTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapelength"> Test case showing that length of
-     * the second pair is read. </testcase>
+     * the second pair is read.
      * 
      * @throws Exception in case of an error
      */
@@ -140,7 +139,7 @@ public class ParshapelengthTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapelength"> Test case showing that the last
-     * value is repeated. </testcase>
+     * value is repeated.
      * 
      * @throws Exception in case of an error
      */
@@ -155,7 +154,7 @@ public class ParshapelengthTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapelength"> Test case showing that the last
-     * value is repeated. </testcase>
+     * value is repeated.
      * 
      * @throws Exception in case of an error
      */
@@ -170,7 +169,7 @@ public class ParshapelengthTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapelength"> Test case showing that
-     * <tt>\parshapelength</tt> is applicable to <tt>\the</tt>. </testcase>
+     * {@code \parshapelength} is applicable to {@code \the}.
      * 
      * @throws Exception in case of an error
      */
@@ -185,7 +184,7 @@ public class ParshapelengthTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapelength"> Test case showing that
-     * <tt>\parshapelength</tt> on a negative index returns 0pt. </testcase>
+     * {@code \parshapelength} on a negative index returns 0pt.
      * 
      * @throws Exception in case of an error
      */
@@ -200,7 +199,7 @@ public class ParshapelengthTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapelength"> Test case showing that
-     * <tt>\parshapelength</tt> is applicable to \the. </testcase>
+     * {@code \parshapelength} is applicable to \the.
      * 
      * @throws Exception in case of an error
      */
@@ -215,7 +214,7 @@ public class ParshapelengthTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapelength"> Test case showing that
-     * <tt>\parshapelength</tt> can be used as a dimen value. </testcase>
+     * {@code \parshapelength} can be used as a dimen value.
      * 
      * @throws Exception in case of an error
      */
@@ -231,7 +230,7 @@ public class ParshapelengthTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapelength"> Test case showing that
-     * <tt>\parshapelength</tt> can be used as a dimen value. </testcase>
+     * {@code \parshapelength} can be used as a dimen value.
      * 
      * @throws Exception in case of an error
      */
@@ -247,7 +246,7 @@ public class ParshapelengthTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapelength"> Test case showing that
-     * <tt>\parshapelength</tt> can be used as a dimen value. </testcase>
+     * {@code \parshapelength} can be used as a dimen value.
      * 
      * @throws Exception in case of an error
      */
@@ -263,7 +262,7 @@ public class ParshapelengthTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapelength"> Test case showing that the last
-     * value is repeated. </testcase>
+     * value is repeated.
      * 
      * @throws Exception in case of an error
      */
@@ -279,7 +278,7 @@ public class ParshapelengthTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapelength"> Test case showing that the last
-     * value is repeated. </testcase>
+     * value is repeated.
      * 
      * @throws Exception in case of an error
      */
@@ -295,7 +294,7 @@ public class ParshapelengthTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapelength"> Test case showing that
-     * <tt>\parshapelength</tt> is count-convertible. </testcase>
+     * {@code \parshapelength} is count-convertible.
      * 
      * @throws Exception in case of an error
      */

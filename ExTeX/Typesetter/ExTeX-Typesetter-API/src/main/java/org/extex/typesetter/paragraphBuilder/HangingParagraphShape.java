@@ -26,29 +26,28 @@ import org.extex.core.dimen.FixedDimen;
  * This paragraph shape represents a block with hanging indentation.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4728 $
- */
+*/
 public class HangingParagraphShape extends ParagraphShape {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>hangafter</tt> contains the number of lines to start or
+     * The field {@code hangafter} contains the number of lines to start or
      * end hanging.
      */
     private int hangafter;
 
     /**
-     * The field <tt>hangindent</tt> contains the amount of indentation.
+     * The field {@code hangindent} contains the amount of indentation.
      */
     private FixedDimen hangindent;
 
     /**
-     * The field <tt>hsize</tt> contains the width of the line.
+     * The field {@code hsize} contains the width of the line.
      */
     private FixedDimen hsize;
 

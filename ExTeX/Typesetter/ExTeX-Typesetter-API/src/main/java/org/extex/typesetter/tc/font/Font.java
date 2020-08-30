@@ -32,8 +32,7 @@ import org.extex.font.FontKey;
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface Font extends Serializable {
 
     /**
@@ -203,7 +202,7 @@ public interface Font extends Serializable {
      *
      * @param uc the character
      *
-     * @return <code>true</code> iff the glyph is present
+     * @return {@code true} iff the glyph is present
      */
     boolean hasGlyph(UnicodeChar uc);
 

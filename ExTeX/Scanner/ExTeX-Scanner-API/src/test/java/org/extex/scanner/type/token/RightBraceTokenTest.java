@@ -30,12 +30,11 @@ import static org.junit.Assert.assertNotEquals;
  * Test cases for right brace tokens.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4756 $
- */
+*/
 public class RightBraceTokenTest extends TokenTester {
 
     /**
-     * The field <tt>token</tt> contains the reference token.
+     * The field {@code token} contains the reference token.
      */
     private static final Token token = new RightBraceToken( UnicodeChar.get( 'x'));
 
@@ -58,9 +57,7 @@ public class RightBraceTokenTest extends TokenTester {
         setStr( "end-group character x");
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testEqualsToken1() {
 
         Token t1 = new RightBraceToken(UnicodeChar.get(' '));

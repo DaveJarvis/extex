@@ -23,11 +23,10 @@ import org.extex.interpreter.expression.term.TCountParser;
 import org.extex.interpreter.expression.term.TGlueParser;
 
 /**
- * This evaluator registers the data types known in <logo>TeX</logo>.
+ * This evaluator registers the data types known in  TeX.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4533 $
- */
+*/
 public class TeXEvaluator extends Evaluator {
 
 

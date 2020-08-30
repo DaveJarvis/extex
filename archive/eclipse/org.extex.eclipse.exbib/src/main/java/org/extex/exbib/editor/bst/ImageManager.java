@@ -30,12 +30,11 @@ import org.extex.exbib.editor.Activator;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class ImageManager {
 
     /**
-     * The field <tt>map</tt> contains the ...
+     * The field {@code map} contains the ...
      */
     private Map<String, Image> map = new HashMap<String, Image>();
 

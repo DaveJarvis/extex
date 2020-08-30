@@ -37,15 +37,14 @@ import static org.junit.Assert.*;
  * This is the test suite for a horizontal list node.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 @SuppressWarnings("RedundantThrows")
 public class GenericNodeListTest extends AbstractNodeListTester {
 
     /**
-     * The constant <tt>VISITOR</tt> contains the a node visitor which return a
+     * The constant {@code VISITOR} contains the a node visitor which return a
      * horizontal list node only. The other nodes are mapped to
-     * <code>null</code>.
+     * {@code null}.
      */
     private static final NodeVisitor<Object, Object> VISITOR =
             new NodeVisitor<Object, Object>() {
@@ -191,23 +190,13 @@ public class GenericNodeListTest extends AbstractNodeListTester {
                 }
             };
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractNodeListTester#makeList()
-     */
-    @Override
+@Override
     protected NodeList makeList() {
 
         return new GenericNodeList();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractNodeListTester#makeList()
-     */
-    @Override
+@Override
     protected NodeList makeList(Node node) {
 
         GenericNodeList list = new GenericNodeList();
@@ -215,19 +204,14 @@ public class GenericNodeListTest extends AbstractNodeListTester {
         return list;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractNodeListTester#makeVisitor()
-     */
-    @Override
+@Override
     protected NodeVisitor<Node, Boolean> makeVisitor() {
 
         return null;
     }
 
     /**
-     * <testcase> Adding a rule node puts the node into the list. </testcase>
+     *  Adding a rule node puts the node into the list.
      */
     @Test
     public void testAddNode111() {

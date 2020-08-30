@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- *  This package contains node types used for handling delayed file operations.
+ *  Contains node types used for handling delayed file operations.
  *  This means that non immediate operations place those nodes on the list and
  *  wait until shipping time to evaluate them.
  */

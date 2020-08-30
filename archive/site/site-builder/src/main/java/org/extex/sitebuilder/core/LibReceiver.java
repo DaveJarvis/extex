@@ -23,14 +23,13 @@ package org.extex.sitebuilder.core;
  * This interface describes a class which can take the definition of a library.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface LibReceiver {
 
     /**
      * Adder for libs.
      * 
-     * @param lib the lib to add or <code>null</code>
+     * @param lib the lib to add or {@code null}
      */
     void lib(String lib);
 }

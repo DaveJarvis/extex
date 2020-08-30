@@ -17,7 +17,7 @@
  */
 /**
  * 
- *   This package contains main programs for ExIndex.
+ *   Contains main programs for ExIndex.
  * 
  *
  */

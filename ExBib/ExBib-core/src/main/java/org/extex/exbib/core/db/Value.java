@@ -72,12 +72,11 @@ import java.util.List;
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Value implements Iterable<ValueItem> {
 
     /**
-     * The field <tt>value</tt> contains the list of items stored in the Value.
+     * The field {@code value} contains the list of items stored in the Value.
      */
     private final List<ValueItem> value = new ArrayList<ValueItem>();
 
@@ -141,7 +140,7 @@ public class Value implements Iterable<ValueItem> {
     /**
      * Tests whether the value is empty.
      * 
-     * @return <code>true</code> iff the value does not contain any elements.
+     * @return {@code true} iff the value does not contain any elements.
      */
     public boolean isEmpty() {
 

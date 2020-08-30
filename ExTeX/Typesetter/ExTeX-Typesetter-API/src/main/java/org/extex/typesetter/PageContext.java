@@ -38,8 +38,7 @@ import org.extex.typesetter.tc.font.Font;
  * options.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface PageContext {
 
     /**
@@ -65,7 +64,7 @@ public interface PageContext {
      *
      * @param name the name or the number of the register
      *
-     * @return the named font register or <code>null</code> if none is set
+     * @return the named font register or {@code null} if none is set
      */
     Font getFont(String name);
 
@@ -116,7 +115,7 @@ public interface PageContext {
     /**
      * Getter for the paragraph shape.
      *
-     * @return the paragraph shape or <code>null</code> if no special shape
+     * @return the paragraph shape or {@code null} if no special shape
      *   is present
      */
     ParagraphShape getParshape();
@@ -167,7 +166,7 @@ public interface PageContext {
      * 
      * @param key the name or the number of the file register
      * @param file the descriptor of the output file
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      */
     void setOutFile(String key, OutFile file, boolean global);

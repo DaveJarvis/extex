@@ -44,32 +44,31 @@ import org.extex.unit.base.Relax;
  * files.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public abstract class AbstractFileCode extends AbstractCode
         implements
             Configurable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2009L;
 
     /**
-     * The field <tt>DEFAULT_ENCODING</tt> contains the default encoding if
+     * The field {@code DEFAULT_ENCODING} contains the default encoding if
      * nothing else is found.
      */
     private static final String DEFAULT_ENCODING = "ISO8859-1";
 
     /**
-     * The constant <tt>MAX_OUT_FILE_NO</tt> contains the maximum number of
+     * The constant {@code MAX_OUT_FILE_NO} contains the maximum number of
      * input files.
      */
     public static final int MAX_IN_FILE_NO = 15;
 
     /**
-     * The constant <tt>MAX_OUT_FILE_NO</tt> contains the maximal number of
+     * The constant {@code MAX_OUT_FILE_NO} contains the maximal number of
      * output files.
      */
     public static final int MAX_OUT_FILE_NO = 15;
@@ -79,13 +78,14 @@ public abstract class AbstractFileCode extends AbstractCode
      * register. Currently only numbers in a certain range are allowed.
      * 
      * 
-     * <doc name="infile name" type="syntax"> <h3>The Infile Name</h3>
+     *  <p>The Infile Name</p>
      * <p>
      * The infile name is a symbolic key to reference an input file. This is a
      * number in the range from 0 to 15.
      * </p>
      * 
-     * <h4>Syntax</h4> The formal description of this primitive is the
+     * <p>Syntax</p>
+ The formal description of this primitive is the
      * following:
      * 
      * <pre class="syntax">
@@ -94,8 +94,7 @@ public abstract class AbstractFileCode extends AbstractCode
      *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;} </pre>
      * 
-     * </doc>
-     * 
+     *
      * 
      * @param context the interpreter context
      * @param source the token source to read from
@@ -124,13 +123,14 @@ public abstract class AbstractFileCode extends AbstractCode
      * Scan the input source for some tokens making up the key for an outfile
      * register. Currently only numbers are allowed.
      * 
-     * <doc name="outfile name" type="syntax"> <h3>The Outfile Name</h3>
+     *  <p>The Outfile Name</p>
      * <p>
      * The outfile name is a symbolic key to reference an output file. This is a
      * number in the range from 0 to 15.
      * </p>
      * 
-     * <h4>Syntax</h4> The formal description of this primitive is the
+     * <p>Syntax</p>
+ The formal description of this primitive is the
      * following:
      * 
      * <pre class="syntax">
@@ -139,8 +139,7 @@ public abstract class AbstractFileCode extends AbstractCode
      *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;} </pre>
      * 
-     * </doc>
-     * 
+     *
      * 
      * @param context the interpreter context
      * @param source the token source to read from
@@ -159,7 +158,7 @@ public abstract class AbstractFileCode extends AbstractCode
     }
 
     /**
-     * The field <tt>strictTeX</tt> contains the boolean indicating whether or
+     * The field {@code strictTeX} contains the boolean indicating whether or
      * not to adhere strictly to the rules of TeX for file name parsing.
      */
     private boolean strictTeX = false;
@@ -174,12 +173,7 @@ public abstract class AbstractFileCode extends AbstractCode
         super(token);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
-     */
-    @Override
+@Override
     public void configure(Configuration config) {
 
         String strict = config.getAttribute("strict");
@@ -189,9 +183,9 @@ public abstract class AbstractFileCode extends AbstractCode
     /**
      * Return the encoding for the AbstractFileCode file.
      * <p>
-     * First of all, <code>\fileencoding</code> is used, if there is no value,
-     * then the property <code>extex.encoding</code> is used, or
-     * <code>ISO8859-1</code>, if no entry exists.
+     * First of all, {@code \fileencoding} is used, if there is no value,
+     * then the property {@code extex.encoding} is used, or
+     * {@code ISO8859-1}, if no entry exists.
      * 
      * @param context the context
      * 
@@ -210,7 +204,7 @@ public abstract class AbstractFileCode extends AbstractCode
     /**
      * Scan the file name.
      * 
-     * <doc type="syntax" name="filename"> This method parses the following
+     * This method parses the following
      * syntactic entity:
      * 
      * <pre class="syntax">
@@ -223,8 +217,7 @@ public abstract class AbstractFileCode extends AbstractCode
      * <li>Otherwise tokens are read until a space token is encountered.</li>
      * </ul>
      * 
-     * </doc>
-     * 
+     *
      * @param context the processing context
      * @param source the source for new tokens
      * 

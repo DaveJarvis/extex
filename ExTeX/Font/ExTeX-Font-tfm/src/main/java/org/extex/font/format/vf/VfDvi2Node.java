@@ -77,37 +77,36 @@ import org.extex.util.file.random.RandomAccessR;
  * Convert Vf-Dvi to nodes.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class VfDvi2Node implements DviInterpreter, DviExecuteCommand {
 
     /**
      * The map for the extex fonts.
      */
-    private Map<Integer, ExtexFont> extexfonts =
+    private final Map<Integer, ExtexFont> extexfonts =
             new HashMap<Integer, ExtexFont>();
 
     /**
      * The node factory.
      */
-    private NodeFactory factory;
+    private final NodeFactory factory;
 
     /**
      * The font factory.
      */
-    private CoreFontFactory fontfactory;
+    private final CoreFontFactory fontfactory;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated with
+     * The field {@code localizer} contains the localizer. It is initiated with
      * a localizer for the name of this class.
      */
-    private Localizer localizer = LocalizerFactory
+    private final Localizer localizer = LocalizerFactory
         .getLocalizer(VfDvi2Node.class);
 
     /**
      * The dvi stack.
      */
-    private DviStack stack = new DviStack();
+    private final DviStack stack = new DviStack();
 
     /**
      * The typesetting context.
@@ -117,27 +116,27 @@ public class VfDvi2Node implements DviInterpreter, DviExecuteCommand {
     /**
      * The typesetting context factory.
      */
-    private TypesettingContextFactory tcFactory;
+    private final TypesettingContextFactory tcFactory;
 
     /**
      * The dvi values.
      */
-    private DviValues val = new DviValues();
+    private final DviValues val = new DviValues();
 
     /**
      * The virtual char node.
      */
-    private VirtualCharNode vCharNode;
+    private final VirtualCharNode vCharNode;
 
     /**
      * The virtual font.
      */
-    private VfFont vfFont;
+    private final VfFont vfFont;
 
     /**
      * The current x point.
      */
-    private Dimen x = new Dimen();
+    private final Dimen x = new Dimen();
 
     /**
      * Creates a new object.
@@ -211,24 +210,14 @@ public class VfDvi2Node implements DviInterpreter, DviExecuteCommand {
         return ff;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviBOP)
-     */
-    @Override
+@Override
     public void execute(DviBOP command) throws FontException {
 
         // ignore
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviChar)
-     */
-    @Override
+@Override
     public void execute(DviChar command) throws FontException {
 
         ExtexFont f = checkFont();
@@ -254,71 +243,41 @@ public class VfDvi2Node implements DviInterpreter, DviExecuteCommand {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviDown)
-     */
-    @Override
+@Override
     public void execute(DviDown command) throws FontException {
 
         val.addV(command.getValue());
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviEOP)
-     */
-    @Override
+@Override
     public void execute(DviEOP command) throws FontException {
 
         // ignore
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviFntDef)
-     */
-    @Override
+@Override
     public void execute(DviFntDef command) throws FontException {
 
         // ignore
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviFntNum)
-     */
-    @Override
+@Override
     public void execute(DviFntNum command) throws FontException {
 
         val.setF(command.getFont());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviNOP)
-     */
-    @Override
+@Override
     public void execute(DviNOP command) throws FontException {
 
         // ignore
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviPOP)
-     */
-    @Override
+@Override
     public void execute(DviPOP command) throws FontException {
 
         DviValues newval = stack.pop();
@@ -326,72 +285,42 @@ public class VfDvi2Node implements DviInterpreter, DviExecuteCommand {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviPost)
-     */
-    @Override
+@Override
     public void execute(DviPost command) throws FontException {
 
         // ignore
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviPostPost)
-     */
-    @Override
+@Override
     public void execute(DviPostPost command) throws FontException {
 
         // ignore
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviPre)
-     */
-    @Override
+@Override
     public void execute(DviPre command) throws FontException {
 
         // ignore
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviPush)
-     */
-    @Override
+@Override
     public void execute(DviPush command) throws FontException {
 
         stack.push(val);
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviRight)
-     */
-    @Override
+@Override
     public void execute(DviRight command) throws FontException {
 
         val.addH(command.getValue());
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviRule)
-     */
-    @Override
+@Override
     public void execute(DviRule command) throws FontException {
 
         RuleNode node = new RuleNode(
@@ -409,12 +338,7 @@ public class VfDvi2Node implements DviInterpreter, DviExecuteCommand {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviW)
-     */
-    @Override
+@Override
     public void execute(DviW command) throws FontException {
 
         if (!command.isW0()) {
@@ -423,12 +347,7 @@ public class VfDvi2Node implements DviInterpreter, DviExecuteCommand {
         val.addH(val.getW());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviX)
-     */
-    @Override
+@Override
     public void execute(DviX command) throws FontException {
 
         if (!command.isX0()) {
@@ -438,24 +357,14 @@ public class VfDvi2Node implements DviInterpreter, DviExecuteCommand {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviXXX)
-     */
-    @Override
+@Override
     public void execute(DviXXX command) throws FontException {
 
         SpecialNode node = new SpecialNode(command.getXXXString());
         addNode(node);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviY)
-     */
-    @Override
+@Override
     public void execute(DviY command) throws FontException {
 
         if (!command.isY0()) {
@@ -465,12 +374,7 @@ public class VfDvi2Node implements DviInterpreter, DviExecuteCommand {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviExecuteCommand#execute(org.extex.font.format.dvi.command.DviZ)
-     */
-    @Override
+@Override
     public void execute(DviZ command) throws FontException {
 
         if (!command.isZ0()) {
@@ -515,12 +419,7 @@ public class VfDvi2Node implements DviInterpreter, DviExecuteCommand {
         return vd;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.DviInterpreter#interpret(org.extex.util.file.random.RandomAccessR)
-     */
-    @Override
+@Override
     public void interpret(RandomAccessR rar) throws IOException, FontException {
 
         if (vCharNode == null) {
@@ -616,18 +515,14 @@ public class VfDvi2Node implements DviInterpreter, DviExecuteCommand {
      * 
      * y is always zero (baseline)!
      * 
-     * @return Returns <code>true</code>, if (x,y) is equals to (h,v).
+     * @return Returns {@code true}, if (x,y) is equals to (h,v).
      */
     private boolean isEquals() {
 
         Dimen hd = TfmFixWord.toDimen(vfFont.getDesignSize(), val.getH());
         Dimen vd = TfmFixWord.toDimen(vfFont.getDesignSize(), val.getV());
 
-        if (x.eq(hd) && vd.isZero()) {
-            return true;
-        }
-
-        return false;
+        return x.eq( hd ) && vd.isZero();
     }
 
     /**

@@ -35,12 +35,11 @@ import org.junit.Test;
  * This is a test suite for {@link ProcessorContainer}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ProcessorContainerTest {
 
     /**
-     * <testcase> A non-number for min.crossref leads to an error. </testcase>
+     *  A non-number for min.crossref leads to an error. 
      * 
      * @throws Exception in case of an error
      */
@@ -54,9 +53,8 @@ public class ProcessorContainerTest {
     }
 
     /**
-     * <testcase> <code>null</code> parameters lead to a
-     * {@link NullPointerException}. </testcase>
-     * 
+     * {@code null} parameters lead to a {@link NullPointerException}
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = NullPointerException.class)
@@ -66,7 +64,7 @@ public class ProcessorContainerTest {
     }
 
     /**
-     * <testcase> A non-number for min.crossref leads to an error. </testcase>
+     *  A non-number for min.crossref leads to an error. 
      * 
      * @throws Exception in case of an error
      */
@@ -80,7 +78,7 @@ public class ProcessorContainerTest {
     }
 
     /**
-     * <testcase> A non-number for min.crossref leads to an error. </testcase>
+     *  A non-number for min.crossref leads to an error. 
      * 
      * @throws Exception in case of an error
      */
@@ -94,7 +92,7 @@ public class ProcessorContainerTest {
     }
 
     /**
-     * <testcase> An unknown local sorter leads to an error. </testcase>
+     *  An unknown local sorter leads to an error. 
      * 
      * @throws Exception in case of an error
      */
@@ -110,7 +108,7 @@ public class ProcessorContainerTest {
     }
 
     /**
-     * <testcase> An unknown global sorter leads to an error. </testcase>
+     *  An unknown global sorter leads to an error. 
      * 
      * @throws Exception in case of an error
      */
@@ -126,8 +124,8 @@ public class ProcessorContainerTest {
     }
 
     /**
-     * <testcase> An unknown processor is returned as <code>null</code>.
-     * </testcase>
+     *  An unknown processor is returned as {@code null}.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -140,8 +138,8 @@ public class ProcessorContainerTest {
     }
 
     /**
-     * <testcase> An unknown processor is returned as <code>null</code>.
-     * </testcase>
+     *  An unknown processor is returned as {@code null}.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -154,7 +152,7 @@ public class ProcessorContainerTest {
     }
 
     /**
-     * <testcase> A new instance is empty. </testcase>
+     *  A new instance is empty. 
      * 
      * @throws Exception in case of an error
      */

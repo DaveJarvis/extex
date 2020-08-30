@@ -31,8 +31,7 @@ package org.extex.builder.maven;
  * 
  * @since 1.0
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NoactionMojo extends LaTeXMojo {
 
 

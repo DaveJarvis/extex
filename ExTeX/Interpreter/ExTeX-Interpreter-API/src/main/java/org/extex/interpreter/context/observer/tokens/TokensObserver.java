@@ -27,8 +27,7 @@ import org.extex.scanner.type.tokens.Tokens;
  * change of a tokens register.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4399 $
- */
+*/
 public interface TokensObserver {
 
     /**
@@ -37,7 +36,7 @@ public interface TokensObserver {
      * @param context the interpreter context
      * @param name the token containing the name of the changed tokens.
      * @param value the new value assigned to the name. In case of
-     *  <code>null</code> the name is unbound.
+     *  {@code null} the name is unbound.
      *
      * @throws Exception in case of a problem
      */

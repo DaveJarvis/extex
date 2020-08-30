@@ -58,70 +58,69 @@ import org.extex.typesetter.Typesetter;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\patterns</code>.
+ * {@code \patterns}.
  * 
- * <doc name="patterns"> <h3>The Primitive <tt>\patterns</tt></h3>
+ * <p>The Primitive {@code \patterns}</p>
  * <p>
- * The primitive <tt>\patterns</tt> adds values to the set of patterns of the
+ * The primitive {@code \patterns} adds values to the set of patterns of the
  * hyphenation algorithm.
  * </p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;patterns&rang;
- *      &rarr; <tt>\patterns</tt> { &lang;patterns&rang; } </pre>
+ *      &rarr; {@code \patterns} { &lang;patterns&rang; } </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \patterns{.ach4 .ad4der .af1t}  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Patterns extends AbstractHyphenationCode {
 
     /**
      * This class provides the token visitor which processes all tokens in the
-     * argument of the <tt>\pattern</tt> macro. The return value of the visitor
+     * argument of the {@code \pattern} macro. The return value of the visitor
      * methods indicates whether or not a continuation of the processing is
      * necessary.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision: 4770 $
-     */
+    */
     private class TV implements TokenVisitor<Boolean, Object> {
 
         /**
-         * The field <tt>table</tt> contains the associated table.
+         * The field {@code table} contains the associated table.
          */
         private Language table;
 
         /**
-         * The field <tt>tokens</tt> contains the the container for the tokens.
+         * The field {@code tokens} contains the the container for the tokens.
          */
         private Tokens tokens = new Tokens();
 
         /**
-         * The field <tt>context</tt> contains the interpreter context to use.
+         * The field {@code context} contains the interpreter context to use.
          */
         private Context context;
 
         /**
-         * The field <tt>zero</tt> contains the OtherToken 0.
+         * The field {@code zero} contains the OtherToken 0.
          */
         private Token zero;
 
         /**
-         * The field <tt>letter</tt> contains the indicator that the character
+         * The field {@code letter} contains the indicator that the character
          * read recently has been a letter.
          */
         private boolean letter = true;
@@ -144,10 +143,7 @@ public class Patterns extends AbstractHyphenationCode {
         }
 
         /**
-         * This visit method is invoked on an active token. In <logo>T<span
-         * style=
-         * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-         * >e</span>X</logo> this is e.g. ~.
+         * This visit method is invoked on an active token. In TeX this is e.g. ~.
          * 
          * @param token the active token to visit
          * @param arg the first argument to pass
@@ -189,10 +185,7 @@ public class Patterns extends AbstractHyphenationCode {
         }
 
         /**
-         * This visit method is invoked on an escape token. In <logo>T<span
-         * style=
-         * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-         * >e</span>X</logo> this normally means a control sequence.
+         * This visit method is invoked on an escape token. In TeX this normally means a control sequence.
          * 
          * @param token the control sequence token to visit
          * @param arg the first argument to pass
@@ -294,10 +287,7 @@ public class Patterns extends AbstractHyphenationCode {
         }
 
         /**
-         * This visit method is invoked on a math shift token. In <logo>T<span
-         * style=
-         * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-         * >e</span>X</logo> this normally is a $.
+         * This visit method is invoked on a math shift token. In TeX this normally is a $.
          * 
          * @param token the math shift token to visit
          * @param arg the first argument to pass
@@ -372,10 +362,7 @@ public class Patterns extends AbstractHyphenationCode {
          * This method returns a non-null value to indicate the end of
          * processing.
          * 
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitRightBrace(org.extex.scanner.type.token.RightBraceToken,
-         *      java.lang.Object)
+    *      java.lang.Object)
          */
         @Override
         public Boolean visitRightBrace(RightBraceToken token, Object arg)
@@ -415,10 +402,7 @@ public class Patterns extends AbstractHyphenationCode {
         }
 
         /**
-         * This visit method is invoked on a sub mark token. In <logo>T<span
-         * style=
-         * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-         * >e</span>X</logo> this normally is a _.
+         * This visit method is invoked on a sub mark token. In TeX this normally is a _.
          * 
          * @param token the sub mark token to visit
          * @param arg the first argument to pass
@@ -439,10 +423,7 @@ public class Patterns extends AbstractHyphenationCode {
         }
 
         /**
-         * This visit method is invoked on a sup mark token. In <logo>T<span
-         * style=
-         * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-         * >e</span>X</logo> this normally is a ^.
+         * This visit method is invoked on a sup mark token. In TeX this normally is a ^.
          * 
          * @param token the sup mark token to visit
          * @param arg the first argument to pass
@@ -463,10 +444,7 @@ public class Patterns extends AbstractHyphenationCode {
         }
 
         /**
-         * This visit method is invoked on a tab mark token. In <logo>T<span
-         * style=
-         * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-         * >e</span>X</logo> this normally is a &.
+         * This visit method is invoked on a tab mark token. In TeX this normally is a &.
          * 
          * @param token the tab mark token to visit
          * @param arg the first argument to pass
@@ -488,7 +466,7 @@ public class Patterns extends AbstractHyphenationCode {
     }
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -504,13 +482,10 @@ public class Patterns extends AbstractHyphenationCode {
 
     /**
      * Scan the patterns for hyphenation and store this values in the
-     * <code>HyphernationTable</code>. The <code>HyphernationTable</code> are
-     * based on the value from <code>\language</code>.
+     * {@code HyphernationTable}. The {@code HyphernationTable} are
+     * based on the value from {@code \language}.
      * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

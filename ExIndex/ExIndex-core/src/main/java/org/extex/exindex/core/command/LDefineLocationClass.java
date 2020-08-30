@@ -34,12 +34,11 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This is the adapter for the L system to define a location class.
  * 
- * <doc type="exindex-command" command="define-location-class">
- * 
- * <h3>The Command <tt>define-location-class</tt></h3>
+*
+ * <p>The Command {@code define-location-class}</p>
  * 
  * <p>
- * The command <tt>define-location-class</tt> can be used to define a location
+ * The command {@code define-location-class} can be used to define a location
  * class.
  * </p>
  * 
@@ -62,7 +61,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <p>
  * Two arguments are mandatory. The first mandatory argument is the name of the
  * location class. It has a string value. In the example above the name is
- * <tt>pages</tt>
+ * {@code pages}
  * </p>
  * 
  * <p>
@@ -97,21 +96,19 @@ import org.extex.framework.i18n.LocalizerFactory;
  * roman letters are defined as well. They are considered as well-</dd>
  * </dl>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LDefineLocationClass extends LFunction {
 
     /**
-     * The constant <tt>SEP</tt> contains the tag :sep.
+     * The constant {@code SEP} contains the tag :sep.
      */
     private static final LSymbol SEP = LSymbol.get(":sep");
 
     /**
-     * The field <tt>container</tt> contains the container for location classes.
+     * The field {@code container} contains the container for location classes.
      */
     private final LocationClassContainer container;
 
@@ -146,7 +143,7 @@ public class LDefineLocationClass extends LFunction {
      * @param hierdepth the hierarchy depth
      * @param var the var indicator
      * 
-     * @return <tt>nil</tt>
+     * @return {@code nil}
      * 
      * @throws LException in case of an error
      */

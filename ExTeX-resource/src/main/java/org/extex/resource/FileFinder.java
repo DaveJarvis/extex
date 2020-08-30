@@ -78,40 +78,40 @@ import org.extex.resource.io.NamedInputStream;
  * Whenever a resource is sought its type is used to find the appropriate
  * parameters for the search. If the sub-configuration with the name of the type
  * exists then this sub-configuration is used. For instance if the resource
- * <tt>tex</tt> with the type <tt>fmt</tt> is sought then the sub-configuration
- * <tt>fmt</tt> determines how to find this file.
+ * {@code tex} with the type {@code fmt} is sought then the sub-configuration
+ * {@code fmt} determines how to find this file.
  * </p>
  * <p>
  * If no sub-configuration of the given type is present then the attribute
- * <tt>default</tt> is used to find the default sub-configuration. In the
- * example given above this default configuration is called <tt>default</tt>.
+ * {@code default} is used to find the default sub-configuration. In the
+ * example given above this default configuration is called {@code default}.
  * Nevertheless it would also be possible to point the default configuration to
- * another existing configuration. The attribute <tt>default</tt> is mandatory.
+ * another existing configuration. The attribute {@code default} is mandatory.
  * </p>
  * <p>
- * Each sub-configuration takes the tags <tt>path</tt> and <tt>extension</tt> in
- * arbitrary number. <tt>path</tt> contains the path prepended before the
- * resource name. <tt>extension</tt> contains the extension appended after the
+ * Each sub-configuration takes the tags {@code path} and {@code extension} in
+ * arbitrary number. {@code path} contains the path prepended before the
+ * resource name. {@code extension} contains the extension appended after the
  * resource name.
  * </p>
  * <p>
- * <tt>path</tt> can carry the attribute <tt>property</tt>. In this case the
+ * {@code path} can carry the attribute {@code property}. In this case the
  * value is ignored and the value is taken from the property named in the
  * attribute. Otherwise the value of the tag is taken as path. The value taken
  * from the property can contain several paths. They are separated by the
  * separator specified for the platform. For instance on windows the separator
- * <tt>;</tt> is used and on Unix the separator <tt>:</tt> is used.
+ * {@code ;} is used and on Unix the separator {@code :} is used.
  * </p>
  * <p>
- * <tt>path</tt> can carry the attribute <tt>env</tt>. In this case the value is
+ * {@code path} can carry the attribute {@code env}. In this case the value is
  * ignored and the value is taken from the environment variable named in the
  * attribute. Otherwise the value of the tag is taken as path. The value taken
  * from the environment variable can contain several paths. They are separated
  * by the separator specified for the platform. For instance on windows the
- * separator <tt>;</tt> is used and on Unix the separator <tt>:</tt> is used.
+ * separator {@code ;} is used and on Unix the separator {@code :} is used.
  * </p>
  * <p>
- * When the full file name contains the string <tt>{type}</tt> this string is
+ * When the full file name contains the string {@code {type}} this string is
  * replaced by the type currently sought. This can for instance be used in
  * default specification to attach the type as extension.
  * </p>
@@ -121,34 +121,33 @@ import org.extex.resource.io.NamedInputStream;
  * used.
  * </p>
  * <p>
- * The attribute <tt>trace</tt> can be used to force a tracing of the actions in
+ * The attribute {@code trace} can be used to force a tracing of the actions in
  * the log file. The tracing is performed only if a logger is present when
  * needed. The tracing flag can be overwritten at run-time. The attribute
- * <tt>trace</tt> is optional.
+ * {@code trace} is optional.
  * </p>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class FileFinder extends AbstractFinder
         implements
             PropertyAware,
             EnvironmentAware {
 
     /**
-     * The constant <tt>PATH_TAG</tt> contains the name of the tag to get the
+     * The constant {@code PATH_TAG} contains the name of the tag to get the
      * path information.
      */
     private static final String PATH_TAG = "path";
 
     /**
-     * The field <tt>properties</tt> contains the properties instance to use.
+     * The field {@code properties} contains the properties instance to use.
      */
     private Properties properties = new Properties();
 
     /**
-     * The field <tt>environment</tt> contains the environment.
+     * The field {@code environment} contains the environment.
      */
     private Map<String, String> environment = System.getenv();
 
@@ -173,7 +172,7 @@ public class FileFinder extends AbstractFinder
      * @param cfg the configuration
      * @param type the current type
      * 
-     * @return the input stream for the file or <code>null</code> if none was
+     * @return the input stream for the file or {@code null} if none was
      *         found.
      */
     private NamedInputStream find(String name, List<String> paths,
@@ -196,7 +195,7 @@ public class FileFinder extends AbstractFinder
      * @param cfg the configuration
      * @param type the current type
      * 
-     * @return the input stream for the file or <code>null</code> if none was
+     * @return the input stream for the file or {@code null} if none was
      *         found.
      */
     private NamedInputStream find(String name, String path, Configuration cfg,
@@ -227,10 +226,7 @@ public class FileFinder extends AbstractFinder
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
-     *      java.lang.String)
+*      java.lang.String)
      */
     public NamedInputStream findResource(String name, String type)
             throws ConfigurationException {
@@ -309,12 +305,7 @@ public class FileFinder extends AbstractFinder
         this.environment = environment;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.PropertyAware#setProperties(java.util.Properties)
-     */
-    public void setProperties(Properties properties) {
+public void setProperties(Properties properties) {
 
         this.properties = properties;
     }

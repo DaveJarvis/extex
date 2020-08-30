@@ -42,33 +42,28 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:4399 $
- */
+*/
 public class GlueComponentConstant implements Serializable, FixedGlueComponent {
 
     /**
-     * The constant <tt>ONE</tt> contains the internal representation for 1pt.
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [101]"
-     */
+     * The constant {@code ONE} contains the internal representation for 1pt.
+*/
     public static final long ONE = 1 << 16;
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>order</tt> contains the order of infinity. In case of an
+     * The field {@code order} contains the order of infinity. In case of an
      * order 0 the value holds the absolute value; otherwise value holds the
      * factor of the order.
      */
     protected byte order;
 
     /**
-     * The field <tt>value</tt> contains the integer representation of the dimen
+     * The field {@code value} contains the integer representation of the dimen
      * register in sp if the order is 0. If the order is not 0 then the value
      * holds the factor to the order in units of 2<sup>16</sup>.
      */
@@ -130,10 +125,10 @@ public class GlueComponentConstant implements Serializable, FixedGlueComponent {
      * Compares the current instance with another GlueComponent for equality.
      * 
      * @param d the other GlueComponent to compare to. If this parameter is
-     *        <code>null</code> then the comparison fails.
+     *        {@code null} then the comparison fails.
      * 
-     * @return <code>true</code> iff <i>|this| == |d| and ord(this) ==
-     *         ord(d)</i>
+     * @return {@code true} iff |this| == |d| and ord(this) ==
+     *         ord(d)
      */
     @Override
     public boolean eq(FixedGlueComponent d) {
@@ -147,7 +142,7 @@ public class GlueComponentConstant implements Serializable, FixedGlueComponent {
      * 
      * @param d the other GlueComponent to compare to
      * 
-     * @return <code>true</code> iff this is greater or equal to d
+     * @return {@code true} iff this is greater or equal to d
      */
     @Override
     public boolean ge(FixedGlueComponent d) {
@@ -155,12 +150,7 @@ public class GlueComponentConstant implements Serializable, FixedGlueComponent {
         return (!lt(d));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.core.glue.FixedGlueComponent#getOrder()
-     */
-    @Override
+@Override
     public byte getOrder() {
 
         return order;
@@ -182,8 +172,8 @@ public class GlueComponentConstant implements Serializable, FixedGlueComponent {
      * 
      * @param d the other GlueComponent to compare to
      * 
-     * @return <code>true</code> iff <i>ord(this) == ord(d) && |this| &gt;
-     *         |d|</i> or <i>ord(this) &gt; ord(d)</i>
+      * @return {@code true} iff ord(this) == ord(d) &amp;&amp; |this| &gt;
+     *         |d| or ord(this) &gt; ord(d)
      */
     @Override
     public boolean gt(FixedGlueComponent d) {
@@ -197,7 +187,7 @@ public class GlueComponentConstant implements Serializable, FixedGlueComponent {
      * 
      * @param d the other GlueComponent to compare to
      * 
-     * @return <code>true</code> iff this is less or equal to d
+     * @return {@code true} iff this is less or equal to d
      */
     @Override
     public boolean le(FixedGlueComponent d) {
@@ -210,8 +200,8 @@ public class GlueComponentConstant implements Serializable, FixedGlueComponent {
      * 
      * @param d the other GlueComponent to compare to
      * 
-     * @return <code>true</code> iff <i>ord(this) == ord(d) && |this| &lt;
-     *         |d|</i> or <i>ord(this) &lt; ord(d)</i>
+      * @return {@code true} iff ord(this) == ord(d) &amp;&amp; |this| &lt;
+     *         |d| or ord(this) &lt; ord(d)
      */
     @Override
     public boolean lt(FixedGlueComponent d) {
@@ -224,10 +214,10 @@ public class GlueComponentConstant implements Serializable, FixedGlueComponent {
      * Compares the current instance with another GlueComponent for equality.
      * 
      * @param d the other GlueComponent to compare to. If this parameter is
-     *        <code>null</code> then the comparison fails.
+     *        {@code null} then the comparison fails.
      * 
-     * @return <code>false</code> iff <i>|this| == |d| and ord(this) ==
-     *         ord(d)</i>
+     * @return {@code false} iff |this| == |d| and ord(this) ==
+     *         ord(d)
      */
     @Override
     public boolean ne(FixedGlueComponent d) {

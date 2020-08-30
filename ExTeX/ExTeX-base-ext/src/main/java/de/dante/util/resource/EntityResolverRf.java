@@ -49,8 +49,7 @@ import org.xml.sax.SAXException;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class EntityResolverRf implements EntityResolver {
 

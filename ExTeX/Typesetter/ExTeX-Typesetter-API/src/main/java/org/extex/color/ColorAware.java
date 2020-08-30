@@ -23,8 +23,7 @@ package org.extex.color;
  * This interface describes the ability to consume a color converter.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface ColorAware {
 
     /**

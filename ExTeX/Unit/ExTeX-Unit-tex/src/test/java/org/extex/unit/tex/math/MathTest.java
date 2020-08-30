@@ -26,8 +26,7 @@ import org.junit.Test;
  * This is a test suite for math.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class MathTest extends ExTeXLauncher {
 
 
@@ -36,9 +35,9 @@ public class MathTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case checking that missing fonts leads to an error.
-     * </testcase>
+     *
      * @throws Exception in case of an error
      */
     @Test
@@ -51,9 +50,9 @@ public class MathTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case checking that a simple character can be typeset in math mode.
-     * </testcase>
+     *
      * @throws Exception in case of an error
      */
     @Test
@@ -66,9 +65,9 @@ public class MathTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case checking that a simple character can be typeset in math mode.
-     * </testcase>
+     *
      * @throws Exception in case of an error
      */
     @Test
@@ -89,9 +88,9 @@ public class MathTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case checking that a simple character can be typeset in math mode.
-     * </testcase>
+     *
      * @throws Exception in case of an error
      */
     @Test

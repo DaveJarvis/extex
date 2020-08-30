@@ -43,38 +43,37 @@ import org.extex.typesetter.tc.font.Font;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\fontcharwd</code>.
+ * {@code \fontcharwd}.
  * 
- * <doc name="fontcharwd">
- * <h3>The Primitive <tt>\fontcharwd</tt></h3>
+ * <p>The Primitive {@code \fontcharwd}</p>
  * <p>
- * The primitive <tt>\fontcharwd</tt> is a read-only dimen register which
+ * The primitive {@code \fontcharwd} is a read-only dimen register which
  * corresponds to the width of a character in a given font. If the character is
  * not defined in the font then 0pt is returned.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;fontcharwd&rang;
- *       &rarr; <tt>\fontcharwd</tt> {@linkplain
+ *       &rarr; {@code \fontcharwd} {@linkplain
  *          org.extex.interpreter.TokenSource#getFont(Context,CodeToken)
  *          &lang;font&rang;} {@linkplain
  *          org.extex.interpreter.TokenSource#scanCharacterCode(Context,Typesetter,CodeToken)
  *          &lang;character code&rang;} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \fontcharwd\tenrm `a  </pre>
  * 
- * </doc>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Fontcharwd extends AbstractCode
         implements
             ExpandableCode,
@@ -83,7 +82,7 @@ public class Fontcharwd extends AbstractCode
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -99,10 +98,7 @@ public class Fontcharwd extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -112,10 +108,7 @@ public class Fontcharwd extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertDimen(Context context, TokenSource source,
@@ -125,10 +118,7 @@ public class Fontcharwd extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,
@@ -166,10 +156,7 @@ public class Fontcharwd extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

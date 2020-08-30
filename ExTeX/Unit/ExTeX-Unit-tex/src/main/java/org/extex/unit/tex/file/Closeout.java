@@ -19,9 +19,6 @@
 
 package org.extex.unit.tex.file;
 
-import java.io.IOException;
-import java.util.logging.Logger;
-
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
@@ -35,55 +32,53 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.file.AbstractFileCode;
 import org.extex.unit.tex.file.nodes.WhatsItCloseNode;
 
+import java.io.IOException;
+import java.util.logging.Logger;
+
 /**
  * This class provides an implementation for the primitive
- * <code>\closeout</code>.
+ * {@code \closeout}.
  * 
- * <doc name="closeout">
- * <h3>The Primitive <tt>\closeout</tt></h3>
+ * <p>The Primitive {@code \closeout}</p>
  * <p>
  * The primitive takes one expanded integer argument. This argument denotes a
  * write register which will be closed if it is currently assigned to a file
- * &ndash; with {@link org.extex.unit.tex.file.Openout <tt>\openout</tt>}. If
+ * &ndash; with {@link org.extex.unit.tex.file.Openout {@code \openout}}. If
  * the input file assigned to the given number has not been opened or has been
  * closed before then this primitive simply does nothing.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
  * <p>
  * The formal description of this primitive is the following:
- * 
+ * </p>
+ *
  * <pre class="syntax">
  *    &lang;closeout&rang;
- *       &rarr; <tt>\closeout</tt> {@linkplain
+ *       &rarr; {@code \closeout} {@linkplain
  *        org.extex.unit.base.file.AbstractFileCode#scanOutFileKey(Context,TokenSource,Typesetter)
  *        &lang;outfile&nbsp;name&rang;} </pre>
  * 
- * </p>
- * 
- * <h4>Examples</h4>
- * 
+ *
+ * <p>Examples</p>
+ *
  * <pre class="TeXSample">
  *    \closeout5  </pre>
  *  <pre class="TeXSample">
  *    \closeout\count120  </pre>
  * 
- * </doc>
- * 
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4441 $
- */
+*/
 public class Closeout extends AbstractCode implements LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>logger</tt> contains the logger to use.
+     * The field {@code logger} contains the logger to use.
      */
     private transient Logger logger = null;
 
@@ -111,10 +106,7 @@ public class Closeout extends AbstractCode implements LogEnabled {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

@@ -29,46 +29,45 @@ import org.extex.typesetter.Typesetter;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\immediate</code>. It does simply nothing, but as a side effect the
+ * {@code \immediate}. It does simply nothing, but as a side effect the
  * prefix <i>IMMEDIATE</i> is added to the prefixes.
  * 
- * <doc name="immediate">
- * <h3>The Prefix Primitive <tt>\immediate</tt></h3>
+ * <p>The Prefix Primitive {@code \immediate}</p>
  * <p>
- * The primitive <tt>\immediate</tt> is a prefix modifying the operation of a
+ * The primitive {@code \immediate} is a prefix modifying the operation of a
  * following primitive. If the immediately following token denotes another
  * prefix primitives then the functionality is accumulated. This means that the
  * next non-prefix primitive is modified by any directly preceding prefix
  * primitives.
  * </p>
  * <p>
- * Multiple <tt>\immediate</tt> prefixes act identical to a single one.
+ * Multiple {@code \immediate} prefixes act identical to a single one.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;immediate&rang;
- *      &rarr; <tt>\immediate</tt>  </pre>
+ *      &rarr; {@code \immediate}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \immediate\write1{abc}  </pre>
  *  <pre class="TeXSample">
  *    \immediate\immediate\write1{abc}  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Immediate extends AbstractCode implements PrefixCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -84,10 +83,7 @@ public class Immediate extends AbstractCode implements PrefixCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

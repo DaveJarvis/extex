@@ -48,18 +48,15 @@ import org.extex.typesetter.type.node.VerticalListNode;
  * will never arrive at the DocumentWriter.
  * 
  * 
- * <doc name="scriptspace" type="register"> <h3>The Dimen Parameter
- * <tt>\scriptspace</tt></h3>
+ * <p>The Dimen Parameter {@code \scriptspace}</p>
  * <p>
- * The dimen parameter <tt>\scriptspace</tt> contains the amount of spacing
+ * The dimen parameter {@code \scriptspace} contains the amount of spacing
  * added to the width of subscripts.
  * </p>
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public abstract class AbstractNoad implements Noad {
 
     /**
@@ -92,7 +89,7 @@ public abstract class AbstractNoad implements Noad {
 
     /**
      * Print a noad to the string buffer preceded by some prefix if the noad is
-     * not <code>null</code>.
+     * not {@code null}.
      * 
      * @param sb the target buffer
      * @param noad the noad to print
@@ -111,17 +108,17 @@ public abstract class AbstractNoad implements Noad {
     }
 
     /**
-     * The field <tt>spacingClass</tt> contains the class for spacing.
+     * The field {@code spacingClass} contains the class for spacing.
      */
     private MathSpacing spacingClass = MathSpacing.UNDEF;
 
     /**
-     * The field <tt>subscript</tt> contains the subscript noad.
+     * The field {@code subscript} contains the subscript noad.
      */
     private Noad subscript = null;
 
     /**
-     * The field <tt>superscript</tt> contains the superscript noad.
+     * The field {@code superscript} contains the superscript noad.
      */
     private Noad superscript = null;
 
@@ -187,7 +184,7 @@ public abstract class AbstractNoad implements Noad {
      * 
      * @return a node containing the node and the subscripts and superscripts.
      *         If no subscripts and superscripts are present then
-     *         <code>null</code> is returned instead.
+     *         {@code null} is returned instead.
      * 
      * @throws TypesetterException in case of an error
      * @throws ConfigurationException in case of an configuration error
@@ -366,12 +363,7 @@ public abstract class AbstractNoad implements Noad {
         this.superscript = superscript;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();
@@ -379,22 +371,14 @@ public abstract class AbstractNoad implements Noad {
         return sb.toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.noad.Noad#toString(StringBuilder)
-     */
-    @Override
+@Override
     public void toString(StringBuilder sb) {
 
         toString(sb, Integer.MAX_VALUE);
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see "TTP [696]"
-     * @see org.extex.typesetter.type.noad.Noad#toString(java.lang.StringBuilder,
+* @see org.extex.typesetter.type.noad.Noad#toString(java.lang.StringBuilder,
      *      int)
      */
     @Override

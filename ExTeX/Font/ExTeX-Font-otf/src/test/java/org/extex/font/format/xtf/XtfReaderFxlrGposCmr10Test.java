@@ -33,14 +33,13 @@ import java.io.IOException;
 import static org.junit.Assert.assertNotNull;
 
 /**
- * Tests for the <code>XtfReader</code> with opentype files.
+ * Tests for the {@code XtfReader} with opentype files.
  * <p>
  * Table GPOS
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class XtfReaderFxlrGposCmr10Test {
 
     private final static String DIR_TARGET = "build";

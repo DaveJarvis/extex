@@ -22,11 +22,10 @@ package org.extex.unit.tex.macro;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\def</tt>.
+ * This is a test suite for the primitive {@code \def}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 2974 $
- */
+*/
 public class DefTest extends AbstractDefTester {
 
 
@@ -36,8 +35,8 @@ public class DefTest extends AbstractDefTester {
     }
 
     /**
-     * <testcase primitive="\def"> Test case checking that <tt>\def</tt>
-     * respects <tt>\global</tt>. </testcase>
+     * <testcase primitive="\def"> Test case checking that {@code \def}
+     * respects {@code \global}.
      * 
      * @throws Exception in case of an error
      */
@@ -52,8 +51,8 @@ public class DefTest extends AbstractDefTester {
     }
 
     /**
-     * <testcase primitive="\def"> Test case checking that <tt>\def</tt>
-     * respects <tt>\global</tt>. </testcase>
+     * <testcase primitive="\def"> Test case checking that {@code \def}
+     * respects {@code \global}.
      * 
      * @throws Exception in case of an error
      */
@@ -68,9 +67,8 @@ public class DefTest extends AbstractDefTester {
     }
 
     /**
-     * <testcase> Test case checking that <tt>\def</tt> with a single argument
-     * accepts a single token. </testcase>
-     * 
+     * Test case checking that {@code \def} with a single argument accepts a single token
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -84,9 +82,8 @@ public class DefTest extends AbstractDefTester {
     }
 
     /**
-     * <testcase> Test case checking that <tt>\def</tt> with a single argument
-     * inserts the actual value. </testcase>
-     * 
+     * Test case checking that {@code \def} with a single argument inserts the actual value
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -100,9 +97,8 @@ public class DefTest extends AbstractDefTester {
     }
 
     /**
-     * <testcase> Test case checking that <tt>\def</tt> with one argument
-     * needs something to fill in. </testcase>
-     * 
+     * Test case checking that {@code \def} with one argument needs something to fill in
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -115,9 +111,8 @@ public class DefTest extends AbstractDefTester {
     }
 
     /**
-     * <testcase> Test case checking that <tt>\def</tt> with one argument
-     * needs something complete to fill in. </testcase>
-     * 
+     * Test case checking that {@code \def} with one argument needs something complete to fill in
+* 
      * @throws Exception in case of an error
      */
     @Test

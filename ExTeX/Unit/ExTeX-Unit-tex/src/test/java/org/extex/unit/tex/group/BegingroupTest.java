@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\begingroup</tt>.
+ * This is a test suite for the primitive {@code \begingroup}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class BegingroupTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -49,7 +48,7 @@ public class BegingroupTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\begingroup"> Test case checking that a lonely
-     * <tt>\begingroup</tt> leads to an error. </testcase>
+     * {@code \begingroup} leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -64,7 +63,7 @@ public class BegingroupTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\begingroup"> Test case checking that a group is ok.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -79,7 +78,7 @@ public class BegingroupTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\begingroup"> Test case checking that a group does
-     * not destroy a count register. </testcase>
+     * not destroy a count register.
      * 
      * @throws Exception in case of an error
      */
@@ -94,7 +93,7 @@ public class BegingroupTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\begingroup"> Test case checking that a group does
-     * restore a count register after the end. </testcase>
+     * restore a count register after the end.
      * 
      * @throws Exception in case of an error
      */
@@ -112,7 +111,7 @@ public class BegingroupTest extends NoFlagsPrimitiveTester {
     /**
      * <testcase primitive="\begingroup"> Test case checking that a group does
      * restore a count register after the end &ndash; across two levels of
-     * grouping. </testcase>
+     * grouping.
      * 
      * @throws Exception in case of an error
      */

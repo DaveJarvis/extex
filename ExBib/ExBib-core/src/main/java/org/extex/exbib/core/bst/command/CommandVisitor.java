@@ -26,14 +26,13 @@ import org.extex.exbib.core.exceptions.ExBibException;
  * pattern shows how to avoid explicit switches over the class of an object.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface CommandVisitor extends TokenVisitor {
 
     /**
-     * Visitor method invoked by <tt>execute</tt> commands.
+     * Visitor method invoked by {@code execute} commands.
      * 
-     * @param command the <tt>Execute</tt> Command which is visited
+     * @param command the {@code Execute} Command which is visited
      * @param args the arguments
      * 
      * @throws ExBibException in case of an error
@@ -41,9 +40,9 @@ public interface CommandVisitor extends TokenVisitor {
     void visitExecute(Command command, Object... args) throws ExBibException;
 
     /**
-     * Visitor method invoked by <tt>iterate</tt> commands.
+     * Visitor method invoked by {@code iterate} commands.
      * 
-     * @param command the <tt>Iterate</tt> Command which is visited
+     * @param command the {@code Iterate} Command which is visited
      * @param args the arguments
      * 
      * @throws ExBibException in case of an error
@@ -51,9 +50,9 @@ public interface CommandVisitor extends TokenVisitor {
     void visitIterate(Command command, Object... args) throws ExBibException;
 
     /**
-     * Visitor method invoked by <tt>read</tt> commands.
+     * Visitor method invoked by {@code read} commands.
      * 
-     * @param command the <tt>Read</tt> Command which is visited
+     * @param command the {@code Read} Command which is visited
      * @param args the arguments
      * 
      * @throws ExBibException in case of an error
@@ -61,9 +60,9 @@ public interface CommandVisitor extends TokenVisitor {
     void visitRead(Command command, Object... args) throws ExBibException;
 
     /**
-     * Visitor method invoked by <tt>reverse</tt> commands.
+     * Visitor method invoked by {@code reverse} commands.
      * 
-     * @param command the <tt>Reverse</tt> Command which is visited
+     * @param command the {@code Reverse} Command which is visited
      * @param args the arguments
      * 
      * @throws ExBibException in case of an error
@@ -71,9 +70,9 @@ public interface CommandVisitor extends TokenVisitor {
     void visitReverse(Command command, Object... args) throws ExBibException;
 
     /**
-     * Visitor method invoked by <tt>sort</tt> commands.
+     * Visitor method invoked by {@code sort} commands.
      * 
-     * @param command the <tt>Sort</tt> Command which is visited
+     * @param command the {@code Sort} Command which is visited
      * @param args the arguments
      * 
      * @throws ExBibException in case of an error

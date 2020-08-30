@@ -26,17 +26,16 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * needed.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4726 $
- */
+*/
 public class MissingResourceFinderException extends ConfigurationException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
-     * The field <tt>message</tt> contains the message of this exception.
+     * The field {@code message} contains the message of this exception.
      */
     private String message;
 

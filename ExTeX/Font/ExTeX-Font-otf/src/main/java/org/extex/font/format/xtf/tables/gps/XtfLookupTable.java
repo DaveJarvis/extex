@@ -26,8 +26,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * Lookup tables provide a way of looking up information about a glyph index.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public abstract class XtfLookupTable implements XMLWriterConvertible {
 
     /**
@@ -38,12 +37,12 @@ public abstract class XtfLookupTable implements XMLWriterConvertible {
     /**
      * The table format
      */
-    private int format;
+    private final int format;
 
     /**
      * The glyph name.
      */
-    private XtfGlyphName xtfGlyph;
+    private final XtfGlyphName xtfGlyph;
 
     /**
      * Create a new object.

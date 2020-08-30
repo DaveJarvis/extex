@@ -32,18 +32,14 @@ import org.extex.typesetter.type.NodeVisitor;
  * contains the distance to add.
  * </p>
  * 
- * @see "<logo>T<span style=
- *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *      >e</span>X</logo> &ndash; The Program [147]"
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4739 $
- */
+*/
 public class BeforeMathNode extends AbstractNode implements Discardable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -66,11 +62,7 @@ public class BeforeMathNode extends AbstractNode implements Discardable {
      * @param prefix the prefix string inserted at the beginning of each line
      * @param breadth the breadth
      * @param depth the depth
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [192]"
-     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
+* @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
      *      java.lang.String, int, int)
      */
     @Override
@@ -87,10 +79,7 @@ public class BeforeMathNode extends AbstractNode implements Discardable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     @Override
     @SuppressWarnings({"unchecked", "rawtypes"})

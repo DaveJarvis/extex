@@ -28,19 +28,18 @@ import java.io.Serializable;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TfmKerning extends TfmLigKern implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 1L;
 
     /**
      * The amount of kerning.
      */
-    private TfmFixWord kern;
+    private final TfmFixWord kern;
 
     /**
      * Create a new object.
@@ -56,23 +55,13 @@ public class TfmKerning extends TfmLigKern implements Serializable {
         kern = k;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.tfm.TfmLigKern#getKern()
-     */
-    @Override
+@Override
     public TfmFixWord getKern() {
 
         return kern;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder buf = new StringBuilder(super.toString());

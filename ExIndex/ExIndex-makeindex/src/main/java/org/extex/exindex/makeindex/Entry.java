@@ -27,37 +27,36 @@ import org.extex.exindex.makeindex.pages.Pages;
  * This class represents an entry in the index.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:7790 $
- */
+*/
 public class Entry {
 
     /**
-     * The field <tt>HEADING_NUMBER</tt> contains the heading number constant.
+     * The field {@code HEADING_NUMBER} contains the heading number constant.
      */
     public static final char HEADING_NUMBER = '1';
 
     /**
-     * The field <tt>HEADING_SYMBOL</tt> contains the heading symbol constant.
+     * The field {@code HEADING_SYMBOL} contains the heading symbol constant.
      */
     public static final char HEADING_SYMBOL = ' ';
 
     /**
-     * The field <tt>value</tt> contains the display value.
+     * The field {@code value} contains the display value.
      */
     private final String[] display;
 
     /**
-     * The field <tt>key</tt> contains the key.
+     * The field {@code key} contains the key.
      */
     private final String[] key;
 
     /**
-     * The field <tt>pages</tt> contains the pages contained.
+     * The field {@code pages} contains the pages contained.
      */
     private final List<Pages> pages = new ArrayList<Pages>();
 
     /**
-     * The field <tt>heading</tt> contains the heading character.
+     * The field {@code heading} contains the heading character.
      */
     private final char heading;
 
@@ -149,12 +148,7 @@ public class Entry {
         return display;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder buffer = new StringBuilder();

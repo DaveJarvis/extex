@@ -30,8 +30,7 @@ import org.extex.typesetter.type.page.Page;
  * extension language.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public interface OutputRoutine {
 
     /**

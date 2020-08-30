@@ -19,9 +19,6 @@
 
 package org.extex.typesetter.listMaker;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.FixedCount;
@@ -48,51 +45,49 @@ import org.extex.typesetter.type.node.HorizontalListNode;
 import org.extex.typesetter.type.node.ImplicitKernNode;
 import org.extex.typesetter.type.node.SpaceNode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Maker for a horizontal list.
  * <p>
- * After <code>par()</code>, the line breaking and hyphenation are applied.
+ * After {@code par()}, the line breaking and hyphenation are applied.
  * </p>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class HorizontalListMaker extends AbstractListMaker {
 
     /**
-     * The constant <tt>DEFAULT_SPACEFACTOR</tt> contains the default value for
+     * The constant {@code DEFAULT_SPACEFACTOR} contains the default value for
      * the space factor. It is 1000 according to TeX.
      */
     private static final int DEFAULT_SPACEFACTOR = 1000;
 
     /**
-     * The constant <tt>SPACEFACTOR_THRESHOLD</tt> contains the threshold for
+     * The constant {@code SPACEFACTOR_THRESHOLD} contains the threshold for
      * the space factor above which the space is handled different.
      */
     private static final int SPACEFACTOR_THRESHOLD = 2000;
 
     /**
-     * The field <tt>afterParagraphObservers</tt> contains the observers to be
+     * The field {@code afterParagraphObservers} contains the observers to be
      * invoked after the paragraph has been completed.
      */
-    private List<ParagraphObserver> afterParagraphObservers =
+    private final List<ParagraphObserver> afterParagraphObservers =
             new ArrayList<ParagraphObserver>();
 
     /**
-     * The field <tt>nodes</tt> contains the node list encapsulated by this
+     * The field {@code nodes} contains the node list encapsulated by this
      * class.
      */
     private HorizontalListNode nodes = new HorizontalListNode();
 
     /**
-     * The field <tt>spaceFactor</tt> contains the current space factor.
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [212]"
-     */
+     * The field {@code spaceFactor} contains the current space factor.
+*/
     private long spaceFactor = DEFAULT_SPACEFACTOR;
 
     /**
@@ -106,24 +101,14 @@ public class HorizontalListMaker extends AbstractListMaker {
         super(manager, locator);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#add(org.extex.core.glue.FixedGlue)
-     */
-    @Override
+@Override
     public void add(FixedGlue g) throws TypesetterException {
 
         nodes.addSkip(g);
         spaceFactor = DEFAULT_SPACEFACTOR;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#add(org.extex.typesetter.type.Node)
-     */
-    @Override
+@Override
     public void add(Node c) throws TypesetterException, ConfigurationException {
 
         nodes.add(c);
@@ -131,10 +116,7 @@ public class HorizontalListMaker extends AbstractListMaker {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#addAndAdjust(org.extex.typesetter.type.NodeList,
-     *      org.extex.typesetter.TypesetterOptions)
+*      org.extex.typesetter.TypesetterOptions)
      */
     @Override
     public void addAndAdjust(NodeList list, TypesetterOptions options)
@@ -144,10 +126,7 @@ public class HorizontalListMaker extends AbstractListMaker {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#addSpace(org.extex.typesetter.tc.TypesettingContext,
-     *      FixedCount)
+*      FixedCount)
      */
     @Override
     public void addSpace(TypesettingContext context, FixedCount sfCount)
@@ -187,23 +166,13 @@ public class HorizontalListMaker extends AbstractListMaker {
         add(new SpaceNode(space));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#afterParagraph(org.extex.typesetter.ParagraphObserver)
-     */
-    @Override
+@Override
     public void afterParagraph(ParagraphObserver observer) {
 
         afterParagraphObservers.add(observer);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#complete(TypesetterOptions)
-     */
-    @Override
+@Override
     public NodeList complete(TypesetterOptions context)
             throws TypesetterException,
                 ConfigurationException {
@@ -212,10 +181,7 @@ public class HorizontalListMaker extends AbstractListMaker {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#cr(org.extex.interpreter.context.Context,
-     *      org.extex.typesetter.tc.TypesettingContext,
+*      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.core.UnicodeChar)
      */
     @Override
@@ -225,23 +191,13 @@ public class HorizontalListMaker extends AbstractListMaker {
         // TODO gene
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#getLastNode()
-     */
-    @Override
+@Override
     public Node getLastNode() {
 
         return (nodes.isEmpty() ? null : nodes.get(nodes.size() - 1));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#getMode()
-     */
-    @Override
+@Override
     public Mode getMode() {
 
         return Mode.HORIZONTAL;
@@ -257,22 +213,14 @@ public class HorizontalListMaker extends AbstractListMaker {
         return this.nodes;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#getSpacefactor()
-     */
-    @Override
+@Override
     public long getSpacefactor() {
 
         return spaceFactor;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#letter(org.extex.core.UnicodeChar,
-     *      org.extex.typesetter.tc.TypesettingContext,
+*      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.core.Locator)
      * @see "The TeXbook [p.76]"
@@ -326,12 +274,7 @@ public class HorizontalListMaker extends AbstractListMaker {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#par()
-     */
-    @Override
+@Override
     public void par() throws TypesetterException, ConfigurationException {
 
         try {
@@ -346,12 +289,7 @@ public class HorizontalListMaker extends AbstractListMaker {
         getManager().endParagraph();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#removeLastNode()
-     */
-    @Override
+@Override
     public void removeLastNode() {
 
         nodes.remove(nodes.size() - 1);
@@ -367,12 +305,7 @@ public class HorizontalListMaker extends AbstractListMaker {
         this.nodes = nodes;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#setSpacefactor(org.extex.core.count.FixedCount)
-     */
-    @Override
+@Override
     public void setSpacefactor(FixedCount f)
             throws TypesetterUnsupportedException,
                 InvalidSpacefactorException {
@@ -384,12 +317,7 @@ public class HorizontalListMaker extends AbstractListMaker {
         spaceFactor = sf;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#showlist(StringBuilder, long, long)
-     */
-    @Override
+@Override
     public void showlist(StringBuilder sb, long l, long m) {
 
         sb.append("spacefactor ");
@@ -397,12 +325,7 @@ public class HorizontalListMaker extends AbstractListMaker {
         sb.append('\n');
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return super.toString() + "\n" + nodes.toString();

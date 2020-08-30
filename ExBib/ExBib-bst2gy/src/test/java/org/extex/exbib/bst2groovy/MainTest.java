@@ -31,15 +31,14 @@ import static org.junit.Assert.assertTrue;
  * This is a test suite for the bst2groovy main program.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 @SuppressWarnings("deprecation")
 public class MainTest {
     
     private static final String DIR_TARGET = "build";
 
     /**
-     * The field <tt>LGPL</tt> contains the text of the LGPG as shown by
+     * The field {@code LGPL} contains the text of the LGPG as shown by
      * --copying.
      */
     private static final String LGPL =
@@ -530,7 +529,7 @@ public class MainTest {
     }
 
     /**
-     * <testcase> Test that a unreadable input file is reported.</testcase>
+     *  Test that a unreadable input file is reported.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -542,7 +541,7 @@ public class MainTest {
     }
 
     /**
-     * <testcase> Test that a unreadable input file is reported.</testcase>
+     *  Test that a unreadable input file is reported.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -554,7 +553,7 @@ public class MainTest {
     }
 
     /**
-     * <testcase> Test that a unreadable input file is reported.</testcase>
+     *  Test that a unreadable input file is reported.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -566,8 +565,8 @@ public class MainTest {
     }
 
     /**
-     * <testcase> Test that a <code>null</code> input file is
-     * reported.</testcase>
+     *  Test that a {@code null} input file is
+     * reported.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -578,7 +577,7 @@ public class MainTest {
     }
 
     /**
-     * <testcase> Test that an empty file is compiled correctly.</testcase>
+     *  Test that an empty file is compiled correctly.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -603,7 +602,7 @@ public class MainTest {
     }
 
     /**
-     * <testcase> Test that an unreadable configuration is reported.</testcase>
+     *  Test that an unreadable configuration is reported.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -615,7 +614,7 @@ public class MainTest {
     }
 
     /**
-     * <testcase> Test that a unknown configuration .</testcase>
+     *  Test that a unknown configuration .
      * 
      * @throws IOException in case of an I/O error
      */
@@ -627,7 +626,7 @@ public class MainTest {
     }
 
     /**
-     * <testcase>Test that the version is reported.</testcase>
+     * Test that the version is reported.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -638,7 +637,7 @@ public class MainTest {
     }
 
     /**
-     * <testcase> Test that an input file is required.</testcase>
+     *  Test that an input file is required.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -649,8 +648,8 @@ public class MainTest {
     }
 
     /**
-     * <testcase>Test that an empty option is ignored and an unknown option is
-     * reported.</testcase>
+     * Test that an empty option is ignored and an unknown option is
+     * reported.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -662,7 +661,7 @@ public class MainTest {
     }
 
     /**
-     * <testcase>Test that an unknown option is reported.</testcase>
+     * Test that an unknown option is reported.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -695,8 +694,8 @@ public class MainTest {
     }
 
     /**
-     * <testcase>A <code>null</code> argument leads to a
-     * {@link NullPointerException}</testcase>
+     * A {@code null} argument leads to a
+     * {@link NullPointerException}
      * 
      * @throws IOException in case of an I/O error
      */
@@ -708,7 +707,7 @@ public class MainTest {
     }
 
     /**
-     * <testcase>Test that an optimizing argument is consumed.</testcase>
+     * Test that an optimizing argument is consumed.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -728,7 +727,7 @@ public class MainTest {
     }
 
     /**
-     * <testcase>Test that an optimizing argument is consumed.</testcase>
+     * Test that an optimizing argument is consumed.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -748,7 +747,7 @@ public class MainTest {
     }
 
     /**
-     * <testcase>Test that an missing option argument is reported.</testcase>
+     * Test that an missing option argument is reported.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -760,7 +759,7 @@ public class MainTest {
     }
 
     /**
-     * <testcase> Test that the output can be redirected.</testcase>
+     *  Test that the output can be redirected.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -779,7 +778,7 @@ public class MainTest {
     }
 
     /**
-     * <testcase> Test that the output can be redirected.</testcase>
+     *  Test that the output can be redirected.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -798,7 +797,7 @@ public class MainTest {
     }
 
     /**
-     * <testcase> Test that --version produces a version info line.</testcase>
+     *  Test that --version produces a version info line.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -819,7 +818,7 @@ public class MainTest {
     }
 
     /**
-     * <testcase>Test that an unknown option is reported.</testcase>
+     * Test that an unknown option is reported.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -831,7 +830,7 @@ public class MainTest {
     }
 
     /**
-     * <testcase>Test that the version is reported.</testcase>
+     * Test that the version is reported.
      * 
      * @throws IOException in case of an I/O error
      */

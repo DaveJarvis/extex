@@ -34,40 +34,39 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\localrightbox</code>.
+ * {@code \localrightbox}.
  * 
- * <doc name="localrightbox">
- * <h3>The Primitive <tt>\localrightbox</tt></h3>
+ * <p>The Primitive {@code \localrightbox}</p>
  * <p>
- * The primitive <tt>\localrightbox</tt> takes an argument enclosed in braces
+ * The primitive {@code \localrightbox} takes an argument enclosed in braces
  * and typesets this contents in horizontal mode.
  * </p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;localrightbox&rang;
- *      &rarr; <tt>\localrightbox</tt> <tt>{</tt> &lang;horizontal material&rang; <tt>}</tt> </pre>
+ *      &rarr; {@code \localrightbox} {@code {} &lang;horizontal material&rang; {@code }} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \localrightbox{abc}  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Localrightbox extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -83,10 +82,7 @@ public class Localrightbox extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

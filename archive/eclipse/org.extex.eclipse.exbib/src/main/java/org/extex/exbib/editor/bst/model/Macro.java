@@ -23,12 +23,11 @@ package org.extex.exbib.editor.bst.model;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class Macro extends Command {
 
     /**
-     * The field <tt>arg</tt> contains the ...
+     * The field {@code arg} contains the ...
      */
     private final VarMacro macro;
 
@@ -54,12 +53,7 @@ public class Macro extends Command {
         return macro;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return macro.getName();

@@ -29,8 +29,7 @@ import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
  * This interface describes a location class group.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface LocationClassGroup {
 
     /**

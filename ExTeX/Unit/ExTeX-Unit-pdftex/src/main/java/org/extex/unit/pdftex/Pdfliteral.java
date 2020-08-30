@@ -30,43 +30,42 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\pdfliteral</code>.
+ * {@code \pdfliteral}.
  * 
- * <doc name="pdfliteral">
- * <h3>The Primitive <tt>\pdfliteral</tt></h3>
+ * <p>The Primitive {@code \pdfliteral}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;pdfliteral&rang;
- *       &rarr; <tt>\pdfliteral</tt> &lang;optional direct&rang; {@linkplain
+ *       &rarr; {@code \pdfliteral} &lang;optional direct&rang; {@linkplain
  *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,CodeToken)
  *          &lang;general text&rang;}
  *
  *    &lang;optional direct&rang;
- *       &rarr; <tt>direct</tt>
+ *       &rarr; {@code direct}
  *       |  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \pdfliteral {...}  </pre>
  *  <pre class="TeXSample">
  *    \pdfliteral direct {...}  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4791 $
- */
+*/
 public class Pdfliteral extends AbstractPdftexCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -82,10 +81,7 @@ public class Pdfliteral extends AbstractPdftexCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

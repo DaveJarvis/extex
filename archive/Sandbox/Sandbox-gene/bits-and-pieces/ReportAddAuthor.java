@@ -39,8 +39,7 @@ import org.xml.sax.helpers.DefaultHandler;
  * Add the author to the checkstyle xml report.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:6459 $
- */
+*/
 
 public final class ReportAddAuthor {
 

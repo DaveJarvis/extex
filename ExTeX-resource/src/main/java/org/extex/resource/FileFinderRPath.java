@@ -37,8 +37,7 @@ import org.extex.resource.io.NamedInputStream;
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class FileFinderRPath extends AbstractFinder
         implements
             ResourceFinder,
@@ -46,7 +45,7 @@ public class FileFinderRPath extends AbstractFinder
             PropertyAware {
 
     /**
-     * The field <tt>properties</tt> contains the properties.
+     * The field {@code properties} contains the properties.
      */
     private Properties properties = null;
 
@@ -106,10 +105,7 @@ public class FileFinderRPath extends AbstractFinder
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
-     *      java.lang.String)
+*      java.lang.String)
      */
     public NamedInputStream findResource(String name, String type)
             throws ConfigurationException {
@@ -154,12 +150,7 @@ public class FileFinderRPath extends AbstractFinder
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.PropertyAware#setProperties(java.util.Properties)
-     */
-    public void setProperties(Properties prop) {
+public void setProperties(Properties prop) {
 
         properties = prop;
     }

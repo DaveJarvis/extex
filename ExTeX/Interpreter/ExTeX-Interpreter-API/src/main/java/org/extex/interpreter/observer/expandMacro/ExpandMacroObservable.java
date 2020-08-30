@@ -24,8 +24,7 @@ package org.extex.interpreter.observer.expandMacro;
  * expansion event on a macro.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface ExpandMacroObservable {
 
     /**

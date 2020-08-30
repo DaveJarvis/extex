@@ -23,8 +23,7 @@ package org.extex.font.format.dvi.command;
  * DVI: z
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class DviZ extends DviCommand {
 
@@ -36,12 +35,12 @@ public class DviZ extends DviCommand {
     /**
      * the value
      */
-    private int value;
+    private final int value;
 
     /**
      * the z0
      */
-    private boolean z0;
+    private final boolean z0;
 
     /**
      * Create a new object.
@@ -70,12 +69,7 @@ public class DviZ extends DviCommand {
         z0 = z;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviCommand#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return new StringBuilder('z').append(getOpcode() - Z0).toString();

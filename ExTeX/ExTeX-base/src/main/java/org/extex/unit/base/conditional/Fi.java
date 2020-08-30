@@ -31,36 +31,35 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\fi</code>.
+ * This class provides an implementation for the primitive {@code \fi}.
  * 
- * <doc name="fi">
- * <h3>The Primitive <tt>\fi</tt></h3>
+ * <p>The Primitive {@code \fi}</p>
  * <p>
  * This primitive indicates the end of an conditional. As such it can not appear
- * alone but only in combination with a preceding <tt>\if*</tt>.
+ * alone but only in combination with a preceding {@code \if*}.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;fi&rang;
- *     &rarr; <tt>\fi</tt>  </pre>
+ *     &rarr; {@code \fi}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \fi  </pre>
  * 
- * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4439 $
- */
+*/
 public class Fi extends AbstractCode implements ExpandableCode, PrefixCode  {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -76,10 +75,7 @@ public class Fi extends AbstractCode implements ExpandableCode, PrefixCode  {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -93,10 +89,7 @@ public class Fi extends AbstractCode implements ExpandableCode, PrefixCode  {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,

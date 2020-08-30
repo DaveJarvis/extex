@@ -36,12 +36,11 @@ import org.junit.runner.JUnitCore;
  * This file contains test cases for the vertical list node.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4756 $
- */
+*/
 public class VerticalListNodeTest extends AbstractNodeListTester {
 
     /**
-     * The field <tt>visitor</tt> contains the visitor to use.
+     * The field {@code visitor} contains the visitor to use.
      */
     private static final NodeVisitor<Node, Boolean> VISITOR =
             new NodeVisitor<Node, Boolean>() {
@@ -177,22 +176,14 @@ public class VerticalListNodeTest extends AbstractNodeListTester {
         (new JUnitCore()).run(VerticalListNodeTest.class);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractNodeListTester#makeList()
-     */
-    @Override
+@Override
     protected NodeList makeList() {
 
         return new VerticalListNode();
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractNodeListTester#makeList(
-     *      org.extex.typesetter.type.Node)
+*      org.extex.typesetter.type.Node)
      */
     @Override
     protected NodeList makeList(Node node) {
@@ -200,12 +191,7 @@ public class VerticalListNodeTest extends AbstractNodeListTester {
         return new VerticalListNode(node);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractNodeListTester#makeVisitor()
-     */
-    @Override
+@Override
     protected NodeVisitor<Node, Boolean> makeVisitor() {
 
         return VISITOR;

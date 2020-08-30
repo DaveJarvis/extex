@@ -31,30 +31,26 @@ import org.extex.exbib.core.io.Locator;
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X built-in function <code>width$</code>
+ * >e</span>X built-in function {@code width$}
  * 
  * <p>
  * This function pops a string from the stack and tries to compute the width of
  * the string when typeset. For this purpose the width of the characters in the
  * font cmr10 are used. Some control sequences are treated specially.
  * </p>
- * <img src="doc-files/width.png"/>
+ * <img src="doc-files/width.png" alt="width">
  * <p>
- * The following example is taken from <tt>alpha.bst</tt>:
+ * The following example is taken from {@code alpha.bst}:
  * </p>
  * 
  * <pre>
  *   label width$
  * </pre>
  * 
- * <hr />
+ * <hr>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X documentation:
- * <dt>
+ * <dt>BibTeX documentation</dt>
  * <dd>Pops the top (string) literal and pushes the integer that represents its
  * width in some relative units (currently, hundredths of a point, as specified
  * by the June 1987 version of the <i>cmr10</i> font; the only white-space
@@ -73,12 +69,11 @@ import org.extex.exbib.core.io.Locator;
  * character after the initial backslash.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Width extends AbstractCode {
 
     /**
-     * The constant <tt>WIDTH</tt> contains the static array of character widths
+     * The constant {@code WIDTH} contains the static array of character widths
      * taken from cmr10.
      */
     private static final int[] WIDTH = {0, // 0
@@ -211,7 +206,7 @@ public class Width extends AbstractCode {
             };
 
     /**
-     * The constant <tt>SPECIAL</tt> contains the mapping of the special
+     * The constant {@code SPECIAL} contains the mapping of the special
      * TeX sequences with positive width.
      */
     private static final Map<String, Integer> SPECIAL = newSpecials();
@@ -356,10 +351,7 @@ public class Width extends AbstractCode {
      * {@inheritDoc}
      * 
      * This implementation follows quite closely the section 451--453 of the
-     * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
-     * style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
-     * >e</span>X sources.
+     * BibTeX sources.
      * 
      * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)

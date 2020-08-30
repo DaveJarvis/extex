@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\raise</tt>.
+ * This is a test suite for the primitive {@code \raise}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class RaiseTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -48,8 +47,8 @@ public class RaiseTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\raise"> Test case checking that <tt>\raise</tt>
-     * on a void box works. </testcase>
+     * <testcase primitive="\raise"> Test case checking that {@code \raise}
+     * on a void box works.
      * 
      * @throws Exception in case of an error
      */

@@ -26,8 +26,7 @@ import org.junit.Test;
  * This is a test suite for macro expansion.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class MacroExpansionTest extends ExTeXLauncher {
 
 
@@ -36,10 +35,10 @@ public class MacroExpansionTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     * 
      *  Test case checking that the prefix global is passed in to the argument
      *  of a macro.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */

@@ -27,8 +27,7 @@ import java.io.InputStream;
  * units in a pipe manner.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5563 $
- */
+*/
 public interface InputStreamInterceptor {
 
     /**
@@ -39,7 +38,7 @@ public interface InputStreamInterceptor {
      * @param stream the stream to add some processing unit to
      * 
      * @return the new input stream. This value should never be
-     *         <code>null</code>.
+     *         {@code null}.
      */
     InputStream pipe(InputStream stream);
 

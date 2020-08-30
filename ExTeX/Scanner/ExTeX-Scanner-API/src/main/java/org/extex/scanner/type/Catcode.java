@@ -29,18 +29,17 @@ import org.extex.scanner.api.exception.CatcodeException;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:5563 $
- */
+*/
 public enum Catcode implements Serializable {
 
     /**
-     * The constant <tt>ACTIVE</tt> contains the unique object representing the
+     * The constant {@code ACTIVE} contains the unique object representing the
      * active catcode.
      */
     ACTIVE(13) {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         protected static final long serialVersionUID = 2011L;
@@ -94,14 +93,14 @@ public enum Catcode implements Serializable {
     },
 
     /**
-     * The constant <tt>COMMENT</tt> contains the unique object representing the
+     * The constant {@code COMMENT} contains the unique object representing the
      * comment catcode. A comment is started with this catcode and lasts to the
      * end of the line.
      */
     COMMENT(14) {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         protected static final long serialVersionUID = 2011L;
@@ -155,13 +154,13 @@ public enum Catcode implements Serializable {
     },
 
     /**
-     * The constant <tt>CR</tt> contains the unique object representing the cr
+     * The constant {@code CR} contains the unique object representing the cr
      * catcode.
      */
     CR(5) {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         protected static final long serialVersionUID = 2011L;
@@ -215,13 +214,13 @@ public enum Catcode implements Serializable {
     },
 
     /**
-     * The constant <tt>ESCAPE</tt> contains the unique object representing the
+     * The constant {@code ESCAPE} contains the unique object representing the
      * escape catcode used to initiate control sequences.
      */
     ESCAPE(0) {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         protected static final long serialVersionUID = 2011L;
@@ -275,13 +274,13 @@ public enum Catcode implements Serializable {
     },
 
     /**
-     * The constant <tt>IGNORE</tt> contains the unique object representing the
+     * The constant {@code IGNORE} contains the unique object representing the
      * ignore catcode.
      */
     IGNORE(9) {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         protected static final long serialVersionUID = 2011L;
@@ -335,13 +334,13 @@ public enum Catcode implements Serializable {
     },
 
     /**
-     * The constant <tt>INVALID</tt> contains the unique object representing the
+     * The constant {@code INVALID} contains the unique object representing the
      * invalid catcode.
      */
     INVALID(15) {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         protected static final long serialVersionUID = 2011L;
@@ -395,13 +394,13 @@ public enum Catcode implements Serializable {
     },
 
     /**
-     * The constant <tt>LEFTBRACE</tt> contains the unique object representing
+     * The constant {@code LEFTBRACE} contains the unique object representing
      * the left brace catcode.
      */
     LEFTBRACE(1) {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         protected static final long serialVersionUID = 2011L;
@@ -455,13 +454,13 @@ public enum Catcode implements Serializable {
     },
 
     /**
-     * The constant <tt>LETTER</tt> contains the unique object representing the
+     * The constant {@code LETTER} contains the unique object representing the
      * letter catcode.
      */
     LETTER(11) {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         protected static final long serialVersionUID = 2011L;
@@ -515,13 +514,13 @@ public enum Catcode implements Serializable {
     },
 
     /**
-     * The constant <tt>MACROPARAM</tt> contains the unique object representing
+     * The constant {@code MACROPARAM} contains the unique object representing
      * the macro parameter catcode.
      */
     MACROPARAM(6) {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         protected static final long serialVersionUID = 2011L;
@@ -575,13 +574,13 @@ public enum Catcode implements Serializable {
     },
 
     /**
-     * The constant <tt>MATHSHIFT</tt> contains the unique object representing
+     * The constant {@code MATHSHIFT} contains the unique object representing
      * the math shift catcode.
      */
     MATHSHIFT(3) {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         protected static final long serialVersionUID = 2011L;
@@ -635,13 +634,13 @@ public enum Catcode implements Serializable {
     },
 
     /**
-     * The constant <tt>OTHER</tt> contains the unique object representing the
+     * The constant {@code OTHER} contains the unique object representing the
      * other catcode.
      */
     OTHER(12) {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         protected static final long serialVersionUID = 2011L;
@@ -695,13 +694,13 @@ public enum Catcode implements Serializable {
     },
 
     /**
-     * The constant <tt>RIGHTBRACE</tt> contains the unique object representing
+     * The constant {@code RIGHTBRACE} contains the unique object representing
      * the right brace catcode.
      */
     RIGHTBRACE(2) {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         protected static final long serialVersionUID = 2011L;
@@ -755,13 +754,13 @@ public enum Catcode implements Serializable {
     },
 
     /**
-     * The constant <tt>SPACE</tt> contains the unique object representing the
+     * The constant {@code SPACE} contains the unique object representing the
      * space catcode.
      */
     SPACE(10) {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         protected static final long serialVersionUID = 2011L;
@@ -815,13 +814,13 @@ public enum Catcode implements Serializable {
     },
 
     /**
-     * The constant <tt>SUBMARK</tt> contains the unique object representing the
+     * The constant {@code SUBMARK} contains the unique object representing the
      * sub mark catcode.
      */
     SUBMARK(8) {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         protected static final long serialVersionUID = 2011L;
@@ -875,13 +874,13 @@ public enum Catcode implements Serializable {
     },
 
     /**
-     * The constant <tt>SUPMARK</tt> contains the unique object representing the
+     * The constant {@code SUPMARK} contains the unique object representing the
      * super mark catcode.
      */
     SUPMARK(7) {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         protected static final long serialVersionUID = 2011L;
@@ -935,13 +934,13 @@ public enum Catcode implements Serializable {
     },
 
     /**
-     * The constant <tt>TABMARK</tt> contains the unique object representing the
+     * The constant {@code TABMARK} contains the unique object representing the
      * tab mark catcode.
      */
     TABMARK(4) {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         protected static final long serialVersionUID = 2011L;
@@ -995,7 +994,7 @@ public enum Catcode implements Serializable {
     };
 
     /**
-     * The field <tt>CATCODES</tt> contains an array of category codes where the
+     * The field {@code CATCODES} contains an array of category codes where the
      * integer catcode can be used as index.
      */
     private static final Catcode[] CATCODES = {ESCAPE, LEFTBRACE, RIGHTBRACE,
@@ -1032,7 +1031,7 @@ public enum Catcode implements Serializable {
     }
 
     /**
-     * The field <tt>code</tt> contains the numerical value.
+     * The field {@code code} contains the numerical value.
      */
     private int code;
 

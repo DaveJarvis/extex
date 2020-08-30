@@ -23,11 +23,10 @@ import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\javadef</tt>.
+ * This is a test suite for the primitive {@code \javadef}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
 
 
@@ -38,8 +37,8 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
-     * can assign a Java class to a control sequence. </testcase>
+     * <testcase primitive="\javadef"> Test case checking that {@code \javadef}
+     * can assign a Java class to a control sequence.
      * 
      * @throws Exception in case of an error
      */
@@ -55,8 +54,8 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
-     * can assign a Java class to an active character. </testcase>
+     * <testcase primitive="\javadef"> Test case checking that {@code \javadef}
+     * can assign a Java class to an active character.
      * 
      * @throws Exception in case of an error
      */
@@ -73,8 +72,8 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
-     * respects \afterassignment. </testcase>
+     * <testcase primitive="\javadef"> Test case checking that {@code \javadef}
+     * respects \afterassignment.
      * 
      * @throws Exception in case of an error
      */
@@ -91,8 +90,8 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
-     * needs a token to assign. </testcase>
+     * <testcase primitive="\javadef"> Test case checking that {@code \javadef}
+     * needs a token to assign.
      * 
      * @throws Exception in case of an error
      */
@@ -107,8 +106,8 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
-     * needs a token to assign. </testcase>
+     * <testcase primitive="\javadef"> Test case checking that {@code \javadef}
+     * needs a token to assign.
      * 
      * @throws Exception in case of an error
      */
@@ -123,8 +122,8 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
-     * needs a token to assign. </testcase>
+     * <testcase primitive="\javadef"> Test case checking that {@code \javadef}
+     * needs a token to assign.
      * 
      * @throws Exception in case of an error
      */
@@ -139,8 +138,8 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
-     * needs a token to assign. </testcase>
+     * <testcase primitive="\javadef"> Test case checking that {@code \javadef}
+     * needs a token to assign.
      * 
      * @throws Exception in case of an error
      */
@@ -155,8 +154,8 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
-     * needs a non-empty class name. </testcase>
+     * <testcase primitive="\javadef"> Test case checking that {@code \javadef}
+     * needs a non-empty class name.
      * 
      * @throws Exception in case of an error
      */
@@ -171,8 +170,8 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
-     * needs a proper class name. </testcase>
+     * <testcase primitive="\javadef"> Test case checking that {@code \javadef}
+     * needs a proper class name.
      * 
      * @throws Exception in case of an error
      */
@@ -187,8 +186,8 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
-     * needs a Java class With a proper constructor. </testcase>
+     * <testcase primitive="\javadef"> Test case checking that {@code \javadef}
+     * needs a Java class With a proper constructor.
      * 
      * @throws Exception in case of an error
      */
@@ -203,8 +202,8 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
-     * needs a Java class of type Code. </testcase>
+     * <testcase primitive="\javadef"> Test case checking that {@code \javadef}
+     * needs a Java class of type Code.
      * 
      * @throws Exception in case of an error
      */
@@ -222,8 +221,8 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
-     * respects the global keyword. </testcase>
+     * <testcase primitive="\javadef"> Test case checking that {@code \javadef}
+     * respects the global keyword.
      * 
      * @throws Exception in case of an error
      */
@@ -240,8 +239,8 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
-     * respects the \global keyword. </testcase>
+     * <testcase primitive="\javadef"> Test case checking that {@code \javadef}
+     * respects the \global keyword.
      * 
      * @throws Exception in case of an error
      */
@@ -258,8 +257,8 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
-     * respects \globaldefs. </testcase>
+     * <testcase primitive="\javadef"> Test case checking that {@code \javadef}
+     * respects \globaldefs.
      * 
      * @throws Exception in case of an error
      */

@@ -35,20 +35,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>change.case$</tt>.
+ * Test suite for {@code change.case$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ChangeCaseTest {
 
     /**
-     * The field <tt>db</tt> contains the database.
+     * The field {@code db} contains the database.
      */
     private DB db = null;
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -85,8 +84,8 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> A lower case letter is not altered by converting to lower
-     * case.</testcase>
+     *  A lower case letter is not altered by converting to lower
+     * case.
      * 
      * @throws Exception in case of an error
      */
@@ -97,8 +96,8 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> The format letter "t" leaves alone a single lowercase letter.
-     * </testcase>
+     *  The format letter "t" leaves alone a single lowercase letter.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -109,8 +108,8 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> A lower case letter is properly translated to upper case.
-     * </testcase>
+     *  A lower case letter is properly translated to upper case.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -121,8 +120,8 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> A upper case letter is properly translated to lower case.
-     * </testcase>
+     *  A upper case letter is properly translated to lower case.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -133,8 +132,8 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> An uppercase letter remains unchanged by format "t".
-     * </testcase>
+     *  An uppercase letter remains unchanged by format "t".
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -145,8 +144,8 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> An uppercase letter remains unchanged by format "u".
-     * </testcase>
+     *  An uppercase letter remains unchanged by format "u".
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -157,7 +156,7 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> An empty string remains unchanged for format "l". </testcase>
+     *  An empty string remains unchanged for format "l".
      * 
      * @throws Exception in case of an error
      */
@@ -168,7 +167,7 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> An empty string remains unchanged for format "t". </testcase>
+     *  An empty string remains unchanged for format "t".
      * 
      * @throws Exception in case of an error
      */
@@ -179,7 +178,7 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> An empty string remains unchanged for format "u". </testcase>
+     *  An empty string remains unchanged for format "u".
      * 
      * @throws Exception in case of an error
      */
@@ -190,7 +189,7 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> Several words are treated separately. </testcase>
+     *  Several words are treated separately.
      * 
      * @throws Exception in case of an error
      */
@@ -201,7 +200,7 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> Several words are treated separately. </testcase>
+     *  Several words are treated separately.
      * 
      * @throws Exception in case of an error
      */
@@ -212,7 +211,7 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> Several words are treated separately. </testcase>
+     *  Several words are treated separately.
      * 
      * @throws Exception in case of an error
      */
@@ -223,7 +222,7 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> Several words are treated separately. </testcase>
+     *  Several words are treated separately.
      * 
      * @throws Exception in case of an error
      */
@@ -234,7 +233,7 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> Several words are treated separately. </testcase>
+     *  Several words are treated separately.
      * 
      * @throws Exception in case of an error
      */
@@ -245,7 +244,7 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> Several words are treated separately. </testcase>
+     *  Several words are treated separately.
      * 
      * @throws Exception in case of an error
      */
@@ -256,7 +255,7 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> Braces protect a string from translation. </testcase>
+     *  Braces protect a string from translation.
      * 
      * @throws Exception in case of an error
      */
@@ -267,7 +266,7 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> Braces protect a string from translation. </testcase>
+     *  Braces protect a string from translation.
      * 
      * @throws Exception in case of an error
      */
@@ -278,7 +277,7 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> Braces protect a string from translation. </testcase>
+     *  Braces protect a string from translation.
      * 
      * @throws Exception in case of an error
      */
@@ -289,7 +288,7 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> Braces protect a string from translation. </testcase>
+     *  Braces protect a string from translation.
      * 
      * @throws Exception in case of an error
      */
@@ -300,7 +299,7 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> Braces protect a string from translation. </testcase>
+     *  Braces protect a string from translation.
      * 
      * @throws Exception in case of an error
      */
@@ -372,7 +371,7 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> The empty stack leads to an error. </testcase>
+     *  The empty stack leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -383,7 +382,7 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> A short stack leads to an error. </testcase>
+     *  A short stack leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -395,7 +394,7 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> The format "e" is unknown. </testcase>
+     *  The format "e" is unknown.
      * 
      * @throws Exception in case of an error
      */
@@ -408,7 +407,7 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> A group protects from translating to lower case.</testcase>
+     *  A group protects from translating to lower case.
      * 
      * @throws Exception in case of an error
      */
@@ -419,7 +418,7 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> A group protects from translating to mixed case.</testcase>
+     *  A group protects from translating to mixed case.
      * 
      * @throws Exception in case of an error
      */
@@ -430,7 +429,7 @@ public class ChangeCaseTest {
     }
 
     /**
-     * <testcase> A group protects from translating to upper case.</testcase>
+     *  A group protects from translating to upper case.
      * 
      * @throws Exception in case of an error
      */

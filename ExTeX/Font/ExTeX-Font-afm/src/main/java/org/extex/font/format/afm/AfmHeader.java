@@ -28,8 +28,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * AFM-Header.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class AfmHeader implements XMLWriterConvertible {
 
@@ -86,7 +85,7 @@ public class AfmHeader implements XMLWriterConvertible {
     private String fullName = "";
 
     /**
-     * <code>true</code> if all the characters have the same width.
+     * {@code true} if all the characters have the same width.
      */
     private boolean isFixedPitch;
 
@@ -633,12 +632,7 @@ public class AfmHeader implements XMLWriterConvertible {
         xheight = x;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("header");
         writer.writeAttribute("name", fontName);

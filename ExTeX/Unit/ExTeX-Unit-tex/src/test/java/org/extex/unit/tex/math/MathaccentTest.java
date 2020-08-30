@@ -20,11 +20,10 @@
 package org.extex.unit.tex.math;
 
 /**
- * This is a test suite for the primitive <tt>\mathaccent</tt>.
+ * This is a test suite for the primitive {@code \mathaccent}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4627 $
- */
+*/
 public class MathaccentTest extends AbstractMathTester {
 
 

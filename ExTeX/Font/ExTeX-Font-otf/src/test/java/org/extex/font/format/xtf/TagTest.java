@@ -33,8 +33,7 @@ import static org.junit.Assert.assertTrue;
  * Test for the class {@link Tag} and all sub classes.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TagTest {
 
     /**

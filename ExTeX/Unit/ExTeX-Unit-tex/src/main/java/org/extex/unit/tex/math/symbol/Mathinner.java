@@ -35,28 +35,29 @@ import org.extex.unit.tex.math.AbstractMathCode;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\mathinner</code>.
+ * {@code \mathinner}.
  * 
- * <doc name="mathinner">
- * <h3>The Math Primitive <tt>\mathinner</tt></h3>
+ * <p>The Math Primitive {@code \mathinner}</p>
  * <p>
- * The primitive <tt>\mathinner</tt> takes an argument and treats it as an
+ * The primitive {@code \mathinner} takes an argument and treats it as an
  * inner symbol. It works in math mode only. The argument can either be a single
  * letter of a math expression enclosed in braces.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;mathinner&rang;
- *       &rarr; <tt>\mathinner</tt>  &lang;formula&rang;
+ *       &rarr; {@code \mathinner}  &lang;formula&rang;
  *
  *    &lang;formula&rang;
  *       &rarr;  &lang;letter&rang;
- *         |  <tt>{</tt> &lang;math material&rang; <tt>}</tt>   </pre>
+ *         |  {@code {} &lang;math material&rang; {@code }}   </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \mathinner x </pre>
@@ -70,15 +71,13 @@ import org.extex.unit.tex.math.AbstractMathCode;
  * <pre class="TeXSample">
  *    \mathinner{a^b}  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Mathinner extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -94,10 +93,7 @@ public class Mathinner extends AbstractMathCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

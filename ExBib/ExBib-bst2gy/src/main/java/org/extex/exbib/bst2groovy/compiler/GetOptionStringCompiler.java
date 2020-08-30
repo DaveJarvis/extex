@@ -31,8 +31,7 @@ import org.extex.exbib.bst2groovy.linker.LinkContainer;
  * This class implements the analyzer for an string option reader.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class GetOptionStringCompiler implements Compiler {
 
     /**
@@ -50,7 +49,7 @@ public class GetOptionStringCompiler implements Compiler {
     }
 
     /**
-     * The field <tt>name</tt> contains the name.
+     * The field {@code name} contains the name.
      */
     private GStringConstant name;
 
@@ -65,10 +64,7 @@ public class GetOptionStringCompiler implements Compiler {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryReference,
-     *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
+*      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */

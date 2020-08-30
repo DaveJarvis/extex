@@ -23,11 +23,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\iffalse</tt>.
+ * This is a test suite for the primitive {@code \iffalse}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class IffalseTest extends ConditionalTester {
 
     /**
@@ -47,8 +46,8 @@ public class IffalseTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\iffalse"> Test case checking that <tt>\iffalse</tt>
-     * selects the else branch. </testcase>
+     * <testcase primitive="\iffalse"> Test case checking that {@code \iffalse}
+     * selects the else branch.
      * 
      * @throws Exception in case of an error
      */
@@ -62,8 +61,8 @@ public class IffalseTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\iffalse"> Test case checking that <tt>\iffalse</tt>
-     * selects nothing if the else branch is missing. </testcase>
+     * <testcase primitive="\iffalse"> Test case checking that {@code \iffalse}
+     * selects nothing if the else branch is missing.
      * 
      * @throws Exception in case of an error
      */
@@ -77,8 +76,8 @@ public class IffalseTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\iffalse"> Test case checking that <tt>\iffalse</tt>
-     * works for a deeply nestes invocation. </testcase>
+     * <testcase primitive="\iffalse"> Test case checking that {@code \iffalse}
+     * works for a deeply nestes invocation.
      * 
      * @throws Exception in case of an error
      */

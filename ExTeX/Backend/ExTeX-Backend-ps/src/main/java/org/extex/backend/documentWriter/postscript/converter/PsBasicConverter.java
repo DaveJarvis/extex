@@ -66,8 +66,7 @@ import org.extex.typesetter.type.page.Page;
  * This class provides a converter to PostScript code.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class PsBasicConverter extends AbstractConverter
         implements
             NodeVisitor<Object, PrintStream>,
@@ -78,35 +77,34 @@ public class PsBasicConverter extends AbstractConverter
      * for output.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
-     */
+    */
     private class Buffer {
 
         /**
-         * The field <tt>charBuffer</tt> contains the dynamic text.
+         * The field {@code charBuffer} contains the dynamic text.
          */
         private StringBuilder text = new StringBuilder();
 
         /**
-         * The field <tt>currX</tt> contains the x coordinate for the first
+         * The field {@code currX} contains the x coordinate for the first
          * character.
          */
         private Dimen currX = new Dimen();
 
         /**
-         * The field <tt>currY</tt> contains the y coordinate for the first
+         * The field {@code currY} contains the y coordinate for the first
          * character.
          */
         private Dimen currY = new Dimen(Long.MIN_VALUE);
 
         /**
-         * The field <tt>empty</tt> contains the indicator that the text is
+         * The field {@code empty} contains the indicator that the text is
          * empty.
          */
         private boolean empty = true;
 
         /**
-         * The field <tt>shift</tt> contains the indicator that the first
+         * The field {@code shift} contains the indicator that the first
          * character is not on the same y coordinate as the previous one.
          */
         private boolean shift = false;
@@ -178,33 +176,33 @@ public class PsBasicConverter extends AbstractConverter
     }
 
     /**
-     * The field <tt>text</tt> contains the character text.
+     * The field {@code text} contains the character text.
      */
     private Buffer buffer = new Buffer();
 
     /**
-     * The field <tt>cc</tt> contains the color converter.
+     * The field {@code cc} contains the color converter.
      */
     private ColorConverter cc = null;
 
     /**
-     * The field <tt>currentColor</tt> contains the current color to keep
+     * The field {@code currentColor} contains the current color to keep
      * track of the color changing commands.
      */
     private Color currentColor = null;
 
     /**
-     * The field <tt>ps</tt> contains the library manager for Postscript code.
+     * The field {@code ps} contains the library manager for Postscript code.
      */
     private Ps ps = new Ps();
 
     /**
-     * The field <tt>x</tt> contains the current x position.
+     * The field {@code x} contains the current x position.
      */
     private Dimen x = new Dimen();
 
     /**
-     * The field <tt>y</tt> contains the current y position.
+     * The field {@code y} contains the current y position.
      */
     private Dimen y = new Dimen();
 
@@ -214,10 +212,7 @@ public class PsBasicConverter extends AbstractConverter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.color.ColorAware#setColorConverter(
-     *      org.extex.color.ColorConverter)
+*      org.extex.color.ColorConverter)
      */
     public void setColorConverter(ColorConverter converter) {
 
@@ -241,10 +236,7 @@ public class PsBasicConverter extends AbstractConverter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.postscript.converter.PsConverter#toPostScript(
-     *      org.extex.typesetter.type.page.Page)
+*      org.extex.typesetter.type.page.Page)
      */
     public byte[] toPostScript(Page page) throws DocumentWriterException {
 
@@ -273,10 +265,7 @@ public class PsBasicConverter extends AbstractConverter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(
-     *      org.extex.typesetter.type.node.AdjustNode, java.lang.Object)
+*      org.extex.typesetter.type.node.AdjustNode, java.lang.Object)
      */
     public Object visitAdjust(AdjustNode node, PrintStream out)
             throws GeneralException {
@@ -286,10 +275,7 @@ public class PsBasicConverter extends AbstractConverter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(
-     *      org.extex.typesetter.type.node.AfterMathNode, java.lang.Object)
+*      org.extex.typesetter.type.node.AfterMathNode, java.lang.Object)
      */
     public Object visitAfterMath(AfterMathNode node, PrintStream out)
             throws GeneralException {
@@ -299,10 +285,7 @@ public class PsBasicConverter extends AbstractConverter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(
-     *      org.extex.typesetter.type.node.AlignedLeadersNode, java.lang.Object)
+*      org.extex.typesetter.type.node.AlignedLeadersNode, java.lang.Object)
      */
     public Object visitAlignedLeaders(AlignedLeadersNode node, PrintStream out)
             throws GeneralException {
@@ -312,10 +295,7 @@ public class PsBasicConverter extends AbstractConverter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(
-     *      org.extex.typesetter.type.node.BeforeMathNode, java.lang.Object)
+*      org.extex.typesetter.type.node.BeforeMathNode, java.lang.Object)
      */
     public Object visitBeforeMath(BeforeMathNode node, PrintStream out)
             throws GeneralException {
@@ -325,10 +305,7 @@ public class PsBasicConverter extends AbstractConverter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(
-     *      org.extex.typesetter.type.node.CenteredLeadersNode,
+*      org.extex.typesetter.type.node.CenteredLeadersNode,
      *      java.lang.Object)
      */
     public Object visitCenteredLeaders(CenteredLeadersNode node, PrintStream out)
@@ -339,10 +316,7 @@ public class PsBasicConverter extends AbstractConverter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitChar(
-     *      org.extex.typesetter.type.node.CharNode, java.lang.Object)
+*      org.extex.typesetter.type.node.CharNode, java.lang.Object)
      */
     public Object visitChar(CharNode node, PrintStream out)
             throws GeneralException {
@@ -378,10 +352,7 @@ public class PsBasicConverter extends AbstractConverter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(
-     *      org.extex.typesetter.type.node.DiscretionaryNode, java.lang.Object)
+*      org.extex.typesetter.type.node.DiscretionaryNode, java.lang.Object)
      */
     public Object visitDiscretionary(DiscretionaryNode node, PrintStream out)
             throws GeneralException {
@@ -391,10 +362,7 @@ public class PsBasicConverter extends AbstractConverter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(
-     *      org.extex.typesetter.type.node.ExpandedLeadersNode,
+*      org.extex.typesetter.type.node.ExpandedLeadersNode,
      *      java.lang.Object)
      */
     public Object visitExpandedLeaders(ExpandedLeadersNode node, PrintStream out)
@@ -405,10 +373,7 @@ public class PsBasicConverter extends AbstractConverter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitGlue(
-     *      org.extex.typesetter.type.node.GlueNode, java.lang.Object)
+*      org.extex.typesetter.type.node.GlueNode, java.lang.Object)
      */
     public Object visitGlue(GlueNode node, PrintStream out)
             throws GeneralException {
@@ -418,10 +383,7 @@ public class PsBasicConverter extends AbstractConverter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(
-     *      org.extex.typesetter.type.node.HorizontalListNode, java.lang.Object)
+*      org.extex.typesetter.type.node.HorizontalListNode, java.lang.Object)
      */
     public Object visitHorizontalList(HorizontalListNode node, PrintStream out)
             throws GeneralException {
@@ -445,10 +407,7 @@ public class PsBasicConverter extends AbstractConverter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(
-     *      org.extex.typesetter.type.node.InsertionNode, java.lang.Object)
+*      org.extex.typesetter.type.node.InsertionNode, java.lang.Object)
      */
     public Object visitInsertion(InsertionNode node, PrintStream out)
             throws GeneralException {
@@ -458,10 +417,7 @@ public class PsBasicConverter extends AbstractConverter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitKern(
-     *      org.extex.typesetter.type.node.KernNode, java.lang.Object)
+*      org.extex.typesetter.type.node.KernNode, java.lang.Object)
      */
     public Object visitKern(KernNode node, PrintStream out)
             throws GeneralException {
@@ -471,10 +427,7 @@ public class PsBasicConverter extends AbstractConverter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitLigature(
-     *      org.extex.typesetter.type.node.LigatureNode, java.lang.Object)
+*      org.extex.typesetter.type.node.LigatureNode, java.lang.Object)
      */
     public Object visitLigature(LigatureNode node, PrintStream out)
             throws GeneralException {
@@ -483,10 +436,7 @@ public class PsBasicConverter extends AbstractConverter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitMark(
-     *      org.extex.typesetter.type.node.MarkNode, java.lang.Object)
+*      org.extex.typesetter.type.node.MarkNode, java.lang.Object)
      */
     public Object visitMark(MarkNode node, PrintStream out)
             throws GeneralException {
@@ -496,10 +446,7 @@ public class PsBasicConverter extends AbstractConverter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(
-     *      org.extex.typesetter.type.node.PenaltyNode, java.lang.Object)
+*      org.extex.typesetter.type.node.PenaltyNode, java.lang.Object)
      */
     public Object visitPenalty(PenaltyNode node, PrintStream out)
             throws GeneralException {
@@ -509,10 +456,7 @@ public class PsBasicConverter extends AbstractConverter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitRule(
-     *      org.extex.typesetter.type.node.RuleNode, java.lang.Object)
+*      org.extex.typesetter.type.node.RuleNode, java.lang.Object)
      */
     public Object visitRule(RuleNode node, PrintStream out)
             throws GeneralException {
@@ -529,10 +473,7 @@ public class PsBasicConverter extends AbstractConverter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitSpace(
-     *      org.extex.typesetter.type.node.SpaceNode, java.lang.Object)
+*      org.extex.typesetter.type.node.SpaceNode, java.lang.Object)
      */
     public Object visitSpace(SpaceNode node, PrintStream out)
             throws GeneralException {
@@ -542,10 +483,7 @@ public class PsBasicConverter extends AbstractConverter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(
-     *      org.extex.typesetter.type.node.VerticalListNode, java.lang.Object)
+*      org.extex.typesetter.type.node.VerticalListNode, java.lang.Object)
      */
     public Object visitVerticalList(VerticalListNode node, PrintStream out)
             throws GeneralException {
@@ -570,10 +508,7 @@ public class PsBasicConverter extends AbstractConverter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(
-     *      org.extex.typesetter.type.node.VirtualCharNode, java.lang.Object)
+*      org.extex.typesetter.type.node.VirtualCharNode, java.lang.Object)
      */
     public Object visitVirtualChar(VirtualCharNode node, PrintStream out)
             throws GeneralException {
@@ -583,10 +518,7 @@ public class PsBasicConverter extends AbstractConverter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(
-     *      org.extex.typesetter.type.node.WhatsItNode, java.lang.Object)
+*      org.extex.typesetter.type.node.WhatsItNode, java.lang.Object)
      */
     public Object visitWhatsIt(WhatsItNode node, PrintStream out)
             throws GeneralException {
@@ -600,10 +532,7 @@ public class PsBasicConverter extends AbstractConverter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.postscript.converter.AbstractConverter#writeHeaders(
-     *      java.io.PrintStream)
+*      java.io.PrintStream)
      */
     @Override
     public void writeHeaders(PrintStream out) throws IOException {

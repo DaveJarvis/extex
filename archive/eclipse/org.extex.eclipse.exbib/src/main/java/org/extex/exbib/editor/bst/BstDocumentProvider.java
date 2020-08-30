@@ -30,16 +30,10 @@ import org.extex.exbib.editor.bst.scanner.BstPartitionScanner;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class BstDocumentProvider extends FileDocumentProvider {
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.editors.text.StorageDocumentProvider#createDocument(java.lang.Object)
-     */
-    @Override
+@Override
     protected IDocument createDocument(Object element) throws CoreException {
 
         IDocument document = super.createDocument(element);

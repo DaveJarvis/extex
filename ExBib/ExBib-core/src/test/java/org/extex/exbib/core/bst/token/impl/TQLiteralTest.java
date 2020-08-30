@@ -37,12 +37,11 @@ import org.junit.Test;
  * This is a test suite for {@link TQLiteral}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TQLiteralTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -68,7 +67,7 @@ public class TQLiteralTest {
     }
 
     /**
-     * <testcase> A QLiteral can nor have an <code>null</code> name. </testcase>
+     *  A QLiteral can nor have an {@code null} name.
      * 
      * @throws Exception in case of an error
      */
@@ -79,7 +78,7 @@ public class TQLiteralTest {
     }
 
     /**
-     * <testcase> A QLiteral can nor have an empty name. </testcase>
+     *  A QLiteral can nor have an empty name.
      * 
      * @throws Exception in case of an error
      */
@@ -90,7 +89,7 @@ public class TQLiteralTest {
     }
 
     /**
-     * <testcase> A QLiteral executes to itself. </testcase>
+     *  A QLiteral executes to itself.
      * 
      * @throws Exception in case of an error
      */
@@ -107,7 +106,7 @@ public class TQLiteralTest {
     }
 
     /**
-     * <testcase> A QLiteral executes to itself. </testcase>
+     *  A QLiteral executes to itself.
      * 
      * @throws Exception in case of an error
      */
@@ -122,7 +121,7 @@ public class TQLiteralTest {
     }
 
     /**
-     * <testcase> toString() works. </testcase>
+     *  toString() works.
      * 
      * @throws Exception in case of an error
      */
@@ -133,7 +132,7 @@ public class TQLiteralTest {
     }
 
     /**
-     * <testcase> The token visitor invokes the correct method. </testcase>
+     *  The token visitor invokes the correct method.
      * 
      * @throws Exception in case of an error
      */

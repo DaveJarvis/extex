@@ -28,14 +28,13 @@ import org.extex.util.xml.XMLStreamWriter;
  * rlineto: {dxa dya}+ rlineto (5).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class T2RLineTo extends T2PathConstruction implements CharStringCalc {
 
     /**
      * The pair array.
      */
-    private T2PairNumber[] pairs;
+    private final T2PairNumber[] pairs;
 
     /**
      * Create a new object.
@@ -66,12 +65,7 @@ public class T2RLineTo extends T2PathConstruction implements CharStringCalc {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.CharStringCalc#calculate(org.extex.font.format.xtf.tables.cff.CharString)
-     */
-    @Override
+@Override
     public void calculate(CharString ch) {
 
         for (int i = 0; i < pairs.length; i++) {
@@ -82,23 +76,13 @@ public class T2RLineTo extends T2PathConstruction implements CharStringCalc {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
-     */
-    @Override
+@Override
     public int getID() {
 
         return TYPE_RLINETO;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "rlineto";
@@ -114,23 +98,13 @@ public class T2RLineTo extends T2PathConstruction implements CharStringCalc {
         return pairs;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getValue()
-     */
-    @Override
+@Override
     public Object getValue() {
 
         return pairs;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#toText()
-     */
-    @Override
+@Override
     public String toText() {
 
         StringBuilder buf = new StringBuilder();
@@ -140,12 +114,7 @@ public class T2RLineTo extends T2PathConstruction implements CharStringCalc {
         return buf.append(getName()).toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    @Override
+@Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());

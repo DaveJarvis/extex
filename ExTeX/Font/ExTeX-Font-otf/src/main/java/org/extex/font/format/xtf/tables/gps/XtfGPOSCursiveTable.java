@@ -41,8 +41,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * of the following glyph.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public abstract class XtfGPOSCursiveTable extends XtfLookupTable {
 
     /**
@@ -60,9 +59,10 @@ public abstract class XtfGPOSCursiveTable extends XtfLookupTable {
      * <p>
      * CursivePosFormat1 subtable: Cursive attachment
      * </p>
-     * <table border="1">
-     * <tr>
-     * <td><b>Value</b></td>
+     * <table>
+ * <caption>TBD</caption>
+ * <tr>
+* <td><b>Value</b></td>
      * <td><b>Type</b></td>
      * <td><b>Description</b></td>
      * </tr>
@@ -115,12 +115,12 @@ public abstract class XtfGPOSCursiveTable extends XtfLookupTable {
         /**
          * The entry count.
          */
-        private int entryExitCount;
+        private final int entryExitCount;
 
         /**
          * The entry exit record array.
          */
-        private EntryExitRecord[] entryExitRecord;
+        private final EntryExitRecord[] entryExitRecord;
 
         /**
          * Create a new object.
@@ -144,12 +144,7 @@ public abstract class XtfGPOSCursiveTable extends XtfLookupTable {
             }
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("cursivetable");
             writer.writeAttribute("format", getFormat());
@@ -166,9 +161,10 @@ public abstract class XtfGPOSCursiveTable extends XtfLookupTable {
     /**
      * The class for EntryExitRecord.
      * 
-     * <table border="1">
-     * <tr>
-     * <td><b>Value</b></td>
+     * <table>
+ * <caption>TBD</caption>
+ * <tr>
+* <td><b>Value</b></td>
      * <td><b>Type</b></td>
      * <td><b>Description</b></td>
      * </tr>
@@ -192,13 +188,13 @@ public abstract class XtfGPOSCursiveTable extends XtfLookupTable {
          * Offset to EntryAnchor table-from beginning of CursivePos subtable-may
          * be NULL.
          */
-        private int entryAnchor;
+        private final int entryAnchor;
 
         /**
          * Offset to ExitAnchor table-from beginning of CursivePos subtable-may
          * be NULL.
          */
-        private int exitAnchor;
+        private final int exitAnchor;
 
         /**
          * Creates a new object.
@@ -232,12 +228,7 @@ public abstract class XtfGPOSCursiveTable extends XtfLookupTable {
             return exitAnchor;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("enryexitrecord");
             writer.writeAttribute("entryanchor", entryAnchor);

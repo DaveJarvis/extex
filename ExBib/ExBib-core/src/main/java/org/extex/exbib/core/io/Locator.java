@@ -21,29 +21,28 @@ package org.extex.exbib.core.io;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * A <code>Locator</code> is a pointer to a certain line and position in a
+ * A {@code Locator} is a pointer to a certain line and position in a
  * resource. This class can be used to store the position to be used in an error
  * message. The position should point to something meaningful for the user and
  * not merely for internal debugging.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Locator {
 
     /**
-     * The field <tt>resource</tt> contains the name of the resource where the
+     * The field {@code resource} contains the name of the resource where the
      * Locator points to.
      */
     private final String resource;
 
     /**
-     * The field <tt>line</tt> contains the number of the line in the resource.
+     * The field {@code line} contains the number of the line in the resource.
      */
     private final int line;
 
     /**
-     * The field <tt>position</tt> contains the position, i.e. Column, in the
+     * The field {@code position} contains the position, i.e. Column, in the
      * line.
      */
     private final int position;
@@ -105,7 +104,7 @@ public class Locator {
 
     /**
      * Conversion to a readable form. The exact text is formatted using the
-     * format <tt>Message</tt> with the line number as argument 0 and the
+     * format {@code Message} with the line number as argument 0 and the
      * resource as argument 1.
      * 
      * @return the readable form of this object.

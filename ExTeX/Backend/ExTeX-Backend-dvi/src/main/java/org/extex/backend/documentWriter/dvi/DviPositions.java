@@ -25,8 +25,7 @@ package org.extex.backend.documentWriter.dvi;
  * This is a implementation of class holding the dvi positions register.
  *
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
- * @version $Revision$
- */
+*/
 public class DviPositions implements Cloneable {
 
     /**

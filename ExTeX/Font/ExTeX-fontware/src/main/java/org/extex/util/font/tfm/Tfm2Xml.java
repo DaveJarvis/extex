@@ -54,8 +54,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * Convert a tfm font to a xml file.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class Tfm2Xml extends AbstractFontUtil {
 
     /**
@@ -78,12 +77,7 @@ public class Tfm2Xml extends AbstractFontUtil {
             this.writer = writer;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.tfm.TfmVisitor#end()
-         */
-        @Override
+    @Override
         public void end() throws IOException {
 
             writer.writeEndElement();
@@ -91,12 +85,7 @@ public class Tfm2Xml extends AbstractFontUtil {
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.tfm.TfmVisitor#start()
-         */
-        @Override
+    @Override
         public void start() throws IOException {
 
             writer.writeStartDocument();
@@ -104,12 +93,7 @@ public class Tfm2Xml extends AbstractFontUtil {
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmCharInfoArray(org.extex.font.format.tfm.TfmCharInfoArray)
-         */
-        @Override
+    @Override
         public void visitTfmCharInfoArray(TfmCharInfoArray charinfo)
                 throws IOException {
 
@@ -192,32 +176,17 @@ public class Tfm2Xml extends AbstractFontUtil {
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmDepthArray(org.extex.font.format.tfm.TfmDepthArray)
-         */
-        @Override
+    @Override
         public void visitTfmDepthArray(TfmDepthArray depth) throws IOException {
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmExtenArray(org.extex.font.format.tfm.TfmExtenArray)
-         */
-        @Override
+    @Override
         public void visitTfmExtenArray(TfmExtenArray exten) throws IOException {
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmHeaderArray(org.extex.font.format.tfm.TfmHeaderArray)
-         */
-        @Override
+    @Override
         public void visitTfmHeaderArray(TfmHeaderArray header)
                 throws IOException {
 
@@ -250,66 +219,36 @@ public class Tfm2Xml extends AbstractFontUtil {
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmHeaderLengths(org.extex.font.format.tfm.TfmHeaderLengths)
-         */
-        @Override
+    @Override
         public void visitTfmHeaderLengths(TfmHeaderLengths lengths)
                 throws IOException {
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmHeightArray(org.extex.font.format.tfm.TfmHeightArray)
-         */
-        @Override
+    @Override
         public void visitTfmHeightArray(TfmHeightArray height)
                 throws IOException {
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmItalicArray(org.extex.font.format.tfm.TfmItalicArray)
-         */
-        @Override
+    @Override
         public void visitTfmItalicArray(TfmItalicArray italic)
                 throws IOException {
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmKernArray(org.extex.font.format.tfm.TfmKernArray)
-         */
-        @Override
+    @Override
         public void visitTfmKernArray(TfmKernArray kern) throws IOException {
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmLigKernArray(org.extex.font.format.tfm.TfmLigKernArray)
-         */
-        @Override
+    @Override
         public void visitTfmLigKernArray(TfmLigKernArray ligkern)
                 throws IOException {
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmParamArray(org.extex.font.format.tfm.TfmParamArray)
-         */
-        @Override
+    @Override
         public void visitTfmParamArray(TfmParamArray param) throws IOException {
 
             writer.writeStartElement("params");
@@ -325,24 +264,14 @@ public class Tfm2Xml extends AbstractFontUtil {
             writer.writeEndElement();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmReader(org.extex.font.format.tfm.TfmReader)
-         */
-        @Override
+    @Override
         public void visitTfmReader(TfmReader tfmReader) throws IOException {
 
             writer.writeAttribute("name", tfmReader.getFontname());
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmWidthArray(org.extex.font.format.tfm.TfmWidthArray)
-         */
-        @Override
+    @Override
         public void visitTfmWidthArray(TfmWidthArray width) throws IOException {
 
         }

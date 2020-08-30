@@ -19,8 +19,6 @@
 
 package org.extex.interpreter.primitives.register.bool;
 
-import java.io.Serializable;
-
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
@@ -33,89 +31,55 @@ import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
+import java.io.Serializable;
+
 /**
  * The register 'bool'.
  * 
  * @author <a href="mailto:m.g.sn@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class Bool implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 1L;
 
     /**
-     * The value
+     * The value is {@code false} by default.
      */
-    private boolean value = false;
+    private boolean value;
 
-
+    /**
+     * Creates a {@link Bool} value in the {@code false} state.
+     */
     public Bool() {
-
     }
 
     /**
-     * Creates a new object.
-     * 
      * @param val initial boolean value
      */
     public Bool(boolean val) {
-
         value = val;
     }
 
     /**
-     * Creates a new object. Scan the <code>TokenSource</code> for a
-     * <code>Bool</code>.
-     * 
-     * @param context the context
-     * @param source the token source
-     * @param typesetter the typesetter
-     * 
-     * @throws HelpingException in case of an error.
-     * @throws ConfigurationException in case if a configuration error
-     * @throws TypesetterException in case of an error
+     * @param l {@code 0} for {@code false}, any other value for {@code true}.
      */
-    public Bool(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException,
-                ConfigurationException,
-                TypesetterException {
-
-        value = scanBool(context, source, typesetter);
+    public Bool(final long l) {
+        value = l != 0;
     }
 
     /**
-     * Creates a new object.
-     * <p>
-     * 0 -> false
-     * </p>
-     * <p>!= -> true
-     * </p>
-     * 
-     * @param l the value as long
-     */
-    public Bool(long l) {
-
-        if (l == 0) {
-            value = false;
-        } else {
-            value = true;
-        }
-    }
-
-    /**
-     * Creates a new object. Possible values are <tt>true</tt>,
-     * <tt>false</tt> or <tt>on</tt>, <tt>off</tt> or <tt>!0</tt>,
-     * <tt>0</tt>
-     * 
+     * Creates a new object. Possible values are {@code true},
+     * {@code false} or {@code on}, {@code off} or {@code !0},
+     * {@code 0}
+     *
      * @param s the value as String
      * @throws HelpingException if no boolean-value are found
      */
     public Bool(String s) throws HelpingException {
-
         if ("true".equalsIgnoreCase(s)) {
             value = true;
         } else if ("on".equalsIgnoreCase(s)) {
@@ -133,6 +97,26 @@ public class Bool implements Serializable {
         } else {
             throw new InterpreterNoBoolValueException(s);
         }
+    }
+
+    /**
+     * Creates a new object. Scan the {@code TokenSource} for a
+     * {@code Bool}.
+     * 
+     * @param context the context
+     * @param source the token source
+     * @param typesetter the typesetter
+     * 
+     * @throws HelpingException in case of an error.
+     * @throws ConfigurationException in case if a configuration error
+     * @throws TypesetterException in case of an error
+     */
+    public Bool(Context context, TokenSource source, Typesetter typesetter)
+            throws HelpingException,
+                ConfigurationException,
+                TypesetterException {
+
+        value = scanBool(context, source, typesetter);
     }
 
     /**
@@ -154,7 +138,7 @@ public class Bool implements Serializable {
     }
 
     /**
-     * Scan the input stream for tokens making up a <code>Bool</code>.
+     * Scan the input stream for tokens making up a {@code Bool}.
      * 
      * @param context the context
      * @param source the token source
@@ -217,9 +201,9 @@ public class Bool implements Serializable {
     }
 
     /**
-     * Return the value as <code>String</code>
+     * Return the value as {@code String}
      * 
-     * @return the value as <code>String</code>
+     * @return the value as {@code String}
      */
     @Override
     public String toString() {

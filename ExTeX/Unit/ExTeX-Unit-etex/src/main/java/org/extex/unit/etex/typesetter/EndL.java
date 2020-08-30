@@ -32,42 +32,41 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.tc.Direction;
 
 /**
- * This class provides an implementation for the primitive <code>\endL</code>.
+ * This class provides an implementation for the primitive {@code \endL}.
  * 
- * <doc name="endL">
- * <h3>The Primitive <tt>\endL</tt></h3>
+ * <p>The Primitive {@code \endL}</p>
  * <p>
- * The primitive <tt>\endL</tt> indicates that the following text is typeset
+ * The primitive {@code \endL} indicates that the following text is typeset
  * in the way it was before the matching
- * {@link org.extex.unit.etex.typesetter.BeginL <tt>\beginL</tt>} has been
+ * {@link org.extex.unit.etex.typesetter.BeginL {@code \beginL}} has been
  * encountered.
  * </p>
  * <p>
- * This primitive is deactivated unless the count register <tt>\TeXXeTstate</tt>
+ * This primitive is deactivated unless the count register {@code \TeXXeTstate}
  * has a positive value.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * 
  * <pre class="syntax">
  *    &lang;endL&rang;
- *     &rarr; <tt>\endL</tt> </pre>
+ *     &rarr; {@code \endL} </pre>
  * 
- * <h4>Example:</h4>
+ * <p>Example:</p>
+
  * 
  * <pre class="TeXSample">
  *   \beginL ... \endL  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class EndL extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -83,10 +82,7 @@ public class EndL extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

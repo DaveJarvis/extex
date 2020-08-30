@@ -27,12 +27,11 @@ import org.extex.framework.i18n.LocalizerFactory;
  * definition of a macro.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class EofInMatchException extends HelpingException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;

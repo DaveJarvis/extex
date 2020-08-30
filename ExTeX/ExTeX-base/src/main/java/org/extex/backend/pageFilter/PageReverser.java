@@ -30,17 +30,16 @@ import org.extex.typesetter.type.page.Page;
  * This page filter reverses the order of the pages shipped out.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4728 $
- */
+*/
 public class PageReverser implements PagePipe {
 
     /**
-     * The field <tt>out</tt> contains the output target.
+     * The field {@code out} contains the output target.
      */
     private PagePipe out = null;
 
     /**
-     * The field <tt>pages</tt> contains the pages.
+     * The field {@code pages} contains the pages.
      */
     private List<Page> pages = new ArrayList<Page>();
 

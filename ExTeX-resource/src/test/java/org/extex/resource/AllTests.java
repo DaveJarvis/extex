@@ -25,8 +25,7 @@ import org.junit.runners.Suite;
  * Run all tests.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 7609 $
- */
+*/
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ClasspathArchiveFinderTest.class,
         UrlFinderTest.class})

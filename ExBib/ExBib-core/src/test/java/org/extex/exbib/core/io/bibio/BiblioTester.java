@@ -33,8 +33,7 @@ import org.extex.resource.ResourceFinderFactory;
  * This is a utility class for tests.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class BiblioTester {
 
     /**

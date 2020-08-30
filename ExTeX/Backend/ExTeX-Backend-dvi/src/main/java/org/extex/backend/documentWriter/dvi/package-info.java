@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the definitions for a DocumentWriter for
+ *Contains definitions for a DocumentWriter for
  * dvi-Files.
  * <p>The class DviDocumentWriter is entrance point
  * for this package.  This class calls DviWriter.  In this class the

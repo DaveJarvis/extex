@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains primitives which directly send instructions to the 
+ * Contains primitives which directly send instructions to the 
  * typesetter. Those instructions are some sort of nodes in the most cases.
  */
 

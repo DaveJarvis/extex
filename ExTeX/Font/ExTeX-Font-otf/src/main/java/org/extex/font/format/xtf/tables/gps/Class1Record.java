@@ -27,22 +27,21 @@ import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
 
 /**
- * Class for a <code>Class1Record</code>.
+ * Class for a {@code Class1Record}.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class Class1Record implements XMLWriterConvertible {
 
     /**
      * Array of Class2 records-ordered by Class2.
      */
-    private Class2Record[] class2RecordArray;
+    private final Class2Record[] class2RecordArray;
 
     /**
      * The index.
      */
-    private int idx;
+    private final int idx;
 
     /**
      * Creates a new object.
@@ -70,10 +69,10 @@ public class Class1Record implements XMLWriterConvertible {
     }
 
     /**
-     * Returns the class or <code>null</code>, if not found.
+     * Returns the class or {@code null}, if not found.
      * 
      * @param classidx The class index.
-     * @return Returns the class or <code>null</code>, if not found.
+     * @return Returns the class or {@code null}, if not found.
      */
     public Class2Record getClass2Record(int classidx) {
 
@@ -108,10 +107,7 @@ public class Class1Record implements XMLWriterConvertible {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

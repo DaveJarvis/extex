@@ -23,18 +23,17 @@ package org.extex.pdf.api.destination;
  * This class carries a destination type ZOOM as used in PDF nodes.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class ZoomDestType extends DestType {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>zoom</tt> contains the zoom value.
+     * The field {@code zoom} contains the zoom value.
      */
     private long zoom;
 

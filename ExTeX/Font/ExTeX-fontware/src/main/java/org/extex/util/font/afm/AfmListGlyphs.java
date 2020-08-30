@@ -35,8 +35,7 @@ import org.extex.util.font.AbstractFontUtil;
  * List all glyphs of a font.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class AfmListGlyphs extends AbstractFontUtil {
 
     /**

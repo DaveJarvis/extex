@@ -26,19 +26,18 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * This class represents a <tt>String</tt> token, i.e. a value enclosed in
+ * This class represents a {@code String} token, i.e. a value enclosed in
  * double quotes.
  * 
  * <p>
- * You can try to store the <code>null</code> value in a TString. This is used
+ * You can try to store the {@code null} value in a TString. This is used
  * to indicate a missing field. The reported value is the empty string.
  * Nevertheless the method {@link #isNull() isNull} can be used to distinguish
  * between those two cases.
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TString extends AbstractToken {
 
     /**
@@ -57,7 +56,7 @@ public class TString extends AbstractToken {
      * 
      * @param that other string to compare to
      * 
-     * @return <code>true</code> iff the values are equal
+     * @return {@code true} iff the values are equal
      */
     @Override
     public boolean equals(Object that) {
@@ -67,10 +66,7 @@ public class TString extends AbstractToken {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.Code#execute(org.extex.exbib.core.bst.BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
@@ -91,22 +87,14 @@ public class TString extends AbstractToken {
         return "\"" + getValue() + "\"";
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
+@Override
     public int hashCode() {
 
         return getValue().hashCode();
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.Token#visit(org.extex.exbib.core.bst.token.TokenVisitor,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visit(TokenVisitor visitor, Object... args)
             throws ExBibException {

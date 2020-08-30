@@ -33,42 +33,39 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\string</code>.
+ * This class provides an implementation for the primitive {@code \string}.
  * 
- * <doc name="string"> <h3>The Primitive <tt>\string</tt></h3>
+ * <p>The Primitive {@code \string}</p>
  * <p>
  * This primitive takes the next unexpanded token. If this token is a control
  * sequence &ndash; and no active character &ndash; then the value of
- * <tt>escapechar</tt> followed by the characters from the name of the control
+ * {@code escapechar} followed by the characters from the name of the control
  * sequence. Otherwise it is a single character token containing the character
  * code of the token.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;string&rang;
- *        &rarr; <tt>\string</tt> &lang;token&rang; </pre>
+ *        &rarr; {@code \string} &lang;token&rang; </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \string \relax  </pre>
  * 
- * </doc>
+ *
  * 
- * 
- * @see "<logo>T<span style=
- *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *      >e</span>X</logo> &ndash; the Program [69]"
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class StringPrimitive extends AbstractCode implements ExpandableCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -83,10 +80,7 @@ public class StringPrimitive extends AbstractCode implements ExpandableCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -97,10 +91,7 @@ public class StringPrimitive extends AbstractCode implements ExpandableCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,

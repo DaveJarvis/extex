@@ -40,12 +40,11 @@ import org.junit.Test;
  * This is a test suite for {@link TField}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TFieldTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -71,8 +70,8 @@ public class TFieldTest {
     }
 
     /**
-     * <testcase> An exception is raised when used outside an entry context.
-     * </testcase>
+     *  An exception is raised when used outside an entry context.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -84,8 +83,8 @@ public class TFieldTest {
     }
 
     /**
-     * <testcase> A Literal executes to an exception if the field is undefined.
-     * </testcase>
+     *  A Literal executes to an exception if the field is undefined.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -103,8 +102,8 @@ public class TFieldTest {
     }
 
     /**
-     * <testcase> A Field for an undefined macro expands to the identical
-     * string??? </testcase>
+     *  A Field for an undefined macro expands to the identical
+     * string??? 
      * 
      * @throws Exception in case of an error
      */
@@ -119,8 +118,8 @@ public class TFieldTest {
     }
 
     /**
-     * <testcase> A Field for an defined macro expands to the name???
-     * </testcase>
+     *  A Field for an defined macro expands to the name???
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -136,7 +135,7 @@ public class TFieldTest {
     }
 
     /**
-     * <testcase> toString() works. </testcase>
+     *  toString() works. 
      * 
      * @throws Exception in case of an error
      */
@@ -147,7 +146,7 @@ public class TFieldTest {
     }
 
     /**
-     * <testcase> The token visitor invokes the correct method. </testcase>
+     *  The token visitor invokes the correct method. 
      * 
      * @throws Exception in case of an error
      */

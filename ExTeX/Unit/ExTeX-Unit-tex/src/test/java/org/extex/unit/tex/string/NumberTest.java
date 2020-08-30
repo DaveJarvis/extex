@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\number</tt>.
+ * This is a test suite for the primitive {@code \number}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class NumberTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -48,8 +47,8 @@ public class NumberTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\number"> Test case checking that <tt>\number</tt>
-     * on a count with the value 2 gives <tt>2</tt>. </testcase>
+     * <testcase primitive="\number"> Test case checking that {@code \number}
+     * on a count with the value 2 gives {@code 2}. 
      * 
      * @throws Exception in case of an error
      */
@@ -62,8 +61,8 @@ public class NumberTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\number"> Test case checking that <tt>\number</tt>
-     * on a count with the value 32 gives <tt>32</tt>. </testcase>
+     * <testcase primitive="\number"> Test case checking that {@code \number}
+     * on a count with the value 32 gives {@code 32}. 
      * 
      * @throws Exception in case of an error
      */
@@ -76,8 +75,8 @@ public class NumberTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\number"> Test case checking that <tt>\number</tt>
-     * on a count with the value -2 gives <tt>-2</tt>. </testcase>
+     * <testcase primitive="\number"> Test case checking that {@code \number}
+     * on a count with the value -2 gives {@code -2}. 
      * 
      * @throws Exception in case of an error
      */
@@ -90,8 +89,8 @@ public class NumberTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\number"> Test case checking that <tt>\number</tt>
-     * is expandable. </testcase>
+     * <testcase primitive="\number"> Test case checking that {@code \number}
+     * is expandable. 
      * 
      * @throws Exception in case of an error
      */

@@ -31,17 +31,16 @@ import org.extex.ocpware.type.OcpCode;
  * The class state represents a state in the &Omega;CP engine for the compiler.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public class State {
 
     /**
-     * The field <tt>instructions</tt> contains the list of instruction words.
+     * The field {@code instructions} contains the list of instruction words.
      */
     private List<Integer> instructions = new ArrayList<Integer>();
 
     /**
-     * The field <tt>numberExpressions</tt> contains the number of expressions
+     * The field {@code numberExpressions} contains the number of expressions
      * stored in this state.
      */
     private int numberExpressions = 0;

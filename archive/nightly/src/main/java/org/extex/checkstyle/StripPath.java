@@ -30,8 +30,7 @@ import java.util.regex.Pattern;
  * ...
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class StripPath {
 
 

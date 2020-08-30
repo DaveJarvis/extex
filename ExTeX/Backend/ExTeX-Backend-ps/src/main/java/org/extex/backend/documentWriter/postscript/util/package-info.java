@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains utility classes for the a PostScript DocumentWriter.
+ * Contains utility classes for the a PostScript DocumentWriter.
  */
 
 package org.extex.backend.documentWriter.postscript.util;

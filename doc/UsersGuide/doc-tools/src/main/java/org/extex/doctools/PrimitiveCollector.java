@@ -62,31 +62,29 @@ import org.xml.sax.SAXException;
 /**
  * This class contains the main program to collect the POMs is a set of base
  * directories.
- * <p>
- * </p>
- * <p>
- * Usage: <tt>java org.extex.doctools.PrimitiveCollector </tt><i>&lt;options&gt;
+ * <br>
+* <p>
+ * Usage: {@code java org.extex.doctools.PrimitiveCollector }<i>&lt;options&gt;
  * bases</i>
  * </p>
  * <p>
  * The following options are supported:
  * </p>
  * <dl>
- * <dt><tt>- &lt;base&gt;</tt></dt>
+ * <dt>{@code - &lt;base&gt;}</dt>
  * <dd>Use this argument as base name &ndash; even when it looks like an option.
  * </dd>
- * <dt><tt>-o[utput] &lt;output directory&gt;</tt></dt>
+ * <dt>{@code -o[utput] &lt;output directory&gt;}</dt>
  * <dd>Use this argument as output directory name.</dd>
- * <dt><tt>-om[it] &lt;name&gt;</tt></dt>
+ * <dt>{@code -om[it] &lt;name&gt;}</dt>
  * <dd>Add the argument to the list of omitted files and directories.</dd>
- * <dt><tt>-x[sl] &lt;xsl file&gt;</tt></dt>
+ * <dt>{@code -x[sl] &lt;xsl file&gt;}</dt>
  * <dd>Name the XSL resource for processing the collected POMs. The XSL file is
  * sought on the classpath.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class PrimitiveCollector {
 
     /**
@@ -95,12 +93,12 @@ public class PrimitiveCollector {
     private class Info {
 
         /**
-         * The field <tt>name</tt> contains the name.
+         * The field {@code name} contains the name.
          */
         private File name;
 
         /**
-         * The field <tt>root</tt> contains the root element.
+         * The field {@code root} contains the root element.
          */
         private Element root;
 
@@ -139,47 +137,37 @@ public class PrimitiveCollector {
     }
 
     /**
-     * The field <tt>DOC_PATTERN</tt> contains the pattern to recognize a doc
+     * The field {@code DOC_PATTERN} contains the pattern to recognize a doc
      * tag.
      */
     private static final Pattern DOC_PATTERN = Pattern.compile("[ *]*<doc.*");
 
     /**
-     * The field <tt>DIR_FILTER</tt> contains the filter to select only
+     * The field {@code DIR_FILTER} contains the filter to select only
      * directories.
      */
     private static final FileFilter DIR_FILTER = new FileFilter() {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.io.FileFilter#accept(java.io.File)
-         */
-        public boolean accept(File f) {
+    public boolean accept(File f) {
 
             return f.isDirectory();
         }
     };
 
     /**
-     * The field <tt>XML_FILTER</tt> contains the filter to select only XML
+     * The field {@code XML_FILTER} contains the filter to select only XML
      * files.
      */
     private static final FileFilter XML_FILTER = new FileFilter() {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.io.FileFilter#accept(java.io.File)
-         */
-        public boolean accept(File f) {
+    public boolean accept(File f) {
 
             return f.isFile() && f.getName().endsWith(".xml");
         }
     };
 
     /**
-     * The constant <tt>XML_INIT</tt> contains the doctype for XML parsing.
+     * The constant {@code XML_INIT} contains the doctype for XML parsing.
      */
     private static final String XML_INIT = "<!DOCTYPE ent ["
             + "<!ENTITY quot \"&#34;\">"
@@ -428,7 +416,7 @@ public class PrimitiveCollector {
             + "]>\n";
 
     /**
-     * The field <tt>TODO_PATTERN</tt> contains the pattern to recognize todos.
+     * The field {@code TODO_PATTERN} contains the pattern to recognize todos.
      */
     private static final Pattern TODO_PATTERN = Pattern
         .compile(".* TODO[: ].*");
@@ -536,78 +524,78 @@ public class PrimitiveCollector {
     }
 
     /**
-     * The field <tt>bases</tt> contains the list of base directories to
+     * The field {@code bases} contains the list of base directories to
      * consider.
      */
     private List<File> bases = new ArrayList<File>();
 
     /**
-     * The field <tt>output</tt> contains the output file name or
-     * <code>null</code> for stdout.
+     * The field {@code output} contains the output file name or
+     * {@code null} for stdout.
      */
     private String output = null;
 
     /**
-     * The field <tt>omit</tt> contains the list of omitted files and
+     * The field {@code omit} contains the list of omitted files and
      * directories.
      */
     private List<String> omit = new ArrayList<String>();
 
     /**
-     * The field <tt>xslt</tt> contains the name of the xslt resource.
+     * The field {@code xslt} contains the name of the xslt resource.
      */
     private String xslt = PrimitiveCollector.class.getName().replace('.', '/');
 
     /**
-     * The field <tt>configs</tt> contains the collected configurations.
+     * The field {@code configs} contains the collected configurations.
      */
     private Map<String, Info> configs = null;
 
     /**
-     * The field <tt>units</tt> contains the collected configurations.
+     * The field {@code units} contains the collected configurations.
      */
     private Map<String, Info> units = null;
 
     /**
-     * The field <tt>builder</tt> contains the encapsulated document builder.
+     * The field {@code builder} contains the encapsulated document builder.
      */
     private DocumentBuilder builder;
 
     /**
-     * The field <tt>docs</tt> contains the collected docs.
+     * The field {@code docs} contains the collected docs.
      */
     private Map<String, Info> docs = null;
 
     /**
-     * The field <tt>verbose</tt> contains the verbosity indicator.
+     * The field {@code verbose} contains the verbosity indicator.
      */
     private boolean verbose = false;
 
     /**
-     * The field <tt>defaultType</tt> contains the default type.
+     * The field {@code defaultType} contains the default type.
      */
     private String defaultType = "primitive";
 
     /**
-     * The field <tt>configurationsFileName</tt> contains the name of the file i
+     * The field {@code configurationsFileName} contains the name of the file i
      * which the configurations are written.
      */
     private String configurationsFileName = "configurations.tex";
 
     /**
-     * The field <tt>unitsFileName</tt> contains the name of the file on which
+     * The field {@code unitsFileName} contains the name of the file on which
      * the units are written.
      */
     private String unitsFileName = "units.tex";
 
     /**
-     * The field <tt>primitivesFileName</tt> contains the file name foe the
+     * The field {@code primitivesFileName} contains the file name foe the
      * primitives.
      */
     private String primitivesFileName = "primitives.tex";
 
     /**
-     * The field <tt>syntaxFileName</tt> contains the file name for the syntax
+     * The field {@code syntaxFileName} contains the file name for the syntax
      * file.
      */
     private String syntaxFileName = "syntax.tex";
@@ -1076,7 +1064,7 @@ public class PrimitiveCollector {
 
     /**
      * Setter for the output. The empty string and the string containing a '-'
-     * only are treated as <code>null</code>.
+     * only are treated as {@code null}.
      * 
      * @param output the output to set
      */

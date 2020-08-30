@@ -29,23 +29,22 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This class implements a logging {@link ResourceObserverImpl}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ResourceObserverImpl implements ResourceObserver {
 
     /**
-     * The constant <tt>localizer</tt> contains the localizer. It is not
+     * The constant {@code localizer} contains the localizer. It is not
      * static to allow the modification of the default locale at run time.
      */
     private final Localizer localizer;
 
     /**
-     * The field <tt>logger</tt> contains the logger.
+     * The field {@code logger} contains the logger.
      */
     private final Logger logger;
 
     /**
-     * The field <tt>level</tt> contains the level of inclusion.
+     * The field {@code level} contains the level of inclusion.
      */
     private int level = 0;
 
@@ -62,10 +61,7 @@ public class ResourceObserverImpl implements ResourceObserver {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.auxio.ResourceObserver#observeClose(
-     *      java.lang.String, java.lang.String, java.lang.String)
+*      java.lang.String, java.lang.String, java.lang.String)
      */
     public void observeClose(String resource, String type, String filename) {
 
@@ -73,10 +69,7 @@ public class ResourceObserverImpl implements ResourceObserver {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.auxio.ResourceObserver#observeOpen(
-     *      java.lang.String, java.lang.String, java.lang.String)
+*      java.lang.String, java.lang.String, java.lang.String)
      */
     public void observeOpen(String resource, String type, String filename) {
 

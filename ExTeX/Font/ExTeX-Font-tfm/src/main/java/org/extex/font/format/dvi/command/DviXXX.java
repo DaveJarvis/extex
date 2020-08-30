@@ -25,15 +25,14 @@ import org.extex.core.UnicodeChar;
  * DVI: xxx: Undefined command e.g. for specials.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class DviXXX extends DviCommand {
 
     /**
      * the value
      */
-    private int[] values;
+    private final int[] values;
 
     /**
      * Create a new object.
@@ -48,12 +47,7 @@ public class DviXXX extends DviCommand {
         values = v;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviCommand#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "xxx";

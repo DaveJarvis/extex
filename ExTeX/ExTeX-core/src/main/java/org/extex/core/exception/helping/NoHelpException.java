@@ -26,12 +26,11 @@ import org.extex.framework.i18n.LocalizerFactory;
  * available. It simply acts as a wrapper for other exceptions.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5586 $
- */
+*/
 public class NoHelpException extends HelpingException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
@@ -58,12 +57,7 @@ public class NoHelpException extends HelpingException {
             message);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.core.exception.helping.HelpingException#getLocalizedMessage()
-     */
-    @Override
+@Override
     public String getLocalizedMessage() {
 
         Throwable e = getCause();

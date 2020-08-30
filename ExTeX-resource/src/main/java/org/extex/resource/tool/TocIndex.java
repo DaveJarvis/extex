@@ -37,12 +37,11 @@ import java.util.regex.PatternSyntaxException;
  * Traverse a directory tree and collect the files in an index.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TocIndex {
 
     /**
-     * The field <tt>FILE_NAME_COMPARATOR</tt> contains the comparator for
+     * The field {@code FILE_NAME_COMPARATOR} contains the comparator for
      * sorting files.
      */
     private static final Comparator<? super File> FILE_NAME_COMPARATOR =
@@ -86,22 +85,22 @@ public class TocIndex {
     }
 
     /**
-     * The field <tt>omit</tt> contains the omit patterns.
+     * The field {@code omit} contains the omit patterns.
      */
     private List<Pattern> omit = new ArrayList<Pattern>();
 
     /**
-     * The field <tt>base</tt> contains the base directory.
+     * The field {@code base} contains the base directory.
      */
     private File base = null;
 
     /**
-     * The field <tt>outFile</tt> contains the name of the output file.
+     * The field {@code outFile} contains the name of the output file.
      */
     private String outFile = null;
 
     /**
-     * The field <tt>verbose</tt> contains the verbosity indicator.
+     * The field {@code verbose} contains the verbosity indicator.
      */
     private boolean verbose = false;
 
@@ -292,7 +291,7 @@ public class TocIndex {
      * 
      * @param outFile the outFile to set
      * 
-     * @throws Exception in case the argument is <code>null</code>
+     * @throws Exception in case the argument is {@code null}
      */
     public void setOutFile(String outFile) throws Exception {
 

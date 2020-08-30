@@ -28,13 +28,12 @@ import org.junit.Test;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 5432 $
- */
+*/
 public class NetTest {
 
     /**
-     * <testcase> An empty net can not find a rule for <tt>null</tt>.
-     * </testcase>
+     *  An empty net can not find a rule for {@code null}.
+     *
      * 
      * @throws MakeException in case of an error
      */
@@ -45,8 +44,8 @@ public class NetTest {
     }
 
     /**
-     * <testcase> An empty net can not find a rule for the empty File.
-     * </testcase>
+     *  An empty net can not find a rule for the empty File.
+     *
      * 
      * @throws MakeException in case of an error
      */
@@ -57,8 +56,8 @@ public class NetTest {
     }
 
     /**
-     * <testcase> An empty net can not find a rule for a non existent File.
-     * </testcase>
+     *  An empty net can not find a rule for a non existent File.
+     *
      * 
      * @throws MakeException in case of an error
      */

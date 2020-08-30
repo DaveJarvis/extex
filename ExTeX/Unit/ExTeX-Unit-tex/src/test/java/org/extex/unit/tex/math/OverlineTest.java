@@ -23,11 +23,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\overline</tt>.
+ * This is a test suite for the primitive {@code \overline}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4627 $
- */
+*/
 public class OverlineTest extends AbstractMathTester {
 
 
@@ -37,9 +36,9 @@ public class OverlineTest extends AbstractMathTester {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case checking that ...
-     * </testcase>
+     *
      * @throws Exception in case of an error
      */
     @Test

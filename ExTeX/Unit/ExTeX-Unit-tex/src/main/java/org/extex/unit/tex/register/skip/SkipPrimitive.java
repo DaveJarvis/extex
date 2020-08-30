@@ -38,22 +38,23 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\skip</code>.
+ * This class provides an implementation for the primitive {@code \skip}.
  * It sets the named skip register to the value given, and as a side effect all
  * prefixes are zeroed.
  * 
- * <doc name="skip"> <h3>The Primitive <tt>\skip</tt></h3>
+ * <p>The Primitive {@code \skip}</p>
  * <p>
- * The primitive <tt>\skip</tt> provides access to a skip register. In a skip
+ * The primitive {@code \skip} provides access to a skip register. In a skip
  * register some glue value can be stored. A glue value consists of a natural
  * length and optionally some stretchability and shrinkability components.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;skip&rang;
- *        &rarr; &lang;optional prefix&rang; <tt>\skip</tt> {@linkplain
+ *        &rarr; &lang;optional prefix&rang; {@code \skip} {@linkplain
  *        org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,CodeToken)
  *        &lang;register name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
@@ -65,19 +66,18 @@ import org.extex.typesetter.exception.TypesetterException;
  *
  *   &lang;optional prefix&rang;
  *     &rarr;
- *      |  <tt>\global</tt> &lang;optional prefix&rang;  </pre>
+ *      |  {@code \global} &lang;optional prefix&rang;  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \skip 1em plus 1pt minus 1pt  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class SkipPrimitive extends AbstractSkip
         implements
             Advanceable,
@@ -87,7 +87,7 @@ public class SkipPrimitive extends AbstractSkip
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -102,10 +102,7 @@ public class SkipPrimitive extends AbstractSkip
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.code.Advanceable#advance(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -120,10 +117,7 @@ public class SkipPrimitive extends AbstractSkip
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -137,10 +131,7 @@ public class SkipPrimitive extends AbstractSkip
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.GlueConvertible#convertGlue(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Glue convertGlue(Context context, TokenSource source,
@@ -151,10 +142,7 @@ public class SkipPrimitive extends AbstractSkip
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.code.Divideable#divide(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -175,10 +163,7 @@ public class SkipPrimitive extends AbstractSkip
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.code.Multiplyable#multiply(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -195,10 +180,7 @@ public class SkipPrimitive extends AbstractSkip
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

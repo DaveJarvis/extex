@@ -35,36 +35,35 @@ import org.extex.resource.io.NamedInputStream;
 
 /**
  * This is the base class for all file reading classes in
- * <logo>&epsilon;&chi;Bib</logo>.
+ * ??Bib.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractFileReader implements Observable {
 
     /**
-     * The field <tt>filename</tt> contains the name of the file to read.
+     * The field {@code filename} contains the name of the file to read.
      */
     private String filename = "???";
 
     /**
-     * The field <tt>reader</tt> contains the internal reader to be used.
+     * The field {@code reader} contains the internal reader to be used.
      */
     private LineNumberReader reader = null;
 
     /**
-     * The field <tt>locator</tt> contains the locator from the user's
+     * The field {@code locator} contains the locator from the user's
      * perspective.
      */
     private Locator locator = null;
 
     /**
-     * The field <tt>line</tt> contains the temporary memory for the line.
+     * The field {@code line} contains the temporary memory for the line.
      */
     private StringBuilder line = new StringBuilder();
 
     /**
-     * The field <tt>finder</tt> contains the resource finder.
+     * The field {@code finder} contains the resource finder.
      */
     private ResourceFinder finder;
 
@@ -80,7 +79,7 @@ public abstract class AbstractFileReader implements Observable {
     /**
      * Determine whether another read can be performed on the reader.
      * 
-     * @return <code>true</code> if read may be performed
+     * @return {@code true} if read may be performed
      */
     public boolean canRead() {
 
@@ -152,7 +151,7 @@ public abstract class AbstractFileReader implements Observable {
      * 
      * @throws ConfigurationException in case that the configuration is invalid
      * @throws FileNotFoundException in case that the reader is
-     *         <code>null</code>
+     *         {@code null}
      */
     public LineNumberReader open(String name, Reader r)
             throws FileNotFoundException,
@@ -171,7 +170,7 @@ public abstract class AbstractFileReader implements Observable {
      * 
      * @param name the name of the file to open
      * @param type the type of the file to open
-     * @param encoding the encoding to use or <code>null</code> for the platform
+     * @param encoding the encoding to use or {@code null} for the platform
      *        default
      * 
      * @return a Reader for the requested file
@@ -233,10 +232,7 @@ public abstract class AbstractFileReader implements Observable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.util.Observable#registerObserver(java.lang.String,
-     *      org.extex.exbib.core.util.Observer)
+*      org.extex.exbib.core.util.Observer)
      */
     @Override
     public void registerObserver(String name, Observer observer)

@@ -25,17 +25,16 @@ import org.extex.framework.configuration.Configuration;
  * This exception is thrown when a dynamically loaded class could not be found.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ConfigurationClassNotFoundException extends ConfigurationException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     private static final long serialVersionUID = 2010L;
 
     /**
-     * The field <tt>className</tt> contains the name of the class which could
+     * The field {@code className} contains the name of the class which could
      * not be found.
      */
     private String className = null;
@@ -56,7 +55,7 @@ public class ConfigurationClassNotFoundException extends ConfigurationException 
      * 
      * @param className the name of the class which could not be found
      * @param config the configuration in which the problem occurred or
-     *        <code>null</code>
+     *        {@code null}
      */
     public ConfigurationClassNotFoundException(String className,
             Configuration config) {
@@ -67,8 +66,8 @@ public class ConfigurationClassNotFoundException extends ConfigurationException 
 
     /**
      * Getter for the text prefix of this ConfigException. The text is taken
-     * from the resource bundle <tt>ConfigurationEception</tt> under the key
-     * <tt>ConfigurationClassNotFoundException.Text</tt>. The argument {0} is
+     * from the resource bundle {@code ConfigurationEception} under the key
+     * {@code ConfigurationClassNotFoundException.Text}. The argument {0} is
      * replaced by the name of the missing class as passed to the constructor,
      * or the message of the cause if no class name is present, or the empty
      * string as final fallback.

@@ -27,8 +27,7 @@ import org.extex.backend.documentWriter.exception.DocumentWriterException;
  * This is the factory for new OutputStreams.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4492 $
- */
+*/
 public interface OutputStreamFactory {
 
     /**
@@ -36,7 +35,7 @@ public interface OutputStreamFactory {
      * 
      * @param name the name segment to characterize the stream externally. This
      *        segment might be used as part of the output file. If the name is
-     *        <code>null</code> then it is treated as not given at all.
+     *        {@code null} then it is treated as not given at all.
      * @param type the type of the stream to acquire. In general this should
      *        correspond to the extension of a file of this type
      * 
@@ -56,7 +55,7 @@ public interface OutputStreamFactory {
 
     /**
      * Setter for the default extension. The default extension is used when the
-     * type specified is <code>null</code>.
+     * type specified is {@code null}.
      * 
      * @param extension the default extension
      */

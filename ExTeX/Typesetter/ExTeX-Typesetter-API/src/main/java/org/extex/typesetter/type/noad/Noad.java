@@ -32,8 +32,7 @@ import org.extex.typesetter.type.noad.util.MathSpacing;
  * constructions.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public interface Noad {
 
     /**

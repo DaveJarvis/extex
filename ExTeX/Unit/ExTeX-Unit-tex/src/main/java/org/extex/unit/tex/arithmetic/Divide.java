@@ -35,64 +35,63 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\divide</code>.
+ * This class provides an implementation for the primitive {@code \divide}.
  * 
- * <doc name="divide">
- * <h3>The Primitive <tt>\divide</tt></h3>
+ * <p>The Primitive {@code \divide}</p>
  * <p>
  * This primitive implements an assignment. The variable given as next tokens is
- * divided by the quantity given after the optional <tt>by</tt>.
+ * divided by the quantity given after the optional {@code by}.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *   &lang;divide&rang;
- *     &rarr; &lang;optional prefix&rang; <tt>\divide</tt> &lang;dividable&rang;
+ *     &rarr; &lang;optional prefix&rang; {@code \divide} &lang;dividable&rang;
  *
  *   &lang;dividable&rang;
- *     &rarr; &lang;integer variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
+ *     &rarr; &lang;integer variable&rang; &lang;optional {@code by}&rang; {@linkplain
  *      org.extex.base.parser.ConstantCountParser#scanInteger(Context,TokenSource,Typesetter)
  *      &lang;8-bit&nbsp;number&rang;}
- *      |  &lang;dimen variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
+ *      |  &lang;dimen variable&rang; &lang;optional {@code by}&rang; {@linkplain
  *      org.extex.base.parser.ConstantCountParser#scanInteger(Context,TokenSource,Typesetter)
  *      &lang;8-bit&nbsp;number&rang;}
- *      |  &lang;glue variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
+ *      |  &lang;glue variable&rang; &lang;optional {@code by}&rang; {@linkplain
  *      org.extex.base.parser.ConstantCountParser#scanInteger(Context,TokenSource,Typesetter)
  *      &lang;8-bit&nbsp;number&rang;}
- *      |  &lang;muglue variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
+ *      |  &lang;muglue variable&rang; &lang;optional {@code by}&rang; {@linkplain
  *      org.extex.base.parser.ConstantCountParser#scanInteger(Context,TokenSource,Typesetter)
  *      &lang;8-bit&nbsp;number&rang;}
  *
  *   &lang;optional prefix&rang;
  *     &rarr;
- *      |  <tt>\global</tt> &lang;optional prefix&rang;
+ *      |  {@code \global} &lang;optional prefix&rang;
  *
- *   &lang;optional <tt>by</tt>&rang;
+ *   &lang;optional {@code by}&rang;
  *     &rarr; [by]
  *      |  {@linkplain org.extex.interpreter.TokenSource#skipSpace()
  *            &lang;optional spaces&rang;}
  *   </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \divide\count12 345  </pre>
  *  <pre class="TeXSample">
  *    \divide\count12 by -345  </pre>
  * 
- * </doc>
  * 
  * 
  * @see org.extex.interpreter.type.code.Divideable
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4408 $
- */
+*/
 public class Divide extends AbstractAssignment {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -108,10 +107,7 @@ public class Divide extends AbstractAssignment {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

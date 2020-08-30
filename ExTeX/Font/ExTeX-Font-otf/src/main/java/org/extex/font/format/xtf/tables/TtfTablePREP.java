@@ -35,7 +35,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * is anachronistic but some people still call the control value program the
  * preProgram.
  * 
- * <table BORDER="1"> <tbody>
+ *  <table> <caption>TBD</caption> <tbody>
  * <tr>
  * <td><b>Type</b></td>
  * <td><b>Description</b></td>
@@ -49,8 +49,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TtfTablePREP extends AbstractXtfTable
         implements
             XtfTable,
@@ -59,7 +58,7 @@ public class TtfTablePREP extends AbstractXtfTable
     /**
      * instructions
      */
-    private byte[] instructions;
+    private final byte[] instructions;
 
     /**
      * Create a new object.
@@ -90,12 +89,7 @@ public class TtfTablePREP extends AbstractXtfTable
         return instructions;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
+public String getShortcut() {
 
         return "prep";
     }
@@ -111,10 +105,7 @@ public class TtfTablePREP extends AbstractXtfTable
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

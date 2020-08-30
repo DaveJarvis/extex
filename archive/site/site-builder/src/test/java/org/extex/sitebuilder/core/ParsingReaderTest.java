@@ -32,12 +32,11 @@ import org.junit.Test;
  * This is a test suite for {@link ParsingReader}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ParsingReaderTest {
 
     /**
-     * <testcase> TODO </testcase>
+     *  TODO
      * 
      * @throws IOException in case of an error
      */
@@ -49,7 +48,7 @@ public class ParsingReaderTest {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     *  TODO
      * 
      * @throws IOException in case of an error
      */
@@ -61,7 +60,7 @@ public class ParsingReaderTest {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     *  TODO
      * 
      * @throws IOException in case of an error
      */
@@ -73,7 +72,7 @@ public class ParsingReaderTest {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     *  TODO
      * 
      * @throws IOException in case of an error
      */
@@ -85,7 +84,7 @@ public class ParsingReaderTest {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     *  TODO
      * 
      * @throws IOException in case of an error
      */
@@ -100,7 +99,7 @@ public class ParsingReaderTest {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     *  TODO
      * 
      * @throws IOException in case of an error
      */

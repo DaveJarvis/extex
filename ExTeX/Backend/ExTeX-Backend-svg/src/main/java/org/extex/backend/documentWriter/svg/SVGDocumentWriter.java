@@ -51,8 +51,7 @@ import java.util.Map;
  * TODO incomplete !!!
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:4704 $
- */
+*/
 public class SVGDocumentWriter
         implements
             DocumentWriter,
@@ -95,7 +94,7 @@ public class SVGDocumentWriter
     private String encoding = "ISO-8859-1";
 
     /**
-     * The field <tt>shippedPages</tt>.
+     * The field {@code shippedPages}.
      */
     private int shippedPages = 0;
 

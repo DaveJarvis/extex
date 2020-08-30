@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains implementations of
+ * Contains implementations of
  * {@link org.extex.exbib.core.bst.command.Command Command}s which are
  * executed when the BST program is run by the
  * {@link org.extex.exbib.core.bst.BstProcessor BstProcessor}.

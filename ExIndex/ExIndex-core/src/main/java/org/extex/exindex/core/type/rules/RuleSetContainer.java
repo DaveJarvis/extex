@@ -26,8 +26,7 @@ import java.util.List;
  * This interface describes a read-only container for rule sets.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface RuleSetContainer {
 
     /**
@@ -43,7 +42,7 @@ public interface RuleSetContainer {
      * 
      * @param name the name of the rule set
      * 
-     * @return the rule set or <code>null</code> if undefined
+     * @return the rule set or {@code null} if undefined
      */
     List<Rule> lookupRule(String name);
 

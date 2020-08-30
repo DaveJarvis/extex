@@ -29,15 +29,14 @@ import org.extex.exindex.core.type.page.PageReference;
  * not been assigned yet.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 5432 $
- */
+*/
 public class PageRangeClose extends Pages {
 
     /**
      * Creates a new object.
      * 
      * @param page the page
-     * @param encap the encapsulator or <code>null</code>
+     * @param encap the encapsulator or {@code null}
      */
     public PageRangeClose(PageReference page, String encap) {
 
@@ -45,10 +44,7 @@ public class PageRangeClose extends Pages {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.makeindex.pages.Pages#writeCore(java.io.Writer,
-     *      java.lang.String[], java.lang.String)
+*      java.lang.String[], java.lang.String)
      */
     @Override
     protected void writeCore(Writer writer, String[] pageParams, String fromPage)

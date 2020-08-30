@@ -36,12 +36,11 @@ import org.junit.Test;
  * This is a test suite for the pom collector.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class PomCollectorTest {
 
     /**
-     * The field <tt>EXPECTED_DOT</tt> contains the result for analyzing the
+     * The field {@code EXPECTED_DOT} contains the result for analyzing the
      * current directory.
      */
     private static final String EXPECTED_DOT =

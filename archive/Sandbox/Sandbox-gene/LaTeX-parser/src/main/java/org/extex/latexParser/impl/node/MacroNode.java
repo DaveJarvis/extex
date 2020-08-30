@@ -29,23 +29,22 @@ import org.extex.scanner.type.token.Token;
  * This class represents an invocation of a macro or active character.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MacroNode extends AbstractNode {
 
     /**
-     * The field <tt>token</tt> contains the command token.
+     * The field {@code token} contains the command token.
      */
     private Token token;
 
     /**
-     * The field <tt>opt</tt> contains the optional argument. it can be
-     * <code>null</code> if none are present.
+     * The field {@code opt} contains the optional argument. it can be
+     * {@code null} if none are present.
      */
     private Node opt;
 
     /**
-     * The field <tt>args</tt> contains the arguments.
+     * The field {@code args} contains the arguments.
      */
     private Node[] args;
 
@@ -97,12 +96,7 @@ public class MacroNode extends AbstractNode {
         return token;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.api.Node#print(java.io.PrintStream)
-     */
-    public void print(PrintStream stream) {
+public void print(PrintStream stream) {
 
         stream.print(token.toText());
         if (opt != null) {
@@ -119,12 +113,7 @@ public class MacroNode extends AbstractNode {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();

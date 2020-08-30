@@ -28,23 +28,22 @@ import org.extex.scanner.type.token.RightBraceToken;
  * This class represents an input or include.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 7667 $
- */
+*/
 public class InputNode extends NodeList {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2009L;
 
     /**
-     * The field <tt>openToken</tt> contains the opening token.
+     * The field {@code openToken} contains the opening token.
      */
     private LeftBraceToken openToken;
 
     /**
-     * The field <tt>closeToken</tt> contains the closing token.
+     * The field {@code closeToken} contains the closing token.
      */
     private RightBraceToken closeToken;
 
@@ -89,7 +88,7 @@ public class InputNode extends NodeList {
 
     /**
      * Getter for the name of the group. Plain groups do not have a name and
-     * thus will return <code>null</code>.
+     * thus will return {@code null}.
      * 
      * @return the name of the group
      */
@@ -108,12 +107,7 @@ public class InputNode extends NodeList {
         return openToken;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.api.Node#print(java.io.PrintStream)
-     */
-    @Override
+@Override
     public void print(PrintStream stream) {
 
         if (openToken != null) {
@@ -125,12 +119,7 @@ public class InputNode extends NodeList {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();

@@ -31,8 +31,7 @@ import java.util.Map;
  * </p>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public final class ScriptTag extends Tag {
 
     private static final Map<String, ScriptTag> scriptTags =
@@ -103,8 +102,8 @@ public final class ScriptTag extends Tag {
      * Check, if the name is in the script tag list.
      *
      * @param name The name of the script tag.
-     * @return Returns <code>true</code>, if found, otherwise
-     *         <code>false</code>.
+     * @return Returns {@code true}, if found, otherwise
+     *         {@code false}.
      */
     public static boolean containsTag( String name ) {
       return scriptTags.containsKey( format( name ) );

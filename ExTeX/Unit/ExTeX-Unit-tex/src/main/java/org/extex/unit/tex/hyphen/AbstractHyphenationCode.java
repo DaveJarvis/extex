@@ -34,88 +34,88 @@ import org.extex.scanner.type.tokens.Tokens;
  * 
  * <p>
  * In TeX the language is determined by the count register named
- * <tt>language</tt>. This has the disadvantage that the language is named
+ * {@code language}. This has the disadvantage that the language is named
  * anonymously by an integer.
  * </p>
  * <p>
  * This base class implements an extension to this scheme. First the toks
- * register <tt>lang</tt> is sought. If this register is defined and not empty
+ * register {@code lang} is sought. If this register is defined and not empty
  * then the contents is used as name of the current language. Otherwise the
- * count register <tt>language</tt> is used for this purpose.
+ * count register {@code language} is used for this purpose.
  * </p>
  * 
  * 
- * <doc name="lang" type="register"> <h3>The Tokens Register <tt>\lang</tt></h3>
+ *  <p>The Tokens Register {@code \lang}</p>
  * <p>
- * The tokens register <tt>\lang</tt> is the primary source of information to
+ * The tokens register {@code \lang} is the primary source of information to
  * determine the current language. If this register is not defined or has the
- * empty value then the count register <tt>\language</tt> is used instead.
+ * empty value then the count register {@code \language} is used instead.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;lang&rang;
- *      &rarr; <tt>\lang</tt> {@linkplain
+ *      &rarr; {@code \lang} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getTokens(Context,org.extex.interpreter.TokenSource,org.extex.typesetter.Typesetter)
  *        &lang;tokens&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \lang={de}  </pre>
  * 
- * </doc>
+ *
  * 
- * 
- * <doc name="language" type="register"> <h3>The Count Register
- * <tt>\language</tt></h3>
+ * <p>The Count Register {@code \language}</p>
  * <p>
- * The count register <tt>\language</tt> is the secondary source of information
- * to determine the current language. If this tokens register <tt>\lang</tt> is
+ * The count register {@code \language} is the secondary source of information
+ * to determine the current language. If this tokens register {@code \lang} is
  * not defined or has the empty value then this is used instead.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;language&rang;
- *      &rarr; <tt>\language</tt> {@linkplain
+ *      &rarr; {@code \language} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,org.extex.interpreter.TokenSource,org.extex.typesetter.Typesetter)
  *        &lang;number&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \language=1  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4766 $
- */
+*/
 public abstract class AbstractHyphenationCode extends AbstractCode {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>LANGUAGE_COUNT</tt> contains the name of the count register
+     * The field {@code LANGUAGE_COUNT} contains the name of the count register
      * to determine the language.
      */
     private static final String LANGUAGE_COUNT = "language";
 
     /**
-     * The field <tt>LANGUAGE_TOKS</tt> contains the name of the tokens register
+     * The field {@code LANGUAGE_TOKS} contains the name of the tokens register
      * to determine the language.
      */
     private static final String LANGUAGE_TOKS = "lang";

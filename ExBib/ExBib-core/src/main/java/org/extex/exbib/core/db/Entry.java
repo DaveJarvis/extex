@@ -30,7 +30,7 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * This is the basic object stored in a <logo>&epsilon;&chi;Bib</logo> database.
+ * This is the basic object stored in a ??Bib database.
  * 
  * <p>
  * Each {@link Entry} has a type and a key. The type classifies the
@@ -38,37 +38,36 @@ import org.extex.exbib.core.io.Locator;
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Entry implements Iterable<String> {
 
     /**
-     * The field <tt>locator</tt> contains the locator for error messages.
+     * The field {@code locator} contains the locator for error messages.
      */
     private final Locator locator;
 
     /**
-     * The field <tt>values</tt> contains the hash of "normal" values.
+     * The field {@code values} contains the hash of "normal" values.
      */
     private final Map<String, Value> values = new HashMap<String, Value>();
 
     /**
-     * The field <tt>local</tt> contains the hash of local values.
+     * The field {@code local} contains the hash of local values.
      */
     private final Map<String, ValueItem> local = new HashMap<String, ValueItem>();
 
     /**
-     * The field <tt>key</tt> contains the "name" of the Entry.
+     * The field {@code key} contains the "name" of the Entry.
      */
     private String key = null;
 
     /**
-     * The field <tt>type</tt> contains the "class" of the Entry.
+     * The field {@code type} contains the "class" of the Entry.
      */
     private String type = null;
 
     /**
-     * The field <tt>keys</tt> contains the list of keys is maintained for
+     * The field {@code keys} contains the list of keys is maintained for
      * performance reasons.
      */
     private final List<String> keys = new ArrayList<String>();
@@ -88,7 +87,7 @@ public class Entry implements Iterable<String> {
      * 
      * @param name the key of the value
      * 
-     * @return the Value or <code>null</code> if none is found
+     * @return the Value or {@code null} if none is found
      */
     public Value get(String name) {
 
@@ -103,7 +102,7 @@ public class Entry implements Iterable<String> {
      * @param entryKey the key of the value
      * @param db database context
      * 
-     * @return the Value or <code>null</code> if none is found
+     * @return the Value or {@code null} if none is found
      * 
      * @throws ExBibException in case of an error
      */
@@ -137,7 +136,7 @@ public class Entry implements Iterable<String> {
      * @param name the key of the "normal" value to expand
      * @param db the database context
      * 
-     * @return the expanded version of the value or <code>null</code> if it does
+     * @return the expanded version of the value or {@code null} if it does
      *         not exist
      * 
      * @throws ExBibException in case of an error
@@ -183,7 +182,7 @@ public class Entry implements Iterable<String> {
      * 
      * @param name the key of the local value
      * 
-     * @return the local value for key or <code>null</code> if it does not
+     * @return the local value for key or {@code null} if it does not
      *         exist.
      */
     public ValueItem getLocal(String name) {
@@ -197,7 +196,7 @@ public class Entry implements Iterable<String> {
      * 
      * @param name the name of the local value
      * 
-     * @return the local value for key or <code>null</code> if it does not
+     * @return the local value for key or {@code null} if it does not
      *         exist.
      * 
      * @throws NullPointerException in case that the local variable isn't
@@ -216,7 +215,7 @@ public class Entry implements Iterable<String> {
      * 
      * @param name the name of the local value
      * 
-     * @return the local value for key or <code>null</code> if it does not
+     * @return the local value for key or {@code null} if it does not
      *         exist.
      */
     public String getLocalString(String name) {
@@ -237,9 +236,9 @@ public class Entry implements Iterable<String> {
 
     /**
      * Getter for the sort key of this Entry. The sort key is stored as local
-     * value under the key <tt>sort.key$</tt>.
+     * value under the key {@code sort.key$}.
      * 
-     * @return the sort key or <code>null</code> if none is set
+     * @return the sort key or {@code null} if none is set
      */
     public String getSortKey() {
 
@@ -257,12 +256,7 @@ public class Entry implements Iterable<String> {
         return type;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Iterable#iterator()
-     */
-    @Override
+@Override
     public Iterator<String> iterator() {
 
         return keys.iterator();
@@ -351,7 +345,7 @@ public class Entry implements Iterable<String> {
 
     /**
      * Setter for the sort key of this Entry. The sort key is stored as local
-     * value under the key <tt>sort.key$</tt>.
+     * value under the key {@code sort.key$}.
      * 
      * @param sortKey the sort key
      */
@@ -370,12 +364,7 @@ public class Entry implements Iterable<String> {
         type = t.toLowerCase(Locale.ENGLISH);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return "@" + type + "{" + key + ",...}";

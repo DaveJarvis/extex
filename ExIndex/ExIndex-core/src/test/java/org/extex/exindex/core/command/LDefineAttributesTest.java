@@ -39,12 +39,11 @@ import org.junit.Test;
  * This is a test suite for (define-attributes).
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6688 $
- */
+*/
 public class LDefineAttributesTest {
 
     /**
-     * The field <tt>DEFINE_ATTRIBUTES</tt> contains the symbol for
+     * The field {@code DEFINE_ATTRIBUTES} contains the symbol for
      * define-attributes.
      */
     private static final LSymbol DEFINE_ATTRIBUTES =

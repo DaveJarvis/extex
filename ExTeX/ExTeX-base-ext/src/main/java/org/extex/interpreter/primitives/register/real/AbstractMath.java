@@ -38,8 +38,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * Abstract class for math primitives. E.g. sin, cos
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractMath extends AbstractCode
         implements
             Theable,
@@ -47,7 +46,7 @@ public abstract class AbstractMath extends AbstractCode
             CountConvertible {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2009L;

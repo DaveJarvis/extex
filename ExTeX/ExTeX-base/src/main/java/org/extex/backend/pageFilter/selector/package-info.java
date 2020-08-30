@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the page selector and supporting classes.
+ *Contains page selector and supporting classes.
  */
 
 package org.extex.backend.pageFilter.selector;

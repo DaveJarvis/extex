@@ -24,8 +24,7 @@ package org.extex.exindex.core.type.rules;
  * expressions are used.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6666 $
- */
+*/
 public class RegexRule extends Rule {
 
     /**
@@ -40,24 +39,14 @@ public class RegexRule extends Rule {
         super(pattern, replacement, again);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.rules.Rule#apply(StringBuilder, int)
-     */
-    @Override
+@Override
     public int apply(StringBuilder word, int index) {
 
         // TODO gene: apply unimplemented
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();

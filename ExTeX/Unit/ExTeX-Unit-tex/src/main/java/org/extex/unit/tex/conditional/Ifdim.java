@@ -31,45 +31,35 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.conditional.AbstractIf;
 
 /**
- * This class provides an implementation for the primitive <code>\ifdim</code>.
+ * This class provides an implementation for the primitive {@code \ifdim}.
  * 
- * <doc name="ifdim">
- * <h3>The Primitive <tt>\ifdim</tt></h3>
+ * <p>The Primitive {@code \ifdim}</p>
  * <p>
- * The primitive <tt>\ifdim</tt> provides a conditional which compares two
+ * The primitive {@code \ifdim} provides a conditional which compares two
  * dimen values. The comparison for equality, greater, and less are possible.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;ifdim&rang;
- *      &rarr; <tt>\ifdim</tt> {@linkplain
- *        org.extex.core.dimen#Dimen(Context,TokenSource)
- *        &lang;dimen&rang;} &lang;op&rang; {@linkplain
- *        org.extex.core.dimen#Dimen(Context,TokenSource)
- *        &lang;dimen&rang;} &lang;true text&rang; <tt>\fi</tt>
- *      | <tt>\ifdim</tt> {@linkplain
- *        org.extex.core.dimen#Dimen(Context,TokenSource)
- *        &lang;dimen&rang;} &lang;op&rang; {@linkplain
- *        org.extex.core.dimen#Dimen(Context,TokenSource)
- *        &lang;dimen&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt>
+ *      &rarr; {@code \ifdim} &lang;dimen&rang; &lang;op&rang; &lang;dimen&rang; &lang;true text&rang; {@code \fi}
+ *      | {@code \ifdim} &lang;dimen&rang; &lang;op&rang; &lang;dimen&rang; &lang;true text&rang; {@code \else} &lang;false text&rang; {@code \fi}
  *
  *    &lang;op&rang;
  *      &rarr; [&lt;]
  *      | [=]
  *      | [&gt;]  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4439 $
- */
+*/
 public class Ifdim extends AbstractIf {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -85,10 +75,7 @@ public class Ifdim extends AbstractIf {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.base.conditional.AbstractIf#conditional(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

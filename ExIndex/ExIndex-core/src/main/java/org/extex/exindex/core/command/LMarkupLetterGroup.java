@@ -33,12 +33,11 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to parse a letter group.
  * 
- * <doc type="exindex-command" command="markup-letter-group">
- * 
- * <h3>The Command <tt>markup-letter-group</tt></h3>
+*
+ * <p>The Command {@code markup-letter-group}</p>
  * 
  * <p>
- * The command <tt>markup-letter-group</tt> can be used to specify the markup
+ * The command {@code markup-letter-group} can be used to specify the markup
  * for letter group lists.
  * </p>
  * 
@@ -64,18 +63,16 @@ import org.extex.exindex.lisp.type.value.LValue;
  * 
  * TODO documentation incomplete
  * 
- * </doc>
- * 
- * <h3>Parameters</h3>
+ *
+ * <p>Parameters</p>
  * <p>
  * The parameters defined with this command are stored in the L system under the
- * key of the function name (i.e. <tt>markup-letter-group</tt>).
+ * key of the function name (i.e. {@code markup-letter-group}).
  * </p>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LMarkupLetterGroup extends AbstractLAdapter {
 
     /**
@@ -117,7 +114,7 @@ public class LMarkupLetterGroup extends AbstractLAdapter {
      * @param capitalize the indicator for the capitalize transform
      * @param force force the printing of the group even if the group is empty
      * 
-     * @return <tt>null</tt>
+     * @return {@code null}
      * 
      * @throws LSettingConstantException should not happen
      * @throws InconsistentFlagsException in case of an error

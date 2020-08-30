@@ -53,12 +53,11 @@ import org.xml.sax.SAXException;
  * Extract doc tags from sources and translate them to HTML.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5413 $
- */
+*/
 public class ExDocHtml extends ExDocXml {
 
     /**
-     * The field <tt>XSLT</tt> contains the name of the XSLT file to use.
+     * The field {@code XSLT} contains the name of the XSLT file to use.
      */
     private static final String XSLT = "org/extex/exdoc/xslt/xml2html.xsl";
 
@@ -81,12 +80,12 @@ public class ExDocHtml extends ExDocXml {
     }
 
     /**
-     * The field <tt>keys</tt> contains the list of keys.
+     * The field {@code keys} contains the list of keys.
      */
     private List<Key> keys = new ArrayList<Key>();
 
     /**
-     * The field <tt>transformer</tt> contains the xslt engine.
+     * The field {@code transformer} contains the xslt engine.
      */
     private Transformer transformer;
 
@@ -153,7 +152,7 @@ public class ExDocHtml extends ExDocXml {
     /**
      * Process the list of resources and authors.
      * 
-     * @param file the target file or <code>null</code>
+     * @param file the target file or {@code null}
      * @param authors the list of authors
      * 
      * @throws IOException in case of an I/O error
@@ -199,10 +198,7 @@ public class ExDocHtml extends ExDocXml {
      * 
      * @throws Exception in case of an error
      * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exdoc.ExDocXml#run(java.lang.String[])
-     */
+*/
     @Override
     @SuppressWarnings("unchecked")
     public void run(String[] args) throws Exception {
@@ -212,10 +208,7 @@ public class ExDocHtml extends ExDocXml {
         Collections.sort(keys, new Comparator<Key>() {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see java.util.Comparator#compare(java.lang.Object,
-             *      java.lang.Object)
+        *      java.lang.Object)
              */
             public int compare(Key o1, Key o2) {
 
@@ -246,10 +239,7 @@ public class ExDocHtml extends ExDocXml {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exdoc.ExDocXml#shipout( org.extex.exdoc.util.Key,
-     *      java.lang.StringBuilder)
+*      java.lang.StringBuilder)
      */
     @Override
     protected void shipout(Key name, StringBuilder content)

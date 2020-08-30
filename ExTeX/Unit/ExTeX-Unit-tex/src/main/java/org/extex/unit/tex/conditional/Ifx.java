@@ -31,12 +31,11 @@ import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.conditional.AbstractIf;
 
 /**
- * This class provides an implementation for the primitive <code>\ifx</code>.
+ * This class provides an implementation for the primitive {@code \ifx}.
  * 
- * <doc name="ifx">
- * <h3>The Primitive <tt>\ifx</tt></h3>
+ * <p>The Primitive {@code \ifx}</p>
  * <p>
- * The primitive <tt>\ifx</tt> compares the following two tokens. If the
+ * The primitive {@code \ifx} compares the following two tokens. If the
  * following tokens are no macros then the comparison succeeds if they agree in
  * category code and character.
  * </p>
@@ -50,36 +49,36 @@ import org.extex.unit.base.conditional.AbstractIf;
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;ifx&rang;
- *      &rarr; <tt>\ifx</tt> {@linkplain
+ *      &rarr; {@code \ifx} {@linkplain
  *        org.extex.interpreter.TokenSource#getToken(Context)
  *        &lang;token<sub>1</sub>&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getToken(Context)
- *        &lang;token<sub>2</sub>&rang;}; &lang;true text&rang; <tt>\fi</tt>
- *      | <tt>\ifx</tt> {@linkplain
+ *        &lang;token<sub>2</sub>&rang;}; &lang;true text&rang; {@code \fi}
+ *      | {@code \ifx} {@linkplain
  *        org.extex.interpreter.TokenSource#getToken(Context)
  *        &lang;token<sub>1</sub>&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getToken(Context)
- *        &lang;token<sub>2</sub>&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
+ *        &lang;token<sub>2</sub>&rang;} &lang;true text&rang; {@code \else} &lang;false text&rang; {@code \fi} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \ifx\a\x ok \fi  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4439 $
- */
+*/
 public class Ifx extends AbstractIf {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -95,10 +94,7 @@ public class Ifx extends AbstractIf {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.base.conditional.AbstractIf#conditional(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

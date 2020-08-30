@@ -22,13 +22,13 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Class for a encoding writer.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- * 
+*
  */
 public class EncWriter {
 
@@ -45,7 +45,7 @@ public class EncWriter {
     /**
      * The encoding vector.
      */
-    private String[] enc = new String[ENCODINGSIZE];
+    private final String[] enc = new String[ENCODINGSIZE];
 
     /**
      * The encoding name.
@@ -139,7 +139,8 @@ public class EncWriter {
     public void write(OutputStream out) throws IOException {
 
         BufferedWriter writer =
-                new BufferedWriter(new OutputStreamWriter(out, "ASCII"));
+                new BufferedWriter(new OutputStreamWriter( out,
+                                                           StandardCharsets.US_ASCII ));
 
         if (headerComment != null) {
             writer.write(headerComment);

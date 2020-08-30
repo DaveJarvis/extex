@@ -26,12 +26,11 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This exception signals that an unknown argument has been encountered.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 6676 $
- */
+*/
 public class UnknownAttributeException extends IndexerException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;

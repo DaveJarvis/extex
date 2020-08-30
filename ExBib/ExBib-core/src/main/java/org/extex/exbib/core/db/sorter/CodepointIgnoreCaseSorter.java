@@ -37,8 +37,7 @@ import org.extex.exbib.core.db.Entry;
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class CodepointIgnoreCaseSorter
         implements
             Comparator<Entry>,
@@ -46,7 +45,7 @@ public class CodepointIgnoreCaseSorter
             Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2008L;
@@ -55,10 +54,7 @@ public class CodepointIgnoreCaseSorter
      * Provide a Comparator which just uses the appropriate keys and compares
      * them without respect to the case.
      * 
-     * {@inheritDoc}
-     * 
-     * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
-     */
+*/
     public int compare(Entry a, Entry b) {
 
         String ka = a.getSortKey();

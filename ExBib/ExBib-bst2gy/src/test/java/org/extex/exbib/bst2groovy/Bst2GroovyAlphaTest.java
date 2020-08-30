@@ -35,8 +35,7 @@ import org.junit.Test;
  * This is a test suite for Bst2Groovy.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Bst2GroovyAlphaTest {
 
     private static final String DIR_TARGET = "build";
@@ -77,8 +76,8 @@ public class Bst2GroovyAlphaTest {
     }
 
     /**
-     * <testcase> Test that abbrv.bst can be compiled without errors.
-     * </testcase>
+     *  Test that abbrv.bst can be compiled without errors.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -89,8 +88,8 @@ public class Bst2GroovyAlphaTest {
     }
 
     /**
-     * <testcase> Test that alpha.bst can be compiled without errors.
-     * </testcase>
+     *  Test that alpha.bst can be compiled without errors.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -101,8 +100,8 @@ public class Bst2GroovyAlphaTest {
     }
 
     /**
-     * <testcase> Test that plain.bst can be compiled without errors.
-     * </testcase>
+     *  Test that plain.bst can be compiled without errors.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -113,8 +112,8 @@ public class Bst2GroovyAlphaTest {
     }
 
     /**
-     * <testcase> Test that unsrt.bst can be compiled without errors.
-     * </testcase>
+     *  Test that unsrt.bst can be compiled without errors.
+     * 
      * 
      * @throws Exception in case of an error
      */

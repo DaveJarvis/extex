@@ -28,8 +28,7 @@ import org.extex.typesetter.output.OutputRoutine;
  * This class provides a factory for the output routines.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4728 $
- */
+*/
 public class OutputRoutineFactory extends AbstractFactory<OutputRoutine> {
 
 

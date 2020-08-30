@@ -22,13 +22,12 @@ package org.extex.font.format.pfb;
  * Exception for the pfb parser: Incorrect Record Type.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class PfbIncorrectRecordTypeException extends PfbException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 1L;

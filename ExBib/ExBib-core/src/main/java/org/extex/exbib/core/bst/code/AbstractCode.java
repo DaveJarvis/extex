@@ -24,8 +24,7 @@ package org.extex.exbib.core.bst.code;
  * handling of the name attribute is located in this class.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractCode implements Code {
 
     /**

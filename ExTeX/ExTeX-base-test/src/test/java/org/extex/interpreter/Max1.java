@@ -51,8 +51,7 @@ import static org.junit.Assert.assertEquals;
  * TODO: Ignored because config/tex.xml is missing.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4784 $
- */
+*/
 @Ignore
 public class Max1 {
 

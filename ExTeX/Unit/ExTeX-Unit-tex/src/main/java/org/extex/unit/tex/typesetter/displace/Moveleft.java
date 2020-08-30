@@ -32,50 +32,43 @@ import org.extex.unit.tex.typesetter.box.AbstractBoxPrimitive;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\moveleft</code>.
+ * {@code \moveleft}.
  * 
- * <doc name="moveleft">
- * <h3>The Primitive <tt>\moveleft</tt></h3>
+ * <p>The Primitive {@code \moveleft}</p>
  * <p>
- * The primitive <tt>\moveleft</tt> takes a box and a length and moves it
+ * The primitive {@code \moveleft} takes a box and a length and moves it
  * leftwards by the amount specified by the length. If the length is negative
  * then the move is done rightwards.
  * </p>
  * <p>
- * The primitive <tt>\moveleft</tt> is the counterpart to
- * {@link org.extex.unit.tex.typesetter.displace.Moveright <tt>\moveright</tt>}.
+ * The primitive {@code \moveleft} is the counterpart to
+ * {@link org.extex.unit.tex.typesetter.displace.Moveright {@code \moveright}}.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;moveleft&rang;
- *      &rarr; <tt>\moveleft</tt> {@linkplain
- *        org.extex.core.dimen#Dimen(Context,TokenSource)
- *        &lang;dimen&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#getBox(org.extex.interpreter.Flags,Context,Typesetter,Token)
- *        &lang;box&rang;}  </pre>
+ *      &rarr; {@code \moveleft} &lang;dimen&rang; &lang;box&rang;
+ * </pre>
  * 
- * <h4>Examples</h4>
- * 
+ * <p>Examples</p>
+ *
  * <pre class="TeXSample">
  *    \moveleft 2em \hbox{abc}  </pre>
  *  <pre class="TeXSample">
  *    \moveleft -1pt \hbox to 120pt {abc}  </pre>
  *  <pre class="TeXSample">
  *    \moveleft 2mm \hbox spread 12pt {abc}  </pre>
- * 
- * </doc>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Moveleft extends AbstractBoxPrimitive {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -91,10 +84,7 @@ public class Moveleft extends AbstractBoxPrimitive {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.register.box.BoxPrimitive#getBox(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */

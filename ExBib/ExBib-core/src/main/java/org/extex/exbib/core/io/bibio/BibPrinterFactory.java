@@ -27,21 +27,20 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 /**
  * This factory class can be used to get an implementation for the interface
  * {@link BibPrinter BibPrinter}.
+ *
  * <p>
  * The factory is controlled by a configuration. This configuration contains an
- * attribute <code>class</code>. This attribute holds the name of the class to
+ * attribute {@code class}. This attribute holds the name of the class to
  * be instantiated. Consider the following example of a configuration file:
- * 
+ * </p>
+ *
  * <pre>
  *   &lt;BibPrinter
  *       class="org.extex.exbib.core.io.bibio.BibPrinterImpl"/&gt;
  * </pre>
- * 
- * </p>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BibPrinterFactory extends AbstractFactory<BibPrinter> {
 
     /**

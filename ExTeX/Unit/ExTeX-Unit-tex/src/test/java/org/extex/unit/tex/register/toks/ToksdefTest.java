@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\toksdef</tt>.
+ * This is a test suite for the primitive {@code \toksdef}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class ToksdefTest extends AbstractToksRegisterTester {
 
     /**
@@ -48,9 +47,9 @@ public class ToksdefTest extends AbstractToksRegisterTester {
     }
 
     /**
-     * <testcase primitive="\toksdef"> Test case checking that <tt>\toksdef</tt>
+     * <testcase primitive="\toksdef"> Test case checking that {@code \toksdef}
      * creates a toks assignable control sequence which is equivalent to the
-     * <tt>\toks</tt>. </testcase>
+     * {@code \toks}. 
      * 
      * @throws Exception in case of an error
      */
@@ -65,8 +64,8 @@ public class ToksdefTest extends AbstractToksRegisterTester {
     }
 
     /**
-     * <testcase primitive="\toksdef"> Test case checking that <tt>\toksdef</tt>
-     * respects a group. </testcase>
+     * <testcase primitive="\toksdef"> Test case checking that {@code \toksdef}
+     * respects a group. 
      * 
      * @throws Exception in case of an error
      */
@@ -80,8 +79,8 @@ public class ToksdefTest extends AbstractToksRegisterTester {
     }
 
     /**
-     * <testcase primitive="\toksdef"> Test case checking that <tt>\toksdef</tt>
-     * respects a group. </testcase>
+     * <testcase primitive="\toksdef"> Test case checking that {@code \toksdef}
+     * respects a group. 
      * 
      * @throws Exception in case of an error
      */

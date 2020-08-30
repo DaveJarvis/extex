@@ -19,18 +19,13 @@
 
 package org.extex.util.file.random;
 
-import java.io.BufferedInputStream;
-import java.io.DataInputStream;
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 /**
  * RandomAccess for a InputStream
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class RandomAccessInputStream implements RandomAccessR {
 
     /**
@@ -90,57 +85,32 @@ public class RandomAccessInputStream implements RandomAccessR {
         pointer = 0;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.file.random.RandomAccessR#close()
-     */
-    @Override
+@Override
     public void close() {
 
         buffer = null;
         pointer = -1;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.file.random.RandomAccessR#getData()
-     */
-    @Override
+@Override
     public byte[] getData() {
 
         return buffer;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.file.random.RandomAccessR#getPointer()
-     */
-    @Override
+@Override
     public long getPointer() {
 
         return pointer;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.file.random.RandomAccessR#isEOF()
-     */
-    @Override
+@Override
     public boolean isEOF() throws IOException {
 
         return (getPointer() >= length());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.file.random.RandomAccessR#length()
-     */
-    @Override
+@Override
     public long length() {
 
         if (buffer != null) {
@@ -151,9 +121,9 @@ public class RandomAccessInputStream implements RandomAccessR {
 
     /**
      * Reads a byte of data from this file. The byte is returned as an integer
-     * in the range 0 to 255 (<code>0x00-0xff</code>).
+     * in the range 0 to 255 ({@code 0x00-0xff}).
      * 
-     * @return the next byte of data, or <code>-1</code> if the end of the file
+     * @return the next byte of data, or {@code -1} if the end of the file
      *         has been reached.
      */
     public int read() {
@@ -164,12 +134,7 @@ public class RandomAccessInputStream implements RandomAccessR {
         return -1;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.DataInput#readBoolean()
-     */
-    @Override
+@Override
     public boolean readBoolean() throws IOException {
 
         int ch = this.read();
@@ -179,12 +144,7 @@ public class RandomAccessInputStream implements RandomAccessR {
         return (ch != 0);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.DataInput#readByte()
-     */
-    @Override
+@Override
     public byte readByte() throws IOException {
 
         int ch = this.read();
@@ -194,12 +154,7 @@ public class RandomAccessInputStream implements RandomAccessR {
         return (byte) (ch);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.file.random.RandomAccessR#readByteAsInt()
-     */
-    @Override
+@Override
     public int readByteAsInt() throws IOException {
 
         int ch = this.read();
@@ -229,20 +184,14 @@ public class RandomAccessInputStream implements RandomAccessR {
     /**
      * Reads a Unicode character from the input.
      * 
-     * If the bytes read, in order, are <code>b1</code> and <code>b2</code>,
-     * where <code>0&nbsp;&lt;=&nbsp;b1,&nbsp;b2&nbsp;&lt;=&nbsp;255</code>,
-     * then the result is equal to: <blockquote>
+     * If the bytes read, in order, are {@code b1} and {@code b2},
+     * where {@code 0&nbsp;&lt;=&nbsp;b1,&nbsp;b2&nbsp;&lt;=&nbsp;255},
+     * then the result is equal to:
      * 
      * <pre>
      *     (char)((b1 &lt;&lt; 8) | b2)
      * </pre>
-     * 
-     * </blockquote>
-     * <p>
-     * 
-     * {@inheritDoc}
-     * 
-     * @see java.io.DataInput#readChar()
+     *
      */
     @Override
     public char readChar() throws IOException {
@@ -256,12 +205,9 @@ public class RandomAccessInputStream implements RandomAccessR {
     }
 
     /**
-     * Reads a <code>double</code> from the input.
+     * Reads a {@code double} from the input.
      * 
-     * {@inheritDoc}
-     * 
-     * @see java.io.DataInput#readDouble()
-     */
+*/
     @Override
     public double readDouble() throws IOException {
 
@@ -269,11 +215,7 @@ public class RandomAccessInputStream implements RandomAccessR {
     }
 
     /**
-     * Reads a <code>float</code> from the input.
-     * 
-     * {@inheritDoc}
-     * 
-     * @see java.io.DataInput#readFloat()
+     * Reads a {@code float} from the input.
      */
     @Override
     public float readFloat() throws IOException {
@@ -281,22 +223,12 @@ public class RandomAccessInputStream implements RandomAccessR {
         return Float.intBitsToFloat(readInt());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.DataInput#readFully(byte[])
-     */
     @Override
     public void readFully(byte[] b) throws IOException {
 
         readFully(b, 0, b.length);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.DataInput#readFully(byte[], int, int)
-     */
     @Override
     public void readFully(byte[] b, int off, int len) throws IOException {
 
@@ -309,22 +241,16 @@ public class RandomAccessInputStream implements RandomAccessR {
 
     /**
      * Reads a signed 32-bit integer from the input.
-     * 
-     * If the bytes read, in order, are <code>b1</code>, <code>b2</code>,
-     * <code>b3</code>, and <code>b4</code>, where
-     * <code>0&nbsp;&lt;=&nbsp;b1, b2, b3, b4&nbsp;&lt;=&nbsp;255</code>, then
-     * the result is equal to: <blockquote>
+     *
+     * <p>
+     * If the bytes read, in order, are {@code b1}, {@code b2},
+     * {@code b3}, and {@code b4}, where {@code 0&nbsp;&lt;=&nbsp;b1, b2, b3,
+     * b4&nbsp;&lt;=&nbsp;255}, then  the result is equal to:
      * 
      * <pre>
      *     (b1 &lt;&lt; 24) | (b2 &lt;&lt; 16) + (b3 &lt;&lt; 8) + b4
      * </pre>
-     * 
-     * </blockquote>
-     * <p>
-     * 
-     * {@inheritDoc}
-     * 
-     * @see java.io.DataInput#readInt()
+     *
      */
     @Override
     public int readInt() throws IOException {
@@ -339,11 +265,6 @@ public class RandomAccessInputStream implements RandomAccessR {
         return ((ch1 << SHIFT24) + (ch2 << SHIFT16) + (ch3 << SHIFT8) + (ch4 << 0));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.file.random.RandomAccessR#readInt16()
-     */
     @Override
     public int readInt16() throws IOException {
 
@@ -357,22 +278,17 @@ public class RandomAccessInputStream implements RandomAccessR {
 
     /**
      * Reads a signed 24-bit integer from the input.
-     * 
-     * If the bytes read, in order, are <code>b1</code>, <code>b2</code>, and
-     * <code>b3</code>, where
-     * <code>0&nbsp;&lt;=&nbsp;b1, b2, b3&nbsp;&lt;=&nbsp;255</code>, then the
-     * result is equal to: <blockquote>
+     *
+     * <p>
+     * If the bytes read, in order, are {@code b1}, {@code b2}, and
+     * {@code b3}, where {@code 0&nbsp;&lt;=&nbsp;b1, b2, b3&nbsp;&lt;=&nbsp;
+     * 255}, then the result is equal to:
+     * </p>
      * 
      * <pre>
      *     (b1 &lt;&lt; 16) + (b2 &lt;&lt; 8) + b3
      * </pre>
-     * 
-     * </blockquote>
-     * <p>
-     * 
-     * {@inheritDoc}
-     * 
-     * @see java.io.DataInput#readInt()
+     *
      */
     @Override
     public int readInt24() throws IOException {
@@ -386,11 +302,6 @@ public class RandomAccessInputStream implements RandomAccessR {
         return ((ch1 << SHIFT16) + (ch2 << SHIFT8) + (ch3 << 0));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.file.random.RandomAccessR#readInt8()
-     */
     @Override
     public int readInt8() throws IOException {
 
@@ -399,10 +310,7 @@ public class RandomAccessInputStream implements RandomAccessR {
 
     /**
      * Reads the next line of text from the input.
-     * 
-     * {@inheritDoc}
-     * 
-     * @see java.io.DataInput#readLine()
+     *
      */
     @Override
     public String readLine() throws IOException {
@@ -439,9 +347,9 @@ public class RandomAccessInputStream implements RandomAccessR {
     /**
      * Reads a signed 64-bit integer from the input.
      * 
-     * If the bytes read, in order, are <code>b1</code>, <code>b2</code>,
-     * <code>b3</code>, <code>b4</code>, <code>b5</code>, <code>b6</code>,
-     * <code>b7</code>, and <code>b8,</code> where: <blockquote>
+     * If the bytes read, in order, are {@code b1}, {@code b2},
+     * {@code b3}, {@code b4}, {@code b5}, {@code b6},
+     * {@code b7}, and {@code b8,} where: <blockquote>
      * 
      * <pre>
      *     0 &lt;= b1, b2, b3, b4, b5, b6, b7, b8 &lt;=255,
@@ -450,22 +358,14 @@ public class RandomAccessInputStream implements RandomAccessR {
      * </blockquote>
      * <p>
      * then the result is equal to:
-     * <p>
-     * <blockquote>
-     * 
+     * </p>
+     *
      * <pre>
      *     ((long)b1 &lt;&lt; 56) + ((long)b2 &lt;&lt; 48)
      *     + ((long)b3 &lt;&lt; 40) + ((long)b4 &lt;&lt; 32)
      *     + ((long)b5 &lt;&lt; 24) + ((long)b6 &lt;&lt; 16)
      *     + ((long)b7 &lt;&lt; 8) + b8
      * </pre>
-     * 
-     * </blockquote>
-     * <p>
-     * 
-     * {@inheritDoc}
-     * 
-     * @see java.io.DataInput#readLong()
      */
     @Override
     public long readLong() throws IOException {
@@ -475,21 +375,15 @@ public class RandomAccessInputStream implements RandomAccessR {
 
     /**
      * Reads a signed 16-bit number from the input.
-     * 
-     * If the two bytes read, in order, are <code>b1</code> and <code>b2</code>,
-     * where each of the two values is between <code>0</code> and
-     * <code>255</code>, inclusive, then the result is equal to: <blockquote>
-     * 
+     * <p>
+     * If the two bytes read, in order, are {@code b1} and {@code b2},
+     * where each of the two values is between {@code 0} and
+     * {@code 255}, inclusive, then the result is equal to:
+     * </p>
+     *
      * <pre>
      *     (short)((b1 &lt;&lt; 8) | b2)
      * </pre>
-     * 
-     * </blockquote>
-     * <p>
-     * 
-     * {@inheritDoc}
-     * 
-     * @see java.io.DataInput#readShort()
      */
     @Override
     public short readShort() throws IOException {
@@ -502,12 +396,7 @@ public class RandomAccessInputStream implements RandomAccessR {
         return (short) ((ch1 << SHIFT8) + (ch2 << 0));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.file.random.RandomAccessR#readSignInt24()
-     */
-    @Override
+@Override
     public int readSignInt24() throws IOException {
 
         int v = readInt24();
@@ -555,10 +444,7 @@ public class RandomAccessInputStream implements RandomAccessR {
     /**
      * Reads an unsigned eight-bit number from the input.
      * 
-     * {@inheritDoc}
-     * 
-     * @see java.io.DataInput#readUnsignedByte()
-     */
+*/
     @Override
     public int readUnsignedByte() throws IOException {
 
@@ -572,8 +458,8 @@ public class RandomAccessInputStream implements RandomAccessR {
     /**
      * Reads an unsigned 16-bit number from the input.
      * 
-     * If the bytes read, in order, are <code>b1</code> and <code>b2</code>,
-     * where <code>0&nbsp;&lt;=&nbsp;b1, b2&nbsp;&lt;=&nbsp;255</code>, then the
+     * If the bytes read, in order, are {@code b1} and {@code b2},
+     * where {@code 0&nbsp;&lt;=&nbsp;b1, b2&nbsp;&lt;=&nbsp;255}, then the
      * result is equal to: <blockquote>
      * 
      * <pre>
@@ -581,12 +467,8 @@ public class RandomAccessInputStream implements RandomAccessR {
      * </pre>
      * 
      * </blockquote>
-     * <p>
-     * 
-     * {@inheritDoc}
-     * 
-     * @see java.io.DataInput#readUnsignedShort()
-     */
+     *
+*/
     @Override
     public int readUnsignedShort() throws IOException {
 
@@ -602,22 +484,14 @@ public class RandomAccessInputStream implements RandomAccessR {
      * Reads in a string from this file. The string has been encoded using a
      * modified UTF-8 format.
      * 
-     * {@inheritDoc}
-     * 
-     * @see java.io.DataInput#readUTF()
-     */
+*/
     @Override
     public String readUTF() throws IOException {
 
         return DataInputStream.readUTF(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.file.random.RandomAccessR#seek(long)
-     */
-    @Override
+@Override
     public void seek(long arg0) throws IOException {
 
         if (buffer != null) {
@@ -631,13 +505,10 @@ public class RandomAccessInputStream implements RandomAccessR {
     }
 
     /**
-     * Attempts to skip over <code>n</code> bytes of input discarding the
+     * Attempts to skip over {@code n} bytes of input discarding the
      * skipped bytes.
      * 
-     * {@inheritDoc}
-     * 
-     * @see java.io.DataInput#skipBytes(int)
-     */
+*/
     @Override
     public int skipBytes(int n) throws IOException {
 

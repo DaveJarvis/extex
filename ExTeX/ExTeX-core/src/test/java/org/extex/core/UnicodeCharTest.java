@@ -32,8 +32,7 @@ import org.junit.Test;
  * This is a test suite for UnicodeChar.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class UnicodeCharTest {
 
     /**

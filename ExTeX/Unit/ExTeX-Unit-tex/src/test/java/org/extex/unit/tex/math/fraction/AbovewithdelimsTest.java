@@ -23,11 +23,10 @@ import org.extex.test.ExTeXLauncher;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\abovewithdelims</tt>.
+ * This is a test suite for the primitive {@code \abovewithdelims}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class AbovewithdelimsTest extends ExTeXLauncher {
 
 

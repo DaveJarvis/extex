@@ -43,8 +43,7 @@ import org.junit.Test;
  * This is a test suite for the {@link Indexer}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class IndexerTest {
 
     /**
@@ -67,7 +66,7 @@ public class IndexerTest {
     }
 
     /**
-     * The field <tt>FILES</tt> contains the prerecorded resources.
+     * The field {@code FILES} contains the prerecorded resources.
      */
     private static final Map<String, String> FILES =
         new HashMap<>();
@@ -102,7 +101,7 @@ public class IndexerTest {
      * 
      * @param args the varargs of the values
      * 
-     * @return the List constructed. This is never <code>null</code>
+     * @return the List constructed. This is never {@code null}
      */
     public static List<String> makeList(String... args) {
 
@@ -157,7 +156,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> Check that null values as parameters are accepted. </testcase>
+     *  Check that null values as parameters are accepted.
      * 
      * @throws Exception in case of an error
      */
@@ -172,9 +171,8 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> Check that empty list for styles and resources as parameters
-     * are accepted. </testcase>
-     * 
+     * Check that empty list for styles and resources as parameters are accepted
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -189,7 +187,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> Check that empty input produces empty output. </testcase>
+     *  Check that empty input produces empty output.
      * 
      * @throws Exception in case of an error
      */
@@ -207,7 +205,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> Check that simple input produces simple output. </testcase>
+     *  Check that simple input produces simple output.
      * 
      * @throws Exception in case of an error
      */
@@ -222,7 +220,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> Check that simple input produces simple output. </testcase>
+     *  Check that simple input produces simple output.
      * 
      * @throws Exception in case of an error
      */
@@ -234,7 +232,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> Check that simple input produces simple output. </testcase>
+     *  Check that simple input produces simple output.
      * 
      * @throws Exception in case of an error
      */
@@ -247,7 +245,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> Check that an undefined style is reported. </testcase>
+     *  Check that an undefined style is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -258,7 +256,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> Check that simple input produces simple output. </testcase>
+     *  Check that simple input produces simple output.
      * 
      * @throws Exception in case of an error
      */
@@ -276,7 +274,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> Check that simple input produces simple output. </testcase>
+     *  Check that simple input produces simple output.
      * 
      * @throws Exception in case of an error
      */
@@ -295,7 +293,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> Check that simple input produces simple output. </testcase>
+     *  Check that simple input produces simple output.
      * 
      * @throws Exception in case of an error
      */

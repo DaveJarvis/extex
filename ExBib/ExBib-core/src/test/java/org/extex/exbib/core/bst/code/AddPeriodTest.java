@@ -34,15 +34,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>add.period$</tt>.
+ * Test suite for {@code add.period$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class AddPeriodTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -67,7 +66,7 @@ public class AddPeriodTest {
     }
 
     /**
-     * <testcase> The empty stack leads to an error. </testcase>
+     *  The empty stack leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -78,7 +77,7 @@ public class AddPeriodTest {
     }
 
     /**
-     * <testcase> An integer gets a period added. </testcase>
+     *  An integer gets a period added.
      * 
      * @throws Exception in case of an error
      */
@@ -104,7 +103,7 @@ public class AddPeriodTest {
     }
 
     /**
-     * <testcase> No period is added to the empty string. </testcase>
+     *  No period is added to the empty string.
      * 
      * @throws Exception in case of an error
      */
@@ -115,9 +114,8 @@ public class AddPeriodTest {
     }
 
     /**
-     * <testcase> No period is added if the last non-brace character is an
-     * exclamation mark. </testcase>
-     * 
+     * No period is added if the last non-brace character is an exclamation mark
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -127,9 +125,8 @@ public class AddPeriodTest {
     }
 
     /**
-     * <testcase> No period is added if the last non-brace character is an
-     * exclamation mark. </testcase>
-     * 
+     * No period is added if the last non-brace character is an exclamation mark
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -139,9 +136,8 @@ public class AddPeriodTest {
     }
 
     /**
-     * <testcase> No period is added if the last non-brace character is an
-     * exclamation mark. </testcase>
-     * 
+     * No period is added if the last non-brace character is an exclamation mark
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -151,9 +147,8 @@ public class AddPeriodTest {
     }
 
     /**
-     * <testcase> No period is added if the last non-brace character is an
-     * exclamation mark. </testcase>
-     * 
+     * No period is added if the last non-brace character is an exclamation mark
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -163,9 +158,8 @@ public class AddPeriodTest {
     }
 
     /**
-     * <testcase> No period is added if the last non-brace character is a
-     * period. </testcase>
-     * 
+     * No period is added if the last non-brace character is a period
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -175,9 +169,8 @@ public class AddPeriodTest {
     }
 
     /**
-     * <testcase> No period is added if the last non-brace character is a
-     * period. </testcase>
-     * 
+     * No period is added if the last non-brace character is a period
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -187,9 +180,8 @@ public class AddPeriodTest {
     }
 
     /**
-     * <testcase> No period is added if the last non-brace character is a
-     * period. </testcase>
-     * 
+     * No period is added if the last non-brace character is a period
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -199,9 +191,8 @@ public class AddPeriodTest {
     }
 
     /**
-     * <testcase> No period is added if the last non-brace character is a
-     * period. </testcase>
-     * 
+     * No period is added if the last non-brace character is a period
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -211,9 +202,8 @@ public class AddPeriodTest {
     }
 
     /**
-     * <testcase> No period is added if the last non-brace character is a
-     * question mark. </testcase>
-     * 
+     * No period is added if the last non-brace character is a question mark
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -223,9 +213,8 @@ public class AddPeriodTest {
     }
 
     /**
-     * <testcase> No period is added if the last non-brace character is a
-     * question mark. </testcase>
-     * 
+     * No period is added if the last non-brace character is a question mark
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -235,9 +224,8 @@ public class AddPeriodTest {
     }
 
     /**
-     * <testcase> No period is added if the last non-brace character is a
-     * question mark. </testcase>
-     * 
+     * No period is added if the last non-brace character is a question mark
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -247,9 +235,8 @@ public class AddPeriodTest {
     }
 
     /**
-     * <testcase> No period is added if the last non-brace character is a
-     * question mark. </testcase>
-     * 
+     * No period is added if the last non-brace character is a question mark
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -259,8 +246,8 @@ public class AddPeriodTest {
     }
 
     /**
-     * <testcase> A period is added if the input consists of text only.
-     * </testcase>
+     *  A period is added if the input consists of text only.
+     *
      * 
      * @throws Exception in case of an error
      */

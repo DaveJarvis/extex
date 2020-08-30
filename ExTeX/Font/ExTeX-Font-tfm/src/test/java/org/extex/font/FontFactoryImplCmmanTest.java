@@ -32,8 +32,7 @@ import org.junit.Test;
  * Test for the font factory (with font logosl9).
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class FontFactoryImplCmmanTest extends AbstractFontFactoryTester {
 
     /**

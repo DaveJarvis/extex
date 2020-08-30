@@ -35,33 +35,32 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\inputfilename</code>. This is an extension primitive not present in
- * <logo>TeX</logo>.
+ * {@code \inputfilename}. This is an extension primitive not present in
+ *  TeX.
  *
- * <doc name="inputfilename">
- * <h3>The Primitive <tt>\inputfilename</tt></h3>
+ * <p>The Primitive {@code \inputfilename}</p>
  * <p>
  *  TODO missing documentation
  * </p>
  *
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  *
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  *  <pre class="TeXSample">
  *    \inputfilename  </pre>
- * </doc>
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4787 $
- */
+*/
 public class Inputfilename extends AbstractCode
         implements
             ExpandableCode,
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 

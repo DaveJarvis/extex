@@ -24,8 +24,7 @@ package org.extex.scanner.stream.observer.writer;
  * open reader event.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface OpenWriterObservable {
 
     /**

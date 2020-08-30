@@ -30,31 +30,27 @@ import org.extex.exbib.core.io.Locator;
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X built-in function <code>preamble$</code>
+ * >e</span>X built-in function {@code preamble$}
  * <p>
  * This function takes the collected preamble from the database and pushes it as
  * string onto the stack.
  * </p>
- * <img src="doc-files/preamble.png"/>
+ * <img src="doc-files/preamble.png" alt="preamble">
  * 
  * <pre>
  *   preamble$
  * </pre>
  * 
- * <hr />
+ * <hr>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X documentation:</dt>
+ * <dt>BibTeX documentation:</dt>
  * <dd>Pushes onto the stack the concatenation of all the
- * <code>{@literal @PREAMBLE}</code> strings read from the database files.</dd>
+ * {@code {@literal @PREAMBLE}} strings read from the database files.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Preamble extends AbstractCode {
 
     /**
@@ -75,10 +71,7 @@ public class Preamble extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)

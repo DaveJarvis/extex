@@ -28,8 +28,7 @@ import java.util.Map;
  * </p>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public final class T2StandardStrings {
 
@@ -462,7 +461,7 @@ public final class T2StandardStrings {
     /**
      * The map for the names.
      */
-    private static Map<String, Integer> names = null;
+    private static final Map<String, Integer> names = null;
 
     /**
      * Returns the SID for a StandardString or -1 if not found.

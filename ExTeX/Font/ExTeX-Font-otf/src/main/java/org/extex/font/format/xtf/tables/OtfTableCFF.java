@@ -52,9 +52,10 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <p>
  * CFF Data Types
  * </p>
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <thead>
- * <tr>
+* <tr>
  * <td>Name</td>
  * <td>Range</td>
  * <td>Description</td>
@@ -91,9 +92,10 @@ import org.extex.util.xml.XMLWriterConvertible;
  * CFF Data Layout
  * </p>
  * 
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <thead>
- * <tr>
+* <tr>
  * <td><b>Entry</b></td>
  * <td><b>Comments</b></td>
  * </tr>
@@ -112,7 +114,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </tr>
  * <tr>
  * <td>String INDEX</td>
- * <td>->/td>
+ * <td>-&gt;</td>
  * </tr>
  * <tr>
  * <td>Global Subr INDEX</td>
@@ -148,13 +150,12 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </tr>
  * <tr>
  * <td>Copyright and Trademark Notices</td>
- * <td>-/td>
+ * <td>-</td>
  * </tr>
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class OtfTableCFF extends AbstractXtfTable
         implements
             XtfTable,
@@ -321,12 +322,7 @@ public class OtfTableCFF extends AbstractXtfTable
         return 0;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
-     */
-    @Override
+@Override
     public String getShortcut() {
 
         return "cff";
@@ -340,7 +336,7 @@ public class OtfTableCFF extends AbstractXtfTable
      * (SID-nStdStrings) as the index.
      * 
      * @param sid the SID for the string.
-     * @return Returns the String or <code>null</code>, if not found.
+     * @return Returns the String or {@code null}, if not found.
      */
     public String getStringIndex(int sid) {
 
@@ -430,7 +426,7 @@ public class OtfTableCFF extends AbstractXtfTable
      * 
      * @param glyphpos The glyph position
      * @param fontnumber The font number.
-     * @return Returns the name of the glpyh or <code>null</code>, if not found.
+     * @return Returns the name of the glpyh or {@code null}, if not found.
      */
     public String mapGlyphPosToGlyphName(int glyphpos, int fontnumber) {
 
@@ -459,9 +455,10 @@ public class OtfTableCFF extends AbstractXtfTable
      * determined.
      * </p>
      * 
-     * <table border="1">
-     * <thead>
-     * <tr>
+     * <table>
+ * <caption>TBD</caption>
+ * <thead>
+* <tr>
      * <td><b>Type</b></td>
      * <td><b>Name</b></td>
      * <td><b> Description</b></td>
@@ -572,9 +569,10 @@ public class OtfTableCFF extends AbstractXtfTable
     /**
      * Read the Header.
      * 
-     * <table border="1">
-     * <tr>
-     * <td><b>Type</b></td>
+     * <table>
+ * <caption>TBD</caption>
+ * <tr>
+* <td><b>Type</b></td>
      * <td><b>Name</b></td>
      * <td><b>Description</b></td>
      * </tr>
@@ -769,12 +767,7 @@ public class OtfTableCFF extends AbstractXtfTable
         return rar.getPointer();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    @Override
+@Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writeStartElement(writer);

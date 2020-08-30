@@ -31,8 +31,7 @@ import org.junit.Test;
  * Test suite for the font key factory.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class FontKeyFactoryTest extends TestCase {
 
     /**

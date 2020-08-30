@@ -25,11 +25,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\penalty</tt>.
+ * This is a test suite for the primitive {@code \penalty}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class PenaltyTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -49,8 +48,8 @@ public class PenaltyTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\penalty"> Test case checking that <tt>\penalty</tt>
-     * inserts a penalty node. </testcase>
+     * <testcase primitive="\penalty"> Test case checking that {@code \penalty}
+     * inserts a penalty node.
      * 
      * @throws Exception in case of an error
      */
@@ -72,8 +71,8 @@ public class PenaltyTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\penalty"> Test case checking that <tt>\penalty</tt>
-     * in vertical mode inserts a penalty node. </testcase>
+     * <testcase primitive="\penalty"> Test case checking that {@code \penalty}
+     * in vertical mode inserts a penalty node.
      * 
      * @throws Exception in case of an error
      */

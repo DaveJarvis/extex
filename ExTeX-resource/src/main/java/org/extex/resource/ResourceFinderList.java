@@ -29,21 +29,20 @@ import org.extex.resource.io.NamedInputStream;
  * as one.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ResourceFinderList extends ArrayList<ResourceFinder>
         implements
             ResourceFinder,
             RecursiveFinder {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2008L;
 
     /**
-     * The field <tt>parent</tt> contains the parent resource finder.
+     * The field {@code parent} contains the parent resource finder.
      */
     private ResourceFinder parent = null;
 
@@ -55,12 +54,7 @@ public class ResourceFinderList extends ArrayList<ResourceFinder>
         this.parent = this;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.util.ArrayList#add(java.lang.Object)
-     */
-    @Override
+@Override
     public boolean add(ResourceFinder finder) {
 
         boolean ret = super.add(finder);
@@ -90,12 +84,12 @@ public class ResourceFinderList extends ArrayList<ResourceFinder>
 
     /**
      * Find a resource which can be used for reading. If the search fails then
-     * <code>null</code> is returned.
+     * {@code null} is returned.
      * 
      * @param name the base name of the resource
      * @param type the type, i.e. the extension
      * 
-     * @return the file or <code>null</code> if none could be found
+     * @return the file or {@code null} if none could be found
      * 
      * @throws ConfigurationException in case of an exception
      * 
@@ -131,12 +125,7 @@ public class ResourceFinderList extends ArrayList<ResourceFinder>
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder("(resource");

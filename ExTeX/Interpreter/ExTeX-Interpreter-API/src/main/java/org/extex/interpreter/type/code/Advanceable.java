@@ -31,31 +31,29 @@ import org.extex.typesetter.exception.TypesetterException;
  * something.
  *
  *
- * <doc type="howto" name="advance">
- * <h3>Extending <tt>\advance</tt></h3>
+ *
+ * <p>Extending {@code \advance}</p>
  * <p>
- *  The primitive <tt>\advance</tt> is designed to be expanded. It is fairly
+ *  The primitive {@code \advance} is designed to be expanded. It is fairly
  *  simple to write an advancable primitive. The associated code simply has to
- *  implement the interface <tt>Advanceable</tt>. Whenever <tt>\advance</tt>
+ *  implement the interface {@code Advanceable}. Whenever {@code \advance}
  *  is encountered immediately followed by a token which has the proper code
- *  associated, the method <tt>advance</tt> is invoked. It is up to this
+ *  associated, the method {@code advance} is invoked. It is up to this
  *  method to gather further arguments and perform the functionality.
  * </p>
  * <p>
  *  With this interface the functionality is in fact tied to the implementing
- *  code and not to the primitive <tt>\advance</tt>. Each primitive can be
- *  made aware for advancing without touching the code for <tt>\advance</tt>.
+ *  code and not to the primitive {@code \advance}. Each primitive can be
+ *  made aware for advancing without touching the code for {@code \advance}.
  * </p>
- * </doc>
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4399 $
- */
+*/
 public interface Advanceable {
 
     /**
-     * This method is called when the macro <tt>\advance</tt> has been seen.
+     * This method is called when the macro {@code \advance} has been seen.
      * It performs the remaining tasks for the expansion.
      *
      * @param prefix the prefix for the command

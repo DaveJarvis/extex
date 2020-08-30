@@ -24,18 +24,17 @@ import org.extex.exbib.core.io.Locator;
  * This Exception is thrown when an undefined field has been used.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ExBibUndefinedFieldException extends ExBibIllegalValueException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2008L;
 
     /**
-     * The field <tt>entry</tt> contains the name of the entry.
+     * The field {@code entry} contains the name of the entry.
      */
     private final String entry;
 
@@ -53,12 +52,7 @@ public class ExBibUndefinedFieldException extends ExBibIllegalValueException {
         this.entry = entry;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.exception.ConfigurationException#getLocalizedMessage()
-     */
-    @Override
+@Override
     public String getLocalizedMessage() {
 
         return getLocalizer().format("Message", super.getMessage(), entry);

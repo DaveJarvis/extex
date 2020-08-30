@@ -23,8 +23,7 @@ package org.extex.exbib.editor.bst.model;
  * This enumeration classifies the nodes stored in the model.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public enum BstClass {
     BUILTIN,
     COMMAND_ENTRY,

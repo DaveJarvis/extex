@@ -25,15 +25,14 @@ import java.io.OutputStream;
 import org.extex.dviware.Dvi;
 
 /**
- * This class represents the DVI instruction <tt>fnt</tt>.
+ * This class represents the DVI instruction {@code fnt}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DviFnt extends AbstractDviCode {
 
     /**
-     * The field <tt>index</tt> contains the index of the font to use.
+     * The field {@code index} contains the index of the font to use.
      */
     private int index;
 

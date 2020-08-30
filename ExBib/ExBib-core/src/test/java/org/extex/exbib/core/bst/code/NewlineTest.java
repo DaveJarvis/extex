@@ -31,20 +31,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>newline$</tt>.
+ * Test suite for {@code newline$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NewlineTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
     /**
-     * The field <tt>out</tt> contains the output buffer.
+     * The field {@code out} contains the output buffer.
      */
     private final StringBuffer out = new StringBuffer();
 
@@ -70,7 +69,7 @@ public class NewlineTest {
     }
 
     /**
-     * <testcase>Tests that a newline is produced. </testcase>
+     * Tests that a newline is produced.
      * 
      * @throws Exception in case of an error
      */

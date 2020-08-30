@@ -36,48 +36,47 @@ import org.extex.unit.omega.ocp.util.OcpUtil;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\DefaultInputTranslation</code>.
+ * {@code \DefaultInputTranslation}.
  * 
- * <doc name="DefaultInputTranslation"> <h3>The Primitive
- * <tt>\DefaultInputTranslation</tt></h3>
+ * <p>The Primitive {@code \DefaultInputTranslation}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;DefaultInputTranslation&rang;
- *      &rarr; <tt>\DefaultInputTranslation</tt> &lang;mode&rang; &lang;ocp&rang;
+ *      &rarr; {@code \DefaultInputTranslation} &lang;mode&rang; &lang;ocp&rang;
  *
  *    &lang;mode&rang;
- *      &rarr; <tt>onebyte</tt>
- *       |  <tt>ebcdic</tt>
- *       |  <tt>twobyte</tt>
- *       |  <tt>twobyteLE</tt>     </pre>
+ *      &rarr; {@code onebyte}
+ *       |  {@code ebcdic}
+ *       |  {@code twobyte}
+ *       |  {@code twobyteLE}     </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *   \DefaultInputTranslation onebyte \OCPebcdic </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4411 $
- */
+*/
 public class DefaultInputTranslation extends AbstractModeCode
         implements
             ResourceAware {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>finder</tt> contains the resource finder.
+     * The field {@code finder} contains the resource finder.
      */
     private transient ResourceFinder finder;
 
@@ -92,10 +91,7 @@ public class DefaultInputTranslation extends AbstractModeCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -110,12 +106,7 @@ public class DefaultInputTranslation extends AbstractModeCode
             ocp, prefix.clearGlobal());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
-     */
-    @Override
+@Override
     public void setResourceFinder(ResourceFinder resourceFinder) {
 
         this.finder = resourceFinder;

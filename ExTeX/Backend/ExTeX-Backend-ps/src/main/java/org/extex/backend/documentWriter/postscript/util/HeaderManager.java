@@ -27,12 +27,11 @@ import java.io.OutputStream;
  * The header manager keeps track of the headers for the PostScript file.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class HeaderManager {
 
     /**
-     * The field <tt>header</tt> contains the buffer for the header.
+     * The field {@code header} contains the buffer for the header.
      */
     private StringBuilder header = new StringBuilder();
 

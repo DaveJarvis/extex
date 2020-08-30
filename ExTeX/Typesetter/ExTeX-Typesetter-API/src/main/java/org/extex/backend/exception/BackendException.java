@@ -25,12 +25,11 @@ import org.extex.core.exception.GeneralException;
  * This exception signals that something went wrong in the back-end.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 3070 $
- */
+*/
 public class BackendException extends GeneralException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     protected static final long serialVersionUID = 1L;

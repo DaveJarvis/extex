@@ -37,8 +37,7 @@ import org.extex.font.FontKey;
  * Abstract Backend font manager.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractBackendFontManager implements BackendFontManager {
 
     /**
@@ -72,45 +71,25 @@ public abstract class AbstractBackendFontManager implements BackendFontManager {
         fontList = new HashMap<FontKey, ManagerInfo>();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFontManager#getRecognizedCharId()
-     */
-    @Override
+@Override
     public BackendCharacter getRecognizedCharId() {
 
         return recognizedCharcterId;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFontManager#getRecognizedFont()
-     */
-    @Override
+@Override
     public BackendFont getRecognizedFont() {
 
         return recognizedFont;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFontManager#isNewRecongnizedFont()
-     */
-    @Override
+@Override
     public boolean isNewRecongnizedFont() {
 
         return newRecongnizedFont;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFontManager#iterator()
-     */
-    @Override
+@Override
     public Iterator<ManagerInfo> iterator() {
 
         return new Iterator<ManagerInfo>() {
@@ -121,7 +100,7 @@ public abstract class AbstractBackendFontManager implements BackendFontManager {
             private Iterator<FontKey> it;
 
             /**
-             * Create the <code>Iterator</code> and sort it.
+             * Create the {@code Iterator} and sort it.
              */
             private void createIterator() {
 
@@ -143,12 +122,7 @@ public abstract class AbstractBackendFontManager implements BackendFontManager {
                 it = sort.iterator();
             }
 
-            /**
-             * {@inheritDoc}
-             * 
-             * @see java.util.Iterator#hasNext()
-             */
-            @Override
+        @Override
             public boolean hasNext() {
 
                 if (fontList != null && it == null) {
@@ -160,12 +134,7 @@ public abstract class AbstractBackendFontManager implements BackendFontManager {
                 return false;
             }
 
-            /**
-             * {@inheritDoc}
-             * 
-             * @see java.util.Iterator#next()
-             */
-            @Override
+        @Override
             public ManagerInfo next() {
 
                 if (fontList != null && it == null) {
@@ -178,12 +147,7 @@ public abstract class AbstractBackendFontManager implements BackendFontManager {
                 return fontList.get(key);
             }
 
-            /**
-             * {@inheritDoc}
-             * 
-             * @see java.util.Iterator#remove()
-             */
-            @Override
+        @Override
             public void remove() {
 
                 throw new UnsupportedOperationException();
@@ -191,12 +155,7 @@ public abstract class AbstractBackendFontManager implements BackendFontManager {
         };
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFontManager#reset()
-     */
-    @Override
+@Override
     public void reset() {
 
         newRecongnizedFont = false;
@@ -206,12 +165,7 @@ public abstract class AbstractBackendFontManager implements BackendFontManager {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFontManager#setBackendFontFactory(org.extex.font.BackendFontFactory)
-     */
-    @Override
+@Override
     public void setBackendFontFactory(BackendFontFactory f) {
 
         this.factory = f;

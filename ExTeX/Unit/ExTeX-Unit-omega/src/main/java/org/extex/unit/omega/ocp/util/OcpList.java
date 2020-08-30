@@ -45,21 +45,20 @@ import org.extex.unit.omega.ocp.Addafterocplist;
  * &Omega;CP programs.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class OcpList extends AbstractCode
         implements
             Showable,
             OcplistConvertible {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>map</tt> contains the pipe.
+     * The field {@code map} contains the pipe.
      */
     private Map<Long, List<OcpProgram>> map =
             new HashMap<Long, List<OcpProgram>>();
@@ -111,10 +110,7 @@ public class OcpList extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.omega.ocp.util.OcplistConvertible#convertOcplist(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public OcpList convertOcplist(Context context, TokenSource source,
@@ -133,10 +129,7 @@ public class OcpList extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -194,10 +187,7 @@ public class OcpList extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Showable#show(
-     *      org.extex.interpreter.context.Context)
+*      org.extex.interpreter.context.Context)
      */
     public Tokens show(Context context) throws HelpingException {
 

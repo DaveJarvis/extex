@@ -79,8 +79,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * This is a xml implementation of a document writer.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class XMLDocumentWriter
         implements
             DocumentWriter,
@@ -436,12 +435,7 @@ public class XMLDocumentWriter
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.FontAware#setFontFactory(org.extex.font.CoreFontFactory)
-     */
-    @Override
+@Override
     public void setFontFactory(CoreFontFactory factory) {
 
         corefactory = factory;

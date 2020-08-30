@@ -30,12 +30,11 @@ import org.extex.scanner.type.tokens.Tokens;
  * implements the marker interface ProtectedCode.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class ProtectedMacroCode extends MacroCode implements ProtectedCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 20060405L;

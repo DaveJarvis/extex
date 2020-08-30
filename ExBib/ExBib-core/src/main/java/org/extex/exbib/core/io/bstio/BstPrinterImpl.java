@@ -57,24 +57,23 @@ import org.extex.exbib.core.io.Writer;
  * >e</span>X notation of bst files.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BstPrinterImpl implements CommandVisitor {
 
     /**
-     * The field <tt>writer</tt> contains the writer onto which the output
+     * The field {@code writer} contains the writer onto which the output
      * should be written.
      */
     private final Writer writer;
 
     /**
-     * The field <tt>in</tt> contains the string to produce an indentation for
+     * The field {@code in} contains the string to produce an indentation for
      * code.
      */
     private String in = "    ";
 
     /**
-     * The field <tt>nl</tt> contains the indicator that the last character in
+     * The field {@code nl} contains the indicator that the last character in
      * the output stream is a newline.
      */
     private boolean nl = true;
@@ -142,10 +141,7 @@ public class BstPrinterImpl implements CommandVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitBlock(org.extex.exbib.core.bst.token.impl.TBlock,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visitBlock(TBlock block, Object... args) throws ExBibException {
 
@@ -169,10 +165,7 @@ public class BstPrinterImpl implements CommandVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitChar(org.extex.exbib.core.bst.token.impl.TChar,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visitChar(TChar c, Object... args) {
 
@@ -180,10 +173,7 @@ public class BstPrinterImpl implements CommandVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.command.CommandVisitor#visitExecute(org.extex.exbib.core.bst.command.Command,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visitExecute(Command command, Object... args)
             throws ExBibException {
@@ -196,10 +186,7 @@ public class BstPrinterImpl implements CommandVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitField(org.extex.exbib.core.bst.token.impl.TField,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visitField(TField field, Object... args) throws ExBibException {
 
@@ -209,10 +196,7 @@ public class BstPrinterImpl implements CommandVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitInteger(org.extex.exbib.core.bst.token.impl.TInteger,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visitInteger(TInteger integer, Object... args)
             throws ExBibException {
@@ -224,10 +208,7 @@ public class BstPrinterImpl implements CommandVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitIntegerOption(org.extex.exbib.core.bst.token.impl.TIntegerOption,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visitIntegerOption(TIntegerOption option, Object... args)
             throws ExBibException {
@@ -236,10 +217,7 @@ public class BstPrinterImpl implements CommandVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.command.CommandVisitor#visitIterate(org.extex.exbib.core.bst.command.Command,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visitIterate(Command command, Object... args)
             throws ExBibException {
@@ -251,10 +229,7 @@ public class BstPrinterImpl implements CommandVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLiteral(org.extex.exbib.core.bst.token.impl.TLiteral,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visitLiteral(TLiteral literal, Object... args)
             throws ExBibException {
@@ -272,10 +247,7 @@ public class BstPrinterImpl implements CommandVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalInteger(org.extex.exbib.core.bst.token.impl.TLocalInteger,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visitLocalInteger(TLocalInteger integer, Object... args)
             throws ExBibException {
@@ -286,10 +258,7 @@ public class BstPrinterImpl implements CommandVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalLocator(org.extex.exbib.core.bst.token.impl.TLocalLocator,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visitLocalLocator(TLocalLocator localLocator, Object[] args)
             throws ExBibIoException {
@@ -300,10 +269,7 @@ public class BstPrinterImpl implements CommandVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalString(org.extex.exbib.core.bst.token.impl.TLocalString,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visitLocalString(TLocalString string, Object... args)
             throws ExBibException {
@@ -314,10 +280,7 @@ public class BstPrinterImpl implements CommandVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitQLiteral(org.extex.exbib.core.bst.token.impl.TQLiteral,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visitQLiteral(TQLiteral qliteral, Object... args)
             throws ExBibException {
@@ -329,10 +292,7 @@ public class BstPrinterImpl implements CommandVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.command.CommandVisitor#visitRead(org.extex.exbib.core.bst.command.Command,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visitRead(Command command, Object... args)
             throws ExBibException {
@@ -341,10 +301,7 @@ public class BstPrinterImpl implements CommandVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.command.CommandVisitor#visitReverse(org.extex.exbib.core.bst.command.Command,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visitReverse(Command command, Object... args)
             throws ExBibException {
@@ -356,10 +313,7 @@ public class BstPrinterImpl implements CommandVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.command.CommandVisitor#visitSort(org.extex.exbib.core.bst.command.Command,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visitSort(Command command, Object... args)
             throws ExBibException {
@@ -368,10 +322,7 @@ public class BstPrinterImpl implements CommandVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitString(org.extex.exbib.core.bst.token.impl.TString,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visitString(TString string, Object... args)
             throws ExBibException {
@@ -384,10 +335,7 @@ public class BstPrinterImpl implements CommandVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitStringOption(org.extex.exbib.core.bst.token.impl.TStringOption,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visitStringOption(TStringOption option, Object... args)
             throws ExBibException {
@@ -396,10 +344,7 @@ public class BstPrinterImpl implements CommandVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitTokenList(org.extex.exbib.core.bst.token.impl.TokenList,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visitTokenList(TokenList list, Object... args)
             throws ExBibException {

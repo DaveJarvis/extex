@@ -27,13 +27,12 @@ import org.junit.Test;
 import java.io.IOException;
 
 /**
- * Tests for the <code>XtfReader</code>.
+ * Tests for the {@code XtfReader}.
  *
- * The test use the data from the <code>ttx</code> output.
+ * The test use the data from the {@code ttx} output.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class XtfReaderGara1Test {
 
     private final XtfReader reader;

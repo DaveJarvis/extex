@@ -42,8 +42,7 @@ import org.extex.resource.ResourceFinder;
  * This is a sorter which used a csf file to read a configuration from.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class CsfSorter
         implements
             Comparator<Entry>,
@@ -54,38 +53,38 @@ public class CsfSorter
             Startable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2009L;
 
     /**
-     * The field <tt>ord</tt> contains the order mapping.
+     * The field {@code ord} contains the order mapping.
      */
     private final int[] ord = new int[256];
 
     /**
-     * The field <tt>upper</tt> contains the uppercase mapping.
+     * The field {@code upper} contains the uppercase mapping.
      */
     private final char[] upper = new char[256];
 
     /**
-     * The field <tt>lower</tt> contains the lowercase mapping.
+     * The field {@code lower} contains the lowercase mapping.
      */
     private final char[] lower = new char[256];
 
     /**
-     * The field <tt>resource</tt> contains the name of the resource to read.
+     * The field {@code resource} contains the name of the resource to read.
      */
     private String resource = null;
 
     /**
-     * The field <tt>finder</tt> contains the resource finder.
+     * The field {@code finder} contains the resource finder.
      */
     private transient ResourceFinder finder;
 
     /**
-     * The field <tt>properties</tt> contains the properties.
+     * The field {@code properties} contains the properties.
      */
     private Properties properties;
 
@@ -115,12 +114,7 @@ public class CsfSorter
         this.resource = resource;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
-     */
-    public int compare(Entry a, Entry b) {
+public int compare(Entry a, Entry b) {
 
         String ka = a.getSortKey();
 
@@ -210,22 +204,12 @@ public class CsfSorter
         ord[c] = on;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.PropertyAware#setProperties(java.util.Properties)
-     */
-    public void setProperties(Properties properties) {
+public void setProperties(Properties properties) {
 
         this.properties = properties;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
-     */
-    public void setResourceFinder(ResourceFinder f) {
+public void setResourceFinder(ResourceFinder f) {
 
         this.finder = f;
     }
@@ -241,22 +225,12 @@ public class CsfSorter
         upper[lc] = uc;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.sorter.Sorter#sort(java.util.List)
-     */
-    public void sort(List<Entry> list) throws ConfigurationException {
+public void sort(List<Entry> list) throws ConfigurationException {
 
         Collections.sort(list, this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.sorter.Startable#start()
-     */
-    public void start() throws ExBibException {
+public void start() throws ExBibException {
 
         if (resource == null || "".equals(resource)) {
             return;

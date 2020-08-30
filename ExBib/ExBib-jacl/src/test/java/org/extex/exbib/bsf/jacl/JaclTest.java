@@ -43,8 +43,7 @@ import static org.junit.Assert.assertTrue;
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 @Ignore
 public class JaclTest {
 

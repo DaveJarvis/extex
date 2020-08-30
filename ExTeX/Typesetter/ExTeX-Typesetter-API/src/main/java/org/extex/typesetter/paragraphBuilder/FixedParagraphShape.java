@@ -27,18 +27,17 @@ import org.extex.core.dimen.FixedDimen;
  * left and by the given width on the right.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4728 $
- */
+*/
 public class FixedParagraphShape extends ParagraphShape {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>hsize</tt> contains the width of the fixed block.
+     * The field {@code hsize} contains the width of the fixed block.
      */
     private FixedDimen hsize;
 

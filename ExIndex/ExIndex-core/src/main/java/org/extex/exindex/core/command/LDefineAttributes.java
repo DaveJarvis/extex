@@ -35,12 +35,11 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This is the adapter for the L system to define attributes. It also serves as
  * a container for the attributes collected.
  * 
- * <doc type="exindex-command" command="define-attributes">
- * 
- * <h3>The Command <tt>define-attributes</tt></h3>
+*
+ * <p>The Command {@code define-attributes}</p>
  * 
  * <p>
- * The command <tt>define-attributes</tt> can be used to specify the markup for
+ * The command {@code define-attributes} can be used to specify the markup for
  * attribute group lists.
  * </p>
  * 
@@ -75,30 +74,28 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * <p>
  * The example above defines two attribute groups. The first one consists of the
- * attribute <tt>definition</tt> only. The second attribute group contains the
- * two elements <tt>example</tt> and <tt>code</tt>.
+ * attribute {@code definition} only. The second attribute group contains the
+ * two elements {@code example} and {@code code}.
  * </p>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LDefineAttributes extends LFunction {
 
     /**
-     * The field <tt>org</tt> contains the reference number for ordering the
+     * The field {@code org} contains the reference number for ordering the
      * attributes.
      */
     private int ord = 0;
 
     /**
-     * The field <tt>group</tt> contains the index of the group.
+     * The field {@code group} contains the index of the group.
      */
     private int group = 0;
 
     /**
-     * The field <tt>container</tt> contains the container for attributes.
+     * The field {@code container} contains the container for attributes.
      */
     private final AttributesContainer container;
 
@@ -126,7 +123,7 @@ public class LDefineAttributes extends LFunction {
      * @param interpreter the interpreter
      * @param list the list of attributes
      * 
-     * @return <tt>nil</tt>
+     * @return {@code nil}
      * 
      * @throws LNonMatchingTypeException is types are wrong
      * @throws LException in case of an error

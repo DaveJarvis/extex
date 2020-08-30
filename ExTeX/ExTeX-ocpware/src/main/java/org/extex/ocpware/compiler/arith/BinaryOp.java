@@ -30,33 +30,32 @@ import org.extex.ocpware.compiler.parser.CompilerState;
  * expressions.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public class BinaryOp extends ArithExpr {
 
     /**
-     * The field <tt>left</tt> contains the left argument.
+     * The field {@code left} contains the left argument.
      */
     private ArithExpr left;
 
     /**
-     * The field <tt>op</tt> contains the name of the operator
+     * The field {@code op} contains the name of the operator
      */
     private String op;
 
     /**
-     * The field <tt>opCode</tt> contains the op code of the associated
+     * The field {@code opCode} contains the op code of the associated
      * &Omega;CP instruction
      */
     private int opCode;
 
     /**
-     * The field <tt>right</tt> contains the right argument.
+     * The field {@code right} contains the right argument.
      */
     private ArithExpr right;
 
     /**
-     * The field <tt>needsParen</tt> contains the indicator for the precedence
+     * The field {@code needsParen} contains the indicator for the precedence
      * of the operator.
      */
     private boolean needsParen = true;
@@ -123,23 +122,13 @@ public class BinaryOp extends ArithExpr {
         return right;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.compiler.arith.ArithExpr#needsParen()
-     */
-    @Override
+@Override
     public boolean needsParen() {
 
         return needsParen;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.compiler.arith.ArithExpr#outExpr(CompilerState)
-     */
-    @Override
+@Override
     void outExpr(CompilerState cs)
             throws IOException,
                 TableNotDefinedException,
@@ -150,12 +139,7 @@ public class BinaryOp extends ArithExpr {
         cs.putInstruction(opCode);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();

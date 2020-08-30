@@ -31,30 +31,29 @@ import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\color</tt>.
+ * This is a test suite for the primitive {@code \color}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
-     * The field <tt>FIFTY_PERCENT</tt> contains the representation for .5.
+     * The field {@code FIFTY_PERCENT} contains the representation for .5.
      */
     private static final int FIFTY_PERCENT = 0x7fff;
 
     /**
-     * The field <tt>THIRTY_PERCENT</tt> contains the representation for .3.
+     * The field {@code THIRTY_PERCENT} contains the representation for .3.
      */
     private static final int THIRTY_PERCENT = 19660;
 
     /**
-     * The field <tt>TWENTY_PERCENT</tt> contains the representation for .2.
+     * The field {@code TWENTY_PERCENT} contains the representation for .2.
      */
     private static final int TWENTY_PERCENT = 13106;
 
     /**
-     * The field <tt>TEN_PERCENT</tt> contains the representation for .1.
+     * The field {@code TEN_PERCENT} contains the representation for .1.
      */
     private static final int TEN_PERCENT = 6553;
 
@@ -66,9 +65,9 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\color"> Test case checking that <tt>\color</tt> in
+     * <testcase primitive="\color"> Test case checking that {@code \color} in
      * default mode returns a RGB color and the components make it to the
-     * output. </testcase>
+     * output. 
      * 
      * @throws Exception in case of an error
      */
@@ -91,8 +90,8 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\color"> Test case checking that <tt>\color</tt> can
-     * digest an alpha channel value in default mode. </testcase>
+     * <testcase primitive="\color"> Test case checking that {@code \color} can
+     * digest an alpha channel value in default mode. 
      * 
      * @throws Exception in case of an error
      */
@@ -115,8 +114,8 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\color"> Test case checking that <tt>\color</tt>
-     * needs an argument. </testcase>
+     * <testcase primitive="\color"> Test case checking that {@code \color}
+     * needs an argument. 
      * 
      * @throws Exception in case of an error
      */
@@ -130,8 +129,8 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\color"> Test case checking that <tt>\color</tt> can
-     * consume an explicit gray scale color. </testcase>
+     * <testcase primitive="\color"> Test case checking that {@code \color} can
+     * consume an explicit gray scale color. 
      * 
      * @throws Exception in case of an error
      */
@@ -152,8 +151,8 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\color"> Test case checking that <tt>\color</tt> can
-     * consume an explicit gray scale color with an alpha channel. </testcase>
+     * <testcase primitive="\color"> Test case checking that {@code \color} can
+     * consume an explicit gray scale color with an alpha channel. 
      * 
      * @throws Exception in case of an error
      */
@@ -174,8 +173,8 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\color"> Test case checking that <tt>\color</tt> can
-     * consume an alpha value with an explicit gray scale color. </testcase>
+     * <testcase primitive="\color"> Test case checking that {@code \color} can
+     * consume an alpha value with an explicit gray scale color. 
      * 
      * @throws Exception in case of an error
      */
@@ -196,8 +195,8 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\color"> Test case checking that <tt>\color</tt>
-     * complains about a missing brace. </testcase>
+     * <testcase primitive="\color"> Test case checking that {@code \color}
+     * complains about a missing brace. 
      * 
      * @throws Exception in case of an error
      */
@@ -211,8 +210,8 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\color"> Test case checking that <tt>\color</tt>
-     * needs a left brace to start a RGB color triple. </testcase>
+     * <testcase primitive="\color"> Test case checking that {@code \color}
+     * needs a left brace to start a RGB color triple. 
      * 
      * @throws Exception in case of an error
      */
@@ -226,8 +225,8 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\color"> Test case checking that <tt>\color</tt> can
-     * consume an explicit RGB color. </testcase>
+     * <testcase primitive="\color"> Test case checking that {@code \color} can
+     * consume an explicit RGB color. 
      * 
      * @throws Exception in case of an error
      */
@@ -250,8 +249,8 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\color"> Test case checking that <tt>\color</tt> can
-     * consume an explicit RGB color with alpha channel. </testcase>
+     * <testcase primitive="\color"> Test case checking that {@code \color} can
+     * consume an explicit RGB color with alpha channel. 
      * 
      * @throws Exception in case of an error
      */
@@ -274,8 +273,8 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\color"> Test case checking that <tt>\color</tt> can
-     * consume an alpha channel with an explicit RGB color. </testcase>
+     * <testcase primitive="\color"> Test case checking that {@code \color} can
+     * consume an alpha channel with an explicit RGB color. 
      * 
      * @throws Exception in case of an error
      */

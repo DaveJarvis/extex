@@ -29,45 +29,40 @@ import org.extex.typesetter.Typesetter;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\endgroup</code>.
+ * {@code \endgroup}.
  * 
- * <doc name="endgroup">
- * <h3>The Primitive <tt>\endgroup</tt></h3>
+ * <p>The Primitive {@code \endgroup}</p>
  * <p>
- * The primitive <tt>\endgroup</tt> closes the current group all properties
+ * The primitive {@code \endgroup} closes the current group all properties
  * are reset to the values they had before the group had been entered. A group
  * is usually opened with
- * {@link org.extex.unit.tex.group.Begingroup <tt>\begingroup</tt>}.
+ * {@link org.extex.unit.tex.group.Begingroup {@code \begingroup}}.
  * </p>
  * <p>
  * If no group has been opened then an error is raised.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * <p>
  * The formal description of this primitive is the following:
- * 
+ * </p>
+ *
  * <pre class="syntax">
  *    &lang;endgroup&rang;
- *      &rarr; <tt>\endgroup</tt>  </pre>
- * 
- * </p>
- * 
- * <h4>Examples</h4>
- * 
+ *      &rarr; {@code \endgroup}  </pre>
+ *
+ * <p>Examples</p>
+ *
  * <pre class="TeXSample">
  *    \begingroup 123 \endgroup  </pre>
  * 
- * </doc>
- * 
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Endgroup extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -83,10 +78,7 @@ public class Endgroup extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

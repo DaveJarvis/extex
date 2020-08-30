@@ -40,43 +40,42 @@ import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.node.AccentKernNode;
 
 /**
- * This class provides an implementation for the primitive <code>\accent</code>.
+ * This class provides an implementation for the primitive {@code \accent}.
  * 
- * <doc name="accent">
- * <h3>The Primitive <tt>\accent</tt></h3>
+ * <p>The Primitive {@code \accent}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;accent&rang;
- *    &rarr; <tt>\accent</tt> ... </pre>
+ *    &rarr; {@code \accent} ... </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \accent 13 a  </pre>
  * 
- * </doc>
  * 
  * @see "TTP [1123]"
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Accent extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The constant <tt>UNIT</tt> contains the unit amount.
+     * The constant {@code UNIT} contains the unit amount.
      */
     private static final int UNIT = 65536;
 
@@ -91,10 +90,7 @@ public class Accent extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      * @see "TTP [1123,1124,1125]"
      */

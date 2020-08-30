@@ -56,30 +56,29 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * This class implements a trivial paragraph builder.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
 
     /**
-     * The constant <tt>DEVELOP</tt> contains a boolean indicating whether the
+     * The constant {@code DEVELOP} contains a boolean indicating whether the
      * develop traces should be written.
      */
     private static final boolean DEVELOP = false;
 
     /**
-     * The constant <tt>EJECT_PENALTY</tt> contains the penalty which forces a
+     * The constant {@code EJECT_PENALTY} contains the penalty which forces a
      * line break. This is an equivalent to -&infin;.
      */
     private static final int EJECT_PENALTY = -10000;
 
     /**
-     * The constant <tt>INF_BAD</tt> contains the value for infinite penalty.
+     * The constant {@code INF_BAD} contains the value for infinite penalty.
      * This is an equivalent to &infin;.
      */
     private static final int INF_PENALTY = 10000;
 
     /**
-     * The field <tt>fixedParshape</tt> contains the data object used to
+     * The field {@code fixedParshape} contains the data object used to
      * transport the fixed paragraph shape to the appropriate places. The values
      * stored in it will be overwritten whenever this object will be used for
      * the current paragraph.
@@ -88,7 +87,7 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
             new FixedParagraphShape(Dimen.ZERO_PT);
 
     /**
-     * The field <tt>hangingParshape</tt> contains the data object used to
+     * The field {@code hangingParshape} contains the data object used to
      * transport the hanging paragraph shape to the appropriate places. The
      * values stored in it will be overwritten whenever this object will be used
      * for the current paragraph.
@@ -97,27 +96,27 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
             new HangingParagraphShape(0, Dimen.ZERO_PT, Dimen.ZERO_PT);
 
     /**
-     * The field <tt>logger</tt> contains the logger to be used. This field is
+     * The field {@code logger} contains the logger to be used. This field is
      * initialized from the framework by invoking the appropriate setter.
      */
     private Logger logger = null;
 
     /**
-     * The field <tt>options</tt> contains the reference to the options
+     * The field {@code options} contains the reference to the options
      * object.
      */
     private TypesetterOptions options = null;
 
     /**
-     * The field <tt>parshape</tt> contains the paragraph shape specification.
+     * The field {@code parshape} contains the paragraph shape specification.
      * This field is initialized at the beginning of the line breaking if it is
-     * <code>null</code>. At the end of the line breaking it is reset to
-     * <code>null</code>.
+     * {@code null}. At the end of the line breaking it is reset to
+     * {@code null}.
      */
     private ParagraphShape parshape = null;
 
     /**
-     * The field <tt>tracer</tt> contains the logger used for tracing.
+     * The field {@code tracer} contains the logger used for tracing.
      */
     private Logger tracer = null;
 
@@ -137,11 +136,11 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
 
     /**
      * Add a new line to a vlist. Ensure that a minimum distance between the
-     * lines exists. Usually the distance <tt>\baselineskip</tt> between the
+     * lines exists. Usually the distance {@code \baselineskip} between the
      * lines is desirable. For this purpose the depth of the previous line and
      * the height of the current line is subtracted. If the remaining distance
-     * is less than <tt>\lineskiplimit</tt> then the value of
-     * <tt>\lineskip</tt> is used instead.
+     * is less than {@code \lineskiplimit} then the value of
+     * {@code \lineskip} is used instead.
      * 
      * @param vlist the target list
      * @param hlist the line to add
@@ -389,7 +388,7 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
     }
 
     /**
-     * Initializes the field <tt>parshape</tt> if not set already. For this
+     * Initializes the field {@code parshape} if not set already. For this
      * purpose the options are considered.
      */
     private void prepareParshape() {

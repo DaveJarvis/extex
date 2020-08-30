@@ -29,8 +29,7 @@ import org.extex.ocpware.type.OcpProgram;
  * This writer for an &Omega;CP is meant for pretty-printing.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class OcpOmegaWriter2 extends OcpOmegaWriter {
 
 
@@ -40,10 +39,7 @@ public class OcpOmegaWriter2 extends OcpOmegaWriter {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.writer.OcpOmegaWriter#write(java.io.OutputStream,
-     *      org.extex.ocpware.type.OcpProgram)
+*      org.extex.ocpware.type.OcpProgram)
      */
     @Override
     public void write(OutputStream stream, OcpProgram ocp) {

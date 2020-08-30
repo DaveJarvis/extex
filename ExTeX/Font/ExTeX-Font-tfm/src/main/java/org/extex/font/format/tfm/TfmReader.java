@@ -34,24 +34,23 @@ import org.extex.util.file.random.RandomAccessR;
  * @see <a href="package-summary.html#TFMformat">TFM-Format</a>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TfmReader implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 1L;
 
     /**
      * The char info.
      */
-    private TfmCharInfoArray charinfo;
+    private final TfmCharInfoArray charinfo;
 
     /**
      * The depth.
      */
-    private TfmDepthArray depth;
+    private final TfmDepthArray depth;
 
     // /**
     // * Encoder factory.
@@ -66,47 +65,47 @@ public class TfmReader implements Serializable {
     /**
      * the exten
      */
-    private TfmExtenArray exten;
+    private final TfmExtenArray exten;
 
     /**
      * The font name.
      */
-    private String fontname;
+    private final String fontname;
 
     /**
      * The header.
      */
-    private TfmHeaderArray header;
+    private final TfmHeaderArray header;
 
     /**
      * The height.
      */
-    private TfmHeightArray height;
+    private final TfmHeightArray height;
 
     /**
      * The italic.
      */
-    private TfmItalicArray italic;
+    private final TfmItalicArray italic;
 
     /**
      * The kern.
      */
-    private TfmKernArray kern;
+    private final TfmKernArray kern;
 
     /**
      * The lengths in the file.
      */
-    private TfmHeaderLengths lengths;
+    private final TfmHeaderLengths lengths;
 
     /**
      * The lig/kern array.
      */
-    private TfmLigKernArray ligkern;
+    private final TfmLigKernArray ligkern;
 
     /**
      * The param.
      */
-    private TfmParamArray param;
+    private final TfmParamArray param;
 
     /**
      * pfb filename.
@@ -131,7 +130,7 @@ public class TfmReader implements Serializable {
     /**
      * The width.
      */
-    private TfmWidthArray width;
+    private final TfmWidthArray width;
 
     /**
      * Create e new object.
@@ -229,7 +228,7 @@ public class TfmReader implements Serializable {
      * Returns the depth of a char.
      * 
      * @param pos the position
-     * @return the depth of a char, or <code>null</code>, if it does not
+     * @return the depth of a char, or {@code null}, if it does not
      *         exist.
      */
     public TfmFixWord getDepth(int pos) {
@@ -356,7 +355,7 @@ public class TfmReader implements Serializable {
      * Returns the height of a char.
      * 
      * @param pos the position
-     * @return the height of a char, or <code>null</code>, if it does not
+     * @return the height of a char, or {@code null}, if it does not
      *         exist.
      */
     public TfmFixWord getHeight(int pos) {
@@ -382,7 +381,7 @@ public class TfmReader implements Serializable {
      * Returns the italic correction of a char.
      * 
      * @param pos the position
-     * @return the italic correction of a char, or <code>null</code>, if it
+     * @return the italic correction of a char, or {@code null}, if it
      *         does not exist.
      */
     public TfmFixWord getItalicCorrection(int pos) {
@@ -533,7 +532,7 @@ public class TfmReader implements Serializable {
      * Returns the width of a char.
      * 
      * @param pos the position
-     * @return the width of a char, or <code>null</code>, if it does not
+     * @return the width of a char, or {@code null}, if it does not
      *         exist.
      */
     public TfmFixWord getWidth(int pos) {

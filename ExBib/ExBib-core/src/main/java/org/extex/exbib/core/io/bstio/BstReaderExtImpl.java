@@ -39,39 +39,35 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * This class implements a reader for BST files.
  * 
  * <p>
- * The syntax follows the definition of B<small>IB</small><span
- * style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X 0.99c with the following extensions:
+ * The syntax follows the definition of BibTeX 0.99c with the following extensions:
  * </p>
  * 
- * <small>
  * <table>
+ * <caption>Caption TBD</caption>
  * <tr>
  * <td><i>item</i></td>
- * <td><tt>+==</tt></td>
+ * <td>{@code +==}</td>
  * <td><i>include</i></td>
  * <tr>
  * <td></td>
- * <td><tt>|</tt></td>
+ * <td>{@code |}</td>
  * <td><i>option</i></td>
  * </tr>
  * 
  * <tr>
  * <td><i>include</i></td>
- * <td><tt>:==</tt></td>
+ * <td>{@code :==}</td>
  * <td>'INCLUDE' '{' <i>resource</i> '}'</td>
  * </tr>
  * 
  * <tr>
  * <td><i>option</i></td>
- * <td><tt>:==</tt></td>
+ * <td>{@code :==}</td>
  * <td>'OPTION' 'INTEGER' '{' <i>name</i> '}' '{' <i>value</i> '}'</td>
  * <td>'OPTION' 'STRING' '{' <i>name</i> '}' '{' <i>value</i> '}'</td>
  * </tr>
- * 
  * </table>
- * </small>
- * 
+ *
  * Example
  * 
  * <pre>
@@ -81,16 +77,13 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  *
  * OPTION STRING {def}{the default value}
  * </pre>
- * 
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BstReaderExtImpl extends BstReaderImpl {
 
     /**
-     * The field <tt>clazz</tt> contains the class name. This works for derived
+     * The field {@code clazz} contains the class name. This works for derived
      * classes as well.
      */
     private final Class<? extends BstReaderImpl> clazz;
@@ -114,10 +107,7 @@ public class BstReaderExtImpl extends BstReaderImpl {
      * <dd>option</dd>
      * </dl>
      * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.bstio.BstReaderImpl#init()
-     */
+*/
     @Override
     protected void init() {
 
@@ -125,10 +115,7 @@ public class BstReaderExtImpl extends BstReaderImpl {
         addInstruction("include", new Instruction() {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
-             *      Locator)
+        *      Locator)
              */
             public void parse(BstProcessor processor, Locator locator)
                     throws ExBibException {
@@ -199,10 +186,7 @@ public class BstReaderExtImpl extends BstReaderImpl {
             }
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
-             *      Locator)
+        *      Locator)
              */
             public void parse(BstProcessor processor, Locator locator)
                     throws ExBibException {

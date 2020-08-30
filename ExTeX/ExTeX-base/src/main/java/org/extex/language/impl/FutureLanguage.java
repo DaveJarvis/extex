@@ -40,29 +40,28 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * loading or the creation should be performed.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4784 $
- */
+*/
 public class FutureLanguage implements ManagedLanguage, Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 20060306L;
 
     /**
-     * The field <tt>creator</tt> contains the creator which should be contacted
+     * The field {@code creator} contains the creator which should be contacted
      * to perform the real task.
      */
     private transient LanguageCreator creator = null;
 
     /**
-     * The field <tt>language</tt> contains the language for which we are acting
+     * The field {@code language} contains the language for which we are acting
      * as proxy.
      */
     private Language language = null;
 
     /**
-     * The field <tt>name</tt> contains the name of the language for the
+     * The field {@code name} contains the name of the language for the
      * creator.
      */
     private String name;

@@ -33,43 +33,43 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\currentiflevel</code>.
+ * {@code \currentiflevel}.
  * 
- * <doc name="currentiflevel"> <h3>The Primitive <tt>\currentiflevel</tt></h3>
+ * <p>The Primitive {@code \currentiflevel}</p>
  * <p>
- * The primitive <tt>\currentiflevel</tt> is an internal integer quantity. It
- * reflects the current level of open conditionals. Whenever an <tt>\if</tt> is
- * opened then this quantity is incremented by one. If the <tt>\if</tt> is
+ * The primitive {@code \currentiflevel} is an internal integer quantity. It
+ * reflects the current level of open conditionals. Whenever an {@code \if} is
+ * opened then this quantity is incremented by one. If the {@code \if} is
  * closed it is decremented. Initially the quantity is zero.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * <p>
  * The formal description of this primitive is the following:
  * </p>
  * 
  * <pre class="syntax">
  *    &lang;currentiflevel&rang;
- *     &rarr; <tt>\currentiflevel</tt> </pre>
+ *     &rarr; {@code \currentiflevel} </pre>
  * 
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \currentiflevel  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4435 $
- */
+*/
 public class Currentiflevel extends AbstractCode
         implements
             CountConvertible,
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -84,10 +84,7 @@ public class Currentiflevel extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertCount(Context context, TokenSource source,
@@ -97,10 +94,7 @@ public class Currentiflevel extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

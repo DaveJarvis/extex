@@ -30,12 +30,11 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to define the location class order.
  * 
- * <doc type="exindex-command" command="define-location-class-order">
- * 
- * <h3>The Command <tt>define-location-class-order</tt></h3>
+*
+ * <p>The Command {@code define-location-class-order}</p>
  * 
  * <p>
- * The command <tt>define-location-class-order</tt> can be used to define the
+ * The command {@code define-location-class-order} can be used to define the
  * order of the location classes.
  * </p>
  * 
@@ -63,16 +62,14 @@ import org.extex.exindex.lisp.type.value.LValue;
  * requested.
  * </p>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LDefineLocationClassOrder extends LFunction {
 
     /**
-     * The field <tt>container</tt> contains the container to store the order
+     * The field {@code container} contains the container to store the order
      * in.
      */
     private final LocationClassContainer container;
@@ -102,7 +99,7 @@ public class LDefineLocationClassOrder extends LFunction {
      * @param interpreter the interpreter
      * @param list the list of location classes determining the order
      * 
-     * @return <tt>nil</tt>
+     * @return {@code nil}
      * 
      * @throws LException in case of an error
      */

@@ -16,8 +16,8 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the classes for reading and writing of any kind in 
- * <logo>&epsilon;&chi;Bib</logo>.
+ * Contains the classes for reading and writing of any kind in
+ * ??Bib.
  *
  */
 

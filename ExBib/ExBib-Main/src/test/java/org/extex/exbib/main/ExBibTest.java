@@ -34,15 +34,14 @@ import static org.junit.Assert.*;
  * This is a test suite for {@link ExBib}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 @SuppressWarnings("deprecation")
 public class ExBibTest extends BibTester {
 
     private static final String DIR_TARGET = "build";
 
     /**
-     * The field <tt>USAGE</tt> contains the expected usage description.
+     * The field {@code USAGE} contains the expected usage description.
      */
     private static final String USAGE =
             "Usage: exbib <options> file\n"
@@ -106,8 +105,8 @@ public class ExBibTest extends BibTester {
                     + "\t\tPrint the version information and exit.\n";
 
     /**
-     * <testcase> Test that no command line option at all leads to an error.
-     * </testcase>
+     *  Test that no command line option at all leads to an error.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -119,9 +118,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--</tt> needs an
-     * argument. </testcase>
-     * 
+     * Test that the command line option {@code --} needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -132,9 +130,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>-</tt> needs an
-     * argument. </testcase>
-     * 
+     * Test that the command line option {@code -} needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -145,7 +142,7 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that multiple files lead to an error. </testcase>
+     *  Test that multiple files lead to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -157,7 +154,7 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that multiple files lead to an error. </testcase>
+     *  Test that multiple files lead to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -169,7 +166,7 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that multiple files lead to an error. </testcase>
+     *  Test that multiple files lead to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -181,7 +178,7 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that an empty aux file is reported. </testcase>
+     *  Test that an empty aux file is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -196,7 +193,7 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that a non-existent aux file is reported. </testcase>
+     *  Test that a non-existent aux file is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -213,7 +210,7 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that multiple files lead to an error. </testcase>
+     *  Test that multiple files lead to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -225,7 +222,7 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that multiple files lead to an error. </testcase>
+     *  Test that multiple files lead to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -237,8 +234,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that an unknown bst in the aux file is reported.
-     * </testcase>
+     *  Test that an unknown bst in the aux file is reported.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -255,8 +252,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that an unknown bst in the aux file is reported.
-     * </testcase>
+     *  Test that an unknown bst in the aux file is reported.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -271,9 +268,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that a missing bst in the aux file can be specified on
-     * the command line. </testcase>
-     * 
+     * Test that a missing bst in the aux file can be specified on the command line
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -286,8 +282,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that a missing bibliography in the aux file is reported.
-     * </testcase>
+     *  Test that a missing bibliography in the aux file is reported.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -307,8 +303,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that an missing bibdata in the aux file is reported.
-     * </testcase>
+     *  Test that an missing bibdata in the aux file is reported.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -327,8 +323,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that a mising bst in the aux file is reported.
-     * </testcase>
+     *  Test that a mising bst in the aux file is reported.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -345,8 +341,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that an unknown bst in the aux file is reported.
-     * </testcase>
+     *  Test that an unknown bst in the aux file is reported.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -361,7 +357,7 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that a missing bibliography is reported. </testcase>
+     *  Test that a missing bibliography is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -376,8 +372,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that an aux file contained in an aux file is reported.
-     * </testcase>
+     *  Test that an aux file contained in an aux file is reported.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -420,9 +416,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that an aux file contained in an aux file twice is
-     * reported twice. </testcase>
-     * 
+     * Test that an aux file contained in an aux file twice is reported twice
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -468,9 +463,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that an aux file contained in an aux file thrice is
-     * reported thrice. </testcase>
-     * 
+     * Test that an aux file contained in an aux file thrice is reported thrice
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -520,9 +514,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that a non-existing aux file contained in an aux file is
-     * reported. </testcase>
-     * 
+     * Test that a non-existing aux file contained in an aux file is reported
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -557,9 +550,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--config</tt> needs an
-     * argument. </testcase>
-     * 
+     * Test that the command line option {@code --config} needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -570,9 +562,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--config</tt> needs an
-     * existing configuration. </testcase>
-     * 
+     * Test that the command line option {@code --config} needs an existing configuration
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -583,9 +574,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--config</tt> needs a
-     * valid configuration. </testcase>
-     * 
+     * Test that the command line option {@code --config} needs a valid configuration
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -601,9 +591,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--config</tt> needs a
-     * valid configuration. </testcase>
-     * 
+     * Test that the command line option {@code --config} needs a valid configuration
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -619,7 +608,7 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that a misconfiguration is reported. </testcase>
+     *  Test that a misconfiguration is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -641,8 +630,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--copying</tt> works.
-     * </testcase>
+     *  Test that the command line option {@code --copying} works.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -655,9 +644,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--csfile</tt> needs an
-     * argument. </testcase>
-     * 
+     * Test that the command line option {@code --csfile} needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -668,9 +656,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--csfile</tt> needs an
-     * argument. </testcase>
-     * 
+     * Test that the command line option {@code --csfile} needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -682,8 +669,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--csfile ''</tt> works.
-     * </testcase>
+     *  Test that the command line option {@code --csfile ''} works.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -697,9 +684,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--debug</tt> needs an
-     * argument. </testcase>
-     * 
+     * Test that the command line option {@code --debug} needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -710,9 +696,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--debug</tt> needs a
-     * known argument. </testcase>
-     * 
+     * Test that the command line option {@code --debug} needs a known argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -723,8 +708,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--debug all</tt> works.
-     * </testcase>
+     *  Test that the command line option {@code --debug all} works.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -745,9 +730,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--debug=all,search</tt>
-     * works. </testcase>
-     * 
+     * Test that the command line option {@code --debug=all,search} works
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -760,9 +744,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option
-     * <tt>--debug=search,search</tt>works. </testcase>
-     * 
+     * Test that the command line option {@code --debug=search,search}works
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -787,9 +770,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option
-     * <tt>--debug=all,none,search</tt>works. </testcase>
-     * 
+     * Test that the command line option {@code --debug=all,none,search}works
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -814,7 +796,7 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that an empty file name is reported. </testcase>
+     *  Test that an empty file name is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -826,7 +808,7 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that an empty file name is reported. </testcase>
+     *  Test that an empty file name is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -838,7 +820,7 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that an empty file name is reported. </testcase>
+     *  Test that an empty file name is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -850,8 +832,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--help</tt> works.
-     * </testcase>
+     *  Test that the command line option {@code --help} works.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -863,8 +845,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>-?</tt> works.
-     * </testcase>
+     *  Test that the command line option {@code -?} works.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -876,9 +858,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>-B</tt> is an ignored
-     * option. </testcase>
-     * 
+     * Test that the command line option {@code -B} is an ignored option
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -890,9 +871,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>-B</tt> is an ignored
-     * option. </testcase>
-     * 
+     * Test that the command line option {@code -B} is an ignored option
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -904,9 +884,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--mcites</tt> is an
-     * ignored option. </testcase>
-     * 
+     * Test that the command line option {@code --mcites} is an ignored option
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -918,9 +897,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--language</tt> needs an
-     * argument. </testcase>
-     * 
+     * Test that the command line option {@code --language} needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -931,9 +909,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--language</tt> falls
-     * back to en for an unknown language. </testcase>
-     * 
+     * Test that the command line option {@code --language} falls back to en for an unknown language
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -945,9 +922,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--language</tt> can be
-     * used to set the language. </testcase>
-     * 
+     * Test that the command line option {@code --language} can be used to set the language
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -959,9 +935,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>-Dlanguage=</tt> can be
-     * used to set the language. </testcase>
-     * 
+     * Test that the command line option {@code -Dlanguage=} can be used to set the language
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -973,9 +948,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--load</tt> needs an
-     * argument. </testcase>
-     * 
+     * Test that the command line option {@code --load} needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -986,9 +960,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--load</tt> does not
-     * work with an empty argument. </testcase>
-     * 
+     * Test that the command line option {@code --load} does not work with an empty argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -998,7 +971,7 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that a file for <tt>--load</tt> has to exist. </testcase>
+     *  Test that a file for {@code --load} has to exist.
      * 
      * @throws Exception in case of an error
      */
@@ -1013,7 +986,7 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that a file for <tt>--load</tt> has to exist. </testcase>
+     *  Test that a file for {@code --load} has to exist.
      * 
      * @throws Exception in case of an error
      */
@@ -1028,7 +1001,7 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that a file for <tt>--load</tt> has to exist. </testcase>
+     *  Test that a file for {@code --load} has to exist.
      * 
      * @throws Exception in case of an error
      */
@@ -1041,9 +1014,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--logfile</tt> needs an
-     * argument. </testcase>
-     * 
+     * Test that the command line option {@code --logfile} needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1054,10 +1026,10 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--logfile</tt> can be
+     *  Test that the command line option {@code --logfile} can be
      * used to redirect the log output. It is tested that the log file is
      * created and the {@link ExBib} instance reports the log file with
-     * getLogfile(). </testcase>
+     * getLogfile().
      * 
      * @throws Exception in case of an error
      */
@@ -1095,9 +1067,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--logfile</tt> can be
-     * used to redirect the log output. </testcase>
-     * 
+     * Test that the command line option {@code --logfile} can be used to redirect the log output
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1111,9 +1082,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--min_crossrefs</tt>
-     * needs an argument. </testcase>
-     * 
+     * Test that the command line option {@code --min_crossrefs} needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1125,9 +1095,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--min_crossrefs</tt>
-     * needs an argument. </testcase>
-     * 
+     * Test that the command line option {@code --min_crossrefs} needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1141,9 +1110,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--min.crossrefs</tt>
-     * needs an argument. </testcase>
-     * 
+     * Test that the command line option {@code --min.crossrefs} needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1155,9 +1123,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--min.crossrefs</tt>
-     * needs an argument. </testcase>
-     * 
+     * Test that the command line option {@code --min.crossrefs} needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1171,9 +1138,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--min.crossrefs</tt>
-     * stores its numeric argument. </testcase>
-     * 
+     * Test that the command line option {@code --min.crossrefs} stores its numeric argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1194,9 +1160,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--min.crossrefs</tt>
-     * stores its numeric argument. </testcase>
-     * 
+     * Test that the command line option {@code --min.crossrefs} stores its numeric argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1218,9 +1183,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--min.crossrefs</tt>
-     * stores its numeric argument. </testcase>
-     * 
+     * Test that the command line option {@code --min.crossrefs} stores its numeric argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1241,7 +1205,7 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that everything might go right. </testcase>
+     *  Test that everything might go right.
      * 
      * @throws Exception in case of an error
      */
@@ -1267,8 +1231,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that everything might go right using the static method.
-     * </testcase>
+     *  Test that everything might go right using the static method.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1308,9 +1272,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the optional argument in aux file macros redirects
-     * the output. </testcase>
-     * 
+     * Test that the optional argument in aux file macros redirects the output
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1346,9 +1309,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--outfile</tt> needs an
-     * argument. </testcase>
-     * 
+     * Test that the command line option {@code --outfile} needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1359,9 +1321,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--outfile</tt> complains
-     * if the output file can not be opened. </testcase>
-     * 
+     * Test that the command line option {@code --outfile} complains if the output file can not be opened
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1377,7 +1338,7 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the output can e redirected to stdout. </testcase>
+     *  Test that the output can e redirected to stdout.
      * 
      * @throws Exception in case of an error
      */
@@ -1411,9 +1372,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--outfile</tt> takes an
-     * empty argument to discard the output. </testcase>
-     * 
+     * Test that the command line option {@code --outfile} takes an empty argument to discard the output
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1427,9 +1387,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--progname</tt> needs an
-     * argument. </testcase>
-     * 
+     * Test that the command line option {@code --progname} needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1440,9 +1399,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--progname</tt> can be
-     * queried with getProgramName(). </testcase>
-     * 
+     * Test that the command line option {@code --progname} can be queried with getProgramName()
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1460,9 +1418,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--progname</tt> can be
-     * used to set the program name. </testcase>
-     * 
+     * Test that the command line option {@code --progname} can be used to set the program name
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1474,8 +1431,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--quiet</tt> is honored.
-     * </testcase>
+     *  Test that the command line option {@code --quiet} is honored.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1487,8 +1444,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--release</tt> works.
-     * </testcase>
+     *  Test that the command line option {@code --release} works.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1500,9 +1457,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--sorter</tt> needs an
-     * argument. </testcase>
-     * 
+     * Test that the command line option {@code --sorter} needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1513,9 +1469,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--sorter</tt> needs a
-     * valid argument. </testcase>
-     * 
+     * Test that the command line option {@code --sorter} needs a valid argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1527,9 +1482,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--sorter</tt> needs a
-     * valid argument. </testcase>
-     * 
+     * Test that the command line option {@code --sorter} needs a valid argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1541,9 +1495,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--sorter</tt> knows a
-     * locale sorter. </testcase>
-     * 
+     * Test that the command line option {@code --sorter} knows a locale sorter
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1569,9 +1522,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--sorter</tt> knows a
-     * locale sorter. </testcase>
-     * 
+     * Test that the command line option {@code --sorter} knows a locale sorter
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1596,9 +1548,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--sorter</tt> knows a
-     * locale sorter. </testcase>
-     * 
+     * Test that the command line option {@code --sorter} knows a locale sorter
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1625,9 +1576,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--sorter</tt> knows a
-     * rbc sorter. </testcase>
-     * 
+     * Test that the command line option {@code --sorter} knows a rbc sorter
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1653,9 +1603,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--sorter</tt> knows a
-     * locale sorter. </testcase>
-     * 
+     * Test that the command line option {@code --sorter} knows a locale sorter
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1680,8 +1629,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that everything might go right in strict mode.
-     * </testcase>
+     *  Test that everything might go right in strict mode.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1707,8 +1656,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--terse</tt> is honored.
-     * </testcase>
+     *  Test that the command line option {@code --terse} is honored.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1720,8 +1669,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--trace</tt> works.
-     * </testcase>
+     *  Test that the command line option {@code --trace} works.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1762,8 +1711,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that an undefined command line option is reported.
-     * </testcase>
+     *  Test that an undefined command line option is reported.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1776,8 +1725,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that an undefined command line option is reported.
-     * </testcase>
+     *  Test that an undefined command line option is reported.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1790,8 +1739,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--verbose</tt> works.
-     * </testcase>
+     *  Test that the command line option {@code --verbose} works.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1823,8 +1772,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--verbose</tt> works.
-     * </testcase>
+     *  Test that the command line option {@code --verbose} works.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1837,8 +1786,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--version</tt> works.
-     * </testcase>
+     *  Test that the command line option {@code --version} works.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1858,9 +1807,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--version</tt> works
-     * when abbreviated as <tt>--vers</tt>. </testcase>
-     * 
+     * Test that the command line option {@code --version} works when abbreviated as {@code --vers}
+* 
      * @throws Exception in case of an error
      */
     @Test

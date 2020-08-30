@@ -52,12 +52,11 @@ import org.apache.velocity.runtime.log.LogChute;
  * RSS 2.0 compatible file.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NewsBuilder {
 
     /**
-     * The field <tt>levelMap</tt> contains the mapping from Velocity error
+     * The field {@code levelMap} contains the mapping from Velocity error
      * levels to those of the Java logger.
      */
     private static Map<Integer, Level> levelMap = new HashMap<Integer, Level>();
@@ -71,29 +70,29 @@ public class NewsBuilder {
     }
 
     /**
-     * The field <tt>baseDirectory</tt> contains the name of the base directory
+     * The field {@code baseDirectory} contains the name of the base directory
      * for the files to be transformed.
      */
     private File baseDirectory = new File(".");
 
     /**
-     * The field <tt>logger</tt> contains the logger.
+     * The field {@code logger} contains the logger.
      */
     private Logger logger;
 
     /**
-     * The field <tt>max</tt> contains the maximal number of articles to be
+     * The field {@code max} contains the maximal number of articles to be
      * published.
      */
     private int max = 8;
 
     /**
-     * The field <tt>outputFile</tt> contains the target file.
+     * The field {@code outputFile} contains the target file.
      */
     private File outputFile = new File(DIR_TARGET + "/test-site/rss/2.0/news.rss");
 
     /**
-     * The field <tt>template</tt> contains the name of the template.
+     * The field {@code template} contains the name of the template.
      */
     private String template = "org/extex/sitebuilder/news.vm";
 
@@ -124,10 +123,7 @@ public class NewsBuilder {
         File[] files = baseDirectory.listFiles(new FilenameFilter() {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see java.io.FilenameFilter#accept(java.io.File,
-             *      java.lang.String)
+        *      java.lang.String)
              */
             @Override
             public boolean accept(File dir, String name) {

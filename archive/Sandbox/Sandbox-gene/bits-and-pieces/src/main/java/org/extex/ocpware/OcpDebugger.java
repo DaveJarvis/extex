@@ -25,20 +25,18 @@ import org.extex.ocpware.engine.OcpReaderObserver;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * 
- * @version $Revision:6007 $
- */
+*/
 public final class OcpDebugger {
 
     /**
      * TODO gene: missing JavaDoc.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision:6459 $
-     */
+    */
     protected class Observer implements OcpReaderObserver {
 
         /**
-         * The field <tt>trace</tt> contains the ...
+         * The field {@code trace} contains the ...
          */
         private boolean trace = true;
 
@@ -83,22 +81,14 @@ public final class OcpDebugger {
             return true;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.ocpware.engine.OcpReaderObserver#close(org.extex.ocpware.engine.OcpReader)
-         */
-        @Override
+    @Override
         public void close(OcpReader reader) {
 
             // TODO gene: close unimplemented
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.ocpware.engine.OcpReaderObserver#step(org.extex.ocpware.engine.OcpReader,
-         *      int, int)
+    *      int, int)
          */
         @Override
         public void step(OcpReader reader, int opcode, int arg) {
@@ -154,22 +144,22 @@ public final class OcpDebugger {
     }
 
     /**
-     * The field <tt>bundle</tt> contains the resource bundle.
+     * The field {@code bundle} contains the resource bundle.
      */
     private ResourceBundle bundle;
 
     /**
-     * The field <tt>in</tt> contains the input stream.
+     * The field {@code in} contains the input stream.
      */
     private LineNumberReader in;
 
     /**
-     * The field <tt>obs</tt> contains the observer.
+     * The field {@code obs} contains the observer.
      */
     private Observer obs = new Observer();
 
     /**
-     * The field <tt>out</tt> contains the output stream.
+     * The field {@code out} contains the output stream.
      */
     private PrintStream out;
 

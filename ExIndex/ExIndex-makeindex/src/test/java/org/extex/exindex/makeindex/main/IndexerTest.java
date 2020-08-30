@@ -29,15 +29,14 @@ import static org.junit.Assert.assertEquals;
  * This is a test suite for makeindex.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:7790 $
- */
+*/
 @Ignore
 public class IndexerTest {
 
     private static final String DIR_TARGET = "build";
     
     /**
-     * The field <tt>MARKER_STYLE</tt> contains the definition of all output
+     * The field {@code MARKER_STYLE} contains the definition of all output
      * options for the test.
      */
     private static final String MARKER_STYLE =
@@ -172,7 +171,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> A null argument array leads to an error.</testcase>
+     *  A null argument array leads to an error.
      * 
      * @throws IOException in case of an error
      */
@@ -185,7 +184,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> An empty argument array works without side effect. </testcase>
+     *  An empty argument array works without side effect.
      * 
      * @throws IOException in case of an error
      */
@@ -199,8 +198,8 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> An empty raw index leads to an empty theindex
-     * environment.</testcase>
+     *  An empty raw index leads to an empty theindex
+     * environment.
      * 
      * @throws IOException in case of an error
      */
@@ -211,7 +210,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> A single index entry is reproduced. </testcase>
+     *  A single index entry is reproduced.
      * 
      * @throws IOException in case of an error
      */
@@ -223,8 +222,8 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> Two single index entries for different keys are
-     * reproduced.</testcase>
+     *  Two single index entries for different keys are
+     * reproduced.
      * 
      * @throws IOException in case of an error
      */
@@ -237,8 +236,8 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> Three single index entries for different keys are
-     * reproduced.</testcase>
+     *  Three single index entries for different keys are
+     * reproduced.
      * 
      * @throws IOException in case of an error
      */
@@ -252,8 +251,8 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> Three single index entries for the same key are
-     * reproduced.</testcase>
+     *  Three single index entries for the same key are
+     * reproduced.
      * 
      * @throws IOException in case of an error
      */
@@ -268,8 +267,8 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> A display string for an index entry is used when present.
-     * </testcase>
+     *  A display string for an index entry is used when present.
+     *
      * 
      * @throws IOException in case of an error
      */
@@ -281,7 +280,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> TODO gene: missing JavaDoc </testcase>
+     *  TODO gene: missing JavaDoc
      * 
      * @throws IOException in case of an error
      */
@@ -295,7 +294,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> TODO gene: missing JavaDoc </testcase>
+     *  TODO gene: missing JavaDoc
      * 
      * @throws IOException in case of an error
      */
@@ -308,7 +307,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> TODO gene: missing JavaDoc </testcase>
+     *  TODO gene: missing JavaDoc
      * 
      * @throws IOException in case of an error
      */
@@ -322,7 +321,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> TODO gene: missing JavaDoc </testcase>
+     *  TODO gene: missing JavaDoc
      * 
      * @throws IOException in case of an error
      */
@@ -338,7 +337,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> TODO gene: missing JavaDoc </testcase>
+     *  TODO gene: missing JavaDoc
      * 
      * @throws IOException in case of an error
      */
@@ -354,7 +353,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> TODO gene: missing JavaDoc </testcase>
+     *  TODO gene: missing JavaDoc
      * 
      * @throws IOException in case of an error
      */
@@ -370,7 +369,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> A reference in a range is discarded.</testcase>
+     *  A reference in a range is discarded.
      * 
      * @throws IOException in case of an error
      */
@@ -385,7 +384,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> TODO gene: missing JavaDoc </testcase>
+     *  TODO gene: missing JavaDoc
      * 
      * @throws IOException in case of an error
      */
@@ -397,7 +396,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> A single index entry is reproduced. </testcase>
+     *  A single index entry is reproduced.
      * 
      * @throws IOException in case of an error
      */
@@ -409,7 +408,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> A single index entry is reproduced. </testcase>
+     *  A single index entry is reproduced.
      * 
      * @throws IOException in case of an error
      */
@@ -421,7 +420,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> Two pages are separated correctly. </testcase>
+     *  Two pages are separated correctly.
      * 
      * @throws IOException in case of an error
      */
@@ -436,8 +435,8 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> Two identical numerical pages with encap are joined.
-     * </testcase>
+     *  Two identical numerical pages with encap are joined.
+     *
      * 
      * @throws IOException in case of an error
      */
@@ -487,7 +486,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> Two identical numerical pages are joined. </testcase>
+     *  Two identical numerical pages are joined.
      * 
      * @throws IOException in case of an error
      */
@@ -501,8 +500,8 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> Two identical numerical pages with encap are joined.
-     * </testcase>
+     *  Two identical numerical pages with encap are joined.
+     *
      * 
      * @throws IOException in case of an error
      */
@@ -518,8 +517,8 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> Two identical numerical pages with encap are joined.
-     * </testcase>
+     *  Two identical numerical pages with encap are joined.
+     *
      * 
      * @throws IOException in case of an error
      */
@@ -535,7 +534,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> A subitem is produced correctly. </testcase>
+     *  A subitem is produced correctly.
      * 
      * @throws IOException in case of an error
      */
@@ -551,7 +550,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> A subitem is produced correctly. </testcase>
+     *  A subitem is produced correctly.
      * 
      * @throws IOException in case of an error
      */

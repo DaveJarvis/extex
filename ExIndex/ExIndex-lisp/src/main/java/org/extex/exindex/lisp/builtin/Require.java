@@ -30,11 +30,10 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * Load a file if not loaded already.
  * 
- * <doc command="require">
- * <h3>The Command <tt>require</tt></h3>
+ * <p>The Command {@code require}</p>
  * 
  * <p>
- * The command <tt>require</tt> can be used to load additional resources.
+ * The command {@code require} can be used to load additional resources.
  * </p>
  * 
  * <pre>
@@ -46,13 +45,9 @@ import org.extex.exindex.lisp.type.value.LValue;
  * The command has as argument the name of a resource. Thus resource is loaded
  * if it is found. Otherwise an error is raised.
  * </p>
- * 
- * </doc>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Require extends LFunction {
 
     /**
@@ -75,7 +70,7 @@ public class Require extends LFunction {
      * @param interpreter the interpreter
      * @param arg the resource name
      * 
-     * @return the last item read or <code>nil</code>
+     * @return the last item read or {@code nil}
      * 
      * @throws LException in case of an error
      */

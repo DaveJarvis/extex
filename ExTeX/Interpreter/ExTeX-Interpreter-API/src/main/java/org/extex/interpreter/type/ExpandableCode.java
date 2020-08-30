@@ -31,8 +31,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * This interface describes the feature of being expandable code.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface ExpandableCode {
 
     /**

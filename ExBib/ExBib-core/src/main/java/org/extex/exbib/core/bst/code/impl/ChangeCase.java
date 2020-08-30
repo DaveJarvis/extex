@@ -31,7 +31,7 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X built-in function <code>change.case</code>
+ * >e</span>X built-in function {@code change.case}
  * <p>
  * This function performs case conversion. It takes two arguments from the
  * stack. The first argument is the format and the second argument is the string
@@ -43,19 +43,19 @@ import org.extex.framework.i18n.LocalizerFactory;
  * associated with the different format strings.
  * </p>
  * <ul>
- * <li>If the format is <tt>"l"</tt> or <tt>"L"</tt> then the string is
+ * <li>If the format is {@code "l"} or {@code "L"} then the string is
  * converted to lower case. This means that each letter is translated to its
  * lowercase counterpart &ndash; even the letters in TeX macros.</li>
- * <li>If the format is <tt>"u"</tt> or <tt>"U"</tt> then the string is
+ * <li>If the format is {@code "u"} or {@code "U"} then the string is
  * converted to upper case. This means that each letter is translated to its
  * lowercase counterpart &ndash; even the letters in TeX macros.</li>
- * <li>If the format is <tt>"t"</tt> or <tt>"T"</tt> then the string is
+ * <li>If the format is {@code "t"} or {@code "T"} then the string is
  * converted to title case. This means that the first `letter' is translated to
  * upper case and the other letters are left unchanged.
  * <p>
  * When a control sequence occurs then it is translated completely. This mean
  * that all letters of the control sequence are translated. For instance
- * <tt>\AA</tt> is translates to <tt>\aa</tt> at the beginning.
+ * {@code \AA} is translates to {@code \aa} at the beginning.
  * </p>
  * </li>
  * <li>If the format is not one of the legal values then a message is written to
@@ -65,77 +65,70 @@ import org.extex.framework.i18n.LocalizerFactory;
  * If the stack does not contain enough elements or the types do not match then
  * an error is raised.
  * </p>
- * <img src="doc-files/change.case.png"/>
+ * <img src="doc-files/change.case.png" alt="change.case">
  * <p>
- * The following example is taken from <tt>alpha.bst</tt>:
+ * The following example is taken from {@code alpha.bst}:
  * </p>
  * 
  * <pre>
  *   edition "l" change.case$
  * </pre>
  * 
- * <hr />
+ * <hr>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X documentation:</dt>
+ * <dt>BibTeX documentation:</dt>
  * <dd>Pops the top two (string) literals; it changes the case of the second
  * according to the specifications of the first, as follows. (Note: The word
  * `letters' in the next sentence refers only to those at brace-level 0, the
  * top-most brace level; no other characters are changed, except perhaps for
  * `special characters'', described in Section 4.) <br>
- * If the first literal is the string `<code>t</code>', it converts to lower
+ * If the first literal is the string `{@code t}', it converts to lower
  * case all letters except the very first character in the string, which it
  * leaves alone, and except the first character following any colon and then
  * nonnull white space, which it also leaves alone; if it's the string `
- * <code>l</code>', it converts all letters to lower case; and if it's the
- * string `<code>u</code>', it converts all letters to upper case. It then
+ * {@code l}', it converts all letters to lower case; and if it's the
+ * string `{@code u}', it converts all letters to upper case. It then
  * pushes this resulting string. If either type is incorrect, it complains and
  * pushes the null string; however, if both types are correct but the
  * specification string (i.e., the first string) isn't one of the legal ones, it
  * merely pushes the second back onto the stack, after complaining. (Another
  * note: It ignores case differences in the specification string; for example,
- * the strings <code>t</code> and <code>T</code> are equivalent for the purposes
+ * the strings {@code t} and {@code T} are equivalent for the purposes
  * of this built-in function.)</dd>
  * </dl>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X web documentation:</dt>
+ * <dt>BibTeX web documentation:</dt>
  * <dd>
- * The <code>built_in</code> function <code>change.case$</code> pops the top two
+ * The {@code built_in} function {@code change.case$} pops the top two
  * (string) literals; it changes the case of the second according to the
  * specifications of the first, as follows. (Note: The word `letters' in the
  * next sentence refers only to those at brace-level 0, the top-most brace
  * level; no other characters are changed, except perhaps for special
  * characters, described shortly.) If the first literal is the string
- * <code>t</code>, it converts to lower case all letters except the very first
+ * {@code t}, it converts to lower case all letters except the very first
  * character in the string, which it leaves alone, and except the first
- * character following any <code>colon</code> and then nonnull
- * <code>white_space</code>, which it also leaves alone; if it's the string
- * <code>l</code>, it converts all letters to lower case; if it's the string
- * <code>u</code>, it converts all letters to upper case; and if it's anything
+ * character following any {@code colon} and then nonnull
+ * {@code white_space}, which it also leaves alone; if it's the string
+ * {@code l}, it converts all letters to lower case; if it's the string
+ * {@code u}, it converts all letters to upper case; and if it's anything
  * else, it complains and does no conversion. It then pushes this resulting
  * string. If either type is incorrect, it complains and pushes the null string;
  * however, if both types are correct but the specification string (i.e., the
  * first string) isn't one of the legal ones, it merely pushes the second back
  * onto the stack, after complaining. (Another note: It ignores case differences
- * in the specification string; for example, the strings <code>t</code> and
- * <code>T</code> are equivalent for the purposes of this <code>built_in</code>
+ * in the specification string; for example, the strings {@code t} and
+ * {@code T} are equivalent for the purposes of this {@code built_in}
  * function.)</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ChangeCase extends AbstractCode {
 
     /**
-     * Perform the case conversion like <tt>change.case$</tt>.
+     * Perform the case conversion like {@code change.case$}.
      * 
      * @param fmt the format; i.e. one of the following:
      *        <ul>
@@ -256,10 +249,7 @@ public class ChangeCase extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)

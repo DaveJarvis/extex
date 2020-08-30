@@ -30,8 +30,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * This interface describes a parser which can be registered in the evaluator.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4787 $
- */
+*/
 public interface ETypeParser {
 
     /**
@@ -42,7 +41,7 @@ public interface ETypeParser {
      * @param source the source for new tokens
      * @param typesetter the typesetter
      *
-     * @return the converted value or <code>null</code> if the conversion
+     * @return the converted value or {@code null} if the conversion
      *  could not be performed
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
@@ -57,7 +56,7 @@ public interface ETypeParser {
      * @param source the source for new tokens
      * @param typesetter the typesetter
      *
-     * @return the element inquired or <code>null</code> if none could be
+     * @return the element inquired or {@code null} if none could be
      *  parsed
      *
      * @throws HelpingException in case of an error

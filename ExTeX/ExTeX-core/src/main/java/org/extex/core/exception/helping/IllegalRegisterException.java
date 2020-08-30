@@ -26,13 +26,12 @@ import org.extex.framework.i18n.LocalizerFactory;
  * not in the legal range.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4728 $
- */
+*/
 
 public class IllegalRegisterException extends HelpingException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;

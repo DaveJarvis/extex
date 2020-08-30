@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\namespace</tt>.
+ * This is a test suite for the primitive {@code \namespace}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NamespaceTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
@@ -50,7 +49,7 @@ public class NamespaceTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\namespace"> Test case checking that
-     * <tt>\namespace</tt> is initially empty. </testcase>
+     * {@code \namespace} is initially empty.
      * 
      * @throws Exception in case of an error
      */
@@ -65,7 +64,7 @@ public class NamespaceTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\namespace"> Test case checking that
-     * <tt>\namespace</tt> can be set and read. </testcase>
+     * {@code \namespace} can be set and read.
      * 
      * @throws Exception in case of an error
      */
@@ -81,8 +80,8 @@ public class NamespaceTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\namespace"> Test case checking that
-     * <tt>\namespace</tt> let assignment in different name spaces are
-     * independent. </testcase>
+     * {@code \namespace} let assignment in different name spaces are
+     * independent.
      * 
      * @throws Exception in case of an error
      */
@@ -99,7 +98,7 @@ public class NamespaceTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\namespace"> Test case checking that
-     * <tt>\namespace</tt> interacts with groups. </testcase>
+     * {@code \namespace} interacts with groups.
      * 
      * @throws Exception in case of an error
      */

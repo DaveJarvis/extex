@@ -29,13 +29,12 @@ import org.junit.Test;
  * This is a test suite for a CsfSorter.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class CsfSorterTest {
 
     /**
-     * <testcase> start() terminates immediately if the resource is null.
-     * </testcase>
+     *  start() terminates immediately if the resource is null.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -46,9 +45,8 @@ public class CsfSorterTest {
     }
 
     /**
-     * <testcase> start() terminates immediately if the resource is the empty
-     * string. </testcase>
-     * 
+     * start() terminates immediately if the resource is the empty string
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -58,8 +56,8 @@ public class CsfSorterTest {
     }
 
     /**
-     * <testcase> start() throws an exception if the resource can not be found.
-     * </testcase>
+     *  start() throws an exception if the resource can not be found.
+     * 
      * 
      * @throws Exception in case of an error
      */

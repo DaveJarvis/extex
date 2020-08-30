@@ -30,8 +30,7 @@ import org.extex.scanner.type.tokens.Tokens;
  * This class holds an input file from which tokens can be read.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4399 $
- */
+*/
 public interface InFile extends Serializable {
 
     /**
@@ -42,7 +41,7 @@ public interface InFile extends Serializable {
     /**
      * Checks whether this InFile is at end of file.
      * 
-     * @return <code>true</code> iff no further token can be read.
+     * @return {@code true} iff no further token can be read.
      * 
      * @throws HelpingException in case of an error
      */
@@ -51,14 +50,14 @@ public interface InFile extends Serializable {
     /**
      * Check if this stream is attached to a file.
      * 
-     * @return <code>true</code> if this stream reads from a file
+     * @return {@code true} if this stream reads from a file
      */
     boolean isFileStream();
 
     /**
      * Check whether this InFile is currently opened for reading.
      * 
-     * @return <tt>true</tt> iff the input stream has still a stream assigned to
+     * @return {@code true} iff the input stream has still a stream assigned to
      *         it.
      */
     boolean isOpen();
@@ -76,7 +75,7 @@ public interface InFile extends Serializable {
      * @param factory the factory to request new tokens from
      * @param tokenizer the tokenizer to use
      * 
-     * @return the tokens read or <code>null</code> in case of eof
+     * @return the tokens read or {@code null} in case of eof
      * 
      * @throws HelpingException in case of an error
      */

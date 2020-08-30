@@ -25,8 +25,7 @@ import org.junit.runners.Suite;
  * Run all tests.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 8318 $
- */
+*/
 @RunWith(Suite.class)
 @Suite.SuiteClasses({IndexerTest.class,
         MakeindexComparatorTest.class,

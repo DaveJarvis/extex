@@ -37,49 +37,45 @@ import org.extex.exindex.lisp.type.value.LValue;
  * This class provides an argument descriptor for a function.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Arg {
 
     /**
-     * The field <tt>LIST</tt> contains the descriptor for a list.
+     * The field {@code LIST} contains the descriptor for a list.
      */
     public static final Arg LIST = new Arg(null, LList.class, LList.NIL, false);
 
     /**
-     * The field <tt>QLIST</tt> contains the descriptor for a quoted list.
+     * The field {@code QLIST} contains the descriptor for a quoted list.
      */
     public static final Arg QLIST = new Arg(null, LList.class, LList.NIL, true);
 
     /**
-     * The field <tt>QSYMBOL</tt> contains the descriptor for a quoted list.
+     * The field {@code QSYMBOL} contains the descriptor for a quoted list.
      */
     public static final Arg QSYMBOL = new Arg(null, LSymbol.class, null, true);
 
     /**
-     * The field <tt>VALUE</tt> contains the specification for an arbitrary
+     * The field {@code VALUE} contains the specification for an arbitrary
      * value.
      */
     public static final Arg VALUE =
             new Arg(null, LValue.class, LList.NIL, false);
 
     /**
-     * The field <tt>QVALUE</tt> contains the specification for a quoted
+     * The field {@code QVALUE} contains the specification for a quoted
      * value.
      */
     public static final Arg QVALUE =
             new Arg(null, LValue.class, LList.NIL, true);
 
     /**
-     * The field <tt>STRING</tt> contains the specification for a string.
+     * The field {@code STRING} contains the specification for a string.
      */
     public static final Arg STRING = new Arg(null, String.class, "", false) {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exindex.lisp.type.function.Arg#validate(
-         *      org.extex.exindex.lisp.type.value.LValue)
+    *      org.extex.exindex.lisp.type.value.LValue)
          */
         @Override
         public Object validate(LValue value) throws LNonMatchingTypeException {
@@ -93,16 +89,13 @@ public class Arg {
     };
 
     /**
-     * The field <tt>LSTRING</tt> contains the specification for a string.
+     * The field {@code LSTRING} contains the specification for a string.
      */
     public static final Arg LSTRING =
             new Arg(null, LString.class, new LString(""), false) {
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.exindex.lisp.type.function.Arg#validate(
-                 *      org.extex.exindex.lisp.type.value.LValue)
+            *      org.extex.exindex.lisp.type.value.LValue)
                  */
                 @Override
                 public Object validate(LValue value)
@@ -129,10 +122,7 @@ public class Arg {
         return new Arg(flag, Boolean.class, fallback, false) {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exindex.lisp.type.function.Arg#parse(
-             *      java.util.List, int, java.lang.Object[], int)
+        *      java.util.List, int, java.lang.Object[], int)
              */
             @Override
             public int parse(List<LValue> args, int ai, Object[] arguments,
@@ -156,10 +146,7 @@ public class Arg {
         return new Arg(flag, LBoolean.class, LBoolean.FALSE, false) {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exindex.lisp.type.function.Arg#parse(
-             *      java.util.List, int, java.lang.Object[], int)
+        *      java.util.List, int, java.lang.Object[], int)
              */
             @Override
             public int parse(List<LValue> args, int ai, Object[] arguments,
@@ -183,10 +170,7 @@ public class Arg {
         return new OptionalArgWithParameter(flag, LList.class, LList.NIL, false) {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exindex.lisp.type.function.Arg#validate(
-             *      org.extex.exindex.lisp.type.value.LValue)
+        *      org.extex.exindex.lisp.type.value.LValue)
              */
             @Override
             public Object validate(LValue a) throws LNonMatchingTypeException {
@@ -214,10 +198,7 @@ public class Arg {
             false) {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exindex.lisp.type.function.Arg#validate(
-             *      org.extex.exindex.lisp.type.value.LValue)
+        *      org.extex.exindex.lisp.type.value.LValue)
              */
             @Override
             public Object validate(LValue a) throws LNonMatchingTypeException {
@@ -249,10 +230,7 @@ public class Arg {
             false) {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exindex.lisp.type.function.Arg#validate(
-             *      org.extex.exindex.lisp.type.value.LValue)
+        *      org.extex.exindex.lisp.type.value.LValue)
              */
             @Override
             public Object validate(LValue a) throws LNonMatchingTypeException {
@@ -280,10 +258,7 @@ public class Arg {
             false) {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exindex.lisp.type.function.Arg#validate(
-             *      org.extex.exindex.lisp.type.value.LValue)
+        *      org.extex.exindex.lisp.type.value.LValue)
              */
             @Override
             public Object validate(LValue a) throws LNonMatchingTypeException {
@@ -313,10 +288,7 @@ public class Arg {
         return new OptionalArgWithParameter(flag, LList.class, LList.NIL, true) {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exindex.lisp.type.function.Arg#validate(
-             *      org.extex.exindex.lisp.type.value.LValue)
+        *      org.extex.exindex.lisp.type.value.LValue)
              */
             @Override
             public Object validate(LValue a) throws LNonMatchingTypeException {
@@ -342,10 +314,7 @@ public class Arg {
         return new OptionalArgWithParameter(flag, LList.class, LList.NIL, true) {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exindex.lisp.type.function.Arg#validate(
-             *      org.extex.exindex.lisp.type.value.LValue)
+        *      org.extex.exindex.lisp.type.value.LValue)
              */
             @Override
             public Object validate(LValue a) throws LNonMatchingTypeException {
@@ -379,10 +348,7 @@ public class Arg {
         return new OptionalArgWithParameter(flag, String.class, fallback, false) {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exindex.lisp.type.function.Arg#validate(
-             *      org.extex.exindex.lisp.type.value.LValue)
+        *      org.extex.exindex.lisp.type.value.LValue)
              */
             @Override
             public Object validate(LValue a)
@@ -414,10 +380,7 @@ public class Arg {
         return new Arg(null, LList.class, LList.NIL, false) {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exindex.lisp.type.function.Arg#parse(java.util.List,
-             *      int, java.lang.Object[], int)
+        *      int, java.lang.Object[], int)
              */
             @Override
             public int parse(List<LValue> args, int ai, Object[] arguments,
@@ -437,22 +400,22 @@ public class Arg {
     }
 
     /**
-     * The field <tt>resultClass</tt> contains the class of the result.
+     * The field {@code resultClass} contains the class of the result.
      */
     private final Class<?> resultClass;
 
     /**
-     * The field <tt>def</tt> contains the default value.
+     * The field {@code def} contains the default value.
      */
     private final Object def;
 
     /**
-     * The field <tt>flag</tt> contains the name of the flag.
+     * The field {@code flag} contains the name of the flag.
      */
     private final String flag;
 
     /**
-     * The field <tt>quoted</tt> contains the indicator for quoted values.
+     * The field {@code quoted} contains the indicator for quoted values.
      */
     private final boolean quoted;
 
@@ -485,7 +448,7 @@ public class Arg {
     /**
      * Getter for the flag.
      * 
-     * @return the flag; i.e. <code>null</code> as default
+     * @return the flag; i.e. {@code null} as default
      */
     public String getFlag() {
 
@@ -505,7 +468,7 @@ public class Arg {
     /**
      * Getter for the indicator whether to protect the argument from evaluation.
      * 
-     * @return <code>true</code> if no evaluation is desirable
+     * @return {@code true} if no evaluation is desirable
      */
     public boolean isQuoted() {
 

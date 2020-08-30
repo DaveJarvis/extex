@@ -39,23 +39,24 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\lccode</code>.
+ * This class provides an implementation for the primitive {@code \lccode}.
  * 
- * <doc name="lccode"> <h3>The Primitive <tt>\lccode</tt></h3>
+ * <p>The Primitive {@code \lccode}</p>
  * <p>
- * The primitive <tt>\lccode</tt> provides access to the mapping from characters
+ * The primitive {@code \lccode} provides access to the mapping from characters
  * to their lower case counterpart. This information is used by the primitive
- * <tt>\lowercase</tt>
+ * {@code \lowercase}
  * </p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;lccode&rang;
- *        &rarr; <tt>\lccode</tt> {@linkplain
+ *        &rarr; {@code \lccode} {@linkplain
  *          org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *          &lang;8-bit&nbsp;number&rang;} {@linkplain
  *          org.extex.interpreter.TokenSource#getOptionalEquals(Context)
@@ -63,17 +64,16 @@ import org.extex.typesetter.exception.TypesetterException;
  *          org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *          &lang;8-bit&nbsp;number&rang;} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \lccode 65=65  </pre>
  * 
- * </doc>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Lccode extends AbstractAssignment
         implements
             ExpandableCode,
@@ -82,7 +82,7 @@ public class Lccode extends AbstractAssignment
             DimenConvertible {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -97,10 +97,7 @@ public class Lccode extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -121,10 +118,7 @@ public class Lccode extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertCount(Context context, TokenSource source,
@@ -136,10 +130,7 @@ public class Lccode extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertDimen(Context context, TokenSource source,
@@ -149,10 +140,7 @@ public class Lccode extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -167,10 +155,7 @@ public class Lccode extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

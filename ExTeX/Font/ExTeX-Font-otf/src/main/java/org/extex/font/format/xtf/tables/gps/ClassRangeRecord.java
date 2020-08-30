@@ -33,9 +33,10 @@ import org.extex.util.file.random.RandomAccessR;
  * a ClassRangeRecord is assumed to belong to Class 0.
  * </p>
  * 
- * <table border="1!>
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td><b>Type</b></td>
+* <td><b>Type</b></td>
  * <td><b>Name</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -57,24 +58,23 @@ import org.extex.util.file.random.RandomAccessR;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class ClassRangeRecord {
 
     /**
      * Last GlyphID in the range.
      */
-    private int end;
+    private final int end;
 
     /**
      * Applied to all glyphs in the range.
      */
-    private int gclass;
+    private final int gclass;
 
     /**
      * First GlyphID in the range.
      */
-    private int start;
+    private final int start;
 
     /**
      * Creates a new object.

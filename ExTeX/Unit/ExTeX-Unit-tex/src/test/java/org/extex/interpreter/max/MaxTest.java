@@ -27,12 +27,11 @@ import org.junit.Test;
  * This is a test suite for the interpreter {@link Max}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class MaxTest extends ExTeXLauncher {
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -43,7 +42,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -54,7 +53,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -65,7 +64,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -76,7 +75,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -90,7 +89,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -101,7 +100,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -112,7 +111,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -123,7 +122,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -134,7 +133,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -145,7 +144,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -156,7 +155,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -167,7 +166,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -192,7 +191,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -203,7 +202,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -214,7 +213,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -225,7 +224,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -236,7 +235,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -247,7 +246,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -258,7 +257,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -269,7 +268,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -294,7 +293,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -305,7 +304,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -316,7 +315,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -327,7 +326,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -338,7 +337,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -349,7 +348,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -360,7 +359,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -371,7 +370,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -410,7 +409,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -421,7 +420,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -432,7 +431,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -443,7 +442,7 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -484,8 +483,8 @@ public class MaxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that the prefix leads to the expected error
-     * message </testcase>
+     *  Test case checking that the prefix leads to the expected error
+     * message
      * 
      * @param prefix the prefix code
      * @param tag the character to be assigned

@@ -54,8 +54,7 @@ import org.junit.Test;
  * This is a test suite for Bst2Groovy.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Bst2GroovyTest {
 
     /**
@@ -66,7 +65,7 @@ public class Bst2GroovyTest {
     public static final class TestResourceFinder implements ResourceFinder {
 
         /**
-         * The field <tt>content</tt> contains the content.
+         * The field {@code content} contains the content.
          */
         private String content = "";
 
@@ -80,22 +79,14 @@ public class Bst2GroovyTest {
             this.content = content;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
-         */
-        @Override
+    @Override
         public void enableTracing(boolean flag) {
 
 
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         @Override
         public NamedInputStream findResource(String name, String type)
@@ -107,38 +98,38 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * The field <tt>POST_RUN</tt> contains the piece of code after the run
+     * The field {@code POST_RUN} contains the piece of code after the run
      * function.
      */
     public static final String POST_RUN = "  }\n" + "\n" + "}\n" + "\n"
             + "new Style(bibDB, bibWriter, bibProcessor).run()\n";
 
     /**
-     * The field <tt>RUN</tt> contains the piece of code starting the run
+     * The field {@code RUN} contains the piece of code starting the run
      * function.
      */
     public static final String RUN = "\n" + "  void run() {\n";
 
     /**
-     * The field <tt>HEAD</tt> contains the head of the style definition.
+     * The field {@code HEAD} contains the head of the style definition.
      */
     public static final String HEAD =
             "\n\n  Style(bibDB, bibWriter, bibProcessor) {\n\n"
                     + "    super(bibDB, bibWriter, bibProcessor)\n\n";
 
     /**
-     * The field <tt>POSTFIX</tt> contains the post-fix string.
+     * The field {@code POSTFIX} contains the post-fix string.
      */
     public static final String POSTFIX = HEAD + "  }\n" + RUN + POST_RUN;
 
     /**
-     * The field <tt>CLASS_PREFIX</tt> contains the prefix code for the class.
+     * The field {@code CLASS_PREFIX} contains the prefix code for the class.
      */
     public static final String CLASS_PREFIX = "\n"
             + "class Style extends org.extex.exbib.groovy.Style {";
 
     /**
-     * The field <tt>PREFIX</tt> contains the prefix code.
+     * The field {@code PREFIX} contains the prefix code.
      */
     public static final String PREFIX =
             "import org.extex.exbib.core.Processor\n"
@@ -224,7 +215,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test the empty program. </testcase>
+     *  Test the empty program.
      * 
      * @throws Exception in case of an error
      */
@@ -235,7 +226,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that add.period$ adds proper code. </testcase>
+     *  Test that add.period$ adds proper code.
      * 
      * @throws Exception in case of an error
      */
@@ -253,8 +244,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the code for change.case$ is created properly.
-     * </testcase>
+     *  Test that the code for change.case$ is created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -275,8 +266,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the code for chr.to.int$ is created properly.
-     * </testcase>
+     *  Test that the code for chr.to.int$ is created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -297,8 +288,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the code for chr.to.int$ is created properly.
-     * </testcase>
+     *  Test that the code for chr.to.int$ is created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -311,8 +302,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the code for chr.to.int$ is created properly.
-     * </testcase>
+     *  Test that the code for chr.to.int$ is created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -323,8 +314,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the code for chr.to.int$ is created properly.
-     * </testcase>
+     *  Test that the code for chr.to.int$ is created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -335,7 +326,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the code for cite$ is created properly. </testcase>
+     *  Test that the code for cite$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -348,7 +339,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that a comment does not add code. </testcase>
+     *  Test that a comment does not add code.
      * 
      * @throws Exception in case of an error
      */
@@ -360,7 +351,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that a comment does not add code. </testcase>
+     *  Test that a comment does not add code.
      * 
      * @throws Exception in case of an error
      */
@@ -372,7 +363,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that a comment does not add code. </testcase>
+     *  Test that a comment does not add code.
      * 
      * @throws Exception in case of an error
      */
@@ -385,7 +376,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that * is created properly. </testcase>
+     *  Test that * is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -398,7 +389,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that * is created properly. </testcase>
+     *  Test that * is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -411,7 +402,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that * is created properly. </testcase>
+     *  Test that * is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -424,7 +415,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that * is created properly. </testcase>
+     *  Test that * is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -437,7 +428,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that * is created properly. </testcase>
+     *  Test that * is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -450,7 +441,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that * is created properly. </testcase>
+     *  Test that * is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -463,7 +454,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that * is created properly. </testcase>
+     *  Test that * is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -476,8 +467,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the code for duplicate$ is created properly.
-     * </testcase>
+     *  Test that the code for duplicate$ is created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -490,8 +481,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the code for duplicate$ is created properly.
-     * </testcase>
+     *  Test that the code for duplicate$ is created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -504,8 +495,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the code for duplicate$ is created properly.
-     * </testcase>
+     *  Test that the code for duplicate$ is created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -518,8 +509,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the code for duplicate$ is created properly.
-     * </testcase>
+     *  Test that the code for duplicate$ is created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -533,7 +524,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that empty$ is created properly. </testcase>
+     *  Test that empty$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -549,7 +540,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the entry itself does not add code. </testcase>
+     *  Test that the entry itself does not add code.
      * 
      * @throws Exception in case of an error
      */
@@ -561,7 +552,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that entry reading is created properly. </testcase>
+     *  Test that entry reading is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -576,7 +567,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that entry writing is created properly. </testcase>
+     *  Test that entry writing is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -590,8 +581,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that entry string reading is created properly.
-     * </testcase>
+     *  Test that entry string reading is created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -605,8 +596,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that entry string writing is created properly.
-     * </testcase>
+     *  Test that entry string writing is created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -620,8 +611,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that entry integer reading is created properly.
-     * </testcase>
+     *  Test that entry integer reading is created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -635,8 +626,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that entry integer writing is created properly.
-     * </testcase>
+     *  Test that entry integer writing is created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -650,7 +641,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that = is created properly. </testcase>
+     *  Test that = is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -663,7 +654,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that EXECUTE adds code to the main program. </testcase>
+     *  Test that EXECUTE adds code to the main program.
      * 
      * @throws Exception in case of an error
      */
@@ -675,7 +666,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that EXECUTE adds code to the main program. </testcase>
+     *  Test that EXECUTE adds code to the main program.
      * 
      * @throws Exception in case of an error
      */
@@ -686,7 +677,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that EXECUTE adds code to the main program. </testcase>
+     *  Test that EXECUTE adds code to the main program.
      * 
      * @throws Exception in case of an error
      */
@@ -697,7 +688,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that EXECUTE adds code to the main program. </testcase>
+     *  Test that EXECUTE adds code to the main program.
      * 
      * @throws Exception in case of an error
      */
@@ -708,8 +699,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the code for format.name$ is created properly.
-     * </testcase>
+     *  Test that the code for format.name$ is created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -731,7 +722,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that an unknown function leads to an error. </testcase>
+     *  Test that an unknown function leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -742,7 +733,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that an empty function is created properly. </testcase>
+     *  Test that an empty function is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -755,8 +746,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that a function with an argument is created properly.
-     * </testcase>
+     *  Test that a function with an argument is created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -769,9 +760,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that a function with an integer return type is created
-     * properly. </testcase>
-     * 
+     * Test that a function with an integer return type is created properly
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -783,9 +773,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that a function with a String return type is created
-     * properly. </testcase>
-     * 
+     * Test that a function with a String return type is created properly
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -798,9 +787,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that a function with multiple return values leads to an
-     * error. </testcase>
-     * 
+     * Test that a function with multiple return values leads to an error
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = ComplexFunctionException.class)
@@ -810,8 +798,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that a function with two arguments is created properly.
-     * </testcase>
+     *  Test that a function with two arguments is created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -829,7 +817,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that a function name created properly. </testcase>
+     *  Test that a function name created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -849,7 +837,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that a function name created properly. </testcase>
+     *  Test that a function name created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -863,7 +851,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that a function name created properly. </testcase>
+     *  Test that a function name created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -881,7 +869,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that a function name created properly. </testcase>
+     *  Test that a function name created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -897,7 +885,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that a function name created properly. </testcase>
+     *  Test that a function name created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -916,7 +904,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that a function name created properly. </testcase>
+     *  Test that a function name created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -933,8 +921,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the function arguments are created properly.
-     * </testcase>
+     *  Test that the function arguments are created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -968,8 +956,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the function arguments are created properly.
-     * </testcase>
+     *  Test that the function arguments are created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1003,8 +991,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the function arguments are created properly.
-     * </testcase>
+     *  Test that the function arguments are created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1056,9 +1044,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the parameters of a function and the call are in the
-     * correct order. </testcase>
-     * 
+     * Test that the parameters of a function and the call are in the correct order
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1117,9 +1104,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the parameters of a function and the call are in the
-     * correct order. </testcase>
-     * 
+     * Test that the parameters of a function and the call are in the correct order
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1173,9 +1159,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the parameters of a function and the call are in the
-     * correct order. </testcase>
-     * 
+     * Test that the parameters of a function and the call are in the correct order
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1224,9 +1209,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the parameters of a function and the call are in the
-     * correct order. </testcase>
-     * 
+     * Test that the parameters of a function and the call are in the correct order
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1262,7 +1246,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that global.max$ is created properly. </testcase>
+     *  Test that global.max$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1277,7 +1261,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that > is created properly. </testcase>
+     *  Test that > is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1290,7 +1274,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that > is created properly. </testcase>
+     *  Test that > is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1303,7 +1287,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that if$ is created properly. </testcase>
+     *  Test that if$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1316,7 +1300,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that if$ is created properly. </testcase>
+     *  Test that if$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1329,7 +1313,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that if$ is created properly. </testcase>
+     *  Test that if$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1342,7 +1326,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that if$ is created properly. </testcase>
+     *  Test that if$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1355,7 +1339,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that if$ is created properly. </testcase>
+     *  Test that if$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1368,7 +1352,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that if$ is created properly. </testcase>
+     *  Test that if$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1382,7 +1366,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that if$ is created properly. </testcase>
+     *  Test that if$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1396,7 +1380,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that if$ is created properly. </testcase>
+     *  Test that if$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1411,7 +1395,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that if$ is created properly. </testcase>
+     *  Test that if$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1424,7 +1408,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that if$ is created properly. </testcase>
+     *  Test that if$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1437,7 +1421,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that if$ is created properly. </testcase>
+     *  Test that if$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1448,7 +1432,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that if$ is created properly. </testcase>
+     *  Test that if$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1459,7 +1443,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that not is treated properly. </testcase>
+     *  Test that not is treated properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1473,7 +1457,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that not is treated properly. </testcase>
+     *  Test that not is treated properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1487,7 +1471,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that not is treated properly. </testcase>
+     *  Test that not is treated properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1501,7 +1485,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that if$ is created properly. </testcase>
+     *  Test that if$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1512,7 +1496,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that if$ is created properly. </testcase>
+     *  Test that if$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1532,7 +1516,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that if$ is created properly. </testcase>
+     *  Test that if$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1547,7 +1531,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that if$ is created properly. </testcase>
+     *  Test that if$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1563,7 +1547,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that if$ is created properly. </testcase>
+     *  Test that if$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1584,7 +1568,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that if$ is created properly. </testcase>
+     *  Test that if$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1598,8 +1582,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that if$ is treated properly when creating a conjunction.
-     * </testcase>
+     *  Test that if$ is treated properly when creating a conjunction.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1614,8 +1598,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that if$ is treated properly when creating a conjunction.
-     * </testcase>
+     *  Test that if$ is treated properly when creating a conjunction.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1630,7 +1614,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that one integer is properly initialized. </testcase>
+     *  Test that one integer is properly initialized.
      * 
      * @throws Exception in case of an error
      */
@@ -1641,7 +1625,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that three integers are properly initialized. </testcase>
+     *  Test that three integers are properly initialized.
      * 
      * @throws Exception in case of an error
      */
@@ -1654,7 +1638,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that reading an integer variable works. </testcase>
+     *  Test that reading an integer variable works.
      * 
      * @throws Exception in case of an error
      */
@@ -1668,7 +1652,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that writing an integer variable works. </testcase>
+     *  Test that writing an integer variable works.
      * 
      * @throws Exception in case of an error
      */
@@ -1683,8 +1667,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the code for int.to.chr$ is created properly.
-     * </testcase>
+     *  Test that the code for int.to.chr$ is created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1698,8 +1682,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the code for int.to.str$ is created properly.
-     * </testcase>
+     *  Test that the code for int.to.str$ is created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1713,7 +1697,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that ITERATE adds code to the main program. </testcase>
+     *  Test that ITERATE adds code to the main program.
      * 
      * @throws Exception in case of an error
      */
@@ -1738,7 +1722,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that ITERATE adds code to the main program. </testcase>
+     *  Test that ITERATE adds code to the main program.
      * 
      * @throws Exception in case of an error
      */
@@ -1749,7 +1733,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that ITERATE adds code to the main program. </testcase>
+     *  Test that ITERATE adds code to the main program.
      * 
      * @throws Exception in case of an error
      */
@@ -1760,7 +1744,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that "location.line$" is created properly. </testcase>
+     *  Test that "location.line$" is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1776,7 +1760,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that "location.line$" is created properly. </testcase>
+     *  Test that "location.line$" is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1790,8 +1774,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that assigning to locator.line$ is not possible.
-     * </testcase>
+     *  Test that assigning to locator.line$ is not possible.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1802,8 +1786,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that "location.resource$" is created properly.
-     * </testcase>
+     *  Test that "location.resource$" is created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1819,8 +1803,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that assigning to locator.resource$ is not possible.
-     * </testcase>
+     *  Test that assigning to locator.resource$ is not possible.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1831,7 +1815,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that < is created properly. </testcase>
+     *  Test that < is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1845,7 +1829,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that < is created properly. </testcase>
+     *  Test that < is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1858,7 +1842,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that @macro works. </testcase>
+     *  Test that @macro works.
      * 
      * @throws Exception in case of an error
      */
@@ -1875,7 +1859,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that @macro works. </testcase>
+     *  Test that @macro works.
      * 
      * @throws Exception in case of an error
      */
@@ -1892,7 +1876,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that - is created properly. </testcase>
+     *  Test that - is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1906,7 +1890,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that - is created properly. </testcase>
+     *  Test that - is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1919,7 +1903,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that missing$ is created properly. </testcase>
+     *  Test that missing$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1933,7 +1917,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that newline$ is created properly. </testcase>
+     *  Test that newline$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1946,7 +1930,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that not is treated properly. </testcase>
+     *  Test that not is treated properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1962,7 +1946,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that not is treated properly. </testcase>
+     *  Test that not is treated properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1978,7 +1962,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that not is treated properly. </testcase>
+     *  Test that not is treated properly.
      * 
      * @throws Exception in case of an error
      */
@@ -1994,7 +1978,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that not is treated properly. </testcase>
+     *  Test that not is treated properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2010,7 +1994,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that not is treated properly. </testcase>
+     *  Test that not is treated properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2025,7 +2009,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that not is treated properly. </testcase>
+     *  Test that not is treated properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2040,8 +2024,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the code for num.names$ is created properly.
-     * </testcase>
+     *  Test that the code for num.names$ is created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -2060,7 +2044,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that "OPTION INTEGER" is created properly. </testcase>
+     *  Test that "OPTION INTEGER" is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2079,7 +2063,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that "OPTION INTEGER" is created properly. </testcase>
+     *  Test that "OPTION INTEGER" is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2104,7 +2088,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that "OPTION STRING" is created properly. </testcase>
+     *  Test that "OPTION STRING" is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2123,8 +2107,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that assigning an "OPTION STRING" is not possible.
-     * </testcase>
+     *  Test that assigning an "OPTION STRING" is not possible.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -2135,7 +2119,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that "OPTION STRING" is created properly. </testcase>
+     *  Test that "OPTION STRING" is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2156,7 +2140,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that + is created properly. </testcase>
+     *  Test that + is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2169,7 +2153,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that + is created properly. </testcase>
+     *  Test that + is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2182,7 +2166,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that preamble$ is created properly. </testcase>
+     *  Test that preamble$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2196,8 +2180,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the code for purify$ is created properly.
-     * </testcase>
+     *  Test that the code for purify$ is created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -2216,7 +2200,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that ' on an unknown function croaks. </testcase>
+     *  Test that ' on an unknown function croaks.
      * 
      * @throws Exception in case of an error
      */
@@ -2230,7 +2214,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that ' is treated properly. </testcase>
+     *  Test that ' is treated properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2244,7 +2228,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that quote$ is created properly. </testcase>
+     *  Test that quote$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2257,7 +2241,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that READ just adds a comment. </testcase>
+     *  Test that READ just adds a comment.
      * 
      * @throws Exception in case of an error
      */
@@ -2269,7 +2253,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that ITERATE adds code to the main program. </testcase>
+     *  Test that ITERATE adds code to the main program.
      * 
      * @throws Exception in case of an error
      */
@@ -2294,7 +2278,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that REVERSE adds code to the main program. </testcase>
+     *  Test that REVERSE adds code to the main program.
      * 
      * @throws Exception in case of an error
      */
@@ -2305,7 +2289,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that REVERSE adds code to the main program. </testcase>
+     *  Test that REVERSE adds code to the main program.
      * 
      * @throws Exception in case of an error
      */
@@ -2316,7 +2300,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that assigning to a number is not possible. </testcase>
+     *  Test that assigning to a number is not possible.
      * 
      * @throws Exception in case of an error
      */
@@ -2327,7 +2311,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that assigning to a string is not possible. </testcase>
+     *  Test that assigning to a string is not possible.
      * 
      * @throws Exception in case of an error
      */
@@ -2338,7 +2322,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that assigning to a block is not possible. </testcase>
+     *  Test that assigning to a block is not possible.
      * 
      * @throws Exception in case of an error
      */
@@ -2349,7 +2333,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that SORT generates proper code. </testcase>
+     *  Test that SORT generates proper code.
      * 
      * @throws Exception in case of an error
      */
@@ -2361,7 +2345,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that one String is properly initialized. </testcase>
+     *  Test that one String is properly initialized.
      * 
      * @throws Exception in case of an error
      */
@@ -2372,7 +2356,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that three Strings are properly initialized. </testcase>
+     *  Test that three Strings are properly initialized.
      * 
      * @throws Exception in case of an error
      */
@@ -2385,7 +2369,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that reading a String variable works. </testcase>
+     *  Test that reading a String variable works.
      * 
      * @throws Exception in case of an error
      */
@@ -2399,7 +2383,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that writing a String variable works. </testcase>
+     *  Test that writing a String variable works.
      * 
      * @throws Exception in case of an error
      */
@@ -2414,8 +2398,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the code for substring$ is created properly.
-     * </testcase>
+     *  Test that the code for substring$ is created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -2437,7 +2421,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the code for swap$ is created properly. </testcase>
+     *  Test that the code for swap$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2450,7 +2434,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the code for swap$ is created properly. </testcase>
+     *  Test that the code for swap$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2463,7 +2447,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the code for swap$ is created properly. </testcase>
+     *  Test that the code for swap$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2476,8 +2460,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the code for text.length$ is created properly.
-     * </testcase>
+     *  Test that the code for text.length$ is created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -2496,8 +2480,8 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the code for text.prefix$ is created properly.
-     * </testcase>
+     *  Test that the code for text.prefix$ is created properly.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -2520,7 +2504,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the function toString() works correctly. </testcase>
+     *  Test that the function toString() works correctly.
      * 
      * @throws Exception in case of an error
      */
@@ -2531,7 +2515,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the code for type$ is created properly. </testcase>
+     *  Test that the code for type$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2544,7 +2528,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that warning$ is created properly. </testcase>
+     *  Test that warning$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2559,7 +2543,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that while$ is created properly. </testcase>
+     *  Test that while$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2577,7 +2561,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that while$ is created properly. </testcase>
+     *  Test that while$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2594,7 +2578,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that while$ is created properly. </testcase>
+     *  Test that while$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2605,7 +2589,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that while$ is created properly. </testcase>
+     *  Test that while$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2616,7 +2600,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that while$ is created properly. </testcase>
+     *  Test that while$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2627,7 +2611,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that while$ is created properly. </testcase>
+     *  Test that while$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2638,7 +2622,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that while$ is created properly. </testcase>
+     *  Test that while$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2655,7 +2639,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that while$ is created properly. </testcase>
+     *  Test that while$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2675,7 +2659,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that while$ is created properly. </testcase>
+     *  Test that while$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2696,7 +2680,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that while$ is created properly. </testcase>
+     *  Test that while$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2716,7 +2700,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that while$ is created properly. </testcase>
+     *  Test that while$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2736,7 +2720,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that while$ is created properly. </testcase>
+     *  Test that while$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2767,7 +2751,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that while$ is created properly. </testcase>
+     *  Test that while$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2793,7 +2777,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that the code for width$ is created properly. </testcase>
+     *  Test that the code for width$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2811,7 +2795,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that write$ is created properly. </testcase>
+     *  Test that write$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2824,7 +2808,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that write$ is created properly. </testcase>
+     *  Test that write$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2839,7 +2823,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that write$ is created properly. </testcase>
+     *  Test that write$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2854,7 +2838,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that write$ is created properly. </testcase>
+     *  Test that write$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2870,7 +2854,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that write$ is created properly. </testcase>
+     *  Test that write$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2886,7 +2870,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that write$ is created properly. </testcase>
+     *  Test that write$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2902,7 +2886,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that write$ is created properly. </testcase>
+     *  Test that write$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2925,7 +2909,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that write$ is created properly. </testcase>
+     *  Test that write$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2940,7 +2924,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that write$ is created properly. </testcase>
+     *  Test that write$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2953,7 +2937,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that write$ is created properly. </testcase>
+     *  Test that write$ is created properly.
      * 
      * @throws Exception in case of an error
      */
@@ -2969,7 +2953,7 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that write$ is created properly. </testcase>
+     *  Test that write$ is created properly.
      * 
      * @throws Exception in case of an error
      */

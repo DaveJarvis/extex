@@ -34,35 +34,34 @@ import org.extex.typesetter.listMaker.AlignmentList;
 import org.extex.typesetter.type.NodeList;
 
 /**
- * This class provides an implementation for the primitive <code>\cr</code>.
+ * This class provides an implementation for the primitive {@code \cr}.
  * 
- * <doc name="cr">
- * <h3>The Primitive <tt>\cr</tt></h3>
+ * <p>The Primitive {@code \cr}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;cr&rang;
- *       &rarr; <tt>\cr</tt>  </pre>
+ *       &rarr; {@code \cr}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \cr  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Cr extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -78,10 +77,7 @@ public class Cr extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

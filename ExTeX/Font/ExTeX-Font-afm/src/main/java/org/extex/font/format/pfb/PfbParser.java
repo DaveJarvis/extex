@@ -54,8 +54,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * TODO mgn: use {@link RandomAccessR} and put indexOf in it
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class PfbParser implements XMLWriterConvertible, Serializable {
 
     /**
@@ -126,7 +125,7 @@ public class PfbParser implements XMLWriterConvertible, Serializable {
     // 00000000 80 01 8b 15 00 00 25 21 50 53 2d 41 64 6f 62 65
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 1L;
 
@@ -269,7 +268,7 @@ public class PfbParser implements XMLWriterConvertible, Serializable {
     }
 
     /**
-     * Returns all the glyph names in the font, or <code>null</code>, if not
+     * Returns all the glyph names in the font, or {@code null}, if not
      * available.
      * 
      * @return Returns all the glyph names in the font.
@@ -455,12 +454,12 @@ public class PfbParser implements XMLWriterConvertible, Serializable {
 
     /**
      * Returns the index of the first occurrence of the specified bytes. if not
-     * found, <code>-1</code> is return.
+     * found, {@code -1} is return.
      * 
      * @param data any data to search.
      * @param src the source data.
      * @return Returns the index of the first occurrence of the specified bytes.
-     *         if not found, <code>-1</code> is return.
+     *         if not found, {@code -1} is return.
      */
     private int indexOf(byte[] data, byte[] src) {
 
@@ -469,11 +468,11 @@ public class PfbParser implements XMLWriterConvertible, Serializable {
 
     /**
      * Returns the index of the first occurrence of the specified bytes. if not
-     * found, <code>-1</code> is return.
+     * found, {@code -1} is return.
      * 
      * @param data any data.
      * @return Returns the index of the first occurrence of the specified bytes.
-     *         if not found, <code>-1</code> is return.
+     *         if not found, {@code -1} is return.
      */
     private int indexOf(byte[] data, byte[] src, int fromIndex) {
 
@@ -566,7 +565,7 @@ public class PfbParser implements XMLWriterConvertible, Serializable {
      * Read the glyph name.
      * 
      * @param data The data.
-     * @return Returns the glyph name or <code>null</code>.
+     * @return Returns the glyph name or {@code null}.
      */
     private String readGlygp(byte[] data) {
 

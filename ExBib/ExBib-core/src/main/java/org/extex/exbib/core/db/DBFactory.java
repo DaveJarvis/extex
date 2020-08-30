@@ -29,19 +29,18 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * {@link DB DB}.
  * <p>
  * The factory is controlled by a configuration. This configuration contains an
- * attribute <code>class</code>. This attribute holds the name of the class to
+ * attribute {@code class}. This attribute holds the name of the class to
  * be instantiated. Consider the following example of a configuration file:
- * 
- * <pre>
- *   &lt;DB
- *     class="org.extex.exbib.core.db.impl.DBImpl"/&gt;
+ * </p>
+ *
+ * <pre>{@code
+ *   <DB class="org.extex.exbib.core.db.impl.DBImpl"/>
+ * }
  * </pre>
  * 
- * </p>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DBFactory extends AbstractFactory<DB> {
 
     /**

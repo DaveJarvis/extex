@@ -28,12 +28,11 @@ import org.extex.exindex.core.type.page.PageReference;
  * This class represents a list of two pages.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 5432 $
- */
+*/
 public class PageRangeMultiple extends Pages {
 
     /**
-     * The field <tt>to</tt> contains the end page.
+     * The field {@code to} contains the end page.
      */
     private PageReference to;
 
@@ -70,10 +69,7 @@ public class PageRangeMultiple extends Pages {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.makeindex.pages.Pages#writeCore(java.io.Writer,
-     *      java.lang.String[], java.lang.String)
+*      java.lang.String[], java.lang.String)
      */
     @Override
     protected void writeCore(Writer writer, String[] pageParams, String fromPage)

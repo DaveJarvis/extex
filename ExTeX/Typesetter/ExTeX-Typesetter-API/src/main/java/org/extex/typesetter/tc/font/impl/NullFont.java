@@ -39,39 +39,38 @@ import org.extex.typesetter.tc.font.Font;
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class NullFont implements Font, Serializable {
 
     /**
-     * The field <tt>DEFAULT_EF_CODE</tt> contains the default value for the
+     * The field {@code DEFAULT_EF_CODE} contains the default value for the
      * ef code.
      */
     private static final int DEFAULT_EF_CODE = 1000;
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>efCode</tt> contains the ef code.
+     * The field {@code efCode} contains the ef code.
      */
     private Map<UnicodeChar, Long> efCode = null;
 
     /**
-     * The field <tt>fontDimens</tt> contains the map for font dimens.
+     * The field {@code fontDimens} contains the map for font dimens.
      */
     private Map<String, Dimen> fontDimens = null;
 
     /**
-     * The field <tt>hyphen</tt> contains the hyphen char for this font.
+     * The field {@code hyphen} contains the hyphen char for this font.
      */
     private UnicodeChar hyphen = UnicodeChar.get('-');
 
     /**
-     * The field <tt>skew</tt> contains the skew char for this font.
+     * The field {@code skew} contains the skew char for this font.
      */
     private UnicodeChar skew = null;
 
@@ -198,7 +197,7 @@ public class NullFont implements Font, Serializable {
      */
     public FixedDimen getFontDimen(String name) {
 
-        return (fontDimens == null ? null : (FixedDimen) fontDimens.get(name));
+        return (fontDimens == null ? null : fontDimens.get( name));
     }
 
     /**
@@ -352,7 +351,7 @@ public class NullFont implements Font, Serializable {
      *
      * @param uc the character
      *
-     * @return <code>true</code> iff the glyph is present
+     * @return {@code true} iff the glyph is present
      *
      * @see org.extex.typesetter.tc.font.Font#hasGlyph(
      *      org.extex.core.UnicodeChar)

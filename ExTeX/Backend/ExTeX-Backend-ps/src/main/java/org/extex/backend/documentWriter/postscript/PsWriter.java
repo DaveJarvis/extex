@@ -38,29 +38,28 @@ import org.extex.typesetter.type.page.Page;
  * This document writer produces multi-page PostScript documents.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class PsWriter extends AbstractPostscriptWriter
         implements
             SingleDocumentStream {
 
     /**
-     * The field <tt>page</tt> contains the byte arrays of the single pages.
+     * The field {@code page} contains the byte arrays of the single pages.
      */
     private List<byte[]> page = new ArrayList<byte[]>();
 
     /**
-     * The field <tt>pageHeight</tt> contains the height of the paper.
+     * The field {@code pageHeight} contains the height of the paper.
      */
     private Dimen pageHeight;
 
     /**
-     * The field <tt>pageWidth</tt> contains the width of the paper.
+     * The field {@code pageWidth} contains the width of the paper.
      */
     private Dimen pageWidth;
 
     /**
-     * The field <tt>writer</tt> contains the target output stream.
+     * The field {@code writer} contains the target output stream.
      */
     private PrintStream stream = null;
 
@@ -90,12 +89,7 @@ public class PsWriter extends AbstractPostscriptWriter
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#close()
-     */
-    public void close() throws DocumentWriterException, IOException {
+public void close() throws DocumentWriterException, IOException {
 
         boolean orderDesc = "Descend".equals(getParameter("PageOrder"));
         int pages = page.size();
@@ -127,10 +121,7 @@ public class PsWriter extends AbstractPostscriptWriter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(
-     *      java.io.OutputStream)
+*      java.io.OutputStream)
      */
     public void setOutputStream(OutputStream out) {
 
@@ -138,10 +129,7 @@ public class PsWriter extends AbstractPostscriptWriter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
-     *      org.extex.typesetter.type.page.Page)
+*      org.extex.typesetter.type.page.Page)
      */
     public int shipout(Page p) throws GeneralException, IOException {
 

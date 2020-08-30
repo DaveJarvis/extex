@@ -26,16 +26,15 @@ import org.extex.framework.i18n.LocalizerFactory;
  * reading tokens in braces.
  * <p>
  *  The localization format is taken from the Localizer under the key
- *  <tt>TTP.EOFinToks</tt>.
+ *  {@code TTP.EOFinToks}.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class EofInToksException extends EofException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     protected static final long serialVersionUID = 20060505L;

@@ -35,35 +35,34 @@ import org.extex.typesetter.type.noad.RadicalNoad;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\oradical</code>.
+ * {@code \oradical}.
  * 
- * <doc name="oradical">
- * <h3>The Math Primitive <tt>\oradical</tt></h3>
+ * <p>The Math Primitive {@code \oradical}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;oradical&rang;
- *       &rarr; <tt>\oradical</tt> ...  </pre>
+ *       &rarr; {@code \oradical} ...  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \oradical\delimiter"123456{a^2 + b^2}  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Oradical extends AbstractOmegaDelimiter {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -79,10 +78,7 @@ public class Oradical extends AbstractOmegaDelimiter {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

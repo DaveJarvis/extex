@@ -28,35 +28,34 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\pardirHL</code>.
+ * {@code \pardirHL}.
  * 
- * <doc name="pardirHL">
- * <h3>The Primitive <tt>\pardirHL</tt></h3>
+ * <p>The Primitive {@code \pardirHL}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;pardirHL&rang;
- *      &rarr; <tt>\pardirHL</tt>  </pre>
+ *      &rarr; {@code \pardirHL}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *  \pardirHL  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4411 $
- */
+*/
 public class PardirHL extends AbstractDirCode {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -72,10 +71,7 @@ public class PardirHL extends AbstractDirCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

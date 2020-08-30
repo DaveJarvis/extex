@@ -42,39 +42,39 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\scantokens</code>.
+ * {@code \scantokens}.
  * 
- * <doc name="scantokens"> <h3>The Primitive <tt>\scantokens</tt></h3>
+ * <p>The Primitive {@code \scantokens}</p>
  * <p>
- * The primitive <tt>\scantokens</tt> takes an unexpanded list of tokens and
+ * The primitive {@code \scantokens} takes an unexpanded list of tokens and
  * uses them as a new source for an input stream. For this purpose the tokens
  * are translated into a string which is used as if it where written to a file
  * and read back in.
  * </p>
  * <p>
- * The tokens from the tokens register <tt>\everyeof</tt> are inserted when the
+ * The tokens from the tokens register {@code \everyeof} are inserted when the
  * stream has no more tokens to read.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;scantokens&rang;
- *      &rarr; <tt>\scantokens</tt> {@linkplain
+ *      &rarr; {@code \scantokens} {@linkplain
  *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *        &lang;tokens&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \scantokens{abc}  </pre>
  * 
- * </doc>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4435 $
- */
+*/
 public class Scantokens extends AbstractCode implements ExpandableCode {
 
     /**
@@ -82,12 +82,11 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
      * stream.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision:4435 $
-     */
+    */
     private static class TokenStreamProxy implements TokenStream {
 
         /**
-         * The field <tt>stream</tt> contains the proxied token stream.
+         * The field {@code stream} contains the proxied token stream.
          */
         private TokenStream stream;
 
@@ -101,12 +100,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
             this.stream = stream;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.api.TokenStream#closeFileStream()
-         */
-        @Override
+    @Override
         public boolean closeFileStream() {
 
             stream.closeFileStream();
@@ -114,10 +108,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.api.TokenStream#get(org.extex.scanner.type.token.TokenFactory,
-         *      org.extex.scanner.api.Tokenizer)
+    *      org.extex.scanner.api.Tokenizer)
          */
         @Override
         public Token get(TokenFactory factory, Tokenizer tokenizer)
@@ -126,56 +117,31 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
             return stream.get(factory, tokenizer);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.api.TokenStream#getLocator()
-         */
-        @Override
+    @Override
         public Locator getLocator() {
 
             return stream.getLocator();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.api.TokenStream#isEof()
-         */
-        @Override
+    @Override
         public boolean isEof() throws ScannerException {
 
             return stream.isEof();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.api.TokenStream#isEol()
-         */
-        @Override
+    @Override
         public boolean isEol() throws ScannerException {
 
             return stream.isEol();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.api.TokenStream#isFileStream()
-         */
-        @Override
+    @Override
         public boolean isFileStream() {
 
             return true;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.api.TokenStream#put(org.extex.scanner.type.token.Token)
-         */
-        @Override
+    @Override
         public void put(Token token) {
 
             stream.put(token);
@@ -184,7 +150,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
     }
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the id for serialization.
+     * The field {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -199,10 +165,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -221,10 +184,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

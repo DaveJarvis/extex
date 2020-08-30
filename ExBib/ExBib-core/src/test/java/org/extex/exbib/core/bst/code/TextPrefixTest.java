@@ -35,15 +35,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>text.prefix$</tt>.
+ * Test suite for {@code text.prefix$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TextPrefixTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -68,7 +67,7 @@ public class TextPrefixTest {
     }
 
     /**
-     * <testcase> text.prefix$ complains about an empty stack. </testcase>
+     *  text.prefix$ complains about an empty stack.
      * 
      * @throws Exception in case of an error
      */
@@ -79,9 +78,8 @@ public class TextPrefixTest {
     }
 
     /**
-     * <testcase> text.prefix$ complains about a stack containing only one
-     * argument. </testcase>
-     * 
+     * text.prefix$ complains about a stack containing only one argument
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = ExBibStackEmptyException.class)
@@ -92,7 +90,7 @@ public class TextPrefixTest {
     }
 
     /**
-     * <testcase> "123" #2 text.prefix$ --> "12". </testcase>
+     *  "123" #2 text.prefix$ --> "12".
      * 
      * @throws Exception in case of an error
      */
@@ -103,7 +101,7 @@ public class TextPrefixTest {
     }
 
     /**
-     * <testcase> text.prefix$ treats braces as units. </testcase>
+     *  text.prefix$ treats braces as units.
      * 
      * @throws Exception in case of an error
      */
@@ -114,7 +112,7 @@ public class TextPrefixTest {
     }
 
     /**
-     * <testcase> text.prefix$ treats braces as units. </testcase>
+     *  text.prefix$ treats braces as units.
      * 
      * @throws Exception in case of an error
      */
@@ -125,7 +123,7 @@ public class TextPrefixTest {
     }
 
     /**
-     * <testcase> text.prefix$ treats braces as units. </testcase>
+     *  text.prefix$ treats braces as units.
      * 
      * @throws Exception in case of an error
      */
@@ -136,7 +134,7 @@ public class TextPrefixTest {
     }
 
     /**
-     * <testcase> text.prefix$ treats braces as units. </testcase>
+     *  text.prefix$ treats braces as units.
      * 
      * @throws Exception in case of an error
      */
@@ -147,7 +145,7 @@ public class TextPrefixTest {
     }
 
     /**
-     * <testcase> "123" #5 text.prefix$ --> "123". </testcase>
+     *  "123" #5 text.prefix$ --> "123".
      * 
      * @throws Exception in case of an error
      */
@@ -158,7 +156,7 @@ public class TextPrefixTest {
     }
 
     /**
-     * <testcase> "+*@" #2 text.prefix$ --> "+*". </testcase>
+     *  "+*@" #2 text.prefix$ --> "+*".
      * 
      * @throws Exception in case of an error
      */
@@ -169,7 +167,7 @@ public class TextPrefixTest {
     }
 
     /**
-     * <testcase> "+*@" #5 text.prefix$ --> "+*@". </testcase>
+     *  "+*@" #5 text.prefix$ --> "+*@".
      * 
      * @throws Exception in case of an error
      */
@@ -180,7 +178,7 @@ public class TextPrefixTest {
     }
 
     /**
-     * <testcase> text.prefix$ treats braces as units. </testcase>
+     *  text.prefix$ treats braces as units.
      * 
      * @throws Exception in case of an error
      */
@@ -191,7 +189,7 @@ public class TextPrefixTest {
     }
 
     /**
-     * <testcase> text.prefix$ treats braces as units. </testcase>
+     *  text.prefix$ treats braces as units.
      * 
      * @throws Exception in case of an error
      */
@@ -202,7 +200,7 @@ public class TextPrefixTest {
     }
 
     /**
-     * <testcase> text.prefix$ treats braces as units. </testcase>
+     *  text.prefix$ treats braces as units.
      * 
      * @throws Exception in case of an error
      */
@@ -213,7 +211,7 @@ public class TextPrefixTest {
     }
 
     /**
-     * <testcase> text.prefix$ treats braces as units. </testcase>
+     *  text.prefix$ treats braces as units.
      * 
      * @throws Exception in case of an error
      */
@@ -224,7 +222,7 @@ public class TextPrefixTest {
     }
 
     /**
-     * <testcase> text.prefix$ treats braces as units. </testcase>
+     *  text.prefix$ treats braces as units.
      * 
      * @throws Exception in case of an error
      */
@@ -235,7 +233,7 @@ public class TextPrefixTest {
     }
 
     /**
-     * <testcase> text.prefix$ can cope with the empty string. </testcase>
+     *  text.prefix$ can cope with the empty string.
      * 
      * @throws Exception in case of an error
      */
@@ -246,7 +244,7 @@ public class TextPrefixTest {
     }
 
     /**
-     * <testcase> text.prefix$ can cope with the empty string. </testcase>
+     *  text.prefix$ can cope with the empty string.
      * 
      * @throws Exception in case of an error
      */

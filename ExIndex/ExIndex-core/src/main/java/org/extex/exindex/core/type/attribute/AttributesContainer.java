@@ -23,8 +23,7 @@ package org.extex.exindex.core.type.attribute;
  * This interface provides reading access to a container of defined attributes.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface AttributesContainer {
 
     /**
@@ -40,7 +39,7 @@ public interface AttributesContainer {
      * 
      * @param attribute the name of the attribute
      * 
-     * @return <code>true</code> iff the attribute is defined
+     * @return {@code true} iff the attribute is defined
      */
     boolean isAttributeDefined(String attribute);
 
@@ -49,7 +48,7 @@ public interface AttributesContainer {
      * 
      * @param attribute the name of the attribute
      * 
-     * @return the named attribute or <code>null</code> if not defined
+     * @return the named attribute or {@code null} if not defined
      */
     Attribute lookupAttribute(String attribute);
 

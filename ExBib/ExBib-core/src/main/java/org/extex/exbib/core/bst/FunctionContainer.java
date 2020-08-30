@@ -31,8 +31,7 @@ import org.extex.exbib.core.io.Locator;
  * This interface describes a container for functions.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface FunctionContainer {
 
     /**
@@ -45,7 +44,7 @@ public interface FunctionContainer {
      * @param locator the locator
      * 
      * @throws ExBibIllegalValueException in case that the name is
-     *         <code>null</code> or empty
+     *         {@code null} or empty
      * @throws ExBibFunctionExistsException in case that the named function
      *         already exists
      * @throws ExBibException just in case
@@ -64,7 +63,7 @@ public interface FunctionContainer {
      * @param locator the locator
      * 
      * @throws ExBibIllegalValueException in case that the name is
-     *         <code>null</code> or empty
+     *         {@code null} or empty
      * @throws ExBibFunctionUndefinedException in case that the function isn't
      *         defined yet
      */

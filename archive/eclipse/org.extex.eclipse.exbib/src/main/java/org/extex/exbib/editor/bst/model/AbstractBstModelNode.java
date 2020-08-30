@@ -30,33 +30,32 @@ import org.extex.exbib.editor.Activator;
  * This class is a base implementation of a {@link BstModelNode}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public abstract class AbstractBstModelNode implements BstModelNode {
 
     /**
-     * The field <tt>NO_OBJECTS</tt> contains the empty array of objects. It is
+     * The field {@code NO_OBJECTS} contains the empty array of objects. It is
      * used to signal that no children are present.
      */
     protected static final Object[] NO_OBJECTS = new Object[]{};
 
     /**
-     * The field <tt>name</tt> contains the name.
+     * The field {@code name} contains the name.
      */
     private String name;
 
     /**
-     * The field <tt>offset</tt> contains the offset within the document.
+     * The field {@code offset} contains the offset within the document.
      */
     private int offset;
 
     /**
-     * The field <tt>elements</tt> contains the children.
+     * The field {@code elements} contains the children.
      */
     private final Object[] elements;
 
     /**
-     * The field <tt>classification</tt> contains the class.
+     * The field {@code classification} contains the class.
      */
     private final BstClass classification;
 
@@ -89,23 +88,13 @@ public abstract class AbstractBstModelNode implements BstModelNode {
         this.elements = elements;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.editor.bst.model.BstModelNode#getClassification()
-     */
-    @Override
+@Override
     public BstClass getClassification() {
 
         return classification;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.editor.bst.model.BstModelNode#getDescription()
-     */
-    @Override
+@Override
     public String getDescription() {
 
         return getDescription("description", getName());
@@ -129,75 +118,40 @@ public abstract class AbstractBstModelNode implements BstModelNode {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.editor.bst.model.BstModelNode#getElements()
-     */
-    public Object[] getElements() {
+public Object[] getElements() {
 
         return elements;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.editor.bst.model.BstModelNode#getImageDescriptor()
-     */
-    @Override
+@Override
     public ImageDescriptor getImageDescriptor() {
 
         return Activator.getImageDescriptor("icons/outline/"
                 + getClass().getSimpleName() + ".png");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.editor.bst.model.BstModelNode#getLength()
-     */
-    public int getLength() {
+public int getLength() {
 
         return name.length();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.editor.bst.model.BstModelNode#getName()
-     */
-    public String getName() {
+public String getName() {
 
         return name;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.editor.bst.model.BstModelNode#getOffset()
-     */
-    public int getOffset() {
+public int getOffset() {
 
         return offset;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.editor.bst.model.BstModelNode#hasChildren()
-     */
-    @Override
+@Override
     public boolean hasChildren() {
 
         return elements.length != 0;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return name;

@@ -27,13 +27,12 @@ import org.junit.Test;
  * This is a test suite for {@link SiteMapBuilder}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SiteMapBuilderTest {
 
     /**
-     * <testcase>A <code>null</code> target leads to an error in
-     * generate().</testcase>
+     * A {@code null} target leads to an error in
+     * generate().
      * 
      * @throws Exception in case of an error
      */
@@ -45,8 +44,8 @@ public class SiteMapBuilderTest {
     }
 
     /**
-     * <testcase>A <code>null</code> template leads to an error in
-     * generate().</testcase>
+     * A {@code null} template leads to an error in
+     * generate().
      * 
      * @throws Exception in case of an error
      */

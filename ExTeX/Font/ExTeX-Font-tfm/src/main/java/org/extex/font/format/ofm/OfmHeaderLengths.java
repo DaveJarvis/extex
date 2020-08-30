@@ -28,8 +28,7 @@ import org.extex.util.file.random.RandomAccessR;
  * Class for the OFM header length table.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class OfmHeaderLengths extends TfmHeaderLengths {
 
     /**
@@ -43,14 +42,14 @@ public class OfmHeaderLengths extends TfmHeaderLengths {
     private static final int MAXCHARS = 65535;
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 1L;
 
     /**
      * The direction of font.
      */
-    private int fontDirection;
+    private final int fontDirection;
 
     /**
      * Creates a new object.

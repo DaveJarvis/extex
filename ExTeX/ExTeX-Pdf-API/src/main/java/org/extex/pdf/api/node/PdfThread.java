@@ -29,27 +29,26 @@ import org.extex.typesetter.type.node.WhatsItNode;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4791 $
- */
+*/
 public class PdfThread extends WhatsItNode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>attr</tt> contains the attribute string.
+     * The field {@code attr} contains the attribute string.
      */
     private String attr;
 
     /**
-     * The field <tt>id</tt> contains the id.
+     * The field {@code id} contains the id.
      */
     private IdSpec id;
 
     /**
-     * The field <tt>rule</tt> contains the rule.
+     * The field {@code rule} contains the rule.
      */
     private RuleNode rule;
 
@@ -57,7 +56,7 @@ public class PdfThread extends WhatsItNode {
      * Creates a new object.
      * 
      * @param rule the rule
-     * @param attr the attribute string. This can be <code>null</code>.
+     * @param attr the attribute string. This can be {@code null}.
      * @param id the id
      */
     public PdfThread(RuleNode rule, String attr, IdSpec id) {

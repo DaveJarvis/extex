@@ -28,12 +28,11 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to parse a keyword.
  * 
- * <doc type="exindex-command" command="markup-keyword">
- * 
- * <h3>The Command <tt>markup-keyword</tt></h3>
+*
+ * <p>The Command {@code markup-keyword}</p>
  * 
  * <p>
- * The command <tt>markup-keyword</tt> can be used to specify the markup for
+ * The command {@code markup-keyword} can be used to specify the markup for
  * keywords.
  * </p>
  * 
@@ -53,17 +52,15 @@ import org.extex.exindex.lisp.type.value.LValue;
  * 
  * TODO documentation incomplete
  * 
- * </doc>
- * 
- * <h3>Parameters</h3>
+ *
+ * <p>Parameters</p>
  * <p>
  * The parameters defined with this command are stored in the L system under the
- * key of the function name (i.e. <tt>markup-keyword</tt>).
+ * key of the function name (i.e. {@code markup-keyword}).
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LMarkupKeyword extends AbstractLAdapter {
 
     /**
@@ -93,7 +90,7 @@ public class LMarkupKeyword extends AbstractLAdapter {
      * @param close the close string
      * @param depth the depth
      * 
-     * @return <tt>null</tt>
+     * @return {@code null}
      * 
      * @throws LSettingConstantException should not happen
      * @throws LNonMatchingTypeException in case of an error

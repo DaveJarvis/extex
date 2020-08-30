@@ -26,19 +26,18 @@ import java.util.Map;
  * This class provides utilities for roman numbers.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class RomanNumber {
 
     /**
-     * The field <tt>LOWER_MAP</tt> contains the map for lower case roman
+     * The field {@code LOWER_MAP} contains the map for lower case roman
      * numbers.
      */
     private static final Map<Character, RomanNumber> LOWER_MAP =
             new HashMap<Character, RomanNumber>();
 
     /**
-     * The field <tt>UPPER_MAP</tt> contains the map for upper case roman
+     * The field {@code UPPER_MAP} contains the map for upper case roman
      * numbers.
      */
     private static final Map<Character, RomanNumber> UPPER_MAP =
@@ -170,7 +169,7 @@ public final class RomanNumber {
      * 
      * @param page the page
      * 
-     * @return <code>true</code> iff the page constitutes a roman number with
+     * @return {@code true} iff the page constitutes a roman number with
      *         lowercase letters only
      */
     public static boolean isLowerRomanNumber(String page) {
@@ -186,7 +185,7 @@ public final class RomanNumber {
      * @param page the page
      * @param map the map of acceptable letters
      * 
-     * @return <code>true</code> iff the page constitutes a roman number
+     * @return {@code true} iff the page constitutes a roman number
      */
     private static boolean isRomanNumber(String page,
             Map<Character, RomanNumber> map) {
@@ -211,7 +210,7 @@ public final class RomanNumber {
      * 
      * @param page the page
      * 
-     * @return <code>true</code> iff the page constitutes a roman number with
+     * @return {@code true} iff the page constitutes a roman number with
      *         uppercase letters only
      */
     public static boolean isUpperRomanNumber(String page) {
@@ -220,12 +219,12 @@ public final class RomanNumber {
     }
 
     /**
-     * The field <tt>number</tt> contains the associated number.
+     * The field {@code number} contains the associated number.
      */
     private final int number;
 
     /**
-     * The field <tt>combining</tt> contains the combining characters for the
+     * The field {@code combining} contains the combining characters for the
      * subtraction rule.
      */
     private final String combining;
@@ -248,7 +247,7 @@ public final class RomanNumber {
      * @param c the character
      * @param map the map in effect
      * 
-     * @return the combining character or <code>null</code> for none
+     * @return the combining character or {@code null} for none
      */
     private RomanNumber combined(char c, Map<Character, RomanNumber> map) {
 

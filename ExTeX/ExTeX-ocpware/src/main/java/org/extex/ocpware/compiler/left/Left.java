@@ -32,8 +32,7 @@ import org.extex.ocpware.compiler.parser.State;
  * This is the interface for left items.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public interface Left {
 
     /**

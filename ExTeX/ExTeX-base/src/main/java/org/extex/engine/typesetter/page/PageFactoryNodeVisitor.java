@@ -66,47 +66,46 @@ import org.extex.typesetter.type.page.Page;
  * {@link org.extex.typesetter.Typesetter Typesetter}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class PageFactoryNodeVisitor
         implements
             NodeVisitor<Node, Boolean>,
             LogEnabled {
 
     /**
-     * The field <tt>context</tt> contains the interpreter context.
+     * The field {@code context} contains the interpreter context.
      */
     private Context context;
 
     /**
-     * The field <tt>logger</tt> contains the logger.
+     * The field {@code logger} contains the logger.
      */
     private Logger logger = null;
 
     /**
-     * The field <tt>page</tt> contains the page.
+     * The field {@code page} contains the page.
      */
     private Page page;
 
     /**
-     * The field <tt>posH</tt> contains the current horizontal reference
+     * The field {@code posH} contains the current horizontal reference
      * point.
      */
     private Dimen posH = new Dimen();
 
     /**
-     * The field <tt>posV</tt> contains the current vertical reference point.
+     * The field {@code posV} contains the current vertical reference point.
      */
     private Dimen posV = new Dimen();
 
     /**
-     * The field <tt>sizePattern</tt> contains the pattern for matching the
-     * <tt>papersize</tt> special.
+     * The field {@code sizePattern} contains the pattern for matching the
+     * {@code papersize} special.
      */
     private Pattern sizePattern;
 
     /**
-     * The field <tt>typesetter</tt> contains the typesetter.
+     * The field {@code typesetter} contains the typesetter.
      */
     private Typesetter typesetter;
 
@@ -130,7 +129,7 @@ public class PageFactoryNodeVisitor
      * @param node the current node
      * @param horizontal the indicator for the orientation
      * 
-     * @return <code>null</code> iff the node should be discarded
+     * @return {@code null} iff the node should be discarded
      * 
      * @throws GeneralException in case of an error
      */
@@ -148,10 +147,7 @@ public class PageFactoryNodeVisitor
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
+*      java.util.logging.Logger)
      */
     public void enableLogging(Logger log) {
 
@@ -176,10 +172,7 @@ public class PageFactoryNodeVisitor
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(
-     *      org.extex.typesetter.type.node.AdjustNode, java.lang.Object)
+*      org.extex.typesetter.type.node.AdjustNode, java.lang.Object)
      */
     public Node visitAdjust(AdjustNode node, Boolean isHMode)
             throws GeneralException {
@@ -188,10 +181,7 @@ public class PageFactoryNodeVisitor
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(
-     *      org.extex.typesetter.type.node.AfterMathNode, java.lang.Object)
+*      org.extex.typesetter.type.node.AfterMathNode, java.lang.Object)
      */
     public Node visitAfterMath(AfterMathNode node, Boolean isHMode)
             throws GeneralException {
@@ -200,10 +190,7 @@ public class PageFactoryNodeVisitor
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(
-     *      org.extex.typesetter.type.node.AlignedLeadersNode, java.lang.Object)
+*      org.extex.typesetter.type.node.AlignedLeadersNode, java.lang.Object)
      */
     public Node visitAlignedLeaders(AlignedLeadersNode node, Boolean isHMode)
             throws GeneralException {
@@ -212,10 +199,7 @@ public class PageFactoryNodeVisitor
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(
-     *      org.extex.typesetter.type.node.BeforeMathNode, java.lang.Object)
+*      org.extex.typesetter.type.node.BeforeMathNode, java.lang.Object)
      */
     public Node visitBeforeMath(BeforeMathNode node, Boolean isHMode)
             throws GeneralException {
@@ -224,10 +208,7 @@ public class PageFactoryNodeVisitor
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(
-     *      org.extex.typesetter.type.node.CenteredLeadersNode,
+*      org.extex.typesetter.type.node.CenteredLeadersNode,
      *      java.lang.Object)
      */
     public Node visitCenteredLeaders(CenteredLeadersNode node, Boolean isHMode)
@@ -237,10 +218,7 @@ public class PageFactoryNodeVisitor
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitChar(
-     *      org.extex.typesetter.type.node.CharNode, java.lang.Object)
+*      org.extex.typesetter.type.node.CharNode, java.lang.Object)
      */
     public Node visitChar(CharNode node, Boolean isHMode)
             throws GeneralException {
@@ -249,10 +227,7 @@ public class PageFactoryNodeVisitor
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(
-     *      org.extex.typesetter.type.node.DiscretionaryNode, java.lang.Object)
+*      org.extex.typesetter.type.node.DiscretionaryNode, java.lang.Object)
      */
     public Node visitDiscretionary(DiscretionaryNode node, Boolean isHMode)
             throws GeneralException {
@@ -261,10 +236,7 @@ public class PageFactoryNodeVisitor
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(
-     *      org.extex.typesetter.type.node.ExpandedLeadersNode,
+*      org.extex.typesetter.type.node.ExpandedLeadersNode,
      *      java.lang.Object)
      */
     public Node visitExpandedLeaders(ExpandedLeadersNode node, Boolean isHMode)
@@ -274,10 +246,7 @@ public class PageFactoryNodeVisitor
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitGlue(
-     *      org.extex.typesetter.type.node.GlueNode, java.lang.Object)
+*      org.extex.typesetter.type.node.GlueNode, java.lang.Object)
      */
     public Node visitGlue(GlueNode node, Boolean isHMode)
             throws GeneralException {
@@ -294,10 +263,7 @@ public class PageFactoryNodeVisitor
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(
-     *      org.extex.typesetter.type.node.HorizontalListNode, java.lang.Object)
+*      org.extex.typesetter.type.node.HorizontalListNode, java.lang.Object)
      */
     public Node visitHorizontalList(HorizontalListNode list, Boolean isHMode)
             throws GeneralException {
@@ -331,10 +297,7 @@ public class PageFactoryNodeVisitor
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(
-     *      org.extex.typesetter.type.node.InsertionNode, java.lang.Object)
+*      org.extex.typesetter.type.node.InsertionNode, java.lang.Object)
      */
     public Node visitInsertion(InsertionNode node, Boolean isHMode)
             throws GeneralException {
@@ -343,10 +306,7 @@ public class PageFactoryNodeVisitor
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitKern(
-     *      org.extex.typesetter.type.node.KernNode, java.lang.Object)
+*      org.extex.typesetter.type.node.KernNode, java.lang.Object)
      */
     public Node visitKern(KernNode node, Boolean isHMode)
             throws GeneralException {
@@ -355,10 +315,7 @@ public class PageFactoryNodeVisitor
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitLigature(
-     *      org.extex.typesetter.type.node.LigatureNode, java.lang.Object)
+*      org.extex.typesetter.type.node.LigatureNode, java.lang.Object)
      */
     public Node visitLigature(LigatureNode node, Boolean isHMode)
             throws GeneralException {
@@ -367,10 +324,7 @@ public class PageFactoryNodeVisitor
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitMark(
-     *      org.extex.typesetter.type.node.MarkNode, java.lang.Object)
+*      org.extex.typesetter.type.node.MarkNode, java.lang.Object)
      */
     public Node visitMark(MarkNode node, Boolean isHMode)
             throws GeneralException {
@@ -379,10 +333,7 @@ public class PageFactoryNodeVisitor
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(
-     *      org.extex.typesetter.type.node.PenaltyNode, java.lang.Object)
+*      org.extex.typesetter.type.node.PenaltyNode, java.lang.Object)
      */
     public Node visitPenalty(PenaltyNode node, Boolean isHMode)
             throws GeneralException {
@@ -391,10 +342,7 @@ public class PageFactoryNodeVisitor
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitRule(
-     *      org.extex.typesetter.type.node.RuleNode, java.lang.Object)
+*      org.extex.typesetter.type.node.RuleNode, java.lang.Object)
      */
     public Node visitRule(RuleNode node, Boolean isHMode)
             throws GeneralException {
@@ -403,10 +351,7 @@ public class PageFactoryNodeVisitor
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitSpace(
-     *      org.extex.typesetter.type.node.SpaceNode, java.lang.Object)
+*      org.extex.typesetter.type.node.SpaceNode, java.lang.Object)
      */
     public Node visitSpace(SpaceNode node, Boolean isHMode)
             throws GeneralException {
@@ -415,10 +360,7 @@ public class PageFactoryNodeVisitor
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(
-     *      org.extex.typesetter.type.node.VerticalListNode, java.lang.Object)
+*      org.extex.typesetter.type.node.VerticalListNode, java.lang.Object)
      */
     public Node visitVerticalList(VerticalListNode list, Boolean isHMode)
             throws GeneralException {
@@ -453,10 +395,7 @@ public class PageFactoryNodeVisitor
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(
-     *      org.extex.typesetter.type.node.VirtualCharNode, java.lang.Object)
+*      org.extex.typesetter.type.node.VirtualCharNode, java.lang.Object)
      */
     public Node visitVirtualChar(VirtualCharNode node, Boolean isHMode)
             throws GeneralException {
@@ -469,10 +408,7 @@ public class PageFactoryNodeVisitor
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(
-     *      org.extex.typesetter.type.node.WhatsItNode, java.lang.Object)
+*      org.extex.typesetter.type.node.WhatsItNode, java.lang.Object)
      */
     public Node visitWhatsIt(WhatsItNode node, Boolean isHMode)
             throws GeneralException {

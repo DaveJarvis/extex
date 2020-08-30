@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the adapter for the PDF-backend and the PDFBox.
+ *Contains adapter for the PDF-backend and the PDFBox.
  */
 
 package org.extex.backend.documentWriter.pdf.pdfbox;

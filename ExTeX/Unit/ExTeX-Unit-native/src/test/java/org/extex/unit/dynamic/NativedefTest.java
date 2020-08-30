@@ -23,11 +23,10 @@ import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\nativedef</tt>.
+ * This is a test suite for the primitive {@code \nativedef}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NativedefTest extends NoFlagsButGlobalPrimitiveTester {
 
 
@@ -39,7 +38,7 @@ public class NativedefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\nativedef"> Test case checking that
-     * <tt>\nativedef</tt> needs a token to assign. </testcase>
+     * {@code \nativedef} needs a token to assign. 
      * 
      * @throws Exception in case of an error
      */
@@ -55,7 +54,7 @@ public class NativedefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\nativedef"> Test case checking that
-     * <tt>\nativedef</tt> needs a token to assign. </testcase>
+     * {@code \nativedef} needs a token to assign. 
      * 
      * @throws Exception in case of an error
      */
@@ -71,7 +70,7 @@ public class NativedefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\nativedef"> Test case checking that
-     * <tt>\nativedef</tt> needs a token to assign. </testcase>
+     * {@code \nativedef} needs a token to assign. 
      * 
      * @throws Exception in case of an error
      */
@@ -87,7 +86,7 @@ public class NativedefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\nativedef"> Test case checking that
-     * <tt>\nativedef</tt> needs a token to assign. </testcase>
+     * {@code \nativedef} needs a token to assign. 
      * 
      * @throws Exception in case of an error
      */
@@ -103,8 +102,8 @@ public class NativedefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\nativedef"> Test case checking that
-     * <tt>\nativedef</tt> can assign a Java class to a control sequence.
-     * </testcase>
+     * {@code \nativedef} can assign a Java class to a control sequence.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -122,8 +121,8 @@ public class NativedefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\nativedef"> Test case checking that
-     * <tt>\nativedef</tt> can assign a Java class to an active character.
-     * </testcase>
+     * {@code \nativedef} can assign a Java class to an active character.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -141,7 +140,7 @@ public class NativedefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\nativedef"> Test case checking that
-     * <tt>\nativedef</tt> respects the global keyword. </testcase>
+     * {@code \nativedef} respects the global keyword. 
      * 
      * @throws Exception in case of an error
      */
@@ -159,7 +158,7 @@ public class NativedefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\nativedef"> Test case checking that
-     * <tt>\nativedef</tt> respects the \global keyword. </testcase>
+     * {@code \nativedef} respects the \global keyword. 
      * 
      * @throws Exception in case of an error
      */
@@ -177,7 +176,7 @@ public class NativedefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\nativedef"> Test case checking that
-     * <tt>\nativedef</tt> respects \globaldefs. </testcase>
+     * {@code \nativedef} respects \globaldefs. 
      * 
      * @throws Exception in case of an error
      */
@@ -195,7 +194,7 @@ public class NativedefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\nativedef"> Test case checking that
-     * <tt>\nativedef</tt> respects \afterassignment. </testcase>
+     * {@code \nativedef} respects \afterassignment. 
      * 
      * @throws Exception in case of an error
      */

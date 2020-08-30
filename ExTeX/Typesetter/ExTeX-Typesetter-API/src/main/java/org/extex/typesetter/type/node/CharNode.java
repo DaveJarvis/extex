@@ -30,29 +30,25 @@ import org.extex.typesetter.type.NodeVisitor;
 /**
  * This is the Node which carries a single character.
  * 
- * @see "<logo>T<span style=
- *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *      >e</span>X</logo> &ndash; The Program [134]"
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4739 $
- */
+*/
 public class CharNode extends AbstractNode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>character</tt> contains the single character represented by
+     * The field {@code character} contains the single character represented by
      * this node.
      */
     private final UnicodeChar character;
 
     /**
-     * The field <tt>typesettingContext</tt> contains the typesetting context
+     * The field {@code typesettingContext} contains the typesetting context
      */
     private final TypesettingContext typesettingContext;
 
@@ -141,11 +137,7 @@ public class CharNode extends AbstractNode {
      * @param prefix the prefix string inserted at the beginning of each line
      * @param breadth the breadth of the nodes to display
      * @param depth the depth of the nodes to display
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [174]"
-     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
+* @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
      *      java.lang.String, int, int)
      */
     @Override
@@ -168,11 +160,7 @@ public class CharNode extends AbstractNode {
      * 
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [174]"
-     * @see org.extex.typesetter.type.Node#toText(StringBuilder,
+* @see org.extex.typesetter.type.Node#toText(StringBuilder,
      *      java.lang.String)
      */
     @Override

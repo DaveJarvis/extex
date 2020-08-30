@@ -24,8 +24,7 @@ package org.extex.typesetter.type;
  * NodeVisitors.  This can be used for debugging.
  *
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
- * @version $Revision: 4399 $
- */
+*/
 public interface InspectableNodeVisitor extends NodeVisitor<Object, Object> {
 
     /**

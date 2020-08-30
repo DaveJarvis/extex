@@ -35,25 +35,24 @@ import org.extex.scanner.type.token.Token;
  * This class provides a factory for a
  * {@link org.extex.interpreter.max.context.Group Group}.
  * 
- * <h3>Configuration</h3>
+ *  Configuration
  * <pre>
  *  &lt;Group class="the.package.TheClass"&gt;
  *  &lt;/Group&gt;
  * </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class GroupFactory {
 
     /**
-     * The constant <tt>CLASS_ATTRIBUTE</tt> contains the name of the
+     * The constant {@code CLASS_ATTRIBUTE} contains the name of the
      * attribute for the class name.
      */
     private static final String CLASS_ATTRIBUTE = "class";
 
     /**
-     * The field <tt>constructor</tt> contains the constructor of the class to
+     * The field {@code constructor} contains the constructor of the class to
      * instantiate. It is kept here to speed up the method
      * {@link #newInstance(Group, Locator, Token, GroupType) newInstance}.
      */

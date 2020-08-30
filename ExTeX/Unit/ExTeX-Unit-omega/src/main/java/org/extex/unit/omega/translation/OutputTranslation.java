@@ -33,38 +33,37 @@ import org.extex.unit.omega.ocp.util.OcpUtil;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\OutputTranslation</code>.
+ * {@code \OutputTranslation}.
  * 
- * <doc name="OutputTranslation">
- * <h3>The Primitive <tt>\OutputTranslation</tt></h3>
+ * <p>The Primitive {@code \OutputTranslation}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;OutputTranslation&rang;
- *      &rarr; <tt>\OutputTranslation</tt> &lang;file&rang; &lang;ocp file&rang;
+ *      &rarr; {@code \OutputTranslation} &lang;file&rang; &lang;ocp file&rang;
  *
  *        ...
  *        </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *   \OutputTranslation 1 unicode8 </pre>
  * 
- * </doc>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4411 $
- */
+*/
 public class OutputTranslation extends AbstractCode {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
@@ -80,10 +79,7 @@ public class OutputTranslation extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

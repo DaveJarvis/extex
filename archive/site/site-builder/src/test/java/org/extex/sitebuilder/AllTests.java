@@ -33,8 +33,7 @@ import org.junit.runners.Suite;
  * This is the test suite for this directory.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 @RunWith(Suite.class)
 @Suite.SuiteClasses({NewsBuilderTest.class,
         NewsBuilderMainTest.class,

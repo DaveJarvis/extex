@@ -32,12 +32,11 @@ import org.extex.unit.tex.math.AbstractMathCode;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\textstyle</code>.
+ * {@code \textstyle}.
  * 
- * <doc name="textstyle">
- * <h3>The Math Primitive <tt>\textstyle</tt></h3>
+ * <p>The Math Primitive {@code \textstyle}</p>
  * <p>
- * The math primitive <tt>\textstyle</tt> arranges that the following material
+ * The math primitive {@code \textstyle} arranges that the following material
  * in the current math group is typeset in text style regardless of the style
  * determined so far. This mean that for instance a subscript can be forced to
  * be typeset in text style.
@@ -50,27 +49,27 @@ import org.extex.unit.tex.math.AbstractMathCode;
  * If used outside of math mode an error is raised.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;textstyle&rang;
- *       &rarr; <tt>\textstyle</tt>  </pre>
+ *       &rarr; {@code \textstyle}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \textstyle  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Textstyle extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -86,10 +85,7 @@ public class Textstyle extends AbstractMathCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

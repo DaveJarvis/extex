@@ -23,29 +23,28 @@ package org.extex.typesetter.tex.paragraph;
  * The passive nodes constitute linked lists with break points.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class PassiveNode {
 
     /**
-     * The field <tt>curBreak</tt> contains the index of this break point.
+     * The field {@code curBreak} contains the index of this break point.
      */
-    private int curBreak;
+    private final int curBreak;
 
     /**
-     * The field <tt>nextBreak</tt> contains the next passive node.
+     * The field {@code nextBreak} contains the next passive node.
      */
     private PassiveNode nextBreak = null;
 
     /**
-     * The field <tt>prevBreak</tt> contains the previous passive node.
+     * The field {@code prevBreak} contains the previous passive node.
      */
-    private PassiveNode prevBreak;
+    private final PassiveNode prevBreak;
 
     /**
-     * The field <tt>serial</tt> contains the serial number for printing.
+     * The field {@code serial} contains the serial number for printing.
      */
-    private int serial;
+    private final int serial;
 
     /**
      * Creates a new object.

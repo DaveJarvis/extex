@@ -34,8 +34,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * Class for a CffFont.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class CffFont implements XMLWriterConvertible {
 
     /**
@@ -81,7 +80,7 @@ public class CffFont implements XMLWriterConvertible {
     /**
      * The font number in the cff table.
      */
-    private int fontnumber;
+    private final int fontnumber;
 
     /**
      * The full name.
@@ -136,7 +135,7 @@ public class CffFont implements XMLWriterConvertible {
     /**
      * The map for the top dict index.
      */
-    private Map<String, T2Operator> topDictIndex =
+    private final Map<String, T2Operator> topDictIndex =
             new HashMap<String, T2Operator>();
 
     /**
@@ -181,7 +180,7 @@ public class CffFont implements XMLWriterConvertible {
             // get charset
             T2Operator op2 = topDictIndex.get("charset");
 
-            if (op2 != null && op2 instanceof T2TDOCharset) {
+            if ( op2 instanceof T2TDOCharset ) {
 
                 T2TDOCharset charset = (T2TDOCharset) op2;
                 T2TDOEncoding enc =
@@ -329,7 +328,7 @@ public class CffFont implements XMLWriterConvertible {
             }
             int[] ii = new int[iarr.length];
             for (int i = 0; i < ii.length; i++) {
-                ii[i] = iarr[i].intValue();
+                ii[i] = iarr[ i ];
             }
             return ii;
         }
@@ -358,7 +357,7 @@ public class CffFont implements XMLWriterConvertible {
     }
 
     /**
-     * Returns the {@link CharString} with the name or <code>null</code>, if not
+     * Returns the {@link CharString} with the name or {@code null}, if not
      * found.
      * 
      * @param name The name of the charstring.
@@ -653,9 +652,6 @@ public class CffFont implements XMLWriterConvertible {
         return name;
     }
 
-    /**
-     * @see org.extex.font.format.xtf.tables.cff.T2TDOCharset#getNameForPos(int)
-     */
     public String getNameForPos(int pos) {
 
         return charset.getNameForPos(pos);
@@ -806,7 +802,7 @@ public class CffFont implements XMLWriterConvertible {
             }
             int[] ii = new int[iarr.length];
             for (int i = 0; i < ii.length; i++) {
-                ii[i] = iarr[i].intValue();
+                ii[i] = iarr[ i ];
             }
             return ii;
         }
@@ -838,7 +834,7 @@ public class CffFont implements XMLWriterConvertible {
             }
             int[] ii = new int[iarr.length];
             for (int i = 0; i < ii.length; i++) {
-                ii[i] = iarr[i].intValue();
+                ii[i] = iarr[ i ];
             }
             return ii;
         }
@@ -858,7 +854,7 @@ public class CffFont implements XMLWriterConvertible {
 
     /**
      * Returns the {@link CharString} (subrs) with the index or
-     * <code>null</code>, if not found.
+     * {@code null}, if not found.
      * 
      * @param idx The index.
      * @return Returns the {@link CharString} with the index.
@@ -866,10 +862,10 @@ public class CffFont implements XMLWriterConvertible {
     public CharString getSubrs(int idx) {
 
         T2Operator op = topDictIndex.get("private");
-        if (op != null && op instanceof T2TDOPrivate) {
+        if ( op instanceof T2TDOPrivate ) {
             T2TDOPrivate priv = (T2TDOPrivate) op;
             T1DictKey dk = priv.getT1DictKey("subrs");
-            if (dk != null && dk instanceof T1Subrs) {
+            if ( dk instanceof T1Subrs ) {
                 T1Subrs subrs = (T1Subrs) dk;
                 return subrs.getCharString(idx);
             }
@@ -878,7 +874,7 @@ public class CffFont implements XMLWriterConvertible {
     }
 
     /**
-     * Returns the top dict index entry, if no entry found, <code>null</code> is
+     * Returns the top dict index entry, if no entry found, {@code null} is
      * returned.
      * 
      * @param name The name of the entry.
@@ -949,13 +945,12 @@ public class CffFont implements XMLWriterConvertible {
 
         T2Operator[] ops = sortT2TopDict();
 
-        for (int i = 0; i < ops.length; i++) {
-            T2Operator op = ops[i];
-            op.init(rar, cff, baseoffset, this);
+        for( T2Operator op : ops ) {
+            op.init( rar, cff, baseoffset, this );
 
             int id = op.getID();
 
-            switch (id) {
+            switch( id ) {
                 case T2TopDICTOperator.TYPE_VERSION:
                     version = op.getValue().toString();
                     break;
@@ -985,11 +980,11 @@ public class CffFont implements XMLWriterConvertible {
                     break;
                 case T2TopDICTOperator.TYPE_UNDERLINEPOSITION:
                     underlineposition =
-                            ((T2TDOUnderlinePosition) op).getInteger();
+                        ((T2TDOUnderlinePosition) op).getInteger();
                     break;
                 case T2TopDICTOperator.TYPE_UNDERLINETHICKNESS:
                     underlinethickness =
-                            ((T2TDOUnderlineThickness) op).getInteger();
+                        ((T2TDOUnderlineThickness) op).getInteger();
                     break;
                 case T2TopDICTOperator.TYPE_PAINTTYPE:
                     painttype = ((T2TDOPaintType) op).getInteger();
@@ -1109,22 +1104,12 @@ public class CffFont implements XMLWriterConvertible {
         return ops;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString() {
 
         return name;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
     @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

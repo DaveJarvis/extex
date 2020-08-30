@@ -30,8 +30,7 @@ import org.extex.interpreter.expression.exception.UnsupportedException;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * 
- * @version $Revision: 4733 $
- */
+*/
 public class TBoolean implements EType {
 
     /**
@@ -56,7 +55,7 @@ public class TBoolean implements EType {
     }
 
     /**
-     * The field <tt>value</tt> contains the value.
+     * The field {@code value} contains the value.
      */
     private boolean value;
 
@@ -78,68 +77,38 @@ public class TBoolean implements EType {
         this.value = value;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#add(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public EType add(EType t) throws UnsupportedException {
 
         throw new UnsupportedException("+", toString());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#and(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public EType and(EType t) throws CastException {
 
         this.value &= castTerminal(t);
         return this;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#divide(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public EType divide(EType t) throws CastException, UnsupportedException {
 
         throw new UnsupportedException("/", toString());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#eq(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public TBoolean eq(EType t) throws UnsupportedException {
 
         throw new UnsupportedException("eq", toString());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#ge(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public TBoolean ge(EType t) throws UnsupportedException {
 
         throw new UnsupportedException("ge", toString());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#gt(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public TBoolean gt(EType t) throws UnsupportedException {
 
         throw new UnsupportedException("gt", toString());
@@ -155,91 +124,51 @@ public class TBoolean implements EType {
         return this.value;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#le(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public TBoolean le(EType t) throws UnsupportedException {
 
         throw new UnsupportedException("le", toString());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#lt(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public TBoolean lt(EType t) throws UnsupportedException {
 
         throw new UnsupportedException("lt", toString());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#multiply(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public EType multiply(EType t) throws CastException, UnsupportedException {
 
         throw new UnsupportedException("*", toString());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#ne(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public TBoolean ne(EType t) throws UnsupportedException {
 
         throw new UnsupportedException("ne", toString());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#negate()
-     */
-    @Override
+@Override
     public EType negate() throws UnsupportedException {
 
         throw new UnsupportedException("-", toString());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#not()
-     */
-    @Override
+@Override
     public EType not() throws UnsupportedException {
 
         value = !value;
         return this;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#or(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public EType or(EType t) throws CastException {
 
         this.value |= castTerminal(t);
         return this;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#parseNumber(java.lang.CharSequence)
-     */
-    public EType parse(CharSequence sequence) {
+public EType parse(CharSequence sequence) {
 
         switch (sequence.length()) {
             case 4:
@@ -261,12 +190,7 @@ public class TBoolean implements EType {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#set(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public EType set(EType t) throws CastException {
 
         this.value = castTerminal(t);
@@ -283,23 +207,13 @@ public class TBoolean implements EType {
         this.value = value;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.expression.EType#subtract(org.extex.interpreter.expression.EType)
-     */
-    @Override
+@Override
     public EType subtract(EType t) throws UnsupportedException {
 
         throw new UnsupportedException("-", toString());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return LocalizerFactory.getLocalizer(TBoolean.class).format("Format",

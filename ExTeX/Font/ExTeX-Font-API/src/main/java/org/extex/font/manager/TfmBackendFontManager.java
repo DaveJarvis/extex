@@ -32,8 +32,7 @@ import org.extex.font.format.TfmMetricFont;
  * Backend font manager for a tfm font.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TfmBackendFontManager extends AbstractBackendFontManager
         implements
             BackendFontManager {
@@ -46,7 +45,7 @@ public class TfmBackendFontManager extends AbstractBackendFontManager
         /**
          * The Unicode char.
          */
-        private UnicodeChar uc;
+        private final UnicodeChar uc;
 
         /**
          * Creates a new object.
@@ -58,12 +57,7 @@ public class TfmBackendFontManager extends AbstractBackendFontManager
             this.uc = uc;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.BackendCharacter#getId()
-         */
-        public int getId() {
+    public int getId() {
 
             int cp = uc.getCodePoint();
 
@@ -77,12 +71,7 @@ public class TfmBackendFontManager extends AbstractBackendFontManager
             return 0;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.BackendCharacter#getName()
-         */
-        public String getName() {
+    public String getName() {
 
             return Integer.toString(getId());
         }
@@ -98,9 +87,7 @@ public class TfmBackendFontManager extends AbstractBackendFontManager
 
             if (obj != null && obj instanceof BackendCharacter) {
                 BackendCharacter ch = (BackendCharacter) obj;
-                if (ch.getId() == getId()) {
-                    return true;
-                }
+                return ch.getId() == getId();
             }
 
             return false;
@@ -114,10 +101,7 @@ public class TfmBackendFontManager extends AbstractBackendFontManager
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFontManager#recognize(org.extex.font.FontKey,
-     *      org.extex.core.UnicodeChar)
+*      org.extex.core.UnicodeChar)
      */
     public boolean recognize(FontKey fontKey, UnicodeChar uc)
             throws FontException {

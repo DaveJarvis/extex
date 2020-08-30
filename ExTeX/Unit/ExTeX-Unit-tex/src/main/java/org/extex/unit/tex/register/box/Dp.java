@@ -39,15 +39,16 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\dp</code>.
+ * This class provides an implementation for the primitive {@code \dp}.
  * 
- * <doc name="dp"> <h3>The Primitive <tt>\dp</tt></h3>
+ * <p>The Primitive {@code \dp}</p>
  * <p>
- * The primitive <tt>\dp</tt> refers to the depth of a box register. It can be
+ * The primitive {@code \dp} refers to the depth of a box register. It can be
  * used in various contexts.
  * </p>
  * 
- * <h4>Execution of the Primitive</h4>
+ * <p>Execution of the Primitive</p>
+ *
  * <p>
  * If the primitive is used in a context it initiated an assignment to the
  * actual depth of the box register. This has an effect only in the case that
@@ -55,80 +56,68 @@ import org.extex.typesetter.exception.TypesetterException;
  * </p>
  * <p>
  * The formal description of this primitive is the following:
- * 
+ * </p>
+ *
  * <pre class="syntax">
  *    &lang;dp&rang;
- *      &rarr; &lang;optional prefix&rang; <tt>\dp</tt> {@linkplain
- *        org.extex.unit.tex.register.box.Setbox#getKey(Context,TokenSource,Typesetter,CodeToken)
- *        &lang;box register name&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
- *        &lang;equals&rang;} {@linkplain
- *        org.extex.core.dimen#Dimen(org.extex.interpreter.context.Context,org.extex.interpreter.TokenSource)
- *        &lang;dimen&rang;}
+ *      &rarr; &lang;optional prefix&rang; {@code \dp}
+ *        &lang;box register name&rang; &lang;equals&rang; &lang;dimen&rang;
  *
  *    &lang;optional prefix&rang;
  *      &rarr;
- *       |  <tt>\global</tt> &lang;optional prefix&rang;  </pre>
- * 
- * </p>
- * 
- * <h4>Examples</h4>
- * <p>
- * 
+ *       |  {@code \global} &lang;optional prefix&rang;  </pre>
+ *
+ * <p>Examples</p>
+ *
  * <pre class="TeXSample">
  *    \dp42 = 12mm  </pre>
  * 
  * <pre class="TeXSample">
  *    \dp42 = \dimen3  </pre>
- * 
- * </p>
- * 
- * <h4>Expansion of the Primitive</h4>
+ *
+ * <p>Expansion of the Primitive</p>
+
  * <p>
  * In an expansion context the primitive results in the the current depth of the
  * given box register. In case that the box register is empty the result is
  * 0&nbsp;pt.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * <p>
  * The formal description of this primitive is the following:
- * 
+ * </p>
+ *
  * <pre class="syntax">
- *    <tt>\dp</tt> {@linkplain
+ *    {@code \dp} {@linkplain
  *      org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *      &lang;8-bit&nbsp;number&rang;} </pre>
- * 
- * </p>
- * 
- * <h4>Examples</h4>
- * <p>
- * 
+ *
+ * <p>Examples</p>
+ *
  * <pre class="TeXSample">
  *    \dimen0 = \dp42  </pre>
  * 
  * <pre class="TeXSample">
  *    \the\dp42  </pre>
- * 
- * </p>
- * 
- * <h4>Conversion to a Count</h4>
+ *
+ * <p>Conversion to a Count</p>
+ *
  * <p>
  * The primitive is convertible into a count. It can be used wherever an integer
  * quantity is expected.
  * </p>
  * 
- * <h4>Interaction with <tt>\the</tt></h4>
+ * <p>Interaction with {@code \the}</p>
+ *
  * <p>
- * The primitive <tt>\the</tt> can be applied to this primitive. In this case it
+ * The primitive {@code \the} can be applied to this primitive. In this case it
  * results in a token list representing the value in points.
  * </p>
- * </doc>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Dp extends AbstractAssignment
         implements
             ExpandableCode,
@@ -137,7 +126,7 @@ public class Dp extends AbstractAssignment
             DimenConvertible {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -152,10 +141,7 @@ public class Dp extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -175,10 +161,7 @@ public class Dp extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertCount(Context context, TokenSource source,
@@ -188,10 +171,7 @@ public class Dp extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertDimen(Context context, TokenSource source,
@@ -203,10 +183,7 @@ public class Dp extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -217,10 +194,7 @@ public class Dp extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

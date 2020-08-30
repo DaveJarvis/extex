@@ -25,11 +25,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\outer</tt>.
+ * This is a test suite for the primitive {@code \outer}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4306 $
- */
+*/
 public class OuterTest extends PrefixTester {
 
     /**
@@ -50,7 +49,7 @@ public class OuterTest extends PrefixTester {
 
     /**
      * <testcase primitive="\outer"> Test case checking that \outer sets the
-     * flag. </testcase>
+     * flag.
      * 
      * @throws Exception in case of an error
      */
@@ -69,7 +68,7 @@ public class OuterTest extends PrefixTester {
 
     /**
      * <testcase primitive="\outer"> Test case checking that double
-     * <tt>\outer</tt> has the same effect as one. </testcase>
+     * {@code \outer} has the same effect as one.
      * 
      * @throws Exception in case of an error
      */
@@ -88,7 +87,7 @@ public class OuterTest extends PrefixTester {
 
     /**
      * <testcase primitive="\outer"> Test case checking that \outer does not
-     * interfere with \long. </testcase>
+     * interfere with \long.
      * 
      * @throws Exception in case of an error
      */

@@ -35,11 +35,11 @@ import org.extex.unit.base.register.CharCode;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\hyphenation</code>.
+ * {@code \hyphenation}.
  * 
- * <doc name="hyphenation"> <h3>The Primitive <tt>\hyphenation</tt></h3>
+ * <p>The Primitive {@code \hyphenation}</p>
  * <p>
- * The primitive <tt>\hyphenation</tt> can be used to add hyphenation exceptions
+ * The primitive {@code \hyphenation} can be used to add hyphenation exceptions
  * to the current language. The argument is a list of white-space separated
  * words enclosed in braces. The hyphenation points are indicated by including a
  * hyphen character (-) at the appropriate places.
@@ -47,7 +47,7 @@ import org.extex.unit.base.register.CharCode;
  * <p>
  * When paragraph breaking needs to insert additional break points these
  * hyphenation points are translated into discretionaries. The exceptions
- * specified with the primitive <tt>\hyphenation</tt> have precedence before the
+ * specified with the primitive {@code \hyphenation} have precedence before the
  * hyphenation points found with the help of hyphenation patterns.
  * </p>
  * <p>
@@ -56,25 +56,28 @@ import org.extex.unit.base.register.CharCode;
  * in a single word.
  * </p>
  * 
- * <h4>Extension</h4>
+ * <p>Extension</p>
+
  * <p>
  * In addition to the behavior of the original TeX definition this implementation can be used to insert words
  * with hyphens as well. To specify the places where a hyphen occurs literally
  * you just have to include two hyphens in the hyphenation list.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * 
  * <pre class="syntax">
  *    &lang;hyphenation&rang;
- *     &rarr; <tt>\hyphenation</tt> {&lang;words&rang;}
+ *     &rarr; {@code \hyphenation} {&lang;words&rang;}
  *     
  *    &lang;words&rang;
  *     &rarr; 
  *      |  &lang;word&rang;
  *      |  &lang;word&rang; &lang;spaces&rang; &lang;words&rang;  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *   \hyphenation{as-so-ciate as-so-ciates}  </pre>
@@ -82,17 +85,15 @@ import org.extex.unit.base.register.CharCode;
  * <pre class="TeXSample">
  *   \hyphenation{Gro&szlig;--Ger-au}  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Hyphenation extends HyphenationPrimitive {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 

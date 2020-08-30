@@ -19,48 +19,39 @@
 
 package org.extex.interpreter.interaction;
 
-import java.io.ObjectStreamException;
-import java.io.Serializable;
-
 import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.exception.InteractionUnknownException;
 
+import java.io.ObjectStreamException;
+import java.io.Serializable;
+
 /**
  * This class provides a type-save enumeration of the interactions styles of
- * ??TeX. It defined constants for the supported interaction modes.
+ * εχTeX. It defined constants for the supported interaction modes.
  * In addition it supports the visitor pattern to react on them.
  * 
- * @see "<logo>T<span style=
- *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *      >e</span>X</logo> &ndash; The Program [73]"
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4726 $
- */
+*/
 public abstract class Interaction implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2009L;
 
     /**
-     * The constant <tt>BATCHMODE</tt> contains the constant for batch mode.
+     * The constant {@code BATCHMODE} contains the constant for batch mode.
      */
     public static final Interaction BATCHMODE = new Interaction() {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         protected static final long serialVersionUID = 1L;
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.interaction.Interaction#getIndex()
-         */
-        @Override
+    @Override
         public String getIndex() {
 
             return "0";
@@ -89,10 +80,7 @@ public abstract class Interaction implements Serializable {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.interaction.Interaction#visit(org.extex.interpreter.interaction.InteractionVisitor,
-         *      java.lang.Object, java.lang.Object, java.lang.Object)
+    *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
         @Override
         @SuppressWarnings({"unchecked", "rawtypes"})
@@ -104,23 +92,18 @@ public abstract class Interaction implements Serializable {
     };
 
     /**
-     * The constant <tt>ERRORSTOPMODE</tt> contains the constant for error stop
+     * The constant {@code ERRORSTOPMODE} contains the constant for error stop
      * mode.
      */
     public static final Interaction ERRORSTOPMODE = new Interaction() {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         protected static final long serialVersionUID = 1L;
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.interaction.Interaction#getIndex()
-         */
-        @Override
+    @Override
         public String getIndex() {
 
             return "3";
@@ -149,10 +132,7 @@ public abstract class Interaction implements Serializable {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.interaction.Interaction#visit(org.extex.interpreter.interaction.InteractionVisitor,
-         *      java.lang.Object, java.lang.Object, java.lang.Object)
+    *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
         @Override
         @SuppressWarnings({"unchecked", "rawtypes"})
@@ -165,23 +145,18 @@ public abstract class Interaction implements Serializable {
     };
 
     /**
-     * The constant <tt>NONSTOPMODE</tt> contains the constant for non-stop
+     * The constant {@code NONSTOPMODE} contains the constant for non-stop
      * mode.
      */
     public static final Interaction NONSTOPMODE = new Interaction() {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         protected static final long serialVersionUID = 1L;
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.interaction.Interaction#getIndex()
-         */
-        @Override
+    @Override
         public String getIndex() {
 
             return "1";
@@ -210,10 +185,7 @@ public abstract class Interaction implements Serializable {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.interaction.Interaction#visit(org.extex.interpreter.interaction.InteractionVisitor,
-         *      java.lang.Object, java.lang.Object, java.lang.Object)
+    *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
         @Override
         @SuppressWarnings({"unchecked", "rawtypes"})
@@ -226,22 +198,17 @@ public abstract class Interaction implements Serializable {
     };
 
     /**
-     * The constant <tt>SCROLLMODE</tt> contains the constant for scroll mode.
+     * The constant {@code SCROLLMODE} contains the constant for scroll mode.
      */
     public static final Interaction SCROLLMODE = new Interaction() {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         protected static final long serialVersionUID = 1L;
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.interaction.Interaction#getIndex()
-         */
-        @Override
+    @Override
         public String getIndex() {
 
             return "2";
@@ -270,10 +237,7 @@ public abstract class Interaction implements Serializable {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.interaction.Interaction#visit(org.extex.interpreter.interaction.InteractionVisitor,
-         *      java.lang.Object, java.lang.Object, java.lang.Object)
+    *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
         @Override
         @SuppressWarnings({"unchecked", "rawtypes"})
@@ -286,13 +250,9 @@ public abstract class Interaction implements Serializable {
     };
 
     /**
-     * The constant <tt>MODE_MAP</tt> contains the list for mapping integers to
+     * The constant {@code MODE_MAP} contains the list for mapping integers to
      * modes.
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [73]"
-     */
+*/
     private static final Interaction[] MODE_MAP =
             {BATCHMODE, NONSTOPMODE, SCROLLMODE, ERRORSTOPMODE};
 
@@ -386,8 +346,9 @@ public abstract class Interaction implements Serializable {
      * Get the numeric index of the interaction mode. According to the
      * definition of TeX the following mapping holds:
      * <table>
+     * <caption>TBD</caption>
      * <tr>
-     * <td>BatchMode</td>
+* <td>BatchMode</td>
      * <td>0</td>
      * </tr>
      * <tr>

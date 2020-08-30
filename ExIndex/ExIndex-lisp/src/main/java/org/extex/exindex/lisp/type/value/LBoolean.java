@@ -25,17 +25,16 @@ import java.io.PrintStream;
  * This class is a node containing a boolean.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class LBoolean implements LValue {
 
     /**
-     * The field <tt>TRUE</tt> contains the constant for true.
+     * The field {@code TRUE} contains the constant for true.
      */
     public static final LBoolean TRUE = new LBoolean(true);
 
     /**
-     * The field <tt>FALSE</tt> contains the constant for false.
+     * The field {@code FALSE} contains the constant for false.
      */
     public static final LBoolean FALSE = new LBoolean(false);
 
@@ -52,7 +51,7 @@ public final class LBoolean implements LValue {
     }
 
     /**
-     * The field <tt>value</tt> contains the value.
+     * The field {@code value} contains the value.
      */
     private final boolean value;
 
@@ -76,12 +75,7 @@ public final class LBoolean implements LValue {
         return value;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
-     */
-    public void print(PrintStream stream) {
+public void print(PrintStream stream) {
 
         stream.print(value ? "t" : "nil");
     }

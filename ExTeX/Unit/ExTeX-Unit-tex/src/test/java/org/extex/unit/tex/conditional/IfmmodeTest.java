@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\ifmmode</tt>.
+ * This is a test suite for the primitive {@code \ifmmode}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class IfmmodeTest extends ConditionalTester {
 
     /**
@@ -48,8 +47,8 @@ public class IfmmodeTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifmmode"> Test case checking that <tt>\ifmmode</tt>
-     * is false in vertical mode. </testcase>
+     * <testcase primitive="\ifmmode"> Test case checking that {@code \ifmmode}
+     * is false in vertical mode.
      * 
      * @throws Exception in case of an error
      */
@@ -63,8 +62,8 @@ public class IfmmodeTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifmmode"> Test case checking that <tt>\ifmmode</tt>
-     * is false in horizontal mode. </testcase>
+     * <testcase primitive="\ifmmode"> Test case checking that {@code \ifmmode}
+     * is false in horizontal mode.
      * 
      * @throws Exception in case of an error
      */
@@ -78,8 +77,8 @@ public class IfmmodeTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifmmode"> Test case checking that <tt>\ifmmode</tt>
-     * is false in displaymath mode. </testcase>
+     * <testcase primitive="\ifmmode"> Test case checking that {@code \ifmmode}
+     * is false in displaymath mode.
      * 
      * @throws Exception in case of an error
      */
@@ -94,8 +93,8 @@ public class IfmmodeTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifmmode"> Test case checking that <tt>\ifmmode</tt>
-     * is true in inner vertical mode. </testcase>
+     * <testcase primitive="\ifmmode"> Test case checking that {@code \ifmmode}
+     * is true in inner vertical mode.
      * 
      * @throws Exception in case of an error
      */
@@ -109,8 +108,8 @@ public class IfmmodeTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifmmode"> Test case checking that <tt>\ifmmode</tt>
-     * is true in restricted horizontal mode. </testcase>
+     * <testcase primitive="\ifmmode"> Test case checking that {@code \ifmmode}
+     * is true in restricted horizontal mode.
      * 
      * @throws Exception in case of an error
      */
@@ -124,8 +123,8 @@ public class IfmmodeTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifmmode"> Test case checking that <tt>\ifmmode</tt>
-     * is true in math mode. </testcase>
+     * <testcase primitive="\ifmmode"> Test case checking that {@code \ifmmode}
+     * is true in math mode.
      * 
      * @throws Exception in case of an error
      */

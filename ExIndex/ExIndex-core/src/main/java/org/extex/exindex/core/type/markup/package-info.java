@@ -17,7 +17,7 @@
  */
 /**
  * 
- *   This package contains containers for markup information.
+ *   Contains containers for markup information.
  * 
  *
  */

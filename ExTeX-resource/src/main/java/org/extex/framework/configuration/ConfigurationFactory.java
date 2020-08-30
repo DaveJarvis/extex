@@ -34,31 +34,30 @@ import org.extex.framework.configuration.impl.XmlConfiguration;
  * This is the factory for {@link Configuration}s.
  * <p>
  * The class to be used for the configuration can be set with the
- * <tt>System.property</tt> named <tt>Util.Configuration.class</tt>. If this
+ * {@code System.property} named {@code Util.Configuration.class}. If this
  * property is not set then the fallback class
  * {@link org.extex.framework.configuration.impl.XmlConfiguration
  * XmlConfiguration} is used instead.
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class ConfigurationFactory {
 
     /**
-     * The field <tt>classloader</tt> contains the class loader.
+     * The field {@code classloader} contains the class loader.
      */
     private static final ClassLoader CLASSLOADER =
         ConfigurationFactory.class.getClassLoader();
 
     /**
-     * The field <tt>ext</tt> contains extensions to use when searching for
+     * The field {@code ext} contains extensions to use when searching for
      * configuration files.
      */
     private static final String[] XML_EXTENSIONS = new String[]{".xml", ""};
 
     /**
-     * The field <tt>path</tt> contains the path to use when searching for
+     * The field {@code path} contains the path to use when searching for
      * configuration files.
      */
     private static final String[] PATHS = {"config/", ""};
@@ -71,7 +70,7 @@ public final class ConfigurationFactory {
      * implementation.
      * <p>
      * The implementation can be specified in the system property
-     * <tt>Util.Configuration.class</tt>. The content is expected to be a fully
+     * {@code Util.Configuration.class}. The content is expected to be a fully
      * qualified class name. This class has to implement the interface
      * {@link Configuration Configuration}.
      * </p>
@@ -88,7 +87,7 @@ public final class ConfigurationFactory {
      * @throws ConfigurationException in case of an error. Especially
      *         <ul>
      *         <li>ConfigurationInvalidNameException in case that the source is
-     *         <code>null</code></li>
+     *         {@code null}</li>
      *         <li>ConfigurationInstantiationException in case of some kind of
      *         error during instantiation</li>
      *         <li>ConfigurationClassNotFoundException in case that the class

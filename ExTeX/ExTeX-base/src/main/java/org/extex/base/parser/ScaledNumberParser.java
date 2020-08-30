@@ -44,16 +44,14 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class provides a fixed point number.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class ScaledNumberParser {
 
     /**
      * This interface describes a binary operation on two longs.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
-     */
+    */
     private interface BinOp {
 
         /**
@@ -68,7 +66,7 @@ public final class ScaledNumberParser {
     }
 
     /**
-     * The constant <tt>FLOAT_DIGITS</tt> contains the number of digits to
+     * The constant {@code FLOAT_DIGITS} contains the number of digits to
      * consider when producing a string representation of this type.
      * 
      * Attention: Do not change this value unless you have read and understood
@@ -77,16 +75,11 @@ public final class ScaledNumberParser {
     private static final int FLOAT_DIGITS = 17;
 
     /**
-     * The field <tt>MINUS</tt> contains the subtractor.
+     * The field {@code MINUS} contains the subtractor.
      */
     private static final BinOp MINUS = new BinOp() {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.base.parser.ScaledNumberParser.BinOp#apply(long, long)
-         */
-        @Override
+    @Override
         public long apply(long arg1, long arg2) {
 
             return arg1 - arg2;
@@ -94,16 +87,11 @@ public final class ScaledNumberParser {
     };
 
     /**
-     * The field <tt>PLUS</tt> contains the adder.
+     * The field {@code PLUS} contains the adder.
      */
     private static final BinOp PLUS = new BinOp() {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.base.parser.ScaledNumberParser.BinOp#apply(long, long)
-         */
-        @Override
+    @Override
         public long apply(long arg1, long arg2) {
 
             return arg1 + arg2;
@@ -111,17 +99,12 @@ public final class ScaledNumberParser {
     };
 
     /**
-     * The field <tt>SECOND</tt> contains the operation to select the second
+     * The field {@code SECOND} contains the operation to select the second
      * argument.
      */
     private static final BinOp SECOND = new BinOp() {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.base.parser.ScaledNumberParser.BinOp#apply(long, long)
-         */
-        @Override
+    @Override
         public long apply(long arg1, long arg2) {
 
             return arg2;

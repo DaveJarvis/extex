@@ -27,8 +27,7 @@ import org.extex.core.UnicodeChar;
  * Test for the mapping between the glyph name and the Unicode char.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class GlyphNameTest extends TestCase {
 
     /**

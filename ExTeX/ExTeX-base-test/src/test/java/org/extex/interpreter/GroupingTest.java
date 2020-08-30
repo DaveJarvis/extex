@@ -28,8 +28,7 @@ import org.junit.runner.JUnitCore;
  * Test for grouping.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class GroupingTest {
 
     /**
@@ -43,7 +42,7 @@ public class GroupingTest {
     }
 
     /**
-     * Test the primitive <tt>&#x5c;unless</tt>.
+     * Test the primitive {@code &#x5c;unless}.
      * 
      * @exception Exception iff test failed
      */

@@ -24,8 +24,7 @@ package org.extex.typesetter.type;
  * direction.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface OrientedNode extends Node {
 
     /**

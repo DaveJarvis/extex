@@ -34,12 +34,11 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\expandafter</code>.
+ * {@code \expandafter}.
  * 
- * <doc name="expandafter">
- * <h3>The Primitive <tt>\expandafter</tt></h3>
+ * <p>The Primitive {@code \expandafter}</p>
  * <p>
- * The primitive <tt>\expandafter</tt> reverses the expansion of the following
+ * The primitive {@code \expandafter} reverses the expansion of the following
  * two tokens. For this purpose the next token following the invocation is read
  * unexpanded and put aside. Then the next token is expanded in whatever way the
  * token requires expansion. This may involve the reading and expansion of
@@ -50,35 +49,35 @@ import org.extex.typesetter.exception.TypesetterException;
  * Any prefix argument is saved for the expansion of the following token.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;expandafter&rang;
- *     &rarr; <tt>\expandafter</tt> {@linkplain
+ *     &rarr; {@code \expandafter} {@linkplain
  *         org.extex.interpreter.TokenSource#getToken(Context)
  *         &lang;token&rang;} {@linkplain
  *         org.extex.interpreter.TokenSource#getToken(Context)
  *         &lang;token&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \expandafter ab  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Expandafter extends AbstractCode
         implements
             ExpandableCode,
             PrefixCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -94,10 +93,7 @@ public class Expandafter extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -114,10 +110,7 @@ public class Expandafter extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,

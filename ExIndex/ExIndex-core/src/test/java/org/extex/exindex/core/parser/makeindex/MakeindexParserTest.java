@@ -39,8 +39,7 @@ import org.junit.Test;
  * This is a test suite for the xindy parser.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6626 $
- */
+*/
 public class MakeindexParserTest {
 
     /**
@@ -242,7 +241,7 @@ public class MakeindexParserTest {
     }
 
     /**
-     * <testcase>Test that multiple entries can be parsed. </testcase>
+     * Test that multiple entries can be parsed.
      * 
      * @throws Exception in case of an error
      */
@@ -268,8 +267,8 @@ public class MakeindexParserTest {
     }
 
     /**
-     * <testcase>Test that multiple entries can be parsed and whitespace in
-     * between is skipped. </testcase>
+     * Test that multiple entries can be parsed and whitespace in
+     * between is skipped.
      * 
      * @throws Exception in case of an error
      */
@@ -295,8 +294,8 @@ public class MakeindexParserTest {
     }
 
     /**
-     * <testcase>Test that multiple entries can be parsed and anything in
-     * between is skipped. </testcase>
+     * Test that multiple entries can be parsed and anything in
+     * between is skipped.
      * 
      * @throws Exception in case of an error
      */
@@ -322,8 +321,8 @@ public class MakeindexParserTest {
     }
 
     /**
-     * <testcase>Test that multiple entries can be parsed and nothing after the
-     * end and after the parser has been closed. </testcase>
+     * Test that multiple entries can be parsed and nothing after the
+     * end and after the parser has been closed.
      * 
      * @throws Exception in case of an error
      */
@@ -343,8 +342,8 @@ public class MakeindexParserTest {
     }
 
     /**
-     * <testcase>Test that an entry can be parsed and embedded braces are
-     * treated right. </testcase>
+     * Test that an entry can be parsed and embedded braces are
+     * treated right.
      * 
      * @throws Exception in case of an error
      */
@@ -365,8 +364,8 @@ public class MakeindexParserTest {
     }
 
     /**
-     * <testcase>Test that an entry with a structured item can be parsed.
-     * </testcase>
+     * Test that an entry with a structured item can be parsed.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -387,8 +386,8 @@ public class MakeindexParserTest {
     }
 
     /**
-     * <testcase>Test that an entry with an embedded \{ can be parsed.
-     * </testcase>
+     * Test that an entry with an embedded \{ can be parsed.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -409,8 +408,8 @@ public class MakeindexParserTest {
     }
 
     /**
-     * <testcase>Test that the keyword has to be followed by an open brace.
-     * </testcase>
+     * Test that the keyword has to be followed by an open brace.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -425,8 +424,8 @@ public class MakeindexParserTest {
     }
 
     /**
-     * <testcase>Test that an unbalance brace in an entry leads to an error.
-     * </testcase>
+     * Test that an unbalance brace in an entry leads to an error.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -441,8 +440,8 @@ public class MakeindexParserTest {
     }
 
     /**
-     * <testcase>Test that an unbalance brace in the page reference leads to an
-     * error. </testcase>
+     * Test that an unbalance brace in the page reference leads to an
+     * error.
      * 
      * @throws Exception in case of an error
      */
@@ -457,8 +456,8 @@ public class MakeindexParserTest {
     }
 
     /**
-     * <testcase>Test that an entry with an \ at the end leads to an error.
-     * </testcase>
+     * Test that an entry with an \ at the end leads to an error.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -473,8 +472,8 @@ public class MakeindexParserTest {
     }
 
     /**
-     * <testcase>Test that makeindex:keyword does not accept nil as value.
-     * </testcase>
+     * Test that makeindex:keyword does not accept nil as value.
+     *
      * 
      * @throws Exception in case of an error
      */

@@ -34,13 +34,9 @@ import org.extex.typesetter.tc.TypesettingContext;
 /**
  * This interface describes the capabilities of a list maker.
  * 
- * @see "<logo>T<span style=
- *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *      >e</span>X</logo> &ndash; The Program [211]"
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface TokenDelegateListMaker extends ListMaker {
 
     /**
@@ -65,7 +61,7 @@ public interface TokenDelegateListMaker extends ListMaker {
      * @param source the source for new tokens
      * @param locator the locator
      * 
-     * @return <code>true</code> iff the character has been discarded because it
+     * @return {@code true} iff the character has been discarded because it
      *         is not defined in the current font.
      * 
      * @throws TypesetterException in case of an error

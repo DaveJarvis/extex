@@ -33,37 +33,36 @@ import org.extex.typesetter.type.noad.UnderlinedNoad;
 
 /**
  * This class provides an implementation for the primitive
- * <code>&#x5c;underline</code>.
+ * {@code &#x5c;underline}.
  * 
- * <doc name="underline">
- * <h3>The Math Primitive <tt>&#x5c;underline</tt></h3>
+ * <p>The Math Primitive {@code &#x5c;underline}</p>
  * <p>
- * The math primitive <tt>&#x5c;underline</tt> takes one argument and
+ * The math primitive {@code &#x5c;underline} takes one argument and
  * underlines it. The material to be underlined is typeset in math mode.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;underline&rang;
- *       &rarr; <tt>&#x5c;underline</tt> &lang;math group&rang;  </pre>
+ *       &rarr; {@code &#x5c;underline} &lang;math group&rang;  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    &#x5c;underline{abc}  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Underline extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -79,10 +78,7 @@ public class Underline extends AbstractMathCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

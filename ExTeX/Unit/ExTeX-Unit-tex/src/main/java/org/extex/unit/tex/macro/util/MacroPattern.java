@@ -54,8 +54,7 @@ import org.extex.unit.tex.typesetter.paragraph.Par;
  * This class provides a container for the pattern of a macro.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class MacroPattern extends Tokens {
 
     /**
@@ -65,13 +64,13 @@ public class MacroPattern extends Tokens {
     private class ArgumentMatcher implements Matcher {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the version number for
+         * The field {@code serialVersionUID} contains the version number for
          * serialization.
          */
         private static final long serialVersionUID = 2007L;
 
         /**
-         * The field <tt>no</tt> contains the index of the argument.
+         * The field {@code no} contains the index of the argument.
          */
         private int no;
 
@@ -86,10 +85,7 @@ public class MacroPattern extends Tokens {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.unit.tex.macro.util.MacroPattern.Matcher#match(org.extex.scanner.type.tokens.Tokens[],
-         *      org.extex.interpreter.context.Context,
+    *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
          *      org.extex.typesetter.Typesetter, boolean, CodeToken)
          */
@@ -103,12 +99,7 @@ public class MacroPattern extends Tokens {
                 typesetter, token);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return "#" + Integer.toString(no);
@@ -124,18 +115,18 @@ public class MacroPattern extends Tokens {
     private class CollectingMatcher implements Matcher {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the version number for
+         * The field {@code serialVersionUID} contains the version number for
          * serialization.
          */
         private static final long serialVersionUID = 2007L;
 
         /**
-         * The field <tt>no</tt> contains the index of the argument.
+         * The field {@code no} contains the index of the argument.
          */
         private int no;
 
         /**
-         * The field <tt>t</tt> contains the terminating token.
+         * The field {@code t} contains the terminating token.
          */
         private Token token;
 
@@ -152,10 +143,7 @@ public class MacroPattern extends Tokens {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.unit.tex.macro.util.MacroPattern.Matcher#match(org.extex.scanner.type.tokens.Tokens[],
-         *      org.extex.interpreter.context.Context,
+    *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
          *      org.extex.typesetter.Typesetter, boolean, CodeToken)
          */
@@ -167,12 +155,7 @@ public class MacroPattern extends Tokens {
             args[no] = scanTo(context, source, token, notLong);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return "#" + Integer.toString(no) + token.toText();
@@ -186,13 +169,13 @@ public class MacroPattern extends Tokens {
     private class ConstantMatcher implements Matcher {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the version number for
+         * The field {@code serialVersionUID} contains the version number for
          * serialization.
          */
         private static final long serialVersionUID = 2007L;
 
         /**
-         * The field <tt>token</tt> contains the token to look for.
+         * The field {@code token} contains the token to look for.
          */
         private Token token;
 
@@ -207,10 +190,7 @@ public class MacroPattern extends Tokens {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.unit.tex.macro.util.MacroPattern.Matcher#match(org.extex.scanner.type.tokens.Tokens[],
-         *      org.extex.interpreter.context.Context,
+    *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
          *      org.extex.typesetter.Typesetter, boolean, CodeToken)
          */
@@ -231,12 +211,7 @@ public class MacroPattern extends Tokens {
             }
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return token.toText();
@@ -250,13 +225,13 @@ public class MacroPattern extends Tokens {
     private class GroupMatcher implements Matcher {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the version number for
+         * The field {@code serialVersionUID} contains the version number for
          * serialization.
          */
         private static final long serialVersionUID = 2007L;
 
         /**
-         * The field <tt>no</tt> contains the index of the argument.
+         * The field {@code no} contains the index of the argument.
          */
         private int no;
 
@@ -271,10 +246,7 @@ public class MacroPattern extends Tokens {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.unit.tex.macro.util.MacroPattern.Matcher#match(org.extex.scanner.type.tokens.Tokens[],
-         *      org.extex.interpreter.context.Context,
+    *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
          *      org.extex.typesetter.Typesetter, boolean, CodeToken)
          */
@@ -304,12 +276,7 @@ public class MacroPattern extends Tokens {
             }
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return "#{" + Integer.toString(no);
@@ -344,19 +311,19 @@ public class MacroPattern extends Tokens {
     }
 
     /**
-     * The constant <tt>EMPTY</tt> contains the empty macro pattern. This can be
+     * The constant {@code EMPTY} contains the empty macro pattern. This can be
      * used in a poor man's factory.
      */
     public static final MacroPattern EMPTY = new MacroPattern(Tokens.EMPTY);
 
     /**
-     * The constant <tt>NOT_COMPILED</tt> contains the flag for the compiler to
+     * The constant {@code NOT_COMPILED} contains the flag for the compiler to
      * leave out the compiler.
      */
     private static final boolean NOT_COMPILED = true;
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -478,19 +445,19 @@ public class MacroPattern extends Tokens {
     }
 
     /**
-     * The field <tt>arity</tt> contains the arity, i.e. the number or
+     * The field {@code arity} contains the arity, i.e. the number or
      * parameters.
      */
     private int arity = 0;
 
     /**
-     * The field <tt>cs</tt> contains the token of the invoking control
+     * The field {@code cs} contains the token of the invoking control
      * sequence.
      */
     private CodeToken cs;
 
     /**
-     * The field <tt>matcher</tt> contains the compiled matcher list.
+     * The field {@code matcher} contains the compiled matcher list.
      */
     private Matcher[] matcher;
 
@@ -597,7 +564,7 @@ public class MacroPattern extends Tokens {
      * 
      * @return a new array of parameters which have been found during the
      *         matching. Note that some of the elements of the array might be
-     *         <code>null</code>.
+     *         {@code null}.
      * 
      * @throws HelpingException in case of an error during the matching
      * @throws TypesetterException in case of an error in the typesetter
@@ -639,7 +606,7 @@ public class MacroPattern extends Tokens {
      * 
      * @return a new array of parameters which have been found during the
      *         matching. Note that some of the elements of the array might be
-     *         <code>null</code>.
+     *         {@code null}.
      * 
      * @throws HelpingException in case of an error during the matching
      * @throws TypesetterException in case of an error in the typesetter
@@ -800,12 +767,7 @@ public class MacroPattern extends Tokens {
         this.arity = arity;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.type.tokens.Tokens#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();

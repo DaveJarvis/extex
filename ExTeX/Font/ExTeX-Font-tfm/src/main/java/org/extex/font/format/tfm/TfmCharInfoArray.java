@@ -34,7 +34,7 @@ import org.extex.util.file.random.RandomAccessR;
  * Each char_info_word contains six fields packed into four bytes as follows.
  * </p>
  * 
- * <table border="1"> <thead>
+ * <table> <caption>TBD</caption> <thead>
  * <tr>
  * <td>byte</td>
  * <td>description</td>
@@ -64,13 +64,12 @@ import org.extex.util.file.random.RandomAccessR;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class TfmCharInfoArray implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 1L;
 
@@ -147,7 +146,7 @@ public class TfmCharInfoArray implements Serializable {
      * Check the existence of particular character in the font.
      * 
      * @param pos the checked character code.
-     * @return <code>true</code> if the character is present.
+     * @return {@code true} if the character is present.
      */
     private boolean charExists(short pos) {
 
@@ -250,7 +249,7 @@ public class TfmCharInfoArray implements Serializable {
 
     /**
      * Returns the charinfoword for the character. If the position less then bc
-     * (first character in the font), <code>null</code> will be returned.
+     * (first character in the font), {@code null} will be returned.
      * 
      * @param i the position of the character
      * @return Returns the charinfoword for the character.
@@ -332,7 +331,7 @@ public class TfmCharInfoArray implements Serializable {
      * 
      * @param table referenced table of dimensions.
      * @param i referenced index to the dimension table.
-     * @param pos the position of character in <code>charTable</code> for
+     * @param pos the position of character in {@code charTable} for
      *        error messages.
      * @return Returns the FixWord
      */
@@ -348,11 +347,11 @@ public class TfmCharInfoArray implements Serializable {
      * Checks the consistency of larger character chain. It checks only the
      * characters which have less position in |charTable| then the given
      * character position and are supossed to have the corresponding
-     * <code>CharInfo</code> already created.
+     * {@code CharInfo} already created.
      * 
      * @param pos position of currently processed character in
-     *        <code>charTable</code>.
-     * @return <code>true</code> if the associated chain is consistent.
+     *        {@code charTable}.
+     * @return {@code true} if the associated chain is consistent.
      */
     private boolean validCharList(int pos) {
 

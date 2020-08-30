@@ -96,23 +96,22 @@ import org.extex.framework.i18n.LocalizerFactory;
  * defined.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Indexer extends LEngine {
 
     /**
-     * The field <tt>LOCALIZER</tt> contains the localizer.
+     * The field {@code LOCALIZER} contains the localizer.
      */
     private static final Localizer LOCALIZER =
             LocalizerFactory.getLocalizer(Indexer.class);
 
     /**
-     * The field <tt>container</tt> contains the container for all indices.
+     * The field {@code container} contains the container for all indices.
      */
     private final IndexContainer container = new IndexContainer();
 
     /**
-     * The field <tt>parserFactory</tt> contains the parser factory.
+     * The field {@code parserFactory} contains the parser factory.
      */
     private RawIndexParserFactory parserFactory;
 
@@ -291,10 +290,7 @@ public class Indexer extends LEngine {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.lisp.LInterpreter#makeParser(java.io.Reader,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     protected LParser makeParser(Reader reader, String name) {
@@ -307,7 +303,7 @@ public class Indexer extends LEngine {
     /**
      * Perform the markup phase and write the result to the given writer.
      * 
-     * @param writer the writer or <code>null</code> to skip this phase
+     * @param writer the writer or {@code null} to skip this phase
      * @param logger the logger
      * 
      * @throws IOException in case of an I/O error
@@ -328,7 +324,7 @@ public class Indexer extends LEngine {
     /**
      * Perform the initial processing step. This step consists of a check of the
      * attributes, the check of the cross-references and the check of the
-     * location references. If all checks are passed then <code>true</code> is
+     * location references. If all checks are passed then {@code true} is
      * returned.
      * 
      * @param entry the entry to store
@@ -336,7 +332,7 @@ public class Indexer extends LEngine {
      * @param openPages the list of open pages
      * @param logger the logger
      * 
-     * @return <code>true</code> iff the entry has been stored
+     * @return {@code true} iff the entry has been stored
      * 
      * @throws LException in case of an error
      */
@@ -372,7 +368,7 @@ public class Indexer extends LEngine {
     /**
      * Perform the processing phase.
      * 
-     * @param resources the list of raw data files or <code>null</code> to
+     * @param resources the list of raw data files or {@code null} to
      *        skip this phase
      * @param logger the logger
      * 
@@ -436,11 +432,11 @@ public class Indexer extends LEngine {
      * Perform all phases; initializing from a list of styles, loading a list of
      * data resources, and writing the result to a writer.
      * 
-     * @param styles the list of styles to use or <code>null</code> to skip
+     * @param styles the list of styles to use or {@code null} to skip
      *        this phase
-     * @param resources the list of raw data files or <code>null</code> to
+     * @param resources the list of raw data files or {@code null} to
      *        skip this phase
-     * @param writer the writer for output or <code>null</code> to skip this
+     * @param writer the writer for output or {@code null} to skip this
      *        phase
      * @param logger the logger
      * 
@@ -476,7 +472,7 @@ public class Indexer extends LEngine {
     /**
      * Load the style files and prepare the engine to get started.
      * 
-     * @param styles the list of styles to use or <code>null</code> to skip
+     * @param styles the list of styles to use or {@code null} to skip
      *        this phase
      * @param logger the logger
      * 

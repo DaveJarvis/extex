@@ -35,18 +35,18 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
 
 /**
- * This class provides an implementation for the primitive <code>\relax</code>.
+ * This class provides an implementation for the primitive {@code \relax}.
  * 
- * <doc name="parshape"> <h3>The Primitive <tt>\parshape</tt></h3>
+ * <p>The Primitive {@code \parshape}</p>
  * <p>
- * The primitive <tt>\parshape</tt> is a declaration of the shape of the
+ * The primitive {@code \parshape} is a declaration of the shape of the
  * paragraph. With its help it is possible to control the left and right margin
  * of the current paragraph.
  * </p>
  * <p>
  * The shape of the paragraph is controlled on a line base. For each line the
  * left indentation and the width are given. The first argument of
- * <tt>\parshape</tt> determines the number of such pairs to follow.
+ * {@code \parshape} determines the number of such pairs to follow.
  * </p>
  * <p>
  * When the paragraph is typeset the lines are indented and adjusted according
@@ -56,20 +56,22 @@ import org.extex.typesetter.paragraphBuilder.ParagraphShape;
  * specification is repeated.
  * </p>
  * <p>
- * If several <tt>\parshape</tt> declarations are given in one paragraph then
+ * If several {@code \parshape} declarations are given in one paragraph then
  * the one is used which is in effect at the end of the paragraph. This means
  * that later declarations overrule earlier ones.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;parshape&rang;
- *        &rarr; <tt>\parshape</tt> {@linkplain
+ *        &rarr; {@code \parshape} {@linkplain
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *        &lang;8-bit&nbsp;number&rang;} ... </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \parshape 3 20pt \linewidth
@@ -79,27 +81,26 @@ import org.extex.typesetter.paragraphBuilder.ParagraphShape;
  * <pre class="TeXSample">
  *    \parshape 0 </pre>
  * 
- * <h3><tt>\parshape</tt> as special integer</h3>
+ * <p>{@code \parshape} as special integer</p>
  * <p>
- * <tt>\parshape</tt> acts as special count register which can be queried. It
+ * {@code \parshape} acts as special count register which can be queried. It
  * returns the size of the current parshape specification or 0 if none is
  * present.
  * </p>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \count1=\parshape  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Parshape extends AbstractCode implements CountConvertible, Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -114,10 +115,7 @@ public class Parshape extends AbstractCode implements CountConvertible, Theable 
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertCount(Context context, TokenSource source,
@@ -128,10 +126,7 @@ public class Parshape extends AbstractCode implements CountConvertible, Theable 
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -153,10 +148,7 @@ public class Parshape extends AbstractCode implements CountConvertible, Theable 
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

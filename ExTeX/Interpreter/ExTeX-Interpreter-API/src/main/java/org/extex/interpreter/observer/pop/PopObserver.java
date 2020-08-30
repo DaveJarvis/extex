@@ -26,8 +26,7 @@ import org.extex.scanner.type.token.Token;
  * occurs.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface PopObserver {
 
     /**

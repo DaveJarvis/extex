@@ -27,7 +27,7 @@ import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
 
 /**
- * Class for a <code>ValueRecord</code>.
+ * Class for a {@code ValueRecord}.
  * <p>
  * GPOS subtables use ValueRecords to describe all the variables and values used
  * to adjust the position of a glyph or set of glyphs. A ValueRecord may define
@@ -48,9 +48,10 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <p>
  * ValueRecord (all fields are optional)
  * </p>
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td><b>Value</b></td>
+* <td><b>Value</b></td>
  * <td><b>Type</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -103,8 +104,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class ValueRecord implements XMLWriterConvertible {
 
     /**
@@ -210,16 +210,13 @@ public class ValueRecord implements XMLWriterConvertible {
      * 
      * @param value The value.
      * @param mask The mask.
-     * @return Returns <code>true</code>, if the bit for the mask is set,
-     *         otherwise <code>false</code>.
+     * @return Returns {@code true}, if the bit for the mask is set,
+     *         otherwise {@code false}.
      */
     public static boolean isMaskSet(int value, int mask) {
 
         int v = value & mask;
-        if (v > 0) {
-            return true;
-        }
-        return false;
+      return v > 0;
     }
 
     /**
@@ -278,7 +275,7 @@ public class ValueRecord implements XMLWriterConvertible {
      * below. To specify multiple fields with a ValueFormat, the bit settings of
      * the relevant fields are added with a logical OR operation.
      */
-    private int valueFormat;
+    private final int valueFormat;
 
     /**
      * Horizontal adjustment for advance-in design units (only used for
@@ -626,12 +623,7 @@ public class ValueRecord implements XMLWriterConvertible {
         return isYPlaDevice;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("valuerecord");
         writer.writeAttribute("valueFormat", valueFormat);

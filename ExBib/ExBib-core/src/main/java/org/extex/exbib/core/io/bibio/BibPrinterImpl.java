@@ -43,92 +43,91 @@ import org.extex.exbib.core.io.bibio.options.Cased;
  * >e</span>X.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BibPrinterImpl implements BibPrinter, ValueVisitor, SectionVisitor {
 
     /**
-     * The field <tt>writer</tt> contains the target writer.
+     * The field {@code writer} contains the target writer.
      */
     private final Writer writer;
 
     /**
-     * The field <tt>preamblePrefix</tt> contains the preamble prefix.
+     * The field {@code preamblePrefix} contains the preamble prefix.
      */
     private String preamblePrefix = "@Preamble{";
 
     /**
-     * The field <tt>preamblePostfix</tt> contains the preamble postfix.
+     * The field {@code preamblePostfix} contains the preamble postfix.
      */
     private String preamblePostfix = "}\n\n";
 
     /**
-     * The field <tt>stringPrefix</tt> contains the string prefix.
+     * The field {@code stringPrefix} contains the string prefix.
      */
     private String stringPrefix = "@String{";
 
     /**
-     * The field <tt>stringInfix</tt> contains the string infix.
+     * The field {@code stringInfix} contains the string infix.
      */
     private String stringInfix = " = ";
 
     /**
-     * The field <tt>stringPostfix</tt> contains the string postfix.
+     * The field {@code stringPostfix} contains the string postfix.
      */
     private String stringPostfix = "}\n";
 
     /**
-     * The field <tt>stringKeyCase</tt> contains the string key case.
+     * The field {@code stringKeyCase} contains the string key case.
      */
     private Cased stringKeyCase = Cased.AsIs;
 
     /**
-     * The field <tt>entryPrefix</tt> contains the entry prefix.
+     * The field {@code entryPrefix} contains the entry prefix.
      */
     private String entryPrefix = "\n@";
 
     /**
-     * The field <tt>entryInfix</tt> contains the entry infix.
+     * The field {@code entryInfix} contains the entry infix.
      */
     private String entryInfix = "{ ";
 
     /**
-     * The field <tt>entryPostfix</tt> contains the entry postfix.
+     * The field {@code entryPostfix} contains the entry postfix.
      */
     private String entryPostfix = "\n}\n";
 
     /**
-     * The field <tt>entryKeyCase</tt> contains the entry key case.
+     * The field {@code entryKeyCase} contains the entry key case.
      */
     private Cased entryKeyCase = Cased.AsIs;
 
     /**
-     * The field <tt>entryTypeCase</tt> contains the entry type case.
+     * The field {@code entryTypeCase} contains the entry type case.
      */
     private Cased entryTypeCase = Cased.AsIs;
 
     /**
-     * The field <tt>fieldPrefix</tt> contains the field prefix.
+     * The field {@code fieldPrefix} contains the field prefix.
      */
     private String fieldPrefix = "\t";
 
     /**
-     * The field <tt>fieldInfix</tt> contains the field infix.
+     * The field {@code fieldInfix} contains the field infix.
      */
     private String fieldInfix = " = ";
 
     /**
-     * The field <tt>fieldPostfix</tt> contains the field postfix.
+     * The field {@code fieldPostfix} contains the field postfix.
      */
     private String fieldPostfix = ",\n";
 
     /**
-     * The field <tt>fieldKeyCase</tt> contains the field key case.
+     * The field {@code fieldKeyCase} contains the field key case.
      */
     private Cased fieldKeyCase = Cased.AsIs;
 
     /**
-     * The field <tt>sections</tt> contains the sections.
+     * The field {@code sections} contains the sections.
      */
     private Section[] sections = new Section[]{Section.Preamble,
             Section.Strings, Section.Entries};
@@ -486,22 +485,14 @@ public class BibPrinterImpl implements BibPrinter, ValueVisitor, SectionVisitor 
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.ValueVisitor#visitBlock(org.extex.exbib.core.db.VBlock,
-     *      org.extex.exbib.core.db.DB)
+*      org.extex.exbib.core.db.DB)
      */
     public void visitBlock(VBlock value, DB db) throws IOException {
 
         writer.print("{", value.getContent(), "}");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.SectionVisitor#visitEntries(org.extex.exbib.core.db.DB)
-     */
-    public void visitEntries(DB db) throws IOException {
+public void visitEntries(DB db) throws IOException {
 
         for (Entry e : db) {
             writer.print(entryPrefix);
@@ -521,10 +512,7 @@ public class BibPrinterImpl implements BibPrinter, ValueVisitor, SectionVisitor 
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.ValueVisitor#visitMacro(org.extex.exbib.core.db.VMacro,
-     *      org.extex.exbib.core.db.DB)
+*      org.extex.exbib.core.db.DB)
      */
     public void visitMacro(VMacro value, DB db) throws IOException {
 
@@ -532,22 +520,14 @@ public class BibPrinterImpl implements BibPrinter, ValueVisitor, SectionVisitor 
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.ValueVisitor#visitNumber(org.extex.exbib.core.db.VNumber,
-     *      org.extex.exbib.core.db.DB)
+*      org.extex.exbib.core.db.DB)
      */
     public void visitNumber(VNumber value, DB db) throws IOException {
 
         writer.print(value.getContent());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.SectionVisitor#visitPreamble(org.extex.exbib.core.db.DB)
-     */
-    public void visitPreamble(DB db) throws IOException {
+public void visitPreamble(DB db) throws IOException {
 
         Value preamble = db.getPreamble();
 
@@ -559,22 +539,14 @@ public class BibPrinterImpl implements BibPrinter, ValueVisitor, SectionVisitor 
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.ValueVisitor#visitString(org.extex.exbib.core.db.VString,
-     *      org.extex.exbib.core.db.DB)
+*      org.extex.exbib.core.db.DB)
      */
     public void visitString(VString value, DB db) throws IOException {
 
         writer.print("\"", value.getContent(), "\"");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.SectionVisitor#visitStrings(DB)
-     */
-    public void visitStrings(DB db) throws IOException {
+public void visitStrings(DB db) throws IOException {
 
         List<String> macroNames = db.getMacroNames();
         Collections.sort(macroNames);
@@ -589,10 +561,7 @@ public class BibPrinterImpl implements BibPrinter, ValueVisitor, SectionVisitor 
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.ValueVisitor#visitValue(org.extex.exbib.core.db.Value,
-     *      org.extex.exbib.core.db.DB)
+*      org.extex.exbib.core.db.DB)
      */
     public void visitValue(Value value, DB db) throws IOException {
 

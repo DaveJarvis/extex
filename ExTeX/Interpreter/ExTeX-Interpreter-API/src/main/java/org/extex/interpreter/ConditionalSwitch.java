@@ -23,15 +23,14 @@ import org.extex.core.Locator;
 import org.extex.interpreter.type.Code;
 
 /**
- * This class represents a conditional for an <tt>\ifcase</tt> construct.
+ * This class represents a conditional for an {@code \ifcase} construct.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5563 $
- */
+*/
 public class ConditionalSwitch extends Conditional {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 1L;
 
@@ -40,7 +39,7 @@ public class ConditionalSwitch extends Conditional {
      *
      * @param locator the locator
      * @param primitive the primitive which started this conditional
-     * @param branch <code>true</code> iff the then branch is taken
+     * @param branch {@code true} iff the then branch is taken
      * @param neg indicator that the conditional has been negated
      */
     public ConditionalSwitch(Locator locator, Code primitive,
@@ -51,8 +50,8 @@ public class ConditionalSwitch extends Conditional {
 
     /**
      * Getter for the value of the conditional.
-     * If it has the value <code>true</code> then the conditional is one of the
-     * if-then-else constructs. Otherwise it is a <tt>\ifcase</tt> construction.
+     * If it has the value {@code true} then the conditional is one of the
+     * if-then-else constructs. Otherwise it is a {@code \ifcase} construction.
      *
      * @return the value
      */

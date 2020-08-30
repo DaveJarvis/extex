@@ -34,35 +34,34 @@ import org.extex.typesetter.type.noad.util.MathSpacing;
  * @see "TTP [689]"
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class ChoiceNoad implements Noad {
 
     /**
-     * The field <tt>display</tt> contains the noads used in display style.
+     * The field {@code display} contains the noads used in display style.
      */
-    private Noad display;
+    private final Noad display;
 
     /**
-     * The field <tt>script</tt> contains the noads used in script style.
+     * The field {@code script} contains the noads used in script style.
      */
-    private Noad script;
+    private final Noad script;
 
     /**
-     * The field <tt>scriptScript</tt> contains the noads used in scriptscript
+     * The field {@code scriptScript} contains the noads used in scriptscript
      * style.
      */
-    private Noad scriptScript;
+    private final Noad scriptScript;
 
     /**
-     * The field <tt>spacingClass</tt> contains the spacing class.
+     * The field {@code spacingClass} contains the spacing class.
      */
     private MathSpacing spacingClass = MathSpacing.UNDEF;
 
     /**
-     * The field <tt>text</tt> contains the noads used in text style.
+     * The field {@code text} contains the noads used in text style.
      */
-    private Noad text;
+    private final Noad text;
 
     /**
      * Creates a new object.
@@ -120,12 +119,7 @@ public class ChoiceNoad implements Noad {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.noad.Noad#setSpacingClass(org.extex.typesetter.type.noad.util.MathSpacing)
-     */
-    @Override
+@Override
     public void setSpacingClass(MathSpacing spacingClass) {
 
         this.spacingClass = spacingClass;
@@ -194,10 +188,7 @@ public class ChoiceNoad implements Noad {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see "TTP [731]"
-     * @see org.extex.typesetter.type.noad.Noad#typeset(org.extex.typesetter.type.noad.Noad,
+* @see org.extex.typesetter.type.noad.Noad#typeset(org.extex.typesetter.type.noad.Noad,
      *      org.extex.typesetter.type.noad.NoadList, int,
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.type.noad.util.MathContext,

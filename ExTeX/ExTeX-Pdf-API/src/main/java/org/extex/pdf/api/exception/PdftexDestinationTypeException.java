@@ -22,18 +22,17 @@ package org.extex.pdf.api.exception;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This exception is raised when a <logo>pdfTeX</logo> encounters an invalid
+ * This exception is raised when a  pdfTeX encounters an invalid
  * destination type.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class PdftexDestinationTypeException
         extends
             PdftexException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the id for serialization.
+     * The field {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 

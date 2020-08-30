@@ -31,49 +31,48 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\pdfobj</code>.
+ * This class provides an implementation for the primitive {@code \pdfobj}.
  * 
- * <doc name="pdfobj">
- * <h3>The Primitive <tt>\pdfobj</tt></h3>
+ * <p>The Primitive {@code \pdfobj}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;pdfobj&rang;
- *       &rarr; <tt>\pdfobj</tt> &lang;optional attr&rang; &lang;optional stream or file&rang; {@linkplain
+ *       &rarr; {@code \pdfobj} &lang;optional attr&rang; &lang;optional stream or file&rang; {@linkplain
  *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,CodeToken)
  *          &lang;general text&rang;}
  *
  *    &lang;optional attr&rang;
- *       &rarr; <tt>attr</tt> {@linkplain
+ *       &rarr; {@code attr} {@linkplain
  *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,CodeToken)
  *          &lang;general text&rang;}
  *       |
  *
  *    &lang;optional stream or file&rang;
- *       &rarr; <tt>file</tt>
- *       |  <tt>stream</tt>
+ *       &rarr; {@code file}
+ *       |  {@code stream}
  *       |
  *    </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \pdfobj {abc.png}  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4791 $
- */
+*/
 public class Pdfobj extends AbstractPdftexCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -89,10 +88,7 @@ public class Pdfobj extends AbstractPdftexCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

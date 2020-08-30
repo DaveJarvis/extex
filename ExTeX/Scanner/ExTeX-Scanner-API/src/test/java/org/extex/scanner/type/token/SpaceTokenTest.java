@@ -32,12 +32,11 @@ import org.junit.runner.JUnitCore;
  * Test cases for space tokens.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4756 $
- */
+*/
 public class SpaceTokenTest extends TokenTester {
 
     /**
-     * The field <tt>token</tt> contains the reference token.
+     * The field {@code token} contains the reference token.
      */
     private static final Token token = new SpaceToken( "x");
 
@@ -60,27 +59,21 @@ public class SpaceTokenTest extends TokenTester {
         setStr( "blank space  ");
     }
 
-    /**
-     */
-    @Test
+@Test
     @Override
     public void testEq10() {
 
         assertTrue(token.eq(Catcode.SPACE, ' '));
     }
 
-    /**
-     */
-    @Test
+@Test
     @Override
     public void testEq20() {
 
         assertTrue(token.toString(), token.eq(' '));
     }
 
-    /**
-     */
-    @Test
+@Test
     @Override
     public void testGetChar0() {
 

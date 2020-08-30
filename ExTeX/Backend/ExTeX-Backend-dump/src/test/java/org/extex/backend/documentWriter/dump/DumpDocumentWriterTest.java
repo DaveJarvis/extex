@@ -34,14 +34,12 @@ import org.junit.Test;
  * This document writer produces multi-page dumps.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DumpDocumentWriterTest {
 
     /**
-     * <testcase> Test that a simple page produces a vbox with all dimensions at
-     * 0pt. </testcase>
-     * 
+     * Test that a simple page produces a vbox with all dimensions at 0pt
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -57,7 +55,7 @@ public class DumpDocumentWriterTest {
     }
 
     /**
-     * <testcase> Test that the default extension is <tt>out</tt>. </testcase>
+     *  Test that the default extension is {@code out}.
      */
     @Test
     public final void testGetExtension1() {
@@ -66,7 +64,7 @@ public class DumpDocumentWriterTest {
     }
 
     /**
-     * <testcase> Test that a <code>null</code> page is not shipped. </testcase>
+     *  Test that a {@code null} page is not shipped.
      * 
      * @throws Exception in case of an error
      */
@@ -80,7 +78,7 @@ public class DumpDocumentWriterTest {
     }
 
     /**
-     * <testcase> Test that a simple page is shipped out. </testcase>
+     *  Test that a simple page is shipped out.
      * 
      * @throws Exception in case of an error
      */

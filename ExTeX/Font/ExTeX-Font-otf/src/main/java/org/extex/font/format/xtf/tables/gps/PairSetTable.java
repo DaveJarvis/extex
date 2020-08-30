@@ -37,9 +37,10 @@ import org.extex.util.xml.XMLWriterConvertible;
  * set.
  * </p>
  * 
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td><b>Value</b></td>
+* <td><b>Value</b></td>
  * <td><b>Type</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -57,19 +58,18 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class PairSetTable implements XMLWriterConvertible {
 
     /**
      * The index.
      */
-    private int idx;
+    private final int idx;
 
     /**
      * Array of PairValueRecords-ordered by GlyphID of the second glyph.
      */
-    private PairValueRecord[] pairValueRecords;
+    private final PairValueRecord[] pairValueRecords;
 
     /**
      * Creates a new object.
@@ -109,7 +109,7 @@ public class PairSetTable implements XMLWriterConvertible {
      * 
      * @param secondGlyph The second glyph.
      * @return Returns the {@link PairValueRecord} for the second glyph or
-     *         <code>null</code>, if not found.
+     *         {@code null}, if not found.
      */
     public PairValueRecord getPairValueRecord(int secondGlyph) {
 
@@ -131,12 +131,7 @@ public class PairSetTable implements XMLWriterConvertible {
         return pairValueRecords;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("pairsettable");
         writer.writeAttribute("ID", idx);

@@ -62,194 +62,193 @@ import org.extex.typesetter.type.noad.MathGlyph;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4770 $
- */
+*/
 public class GroupImpl implements Group {
 
     /**
-     * The constant <tt>INVALID_CHAR_CODE</tt> contains the code for an invalid
+     * The constant {@code INVALID_CHAR_CODE} contains the code for an invalid
      * character.
      */
     private static final int INVALID_CHAR_CODE = 127;
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 20060512L;
 
     /**
-     * The field <tt>SFCODE_DEFAULT</tt> contains the default space factor code
+     * The field {@code SFCODE_DEFAULT} contains the default space factor code
      * for non-letters.
      */
     private static final FixedCount SFCODE_DEFAULT = new CountConstant(1000);
 
     /**
-     * The field <tt>SFCODE_LETTER</tt> contains the default space factor code
+     * The field {@code SFCODE_LETTER} contains the default space factor code
      * for letters.
      */
     private static final FixedCount SFCODE_LETTER = new CountConstant(999);
 
     /**
-     * The field <tt>afterGroup</tt> contains the tokens to be inserted after
+     * The field {@code afterGroup} contains the tokens to be inserted after
      * the group has been closed.
      */
     private Tokens afterGroup = null;
 
     /**
-     * The field <tt>afterGroupObservers</tt> contains the list of observers to
+     * The field {@code afterGroupObservers} contains the list of observers to
      * be invoked after the group has been closed.
      */
     private transient AfterGroupObserver afterGroupObservers = null;
 
     /**
-     * The field <tt>boxMap</tt> contains the map for the boxes. The field is
+     * The field {@code boxMap} contains the map for the boxes. The field is
      * initialized lacy. Thus new groups come up faster.
      */
     private Map<String, Box> boxMap;
 
     /**
-     * The field <tt>catcodeMap</tt> contains the map for the category codes.
+     * The field {@code catcodeMap} contains the map for the category codes.
      * The field is initialized lacy. Thus new groups come up faster.
      */
     private Map<UnicodeChar, Catcode> catcodeMap;
 
     /**
-     * The field <tt>codeMap</tt> contains the map for the active characters and
+     * The field {@code codeMap} contains the map for the active characters and
      * macros. The key is a Token. The value is a Code. The field is initialized
      * lacy. Thus new groups come up faster.
      */
     private Map<Token, Code> codeMap;
 
     /**
-     * The field <tt>countMap</tt> contains the map for the count registers. The
+     * The field {@code countMap} contains the map for the count registers. The
      * field is initialized lacy. Thus new groups come up faster.
      */
     private Map<String, Count> countMap;
 
     /**
-     * The field <tt>delcodeMap</tt> contains the map for the delimiter code of
+     * The field {@code delcodeMap} contains the map for the delimiter code of
      * the characters. The field is initialized lacy. Thus new groups come up
      * faster.
      */
     private Map<UnicodeChar, MathDelimiter> delcodeMap;
 
     /**
-     * The field <tt>dimenMap</tt> contains the map for the dimen registers. The
+     * The field {@code dimenMap} contains the map for the dimen registers. The
      * field is initialized lacy. Thus new groups come up faster.
      */
     private Map<String, Dimen> dimenMap;
 
     /**
-     * The field <tt>extensionMap</tt> contains the mapping from extension to
+     * The field {@code extensionMap} contains the mapping from extension to
      * their HashMap. The field is initialized lacy. Thus new groups come up
      * faster.
      */
     private HashMap<Object, Map<Object, Object>> extensionMap;
 
     /**
-     * The field <tt>fontMap</tt> contains the map for the fonts. The field is
+     * The field {@code fontMap} contains the map for the fonts. The field is
      * initialized lacy. Thus new groups come up faster.
      */
     private Map<String, Font> fontMap;
 
     /**
-     * The field <tt>ifMap</tt> contains the map for the booleans. The field is
+     * The field {@code ifMap} contains the map for the booleans. The field is
      * initialized lacy. Thus new groups come up faster.
      */
     private Map<String, Boolean> ifMap;
 
     /**
-     * The field <tt>inFileMap</tt> contains the map for the input files. The
+     * The field {@code inFileMap} contains the map for the input files. The
      * field is initialized lacy. Thus new groups come up faster. The map is not
      * stored in the format file since files can not be kept open.
      */
     private transient Map<String, InFile> inFileMap;
 
     /**
-     * The field <tt>lccodeMap</tt> contains the map for the translation to
+     * The field {@code lccodeMap} contains the map for the translation to
      * lower case. The field is initialized lacy. Thus new groups come up
      * faster.
      */
     private Map<UnicodeChar, UnicodeChar> lccodeMap;
 
     /**
-     * The field <tt>locator</tt> contains the locator to determine the position
+     * The field {@code locator} contains the locator to determine the position
      * a token came from.
      */
     private transient Locator locator;
 
     /**
-     * The field <tt>mathcodeMap</tt> contains the map for the category codes.
+     * The field {@code mathcodeMap} contains the map for the category codes.
      * The field is initialized lacy. Thus new groups come up faster.
      */
     private Map<UnicodeChar, MathCode> mathcodeMap;
 
     /**
-     * The field <tt>muskipMap</tt> contains the map for the muskip registers.
+     * The field {@code muskipMap} contains the map for the muskip registers.
      * The field is initialized lacy. Thus new groups come up faster.
      */
     private Map<String, Muskip> muskipMap;
 
     /**
-     * The field <tt>namespace</tt> contains the current name space.
+     * The field {@code namespace} contains the current name space.
      */
     private String namespace = null;
 
     /**
-     * The field <tt>next</tt> contains the next group in the linked list.
+     * The field {@code next} contains the next group in the linked list.
      */
     private Group next = null;
 
     /**
-     * The field <tt>outFileMap</tt> contains the map for the output files. The
+     * The field {@code outFileMap} contains the map for the output files. The
      * field is initialized lacy. Thus new groups come up faster. The map is not
      * stored in the format file since files can not be kept open.
      */
     private transient Map<String, OutFile> outFileMap;
 
     /**
-     * The field <tt>sfcodeMap</tt> contains the map for the space factor. The
+     * The field {@code sfcodeMap} contains the map for the space factor. The
      * field is initialized lacy. Thus new groups come up faster.
      */
     private Map<UnicodeChar, Count> sfcodeMap;
 
     /**
-     * The field <tt>skipMap</tt> contains the map for the skip registers The
+     * The field {@code skipMap} contains the map for the skip registers The
      * field is initialized lacy. Thus new groups come up faster.
      */
     private Map<String, Glue> skipMap;
 
     /**
-     * The field <tt>standardTokenStream</tt> contains the standard token
+     * The field {@code standardTokenStream} contains the standard token
      * stream.
      */
     private transient TokenStream standardTokenStream = null;
 
     /**
-     * The field <tt>start</tt> contains the start token.
+     * The field {@code start} contains the start token.
      */
     private Token start;
 
     /**
-     * The field <tt>toksMap</tt> contains the map for the tokens registers. The
+     * The field {@code toksMap} contains the map for the tokens registers. The
      * field is initialized lacy. Thus new groups come up faster.
      */
     private Map<String, Tokens> toksMap;
 
     /**
-     * The field <tt>type</tt> contains the type number of the group as returned
-     * by <tt>\currentgrouptype</tt>.
+     * The field {@code type} contains the type number of the group as returned
+     * by {@code \currentgrouptype}.
      */
     private GroupType type = GroupType.BOTTOM_LEVEL_GROUP;
 
     /**
-     * The field <tt>typesettingContext</tt> contains the typesetting context to
+     * The field {@code typesettingContext} contains the typesetting context to
      * be used.
      */
     private TypesettingContext typesettingContext = null;
 
     /**
-     * The field <tt>uccodeMap</tt> contains the map for the translation to
+     * The field {@code uccodeMap} contains the map for the translation to
      * upper case. The field is initialized lacy. Thus new groups come up
      * faster.
      */
@@ -259,7 +258,7 @@ public class GroupImpl implements Group {
      * Creates a new object.
      * 
      * @param nextGroup the next group in the stack. If the value is
-     *        <code>null</code> then this is the global base
+     *        {@code null} then this is the global base
      */
     public GroupImpl(Group nextGroup) {
 
@@ -302,7 +301,7 @@ public class GroupImpl implements Group {
      * @param key the key of the object
      * 
      * @return the object stored for the extension under the given key or
-     *         <code>null</code> if none is there
+     *         {@code null} if none is there
      * 
      * @see org.extex.interpreter.max.context.Group#get(java.lang.Object,
      *      java.lang.Object)
@@ -338,11 +337,11 @@ public class GroupImpl implements Group {
      * Getter for the {@link org.extex.interpreter.type.box.Box box}register.
      * Count registers are named, either with a number or an arbitrary string.
      * The numbered registers where limited to 256 in TeX. This restriction does no longer hold for
-     * ??TeX.
+     * εχTeX.
      * 
      * @param name the name or number of the count register
      * 
-     * @return the count register or <code>null</code> if it is not defined
+     * @return the count register or {@code null} if it is not defined
      * 
      * @see org.extex.interpreter.max.context.Group#getBox(java.lang.String)
      */
@@ -407,7 +406,7 @@ public class GroupImpl implements Group {
      * 
      * @param token the name of the active character or macro
      * 
-     * @return the code associated to the name or <code>null</code> if none is
+     * @return the code associated to the name or {@code null} if none is
      *         defined yet
      * 
      * @see org.extex.interpreter.max.context.Group#getCode(CodeToken)
@@ -430,7 +429,7 @@ public class GroupImpl implements Group {
      * 
      * @param token the token to look-up the definition for
      * 
-     * @return the code assigned to the token or <code>null</code> if none is
+     * @return the code assigned to the token or {@code null} if none is
      *         found.
      */
     protected Code getCodeForToken(CodeToken token) {
@@ -600,8 +599,8 @@ public class GroupImpl implements Group {
 
     /**
      * Getter for a input file register. In the case that the named descriptor
-     * does not exist yet <code>null</code> is returned. If the name is
-     * <code>null</code> then the default input stream is used.
+     * does not exist yet {@code null} is returned. If the name is
+     * {@code null} then the default input stream is used.
      * 
      * @param name the name or the number of the file register
      * 
@@ -616,7 +615,7 @@ public class GroupImpl implements Group {
             return new InFile() {
 
                 /**
-                 * The field <tt>serialVersionUID</tt> contains the version
+                 * The field {@code serialVersionUID} contains the version
                  * number for serialization.
                  */
                 private static final long serialVersionUID = 2007L;
@@ -981,7 +980,7 @@ public class GroupImpl implements Group {
      * 
      * @param name the name of the toks register
      * 
-     * @return the value of the toks register or <code>null</code> if none is
+     * @return the value of the toks register or {@code null} if none is
      *         defined
      * 
      * @see org.extex.interpreter.max.context.Group#getToksOrNull(java.lang.String)
@@ -1061,12 +1060,7 @@ public class GroupImpl implements Group {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.max.context.Group#runAfterGroup()
-     */
-    public void runAfterGroup() throws HelpingException {
+public void runAfterGroup() throws HelpingException {
 
         if (afterGroupObservers != null) {
             afterGroupObservers.update();
@@ -1074,10 +1068,7 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.max.context.Group#set(java.lang.Object,
-     *      java.lang.Object, java.lang.Object, boolean)
+*      java.lang.Object, java.lang.Object, boolean)
      */
     public void set(Object extension, Object key, Object value, boolean global) {
 
@@ -1098,10 +1089,7 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.max.context.Group#setBox(java.lang.String,
-     *      org.extex.interpreter.type.box.Box, boolean)
+*      org.extex.interpreter.type.box.Box, boolean)
      */
     public void setBox(String name, Box value, boolean global) {
 
@@ -1117,10 +1105,7 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.max.context.Group#setCatcode(org.extex.core.UnicodeChar,
-     *      org.extex.scanner.type.Catcode, boolean)
+*      org.extex.scanner.type.Catcode, boolean)
      */
     public void setCatcode(UnicodeChar uc, Catcode code, boolean global) {
 
@@ -1141,7 +1126,7 @@ public class GroupImpl implements Group {
      * @param token the name of the active character, i.e. a single letter
      *        string
      * @param code the new code
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.max.context.Group#setCode(org.extex.scanner.type.token.Token,
@@ -1165,7 +1150,7 @@ public class GroupImpl implements Group {
      * 
      * @param name the name of the count register
      * @param value the value of the count register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.max.context.Group#setCount(java.lang.String,
@@ -1189,7 +1174,7 @@ public class GroupImpl implements Group {
      * 
      * @param uc the character to set the delimiter code for
      * @param code the new delimiter code
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.max.context.Group#setDelcode(org.extex.core.UnicodeChar,
@@ -1213,7 +1198,7 @@ public class GroupImpl implements Group {
      * 
      * @param name the name of the count register
      * @param value the value of the count register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.max.context.Group#setDimen(java.lang.String,
@@ -1237,7 +1222,7 @@ public class GroupImpl implements Group {
      * 
      * @param name the name of the font
      * @param font the new font
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.max.context.Group#setFont(java.lang.String,
@@ -1261,7 +1246,7 @@ public class GroupImpl implements Group {
      * 
      * @param name the name of the boolean
      * @param value the truth value
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.max.context.Group#setIf(java.lang.String,
@@ -1285,7 +1270,7 @@ public class GroupImpl implements Group {
      * 
      * @param name the name of the input file
      * @param file the input file specification
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.max.context.Group#setInFile(java.lang.String,
@@ -1310,7 +1295,7 @@ public class GroupImpl implements Group {
      * 
      * @param uc upper case character
      * @param lc lower case equivalent
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.max.context.Group#setLccode(org.extex.core.UnicodeChar,
@@ -1344,7 +1329,7 @@ public class GroupImpl implements Group {
      * 
      * @param uc the character to set the math code for
      * @param code the new math code
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.max.context.Group#setMathcode(org.extex.core.UnicodeChar,
@@ -1364,10 +1349,7 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.max.context.Group#setMuskip(java.lang.String,
-     *      org.extex.core.muskip.Muskip, boolean)
+*      org.extex.core.muskip.Muskip, boolean)
      */
     public void setMuskip(String name, Muskip value, boolean global) {
 
@@ -1383,10 +1365,7 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.max.context.Group#setNamespace(java.lang.String,
-     *      boolean)
+*      boolean)
      */
     public void setNamespace(String theNamespace, boolean global) {
 
@@ -1398,10 +1377,7 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.max.context.Group#setOutFile(java.lang.String,
-     *      org.extex.scanner.type.file.OutFile, boolean)
+*      org.extex.scanner.type.file.OutFile, boolean)
      */
     public void setOutFile(String name, OutFile file, boolean global) {
 
@@ -1421,7 +1397,7 @@ public class GroupImpl implements Group {
      * 
      * @param uc the character to set the space factor code for
      * @param code the new space factor code
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.max.context.Group#setSfcode(org.extex.core.UnicodeChar,
@@ -1445,7 +1421,7 @@ public class GroupImpl implements Group {
      * 
      * @param name the name of the count register
      * @param value the value of the count register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.max.context.Group#setSkip(java.lang.String,
@@ -1487,10 +1463,7 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.max.context.Group#setToks(java.lang.String,
-     *      org.extex.scanner.type.tokens.Tokens, boolean)
+*      org.extex.scanner.type.tokens.Tokens, boolean)
      */
     public void setToks(String name, Tokens value, boolean global) {
 
@@ -1505,21 +1478,13 @@ public class GroupImpl implements Group {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.max.context.Group#setType(org.extex.interpreter.context.group.GroupType)
-     */
-    public void setType(GroupType type) {
+public void setType(GroupType type) {
 
         this.type = type;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.max.context.Group#setTypesettingContext(org.extex.typesetter.tc.TypesettingContext,
-     *      boolean)
+*      boolean)
      */
     public void setTypesettingContext(TypesettingContext context, boolean global) {
 
@@ -1531,10 +1496,7 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.max.context.Group#setUccode(org.extex.core.UnicodeChar,
-     *      org.extex.core.UnicodeChar, boolean)
+*      org.extex.core.UnicodeChar, boolean)
      */
     public void setUccode(UnicodeChar uc, UnicodeChar lc, boolean global) {
 

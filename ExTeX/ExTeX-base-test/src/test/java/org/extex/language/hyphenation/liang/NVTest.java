@@ -45,45 +45,43 @@ import org.junit.runner.JUnitCore;
  * This is the test class for NV.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4527 $
- */
+*/
 public class NVTest {
 
     /**
      * This is a mock implementation of a font.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision:4527 $
-     */
+    */
     private class MockFont extends NullFont {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the version number.
+         * The field {@code serialVersionUID} contains the version number.
          */
         private static final long serialVersionUID = 1L;
 
         /**
-         * The field <tt>FF</tt> contains the ligature character ff.
+         * The field {@code FF} contains the ligature character ff.
          */
         public static final char FF = 'F';
 
         /**
-         * The field <tt>FFL</tt> contains the ligature character ffl.
+         * The field {@code FFL} contains the ligature character ffl.
          */
         public static final char FFL = 'L';
 
         /**
-         * The field <tt>FL</tt> contains the ligature character ffl.
+         * The field {@code FL} contains the ligature character ffl.
          */
         public static final char FL = 'G';
 
         /**
-         * The field <tt>hyphen</tt> contains the hyphen character.
+         * The field {@code hyphen} contains the hyphen character.
          */
         private UnicodeChar hyphen = UnicodeChar.get('-');
 
         /**
-         * The field <tt>map</tt> contains the glyph cache.
+         * The field {@code map} contains the glyph cache.
          */
         private final Map<UnicodeChar, MockGlyph> map =
                 new HashMap<UnicodeChar, MockGlyph>();
@@ -284,12 +282,11 @@ public class NVTest {
      * This is a mock implementation of a glyph.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision:4527 $
-     */
+    */
     private static class MockGlyph {
 
         /**
-         * The field <tt>c</tt> contains the character.
+         * The field {@code c} contains the character.
          */
         private final char c;
 
@@ -330,7 +327,7 @@ public class NVTest {
     }
 
     /**
-     * The field <tt>tokenFactory</tt> contains the token factory.
+     * The field {@code tokenFactory} contains the token factory.
      */
     // private static TokenFactory tokenFactory;
     /**
@@ -344,27 +341,27 @@ public class NVTest {
     }
 
     /**
-     * The field <tt>cnf</tt> contains the char node factory.
+     * The field {@code cnf} contains the char node factory.
      */
     // private NodeFactory cnf;
 
     /**
-     * The field <tt>f</tt> contains the token for f.
+     * The field {@code f} contains the token for f.
      */
     // private Token f;
 
     /**
-     * The field <tt>font</tt> contains the font.
+     * The field {@code font} contains the font.
      */
     private Font font;
 
     /**
-     * The field <tt>l</tt> contains the token for l.
+     * The field {@code l} contains the token for l.
      */
     // private Token l;
 
     /**
-     * The field <tt>tc</tt> contains the typesetting context.
+     * The field {@code tc} contains the typesetting context.
      */
     private TypesettingContext tc;
 

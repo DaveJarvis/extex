@@ -29,8 +29,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * This location class represents a parser for uppercase letters.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class AlphaUppercase implements LValue, Alphabet, LocationClass {
 
     /**
@@ -42,10 +41,7 @@ public class AlphaUppercase implements LValue, Alphabet, LocationClass {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.alphabet.LocationClass#match(String,
-     *      java.lang.String)
+*      java.lang.String)
      */
     public PageReference match(String encap, String s) {
 
@@ -55,12 +51,7 @@ public class AlphaUppercase implements LValue, Alphabet, LocationClass {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.alphabet.LocationClass#match(java.lang.StringBuilder)
-     */
-    public boolean match(StringBuilder s) {
+public boolean match(StringBuilder s) {
 
         if (s.length() == 0) {
             return false;
@@ -80,12 +71,7 @@ public class AlphaUppercase implements LValue, Alphabet, LocationClass {
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
-     */
-    public void print(PrintStream stream) {
+public void print(PrintStream stream) {
 
         stream.print("#ALPHA");
     }

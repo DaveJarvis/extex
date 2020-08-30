@@ -32,12 +32,11 @@ import org.extex.typesetter.listMaker.math.NoadConsumer;
  * It tries to ensure that the primitive is invoked in math mode only.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public abstract class AbstractMathCode extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 

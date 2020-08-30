@@ -37,8 +37,7 @@ import org.junit.runner.JUnitCore;
  * This class is a test suite for the expression evaluator.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4787 $
- */
+*/
 public class TeXEvaluatorTest extends TestCase {
 
     /**
@@ -93,7 +92,7 @@ public class TeXEvaluatorTest extends TestCase {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */
@@ -108,7 +107,7 @@ public class TeXEvaluatorTest extends TestCase {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */
@@ -122,7 +121,7 @@ public class TeXEvaluatorTest extends TestCase {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */
@@ -136,7 +135,7 @@ public class TeXEvaluatorTest extends TestCase {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */
@@ -150,7 +149,7 @@ public class TeXEvaluatorTest extends TestCase {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */
@@ -164,7 +163,7 @@ public class TeXEvaluatorTest extends TestCase {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */

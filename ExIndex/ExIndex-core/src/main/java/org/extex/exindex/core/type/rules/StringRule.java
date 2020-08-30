@@ -24,8 +24,7 @@ package org.extex.exindex.core.type.rules;
  * is the most simple case of a rule.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class StringRule extends Rule {
 
     /**
@@ -43,12 +42,7 @@ public class StringRule extends Rule {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.rules.Rule#apply(StringBuilder, int)
-     */
-    @Override
+@Override
     public int apply(StringBuilder sb, int index) {
 
         int ret = -1;

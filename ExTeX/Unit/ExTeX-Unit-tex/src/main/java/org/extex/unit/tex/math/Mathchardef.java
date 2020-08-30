@@ -32,39 +32,38 @@ import org.extex.unit.tex.math.util.TeXMathcharCode;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\mathchardef</code>.
+ * {@code \mathchardef}.
  * 
- * <doc name="mathchardef">
- * <h3>The Math Primitive <tt>\mathchardef</tt></h3>
+ * <p>The Math Primitive {@code \mathchardef}</p>
  * <p>
- * The math primitive <tt>\mathchardef</tt> defines a control sequence or
+ * The math primitive {@code \mathchardef} defines a control sequence or
  * active character as equivalent to a math character.
  * </p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;mathchardef&rang;
- *       &rarr; <tt>\mathchardef</tt> ...  </pre>
+ *       &rarr; {@code \mathchardef} ...  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \mathchardef\alpha ...  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Mathchardef extends AbstractAssignment {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -80,10 +79,7 @@ public class Mathchardef extends AbstractAssignment {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

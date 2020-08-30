@@ -46,8 +46,7 @@ import java.io.OutputStream;
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MultiDumpDocumentWriter
         implements
             DocumentWriter,
@@ -55,19 +54,19 @@ public class MultiDumpDocumentWriter
             Configurable {
 
     /**
-     * The field <tt>extension</tt> contains the default extension.
+     * The field {@code extension} contains the default extension.
      */
     private String extension = "out";
 
     /**
-     * The field <tt>nodeVisitor</tt> contains the node visitor instance to use
+     * The field {@code nodeVisitor} contains the node visitor instance to use
      * in the form of an anonymous inner class.
      */
     private final NodeVisitor<Object, Object> nodeVisitor =
             new NodeVisitor<Object, Object>() {
 
                 /**
-                 * The field <tt>isVertical</tt> contains the indicator that a
+                 * The field {@code isVertical} contains the indicator that a
                  * vlist is processed.
                  */
                 private boolean isVertical = false;
@@ -97,7 +96,7 @@ public class MultiDumpDocumentWriter
                  *        visited
                  * @param oOut the second parameter for the visitor
                  * 
-                 * @return <code>null</code>
+                 * @return {@code null}
                  * 
                  * @throws GeneralException in case of an error
                  * 
@@ -121,7 +120,7 @@ public class MultiDumpDocumentWriter
                  *        visited
                  * @param oOut the second parameter for the visitor
                  * 
-                 * @return <code>null</code>
+                 * @return {@code null}
                  * 
                  * @throws GeneralException in case of an error
                  * 
@@ -162,7 +161,7 @@ public class MultiDumpDocumentWriter
                  *        visited
                  * @param oOut the second parameter for the visitor
                  * 
-                 * @return <code>null</code>
+                 * @return {@code null}
                  * 
                  * @throws GeneralException in case of an error
                  * 
@@ -188,7 +187,7 @@ public class MultiDumpDocumentWriter
                  *        visited
                  * @param oOut the second parameter for the visitor
                  * 
-                 * @return <code>null</code>
+                 * @return {@code null}
                  * 
                  * @throws GeneralException in case of an error
                  * 
@@ -215,7 +214,7 @@ public class MultiDumpDocumentWriter
                  *        visited
                  * @param oOut the second parameter for the visitor
                  * 
-                 * @return <code>null</code>
+                 * @return {@code null}
                  * 
                  * @throws GeneralException in case of an error
                  * 
@@ -239,7 +238,7 @@ public class MultiDumpDocumentWriter
                  *        visited
                  * @param oOut the second parameter for the visitor
                  * 
-                 * @return <code>null</code>
+                 * @return {@code null}
                  * 
                  * @throws GeneralException in case of an error
                  * 
@@ -263,7 +262,7 @@ public class MultiDumpDocumentWriter
                  *        visited
                  * @param oOut the second parameter for the visitor
                  * 
-                 * @return <code>null</code>
+                 * @return {@code null}
                  * 
                  * @throws GeneralException in case of an error
                  * 
@@ -290,7 +289,7 @@ public class MultiDumpDocumentWriter
                  *        visited
                  * @param oOut the second parameter for the visitor
                  * 
-                 * @return <code>null</code>
+                 * @return {@code null}
                  * 
                  * @throws GeneralException in case of an error
                  * 
@@ -323,7 +322,7 @@ public class MultiDumpDocumentWriter
                  *        visited
                  * @param oOut the second parameter for the visitor
                  * 
-                 * @return <code>null</code>
+                 * @return {@code null}
                  * 
                  * @throws GeneralException in case of an error
                  * 
@@ -353,7 +352,7 @@ public class MultiDumpDocumentWriter
                  *        visited
                  * @param oOut the second parameter for the visitor
                  * 
-                 * @return <code>null</code>
+                 * @return {@code null}
                  * 
                  * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(org.extex.typesetter.type.node.InsertionNode,
                  *      java.lang.Object)
@@ -373,7 +372,7 @@ public class MultiDumpDocumentWriter
                  *        visited
                  * @param oOut the second parameter for the visitor
                  * 
-                 * @return <code>null</code>
+                 * @return {@code null}
                  *
                  * @see org.extex.typesetter.type.NodeVisitor#visitKern(org.extex.typesetter.type.node.KernNode,
                  *      java.lang.Object)
@@ -393,7 +392,7 @@ public class MultiDumpDocumentWriter
                  *        visited
                  * @param oOut the second parameter for the visitor
                  * 
-                 * @return <code>null</code>
+                 * @return {@code null}
                  * 
                  * @throws GeneralException in case of an error
                  * 
@@ -417,7 +416,7 @@ public class MultiDumpDocumentWriter
                  *        visited
                  * @param oOut the second parameter for the visitor
                  * 
-                 * @return <code>null</code>
+                 * @return {@code null}
                  * 
                  * @see org.extex.typesetter.type.NodeVisitor#visitMark(org.extex.typesetter.type.node.MarkNode,
                  *      java.lang.Object)
@@ -437,7 +436,7 @@ public class MultiDumpDocumentWriter
                  *        visited
                  * @param oOut the second parameter for the visitor
                  * 
-                 * @return <code>null</code>
+                 * @return {@code null}
                  * 
                  * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(org.extex.typesetter.type.node.PenaltyNode,
                  *      java.lang.Object)
@@ -457,7 +456,7 @@ public class MultiDumpDocumentWriter
                  *        visited
                  * @param oOut the second parameter for the visitor
                  * 
-                 * @return <code>null</code>
+                 * @return {@code null}
                  * 
                  * @throws GeneralException in case of an error
                  * 
@@ -481,7 +480,7 @@ public class MultiDumpDocumentWriter
                  *        visited
                  * @param oOut the second parameter for the visitor
                  * 
-                 * @return <code>null</code>
+                 * @return {@code null}
                  * 
                  * @throws GeneralException in case of an error
                  * 
@@ -505,7 +504,7 @@ public class MultiDumpDocumentWriter
                  *        visited
                  * @param oOut the second parameter for the visitor
                  * 
-                 * @return <code>null</code>
+                 * @return {@code null}
                  * 
                  * @throws GeneralException in case of an error
                  * 
@@ -535,7 +534,7 @@ public class MultiDumpDocumentWriter
                  *        visited
                  * @param oOut the second parameter for the visitor
                  * 
-                 * @return <code>null</code>
+                 * @return {@code null}
                  * 
                  * @throws GeneralException in case of an error
                  * 
@@ -559,7 +558,7 @@ public class MultiDumpDocumentWriter
                  *        visited
                  * @param oOut the second parameter for the visitor
                  * 
-                 * @return <code>null</code>
+                 * @return {@code null}
                  * 
                  * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(org.extex.typesetter.type.node.WhatsItNode,
                  *      java.lang.Object)
@@ -608,18 +607,18 @@ public class MultiDumpDocumentWriter
             };
 
     /**
-     * The field <tt>out</tt> contains the output stream to use.
+     * The field {@code out} contains the output stream to use.
      */
     private OutputStream out = null;
 
     /**
-     * The field <tt>outputStreamFactory</tt> contains the factory for output
+     * The field {@code outputStreamFactory} contains the factory for output
      * streams.
      */
     private OutputStreamFactory outputStreamFactory;
 
     /**
-     * The field <tt>tree</tt> contains the indicator whether to use the tree
+     * The field {@code tree} contains the indicator whether to use the tree
      * representation.
      */
     private boolean tree = true;
@@ -663,8 +662,8 @@ public class MultiDumpDocumentWriter
 
     /**
      * Getter for the extension associated with this kind of output. For
-     * instance <tt>pdf</tt> is the expected value for PDF files and
-     * <tt>dvi</tt> is the expected value for DVI files.
+     * instance {@code pdf} is the expected value for PDF files and
+     * {@code dvi} is the expected value for DVI files.
      * 
      * @return the appropriate extension for file names
      * 

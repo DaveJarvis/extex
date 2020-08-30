@@ -17,7 +17,7 @@
  */
 /**
  * 
- *   This package contains exceptions for the L system.
+ *   Contains exceptions for the L system.
  * 
  *
  */

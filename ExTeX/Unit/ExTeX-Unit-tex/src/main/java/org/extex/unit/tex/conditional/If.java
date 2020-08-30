@@ -31,46 +31,45 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.conditional.AbstractIf;
 
 /**
- * This class provides an implementation for the primitive <code>\if</code>.
+ * This class provides an implementation for the primitive {@code \if}.
  * 
- * <doc name="if">
- * <h3>The Primitive <tt>\if</tt></h3>
+ * <p>The Primitive {@code \if}</p>
  * <p>
  * The primitive expands the tokens following it until two non-expandable tokens
  * are found. The conditional is true iff the character codes of the two tokens
  * agree.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;if&rang;
- *     &rarr; <tt>\if</tt> {@linkplain
+ *     &rarr; {@code \if} {@linkplain
  *       org.extex.interpreter.TokenSource#getToken(Context)
  *       &lang;token<sub>1</sub>&rang;} {@linkplain
  *       org.extex.interpreter.TokenSource#getToken(Context)
- *       &lang;token<sub>2</sub>&rang;} &lang;true text&rang; <tt>\fi</tt>
- *     | <tt>\if</tt> {@linkplain
+ *       &lang;token<sub>2</sub>&rang;} &lang;true text&rang; {@code \fi}
+ *     | {@code \if} {@linkplain
  *       org.extex.interpreter.TokenSource#getToken(Context)
  *       &lang;token<sub>1</sub>&rang;} {@linkplain
  *       org.extex.interpreter.TokenSource#getToken(Context)
- *       &lang;token<sub>2</sub>&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
+ *       &lang;token<sub>2</sub>&rang;} &lang;true text&rang; {@code \else} &lang;false text&rang; {@code \fi} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \if\a\x ok \fi  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4439 $
- */
+*/
 public class If extends AbstractIf {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -86,10 +85,7 @@ public class If extends AbstractIf {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.base.conditional.AbstractIf#conditional(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

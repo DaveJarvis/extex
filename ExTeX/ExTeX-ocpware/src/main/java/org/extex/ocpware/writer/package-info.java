@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains some writers for OCPs.
+ * Contains some writers for OCPs.
  */
 
 package org.extex.ocpware.writer;

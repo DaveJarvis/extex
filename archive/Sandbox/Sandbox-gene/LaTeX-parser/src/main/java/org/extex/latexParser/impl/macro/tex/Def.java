@@ -35,8 +35,7 @@ import org.extex.scanner.type.token.Token;
  * This class implements some definition-like macros.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Def implements Macro {
 
     /**
@@ -50,10 +49,7 @@ public class Def implements Macro {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Macro#parse(
-     *      org.extex.scanner.type.token.Token,
+*      org.extex.scanner.type.token.Token,
      *      org.extex.latexParser.impl.Parser)
      */
     public Node parse(Token token, Parser parser) throws ScannerException {

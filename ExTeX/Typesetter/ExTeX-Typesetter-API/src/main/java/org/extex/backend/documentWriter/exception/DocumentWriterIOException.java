@@ -23,12 +23,11 @@ package org.extex.backend.documentWriter.exception;
  * DocumentWriter: IOException.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class DocumentWriterIOException extends DocumentWriterException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 1L;

@@ -26,8 +26,7 @@ import java.util.List;
  * Postscript.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class T2TDOPostscript extends T2TDOSID {
 
@@ -42,23 +41,13 @@ public class T2TDOPostscript extends T2TDOSID {
         super(stack, new short[]{ESCAPE_BYTE, CFF_POSTSCRIPT});
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
-     */
-    @Override
+@Override
     public int getID() {
 
         return T2TopDICTOperator.CFF_POSTSCRIPT;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "postscript";

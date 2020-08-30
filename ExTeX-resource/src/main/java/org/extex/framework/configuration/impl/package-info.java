@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains implementations for a configuration.
+ * Contains implementations for a configuration.
  */
 
 package org.extex.framework.configuration.impl;

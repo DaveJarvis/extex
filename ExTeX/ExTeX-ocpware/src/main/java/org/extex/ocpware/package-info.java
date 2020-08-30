@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains classes for handling &Omega;CP programs.
+ * Contains classes for handling &Omega;CP programs.
  */
 
 package org.extex.ocpware;

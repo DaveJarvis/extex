@@ -30,8 +30,7 @@ import org.junit.Test;
  * This is a test suite for {@link ImpossibleException}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ImpossibleExceptionTest {
 
     /**
@@ -51,7 +50,7 @@ public class ImpossibleExceptionTest {
             e.toString());
         Locale.setDefault(Locale.GERMAN);
         assertEquals(
-            "org.extex.exbib.bst2groovy.exception.ImpossibleException: Unmöglich: msg\n",
+            "org.extex.exbib.bst2groovy.exception.ImpossibleException: Unmï¿½glich: msg\n",
             e.toString());
     }
 
@@ -72,7 +71,7 @@ public class ImpossibleExceptionTest {
             e.toString());
         Locale.setDefault(Locale.GERMAN);
         assertEquals(
-            "org.extex.exbib.bst2groovy.exception.ImpossibleException: Unmöglich: java.lang.Exception: msg\n",
+            "org.extex.exbib.bst2groovy.exception.ImpossibleException: Unmï¿½glich: java.lang.Exception: msg\n",
             e.toString());
     }
 

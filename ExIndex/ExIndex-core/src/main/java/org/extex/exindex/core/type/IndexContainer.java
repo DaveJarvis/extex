@@ -50,8 +50,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * process them.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class IndexContainer
         implements
             LValue,
@@ -65,29 +64,29 @@ public class IndexContainer
             Iterable<String> {
 
     /**
-     * The constant <tt>DEFAULT_INDEX</tt> contains the name of the default
+     * The constant {@code DEFAULT_INDEX} contains the name of the default
      * index.
      */
     public static final String DEFAULT_INDEX = "";
 
     /**
-     * The field <tt>map</tt> contains the mapping from name to index.
+     * The field {@code map} contains the mapping from name to index.
      */
     private final Map<String, StructuredIndex> indexMap =
             new HashMap<String, StructuredIndex>();
 
     /**
-     * The field <tt>currentIndex</tt> contains the current index.
+     * The field {@code currentIndex} contains the current index.
      */
     private StructuredIndex currentIndex;
 
     /**
-     * The field <tt>rules</tt> contains the mapping from names to rule sets.
+     * The field {@code rules} contains the mapping from names to rule sets.
      */
     private final Map<String, List<Rule>> rules = new HashMap<String, List<Rule>>();
 
     /**
-     * The field <tt>alphabetMap</tt> contains the alphabets.
+     * The field {@code alphabetMap} contains the alphabets.
      */
     private final Map<String, Alphabet> alphabetMap = new HashMap<String, Alphabet>();
 
@@ -107,10 +106,7 @@ public class IndexContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.alphabet.AlphabetContainer#addAlphabet(
-     *      java.lang.String, org.extex.exindex.core.type.alphabet.Alphabet)
+*      java.lang.String, org.extex.exindex.core.type.alphabet.Alphabet)
      */
     public void addAlphabet(String name, Alphabet alphabet) {
 
@@ -118,10 +114,7 @@ public class IndexContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.LocationClassContainer#addLocationClass(
-     *      java.lang.String,
+*      java.lang.String,
      *      org.extex.exindex.core.type.alphabet.LocationClass)
      */
     public boolean addLocationClass(String name, LocationClass locationClass) {
@@ -140,10 +133,7 @@ public class IndexContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.rules.RuleSetContainer#addRule(
-     *      java.lang.String, java.util.List)
+*      java.lang.String, java.util.List)
      */
     public void addRule(String name, List<Rule> rule) {
 
@@ -151,10 +141,7 @@ public class IndexContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.rules.SortRuleContainer#addSortRule(
-     *      Integer, org.extex.exindex.core.type.rules.Rule)
+*      Integer, org.extex.exindex.core.type.rules.Rule)
      */
     public void addSortRule(Integer level, Rule rule) {
 
@@ -162,10 +149,7 @@ public class IndexContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.rules.SortRuleContainer#addSortRules(
-     *      Integer, java.util.List)
+*      Integer, java.util.List)
      */
     public void addSortRules(Integer level, List<Rule> ruleList) {
 
@@ -173,10 +157,7 @@ public class IndexContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.FallbackContainer#applyMergeRuleFallback(
-     *      String)
+*      String)
      */
     public String applyMergeRuleFallback(String text) {
 
@@ -184,10 +165,7 @@ public class IndexContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.FallbackContainer#applySortRuleFallback(
-     *      java.lang.String, int)
+*      java.lang.String, int)
      */
     public String applySortRuleFallback(String text, int level) {
 
@@ -195,10 +173,7 @@ public class IndexContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.attribute.AttributesContainer#defineAttribute(
-     *      java.lang.String, org.extex.exindex.core.type.attribute.Attribute)
+*      java.lang.String, org.extex.exindex.core.type.attribute.Attribute)
      */
     public void defineAttribute(String key, Attribute attribute) {
 
@@ -269,7 +244,7 @@ public class IndexContainer
      * 
      * @param name the name of the index.
      * 
-     * @return the named index or <code>null</code>
+     * @return the named index or {@code null}
      */
     public StructuredIndex get(String name) {
 
@@ -286,12 +261,7 @@ public class IndexContainer
         return currentIndex;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.FallbackContainer#getFallbackMarkup(String)
-     */
-    public Markup getFallbackMarkup(String name) {
+public Markup getFallbackMarkup(String name) {
 
         return get(DEFAULT_INDEX).getMarkup(name);
     }
@@ -301,7 +271,7 @@ public class IndexContainer
      * 
      * @param name the name
      * 
-     * @return the markup or <code>null</code> if it is not defined
+     * @return the markup or {@code null} if it is not defined
      */
     public Markup getMarkup(String name) {
 
@@ -342,12 +312,7 @@ public class IndexContainer
         return currentIndex.isAttributeDefined(name);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Iterable#iterator()
-     */
-    public Iterator<String> iterator() {
+public Iterator<String> iterator() {
 
         Set<String> keySet = indexMap.keySet();
         keySet.remove(null);
@@ -355,10 +320,7 @@ public class IndexContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.alphabet.AlphabetContainer#lookupAlphabet(
-     *      java.lang.String)
+*      java.lang.String)
      */
     public Alphabet lookupAlphabet(String name) {
 
@@ -382,10 +344,7 @@ public class IndexContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.LocationClassContainer#lookupLocationClass(
-     *      java.lang.String)
+*      java.lang.String)
      */
     public LocationClass lookupLocationClass(String name) {
 
@@ -393,10 +352,7 @@ public class IndexContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.rules.SortRuleContainer#lookupOrCreateSortRule(
-     *      Integer)
+*      Integer)
      */
     public SortRules lookupOrCreateSortRule(Integer level) {
 
@@ -404,10 +360,7 @@ public class IndexContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.rules.RuleSetContainer#lookupRule(
-     *      java.lang.String)
+*      java.lang.String)
      */
     public List<Rule> lookupRule(String name) {
 
@@ -415,10 +368,7 @@ public class IndexContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.rules.SortRuleContainer#lookupSortRules(
-     *      Integer)
+*      Integer)
      */
     public SortRules lookupSortRules(Integer level) {
 
@@ -426,10 +376,7 @@ public class IndexContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.LocationClassContainer#makePageReference(
-     *      java.lang.String, String)
+*      java.lang.String, String)
      */
     public PageReference makePageReference(String encap, String page) {
 
@@ -437,22 +384,14 @@ public class IndexContainer
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.LocationClassContainer#orderLocationClasses(
-     *      java.lang.String[])
+*      java.lang.String[])
      */
     public void orderLocationClasses(String[] list) throws LException {
 
         currentIndex.orderLocationClasses(list);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
-     */
-    public void print(PrintStream stream) {
+public void print(PrintStream stream) {
 
         stream.print("[index-container ");
         stream.print("]");
@@ -463,7 +402,7 @@ public class IndexContainer
      * 
      * @param name the name
      * 
-     * @return <code>true</code> if the index is found and the set is
+     * @return {@code true} if the index is found and the set is
      *         successful
      */
     public boolean setCurrentIndex(String name) {
@@ -505,12 +444,7 @@ public class IndexContainer
         currentIndex.setMarkup(name, m);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.rules.SortRuleContainer#sortRuleSize()
-     */
-    public int sortRuleSize() {
+public int sortRuleSize() {
 
         return currentIndex.sortRuleSize();
     }

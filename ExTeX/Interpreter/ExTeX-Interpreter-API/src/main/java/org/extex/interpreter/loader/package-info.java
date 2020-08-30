@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains an implementation for a format loader core engine.
+ * Contains an implementation for a format loader core engine.
  */
 
 package org.extex.interpreter.loader;

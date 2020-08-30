@@ -44,14 +44,10 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X built-in function <code>format.name$</code>
+ * >e</span>X built-in function {@code format.name$}
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X documentation:
- * <dt>
+ * <dt>BibTeX documentation</dt>
  * <dd>Pops the top three literals (they are a string, an integer, and a string
  * literal). The last string literal represents a name list (each name
  * corresponding to a person), the integer literal specifies which name to pick
@@ -61,11 +57,8 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </dl>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X web documentation:</dt>
- * <dd>The <code>built_in</code> function <code>format.name$</code> pops the top
+ * <dt>BibTeX web documentation:</dt>
+ * <dd>The {@code built_in} function {@code format.name$} pops the top
  * three literals (they are a string, an integer, and a string literal, in that
  * order). The last string literal represents a name list (each name
  * corresponding to a person), the integer literal specifies which name to pick
@@ -78,15 +71,12 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </dl>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X web documentation:</dt>
- * <dd>Here we output either the <code>.bst</code> given string if it exists, or
- * else the <code>.bib</code> <code>sep_char</code> if it exists, or else the
- * default string. A <code>tie</code> is the default space character between the
+ * <dt>BibTeX web documentation:</dt>
+ * <dd>Here we output either the {@code .bst} given string if it exists, or
+ * else the {@code .bib} {@code sep_char} if it exists, or else the
+ * default string. A {@code tie} is the default space character between the
  * last two tokens of the name part, and between the first two tokens if the
- * first token is short enough; otherwise, a <code>space</code> is the default.
+ * first token is short enough; otherwise, a {@code space} is the default.
  * 
  * <pre>
  *     long_token = 3       {a token this length or longer is ``long''}
@@ -96,8 +86,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class FormatName extends AbstractCode implements Serializable {
 
     /**
@@ -106,7 +95,7 @@ public class FormatName extends AbstractCode implements Serializable {
     private class Format extends ArrayList<FormatItem> {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the version number for
+         * The field {@code serialVersionUID} contains the version number for
          * serialization.
          */
         private static final long serialVersionUID = 2008L;
@@ -117,8 +106,8 @@ public class FormatName extends AbstractCode implements Serializable {
          * @param format the format string to parse
          * @param locator the locator for the format
          * 
-         * @throws ExBibException in case that something else went wrong<br/>
-         *         ExBibSyntaxException in case that the syntax is not correct<br/>
+         * @throws ExBibException in case that something else went wrong<br>
+         *         ExBibSyntaxException in case that the syntax is not correct<br>
          *         ExBibImpossibleException this case should never happen
          */
         public Format(String format, Locator locator) throws ExBibException {
@@ -134,7 +123,7 @@ public class FormatName extends AbstractCode implements Serializable {
          * @param index the last character position in buffer to start
          *        comparison with; anything behind is treated as not present
          * 
-         * @return <code>true</code> if the buffer ends in the string
+         * @return {@code true} if the buffer ends in the string
          */
         private boolean endsIn(StringBuilder sb, String s, int index) {
 
@@ -157,10 +146,7 @@ public class FormatName extends AbstractCode implements Serializable {
          * 
          * <p>
          * This function reimplements the function 418 of the
-         * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
-         * style=
-         * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
-         * >e</span>X web sources.
+         * BibTeX web sources.
          * </p>
          * 
          * @param buffer the buffer to analyze
@@ -168,7 +154,7 @@ public class FormatName extends AbstractCode implements Serializable {
          * @param start the starting position
          * @param end the ending position
          * 
-         * @return <code>true</code> iff the number of text characters is at
+         * @return {@code true} iff the number of text characters is at
          *         least the limit
          */
         protected boolean enoughTextChars(StringBuilder buffer,
@@ -265,7 +251,7 @@ public class FormatName extends AbstractCode implements Serializable {
          * @param start start position in the format
          * @param item the item to store the result in
          * @param format the format string to parse
-         * @param midp if <code>true</code> then the result is stored in the Mid
+         * @param midp if {@code true} then the result is stored in the Mid
          *        attribute of item, otherwise it is stored in the Post
          *        attribute
          * @param locator the locator for the format string
@@ -311,11 +297,11 @@ public class FormatName extends AbstractCode implements Serializable {
          * Parse a format item. I.e. a brace group at level 1 with a predefined
          * content structure.
          * 
-         * @param start the index in <code>format</code> for the initial '{'
+         * @param start the index in {@code format} for the initial '{'
          * @param format the format string to parse
          * @param locator the locator for the format string
          * 
-         * @return the index in <code>format</code> containing the first
+         * @return the index in {@code format} containing the first
          *         character after the group parsed
          * 
          * @throws ExBibSyntaxException in case of an syntax error
@@ -429,8 +415,8 @@ public class FormatName extends AbstractCode implements Serializable {
 
         /**
          * Find the matching closing brace in a String. The starting position
-         * <tt>start</tt> points to the first character after the opening brace
-         * in the format string <tt>fmt</tt>.
+         * {@code start} points to the first character after the opening brace
+         * in the format string {@code fmt}.
          * 
          * @param start the starting position to consider
          * @param format the format string to parse
@@ -457,12 +443,7 @@ public class FormatName extends AbstractCode implements Serializable {
             return brace;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             StringBuilder sb = new StringBuilder();
@@ -547,7 +528,7 @@ public class FormatName extends AbstractCode implements Serializable {
     private class FormatItem {
 
         /**
-         * The field <tt>id</tt> contains the id for printing.
+         * The field {@code id} contains the id for printing.
          */
         private final String id;
 
@@ -587,7 +568,7 @@ public class FormatName extends AbstractCode implements Serializable {
          * @param name the (ignored) name to format
          * @param locator the locator
          * 
-         * @return <code>true</code> iff the buffer has been modified
+         * @return {@code true} iff the buffer has been modified
          * 
          * @throws ExBibException never; just for the subclasses
          */
@@ -663,12 +644,7 @@ public class FormatName extends AbstractCode implements Serializable {
             pre = string;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             if (id == null) {
@@ -885,13 +861,13 @@ public class FormatName extends AbstractCode implements Serializable {
     }
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2008L;
 
     /**
-     * The field <tt>formatCache</tt> contains the format cache. To avoid the
+     * The field {@code formatCache} contains the format cache. To avoid the
      * re-parsing of a format string the result of the parsing is stored in the
      * format cache. The key is the string representation. Thus it is possible
      * to get the Format from the cache.
@@ -900,12 +876,12 @@ public class FormatName extends AbstractCode implements Serializable {
             new HashMap<String, Format>();
 
     /**
-     * The field <tt>tie</tt> contains the string used as tie.
+     * The field {@code tie} contains the string used as tie.
      */
     private String tie = "~";
 
     /**
-     * The field <tt>instance</tt> contains the one instance used for the static
+     * The field {@code instance} contains the one instance used for the static
      * method.
      */
     private static FormatName instance = null;
@@ -914,7 +890,7 @@ public class FormatName extends AbstractCode implements Serializable {
      * Format a name like the B<small>IB</small><span
      * style="margin-left: -0.15em;" >T</span><span style=
      * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
-     * >e</span>X built-in function <code>format.name$</code>.
+     * >e</span>X built-in function {@code format.name$}.
      * 
      * @param names the names string
      * @param index the index of the name
@@ -961,7 +937,7 @@ public class FormatName extends AbstractCode implements Serializable {
      * @param sep the separator
      * @param locator the locator
      * 
-     * @return <code>true</code> if the last non-brace was a dot
+     * @return {@code true} if the last non-brace was a dot
      * 
      * @throws ExBibException in case of an error
      */
@@ -1049,10 +1025,7 @@ public class FormatName extends AbstractCode implements Serializable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.Code#execute(BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
@@ -1129,7 +1102,7 @@ public class FormatName extends AbstractCode implements Serializable {
      * @param post the post parameter
      * @param n the line length?
      * @param locator the locator from the users perspective
-     * @return <code>true</code> iff the buffer has been modified
+     * @return {@code true} iff the buffer has been modified
      * 
      * @throws ExBibException in case that no initial is found
      */

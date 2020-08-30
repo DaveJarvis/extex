@@ -40,11 +40,10 @@ import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * Create a jar archive with the toc index for the
- * <code>ClasspathArchiveFinder</code>.
+ * {@code ClasspathArchiveFinder}.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class CreateClasspathArchive {
 
     /**
@@ -88,14 +87,14 @@ public class CreateClasspathArchive {
     private Handler consoleHandler;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated with
+     * The field {@code localizer} contains the localizer. It is initiated with
      * a localizer for the name of this class.
      */
     private Localizer localizer = LocalizerFactory
         .getLocalizer(CreateClasspathArchive.class);
 
     /**
-     * The field <tt>logger</tt> contains the logger currently in use.
+     * The field {@code logger} contains the logger currently in use.
      */
     private Logger logger;
 

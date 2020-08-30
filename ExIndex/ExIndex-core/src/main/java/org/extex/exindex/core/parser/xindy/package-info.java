@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- *   This package contains the parser for raw index files emulating xindy.
+ *   Contains the parser for raw index files emulating xindy.
  */
 
 package org.extex.exindex.core.parser.xindy;

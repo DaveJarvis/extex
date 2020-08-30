@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\inputlineno</tt>.
+ * This is a test suite for the primitive {@code \inputlineno}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class InputlinenoTest extends AbstractReadonlyCountRegisterTester {
 
     /**
@@ -48,9 +47,8 @@ public class InputlinenoTest extends AbstractReadonlyCountRegisterTester {
     }
 
     /**
-     * <testcase> Test case showing that the primitive is applicable for
-     * \showthe. </testcase>
-     * 
+     * Test case showing that the primitive is applicable for \showthe
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -63,8 +61,8 @@ public class InputlinenoTest extends AbstractReadonlyCountRegisterTester {
     }
 
     /**
-     * <testcase> Test case showing that the primitive is applicable for \the.
-     * </testcase>
+     *  Test case showing that the primitive is applicable for \the.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -78,9 +76,8 @@ public class InputlinenoTest extends AbstractReadonlyCountRegisterTester {
     }
 
     /**
-     * <testcase> Test case showing that an assignment of a constant 123 works
-     * when using an equal sign after the primitive name. </testcase>
-     * 
+     * Test case showing that an assignment of a constant 123 works when using an equal sign after the primitive name
+* 
      * @throws Exception in case of an error
      */
     @Test

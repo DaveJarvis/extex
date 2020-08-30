@@ -31,8 +31,7 @@ import org.extex.font.format.XtfMetricFont;
  * Backend font manager for a xtf (ttf, otf) font.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class XtfBackendFontManager extends AbstractBackendFontManager
         implements
             BackendFontManager {
@@ -45,7 +44,7 @@ public class XtfBackendFontManager extends AbstractBackendFontManager
         /**
          * The Unicode char.
          */
-        private UnicodeChar uc;
+        private final UnicodeChar uc;
 
         /**
          * Creates a new object.
@@ -57,22 +56,12 @@ public class XtfBackendFontManager extends AbstractBackendFontManager
             this.uc = uc;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.BackendCharacter#getId()
-         */
-        public int getId() {
+    public int getId() {
 
             return uc.getCodePoint();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.BackendCharacter#getName()
-         */
-        public String getName() {
+    public String getName() {
 
             return uc.toString();
         }
@@ -88,9 +77,7 @@ public class XtfBackendFontManager extends AbstractBackendFontManager
 
             if (obj != null && obj instanceof BackendCharacter) {
                 BackendCharacter ch = (BackendCharacter) obj;
-                if (ch.getId() == getId()) {
-                    return true;
-                }
+                return ch.getId() == getId();
             }
 
             return false;
@@ -103,10 +90,7 @@ public class XtfBackendFontManager extends AbstractBackendFontManager
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFontManager#recognize(org.extex.font.FontKey,
-     *      org.extex.core.UnicodeChar)
+*      org.extex.core.UnicodeChar)
      */
     public boolean recognize(FontKey fontKey, UnicodeChar uc)
             throws FontException {

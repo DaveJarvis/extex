@@ -24,8 +24,7 @@ package org.extex.exindex.core.type.page;
  * information is provided in this case.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SomePage extends AbstractPage {
 
     /**

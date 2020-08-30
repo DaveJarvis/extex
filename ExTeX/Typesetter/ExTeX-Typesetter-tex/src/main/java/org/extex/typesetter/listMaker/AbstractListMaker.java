@@ -45,20 +45,19 @@ import org.extex.typesetter.listMaker.math.MathListMaker;
  * This abstract class provides some methods common to all ListMakers.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 5947 $
- */
+*/
 public abstract class AbstractListMaker implements TokenDelegateListMaker {
 
     /**
-     * The field <tt>locator</tt> contains the locator pointing to the start.
+     * The field {@code locator} contains the locator pointing to the start.
      */
-    private Locator locator;
+    private final Locator locator;
 
     /**
-     * The field <tt>manager</tt> contains the manager to ask for global
+     * The field {@code manager} contains the manager to ask for global
      * changes.
      */
-    private ListManager manager;
+    private final ListManager manager;
 
     /**
      * Creates a new object.
@@ -141,33 +140,20 @@ public abstract class AbstractListMaker implements TokenDelegateListMaker {
         throw new TypesetterUnsupportedException();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#getSpacefactor()
-     */
-    @Override
+@Override
     public long getSpacefactor() throws TypesetterUnsupportedException {
 
         throw new TypesetterUnsupportedException();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#leftBrace()
-     */
-    @Override
+@Override
     public void leftBrace() {
 
         // noop
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#mathShift(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
+*      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
     @Override
@@ -243,10 +229,7 @@ public abstract class AbstractListMaker implements TokenDelegateListMaker {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#subscriptMark(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
     @Override
@@ -260,10 +243,7 @@ public abstract class AbstractListMaker implements TokenDelegateListMaker {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#superscriptMark(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
     @Override
@@ -277,10 +257,7 @@ public abstract class AbstractListMaker implements TokenDelegateListMaker {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#tab(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
+*      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
     @Override

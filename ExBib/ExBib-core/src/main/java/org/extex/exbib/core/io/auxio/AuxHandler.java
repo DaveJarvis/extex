@@ -29,8 +29,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * This interface describes a handler for macros found in an aux file.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface AuxHandler {
 
     /**

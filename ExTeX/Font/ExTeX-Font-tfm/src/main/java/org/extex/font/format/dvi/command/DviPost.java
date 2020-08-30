@@ -23,50 +23,49 @@ package org.extex.font.format.dvi.command;
  * DVI: post: Beginning of the postamble.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class DviPost extends DviCommand {
 
     /**
      * the den
      */
-    private int den;
+    private final int den;
 
     /**
      * height-plus-depth of the tallest page
      */
-    private int heigthdepth;
+    private final int heigthdepth;
 
     /**
      * the mag
      */
-    private int mag;
+    private final int mag;
 
     /**
      * the num
      */
-    private int num;
+    private final int num;
 
     /**
      * the pointer of the final page
      */
-    private int pointer;
+    private final int pointer;
 
     /**
      * the stack depth
      */
-    private int stackdepth;
+    private final int stackdepth;
 
     /**
      * total pages
      */
-    private int totalpage;
+    private final int totalpage;
 
     /**
      * the width of the widest page
      */
-    private int width;
+    private final int width;
 
     /**
      * Create a new object.
@@ -128,12 +127,7 @@ public class DviPost extends DviCommand {
         return mag;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviCommand#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "post";

@@ -23,11 +23,10 @@ import org.extex.test.count.AbstractNonGroupIntegerTester;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\maxError</tt>.
+ * This is a test suite for the primitive {@code \maxError}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MaxErrorTest extends AbstractNonGroupIntegerTester {
 
     /**

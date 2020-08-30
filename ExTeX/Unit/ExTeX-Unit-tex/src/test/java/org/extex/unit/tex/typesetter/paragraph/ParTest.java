@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\par</tt>.
+ * This is a test suite for the primitive {@code \par}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class ParTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -48,8 +47,8 @@ public class ParTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\par"> Test case checking that <tt>\par</tt>
-     * works. </testcase>
+     * <testcase primitive="\par"> Test case checking that {@code \par}
+     * works.
      * 
      * @throws Exception in case of an error
      */

@@ -28,32 +28,31 @@ import org.extex.typesetter.type.node.WhatsItNode;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4791 $
- */
+*/
 public class PdfXImage extends WhatsItNode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>attr</tt> contains the attribute string.
+     * The field {@code attr} contains the attribute string.
      */
     private String attr;
 
     /**
-     * The field <tt>page</tt> contains the page number.
+     * The field {@code page} contains the page number.
      */
     private long page;
 
     /**
-     * The field <tt>resource</tt> contains the name of the object.
+     * The field {@code resource} contains the name of the object.
      */
     private String resource;
 
     /**
-     * The field <tt>rule</tt> contains the rule.
+     * The field {@code rule} contains the rule.
      */
     private RuleNode rule;
 
@@ -62,7 +61,7 @@ public class PdfXImage extends WhatsItNode {
      * 
      * @param resource the name of the object
      * @param rule the rule
-     * @param attr the attribute string. This can be <code>null</code>.
+     * @param attr the attribute string. This can be {@code null}.
      * @param page the page number
      */
     public PdfXImage(String resource, RuleNode rule, String attr, long page) {

@@ -24,11 +24,10 @@ import org.junit.Test;
 
 /**
  * This is a test suite for the macro code defined with the primitive
- * <tt>\def</tt> or friends.
+ * {@code \def} or friends.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MacroCodeTest extends ExTeXLauncher {
 
 
@@ -37,9 +36,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that an empty pattern does not absorb
-     * anything. </testcase>
-     * 
+     * Test case checking that an empty pattern does not absorb anything
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -52,9 +50,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a simple macro parameter absorbs a
-     * single token. </testcase>
-     * 
+     * Test case checking that a simple macro parameter absorbs a single token
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -67,9 +64,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that two macro parameters absorb a token
-     * each. </testcase>
-     * 
+     * Test case checking that two macro parameters absorb a token each
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -82,9 +78,9 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that en embedded constant token is
+     *  Test case checking that en embedded constant token is
      * respected when the preceding macro parameter consumes one token.
-     * </testcase>
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -98,9 +94,9 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that en embedded constant token is
+     *  Test case checking that en embedded constant token is
      * respected when the preceding macro parameter consumes two tokens.
-     * </testcase>
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -114,9 +110,9 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that en embedded constant token is
+     *  Test case checking that en embedded constant token is
      * respected when the preceding macro parameter consumes one token group.
-     * </testcase>
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -130,9 +126,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that the second macro parameter can take a
-     * token group. </testcase>
-     * 
+     * Test case checking that the second macro parameter can take a token group
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -145,9 +140,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that scanning for a parameter at eof leads
-     * to an exception. </testcase>
-     * 
+     * Test case checking that scanning for a parameter at eof leads to an exception
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -160,9 +154,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that scanning for a token which does never
-     * come leads to an exception. </testcase>
-     * 
+     * Test case checking that scanning for a token which does never come leads to an exception
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -175,9 +168,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that scanning for a token after a parameter
-     * which does never come leads to an exception. </testcase>
-     * 
+     * Test case checking that scanning for a token after a parameter which does never come leads to an exception
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -190,9 +182,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that scanning for an unclosed argument
-     * block leads to an exception. </testcase>
-     * 
+     * Test case checking that scanning for an unclosed argument block leads to an exception
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -205,9 +196,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that scanning for an unopened argument
-     * block leads to an exception. </testcase>
-     * 
+     * Test case checking that scanning for an unopened argument block leads to an exception
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -220,9 +210,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that scanning for an unopened argument
-     * block leads to an exception. </testcase>
-     * 
+     * Test case checking that scanning for an unopened argument block leads to an exception
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -235,9 +224,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that braces are removed when scanning for a
-     * following token. </testcase>
-     * 
+     * Test case checking that braces are removed when scanning for a following token
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -251,9 +239,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that braces are added when the last # is
-     * followed by a {. </testcase>
-     * 
+     * Test case checking that braces are added when the last # is followed by a {
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -268,9 +255,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that ## in parameters are matched against a
-     * single #. </testcase>
-     * 
+     * Test case checking that ## in parameters are matched against a single #
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -286,9 +272,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that ## in parameters are matched against a
-     * single #. </testcase>
-     * 
+     * Test case checking that ## in parameters are matched against a single #
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -301,9 +286,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a \par in a macro argument of a macro
-     * which is not long leads to an exception. </testcase>
-     * 
+     * Test case checking that a \par in a macro argument of a macro which is not long leads to an exception
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -316,9 +300,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a \par in a macro argument of a macro
-     * which is long does not lead to an exception. </testcase>
-     * 
+     * Test case checking that a \par in a macro argument of a macro which is long does not lead to an exception
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -331,8 +314,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a # in a macro body is passed out.
-     * </testcase>
+     *  Test case checking that a # in a macro body is passed out.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -347,9 +330,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a macro without parameters and an
-     * empty replacement text is showable. </testcase>
-     * 
+     * Test case checking that a macro without parameters and an empty replacement text is showable
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -365,9 +347,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a macro without parameters and a
-     * non-empty replacement text is showable. </testcase>
-     * 
+     * Test case checking that a macro without parameters and a non-empty replacement text is showable
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -383,9 +364,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a macro with parameter and a non-empty
-     * replacement text is showable. </testcase>
-     * 
+     * Test case checking that a macro with parameter and a non-empty replacement text is showable
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -401,9 +381,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a macro with parameter and a non-empty
-     * replacement text and trailing { is showable. </testcase>
-     * 
+     * Test case checking that a macro with parameter and a non-empty replacement text and trailing { is showable
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -419,9 +398,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a macro with parameter and a non-empty
-     * replacement text with the parameter is showable. </testcase>
-     * 
+     * Test case checking that a macro with parameter and a non-empty replacement text with the parameter is showable
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -437,9 +415,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a macro with parameter and a non-empty
-     * replacement text with doubled # is showable. </testcase>
-     * 
+     * Test case checking that a macro with parameter and a non-empty replacement text with doubled # is showable
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -455,7 +432,7 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a long macro is showable. </testcase>
+     *  Test case checking that a long macro is showable. 
      * 
      * @throws Exception in case of an error
      */
@@ -472,7 +449,7 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a outer macro is showable. </testcase>
+     *  Test case checking that a outer macro is showable. 
      * 
      * @throws Exception in case of an error
      */
@@ -489,8 +466,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a outer and long macro is showable.
-     * </testcase>
+     *  Test case checking that a outer and long macro is showable.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -507,9 +484,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a macro with macros in the expansion
-     * text is showable. </testcase>
-     * 
+     * Test case checking that a macro with macros in the expansion text is showable
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -525,9 +501,8 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a macro with macros in the expansion
-     * text is showable and respects \escapechar. </testcase>
-     * 
+     * Test case checking that a macro with macros in the expansion text is showable and respects \escapechar
+* 
      * @throws Exception in case of an error
      */
     @Test

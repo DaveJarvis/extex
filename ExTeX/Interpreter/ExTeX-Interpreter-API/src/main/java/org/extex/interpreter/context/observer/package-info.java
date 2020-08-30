@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains observer interfaces for the Context.
+ * Contains observer interfaces for the Context.
  */
 
 package org.extex.interpreter.context.observer;

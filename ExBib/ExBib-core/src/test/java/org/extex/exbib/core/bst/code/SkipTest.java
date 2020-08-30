@@ -32,25 +32,24 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>skip$</tt>.
+ * Test suite for {@code skip$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SkipTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
     /**
-     * The field <tt>err</tt> contains the error stream.
+     * The field {@code err} contains the error stream.
      */
     private final StringBuffer err = new StringBuffer();
 
     /**
-     * The field <tt>out</tt> contains the output stream.
+     * The field {@code out} contains the output stream.
      */
     private final StringBuffer out = new StringBuffer();
 
@@ -75,7 +74,7 @@ public class SkipTest {
     }
 
     /**
-     * <testcase> The next element from the stack is skipped. </testcase>
+     *  The next element from the stack is skipped.
      * 
      * @throws Exception in case of an error
      */

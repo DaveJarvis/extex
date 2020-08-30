@@ -33,43 +33,41 @@ import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * <logo>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X</logo> built-in function <code>purify$</code>
- * 
+ * BibTeX built-in function {@code purify$}
+ * <p>
  * This function takes a string valued argument and performs the following
  * transformations:
+ * </p>
  * 
  * <ul>
  * <li>Any known TeX macro at brace level 1 is expanded.</li>
  * <li>Any unknown TeX macro at brace level 1 is removed.</li>
- * <li>Any white-space character, the tilde <tt>~</tt>, and the hyphen
- * <tt>-</tt> are replaced by a single space character.</li>
+ * <li>Any white-space character, the tilde {@code ~}, and the hyphen
+ * {@code -} are replaced by a single space character.</li>
  * <li>Any other non-alphanumeric characters are removed.</li>
  * </ul>
  * <p>
  * The known macros and their expansion text can be found in the following list:
  * </p>
- * <div style="margin-left:2em;"> <tt>\l</tt> &rarr; <tt>l</tt><br />
- * <tt>\L</tt> &rarr; <tt>L</tt><br />
- * <tt>\i</tt> &rarr; <tt>i</tt><br />
- * <tt>\j</tt> &rarr; <tt>j</tt><br />
- * <tt>\o</tt> &rarr; <tt>o</tt><br />
- * <tt>\O</tt> &rarr; <tt>O</tt><br />
- * <tt>\aa</tt> &rarr; <tt>a</tt><br />
- * <tt>\AA</tt> &rarr; <tt>A</tt><br />
- * <tt>\ss</tt> &rarr; <tt>ss</tt><br />
- * <tt>\oe</tt> &rarr; <tt>oe</tt><br />
- * <tt>\OE</tt> &rarr; <tt>OE</tt><br />
- * <tt>\ae</tt> &rarr; <tt>ae</tt><br />
- * <tt>\AE</tt> &rarr; <tt>AE</tt><br />
+ * <div style="margin-left:2em;"> {@code \l} &rarr; {@code l}<br>
+ * {@code \L} &rarr; {@code L}<br>
+ * {@code \i} &rarr; {@code i}<br>
+ * {@code \j} &rarr; {@code j}<br>
+ * {@code \o} &rarr; {@code o}<br>
+ * {@code \O} &rarr; {@code O}<br>
+ * {@code \aa} &rarr; {@code a}<br>
+ * {@code \AA} &rarr; {@code A}<br>
+ * {@code \ss} &rarr; {@code ss}<br>
+ * {@code \oe} &rarr; {@code oe}<br>
+ * {@code \OE} &rarr; {@code OE}<br>
+ * {@code \ae} &rarr; {@code ae}<br>
+ * {@code \AE} &rarr; {@code AE}<br>
  * </div>
  * 
- * <img src="doc-files/purify.png"/>
+ * <img src="doc-files/purify.png" alt="purify">
  * 
  * <p>
- * The following example is taken from <tt>alpha.bst</tt>:
+ * The following example is taken from {@code alpha.bst}:
  * </p>
  * 
  * <pre>
@@ -79,14 +77,10 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * }
  * </pre>
  * 
- * <hr />
+ * <hr>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X documentation:
- * <dt>
+ * <dt>BibTeX documentation</dt>
  * <dd>Pops the top (string) literal, removes non alphanumeric characters except
  * for white-space characters and hyphens and ties (these all get converted to a
  * space), removes certain alphabetic characters contained in the control
@@ -95,24 +89,21 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * </dl>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X web documentation:</dt>
- * <dd>The <code>built_in</code> function <code>purify$</code> pops the top
+ * <dt>BibTeX web documentation:</dt>
+ * <dd>The {@code built_in} function {@code purify$} pops the top
  * (string) literal, removes non alphanumeric characters except for
- * <code>white_space</code> and <code>sep_char</code> characters (these get
- * converted to a <code>space</code>) and removes certain alphabetic characters
+ * {@code white_space} and {@code sep_char} characters (these get
+ * converted to a {@code space}) and removes certain alphabetic characters
  * contained in the control sequences associated with a macro character, and
  * pushes the resulting string. If the literal isn't a string, it complains and
  * pushes the null string.</dd>
  * </dl>
  * 
  * 
- * <h3>Configuration</h3>
+ *  Configuration
  * <p>
- * The configuration can take embedded elements with the name <tt>map</tt> to
- * specify the mapping of known macros. The attribute <tt>name</tt> names the
+ * The configuration can take embedded elements with the name {@code map} to
+ * specify the mapping of known macros. The attribute {@code name} names the
  * macro &ndash; without leading backslash. The body contains the replacement
  * text.
  * </p>
@@ -120,7 +111,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * Initially the mapping contains the known macros shown above. Specified
  * mappings are added to the predefined list. older mappings are overwritten by
  * newer ones. If you want to remove the predefined mappings before starting to
- * define new ones you can use the attribute <tt>clear</tt>. If it is present
+ * define new ones you can use the attribute {@code clear}. If it is present
  * &ndash; no matter what its value may be &ndash; the predefined mappings re
  * discarded.
  * </p>
@@ -146,12 +137,11 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Purify extends AbstractCode implements Configurable {
 
     /**
-     * The field <tt>instance</tt> contains the instance for the static method.
+     * The field {@code instance} contains the instance for the static method.
      */
     private static Purify instance = null;
 
@@ -175,7 +165,7 @@ public class Purify extends AbstractCode implements Configurable {
     }
 
     /**
-     * The field <tt>macro</tt> contains the mapping of macro characters.
+     * The field {@code macro} contains the mapping of macro characters.
      */
     private final Map<String, String> macro = new HashMap<String, String>();
 
@@ -210,12 +200,7 @@ public class Purify extends AbstractCode implements Configurable {
         macro.put("AE", "AE");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
-     */
-    @Override
+@Override
     public void configure(Configuration config) throws ConfigurationException {
 
         if (config == null) {
@@ -233,10 +218,7 @@ public class Purify extends AbstractCode implements Configurable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)

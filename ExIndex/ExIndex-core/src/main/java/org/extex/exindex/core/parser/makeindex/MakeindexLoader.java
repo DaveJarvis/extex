@@ -43,19 +43,18 @@ import org.extex.exindex.lisp.type.value.LValue;
  * String encoded according to the makeindex definition.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 6713 $
- */
+*/
 public final class MakeindexLoader {
 
     /**
-     * The field <tt>map</tt> contains the mapping of makeindex names to
+     * The field {@code map} contains the mapping of makeindex names to
      * parameter names in ExIndex.
      */
     private static final Map<String, String> MAKEINDEX2PARAM =
             new HashMap<String, String>();
 
     /**
-     * The field <tt>DEFAULT_PARAM</tt> contains the default parameters.
+     * The field {@code DEFAULT_PARAM} contains the default parameters.
      */
     private static final Map<String, LValue> DEFAULT_PARAM =
             new HashMap<String, LValue>();

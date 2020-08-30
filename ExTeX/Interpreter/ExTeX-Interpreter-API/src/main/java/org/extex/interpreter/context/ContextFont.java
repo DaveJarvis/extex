@@ -27,8 +27,7 @@ import org.extex.typesetter.tc.font.Font;
  * context.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface ContextFont {
 
     /**
@@ -36,7 +35,7 @@ public interface ContextFont {
      *
      * @param name the name or the number of the register
      *
-     * @return the named font register or <code>null</code> if none is set
+     * @return the named font register or {@code null} if none is set
      *
      * @see #setFont(String, Font, boolean)
      */
@@ -56,7 +55,7 @@ public interface ContextFont {
      *
      * @param name the name or the number of the register
      * @param font the new Font value
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *   groups; otherwise the current group is affected only
      *
      * @see #getFont(String)

@@ -37,9 +37,10 @@ import org.extex.util.xml.XMLWriterConvertible;
  * from the coordinate at the next ppem size, and so on for each ppem size in
  * the range.
  * </p>
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td><b>Type</b></td>
+* <td><b>Type</b></td>
  * <td><b>Name</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -74,9 +75,10 @@ import org.extex.util.xml.XMLWriterConvertible;
  * bits first. For example, using a DeltaFormat of 2 (4-bit values), an array of
  * values equal to {1, 2, 3, -1} would be represented by the DeltaValue 0x123F.
  * </p>
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td><b>Type</b></td>
+* <td><b>Type</b></td>
  * <td><b>Name</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -98,29 +100,28 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class DeviceTable implements XMLWriterConvertible {
 
     /**
      * Format of DeltaValue array data: 1, 2, or 3.
      */
-    private int deltaFormat;
+    private final int deltaFormat;
 
     /**
      * Array of compressed data.
      */
-    private int[] deltaValues;
+    private final int[] deltaValues;
 
     /**
      * Largest size to correct-in ppem.
      */
-    private int endSize;
+    private final int endSize;
 
     /**
      * Smallest size to correct-in ppem.
      */
-    private int startSize;
+    private final int startSize;
 
     /**
      * Creates a new object.
@@ -143,12 +144,7 @@ public class DeviceTable implements XMLWriterConvertible {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("device");
         writer.writeAttribute("startSize", startSize);

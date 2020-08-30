@@ -34,12 +34,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * This abstract base class for mark primitives provides the common features.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public abstract class AbstractMarkCode extends AbstractCode {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     static final long serialVersionUID = 2007L;

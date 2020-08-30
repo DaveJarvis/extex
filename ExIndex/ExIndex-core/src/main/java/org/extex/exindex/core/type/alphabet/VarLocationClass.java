@@ -29,8 +29,7 @@ import org.extex.exindex.core.type.page.SomePage;
  * This class contains a composed location class.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class VarLocationClass implements LocationClass {
 
     /**
@@ -39,7 +38,7 @@ public class VarLocationClass implements LocationClass {
     private class Seperator implements LocationClass {
 
         /**
-         * The field <tt>sep</tt> contains the separator.
+         * The field {@code sep} contains the separator.
          */
         private String sep;
 
@@ -64,10 +63,7 @@ public class VarLocationClass implements LocationClass {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exindex.core.type.alphabet.LocationClass#match(
-         *      java.lang.String, String)
+    *      java.lang.String, String)
          */
         public PageReference match(String encap, String s) {
 
@@ -75,10 +71,7 @@ public class VarLocationClass implements LocationClass {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exindex.core.type.alphabet.LocationClass#match(
-         *      java.lang.StringBuilder)
+    *      java.lang.StringBuilder)
          */
         public boolean match(StringBuilder s) {
 
@@ -96,7 +89,7 @@ public class VarLocationClass implements LocationClass {
     }
 
     /**
-     * The field <tt>list</tt> contains the constituents.
+     * The field {@code list} contains the constituents.
      */
     private final List<LocationClass> list = new ArrayList<LocationClass>();
 
@@ -137,10 +130,7 @@ public class VarLocationClass implements LocationClass {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.alphabet.LocationClass#match(java.lang.String,
-     *      String)
+*      String)
      */
     public PageReference match(String encap, String text) {
 
@@ -152,12 +142,7 @@ public class VarLocationClass implements LocationClass {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.alphabet.LocationClass#match(java.lang.StringBuilder)
-     */
-    public boolean match(StringBuilder s) {
+public boolean match(StringBuilder s) {
 
         int size = list.size();
         if (size == 0) {

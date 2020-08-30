@@ -33,8 +33,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public abstract class XtfGSUBSingleTable extends XtfLookupTable {
 
     /**
@@ -86,12 +85,7 @@ public abstract class XtfGSUBSingleTable extends XtfLookupTable {
             coverage = XtfCoverage.newInstance(rar, xtfGlyph);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.gps.XtfGSUBSingleTable#getSubGlyph()
-         */
-        @Override
+    @Override
         public String[][] getSubGlyph() {
 
             int[] glyphs = coverage.getGlyphs();
@@ -106,12 +100,7 @@ public abstract class XtfGSUBSingleTable extends XtfLookupTable {
             return tmp;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.gps.XtfGSUBSingleTable#substitute(int)
-         */
-        @Override
+    @Override
         public int substitute(int glyphId) {
 
             int i = coverage.findGlyph(glyphId);
@@ -121,12 +110,7 @@ public abstract class XtfGSUBSingleTable extends XtfLookupTable {
             return glyphId;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("singletable");
             writer.writeAttribute("format", getFormat());
@@ -224,12 +208,7 @@ public abstract class XtfGSUBSingleTable extends XtfLookupTable {
             return tmp;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.gps.XtfGSUBSingleTable#substitute(int)
-         */
-        @Override
+    @Override
         public int substitute(int glyphId) {
 
             int i = coverage.findGlyph(glyphId);
@@ -239,12 +218,7 @@ public abstract class XtfGSUBSingleTable extends XtfLookupTable {
             return glyphId;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("singletable");
             writer.writeAttribute("format", getFormat());

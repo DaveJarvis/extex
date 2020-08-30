@@ -37,26 +37,28 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
 
 /**
- * This class provides an implementation for the primitive <code>\relax</code>.
+ * This class provides an implementation for the primitive {@code \relax}.
  * 
- * <doc name="parshapelength"> <h3>The Primitive <tt>\parshapelength</tt></h3>
+ * <p>The Primitive {@code \parshapelength}</p>
  * <p>
- * The primitive <tt>\parshapelength</tt> gives access to the settings for the
+ * The primitive {@code \parshapelength} gives access to the settings for the
  * current paragraph shape. The primitive takes a number as parameter. If this
  * number is positive then the length of the line denoted by the parameter is
  * returned. The line numbering starts with 1. If the argument is less than 1
  * then 0 is returned.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;parshapelength&rang;
- *        &rarr; <tt>\parshapelength</tt> {@linkplain
+ *        &rarr; {@code \parshapelength} {@linkplain
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *        &lang;8-bit&nbsp;number&rang;} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \dimen2=\parshapelength 3  </pre>
@@ -64,11 +66,9 @@ import org.extex.typesetter.paragraphBuilder.ParagraphShape;
  * <pre class="TeXSample">
  *    \dimen2=\parshapelength -3  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Parshapelength extends AbstractCode
         implements
             CountConvertible,
@@ -76,7 +76,7 @@ public class Parshapelength extends AbstractCode
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -91,10 +91,7 @@ public class Parshapelength extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertCount(Context context, TokenSource source,
@@ -104,10 +101,7 @@ public class Parshapelength extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertDimen(Context context, TokenSource source,
@@ -121,10 +115,7 @@ public class Parshapelength extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

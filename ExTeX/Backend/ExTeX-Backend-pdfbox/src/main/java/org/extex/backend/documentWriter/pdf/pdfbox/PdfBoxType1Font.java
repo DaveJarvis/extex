@@ -36,8 +36,7 @@ import org.pdfbox.pdmodel.font.PDType1Font;
  * Type1 font with ExTeX values.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:4704 $
- */
+*/
 
 public final class PdfBoxType1Font extends PDType1Font {
 

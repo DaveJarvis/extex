@@ -53,16 +53,15 @@ import org.extex.unit.tex.register.count.AbstractReadonlyCount;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\lastnodetype</code>.
+ * {@code \lastnodetype}.
  * 
- * <doc name="lastnodetype">
- * <h3>The Primitive <tt>\lastnodetype</tt></h3>
+ * <p>The Primitive {@code \lastnodetype}</p>
  * <p>
- * The primitive <tt>\lastnodetype</tt> inspects the last node in the
+ * The primitive {@code \lastnodetype} inspects the last node in the
  * typesetter and returns a count value according to the node type found. The
  * following table shows the values returned:
  * </p>
- * <table>
+ * <table> <caption>TBD</caption>
  * <tr><td>-1</td><td>no node; i.e. the list is empty</td></tr>
  * <tr><td>0</td><td>char node</td></tr>
  * <tr><td>1</td><td>hlist node</td></tr>
@@ -82,27 +81,27 @@ import org.extex.unit.tex.register.count.AbstractReadonlyCount;
  * <tr><td>15</td><td>math mode nodes</td></tr>
  * </table>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;lastnodetype&rang;
- *       &rarr; <tt>\lastnodetype</tt>  </pre>
+ *       &rarr; {@code \lastnodetype}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \count42=\lastnodetype  </pre>
  *  <pre class="TeXSample">
  *    Test\the\lastnodetype  </pre>
  * 
- * </doc>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
- * @version $Revision: 4732 $
- */
+*/
 
 public class Lastnodetype extends AbstractReadonlyCount {
 
@@ -211,7 +210,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
         /**
          * Returns the Node for an specified node.
          * 
-         * @param node a <code>Node</code> value
+         * @param node a {@code Node} value
          * 
          * @return the type of the node
          * 
@@ -237,7 +236,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @param node the visited node
          * @param arg null
          * 
-         * @return type number of node as <code>Integer</code>
+         * @return type number of node as {@code Integer}
          * 
          * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(AdjustNode,
          *      java.lang.Object)
@@ -253,7 +252,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @param node the visited node
          * @param arg null
          * 
-         * @return type number of node as <code>Integer</code>
+         * @return type number of node as {@code Integer}
          * 
          * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(AfterMathNode,
          *      java.lang.Object)
@@ -270,7 +269,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @param node the visited node
          * @param arg null
          * 
-         * @return type number of node as <code>Integer</code>
+         * @return type number of node as {@code Integer}
          * 
          * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(AlignedLeadersNode,
          *      java.lang.Object)
@@ -286,10 +285,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * Return type number for before math nodes. Both arguments are not
          * used.
          * 
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(
-         *      org.extex.typesetter.type.node.BeforeMathNode, java.lang.Object)
+    *      org.extex.typesetter.type.node.BeforeMathNode, java.lang.Object)
          */
         public Integer visitBeforeMath(BeforeMathNode node, Object arg) {
 
@@ -304,7 +300,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @param node the visited node
          * @param arg null
          * 
-         * @return type number of node as <code>Integer</code>
+         * @return type number of node as {@code Integer}
          * 
          * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(CenteredLeadersNode,
          *      java.lang.Object)
@@ -322,7 +318,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @param node the visited node
          * @param arg null
          * 
-         * @return type number of node as <code>Integer</code>
+         * @return type number of node as {@code Integer}
          * 
          * @see org.extex.typesetter.type.NodeVisitor#visitChar(CharNode,
          *      java.lang.Object)
@@ -339,7 +335,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @param node the visited node
          * @param arg null
          * 
-         * @return type number of node as <code>Integer</code>
+         * @return type number of node as {@code Integer}
          * 
          * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(DiscretionaryNode,
          *      java.lang.Object)
@@ -356,7 +352,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @param node the visited node
          * @param arg null
          * 
-         * @return type number of node as <code>Integer</code>
+         * @return type number of node as {@code Integer}
          * 
          * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(ExpandedLeadersNode,
          *      java.lang.Object)
@@ -374,7 +370,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @param node the visited node
          * @param arg null
          * 
-         * @return type number of node as <code>Integer</code>
+         * @return type number of node as {@code Integer}
          * 
          * @see org.extex.typesetter.type.NodeVisitor#visitGlue(GlueNode,
          *      java.lang.Object)
@@ -391,7 +387,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @param node the visited node
          * @param arg null
          * 
-         * @return type number of node as <code>Integer</code>
+         * @return type number of node as {@code Integer}
          * 
          * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(HorizontalListNode,
          *      java.lang.Object)
@@ -407,7 +403,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @param node the visited node
          * @param arg null
          * 
-         * @return type number of node as <code>Integer</code>
+         * @return type number of node as {@code Integer}
          * 
          * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(InsertionNode,
          *      java.lang.Object)
@@ -423,7 +419,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @param node the visited node
          * @param arg null
          * 
-         * @return type number of node as <code>Integer</code>
+         * @return type number of node as {@code Integer}
          * 
          * @see org.extex.typesetter.type.NodeVisitor#visitKern(KernNode,
          *      java.lang.Object)
@@ -439,7 +435,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @param node the visited node
          * @param arg null
          * 
-         * @return type number of node as <code>Integer</code>
+         * @return type number of node as {@code Integer}
          * 
          * @see org.extex.typesetter.type.NodeVisitor#visitLigature(LigatureNode,
          *      java.lang.Object)
@@ -455,7 +451,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @param node the visited node
          * @param arg null
          * 
-         * @return type number of node as <code>Integer</code>
+         * @return type number of node as {@code Integer}
          * 
          * @see org.extex.typesetter.type.NodeVisitor#visitMark(MarkNode,
          *      java.lang.Object)
@@ -471,7 +467,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @param node the visited node
          * @param arg null
          * 
-         * @return type number of node as <code>Integer</code>
+         * @return type number of node as {@code Integer}
          * 
          * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(PenaltyNode,
          *      java.lang.Object)
@@ -487,7 +483,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @param node the visited node
          * @param arg null
          * 
-         * @return type number of node as <code>Integer</code>
+         * @return type number of node as {@code Integer}
          * 
          * @see org.extex.typesetter.type.NodeVisitor#visitRule(RuleNode,
          *      java.lang.Object)
@@ -503,7 +499,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @param node the visited node
          * @param arg null
          * 
-         * @return type number of node as <code>Integer</code>
+         * @return type number of node as {@code Integer}
          * 
          * @see org.extex.typesetter.type.NodeVisitor#visitSpace(SpaceNode,
          *      java.lang.Object)
@@ -520,7 +516,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @param node the visited node
          * @param arg null
          * 
-         * @return type number of node as <code>Integer</code>
+         * @return type number of node as {@code Integer}
          * 
          * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(
          *      VerticalListNode, java.lang.Object)
@@ -531,10 +527,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(
-         *      org.extex.typesetter.type.node.VirtualCharNode,
+    *      org.extex.typesetter.type.node.VirtualCharNode,
          *      java.lang.Object)
          */
         public Integer visitVirtualChar(VirtualCharNode node, Object value) {
@@ -548,7 +541,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @param node the visited node
          * @param arg null
          * 
-         * @return type number of node as <code>Integer</code>
+         * @return type number of node as {@code Integer}
          * 
          * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(WhatsItNode,
          *      java.lang.Object)
@@ -568,7 +561,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
     // it is not used in ExTeX (gene)
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
@@ -584,10 +577,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,

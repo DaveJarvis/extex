@@ -30,12 +30,11 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
  * This class represents a boolean expression which is casted to int by need.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class GBoolean implements GCode {
 
     /**
-     * The field <tt>code</tt> contains the code.
+     * The field {@code code} contains the code.
      */
     private GCode code;
 
@@ -59,53 +58,30 @@ public class GBoolean implements GCode {
         return code;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#getType()
-     */
-    public ReturnType getType() {
+public ReturnType getType() {
 
         return ReturnType.INT;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#hasSideEffect()
-     */
-    @Override
+@Override
     public boolean hasSideEffect() {
 
         return code.hasSideEffect();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#optimize()
-     */
-    public GCode optimize() {
+public GCode optimize() {
 
         code = code.optimize();
         return this;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#optimize(java.util.List, int)
-     */
-    public int optimize(List<GCode> list, int index) {
+public int optimize(List<GCode> list, int index) {
 
         return index + 1;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(org.extex.exbib.bst2groovy.io.CodeWriter,
-     *      java.lang.String)
+*      java.lang.String)
      */
     public void print(CodeWriter writer, String prefix) throws IOException {
 
@@ -113,23 +89,13 @@ public class GBoolean implements GCode {
         writer.write(" ? 1 : 0");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return "(Boolean) " + code.toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#unify(org.extex.exbib.bst2groovy.data.GCode)
-     */
-    public boolean unify(GCode other) {
+public boolean unify(GCode other) {
 
         if (other instanceof Var) {
             return other.unify(this);

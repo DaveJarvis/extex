@@ -23,12 +23,11 @@ package org.extex.interpreter.loader;
  * This exception is used when the loader detects a class cast exception.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4592 $
- */
+*/
 public class LoaderClassCastException extends LoaderException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 1L;
 

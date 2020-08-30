@@ -40,26 +40,26 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\dimen</code>.
+ * This class provides an implementation for the primitive {@code \dimen}.
  * It sets the named dimen register to the value given, and as a side effect all
  * prefixes are zeroed.
  * 
- * <doc name="dimen">
- * <h3>The Primitive <tt>\dimen</tt></h3>
+ * <p>The Primitive {@code \dimen}</p>
  * <p>
- * The primitive <tt>\dimen</tt> provides access to the dimen registers. Those
+ * The primitive {@code \dimen} provides access to the dimen registers. Those
  * registers contain length values.
  * </p>
  * <p>
  * TODO gene documentation incomplete
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;dimen&rang;
- *      &rarr; &lang;optional prefix&rang; <tt>\dimen</tt> {@linkplain
+ *      &rarr; &lang;optional prefix&rang; {@code \dimen} {@linkplain
  *        org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,CodeToken)
  *        &lang;register name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
@@ -69,18 +69,17 @@ import org.extex.typesetter.exception.TypesetterException;
  *
  *   &lang;optional prefix&rang;
  *     &rarr;
- *      |  <tt>\global</tt> &lang;optional prefix&rang;  </pre>
+ *      |  {@code \global} &lang;optional prefix&rang;  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *   \dimen1=12 pt </pre>
  * 
- * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class DimenPrimitive extends AbstractDimen
         implements
             Advanceable,
@@ -92,7 +91,7 @@ public class DimenPrimitive extends AbstractDimen
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -108,10 +107,7 @@ public class DimenPrimitive extends AbstractDimen
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.code.Advanceable#advance(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void advance(Flags prefix, Context context, TokenSource source,
@@ -126,10 +122,7 @@ public class DimenPrimitive extends AbstractDimen
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -144,10 +137,7 @@ public class DimenPrimitive extends AbstractDimen
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -159,10 +149,7 @@ public class DimenPrimitive extends AbstractDimen
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertDimen(Context context, TokenSource source,
@@ -172,10 +159,7 @@ public class DimenPrimitive extends AbstractDimen
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.code.Divideable#divide(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void divide(Flags prefix, Context context, TokenSource source,
@@ -195,10 +179,7 @@ public class DimenPrimitive extends AbstractDimen
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,
@@ -216,10 +197,7 @@ public class DimenPrimitive extends AbstractDimen
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.code.Multiplyable#multiply(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void multiply(Flags prefix, Context context, TokenSource source,
@@ -233,10 +211,7 @@ public class DimenPrimitive extends AbstractDimen
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

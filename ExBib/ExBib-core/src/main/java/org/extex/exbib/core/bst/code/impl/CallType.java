@@ -32,60 +32,54 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X built-in function <code>call.type$</code>
+ * >e</span>X built-in function {@code call.type$}
  * <p>
  * This function looks at the current entry and calls the function with the same
  * name as the type. The name is normalized; i.e. translated to lower case.
  * </p>
  * <p>
  * If no such function is defined then the user-defined function
- * <tt>default.type</tt> is consulted and invoked instead.
+ * {@code default.type} is consulted and invoked instead.
  * </p>
- * <img src="doc-files/call.type.png"/>
+ * <img src="doc-files/call.type.png" alt="call.type">
  * <p>
- * The following example is taken from <tt>alpha.bst</tt>:
+ * The following example is taken from {@code alpha.bst}:
  * </p>
  * 
  * <pre>
  *   ITERATE {call.type$}
  * </pre>
  * 
- * <hr />
+ * <hr>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X documentation:</dt>
+ * <dt>BibTeX documentation:</dt>
  * <dd>Executes the function whose name is the entry type of an entry. For
- * example if an entry is of type <code>book</code>, this function executes the
- * <code>book</code> function. When given as an argument to the
- * <code>ITERATE</code> command, <code>call.type$</code> actually produces the
+ * example if an entry is of type {@code book}, this function executes the
+ * {@code book} function. When given as an argument to the
+ * {@code ITERATE} command, {@code call.type$} actually produces the
  * output for the entries. For an entry with an unknown type, it executes the
- * function <code>default.type</code>. Thus you should define (before the
- * <code>READ</code> command) one function for each standard entry type as well
- * as a <code>default.type</code> function.</dd>
+ * function {@code default.type}. Thus you should define (before the
+ * {@code READ} command) one function for each standard entry type as well
+ * as a {@code default.type} function.</dd>
  * </dl>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X web documentation:</dt>
- * <dd>The <i>built_in</i> function <code>call.type$</code> executes the
- * function specified in <code>type_list</code> for this entry unless it's
- * <code>undefined</code>, in which case it executes the default function
- * <code>default.type</code> defined in the <i>.bst</i> file, or unless it's
- * <code>empty</code>, in which case it does nothing.</dd>
+ * <dt>BibTeX web documentation:</dt>
+ * <dd>The <i>built_in</i> function {@code call.type$} executes the
+ * function specified in {@code type_list} for this entry unless it's
+ * {@code undefined}, in which case it executes the default function
+ * {@code default.type} defined in the <i>.bst</i> file, or unless it's
+ * {@code empty}, in which case it does nothing.</dd>
  * </dl>
  * 
  * 
- * <h3>Configuration</h3>
+ *  Configuration
  * <p>
- * The configuration can take an embedded element with the name <tt>default</tt>
+ * The configuration can take an embedded element with the name {@code default}
  * . The text contained in this element is taken as the name of the function to
  * be called when no appropriate function is found. The default is
- * <code>default.type</code>.
+ * {@code default.type}.
  * </p>
  * 
  * <pre>
@@ -98,12 +92,11 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class CallType extends AbstractCode implements Configurable {
 
     /**
-     * The field <tt>defaultType</tt> contains the name of the default type.
+     * The field {@code defaultType} contains the name of the default type.
      */
     private String defaultType = "default.type";
 
@@ -122,12 +115,7 @@ public class CallType extends AbstractCode implements Configurable {
         super(name);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
-     */
-    public void configure(Configuration config) throws ConfigurationException {
+public void configure(Configuration config) throws ConfigurationException {
 
         String dt = config.getValue("default");
         if (dt != null && !"".equals(dt)) {
@@ -136,10 +124,7 @@ public class CallType extends AbstractCode implements Configurable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {

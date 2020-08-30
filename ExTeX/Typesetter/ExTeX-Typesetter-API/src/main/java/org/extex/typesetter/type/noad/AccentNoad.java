@@ -34,14 +34,13 @@ import org.extex.typesetter.type.noad.util.MathContext;
  * @see "TTP [687]"
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class AccentNoad extends AbstractNucleusNoad {
 
     /**
-     * The field <tt>accent</tt> contains the specification for the accent.
+     * The field {@code accent} contains the specification for the accent.
      */
-    private MathCode accent;
+    private final MathCode accent;
 
     /**
      * Creates a new object.

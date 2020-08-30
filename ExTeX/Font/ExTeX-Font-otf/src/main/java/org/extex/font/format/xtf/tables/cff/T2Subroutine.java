@@ -26,15 +26,14 @@ import java.util.List;
  * Subroutine.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:5595 $
- */
+*/
 
 public abstract class T2Subroutine extends T2Operator {
 
     /**
      * bytes
      */
-    private short[] bytes;
+    private final short[] bytes;
 
     /**
      * Create a new object.
@@ -51,12 +50,7 @@ public abstract class T2Subroutine extends T2Operator {
         bytes = convertStackaddID(stack, id);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#getBytes()
-     */
-    @Override
+@Override
     public short[] getBytes() {
 
         return bytes;

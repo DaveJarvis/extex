@@ -23,19 +23,18 @@ package org.extex.font.format.xtf.tables.gps;
  * Class for a pair of {@link ValueRecord}s.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class PairValue {
 
     /**
      * The value 1.
      */
-    private ValueRecord value1;
+    private final ValueRecord value1;
 
     /**
      * The value 2.
      */
-    private ValueRecord value2;
+    private final ValueRecord value2;
 
     /**
      * Creates a new object.

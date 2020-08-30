@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\lowercase</tt>.
+ * This is a test suite for the primitive {@code \lowercase}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class LowercaseTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -49,7 +48,7 @@ public class LowercaseTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\lowercase"> Test case checking that
-     * <tt>\lowercase</tt> throws an error on eof. </testcase>
+     * {@code \lowercase} throws an error on eof.
      * 
      * @throws Exception in case of an error
      */
@@ -64,7 +63,7 @@ public class LowercaseTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\lowercase"> Test case checking that
-     * <tt>\lowercase</tt> is invariant on lowercase letters. </testcase>
+     * {@code \lowercase} is invariant on lowercase letters.
      * 
      * @throws Exception in case of an error
      */
@@ -79,7 +78,7 @@ public class LowercaseTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\lowercase"> Test case checking that
-     * <tt>\lowercase</tt> translates uppercase letters. </testcase>
+     * {@code \lowercase} translates uppercase letters.
      * 
      * @throws Exception in case of an error
      */
@@ -94,7 +93,7 @@ public class LowercaseTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\lowercase"> Test case checking that
-     * <tt>\lowercase</tt> translates mixed letters. </testcase>
+     * {@code \lowercase} translates mixed letters.
      * 
      * @throws Exception in case of an error
      */
@@ -109,7 +108,7 @@ public class LowercaseTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\lowercase"> Test case checking that
-     * <tt>\lowercase</tt> respects lccode. </testcase>
+     * {@code \lowercase} respects lccode.
      * 
      * @throws Exception in case of an error
      */

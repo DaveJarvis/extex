@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\copy</tt>.
+ * This is a test suite for the primitive {@code \copy}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class CopyTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -48,8 +47,8 @@ public class CopyTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\copy"> Test case checking that <tt>\copy</tt>
-     * needs a key. </testcase>
+     * <testcase primitive="\copy"> Test case checking that {@code \copy}
+     * needs a key.
      * 
      * @throws Exception in case of an error
      */

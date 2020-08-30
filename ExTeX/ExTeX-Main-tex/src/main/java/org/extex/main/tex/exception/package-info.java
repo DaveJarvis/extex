@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains some support classes for the ??TeX main program. This means Exceptions in this package. 
+ * Contains some support classes for the εχTeX main program. This means Exceptions in this package. 
  */
 
 package org.extex.main.tex.exception;

@@ -26,12 +26,11 @@ import java.util.Map;
  * This class provides a map of arrays with a default value.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MarkupNum extends Markup {
 
     /**
-     * The field <tt>numMap</tt> contains the content.
+     * The field {@code numMap} contains the content.
      */
     private final Map<String, int[]> numMap = new HashMap<String, int[]>();
 
@@ -47,13 +46,13 @@ public class MarkupNum extends Markup {
 
     /**
      * Get an element at a certain position. If the position is empty then an
-     * attempt is made to use the default value at position <code>null</code>.
+     * attempt is made to use the default value at position {@code null}.
      * If everything fails 0 is returned.
      * 
      * @param key the key
      * @param index the index
      * 
-     * @return the specified element or <tt>nil</tt>
+     * @return the specified element or {@code nil}
      */
     public int getNumber(String key, int index) {
 

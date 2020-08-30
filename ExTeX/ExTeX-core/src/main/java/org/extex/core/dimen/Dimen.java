@@ -27,51 +27,46 @@ import org.extex.core.glue.GlueComponent;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4726 $
- */
+*/
 public class Dimen extends DimenConstant {
 
     /**
-     * The constant <tt>ZERO</tt> contains the non-stretchable and
+     * The constant {@code ZERO} contains the non-stretchable and
      * non-shrinkable value of 0&nbsp;pt.
      */
     public static final FixedDimen ZERO = new DimenConstant(0);
 
     /**
-     * The constant <tt>ONE</tt> contains the internal representation for 1pt.
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [101]"
-     */
+     * The constant {@code ONE} contains the internal representation for 1pt.
+*/
     public static final long ONE = GlueComponent.ONE;
 
     /**
-     * The constant <tt>ONE_INCH</tt> contains the immutable dimen register
+     * The constant {@code ONE_INCH} contains the immutable dimen register
      * representing the length of 1&nbsp;in.
      */
     public static final FixedDimen ONE_INCH = new DimenConstant(
         ONE * 7227 / 100);
 
     /**
-     * The constant <tt>ONE_PT</tt> contains the immutable dimen register
+     * The constant {@code ONE_PT} contains the immutable dimen register
      * representing the length of 1&nbsp;pt.
      */
     public static final FixedDimen ONE_PT = new DimenConstant(ONE);
 
     /**
-     * The constant <tt>ONE_SP</tt> contains the immutable dimen register
+     * The constant {@code ONE_SP} contains the immutable dimen register
      * representing the length of 1&nbsp;scaled point.
      */
     public static final FixedDimen ONE_SP = new DimenConstant(1);
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The constant <tt>ZERO_PT</tt> contains the immutable dimen register
+     * The constant {@code ZERO_PT} contains the immutable dimen register
      * representing the length of 0&nbsp;pt.
      */
     public static final FixedDimen ZERO_PT = new DimenConstant(0);
@@ -176,7 +171,7 @@ public class Dimen extends DimenConstant {
     /**
      * Test for a value of zero.
      * 
-     * @return <code>true</code> iff the value is 0
+     * @return {@code true} iff the value is 0
      */
     public boolean isZero() {
 
@@ -187,7 +182,7 @@ public class Dimen extends DimenConstant {
      * Sets the value of the dimen to the maximum of the value already stored
      * and a given argument.
      * 
-     * <i>|this| = max(|this|, |d|)</i>
+     * |this| = max(|this|, |d|)
      * 
      * @param d the other dimen
      */
@@ -203,7 +198,7 @@ public class Dimen extends DimenConstant {
      * Sets the value of the dimen to the minimum of the value already stored
      * and a given argument.
      * 
-     * <i>|this| = min(|this|, |d|)</i>
+     * |this| = min(|this|, |d|)
      * 
      * @param d the other dimen
      */

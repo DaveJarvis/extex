@@ -30,8 +30,7 @@ import org.junit.Test;
  * </p>
  * 
  * @author <a href="mailto:m.g.sn@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class MathTest extends ExTeXLauncher {
 
 
@@ -45,7 +44,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: abs(0.234)
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -64,7 +63,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: abs(-0.234)
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -83,7 +82,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: acos(0.234)
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -102,7 +101,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: 0.234 + 0.34
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -121,7 +120,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: asin(0.234)
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -140,7 +139,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: atan(0.234)
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -159,7 +158,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: atan2(0.234)
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -178,7 +177,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: ceil(1.234)
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -197,7 +196,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: cos(0.234)
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -216,7 +215,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: 1.234 / 2.1
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -233,9 +232,9 @@ public class MathTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\mathe">
      * 
-     * Test case checking that <tt>\mathe</tt> returns the right value.
+     * Test case checking that {@code \mathe} returns the right value.
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -254,7 +253,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: exp(0.234)
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -273,7 +272,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: floor(0.234)
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -292,7 +291,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: log(22)
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -311,7 +310,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: max(0.234,0.34)
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -330,7 +329,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: min(0.234,0.34)
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -349,7 +348,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: 0.234 * 0.34
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -368,7 +367,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: 0.234 * 0.34
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -385,9 +384,9 @@ public class MathTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\mathpi">
      * 
-     * Test case checking that <tt>\mathpi</tt> returns the right value.
+     * Test case checking that {@code \mathpi} returns the right value.
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -406,7 +405,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: 3 + pi
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -426,7 +425,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: 0.234 * 0.34
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -445,7 +444,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: round(1.234)
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -464,7 +463,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: sin(0.234)
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -483,7 +482,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: sqrt(4)
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -502,7 +501,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: 0.234 - 0.34
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -521,7 +520,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: tan(0.234)
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -540,7 +539,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: todegreess(0.234)
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -559,7 +558,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * Test case: toradians(0.234)
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */

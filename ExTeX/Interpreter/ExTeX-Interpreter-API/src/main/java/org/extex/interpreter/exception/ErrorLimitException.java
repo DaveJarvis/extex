@@ -25,17 +25,16 @@ import org.extex.core.exception.helping.HelpingException;
  * This exception s thrown when the error count exceeds the given limit.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ErrorLimitException extends HelpingException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 1L;
 
     /**
-     * The field <tt>limit</tt> contains the maximal allowed number of errors.
+     * The field {@code limit} contains the maximal allowed number of errors.
      */
     private long limit;
 
@@ -66,8 +65,8 @@ public class ErrorLimitException extends HelpingException {
     /**
      * Returns the detail message string of this throwable.
      *
-     * @return  the detail message string of this <tt>Throwable</tt> instance
-     *          (which may be <tt>null</tt>).
+     * @return  the detail message string of this {@code Throwable} instance
+     *          (which may be {@code null}).
      *
      * @see java.lang.Throwable#getMessage()
      */

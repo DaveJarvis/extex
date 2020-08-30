@@ -31,8 +31,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * @param <TYPE> the type for the parser
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface Parser<TYPE> {
 
     /**

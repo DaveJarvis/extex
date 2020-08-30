@@ -48,8 +48,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * </pre>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class MathExpression extends AbstractMath
         implements
             Theable,
@@ -57,12 +56,12 @@ public class MathExpression extends AbstractMath
             CountConvertible {
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated
+     * The field {@code localizer} contains the localizer. It is initiated
      * with a localizer for the name of this class.
      */
     private final Localizer localizer =

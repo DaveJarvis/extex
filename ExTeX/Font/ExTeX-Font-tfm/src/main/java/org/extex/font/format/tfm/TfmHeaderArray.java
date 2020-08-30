@@ -31,9 +31,10 @@ import org.extex.util.file.random.RandomAccessR;
  * header : array [0 .. (lh-1)] of stuff
  * </p>
  * 
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td>header[0]</td>
+* <td>header[0]</td>
  * <td>a 32-bit check sum</td>
  * </tr>
  * <tr>
@@ -66,8 +67,7 @@ import org.extex.util.file.random.RandomAccessR;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TfmHeaderArray implements Serializable {
 
     /**
@@ -86,14 +86,14 @@ public class TfmHeaderArray implements Serializable {
     public static final int HEADER_REST_SIZE = 18;
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 1L;
 
     /**
      * header[0]: checksum
      */
-    private int checksum;
+    private final int checksum;
 
     /**
      * header[2..11]: coding scheme
@@ -103,7 +103,7 @@ public class TfmHeaderArray implements Serializable {
     /**
      * header[1]: design size
      */
-    private TfmFixWord designsize;
+    private final TfmFixWord designsize;
 
     /**
      * header[12..16]: font family

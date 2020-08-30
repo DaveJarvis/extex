@@ -31,50 +31,44 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This is the base class for assignments. The assignments are implemented like
- * any Code with the exception that the method <tt>assign</tt> is used instead
- * of the method <tt>execute</tt>.
+ * any Code with the exception that the method {@code assign} is used instead
+ * of the method {@code execute}.
  *
  * <p>
  * This abstract class takes care of the treatment of the
- * <tt>\afterassignment</tt> token and the <tt>\globaldefs</tt> declaration.
+ * {@code \afterassignment} token and the {@code \globaldefs} declaration.
  * </p>
  *
  *
- * <doc name="globaldefs" type="register"> <h3>The Count Parameter
- * <tt>\globaldefs</tt></h3>
+ * <p>The Count Parameter {@code \globaldefs}</p>
  * <p>
- * The count register <tt>\globaldefs</tt> contains the indicator that an
+ * The count register {@code \globaldefs} contains the indicator that an
  * assignment should be performed globally. If its value is greater than zero
  * then all assignments are global. Otherwise the grouping is honored. In this
- * sense setting <tt>\globaldefs</tt> to a positive value implicitly prefixes
- * all assignments with <tt>\global</tt>.
+ * sense setting {@code \globaldefs} to a positive value implicitly prefixes
+ * all assignments with {@code \global}.
  * </p>
  *
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  *
  * <pre class="syntax">
  *    &lang;globaldefs&rang;
- *       &rarr; <tt>\globaldefs</tt> {@linkplain
- *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
- *        &lang;equals&rang;} {@linkplain
- *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
- *        &lang;number&rang;}  </pre>
+ *       &rarr; {@code \globaldefs} &lang;equals&rang; &lang;number&rang;
+ * </pre>
  *
- * <h4>Examples</h4>
+ * <p>Examples</p>
  *
  * <pre class="TeXSample">
- *    \globaldefs=1  </pre>
- *
- * </doc>
- *
+ *    \globaldefs=1
+ * </pre>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractAssignment extends AbstractCode {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2009L;
@@ -90,11 +84,11 @@ public abstract class AbstractAssignment extends AbstractCode {
     }
 
     /**
-     * The method <tt>assign</tt> is the core of the functionality of
+     * The method {@code assign} is the core of the functionality of
      * {@link #execute(Flags, Context, TokenSource, Typesetter) execute()}. This
-     * method is preferable to <tt>execute()</tt> since the <tt>execute()</tt>
-     * method provided in this class takes care of <tt>\afterassignment</tt> and
-     * <tt>\globaldefs</tt> as well.
+     * method is preferable to {@code execute()} since the {@code execute()}
+     * method provided in this class takes care of {@code \afterassignment} and
+     * {@code \globaldefs} as well.
      *
      * @param prefix the prefix controlling the execution
      * @param context the interpreter context

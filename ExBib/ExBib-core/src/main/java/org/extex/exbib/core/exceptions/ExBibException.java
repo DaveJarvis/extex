@@ -33,12 +33,11 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ExBibException extends Exception {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2008L;
@@ -109,12 +108,7 @@ public class ExBibException extends Exception {
         return l.format("Locator", loc.toString());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.exception.ConfigurationException#getLocalizedMessage()
-     */
-    @Override
+@Override
     public String getLocalizedMessage() {
 
         Throwable cause = getCause();

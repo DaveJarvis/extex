@@ -45,8 +45,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * time of expansion.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class CharCode extends AbstractCode
         implements
             ExpandableCode,
@@ -55,12 +54,12 @@ public class CharCode extends AbstractCode
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>character</tt> contains the encapsulated Unicode character.
+     * The field {@code character} contains the encapsulated Unicode character.
      */
     private UnicodeChar character;
 
@@ -77,10 +76,7 @@ public class CharCode extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, Typesetter)
+*      org.extex.interpreter.TokenSource, Typesetter)
      */
     @Override
     public long convertCount(Context context, TokenSource source,
@@ -90,10 +86,7 @@ public class CharCode extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Code#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -104,10 +97,7 @@ public class CharCode extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -134,12 +124,7 @@ public class CharCode extends AbstractCode
         return this.character;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Showable#show(org.extex.interpreter.context.Context)
-     */
-    @Override
+@Override
     public Tokens show(Context context) throws HelpingException {
 
         try {
@@ -154,10 +139,7 @@ public class CharCode extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
@@ -169,12 +151,7 @@ public class CharCode extends AbstractCode
             Integer.toString(character.getCodePoint()));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return character.toString();

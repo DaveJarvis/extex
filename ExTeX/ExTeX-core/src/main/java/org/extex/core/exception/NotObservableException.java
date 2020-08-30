@@ -24,12 +24,11 @@ package org.extex.core.exception;
  * requested to be registered.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5417 $
- */
+*/
 public class NotObservableException extends GeneralException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     private static final long serialVersionUID = 2007L;
 
@@ -81,8 +80,8 @@ public class NotObservableException extends GeneralException {
     /**
      * Returns the detail message string of this throwable.
      *
-     * @return  the detail message string of this <tt>Throwable</tt> instance
-     *          (which may be <tt>null</tt>).
+     * @return  the detail message string of this {@code Throwable} instance
+     *          (which may be {@code null}).
      *
      * @see java.lang.Throwable#getMessage()
      */

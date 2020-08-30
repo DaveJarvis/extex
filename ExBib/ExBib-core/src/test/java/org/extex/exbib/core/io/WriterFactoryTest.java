@@ -43,8 +43,7 @@ import static org.junit.Assert.*;
  * This is a test suite for a {@link WriterFactory}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class WriterFactoryTest {
 
     private static final String DIR_TARGET = "build";
@@ -56,7 +55,7 @@ public class WriterFactoryTest {
     private static class MyConfig implements Configuration {
 
         /**
-         * The field <tt>encoding</tt> contains the encoding.
+         * The field {@code encoding} contains the encoding.
          */
         private final String encoding;
 
@@ -71,10 +70,7 @@ public class WriterFactoryTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public Configuration findConfiguration(String key)
                 throws ConfigurationInvalidResourceException,
@@ -86,10 +82,7 @@ public class WriterFactoryTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(
-         *      java.lang.String, java.lang.String)
+    *      java.lang.String, java.lang.String)
          */
         public Configuration findConfiguration(String key, String attribute)
                 throws ConfigurationException {
@@ -98,10 +91,7 @@ public class WriterFactoryTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getAttribute(
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public String getAttribute(String name) {
 
@@ -112,10 +102,7 @@ public class WriterFactoryTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getConfiguration(
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public Configuration getConfiguration(String key)
                 throws ConfigurationException {
@@ -124,10 +111,7 @@ public class WriterFactoryTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getConfiguration(
-         *      java.lang.String, java.lang.String)
+    *      java.lang.String, java.lang.String)
          */
         public Configuration getConfiguration(String key, String attribute)
                 throws ConfigurationException {
@@ -135,21 +119,13 @@ public class WriterFactoryTest {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValue()
-         */
-        public String getValue() throws ConfigurationException {
+    public String getValue() throws ConfigurationException {
 
             return null;
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValue(
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public String getValue(String key) throws ConfigurationException {
 
@@ -157,10 +133,7 @@ public class WriterFactoryTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValueAsInteger(
-         *      java.lang.String, int)
+    *      java.lang.String, int)
          */
         public int getValueAsInteger(String key, int defaultValue)
                 throws ConfigurationException {
@@ -169,10 +142,7 @@ public class WriterFactoryTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValues(
-         *      java.util.List, java.lang.String)
+    *      java.util.List, java.lang.String)
          */
         public void getValues(List<String> list, String key) {
 
@@ -180,31 +150,20 @@ public class WriterFactoryTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValues(
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public List<String> getValues(String key) {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#iterator()
-         */
-        public Iterator<Configuration> iterator() throws ConfigurationException {
+    public Iterator<Configuration> iterator() throws ConfigurationException {
 
             return null;
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#iterator(
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public Iterator<Configuration> iterator(String key)
                 throws ConfigurationException {
@@ -213,10 +172,7 @@ public class WriterFactoryTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(
-         *      org.extex.framework.configuration.ConfigurationLoader)
+    *      org.extex.framework.configuration.ConfigurationLoader)
          */
         public void setConfigurationLoader(ConfigurationLoader loader) {
 
@@ -225,9 +181,8 @@ public class WriterFactoryTest {
     }
 
     /**
-     * <testcase> {@link WriterFactory#configure(Configuration)} recognizes an
-     * unsupported encoding. </testcase>
-     * 
+     * {@link WriterFactory#configure(Configuration)} recognizes an unsupported encoding
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = ConfigurationUnsupportedEncodingException.class)
@@ -237,9 +192,8 @@ public class WriterFactoryTest {
     }
 
     /**
-     * <testcase> {@link WriterFactory#newInstance()} returns a
-     * {@link NullWriter}. </testcase>
-     * 
+     * {@link WriterFactory#newInstance()} returns a {@link NullWriter}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -249,8 +203,8 @@ public class WriterFactoryTest {
     }
 
     /**
-     * <testcase> A <code>null</code> argument leads to a {@link NullWriter}.
-     * </testcase>
+     *  A {@code null} argument leads to a {@link NullWriter}.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -262,8 +216,8 @@ public class WriterFactoryTest {
     }
 
     /**
-     * <testcase> A non-<code>null</code> argument leads to some writer.
-     * </testcase>
+     *  A non-{@code null} argument leads to some writer.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -275,8 +229,8 @@ public class WriterFactoryTest {
     }
 
     /**
-     * <testcase> A <code>null</code> argument leads to an {@link NullWriter}.
-     * </testcase>
+     *  A {@code null} argument leads to an {@link NullWriter}.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -288,9 +242,8 @@ public class WriterFactoryTest {
     }
 
     /**
-     * <testcase> A non-<code>null</code> argument leads to an exception if
-     * the file can not be opened. </testcase>
-     * 
+     * A non-{@code null} argument leads to an exception if the file can not be opened
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = FileNotFoundException.class)
@@ -301,8 +254,8 @@ public class WriterFactoryTest {
     }
 
     /**
-     * <testcase> A non-<code>null</code> argument opens a file for writing.
-     * </testcase>
+     *  A non-{@code null} argument opens a file for writing.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -326,8 +279,8 @@ public class WriterFactoryTest {
     }
 
     /**
-     * <testcase> A non-<code>null</code> argument leads to some writer.
-     * </testcase>
+     *  A non-{@code null} argument leads to some writer.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -339,8 +292,8 @@ public class WriterFactoryTest {
     }
 
     /**
-     * <testcase> Two <code>null</code> writers lead to an {@link NullWriter}.
-     * </testcase>
+     *  Two {@code null} writers lead to an {@link NullWriter}.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -352,8 +305,8 @@ public class WriterFactoryTest {
     }
 
     /**
-     * <testcase> One <code>null</code> writer lead to the other writer.
-     * </testcase>
+     *  One {@code null} writer lead to the other writer.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -366,8 +319,8 @@ public class WriterFactoryTest {
     }
 
     /**
-     * <testcase> One <code>null</code> writer lead to the other writer.
-     * </testcase>
+     *  One {@code null} writer lead to the other writer.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -380,8 +333,8 @@ public class WriterFactoryTest {
     }
 
     /**
-     * <testcase> One <code>null</code> writer lead to the other writer.
-     * </testcase>
+     *  One {@code null} writer lead to the other writer.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -395,8 +348,8 @@ public class WriterFactoryTest {
     }
 
     /**
-     * <testcase> <code>null</code> is a legal value for the encoding.
-     * </testcase>
+     *  {@code null} is a legal value for the encoding.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -407,7 +360,7 @@ public class WriterFactoryTest {
     }
 
     /**
-     * <testcase> An unknown encoding leads to an Exception. </testcase>
+     *  An unknown encoding leads to an Exception.
      * 
      * @throws Exception in case of an error
      */
@@ -418,9 +371,8 @@ public class WriterFactoryTest {
     }
 
     /**
-     * <testcase> A <code>null</code> argument leads to a
-     * {@link NullPointerException}. </testcase>
-     * 
+     * A {@code null} argument leads to a {@link NullPointerException}
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = NullPointerException.class)
@@ -430,7 +382,7 @@ public class WriterFactoryTest {
     }
 
     /**
-     * <testcase> An unknown encoding leads to an Exception. </testcase>
+     *  An unknown encoding leads to an Exception.
      * 
      * @throws Exception in case of an error
      */

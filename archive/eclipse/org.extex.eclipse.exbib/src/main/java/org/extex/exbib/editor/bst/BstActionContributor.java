@@ -35,12 +35,11 @@ import org.eclipse.ui.texteditor.RetargetTextEditorAction;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class BstActionContributor extends BasicTextEditorActionContributor {
 
     /**
-     * The field <tt>contentAssist</tt> contains the ...
+     * The field {@code contentAssist} contains the ...
      */
     private RetargetTextEditorAction contentAssist;
 
@@ -58,12 +57,7 @@ public class BstActionContributor extends BasicTextEditorActionContributor {
             ITextEditorActionDefinitionIds.CONTENT_ASSIST_PROPOSALS);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.texteditor.BasicTextEditorActionContributor#contributeToMenu(org.eclipse.jface.action.IMenuManager)
-     */
-    @Override
+@Override
     public void contributeToMenu(IMenuManager menu) {
 
         super.contributeToMenu(menu);
@@ -73,12 +67,7 @@ public class BstActionContributor extends BasicTextEditorActionContributor {
             contentAssist);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.texteditor.BasicTextEditorActionContributor#setActiveEditor(org.eclipse.ui.IEditorPart)
-     */
-    @Override
+@Override
     public void setActiveEditor(IEditorPart part) {
 
         super.setActiveEditor(part);

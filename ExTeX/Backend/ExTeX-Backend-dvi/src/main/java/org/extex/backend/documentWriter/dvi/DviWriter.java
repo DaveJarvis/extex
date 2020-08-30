@@ -43,8 +43,7 @@ import org.extex.typesetter.type.node.WhatsItNode;
  * This is a implementation of a dvi document writer.
  * 
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
- * @version $Revision:4704 $
- */
+*/
 public class DviWriter {
 
     /**
@@ -256,7 +255,7 @@ public class DviWriter {
     private static final int DVI_POST_POST = 249;
 
     /**
-     * The dvi-file Version.Describe constant <code>DVI_VERSION</code> here.
+     * The dvi-file Version.Describe constant {@code DVI_VERSION} here.
      * 
      * @see "TeX -- The Program [587]"
      * 
@@ -278,7 +277,7 @@ public class DviWriter {
     private static final int DVI_ALIGN_SIZE = 4;
 
     /**
-     * The constant <tt>MINUTES_PER_HOUR</tt> contains the number of minutes
+     * The constant {@code MINUTES_PER_HOUR} contains the number of minutes
      * per hour.
      */
     private static final int MINUTES_PER_HOUR = 60;
@@ -326,7 +325,7 @@ public class DviWriter {
     private static final int DENOMINATOR_PT_TO_CM = 7227;
 
     /**
-     * Describes the unit of measurement (sp). 1sp=<code>SP_NUMERATOR</code>/{@link #SP_DENOMINATOR
+     * Describes the unit of measurement (sp). 1sp={@code SP_NUMERATOR}/{@link #SP_DENOMINATOR
      * SP_DENOMINATOR}*10^-7&nbsp;m.
      * 
      */
@@ -335,7 +334,7 @@ public class DviWriter {
 
     /**
      * Describes the unit of measurement (sp). 1sp={@link #SP_NUMERATOR
-     * SP_NUMERATOR}/<code>SP_DENOMINATOR</code>*10^-7&nbsp;m.
+     * SP_NUMERATOR}/{@code SP_DENOMINATOR}*10^-7&nbsp;m.
      * 
      * @see "TeX -- The Program [586]"
      */
@@ -435,7 +434,7 @@ public class DviWriter {
     private GeneralException error = null;
 
     /**
-     * Creates a new <code>DviWriter</code> instance.
+     * Creates a new {@code DviWriter} instance.
      * 
      * @param outputStream the dvi file is written to this stream
      * @param options options for the dvi-file
@@ -454,12 +453,12 @@ public class DviWriter {
     }
 
     /**
-     * Convert an <code>long</code> value to <code>int</code>.
+     * Convert an {@code long} value to {@code int}.
      * 
-     * @param number the <code>long</code> value
-     * @return the <code>int</code> value
-     * @exception GeneralException iff the <code>long</code> value is not in
-     *            the range of an <code>int</code> value.
+     * @param number the {@code long} value
+     * @return the {@code int} value
+     * @exception GeneralException iff the {@code long} value is not in
+     *            the range of an {@code int} value.
      */
     private int convertToInt(long number) throws GeneralException {
 
@@ -482,7 +481,7 @@ public class DviWriter {
     /**
      * Append number to buffer. If number is less 10 a 0 is inserted before.
      * 
-     * @param buffer <code>StringBuffer</code> to append
+     * @param buffer {@code StringBuffer} to append
      * @param number the value
      */
     private void appendZeroFilledToBuffer(StringBuffer buffer, long number) {
@@ -494,7 +493,7 @@ public class DviWriter {
     }
 
     /**
-     * Before any output the method <code>beginDviFile</code> have to be
+     * Before any output the method {@code beginDviFile} have to be
      * called.
      * 
      * @exception GeneralException if an error occurs
@@ -531,7 +530,7 @@ public class DviWriter {
     }
 
     /**
-     * After the output the method <code>endDviFile</code> have to be called.
+     * After the output the method {@code endDviFile} have to be called.
      * 
      * @exception GeneralException if an error occurs
      * @throws IOException ...
@@ -581,9 +580,9 @@ public class DviWriter {
     }
 
     /**
-     * <code>beginPage</code> starts a new page in the dvi file. Each page
+     * {@code beginPage} starts a new page in the dvi file. Each page
      * must be terminated with a call of
-     * <code>{@link #endPage() endPage()}</code>.
+     * {@code {@link #endPage() endPage()}}.
      * 
      * @exception GeneralException if an error occurs
      */
@@ -601,7 +600,7 @@ public class DviWriter {
     }
 
     /**
-     * <code>endPage</code> terminates the current page. The page have to be
+     * {@code endPage} terminates the current page. The page have to be
      * started with <code>{@link #beginPage()
      * beginPage()}</code>.
      * 
@@ -622,7 +621,7 @@ public class DviWriter {
     /**
      * Define a font used in the dvi file.
      * 
-     * @param font the <code>Font</code>
+     * @param font the {@code Font}
      * @exception GeneralException if an error occurs
      */
     private void defineFont(Font font) throws GeneralException {
@@ -650,9 +649,9 @@ public class DviWriter {
     }
 
     /**
-     * Select <code>Font</code> for the next CharNodes.
+     * Select {@code Font} for the next CharNodes.
      * 
-     * @param font the <code>Font</code>
+     * @param font the {@code Font}
      * @exception GeneralException if an error occurs
      */
     public void selectFont(Font font) throws GeneralException {
@@ -685,7 +684,7 @@ public class DviWriter {
     /**
      * Write a char node to the dvi file.
      * 
-     * @param node the <code>CharNode</code>
+     * @param node the {@code CharNode}
      * @exception GeneralException if an error occurs
      */
     public void writeNode(CharNode node) throws GeneralException {
@@ -711,7 +710,7 @@ public class DviWriter {
     /**
      * Write node to the dvi file.
      * 
-     * @param node a <code>RuleNode</code>
+     * @param node a {@code RuleNode}
      * @exception GeneralException if an error occurs
      * @see "TeX -- The Program [585]"
      */
@@ -730,7 +729,7 @@ public class DviWriter {
     /**
      * Write node to the dvi-file.
      * 
-     * @param node a <code>WhatsItNode</code>
+     * @param node a {@code WhatsItNode}
      * @exception GeneralException if an error occurs
      */
     public void writeNode(WhatsItNode node) throws GeneralException {
@@ -743,7 +742,7 @@ public class DviWriter {
     /**
      * Get the last error.
      * 
-     * @return <code>null</code> if there was no error, otherwise the occurred
+     * @return {@code null} if there was no error, otherwise the occurred
      *         error
      */
     public GeneralException getError() {

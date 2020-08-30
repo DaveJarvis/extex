@@ -30,48 +30,53 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\color</code>.
+ * This class provides an implementation for the primitive {@code \color}.
  * 
- * <doc name="color"> <h3>The Primitive <tt>\color</tt></h3>
+ * <p>The Primitive {@code \color}</p>
  * <p>
- * The primitive <tt>\color</tt> sets the current color value to the value
+ * The primitive {@code \color} sets the current color value to the value
  * given. The value can be any color specification for one of the supported
  * color models.
  * </p>
  * <p>
- * The color models of ??TeX use components of two bytes. This means that values from 0
+ * The color models of εχTeX use components of two bytes. This means that values from 0
  * to 65535 can be stored in each component. The external representation is a
  * floating point number in the range from 0.0 to 1.0.
  * </p>
  * <p>
- * The color models of ??TeX support an alpha channel.
+ * The color models of εχTeX support an alpha channel.
  * </p>
  * 
- * <h4>The RGB Color Model</h4>
+ * <p>The RGB Color Model</p>
+
  * <p>
  * The RGB color model provides three values for the red, green, and blue
  * channel. Each is given as floating point number from 0.0 to 1.0.
  * </p>
  * 
- * <h4>The CMYK Color Model</h4>
+ * <p>The CMYK Color Model</p>
+
  * <p>
  * The CMYK color model provides four values for cyan, magenta, yellow, and
  * black channel. Each is given as floating point number from 0.0 to 1.0.
  * </p>
  * 
- * <h4>The Grayscale Model</h4>
+ * <p>The Grayscale Model</p>
+
  * <p>
  * The gray-scale color model provides one value for the gray channel. It is
  * given as floating point number from 0.0 to 1.0.
  * </p>
  * 
- * <h4>The HSV Color Model</h4>
+ * <p>The HSV Color Model</p>
+
  * <p>
  * The HSV color model provides three values for the hue, saturation, and value
  * channel. Each is given as floating point number from 0.0 to 1.0.
  * </p>
  * 
- * <h4>The Alpha Channel</h4>
+ * <p>The Alpha Channel</p>
+
  * <p>
  * The alpha channel determines the opactivity of the color. A value of 0 means
  * that the given color completely overwrites the underlying texture. A value of
@@ -85,75 +90,70 @@ import org.extex.typesetter.exception.TypesetterException;
  * value or ignore it at all.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;color&rang;
- *      &rarr; &lang;prefix&rang; <tt>\color</tt> &lang;alpha&rang; &lang;color&rang;
+ *      &rarr; &lang;prefix&rang; {@code \color} &lang;alpha&rang; &lang;color&rang;
  *
  *    &lang;prefix&rang;
  *      &rarr;
- *       |  <tt>\global</tt>
+ *       |  {@code \global}
  *
  *    &lang;alpha&rang;
  *      &rarr;
- *       |  <tt>alpha</tt> &lang;number&rang;
+ *       |  {@code alpha} &lang;number&rang;
  *
  *    &lang;color&rang;
- *      &rarr; <tt>{</tt> &lang;color value&rang; &lang;color value&rang; &lang;color value&rang; <tt>}</tt>
- *       |  <tt>rgb</tt> <tt>{</tt> &lang;color value&rang; &lang;color value&rang; &lang;color value&rang; <tt>}</tt>
- *       |  <tt>gray</tt> <tt>{</tt> &lang;color value&rang; <tt>}</tt>
- *       |  <tt>cmyk</tt> <tt>{</tt> &lang;color value&rang; &lang;color value&rang; &lang;color value&rang; &lang;color value&rang; <tt>}</tt>
- *       |  <tt>hsv</tt> <tt>{</tt> &lang;color value&rang; &lang;color value&rang; &lang;color value&rang; <tt>}</tt>
+ *      &rarr; {@code {} &lang;color value&rang; &lang;color value&rang; &lang;color value&rang; {@code }}
+ *       |  {@code rgb} {@code {} &lang;color value&rang; &lang;color value&rang; &lang;color value&rang; {@code }}
+ *       |  {@code gray} {@code {} &lang;color value&rang; {@code }}
+ *       |  {@code cmyk} {@code {} &lang;color value&rang; &lang;color value&rang; &lang;color value&rang; &lang;color value&rang; {@code }}
+ *       |  {@code hsv} {@code {} &lang;color value&rang; &lang;color value&rang; &lang;color value&rang; {@code }}
  *       |  &lang;color convertible&rang;
  *
  *    &lang;color value&rang;
  *      &rarr; &lang;number&rang;  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \color{\r \b \g}  </pre>
  * 
- * <p>
- * </p>
- * 
+ * <br>
+*
  * <pre class="TeXSample">
  *    \color gray {\gray}  </pre>
  * 
- * <p>
- * </p>
- * 
+ * <br>
+*
  * <pre class="TeXSample">
  *    \color rgb {\r \b \g}  </pre>
  * 
- * <p>
- * </p>
- * 
+ * <br>
+*
  * <pre class="TeXSample">
  *    \color rgb {1 .2 .3333}  </pre>
  * 
- * <p>
- * </p>
- * 
+ * <br>
+*
  * <pre class="TeXSample">
  *    \color hsv {\h \s \v}  </pre>
  * 
- * <p>
- * </p>
- * 
+ * <br>
+*
  * <pre class="TeXSample">
  *    \color alpha 500 rgb {\r \b \g} </pre>
  * 
- * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ColorPrimitive extends AbstractColor {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -168,10 +168,7 @@ public class ColorPrimitive extends AbstractColor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -187,10 +184,7 @@ public class ColorPrimitive extends AbstractColor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.color.ColorConvertible#convertColor(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Color convertColor(Context context, TokenSource source,

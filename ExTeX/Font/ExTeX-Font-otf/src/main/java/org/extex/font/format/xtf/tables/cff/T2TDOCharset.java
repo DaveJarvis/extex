@@ -19,14 +19,14 @@
 
 package org.extex.font.format.xtf.tables.cff;
 
+import org.extex.font.format.xtf.tables.OtfTableCFF;
+import org.extex.util.file.random.RandomAccessR;
+import org.extex.util.xml.XMLStreamWriter;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.extex.font.format.xtf.tables.OtfTableCFF;
-import org.extex.util.file.random.RandomAccessR;
-import org.extex.util.xml.XMLStreamWriter;
 
 /**
  * Charset.
@@ -40,9 +40,10 @@ import org.extex.util.xml.XMLStreamWriter;
  * <p>
  * Format 0
  * </p>
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td><b>Type</b></td>
+* <td><b>Type</b></td>
  * <td><b>Name</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -53,7 +54,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * </tr>
  * <tr>
  * <td>SID</td>
- * <td>glyph<br/>[nGlyphs-1]</td>
+ * <td>glyph<br>[nGlyphs-1]</td>
  * <td>Glyph name array</td>
  * </tr>
  * </table>
@@ -69,7 +70,8 @@ import org.extex.util.xml.XMLStreamWriter;
  * <p>
  * Format 1
  * </p>
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
  * <td><b>Type</b></td>
  * <td><b>Name</b></td>
@@ -82,7 +84,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * </tr>
  * <tr>
  * <td>struct</td>
- * <td> Range1<br/>[varies]</td>
+ * <td> Range1<br>[varies]</td>
  * <td> Range1 array</td>
  * </tr>
  * </table>
@@ -90,7 +92,8 @@ import org.extex.util.xml.XMLStreamWriter;
  * <p>
  * Range1 Format (Charset)
  * </p>
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
  * <td><b>Type</b></td>
  * <td><b>Name</b></td>
@@ -117,7 +120,8 @@ import org.extex.util.xml.XMLStreamWriter;
  * <p>
  * Format 2
  * </p>
- * <table broder="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
  * <td><b>Type</b></td>
  * <td><b>Name</b></td>
@@ -130,7 +134,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * </tr>
  * <tr>
  * <td>struct</td>
- * <td>Range2 <br/>[varies]</td>
+ * <td>Range2 <br>[varies]</td>
  * <td>Range2 array</td>
  * </tr>
  * </table>
@@ -138,9 +142,10 @@ import org.extex.util.xml.XMLStreamWriter;
  * <p>
  * Range2 Format
  * </p>
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td><b>Type</b></td>
+* <td><b>Type</b></td>
  * <td><b>Name</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -170,9 +175,10 @@ import org.extex.util.xml.XMLStreamWriter;
  * <p>
  * Charset ID
  * </p>
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td><b>Id</b></td>
+* <td><b>Id</b></td>
  * <td><b>Name</b></td>
  * </tr>
  * <tr>
@@ -192,14 +198,13 @@ import org.extex.util.xml.XMLStreamWriter;
  * If the font has an ISOAdobe charset, the charset operator can be omitted from
  * the Top DICT since its default value is 0. Details of predefined charsets can
  * be found in Appendix�C. A font may use a predefined charset if it exactly
- * matches in the first nGlyphs. CID fonts must not use predefined charsets.<br/>
+ * matches in the first nGlyphs. CID fonts must not use predefined charsets.<br>
  * Two or more fonts may share the same charset by setting the offset operand of
  * the charset operator to the same value in each font.
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class T2TDOCharset extends T2TDONumber {
 
@@ -259,23 +264,13 @@ public class T2TDOCharset extends T2TDONumber {
         super(stack, new short[]{CFF_CHARSET});
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
-     */
-    @Override
+@Override
     public int getID() {
 
         return T2TopDICTOperator.TYPE_CHARSET;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "charset";
@@ -349,10 +344,7 @@ public class T2TDOCharset extends T2TDONumber {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#init(org.extex.util.file.random.RandomAccessR,
-     *      org.extex.font.format.xtf.tables.OtfTableCFF, int,
+*      org.extex.font.format.xtf.tables.OtfTableCFF, int,
      *      org.extex.font.format.xtf.tables.cff.CffFont)
      */
     @Override
@@ -456,10 +448,7 @@ public class T2TDOCharset extends T2TDONumber {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {

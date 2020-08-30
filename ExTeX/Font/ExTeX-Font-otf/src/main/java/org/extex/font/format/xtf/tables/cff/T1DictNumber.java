@@ -28,8 +28,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * Type 1 dict number.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public abstract class T1DictNumber extends T1DictKey {
 
     /**
@@ -54,12 +53,12 @@ public abstract class T1DictNumber extends T1DictKey {
     /**
      * bytes
      */
-    private short[] bytes;
+    private final short[] bytes;
 
     /**
      * value
      */
-    private T2Number value;
+    private final T2Number value;
 
     /**
      * {@inheritDoc}
@@ -74,7 +73,7 @@ public abstract class T1DictNumber extends T1DictKey {
 
     /**
      * Check, if the object is a integer.
-     * @return Returns <code>true</code>, if the object is a integer.
+     * @return Returns {@code true}, if the object is a integer.
      */
     @Override
     public boolean isInteger() {
@@ -84,7 +83,7 @@ public abstract class T1DictNumber extends T1DictKey {
 
     /**
      * Check, if the object is a double.
-     * @return Returns <code>true</code>, if the object is a double.
+     * @return Returns {@code true}, if the object is a double.
      */
     @Override
     public boolean isDouble() {

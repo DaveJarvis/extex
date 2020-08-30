@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\currentifbranch</tt>.
+ * This is a test suite for the primitive {@code \currentifbranch}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class CurrentifbranchTest extends AbstractReadonlyCountRegisterTester {
 
     /**
@@ -50,9 +49,9 @@ public class CurrentifbranchTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentifbranch">
-     *  Test case checking that <tt>\currentifbranch</tt> in the then branch
+     *  Test case checking that {@code \currentifbranch} in the then branch
      *  returns 1.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -67,9 +66,9 @@ public class CurrentifbranchTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentifbranch">
-     *  Test case checking that <tt>\currentifbranch</tt> in the else branch
+     *  Test case checking that {@code \currentifbranch} in the else branch
      *  returns -1.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -84,9 +83,9 @@ public class CurrentifbranchTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentifbranch">
-     *  Test case checking that <tt>\currentifbranch</tt> in the branch 0
-     *  returns 0 for <tt>\ifcase</tt>.
-     * </testcase>
+     *  Test case checking that {@code \currentifbranch} in the branch 0
+     *  returns 0 for {@code \ifcase}.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -101,9 +100,9 @@ public class CurrentifbranchTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentifbranch">
-     *  Test case checking that <tt>\currentifbranch</tt> in the branch 0
-     *  returns 0 for <tt>\ifcase</tt>.
-     * </testcase>
+     *  Test case checking that {@code \currentifbranch} in the branch 0
+     *  returns 0 for {@code \ifcase}.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -118,9 +117,9 @@ public class CurrentifbranchTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentifbranch">
-     *  Test case checking that <tt>\currentifbranch</tt> in the else branch
-     *  returns -1 for <tt>\ifcase</tt>.
-     * </testcase>
+     *  Test case checking that {@code \currentifbranch} in the else branch
+     *  returns -1 for {@code \ifcase}.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -135,9 +134,9 @@ public class CurrentifbranchTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentifbranch">
-     *  Test case checking that <tt>\currentifbranch</tt> in the else branch
-     *  returns -1 for <tt>\ifcase</tt>.
-     * </testcase>
+     *  Test case checking that {@code \currentifbranch} in the else branch
+     *  returns -1 for {@code \ifcase}.
+     *
      *
      * @throws Exception in case of an error
      */

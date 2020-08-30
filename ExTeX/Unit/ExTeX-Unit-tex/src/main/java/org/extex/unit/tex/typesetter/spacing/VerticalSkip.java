@@ -30,8 +30,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * This interface describes macros which produces a vertical glue.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public interface VerticalSkip {
 
     /**

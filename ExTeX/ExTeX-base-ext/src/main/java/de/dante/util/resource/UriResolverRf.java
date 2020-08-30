@@ -35,8 +35,7 @@ import org.extex.resource.ResourceFinder;
  * <p>Used for the TransformerFactory</p>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class UriResolverRf implements URIResolver {
 

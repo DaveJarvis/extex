@@ -28,20 +28,19 @@ import org.extex.util.file.random.RandomAccessR;
  * T2 Number: 16-bit two complement number.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class T2Number16 extends T2Number {
 
     /**
      * the bytes as short-array
      */
-    private short[] bytes;
+    private final short[] bytes;
 
     /**
      * The value.
      */
-    private int val;
+    private final int val;
 
     /**
      * Create a new object.
@@ -63,56 +62,31 @@ public class T2Number16 extends T2Number {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#getBytes()
-     */
-    @Override
+@Override
     public short[] getBytes() {
 
         return bytes;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Number#getDouble()
-     */
-    @Override
+@Override
     public double getDouble() {
 
         return val;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Number#getInteger()
-     */
-    @Override
+@Override
     public int getInteger() {
 
         return val;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#isInteger()
-     */
-    @Override
+@Override
     public boolean isInteger() {
 
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return String.valueOf(val);

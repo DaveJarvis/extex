@@ -29,8 +29,7 @@ import org.xml.sax.SAXException;
  * Resolve XML entities.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5413 $
- */
+*/
 public class ExdocEntityResolver implements EntityResolver {
 
 
@@ -39,10 +38,7 @@ public class ExdocEntityResolver implements EntityResolver {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.xml.sax.EntityResolver#resolveEntity(java.lang.String,
-     *      java.lang.String)
+*      java.lang.String)
      */
     public InputSource resolveEntity(String publicId, String systemId)
             throws SAXException,

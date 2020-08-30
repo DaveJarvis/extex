@@ -30,8 +30,7 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * CharNode.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface CharNodeBuilder {
 
     /**
@@ -45,7 +44,7 @@ public interface CharNodeBuilder {
      * @param factory the factory to acquire new nodes from
      * @param tcFactory the factor for new typesetting contexts
      * 
-     * @return the node for the character or <code>null</code> if none can be
+     * @return the node for the character or {@code null} if none can be
      *         determined
      */
     CharNode buildCharNode(UnicodeChar uc, TypesettingContext tc,

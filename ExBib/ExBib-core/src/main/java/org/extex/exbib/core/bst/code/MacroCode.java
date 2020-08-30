@@ -31,12 +31,11 @@ import org.extex.exbib.core.io.Locator;
  * execution is attached to a token embedded in this class.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MacroCode extends AbstractCode {
 
     /**
-     * The field <tt>token </tt> contains the value for the macro code.
+     * The field {@code token } contains the value for the macro code.
      */
     private Token token = null;
 

@@ -35,15 +35,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>chr.to.int$</tt>.
+ * Test suite for {@code chr.to.int$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ChrToIntTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -83,7 +82,7 @@ public class ChrToIntTest {
     }
 
     /**
-     * <testcase> The character 0 is mapped correctly. </testcase>
+     *  The character 0 is mapped correctly.
      * 
      * @throws Exception in case of an error
      */
@@ -94,7 +93,7 @@ public class ChrToIntTest {
     }
 
     /**
-     * <testcase> The character 123 is mapped correctly. </testcase>
+     *  The character 123 is mapped correctly.
      * 
      * @throws Exception in case of an error
      */
@@ -105,7 +104,7 @@ public class ChrToIntTest {
     }
 
     /**
-     * <testcase> The character 32 is mapped correctly. </testcase>
+     *  The character 32 is mapped correctly.
      * 
      * @throws Exception in case of an error
      */
@@ -116,7 +115,7 @@ public class ChrToIntTest {
     }
 
     /**
-     * <testcase> The first argument can not be a String. </testcase>
+     *  The first argument can not be a String.
      * 
      * @throws Exception in case of an error
      */
@@ -128,7 +127,7 @@ public class ChrToIntTest {
     }
 
     /**
-     * <testcase> The first argument can not be an empty String. </testcase>
+     *  The first argument can not be an empty String.
      * 
      * @throws Exception in case of an error
      */
@@ -140,7 +139,7 @@ public class ChrToIntTest {
     }
 
     /**
-     * <testcase> An empty stack leads to an error. </testcase>
+     *  An empty stack leads to an error.
      * 
      * @throws Exception in case of an error
      */

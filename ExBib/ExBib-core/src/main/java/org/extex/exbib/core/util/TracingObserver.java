@@ -30,12 +30,12 @@ import java.util.logging.Logger;
 public class TracingObserver implements Observer {
 
     /**
-     * The field <tt>prefix</tt> contains the prefix for the tracing line.
+     * The field {@code prefix} contains the prefix for the tracing line.
      */
     private final String prefix;
 
     /**
-     * The field <tt>writer</tt> contains the writer for the output produced.
+     * The field {@code writer} contains the writer for the output produced.
      */
     private final Logger logger;
 
@@ -52,10 +52,7 @@ public class TracingObserver implements Observer {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.util.Observer#update(
-     *      org.extex.exbib.core.util.Observable, java.lang.Object)
+*      org.extex.exbib.core.util.Observable, java.lang.Object)
      */
     public void update(Observable source, Object obj) {
 

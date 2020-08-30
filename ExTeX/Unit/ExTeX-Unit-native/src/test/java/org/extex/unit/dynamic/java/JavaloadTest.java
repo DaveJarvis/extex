@@ -25,15 +25,14 @@ import org.extex.test.NoFlagsPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\javaload</tt>.
+ * This is a test suite for the primitive {@code \javaload}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class JavaloadTest extends NoFlagsPrimitiveTester {
 
     /**
-     * The constant <tt>SENSOR</tt> contains the name of the sensor class.
+     * The constant {@code SENSOR} contains the name of the sensor class.
      */
     private static final String SENSOR = JavaloadSensor.class.getName();
 
@@ -46,7 +45,7 @@ public class JavaloadTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\javaload"> Test case checking that
-     * <tt>\javaload</tt> needs an argument. </testcase>
+     * {@code \javaload} needs an argument.
      * 
      * @throws Exception in case of an error
      */
@@ -62,7 +61,7 @@ public class JavaloadTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\javaload"> Test case checking that
-     * <tt>\javaload</tt> invokes the sensor class. </testcase>
+     * {@code \javaload} invokes the sensor class.
      * 
      * @throws Exception in case of an error
      */
@@ -80,7 +79,7 @@ public class JavaloadTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\javaload"> Test case checking that
-     * <tt>\javaload</tt> invokes the sensor class. </testcase>
+     * {@code \javaload} invokes the sensor class.
      * 
      * @throws Exception in case of an error
      */

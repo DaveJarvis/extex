@@ -65,8 +65,7 @@ import static org.junit.Assert.assertTrue;
  * This is the abstract base class to test a paragraph builder.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5952 $
- */
+*/
 @SuppressWarnings("RedundantThrows")
 public abstract class AbstractParagraphBuilderTester {
 
@@ -74,8 +73,7 @@ public abstract class AbstractParagraphBuilderTester {
    * Inner class for the typesetter options.
    *
    * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-   * @version $Revision:5952 $
-   */
+  */
   private static class MockOptions implements TypesetterOptions {
 
     /**
@@ -244,54 +242,54 @@ public abstract class AbstractParagraphBuilderTester {
   }
 
   /**
-   * The field <tt>pDisc</tt> contains the pattern to discover a
+   * The field {@code pDisc} contains the pattern to discover a
    * discretionary.
    */
   private static Pattern pDisc = null;
 
   /**
-   * The field <tt>pGlue</tt> contains the pattern to discover a glue.
+   * The field {@code pGlue} contains the pattern to discover a glue.
    */
   private static Pattern pGlue = null;
 
   /**
-   * The field <tt>pRule</tt> contains the pattern to discover a rule.
+   * The field {@code pRule} contains the pattern to discover a rule.
    */
   private static Pattern pRule = null;
 
   /**
-   * The field <tt>tracer</tt> contains the logger for the output.
+   * The field {@code tracer} contains the logger for the output.
    */
   private static Logger tracer = null;
 
   /**
-   * The field <tt>VPT</tt> contains the constant for 5pt.
+   * The field {@code VPT} contains the constant for 5pt.
    */
   protected static final Dimen VPT = new Dimen( Dimen.ONE * 5 );
 
   /**
-   * The field <tt>pb</tt> contains the paragraph builder to test.
+   * The field {@code pb} contains the paragraph builder to test.
    */
   private ParagraphBuilder pb;
 
   /**
-   * The field <tt>tc</tt> contains the mock typesetting context.
+   * The field {@code tc} contains the mock typesetting context.
    */
   private final TypesettingContextImpl tc =
       new TypesettingContextImpl( new Font() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the version number.
+         * The field {@code serialVersionUID} contains the version number.
          */
         private static final long serialVersionUID = 1L;
 
         /**
-         * The field <tt>hyphenChar</tt> contains the hyphen character.
+         * The field {@code hyphenChar} contains the hyphen character.
          */
         private UnicodeChar hyphenChar = UnicodeChar.get( '-' );
 
         /**
-         * The field <tt>skewChar</tt> contains the skew character.
+         * The field {@code skewChar} contains the skew character.
          */
         private UnicodeChar skewChar = null;
 
@@ -580,7 +578,7 @@ public abstract class AbstractParagraphBuilderTester {
     tc.setLanguage( new Language() {
 
       /**
-       * The field <tt>serialVersionUID</tt> contains the version number.
+       * The field {@code serialVersionUID} contains the version number.
        */
       private static final long serialVersionUID = 1L;
 
@@ -793,7 +791,7 @@ public abstract class AbstractParagraphBuilderTester {
   }
 
   /**
-   * <testcase> Test case checking that ... </testcase>
+   *  Test case checking that ...
    *
    * @throws Exception in case of an error
    */
@@ -820,7 +818,7 @@ public abstract class AbstractParagraphBuilderTester {
   }
 
   /**
-   * <testcase> Test case checking that ... </testcase>
+   *  Test case checking that ...
    *
    * @throws Exception in case of an error
    */
@@ -848,7 +846,7 @@ public abstract class AbstractParagraphBuilderTester {
   }
 
   /**
-   * <testcase> Test case checking that ... </testcase>
+   *  Test case checking that ...
    *
    * @throws Exception in case of an error
    */
@@ -900,7 +898,7 @@ public abstract class AbstractParagraphBuilderTester {
   }
 
   /**
-   * <testcase> Test case checking that ... </testcase>
+   *  Test case checking that ...
    *
    * @throws Exception in case of an error
    */
@@ -922,7 +920,7 @@ public abstract class AbstractParagraphBuilderTester {
   }
 
   /**
-   * <testcase> Test case checking that ... </testcase>
+   *  Test case checking that ...
    *
    * @throws Exception in case of an error
    */
@@ -947,8 +945,8 @@ public abstract class AbstractParagraphBuilderTester {
   }
 
   /**
-   * <testcase> Test case checking that discretionary without content may be
-   * contained in the non-broken text. </testcase>
+   *  Test case checking that discretionary without content may be
+   * contained in the non-broken text.
    *
    * @throws Exception in case of an error
    */
@@ -985,8 +983,8 @@ public abstract class AbstractParagraphBuilderTester {
   }
 
   /**
-   * <testcase> Test case checking that discretionary without content may be
-   * contained in the non-broken text. </testcase>
+   *  Test case checking that discretionary without content may be
+   * contained in the non-broken text.
    *
    * @throws Exception in case of an error
    */
@@ -1014,8 +1012,8 @@ public abstract class AbstractParagraphBuilderTester {
   }
 
   /**
-   * <testcase> Test case checking that the empty list is treated correctly.
-   * </testcase>
+   *  Test case checking that the empty list is treated correctly.
+   *
    *
    * @throws Exception in case of an error
    */
@@ -1033,7 +1031,7 @@ public abstract class AbstractParagraphBuilderTester {
    * written to the console. This method is meant to be overwritten by derived
    * classes to change the default behavior.
    *
-   * @return <code>true</code> iff the tracing is requested
+   * @return {@code true} iff the tracing is requested
    */
   protected boolean traceonline() {
 

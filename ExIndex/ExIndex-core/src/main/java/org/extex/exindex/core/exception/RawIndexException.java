@@ -27,18 +27,17 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This exception signals that an unknown argument has been encountered.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class RawIndexException extends LException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2008L;
 
     /**
-     * The field <tt>locator</tt> contains the name and line number of the
+     * The field {@code locator} contains the name and line number of the
      * resource.
      */
     private final ResourceLocator locator;
@@ -55,12 +54,7 @@ public class RawIndexException extends LException {
         this.locator = locator;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Throwable#getLocalizedMessage()
-     */
-    @Override
+@Override
     public String getLocalizedMessage() {
 
         String message = getMessage();

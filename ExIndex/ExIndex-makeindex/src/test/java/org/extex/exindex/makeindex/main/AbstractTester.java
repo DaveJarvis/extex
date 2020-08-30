@@ -38,12 +38,11 @@ import java.io.Writer;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * 
- * @version $Revision$
- */
+*/
 public abstract class AbstractTester {
 
     /**
-     * The field <tt>BANNER</tt> contains the expected banner.
+     * The field {@code BANNER} contains the expected banner.
      */
     protected final String BANNER =
             "This is exindex version " + Makeindex.VERSION + " (revision "

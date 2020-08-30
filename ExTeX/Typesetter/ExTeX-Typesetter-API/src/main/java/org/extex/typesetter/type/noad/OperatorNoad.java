@@ -34,12 +34,11 @@ import org.extex.typesetter.type.noad.util.MathSpacing;
  * @see "TTP [682]"
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class OperatorNoad extends AbstractNucleusNoad implements SimpleNoad {
 
     /**
-     * The field <tt>limits</tt> contains the indicator for limits. This can
+     * The field {@code limits} contains the indicator for limits. This can
      * either be unset or it can have the value TRUE for \limits and FALSE for
      * \nolimits.
      */

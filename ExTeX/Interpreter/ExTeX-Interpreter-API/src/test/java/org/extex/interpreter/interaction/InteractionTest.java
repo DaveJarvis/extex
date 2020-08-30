@@ -32,8 +32,7 @@ import static org.junit.Assert.*;
  * Test suite for the interaction constants.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class InteractionTest {
 
     /**
@@ -44,7 +43,7 @@ public class InteractionTest {
                 InteractionVisitor<Object, Object, Object> {
 
         /**
-         * The field <tt>mode</tt> contains the interaction mode encountered
+         * The field {@code mode} contains the interaction mode encountered
          * last.
          */
         private Interaction mode = null;

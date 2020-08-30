@@ -31,7 +31,7 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X built-in function <code>warning$</code>
+ * >e</span>X built-in function {@code warning$}
  * <p>
  * This function pops a string from the stack and prints it as a warning to the
  * log stream. The message is terminated by a newline character. The line in the
@@ -41,45 +41,37 @@ import org.extex.framework.i18n.LocalizerFactory;
  * An empty stack leads to an error as well as a wrong type argument on the
  * stack.
  * </p>
- * <img src="doc-files/warning.png"/>
+ * <img src="doc-files/warning.png" alt="warning">
  * <p>
- * The following example is taken from <tt>alpha.bst</tt>:
+ * The following example is taken from {@code alpha.bst}:
  * </p>
  * 
  * <pre>
  *   "there's a number but no series in " cite$ * warning$ 
  * </pre>
  * 
- * <hr />
+ * <hr>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X documentation:
- * <dt>
+ * <dt>BibTeX documentation</dt>
  * <dd>Pops the top (string) literal and prints it following a warning message.
  * This also increments a count of the number of warning messages issued.</dd>
  * </dl>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X web documentation:</dt>
- * <dd>The <code>built_in</code> function <code>warning$</code> pops the top
+ * <dt>BibTeX web documentation:</dt>
+ * <dd>The {@code built_in} function {@code warning$} pops the top
  * (string) literal and prints it following a warning message. This is
- * implemented as a special <code>built_in</code> function rather than using the
- * <code>top$</code> function so that it can <code>mark_warning</code>.</dd>
+ * implemented as a special {@code built_in} function rather than using the
+ * {@code top$} function so that it can {@code mark_warning}.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Warning extends AbstractCode {
 
     /**
-     * The field <tt>localizer</tt> contains the cached localizer.
+     * The field {@code localizer} contains the cached localizer.
      */
     private transient Localizer localizer = null;
 
@@ -101,10 +93,7 @@ public class Warning extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {

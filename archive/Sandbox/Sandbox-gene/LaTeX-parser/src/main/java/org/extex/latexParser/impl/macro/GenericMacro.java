@@ -33,12 +33,11 @@ import org.extex.scanner.type.token.Token;
  * This class represents a generic macro.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class GenericMacro implements Macro {
 
     /**
-     * The field <tt>spec</tt> contains the specification for parsing of
+     * The field {@code spec} contains the specification for parsing of
      * arguments.
      */
     private String spec;
@@ -54,12 +53,7 @@ public class GenericMacro implements Macro {
         this.spec = spec;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Macro#parse( Token, Parser)
-     */
-    public Node parse(Token token, Parser parser) throws ScannerException {
+public Node parse(Token token, Parser parser) throws ScannerException {
 
         if (spec == null || "".equals(spec)) {
             return new MacroNode(token, null, new Node[]{}, parser.getSource(),

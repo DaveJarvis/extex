@@ -23,11 +23,10 @@ import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\sfcode</tt>.
+ * This is a test suite for the primitive {@code \sfcode}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Sfcode2Test extends NoFlagsButGlobalPrimitiveTester {
 
     /**

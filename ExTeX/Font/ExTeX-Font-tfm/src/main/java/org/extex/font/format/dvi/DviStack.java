@@ -25,15 +25,14 @@ import java.util.Stack;
  * DVI stack.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class DviStack {
 
     /**
      * The stack.
      */
-    private Stack<DviValues> stack;
+    private final Stack<DviValues> stack;
 
     /**
      * Create a new object
@@ -55,7 +54,7 @@ public class DviStack {
     /**
      * Tests if this stack is empty.
      * 
-     * @return Returns <code>true</code>, if this stack is empty.
+     * @return Returns {@code true}, if this stack is empty.
      */
     public boolean empty() {
 
@@ -63,10 +62,10 @@ public class DviStack {
     }
 
     /**
-     * Removes the <code>DVIValues</code> at the top of this stack and returns
+     * Removes the {@code DVIValues} at the top of this stack and returns
      * that object as the value of this function.
      * 
-     * @return Returns the <code>DVIValues</code> at the top of this stack.
+     * @return Returns the {@code DVIValues} at the top of this stack.
      */
     public DviValues pop() {
 

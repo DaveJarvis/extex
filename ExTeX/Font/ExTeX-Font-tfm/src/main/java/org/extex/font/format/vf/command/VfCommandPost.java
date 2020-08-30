@@ -30,8 +30,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * VfCommand: post
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class VfCommandPost extends VfCommand {
 
@@ -55,12 +54,7 @@ public class VfCommandPost extends VfCommand {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("post");
         writer.writeAttribute("opcode", getCommandCode());

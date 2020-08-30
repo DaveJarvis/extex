@@ -27,8 +27,7 @@ import org.extex.exbib.core.bst.token.impl.TString;
  * constant tokens can be received from the factory.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class TokenFactory {
 
     /* Poor man's symbol table: created once, used often */

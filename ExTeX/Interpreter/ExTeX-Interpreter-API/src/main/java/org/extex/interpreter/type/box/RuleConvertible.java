@@ -33,8 +33,7 @@ import org.extex.typesetter.type.node.RuleNode;
  * the typesetter.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4399 $
- */
+*/
 public interface RuleConvertible extends BoxOrRule {
 
     /**

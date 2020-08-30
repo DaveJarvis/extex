@@ -29,38 +29,37 @@ import org.extex.core.exception.GeneralException;
  * channel.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4446 $
- */
+*/
 public class RgbColor implements Color {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 1L;
 
     /**
-     * The field <tt>red</tt> contains the red value of the color.
+     * The field {@code red} contains the red value of the color.
      * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
      */
-    private int red;
+    private final int red;
 
     /**
-     * The field <tt>green</tt> contains the green value of the color.
+     * The field {@code green} contains the green value of the color.
      * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
      */
-    private int green;
+    private final int green;
 
     /**
-     * The field <tt>blue</tt> contains the blue value of the color.
+     * The field {@code blue} contains the blue value of the color.
      * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
      */
-    private int blue;
+    private final int blue;
 
     /**
-     * The field <tt>alpha</tt> contains the alpha channel of the color.
+     * The field {@code alpha} contains the alpha channel of the color.
      * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
      */
-    private int alpha;
+    private final int alpha;
 
     /**
      * Creates a new object.
@@ -83,8 +82,8 @@ public class RgbColor implements Color {
      * Indicates whether some other object is "equal to" this one.
      *
      * @param   obj   the reference object with which to compare.
-     * @return  <code>true</code> if this object is the same as the obj
-     *          argument; <code>false</code> otherwise.
+     * @return  {@code true} if this object is the same as the obj
+     *          argument; {@code false} otherwise.
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */

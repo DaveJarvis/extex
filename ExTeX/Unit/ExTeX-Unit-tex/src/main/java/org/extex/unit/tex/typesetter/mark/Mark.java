@@ -25,14 +25,13 @@ import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 
 /**
- * This class provides an implementation for the primitive <code>\mark</code>.
+ * This class provides an implementation for the primitive {@code \mark}.
  * 
- * <doc name="mark">
- * <h3>The Primitive <tt>\mark</tt></h3>
+ * <p>The Primitive {@code \mark}</p>
  * <p>
- * The primitive <tt>\mark</tt> places its argument as a mark node on the
+ * The primitive {@code \mark} places its argument as a mark node on the
  * current node list. The argument is expanded during this operation as in
- * {@link org.extex.unit.tex.macro.Edef <tt>\edef</tt>}.
+ * {@link org.extex.unit.tex.macro.Edef {@code \edef}}.
  * </p>
  * <p>
  * The tokens are stored in the current node list. They are not affected by
@@ -40,79 +39,80 @@ import org.extex.typesetter.Typesetter;
  * </p>
  * <p>
  * Suppose we have several pages. Page 1 contains no mark. Page 2 contains the
- * marks <tt>a</tt> and <tt>b</tt>. Page 3 does not contain any marks. Page
- * 4 contains the mark <tt>c</tt> and page 5 does not contain any marks. The
+ * marks {@code a} and {@code b}. Page 3 does not contain any marks. Page
+ * 4 contains the mark {@code c} and page 5 does not contain any marks. The
  * marks and the expansion text of the primitives
- * {@link org.extex.unit.tex.typesetter.mark.Topmark <tt>\topmark</tt>},
- * {@link org.extex.unit.tex.typesetter.mark.Firstmark <tt>\firstmark</tt>},
- * and {@link org.extex.unit.tex.typesetter.mark.Botmark <tt>\botmark</tt>} are
+ * {@link org.extex.unit.tex.typesetter.mark.Topmark {@code \topmark}},
+ * {@link org.extex.unit.tex.typesetter.mark.Firstmark {@code \firstmark}},
+ * and {@link org.extex.unit.tex.typesetter.mark.Botmark {@code \botmark}} are
  * shown in the table below.
  * </p>
- * <table format="ccccccc">
+* <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td align="center"></td>
- * <td align="center">on page 1</td>
- * <td align="center">on page 2</td>
- * <td align="center">on page 3</td>
- * <td align="center">on page 4</td>
- * <td align="center">on page 5</td>
+* <td></td>
+ * <td>on page 1</td>
+ * <td>on page 2</td>
+ * <td>on page 3</td>
+ * <td>on page 4</td>
+ * <td>on page 5</td>
  * </tr>
  * <tr>
  * <td>marks</td>
- * <td align="center"></td>
- * <td align="center"><tt>\mark{a}</tt><br/><tt>\mark{b}</tt></td>
- * <td align="center"></td>
- * <td align="center"><tt>\mark{c}</tt></td>
- * <td align="center"></td>
+ * <td></td>
+ * <td>{@code \mark{a}}<br>{@code \mark{b}}</td>
+ * <td></td>
+ * <td>{@code \mark{c}}</td>
+ * <td></td>
  * </tr>
  * <tr>
- * <td><tt>\topmark</tt></td>
- * <td align="center"></td>
- * <td align="center">a</td>
- * <td align="center">b</td>
- * <td align="center">b</td>
- * <td align="center">c</td>
+ * <td>{@code \topmark}</td>
+ * <td></td>
+ * <td>a</td>
+ * <td>b</td>
+ * <td>b</td>
+ * <td>c</td>
  * </tr>
  * <tr>
- * <td><tt>\firstmark</tt></td>
- * <td align="center"></td>
- * <td align="center">a</td>
- * <td align="center">b</td>
- * <td align="center">c</td>
- * <td align="center">c</td>
+ * <td>{@code \firstmark}</td>
+ * <td></td>
+ * <td>a</td>
+ * <td>b</td>
+ * <td>c</td>
+ * <td>c</td>
  * </tr>
  * <tr>
- * <td><tt>\botmark</tt></td>
- * <td align="center"></td>
- * <td align="center">b</td>
- * <td align="center">b</td>
- * <td align="center">c</td>
- * <td align="center">c</td>
+ * <td>{@code \botmark}</td>
+ * <td></td>
+ * <td>b</td>
+ * <td>b</td>
+ * <td>c</td>
+ * <td>c</td>
  * </tr>
  * </table>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;mark&rang;
- *      &rarr; <tt>\mark</tt> &lang;expanded tokens&rang;  </pre>
+ *      &rarr; {@code \mark} &lang;expanded tokens&rang;  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \mark{abc}  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Mark extends Marks {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;

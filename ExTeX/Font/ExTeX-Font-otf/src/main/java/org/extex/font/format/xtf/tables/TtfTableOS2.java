@@ -30,7 +30,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * The 'OS/2' table consists of a set of metrics that are required by OS/2 and
  * Windows. It is not used by the Mac OS.
  * 
- * <table BORDER="1"> <tbody>
+ *  <table> <caption>TBD</caption> <tbody>
  * <tr>
  * <td><b>Type</b></td>
  * <td><b>Name of Entry</b></td>
@@ -130,7 +130,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td> Field is split into two bit fields of 96 and 36 bits each. The low 96
  * bits are used to specify the Unicode blocks encompassed by the font file. The
  * high 32 bits are used to specify the character or script sets covered by the
- * font file. Bit assignments are pending. Set to 0<br/> Bits 0&ndash;31</td>
+ * font file. Bit assignments are pending. Set to 0<br> Bits 0&ndash;31</td>
  * </tr>
  * <tr>
  * <td>ULONG</td>
@@ -206,8 +206,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TtfTableOS2 extends AbstractXtfTable
         implements
             XtfTable,
@@ -607,10 +606,7 @@ public class TtfTableOS2 extends AbstractXtfTable
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-         *      org.extex.util.xml.XMLStreamWriter)
+    *      org.extex.util.xml.XMLStreamWriter)
          */
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
@@ -927,12 +923,7 @@ public class TtfTableOS2 extends AbstractXtfTable
         return sFamilyClass;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
+public String getShortcut() {
 
         return "os2";
     }
@@ -1218,10 +1209,7 @@ public class TtfTableOS2 extends AbstractXtfTable
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

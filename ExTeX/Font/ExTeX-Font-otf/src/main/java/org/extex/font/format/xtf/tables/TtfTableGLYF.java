@@ -19,14 +19,14 @@
 
 package org.extex.font.format.xtf.tables;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.util.Vector;
-
 import org.extex.font.format.xtf.XtfReader;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.util.Vector;
 
 /**
  * The 'glyf' table contains the data that defines the appearance of the glyphs
@@ -35,7 +35,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * glyph. The 'glyf' table supports the definition of simple glyphs and compound
  * glyphs, that is, glyphs that are made up of other glyphs.
  * 
- * <table BORDER="1"> <tbody>
+ * <table> <caption>TBD</caption> <tbody>
  * <tr>
  * <td><b>Type</b></td>
  * <td><b>Name</b></td>
@@ -71,8 +71,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TtfTableGLYF extends AbstractXtfTable
         implements
             XtfTable,
@@ -438,7 +437,7 @@ public class TtfTableGLYF extends AbstractXtfTable
      * offset entries and from one to four transformation entries.
      * </p>
      * 
-     * <table border="1"> <tbody>
+     *  <table> <caption>TBD</caption> <tbody>
      * <tr>
      * <th>Type</th>
      * <th>Name</th>
@@ -477,7 +476,7 @@ public class TtfTableGLYF extends AbstractXtfTable
      * Component flags
      * </p>
      * 
-     * <table border="1"> <tbody>
+     *  <table> <caption>TBD</caption> <tbody>
      * <tr>
      * <th>Flags</th>
      * <th>Bit</th>
@@ -649,12 +648,7 @@ public class TtfTableGLYF extends AbstractXtfTable
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.TtfTableGLYF.Descript#getContourCount()
-         */
-        @Override
+    @Override
         public int getContourCount() {
 
             CompositeComp c = components.elementAt(components.size() - 1);
@@ -663,12 +657,7 @@ public class TtfTableGLYF extends AbstractXtfTable
                         .getContourCount();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.TtfTableGLYF.Descript#getEndPtOfContours(int)
-         */
-        @Override
+    @Override
         public int getEndPtOfContours(int i) {
 
             CompositeComp c = getCompositeCompEndPt(i);
@@ -680,12 +669,7 @@ public class TtfTableGLYF extends AbstractXtfTable
             return 0;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.TtfTableGLYF.Descript#getFlags(int)
-         */
-        @Override
+    @Override
         public byte getFlags(int i) {
 
             CompositeComp c = getCompositeComp(i);
@@ -696,12 +680,7 @@ public class TtfTableGLYF extends AbstractXtfTable
             return 0;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.TtfTableGLYF.Descript#getPointCount()
-         */
-        @Override
+    @Override
         public int getPointCount() {
 
             CompositeComp c = components.elementAt(components.size() - 1);
@@ -710,12 +689,7 @@ public class TtfTableGLYF extends AbstractXtfTable
                         .getPointCount();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.TtfTableGLYF.Descript#getXCoordinate(int)
-         */
-        @Override
+    @Override
         public short getXCoordinate(int i) {
 
             CompositeComp c = getCompositeComp(i);
@@ -731,12 +705,7 @@ public class TtfTableGLYF extends AbstractXtfTable
             return 0;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.TtfTableGLYF.Descript#getYCoordinate(int)
-         */
-        @Override
+    @Override
         public short getYCoordinate(int i) {
 
             CompositeComp c = getCompositeComp(i);
@@ -752,11 +721,6 @@ public class TtfTableGLYF extends AbstractXtfTable
             return 0;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.TtfTableGLYF.Descript#isComposite()
-         */
         @Override
         public boolean isComposite() {
 
@@ -766,8 +730,8 @@ public class TtfTableGLYF extends AbstractXtfTable
 
     /**
      * Simple Glyph Description.
-     * 
-     * <table BORDER="1"> <tbody>
+     *
+     * <table> <caption>TBD</caption> <tbody>
      * <tr>
      * <td><b>Type</b></td>
      * <td><b>Name</b></td>
@@ -776,9 +740,8 @@ public class TtfTableGLYF extends AbstractXtfTable
      * </tbody>
      * <tr>
      * <td>USHORT</td>
-     * <td>endPtsOfContours[<I>n</I>]</td>
-     * </td>
-     * Array of last points of each contour; <I>n</I> is the number of
+     * <td>endPtsOfContours[<i>n</i>]</td>
+     * <td>Array of last points of each contour; <i>n</i> is the number of
      * contours.</td>
      * </tr>
      * <tr>
@@ -788,14 +751,14 @@ public class TtfTableGLYF extends AbstractXtfTable
      * </tr>
      * <tr>
      * <td>BYTE</td>
-     * <td>instructions[<I>n</I>]</td>
-     * <td> Array of instructions for each glyph; <I>n </I>is the number of
+     * <td>instructions[<i>n</i>]</td>
+     * <td> Array of instructions for each glyph; <i>n</i> is the number of
      * instructions.</td>
      * </tr>
      * <tr>
      * <td>BYTE</td>
-     * <td>flags[<I>n</I>]</td>
-     * <td> Array of flags for each coordinate in outline; <I>n</I> is the
+     * <td>flags[<i>n</i>]</td>
+     * <td> Array of flags for each coordinate in outline; <i>n</i> is the
      * number of flags.</td>
      * </tr>
      * <tr>
@@ -811,12 +774,12 @@ public class TtfTableGLYF extends AbstractXtfTable
      * point.</td>
      * </tr>
      * </table>
-     * 
+     *
      * <p>
      * Each flag is a single byte. Their meanings are shown below.
      * </p>
-     * 
-     * <table BORDER="1"> <tbody>
+     *
+     *  <table> <caption>TBD</caption> <tbody>
      * <tr>
      * <td><b>Flags</b></td>
      * <td><b>Bit </b></td>
@@ -826,7 +789,8 @@ public class TtfTableGLYF extends AbstractXtfTable
      * <tr>
      * <td>On Curve</td>
      * <td>0</td>
-     * <td> If set, the point is on the curve; otherwise, it is off the curve.</td>
+     * <td> If set, the point is on the curve; otherwise, it is off the curve
+     * .</td>
      * </tr>
      * <tr>
      * <td>x-Short Vector</td>
@@ -855,7 +819,7 @@ public class TtfTableGLYF extends AbstractXtfTable
      * same as the previous x-coordinate. If the x-Short Vector bit is not set
      * and this bit is also not set, the current x-coordinate is a signed 16-bit
      * delta vector.</td>
-     * /tr>
+     * </tr>
      * <tr>
      * <td>This y is same (Positive y-Short Vector)</td>
      * <td>5</td>
@@ -1108,10 +1072,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-         *      org.extex.util.xml.XMLStreamWriter)
+    *      org.extex.util.xml.XMLStreamWriter)
          */
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
@@ -1138,7 +1099,7 @@ public class TtfTableGLYF extends AbstractXtfTable
      * href="http://developer.apple.com/fonts/TTRefMan/RM01/Chap1.html">
      * Digitizing Letterform Designs</a>.
      * </p>
-     * <table border="1"> <tbody>
+     *  <table> <caption>TBD</caption> <tbody>
      * <tr>
      * <td>Type</td>
      * <td>Name</td>
@@ -1185,7 +1146,7 @@ public class TtfTableGLYF extends AbstractXtfTable
      * with each bit in that byte are given in Table 16 below.
      * </p>
      * 
-     * <table border="1"> <tbody>
+     *  <table> <caption>TBD</caption> <tbody>
      * <tr>
      * <td>Flags</td>
      * <td>Bit (0 is lsb)</td>
@@ -1238,7 +1199,7 @@ public class TtfTableGLYF extends AbstractXtfTable
      * If the y-Short Vector bit is set, this bit describes the sign of the
      * value, with a value of 1 equalling positive and a zero value negative.<br>
      * If the y-short Vector bit is not set, and this bit is set, then the
-     * current y-coordinate is the same as the previous y-coordinate.<br If the
+     * current y-coordinate is the same as the previous y-coordinate.<br> If the
      * y-short Vector bit is not set, and this bit is not set, the current
      * y-coordinate is a signed 16-bit delta vector. In this case, the delta
      * vector is the change in y</td>
@@ -1308,78 +1269,43 @@ public class TtfTableGLYF extends AbstractXtfTable
             readCoords(count, bais);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.TtfTableGLYF.Descript#getContourCount()
-         */
-        @Override
+    @Override
         public int getContourCount() {
 
             return getNumberOfContours();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.TtfTableGLYF.Descript#getEndPtOfContours(int)
-         */
-        @Override
+    @Override
         public int getEndPtOfContours(int i) {
 
             return endPtsOfContours[i];
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.TtfTableGLYF.Descript#getFlags(int)
-         */
-        @Override
+    @Override
         public byte getFlags(int i) {
 
             return flags[i];
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.TtfTableGLYF.Descript#getPointCount()
-         */
-        @Override
+    @Override
         public int getPointCount() {
 
             return count;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.TtfTableGLYF.Descript#getXCoordinate(int)
-         */
-        @Override
+    @Override
         public short getXCoordinate(int i) {
 
             return xCoordinates[i];
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.TtfTableGLYF.Descript#getYCoordinate(int)
-         */
-        @Override
+    @Override
         public short getYCoordinate(int i) {
 
             return yCoordinates[i];
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.TtfTableGLYF.Descript#isComposite()
-         */
-        @Override
+    @Override
         public boolean isComposite() {
 
             return false;
@@ -1496,12 +1422,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         return descript[i];
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.AbstractXtfTable#getInitOrder()
-     */
-    @Override
+@Override
     public int getInitOrder() {
 
         return 2;
@@ -1512,12 +1433,7 @@ public class TtfTableGLYF extends AbstractXtfTable
     // ------------------------------------------------
     // ------------------------------------------------
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
+public String getShortcut() {
 
         return "glyf";
     }
@@ -1532,12 +1448,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         return XtfReader.GLYF;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.AbstractXtfTable#init()
-     */
-    @Override
+@Override
     public void init() {
 
         TtfTableLOCA loca = (TtfTableLOCA) getTableMap().get(XtfReader.LOCA);
@@ -1574,12 +1485,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         buf = null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writeStartElement(writer);
         for (int i = 0; i < descript.length; i++) {

@@ -45,25 +45,25 @@ import org.extex.unit.tex.table.util.HAlignListMaker;
 import org.extex.unit.tex.table.util.PreambleItem;
 
 /**
- * This class provides an implementation for the primitive <code>\halign</code>.
+ * This class provides an implementation for the primitive {@code \halign}.
  * 
- * <doc name="halign">
- * <h3>The Primitive <tt>\halign</tt></h3>
+ * <p>The Primitive {@code \halign}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;halign&rang;
- *       &rarr; <tt>\halign</tt> &lang;box specification&rang; <tt>{</tt> &lang;preamble&rang; <tt>\cr</tt> &lang;rows&rang; <tt>}</tt>
+ *       &rarr; {@code \halign} &lang;box specification&rang; {@code {} &lang;preamble&rang; {@code \cr} &lang;rows&rang; {@code }}
  *
  *    &lang;box specification&rang;
  *        &rarr;
- *         | <tt>to</tt> &lang;rule dimension&rang;
- *         | <tt>spread</tt> &lang;rule dimension&rang;
+ *         | {@code to} &lang;rule dimension&rang;
+ *         | {@code spread} &lang;rule dimension&rang;
  *
  *    &lang;rows&rang;
  *       &rarr;
@@ -72,20 +72,19 @@ import org.extex.unit.tex.table.util.PreambleItem;
  *    &lang;preamble&rang;
  *       &rarr; ...   </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \halign  </pre>
  * 
- * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Halign extends AbstractAlign implements Boxable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -101,10 +100,7 @@ public class Halign extends AbstractAlign implements Boxable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -121,10 +117,7 @@ public class Halign extends AbstractAlign implements Boxable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.register.box.BoxPrimitive#getBox(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */

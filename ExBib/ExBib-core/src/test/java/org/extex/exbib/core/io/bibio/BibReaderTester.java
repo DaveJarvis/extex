@@ -52,8 +52,7 @@ import org.junit.Test;
  * This is an abstract base class for {@link BibReader}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class BibReaderTester {
 
     /**
@@ -73,113 +72,58 @@ public abstract class BibReaderTester {
      */
     protected class TestDB implements DB {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.db.DB#getEntries()
-         */
-        public List<Entry> getEntries() {
+    public List<Entry> getEntries() {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.db.DB#getEntry(java.lang.String)
-         */
-        public Entry getEntry(String key) {
+    public Entry getEntry(String key) {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.db.DB#getExpandedMacro(java.lang.String)
-         */
-        public String getExpandedMacro(String key) {
+    public String getExpandedMacro(String key) {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.db.DB#getMacro(java.lang.String)
-         */
-        public Value getMacro(String name) {
+    public Value getMacro(String name) {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.db.DB#getMacroNames()
-         */
-        public List<String> getMacroNames() {
+    public List<String> getMacroNames() {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.db.DB#getMinCrossrefs()
-         */
-        public int getMinCrossrefs() {
+    public int getMinCrossrefs() {
 
             return 0;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.db.DB#getPreamble()
-         */
-        public Value getPreamble() {
+    public Value getPreamble() {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.db.DB#getPreambleExpanded()
-         */
-        public String getPreambleExpanded() {
+    public String getPreambleExpanded() {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.db.DB#getSorter()
-         */
-        public Sorter getSorter() {
+    public Sorter getSorter() {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Iterable#iterator()
-         */
-        public Iterator<Entry> iterator() {
+    public Iterator<Entry> iterator() {
 
             assertTrue("unexpected iterator()", false);
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.db.DB#load(java.lang.String, java.util.Map)
-         */
-        public List<String> load(String file, Map<String, String> citation)
+    public List<String> load(String file, Map<String, String> citation)
                 throws ExBibException,
                     ConfigurationException,
                     FileNotFoundException {
@@ -189,10 +133,7 @@ public abstract class BibReaderTester {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.db.DB#makeEntry(java.lang.String,
-         *      java.lang.String, org.extex.exbib.core.io.Locator)
+    *      java.lang.String, org.extex.exbib.core.io.Locator)
          */
         public Entry makeEntry(String type, String key, Locator locator) {
 
@@ -201,10 +142,7 @@ public abstract class BibReaderTester {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.db.DB#registerObserver(java.lang.String,
-         *      org.extex.exbib.core.util.Observer)
+    *      org.extex.exbib.core.util.Observer)
          */
         public void registerObserver(String name, Observer observer)
                 throws NotObservableException {
@@ -212,51 +150,28 @@ public abstract class BibReaderTester {
             assertTrue("unexpected registerObserver()", false);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.db.DB#setBibReaderFactory(org.extex.exbib.core.io.bibio.BibReaderFactory)
-         */
-        public void setBibReaderFactory(BibReaderFactory factory) {
+    public void setBibReaderFactory(BibReaderFactory factory) {
 
             assertTrue("unexpected setBibReaderFactory()", false);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.db.DB#setMinCrossrefs(int)
-         */
-        public void setMinCrossrefs(int minCrossref) {
+    public void setMinCrossrefs(int minCrossref) {
 
             assertTrue("unexpected setMinCrossrefs()", false);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.db.DB#setSorter(org.extex.exbib.core.db.sorter.Sorter)
-         */
-        public void setSorter(Sorter sorter) {
+    public void setSorter(Sorter sorter) {
 
             assertTrue("unexpected setSorter()", false);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.db.DB#sort()
-         */
-        public void sort() throws ConfigurationException {
+    public void sort() throws ConfigurationException {
 
             assertTrue("unexpected sort()", false);
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.db.DB#storeAlias(java.lang.String,
-         *      java.lang.String, org.extex.exbib.core.io.Locator)
+    *      java.lang.String, org.extex.exbib.core.io.Locator)
          */
         public void storeAlias(String alias, String key, Locator locator)
                 throws ExBibEntryUndefinedException {
@@ -264,31 +179,18 @@ public abstract class BibReaderTester {
             assertTrue("unexpected storeAlias()", false);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.db.DB#storeComment(java.lang.String)
-         */
-        public void storeComment(String comment) {
+    public void storeComment(String comment) {
 
             
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.db.DB#storePreamble(org.extex.exbib.core.db.Value)
-         */
-        public void storePreamble(Value pre) {
+    public void storePreamble(Value pre) {
 
             assertTrue("unexpected storePreamble()", false);
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.db.DB#storeString(java.lang.String,
-         *      org.extex.exbib.core.db.Value)
+    *      org.extex.exbib.core.db.Value)
          */
         public void storeString(String name, Value value) {
 
@@ -297,7 +199,7 @@ public abstract class BibReaderTester {
     }
 
     /**
-     * The field <tt>commentSpace</tt> contains the indicator for extra space
+     * The field {@code commentSpace} contains the indicator for extra space
      * after {@literal @comment}.
      */
     private final boolean commentSpace;
@@ -340,7 +242,7 @@ public abstract class BibReaderTester {
     }
 
     /**
-     * <testcase> A {@code @book} is read in. </testcase>
+     *  A {@code @book} is read in.
      * 
      * @throws Exception in case of an error
      */
@@ -352,26 +254,18 @@ public abstract class BibReaderTester {
         TestDB db = new TestDB() {
 
             /**
-             * The field <tt>entry</tt> contains the entry.
+             * The field {@code entry} contains the entry.
              */
             private Entry entry = null;
 
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bibio.BibReaderTester.TestDB#getEntry(java.lang.String)
-             */
-            @Override
+        @Override
             public Entry getEntry(String key) {
 
                 return entry;
             }
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bibio.BibReaderTester.TestDB#makeEntry(java.lang.String,
-             *      java.lang.String, org.extex.exbib.core.io.Locator)
+        *      java.lang.String, org.extex.exbib.core.io.Locator)
              */
             @Override
             public Entry makeEntry(String type, String key, Locator locator) {
@@ -392,9 +286,8 @@ public abstract class BibReaderTester {
     }
 
     /**
-     * <testcase> The empty input is accepted and does not require anything to
-     * be stored in the database. </testcase>
-     * 
+     * The empty input is accepted and does not require anything to be stored in the database
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -404,12 +297,7 @@ public abstract class BibReaderTester {
         r.open("test", new StringReader(""));
         r.load(new TestDB() {
 
-            /**
-             * {@inheritDoc}
-             * 
-             * @see BibReaderTester.TestDB#storeComment(java.lang.String)
-             */
-            @Override
+        @Override
             public void storeComment(String comment) {
 
                 assertEquals("", comment);
@@ -419,8 +307,8 @@ public abstract class BibReaderTester {
     }
 
     /**
-     * <testcase> The comments are accepted and stored in the database.
-     * </testcase>
+     *  The comments are accepted and stored in the database.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -431,12 +319,7 @@ public abstract class BibReaderTester {
         r.open("test", new StringReader("abc"));
         r.load(new TestDB() {
 
-            /**
-             * {@inheritDoc}
-             * 
-             * @see BibReaderTester.TestDB#storeComment(java.lang.String)
-             */
-            @Override
+        @Override
             public void storeComment(String comment) {
 
                 assertEquals("abc", comment);
@@ -446,9 +329,8 @@ public abstract class BibReaderTester {
     }
 
     /**
-     * <testcase> The comments starting with {@literal @comment} are accepted
-     * and stored in the database. </testcase>
-     * 
+     * The comments starting with {@literal @comment} are accepted and stored in the database
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -458,12 +340,7 @@ public abstract class BibReaderTester {
         r.open("test", new StringReader("abc @comment xyz"));
         r.load(new TestDB() {
 
-            /**
-             * {@inheritDoc}
-             * 
-             * @see BibReaderTester.TestDB#storeComment(java.lang.String)
-             */
-            @Override
+        @Override
             public void storeComment(String comment) {
 
                 assertEquals("abc @comment xyz", comment);
@@ -473,9 +350,8 @@ public abstract class BibReaderTester {
     }
 
     /**
-     * <testcase> The comments starting with {@literal @comment} are accepted
-     * and stored in the database. </testcase>
-     * 
+     * The comments starting with {@literal @comment} are accepted and stored in the database
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -485,12 +361,7 @@ public abstract class BibReaderTester {
         r.open("test", new StringReader("abc @comment \nxyz"));
         r.load(new TestDB() {
 
-            /**
-             * {@inheritDoc}
-             * 
-             * @see BibReaderTester.TestDB#storeComment(java.lang.String)
-             */
-            @Override
+        @Override
             public void storeComment(String comment) {
 
                 assertEquals("abc @comment" + (commentSpace ? " " : "")
@@ -501,7 +372,7 @@ public abstract class BibReaderTester {
     }
 
     /**
-     * <testcase> Test that a missing key leads to an error. </testcase>
+     *  Test that a missing key leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -512,7 +383,7 @@ public abstract class BibReaderTester {
     }
 
     /**
-     * <testcase> Test that a missing entry type leads to an error. </testcase>
+     *  Test that a missing entry type leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -523,8 +394,8 @@ public abstract class BibReaderTester {
     }
 
     /**
-     * <testcase> Test that a missing attribute name leads to an error.
-     * </testcase>
+     *  Test that a missing attribute name leads to an error.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -535,7 +406,7 @@ public abstract class BibReaderTester {
     }
 
     /**
-     * <testcase> Test that an EOF in a block leads to an error. </testcase>
+     *  Test that an EOF in a block leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -546,7 +417,7 @@ public abstract class BibReaderTester {
     }
 
     /**
-     * <testcase> Test that an EOF in a block leads to an error. </testcase>
+     *  Test that an EOF in a block leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -557,7 +428,7 @@ public abstract class BibReaderTester {
     }
 
     /**
-     * <testcase> Test that an EOF in a string leads to an error. </testcase>
+     *  Test that an EOF in a string leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -568,8 +439,8 @@ public abstract class BibReaderTester {
     }
 
     /**
-     * <testcase> Test that an invalid closing brace leads to an error.
-     * </testcase>
+     *  Test that an invalid closing brace leads to an error.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -580,8 +451,8 @@ public abstract class BibReaderTester {
     }
 
     /**
-     * <testcase> Test that an EOF before an attribute value leads to an error.
-     * </testcase>
+     *  Test that an EOF before an attribute value leads to an error.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -592,8 +463,8 @@ public abstract class BibReaderTester {
     }
 
     /**
-     * <testcase> Test that an EOF before an attribute value leads to an error.
-     * </testcase>
+     *  Test that an EOF before an attribute value leads to an error.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -604,8 +475,8 @@ public abstract class BibReaderTester {
     }
 
     /**
-     * <testcase> Test that a # instead of an attribute value leads to an error.
-     * </testcase>
+     *  Test that a # instead of an attribute value leads to an error.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -616,8 +487,8 @@ public abstract class BibReaderTester {
     }
 
     /**
-     * <testcase> Test that a # instead of an attribute value leads to an error.
-     * </testcase>
+     *  Test that a # instead of an attribute value leads to an error.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -628,8 +499,8 @@ public abstract class BibReaderTester {
     }
 
     /**
-     * <testcase> Test that a # instead of an attribute value leads to an error.
-     * </testcase>
+     *  Test that a # instead of an attribute value leads to an error.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -640,8 +511,8 @@ public abstract class BibReaderTester {
     }
 
     /**
-     * <testcase> Test that a # instead of an attribute value leads to an error.
-     * </testcase>
+     *  Test that a # instead of an attribute value leads to an error.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -652,8 +523,8 @@ public abstract class BibReaderTester {
     }
 
     /**
-     * <testcase> Test that a # instead of an attribute value leads to an error.
-     * </testcase>
+     *  Test that a # instead of an attribute value leads to an error.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -664,8 +535,8 @@ public abstract class BibReaderTester {
     }
 
     /**
-     * <testcase> Test that a # instead of an attribute value leads to an error.
-     * </testcase>
+     *  Test that a # instead of an attribute value leads to an error.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -676,8 +547,8 @@ public abstract class BibReaderTester {
     }
 
     /**
-     * <testcase> Test that a # instead of an attribute value leads to an error.
-     * </testcase>
+     *  Test that a # instead of an attribute value leads to an error.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -688,8 +559,8 @@ public abstract class BibReaderTester {
     }
 
     /**
-     * <testcase> Test that an EOF after an assignment leads to an error.
-     * </testcase>
+     *  Test that an EOF after an assignment leads to an error.
+     *
      * 
      * @throws Exception in case of an error
      */

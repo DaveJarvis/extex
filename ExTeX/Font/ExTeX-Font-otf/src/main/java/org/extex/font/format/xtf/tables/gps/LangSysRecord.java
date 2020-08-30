@@ -30,8 +30,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * Class for a langsys table.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class LangSysRecord implements XMLWriterConvertible {
 
     /**
@@ -47,7 +46,7 @@ public class LangSysRecord implements XMLWriterConvertible {
     /**
      * Offset to LangSys table-from beginning of Script table.
      */
-    private int offset;
+    private final int offset;
 
     /**
      * Index of a feature required for this language system- if no required
@@ -58,7 +57,7 @@ public class LangSysRecord implements XMLWriterConvertible {
     /**
      * The LangSysTag identifier.
      */
-    private LanguageSystemTag tag;
+    private final LanguageSystemTag tag;
 
     /**
      * Creates a new object.
@@ -127,23 +126,23 @@ public class LangSysRecord implements XMLWriterConvertible {
      * <p>
      * The Language System table (LangSys) identifies language-system features
      * used to render the glyphs in a script. (The LookupOrder offset is
-     * reserved for future use.) <br/> Optionally, a LangSys table may define a
+     * reserved for future use.) <br> Optionally, a LangSys table may define a
      * Required Feature Index (ReqFeatureIndex) to specify one feature as
      * required within the context of a particular language system. For example,
      * in the Cyrillic script, the Serbian language system always renders
-     * certain glyphs differently than the Russian language system. <br/> Only
+     * certain glyphs differently than the Russian language system. <br> Only
      * one feature index value can be tagged as the ReqFeatureIndex. This is not
      * a functional limitation, however, because the feature and lookup
      * definitions in OpenType Layout are structured so that one feature table
      * can reference many glyph substitution and positioning lookups. When no
      * required features are defined, then the ReqFeatureIndex is set to 0xFFFF.
-     * <br/> All other features are optional. For each optional feature, a
+     * <br> All other features are optional. For each optional feature, a
      * zero-based index value references a record (FeatureRecord) in the
      * FeatureRecord array, which is stored in a Feature List table
      * (FeatureList). The feature indices themselves (excluding the
      * ReqFeatureIndex) are stored in arbitrary order in the FeatureIndex array.
      * The FeatureCount specifies the total number of features listed in the
-     * FeatureIndex array. <br/> Features are specified in full in the
+     * FeatureIndex array. <br> Features are specified in full in the
      * FeatureList table, FeatureRecord, and Feature table, which are described
      * later in this chapter. Example 2 at the end of this chapter shows a
      * Script table, LangSysRecord, and LangSys table used for contextual
@@ -152,9 +151,10 @@ public class LangSysRecord implements XMLWriterConvertible {
      * <p>
      * LangSys table
      * </p>
-     * <table border="1">
-     * <tr>
-     * <td><b>Type</b></td>
+     * <table>
+ * <caption>TBD</caption>
+ * <tr>
+* <td><b>Type</b></td>
      * <td><b>Name</b></td>
      * <td><b>Description</b></td>
      * </tr>
@@ -180,7 +180,7 @@ public class LangSysRecord implements XMLWriterConvertible {
      * <td>FeatureIndex[FeatureCount]</td>
      * <td>Array of indices into the FeatureList-in arbitrary order</td>
      * </tr>
-     * </table> <br/>
+     * </table> <br>
      * 
      * @param rar The input.
      * @param baseoffset The base offset.
@@ -200,10 +200,7 @@ public class LangSysRecord implements XMLWriterConvertible {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

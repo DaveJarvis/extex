@@ -41,8 +41,7 @@ import java.util.List;
  * This class provides means to deal with configurations stored as XML files.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class XmlConfiguration implements Configuration {
 
     /**
@@ -52,7 +51,7 @@ public class XmlConfiguration implements Configuration {
     private class ConfigIterator implements Iterator<Configuration> {
 
         /**
-         * The field <tt>node</tt> contains the current node.
+         * The field {@code node} contains the current node.
          */
         private Node node;
 
@@ -67,13 +66,11 @@ public class XmlConfiguration implements Configuration {
         }
 
         /**
-         * Returns <tt>true</tt> if the iteration has more elements. (In other
-         * words, returns <tt>true</tt> if <tt>next</tt> would return an element
+         * Returns {@code true} if the iteration has more elements. (In other
+         * words, returns {@code true} if {@code next} would return an element
          * rather than throwing an exception.)
          *
-         * @return <tt>true</tt> if the iterator has more elements.
-         *
-         * @see java.util.Iterator#hasNext()
+         * @return {@code true} if the iterator has more elements.
          */
         @Override
         public boolean hasNext() {
@@ -128,19 +125,19 @@ public class XmlConfiguration implements Configuration {
     }
 
     /**
-     * The field <tt>ext</tt> contains extensions to use when searching for
+     * The field {@code ext} contains extensions to use when searching for
      * configuration files.
      */
     private static final String[] EXTENSIONS = {".xml", ""};
 
     /**
-     * The field <tt>path</tt> contains the path to use when searching for
+     * The field {@code path} contains the path to use when searching for
      * configuration files.
      */
     private static final String[] PATHS = {"config/", ""};
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2010L;
 
@@ -164,28 +161,28 @@ public class XmlConfiguration implements Configuration {
     }
 
     /**
-     * The field <tt>loader</tt> contains the optional loader.
+     * The field {@code loader} contains the optional loader.
      */
     // private ConfigurationLoader loader = null;
     /**
-     * The field <tt>base</tt> contains the base of the resource name; i.e. the
+     * The field {@code base} contains the base of the resource name; i.e. the
      * resource up to the last slash or the empty string if no slash is
      * contained.
      */
     private String base;
 
     /**
-     * The field <tt>fullName</tt> contains the URL of the resource found.
+     * The field {@code fullName} contains the URL of the resource found.
      */
     private String fullName;
 
     /**
-     * The field <tt>resource</tt> contains the name of the resource.
+     * The field {@code resource} contains the name of the resource.
      */
     private String resource;
 
     /**
-     * The field <tt>root</tt> contains the root element for this configuration.
+     * The field {@code root} contains the root element for this configuration.
      */
     private Element root;
 
@@ -215,7 +212,7 @@ public class XmlConfiguration implements Configuration {
      * </p>
      * <p>
      * Beside of the class loader a search is performed by appending
-     * <tt>.xml</tt> and/or prepending <tt>config/</tt> if the path is not
+     * {@code .xml} and/or prepending {@code config/} if the path is not
      * sufficient to find the resource.
      * </p>
      *
@@ -224,7 +221,7 @@ public class XmlConfiguration implements Configuration {
      *        the file name
      *
      * @throws ConfigurationInvalidResourceException in case that the given
-     *         resource name is <code>null</code> or empty.
+     *         resource name is {@code null} or empty.
      * @throws ConfigurationNotFoundException in case that the named path does
      *         not lead to a resource.
      * @throws ConfigurationSyntaxException in case that the resource contains
@@ -242,22 +239,20 @@ public class XmlConfiguration implements Configuration {
     }
 
     /**
-     * Creates a new object.
-     * <p>
      * The path given is the location of the XML file containing the
      * configuration information. This path is used to determine the XML file
      * utilizing the class loader for this class. Thus it is possible to place
      * the XML file into a jar archive.
-     * </p>
      * <p>
      * Beside of the class loader a search is performed by appending
-     * <tt>.xml</tt> and/or prepending <tt>config/</tt> if the path is not
+     * {@code .xml} and/or prepending {@code config/} if the path is not
      * sufficient to find the resource.
      * </p>
      *
-     * <h3>Example</h3>
+     * Example
      * <p>
      * Consider the following creation of an instance of this class
+     * </p>
      *
      * <pre>
      *   cfg = new XmlConfiguration("cfg");
@@ -270,12 +265,10 @@ public class XmlConfiguration implements Configuration {
      *     cfg   cfg.xml   config/cfg   config/cfg.xml
      *  </pre>
      *
-     * </p>
-     *
      * @param resource the name of the resource to be used; i.e. the file name
      *
      * @throws ConfigurationInvalidResourceException in case that the given
-     *         resource name is <code>null</code> or empty
+     *         resource name is {@code null} or empty
      * @throws ConfigurationNotFoundException in case that the named path does
      *         not lead to a resource
      * @throws ConfigurationSyntaxException in case that the resource contains
@@ -320,7 +313,7 @@ public class XmlConfiguration implements Configuration {
      * </pre>
      *
      * <p>
-     * Then <tt>findConfiguration("abc")</tt> returns a new XMLConfig rooted at
+     * Then {@code findConfiguration("abc")} returns a new XMLConfig rooted at
      * abc.
      * </p>
      * <p>
@@ -333,10 +326,10 @@ public class XmlConfiguration implements Configuration {
      *
      * @param name the tag name of the sub-configuration
      *
-     * @return the sub-configuration or <code>null</code> if none was found
+     * @return the sub-configuration or {@code null} if none was found
      *
      * @throws ConfigurationInvalidResourceException in case that the given
-     *         resource name is <code>null</code> or empty
+     *         resource name is {@code null} or empty
      * @throws ConfigurationNotFoundException in case that the named path does
      *         not lead to a resource
      * @throws ConfigurationSyntaxException in case that the resource contains
@@ -392,7 +385,7 @@ public class XmlConfiguration implements Configuration {
      * </pre>
      *
      * <p>
-     * Then <tt>getConfig("abc","two")</tt> returns a new XMLConfig rooted at
+     * Then {@code getConfig("abc","two")} returns a new XMLConfig rooted at
      * the abc with the name attribute "two".
      * </p>
      * <p>
@@ -400,7 +393,7 @@ public class XmlConfiguration implements Configuration {
      * used.
      * </p>
      * <p>
-     * If there are no tags with the given name then <code>null</code> is
+     * If there are no tags with the given name then {@code null} is
      * returned.
      * </p>
      *
@@ -460,7 +453,7 @@ public class XmlConfiguration implements Configuration {
      * </pre>
      *
      * <p>
-     * Then <tt>getConfiguration("abc")</tt> returns a new XMLConfig rooted at
+     * Then {@code getConfiguration("abc")} returns a new XMLConfig rooted at
      * abc.
      * </p>
      * <p>
@@ -482,7 +475,7 @@ public class XmlConfiguration implements Configuration {
      * @throws ConfigurationSyntaxException in case of a syntax error in the
      *         configuration.
      * @throws ConfigurationInvalidResourceException in case that the given
-     *         resource name is <code>null</code> or empty
+     *         resource name is {@code null} or empty
      *
      * @see #findConfiguration(String)
      */
@@ -522,7 +515,7 @@ public class XmlConfiguration implements Configuration {
      * </pre>
      *
      * <p>
-     * Then <tt>getConfig("abc","two")</tt> returns a new XMLConfig rooted at
+     * Then {@code getConfig("abc","two")} returns a new XMLConfig rooted at
      * the abc with the name attribute "two".
      * </p>
      * <p>
@@ -603,7 +596,7 @@ public class XmlConfiguration implements Configuration {
      * </pre>
      *
      * <p>
-     * Then <tt>getValue("two")</tt> returns the String "the second value".
+     * Then {@code getValue("two")} returns the String "the second value".
      * </p>
      *
      * @param tag the name of the tag
@@ -751,7 +744,7 @@ public class XmlConfiguration implements Configuration {
      * @param classLoader the class loader to use for finding the resource
      *
      * @return an input stream to the requested configuration or
-     *         <code>null</code> if none could be opened.
+     *         {@code null} if none could be opened.
      */
     private InputStream locateConfiguration(String name, ClassLoader classLoader) {
         for( final String p : PATHS ) {

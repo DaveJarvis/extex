@@ -26,8 +26,7 @@ import java.io.InputStream;
  * a new file based stream has been opened.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface OpenFileObserver {
 
     /**

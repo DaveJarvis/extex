@@ -42,8 +42,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class T2TDOEncoding extends T2TDONumber {
 
@@ -70,7 +69,7 @@ public class T2TDOEncoding extends T2TDONumber {
     /**
      * The encoding vector.
      */
-    private String[] enc = new String[256];
+    private final String[] enc = new String[256];
 
     /**
      * The encoding of the font.
@@ -169,33 +168,20 @@ public class T2TDOEncoding extends T2TDONumber {
         return ".notdef";
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
-     */
-    @Override
+@Override
     public int getID() {
 
         return T2TopDICTOperator.TYPE_ENCODING;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "encoding";
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#init(org.extex.util.file.random.RandomAccessR,
-     *      org.extex.font.format.xtf.tables.OtfTableCFF, int,
+*      org.extex.font.format.xtf.tables.OtfTableCFF, int,
      *      org.extex.font.format.xtf.tables.cff.CffFont)
      */
     @Override
@@ -224,10 +210,7 @@ public class T2TDOEncoding extends T2TDONumber {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2TDONumber#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {

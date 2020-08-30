@@ -30,8 +30,7 @@ import org.junit.Test;
  * </p>
  * 
  * @author <a href="mailto:m.g.sn@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class PairRegisterTest extends ExTeXLauncher {
 
 
@@ -43,10 +42,10 @@ public class PairRegisterTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\pairdef">
      * 
-     * Test case checking that <tt>\pairdef</tt> creates a pair assignable
-     * control sequence which is equivalent to the <tt>\pair</tt>.
+     * Test case checking that {@code \pairdef} creates a pair assignable
+     * control sequence which is equivalent to the {@code \pair}.
      * 
-     * </testcase>
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -63,9 +62,9 @@ public class PairRegisterTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\pairdef">
      * 
-     * Test case checking that <tt>\pairdef</tt> respects a group.
+     * Test case checking that {@code \pairdef} respects a group.
      * 
-     * </testcase>
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -81,9 +80,9 @@ public class PairRegisterTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\pairdef">
      * 
-     * Test case checking that <tt>\pairdef</tt> respects a group.
+     * Test case checking that {@code \pairdef} respects a group.
      * 
-     * </testcase>
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -100,9 +99,9 @@ public class PairRegisterTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\pairdef">
      * 
-     * Test case checking that <tt>\pairdef</tt> respects a group.
+     * Test case checking that {@code \pairdef} respects a group.
      * 
-     * </testcase>
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -119,9 +118,9 @@ public class PairRegisterTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\pairdef">
      * 
-     * Test case checking that <tt>\pairdef</tt> respects <tt>\globaldefs</tt>.
+     * Test case checking that {@code \pairdef} respects {@code \globaldefs}.
      * 
-     * </testcase>
+     * 
      * 
      * @throws Exception in case of an error
      */

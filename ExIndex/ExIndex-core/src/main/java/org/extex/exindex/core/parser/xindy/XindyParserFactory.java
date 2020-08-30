@@ -35,20 +35,16 @@ import org.extex.resource.ResourceFinder;
  * {@link XindyParser}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class XindyParserFactory implements RawIndexParserFactory {
 
     /**
-     * The field <tt>finder</tt> contains the resource finder.
+     * The field {@code finder} contains the resource finder.
      */
     private ResourceFinder finder = null;
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.parser.RawIndexParserFactory#create(
-     *      java.lang.String, java.lang.String, Indexer)
+*      java.lang.String, java.lang.String, Indexer)
      */
     public RawIndexParser create(String resource, String charset,
             Indexer indexer) throws RawIndexException, IOException {
@@ -64,10 +60,7 @@ public class XindyParserFactory implements RawIndexParserFactory {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.parser.RawIndexParserFactory#setResourceFinder(
-     *      org.extex.resource.ResourceFinder)
+*      org.extex.resource.ResourceFinder)
      */
     public void setResourceFinder(ResourceFinder finder) {
 

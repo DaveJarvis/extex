@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\shipout</tt>.
+ * This is a test suite for the primitive {@code \shipout}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class ShipoutTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -49,7 +48,7 @@ public class ShipoutTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\shipout"> Test case showing that a void box is
-     * simply ignored. </testcase>
+     * simply ignored.
      * 
      * @throws Exception in case of an error
      */
@@ -64,7 +63,7 @@ public class ShipoutTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\shipout"> Test case showing that an empty box is
-     * shipped. </testcase>
+     * shipped.
      * 
      * @throws Exception in case of an error
      */

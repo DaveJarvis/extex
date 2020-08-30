@@ -31,8 +31,7 @@ import org.junit.Test;
  * Test suite for outocp.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public class Otp2OcpTest {
 
     /**

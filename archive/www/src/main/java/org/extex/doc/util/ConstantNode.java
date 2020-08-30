@@ -23,12 +23,11 @@ package org.extex.doc.util;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ConstantNode implements DocToken {
 
     /**
-     * The field <tt>s</tt> contains the ...
+     * The field {@code s} contains the ...
      */
     private String s;
 
@@ -42,23 +41,13 @@ public class ConstantNode implements DocToken {
         this.s = s;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return s;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.doc.util.DocToken#visit(org.extex.doc.util.TokenVisitor)
-     */
-    public void visit(TokenVisitor visitor) {
+public void visit(TokenVisitor visitor) {
 
         visitor.visitString(s);
     }

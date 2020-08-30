@@ -24,8 +24,7 @@ package org.extex.exbib.core.util;
  * be invoked upon certain actions.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface Observable {
 
     /**

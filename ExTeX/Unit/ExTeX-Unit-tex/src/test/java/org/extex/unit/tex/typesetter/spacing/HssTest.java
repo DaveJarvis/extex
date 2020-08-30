@@ -25,11 +25,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\hss</tt>.
+ * This is a test suite for the primitive {@code \hss}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class HssTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -49,8 +48,8 @@ public class HssTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case showing that the natural width of \hss is 0pt.
-     * </testcase>
+     *  Test case showing that the natural width of \hss is 0pt.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -64,9 +63,8 @@ public class HssTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that <tt>\hfi*</tt> is ignored at the
-     * beginning of a paragraph. </testcase>
-     * 
+     * Test case checking that {@code \hfi*} is ignored at the beginning of a paragraph
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -80,9 +78,8 @@ public class HssTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that <tt>\hfi*</tt> is ignored at the
-     * beginning of a paragraph. </testcase>
-     * 
+     * Test case checking that {@code \hfi*} is ignored at the beginning of a paragraph
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -99,8 +96,8 @@ public class HssTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case showing that \hss expands to the width needed.
-     * </testcase>
+     *  Test case showing that \hss expands to the width needed.
+     * 
      * 
      * @throws Exception in case of an error
      */

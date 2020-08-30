@@ -31,17 +31,16 @@ import org.junit.Test;
  * This is a test suite for {@link VMacro}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class VMacroTest {
 
     /**
-     * The field <tt>db</tt> contains the database.
+     * The field {@code db} contains the database.
      */
     private DB db;
 
     /**
-     * The field <tt>hit</tt> contains the hit indicator.
+     * The field {@code hit} contains the hit indicator.
      */
     private boolean hit;
 
@@ -67,7 +66,7 @@ public class VMacroTest {
     }
 
     /**
-     * <testcase> An undefined macro expands to the empty string. </testcase>
+     *  An undefined macro expands to the empty string.
      * 
      * @throws Exception in case of an error
      */
@@ -80,7 +79,7 @@ public class VMacroTest {
     }
 
     /**
-     * <testcase> A defined macro in lowercase is expanded. </testcase>
+     *  A defined macro in lowercase is expanded.
      * 
      * @throws Exception in case of an error
      */
@@ -93,7 +92,7 @@ public class VMacroTest {
     }
 
     /**
-     * <testcase> A defined macro in mixed case is expanded. </testcase>
+     *  A defined macro in mixed case is expanded.
      * 
      * @throws Exception in case of an error
      */
@@ -106,8 +105,8 @@ public class VMacroTest {
     }
 
     /**
-     * <testcase> toString() returns the argument of the constructor.
-     * </testcase>
+     *  toString() returns the argument of the constructor.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -118,7 +117,7 @@ public class VMacroTest {
     }
 
     /**
-     * <testcase> toString() returns the content. </testcase>
+     *  toString() returns the content.
      * 
      * @throws Exception in case of an error
      */
@@ -131,7 +130,7 @@ public class VMacroTest {
     }
 
     /**
-     * <testcase> the visit method invokes the correct case. </testcase>
+     *  the visit method invokes the correct case.
      * 
      * @throws Exception in case of an error
      */

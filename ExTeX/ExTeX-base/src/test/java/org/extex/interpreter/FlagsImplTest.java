@@ -32,13 +32,10 @@ import org.junit.Test;
  * Test cases for the flags implementation.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4784 $
- */
+*/
 public class FlagsImplTest {
 
-    /**
-     */
-    @Test
+@Test
     public void testClear() {
 
         Flags f = new FlagsImpl();
@@ -55,9 +52,7 @@ public class FlagsImplTest {
         assertFalse(f.isProtected());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testClearGlobal1() {
 
         Flags f = new FlagsImpl();
@@ -70,9 +65,7 @@ public class FlagsImplTest {
         assertEquals("-LOIP", f.toString());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testClearGlobal2() {
 
         Flags f = new FlagsImpl();
@@ -84,9 +77,7 @@ public class FlagsImplTest {
         assertEquals("-LOIP", f.toString());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testClearImmediate1() {
 
         Flags f = new FlagsImpl();
@@ -99,9 +90,7 @@ public class FlagsImplTest {
         assertEquals("GLO-P", f.toString());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testClearImmediate2() {
 
         Flags f = new FlagsImpl();
@@ -113,9 +102,7 @@ public class FlagsImplTest {
         assertEquals("GLO-P", f.toString());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testClearLong1() {
 
         Flags f = new FlagsImpl();
@@ -128,9 +115,7 @@ public class FlagsImplTest {
         assertEquals("G-OIP", f.toString());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testClearLong2() {
 
         Flags f = new FlagsImpl();
@@ -142,9 +127,7 @@ public class FlagsImplTest {
         assertEquals("G-OIP", f.toString());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testClearOuter1() {
 
         Flags f = new FlagsImpl();
@@ -157,9 +140,7 @@ public class FlagsImplTest {
         assertEquals("GL-IP", f.toString());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testClearOuter2() {
 
         Flags f = new FlagsImpl();
@@ -171,9 +152,7 @@ public class FlagsImplTest {
         assertEquals("GL-IP", f.toString());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testClearProtected1() {
 
         Flags f = new FlagsImpl();
@@ -186,9 +165,7 @@ public class FlagsImplTest {
         assertEquals("GLOI-", f.toString());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testClearProtected2() {
 
         Flags f = new FlagsImpl();
@@ -200,9 +177,7 @@ public class FlagsImplTest {
         assertEquals("GLOI-", f.toString());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testCopy0() {
 
         Flags fl = new FlagsImpl();
@@ -211,9 +186,7 @@ public class FlagsImplTest {
         assertEquals("-----", f.toString());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testCopy1() {
 
         Flags fl = new FlagsImpl();
@@ -227,9 +200,7 @@ public class FlagsImplTest {
         assertEquals("GLOIP", f.toString());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testCopy2() {
 
         Flags fl = new FlagsImpl();
@@ -240,18 +211,14 @@ public class FlagsImplTest {
         assertEquals("G-O--", f.toString());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testIsDirty0() {
 
         Flags f = new FlagsImpl();
         assertFalse(f.isDirty());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testIsDirty1() {
 
         Flags f = new FlagsImpl();
@@ -259,9 +226,7 @@ public class FlagsImplTest {
         assertTrue(f.isDirty());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testIsDirty2() {
 
         Flags f = new FlagsImpl();
@@ -269,9 +234,7 @@ public class FlagsImplTest {
         assertTrue(f.isDirty());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testIsDirty3() {
 
         Flags f = new FlagsImpl();
@@ -279,9 +242,7 @@ public class FlagsImplTest {
         assertTrue(f.isDirty());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testIsDirty5() {
 
         Flags f = new FlagsImpl();
@@ -289,9 +250,7 @@ public class FlagsImplTest {
         assertTrue(f.isDirty());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testIsDirty6() {
 
         Flags f = new FlagsImpl();
@@ -299,9 +258,7 @@ public class FlagsImplTest {
         assertTrue(f.isDirty());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testIsDirty7() {
 
         Flags f = new FlagsImpl();
@@ -313,54 +270,42 @@ public class FlagsImplTest {
         assertTrue(f.isDirty());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testIsGlobal() {
 
         Flags f = new FlagsImpl();
         assertFalse(f.isGlobal());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testIsImmediate() {
 
         Flags f = new FlagsImpl();
         assertFalse(f.isImmediate());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testIsLong() {
 
         Flags f = new FlagsImpl();
         assertFalse(f.isLong());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testIsOuter() {
 
         Flags f = new FlagsImpl();
         assertFalse(f.isOuter());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testIsProtected() {
 
         Flags f = new FlagsImpl();
         assertFalse(f.isProtected());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testSet1() {
 
         Flags fl = new FlagsImpl();
@@ -369,9 +314,7 @@ public class FlagsImplTest {
         assertEquals("-----", f.toString());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testSet2() {
 
         Flags fl = new FlagsImpl();
@@ -381,9 +324,7 @@ public class FlagsImplTest {
         assertEquals("G----", f.toString());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testSet3() {
 
         Flags fl = new FlagsImpl();
@@ -397,9 +338,7 @@ public class FlagsImplTest {
         assertEquals("GLOIP", f.toString());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testSetGlobal() {
 
         Flags f = new FlagsImpl();
@@ -411,9 +350,7 @@ public class FlagsImplTest {
         assertFalse(f.isProtected());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testSetGlobalBoolean1() {
 
         Flags f = new FlagsImpl();
@@ -425,9 +362,7 @@ public class FlagsImplTest {
         assertFalse(f.isProtected());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testSetGlobalBoolean2() {
 
         Flags f = new FlagsImpl();
@@ -439,9 +374,7 @@ public class FlagsImplTest {
         assertFalse(f.isProtected());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testSetImmediate() {
 
         Flags f = new FlagsImpl();
@@ -453,9 +386,7 @@ public class FlagsImplTest {
         assertFalse(f.isProtected());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testSetLong() {
 
         Flags f = new FlagsImpl();
@@ -467,9 +398,7 @@ public class FlagsImplTest {
         assertFalse(f.isProtected());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testSetOuter() {
 
         Flags f = new FlagsImpl();
@@ -481,9 +410,7 @@ public class FlagsImplTest {
         assertFalse(f.isProtected());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testSetProtected() {
 
         Flags f = new FlagsImpl();
@@ -495,18 +422,14 @@ public class FlagsImplTest {
         assertTrue(f.isProtected());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testToString0() {
 
         Flags f = new FlagsImpl();
         assertEquals("-----", f.toString());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testToString1() {
 
         Flags f = new FlagsImpl();
@@ -515,9 +438,7 @@ public class FlagsImplTest {
         assertEquals("GL---", f.toString());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testToString2() {
 
         Flags f = new FlagsImpl();
@@ -525,9 +446,7 @@ public class FlagsImplTest {
         assertEquals("----P", f.toString());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testToString3() {
 
         Flags f = new FlagsImpl();
@@ -539,18 +458,14 @@ public class FlagsImplTest {
         assertEquals("GLOIP", f.toString());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testToText0() {
 
         Flags f = new FlagsImpl();
         assertEquals("", f.toText());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testToText1() {
 
         Locale.setDefault(Locale.ENGLISH);
@@ -564,9 +479,7 @@ public class FlagsImplTest {
             f.toText());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testToText2() {
 
         Locale.setDefault(Locale.ENGLISH);
@@ -578,9 +491,7 @@ public class FlagsImplTest {
         assertEquals("long, outer, immediate, and protected", f.toText());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testToText3() {
 
         Locale.setDefault(Locale.ENGLISH);
@@ -591,9 +502,7 @@ public class FlagsImplTest {
         assertEquals("outer, immediate, and protected", f.toText());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testToText4() {
 
         Locale.setDefault(Locale.ENGLISH);
@@ -603,9 +512,7 @@ public class FlagsImplTest {
         assertEquals("immediate and protected", f.toText());
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testToText5() {
 
         Locale.setDefault(Locale.ENGLISH);

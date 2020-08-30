@@ -33,8 +33,7 @@ import org.extex.typesetter.type.node.CharNode;
  * This kind of tokenizer might be language specific.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4446 $
- */
+*/
 public interface WordTokenizer extends Serializable {
 
     /**
@@ -57,7 +56,7 @@ public interface WordTokenizer extends Serializable {
      * @param nodes the node list to modify
      * @param insertionPoint the index to insert something into the nodes
      * @param spec the specification where to insert hyphenation marks.
-     *  If <code>spec[i]</code> is <code>true</code> then a hyphen needs to be
+     *  If {@code spec[i]} is {@code true} then a hyphen needs to be
      *  inserted before the i<sup>th</sup> character at or after insertionPoint
      *  in nodes
      * @param hyphenNode the hyphen as node

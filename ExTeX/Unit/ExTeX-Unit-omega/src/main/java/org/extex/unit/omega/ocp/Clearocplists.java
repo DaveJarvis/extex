@@ -31,37 +31,36 @@ import org.extex.unit.omega.OmegaExtension;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\clearocplists</code>.
+ * {@code \clearocplists}.
  * 
- * <doc name="clearocplists">
- * <h3>The Primitive <tt>\clearocplists</tt></h3>
+ * <p>The Primitive {@code \clearocplists}</p>
  * <p>
- * The primitive <tt>\clearocplists</tt> disables the currently active
+ * The primitive {@code \clearocplists} disables the currently active
  * ocplist. This operation respects grouping. It is an assignment.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;clearocplists&rang;
- *      &rarr; <tt>\clearocplists</tt>  </pre>
+ *      &rarr; {@code \clearocplists}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  * \clearocplists </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Clearocplists extends AbstractAssignment {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
@@ -77,10 +76,7 @@ public class Clearocplists extends AbstractAssignment {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

@@ -50,34 +50,33 @@ package org.extex.typesetter.tex.paragraph;
  * @see "TTP [817]"
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class Fitness {
 
     /**
-     * The field <tt>TIGHT</tt> contains the fitness of class 3.
+     * The field {@code TIGHT} contains the fitness of class 3.
      */
     public static final Fitness TIGHT = new Fitness(3);
 
     /**
-     * The field <tt>LOOSE</tt> contains the fitness of class 1.
+     * The field {@code LOOSE} contains the fitness of class 1.
      */
     public static final Fitness LOOSE = new Fitness(1);
 
     /**
-     * The field <tt>VERY_LOOSE</tt> contains the fitness of class 0.
+     * The field {@code VERY_LOOSE} contains the fitness of class 0.
      */
     public static final Fitness VERY_LOOSE = new Fitness(0);
 
     /**
-     * The field <tt>DESCENT</tt> contains the fitness of class 2.
+     * The field {@code DESCENT} contains the fitness of class 2.
      */
     public static final Fitness DECENT = new Fitness(2);
 
     /**
-     * The field <tt>order</tt> contains the order of the fitness.
+     * The field {@code order} contains the order of the fitness.
      */
-    private int order;
+    private final int order;
 
     /**
      * Creates a new object.
@@ -97,7 +96,7 @@ public final class Fitness {
      *
      * @param fitness the fitness to compare to
      *
-     * @return <code>true</code> iff the order of the given fitness is equal
+     * @return {@code true} iff the order of the given fitness is equal
      *  or adjacent to the given one.
      */
     public boolean adjacent(Fitness fitness) {

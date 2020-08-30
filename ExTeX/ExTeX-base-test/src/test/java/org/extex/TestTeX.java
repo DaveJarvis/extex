@@ -35,17 +35,16 @@ import java.util.Properties;
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
- * @version $Revision$
- */
+*/
 public final class TestTeX {
 
     /**
-     * The field <tt>DATA_DIR</tt> contains the location of the data directory.
+     * The field {@code DATA_DIR} contains the location of the data directory.
      */
     private static final String DATA_DIR = "/src/test/resources/data/";
 
     /**
-     * The field <tt>ERROR_HANDLER</tt> contains the error handler which always
+     * The field {@code ERROR_HANDLER} contains the error handler which always
      * fails.
      */
     private static final ErrorHandler ERROR_HANDLER = new ErrorHandler() {
@@ -67,9 +66,9 @@ public final class TestTeX {
     };
 
     /**
-     * Make an <code>Interpreter</code>.
+     * Make an {@code Interpreter}.
      * 
-     * @return an <code>Interpreter</code>
+     * @return an {@code Interpreter}
      */
     public static Interpreter makeInterpreter() {
 
@@ -77,10 +76,10 @@ public final class TestTeX {
     }
 
     /**
-     * Make an <code>Interpreter</code>.
+     * Make an {@code Interpreter}.
      * 
      * @param configurationFile configuration file for ExTeX
-     * @return an <code>Interpreter</code>
+     * @return an {@code Interpreter}
      */
     public static Interpreter makeInterpreter(String configurationFile) {
 

@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains utility classes for the processing of alignment tables.
+ * Contains utility classes for the processing of alignment tables.
  */
 
 package org.extex.unit.tex.table.util;

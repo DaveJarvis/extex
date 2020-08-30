@@ -32,28 +32,26 @@ import org.extex.unit.tex.typesetter.box.AbstractBoxPrimitive;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\moveright</code>.
+ * {@code \moveright}.
  * 
- * <doc name="moveright">
- * <h3>The Primitive <tt>\moveright</tt></h3>
+ * <p>The Primitive {@code \moveright}</p>
  * <p>
- * The primitive <tt>\moderight</tt> takes a box and a length and moves it
+ * The primitive {@code \moderight} takes a box and a length and moves it
  * rightwards by the amount specified by the length. If the length is negative
  * then the move is done leftwards.
  * </p>
  * <p>
- * The primitive <tt>\moveright</tt> is the counterpart to
- * {@link org.extex.unit.tex.typesetter.displace.Moveleft <tt>\moveleft</tt>}.
+ * The primitive {@code \moveright} is the counterpart to
+ * {@link org.extex.unit.tex.typesetter.displace.Moveleft {@code \moveleft}}.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;moveright&rang;
- *      &rarr; <tt>\moveright</tt> {@linkplain
- *        org.extex.core.dimen#Dimen(Context,TokenSource)
- *        &lang;dimen&rang;} {@linkplain
+ *      &rarr; {@code \moveright} &lang;dimen&rang; {@linkplain
  *        org.extex.interpreter.TokenSource#getBox(org.extex.interpreter.Flags,Context,Typesetter,Token)
  *        &lang;box&rang;}  </pre>
  * 
@@ -61,7 +59,8 @@ import org.extex.unit.tex.typesetter.box.AbstractBoxPrimitive;
  * The color from the typographic context is taken as foregroud color for the
  * rule. The default color is black.
  * </p>
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \moveright 2em \hbox{abc}  </pre>
@@ -70,16 +69,14 @@ import org.extex.unit.tex.typesetter.box.AbstractBoxPrimitive;
  *  <pre class="TeXSample">
  *    \moveright 2mm \hbox spread 12pt {abc}  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Moveright extends AbstractBoxPrimitive {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -95,10 +92,7 @@ public class Moveright extends AbstractBoxPrimitive {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.register.box.BoxPrimitive#getBox(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */

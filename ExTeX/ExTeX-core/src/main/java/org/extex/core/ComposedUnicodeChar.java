@@ -26,12 +26,11 @@ import com.ibm.icu.lang.UCharacter;
  * to it.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5417 $
- */
+*/
 public class ComposedUnicodeChar extends UnicodeChar {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -67,7 +66,7 @@ public class ComposedUnicodeChar extends UnicodeChar {
     }
 
     /**
-     * The field <tt>combiningCodePoints</tt> contains the combining
+     * The field {@code combiningCodePoints} contains the combining
      * characters.
      */
     private int[] combiningCodePoints;
@@ -102,7 +101,7 @@ public class ComposedUnicodeChar extends UnicodeChar {
     }
 
     /**
-     * Compares a <code>UnicodeChar</code> character with the value of this
+     * Compares a {@code UnicodeChar} character with the value of this
      * object. They are considered equal if the are both
      * {@link ComposedUnicodeChar ComposedUnicodeChar}s and have the same
      * codes.
@@ -113,8 +112,8 @@ public class ComposedUnicodeChar extends UnicodeChar {
      * 
      * @param unicodeChar the character to compare
      * 
-     * @return <code>true</code> if the characters are equal, otherwise
-     *         <code>false</code>
+     * @return {@code true} if the characters are equal, otherwise
+     *         {@code false}
      */
     @Override
     public boolean equals(Object unicodeChar) {

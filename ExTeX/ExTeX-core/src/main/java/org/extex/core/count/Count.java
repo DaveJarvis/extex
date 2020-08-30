@@ -25,29 +25,28 @@ package org.extex.core.count;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:4399 $
- */
+*/
 public class Count extends CountConstant {
 
     /**
-     * The constant <tt>ONE</tt> contains the count register with the value 1.
+     * The constant {@code ONE} contains the count register with the value 1.
      * This count register is in fact immutable.
      */
     public static final FixedCount ONE = new CountConstant(1);
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The constant <tt>THOUSAND</tt> contains the count register with the value
+     * The constant {@code THOUSAND} contains the count register with the value
      * 1000. This count register is in fact immutable.
      */
     public static final FixedCount THOUSAND = new CountConstant(1000);
 
     /**
-     * The constant <tt>ZERO</tt> contains the count register with the value 0.
+     * The constant {@code ZERO} contains the count register with the value 0.
      * This count register is in fact immutable.
      */
     public static final FixedCount ZERO = new CountConstant(0);
@@ -130,23 +129,13 @@ public class Count extends CountConstant {
         value /= d;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.core.count.FixedCount#eq(org.extex.core.count.FixedCount)
-     */
-    @Override
+@Override
     public boolean eq(FixedCount count) {
 
         return count.getValue() == value;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.core.count.FixedCount#ge(org.extex.core.count.FixedCount)
-     */
-    @Override
+@Override
     public boolean ge(FixedCount count) {
 
         return value >= count.getValue();
@@ -163,34 +152,19 @@ public class Count extends CountConstant {
         return value;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.core.count.FixedCount#gt(org.extex.core.count.FixedCount)
-     */
-    @Override
+@Override
     public boolean gt(FixedCount count) {
 
         return value > count.getValue();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.core.count.FixedCount#le(org.extex.core.count.FixedCount)
-     */
-    @Override
+@Override
     public boolean le(FixedCount count) {
 
         return value <= count.getValue();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.core.count.FixedCount#lt(org.extex.core.count.FixedCount)
-     */
-    @Override
+@Override
     public boolean lt(FixedCount count) {
 
         return value < count.getValue();
@@ -216,12 +190,7 @@ public class Count extends CountConstant {
         value *= factor.getValue();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.core.count.FixedCount#ne(org.extex.core.count.FixedCount)
-     */
-    @Override
+@Override
     public boolean ne(FixedCount count) {
 
         return value != count.getValue();

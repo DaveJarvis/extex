@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007´-2011 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007ï¿½-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -34,23 +34,22 @@ import org.extex.ocpware.type.OcpCode;
  * This class represents a left item with minimum and maximum restrictions.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public class CompleteLeft implements Left {
 
     /**
-     * The field <tt>from</tt> contains the lower bound.
+     * The field {@code from} contains the lower bound.
      */
     private int from;
 
     /**
-     * The field <tt>left</tt> contains the left item to apply the constraints
+     * The field {@code left} contains the left item to apply the constraints
      * to.
      */
     private Left left;
 
     /**
-     * The field <tt>to</tt> contains the upper bound.
+     * The field {@code to} contains the upper bound.
      */
     private int to;
 
@@ -69,10 +68,7 @@ public class CompleteLeft implements Left {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.compiler.left.Left#genLeft(
-     *      org.extex.ocpware.compiler.parser.State, CompilerState)
+*      org.extex.ocpware.compiler.parser.State, CompilerState)
      */
     public List<Integer> genLeft(State state, CompilerState cs)
             throws IOException,
@@ -107,12 +103,7 @@ public class CompleteLeft implements Left {
         return holes;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder(left.toString());

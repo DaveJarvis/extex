@@ -20,18 +20,14 @@
 package org.extex.core;
 
 /**
- * Central utility class for Unicode compatibility in <logo>&epsilon;&chi;T<span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>.
+ * Central utility class for Unicode compatibility in εχTeX.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4388 $
- */
+*/
 public final class Unicode {
 
     /**
-     * The constant <tt>OFFSET</tt> contains the offset for shifting code points
+     * The constant {@code OFFSET} contains the offset for shifting code points
      * to a private Unicode area.
      */
     public static final int OFFSET = 0xEE00;

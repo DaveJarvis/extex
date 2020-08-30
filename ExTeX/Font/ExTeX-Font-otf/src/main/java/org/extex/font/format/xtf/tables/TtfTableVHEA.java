@@ -28,8 +28,7 @@ import org.extex.util.file.random.RandomAccessR;
  * The 'VHEA' ... TODO incomplete
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TtfTableVHEA extends AbstractXtfTable implements XtfTable {
 
     /**
@@ -49,12 +48,7 @@ public class TtfTableVHEA extends AbstractXtfTable implements XtfTable {
         // incomplete
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
+public String getShortcut() {
 
         return "vhea";
     }

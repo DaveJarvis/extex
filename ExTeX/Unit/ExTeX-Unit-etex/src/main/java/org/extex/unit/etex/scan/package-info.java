@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains primitives related to scanning of tokens.
+ * Contains primitives related to scanning of tokens.
  */
 
 package org.extex.unit.etex.scan;

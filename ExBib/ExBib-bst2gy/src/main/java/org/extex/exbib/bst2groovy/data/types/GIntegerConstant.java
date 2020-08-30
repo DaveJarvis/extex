@@ -24,12 +24,11 @@ import org.extex.exbib.bst2groovy.data.GenericCode;
  * This class represents an integer constant.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class GIntegerConstant extends GenericCode {
 
     /**
-     * The field <tt>value</tt> contains the value.
+     * The field {@code value} contains the value.
      */
     private int value;
 

@@ -19,17 +19,11 @@
 
 package org.extex.interpreter.loader;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
+import org.extex.interpreter.context.Context;
+
+import java.io.*;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
-
-import org.extex.interpreter.context.Context;
 
 /**
  * This class writes and reads format files.
@@ -37,9 +31,10 @@ import org.extex.interpreter.context.Context;
  * Format files contains the information needed to continue processing some
  * input. This means that essentially the context is stored.
  * </p>
- * <h3>The Format File</h3>
+ * <p>The Format File</p>
  * <p>
  * The format file contains certain information in a fixed sequence:
+ * </p>
  * <dl>
  *  <dd>The magic line</dd>
  *  <dt>This line is ended by a newline character and is used on Unix to
@@ -58,26 +53,24 @@ import org.extex.interpreter.context.Context;
  *   information.
  *  </dt>
  * </dl>
- * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4408 $
- */
+*/
 public class SerialLoader {
 
     /**
-     * The field <tt>MAGIC_LINE</tt> contains the first line of a format file.
+     * The field {@code MAGIC_LINE} contains the first line of a format file.
      */
     private static final String MAGIC_LINE = "#!extex -run-format\n";
 
     /**
-     * The constant <tt>FORMAT_VERSION</tt> contains the version number of the
+     * The constant {@code FORMAT_VERSION} contains the version number of the
      * format file.
      */
     private static final String FORMAT_VERSION = "1.0";
 
     /**
-     * The field <tt>FORMAT_ID</tt> contains the id string stored in the
+     * The field {@code FORMAT_ID} contains the id string stored in the
      * format file.
      */
     private static final String FORMAT_ID = "ExTeX format";

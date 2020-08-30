@@ -39,8 +39,7 @@ import org.extex.scanner.api.Tokenizer;
  * This is a simple implementation for a group with ExTeX-functions.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class GroupExtensionImpl extends GroupImpl
         implements
             Tokenizer,
@@ -49,7 +48,7 @@ public class GroupExtensionImpl extends GroupImpl
             Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 1L;
 
@@ -88,7 +87,7 @@ public class GroupExtensionImpl extends GroupImpl
      * Creates a new object.
      * 
      * @param next the next group in the stack. If the value is
-     *        <code>null</code> then this is the global base
+     *        {@code null} then this is the global base
      * @throws GeneralException if the group is not a groupextension
      */
     public GroupExtensionImpl(Group next) throws GeneralException {

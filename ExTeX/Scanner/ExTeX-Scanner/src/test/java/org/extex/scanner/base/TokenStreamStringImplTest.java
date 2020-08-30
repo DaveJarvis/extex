@@ -45,22 +45,21 @@ import org.junit.runner.JUnitCore;
  * Test cases for the string implementation of a token stream.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class TokenStreamStringImplTest {
 
     /**
-     * The constant <tt>SPACE</tt> contains the code point of space.
+     * The constant {@code SPACE} contains the code point of space.
      */
     private static final int SPACE = 32;
 
     /**
-     * The field <tt>factory</tt> contains the token factory to use.
+     * The field {@code factory} contains the token factory to use.
      */
     protected static final TokenFactory FACTORY = new TokenFactoryImpl();
 
     /**
-     * The field <tt>tokenizer</tt> contains the tokenizer to use for
+     * The field {@code tokenizer} contains the tokenizer to use for
      * categorizing characters.
      */
     protected static final Tokenizer TOKENIZER = new Tokenizer() {
@@ -161,8 +160,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase> The digit 1 is parsed as other character and nothing more.
-     * </testcase>
+     *  The digit 1 is parsed as other character and nothing more.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -179,9 +178,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase> The digits 1 and 2 are parsed as other character and nothing
-     * more. </testcase>
-     * 
+     * The digits 1 and 2 are parsed as other character and nothing more
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -199,7 +197,7 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase> Test that ~ is recognized as active character. </testcase>
+     *  Test that ~ is recognized as active character. 
      * 
      * @throws Exception in case of an error
      */
@@ -216,9 +214,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase> The character ^ is parsed as superscript character if followed
-     * by a small number. </testcase>
-     * 
+     * The character ^ is parsed as superscript character if followed by a small number
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -236,8 +233,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>The character ^^ is parsed as character escape if followed by a
-     * sufficiently large number, e.g. 41 for the letter A. </testcase>
+     * The character ^^ is parsed as character escape if followed by a
+     * sufficiently large number, e.g. 41 for the letter A. 
      * 
      * @throws Exception in case of an error
      */
@@ -253,8 +250,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>The character ^^ is parsed as character escape if followed by a
-     * small number, e.g. A for the character number 1. </testcase>
+     * The character ^^ is parsed as character escape if followed by a
+     * small number, e.g. A for the character number 1. 
      * 
      * @throws Exception in case of an error
      */
@@ -271,9 +268,9 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>The character ^^ is parsed as character escape if followed by a
+     * The character ^^ is parsed as character escape if followed by a
      * small number, e.g. A for the character number 1. Thus works even when
-     * other characters follow. </testcase>
+     * other characters follow. 
      * 
      * @throws Exception in case of an error
      */
@@ -292,9 +289,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase> This test case validates that ^^ followed by a number is
-     * parsed correctly. </testcase>
-     * 
+     * This test case validates that ^^ followed by a number is parsed correctly
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -312,9 +308,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase> This test case validates that ^^ followed by a space is parsed
-     * correctly. </testcase>
-     * 
+     * This test case validates that ^^ followed by a space is parsed correctly
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -330,9 +325,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase> The character ^ is parsed as superscript character if
-     * encountered at the end of file. </testcase>
-     * 
+     * The character ^ is parsed as superscript character if encountered at the end of file
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -348,8 +342,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>The character ^^ is parsed as character escape if followed by a
-     * sufficiently large number, e.g. 4f for the letter O. </testcase>
+     * The character ^^ is parsed as character escape if followed by a
+     * sufficiently large number, e.g. 4f for the letter O. 
      * 
      * @throws Exception in case of an error
      */
@@ -365,9 +359,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase> Test that % acts as comment characters and eats up anything to
-     * EOF if no newline is contained. </testcase>
-     * 
+     * Test that % acts as comment characters and eats up anything to EOF if no newline is contained
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -378,9 +371,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase> Test that % acts as comment characters and eats up anything to
-     * EOF if no newline is contained. </testcase>
-     * 
+     * Test that % acts as comment characters and eats up anything to EOF if no newline is contained
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -393,9 +385,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase> This test case validates that a single newline translates into
-     * a space. </testcase>
-     * 
+     * This test case validates that a single newline translates into a space
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -412,8 +403,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>A single newline character is translated into a space.
-     * </testcase>
+     * A single newline character is translated into a space.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -430,7 +421,7 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ... 
      * 
      * @throws Exception in case of an error
      */
@@ -451,8 +442,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>A single newline character is translated into a space. The
-     * following space is absorbed. </testcase>
+     * A single newline character is translated into a space. The
+     * following space is absorbed. 
      * 
      * @throws Exception in case of an error
      */
@@ -469,7 +460,7 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ... 
      * 
      * @throws Exception in case of an error
      */
@@ -489,7 +480,7 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ... 
      * 
      * @throws Exception in case of an error
      */
@@ -508,7 +499,7 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>A single dollar is parsed as math shift character. </testcase>
+     * A single dollar is parsed as math shift character. 
      * 
      * @throws Exception in case of an error
      */
@@ -525,7 +516,7 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase> The empty string does not contain any characters </testcase>
+     *  The empty string does not contain any characters 
      * 
      * @throws Exception in case of an error
      */
@@ -537,8 +528,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>\abc at the end of the file is recognized as control sequence
-     * </testcase>
+     * \abc at the end of the file is recognized as control sequence
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -552,7 +543,7 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>\abc followed by a space eats up the space. </testcase>
+     * \abc followed by a space eats up the space. 
      * 
      * @throws Exception in case of an error
      */
@@ -566,8 +557,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>\ at the end of file parses the empty control sequence. It is
-     * followed by an artificial \par. </testcase>
+     * \ at the end of file parses the empty control sequence. It is
+     * followed by an artificial \par. 
      * 
      * @throws Exception in case of an error
      */
@@ -584,8 +575,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>\2 is parsed as a control sequence even when followed by a
-     * digit.</testcase>
+     * \2 is parsed as a control sequence even when followed by a
+     * digit.
      * 
      * @throws Exception in case of an error
      */
@@ -602,8 +593,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>Caret escapes work even when interwoven into control sequence
-     * parsing. </testcase>
+     * Caret escapes work even when interwoven into control sequence
+     * parsing. 
      * 
      * @throws Exception in case of an error
      */
@@ -617,8 +608,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>Caret escapes work even when encountered at the beginning of
-     * control sequence parsing. </testcase>
+     * Caret escapes work even when encountered at the beginning of
+     * control sequence parsing. 
      * 
      * @throws Exception in case of an error
      */
@@ -632,8 +623,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>Caret escapes work even when encountered when reading the
-     * escape character. </testcase>
+     * Caret escapes work even when encountered when reading the
+     * escape character. 
      * 
      * @throws Exception in case of an error
      */
@@ -647,8 +638,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>The hash mark is parsed as macro parameter character.
-     * </testcase>
+     * The hash mark is parsed as macro parameter character.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -665,8 +656,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>An ignored character does not appear in the token stream.
-     * </testcase>
+     * An ignored character does not appear in the token stream.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -681,8 +672,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>An invalid character does not appear in the token stream.
-     * </testcase>
+     * An invalid character does not appear in the token stream.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -703,7 +694,7 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ... 
      * 
      * @throws Exception in case of an error
      */
@@ -718,9 +709,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase> Test that isEof() reports <code>false</code> if something is
-     * left on the stream. </testcase>
-     * 
+     * Test that isEof() reports {@code false} if something is left on the stream
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -734,8 +724,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>The method isEol() returns false if something is left to read.
-     * </testcase>
+     * The method isEol() returns false if something is left to read.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -748,8 +738,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>The method isEol() returns true if nothing is left to read.
-     * </testcase>
+     * The method isEol() returns true if nothing is left to read.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -761,7 +751,7 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>A { is parsed as left brace character. </testcase>
+     * A { is parsed as left brace character. 
      * 
      * @throws Exception in case of an error
      */
@@ -778,7 +768,7 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>A letter is parsed as letter; e.g. the letter A. </testcase>
+     * A letter is parsed as letter; e.g. the letter A. 
      * 
      * @throws Exception in case of an error
      */
@@ -794,7 +784,7 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase> Test that getLocator() returns something sensible. </testcase>
+     *  Test that getLocator() returns something sensible. 
      * 
      * @throws Exception in case of an error
      */
@@ -810,8 +800,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase> An embedded space between letters is treated correctly.
-     * </testcase>
+     *  An embedded space between letters is treated correctly.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -835,7 +825,7 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>Attempts to read past the end of file do no harm. </testcase>
+     * Attempts to read past the end of file do no harm. 
      * 
      * @throws Exception in case of an error
      */
@@ -848,7 +838,7 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>A } is parsed as left brace character. </testcase>
+     * A } is parsed as left brace character. 
      * 
      * @throws Exception in case of an error
      */
@@ -865,8 +855,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase> A single space at the beginning of the processing is skipped
-     * </testcase>
+     *  A single space at the beginning of the processing is skipped
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -881,9 +871,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase> The character period and space in sequence are parsed into
-     * appropriate tokens. </testcase>
-     * 
+     * The character period and space in sequence are parsed into appropriate tokens
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -897,9 +886,9 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase> The character period and two spaces in sequence are parsed
+     *  The character period and two spaces in sequence are parsed
      * into appropriate tokens. The two spaces are collapsed into one.
-     * </testcase>
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -914,7 +903,7 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase> Two spaces at the beginning are ignored. </testcase>
+     *  Two spaces at the beginning are ignored. 
      * 
      * @throws Exception in case of an error
      */
@@ -929,7 +918,7 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>An ampersand is pared as alignment tab character. </testcase>
+     * An ampersand is pared as alignment tab character. 
      * 
      * @throws Exception in case of an error
      */
@@ -946,8 +935,8 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>The method toString() retorts the file, the line and the
-     * column. </testcase>
+     * The method toString() retorts the file, the line and the
+     * column. 
      * 
      * @throws Exception in case of an error
      */
@@ -959,7 +948,7 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>An underscore is parsed as subscript character. </testcase>
+     * An underscore is parsed as subscript character. 
      * 
      * @throws Exception in case of an error
      */

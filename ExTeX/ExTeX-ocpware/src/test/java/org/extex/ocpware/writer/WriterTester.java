@@ -33,8 +33,7 @@ import org.extex.ocpware.type.OcpProgram;
  * This abstract base class provides some utility methods for testing writers.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6021 $
- */
+*/
 public abstract class WriterTester {
 
 

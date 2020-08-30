@@ -36,33 +36,33 @@ import org.extex.typesetter.tc.font.Font;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\pdffontobjnum</code>.
+ * {@code \pdffontobjnum}.
  * 
- * <doc name="pdffontobjnum"> <h3>The PDF Primitive <tt>\pdffontobjnum</tt></h3>
+ * <p>The PDF Primitive {@code \pdffontobjnum}</p>
  * <p>
  * This primitive provides a read-only count register containing... TODO missing
  * documentation
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;pdffontobjnum&rang;
- *       &rarr; <tt>\pdffontobjnum</tt> {@linkplain
+ *       &rarr; {@code \pdffontobjnum} {@linkplain
  *          org.extex.interpreter.TokenSource#getFont(Context, CodeToken)
  *          &lang;font&rang;} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \font\f cmr12
  *    \pdffontobjnum \f  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4791 $
- */
+*/
 public class Pdffontobjnum extends AbstractPdftexCode
         implements
             Theable,
@@ -70,7 +70,7 @@ public class Pdffontobjnum extends AbstractPdftexCode
             TokensConvertible {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -85,10 +85,7 @@ public class Pdffontobjnum extends AbstractPdftexCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertCount(Context context, TokenSource source,
@@ -102,10 +99,7 @@ public class Pdffontobjnum extends AbstractPdftexCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens convertTokens(Context context, TokenSource source,
@@ -120,10 +114,7 @@ public class Pdffontobjnum extends AbstractPdftexCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

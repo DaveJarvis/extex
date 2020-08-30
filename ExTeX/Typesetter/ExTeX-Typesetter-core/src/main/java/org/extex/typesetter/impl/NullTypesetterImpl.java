@@ -47,13 +47,12 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * interface.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4526 $
- */
+*/
 @SuppressWarnings("unused")
 public class NullTypesetterImpl implements Typesetter, TokenDelegateListMaker {
 
     /**
-     * The field <tt>backend</tt> contains the back-end driver for producing the
+     * The field {@code backend} contains the back-end driver for producing the
      * output.
      */
     private BackendDriver backend = null;
@@ -63,33 +62,20 @@ public class NullTypesetterImpl implements Typesetter, TokenDelegateListMaker {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#add(org.extex.core.glue.FixedGlue)
-     */
-    @Override
+@Override
     public void add(FixedGlue g) throws TypesetterException {
 
         // nothing to do
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#add(org.extex.typesetter.type.Node)
-     */
-    @Override
+@Override
     public void add(Node node) throws TypesetterException {
 
         // nothing to do
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#addAndAdjust(org.extex.typesetter.type.NodeList,
-     *      org.extex.typesetter.TypesetterOptions)
+*      org.extex.typesetter.TypesetterOptions)
      */
     @Override
     public void addAndAdjust(NodeList list, TypesetterOptions options)
@@ -103,7 +89,7 @@ public class NullTypesetterImpl implements Typesetter, TokenDelegateListMaker {
      * 
      * @param typesettingContext the typesetting context for the space
      * @param spacefactor the space factor to use for this space or
-     *        <code>null</code> to indicate that the default space factor should
+     *        {@code null} to indicate that the default space factor should
      *        be used.
      * 
      * @throws TypesetterException in case of an error
@@ -134,23 +120,13 @@ public class NullTypesetterImpl implements Typesetter, TokenDelegateListMaker {
         // nothing to do
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.Typesetter#clearShipoutMark()
-     */
-    @Override
+@Override
     public void clearShipoutMark() {
 
         // nothing to do
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.Typesetter#complete(TypesetterOptions)
-     */
-    @Override
+@Override
     public NodeList complete(TypesetterOptions context)
             throws TypesetterException,
                 ConfigurationException {
@@ -159,10 +135,7 @@ public class NullTypesetterImpl implements Typesetter, TokenDelegateListMaker {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#cr(org.extex.interpreter.context.Context,
-     *      org.extex.typesetter.tc.TypesettingContext,
+*      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.core.UnicodeChar)
      */
     @Override
@@ -172,154 +145,86 @@ public class NullTypesetterImpl implements Typesetter, TokenDelegateListMaker {
         // nothing to do
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.Typesetter#ensureHorizontalMode(org.extex.core.Locator)
-     */
-    @Override
+@Override
     public ListMaker ensureHorizontalMode(Locator locator) {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.Typesetter#finish()
-     */
-    @Override
+@Override
     public void finish() {
 
         // nothing to do
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.Typesetter#getBackendDriver()
-     */
-    @Override
+@Override
     public BackendDriver getBackendDriver() {
 
         return this.backend;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#getLastNode()
-     */
-    @Override
+@Override
     public Node getLastNode() {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.Typesetter#getListMaker()
-     */
-    @Override
+@Override
     public ListMaker getListMaker() {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#getLocator()
-     */
-    @Override
+@Override
     public Locator getLocator() {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.Typesetter#getManager()
-     */
-    @Override
+@Override
     public ListManager getManager() {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.Typesetter#getMode()
-     */
-    @Override
+@Override
     public Mode getMode() {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.Typesetter#getNodeFactory()
-     */
-    @Override
+@Override
     public NodeFactory getNodeFactory() {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#getPrevDepth()
-     */
-    @Override
+@Override
     public FixedDimen getPrevDepth() throws TypesetterUnsupportedException {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#getSpacefactor()
-     */
-    @Override
+@Override
     public long getSpacefactor() throws TypesetterUnsupportedException {
 
         return 0;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.Typesetter#isShipoutMark()
-     */
-    @Override
+@Override
     public boolean isShipoutMark() {
 
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#leftBrace()
-     */
-    @Override
+@Override
     public void leftBrace() {
 
         // nothing to do
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#letter(org.extex.core.UnicodeChar,
-     *      org.extex.typesetter.tc.TypesettingContext,
+*      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.core.Locator)
      */
@@ -332,10 +237,7 @@ public class NullTypesetterImpl implements Typesetter, TokenDelegateListMaker {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#mathShift(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
+*      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
     @Override
@@ -377,10 +279,7 @@ public class NullTypesetterImpl implements Typesetter, TokenDelegateListMaker {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.Typesetter#pushListMaker(org.extex.typesetter.ListMakerType,
-     *      org.extex.core.Locator)
+*      org.extex.core.Locator)
      */
     @Override
     public ListMaker pushListMaker(ListMakerType type, Locator locator)
@@ -483,52 +382,32 @@ public class NullTypesetterImpl implements Typesetter, TokenDelegateListMaker {
         // nothing to do
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.Typesetter#setParagraphBuilder(org.extex.typesetter.paragraphBuilder.ParagraphBuilder)
-     */
-    @Override
+@Override
     public void setParagraphBuilder(ParagraphBuilder paragraphBuilder) {
 
         // not supported yet
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#setPrevDepth(org.extex.core.dimen.FixedDimen)
-     */
-    @Override
+@Override
     public void setPrevDepth(FixedDimen pd) {
 
         // nothing to do
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#setSpacefactor(org.extex.core.count.FixedCount)
-     */
-    @Override
+@Override
     public void setSpacefactor(FixedCount sf) {
 
         // nothing to do
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.Typesetter#shipout(org.extex.typesetter.type.NodeList)
-     */
-    @Override
+@Override
     public void shipout(NodeList nodes) {
 
         // nothing to do
     }
 
     /**
-     * Print the status for <tt>\showlists</tt>.
+     * Print the status for {@code \showlists}.
      * 
      * @param sb the target buffer
      * @param depth the depth of the list display
@@ -542,22 +421,14 @@ public class NullTypesetterImpl implements Typesetter, TokenDelegateListMaker {
         // nothing to do
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.Typesetter#showlists(StringBuilder, long, long)
-     */
-    @Override
+@Override
     public void showlists(StringBuilder sb, long depth, long breadth) {
 
         // nothing to do
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#subscriptMark(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
     @Override
@@ -570,10 +441,7 @@ public class NullTypesetterImpl implements Typesetter, TokenDelegateListMaker {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#superscriptMark(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
     @Override
@@ -586,10 +454,7 @@ public class NullTypesetterImpl implements Typesetter, TokenDelegateListMaker {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#tab(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
+*      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
     @Override

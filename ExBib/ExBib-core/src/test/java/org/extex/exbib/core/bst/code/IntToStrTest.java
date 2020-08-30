@@ -35,15 +35,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>int.to.str$</tt>.
+ * Test suite for {@code int.to.str$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class IntToStrTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -83,7 +82,7 @@ public class IntToStrTest {
     }
 
     /**
-     * <testcase> The empty stack leads to an error. </testcase>
+     *  The empty stack leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -94,7 +93,7 @@ public class IntToStrTest {
     }
 
     /**
-     * <testcase> Test int.to.str$(0). </testcase>
+     *  Test int.to.str$(0).
      * 
      * @throws Exception in case of an error
      */
@@ -105,7 +104,7 @@ public class IntToStrTest {
     }
 
     /**
-     * <testcase> Test int.to.str$(123). </testcase>
+     *  Test int.to.str$(123).
      * 
      * @throws Exception in case of an error
      */
@@ -116,7 +115,7 @@ public class IntToStrTest {
     }
 
     /**
-     * <testcase> Test int.to.str$(32). </testcase>
+     *  Test int.to.str$(32).
      * 
      * @throws Exception in case of an error
      */
@@ -127,7 +126,7 @@ public class IntToStrTest {
     }
 
     /**
-     * <testcase> Test int.to.str$(-1). </testcase>
+     *  Test int.to.str$(-1).
      * 
      * @throws Exception in case of an error
      */
@@ -138,7 +137,7 @@ public class IntToStrTest {
     }
 
     /**
-     * <testcase> Test int.to.str$("abc") leads to an error. </testcase>
+     *  Test int.to.str$("abc") leads to an error.
      * 
      * @throws Exception in case of an error
      */

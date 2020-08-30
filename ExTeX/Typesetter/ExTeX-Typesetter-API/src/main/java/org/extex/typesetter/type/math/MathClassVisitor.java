@@ -42,18 +42,18 @@ package org.extex.typesetter.type.math;
  * </p>
  * <p>
  * This problem is solved in the visitor pattern. Each sub-class of MathClass
- * has to provide one method called <tt>visit()</tt> here. This method has as
+ * has to provide one method called {@code visit()} here. This method has as
  * one argument the visitor which should be called back. The visitor is defined
  * by the current interface. It has to provide a set of methods which allow him
  * to differentiate the types of the math class.
  * </p>
  * <p>
- * Each math class has to implement the method <tt>visit()</tt> in a way that
+ * Each math class has to implement the method {@code visit()} in a way that
  * the appropriate method from the visitor interface is invoked. Thus as a
  * result the math class and the algorithm are decoupled.
  * </p>
  * 
- * <h3>Example Source Code</h3>
+ * <p>Example Source Code</p>
  * <p>
  * Consider you have a class with a method which needs to react differently on
  * different mode classes. The first approximation looks as follows:
@@ -97,7 +97,7 @@ package org.extex.typesetter.type.math;
  * 
  * <p>
  * Now we just have to make sure that those methods are invoked. This is done
- * with the method <tt>visit()</tt> of the MathClass. The signature allows us
+ * with the method {@code visit()} of the MathClass. The signature allows us
  * to provide one additional argument and receive a return value. Since we want
  * to do something with a Noad, we use the argument for the noad.
  * </p>
@@ -106,7 +106,7 @@ package org.extex.typesetter.type.math;
  * it is possible to use the visitor pattern in several different situations.
  * </p>
  * <p>
- * The visitor is not necessarily the class <tt>Myclass</tt> itself. If this
+ * The visitor is not necessarily the class {@code Myclass} itself. If this
  * class contains several methods which need to distinguish the types of the
  * math class it is possible to use another class as visitor, e.g. an inner
  * class.
@@ -118,8 +118,7 @@ package org.extex.typesetter.type.math;
  * @param <A2_TYPE> the type of argument 2
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface MathClassVisitor<RET_TYPE, A1_TYPE, A2_TYPE> {
 
     /**

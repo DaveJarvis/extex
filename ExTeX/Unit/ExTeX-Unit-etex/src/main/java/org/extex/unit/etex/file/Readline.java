@@ -43,54 +43,54 @@ import org.extex.unit.tex.macro.util.MacroPattern;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\readline</code>.
+ * {@code \readline}.
  * 
- * <doc name="readline"> <h3>The Primitive <tt>\readline</tt></h3>
+ * <p>The Primitive {@code \readline}</p>
  * <p>
- * The primitive <tt>\readline</tt> read characters from an input stream until
+ * The primitive {@code \readline} read characters from an input stream until
  * the end of line is encountered. The characters are translated to tokens with
  * the category code OTHER except the white-space characters which receive the
  * category code SPACE. This mapping is performed ignoring the setting of
- * {@link org.extex.unit.tex.register.CatcodePrimitive <tt>\catcode</tt>}. The
+ * {@link org.extex.unit.tex.register.CatcodePrimitive {@code \catcode}}. The
  * resulting token list is bound to the control sequence given.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;readline&rang;
- *      &rarr; &lang;optional prefix&rang; <tt>\readline</tt> {@linkplain
+ *      &rarr; &lang;optional prefix&rang; {@code \readline} {@linkplain
  *        org.extex.unit.base.file.AbstractFileCode#scanInFileKey(Context,TokenSource,Typesetter)
- *        &lang;infile&nbsp;name&rang;} <tt>to</tt> {@linkplain
+ *        &lang;infile&nbsp;name&rang;} {@code to} {@linkplain
  *        org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *        &lang;control sequence&rang;}
  *
  *    &lang;optional prefix&rang;
  *      &rarr;
- *       |  <tt>\global</tt> &lang;optional prefix&rang; </pre>
+ *       |  {@code \global} &lang;optional prefix&rang; </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  * \openin3= abc.def
  * \readline3 to \line
  * \closein3 </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Readline extends AbstractAssignment implements LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>TOKENIZER</tt> contains the tokenizer to use for this
+     * The field {@code TOKENIZER} contains the tokenizer to use for this
      * primitive.
      */
     private static final Tokenizer TOKENIZER = new Tokenizer() {
@@ -126,7 +126,7 @@ public class Readline extends AbstractAssignment implements LogEnabled {
     };
 
     /**
-     * The field <tt>logger</tt> contains the target channel for the message.
+     * The field {@code logger} contains the target channel for the message.
      */
     private transient Logger logger = null;
 
@@ -141,10 +141,7 @@ public class Readline extends AbstractAssignment implements LogEnabled {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

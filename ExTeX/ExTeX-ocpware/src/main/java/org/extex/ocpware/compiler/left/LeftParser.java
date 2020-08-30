@@ -31,8 +31,7 @@ import org.extex.ocpware.compiler.parser.ParserStream;
  * This utility class contains parser methods for left items.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public final class LeftParser {
 
     /**

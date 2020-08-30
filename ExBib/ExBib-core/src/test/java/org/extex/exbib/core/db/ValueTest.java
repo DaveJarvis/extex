@@ -28,12 +28,11 @@ import org.junit.Test;
  * Test suite for {@link Value}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ValueTest {
 
     /**
-     * The field <tt>db</tt> contains the database.
+     * The field {@code db} contains the database.
      */
     private DB db;
 
@@ -59,7 +58,7 @@ public class ValueTest {
     }
 
     /**
-     * <testcase> An empty value expands to the empty string. </testcase>
+     *  An empty value expands to the empty string. 
      * 
      * @throws Exception in case of an error
      */
@@ -70,7 +69,7 @@ public class ValueTest {
     }
 
     /**
-     * <testcase> An the value "jan" expands to "January". </testcase>
+     *  An the value "jan" expands to "January". 
      * 
      * @throws Exception in case of an error
      */
@@ -81,7 +80,7 @@ public class ValueTest {
     }
 
     /**
-     * <testcase> An composed value expands its compnents. </testcase>
+     *  An composed value expands its compnents. 
      * 
      * @throws Exception in case of an error
      */

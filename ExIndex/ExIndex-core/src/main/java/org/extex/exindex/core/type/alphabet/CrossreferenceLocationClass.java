@@ -25,12 +25,11 @@ import org.extex.exindex.core.type.page.PageReference;
  * This class contains a cross-reference location class.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class CrossreferenceLocationClass implements LocationClass {
 
     /**
-     * The field <tt>verified</tt> contains the indicator for unverified cross
+     * The field {@code verified} contains the indicator for unverified cross
      * references.
      */
     private final boolean unverified;
@@ -56,10 +55,7 @@ public class CrossreferenceLocationClass implements LocationClass {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.alphabet.LocationClass#match(java.lang.String,
-     *      String)
+*      String)
      */
     public PageReference match(String encap, String text) {
 
@@ -68,12 +64,7 @@ public class CrossreferenceLocationClass implements LocationClass {
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.alphabet.LocationClass#match(java.lang.StringBuilder)
-     */
-    public boolean match(StringBuilder s) {
+public boolean match(StringBuilder s) {
 
         // TODO gene: match unimplemented
         throw new RuntimeException("unimplemented");

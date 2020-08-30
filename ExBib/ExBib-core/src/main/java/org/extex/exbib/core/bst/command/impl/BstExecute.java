@@ -31,13 +31,13 @@ import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This class represents an <tt>EXECUTE</tt> command.
+ * This class represents an {@code EXECUTE} command.
  * <p>
- * The <tt>execute</tt> command executes the function in the argument. There is
+ * The {@code execute} command executes the function in the argument. There is
  * no current entry then this code is executed.
  * </p>
  * <p>
- * The following example is taken from <tt>alpha.bst</tt>:
+ * The following example is taken from {@code alpha.bst}:
  * </p>
  * 
  * <pre>
@@ -45,8 +45,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BstExecute extends AbstractCommand {
 
     /**
@@ -55,7 +54,7 @@ public class BstExecute extends AbstractCommand {
      * @param value the value of this Command
      * @param locator the locator from the users perspective
      * 
-     * @throws ExBibIllegalValueException in case of a <code>null</code> value
+     * @throws ExBibIllegalValueException in case of a {@code null} value
      */
     public BstExecute(Token value, Locator locator)
             throws ExBibIllegalValueException {
@@ -70,10 +69,7 @@ public class BstExecute extends AbstractCommand {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.command.Command#execute(BstProcessor,
-     *      org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Locator locator)
             throws ExBibException {
@@ -93,10 +89,7 @@ public class BstExecute extends AbstractCommand {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.command.Command#visit(org.extex.exbib.core.bst.command.CommandVisitor,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visit(CommandVisitor visitor, Object... args)
             throws IOException,

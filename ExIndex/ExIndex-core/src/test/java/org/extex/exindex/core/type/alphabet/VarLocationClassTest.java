@@ -32,12 +32,11 @@ import org.junit.Test;
  * This is a test suite for a var location class.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class VarLocationClassTest {
 
     /**
-     * <testcase> An empty specification matches the empty string. </testcase>
+     *  An empty specification matches the empty string. 
      * 
      * @throws Exception in case of an error
      */
@@ -49,8 +48,8 @@ public class VarLocationClassTest {
     }
 
     /**
-     * <testcase> A separator matches the constant string with the same content.
-     * </testcase>
+     *  A separator matches the constant string with the same content.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -65,7 +64,7 @@ public class VarLocationClassTest {
     }
 
     /**
-     * <testcase> Arabic number matches arabic numbers. </testcase>
+     *  Arabic number matches arabic numbers. 
      * 
      * @throws Exception in case of an error
      */
@@ -79,8 +78,8 @@ public class VarLocationClassTest {
     }
 
     /**
-     * <testcase> Arabic number does not matches a string of letters.
-     * </testcase>
+     *  Arabic number does not matches a string of letters.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -93,7 +92,7 @@ public class VarLocationClassTest {
     }
 
     /**
-     * <testcase> Arabic numbers separated by a period is accepted. </testcase>
+     *  Arabic numbers separated by a period is accepted. 
      * 
      * @throws Exception in case of an error
      */
@@ -109,7 +108,7 @@ public class VarLocationClassTest {
     }
 
     /**
-     * <testcase> A letter and an arabic number is accepted. </testcase>
+     *  A letter and an arabic number is accepted. 
      * 
      * @throws Exception in case of an error
      */
@@ -124,8 +123,8 @@ public class VarLocationClassTest {
     }
 
     /**
-     * <testcase> A letter, a separator, and an arabic number is accepted.
-     * </testcase>
+     *  A letter, a separator, and an arabic number is accepted.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -139,8 +138,8 @@ public class VarLocationClassTest {
     }
 
     /**
-     * <testcase> A letter, two separators, and an arabic number is accepted.
-     * </testcase>
+     *  A letter, two separators, and an arabic number is accepted.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -157,9 +156,8 @@ public class VarLocationClassTest {
     }
 
     /**
-     * <testcase> A letter, three separators (including an empty string), and an
-     * arabic number is accepted. </testcase>
-     * 
+     * A letter, three separators (including an empty string), and an arabic number is accepted
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -176,7 +174,7 @@ public class VarLocationClassTest {
     }
 
     /**
-     * <testcase> A separator alone is accepted. </testcase>
+     *  A separator alone is accepted. 
      * 
      * @throws Exception in case of an error
      */

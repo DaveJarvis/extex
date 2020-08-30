@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\removebeforeocplist</tt>.
+ * This is a test suite for the primitive {@code \removebeforeocplist}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class RemovebeforeocplistTest extends ExTeXLauncher {
 
     /**
@@ -49,8 +48,8 @@ public class RemovebeforeocplistTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\removebeforeocplist"> Test case checking that
-     * <tt>\removebeforeocplist</tt> can not be used in a normal mode.
-     * </testcase>
+     * {@code \removebeforeocplist} can not be used in a normal mode.
+     *
      * 
      * @throws Exception in case of an error
      */

@@ -24,14 +24,13 @@ package org.extex.font.format;
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Fixed32 {
 
     /**
      * the value
      */
-    private int fp;
+    private final int fp;
 
     /**
      * Create a new object.

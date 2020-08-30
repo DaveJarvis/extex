@@ -39,45 +39,46 @@ import org.extex.typesetter.tc.font.Font;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\hyphenchar</code>.
+ * {@code \hyphenchar}.
  * 
- * <doc name="hyphenchar"> <h3>The Primitive <tt>\hyphenchar</tt></h3>
+ * <p>The Primitive {@code \hyphenchar}</p>
  * <p>
- * The primitive <tt>\hyphenchar</tt> can be used to set the hyphenation
+ * The primitive {@code \hyphenchar} can be used to set the hyphenation
  * character for a given font. The undefined character &ndash; represented by a
  * negative value &ndash; indicates that no hyphenation should be applied.
  * Otherwise the given character will be used when hyphenating words.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *     &lang;hyphenchar&rang;
- *       &rarr; <tt>\hyphenchar</tt> &lang;font&rang; {@linkplain
+ *       &rarr; {@code \hyphenchar} &lang;font&rang; {@linkplain
  *         org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *         &lang;equals&rang;} {@linkplain
  *         org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *         &lang;8-bit number&rang;}
  * </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *     \hyphenchar\font=132
  * </pre>
  * 
- * <h4>Incompatibility</h4>
+ * <p>Incompatibility</p>
+
  * <p>
  * The TeXbook gives no indication how the primitive should react for
  * negative values &ndash; except -1. The implementation of TeX allows to store and retrieve arbitrary negative values.
- * This behavior of TeX is not preserved in ??TeX.
+ * This behavior of TeX is not preserved in εχTeX.
  * </p>
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Hyphenchar extends AbstractAssignment
         implements
             CountConvertible,
@@ -85,7 +86,7 @@ public class Hyphenchar extends AbstractAssignment
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2011L;
 
@@ -100,10 +101,7 @@ public class Hyphenchar extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -121,10 +119,7 @@ public class Hyphenchar extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertCount(Context context, TokenSource source,
@@ -141,10 +136,7 @@ public class Hyphenchar extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -159,10 +151,7 @@ public class Hyphenchar extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

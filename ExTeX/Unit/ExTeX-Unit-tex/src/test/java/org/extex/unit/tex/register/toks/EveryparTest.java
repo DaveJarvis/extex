@@ -23,11 +23,10 @@ import org.extex.test.toks.AbstractToksRegisterTester;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\everypar</tt>.
+ * This is a test suite for the primitive {@code \everypar}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class EveryparTest extends AbstractToksRegisterTester {
 
     /**

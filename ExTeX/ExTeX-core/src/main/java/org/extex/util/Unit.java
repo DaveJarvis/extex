@@ -29,8 +29,7 @@ import org.extex.core.glue.GlueComponent;
  * This class implements a converter e.g for dimen values.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public final class Unit {
 
     /**
@@ -77,9 +76,9 @@ public final class Unit {
     private static final int SHIFT = 16;
 
     /**
-     * Returns the <code>Dimen</code>-value as BP (big point)
-     * @param value the <code>Dimen</code>
-     * @return Returns the <code>Dimen</code>-value as BP
+     * Returns the {@code Dimen}-value as BP (big point)
+     * @param value the {@code Dimen}
+     * @return Returns the {@code Dimen}-value as BP
      */
     public static float getDimenAsBP(FixedDimen value) {
 
@@ -87,9 +86,9 @@ public final class Unit {
     }
 
     /**
-     * Return the <code>Dimen</code>-value as PT (point)
-     * @param value the <code>Dimen</code>
-     * @return Returns the <code>Dimen</code>-value as PT
+     * Return the {@code Dimen}-value as PT (point)
+     * @param value the {@code Dimen}
+     * @return Returns the {@code Dimen}-value as PT
      */
     public static double getDimenAsPT(FixedDimen value) {
 
@@ -97,9 +96,9 @@ public final class Unit {
     }
 
     /**
-     * Return the <code>Dimen</code>-value (round) as PT (point) as  String.
-     * @param value the <code>Dimen</code>
-     * @return Returns the <code>Dimen</code>-value (round) as PT as String
+     * Return the {@code Dimen}-value (round) as PT (point) as  String.
+     * @param value the {@code Dimen}
+     * @return Returns the {@code Dimen}-value (round) as PT as String
      */
     public static String getDimenAsPTString(FixedDimen value) {
 
@@ -107,10 +106,10 @@ public final class Unit {
     }
 
     /**
-     * Return the <code>Dimen</code>-value (round) as PT (point) as  String.
-     * @param value the <code>Dimen</code>
+     * Return the {@code Dimen}-value (round) as PT (point) as  String.
+     * @param value the {@code Dimen}
      * @param round the round position
-     * @return Returns the <code>Dimen</code>-value (round) as PT as String
+     * @return Returns the {@code Dimen}-value (round) as PT as String
      */
     public static String getDimenAsPTString(FixedDimen value,
             int round) {
@@ -122,9 +121,9 @@ public final class Unit {
     }
 
     /**
-     * Returns the <code>Dimen</code>-value as MM (milimeter)
-     * @param value the <code>Dimen</code>
-     * @return Returns the <code>Dimen</code>-value as MM
+     * Returns the {@code Dimen}-value as MM (milimeter)
+     * @param value the {@code Dimen}
+     * @return Returns the {@code Dimen}-value as MM
      */
     public static double getDimenAsMM(FixedDimen value) {
 
@@ -132,9 +131,9 @@ public final class Unit {
     }
 
     /**
-     * Returns the <code>Dimen</code>-value as CM (centimeter)
-     * @param value the <code>Dimen</code>
-     * @return Returns the <code>Dimen</code>-value as CM
+     * Returns the {@code Dimen}-value as CM (centimeter)
+     * @param value the {@code Dimen}
+     * @return Returns the {@code Dimen}-value as CM
      */
     public static double getDimenAsCM(FixedDimen value) {
 
@@ -142,9 +141,9 @@ public final class Unit {
     }
 
     /**
-     * Returns the <code>Dimen</code>-value as IN (inch)
-     * @param value the <code>Dimen</code>
-     * @return Returns the <code>Dimen</code>-value as IN
+     * Returns the {@code Dimen}-value as IN (inch)
+     * @param value the {@code Dimen}
+     * @return Returns the {@code Dimen}-value as IN
      */
     public static double getDimenAsIN(FixedDimen value) {
 
@@ -152,9 +151,9 @@ public final class Unit {
     }
 
     /**
-     * Create a new <code>Dimen</code> from a CM-value
+     * Create a new {@code Dimen} from a CM-value
      * @param cm    the cm-value
-     * @return Returns the new <code>Dimne</code> from cm-value.
+     * @return Returns the new {@code Dimne} from cm-value.
      */
     public static Dimen createDimenFromCM(double cm) {
 
@@ -162,7 +161,7 @@ public final class Unit {
     }
 
     /**
-     * Set the <code>Dimen</code>-value from a BP-value
+     * Set the {@code Dimen}-value from a BP-value
      * @param d     the dimen
      * @param bp    the bp-value
      */

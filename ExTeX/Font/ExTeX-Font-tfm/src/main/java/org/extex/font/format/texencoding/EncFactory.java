@@ -33,8 +33,7 @@ import org.extex.resource.ResourceFinder;
  * Factory for enc-files.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class EncFactory implements Serializable {
 
     /**
@@ -45,18 +44,18 @@ public class EncFactory implements Serializable {
     /**
      * Map.
      */
-    private Map<String, EncReader> data;
+    private final Map<String, EncReader> data;
 
     /**
      * The resource finder.
      */
-    private transient ResourceFinder finder;
+    private final transient ResourceFinder finder;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated
+     * The field {@code localizer} contains the localizer. It is initiated
      * with a localizer for the name of this class.
      */
-    private transient Localizer localizer =
+    private final transient Localizer localizer =
             LocalizerFactory.getLocalizer(EncFactory.class);
 
     /**

@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains math utility classes.
+ * Contains math utility classes.
  */
 
 package org.extex.unit.tex.math.util;

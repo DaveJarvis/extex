@@ -29,12 +29,11 @@ import java.util.ResourceBundle;
  * application of a resource bundle.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractWriter implements OcpWriter {
 
     /**
-     * The field <tt>bundle</tt> contains the resource bundle for i18n.
+     * The field {@code bundle} contains the resource bundle for i18n.
      */
     private ResourceBundle bundle;
 
@@ -83,7 +82,7 @@ public abstract class AbstractWriter implements OcpWriter {
      *
      * @param key the key in the resource bundle
      *
-     * @return the boolean value; it defaults to <code>false</code>
+     * @return the boolean value; it defaults to {@code false}
      */
     protected boolean booleanResource(String key) {
 

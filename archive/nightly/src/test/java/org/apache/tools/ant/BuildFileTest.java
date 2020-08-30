@@ -33,29 +33,17 @@ import junit.framework.TestCase;
  */
 public abstract class BuildFileTest extends TestCase {
 
-    /**
-     */
-    protected Project project;
+protected Project project;
 
-    /**
-     */
-    private StringBuffer logBuffer;
+private StringBuffer logBuffer;
 
-    /**
-     */
-    private StringBuffer fullLogBuffer;
+private StringBuffer fullLogBuffer;
 
-    /**
-     */
-    private StringBuffer outBuffer;
+private StringBuffer outBuffer;
 
-    /**
-     */
-    private StringBuffer errBuffer;
+private StringBuffer errBuffer;
 
-    /**
-     */
-    private BuildException buildException;
+private BuildException buildException;
 
     /**
      *  Constructor for the BuildFileTest object

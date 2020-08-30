@@ -27,8 +27,7 @@ import org.junit.runner.JUnitCore;
  * This is a test suite for the kerning.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4527 $
- */
+*/
 public class KerningTest extends ExTeXLauncher {
 
     /**
@@ -47,7 +46,7 @@ public class KerningTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */
@@ -68,7 +67,7 @@ public class KerningTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ...
      * 
      * @throws Exception in case of an error
      */

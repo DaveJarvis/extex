@@ -31,12 +31,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class represents a thread action spec.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4409 $
- */
+*/
 public class ThreadActionSpec extends ActionSpec {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
@@ -70,12 +69,12 @@ public class ThreadActionSpec extends ActionSpec {
     }
 
     /**
-     * The field <tt>file</tt> contains the file.
+     * The field {@code file} contains the file.
      */
     private String file;
 
     /**
-     * The field <tt>id</tt> contains the id.
+     * The field {@code id} contains the id.
      */
     private IdSpec id;
 
@@ -92,7 +91,7 @@ public class ThreadActionSpec extends ActionSpec {
     }
 
     /**
-     * Getter for file. This value is not <code>null</code>.
+     * Getter for file. This value is not {@code null}.
      * 
      * @return the file
      */
@@ -103,7 +102,7 @@ public class ThreadActionSpec extends ActionSpec {
 
     /**
      * Getter for id. The id can either be a number or a name. This value is not
-     * <code>null</code>.
+     * {@code null}.
      * 
      * @return the id
      */

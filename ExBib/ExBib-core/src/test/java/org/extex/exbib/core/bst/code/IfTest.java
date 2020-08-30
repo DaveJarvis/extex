@@ -42,11 +42,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>if$</tt>.
+ * Test suite for {@code if$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class IfTest {
 
     /**
@@ -55,10 +54,7 @@ public class IfTest {
     private class ElseCode extends AbstractCode {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
-         *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+    *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
          */
         public void execute(BstProcessor processor, Entry entry, Locator locator)
                 throws ExBibException {
@@ -73,10 +69,7 @@ public class IfTest {
     private class ThenCode extends AbstractCode {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
-         *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+    *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
          */
         public void execute(BstProcessor processor, Entry entry, Locator locator)
                 throws ExBibException {
@@ -86,22 +79,22 @@ public class IfTest {
     }
 
     /**
-     * The field <tt>thenCount</tt> contains the counter for the then branch.
+     * The field {@code thenCount} contains the counter for the then branch.
      */
     private int thenCount = 0;
 
     /**
-     * The field <tt>elseCount</tt> contains the counter for the else branch.
+     * The field {@code elseCount} contains the counter for the else branch.
      */
     private int elseCount = 0;
 
     /**
-     * The field <tt>db</tt> contains the database.
+     * The field {@code db} contains the database.
      */
     private DB db = null;
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -130,9 +123,8 @@ public class IfTest {
     }
 
     /**
-     * <testcase> If the condition evaluates to 0 then only the else branch is
-     * executed. </testcase>
-     * 
+     * If the condition evaluates to 0 then only the else branch is executed
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -150,9 +142,8 @@ public class IfTest {
     }
 
     /**
-     * <testcase> If the condition evaluates to 1 then only the then branch is
-     * executed. </testcase>
-     * 
+     * If the condition evaluates to 1 then only the then branch is executed
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -170,7 +161,7 @@ public class IfTest {
     }
 
     /**
-     * <testcase> An empty stack leads to an error. </testcase>
+     *  An empty stack leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -181,7 +172,7 @@ public class IfTest {
     }
 
     /**
-     * <testcase> A short stack leads to an error. </testcase>
+     *  A short stack leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -193,7 +184,7 @@ public class IfTest {
     }
 
     /**
-     * <testcase> A short stack leads to an error. </testcase>
+     *  A short stack leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -206,7 +197,7 @@ public class IfTest {
     }
 
     /**
-     * <testcase> The first argument needs to be a number. </testcase>
+     *  The first argument needs to be a number.
      * 
      * @throws Exception in case of an error
      */
@@ -220,7 +211,7 @@ public class IfTest {
     }
 
     /**
-     * <testcase> The first argument needs to be a number. </testcase>
+     *  The first argument needs to be a number.
      * 
      * @throws Exception in case of an error
      */

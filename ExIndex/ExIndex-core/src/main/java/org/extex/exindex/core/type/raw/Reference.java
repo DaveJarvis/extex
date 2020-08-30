@@ -30,8 +30,7 @@ import org.extex.exindex.core.type.attribute.AttributesContainer;
  * This interface describes a reference specification.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6617 $
- */
+*/
 public interface Reference {
 
     /**
@@ -44,7 +43,7 @@ public interface Reference {
      * @param openPages the list of open pages
      * @param attributes the defined attributes
      * 
-     * @return <code>true</code> iff everything is ok
+     * @return {@code true} iff everything is ok
      */
     boolean check(Logger logger, RawIndexentry entry, StructuredIndex index,
             LocationClassContainer crossrefClass,
@@ -54,7 +53,7 @@ public interface Reference {
     /**
      * Getter for the layer.
      * 
-     * @return the layer or <code>null</code>
+     * @return the layer or {@code null}
      */
     String getLayer();
 

@@ -26,8 +26,7 @@ import org.extex.core.dimen.Dimen;
  * DVI: fnt_def: Define a font.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class DviFntDef extends DviCommand {
 
@@ -44,32 +43,32 @@ public class DviFntDef extends DviCommand {
     /**
      * the area
      */
-    private String area;
+    private final String area;
 
     /**
      * the checkusm
      */
-    private int checksum;
+    private final int checksum;
 
     /**
      * the design size
      */
-    private int designsize;
+    private final int designsize;
 
     /**
      * the name
      */
-    private String fname;
+    private final String fname;
 
     /**
      * the font (number)
      */
-    private int font;
+    private final int font;
 
     /**
      * the scalefactor
      */
-    private int scale;
+    private final int scale;
 
     /**
      * Create a new object.
@@ -145,12 +144,7 @@ public class DviFntDef extends DviCommand {
         return font;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviCommand#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return new StringBuilder("fntdef").append(getOpcode() - FNT_DEF1 + 1)
@@ -168,9 +162,9 @@ public class DviFntDef extends DviCommand {
     }
 
     /**
-     * Returns the scale as <code>Dimen</code>.
+     * Returns the scale as {@code Dimen}.
      * 
-     * @return Returns the scale as <code>Dimen</code>.
+     * @return Returns the scale as {@code Dimen}.
      */
     public Dimen getScaleAsDimen() {
 
@@ -189,10 +183,10 @@ public class DviFntDef extends DviCommand {
     }
 
     /**
-     * Returns the scaled from a font as <code>Count</code>.
+     * Returns the scaled from a font as {@code Count}.
      * 
      * @param mag the maginification
-     * @return Returns the scaled from a font as <code>Count</code>.
+     * @return Returns the scaled from a font as {@code Count}.
      */
     public Count getScaledAsCount(final int mag) {
 

@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains classes for the primitives related to the shipping of
+ * Contains classes for the primitives related to the shipping of
  * output to the document writer.
  */
 

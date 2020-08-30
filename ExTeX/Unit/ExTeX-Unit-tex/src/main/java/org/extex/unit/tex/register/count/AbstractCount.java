@@ -35,14 +35,13 @@ import org.extex.typesetter.exception.TypesetterException;
  * numbered count registers.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public abstract class AbstractCount extends AbstractAssignment
         implements
             InitializableCode {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     static final long serialVersionUID = 2007L;
@@ -84,10 +83,7 @@ public abstract class AbstractCount extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.InitializableCode#init(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public void init(Context context, TokenSource source, Typesetter typesetter)

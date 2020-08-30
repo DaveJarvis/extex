@@ -38,22 +38,21 @@ import org.extex.scanner.type.Namespace;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4399 $
- */
+*/
 public class ControlSequenceToken extends AbstractToken implements CodeToken {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2011L;
 
     /**
-     * The field <tt>value</tt> contains the string value.
+     * The field {@code value} contains the string value.
      */
     private String name;
 
     /**
-     * The field <tt>namespace</tt> contains the name space for this token.
+     * The field {@code namespace} contains the name space for this token.
      */
     private String namespace;
 
@@ -120,7 +119,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * @param cc the catcode
      * @param c the value
      * 
-     * @return <code>true</code> iff the tokens are equal
+     * @return {@code true} iff the tokens are equal
      * 
      * @see org.extex.scanner.type.token.AbstractToken#eq(org.extex.scanner.type.Catcode,
      *      char)
@@ -140,7 +139,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * @param cc the catcode
      * @param s the value
      * 
-     * @return <code>true</code> iff the tokens are equal
+     * @return {@code true} iff the tokens are equal
      * 
      * @see org.extex.scanner.type.token.Token#eq(org.extex.scanner.type.Catcode,
      *      java.lang.String)
@@ -157,7 +156,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * 
      * @param c the value
      * 
-     * @return <code>true</code> iff the tokens are equal
+     * @return {@code true} iff the tokens are equal
      * 
      * @see org.extex.scanner.type.token.AbstractToken#eq(char)
      */
@@ -171,8 +170,8 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * Indicates whether some other object is "equal to" this one.
      * 
      * @param other the reference object with which to compare.
-     * @return <code>true</code> if this object is the same as the obj argument;
-     *         <code>false</code> otherwise.
+     * @return {@code true} if this object is the same as the obj argument;
+     *         {@code false} otherwise.
      * 
      * @see java.lang.Object#equals(java.lang.Object)
      */

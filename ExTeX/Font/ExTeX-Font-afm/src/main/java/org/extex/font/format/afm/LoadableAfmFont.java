@@ -19,16 +19,6 @@
 
 package org.extex.font.format.afm;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Logger;
-
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
 import org.extex.core.count.FixedCount;
@@ -36,11 +26,7 @@ import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
-import org.extex.font.BackendCharacter;
-import org.extex.font.BackendFont;
-import org.extex.font.CoreFontFactory;
-import org.extex.font.FontKey;
-import org.extex.font.LoadableFont;
+import org.extex.font.*;
 import org.extex.font.exception.CorruptFontException;
 import org.extex.font.exception.FontException;
 import org.extex.font.fontparameter.FontParameter;
@@ -53,19 +39,24 @@ import org.extex.framework.logger.LogEnabled;
 import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.*;
+import java.util.logging.Logger;
+
 /**
  * Class to load afm fonts.
  * 
  * <ul>
  * <li>The font has no design size; this is set to the size of the font key.</li>
  * <li>The EM size is set to the size of the font.</li>
- * <li>The font load the font dimen values over <code>FontParameter</code>.
+ * <li>The font load the font dimen values over {@code FontParameter}.
  * <li>If the font has no glyph 'space', then ex is used for getSpace().</li>
  * </ul>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class LoadableAfmFont
         implements
             LoadableFont,
@@ -77,12 +68,12 @@ public class LoadableAfmFont
     /**
      * The actual dynamic encoding vector.
      */
-    private String[] actualDynEnc = null;
+    private String[] actualDynEnc;
 
     /**
      * The actual position in the encoding vector.
      */
-    private int actualDynPos = 0;
+    private int actualDynPos;
 
     /**
      * The actual font key.
@@ -92,12 +83,12 @@ public class LoadableAfmFont
     /**
      * The list of encoding vectors.
      */
-    private List<String[]> encodingVectors = null;
+    private List<String[]> encodingVectors;
 
     /**
      * The position of the encoding vector.
      */
-    private int encodingVectorsPos = 0;
+    private int encodingVectorsPos;
 
     /**
      * The resource finder.
@@ -107,7 +98,7 @@ public class LoadableAfmFont
     /**
      * The map for the font dimen values.
      */
-    private Map<String, FixedDimen> fontDimen =
+    private final Map<String, FixedDimen> fontDimen =
             new HashMap<String, FixedDimen>();
 
     /**
@@ -123,23 +114,23 @@ public class LoadableAfmFont
     /**
      * Has multi fonts.
      */
-    private boolean hasMultiFonts = false;
+    private boolean hasMultiFonts;
 
     /**
      * The last used char metric (for caching).
      */
-    private AfmCharMetric lastUsedCm = null;
+    private AfmCharMetric lastUsedCm;
 
     /**
      * The last used Unicode char (for caching).
      */
-    private UnicodeChar lastUsedUc = null;
+    private UnicodeChar lastUsedUc;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated with
+     * The field {@code localizer} contains the localizer. It is initiated with
      * a localizer for the name of this class.
      */
-    private Localizer localizer = LocalizerFactory
+    private final Localizer localizer = LocalizerFactory
         .getLocalizer(LoadableAfmFont.class);
 
     /**
@@ -150,17 +141,17 @@ public class LoadableAfmFont
     /**
      * Use no kerning information.
      */
-    private boolean nokerning = false;
+    private boolean nokerning;
 
     /**
      * Use no ligature information.
      */
-    private boolean noligature = false;
+    private boolean noligature;
 
     /**
      * The font parameter
      */
-    private FontParameter param = null;
+    private FontParameter param;
 
     /**
      * The afm parser.
@@ -181,14 +172,10 @@ public class LoadableAfmFont
      * Map for the used code points and the corresponding encoding vector
      * position.
      */
-    private Map<Integer, Integer> useCodepoints =
+    private final Map<Integer, Integer> useCodepoints =
             new HashMap<Integer, Integer>();
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
-     */
+
     @Override
     public void enableLogging(Logger logger) {
 
@@ -196,10 +183,10 @@ public class LoadableAfmFont
     }
 
     /**
-     * Convert a float value to a <code>Dimen</code>.
+     * Convert a float value to a {@code Dimen}.
      * 
      * @param val the value
-     * @return the <code>Dimen</code> value of the float value.
+     * @return the {@code Dimen} value of the float value.
      */
     private FixedDimen floatToDimen(float val) {
 
@@ -208,44 +195,32 @@ public class LoadableAfmFont
         return new Dimen(l);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BaseFont#getActualFontKey()
-     */
+
     @Override
     public FontKey getActualFontKey() {
 
         return actualFontKey;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getActualSize()
-     */
+
     @Override
     public FixedDimen getActualSize() {
 
         return actualFontKey.getDimen("size");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getAfm()
-     */
+
     public byte[] getAfm() {
 
         return parser.getFontData();
     }
 
     /**
-     * Returns the char metric for a Unicode char, or <code>null</code>, if not
+     * Returns the char metric for a Unicode char, or {@code null}, if not
      * found.
      * 
      * @param uc the Unicode char.
-     * @return the char metric for a Unicode char, or <code>null</code>, if not
+     * @return the char metric for a Unicode char, or {@code null}, if not
      *         found.
      */
     private AfmCharMetric getCharMetric(UnicodeChar uc) {
@@ -274,21 +249,13 @@ public class LoadableAfmFont
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getCheckSum()
-     */
+
     public int getCheckSum() {
 
         return 0;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getDepth(org.extex.core.UnicodeChar)
-     */
+
     @Override
     public FixedGlue getDepth(UnicodeChar uc) {
 
@@ -299,58 +266,38 @@ public class LoadableAfmFont
         return FixedGlue.ZERO;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getDesignSize()
-     */
+
     @Override
     public FixedDimen getDesignSize() {
 
         return fontKey.getDimen("size");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getEm()
-     */
+
     @Override
     public FixedDimen getEm() {
 
         return actualFontKey.getDimen("size");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getEncodingForChar(int)
-     */
+
     public int getEncodingForChar(int codepoint) {
 
         Integer pos = useCodepoints.get(codepoint);
         if (pos != null) {
-            return pos.intValue();
+            return pos;
         }
 
         return -1;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getEncodingVectors()
-     */
+
     public List<String[]> getEncodingVectors() {
 
         return encodingVectors;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getEx()
-     */
+
     @Override
     public FixedDimen getEx() {
 
@@ -362,11 +309,7 @@ public class LoadableAfmFont
         return floatToDimen(xh);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getFontDimen(java.lang.String)
-     */
+
     @Override
     public FixedDimen getFontDimen(String name) {
 
@@ -377,33 +320,21 @@ public class LoadableAfmFont
         return Dimen.ZERO_PT;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BaseFont#getFontKey()
-     */
+
     @Override
     public FontKey getFontKey() {
 
         return fontKey;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getFontName()
-     */
+
     @Override
     public String getFontName() {
 
         return fontKey.getName();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getHeight(org.extex.core.UnicodeChar)
-     */
+
     @Override
     public FixedGlue getHeight(UnicodeChar uc) {
 
@@ -414,11 +345,7 @@ public class LoadableAfmFont
         return FixedGlue.ZERO;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getItalicCorrection(org.extex.core.UnicodeChar)
-     */
+
     @Override
     public FixedDimen getItalicCorrection(UnicodeChar uc) {
 
@@ -427,10 +354,7 @@ public class LoadableAfmFont
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getKerning(org.extex.core.UnicodeChar,
-     *      org.extex.core.UnicodeChar)
+*      org.extex.core.UnicodeChar)
      */
     @Override
     public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
@@ -454,10 +378,7 @@ public class LoadableAfmFont
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getLigature(org.extex.core.UnicodeChar,
-     *      org.extex.core.UnicodeChar)
+*      org.extex.core.UnicodeChar)
      */
     @Override
     public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
@@ -490,33 +411,21 @@ public class LoadableAfmFont
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getName()
-     */
+
     @Override
     public String getName() {
 
         return actualFontKey.getName();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getPfa()
-     */
+
     @Override
     public byte[] getPfa() {
 
         return pfadata;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getPfb()
-     */
+
     @Override
     public byte[] getPfb() {
 
@@ -542,22 +451,14 @@ public class LoadableAfmFont
         return pfbdata;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getScaleFactor()
-     */
+
     @Override
     public FixedCount getScaleFactor() {
 
         return Count.ONE;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getSpace()
-     */
+
     @Override
     public FixedGlue getSpace() {
 
@@ -573,11 +474,7 @@ public class LoadableAfmFont
         return new Glue(getEx());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getWidth(org.extex.core.UnicodeChar)
-     */
+
     @Override
     public FixedGlue getWidth(UnicodeChar uc) {
 
@@ -588,77 +485,42 @@ public class LoadableAfmFont
         return FixedGlue.ZERO;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getXtf()
-     */
+
     @Override
     public byte[] getXtf() {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#hasEncodingVector()
-     */
     public boolean hasEncodingVector() {
 
         // TODO mgn: hasEncodingVector unimplemented
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#hasGlyph(org.extex.core.UnicodeChar)
-     */
     @Override
     public boolean hasGlyph(UnicodeChar uc) {
 
-        return getCharMetric(uc) != null ? true : false;
+        return getCharMetric( uc ) != null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#hasMultiFonts()
-     */
     public boolean hasMultiFonts() {
 
         return hasMultiFonts;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#isType1()
-     */
     @Override
     public boolean isType1() {
 
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#isXtf()
-     */
     @Override
     public boolean isXtf() {
 
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.LoadableFont#loadFont(java.io.InputStream,
-     *      org.extex.font.CoreFontFactory, org.extex.font.FontKey)
-     */
     @Override
     public void loadFont(InputStream in, CoreFontFactory factory, FontKey key)
             throws CorruptFontException {
@@ -681,9 +543,7 @@ public class LoadableAfmFont
                 param = new FontParameter(paramin);
             }
 
-        } catch (FontException e) {
-            throw new CorruptFontException(key, e.getLocalizedMessage());
-        } catch (IOException e) {
+        } catch ( FontException | IOException e) {
             throw new CorruptFontException(key, e.getLocalizedMessage());
         }
 
@@ -717,28 +577,18 @@ public class LoadableAfmFont
             for (String key : fd.keySet()) {
                 Integer val = fd.get(key);
                 if (val != null) {
-                    fontDimen.put(key, floatToDimen(val.intValue()));
+                    fontDimen.put(key, floatToDimen( val ));
                 }
             }
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
-     */
     @Override
     public void setResourceFinder(ResourceFinder finder) {
 
         this.finder = finder;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#usedCharacter(org.extex.font.BackendCharacter)
-     */
     public void usedCharacter(BackendCharacter bc) {
 
         // check, if the char is in the default encoding.

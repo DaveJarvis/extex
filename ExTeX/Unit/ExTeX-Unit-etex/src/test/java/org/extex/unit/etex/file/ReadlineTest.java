@@ -23,15 +23,14 @@ import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\readline</tt>.
+ * This is a test suite for the primitive {@code \readline}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class ReadlineTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
-     * The constant <tt>DATA_FILE</tt> contains the name of the file to be used
+     * The constant {@code DATA_FILE} contains the name of the file to be used
      * for reading.
      */
     private static final String DATA_FILE =

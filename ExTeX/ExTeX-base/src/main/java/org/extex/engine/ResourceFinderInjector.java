@@ -29,12 +29,11 @@ import org.extex.resource.ResourceFinder;
  * from a format which needs it.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ResourceFinderInjector implements RegistrarObserver {
 
     /**
-     * The field <tt>finder</tt> contains the resource finder to inject.
+     * The field {@code finder} contains the resource finder to inject.
      */
     private ResourceFinder finder;
 

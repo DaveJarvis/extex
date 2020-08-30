@@ -33,25 +33,27 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\badness</code>
+ * This class provides an implementation for the primitive {@code \badness}
  * .
  * 
- * <doc name="badness"> <h3>The Primitive <tt>\badness</tt></h3>
+ * <p>The Primitive {@code \badness}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *   &lang;badness&rang;
- *     &rarr; <tt>\badness</tt> {@linkplain
+ *     &rarr; {@code \badness} {@linkplain
  *       org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *       &lang;equals&rang;} {@linkplain
  *       org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *       &lang;number&rang;} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *   \badness=999  </pre>
@@ -59,21 +61,19 @@ import org.extex.typesetter.exception.TypesetterException;
  * <pre class="TeXSample">
  *   \count1=\badness  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Badness extends AbstractCode implements CountConvertible, Theable {
 
     /**
-     * The constant <tt>BADNESS</tt> contains the key for the register value.
+     * The constant {@code BADNESS} contains the key for the register value.
      */
     private static final String BADNESS = "badness";
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -88,10 +88,7 @@ public class Badness extends AbstractCode implements CountConvertible, Theable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertCount(Context context, TokenSource source,
@@ -102,10 +99,7 @@ public class Badness extends AbstractCode implements CountConvertible, Theable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

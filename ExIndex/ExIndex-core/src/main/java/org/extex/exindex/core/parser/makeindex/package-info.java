@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- *   This package contains the filter for makeindex files to emulate the makeindex
+ *   Contains the filter for makeindex files to emulate the makeindex
  *   behavior.
  */
 

@@ -28,11 +28,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\openout</tt>.
+ * This is a test suite for the primitive {@code \openout}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class OpenoutTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
 
     /**
@@ -53,7 +52,7 @@ public class OpenoutTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
 
     /**
      * <testcase primitive="\openout"> Test case checking that a lonely
-     * <tt>\openout</tt> leads to an error. </testcase>
+     * {@code \openout} leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -68,7 +67,7 @@ public class OpenoutTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
 
     /**
      * <testcase primitive="\openout"> Test case checking that a lonely
-     * <tt>\openout</tt> with an index leads to an error. </testcase>
+     * {@code \openout} with an index leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -83,7 +82,7 @@ public class OpenoutTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
 
     /**
      * <testcase primitive="\openout"> Test case checking that an unknown
-     * encoding for immediate <tt>\openout</tt> leads to an error. </testcase>
+     * encoding for immediate {@code \openout} leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -110,8 +109,8 @@ public class OpenoutTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
 
     /**
      * <testcase primitive="\openout"> Test case checking that an unknown
-     * encoding for non-immediate <tt>\openout</tt> leads to an error.
-     * </testcase>
+     * encoding for non-immediate {@code \openout} leads to an error.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -138,7 +137,7 @@ public class OpenoutTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
 
     /**
      * <testcase primitive="\openout"> Test case checking that an immediate
-     * <tt>\openout</tt> works. </testcase>
+     * {@code \openout} works.
      * 
      * @throws Exception in case of an error
      */
@@ -166,7 +165,7 @@ public class OpenoutTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
 
     /**
      * <testcase primitive="\openout"> Test case checking that a non-immediate
-     * <tt>\openout</tt> works. </testcase>
+     * {@code \openout} works.
      * 
      * @throws Exception in case of an error
      */

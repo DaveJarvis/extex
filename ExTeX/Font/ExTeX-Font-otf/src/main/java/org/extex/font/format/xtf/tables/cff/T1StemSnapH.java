@@ -26,8 +26,7 @@ import java.util.List;
  * StemSnapH.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class T1StemSnapH extends T1DictDelta {
 
     /**

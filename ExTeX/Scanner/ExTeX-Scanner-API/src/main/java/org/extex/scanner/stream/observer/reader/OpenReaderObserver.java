@@ -26,8 +26,7 @@ import java.io.Reader;
  * a new reader-based stream has been opened.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface OpenReaderObserver {
 
     /**

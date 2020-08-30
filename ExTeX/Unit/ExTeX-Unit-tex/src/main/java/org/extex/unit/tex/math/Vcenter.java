@@ -32,35 +32,34 @@ import org.extex.typesetter.type.noad.Noad;
 import org.extex.typesetter.type.noad.VCenterNoad;
 
 /**
- * This class provides an implementation for the primitive <code>\vcenter</code>.
+ * This class provides an implementation for the primitive {@code \vcenter}.
  * 
- * <doc name="vcenter">
- * <h3>The Math Primitive <tt>\vcenter</tt></h3>
+ * <p>The Math Primitive {@code \vcenter}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;vcenter&rang;
- *       &rarr; <tt>\vcenter</tt> ...  </pre>
+ *       &rarr; {@code \vcenter} ...  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \vcenter  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Vcenter extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -76,10 +75,7 @@ public class Vcenter extends AbstractMathCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

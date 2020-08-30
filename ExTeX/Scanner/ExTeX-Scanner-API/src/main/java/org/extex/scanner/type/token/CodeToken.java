@@ -24,8 +24,7 @@ package org.extex.scanner.type.token;
  * with the ability to retrieve a name space.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4738 $
- */
+*/
 public interface CodeToken extends Token {
 
     /**

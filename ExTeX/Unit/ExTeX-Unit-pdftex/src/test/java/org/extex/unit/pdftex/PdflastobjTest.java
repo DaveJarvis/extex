@@ -22,11 +22,10 @@ package org.extex.unit.pdftex;
 import org.extex.test.count.AbstractReadonlyCountRegisterTester;
 
 /**
- * This is a test suite for the primitive <tt>\pdflastobj</tt>.
+ * This is a test suite for the primitive {@code \pdflastobj}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class PdflastobjTest extends AbstractReadonlyCountRegisterTester {
 
 

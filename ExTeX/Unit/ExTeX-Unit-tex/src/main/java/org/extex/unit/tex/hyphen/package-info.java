@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the primitives for hyphenations in ??TeX.
+ *Contains primitives for hyphenations in εχTeX.
  *  
  * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
  */

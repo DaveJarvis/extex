@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains a backend of ExTeX which dumps the information in a SVG format.
+ * Contains a backend of ExTeX which dumps the information in a SVG format.
  */
 
 package org.extex.backend.documentWriter.svg;

@@ -25,18 +25,17 @@ import java.util.ResourceBundle;
  * This exception signals a syntax error.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SyntaxException extends Exception {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2008L;
 
     /**
-     * The field <tt>resource</tt> contains the name of the resource.
+     * The field {@code resource} contains the name of the resource.
      */
     private String resource;
 
@@ -52,12 +51,7 @@ public class SyntaxException extends Exception {
         this.resource = resource;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Throwable#getLocalizedMessage()
-     */
-    @Override
+@Override
     public String getLocalizedMessage() {
 
         ResourceBundle bundle = ResourceBundle.getBundle(getClass().getName());
@@ -66,12 +60,7 @@ public class SyntaxException extends Exception {
             super.getMessage());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Throwable#getMessage()
-     */
-    @Override
+@Override
     public String getMessage() {
 
         return super.getMessage();
@@ -87,12 +76,7 @@ public class SyntaxException extends Exception {
         return resource;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Throwable#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return getLocalizedMessage();

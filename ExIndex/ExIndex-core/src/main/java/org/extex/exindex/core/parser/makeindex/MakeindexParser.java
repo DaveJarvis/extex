@@ -43,16 +43,15 @@ import org.extex.exindex.lisp.type.value.LValue;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This parser is a reader for input in the form of the <logo>makeindex</logo>
+ * This parser is a reader for input in the form of the  makeindex
  * format and some extensions of it.
  * 
- * <doc type="exindex-format" section="Makeindex Index Format">
- * 
- * <h2>The <logo>makeindex</logo> Raw Index Format</h2>
+*
+ * <h2>The  makeindex Raw Index Format</h2>
  * 
  * <p>
- * The raw index format for <logo>makeindex</logo> is used to parse the input
- * and acquire index data. <logo>makeindex</logo> is rather general. The parser
+ * The raw index format for  makeindex is used to parse the input
+ * and acquire index data.  makeindex is rather general. The parser
  * is highly configurable. A general scheme is used. The characters involved can
  * be adjusted in the configuration. The general scheme is the following:
  * </p>
@@ -79,29 +78,31 @@ import org.extex.framework.i18n.LocalizerFactory;
  * parts containing the data of the entry.
  * </p>
  * 
- * <h3>The Parameters</h3>
+ * <p>The Parameters</p>
  * 
  * <p>
- * The parsing of raw index entries in the <logo>makeindex</logo> format can be
+ * The parsing of raw index entries in the  makeindex format can be
  * controlled by a set of parameters. This makes the parser adaptable to a wider
  * range of applications.
  * </p>
  * <p>
  * The original need to introduce the parameters is the flexibility of
  * TeX. In TeX the category codes of characters can be redefined. Thus
- * <logo>makeindex</logo> needs to be able to adjust its behavior to cope with
+ *  makeindex needs to be able to adjust its behavior to cope with
  * such a situation.
  * </p>
  * <p>
  * The following table shows the parameters with their
- * <logo>&epsilon;&chi;Index</logo> name, its <logo>makeindex</logo> name and
+ *  &epsilon;&chi;Index name, its  makeindex name and
  * the default value.
  * </p>
  * 
- * <table>
+* <table>
+ * <caption>TBD</caption>
+
  * <tr>
- * <th><logo>&epsilon;&chi;Index</logo> parameter</th>
- * <th><logo>makeindex</logo> parameter</th>
+* <th> &epsilon;&chi;Index parameter</th>
+ * <th> makeindex parameter</th>
  * <th>Fallback</th>
  * <th>Type</th>
  * <th>Description</th>
@@ -109,14 +110,14 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <tr>
  * <td>makeindex:keyword</td>
  * <td>keyword</td>
- * <td><tt>\indexentry</tt></td>
+ * <td>{@code \indexentry}</td>
  * <td>string</td>
  * <td>This string starts an entry. Anything between entries is ignored.</td>
  * </tr>
  * <tr>
  * <td>makeindex:arg-open</td>
  * <td>arg_open</td>
- * <td><tt>{</tt></td>
+ * <td>{@code {}</td>
  * <td>character</td>
  * <td>This character opens an argument. It is terminated by the arg-close
  * character.</td>
@@ -124,7 +125,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <tr>
  * <td>makeindex:arg-close</td>
  * <td>arg_close</td>
- * <td><tt>}</tt></td>
+ * <td>{@code }}</td>
  * <td>character</td>
  * <td>This character closes an argument which has been opened by the arg-open
  * character. The arg-open and arg-close characters have to be balanced before
@@ -134,42 +135,42 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <tr>
  * <td>makeindex:range-open</td>
  * <td>range_open</td>
- * <td><tt>(</tt></td>
+ * <td>{@code (}</td>
  * <td>character</td>
  * <td>This character indicates the start of a range.</td>
  * </tr>
  * <tr>
  * <td>makeindex:range-close</td>
  * <td>range_close</td>
- * <td><tt>)</tt></td>
+ * <td>{@code )}</td>
  * <td>character</td>
  * <td>This character indicates the end of a range.</td>
  * </tr>
  * <tr>
  * <td>makeindex:escape</td>
  * <td>escape</td>
- * <td><tt>"</tt></td>
+ * <td>{@code "}</td>
  * <td>character</td>
  * <td>This is the escape character.</td>
  * </tr>
  * <tr>
  * <td>makeindex:quote</td>
  * <td>quote</td>
- * <td><tt>\</tt></td>
+ * <td>{@code \}</td>
  * <td>character</td>
  * <td>This is the quote character</td>
  * </tr>
  * <tr>
  * <td>makeindex:encap</td>
  * <td>encap</td>
- * <td><tt>|</tt></td>
+ * <td>{@code |}</td>
  * <td>character</td>
  * <td>This character is the separator for the encapsulator.</td>
  * </tr>
  * <tr>
  * <td>makeindex:level</td>
  * <td>level</td>
- * <td><tt>!</tt></td>
+ * <td>{@code !}</td>
  * <td>character</td>
  * <td>This character is the level separator. A structured key is divided into
  * parts with this character.</td>
@@ -177,28 +178,28 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <tr>
  * <td>makeindex:actual</td>
  * <td>actual</td>
- * <td><tt>@</tt></td>
+ * <td>{@code @}</td>
  * <td>character</td>
  * <td>The actual character, separating the print representation from the key.</td>
  * </tr>
  * <tr>
  * <td>makeindex:encap-prefix</td>
  * <td>encap_prefix</td>
- * <td><tt>\\</tt></td>
+ * <td>{@code \\}</td>
  * <td>string</td>
  * <td>The string to be inserted before encapsulations</td>
  * </tr>
  * <tr>
  * <td>makeindex:encap-infix</td>
  * <td>encap_infix</td>
- * <td><tt>{</tt></td>
+ * <td>{@code {}</td>
  * <td>string</td>
  * <td>The string to be inserted between encapsulations</td>
  * </tr>
  * <tr>
  * <td>makeindex:encap-suffix</td>
  * <td>encap_suffix</td>
- * <td><tt>}</tt></td>
+ * <td>{@code }}</td>
  * <td>string</td>
  * <td>The string to be inserted after encapsulations</td>
  * </tr>
@@ -206,7 +207,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * <p>
  * The following example shows how the default setting can be defined in a
- * <logo>&epsilon;&chi;Index</logo> style file.
+ *  &epsilon;&chi;Index style file.
  * </p>
  * 
  * <pre>
@@ -224,33 +225,33 @@ import org.extex.framework.i18n.LocalizerFactory;
  *  (setq makeindex:encap-infix "{")
  *  (setq makeindex:encap-suffix "}")   </pre>
  * 
- * <h3>Examples of Index Entries</h3>
+ * <p>Examples of Index Entries</p>
  * 
  * <p>
  * The following examples illustrate the index entries understood by the
- * <logo>makeindex</logo> raw index format.
+ *  makeindex raw index format.
  * </p>
  * 
  * <pre>
  * \indexentry{abc}{123}   </pre>
  * 
  * <p>
- * This example is the simple case of a main key <tt>abc</tt> and the page
- * reference <tt>123</tt>.
+ * This example is the simple case of a main key {@code abc} and the page
+ * reference {@code 123}.
  * </p>
  * 
  * <pre>
  * \indexentry{alpha@$\alpha$}{123}   </pre>
  * 
  * <p>
- * This example sorts as <tt>alpha</tt> and prints as &alpha;.
+ * This example sorts as {@code alpha} and prints as &alpha;.
  * </p>
  * 
  * <pre>
  * \indexentry{alpha@$\alpha$|textbf(}{123}   </pre>
  * 
  * <p>
- * This example shows an entry with the attribute <tt>textbf</tt> which is
+ * This example shows an entry with the attribute {@code textbf} which is
  * started here.
  * </p>
  * 
@@ -262,90 +263,88 @@ import org.extex.framework.i18n.LocalizerFactory;
  * c.
  * </p>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MakeindexParser implements RawIndexParser {
 
     /**
-     * The field <tt>keyword</tt> contains the keyword for an index entry.
+     * The field {@code keyword} contains the keyword for an index entry.
      */
     private String keyword;
 
     /**
-     * The field <tt>argOpen</tt> contains the argument open character.
+     * The field {@code argOpen} contains the argument open character.
      */
     private char argOpen;
 
     /**
-     * The field <tt>argClose</tt> contains the argument close character.
+     * The field {@code argClose} contains the argument close character.
      */
     private char argClose;
 
     /**
-     * The field <tt>escape</tt> contains the escape character.
+     * The field {@code escape} contains the escape character.
      */
     private char escape;
 
     /**
-     * The field <tt>quote</tt> contains the quote character.
+     * The field {@code quote} contains the quote character.
      */
     private char quote;
 
     /**
-     * The field <tt>encap</tt> contains the encapsulation separator.
+     * The field {@code encap} contains the encapsulation separator.
      */
     private char encap;
 
     /**
-     * The field <tt>level</tt> contains the level separator.
+     * The field {@code level} contains the level separator.
      */
     private char level;
 
     /**
-     * The field <tt>actual</tt> contains the actual separator.
+     * The field {@code actual} contains the actual separator.
      */
     private char actual;
 
     /**
-     * The field <tt>rangeOpen</tt> contains the range open separator.
+     * The field {@code rangeOpen} contains the range open separator.
      */
     private char rangeOpen;
 
     /**
-     * The field <tt>rangeClose</tt> contains the range close separator.
+     * The field {@code rangeClose} contains the range close separator.
      */
     private char rangeClose;
 
     /**
-     * The field <tt>locator</tt> contains the locator.
+     * The field {@code locator} contains the locator.
      */
     private ReaderLocator locator;
 
     /**
-     * The field <tt>index</tt> contains the name of the index.
+     * The field {@code index} contains the name of the index.
      */
     private final String index = "";
 
     /**
-     * The field <tt>encapPrefix</tt> contains the encapsulation prefix.
+     * The field {@code encapPrefix} contains the encapsulation prefix.
      */
     private String encapPrefix;
 
     /**
-     * The field <tt>encapInfix</tt> contains the encapsulation infix.
+     * The field {@code encapInfix} contains the encapsulation infix.
      */
     private String encapInfix;
 
     /**
-     * The field <tt>encapSuffix</tt> contains the encapsulation suffix.
+     * The field {@code encapSuffix} contains the encapsulation suffix.
      */
     private String encapSuffix;
 
     /**
-     * The field <tt>indexer</tt> contains the indexer.
+     * The field {@code indexer} contains the indexer.
      */
     private final Indexer indexer;
 
@@ -368,12 +367,7 @@ public class MakeindexParser implements RawIndexParser {
         configure(indexer);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.parser.RawIndexParser#close()
-     */
-    public void close() throws IOException {
+public void close() throws IOException {
 
         if (locator != null) {
             locator.close();
@@ -384,80 +378,81 @@ public class MakeindexParser implements RawIndexParser {
     /**
      * Gather the parameters from an interpreter. If the interpreter does not
      * have an appropriate value then a fallback is used. The following
-     * parameters are used by this parser: <br/>
+     * parameters are used by this parser: <br>
      * <table>
+     * <caption>TBD</caption>
      * <tr>
-     * <th>Name</th>
+* <th>Name</th>
      * <th>Fallback</th>
      * <th>Description</th>
      * </tr>
      * <tr>
      * <td>makeindex:keyword</td>
-     * <td><tt>\indexentry</tt></td>
+     * <td>{@code \indexentry}</td>
      * <td>This string starts an entry. Anything between entries is ignored.</td>
      * </tr>
      * <tr>
      * <td>makeindex:arg-open</td>
-     * <td><tt>{</tt></td>
+     * <td>{@code {}</td>
      * <td>This character opens an argument. It is terminated by the arg-close
      * character.</td>
      * </tr>
      * <tr>
      * <td>makeindex:arg-close</td>
-     * <td><tt>}</tt></td>
+     * <td>{@code }}</td>
      * <td>This character closes an argument which has been opened by the
      * arg-open character.</td>
      * </tr>
      * <tr>
      * <td>makeindex:range-open</td>
-     * <td><tt>(</tt></td>
+     * <td>{@code (}</td>
      * <td>This character indicates the start of a range.</td>
      * </tr>
      * <tr>
      * <td>makeindex:range-close</td>
-     * <td><tt>)</tt></td>
+     * <td>{@code )}</td>
      * <td>This character indicates the end of a range.</td>
      * </tr>
      * <tr>
      * <td>makeindex:escape</td>
-     * <td><tt>"</tt></td>
+     * <td>{@code "}</td>
      * <td>This is the escape character.</td>
      * </tr>
      * <tr>
      * <td>makeindex:quote</td>
-     * <td><tt>\</tt></td>
+     * <td>{@code \}</td>
      * <td>This is the quote character</td>
      * </tr>
      * <tr>
      * <td>makeindex:encap</td>
-     * <td><tt>|</tt></td>
+     * <td>{@code |}</td>
      * <td>This character is the separator for the encapsulator.</td>
      * </tr>
      * <tr>
      * <td>makeindex:level</td>
-     * <td><tt>!</tt></td>
+     * <td>{@code !}</td>
      * <td>This character is the level separator. A structured key is divided
      * into parts with this character.</td>
      * </tr>
      * <tr>
      * <td>makeindex:actual</td>
-     * <td><tt>@</tt></td>
+     * <td>{@code @}</td>
      * <td>The actual character, separating the print representation from the
      * key.</td>
      * </tr>
      * <tr>
      * <td>makeindex:encap-prefix</td>
-     * <td><tt>\\</tt></td>
+     * <td>{@code \\}</td>
      * <td>The string to be inserted before encapsulations</td>
      * </tr>
      * <tr>
      * <td>makeindex:encap-infix</td>
-     * <td><tt>{</tt></td>
+     * <td>{@code {}</td>
      * <td>The string to be inserted between encapsulations</td>
      * </tr>
      * <tr>
      * <td>makeindex:encap-suffix</td>
-     * <td><tt>}</tt></td>
+     * <td>{@code }}</td>
      * <td>The string to be inserted after encapsulations</td>
      * </tr>
      * </table>
@@ -612,12 +607,7 @@ public class MakeindexParser implements RawIndexParser {
         return entry;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.parser.RawIndexParser#parse()
-     */
-    public RawIndexentry parse() throws RawIndexException, IOException {
+public RawIndexentry parse() throws RawIndexException, IOException {
 
         if (locator == null) {
             return null;
@@ -647,7 +637,7 @@ public class MakeindexParser implements RawIndexParser {
     }
 
     /**
-     * Scan an argument enclosed in <tt>argOpen</tt> and <tt>argClose</tt>.
+     * Scan an argument enclosed in {@code argOpen} and {@code argClose}.
      * 
      * @return the argument found
      * 
@@ -714,7 +704,7 @@ public class MakeindexParser implements RawIndexParser {
      * 
      * @param keyword the keyword to read
      * 
-     * @return <code>true</code> iff the keyword has been found
+     * @return {@code true} iff the keyword has been found
      * 
      * @throws IOException in case of an I/O error
      */

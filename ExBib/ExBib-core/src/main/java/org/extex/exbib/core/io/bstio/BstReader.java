@@ -30,8 +30,7 @@ import org.extex.resource.ResourceAware;
  * This interface describes a reader for BST files.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface BstReader extends ResourceAware {
 
     /**
@@ -69,7 +68,7 @@ public interface BstReader extends ResourceAware {
 
     /**
      * The parser can be asked to save the comments found in a buffer. If the
-     * buffer is <code>null</code> then the comments are discarded. This is the
+     * buffer is {@code null} then the comments are discarded. This is the
      * default behavior.
      * 
      * @param save the buffer for the comment

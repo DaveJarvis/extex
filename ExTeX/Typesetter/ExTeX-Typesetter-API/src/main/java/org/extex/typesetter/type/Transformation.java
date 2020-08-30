@@ -22,45 +22,43 @@ package org.extex.typesetter.type;
 /**
  * This class carries a two-dimensional transformation.
  *
- *
- * <table>
+ * <table> <caption>TBD</caption>
  *  <tr><td>a</td>  <td>b</td>  <td>0</td> </tr>
  *  <tr><td>c</td>  <td>d</td>  <td>0</td> </tr>
  *  <tr><td>tx</td> <td>ty</td> <td>1</td> </tr>
  * </table>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4399 $
- */
+*/
 public class Transformation {
 
     /**
-     * The field <tt>a</tt> contains the a component.
+     * The field {@code a} contains the a component.
      */
     private float a;
 
     /**
-     * The field <tt>b</tt> contains the b component.
+     * The field {@code b} contains the b component.
      */
     private float b;
 
     /**
-     * The field <tt>c</tt> contains the c component.
+     * The field {@code c} contains the c component.
      */
     private float c;
 
     /**
-     * The field <tt>d</tt> contains the d component.
+     * The field {@code d} contains the d component.
      */
     private float d;
 
     /**
-     * The field <tt>tx</tt> contains the tx component.
+     * The field {@code tx} contains the tx component.
      */
     private float tx;
 
     /**
-     * The field <tt>ty</tt> contains the ty component.
+     * The field {@code ty} contains the ty component.
      */
     private float ty;
 
@@ -128,5 +126,4 @@ public class Transformation {
 
         return Float.toString(this.ty);
     }
-
 }

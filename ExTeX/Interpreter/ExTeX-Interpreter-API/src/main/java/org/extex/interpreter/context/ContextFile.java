@@ -27,14 +27,13 @@ import org.extex.scanner.type.file.OutFile;
  * context.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface ContextFile {
 
     /**
      * Getter for a input file register. In the case that the named descriptor
      * doe not exist yet a new one is returned. Especially if the name is
-     * <code>null</code> then the default input stream is used.
+     * {@code null} then the default input stream is used.
      * 
      * @param name the name or the number of the file register
      * 
@@ -60,11 +59,11 @@ public interface ContextFile {
      * in all requested groups. InFile registers are named, either with a number
      * or an arbitrary string. The numbered registers where limited to 16 in
      * TeX. This restriction does no longer hold for
-     * ??TeX.
+     * εχTeX.
      * 
      * @param name the name or the number of the file register
      * @param file the input file descriptor
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see #getInFile(String)
@@ -76,7 +75,7 @@ public interface ContextFile {
      * 
      * @param name the name or the number of the file register
      * @param file the descriptor of the output file
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see #getOutFile(String)

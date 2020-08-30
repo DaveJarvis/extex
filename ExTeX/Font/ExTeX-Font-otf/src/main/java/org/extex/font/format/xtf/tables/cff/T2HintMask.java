@@ -29,8 +29,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * T2: hintmask: hintmask (19 + mask).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class T2HintMask extends T2AbstractHintMask {
 
     /**
@@ -73,7 +72,7 @@ public class T2HintMask extends T2AbstractHintMask {
     /**
      * The values.
      */
-    private T2Number[] val;
+    private final T2Number[] val;
 
     /**
      * Create a new object.
@@ -99,12 +98,7 @@ public class T2HintMask extends T2AbstractHintMask {
         readMask(ch, rar);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
-     */
-    @Override
+@Override
     public int getID() {
 
         return TYPE_HINTMASK;
@@ -130,12 +124,7 @@ public class T2HintMask extends T2AbstractHintMask {
         return toBin(mask);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "hintmask";
@@ -151,12 +140,7 @@ public class T2HintMask extends T2AbstractHintMask {
         return val;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getValue()
-     */
-    @Override
+@Override
     public Object getValue() {
 
         return val;
@@ -179,12 +163,7 @@ public class T2HintMask extends T2AbstractHintMask {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#toText()
-     */
-    @Override
+@Override
     public String toText() {
 
         StringBuilder buf = new StringBuilder();
@@ -196,12 +175,7 @@ public class T2HintMask extends T2AbstractHintMask {
         return buf.toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    @Override
+@Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());

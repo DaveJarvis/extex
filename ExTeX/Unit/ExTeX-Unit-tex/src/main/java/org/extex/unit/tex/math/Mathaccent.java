@@ -34,35 +34,34 @@ import org.extex.typesetter.type.noad.Noad;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\mathaccent</code>.
+ * {@code \mathaccent}.
  * 
- * <doc name="mathaccent">
- * <h3>The Math Primitive <tt>\mathaccent</tt></h3>
+ * <p>The Math Primitive {@code \mathaccent}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;mathaccent&rang;
- *       &rarr; <tt>\mathaccent</tt>  </pre>
+ *       &rarr; {@code \mathaccent}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \mathaccent ... </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Mathaccent extends AbstractTeXMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -78,10 +77,7 @@ public class Mathaccent extends AbstractTeXMathCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

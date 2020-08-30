@@ -24,8 +24,7 @@ package org.extex.interpreter.context.observer.glue;
  * glue change event.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface GlueObservable {
 
     /**
@@ -36,7 +35,7 @@ public interface GlueObservable {
      * <p>
      *  A single glue register can be observed by giving a name of the glue
      *  register to observe. Only changes to this register trigger the
-     *  notification. If this name is <code>null</code> the changes to all
+     *  notification. If this name is {@code null} the changes to all
      *  registers are reported to the observer.
      * </p>
      *
@@ -56,7 +55,7 @@ public interface GlueObservable {
      *  observer for this register. If none is registered then nothing happens.
      * </p>
      * <p>
-     *  If this name is <code>null</code> then the observer for all registers
+     *  If this name is {@code null} then the observer for all registers
      *  is removed. Note that the observers for named registers are not
      *  effected. They have to be unregistered individually.
      * </p>

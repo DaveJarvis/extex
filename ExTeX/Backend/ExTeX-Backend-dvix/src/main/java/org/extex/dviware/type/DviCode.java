@@ -29,12 +29,11 @@ import org.extex.dviware.Dvi;
  * at the end.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface DviCode {
 
     /**
-     * The constant <tt>POP</tt> contains the DviCode for the <tt>pop</tt>
+     * The constant {@code POP} contains the DviCode for the {@code pop}
      * instruction. This instruction doe not carry any parameters. Thus a
      * singleton can be used.
      */
@@ -60,7 +59,7 @@ public interface DviCode {
     };
 
     /**
-     * The constant <tt>PUSH</tt> contains the DviCode for the <tt>push</tt>
+     * The constant {@code PUSH} contains the DviCode for the {@code push}
      * instruction. This instruction doe not carry any parameters. Thus a
      * singleton can be used.
      */
@@ -86,7 +85,7 @@ public interface DviCode {
     };
 
     /**
-     * The constant <tt>W0</tt> contains the DviCode for the <tt>w0</tt>
+     * The constant {@code W0} contains the DviCode for the {@code w0}
      * instruction. This instruction doe not carry any parameters. Thus a
      * singleton can be used.
      */
@@ -112,7 +111,7 @@ public interface DviCode {
     };
 
     /**
-     * The constant <tt>X0</tt> contains the DviCode for the <tt>x0</tt>
+     * The constant {@code X0} contains the DviCode for the {@code x0}
      * instruction. This instruction doe not carry any parameters. Thus a
      * singleton can be used.
      */
@@ -138,7 +137,7 @@ public interface DviCode {
     };
 
     /**
-     * The constant <tt>X0</tt> contains the DviCode for the <tt>y0</tt>
+     * The constant {@code X0} contains the DviCode for the {@code y0}
      * instruction. This instruction doe not carry any parameters. Thus a
      * singleton can be used.
      */
@@ -164,7 +163,7 @@ public interface DviCode {
     };
 
     /**
-     * The constant <tt>Z0</tt> contains the DviCode for the <tt>z0</tt>
+     * The constant {@code Z0} contains the DviCode for the {@code z0}
      * instruction. This instruction doe not carry any parameters. Thus a
      * singleton can be used.
      */

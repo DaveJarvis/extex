@@ -27,25 +27,24 @@ import static org.junit.Assert.assertNotNull;
  * value is passed in via the constructor.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class EqualityValidator implements Validator {
 
     /**
-     * The field <tt>expected</tt> contains the expected value.
+     * The field {@code expected} contains the expected value.
      */
-    private String expected;
+    private final String expected;
 
     /**
-     * The field <tt>comment</tt> contains the comment for the error message.
+     * The field {@code comment} contains the comment for the error message.
      */
-    private String comment;
+    private final String comment;
 
     /**
      * Creates a new object.
      * 
      * @param comment the error message comment
-     * @param expected the expected value or <code>null</code> to accept
+     * @param expected the expected value or {@code null} to accept
      *        anything
      */
     public EqualityValidator(String comment, String expected) {
@@ -55,14 +54,11 @@ public class EqualityValidator implements Validator {
     }
 
     /**
-     * Returns <code>true</code> if the given string is not <code>null</code>
+     * Returns {@code true} if the given string is not {@code null}
      * and if it is equal to the given string. Otherwise an JUnit exception is
      * raised.
      * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.test.Validator#validate(java.lang.String)
-     */
+*/
     @Override
     public boolean validate(String s) {
 

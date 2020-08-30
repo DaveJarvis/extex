@@ -38,20 +38,16 @@ import org.junit.Test;
  * This is a test suite for {@link BibPrinterFactory}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BibPrinterFactoryTest {
 
     /**
-     * The field <tt>cfg</tt> contains the test configuration.
+     * The field {@code cfg} contains the test configuration.
      */
     private final Configuration cfg = new Configuration() {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public Configuration findConfiguration(String key)
                 throws ConfigurationInvalidResourceException,
@@ -63,10 +59,7 @@ public class BibPrinterFactoryTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(
-         *      java.lang.String, java.lang.String)
+    *      java.lang.String, java.lang.String)
          */
         public Configuration findConfiguration(String key, String attribute)
                 throws ConfigurationException {
@@ -75,10 +68,7 @@ public class BibPrinterFactoryTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getAttribute(
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public String getAttribute(String name) {
 
@@ -90,10 +80,7 @@ public class BibPrinterFactoryTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getConfiguration(
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public Configuration getConfiguration(String key)
                 throws ConfigurationException {
@@ -102,10 +89,7 @@ public class BibPrinterFactoryTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getConfiguration(
-         *      java.lang.String, java.lang.String)
+    *      java.lang.String, java.lang.String)
          */
         public Configuration getConfiguration(String key, String attribute)
                 throws ConfigurationException {
@@ -113,21 +97,13 @@ public class BibPrinterFactoryTest {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValue()
-         */
-        public String getValue() throws ConfigurationException {
+    public String getValue() throws ConfigurationException {
 
             return null;
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValue(
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public String getValue(String key) throws ConfigurationException {
 
@@ -135,10 +111,7 @@ public class BibPrinterFactoryTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValueAsInteger(
-         *      java.lang.String, int)
+    *      java.lang.String, int)
          */
         public int getValueAsInteger(String key, int defaultValue)
                 throws ConfigurationException {
@@ -147,10 +120,7 @@ public class BibPrinterFactoryTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValues(
-         *      java.util.List, java.lang.String)
+    *      java.util.List, java.lang.String)
          */
         public void getValues(List<String> list, String key) {
 
@@ -158,31 +128,20 @@ public class BibPrinterFactoryTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValues(
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public List<String> getValues(String key) {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#iterator()
-         */
-        public Iterator<Configuration> iterator() throws ConfigurationException {
+    public Iterator<Configuration> iterator() throws ConfigurationException {
 
             return null;
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#iterator(
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public Iterator<Configuration> iterator(String key)
                 throws ConfigurationException {
@@ -191,10 +150,7 @@ public class BibPrinterFactoryTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(
-         *      org.extex.framework.configuration.ConfigurationLoader)
+    *      org.extex.framework.configuration.ConfigurationLoader)
          */
         public void setConfigurationLoader(ConfigurationLoader loader) {
 
@@ -204,8 +160,8 @@ public class BibPrinterFactoryTest {
     };
 
     /**
-     * <testcase> The default value of encoding is <code>null</code>.
-     * </testcase>
+     *  The default value of encoding is {@code null}.
+     *
      * 
      * @throws Exception in case of an error
      */

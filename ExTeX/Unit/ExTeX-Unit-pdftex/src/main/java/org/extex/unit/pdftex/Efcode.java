@@ -37,12 +37,11 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.tc.font.Font;
 
 /**
- * This class provides an implementation for the primitive <code>\efcode</code>.
+ * This class provides an implementation for the primitive {@code \efcode}.
  * 
- * <doc name="efcode">
- * <h3>The PDF Primitive <tt>\efcode</tt></h3>
+ * <p>The PDF Primitive {@code \efcode}</p>
  * <p>
- * The PDF primitive <tt>\efcode</tt> ...
+ * The PDF primitive {@code \efcode} ...
  * </p>
  * <p>
  * TODO missing documentation
@@ -51,24 +50,24 @@ import org.extex.typesetter.tc.font.Font;
  * The default value is 1000.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;efcode&rang;
- *       &rarr; <tt>\efcode</tt> ... </pre>
+ *       &rarr; {@code \efcode} ... </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \efcode\f`A 1200  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4791 $
- */
+*/
 public class Efcode extends AbstractCode
         implements
             CountConvertible,
@@ -76,7 +75,7 @@ public class Efcode extends AbstractCode
             Theable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the id for serialization.
+     * The field {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -91,10 +90,7 @@ public class Efcode extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -110,10 +106,7 @@ public class Efcode extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -127,10 +120,7 @@ public class Efcode extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,
@@ -145,10 +135,7 @@ public class Efcode extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

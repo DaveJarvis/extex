@@ -41,38 +41,37 @@ import org.extex.util.xml.XMLStreamWriter;
  * </pre>
  * 
  * <p>
- * Here <code>i</code> is the identification byte of VF, currently 202. The
- * string <code>x</code> is merely a comment, usually indicating the source of
- * the VF file. Parameters <code>cs</code> and <code>ds</code> are respectively
+ * Here {@code i} is the identification byte of VF, currently 202. The
+ * string {@code x} is merely a comment, usually indicating the source of
+ * the VF file. Parameters {@code cs} and {@code ds} are respectively
  * the check sum and the design size of the virtual font; they should match the
  * first two words in the header of the TFM file.
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class VfCommandPre extends VfCommand {
 
     /**
      * the checksum
      */
-    private int checksum;
+    private final int checksum;
 
     /**
      * the comment
      */
-    private String comment;
+    private final String comment;
 
     /**
      * the designsize
      */
-    private TfmFixWord designsize;
+    private final TfmFixWord designsize;
 
     /**
      * the identification
      */
-    private int identification;
+    private final int identification;
 
     /**
      * Create e new object.
@@ -158,12 +157,7 @@ public class VfCommandPre extends VfCommand {
         return buf.toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    @Override
+@Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("preamble");

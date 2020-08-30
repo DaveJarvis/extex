@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\maxRegister</tt>.
+ * This is a test suite for the primitive {@code \maxRegister}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MaxRegisterTest extends AbstractNonGroupIntegerTester {
 
     /**
@@ -49,9 +48,8 @@ public class MaxRegisterTest extends AbstractNonGroupIntegerTester {
     }
 
     /**
-     * <testcase> Test case showing that <tt>\maxRegister</tt> controls count
-     * registers. </testcase>
-     * 
+     * Test case showing that {@code \maxRegister} controls count registers
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -65,9 +63,8 @@ public class MaxRegisterTest extends AbstractNonGroupIntegerTester {
     }
 
     /**
-     * <testcase> Test case showing that <tt>\maxRegister</tt> controls count
-     * registers. </testcase>
-     * 
+     * Test case showing that {@code \maxRegister} controls count registers
+* 
      * @throws Exception in case of an error
      */
     @Test

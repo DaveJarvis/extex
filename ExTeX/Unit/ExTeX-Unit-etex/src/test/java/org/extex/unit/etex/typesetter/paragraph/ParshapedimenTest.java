@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\parshapedimen</tt>.
+ * This is a test suite for the primitive {@code \parshapedimen}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class ParshapedimenTest extends NonExecuteTester {
 
     /**
@@ -49,9 +48,8 @@ public class ParshapedimenTest extends NonExecuteTester {
     }
 
     /**
-     * <testcase> Test case showing that the primitive can not be used in inner
-     * vertical mode. </testcase>
-     * 
+     * Test case showing that the primitive can not be used in inner vertical mode
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -64,9 +62,8 @@ public class ParshapedimenTest extends NonExecuteTester {
     }
 
     /**
-     * <testcase> Test case showing that the primitive can not be used in
-     * restricted horizontal mode. </testcase>
-     * 
+     * Test case showing that the primitive can not be used in restricted horizontal mode
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -81,7 +78,7 @@ public class ParshapedimenTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapedimen"> Test case showing that
-     * <tt>\parshapedimen</tt> is applicable to <tt>\the</tt>. </testcase>
+     * {@code \parshapedimen} is applicable to {@code \the}.
      * 
      * @throws Exception in case of an error
      */
@@ -96,7 +93,7 @@ public class ParshapedimenTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapedimen"> Test case showing that
-     * <tt>\parshapedimen</tt> on a negative index returns 0pt. </testcase>
+     * {@code \parshapedimen} on a negative index returns 0pt.
      * 
      * @throws Exception in case of an error
      */
@@ -111,7 +108,7 @@ public class ParshapedimenTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapedimen"> Test case showing that
-     * \parshapedimen outside the defined values returns 0pt. </testcase>
+     * \parshapedimen outside the defined values returns 0pt.
      * 
      * @throws Exception in case of an error
      */
@@ -127,7 +124,7 @@ public class ParshapedimenTest extends NonExecuteTester {
     /**
      * <testcase primitive="\parshapedimen"> Test case showing that
      * \parshapedimen at index 0 returns the first value if just one is defined.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -143,7 +140,7 @@ public class ParshapedimenTest extends NonExecuteTester {
     /**
      * <testcase primitive="\parshapedimen"> Test case showing that
      * \parshapedimen at index 0 returns the first value if two are defined.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -159,7 +156,7 @@ public class ParshapedimenTest extends NonExecuteTester {
     /**
      * <testcase primitive="\parshapedimen"> Test case showing that
      * \parshapedimen at index 1 returns the second value if just pairs are
-     * defined. </testcase>
+     * defined.
      * 
      * @throws Exception in case of an error
      */
@@ -174,7 +171,7 @@ public class ParshapedimenTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapedimen"> Test case showing that the last
-     * value is repeated. </testcase>
+     * value is repeated.
      * 
      * @throws Exception in case of an error
      */
@@ -189,7 +186,7 @@ public class ParshapedimenTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapedimen"> Test case showing that the last
-     * value is repeated. </testcase>
+     * value is repeated.
      * 
      * @throws Exception in case of an error
      */
@@ -204,7 +201,7 @@ public class ParshapedimenTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapedimen"> Test case showing that the last
-     * value is repeated. </testcase>
+     * value is repeated.
      * 
      * @throws Exception in case of an error
      */
@@ -219,7 +216,7 @@ public class ParshapedimenTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapedimen"> Test case showing that the last
-     * value is repeated. </testcase>
+     * value is repeated.
      * 
      * @throws Exception in case of an error
      */
@@ -234,7 +231,7 @@ public class ParshapedimenTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapedimen"> Test case showing that the last
-     * value is repeated. </testcase>
+     * value is repeated.
      * 
      * @throws Exception in case of an error
      */
@@ -250,7 +247,7 @@ public class ParshapedimenTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapedimen"> Test case showing that
-     * <tt>\parshapedimen</tt> is applicable to <tt>\the</tt>. </testcase>
+     * {@code \parshapedimen} is applicable to {@code \the}.
      * 
      * @throws Exception in case of an error
      */
@@ -265,7 +262,7 @@ public class ParshapedimenTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapedimen"> Test case showing that
-     * <tt>\parshapedimen</tt> on a negative index returns 0pt. </testcase>
+     * {@code \parshapedimen} on a negative index returns 0pt.
      * 
      * @throws Exception in case of an error
      */
@@ -280,7 +277,7 @@ public class ParshapedimenTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapedimen"> Test case showing that
-     * \parshapedimen can be assigned to a dimen register. </testcase>
+     * \parshapedimen can be assigned to a dimen register.
      * 
      * @throws Exception in case of an error
      */
@@ -295,7 +292,7 @@ public class ParshapedimenTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapedimen"> Test case showing that
-     * \parshapedimen can be assigned to a dimen register. </testcase>
+     * \parshapedimen can be assigned to a dimen register.
      * 
      * @throws Exception in case of an error
      */
@@ -311,7 +308,7 @@ public class ParshapedimenTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapedimen"> Test case showing that
-     * \parshapedimen can be assigned to a dimen register. </testcase>
+     * \parshapedimen can be assigned to a dimen register.
      * 
      * @throws Exception in case of an error
      */
@@ -327,7 +324,7 @@ public class ParshapedimenTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapedimen"> Test case showing that
-     * \parshapedimen can be assigned to a dimen register. </testcase>
+     * \parshapedimen can be assigned to a dimen register.
      * 
      * @throws Exception in case of an error
      */
@@ -343,7 +340,7 @@ public class ParshapedimenTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapedimen"> Test case showing that the last
-     * value is repeated. </testcase>
+     * value is repeated.
      * 
      * @throws Exception in case of an error
      */
@@ -359,7 +356,7 @@ public class ParshapedimenTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapedimen"> Test case showing that the last
-     * value is repeated. </testcase>
+     * value is repeated.
      * 
      * @throws Exception in case of an error
      */
@@ -375,7 +372,7 @@ public class ParshapedimenTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapedimen"> Test case showing that the last
-     * value is repeated. </testcase>
+     * value is repeated.
      * 
      * @throws Exception in case of an error
      */
@@ -391,7 +388,7 @@ public class ParshapedimenTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapedimen"> Test case showing that the last
-     * value is repeated. </testcase>
+     * value is repeated.
      * 
      * @throws Exception in case of an error
      */
@@ -407,7 +404,7 @@ public class ParshapedimenTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapedimen"> Test case showing that the last
-     * value is repeated. </testcase>
+     * value is repeated.
      * 
      * @throws Exception in case of an error
      */
@@ -424,7 +421,7 @@ public class ParshapedimenTest extends NonExecuteTester {
 
     /**
      * <testcase primitive="\parshapedimen"> Test case showing that
-     * <tt>\parshapedimen</tt> is count-convertible. </testcase>
+     * {@code \parshapedimen} is count-convertible.
      * 
      * @throws Exception in case of an error
      */

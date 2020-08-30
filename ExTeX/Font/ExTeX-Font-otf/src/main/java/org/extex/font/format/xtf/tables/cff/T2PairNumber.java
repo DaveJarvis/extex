@@ -23,8 +23,7 @@ package org.extex.font.format.xtf.tables.cff;
  * A pair of two {@link T2Number},
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class T2PairNumber {
 
     /**
@@ -89,12 +88,7 @@ public class T2PairNumber {
         this.b = b;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return new StringBuilder(a.toString()).append(' ').append(b.toString())

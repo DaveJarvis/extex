@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\everyhbox</tt>.
+ * This is a test suite for the primitive {@code \everyhbox}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class EveryhboxTest extends AbstractToksRegisterTester {
 
     /**
@@ -50,7 +49,7 @@ public class EveryhboxTest extends AbstractToksRegisterTester {
     /**
      * <testcase primitive="\everyhbox"> Test case checking that a hbox
      * containing "abc" in font cmtt12 has the width 37.05002pt where "123" is
-     * added to the box by an <tt>\everyhbox</tt>. </testcase>
+     * added to the box by an {@code \everyhbox}.
      * 
      * @throws Exception in case of an error
      */
@@ -66,7 +65,7 @@ public class EveryhboxTest extends AbstractToksRegisterTester {
     /**
      * <testcase primitive="\everyhbox"> Test case checking that a hbox
      * containing "abc" in font cmtt12 has the width 37.05002pt where "123" is
-     * added to the box by an <tt>\everyhbox</tt>. </testcase>
+     * added to the box by an {@code \everyhbox}.
      * 
      * @throws Exception in case of an error
      */
@@ -85,7 +84,7 @@ public class EveryhboxTest extends AbstractToksRegisterTester {
      * <testcase primitive="\everyhbox"> Test case checking that a hbox
      * containing "abc" in font cmtt12 has the width 55.57503pt where "123" is
      * added to the box by an \everyhbox and "..." is prepended by
-     * \afterassignment. </testcase>
+     * \afterassignment.
      * 
      * @throws Exception in case of an error
      */

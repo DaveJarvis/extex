@@ -30,10 +30,9 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.PenaltyNode;
 
 /**
- * This class provides an implementation for the primitive <code>\penalty</code>.
+ * This class provides an implementation for the primitive {@code \penalty}.
  * 
- * <doc name="penalty">
- * <h3>The Primitive <tt>\penalty</tt></h3>
+ * <p>The Primitive {@code \penalty}</p>
  * <p>
  * This primitive inserts penalty into the current node list. In vertical mode
  * the page builder is also invoked.
@@ -43,16 +42,18 @@ import org.extex.typesetter.type.node.PenaltyNode;
  * of -10000 or less will force a break at this position.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;penalty&rang;
- *        &rarr; <tt>\penalty</tt> {@linkplain
+ *        &rarr; {@code \penalty} {@linkplain
  *          org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *          &lang;8-bit&nbsp;number&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \penalty 123  </pre>
@@ -61,16 +62,14 @@ import org.extex.typesetter.type.node.PenaltyNode;
  *  <pre class="TeXSample">
  *    \penalty -\count254  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Penalty extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -86,10 +85,7 @@ public class Penalty extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

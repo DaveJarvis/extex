@@ -25,17 +25,16 @@ import org.eclipse.core.runtime.IAdaptable;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 class TreeNode implements IAdaptable {
 
     /**
-     * The field <tt>name</tt> contains the ...
+     * The field {@code name} contains the ...
      */
     private String name;
 
     /**
-     * The field <tt>parent</tt> contains the ...
+     * The field {@code parent} contains the ...
      */
     private TreeDirectory parent;
 
@@ -50,12 +49,7 @@ class TreeNode implements IAdaptable {
         this.parent = parent;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.core.runtime.IAdaptable#getAdapter(java.lang.Class)
-     */
-    @SuppressWarnings("unchecked")
+@SuppressWarnings("unchecked")
     public Object getAdapter(Class key) {
 
         return null;
@@ -91,12 +85,7 @@ class TreeNode implements IAdaptable {
         this.parent = parent;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return name;

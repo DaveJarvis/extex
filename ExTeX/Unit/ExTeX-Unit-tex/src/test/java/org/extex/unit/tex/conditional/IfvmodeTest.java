@@ -23,11 +23,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\ifvmode</tt>.
+ * This is a test suite for the primitive {@code \ifvmode}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class IfvmodeTest extends ConditionalTester {
 
     /**
@@ -47,8 +46,8 @@ public class IfvmodeTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifvmode"> Test case checking that <tt>\ifvmode</tt>
-     * is true initially. </testcase>
+     * <testcase primitive="\ifvmode"> Test case checking that {@code \ifvmode}
+     * is true initially. 
      * 
      * @throws Exception in case of an error
      */
@@ -62,8 +61,8 @@ public class IfvmodeTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifvmode"> Test case checking that <tt>\ifvmode</tt>
-     * is false when in a paragraph. </testcase>
+     * <testcase primitive="\ifvmode"> Test case checking that {@code \ifvmode}
+     * is false when in a paragraph. 
      * 
      * @throws Exception in case of an error
      */
@@ -77,8 +76,8 @@ public class IfvmodeTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifvmode"> Test case checking that <tt>\ifvmode</tt>
-     * is true in a vbox. </testcase>
+     * <testcase primitive="\ifvmode"> Test case checking that {@code \ifvmode}
+     * is true in a vbox. 
      * 
      * @throws Exception in case of an error
      */
@@ -93,8 +92,8 @@ public class IfvmodeTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifvmode"> Test case checking that <tt>\ifvmode</tt>
-     * is false in an hbox. </testcase>
+     * <testcase primitive="\ifvmode"> Test case checking that {@code \ifvmode}
+     * is false in an hbox. 
      * 
      * @throws Exception in case of an error
      */

@@ -29,19 +29,18 @@ import java.nio.charset.CoderResult;
  * This class provides a table-based {@link CharsetEncoder}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TableEncoder extends CharsetEncoder {
 
     /**
-     * The field <tt>table</tt> contains the table.
+     * The field {@code table} contains the table.
      */
-    private char[] table;
+    private final char[] table;
 
     /**
-     * The field <tt>reverse</tt> contains the reverse table.
+     * The field {@code reverse} contains the reverse table.
      */
-    private byte[] reverse = new byte[256];
+    private final byte[] reverse = new byte[256];
 
     /**
      * Creates a new object.
@@ -63,10 +62,7 @@ public class TableEncoder extends CharsetEncoder {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see java.nio.charset.CharsetEncoder#encodeLoop(java.nio.CharBuffer,
-     *      java.nio.ByteBuffer)
+*      java.nio.ByteBuffer)
      */
     @Override
     protected CoderResult encodeLoop(CharBuffer in, ByteBuffer out) {

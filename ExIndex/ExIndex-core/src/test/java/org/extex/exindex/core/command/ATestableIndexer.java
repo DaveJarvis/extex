@@ -33,30 +33,21 @@ import org.extex.resource.io.NamedInputStream;
  * This class is an indexer for testing.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6688 $
- */
+*/
 public class ATestableIndexer extends Indexer {
 
     /**
-     * The field <tt>FINDER</tt> contains the resource finder.
+     * The field {@code FINDER} contains the resource finder.
      */
     private static final ResourceFinder FINDER = new ResourceFinder() {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
-         */
-        public void enableTracing(boolean flag) {
+    public void enableTracing(boolean flag) {
 
             // nay
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public NamedInputStream findResource(String name, String type)
                 throws ConfigurationException {

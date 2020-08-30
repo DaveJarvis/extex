@@ -24,16 +24,15 @@ import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This exception is raised when a <logo>pdfTeX</logo> primitive is used
+ * This exception is raised when a  pdfTeX primitive is used
  * without being in PDF mode.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class PdftexException extends HelpingException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the id for serialization.
+     * The field {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 

@@ -23,11 +23,10 @@ import org.extex.test.NoFlagsButImmediateAndProtectedPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\pdfobj</tt>.
+ * This is a test suite for the primitive {@code \pdfobj}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class PdfobjTest extends NoFlagsButImmediateAndProtectedPrimitiveTester {
 
 
@@ -38,7 +37,7 @@ public class PdfobjTest extends NoFlagsButImmediateAndProtectedPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\pdfobj"> Test case checking that ... </testcase>
+     * <testcase primitive="\pdfobj"> Test case checking that ... 
      * 
      * @throws Exception in case of an error
      */

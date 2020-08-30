@@ -52,43 +52,42 @@ import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TeXConfiguration implements Configuration {
 
     /**
-     * The field <tt>name</tt> contains the name of the configuration.
+     * The field {@code name} contains the name of the configuration.
      */
     private String name;
 
     /**
-     * The field <tt>resource</tt> contains the name of the resource.
+     * The field {@code resource} contains the name of the resource.
      */
     private String resource;
 
     /**
-     * The field <tt>base</tt> contains the base of the resource name; i.e. the
+     * The field {@code base} contains the base of the resource name; i.e. the
      * resource up to the last slash or the empty string if no slash is
      * contained.
      */
     // private String base;
     /**
-     * The field <tt>attributes</tt> contains the attributes.
+     * The field {@code attributes} contains the attributes.
      */
     private Map<String, String> attributes = new HashMap<String, String>();
 
     /**
-     * The field <tt>configurations</tt> contains the configurations.
+     * The field {@code configurations} contains the configurations.
      */
     private Map<String, List<TeXConfiguration>> configurations =
             new HashMap<String, List<TeXConfiguration>>();
 
     /**
-     * The field <tt>loader</tt> contains the loader.
+     * The field {@code loader} contains the loader.
      */
     // private ConfigurationLoader loader;
     /**
-     * The field <tt>parts</tt> contains the parts.
+     * The field {@code parts} contains the parts.
      */
     private List<Object> parts = new ArrayList<Object>();
 
@@ -103,7 +102,7 @@ public class TeXConfiguration implements Configuration {
      * </p>
      * <p>
      * Beside of the class loader a search is performed by appending
-     * <tt>.tex</tt> and/or prepending <tt>config/</tt> if the path is not
+     * {@code .tex} and/or prepending {@code config/} if the path is not
      * sufficient to find the resource.
      * </p>
      * 
@@ -112,7 +111,7 @@ public class TeXConfiguration implements Configuration {
      *        the file name
      * 
      * @throws ConfigurationInvalidResourceException in case that the given
-     *         resource name is <code>null</code> or empty.
+     *         resource name is {@code null} or empty.
      * @throws ConfigurationNotFoundException in case that the named path does
      *         not lead to a resource.
      * @throws ConfigurationSyntaxException in case that the resource contains
@@ -143,12 +142,7 @@ public class TeXConfiguration implements Configuration {
         parse(reader, name);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
-     */
-    public Configuration findConfiguration(String key)
+public Configuration findConfiguration(String key)
             throws ConfigurationInvalidResourceException,
                 ConfigurationNotFoundException,
                 ConfigurationSyntaxException,
@@ -159,10 +153,7 @@ public class TeXConfiguration implements Configuration {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String,
-     *      java.lang.String)
+*      java.lang.String)
      */
     public Configuration findConfiguration(String key, String attribute)
             throws ConfigurationException {
@@ -195,22 +186,12 @@ public class TeXConfiguration implements Configuration {
                 args);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configuration#getAttribute(java.lang.String)
-     */
-    public String getAttribute(String attribute) {
+public String getAttribute(String attribute) {
 
         return attributes.get(attribute);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String)
-     */
-    public Configuration getConfiguration(String key)
+public Configuration getConfiguration(String key)
             throws ConfigurationException {
 
         Configuration cfg = findConfiguration(key);
@@ -221,10 +202,7 @@ public class TeXConfiguration implements Configuration {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String,
-     *      java.lang.String)
+*      java.lang.String)
      */
     public Configuration getConfiguration(String key, String attribute)
             throws ConfigurationException {
@@ -247,12 +225,7 @@ public class TeXConfiguration implements Configuration {
         return name;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configuration#getValue()
-     */
-    public String getValue() throws ConfigurationException {
+public String getValue() throws ConfigurationException {
 
         StringBuilder sb = new StringBuilder();
 
@@ -267,12 +240,7 @@ public class TeXConfiguration implements Configuration {
         return sb.toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configuration#getValue(java.lang.String)
-     */
-    public String getValue(String key) throws ConfigurationException {
+public String getValue(String key) throws ConfigurationException {
 
         for (Object obj : parts) {
             if (obj instanceof TeXConfiguration
@@ -285,10 +253,7 @@ public class TeXConfiguration implements Configuration {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configuration#getValueAsInteger(java.lang.String,
-     *      int)
+*      int)
      */
     public int getValueAsInteger(String key, int defaultValue)
             throws ConfigurationException {
@@ -305,10 +270,7 @@ public class TeXConfiguration implements Configuration {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configuration#getValues(java.util.List,
-     *      java.lang.String)
+*      java.lang.String)
      */
     public void getValues(List<String> list, String key) {
 
@@ -317,24 +279,14 @@ public class TeXConfiguration implements Configuration {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
-     */
-    public List<String> getValues(String key) {
+public List<String> getValues(String key) {
 
         List<String> result = new ArrayList<String>();
         getValues(result, key);
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configuration#iterator()
-     */
-    public Iterator<Configuration> iterator() throws ConfigurationException {
+public Iterator<Configuration> iterator() throws ConfigurationException {
 
         List<Configuration> list = new ArrayList<Configuration>();
 
@@ -346,12 +298,7 @@ public class TeXConfiguration implements Configuration {
         return list.iterator();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configuration#iterator(java.lang.String)
-     */
-    public Iterator<Configuration> iterator(String key)
+public Iterator<Configuration> iterator(String key)
             throws ConfigurationException {
 
         List<Configuration> list = new ArrayList<Configuration>();
@@ -673,12 +620,7 @@ public class TeXConfiguration implements Configuration {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(org.extex.framework.configuration.ConfigurationLoader)
-     */
-    public void setConfigurationLoader(ConfigurationLoader loader) {
+public void setConfigurationLoader(ConfigurationLoader loader) {
 
         // this.loader = loader;
     }

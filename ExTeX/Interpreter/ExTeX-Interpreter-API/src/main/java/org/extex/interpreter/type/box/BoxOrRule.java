@@ -24,8 +24,7 @@ package org.extex.interpreter.type.box;
  * It is needed for leaders.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface BoxOrRule {
 
     // marker interface

@@ -25,24 +25,23 @@ import java.io.File;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * 
- * @version $Revision$
- */
+*/
 public class Parameters {
 
     /**
-     * The field <tt>bibtexCommand</tt> contains the <span
+     * The field {@code bibtexCommand} contains the <span
      * class="sc">Bib</span><span class="t">T</span><span class="e">e</span>X
      * command.
      */
     private String bibtexCommand = "bibtex";
 
     /**
-     * The field <tt>texinputs</tt> contains the search path for files.
+     * The field {@code texinputs} contains the search path for files.
      */
     private String[] texinputs = new String[]{""};
 
     /**
-     * The field <tt>bibtexExtensions</tt> contains the <span
+     * The field {@code bibtexExtensions} contains the <span
      * class="sc">Bib</span><span class="t">T</span><span class="e">e</span>X
      * extensions.
      */
@@ -50,52 +49,52 @@ public class Parameters {
             ".BibTeX", ""};
 
     /**
-     * The field <tt>graphicsExtensions</tt> contains the extensions for
+     * The field {@code graphicsExtensions} contains the extensions for
      * graphics files.
      */
     private String[] graphicsExtensions = new String[]{".png", ".jpg", ".jpeg",
             ".gif", ".tiff", ".pdf", ""};
 
     /**
-     * The field <tt>latexCommand</tt> contains the L<span
+     * The field {@code latexCommand} contains the L<span
      * class="la">a</span>T<span class="e">e</span>X command.
      */
     private String latexCommand = "pdflatex";
 
     /**
-     * The field <tt>latexExtensions</tt> contains the L<span
+     * The field {@code latexExtensions} contains the L<span
      * class="la">a</span>T<span class="e">e</span>X extensions.
      */
     private String[] latexExtensions = new String[]{".tex", ".TeX", ".latex",
             ".LaTeX", ".ltx", ""};
 
     /**
-     * The field <tt>makeindexCommand</tt> contains the makeindex command.
+     * The field {@code makeindexCommand} contains the makeindex command.
      */
     private String makeindexCommand = "makeindex";
 
     /**
-     * The field <tt>makeindexStyle</tt> contains the makeindex style.
+     * The field {@code makeindexStyle} contains the makeindex style.
      */
     private String makeindexStyle = null;
 
     /**
-     * The field <tt>outputDirectory</tt> contains the output directory.
+     * The field {@code outputDirectory} contains the output directory.
      */
     private File outputDirectory = new File(".");
 
     /**
-     * The field <tt>targetFormat</tt> contains the target format.
+     * The field {@code targetFormat} contains the target format.
      */
     private FileFormat targetFormat = FileFormat.PDF;
 
     /**
-     * The field <tt>workingDirectory</tt> contains the working directory.
+     * The field {@code workingDirectory} contains the working directory.
      */
     private File workingDirectory = new File(".");
 
     /**
-     * The field <tt>limit</tt> contains the artificial limit to break out of
+     * The field {@code limit} contains the artificial limit to break out of
      * infinite make loops.
      */
     private int limit = 3;
@@ -229,8 +228,8 @@ public class Parameters {
 
     /**
      * Setter for the <span class="sc">Bib</span><span class="t">T</span><span
-     * class="e">e</span>X command. If the argument is <code>null</code> then it
-     * is silently ignored. Thus a <code>null</code> value has no effect.
+     * class="e">e</span>X command. If the argument is {@code null} then it
+     * is silently ignored. Thus a {@code null} value has no effect.
      * 
      * @param bibtexCommand the <span class="sc">Bib</span><span
      *        class="t">T</span><span class="e">e</span>X command to set
@@ -244,8 +243,8 @@ public class Parameters {
 
     /**
      * Setter for the <span class="sc">Bib</span><span class="t">T</span><span
-     * class="e">e</span>X extensions. If the argument is <code>null</code> then
-     * it is silently ignored. Thus a <code>null</code> value has no effect.
+     * class="e">e</span>X extensions. If the argument is {@code null} then
+     * it is silently ignored. Thus a {@code null} value has no effect.
      * 
      * @param bibtexExtensions the <span class="sc">Bib</span><span
      *        class="t">T</span><span class="e">e</span>X extensions to set
@@ -258,8 +257,8 @@ public class Parameters {
     }
 
     /**
-     * Setter for the graphics extensions. If the argument is <code>null</code>
-     * then it is silently ignored. Thus a <code>null</code> value has no
+     * Setter for the graphics extensions. If the argument is {@code null}
+     * then it is silently ignored. Thus a {@code null} value has no
      * effect.
      * 
      * @param graphicsExtensions the graphics extensions to set
@@ -273,8 +272,8 @@ public class Parameters {
 
     /**
      * Setter for the L<span class="la">a</span>T<span class="e">e</span>X
-     * command. If the argument is <code>null</code> then it is silently
-     * ignored. Thus a <code>null</code> value has no effect.
+     * command. If the argument is {@code null} then it is silently
+     * ignored. Thus a {@code null} value has no effect.
      * 
      * @param latexCommand the L<span class="la">a</span>T<span
      *        class="e">e</span>X command to set
@@ -288,8 +287,8 @@ public class Parameters {
 
     /**
      * Setter for the L<span class="la">a</span>T<span class="e">e</span>X
-     * extensions. If the argument is <code>null</code> then it is silently
-     * ignored. Thus a <code>null</code> value has no effect.
+     * extensions. If the argument is {@code null} then it is silently
+     * ignored. Thus a {@code null} value has no effect.
      * 
      * @param latexExtensions the L<span class="la">a</span>T<span
      *        class="e">e</span>X extensions to set
@@ -312,8 +311,8 @@ public class Parameters {
     }
 
     /**
-     * Setter for the makeindex command. If the argument is <code>null</code>
-     * then it is silently ignored. Thus a <code>null</code> value has no
+     * Setter for the makeindex command. If the argument is {@code null}
+     * then it is silently ignored. Thus a {@code null} value has no
      * effect.
      * 
      * @param makeindexCommand the makeindex command to set
@@ -336,8 +335,8 @@ public class Parameters {
     }
 
     /**
-     * Setter for the output directory. If the argument is <code>null</code>
-     * then it is silently ignored. Thus a <code>null</code> value has no
+     * Setter for the output directory. If the argument is {@code null}
+     * then it is silently ignored. Thus a {@code null} value has no
      * effect.
      * 
      * @param outputDirectory the output directory to set
@@ -350,8 +349,8 @@ public class Parameters {
     }
 
     /**
-     * Setter for the target format. If the argument is <code>null</code> then
-     * it is silently ignored. Thus a <code>null</code> value has no effect.
+     * Setter for the target format. If the argument is {@code null} then
+     * it is silently ignored. Thus a {@code null} value has no effect.
      * 
      * @param targetFormat the target format to set
      */
@@ -361,8 +360,8 @@ public class Parameters {
     }
 
     /**
-     * Setter for the texinputs. If the argument is <code>null</code> then it is
-     * silently ignored. Thus a <code>null</code> value has no effect.
+     * Setter for the texinputs. If the argument is {@code null} then it is
+     * silently ignored. Thus a {@code null} value has no effect.
      * 
      * @param texinputs the texinputs to set
      */
@@ -374,8 +373,8 @@ public class Parameters {
     }
 
     /**
-     * Setter for the working directory. If the argument is <code>null</code>
-     * then it is silently ignored. Thus a <code>null</code> value has no
+     * Setter for the working directory. If the argument is {@code null}
+     * then it is silently ignored. Thus a {@code null} value has no
      * effect.
      * 
      * @param workingDirectory the working directory to set

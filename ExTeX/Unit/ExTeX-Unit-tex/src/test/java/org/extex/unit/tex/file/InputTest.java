@@ -27,11 +27,10 @@ import java.io.File;
 import java.net.URL;
 
 /**
- * This is a test suite for the primitive <tt>\input</tt>.
+ * This is a test suite for the primitive {@code \input}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class InputTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -55,8 +54,8 @@ public class InputTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\input"> Test case checking that a <tt>\input</tt>
-     * works. </testcase>
+     * <testcase primitive="\input"> Test case checking that a {@code \input}
+     * works. 
      *
      * @throws Exception in case of an error
      */
@@ -70,8 +69,8 @@ public class InputTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\input"> Test case checking that a <tt>\input</tt>
-     * works. </testcase>
+     * <testcase primitive="\input"> Test case checking that a {@code \input}
+     * works. 
      *
      * @throws Exception in case of an error
      */

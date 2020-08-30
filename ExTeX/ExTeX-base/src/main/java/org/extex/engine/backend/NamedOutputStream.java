@@ -26,17 +26,16 @@ import java.io.OutputStream;
  * This class provides a delegate to an output stream with an additional name.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NamedOutputStream extends OutputStream {
 
     /**
-     * The field <tt>name</tt> contains the name.
+     * The field {@code name} contains the name.
      */
     private String name;
 
     /**
-     * The field <tt>stream</tt> contains the encapsulated stream.
+     * The field {@code stream} contains the encapsulated stream.
      */
     private OutputStream stream;
 
@@ -54,7 +53,7 @@ public class NamedOutputStream extends OutputStream {
 
     /**
      * Closes this output stream and releases any system resources
-     * associated with this stream. The general contract of <code>close</code>
+     * associated with this stream. The general contract of {@code close}
      * is that it closes the output stream. A closed stream cannot perform
      * output operations and cannot be reopened.
      *
@@ -73,8 +72,8 @@ public class NamedOutputStream extends OutputStream {
      *
      * @param   obj   the reference object with which to compare.
      *
-     * @return  <code>true</code> if this object is the same as the obj
-     *          argument; <code>false</code> otherwise.
+     * @return  {@code true} if this object is the same as the obj
+     *          argument; {@code false} otherwise.
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */
@@ -86,7 +85,7 @@ public class NamedOutputStream extends OutputStream {
 
     /**
      * Flushes this output stream and forces any buffered output bytes
-     * to be written out. The general contract of <code>flush</code> is
+     * to be written out. The general contract of {@code flush} is
      * that calling it is an indication that, if any bytes previously
      * written have been buffered by the implementation of the output
      * stream, such bytes should immediately be written to their
@@ -141,10 +140,10 @@ public class NamedOutputStream extends OutputStream {
     }
 
     /**
-     * Writes <code>b.length</code> bytes from the specified byte array
-     * to this output stream. The general contract for <code>write(b)</code>
+     * Writes {@code b.length} bytes from the specified byte array
+     * to this output stream. The general contract for {@code write(b)}
      * is that it should have exactly the same effect as the call
-     * <code>write(b, 0, b.length)</code>.
+     * {@code write(b, 0, b.length)}.
      *
      * @param      b   the data.
      * @exception  IOException  if an I/O error occurs.
@@ -158,14 +157,14 @@ public class NamedOutputStream extends OutputStream {
     }
 
     /**
-     * Writes <code>len</code> bytes from the specified byte array
-     * starting at offset <code>off</code> to this output stream.
+     * Writes {@code len} bytes from the specified byte array
+     * starting at offset {@code off} to this output stream.
      *
      * @param      b     the data.
      * @param      off   the start offset in the data.
      * @param      len   the number of bytes to write.
      * @exception  IOException  if an I/O error occurs. In particular,
-     *             an <code>IOException</code> is thrown if the output
+     *             an {@code IOException} is thrown if the output
      *             stream is closed.
      *
      * @see java.io.OutputStream#write(byte[], int, int)
@@ -180,9 +179,9 @@ public class NamedOutputStream extends OutputStream {
     /**
      * Writes the specified byte to this output stream.
      *
-     * @param      b   the <code>byte</code>.
+     * @param      b   the {@code byte}.
      * @exception  IOException  if an I/O error occurs. In particular,
-     *             an <code>IOException</code> may be thrown if the
+     *             an {@code IOException} may be thrown if the
      *             output stream has been closed.
      *
      * @see java.io.OutputStream#write(int)

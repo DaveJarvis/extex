@@ -32,59 +32,58 @@ import org.extex.dviware.Dvi;
 import org.extex.typesetter.tc.font.Font;
 
 /**
- * This class represents the DVI instruction <tt>post</tt> and the contents
- * up to the terminating <tt>post_post</tt>.
+ * This class represents the DVI instruction {@code post} and the contents
+ * up to the terminating {@code post_post}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4704 $
- */
+*/
 public class DviPostamble extends AbstractDviCode {
 
     /**
-     * The field <tt>bop</tt> contains the offset for the last bop instruction.
+     * The field {@code bop} contains the offset for the last bop instruction.
      */
     private int bop = -1;
 
     /**
-     * The field <tt>fontMap</tt> contains the fonts and their mapping to
+     * The field {@code fontMap} contains the fonts and their mapping to
      * indexes.
      */
     private Map<Font, Long> fontMap = new HashMap<Font, Long>();
 
     /**
-     * The field <tt>fonts</tt> contains the list of the font def instructions
+     * The field {@code fonts} contains the list of the font def instructions
      * to be written out at the end.
      */
     private List<DviFntDef> fonts = new ArrayList<DviFntDef>();
 
     /**
-     * The field <tt>mag</tt> contains the magnification in permille.
+     * The field {@code mag} contains the magnification in permille.
      */
     private int mag;
 
     /**
-     * The field <tt>maxHeight</tt> contains the maximal height.
+     * The field {@code maxHeight} contains the maximal height.
      */
     private Dimen maxHeight = new Dimen(0);
 
     /**
-     * The field <tt>maxWidth</tt> contains the maximal width.
+     * The field {@code maxWidth} contains the maximal width.
      */
     private Dimen maxWidth = new Dimen(0);
 
     /**
-     * The field <tt>numberOfPages</tt> contains the number of pages.
+     * The field {@code numberOfPages} contains the number of pages.
      */
     private int numberOfPages = 0;
 
     /**
-     * The field <tt>bopOffset</tt> contains the index of the last BOP
+     * The field {@code bopOffset} contains the index of the last BOP
      * instruction in the output stream.
      */
     private int bopOffset;
 
     /**
-     * The field <tt>stackDepth</tt> contains the stack depth needed to process
+     * The field {@code stackDepth} contains the stack depth needed to process
      * all push and pop operations.
      */
     private int stackDepth = 0;

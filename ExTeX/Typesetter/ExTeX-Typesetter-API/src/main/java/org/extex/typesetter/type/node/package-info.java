@@ -16,8 +16,8 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the basic data types for nodes as stored in boxed and 
- * processed by the typesetter in ??TeX.
+ *Contains basic data types for nodes as stored in boxed and
+ * processed by the typesetter in εχTeX.
  */
 
 package org.extex.typesetter.type.node;

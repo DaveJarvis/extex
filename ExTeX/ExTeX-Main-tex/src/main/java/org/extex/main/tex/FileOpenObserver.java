@@ -29,12 +29,11 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * behavior of TeX it logs an open brace and the name of the file.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4708 $
- */
+*/
 public class FileOpenObserver implements OpenFileObserver {
 
     /**
-     * The field <tt>logger</tt> contains the current logger
+     * The field {@code logger} contains the current logger
      */
     private Logger logger;
 

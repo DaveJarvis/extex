@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the classes and interfaces relevant for the processor
+ * Contains the classes and interfaces relevant for the processor
  * of the BST language.
  *
  */

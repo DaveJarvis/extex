@@ -28,8 +28,7 @@ import org.extex.core.dimen.FixedDimen;
  * processor. Only read access is provided.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5563 $
- */
+*/
 public interface DocumentWriterOptions {
 
     /**

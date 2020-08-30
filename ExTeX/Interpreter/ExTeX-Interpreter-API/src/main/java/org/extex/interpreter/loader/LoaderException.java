@@ -25,12 +25,11 @@ import org.extex.interpreter.exception.InterpreterException;
  * This exception is used when the loader detects some problem.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4592 $
- */
+*/
 public class LoaderException extends InterpreterException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 1L;
 

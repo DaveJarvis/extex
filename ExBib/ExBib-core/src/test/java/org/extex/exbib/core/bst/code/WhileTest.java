@@ -38,11 +38,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>while$</tt>.
+ * Test suite for {@code while$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class WhileTest {
 
     /**
@@ -51,10 +50,7 @@ public class WhileTest {
     private class BodyCode extends AbstractCode {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
-         *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+    *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
          */
         public void execute(BstProcessor processor, Entry entry, Locator locator)
                 throws ExBibException {
@@ -69,7 +65,7 @@ public class WhileTest {
     private class CondCode extends AbstractCode {
 
         /**
-         * The field <tt>rep</tt> contains the repetition counter.
+         * The field {@code rep} contains the repetition counter.
          */
         private int rep;
 
@@ -84,10 +80,7 @@ public class WhileTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
-         *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+    *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
          */
         public void execute(BstProcessor processor, Entry entry, Locator locator)
                 throws ExBibException {
@@ -99,22 +92,22 @@ public class WhileTest {
     }
 
     /**
-     * The field <tt>bodyCount</tt> contains the body counter.
+     * The field {@code bodyCount} contains the body counter.
      */
     private int bodyCount = 0;
 
     /**
-     * The field <tt>condCount</tt> contains the condition counter.
+     * The field {@code condCount} contains the condition counter.
      */
     private int condCount = 0;
 
     /**
-     * The field <tt>db</tt> contains the database.
+     * The field {@code db} contains the database.
      */
     private DB db = null;
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -142,8 +135,8 @@ public class WhileTest {
     }
 
     /**
-     * <testcase> The body is not executed when the condition immediately fails.
-     * </testcase>
+     *  The body is not executed when the condition immediately fails.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -162,9 +155,8 @@ public class WhileTest {
     }
 
     /**
-     * <testcase> The body is executed once if the condition fails the second
-     * time it is invoked. </testcase>
-     * 
+     * The body is executed once if the condition fails the second time it is invoked
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -182,9 +174,8 @@ public class WhileTest {
     }
 
     /**
-     * <testcase> The body is executed 12 times if the condition fails the 13th
-     * time it is invoked. </testcase>
-     * 
+     * The body is executed 12 times if the condition fails the 13th time it is invoked
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -202,7 +193,7 @@ public class WhileTest {
     }
 
     /**
-     * <testcase> The empoty stack leads to an error. </testcase>
+     *  The empoty stack leads to an error. 
      * 
      * @throws Exception in case of an error
      */
@@ -213,8 +204,8 @@ public class WhileTest {
     }
 
     /**
-     * <testcase> A stack containing only one element leads to an error.
-     * </testcase>
+     *  A stack containing only one element leads to an error.
+     * 
      * 
      * @throws Exception in case of an error
      */

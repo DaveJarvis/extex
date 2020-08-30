@@ -41,124 +41,123 @@ import org.extex.ocpware.type.OcpProgram;
  * @see OcpCode
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class OcpReader extends Reader {
 
     /**
-     * The field <tt>ARITH_STACK_INCREMENT</tt> contains the increment for the
+     * The field {@code ARITH_STACK_INCREMENT} contains the increment for the
      * arithmetic stack if the current stack is full.
      */
     private static final int ARITH_STACK_INCREMENT = 32;
 
     /**
-     * The constant <tt>ARITH_STACK_SIZE</tt> contains the initial size of the
+     * The constant {@code ARITH_STACK_SIZE} contains the initial size of the
      * arithmetic stack.
      */
     private static final int ARITH_STACK_SIZE = 32;
 
     /**
-     * The constant <tt>LINE_SIZE_INCREMENT</tt> contains the increment of the
+     * The constant {@code LINE_SIZE_INCREMENT} contains the increment of the
      * size of the line buffer. This value has to be a positive number.
      */
     private static final int LINE_SIZE_INCREMENT = 128;
 
     /**
-     * The constant <tt>LINE_INITIAL_SIZE</tt> contains the initial size of
+     * The constant {@code LINE_INITIAL_SIZE} contains the initial size of
      * the line buffer. The value must not be negative. The line buffer may be
      * expanded when necessary.
      */
     private static final int LINE_INITIAL_SIZE = 128;
 
     /**
-     * The field <tt>arithStack</tt> contains the stack for execution.
+     * The field {@code arithStack} contains the stack for execution.
      */
     private int[] arithStack = new int[ARITH_STACK_SIZE];
 
     /**
-     * The field <tt>arithStackPtr</tt> contains the pointer to the first free
+     * The field {@code arithStackPtr} contains the pointer to the first free
      * item on the arithmetic stack.
      */
     private int arithStackPtr = 0;
 
     /**
-     * The field <tt>code</tt> contains the code currently run.
+     * The field {@code code} contains the code currently run.
      */
     private int[] code;
 
     /**
-     * The field <tt>last</tt> contains the index of the last character of the
+     * The field {@code last} contains the index of the last character of the
      * prefix matched.
      */
     private int inputLast = 0;
 
     /**
-     * The field <tt>start</tt> contains the index of the first character of
+     * The field {@code start} contains the index of the first character of
      * the prefix matched.
      */
     private int inputStart = 0;
 
     /**
-     * The field <tt>line</tt> contains the intermediate buffer for the
+     * The field {@code line} contains the intermediate buffer for the
      * characters read. The buffer will be extended dynamically if required.
      */
     private char[] line = new char[LINE_INITIAL_SIZE];
 
     /**
-     * The field <tt>lineEnd</tt> contains the index of the character
+     * The field {@code lineEnd} contains the index of the character
      * following the last one used in the line buffer.
      */
     private int lineEnd = 0;
 
     /**
-     * The field <tt>observers</tt> contains the list of observers.
+     * The field {@code observers} contains the list of observers.
      */
     private List<OcpReaderObserver> observers = null;
 
     /**
-     * The field <tt>outMax</tt> contains the maximum number requested for an
+     * The field {@code outMax} contains the maximum number requested for an
      * output character.
      */
     private int outMax;
 
     /**
-     * The field <tt>pc</tt> contains the program counter. It must be in the
-     * range from 0 to <tt>code.length</tt>.
+     * The field {@code pc} contains the program counter. It must be in the
+     * range from 0 to {@code code.length}.
      */
     private int pc = 0;
 
     /**
-     * The field <tt>program</tt> contains the reference to the entire
+     * The field {@code program} contains the reference to the entire
      * program.
      */
     private OcpProgram program;
 
     /**
-     * The field <tt>pushbackBuffer</tt> contains the buffer for push-back
+     * The field {@code pushbackBuffer} contains the buffer for push-back
      * characters. The first character will never be read and processed but used
      * to determine the beginning of the line.
      */
     private char[] pushbackBuffer = new char[LINE_INITIAL_SIZE];
 
     /**
-     * The field <tt>pushbackEnd</tt> contains the index of the first free
+     * The field {@code pushbackEnd} contains the index of the first free
      * position in the push-back buffer.
      */
     private int pushbackEnd = 0;
 
     /**
-     * The field <tt>reader</tt> contains the reader to acquire input from.
+     * The field {@code reader} contains the reader to acquire input from.
      */
     private Reader reader;
 
     /**
-     * The field <tt>bufferEnd</tt> contains the pointer to the end of the
+     * The field {@code bufferEnd} contains the pointer to the end of the
      * input buffer.
      */
     private int someEnd = -1;
 
     /**
-     * The field <tt>somePtr</tt> contains the pointer for delivering <i>some</i>
+     * The field {@code somePtr} contains the pointer for delivering <i>some</i>
      * values. If it is less then someEnd then the processing is not continued
      * but a character is delivered from the line position pointed to in this
      * field.
@@ -166,12 +165,12 @@ public class OcpReader extends Reader {
     private int somePtr = 0;
 
     /**
-     * The field <tt>state</tt> contains the current state.
+     * The field {@code state} contains the current state.
      */
     private int state = 0;
 
     /**
-     * The field <tt>stateStack</tt> contains the stack of states.
+     * The field {@code stateStack} contains the stack of states.
      */
     private Stack<Integer> stateStack = new Stack<Integer>();
 
@@ -179,12 +178,12 @@ public class OcpReader extends Reader {
      * Creates a new object.
      * 
      * @param reader the reader for input characters. This is not allowed to be
-     *        <code>null</code>.
+     *        {@code null}.
      * @param program the program code to run. This is not allowed to be
-     *        <code>null</code>.
+     *        {@code null}.
      * 
      * @throws IllegalArgumentException in case that one of the arguments is
-     *         <code>null</code>
+     *         {@code null}
      * @throws UnsupportedOutputException in case of an unknown output size is
      *         encountered
      */
@@ -244,12 +243,7 @@ public class OcpReader extends Reader {
         arithStack[arithStackPtr++] = x;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.Reader#close()
-     */
-    @Override
+@Override
     public void close() throws IOException {
 
         if (reader == null) {
@@ -311,7 +305,7 @@ public class OcpReader extends Reader {
     /**
      * Gets some more characters into the input buffer.
      * 
-     * @return <code>true</code> when end of file is reached
+     * @return {@code true} when end of file is reached
      * 
      * @throws IOException in case of an I/O error
      */
@@ -459,10 +453,7 @@ public class OcpReader extends Reader {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.Reader#read()
-     * 
+*
      * @throws OcpEmptyStackException in case of an empty stack
      * @throws IllegalPcException if the program counter points outside the code
      *         area
@@ -491,12 +482,7 @@ public class OcpReader extends Reader {
         return c;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.Reader#read(char[], int, int)
-     */
-    @Override
+@Override
     public int read(char[] cbuf, int off, int len) throws IOException {
 
         int i = off;
@@ -851,12 +837,7 @@ public class OcpReader extends Reader {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return "[" + Integer.toString(state) + "/" + Integer.toString(pc)

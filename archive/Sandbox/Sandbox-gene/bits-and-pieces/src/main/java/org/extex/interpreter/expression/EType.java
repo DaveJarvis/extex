@@ -28,8 +28,7 @@ import org.extex.interpreter.expression.term.TBoolean;
  * This interface describes the data type of an expression type.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4733 $
- */
+*/
 public interface EType {
 
     /**
@@ -45,7 +44,7 @@ public interface EType {
     EType add(EType t) throws CastException, UnsupportedException;
 
     /**
-     * Apply the operation && on the current instance and an additional argument.
+      * Apply the operation &amp;&amp; on the current instance and an additional argument.
      *
      * @param t the terminal to build the conjunction with
      *

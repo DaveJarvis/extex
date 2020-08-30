@@ -28,18 +28,17 @@ import org.extex.exindex.core.type.transform.Transform;
  * This class provides a map of arrays with a default value.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MarkupTransform extends Markup {
 
     /**
-     * The field <tt>transformMap</tt> contains the transforms.
+     * The field {@code transformMap} contains the transforms.
      */
     private final Map<String, Transform> transformMap =
             new HashMap<String, Transform>();
 
     /**
-     * The field <tt>map</tt> contains the mapping from name to Booleans.
+     * The field {@code map} contains the mapping from name to Booleans.
      */
     private final Map<String, Boolean> forceMap = new HashMap<String, Boolean>();
 
@@ -106,12 +105,7 @@ public class MarkupTransform extends Markup {
         this.transformMap.put(clazz, transform);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         final StringBuilder sb = new StringBuilder(super.toString());

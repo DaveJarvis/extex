@@ -32,7 +32,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * <p>
  * Each primitive has a name which is used for debugging purposes. Since an
- * arbitrary sequence of <tt>\let</tt> and <tt>\def</tt> operations might have
+ * arbitrary sequence of {@code \let} and {@code \def} operations might have
  * taken place it is in general not possible to determine the current name under
  * which the primitive has been called. Thus an initial value is stored in it
  * for this purpose.
@@ -40,8 +40,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public interface Code {
 
     /**
@@ -83,14 +82,14 @@ public interface Code {
      * This simple little method distinguishes the conditionals from the other
      * primitives. This is necessary for the processing of all \if* primitives.
      * 
-     * @return <code>true</code> iff this is some sort if <tt>\if</tt>.
+     * @return {@code true} iff this is some sort if {@code \if}.
      */
     boolean isIf();
 
     /**
      * Getter for the outer flag.
      * 
-     * @return <code>true</code> iff the code is defined outer.
+     * @return {@code true} iff the code is defined outer.
      */
     boolean isOuter();
 

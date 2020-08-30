@@ -33,8 +33,7 @@ import static org.junit.Assert.assertTrue;
  * This is a test suite for {@link Makeindex}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 @Ignore
 public class MakeindexTest extends AbstractTester {
 
@@ -47,9 +46,8 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> The argument to run can not be <code>null</code>. In this case
-     * an {@link IllegalArgumentException} is thrown. </testcase>
-     */
+     * The argument to run can not be {@code null}. In this case an {@link IllegalArgumentException} is thrown
+*/
     @Test(expected = IllegalArgumentException.class)
     public void test00() {
 
@@ -64,7 +62,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> An index can be sorted. </testcase>
+     *  An index can be sorted.
      * 
      * @throws IOException in case of an error
      */
@@ -92,7 +90,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> An index can be sorted with option -g. </testcase>
+     *  An index can be sorted with option -g.
      * 
      * @throws IOException in case of an error
      */
@@ -120,7 +118,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> An index can be sorted with option -gc. </testcase>
+     *  An index can be sorted with option -gc.
      * 
      * @throws IOException in case of an error
      */
@@ -148,7 +146,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> An index can be sorted with option -l. </testcase>
+     *  An index can be sorted with option -l.
      * 
      * @throws IOException in case of an error
      */
@@ -176,7 +174,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> An index can be sorted. </testcase>
+     *  An index can be sorted.
      * 
      * @throws IOException in case of an error
      */
@@ -204,7 +202,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> An index can be sorted. </testcase>
+     *  An index can be sorted.
      * 
      * @throws IOException in case of an error
      */
@@ -225,7 +223,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> An index can be sorted. </testcase>
+     *  An index can be sorted.
      * 
      * @throws IOException in case of an error
      */
@@ -246,7 +244,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> An index (omitting the suffix) can be sorted. </testcase>
+     *  An index (omitting the suffix) can be sorted.
      * 
      * @throws IOException in case of an error
      */
@@ -272,7 +270,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> An index with colliding keys can be sorted. </testcase>
+     *  An index with colliding keys can be sorted.
      * 
      * @throws IOException in case of an error
      */
@@ -300,7 +298,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> An index can be sorted with option -c. </testcase>
+     *  An index can be sorted with option -c.
      * 
      * @throws IOException in case of an error
      */
@@ -328,7 +326,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> An illegal argument for -D is reported. </testcase>
+     *  An illegal argument for -D is reported.
      */
     @Test
     public void testD01() {
@@ -340,7 +338,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> An illegal argument for -D is reported. </testcase>
+     *  An illegal argument for -D is reported.
      * 
      */
     @Test
@@ -353,7 +351,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> The argument to run can be the empty string array. </testcase>
+     *  The argument to run can be the empty string array.
      * 
      */
     @Test
@@ -371,7 +369,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> The empty string argument is ignored. </testcase>
+     *  The empty string argument is ignored.
      * 
      */
     @Test
@@ -389,7 +387,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> An illegal argument for -encoding is reported. </testcase>
+     *  An illegal argument for -encoding is reported.
      * 
      */
     @Test
@@ -402,7 +400,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> An illegal argument for -encoding is reported. </testcase>
+     *  An illegal argument for -encoding is reported.
      * 
      */
     @Test
@@ -415,7 +413,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> An illegal argument for -encoding is reported. </testcase>
+     *  An illegal argument for -encoding is reported.
      * 
      */
     @Test
@@ -428,7 +426,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> An illegal argument for -encoding is reported. </testcase>
+     *  An illegal argument for -encoding is reported.
      * 
      */
     @Test
@@ -441,7 +439,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> Help is provided upon request. </testcase>
+     *  Help is provided upon request.
      * 
      */
     @Test
@@ -456,7 +454,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> A missing argument for -style is reported. </testcase>
+     *  A missing argument for -style is reported.
      * 
      */
     @Test
@@ -469,7 +467,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> An empty argument for -style is reported. </testcase>
+     *  An empty argument for -style is reported.
      * 
      */
     @Test
@@ -482,7 +480,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> A null argument for -style is reported. </testcase>
+     *  A null argument for -style is reported.
      * 
      */
     @Test
@@ -495,7 +493,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> A null argument for -style is reported. </testcase>
+     *  A null argument for -style is reported.
      * 
      */
     @Test
@@ -508,7 +506,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> A missing argument for -style is reported. </testcase>
+     *  A missing argument for -style is reported.
      * 
      */
     @Test
@@ -521,7 +519,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> A empty style is consumed. </testcase>
+     *  A empty style is consumed.
      * 
      */
     @Test
@@ -541,7 +539,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> A empty style is consumed. </testcase>
+     *  A empty style is consumed.
      * 
      */
     @Test
@@ -561,7 +559,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> An unknown file argument is reported. </testcase>
+     *  An unknown file argument is reported.
      * 
      */
     @Test
@@ -583,7 +581,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> An unknown file argument is reported. </testcase>
+     *  An unknown file argument is reported.
      * 
      */
     @Test
@@ -605,7 +603,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> An unknown argument is reported. </testcase>
+     *  An unknown argument is reported.
      * 
      */
     @Test
@@ -618,7 +616,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> An unknown file argument is reported. </testcase>
+     *  An unknown file argument is reported.
      * 
      */
     @Test
@@ -631,7 +629,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> An unknown file argument is reported. </testcase>
+     *  An unknown file argument is reported.
      * 
      */
     @Test
@@ -644,7 +642,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> An unknown file argument is reported. </testcase>
+     *  An unknown file argument is reported.
      * 
      */
     @Test
@@ -657,7 +655,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> The version is reported upon request. </testcase>
+     *  The version is reported upon request.
      * 
      */
     @Test
@@ -668,7 +666,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> The version is reported upon request. </testcase>
+     *  The version is reported upon request.
      * 
      */
     @Test
@@ -679,7 +677,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> The version is reported upon request. </testcase>
+     *  The version is reported upon request.
      * 
      */
     @Test
@@ -690,7 +688,7 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
-     * <testcase> The version is reported upon request. </testcase>
+     *  The version is reported upon request.
      * 
      */
     @Test

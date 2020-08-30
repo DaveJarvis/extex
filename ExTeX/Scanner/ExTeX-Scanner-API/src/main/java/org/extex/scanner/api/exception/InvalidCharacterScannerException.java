@@ -25,18 +25,17 @@ import org.extex.core.UnicodeChar;
  * This exception signals that an invalid character has been encountered.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5563 $
- */
+*/
 public class InvalidCharacterScannerException extends ScannerException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>c</tt> contains the invalid character.
+     * The field {@code c} contains the invalid character.
      */
     private UnicodeChar c;
 

@@ -28,8 +28,7 @@ import org.extex.exindex.core.type.alphabet.util.RomanNumber;
  * identical letters.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class UpperRomanPage extends AbstractPage {
 
     /**

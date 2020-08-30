@@ -31,8 +31,7 @@ import org.junit.runner.JUnitCore;
  * This class contains test cases for the log formatter.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4784 $
- */
+*/
 public class LogFormatterTest {
 
     /**
@@ -52,7 +51,7 @@ public class LogFormatterTest {
 
     /**
      * <testcase class="LogFormatter"> Test case checking that a simple string
-     * comes through. <testcase>
+     * comes through.
      * 
      * @throws Exception in case of an error
      */
@@ -67,7 +66,7 @@ public class LogFormatterTest {
 
     /**
      * <testcase class="LogFormatter"> Test case checking that a simple string
-     * comes through. <testcase>
+     * comes through.
      * 
      * @throws Exception in case of an error
      */
@@ -83,7 +82,7 @@ public class LogFormatterTest {
 
     /**
      * <testcase class="LogFormatter"> Test case checking that a simple string
-     * comes through. <testcase>
+     * comes through.
      * 
      * @throws Exception in case of an error
      */

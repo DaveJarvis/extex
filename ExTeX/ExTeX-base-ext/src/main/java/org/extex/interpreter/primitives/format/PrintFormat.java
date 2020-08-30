@@ -47,8 +47,8 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\printformat</code>. It format the next primitive for the output
- * with the given pattern and the default <code>Locale</code>.
+ * {@code \printformat}. It format the next primitive for the output
+ * with the given pattern and the default {@code Locale}.
  * 
  * <p>
  * Example:
@@ -67,12 +67,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * @see java.text.DecimalFormat
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class PrintFormat extends AbstractCode implements Theable {
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 2007L;
 
@@ -87,10 +86,7 @@ public class PrintFormat extends AbstractCode implements Theable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

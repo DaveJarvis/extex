@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the data structures for Noads.
+ *Contains data structures for Noads.
  *
  * A {@link org.extex.typesetter.type.noad.Noad Noad} is the intermediate
  * data strcuture which is used for processing mathamatical material. Finally

@@ -28,8 +28,7 @@ import org.extex.scanner.type.token.Token;
  * which do not modify the value.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4726 $
- */
+*/
 public interface FixedTokens {
 
     /**
@@ -37,7 +36,7 @@ public interface FixedTokens {
      *
      * @param i the index for the token to get
      *
-     * @return the i<sup>th</sup> token or <code>null</code> if i is out of
+     * @return the i<sup>th</sup> token or {@code null} if i is out of
      *  bounds
      */
     Token get(int i);

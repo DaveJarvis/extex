@@ -32,8 +32,7 @@ import org.extex.scanner.type.token.Token;
  * This class represents a \par instruction.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Par extends AbstractNode implements Macro, Node {
 
     /**
@@ -58,10 +57,7 @@ public class Par extends AbstractNode implements Macro, Node {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Macro#parse(
-     *      org.extex.scanner.type.token.Token,
+*      org.extex.scanner.type.token.Token,
      *      org.extex.latexParser.impl.Parser)
      */
     public Node parse(Token token, Parser parser) throws ScannerException {
@@ -69,23 +65,13 @@ public class Par extends AbstractNode implements Macro, Node {
         return new Par(parser.getSource(), parser.getLineno());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.api.Node#print(java.io.PrintStream)
-     */
-    public void print(PrintStream stream) {
+public void print(PrintStream stream) {
 
         stream.println();
         stream.println();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return "\n\n";

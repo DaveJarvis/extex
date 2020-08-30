@@ -33,7 +33,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * also contains memory usage information needed by the PostScript driver for
  * memory management.
  * 
- * <table BORDER="1"> <tbody>
+ *  <table> <caption>TBD</caption> <tbody>
  * <tr>
  * <td><b>Type</b></td>
  * <td><b>Name</b></td>
@@ -94,7 +94,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <p>
  * Format 2
  * </p>
- * <table border="1"> <tbody>
+ *  <table> <caption>TBD</caption> <tbody>
  * <tr>
  * <td><b>Type</b></td>
  * <td><b>Name</b></td>
@@ -109,7 +109,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <tr>
  * <td>uint16</td>
  * <td>glyphNameIndex[numberOfGlyphs]</td>
- * <td> Ordinal number of this glyph in <code>'post'</code> string tables.
+ * <td> Ordinal number of this glyph in {@code 'post'} string tables.
  * This is not an offset.</td>
  * </tr>
  * <tr>
@@ -136,8 +136,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TtfTablePOST extends AbstractXtfTable
         implements
             XtfTable,
@@ -449,32 +448,32 @@ public class TtfTablePOST extends AbstractXtfTable
     /**
      * isFixedPitch.
      */
-    private int isFixedPitch;
+    private final int isFixedPitch;
 
     /**
      * italicAngle.
      */
-    private int italicAngle;
+    private final int italicAngle;
 
     /**
      * maxMemType1.
      */
-    private int maxMemType1;
+    private final int maxMemType1;
 
     /**
      * maxMemType42.
      */
-    private int maxMemType42;
+    private final int maxMemType42;
 
     /**
      * minMemType1.
      */
-    private int minMemType1;
+    private final int minMemType1;
 
     /**
      * minMemType42.
      */
-    private int minMemType42;
+    private final int minMemType42;
 
     /**
      * numGlyphs.
@@ -489,17 +488,17 @@ public class TtfTablePOST extends AbstractXtfTable
     /**
      * underlinePosition.
      */
-    private short underlinePosition;
+    private final short underlinePosition;
 
     /**
      * underlineThickness.
      */
-    private short underlineThickness;
+    private final short underlineThickness;
 
     /**
      * version.
      */
-    private int version;
+    private final int version;
 
     /**
      * Create a new object.
@@ -720,12 +719,7 @@ public class TtfTablePOST extends AbstractXtfTable
         return psGlyphName;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
+public String getShortcut() {
 
         return "post";
     }
@@ -787,10 +781,7 @@ public class TtfTablePOST extends AbstractXtfTable
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

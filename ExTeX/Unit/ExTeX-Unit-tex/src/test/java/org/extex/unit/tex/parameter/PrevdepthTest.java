@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\prevdepth</tt>.
+ * This is a test suite for the primitive {@code \prevdepth}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class PrevdepthTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -49,7 +48,7 @@ public class PrevdepthTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\prevdepth"> Test case checking that
-     * <tt>\prevdepth</tt> in horizontal mode leads to an error. </testcase>
+     * {@code \prevdepth} in horizontal mode leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -64,7 +63,7 @@ public class PrevdepthTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\prevdepth"> Test case checking that
-     * <tt>\prevdepth</tt> in horizontal mode leads to an error. </testcase>
+     * {@code \prevdepth} in horizontal mode leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -79,7 +78,7 @@ public class PrevdepthTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\prevdepth"> Test case checking that
-     * <tt>\prevdepth</tt> in math mode leads to an error. </testcase>
+     * {@code \prevdepth} in math mode leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -94,7 +93,7 @@ public class PrevdepthTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\prevdepth"> Test case checking that
-     * <tt>\prevdepth</tt> in display math mode leads to an error. </testcase>
+     * {@code \prevdepth} in display math mode leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -109,7 +108,7 @@ public class PrevdepthTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\prevdepth"> Test case checking that
-     * <tt>\prevdepth</tt> has a default value of -1000pt. </testcase>
+     * {@code \prevdepth} has a default value of -1000pt.
      * 
      * @throws Exception in case of an error
      */
@@ -124,7 +123,7 @@ public class PrevdepthTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\prevdepth"> Test case checking that
-     * <tt>\prevdepth</tt> ... </testcase>
+     * {@code \prevdepth} ...
      * 
      * @throws Exception in case of an error
      */
@@ -139,7 +138,7 @@ public class PrevdepthTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\prevdepth"> Test case checking that
-     * <tt>\prevdepth</tt> ... </testcase>
+     * {@code \prevdepth} ...
      * 
      * @throws Exception in case of an error
      */

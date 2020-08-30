@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\ignorespaces</tt>.
+ * This is a test suite for the primitive {@code \ignorespaces}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class IgnorespacesTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -48,8 +47,8 @@ public class IgnorespacesTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase>Test that <tt>\ignorespaces</tt> absorbs following spaces in
-     * a group. The open group character does not consume following spaces.</testcase>
+     * Test that {@code \ignorespaces} absorbs following spaces in
+     * a group. The open group character does not consume following spaces.
      * 
      * @throws Exception in case of an error
      */
@@ -61,9 +60,9 @@ public class IgnorespacesTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase>Test that <tt>\ignorespaces</tt> absorbs following spaces if
+     * Test that {@code \ignorespaces} absorbs following spaces if
      * let to an active character. The active character does not consume
-     * following spaces.</testcase>
+     * following spaces.
      * 
      * @throws Exception in case of an error
      */
@@ -75,9 +74,9 @@ public class IgnorespacesTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase>Test that <tt>\ignorespaces</tt> absorbs following spaces if
+     * Test that {@code \ignorespaces} absorbs following spaces if
      * used as last primitive in a macro (with arguments). The argument avoids
-     * that the following spaces are consumed by the scanner.</testcase>
+     * that the following spaces are consumed by the scanner.
      * 
      * @throws Exception in case of an error
      */

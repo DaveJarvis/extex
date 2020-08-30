@@ -32,10 +32,7 @@ import org.extex.builder.latex.artifact.Artifact;
 public abstract class MacroWithOption extends Macro {
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.builder.latex.artifact.latex.Macro#expand(LatexReader,
-     *      org.extex.builder.latex.DependencyNet, Artifact)
+*      org.extex.builder.latex.DependencyNet, Artifact)
      */
     @Override
     public final void expand(LatexReader reader, DependencyNet net,
@@ -59,7 +56,7 @@ public abstract class MacroWithOption extends Macro {
      * @param reader the reader to consume further input
      * @param net the net
      * @param artifact the artifact currently processed
-     * @param opt the optional argument or <code>null</code>
+     * @param opt the optional argument or {@code null}
      * 
      * @throws IOException in case of an I/O error
      */

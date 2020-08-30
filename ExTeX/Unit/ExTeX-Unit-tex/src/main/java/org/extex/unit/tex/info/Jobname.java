@@ -30,44 +30,43 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\jobname</code>.
+ * This class provides an implementation for the primitive {@code \jobname}.
  * 
- * <doc name="jobname">
- * <h3>The Primitive <tt>\jobname</tt></h3>
+ * <p>The Primitive {@code \jobname}</p>
  * <p>
- * The primitive <tt>\jobname</tt> expands to the name of the job currently
+ * The primitive {@code \jobname} expands to the name of the job currently
  * processed. The job name is usually the name of the first input file. If this
  * can not be determined &ndash; e.g. because the input is not coming from a
- * file &ndash; then the fallback <tt>texput</tt> is usd as default value.
+ * file &ndash; then the fallback {@code texput} is usd as default value.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;jobname&rang;
- *      &rarr; <tt>\jobname</tt>  </pre>
+ *      &rarr; {@code \jobname}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \jobname  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Jobname extends AbstractCode implements ExpandableCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The constant <tt>JOBNAME</tt> contains the name of the token register
+     * The constant {@code JOBNAME} contains the name of the token register
      * to carry the job name.
      */
     public static final String JOBNAME = "jobname";
@@ -83,10 +82,7 @@ public class Jobname extends AbstractCode implements ExpandableCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -97,10 +93,7 @@ public class Jobname extends AbstractCode implements ExpandableCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,

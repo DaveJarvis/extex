@@ -40,17 +40,16 @@ import org.extex.exbib.core.exceptions.ExBibException;
  * Consider t is a {@link Token Token} of some kind and a class wants to act
  * differently for the different subtypes. Then this class implements this
  * interface and invokes the method
- * <tt>{@link Token#visit(TokenVisitor,Object[]) visit}</tt>. The appropriate
+ * {@code {@link Token#visit(TokenVisitor,Object[]) visit}}. The appropriate
  * visit method will be invoked then.
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface TokenVisitor {
 
     /**
-     * Visitor method invoked by <tt>block</tt> tokens.
+     * Visitor method invoked by {@code block} tokens.
      * 
      * @param block the block visited
      * @param args the arguments
@@ -60,7 +59,7 @@ public interface TokenVisitor {
     void visitBlock(TBlock block, Object... args) throws ExBibException;
 
     /**
-     * Visitor method invoked by <tt>character</tt> tokens.
+     * Visitor method invoked by {@code character} tokens.
      * 
      * @param c the character visited
      * @param args the arguments
@@ -70,7 +69,7 @@ public interface TokenVisitor {
     void visitChar(TChar c, Object... args) throws ExBibException;
 
     /**
-     * Visitor method invoked by <tt>field</tt> tokens.
+     * Visitor method invoked by {@code field} tokens.
      * 
      * @param field the field visited
      * @param args the arguments
@@ -80,7 +79,7 @@ public interface TokenVisitor {
     void visitField(TField field, Object... args) throws ExBibException;
 
     /**
-     * Visitor method invoked by <tt>integer</tt> tokens.
+     * Visitor method invoked by {@code integer} tokens.
      * 
      * @param integer the integer visited
      * @param args the arguments
@@ -90,7 +89,7 @@ public interface TokenVisitor {
     void visitInteger(TInteger integer, Object... args) throws ExBibException;
 
     /**
-     * Visitor method invoked by <tt>option integer</tt> tokens.
+     * Visitor method invoked by {@code option integer} tokens.
      * 
      * @param option the integer option visited
      * @param args the arguments
@@ -101,7 +100,7 @@ public interface TokenVisitor {
             throws ExBibException;
 
     /**
-     * Visitor method invoked by <tt>literal</tt> tokens.
+     * Visitor method invoked by {@code literal} tokens.
      * 
      * @param literal the literal visited
      * @param args the arguments
@@ -111,7 +110,7 @@ public interface TokenVisitor {
     void visitLiteral(TLiteral literal, Object... args) throws ExBibException;
 
     /**
-     * Visitor method invoked by <tt>local integers</tt> tokens.
+     * Visitor method invoked by {@code local integers} tokens.
      * 
      * @param integer the local integer visited
      * @param args the arguments
@@ -133,7 +132,7 @@ public interface TokenVisitor {
             throws ExBibException;
 
     /**
-     * Visitor method invoked by <tt>local string</tt> tokens.
+     * Visitor method invoked by {@code local string} tokens.
      * 
      * @param string the local string visited
      * @param args the arguments
@@ -144,7 +143,7 @@ public interface TokenVisitor {
             throws ExBibException;
 
     /**
-     * Visitor method invoked by <tt>qliteral</tt> tokens.
+     * Visitor method invoked by {@code qliteral} tokens.
      * 
      * @param qliteral the qliteral visited
      * @param args the arguments
@@ -155,7 +154,7 @@ public interface TokenVisitor {
             throws ExBibException;
 
     /**
-     * Visitor method invoked by <tt>string</tt> tokens.
+     * Visitor method invoked by {@code string} tokens.
      * 
      * @param string the string visited
      * @param args the arguments
@@ -165,7 +164,7 @@ public interface TokenVisitor {
     void visitString(TString string, Object... args) throws ExBibException;
 
     /**
-     * Visitor method invoked by <tt>option string</tt> tokens.
+     * Visitor method invoked by {@code option string} tokens.
      * 
      * @param option the integer option visited
      * @param args the arguments
@@ -176,7 +175,7 @@ public interface TokenVisitor {
             throws ExBibException;
 
     /**
-     * Visitor method invoked by <tt>token list</tt> tokens.
+     * Visitor method invoked by {@code token list} tokens.
      * 
      * @param list the list visited
      * @param args the arguments

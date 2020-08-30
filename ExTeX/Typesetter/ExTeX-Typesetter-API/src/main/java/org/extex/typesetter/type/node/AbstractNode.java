@@ -36,35 +36,34 @@ import org.extex.typesetter.type.Node;
  * This abstract class provides some methods common to all Nodes.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public abstract class AbstractNode implements Node {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2009L;
 
     /**
-     * The constant <tt>NO_CHAR</tt> contains the empty array of CharNode.
+     * The constant {@code NO_CHAR} contains the empty array of CharNode.
      */
     protected static final CharNode[] NO_CHARS = new CharNode[0];
 
     /**
-     * The field <tt>depth</tt> contains the depth of the node. The depth is the
+     * The field {@code depth} contains the depth of the node. The depth is the
      * extend of the node below the baseline.
      */
     private Glue depth;
 
     /**
-     * The field <tt>height</tt> contains the height of the node. The height is
+     * The field {@code height} contains the height of the node. The height is
      * the extend of the node above the baseline.
      */
     private Glue height;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer.
+     * The field {@code localizer} contains the localizer.
      */
     private Localizer localizer = null;
 
@@ -181,10 +180,7 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.Node#atShipping(org.extex.typesetter.PageContext,
-     *      org.extex.typesetter.Typesetter, org.extex.core.dimen.FixedDimen,
+*      org.extex.typesetter.Typesetter, org.extex.core.dimen.FixedDimen,
      *      org.extex.core.dimen.FixedDimen)
      */
     @Override
@@ -194,12 +190,7 @@ public abstract class AbstractNode implements Node {
         return this;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#clone()
-     */
-    @Override
+@Override
     protected Object clone() throws CloneNotSupportedException {
 
         AbstractNode clone = (AbstractNode) super.clone();
@@ -307,23 +298,13 @@ public abstract class AbstractNode implements Node {
         return this.localizer;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.Node#getNaturalDepth()
-     */
-    @Override
+@Override
     public FixedDimen getNaturalDepth() {
 
         return depth.getLength();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.Node#getNaturalHeight()
-     */
-    @Override
+@Override
     public FixedDimen getNaturalHeight() {
 
         return height.getLength();
@@ -514,10 +495,7 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
-     *      java.lang.String, int, int)
+*      java.lang.String, int, int)
      */
     @Override
     public void toString(StringBuilder sb, String prefix, int breadth, int d) {

@@ -28,12 +28,11 @@ import org.extex.scanner.type.token.Token;
  * This class represents a single token.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TokenNode extends AbstractNode implements Node {
 
     /**
-     * The field <tt>token</tt> contains the token contained.
+     * The field {@code token} contains the token contained.
      */
     private Token token;
 
@@ -60,24 +59,14 @@ public class TokenNode extends AbstractNode implements Node {
         return token;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.api.Node#print(java.io.PrintStream)
-     */
-    public void print(PrintStream stream) {
+public void print(PrintStream stream) {
 
         if (token != null) {
             stream.print(token.toText());
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         if (token != null) {

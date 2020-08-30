@@ -26,8 +26,7 @@ import java.util.List;
  * FontMatrix.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class T2TDOFontMatrix extends T2TDOArray {
 
@@ -42,23 +41,13 @@ public class T2TDOFontMatrix extends T2TDOArray {
         super(stack, new short[]{ESCAPE_BYTE, CFF_FONTMATRIX});
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
-     */
-    @Override
+@Override
     public int getID() {
 
         return T2TopDICTOperator.TYPE_FONTMATRIX;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "fontmatrix";

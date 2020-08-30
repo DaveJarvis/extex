@@ -32,14 +32,14 @@ import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This class represents an <tt>ITERATE</tt> command.
+ * This class represents an {@code ITERATE} command.
  * <p>
- * The <tt>iterate</tt> command iterates over the entries in the order they are
+ * The {@code iterate} command iterates over the entries in the order they are
  * currently in the entry list from the beginning to the end. Each entry is
  * considered as current entry and the function in the argument is executed.
  * </p>
  * <p>
- * The following example is taken from <tt>alpha.bst</tt>:
+ * The following example is taken from {@code alpha.bst}:
  * </p>
  * 
  * <pre>
@@ -48,8 +48,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BstIterate extends AbstractCommand {
 
     /**
@@ -72,10 +71,7 @@ public class BstIterate extends AbstractCommand {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.command.Command#execute(BstProcessor,
-     *      org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Locator locator)
             throws ExBibException {
@@ -105,10 +101,7 @@ public class BstIterate extends AbstractCommand {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.command.Command#visit(org.extex.exbib.core.bst.command.CommandVisitor,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visit(CommandVisitor visitor, Object... args)
             throws IOException,

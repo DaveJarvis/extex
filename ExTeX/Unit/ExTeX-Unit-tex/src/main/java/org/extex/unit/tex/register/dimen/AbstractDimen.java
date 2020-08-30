@@ -33,12 +33,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * numbered dimen registers.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public abstract class AbstractDimen extends AbstractAssignment {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     static final long serialVersionUID = 2007L;

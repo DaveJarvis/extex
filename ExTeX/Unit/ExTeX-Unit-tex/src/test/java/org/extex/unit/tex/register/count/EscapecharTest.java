@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\escapechar</tt>.
+ * This is a test suite for the primitive {@code \escapechar}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class EscapecharTest extends AbstractCountRegisterTester {
 
     /**
@@ -49,7 +48,7 @@ public class EscapecharTest extends AbstractCountRegisterTester {
 
     /**
      * <testcase primitive="\escapechar"> Test case checking that
-     * <tt>\escapechar</tt> works with <tt>\meaning</tt>. </testcase>
+     * {@code \escapechar} works with {@code \meaning}.
      * 
      * @throws Exception in case of an error
      */
@@ -64,7 +63,7 @@ public class EscapecharTest extends AbstractCountRegisterTester {
 
     /**
      * <testcase primitive="\escapechar"> Test case checking that
-     * <tt>\escapechar</tt> works with <tt>\string</tt>. </testcase>
+     * {@code \escapechar} works with {@code \string}.
      * 
      * @throws Exception in case of an error
      */

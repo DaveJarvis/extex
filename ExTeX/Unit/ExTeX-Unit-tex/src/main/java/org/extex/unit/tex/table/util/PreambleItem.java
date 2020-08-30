@@ -25,17 +25,16 @@ import org.extex.scanner.type.tokens.Tokens;
  * This class provides a building block for the preamble of an alignment.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class PreambleItem {
 
     /**
-     * The field <tt>post</tt> contains the tokens before the insertion text.
+     * The field {@code post} contains the tokens before the insertion text.
      */
     private Tokens post;
 
     /**
-     * The field <tt>pre</tt> contains the tokens after the insertion text.
+     * The field {@code pre} contains the tokens after the insertion text.
      */
     private Tokens pre;
 

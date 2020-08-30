@@ -19,20 +19,19 @@
 
 package org.extex.exindex.lisp.type.value;
 
-import java.io.PrintStream;
-
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
+
+import java.io.PrintStream;
 
 /**
  * This class is a node containing a string.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LString implements LValue {
 
     /**
-     * The constant <tt>EMPTY</tt> contains the empty string.
+     * The constant {@code EMPTY} contains the empty string.
      */
     public static final LString EMPTY = new LString("");
 
@@ -47,7 +46,6 @@ public class LString implements LValue {
      */
     public static String stringValue(LValue value)
             throws LNonMatchingTypeException {
-
         if (!(value instanceof LString)) {
             throw new LNonMatchingTypeException("");
         }
@@ -56,17 +54,11 @@ public class LString implements LValue {
     }
 
     /**
-     * The field <tt>value</tt> contains the value.
+     * The field {@code value} contains the value.
      */
     private final String value;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param value
-     */
     public LString(String value) {
-
         this.value = value;
     }
 
@@ -76,28 +68,15 @@ public class LString implements LValue {
      * @return the value
      */
     public String getValue() {
-
         return value;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
-     */
     public void print(PrintStream stream) {
-
         stream.print(toString());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString() {
-
         return toString('\\');
     }
 
@@ -109,10 +88,10 @@ public class LString implements LValue {
      * @return the print representation
      */
     public String toString(char esc) {
-
-        StringBuilder sb = new StringBuilder();
+        final int len = value.length();
+        final StringBuilder sb = new StringBuilder(len);
         sb.append('"');
-        int len = value.length();
+
         for (int i = 0; i < len; i++) {
             char c = value.charAt(i);
             switch (c) {
@@ -138,7 +117,7 @@ public class LString implements LValue {
             sb.append(c);
         }
         sb.append('"');
+
         return sb.toString();
     }
-
 }

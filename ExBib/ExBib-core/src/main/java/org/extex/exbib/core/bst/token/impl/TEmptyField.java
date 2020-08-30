@@ -28,17 +28,16 @@ import org.extex.exbib.core.io.Locator;
  * exception when expanded.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TEmptyField extends TString {
 
     /**
-     * The field <tt>entryName</tt> contains the name of the entry.
+     * The field {@code entryName} contains the name of the entry.
      */
     private final String entryName;
 
     /**
-     * The field <tt>name</tt> contains the name.
+     * The field {@code name} contains the name.
      */
     private final String name;
 
@@ -61,7 +60,7 @@ public class TEmptyField extends TString {
      * 
      * @param that other string to compare to
      * 
-     * @return <code>true</code> iff the values are equal
+     * @return {@code true} iff the values are equal
      */
     @Override
     public boolean equals(Object that) {
@@ -70,23 +69,13 @@ public class TEmptyField extends TString {
                 && getValue().equals(((TString) that).getValue());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.AbstractToken#expand(org.extex.exbib.core.Processor)
-     */
-    @Override
+@Override
     public String expand(Processor processor) throws ExBibException {
 
         throw new ExBibUndefinedFieldException(name, entryName, getLocator());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.impl.TString#hashCode()
-     */
-    @Override
+@Override
     public int hashCode() {
 
         return super.hashCode();

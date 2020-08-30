@@ -33,8 +33,7 @@ import org.extex.resource.ResourceAware;
  * This interface describes a reader for bibliography files.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface BibReader extends ResourceAware {
 
     /**
@@ -66,7 +65,7 @@ public interface BibReader extends ResourceAware {
      * 
      * @throws ConfigurationException in case that the configuration is invalid
      * @throws FileNotFoundException in case that the reader is
-     *         <code>null</code>
+     *         {@code null}
      */
     LineNumberReader open(String name, Reader r)
             throws FileNotFoundException,

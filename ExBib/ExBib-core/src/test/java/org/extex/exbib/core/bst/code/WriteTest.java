@@ -37,20 +37,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>write$</tt>.
+ * Test suite for {@code write$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class WriteTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
     /**
-     * The field <tt>out</tt> contains the output buffer.
+     * The field {@code out} contains the output buffer.
      */
     private StringBuffer out = null;
 
@@ -77,7 +76,7 @@ public class WriteTest {
     }
 
     /**
-     * <testcase> write$ needs an argument. </testcase>
+     *  write$ needs an argument.
      * 
      * @throws Exception in case of an error
      */
@@ -88,7 +87,7 @@ public class WriteTest {
     }
 
     /**
-     * <testcase> write$ can write a block. </testcase>
+     *  write$ can write a block.
      * 
      * @throws Exception in case of an error
      */
@@ -104,7 +103,7 @@ public class WriteTest {
     }
 
     /**
-     * <testcase> write$ can write a character. </testcase>
+     *  write$ can write a character.
      * 
      * @throws Exception in case of an error
      */
@@ -118,7 +117,7 @@ public class WriteTest {
     }
 
     /**
-     * <testcase> write$ can write a number. </testcase>
+     *  write$ can write a number.
      * 
      * @throws Exception in case of an error
      */
@@ -132,7 +131,7 @@ public class WriteTest {
     }
 
     /**
-     * <testcase> write$ can write a QLiteral. </testcase>
+     *  write$ can write a QLiteral.
      * 
      * @throws Exception in case of an error
      */
@@ -146,7 +145,7 @@ public class WriteTest {
     }
 
     /**
-     * <testcase> write$ can write a string. </testcase>
+     *  write$ can write a string.
      * 
      * @throws Exception in case of an error
      */

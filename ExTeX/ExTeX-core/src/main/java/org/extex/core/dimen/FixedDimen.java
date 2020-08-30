@@ -24,8 +24,7 @@ package org.extex.core.dimen;
  * Dimen} which do not modify the value.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4399 $
- */
+*/
 public interface FixedDimen {
 
     /**
@@ -39,9 +38,9 @@ public interface FixedDimen {
      * Compares the current instance with another GlueComponent for equality.
      * 
      * @param d the other GlueComponent to compare to. If this parameter is
-     *        <code>null</code> then the comparison fails.
+     *        {@code null} then the comparison fails.
      * 
-     * @return <code>true</code> iff <i>|this| == |d|</i>
+     * @return {@code true} iff |this| == |d|
      */
     boolean eq(FixedDimen d);
 
@@ -50,7 +49,7 @@ public interface FixedDimen {
      * 
      * @param d the other GlueComponent to compare to
      * 
-     * @return <code>true</code> iff this is greater or equal to d
+     * @return {@code true} iff this is greater or equal to d
      */
     boolean ge(FixedDimen d);
 
@@ -66,7 +65,7 @@ public interface FixedDimen {
      * 
      * @param d the other GlueComponent to compare to
      * 
-     * @return <code>true</code> iff |this| &gt; |d|</i>
+     * @return {@code true} iff |this| &gt; |d|
      */
     boolean gt(FixedDimen d);
 
@@ -75,7 +74,7 @@ public interface FixedDimen {
      * 
      * @param d the other GlueComponent to compare to
      * 
-     * @return <code>true</code> iff this is less or equal to d
+     * @return {@code true} iff this is less or equal to d
      */
     boolean le(FixedDimen d);
 
@@ -84,7 +83,7 @@ public interface FixedDimen {
      * 
      * @param d the other GlueComponent to compare to
      * 
-     * @return <code>true</code> iff |this| &lt; |d|</i>
+     * @return {@code true} iff |this| &lt; |d|
      */
     boolean lt(FixedDimen d);
 
@@ -92,9 +91,9 @@ public interface FixedDimen {
      * Compares the current instance with another GlueComponent for equality.
      * 
      * @param d the other GlueComponent to compare to. If this parameter is
-     *        <code>null</code> then the comparison fails.
+     *        {@code null} then the comparison fails.
      * 
-     * @return <code>false</code> iff <i>|this| == |d|</i>
+     * @return {@code false} iff |this| == |d|
      */
     boolean ne(FixedDimen d);
 

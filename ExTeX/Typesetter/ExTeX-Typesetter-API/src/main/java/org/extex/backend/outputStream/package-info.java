@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains classes and interfaces for output streams.
+ * Contains classes and interfaces for output streams.
  */
 
 package org.extex.backend.outputStream;

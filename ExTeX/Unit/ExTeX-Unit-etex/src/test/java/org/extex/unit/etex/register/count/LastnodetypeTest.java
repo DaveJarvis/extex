@@ -23,11 +23,10 @@ import org.extex.test.count.AbstractReadonlyCountRegisterTester;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\lastnodetype</tt>.
+ * This is a test suite for the primitive {@code \lastnodetype}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class LastnodetypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**

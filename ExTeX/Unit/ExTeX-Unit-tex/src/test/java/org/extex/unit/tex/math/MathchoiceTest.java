@@ -23,11 +23,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\mathchoice</tt>.
+ * This is a test suite for the primitive {@code \mathchoice}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4627 $
- */
+*/
 public class MathchoiceTest extends AbstractMathTester {
 
 
@@ -37,10 +36,10 @@ public class MathchoiceTest extends AbstractMathTester {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that <tt>\mathchoice</tt> selects the correct branch
+     *
+     *  Test case checking that {@code \mathchoice} selects the correct branch
      *  in display mode.
-     * </testcase>
+     *
      * @throws Exception in case of an error
      */
     @Test
@@ -55,10 +54,10 @@ public class MathchoiceTest extends AbstractMathTester {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that <tt>\mathchoice</tt> selects the correct branch
+     *
+     *  Test case checking that {@code \mathchoice} selects the correct branch
      *  in text mode.
-     * </testcase>
+     *
      * @throws Exception in case of an error
      */
     @Test
@@ -73,10 +72,10 @@ public class MathchoiceTest extends AbstractMathTester {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that <tt>\mathchoice</tt> selects the correct branch
+     *
+     *  Test case checking that {@code \mathchoice} selects the correct branch
      *  in explicit display mode.
-     * </testcase>
+     *
      * @throws Exception in case of an error
      */
     @Test
@@ -91,10 +90,10 @@ public class MathchoiceTest extends AbstractMathTester {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that <tt>\mathchoice</tt> selects the correct branch
+     *
+     *  Test case checking that {@code \mathchoice} selects the correct branch
      *  in explicit script mode.
-     * </testcase>
+     *
      * @throws Exception in case of an error
      */
     @Test
@@ -109,10 +108,10 @@ public class MathchoiceTest extends AbstractMathTester {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that <tt>\mathchoice</tt> selects the correct branch
+     *
+     *  Test case checking that {@code \mathchoice} selects the correct branch
      *  in explicit scriptscript mode.
-     * </testcase>
+     *
      * @throws Exception in case of an error
      */
     @Test

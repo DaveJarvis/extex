@@ -35,12 +35,11 @@ import org.junit.Test;
  * This is a test suite for (define-attributes).
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6688 $
- */
+*/
 public class DefineIndexTest {
 
     /**
-     * <testcase>Test that a new index can be defined.</testcase>
+     * Test that a new index can be defined.
      * 
      * @throws Exception in case of an error
      */
@@ -53,7 +52,7 @@ public class DefineIndexTest {
     }
 
     /**
-     * <testcase>Test that :drop is accepted.</testcase>
+     * Test that :drop is accepted.
      * 
      * @throws Exception in case of an error
      */
@@ -68,7 +67,7 @@ public class DefineIndexTest {
     }
 
     /**
-     * <testcase>Test that :merge-to works.</testcase>
+     * Test that :merge-to works.
      * 
      * @throws Exception in case of an error
      */
@@ -86,7 +85,7 @@ public class DefineIndexTest {
     }
 
     /**
-     * <testcase>Test that an argument is needed.</testcase>
+     * Test that an argument is needed.
      * 
      * @throws Exception in case of an error
      */
@@ -97,8 +96,8 @@ public class DefineIndexTest {
     }
 
     /**
-     * <testcase>Test that an undefined index in the merge-to leads to an
-     * error.</testcase>
+     * Test that an undefined index in the merge-to leads to an
+     * error.
      * 
      * @throws Exception in case of an error
      */
@@ -109,7 +108,7 @@ public class DefineIndexTest {
     }
 
     /**
-     * <testcase>Test that a loop of length 1 is detected.</testcase>
+     * Test that a loop of length 1 is detected.
      * 
      * @throws Exception in case of an error
      */
@@ -120,7 +119,7 @@ public class DefineIndexTest {
     }
 
     /**
-     * <testcase>Test that a loop of length 2 is detected.</testcase>
+     * Test that a loop of length 2 is detected.
      * 
      * @throws Exception in case of an error
      */
@@ -133,8 +132,8 @@ public class DefineIndexTest {
     }
 
     /**
-     * <testcase>Test that :drop and :merge-to can not be used
-     * together.</testcase>
+     * Test that :drop and :merge-to can not be used
+     * together.
      * 
      * @throws Exception in case of an error
      */

@@ -68,8 +68,7 @@ import org.extex.typesetter.type.page.Page;
  * and as tool for testing.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TestPdfDocumentWriter
         implements
             DocumentWriter,
@@ -78,14 +77,14 @@ public class TestPdfDocumentWriter
             Configurable {
 
     /**
-     * The field <tt>nodeVisitor</tt> contains the node visitor instance to use
+     * The field {@code nodeVisitor} contains the node visitor instance to use
      * in the form of an anonymous inner class.
      */
     private NodeVisitor<Object, Object> nodeVisitor =
             new NodeVisitor<Object, Object>() {
 
                 /**
-                 * The field <tt>vmode</tt> contains the indicator that a vlist
+                 * The field {@code vmode} contains the indicator that a vlist
                  * is processed.
                  */
                 private boolean vmode = false;
@@ -107,10 +106,7 @@ public class TestPdfDocumentWriter
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(org.extex.typesetter.type.node.AdjustNode,
-                 *      java.lang.Object)
+            *      java.lang.Object)
                  */
                 @Override
                 public Object visitAdjust(AdjustNode node, Object oOut)
@@ -121,10 +117,7 @@ public class TestPdfDocumentWriter
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(org.extex.typesetter.type.node.AfterMathNode,
-                 *      java.lang.Object)
+            *      java.lang.Object)
                  */
                 @Override
                 public Object visitAfterMath(AfterMathNode node, Object oOut)
@@ -137,10 +130,7 @@ public class TestPdfDocumentWriter
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(org.extex.typesetter.type.node.AlignedLeadersNode,
-                 *      java.lang.Object)
+            *      java.lang.Object)
                  */
                 @Override
                 public Object visitAlignedLeaders(AlignedLeadersNode node,
@@ -154,10 +144,7 @@ public class TestPdfDocumentWriter
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(org.extex.typesetter.type.node.BeforeMathNode,
-                 *      java.lang.Object)
+            *      java.lang.Object)
                  */
                 @Override
                 public Object visitBeforeMath(BeforeMathNode node, Object oOut)
@@ -170,10 +157,7 @@ public class TestPdfDocumentWriter
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(org.extex.typesetter.type.node.CenteredLeadersNode,
-                 *      java.lang.Object)
+            *      java.lang.Object)
                  */
                 @Override
                 public Object visitCenteredLeaders(CenteredLeadersNode node,
@@ -187,10 +171,7 @@ public class TestPdfDocumentWriter
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitChar(org.extex.typesetter.type.node.CharNode,
-                 *      java.lang.Object)
+            *      java.lang.Object)
                  */
                 @Override
                 public Object visitChar(CharNode node, Object oOut)
@@ -201,10 +182,7 @@ public class TestPdfDocumentWriter
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(org.extex.typesetter.type.node.DiscretionaryNode,
-                 *      java.lang.Object)
+            *      java.lang.Object)
                  */
                 @Override
                 public Object visitDiscretionary(DiscretionaryNode node,
@@ -215,10 +193,7 @@ public class TestPdfDocumentWriter
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(org.extex.typesetter.type.node.ExpandedLeadersNode,
-                 *      java.lang.Object)
+            *      java.lang.Object)
                  */
                 @Override
                 public Object visitExpandedLeaders(ExpandedLeadersNode node,
@@ -232,10 +207,7 @@ public class TestPdfDocumentWriter
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitGlue(org.extex.typesetter.type.node.GlueNode,
-                 *      java.lang.Object)
+            *      java.lang.Object)
                  */
                 @Override
                 public Object visitGlue(GlueNode node, Object oOut)
@@ -255,10 +227,7 @@ public class TestPdfDocumentWriter
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(org.extex.typesetter.type.node.HorizontalListNode,
-                 *      java.lang.Object)
+            *      java.lang.Object)
                  */
                 @Override
                 public Object visitHorizontalList(HorizontalListNode list,
@@ -275,10 +244,7 @@ public class TestPdfDocumentWriter
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(org.extex.typesetter.type.node.InsertionNode,
-                 *      java.lang.Object)
+            *      java.lang.Object)
                  */
                 @Override
                 public Object visitInsertion(InsertionNode node, Object oOut)
@@ -288,10 +254,7 @@ public class TestPdfDocumentWriter
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitKern(org.extex.typesetter.type.node.KernNode,
-                 *      java.lang.Object)
+            *      java.lang.Object)
                  */
                 @Override
                 public Object visitKern(KernNode node, Object oOut)
@@ -301,10 +264,7 @@ public class TestPdfDocumentWriter
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitLigature(org.extex.typesetter.type.node.LigatureNode,
-                 *      java.lang.Object)
+            *      java.lang.Object)
                  */
                 @Override
                 public Object visitLigature(LigatureNode node, Object oOut)
@@ -315,10 +275,7 @@ public class TestPdfDocumentWriter
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitMark(org.extex.typesetter.type.node.MarkNode,
-                 *      java.lang.Object)
+            *      java.lang.Object)
                  */
                 @Override
                 public Object visitMark(MarkNode node, Object oOut)
@@ -328,10 +285,7 @@ public class TestPdfDocumentWriter
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(org.extex.typesetter.type.node.PenaltyNode,
-                 *      java.lang.Object)
+            *      java.lang.Object)
                  */
                 @Override
                 public Object visitPenalty(PenaltyNode node, Object oOut)
@@ -341,10 +295,7 @@ public class TestPdfDocumentWriter
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitRule(org.extex.typesetter.type.node.RuleNode,
-                 *      java.lang.Object)
+            *      java.lang.Object)
                  */
                 @Override
                 public Object visitRule(RuleNode node, Object oOut)
@@ -355,10 +306,7 @@ public class TestPdfDocumentWriter
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitSpace(org.extex.typesetter.type.node.SpaceNode,
-                 *      java.lang.Object)
+            *      java.lang.Object)
                  */
                 @Override
                 public Object visitSpace(SpaceNode node, Object oOut)
@@ -369,10 +317,7 @@ public class TestPdfDocumentWriter
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(org.extex.typesetter.type.node.VerticalListNode,
-                 *      java.lang.Object)
+            *      java.lang.Object)
                  */
                 @Override
                 public Object visitVerticalList(VerticalListNode list,
@@ -389,10 +334,7 @@ public class TestPdfDocumentWriter
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(org.extex.typesetter.type.node.VirtualCharNode,
-                 *      java.lang.Object)
+            *      java.lang.Object)
                  */
                 @Override
                 public Object visitVirtualChar(VirtualCharNode node, Object oOut)
@@ -403,10 +345,7 @@ public class TestPdfDocumentWriter
                 }
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(org.extex.typesetter.type.node.WhatsItNode,
-                 *      java.lang.Object)
+            *      java.lang.Object)
                  */
                 @Override
                 public Object visitWhatsIt(WhatsItNode node, Object oOut)
@@ -453,12 +392,12 @@ public class TestPdfDocumentWriter
             };
 
     /**
-     * The field <tt>out</tt> contains the output stream to use.
+     * The field {@code out} contains the output stream to use.
      */
     private OutputStream out = null;
 
     /**
-     * The field <tt>tree</tt> contains the indicator whether to use the tree
+     * The field {@code tree} contains the indicator whether to use the tree
      * representation.
      */
     private boolean tree = true;
@@ -472,12 +411,7 @@ public class TestPdfDocumentWriter
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#close()
-     */
-    @Override
+@Override
     public void close() throws IOException {
 
         if (out != null) {
@@ -486,22 +420,14 @@ public class TestPdfDocumentWriter
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
-     */
-    @Override
+@Override
     public void configure(Configuration config) throws ConfigurationException {
 
         tree = Boolean.valueOf(config.getAttribute("tree")).booleanValue();
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#getAnnotation(org.extex.typesetter.type.node.RuleNode,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public PdfAnnotation getAnnotation(RuleNode node, String annotation)
@@ -511,22 +437,14 @@ public class TestPdfDocumentWriter
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
-     */
-    @Override
+@Override
     public String getExtension() {
 
         return "out";
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#getObject(java.lang.String, boolean,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public PdfObject getObject(String attr, boolean isStream, String text)
@@ -537,10 +455,7 @@ public class TestPdfDocumentWriter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#getXForm(java.lang.String,
-     *      java.lang.String, org.extex.typesetter.type.NodeList)
+*      java.lang.String, org.extex.typesetter.type.NodeList)
      */
     @Override
     public PdfXForm getXForm(String attr, String resources, NodeList list)
@@ -551,10 +466,7 @@ public class TestPdfDocumentWriter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#getXImage(java.lang.String,
-     *      org.extex.typesetter.type.node.RuleNode, java.lang.String, long,
+*      org.extex.typesetter.type.node.RuleNode, java.lang.String, long,
      *      boolean)
      */
     @Override
@@ -566,10 +478,7 @@ public class TestPdfDocumentWriter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdfcatalog(java.lang.String,
-     *      org.extex.pdf.api.action.ActionSpec)
+*      org.extex.pdf.api.action.ActionSpec)
      */
     @Override
     public void pdfcatalog(String text, ActionSpec action) {
@@ -578,24 +487,14 @@ public class TestPdfDocumentWriter
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdffontname(org.extex.typesetter.tc.font.Font)
-     */
-    @Override
+@Override
     public String pdffontname(Font font) {
 
         // TODO gene: pdffontname unimplemented
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdffontobjnum(org.extex.typesetter.tc.font.Font)
-     */
-    @Override
+@Override
     public long pdffontobjnum(Font font) {
 
         // TODO gene: pdffontobjnum unimplemented
@@ -603,10 +502,7 @@ public class TestPdfDocumentWriter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdfincludechars(org.extex.typesetter.tc.font.Font,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public void pdfincludechars(Font font, String text) {
@@ -615,72 +511,42 @@ public class TestPdfDocumentWriter
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdfinfo(java.lang.String)
-     */
-    @Override
+@Override
     public void pdfinfo(String text) {
 
         // TODO gene: pdfinfo unimplemented
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdflastannot()
-     */
-    @Override
+@Override
     public long pdflastannot() {
 
         // TODO gene: pdflastannot unimplemented
         return 0;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdflastobj()
-     */
-    @Override
+@Override
     public long pdflastobj() {
 
         // TODO gene: pdflastobj unimplemented
         return 0;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdflastxform()
-     */
-    @Override
+@Override
     public long pdflastxform() {
 
         // TODO gene: pdflastxform unimplemented
         return 0;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdflastximage()
-     */
-    @Override
+@Override
     public long pdflastximage() {
 
         // TODO gene: pdflastximage unimplemented
         return 0;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdfnames(java.lang.String)
-     */
-    @Override
+@Override
     public void pdfnames(String text) {
 
         // TODO gene: pdfnames unimplemented
@@ -688,10 +554,7 @@ public class TestPdfDocumentWriter
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdfoutline(org.extex.pdf.api.action.ActionSpec,
-     *      long, java.lang.String)
+*      long, java.lang.String)
      */
     @Override
     public void pdfoutline(ActionSpec action, long count, String text) {
@@ -700,22 +563,14 @@ public class TestPdfDocumentWriter
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(java.io.OutputStream)
-     */
-    @Override
+@Override
     public void setOutputStream(OutputStream outStream) {
 
         out = outStream;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(java.lang.String,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public void setParameter(String name, String value) {
@@ -733,12 +588,7 @@ public class TestPdfDocumentWriter
         this.tree = tree;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#shipout(org.extex.typesetter.type.page.Page)
-     */
-    @Override
+@Override
     public int shipout(Page page) throws DocumentWriterException {
 
         NodeList nodes = page.getNodes();

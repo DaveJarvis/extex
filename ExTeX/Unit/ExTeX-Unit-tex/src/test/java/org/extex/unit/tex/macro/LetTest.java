@@ -23,11 +23,10 @@ import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\let</tt>.
+ * This is a test suite for the primitive {@code \let}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class LetTest extends NoFlagsButGlobalPrimitiveTester {
 
 
@@ -37,8 +36,8 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\let"> Test case checking that <tt>\let</tt> can be
-     * used to assign a opening brace to a control sequence. </testcase>
+     * <testcase primitive="\let"> Test case checking that {@code \let} can be
+     * used to assign a opening brace to a control sequence.
      * 
      * @throws Exception in case of an error
      */
@@ -53,8 +52,8 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\let"> Test case checking that <tt>\let</tt> can be
-     * used to assign a opening brace to a control sequence. </testcase>
+     * <testcase primitive="\let"> Test case checking that {@code \let} can be
+     * used to assign a opening brace to a control sequence.
      * 
      * @throws Exception in case of an error
      */
@@ -70,7 +69,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\let"> Test case checking that let needs a second
-     * argument. </testcase>
+     * argument.
      * 
      * @throws Exception in case of an error
      */
@@ -85,7 +84,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\let"> Test case checking that let can assign a
-     * digit to a control sequence. </testcase>
+     * digit to a control sequence.
      * 
      * @throws Exception in case of an error
      */
@@ -100,7 +99,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\let"> Test case checking that let can assign a
-     * digit to a control sequence. </testcase>
+     * digit to a control sequence.
      * 
      * @throws Exception in case of an error
      */
@@ -115,7 +114,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\let"> Test case checking that let can assign a
-     * letter to a control sequence. </testcase>
+     * letter to a control sequence.
      * 
      * @throws Exception in case of an error
      */
@@ -132,7 +131,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\let"> Test case checking that let can assign a
-     * letter to a control sequence. </testcase>
+     * letter to a control sequence.
      * 
      * @throws Exception in case of an error
      */
@@ -148,7 +147,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\let"> Test case checking that let can assign space
-     * to a control sequence. </testcase>
+     * to a control sequence.
      * 
      * @throws Exception in case of an error
      */
@@ -163,7 +162,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\let"> Test case checking that let can assign space
-     * to a control sequence. </testcase>
+     * to a control sequence.
      * 
      * @throws Exception in case of an error
      */
@@ -179,7 +178,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\let"> Test case checking that let can assign a
-     * letter to a control sequence. </testcase>
+     * letter to a control sequence.
      * 
      * @throws Exception in case of an error
      */
@@ -194,7 +193,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\let"> Test case checking that let can assign a
-     * letter to a control sequence. </testcase>
+     * letter to a control sequence.
      * 
      * @throws Exception in case of an error
      */
@@ -211,7 +210,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\let"> Test case checking that let can assign a
-     * letter to a control sequence. </testcase>
+     * letter to a control sequence.
      * 
      * @throws Exception in case of an error
      */
@@ -227,7 +226,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\let"> Test case checking that let can assign a
-     * digit to a control sequence. </testcase>
+     * digit to a control sequence.
      * 
      * @throws Exception in case of an error
      */
@@ -242,7 +241,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\let"> Test case checking that let can assign a
-     * letter to a control sequence. </testcase>
+     * letter to a control sequence.
      * 
      * @throws Exception in case of an error
      */
@@ -259,7 +258,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\let"> Test case checking that let can assign a
-     * letter to a control sequence. </testcase>
+     * letter to a control sequence.
      * 
      * @throws Exception in case of an error
      */
@@ -274,8 +273,8 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\let"> Test case checking that <tt>\let</tt> can be
-     * used to assign a macro parameter to a control sequence. </testcase>
+     * <testcase primitive="\let"> Test case checking that {@code \let} can be
+     * used to assign a macro parameter to a control sequence.
      * 
      * @throws Exception in case of an error
      */
@@ -290,8 +289,8 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\let"> Test case checking that <tt>\let</tt> can be
-     * used to assign a mathshift to a control sequence. </testcase>
+     * <testcase primitive="\let"> Test case checking that {@code \let} can be
+     * used to assign a mathshift to a control sequence.
      * 
      * @throws Exception in case of an error
      */
@@ -305,8 +304,8 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\let"> Test case checking that <tt>\let</tt> can be
-     * used to assign a opening brace to a control sequence. </testcase>
+     * <testcase primitive="\let"> Test case checking that {@code \let} can be
+     * used to assign a opening brace to a control sequence.
      * 
      * @throws Exception in case of an error
      */
@@ -321,8 +320,8 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\let"> Test case checking that <tt>\let</tt> can be
-     * used to assign a opening brace to a control sequence. </testcase>
+     * <testcase primitive="\let"> Test case checking that {@code \let} can be
+     * used to assign a opening brace to a control sequence.
      * 
      * @throws Exception in case of an error
      */
@@ -337,8 +336,8 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\let"> Test case checking that <tt>\let</tt> can be
-     * used to assign a submark to a control sequence. </testcase>
+     * <testcase primitive="\let"> Test case checking that {@code \let} can be
+     * used to assign a submark to a control sequence.
      * 
      * @throws Exception in case of an error
      */
@@ -352,8 +351,8 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\let"> Test case checking that <tt>\let</tt> can be
-     * used to assign a supermark to a control sequence. </testcase>
+     * <testcase primitive="\let"> Test case checking that {@code \let} can be
+     * used to assign a supermark to a control sequence.
      * 
      * @throws Exception in case of an error
      */

@@ -58,6 +58,9 @@ index processor. εχIndex can be found in the sub-directory
 spirit of TeX. This directory contains the specific modules for
 this program.
 
+![](src/images/folder-blue.png) [ExTeX-example](ExTeX-example)
+contains short proof-of-concepts.
+
 ![](src/images/folder-blue.png) [ExTeX-resource](ExTeX-resource)
 contains a library for resource loading and several supporting
 functionality for components and configuration.

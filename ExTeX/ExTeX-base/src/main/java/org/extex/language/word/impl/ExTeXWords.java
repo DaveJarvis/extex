@@ -44,12 +44,11 @@ import org.extex.typesetter.type.node.WhatsItNode;
  * This class tokenizes a list of nodes according to the rules of εχTeX.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4784 $
- */
+*/
 public class ExTeXWords implements WordTokenizer {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
@@ -228,10 +227,7 @@ public class ExTeXWords implements WordTokenizer {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.language.word.WordTokenizer#findWord(org.extex.typesetter.type.NodeList,
-     *      int, org.extex.core.UnicodeCharList)
+*      int, org.extex.core.UnicodeCharList)
      */
     @Override
     public int findWord(NodeList nodes, int start, UnicodeCharList word)
@@ -256,10 +252,7 @@ public class ExTeXWords implements WordTokenizer {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.language.word.WordTokenizer#insertShy(org.extex.typesetter.type.NodeList,
-     *      int, boolean[], org.extex.typesetter.type.node.CharNode)
+*      int, boolean[], org.extex.typesetter.type.node.CharNode)
      */
     @Override
     public void insertShy(NodeList nodes, int insertionPoint, boolean[] spec,
@@ -340,10 +333,7 @@ public class ExTeXWords implements WordTokenizer {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.language.word.WordTokenizer#normalize(org.extex.core.UnicodeCharList,
-     *      org.extex.typesetter.TypesetterOptions)
+*      org.extex.typesetter.TypesetterOptions)
      */
     @Override
     public UnicodeCharList normalize(UnicodeCharList word,

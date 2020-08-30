@@ -26,8 +26,7 @@ import org.extex.core.Locator;
  * TeX-compatible way. The output is written out via the Logger.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ErrorHandlerTeXImpl extends ErrorHandlerImpl {
 
 
@@ -36,10 +35,7 @@ public class ErrorHandlerTeXImpl extends ErrorHandlerImpl {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.main.tex.ErrorHandlerImpl#showErrorLine(java.lang.String,
-     *      org.extex.core.Locator)
+*      org.extex.core.Locator)
      */
     @Override
     protected void showErrorLine(String message, Locator locator) {

@@ -30,8 +30,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * LookupTable for a ligature.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
 
     /**
@@ -42,22 +41,22 @@ public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
         /**
          * compCount
          */
-        private int compCount;
+        private final int compCount;
 
         /**
          * components
          */
-        private int[] components;
+        private final int[] components;
 
         /**
          * The index.
          */
-        private int idx;
+        private final int idx;
 
         /**
          * ligGlyph
          */
-        private int ligGlyph;
+        private final int ligGlyph;
 
         /**
          * Create a new object.
@@ -128,12 +127,7 @@ public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
             return ligGlyph;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("ligature");
             writer.writeAttribute("id", idx);
@@ -161,22 +155,22 @@ public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
         /**
          * The index.
          */
-        private int idx;
+        private final int idx;
 
         /**
          * ligatureCount
          */
-        private int ligatureCount;
+        private final int ligatureCount;
 
         /**
          * ligatureOffsets
          */
-        private int[] ligatureOffsets;
+        private final int[] ligatureOffsets;
 
         /**
          * ligatures
          */
-        private Ligature[] ligatures;
+        private final Ligature[] ligatures;
 
         /**
          * Create a new object.
@@ -208,8 +202,8 @@ public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
          * @param glyphCount The count of glyphs.
          * @param components The components.
          * @param glyphIds The glyph ids.
-         * @return Returns <code>true</code>, if the glyphs are found, or
-         *         <code>false</code>, if not.
+         * @return Returns {@code true}, if the glyphs are found, or
+         *         {@code false}, if not.
          */
         private boolean checkComponents(int glyphCount, int[] components,
                 int[] glyphIds) {
@@ -290,12 +284,7 @@ public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
             return ligatures;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("ligatureset");
             writer.writeAttribute("id", idx);
@@ -316,22 +305,22 @@ public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
         /**
          * coverage
          */
-        private XtfCoverage coverage;
+        private final XtfCoverage coverage;
 
         /**
          * coverageOffset
          */
-        private int coverageOffset;
+        private final int coverageOffset;
 
         /**
          * ligatureSetOffsets
          */
-        private int[] ligatureSetOffsets;
+        private final int[] ligatureSetOffsets;
 
         /**
          * ligatureSets
          */
-        private LigatureSet[] ligatureSets;
+        private final LigatureSet[] ligatureSets;
 
         /**
          * Create a new object.
@@ -381,12 +370,7 @@ public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
             return coverageOffset;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.gps.XtfGSUBLigatureTable#getLigatureSet(int)
-         */
-        @Override
+    @Override
         public LigatureSet getLigatureSet(int glyphId) {
 
             int ligSetIndex = coverage.findGlyph(glyphId);
@@ -417,12 +401,7 @@ public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
             return ligatureSets;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("ligaturetable");
             writer.writeAttribute("format", getFormat());
@@ -459,23 +438,13 @@ public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
             super(format, xtfGlyph);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.gps.XtfGSUBLigatureTable#getLigatureSet(int)
-         */
-        @Override
+    @Override
         public LigatureSet getLigatureSet(int glyphiD) {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("ligaturetable");
             writer.writeAttribute("format", getFormat());
@@ -523,7 +492,7 @@ public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
     }
 
     /**
-     * Returns the ligature set or <code>null</code>, if not found.
+     * Returns the ligature set or {@code null}, if not found.
      * 
      * @param glyphiD TODO
      * @return Returns the ligature set.

@@ -23,11 +23,10 @@ import org.extex.test.ExTeXLauncher;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\fontcharht</tt>.
+ * This is a test suite for the primitive {@code \fontcharht}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class FontcharhtTest extends ExTeXLauncher {
 
 
@@ -38,9 +37,9 @@ public class FontcharhtTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\fontcharht">
-     *  Test case checking that <tt>\fontcharht</tt> can not be used in vertical
+     *  Test case checking that {@code \fontcharht} can not be used in vertical
      *  mode.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -55,9 +54,9 @@ public class FontcharhtTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\fontcharht">
-     *  Test case checking that <tt>\fontcharht</tt> can not be used in vertical
+     *  Test case checking that {@code \fontcharht} can not be used in vertical
      *  mode.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -72,9 +71,9 @@ public class FontcharhtTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\fontcharht">
-     *  Test case checking that <tt>\fontcharht</tt> can not be used in vertical
+     *  Test case checking that {@code \fontcharht} can not be used in vertical
      *  mode.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -89,9 +88,9 @@ public class FontcharhtTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\fontcharht" checked="etex">
-     *  Test case checking that <tt>\fontcharht</tt> can not be used in vertical
+     *  Test case checking that {@code \fontcharht} can not be used in vertical
      *  mode.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -107,9 +106,9 @@ public class FontcharhtTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\fontcharht" checked="etex">
-     *  Test case checking that <tt>\fontcharht</tt> can not be used in vertical
+     *  Test case checking that {@code \fontcharht} can not be used in vertical
      *  mode.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -125,9 +124,9 @@ public class FontcharhtTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\fontcharht" checked="etex">
-     *  Test case checking that <tt>\fontcharht</tt> can not be used in vertical
+     *  Test case checking that {@code \fontcharht} can not be used in vertical
      *  mode.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -143,9 +142,9 @@ public class FontcharhtTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\fontcharht" checked="etex">
-     *  Test case checking that <tt>\fontcharht</tt> can not be used in vertical
+     *  Test case checking that {@code \fontcharht} can not be used in vertical
      *  mode.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -161,9 +160,9 @@ public class FontcharhtTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\fontcharht">
-     *  Test case checking that <tt>\fontcharht</tt> can not be used in vertical
+     *  Test case checking that {@code \fontcharht} can not be used in vertical
      *  mode.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */

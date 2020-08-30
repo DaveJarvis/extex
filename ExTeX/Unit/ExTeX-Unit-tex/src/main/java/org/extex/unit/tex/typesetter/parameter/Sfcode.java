@@ -39,22 +39,23 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\sfcode</code>.
+ * This class provides an implementation for the primitive {@code \sfcode}.
  * 
- * <doc name="sfcode"> <h3>The Primitive <tt>\sfcode</tt></h3>
+ * <p>The Primitive {@code \sfcode}</p>
  * <p>
- * The primitive <tt>\sfcode</tt> provides reading and writing access to the
+ * The primitive {@code \sfcode} provides reading and writing access to the
  * space factor assigned to each character.
  * </p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;sfcode&rang;
- *      &rarr; <tt>\sfcode</tt> {@linkplain
+ *      &rarr; {@code \sfcode} {@linkplain
  *        TokenSource#scanCharacterCode(Context,Typesetter,CodeToken) 
  *        &lang;character code&rang;} {@linkplain
  *          org.extex.interpreter.TokenSource#getOptionalEquals(Context)
@@ -62,7 +63,8 @@ import org.extex.typesetter.exception.TypesetterException;
  *          org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *        &lang;space factor&rang;}   </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \sfcode `a 1000  </pre>
@@ -70,11 +72,9 @@ import org.extex.typesetter.exception.TypesetterException;
  * <pre class="TeXSample">
  *    \sfcode `a = 1000  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Sfcode extends AbstractAssignment implements
 // ExpandableCode,
             CountConvertible,
@@ -82,13 +82,13 @@ public class Sfcode extends AbstractAssignment implements
             Theable {
 
     /**
-     * The field <tt>MAX_SF_CODE</tt> contains the maximal value for a space
+     * The field {@code MAX_SF_CODE} contains the maximal value for a space
      * factor code.
      */
     private static final int MAX_SF_CODE = 32767;
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -103,10 +103,7 @@ public class Sfcode extends AbstractAssignment implements
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -127,10 +124,7 @@ public class Sfcode extends AbstractAssignment implements
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertCount(Context context, TokenSource source,
@@ -142,10 +136,7 @@ public class Sfcode extends AbstractAssignment implements
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertDimen(Context context, TokenSource source,
@@ -184,10 +175,7 @@ public class Sfcode extends AbstractAssignment implements
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

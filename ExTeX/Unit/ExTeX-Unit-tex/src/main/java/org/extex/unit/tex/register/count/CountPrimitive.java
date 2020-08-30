@@ -39,20 +39,21 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\count</code>.
+ * This class provides an implementation for the primitive {@code \count}.
  * It sets the named count register to the value given, and as a side effect all
  * prefixes are zeroed.
  * 
- * <doc name="count"> <h3>The Primitive <tt>\count</tt></h3>
+ * <p>The Primitive {@code \count}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;count&rang;
- *      &rarr; &lang;optional prefix&rang; <tt>\count</tt> {@linkplain
+ *      &rarr; &lang;optional prefix&rang; {@code \count} {@linkplain
  *        org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,CodeToken)
  *        &lang;register name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
@@ -62,15 +63,15 @@ import org.extex.typesetter.exception.TypesetterException;
  *
  *   &lang;optional prefix&rang;
  *     &rarr;
- *      |  <tt>\global</tt> &lang;optional prefix&rang;  </pre>
+ *      |  {@code \global} &lang;optional prefix&rang;  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \count23=-456  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @see org.extex.interpreter.type.code.Advanceable
  * @see org.extex.interpreter.type.code.Divideable
@@ -79,8 +80,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4732 $
- */
+*/
 public class CountPrimitive extends AbstractCount
         implements
             ExpandableCode,
@@ -91,7 +91,7 @@ public class CountPrimitive extends AbstractCount
             CountConvertible {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -106,10 +106,7 @@ public class CountPrimitive extends AbstractCount
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.code.Advanceable#advance(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -126,10 +123,7 @@ public class CountPrimitive extends AbstractCount
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -144,10 +138,7 @@ public class CountPrimitive extends AbstractCount
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertCount(Context context, TokenSource source,
@@ -159,10 +150,7 @@ public class CountPrimitive extends AbstractCount
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.code.Divideable#divide(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -183,10 +171,7 @@ public class CountPrimitive extends AbstractCount
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -203,10 +188,7 @@ public class CountPrimitive extends AbstractCount
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.code.Multiplyable#multiply(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -222,10 +204,7 @@ public class CountPrimitive extends AbstractCount
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

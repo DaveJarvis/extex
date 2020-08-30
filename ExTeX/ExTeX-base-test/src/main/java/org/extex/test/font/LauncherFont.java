@@ -39,33 +39,32 @@ import org.extex.typesetter.tc.font.Font;
  * is required no problem with parsing can happen.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4784 $
- */
+*/
 public class LauncherFont implements Font, Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     protected static final long serialVersionUID = 1L;
 
     /**
-     * The field <tt>efCode</tt> contains the ef code.
+     * The field {@code efCode} contains the ef code.
      */
-    private Map<UnicodeChar, Long> efCode = new HashMap<UnicodeChar, Long>();
+    private final Map<UnicodeChar, Long> efCode = new HashMap<UnicodeChar, Long>();
 
     /**
-     * The field <tt>fontdimen</tt> contains the font dimens.
+     * The field {@code fontdimen} contains the font dimens.
      */
-    private Map<String, Dimen> fontdimen = new HashMap<String, Dimen>();
+    private final Map<String, Dimen> fontdimen = new HashMap<String, Dimen>();
 
     /**
-     * The field <tt>hyphen</tt> contains the hyphen char.
+     * The field {@code hyphen} contains the hyphen char.
      */
     private UnicodeChar hyphen = UnicodeChar.get(45);
 
     /**
-     * The field <tt>skew</tt> contains the skew char.
+     * The field {@code skew} contains the skew char.
      */
     private UnicodeChar skew = null;
 
@@ -361,7 +360,7 @@ public class LauncherFont implements Font, Serializable {
      *
      * @param uc the character
      *
-     * @return <code>true</code> iff the glyph is present
+     * @return {@code true} iff the glyph is present
      *
      * @see org.extex.typesetter.tc.font.Font#hasGlyph(
      *      org.extex.core.UnicodeChar)

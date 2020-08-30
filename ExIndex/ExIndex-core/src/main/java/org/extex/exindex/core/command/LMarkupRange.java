@@ -30,16 +30,14 @@ import org.extex.exindex.lisp.type.value.LValue;
 
 /**
  * This is the adapter for the L system to define the markup of a range.
- * 
- * <doc type="exindex-command" command="markup-range">
- * 
- * <h3>The Command <tt>markup-range</tt></h3>
- * 
+ *
+ * <p>The Command {@code markup-range}</p>
+ *
  * <p>
- * The command <tt>markup-range</tt> can be used to specify the markup for
+ * The command {@code markup-range} can be used to specify the markup for
  * ranges.
  * </p>
- * 
+ *
  * <pre>
  *  (markup-range
  *     [:open <i>open-markup</i>]
@@ -48,22 +46,21 @@ import org.extex.exindex.lisp.type.value.LValue;
  *     [:length <i>length</i>]
  *     [:ignore-end]
  *     [:class <i>class</i>]
- *  )   </pre>
- * 
+ *  )
+ * </pre>
+ *
  * <p>
  * The command has some optional arguments which are described in turn.
  * </p>
- * 
+ *
  * <pre>
- *  (markup-range :open "\\begingroup " :close "\\endgroup ")   </pre>
- * 
- * <p>
- * </p>
- * 
+ *  (markup-range :open "\\begingroup " :close "\\endgroup ")
+ * </pre>
+ *
  * <p>
  * For the following examples we consider the index entries shown next:
  * </p>
- * 
+ *
  * <pre>
  *  (indexentry :tkey (("Tree")) :locref "2")
  *  (indexentry :tkey (("Tree")) :locref "3")
@@ -71,59 +68,57 @@ import org.extex.exindex.lisp.type.value.LValue;
  *  (indexentry :tkey (("Tree")) :locref "6")
  *  (indexentry :tkey (("Tree")) :locref "7")
  *  (indexentry :tkey (("Tree")) :locref "42" :open-range)
- *  (indexentry :tkey (("Tree")) :locref "43" :close-range) </pre>
- * 
+ *  (indexentry :tkey (("Tree")) :locref "43" :close-range)
+ * </pre>
+ *
  * <pre>
- *  (markup-range :sep "--")   </pre>
- * 
- * <p>
- * </p>
+ *  (markup-range :sep "--")
+ * </pre>
+ *
  * <table>
+ * <caption>TBD</caption>
  * <tr>
  * <td>Tree &nbsp;&nbsp;&nbsp;</td>
  * <td>2, 3, 4, 6, 7, 42&ndash;43</td>
  * </tr>
  * </table>
- * 
+ *
  * <pre>
- *  (markup-range :sep "--" :length 2)   </pre>
- * 
- * <p>
- * </p>
+ *  (markup-range :sep "--" :length 2)
+ * </pre>
+ *
  * <table>
+ * <caption>TBD</caption>
  * <tr>
  * <td>Tree &nbsp;&nbsp;&nbsp;</td>
  * <td>2&ndash;4, 6, 7, 42&ndash;43</td>
  * </tr>
  * </table>
- * 
+ *
  * <pre>
  *  (markup-range :sep "--" :length 1)   </pre>
- * 
- * <p>
- * </p>
+ *
+ * <br>
+ *
  * <table>
+ * <caption>TBD</caption>
  * <tr>
  * <td>Tree &nbsp;&nbsp;&nbsp;</td>
  * <td>2&ndash;4, 6&ndash;7, 42&ndash;43</td>
  * </tr>
  * </table>
- * 
- * 
+ * <p>
  * TODO documentation incomplete
- * 
- * </doc>
- * 
- * <h3>Parameters</h3>
+ * </p>
+ *
+ * <p>Parameters</p>
  * <p>
  * The parameters defined with this command are stored in the L system under the
- * key of the function name (i.e. <tt>markup-range</tt>).
+ * key of the function name (i.e. {@code markup-range}).
  * </p>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LMarkupRange extends AbstractLAdapter {
 
     /**
@@ -159,7 +154,7 @@ public class LMarkupRange extends AbstractLAdapter {
      * @param length the length
      * @param ignoreEnd the indicator to ignore the end
      * 
-     * @return <tt>null</tt>
+     * @return {@code null}
      * 
      * @throws LSettingConstantException should not happen
      * @throws LNonMatchingTypeException in case of an error

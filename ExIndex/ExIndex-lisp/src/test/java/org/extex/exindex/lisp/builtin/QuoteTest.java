@@ -34,11 +34,10 @@ import org.extex.exindex.lisp.type.value.LValue;
 import org.junit.Test;
 
 /**
- * This is a test suite for the function <tt>quote</tt>.
+ * This is a test suite for the function {@code quote}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class QuoteTest {
 
     /**
@@ -55,7 +54,7 @@ public class QuoteTest {
     }
 
     /**
-     * <testcase> A quoted symbol is returned as symbol. <testcase>
+     *  A quoted symbol is returned as symbol. 
      * 
      * @throws Exception in case of an error
      */
@@ -70,7 +69,7 @@ public class QuoteTest {
     }
 
     /**
-     * <testcase> A quoted list is returned as list. <testcase>
+     *  A quoted list is returned as list. 
      * 
      * @throws Exception in case of an error
      */

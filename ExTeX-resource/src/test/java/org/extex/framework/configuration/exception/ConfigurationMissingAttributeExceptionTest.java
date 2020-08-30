@@ -35,12 +35,11 @@ import org.junit.Test;
  * This is a test suite for {@link ConfigurationMissingAttributeException}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ConfigurationMissingAttributeExceptionTest {
 
     /**
-     * The field <tt>CONF</tt> contains the configuration for testing purposes.
+     * The field {@code CONF} contains the configuration for testing purposes.
      */
     private static final Configuration CONF = new Configuration() {
 
@@ -129,12 +128,7 @@ public class ConfigurationMissingAttributeExceptionTest {
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return "THE CONFIG";
@@ -143,7 +137,7 @@ public class ConfigurationMissingAttributeExceptionTest {
     };
 
     /**
-     * <testcase> ... </testcase>
+     *  ... 
      */
     @Test
     public void testGetLocalizedMessage() {
@@ -156,7 +150,7 @@ public class ConfigurationMissingAttributeExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ... 
      */
     @Test
     public void testGetLocalizer() {
@@ -168,7 +162,7 @@ public class ConfigurationMissingAttributeExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ... 
      */
     @Test
     public void testGetMessage1() {
@@ -180,7 +174,7 @@ public class ConfigurationMissingAttributeExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ... 
      */
     @Test
     public void testGetMessage2() {
@@ -192,7 +186,7 @@ public class ConfigurationMissingAttributeExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ... 
      */
     @Test
     public void testGetSource() {
@@ -204,7 +198,7 @@ public class ConfigurationMissingAttributeExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ... 
      */
     @Test
     public void testGetText0() {
@@ -216,7 +210,7 @@ public class ConfigurationMissingAttributeExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ... 
      */
     @Test
     public void testGetText1() {

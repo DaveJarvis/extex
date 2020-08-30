@@ -31,17 +31,16 @@ import org.junit.Test;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6459 $
- */
+*/
 public class PropertiesConfigurationTest extends TestCase {
 
     /**
-     * The field <tt>B0</tt> contains the empty properties file contents.
+     * The field {@code B0} contains the empty properties file contents.
      */
     private static final byte[] B0 = "".getBytes();
 
     /**
-     * The field <tt>B1</tt> contains a properties file contents.
+     * The field {@code B1} contains a properties file contents.
      */
     private static final byte[] B1 = ("b=123\n" + "x.a=456").getBytes();
 

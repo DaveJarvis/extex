@@ -31,12 +31,11 @@ import org.junit.runner.JUnitCore;
  * Test cases for other tokens.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4756 $
- */
+*/
 public class OtherTokenTest extends TokenTester {
 
     /**
-     * The field <tt>token</tt> contains the reference token.
+     * The field {@code token} contains the reference token.
      */
     private static final Token token = new OtherToken( UnicodeChar.get( 'x'));
 
@@ -59,9 +58,7 @@ public class OtherTokenTest extends TokenTester {
         setStr( "the character x");
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testEqualsToken1() {
 
         Token t1 = new OtherToken(UnicodeChar.get(' '));

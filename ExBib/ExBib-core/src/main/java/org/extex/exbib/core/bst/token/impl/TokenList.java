@@ -18,10 +18,6 @@
 
 package org.extex.exbib.core.bst.token.impl;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.token.AbstractToken;
@@ -32,21 +28,24 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibMissingLiteralException;
 import org.extex.exbib.core.io.Locator;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 /**
  * This is a container for a sorted sequence of {@link Token Token}s. In
  * addition to the operation as container it also implements the interface
  * {@link Token Token} itself to act as one.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TokenList extends AbstractToken implements Iterable<Token> {
 
     /**
-     * The field <tt>value</tt> contains the internal representation upon which
+     * The field {@code value} contains the internal representation upon which
      * the list is based.
      */
-    private List<Token> value = null;
+    private final List<Token> value = new ArrayList<>();
 
     /**
      * Creates a new object.
@@ -56,7 +55,6 @@ public class TokenList extends AbstractToken implements Iterable<Token> {
     public TokenList(Locator locator) {
 
         super(null, locator);
-        value = new ArrayList<Token>();
     }
 
     /**
@@ -69,12 +67,6 @@ public class TokenList extends AbstractToken implements Iterable<Token> {
         value.add(t);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.Code#execute(org.extex.exbib.core.bst.BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
-     */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
 
@@ -83,11 +75,6 @@ public class TokenList extends AbstractToken implements Iterable<Token> {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.Token#expand(org.extex.exbib.core.Processor)
-     */
     @Override
     public String expand(Processor processor) throws ExBibException {
 
@@ -118,8 +105,6 @@ public class TokenList extends AbstractToken implements Iterable<Token> {
      * Compute a printable representation of this object.
      * 
      * @return the printable representation
-     * 
-     * @see org.extex.exbib.core.bst.token.AbstractToken#getString()
      */
     @Override
     protected String getString() {
@@ -140,11 +125,6 @@ public class TokenList extends AbstractToken implements Iterable<Token> {
         return sb.toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.AbstractToken#getValue()
-     */
     @Override
     public String getValue() {
 
@@ -179,7 +159,7 @@ public class TokenList extends AbstractToken implements Iterable<Token> {
     }
 
     /**
-     * Transform the TokenList into a {@link List List<String>} if the elements
+     * Transform the TokenList into a {@link List} if the elements
      * are of type {@link TLiteral TLiteral} only. If some other elements are
      * found then an exception is thrown.
      * 
@@ -190,7 +170,7 @@ public class TokenList extends AbstractToken implements Iterable<Token> {
      */
     public List<String> toStringList() throws ExBibMissingLiteralException {
 
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
 
         for (Token t : value) {
             if (!(t instanceof TLiteral)) {
@@ -203,12 +183,6 @@ public class TokenList extends AbstractToken implements Iterable<Token> {
         return list;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.Token#visit(org.extex.exbib.core.bst.token.TokenVisitor,
-     *      java.lang.Object[])
-     */
     public void visit(TokenVisitor visitor, Object... args)
             throws ExBibException {
 

@@ -25,12 +25,11 @@ import java.io.File;
  * ...
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class AuxFile {
 
     /**
-     * The field <tt>name</tt> contains the ...
+     * The field {@code name} contains the ...
      */
     private String name;
 

@@ -30,17 +30,16 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
  * language.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DeclareVar extends GenericCode {
 
     /**
-     * The field <tt>var</tt> contains the variable.
+     * The field {@code var} contains the variable.
      */
     private Var var;
 
     /**
-     * The field <tt>value</tt> contains the value.
+     * The field {@code value} contains the value.
      */
     private GCode value;
 
@@ -91,10 +90,7 @@ public class DeclareVar extends GenericCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public void print(CodeWriter writer, String prefix) throws IOException {

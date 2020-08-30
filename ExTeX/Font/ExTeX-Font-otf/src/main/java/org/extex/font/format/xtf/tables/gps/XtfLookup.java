@@ -39,8 +39,9 @@ import org.extex.util.xml.XMLWriterConvertible;
  * The format of the Lookup Table header is as follows:
  * </p>
  * 
- * <table border="1">
- * <tbody>
+ * <table>
+ * <caption>TBD</caption>
+* <tbody>
  * <tr>
  * <th>Type</th>
  * <th>Name</th>
@@ -63,8 +64,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class XtfLookup implements XMLWriterConvertible {
 
     /**
@@ -208,37 +208,37 @@ public class XtfLookup implements XMLWriterConvertible {
     /**
      * flag
      */
-    private int flag;
+    private final int flag;
 
     /**
      * The index.
      */
-    private int index;
+    private final int index;
 
     /**
      * The lookup factory.
      */
-    private LookupTableFactory lookupFactory;
+    private final LookupTableFactory lookupFactory;
 
     /**
      * subtable count
      */
-    private int subTableCount;
+    private final int subTableCount;
 
     /**
      * subtable offsets
      */
-    private int[] subTableOffsets;
+    private final int[] subTableOffsets;
 
     /**
      * subtables
      */
-    private XtfLookupTable[] subTables;
+    private final XtfLookupTable[] subTables;
 
     /**
      * type
      */
-    private int type;
+    private final int type;
 
     /**
      * Create a new object
@@ -279,15 +279,12 @@ public class XtfLookup implements XMLWriterConvertible {
      * 
      * @param value The value.
      * @param flag The flag.
-     * @return Return <code>true</code>, if the flag is set.
+     * @return Return {@code true}, if the flag is set.
      */
     private boolean checkFlag(int value, int flag) {
 
         int erg = value & flag;
-        if (erg > 0) {
-            return true;
-        }
-        return false;
+      return erg > 0;
     }
 
     /**
@@ -354,12 +351,7 @@ public class XtfLookup implements XMLWriterConvertible {
         return buf.toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    @Override
+@Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("lookup");

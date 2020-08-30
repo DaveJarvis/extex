@@ -16,14 +16,13 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- *  This package contains primitives for ??TeX's TeX mode.
+ *  Contains primitives for εχTeX's TeX mode.
  *
- * <doc name="tracingrestores" type="register">
- * <h3>The Count Parameter <tt>\tracingrestores</tt></h3>
+ * <p>The Count Parameter {@code \tracingrestores}</p>
  * <p>
- *  The count register <tt>\tracingrestores</tt> controls the
+ *  The count register {@code \tracingrestores} controls the
  *  logging of restore operations when the blocks are closed. The
- *  default implementation of ??TeX uses another
+ *  default implementation of εχTeX uses another
  *  mechanism. Thus this register has no effect at all.
  * </p>
  * <p>
@@ -31,17 +30,18 @@
  *  as such. Thus assignments and arithmetic can be performed on it.
  * </p>
  *
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;tracingrestores&rang;
- *       &rarr; <tt>\tracingrestores</tt> ...  </pre>
+ *       &rarr; {@code \tracingrestores} ...  </pre>
  *
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  *  <pre class="TeXSample">
  *    \tracingrestores=1  </pre>
  *
- * </doc>
  */
 
 package org.extex.unit.tex.doc;

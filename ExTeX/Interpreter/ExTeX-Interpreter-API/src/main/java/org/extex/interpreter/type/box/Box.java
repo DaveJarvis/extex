@@ -52,21 +52,20 @@ import org.extex.typesetter.type.node.VerticalListNode;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:4399 $
- */
+*/
 public class Box implements BoxOrRule, Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
-     * The field <tt>nodes</tt> contains the node list stored in this box. Thus
+     * The field {@code nodes} contains the node list stored in this box. Thus
      * is either a {@link org.extex.typesetter.type.node.HorizontalListNode
      * HorizontalListNode} or a
      * {@link org.extex.typesetter.type.node.VerticalListNode VerticalListNode}
-     * or it is <code>null</code>. In case of a <code>null</code> value the box
+     * or it is {@code null}. In case of a {@code null} value the box
      * is void.
      */
     private NodeList nodes = null;
@@ -87,9 +86,9 @@ public class Box implements BoxOrRule, Serializable {
      * @param context the processor context
      * @param source the source for new tokens
      * @param typesetter the typesetter stack
-     * @param isHorizontal indicator whether a <tt>\hbox</tt> should be
-     *        constructed. The alternative is a <tt>\vbox</tt>.
-     * @param insert tokens to insert at the beginning or <code>null</code> for
+     * @param isHorizontal indicator whether a {@code \hbox} should be
+     *        constructed. The alternative is a {@code \vbox}.
+     * @param insert tokens to insert at the beginning or {@code null} for
      *        none
      * @param groupType the type of the group just entered
      * @param startToken the token which started the group
@@ -225,7 +224,7 @@ public class Box implements BoxOrRule, Serializable {
     /**
      * Checks whether the box is a horizontal box.
      * 
-     * @return <tt>true</tt> iff the box is a horizontal box.
+     * @return {@code true} iff the box is a horizontal box.
      */
     public boolean isHbox() {
 
@@ -235,7 +234,7 @@ public class Box implements BoxOrRule, Serializable {
     /**
      * Checks whether the box is a vertical box.
      * 
-     * @return <tt>true</tt> iff the box is a vertical box.
+     * @return {@code true} iff the box is a vertical box.
      */
     public boolean isVbox() {
 
@@ -245,7 +244,7 @@ public class Box implements BoxOrRule, Serializable {
     /**
      * Checks whether the box is void.
      * 
-     * @return <tt>true</tt> iff the box is void.
+     * @return {@code true} iff the box is void.
      */
     public boolean isVoid() {
 
@@ -350,12 +349,7 @@ public class Box implements BoxOrRule, Serializable {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         if (nodes == null) {
@@ -368,7 +362,7 @@ public class Box implements BoxOrRule, Serializable {
      * Split off material from a vlist of a certain height.
      * 
      * @param height the height of the material to cut off
-     * @param logger the logger or <code>null</code>
+     * @param logger the logger or {@code null}
      * 
      * @return a new vertical node list with the material
      * 

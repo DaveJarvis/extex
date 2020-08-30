@@ -30,8 +30,7 @@ import org.extex.exbib.core.io.Locator;
  * not related to externally stored values but used internally only.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TLocalLocator extends TLiteral {
 
     /**
@@ -43,12 +42,7 @@ public class TLocalLocator extends TLiteral {
          */
         RESOURCE {
 
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.bst.token.impl.TLocalLocator.LocatorField#get(org.extex.exbib.core.db.Entry)
-             */
-            @Override
+        @Override
             String get(Entry entry) {
 
                 return entry.getLocator().getResourceName();
@@ -59,12 +53,7 @@ public class TLocalLocator extends TLiteral {
          */
         LINE {
 
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.bst.token.impl.TLocalLocator.LocatorField#get(org.extex.exbib.core.db.Entry)
-             */
-            @Override
+        @Override
             String get(Entry entry) {
 
                 return Integer.toString(entry.getLocator().getLineNumber());
@@ -82,7 +71,7 @@ public class TLocalLocator extends TLiteral {
     }
 
     /**
-     * The field <tt>field</tt> contains the specification of the field of the
+     * The field {@code field} contains the specification of the field of the
      * locator.
      */
     private final LocatorField field;
@@ -107,10 +96,7 @@ public class TLocalLocator extends TLiteral {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.Code#execute(org.extex.exbib.core.bst.BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)
@@ -124,10 +110,7 @@ public class TLocalLocator extends TLiteral {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.impl.TLiteral#visit(org.extex.exbib.core.bst.token.TokenVisitor,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     @Override
     public void visit(TokenVisitor visitor, Object... args)

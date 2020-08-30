@@ -25,8 +25,7 @@ import java.io.PrintStream;
  * This is a interface describing values.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface LValue {
 
     /**

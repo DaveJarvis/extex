@@ -23,11 +23,10 @@ import org.extex.test.NoFlagsPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\show</tt>.
+ * This is a test suite for the primitive {@code \show}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class ShowTest extends NoFlagsPrimitiveTester {
 
 
@@ -38,9 +37,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\show">
-     *  Test case checking that <tt>\show</tt> works with
+     *  Test case checking that {@code \show} works with
      *  a letter.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -55,9 +54,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\show">
-     *  Test case checking that <tt>\show</tt> works with
+     *  Test case checking that {@code \show} works with
      *  a letter.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -72,9 +71,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\show">
-     *  Test case checking that <tt>\show</tt> works with
+     *  Test case checking that {@code \show} works with
      *  a digit.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -89,9 +88,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\show">
-     *  Test case checking that <tt>\show</tt> works with
+     *  Test case checking that {@code \show} works with
      *  a comma.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -106,9 +105,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\show">
-     *  Test case checking that <tt>\show</tt> works with
+     *  Test case checking that {@code \show} works with
      *  a brace.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -123,9 +122,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\show">
-     *  Test case checking that <tt>\show</tt> works with
+     *  Test case checking that {@code \show} works with
      *  a brace.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -140,9 +139,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\show">
-     *  Test case checking that <tt>\show</tt> works with
+     *  Test case checking that {@code \show} works with
      *  a hash.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -157,9 +156,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\show">
-     *  Test case checking that <tt>\show</tt> works with
+     *  Test case checking that {@code \show} works with
      *  a dollar.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -174,9 +173,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\show">
-     *  Test case checking that <tt>\show</tt> works with
+     *  Test case checking that {@code \show} works with
      *  a underscore.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -191,9 +190,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\show">
-     *  Test case checking that <tt>\show</tt> works with
+     *  Test case checking that {@code \show} works with
      *  a ampercent.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -208,9 +207,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\show">
-     *  Test case checking that <tt>\show</tt> works with
+     *  Test case checking that {@code \show} works with
      *  a caret-defined character.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -225,9 +224,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\show">
-     *  Test case checking that <tt>\show</tt> works with
+     *  Test case checking that {@code \show} works with
      *  a caret.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -242,9 +241,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\show">
-     *  Test case checking that <tt>\show</tt> works with
+     *  Test case checking that {@code \show} works with
      *  an undefined control sequence.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -259,9 +258,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\show">
-     *  Test case checking that <tt>\show</tt> works with
-     *  <tt>\relax</tt>.
-     * </testcase>
+     *  Test case checking that {@code \show} works with
+     *  {@code \relax}.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -276,9 +275,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\show">
-     *  Test case checking that <tt>\show</tt> works with
-     *  <tt>\relax</tt>.
-     * </testcase>
+     *  Test case checking that {@code \show} works with
+     *  {@code \relax}.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -293,9 +292,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\show">
-     *  Test case checking that <tt>\show</tt> works with
+     *  Test case checking that {@code \show} works with
      *  a macro.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -310,9 +309,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\show">
-     *  Test case checking that <tt>\show</tt> works with
+     *  Test case checking that {@code \show} works with
      *  a macro.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -327,9 +326,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\show">
-     *  Test case checking that <tt>\show</tt> works with
+     *  Test case checking that {@code \show} works with
      *  a macro.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -344,9 +343,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\show">
-     *  Test case checking that <tt>\show</tt> works with
+     *  Test case checking that {@code \show} works with
      *  a macro.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -361,9 +360,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\show">
-     *  Test case checking that <tt>\show</tt> works with
+     *  Test case checking that {@code \show} works with
      *  a macro.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -378,9 +377,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\show">
-     *  Test case checking that <tt>\show</tt> works with
+     *  Test case checking that {@code \show} works with
      *  a macro.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -395,9 +394,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\show">
-     *  Test case checking that <tt>\show</tt> works with
+     *  Test case checking that {@code \show} works with
      *  a macro.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -412,9 +411,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\show">
-     *  Test case checking that <tt>\show</tt> works with
+     *  Test case checking that {@code \show} works with
      *  a defined character.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -429,9 +428,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\show">
-     *  Test case checking that <tt>\show</tt> works with
+     *  Test case checking that {@code \show} works with
      *  a defined math character.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */

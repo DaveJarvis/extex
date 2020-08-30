@@ -22,16 +22,15 @@ package org.extex.pdf.api.exception;
 import org.extex.interpreter.exception.InterpreterException;
 
 /**
- * This exception is raised when a <logo>pdfTeX</logo> primitive is used
+ * This exception is raised when a  pdfTeX primitive is used
  * without being in PDF mode.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class PdftexUnsupportedException extends InterpreterException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the id for serialization.
+     * The field {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
@@ -56,8 +55,8 @@ public class PdftexUnsupportedException extends InterpreterException {
     /**
      * Returns the detail message string of this throwable.
      *
-     * @return  the detail message string of this <tt>Throwable</tt> instance
-     *          (which may be <tt>null</tt>).
+     * @return  the detail message string of this {@code Throwable} instance
+     *          (which may be {@code null}).
      *
      * @see java.lang.Throwable#getMessage()
      */

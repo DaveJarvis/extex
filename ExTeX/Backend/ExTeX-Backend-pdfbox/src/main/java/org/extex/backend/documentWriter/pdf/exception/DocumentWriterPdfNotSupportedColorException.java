@@ -24,15 +24,14 @@ package org.extex.backend.documentWriter.pdf.exception;
  * The colorsystem is not aviable in the PDF.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:4704 $
- */
+*/
 
 public class DocumentWriterPdfNotSupportedColorException
         extends
             DocumentWriterPdfException {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field {@code serialVersionUID} ...
      */
     private static final long serialVersionUID = 1L;
 

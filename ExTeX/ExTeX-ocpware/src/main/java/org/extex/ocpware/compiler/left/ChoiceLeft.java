@@ -34,12 +34,11 @@ import org.extex.ocpware.type.OcpCode;
  * This class represents a list of alternative left items.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public class ChoiceLeft extends ArrayList<Left> implements Left {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
@@ -50,10 +49,7 @@ public class ChoiceLeft extends ArrayList<Left> implements Left {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.compiler.left.Left#genLeft(
-     *      org.extex.ocpware.compiler.parser.State, CompilerState)
+*      org.extex.ocpware.compiler.parser.State, CompilerState)
      */
     public List<Integer> genLeft(State state, CompilerState cs)
             throws IOException,
@@ -81,12 +77,7 @@ public class ChoiceLeft extends ArrayList<Left> implements Left {
         return holes;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();

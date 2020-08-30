@@ -36,23 +36,22 @@ import org.extex.typesetter.type.node.RuleNode;
  * This is the abstract base class for destination types in PDF.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4409 $
- */
+*/
 public abstract class DestType implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2009L;
 
     /**
-     * The constant <tt>FIT</tt> contains the destination type fit.
+     * The constant {@code FIT} contains the destination type fit.
      */
     public static final DestType FIT = new DestType() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the version number for
+         * The field {@code serialVersionUID} contains the version number for
          * serialization.
          */
         private static final long serialVersionUID = 2007L;
@@ -96,12 +95,12 @@ public abstract class DestType implements Serializable {
     };
 
     /**
-     * The constant <tt>FITB</tt> contains the destination type fitb.
+     * The constant {@code FITB} contains the destination type fitb.
      */
     public static final DestType FITB = new DestType() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the version number for
+         * The field {@code serialVersionUID} contains the version number for
          * serialization.
          */
         private static final long serialVersionUID = 2007L;
@@ -145,12 +144,12 @@ public abstract class DestType implements Serializable {
     };
 
     /**
-     * The constant <tt>FITBH</tt> contains the destination type fitbh.
+     * The constant {@code FITBH} contains the destination type fitbh.
      */
     public static final DestType FITBH = new DestType() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the version number for
+         * The field {@code serialVersionUID} contains the version number for
          * serialization.
          */
         private static final long serialVersionUID = 2007L;
@@ -194,12 +193,12 @@ public abstract class DestType implements Serializable {
     };
 
     /**
-     * The constant <tt>FITBV</tt> contains the destination type fitbv.
+     * The constant {@code FITBV} contains the destination type fitbv.
      */
     public static final DestType FITBV = new DestType() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the version number for
+         * The field {@code serialVersionUID} contains the version number for
          * serialization.
          */
         private static final long serialVersionUID = 2007L;
@@ -243,12 +242,12 @@ public abstract class DestType implements Serializable {
     };
 
     /**
-     * The constant <tt>FITH</tt> contains the destination type fith.
+     * The constant {@code FITH} contains the destination type fith.
      */
     public static final DestType FITH = new DestType() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the version number for
+         * The field {@code serialVersionUID} contains the version number for
          * serialization.
          */
         private static final long serialVersionUID = 2007L;
@@ -292,12 +291,12 @@ public abstract class DestType implements Serializable {
     };
 
     /**
-     * The constant <tt>FITV</tt> contains the destination type fitv.
+     * The constant {@code FITV} contains the destination type fitv.
      */
     public static final DestType FITV = new DestType() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the version number for
+         * The field {@code serialVersionUID} contains the version number for
          * serialization.
          */
         private static final long serialVersionUID = 2007L;
@@ -341,12 +340,12 @@ public abstract class DestType implements Serializable {
     };
 
     /**
-     * The constant <tt>XYZ</tt> contains the destination type xyz.
+     * The constant {@code XYZ} contains the destination type xyz.
      */
     public static final DestType XYZ = new DestType() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the version number for
+         * The field {@code serialVersionUID} contains the version number for
          * serialization.
          */
         private static final long serialVersionUID = 2007L;

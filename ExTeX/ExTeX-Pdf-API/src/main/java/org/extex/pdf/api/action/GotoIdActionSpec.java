@@ -25,28 +25,27 @@ import org.extex.pdf.api.id.IdSpec;
  * This is the a goto action with id for PDF.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class GotoIdActionSpec extends GotoActionSpec {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>file</tt> contains the optional file.
+     * The field {@code file} contains the optional file.
      */
     private String file;
 
     /**
-     * The field <tt>id</tt> contains the id.
+     * The field {@code id} contains the id.
      */
     private IdSpec id;
 
     /**
-     * The field <tt>newWin</tt> contains the indicator for the new window.
+     * The field {@code newWin} contains the indicator for the new window.
      */
     private Boolean newWin;
 

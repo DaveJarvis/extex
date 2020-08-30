@@ -35,28 +35,29 @@ import org.extex.typesetter.type.noad.util.MathSpacing;
 import org.extex.unit.tex.math.AbstractMathCode;
 
 /**
- * This class provides an implementation for the primitive <code>\mathord</code>.
+ * This class provides an implementation for the primitive {@code \mathord}.
  * 
- * <doc name="mathord">
- * <h3>The Math Primitive <tt>\mathord</tt></h3>
+ * <p>The Math Primitive {@code \mathord}</p>
  * <p>
- * The primitive <tt>\mathord</tt> takes an argument and treats it as an
+ * The primitive {@code \mathord} takes an argument and treats it as an
  * ordinary symbol. It works in math mode only. The argument can either be a
  * single letter of a math expression enclosed in braces.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;mathord&rang;
- *       &rarr; <tt>\mathord</tt> &lang;formula&rang;
+ *       &rarr; {@code \mathord} &lang;formula&rang;
  *
  *    &lang;formula&rang;
  *       &rarr;  &lang;letter&rang;
- *         |  <tt>{</tt> &lang;math material&rang; <tt>}</tt>  </pre>
+ *         |  {@code {} &lang;math material&rang; {@code }}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \mathord x </pre>
@@ -67,15 +68,13 @@ import org.extex.unit.tex.math.AbstractMathCode;
  * <pre class="TeXSample">
  *    \mathord {abc} </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Mathord extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -91,10 +90,7 @@ public class Mathord extends AbstractMathCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

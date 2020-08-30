@@ -35,11 +35,11 @@ import org.extex.typesetter.type.node.DiscretionaryNode;
 import org.extex.typesetter.type.node.HorizontalListNode;
 
 /**
- * This class provides an implementation for the primitive <code>\-</code>.
+ * This class provides an implementation for the primitive {@code \-}.
  * 
- * <doc name="-"> <h3>The Primitive <tt>\-</tt></h3>
+ * <p>The Primitive {@code \-}</p>
  * <p>
- * The primitive <tt>\-</tt> inserts a soft hyphenation into the current list.
+ * The primitive {@code \-} inserts a soft hyphenation into the current list.
  * The effect is that the current position is considered as point to insert a
  * hyphenation mark and break the line here.
  * </p>
@@ -47,36 +47,36 @@ import org.extex.typesetter.type.node.HorizontalListNode;
  * TeX has another mechanism for describing conditional text
  * insertions when line breaking appears at a certain place. Those are
  * associated with the primitive {@link org.extex.unit.tex.hyphen.Discretionary
- * <tt>\discretionary</tt>}. In this context the primitive <tt>\-</tt> is an
- * abbreviation for <tt>\discretionary{-}{}{}</tt>.
+ * {@code \discretionary}}. In this context the primitive {@code \-} is an
+ * abbreviation for {@code \discretionary{-}{}{}}.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;hyphen&rang;
- *       &rarr; <tt>\-</tt>  </pre>
+ *       &rarr; {@code \-}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    abc\-def  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Hyphen extends AbstractCode {
 
     /**
-     * The field <tt>HYPHEN</tt> contains the Unicode character for the hyphen.
+     * The field {@code HYPHEN} contains the Unicode character for the hyphen.
      */
     private static final UnicodeChar HYPHEN = UnicodeChar.get('-');
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -91,10 +91,7 @@ public class Hyphen extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Code#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

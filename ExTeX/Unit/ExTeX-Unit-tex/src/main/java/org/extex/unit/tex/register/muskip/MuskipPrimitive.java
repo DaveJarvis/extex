@@ -28,7 +28,7 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\muskip</code>.
+ * This class provides an implementation for the primitive {@code \muskip}.
  * It sets the named muskip register to the value given, and as a side effect
  * all prefixes are zeroed.
  * 
@@ -39,18 +39,18 @@ import org.extex.typesetter.exception.TypesetterException;
  * This key is constructed from the name, a hash mark and the running number.
  * </p>
  * 
- * <doc name="muskip">
- * <h3>The Primitive <tt>\muskip</tt></h3>
+ * <p>The Primitive {@code \muskip}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;muskip&rang;
- *      &rarr; &lang;optional prefix&rang; <tt>\muskip</tt>  {@linkplain
+ *      &rarr; &lang;optional prefix&rang; {@code \muskip}  {@linkplain
  *        org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,CodeToken)
  *        &lang;register name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
@@ -60,25 +60,24 @@ import org.extex.typesetter.exception.TypesetterException;
  *
  *   &lang;optional prefix&rang;
  *     &rarr;
- *      |  <tt>\global</tt> &lang;optional prefix&rang;  </pre>
+ *      |  {@code \global} &lang;optional prefix&rang;  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *   \muskip12=345mu plus 12mu  </pre>
  *  <pre class="TeXSample">
  *   \muskip12=0mu plus 1.2fil  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class MuskipPrimitive extends MuskipParameter {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -94,10 +93,7 @@ public class MuskipPrimitive extends MuskipParameter {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.register.muskip.MuskipParameter#getKey(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

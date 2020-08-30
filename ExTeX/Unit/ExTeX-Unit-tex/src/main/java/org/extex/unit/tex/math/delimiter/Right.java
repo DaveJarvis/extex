@@ -31,35 +31,34 @@ import org.extex.typesetter.listMaker.math.NoadConsumer;
 import org.extex.typesetter.type.math.MathDelimiter;
 
 /**
- * This class provides an implementation for the primitive <code>\right</code>.
+ * This class provides an implementation for the primitive {@code \right}.
  * 
- * <doc name="right">
- * <h3>The Math Primitive <tt>\right</tt></h3>
+ * <p>The Math Primitive {@code \right}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;span&rang;
- *       &rarr; <tt>\right</tt> ...  </pre>
+ *       &rarr; {@code \right} ...  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \right )  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Right extends AbstractTeXDelimiter {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -75,10 +74,7 @@ public class Right extends AbstractTeXDelimiter {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

@@ -41,8 +41,8 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
 import org.extex.resource.io.NamedInputStream;
 
 /**
- * This resource finder searches a file in a <tt>ls-R</tt> file database as
- * present in a texmf tree. For this purpose the <tt>ls-R</tt> file databases
+ * This resource finder searches a file in a {@code ls-R} file database as
+ * present in a texmf tree. For this purpose the {@code ls-R} file databases
  * found are read and stored internally.
  * 
  * <h2>Configuration</h2> The lsr finder can be configured to influence its
@@ -65,43 +65,43 @@ import org.extex.resource.io.NamedInputStream;
  * 
  * <p>
  * Whenever a resource is sought the first step is to ensure that the file
- * databases are read in. For this purpose the <tt>path</tt> tag is used. The
- * <tt>path</tt> tags name directories which may contain file databases. The
- * file databases have a fixed name <tt>ls-R</tt>.
+ * databases are read in. For this purpose the {@code path} tag is used. The
+ * {@code path} tags name directories which may contain file databases. The
+ * file databases have a fixed name {@code ls-R}.
  * </p>
  * <p>
- * <tt>path</tt> can carry the attribute <tt>property</tt>. In this case the
+ * {@code path} can carry the attribute {@code property}. In this case the
  * value is ignored and the value is taken from the property named in the
  * attribute. Otherwise the value of the tag is taken as path. The value taken
  * from the property can contain several paths. They are separated by the
  * separator specified for the platform. For instance on windows the separator
- * <tt>;</tt> is used and on Unix the separator <tt>:</tt> is used.
+ * {@code ;} is used and on Unix the separator {@code :} is used.
  * </p>
  * <p>
- * <tt>path</tt> can carry the attribute <tt>env</tt>. In this case the value is
+ * {@code path} can carry the attribute {@code env}. In this case the value is
  * ignored and the value is taken from the environment variable named in the
  * attribute. Otherwise the value of the tag is taken as path. The value taken
  * from the environment variable can contain several paths. They are separated
  * by the separator specified for the platform. For instance on windows the
- * separator <tt>;</tt> is used and on Unix the separator <tt>:</tt> is used.
+ * separator {@code ;} is used and on Unix the separator {@code :} is used.
  * </p>
  * <p>
  * To find a resource its type is used to find the appropriate parameters for
  * the search. If the sub-configuration with the name of the type exists then
- * this sub-configuration is used. For instance if the resource <tt>tex</tt>
- * with the type <tt>fmt</tt> is sought then the sub-configuration <tt>fmt</tt>
+ * this sub-configuration is used. For instance if the resource {@code tex}
+ * with the type {@code fmt} is sought then the sub-configuration {@code fmt}
  * determines how to find this file.
  * </p>
  * <p>
  * If no sub-configuration of the given type is present then the attribute
- * <tt>default</tt> is used to find the default sub-configuration. In the
- * example given above this default configuration is called <tt>default</tt>.
+ * {@code default} is used to find the default sub-configuration. In the
+ * example given above this default configuration is called {@code default}.
  * Nevertheless it would also be possible to point the default configuration to
- * another existing configuration. The attribute <tt>default</tt> is mandatory.
+ * another existing configuration. The attribute {@code default} is mandatory.
  * </p>
  * <p>
- * Each sub-configuration takes the <tt>extension</tt> in arbitrary number.
- * <tt>extension</tt> contains the extension appended after the resource name.
+ * Each sub-configuration takes the {@code extension} in arbitrary number.
+ * {@code extension} contains the extension appended after the resource name.
  * </p>
  * <p>
  * All combinations of resource name and extension are tried in turn to be found
@@ -109,72 +109,71 @@ import org.extex.resource.io.NamedInputStream;
  * input stream to this file is used.
  * </p>
  * <p>
- * The attribute <tt>trace</tt> can be used to force a tracing of the actions in
+ * The attribute {@code trace} can be used to force a tracing of the actions in
  * the log file. The tracing is performed only if a logger is present when
  * needed. The tracing flag can be overwritten at run-time. The attribute
- * <tt>trace</tt> is optional.
+ * {@code trace} is optional.
  * </p>
  * <p>
- * The attribute <tt>capacity</tt> can be used to configure the initial capacity
+ * The attribute {@code capacity} can be used to configure the initial capacity
  * of the internal cache for the file database. If this number is less than one
  * than an internal default is used. This value should be larger than the number
- * of files expected for best performance. The attribute <tt>capacity</tt> is
+ * of files expected for best performance. The attribute {@code capacity} is
  * optional.
  * </p>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class LsrFinder extends AbstractFinder
         implements
             PropertyAware,
             EnvironmentAware {
 
     /**
-     * The field <tt>ATTR_PROPERTY</tt> contains the attribute name for the
+     * The field {@code ATTR_PROPERTY} contains the attribute name for the
      * property access.
      */
     private static final String ATTR_PROPERTY = "property";
 
     /**
-     * The field <tt>INITIAL_LIST_SIZE</tt> contains the initial size of the
+     * The field {@code INITIAL_LIST_SIZE} contains the initial size of the
      * collision list items in the cache.
      */
     private static final int INITIAL_LIST_SIZE = 3;
 
     /**
-     * The field <tt>LSR_FILE_NAME</tt> contains the name of the ls-R file.
+     * The field {@code LSR_FILE_NAME} contains the name of the ls-R file.
      */
     private static final String LSR_FILE_NAME = "ls-R";
 
     /**
-     * The field <tt>TAG_PATH</tt> contains the name of the tag to identify
+     * The field {@code TAG_PATH} contains the name of the tag to identify
      * paths.
      */
     private static final String TAG_PATH = "path";
 
     /**
-     * The field <tt>cache</tt> contains the map for the ls-R entries.
+     * The field {@code cache} contains the map for the ls-R entries.
      */
     private Map<String, Object> cache = null;
 
     /**
-     * The field <tt>initialCapacity</tt> contains the initial capacity of the
+     * The field {@code initialCapacity} contains the initial capacity of the
      * cache. If the value is less than 1 then the default of the underling
      * implementation is used.
      */
     private int initialCapacity = -1;
 
     /**
-     * The field <tt>properties</tt> contains the properties provided for this
+     * The field {@code properties} contains the properties provided for this
      * finder.
      */
     private Properties properties = System.getProperties();
 
     /**
-     * The field <tt>environment</tt> contains the environment.
+     * The field {@code environment} contains the environment.
      */
     private Map<String, String> environment = System.getenv();
 
@@ -201,10 +200,7 @@ public class LsrFinder extends AbstractFinder
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @SuppressWarnings("unchecked")
     public NamedInputStream findResource(String name, String type)

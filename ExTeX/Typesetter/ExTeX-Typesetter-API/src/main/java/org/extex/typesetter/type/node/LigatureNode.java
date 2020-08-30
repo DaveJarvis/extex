@@ -32,36 +32,32 @@ import org.extex.typesetter.type.NodeVisitor;
  * and how to build ligatures comes from the font. The original characters are
  * contained in this node to be restored when required.
  * 
- * @see "<logo>T<span style=
- *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *      >e</span>X</logo> &ndash; The Program [143]"
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4739 $
- */
+*/
 public class LigatureNode extends CharNode implements Node {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>chars</tt> contains the cache of the list of plain char
+     * The field {@code chars} contains the cache of the list of plain char
      * nodes contained.
      */
-    private CharNode[] chars;
+    private final CharNode[] chars;
 
     /**
-     * The field <tt>left</tt> contains the first node combined in the ligature.
+     * The field {@code left} contains the first node combined in the ligature.
      */
-    private CharNode left;
+    private final CharNode left;
 
     /**
-     * The field <tt>second</tt> contains the node combined in the ligature.
+     * The field {@code second} contains the node combined in the ligature.
      */
-    private CharNode right;
+    private final CharNode right;
 
     /**
      * Creates a new object.
@@ -70,11 +66,7 @@ public class LigatureNode extends CharNode implements Node {
      * @param uc the Unicode character
      * @param left the first node for the ligature
      * @param right the second node for the ligature
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [144]"
-     */
+*/
     public LigatureNode(TypesettingContext context, UnicodeChar uc,
             CharNode left, CharNode right) {
 
@@ -155,11 +147,7 @@ public class LigatureNode extends CharNode implements Node {
      * @param prefix the prefix string inserted at the beginning of each line
      * @param breadth the breadth
      * @param depth the depth
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [193]"
-     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
+* @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
      *      java.lang.String, int, int)
      */
     @Override
@@ -172,10 +160,7 @@ public class LigatureNode extends CharNode implements Node {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     @Override
     @SuppressWarnings({"unchecked", "rawtypes"})

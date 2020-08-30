@@ -50,28 +50,27 @@ import org.junit.Test;
  * This is a base class for node list test suites.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5563 $
- */
+*/
 public abstract class AbstractNodeListTester {
 
     /**
-     * The field <tt>tc</tt> contains the mock typesetting context.
+     * The field {@code tc} contains the mock typesetting context.
      */
     protected static final TypesettingContext TC = new TypesettingContext() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the version number for
+         * The field {@code serialVersionUID} contains the version number for
          * serialization.
          */
         private static final long serialVersionUID = 1L;
 
         /**
-         * The field <tt>f</tt> contains the font.
+         * The field {@code f} contains the font.
          */
         private Font f = new Font() {
 
             /**
-             * The field <tt>serialVersionUID</tt> contains the version number
+             * The field {@code serialVersionUID} contains the version number
              * for serialization.
              */
             private static final long serialVersionUID = 1L;
@@ -263,15 +262,15 @@ public abstract class AbstractNodeListTester {
 
     /**
      * Make a node visitor which returns the argument only for the tested node
-     * type and <code>null</code> otherwise.
+     * type and {@code null} otherwise.
      * 
      * @return the visitor
      */
     protected abstract NodeVisitor<Node, Boolean> makeVisitor();
 
     /**
-     * <testcase> Adding a <code>null</code> node is silently ignored.
-     * </testcase>
+     *  Adding a {@code null} node is silently ignored.
+     *
      */
     @Test
     public void testAddIntNode0() {
@@ -282,8 +281,8 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> Adding a <code>null</code> node is silently ignored.
-     * </testcase>
+     *  Adding a {@code null} node is silently ignored.
+     *
      */
     @Test
     public void testAddIntNode1() {
@@ -294,8 +293,8 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> Adding a <code>null</code> node is silently ignored.
-     * </testcase>
+     *  Adding a {@code null} node is silently ignored.
+     *
      */
     @Test
     public void testAddIntNode2() {
@@ -306,9 +305,8 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> Adding a non-null node at a negative position lead to an
-     * exception. </testcase>
-     */
+     * Adding a non-null node at a negative position lead to an exception
+*/
     @Test
     public void testAddIntNode3() {
 
@@ -322,9 +320,8 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> Adding a non-null node at position past the end lead to an
-     * exception. </testcase>
-     */
+     * Adding a non-null node at position past the end lead to an exception
+*/
     @Test
     public void testAddIntNode4() {
 
@@ -338,7 +335,7 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> Adding a ... </testcase>
+     *  Adding a ...
      */
     @Test
     public void testAddIntNode5() {
@@ -349,7 +346,7 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> Adding a ... </testcase>
+     *  Adding a ...
      */
     @Test
     public void testAddIntNode6() {
@@ -364,7 +361,7 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> Adding a ... </testcase>
+     *  Adding a ...
      */
     @Test
     public void testAddIntNode7() {
@@ -379,8 +376,8 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> Adding a <code>null</code> node is silently ignored.
-     * </testcase>
+     *  Adding a {@code null} node is silently ignored.
+     *
      */
     @Test
     public void testAddNode0() {
@@ -391,7 +388,7 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> Adding a rule node puts the node into the list. </testcase>
+     *  Adding a rule node puts the node into the list.
      */
     @Test
     public void testAddNode1() {
@@ -408,7 +405,7 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> Adding a penalty node puts the node into the list. </testcase>
+     *  Adding a penalty node puts the node into the list.
      */
     @Test
     public void testAddNode2() {
@@ -419,7 +416,7 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> Adding a penalty node puts the node into the list. </testcase>
+     *  Adding a penalty node puts the node into the list.
      */
     @Test
     public void testAddNode3() {
@@ -431,7 +428,7 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> Shipping ... </testcase>
+     *  Shipping ...
      * 
      * @throws GeneralException in case of an error
      */
@@ -445,7 +442,7 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> Shipping ... </testcase>
+     *  Shipping ...
      * 
      * @throws GeneralException in case of an error
      */
@@ -459,9 +456,8 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> Test that clearing an empty list removes all nodes and resets
-     * all dimensions to 0. </testcase>
-     */
+     * Test that clearing an empty list removes all nodes and resets all dimensions to 0
+*/
     @Test
     public void testClear0() {
 
@@ -474,9 +470,8 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> Test that clearing a list with one element removes all nodes
-     * and resets all dimensions to 0. </testcase>
-     */
+     * Test that clearing a list with one element removes all nodes and resets all dimensions to 0
+*/
     @Test
     public void testClear1() {
 
@@ -489,9 +484,8 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> Test that clearing a list with two elements removes all nodes
-     * and resets all dimensions to 0. </testcase>
-     */
+     * Test that clearing a list with two elements removes all nodes and resets all dimensions to 0
+*/
     @Test
     public void testClear2() {
 
@@ -505,7 +499,7 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      */
     @Test
@@ -520,7 +514,7 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      */
     @Test
@@ -535,7 +529,7 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      */
     @Test
@@ -548,7 +542,7 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      */
     @Test
@@ -562,7 +556,7 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      */
     @Test
@@ -578,7 +572,7 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      */
     @Test
@@ -597,7 +591,7 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      */
     @Test
@@ -616,7 +610,7 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      */
     @Test
@@ -635,7 +629,7 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      */
     @Test
@@ -648,7 +642,7 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      */
     @Test
@@ -664,7 +658,7 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      */
     @Test
@@ -680,7 +674,7 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      */
     @Test
@@ -696,7 +690,7 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      */
     @Test
@@ -712,7 +706,7 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      */
     @Test
@@ -728,7 +722,7 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      */
     @Test
@@ -740,9 +734,8 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> Calling the visit() method invokes the appropriate method in
-     * the visitor and the argument is passed down. </testcase>
-     * 
+     * Calling the visit() method invokes the appropriate method in the visitor and the argument is passed down
+* 
      * @throws GeneralException in case of an error
      */
     @Test

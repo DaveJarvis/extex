@@ -35,15 +35,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>-</tt>.
+ * Test suite for {@code -}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MinusTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -85,7 +84,7 @@ public class MinusTest {
     }
 
     /**
-     * <testcase> A short stack leads to an error. </testcase>
+     *  A short stack leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -97,7 +96,7 @@ public class MinusTest {
     }
 
     /**
-     * <testcase> An empty stack leads to an error. </testcase>
+     *  An empty stack leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -108,8 +107,8 @@ public class MinusTest {
     }
 
     /**
-     * <testcase> A type error in the first argument leads to an error.
-     * </testcase>
+     *  A type error in the first argument leads to an error.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -122,8 +121,8 @@ public class MinusTest {
     }
 
     /**
-     * <testcase> A type error in the second argument leads to an error.
-     * </testcase>
+     *  A type error in the second argument leads to an error.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -136,7 +135,7 @@ public class MinusTest {
     }
 
     /**
-     * <testcase> Test 0 - 0. </testcase>
+     *  Test 0 - 0.
      * 
      * @throws Exception in case of an error
      */
@@ -147,7 +146,7 @@ public class MinusTest {
     }
 
     /**
-     * <testcase> Test 1 - 0. </testcase>
+     *  Test 1 - 0.
      * 
      * @throws Exception in case of an error
      */
@@ -158,7 +157,7 @@ public class MinusTest {
     }
 
     /**
-     * <testcase> Test 1 - 1. </testcase>
+     *  Test 1 - 1.
      * 
      * @throws Exception in case of an error
      */
@@ -169,7 +168,7 @@ public class MinusTest {
     }
 
     /**
-     * <testcase> Test 1 - 2. </testcase>
+     *  Test 1 - 2.
      * 
      * @throws Exception in case of an error
      */
@@ -180,7 +179,7 @@ public class MinusTest {
     }
 
     /**
-     * <testcase> Test 123 - 123. </testcase>
+     *  Test 123 - 123.
      * 
      * @throws Exception in case of an error
      */
@@ -191,7 +190,7 @@ public class MinusTest {
     }
 
     /**
-     * <testcase> Test 123 - -123. </testcase>
+     *  Test 123 - -123.
      * 
      * @throws Exception in case of an error
      */
@@ -202,7 +201,7 @@ public class MinusTest {
     }
 
     /**
-     * <testcase> Test 1 - -1. </testcase>
+     *  Test 1 - -1.
      * 
      * @throws Exception in case of an error
      */
@@ -213,7 +212,7 @@ public class MinusTest {
     }
 
     /**
-     * <testcase> Test 2 - 1. </testcase>
+     *  Test 2 - 1.
      * 
      * @throws Exception in case of an error
      */
@@ -224,7 +223,7 @@ public class MinusTest {
     }
 
     /**
-     * <testcase> Test 2 - 2. </testcase>
+     *  Test 2 - 2.
      * 
      * @throws Exception in case of an error
      */
@@ -235,7 +234,7 @@ public class MinusTest {
     }
 
     /**
-     * <testcase> Test -123 - 123. </testcase>
+     *  Test -123 - 123.
      * 
      * @throws Exception in case of an error
      */
@@ -246,7 +245,7 @@ public class MinusTest {
     }
 
     /**
-     * <testcase> Test -1 - -2. </testcase>
+     *  Test -1 - -2.
      * 
      * @throws Exception in case of an error
      */
@@ -257,7 +256,7 @@ public class MinusTest {
     }
 
     /**
-     * <testcase> Test -2 - -1. </testcase>
+     *  Test -2 - -1.
      * 
      * @throws Exception in case of an error
      */

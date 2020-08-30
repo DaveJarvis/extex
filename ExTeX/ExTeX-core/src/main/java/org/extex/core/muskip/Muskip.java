@@ -19,39 +19,38 @@
 
 package org.extex.core.muskip;
 
-import java.io.Serializable;
-
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.glue.FixedGlueComponent;
 import org.extex.core.glue.GlueComponent;
+
+import java.io.Serializable;
 
 /**
  * This class provides a skip value with a variable length of order 0. The
  * actual length is a multiple of math units (mu).
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4399 $
- */
+*/
 public class Muskip extends Mudimen implements Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>kill</tt> contains the indicator that the following glue
+     * The field {@code kill} contains the indicator that the following glue
      * might be killed.
      */
     private boolean kill;
 
     /**
-     * The field <tt>shrink</tt> contains the shrinkability specification.
+     * The field {@code shrink} contains the shrinkability specification.
      */
     private GlueComponent shrink = new GlueComponent(0);
 
     /**
-     * The field <tt>stretch</tt> contains the stretchability specification.
+     * The field {@code stretch} contains the stretchability specification.
      */
     private GlueComponent stretch = new GlueComponent(0);
 
@@ -192,7 +191,7 @@ public class Muskip extends Mudimen implements Serializable {
      * Check that the muskip has natural length zero and no stretch and shrink
      * component.
      * 
-     * @return <code>true</code> iff the register is zero
+     * @return {@code true} iff the register is zero
      */
     @Override
     public boolean isZero() {
@@ -229,9 +228,6 @@ public class Muskip extends Mudimen implements Serializable {
      * Return the string representation of the instance.
      * 
      * @return the string representation of this glue
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [???]"
      */
     @Override
     public String toString() {

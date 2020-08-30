@@ -22,17 +22,16 @@ package org.extex.sitebuilder.ant;
 import org.extex.sitebuilder.core.LibReceiver;
 
 /**
- * This class is the container for the <tt>&lt;lib&gt;</tt> tag from the Ant
+ * This class is the container for the {@code &lt;lib&gt;} tag from the Ant
  * build file. the text contained is stored internally and passed to a receiver
  * upon request.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LibTag {
 
     /**
-     * The field <tt>text</tt> contains the contents.
+     * The field {@code text} contains the contents.
      */
     private StringBuilder text = new StringBuilder();
 

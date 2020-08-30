@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\parshape</tt>.
+ * This is a test suite for the primitive {@code \parshape}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class ParshapeTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -49,7 +48,7 @@ public class ParshapeTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\parshape"> Test case showing that
-     * <tt>\parshape</tt> needs an argument. </testcase>
+     * {@code \parshape} needs an argument. 
      * 
      * @throws Exception in case of an error
      */
@@ -64,8 +63,8 @@ public class ParshapeTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\parshape"> Test case showing that
-     * <tt>\parshape</tt> is theable and returns the number of entries if they
-     * are 0. </testcase>
+     * {@code \parshape} is theable and returns the number of entries if they
+     * are 0. 
      * 
      * @throws Exception in case of an error
      */
@@ -80,7 +79,7 @@ public class ParshapeTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\parshape"> Test case showing that
-     * <tt>\parshape</tt> on a length of 1 returns 1. </testcase>
+     * {@code \parshape} on a length of 1 returns 1. 
      * 
      * @throws Exception in case of an error
      */
@@ -95,7 +94,7 @@ public class ParshapeTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\parshape"> Test case showing that
-     * <tt>\parshape</tt> is a count value. </testcase>
+     * {@code \parshape} is a count value. 
      * 
      * @throws Exception in case of an error
      */
@@ -110,7 +109,7 @@ public class ParshapeTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\parshape"> Test case showing that
-     * <tt>\parshape</tt> returns the count value of the length. </testcase>
+     * {@code \parshape} returns the count value of the length. 
      * 
      * @throws Exception in case of an error
      */

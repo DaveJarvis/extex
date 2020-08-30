@@ -30,8 +30,7 @@ package org.extex.font.format.dvi.command;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class DviChar extends DviCommand {
 
@@ -68,14 +67,14 @@ public class DviChar extends DviCommand {
     /**
      * the character
      */
-    private int ch;
+    private final int ch;
 
     /**
      * put-mode (The 'put' commands are exactly like the 'set' commands, except
      * that they simply put out a character or a rule without moving the
      * reference point afterwards.)
      */
-    private boolean put;
+    private final boolean put;
 
     /**
      * Create a new object.
@@ -114,12 +113,7 @@ public class DviChar extends DviCommand {
         return ch;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviCommand#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         StringBuilder buf = new StringBuilder();
@@ -144,16 +138,13 @@ public class DviChar extends DviCommand {
     }
 
     /**
-     * Returns <code>true</code>, if the command ist setx oder putx.
+     * Returns {@code true}, if the command ist setx oder putx.
      * 
-     * @return Returns <code>true</code>, if the command ist setx oder putx.
+     * @return Returns {@code true}, if the command ist setx oder putx.
      */
     public boolean isSetPut() {
 
-        if ((getOpcode() >= MIN_SET && getOpcode() <= MAX_SET)
-                || (getOpcode() >= MIN_PUT && getOpcode() <= MAX_PUT)) {
-            return true;
-        }
-        return false;
+      return (getOpcode() >= MIN_SET && getOpcode() <= MAX_SET)
+          || (getOpcode() >= MIN_PUT && getOpcode() <= MAX_PUT);
     }
 }

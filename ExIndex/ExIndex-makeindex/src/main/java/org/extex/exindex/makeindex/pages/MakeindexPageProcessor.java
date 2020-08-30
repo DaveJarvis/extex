@@ -40,19 +40,18 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This class provides some functions to process pages.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6622 $
- */
+*/
 public class MakeindexPageProcessor implements PageProcessor {
 
     /**
-     * The field <tt>map</tt> contains the mapping from classes to integers for
+     * The field {@code map} contains the mapping from classes to integers for
      * sorting.
      */
     private final Map<Class<? extends PageReference>, Integer> map =
             new HashMap<Class<? extends PageReference>, Integer>();
 
     /**
-     * The field <tt>comparator</tt> contains the comparator.
+     * The field {@code comparator} contains the comparator.
      */
     private final Comparator<? super Pages> comparator = new Comparator<Pages>() {
 

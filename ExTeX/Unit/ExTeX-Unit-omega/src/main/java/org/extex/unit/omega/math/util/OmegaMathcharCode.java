@@ -43,8 +43,7 @@ import org.extex.unit.tex.math.util.MathCodeConvertible;
  * Omega encoding into a count value.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class OmegaMathcharCode extends AbstractOmegaMathCode
         implements
             MathCodeConvertible,
@@ -53,12 +52,12 @@ public class OmegaMathcharCode extends AbstractOmegaMathCode
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
     /**
-     * The field <tt>mathchar</tt> contains the actual character in the form of
+     * The field {@code mathchar} contains the actual character in the form of
      * a MathCode which can immediately be passed to the typesetter.
      */
     private MathCode mathchar;
@@ -76,10 +75,7 @@ public class OmegaMathcharCode extends AbstractOmegaMathCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertCount(Context context, TokenSource source,
@@ -89,10 +85,7 @@ public class OmegaMathcharCode extends AbstractOmegaMathCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.math.util.MathCodeConvertible#convertMathCode(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public MathCode convertMathCode(Context context, TokenSource source,
@@ -102,10 +95,7 @@ public class OmegaMathcharCode extends AbstractOmegaMathCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -118,12 +108,7 @@ public class OmegaMathcharCode extends AbstractOmegaMathCode
         nc.add(mathchar, context.getTypesettingContext());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Showable#show(org.extex.interpreter.context.Context)
-     */
-    @Override
+@Override
     public Tokens show(Context context) throws HelpingException {
 
         try {
@@ -138,10 +123,7 @@ public class OmegaMathcharCode extends AbstractOmegaMathCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

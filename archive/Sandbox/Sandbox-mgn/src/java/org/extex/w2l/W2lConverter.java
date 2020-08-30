@@ -35,8 +35,7 @@ import writer2latex.util.Config;
  * Converter w2l.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class W2lConverter {
 
     /**
@@ -55,7 +54,7 @@ public class W2lConverter {
     private Converter converter;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated
+     * The field {@code localizer} contains the localizer. It is initiated
      * with a localizer for the name of this class.
      */
     private Localizer localizer = LocalizerFactory

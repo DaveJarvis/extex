@@ -42,8 +42,7 @@ import org.extex.util.font.AbstractFontUtil;
  * Create mtx files (fontinst) from a afm file.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class Afm2Mtx extends AbstractFontUtil {
 
     /**

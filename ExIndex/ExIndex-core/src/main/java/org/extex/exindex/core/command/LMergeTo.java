@@ -32,12 +32,11 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to parse a rule set.
  * 
- * <doc type="exindex-command" command="merge-to">
- * 
- * <h3>The Command <tt>merge-to</tt></h3>
+*
+ * <p>The Command {@code merge-to}</p>
  * 
  * <p>
- * The command <tt>merge-to</tt> can be used to add a merge rule. The merge rule
+ * The command {@code merge-to} can be used to add a merge rule. The merge rule
  * applies to the current index.
  * </p>
  * 
@@ -65,19 +64,17 @@ import org.extex.exindex.lisp.type.value.LValue;
  *  (merge-to "abc" "" :drop)   </pre>
  * 
  * <p>
- * If the flag <tt>:drop</tt> is given then the attribute will be dropped.
+ * If the flag {@code :drop} is given then the attribute will be dropped.
  * </p>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LMergeTo extends LFunction {
 
     /**
-     * The field <tt>container</tt> contains the container for indices.
+     * The field {@code container} contains the container for indices.
      */
     private final IndexContainer container;
 
@@ -108,7 +105,7 @@ public class LMergeTo extends LFunction {
      * @param to the attribute to which to merge
      * @param drop the drop indicator
      * 
-     * @return <tt>null</tt>
+     * @return {@code null}
      * 
      * @throws LSettingConstantException should not happen
      * @throws UnknownAttributeException in case that the attribute is unknown

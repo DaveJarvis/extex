@@ -37,20 +37,19 @@ import org.extex.util.xml.XMLWriterConvertible;
  * by 4.
  * </p>
  * 
- * <table BORDER="1"> <tbody>
+ *  <table> <caption>TBD</caption> <tbody>
  * <tr>
  * <td><b>Type</b></td>
  * <td><b>Description</b></td>
  * <tr> </tbody>
  * <tr>
- * <td>FWORD[ <I>n</I> ]</td>
- * <td>List of <I>n</I> values referenceable by instructions.</td>
+ * <td>FWORD[ <i>n</i> ]</td>
+ * <td>List of <i>n</i> values referenceable by instructions.</td>
  * </tr>
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TtfTableCVT extends AbstractXtfTable
         implements
             XtfTable,
@@ -59,7 +58,7 @@ public class TtfTableCVT extends AbstractXtfTable
     /**
      * values
      */
-    private short[] values;
+    private final short[] values;
 
     /**
      * Create a new object.
@@ -82,12 +81,7 @@ public class TtfTableCVT extends AbstractXtfTable
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
+public String getShortcut() {
 
         return "cvt";
     }
@@ -113,10 +107,7 @@ public class TtfTableCVT extends AbstractXtfTable
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

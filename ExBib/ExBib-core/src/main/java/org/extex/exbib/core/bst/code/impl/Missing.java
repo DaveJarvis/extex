@@ -30,7 +30,7 @@ import org.extex.exbib.core.io.Locator;
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X built-in function <code>missing$</code>
+ * >e</span>X built-in function {@code missing$}
  * <p>
  * This function determines whether a field is missing. It takes one argument
  * from the stack. If it refers to a missing field it pushes the integer 1 to
@@ -40,9 +40,9 @@ import org.extex.exbib.core.io.Locator;
  * If the stack is empty of the argument does not refer to a field then an error
  * is raised.
  * </p>
- * <img src="doc-files/missing.png"/>
+ * <img src="doc-files/missing.png" alt="missing">
  * <p>
- * The following example is taken from <tt>alpha.bst</tt>:
+ * The following example is taken from {@code alpha.bst}:
  * </p>
  * 
  * <pre>
@@ -52,14 +52,10 @@ import org.extex.exbib.core.io.Locator;
  *   if$
  * </pre>
  * 
- * <hr />
+ * <hr>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X documentation:
- * <dt>
+ * <dt>BibTeX documentation</dt>
  * <dd>Pops the top literal and pushes the integer 1 if it's a missing field, 0
  * otherwise.</dd>
  * </dl>
@@ -68,15 +64,14 @@ import org.extex.exbib.core.io.Locator;
  * <p>
  * Missing items are represented as
  * {@link org.extex.exbib.core.bst.token.impl.TString}s with the value
- * <code>null</code>. Those can be distinguished from
+ * {@code null}. Those can be distinguished from
  * {@link org.extex.exbib.core.bst.token.impl.TString}s with the value "". They
  * can be detected only by the special method
  * {@link org.extex.exbib.core.bst.token.impl.TString#isNull()}.
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Missing extends AbstractCode {
 
     /**
@@ -97,10 +92,7 @@ public class Missing extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.Code#execute(BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)

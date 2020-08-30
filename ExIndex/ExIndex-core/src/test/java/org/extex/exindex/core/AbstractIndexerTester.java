@@ -40,8 +40,7 @@ import org.extex.resource.io.NamedInputStream;
  * This is a test driver for the {@link Indexer}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractIndexerTester {
 
     /**
@@ -49,21 +48,13 @@ public abstract class AbstractIndexerTester {
      */
     private static final class MyFinder implements ResourceFinder {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
-         */
-        public void enableTracing(boolean flag) {
+    public void enableTracing(boolean flag) {
 
             // no effect
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public NamedInputStream findResource(String name, String type)
                 throws ConfigurationException {
@@ -75,31 +66,23 @@ public abstract class AbstractIndexerTester {
     }
 
     /**
-     * The field <tt>FILES</tt> contains the prerecorded resources.
+     * The field {@code FILES} contains the prerecorded resources.
      */
     private static final Map<String, String> FILES =
         new HashMap<>();
 
     /**
-     * The field <tt>FINDER</tt> contains the resource finder.
+     * The field {@code FINDER} contains the resource finder.
      */
     private static final ResourceFinder FINDER = new ResourceFinder() {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
-         */
-        public void enableTracing(boolean flag) {
+    public void enableTracing(boolean flag) {
 
             // nay
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public NamedInputStream findResource(String name, String type)
                 throws ConfigurationException {
@@ -127,7 +110,7 @@ public abstract class AbstractIndexerTester {
      * 
      * @param args the varargs of the values
      * 
-     * @return the List constructed. This is never <code>null</code>
+     * @return the List constructed. This is never {@code null}
      */
     public List<String> makeList(String... args) {
 

@@ -31,14 +31,13 @@ import org.junit.Test;
  * This is a test suite for {@link Not}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NotTest {
 
     /**
-     * <testcase> Test method for
+     *  Test method for
      * {@link org.extex.exbib.bst2groovy.data.bool.Not#print(org.extex.exbib.bst2groovy.io.CodeWriter, java.lang.String)}
-     * . </testcase>
+     * . 
      * 
      * @throws Exception in case of an error
      */
@@ -54,9 +53,9 @@ public class NotTest {
     }
 
     /**
-     * <testcase> Test method for
+     *  Test method for
      * {@link org.extex.exbib.bst2groovy.data.bool.Not#print(org.extex.exbib.bst2groovy.io.CodeWriter, java.lang.String)}
-     * . </testcase>
+     * . 
      * 
      * @throws Exception in case of an error
      */

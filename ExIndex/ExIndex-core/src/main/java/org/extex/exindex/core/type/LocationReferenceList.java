@@ -33,17 +33,16 @@ import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
  * This class represents a location reference group.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LocationReferenceList implements LocationClassGroup {
 
     /**
-     * The field <tt>clazz</tt> contains the class.
+     * The field {@code clazz} contains the class.
      */
     private final String clazz;
 
     /**
-     * The field <tt>list</tt> contains the list of location references.
+     * The field {@code list} contains the list of location references.
      */
     private final List<LocationReference> list = new ArrayList<LocationReference>();
 
@@ -68,10 +67,7 @@ public class LocationReferenceList implements LocationClassGroup {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.LocationClassGroup#write(java.io.Writer,
-     *      org.extex.exindex.lisp.LInterpreter, MarkupContainer, boolean)
+*      org.extex.exindex.lisp.LInterpreter, MarkupContainer, boolean)
      */
     public void write(Writer writer, LInterpreter interpreter,
             MarkupContainer markupContainer, boolean trace)

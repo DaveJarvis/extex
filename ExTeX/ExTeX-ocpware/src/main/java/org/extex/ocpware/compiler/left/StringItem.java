@@ -34,12 +34,11 @@ import org.extex.ocpware.type.OcpCode;
  * This class represents a string of characters as left item.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public class StringItem implements Left, Expr {
 
     /**
-     * The field <tt>s</tt> contains the string.
+     * The field {@code s} contains the string.
      */
     private String s;
 
@@ -53,12 +52,7 @@ public class StringItem implements Left, Expr {
         this.s = s;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.compiler.left.Left#genLeft(State, CompilerState)
-     */
-    public List<Integer> genLeft(State state, CompilerState cs)
+public List<Integer> genLeft(State state, CompilerState cs)
             throws IOException,
                 ArgmentTooBigException {
 
@@ -81,10 +75,7 @@ public class StringItem implements Left, Expr {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.compiler.sexpression.Expr#outRight(
-     *      org.extex.ocpware.compiler.parser.CompilerState, boolean)
+*      org.extex.ocpware.compiler.parser.CompilerState, boolean)
      */
     public void outRight(CompilerState cs, boolean withOffset)
             throws ArgmentTooBigException,
@@ -99,12 +90,7 @@ public class StringItem implements Left, Expr {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return "\"" + s.replaceAll("\"", "\"\"") + '"';

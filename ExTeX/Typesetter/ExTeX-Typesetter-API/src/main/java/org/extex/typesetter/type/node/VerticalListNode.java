@@ -36,38 +36,30 @@ import org.extex.typesetter.type.OrientedNodeList;
 /**
  * This class provides an implementation for a vertical list.
  * 
- * @see "<logo>T<span style=
- *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *      >e</span>X</logo> &ndash; The Program [137]"
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4739 $
- */
+*/
 public class VerticalListNode extends GenericNodeList
         implements
             OrientedNodeList {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>top</tt> contains the indicator that the adjustment should
+     * The field {@code top} contains the indicator that the adjustment should
      * use the reference point of the fist box. This is the mode for
-     * <tt>\vtop</tt>. In contrast the last box is used. This is the mode for
-     * <tt>\vbox</tt>.
+     * {@code \vtop}. In contrast the last box is used. This is the mode for
+     * {@code \vbox}.
      */
     private boolean top = false;
 
     /**
      * Creates a new empty list.
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [136]"
-     */
+*/
     public VerticalListNode() {
 
     }
@@ -167,12 +159,7 @@ public class VerticalListNode extends GenericNodeList
         add(new GlueNode(glue, false));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.GenericNodeList#clone()
-     */
-    @Override
+@Override
     protected Object clone() throws CloneNotSupportedException {
 
         VerticalListNode clone = (VerticalListNode) super.clone();
@@ -180,22 +167,17 @@ public class VerticalListNode extends GenericNodeList
         return clone;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.OrientedNode#isHorizontal()
-     */
-    @Override
+@Override
     public boolean isHorizontal() {
 
         return false;
     }
 
     /**
-     * Getter for <tt>top</tt>. The field <tt>top</tt> contains the indicator
+     * Getter for {@code top}. The field {@code top} contains the indicator
      * that the adjustment should use the reference point of the fist box. This
-     * is the mode for <tt>\vtop</tt>. In contrast the last box is used. This is
-     * the mode for <tt>\vbox</tt>.
+     * is the mode for {@code \vtop}. In contrast the last box is used. This is
+     * the mode for {@code \vbox}.
      * 
      * @return the top indicator
      */
@@ -204,12 +186,7 @@ public class VerticalListNode extends GenericNodeList
         return this.top;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.GenericNodeList#remove(int)
-     */
-    @Override
+@Override
     public Node remove(int index) {
 
         Node node = super.remove(index);

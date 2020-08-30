@@ -22,11 +22,10 @@ package org.extex.unit.tex.math.fraction;
 import org.extex.unit.tex.math.AbstractMathTester;
 
 /**
- * This is a test suite for the primitive <tt>\atop</tt>.
+ * This is a test suite for the primitive {@code \atop}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class AtopTest extends AbstractMathTester {
 
 

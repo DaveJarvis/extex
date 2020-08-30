@@ -16,11 +16,9 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- *  This package contains primitives for the manipulation of dimen registers.
+ *  Contains primitives for the manipulation of dimen registers.
  *  Registers are the primary means to store parameters which influence the
- *  behavior of <logo>&epsilon;&chi;T<span style=
- *  "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *  >e</span>X</logo>as well as variables used in macro programming. 
+ *  behavior of εχTeXas well as variables used in macro programming.
  *  The name of the registers can be a name or a number.
  */
 

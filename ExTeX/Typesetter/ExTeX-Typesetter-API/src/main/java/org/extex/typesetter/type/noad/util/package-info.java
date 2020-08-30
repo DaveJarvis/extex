@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains some utility classes for Noads.
+ * Contains some utility classes for Noads.
  */
 
 package org.extex.typesetter.type.noad.util;

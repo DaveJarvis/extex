@@ -34,7 +34,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X built-in function <code>add.period$</code>
+ * >e</span>X built-in function {@code add.period$}
  * <p>
  * This function pops a string argument from the stack and inspects it. It the
  * argument ends in one of the characters period '.', exclamation mark '!', or
@@ -43,9 +43,9 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * 
  * When determining the last character closing braces are ignored.
  * </p>
- * <img src="doc-files/add.period.png"/>
+ * <img src="doc-files/add.period.png" alt="add.period">
  * <p>
- * The following example is taken from <tt>alpha.bst</tt>:
+ * The following example is taken from {@code alpha.bst}:
  * </p>
  * 
  * <pre>
@@ -56,38 +56,31 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  *   }
  * </pre>
  * 
- * <hr />
+ * <hr>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X documentation:</dt>
- * <dd>Pops the top (string) literal, adds a `<code>.</code>' to it if the last
- * non`<code>}</code>' character isn't a `<code>.</code>', `<code>?</code>', or
- * `<code>!</code>, and pushes this resulting string.</dd>
+ * <dt>BibTeX documentation:</dt>
+ * <dd>Pops the top (string) literal, adds a `{@code .}' to it if the last
+ * non`{@code }}' character isn't a `{@code .}', `{@code ?}', or
+ * `{@code !}, and pushes this resulting string.</dd>
  * </dl>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X web documentation:</dt>
- * <dd>The <code>built_in</code> function <code>add.period$</code> pops the top
- * (string) literal, adds a <code>period</code> to a nonnull string if its last
- * non<code>right_brace</code> character isn't a <code>period</code>,
- * <code>question_mark</code>, or <code>exclamation_mark</code>, and pushes this
+ * <dt>BibTeX web documentation:</dt>
+ * <dd>The {@code built_in} function {@code add.period$} pops the top
+ * (string) literal, adds a {@code period} to a nonnull string if its last
+ * non{@code right_brace} character isn't a {@code period},
+ * {@code question_mark}, or {@code exclamation_mark}, and pushes this
  * resulting string back onto the stack. If the literal isn't a string, it
  * complains and pushes the null string.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class AddPeriod extends AbstractCode implements Configurable {
 
     /**
-     * The field <tt>omitPattern</tt> contains the pattern to determine when not
+     * The field {@code omitPattern} contains the pattern to determine when not
      * to add a period.
      */
     private Pattern omitPattern = Pattern.compile(".*[.!?][}]*$");
@@ -124,12 +117,7 @@ public class AddPeriod extends AbstractCode implements Configurable {
         return value;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
-     */
-    public void configure(Configuration config) throws ConfigurationException {
+public void configure(Configuration config) throws ConfigurationException {
 
         String op = config.getValue("omitPattern");
         if (op != null) {
@@ -138,10 +126,7 @@ public class AddPeriod extends AbstractCode implements Configurable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {

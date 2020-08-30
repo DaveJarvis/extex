@@ -38,8 +38,7 @@ import org.junit.Test;
  * This is a test suite for the {@link BblWriter}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BblWriterTest {
 
     /**
@@ -47,12 +46,7 @@ public class BblWriterTest {
      */
     private static class DummyConfig implements Configuration {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
-         */
-        public Configuration findConfiguration(String key)
+    public Configuration findConfiguration(String key)
                 throws ConfigurationInvalidResourceException,
                     ConfigurationNotFoundException,
                     ConfigurationSyntaxException,
@@ -63,10 +57,7 @@ public class BblWriterTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public Configuration findConfiguration(String key, String attribute)
                 throws ConfigurationException {
@@ -75,32 +66,19 @@ public class BblWriterTest {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getAttribute(java.lang.String)
-         */
-        public String getAttribute(String name) throws ConfigurationException {
+    public String getAttribute(String name) throws ConfigurationException {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String)
-         */
-        public Configuration getConfiguration(String key)
+    public Configuration getConfiguration(String key)
                 throws ConfigurationException {
 
             return null;
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public Configuration getConfiguration(String key, String attribute)
                 throws ConfigurationException {
@@ -108,32 +86,19 @@ public class BblWriterTest {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValue()
-         */
-        public String getValue() throws ConfigurationException {
+    public String getValue() throws ConfigurationException {
 
             // getValue unimplemented
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValue(java.lang.String)
-         */
-        public String getValue(String key) throws ConfigurationException {
+    public String getValue(String key) throws ConfigurationException {
 
             return null;
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValueAsInteger(java.lang.String,
-         *      int)
+    *      int)
          */
         public int getValueAsInteger(String key, int defaultValue)
                 throws ConfigurationException {
@@ -142,54 +107,31 @@ public class BblWriterTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValues(java.util.List,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public void getValues(List<String> list, String key) {
 
             // getValues unimplemented
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
-         */
-        public List<String> getValues(String key) throws ConfigurationException {
+    public List<String> getValues(String key) throws ConfigurationException {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#iterator()
-         */
-        public Iterator<Configuration> iterator() throws ConfigurationException {
+    public Iterator<Configuration> iterator() throws ConfigurationException {
 
             // iterator unimplemented
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#iterator(java.lang.String)
-         */
-        public Iterator<Configuration> iterator(String key)
+    public Iterator<Configuration> iterator(String key)
                 throws ConfigurationException {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(org.extex.framework.configuration.ConfigurationLoader)
-         */
-        public void setConfigurationLoader(ConfigurationLoader loader) {
+    public void setConfigurationLoader(ConfigurationLoader loader) {
 
             // setConfigurationLoader unimplemented
         }
@@ -215,7 +157,7 @@ public class BblWriterTest {
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
+     *  Test the line breaking. 
      * 
      * @throws Exception in case of an error
      */
@@ -226,7 +168,7 @@ public class BblWriterTest {
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
+     *  Test the line breaking. 
      * 
      * @throws Exception in case of an error
      */
@@ -237,7 +179,7 @@ public class BblWriterTest {
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
+     *  Test the line breaking. 
      * 
      * @throws Exception in case of an error
      */
@@ -248,7 +190,7 @@ public class BblWriterTest {
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
+     *  Test the line breaking. 
      * 
      * @throws Exception in case of an error
      */
@@ -259,7 +201,7 @@ public class BblWriterTest {
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
+     *  Test the line breaking. 
      * 
      * @throws Exception in case of an error
      */
@@ -270,7 +212,7 @@ public class BblWriterTest {
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
+     *  Test the line breaking. 
      * 
      * @throws Exception in case of an error
      */
@@ -281,7 +223,7 @@ public class BblWriterTest {
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
+     *  Test the line breaking. 
      * 
      * @throws Exception in case of an error
      */
@@ -293,7 +235,7 @@ public class BblWriterTest {
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
+     *  Test the line breaking. 
      * 
      * @throws Exception in case of an error
      */
@@ -305,7 +247,7 @@ public class BblWriterTest {
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
+     *  Test the line breaking. 
      * 
      * @throws Exception in case of an error
      */
@@ -317,7 +259,7 @@ public class BblWriterTest {
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
+     *  Test the line breaking. 
      * 
      * @throws Exception in case of an error
      */
@@ -335,9 +277,8 @@ public class BblWriterTest {
     }
 
     /**
-     * <testcase> Test the line breaking: Whitespace in unusable positions doies
-     * no harm. </testcase>
-     * 
+     * Test the line breaking: Whitespace in unusable positions doies no harm
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -348,8 +289,8 @@ public class BblWriterTest {
     }
 
     /**
-     * <testcase> Test the line breaking: Whitespace are translated to space.
-     * </testcase>
+     *  Test the line breaking: Whitespace are translated to space.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -361,8 +302,8 @@ public class BblWriterTest {
     }
 
     /**
-     * <testcase> Test the line breaking: multiple spaces are reduced to one.
-     * </testcase>
+     *  Test the line breaking: multiple spaces are reduced to one.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -374,9 +315,8 @@ public class BblWriterTest {
     }
 
     /**
-     * <testcase> A <code>null</code> argument to the constructor leads to an
-     * exception. </testcase>
-     * 
+     * A {@code null} argument to the constructor leads to an exception
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = IllegalArgumentException.class)
@@ -386,7 +326,7 @@ public class BblWriterTest {
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
+     *  Test the line breaking. 
      * 
      * @throws Exception in case of an error
      */
@@ -403,7 +343,7 @@ public class BblWriterTest {
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
+     *  Test the line breaking. 
      * 
      * @throws Exception in case of an error
      */
@@ -421,7 +361,7 @@ public class BblWriterTest {
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
+     *  Test the line breaking. 
      * 
      * @throws Exception in case of an error
      */
@@ -438,7 +378,7 @@ public class BblWriterTest {
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
+     *  Test the line breaking. 
      * 
      * @throws Exception in case of an error
      */
@@ -455,7 +395,7 @@ public class BblWriterTest {
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
+     *  Test the line breaking. 
      * 
      * @throws Exception in case of an error
      */
@@ -472,7 +412,7 @@ public class BblWriterTest {
     }
 
     /**
-     * <testcase> Test toString() methos. </testcase>
+     *  Test toString() methos. 
      * 
      * @throws Exception in case of an error
      */
@@ -485,7 +425,7 @@ public class BblWriterTest {
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
+     *  Test the line breaking. 
      * 
      * @throws Exception in case of an error
      */

@@ -17,7 +17,7 @@
  */
 /**
  * 
- *   This package contains normalizers for the makeindex emulator.
+ *   Contains normalizers for the makeindex emulator.
  * 
  *
  */

@@ -22,8 +22,7 @@ package org.extex.builder.latex.artifact.latex;
  * This interface describes a state carrier for catcodes.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface State {
 
     /**

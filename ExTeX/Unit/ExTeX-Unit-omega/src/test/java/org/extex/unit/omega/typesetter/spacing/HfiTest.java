@@ -22,11 +22,10 @@ package org.extex.unit.omega.typesetter.spacing;
 import org.extex.test.AbstractHfillTester;
 
 /**
- * This is a test suite for the primitive <tt>\hfi</tt>.
+ * This is a test suite for the primitive {@code \hfi}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class HfiTest extends AbstractHfillTester {
 
     public HfiTest() {

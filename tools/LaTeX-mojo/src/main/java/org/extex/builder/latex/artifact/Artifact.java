@@ -40,41 +40,40 @@ import org.extex.builder.latex.exception.MakeException;
  * derive specialized artifacts from it.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Artifact {
 
     /**
-     * The constant <tt>READ_JUNK_SIZE</tt> contains the number of bytes to read
+     * The constant {@code READ_JUNK_SIZE} contains the number of bytes to read
      * from file.
      */
     private static final int READ_JUNK_SIZE = 1024;
 
     /**
-     * The field <tt>file</tt> contains the file.
+     * The field {@code file} contains the file.
      */
     private File file;
 
     /**
-     * The field <tt>checksum</tt> contains the cached MD5 checksum from the
+     * The field {@code checksum} contains the cached MD5 checksum from the
      * last round.
      */
     private byte[] checksum = null;
 
     /**
-     * The field <tt>dependencies</tt> contains the artifacts this one depends
+     * The field {@code dependencies} contains the artifacts this one depends
      * on.
      */
     private List<Artifact> dependencies = new ArrayList<Artifact>();
 
     /**
-     * The field <tt>actions</tt> contains the actions to be executed to update
+     * The field {@code actions} contains the actions to be executed to update
      * the current artifact.
      */
     private List<Action> actions = new ArrayList<Action>();
 
     /**
-     * The field <tt>lastModified</tt> contains the cached modification time.
+     * The field {@code lastModified} contains the cached modification time.
      */
     private long lastModified = Long.MIN_VALUE;
 
@@ -114,7 +113,7 @@ public class Artifact {
      * @param logger the logger
      * @param simulate the simulation indicator
      * 
-     * @return <code>true</code> iff the build has changed something
+     * @return {@code true} iff the build has changed something
      * 
      * @throws MakeException in case of an error
      */
@@ -189,7 +188,7 @@ public class Artifact {
      * @param cs1 checksum 1
      * @param cs2 checksum 2
      * 
-     * @return <code>true</code> iff the two arrays are different
+     * @return {@code true} iff the two arrays are different
      */
     private boolean different(byte[] cs1, byte[] cs2) {
 
@@ -240,7 +239,7 @@ public class Artifact {
     /**
      * Check whether the file contents has been modified and refresh the cache.
      * 
-     * @return <code>true</code> iff the artifact does not exist or has recently
+     * @return {@code true} iff the artifact does not exist or has recently
      *         been modified.
      * 
      * @throws IOException in case of an I/O error
@@ -262,7 +261,7 @@ public class Artifact {
      * @param artifact the artifact
      * @param logger the logger
      * 
-     * @return <code>true</code> iff the artifact exists and is up to date
+     * @return {@code true} iff the artifact exists and is up to date
      *         w.r.t. the argument
      * 
      * @throws MakeException in case of an I/O error
@@ -368,12 +367,7 @@ public class Artifact {
         return digest.digest();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return file.toString().replaceAll("\\\\", "/");

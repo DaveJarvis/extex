@@ -29,11 +29,10 @@ import org.extex.typesetter.type.math.MathCode;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\mathcode</tt>.
+ * This is a test suite for the primitive {@code \mathcode}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
 
@@ -44,7 +43,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathcode"> Test case checking that the math code
-     * can be used to define a replacement character. </testcase>
+     * can be used to define a replacement character.
      * 
      * @throws Exception in case of an error
      */
@@ -61,7 +60,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathcode"> Test case checking that mathcode can be
-     * used to invoke an active character. </testcase>
+     * used to invoke an active character.
      * 
      * @throws Exception in case of an error
      */
@@ -79,7 +78,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathcode"> Test case checking that mathcode can be
-     * used to define an active character. </testcase>
+     * used to define an active character.
      * 
      * @throws Exception in case of an error
      */
@@ -96,7 +95,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathcode"> Test case checking that the math code of
-     * type bin is correct stored in the context. </testcase>
+     * type bin is correct stored in the context.
      * 
      * @throws Exception in case of an error
      */
@@ -117,7 +116,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathcode"> Test case checking that the math code of
-     * type close is correct stored in the context. </testcase>
+     * type close is correct stored in the context.
      * 
      * @throws Exception in case of an error
      */
@@ -138,7 +137,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathcode"> Test case checking that
-     * <tt>\mathcode</tt> is convertible into a count. </testcase>
+     * {@code \mathcode} is convertible into a count.
      * 
      * @throws Exception in case of an error
      */
@@ -154,7 +153,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathcode"> Test case checking that
-     * <tt>\mathcode</tt> needs a parameter. </testcase>
+     * {@code \mathcode} needs a parameter.
      * 
      * @throws Exception in case of an error
      */
@@ -170,7 +169,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathcode"> Test case checking that
-     * <tt>\mathcode</tt> has a limit of the numeric math code. </testcase>
+     * {@code \mathcode} has a limit of the numeric math code.
      * 
      * @throws Exception in case of an error
      */
@@ -186,7 +185,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathcode"> Test case checking that
-     * <tt>\mathcode</tt> has a limit of the numeric math code. </testcase>
+     * {@code \mathcode} has a limit of the numeric math code.
      * 
      * @throws Exception in case of an error
      */
@@ -202,7 +201,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathcode"> Test case checking that a negative math
-     * code is not accepted. </testcase>
+     * code is not accepted.
      * 
      * @throws Exception in case of an error
      */
@@ -218,7 +217,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathcode"> Test case checking that the math code of
-     * type large is correct stored in the context. </testcase>
+     * type large is correct stored in the context.
      * 
      * @throws Exception in case of an error
      */
@@ -239,7 +238,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathcode"> Test case checking that the math code of
-     * type open is correct stored in the context. </testcase>
+     * type open is correct stored in the context.
      * 
      * @throws Exception in case of an error
      */
@@ -260,7 +259,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathcode"> Test case checking that the math code of
-     * type ord is correct stored in the context. </testcase>
+     * type ord is correct stored in the context.
      * 
      * @throws Exception in case of an error
      */
@@ -281,7 +280,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathcode"> Test case checking that the math code of
-     * type punct is correct stored in the context. </testcase>
+     * type punct is correct stored in the context.
      * 
      * @throws Exception in case of an error
      */
@@ -302,7 +301,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathcode"> Test case checking that a math code of 0
-     * is acceptable. </testcase>
+     * is acceptable.
      * 
      * @throws Exception in case of an error
      */
@@ -318,7 +317,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathcode"> Test case checking that a math code of
-     * 32767 is accepted. </testcase>
+     * 32767 is accepted.
      * 
      * @throws Exception in case of an error
      */
@@ -334,7 +333,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathcode"> Test case checking that a math code of
-     * 32768 is accepted. </testcase>
+     * 32768 is accepted.
      * 
      * @throws Exception in case of an error
      */
@@ -350,7 +349,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathcode"> Test case checking that the math code of
-     * type rel is correct stored in the context. </testcase>
+     * type rel is correct stored in the context.
      * 
      * @throws Exception in case of an error
      */
@@ -371,7 +370,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathcode"> Test case checking that
-     * <tt>\mathcode</tt> is theable. </testcase>
+     * {@code \mathcode} is theable.
      * 
      * @throws Exception in case of an error
      */
@@ -387,7 +386,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathcode"> Test case checking that the math code of
-     * type var is correct stored in the context. </testcase>
+     * type var is correct stored in the context.
      * 
      * @throws Exception in case of an error
      */

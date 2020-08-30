@@ -41,37 +41,32 @@ import org.extex.typesetter.tc.font.Font;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\fontdimen</code>.
+ * {@code \fontdimen}.
  * 
- * <doc name="fontdimen"> <h3>The Primitive <tt>\fontdimen</tt></h3>
+ * <p>The Primitive {@code \fontdimen}</p>
  * <p>
- * The primitive <tt>\fontdimen</tt> can be used to set a font dimension value.
+ * The primitive {@code \fontdimen} can be used to set a font dimension value.
  * Each font has an arbitrary number of dimen values which are addressed by an
- * numerical index in TeX. In ??TeX this has been extended to arbitrary strings.
+ * numerical index in TeX. In εχTeX this has been extended to arbitrary strings.
  * </p>
  * <p>
  * The primitive expands to the value of the font dimension in a right hand
  * context.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;fontdimen&rang;
- *       &rarr; <tt>\fontdimen</tt> {@linkplain
- *          org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
- *          &lang;8-bit&nbsp;number&rang;} {@linkplain
- *          org.extex.interpreter.TokenSource#getFont(Context,CodeToken)
- *          &lang;font&rang;} {@linkplain
- *          org.extex.interpreter.TokenSource#getOptionalEquals(Context)
- *          &lang;equals&rang;} {@linkplain
- *          org.extex.core.dimen#Dimen(Context,TokenSource)
- *          &lang;dimen&rang;}   </pre>
+ *       &rarr; {@code \fontdimen}
+ *          &lang;8-bit&nbsp;number&rang; &lang;font&rang; &lang;equals&rang; &lang;dimen&rang;
+ * </pre>
  * 
  * TODO gene: document Extension
  * 
- * <h4>Examples</h4>
- * 
+ * <p>Examples</p>
+ *
  * <pre class="TeXSample">
  *    \fontdimen13\ff=5pt  </pre>
  * 
@@ -80,21 +75,17 @@ import org.extex.typesetter.tc.font.Font;
  * 
  * <pre class="TeXSample">
  *    \the\fontdimen{em}\ff=8pt  </pre>
- * 
- * </doc>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:4431 $
- */
+*/
 public class Fontdimen extends AbstractAssignment
         implements
             ExpandableCode,
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -109,10 +100,7 @@ public class Fontdimen extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -128,10 +116,7 @@ public class Fontdimen extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -143,7 +128,7 @@ public class Fontdimen extends AbstractAssignment
 
     /**
      * Get the key for the font dimen. According to TeX the key is an arbitrary number. In
-     * ??TeX this has been extended to take an expandable sequence
+     * εχTeX this has been extended to take an expandable sequence
      * of tokens enclosed in braces. The left brace acts as indicator that this
      * extension is used.
      * 
@@ -175,10 +160,7 @@ public class Fontdimen extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

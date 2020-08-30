@@ -25,17 +25,16 @@ import org.extex.core.exception.GeneralException;
  * Panic exception in dvi writer.
  * 
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
- * @version $Revision:4704 $
- */
+*/
 public class PanicException extends GeneralException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number.
+     * The field {@code serialVersionUID} contains the version number.
      */
     private static final long serialVersionUID = 1L;
 
     /**
-     * Creates a new <code>PanicException</code> instance.
+     * Creates a new {@code PanicException} instance.
      */
     public PanicException() {
 

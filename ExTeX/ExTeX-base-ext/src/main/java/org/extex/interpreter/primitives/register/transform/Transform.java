@@ -35,12 +35,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * Transform (transformation with six values).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class Transform implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 1L;
 
@@ -93,8 +92,8 @@ public class Transform implements Serializable {
     }
 
     /**
-     * Creates a new object. Scan the <code>TokenSource</code> for a
-     * <code>Transform</code>.
+     * Creates a new object. Scan the {@code TokenSource} for a
+     * {@code Transform}.
      * 
      * @param context the context
      * @param source the token source
@@ -158,7 +157,7 @@ public class Transform implements Serializable {
     /**
      * Creates a new object.
      * <p>
-     * If the string equals <code>null</code> or empty, the value is set to zero
+     * If the string equals {@code null} or empty, the value is set to zero
      * 
      * @param s the value as String
      * 
@@ -228,9 +227,9 @@ public class Transform implements Serializable {
     }
 
     /**
-     * Return the value as <code>String</code>
+     * Return the value as {@code String}
      * 
-     * @return the value as <code>String</code>
+     * @return the value as {@code String}
      */
     @Override
     public String toString() {

@@ -27,23 +27,22 @@ import org.extex.framework.i18n.LocalizerFactory;
  * detected.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class ConfigurationException extends RuntimeException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2009L;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer.
+     * The field {@code localizer} contains the localizer.
      */
     private Localizer localizer = null;
 
     /**
-     * The field <tt>source</tt> contains the location for this exception.
+     * The field {@code source} contains the location for this exception.
      */
     private String source = null;
 
@@ -82,39 +81,39 @@ public abstract class ConfigurationException extends RuntimeException {
 
     /**
      * Getter for the localized message of this Exception. The text is taken
-     * from the resource bundle <tt>ConfigurationEception</tt> The key depends
+     * from the resource bundle {@code ConfigurationEception} The key depends
      * on the further information present:
      *
      * <p>
-     * <tt>ConfigurationException.FormatCauseMessageLocation</tt> is used when a
+     * {@code ConfigurationException.FormatCauseMessageLocation} is used when a
      * cause, a message, and a location are present. The arguments {1}, {2}, and
      * {3} are set respectively.
      * </p>
      * <p>
-     * <tt>ConfigurationException.FormatCauseLocation</tt> is used when a cause
+     * {@code ConfigurationException.FormatCauseLocation} is used when a cause
      * and a location are present. The arguments {1} and {2} are set
      * respectively.
      * </p>
      * <p>
-     * <tt>ConfigurationException.FormatCauseMessage</tt> is used when a cause
+     * {@code ConfigurationException.FormatCauseMessage} is used when a cause
      * and a message are present. The arguments {1} and {2} are set
      * respectively.
      * </p>
      * <p>
-     * <tt>ConfigurationException.FormatCause</tt> is used when a cause is
+     * {@code ConfigurationException.FormatCause} is used when a cause is
      * present. The argument {1} is set respectively.
      * </p>
      * <p>
-     * <tt>ConfigurationException.FormatMessageLocation</tt> is used when a
+     * {@code ConfigurationException.FormatMessageLocation} is used when a
      * message and a location are present. The arguments {1} and {2} are set
      * respectively.
      * </p>
      * <p>
-     * <tt>ConfigurationException.FormatMessage</tt> is used when a message is
+     * {@code ConfigurationException.FormatMessage} is used when a message is
      * present. The argument {1} is set respectively.
      * </p>
      * <p>
-     * <tt>ConfigurationException.FormatLocation</tt> is used when a location is
+     * {@code ConfigurationException.FormatLocation} is used when a location is
      * present. The argument {1} is set respectively.
      * </p>
      * <p>
@@ -200,8 +199,8 @@ public abstract class ConfigurationException extends RuntimeException {
 
     /**
      * Getter for the text prefix of this ConfigurationException. The text is
-     * taken from the resource bundle <tt>ConfigurationEception</tt> under the
-     * key <tt>ConfigurationException.Text</tt>.
+     * taken from the resource bundle {@code ConfigurationEception} under the
+     * key {@code ConfigurationException.Text}.
      *
      * @return the text
      */

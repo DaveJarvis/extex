@@ -1,43 +1,55 @@
 allprojects {
-    group = 'org.extex'
-    version = '0.1-SNAPSHOT'
+  group = 'org.extex'
+  version = '0.1-SNAPSHOT'
 }
 
+buildscript {
+  repositories {
+    jcenter()
+  }
+
+  dependencies {
+    classpath 'com.netflix.nebula:gradle-aggregate-javadocs-plugin:2.2.+'
+  }
+}
+
+apply plugin: 'nebula-aggregate-javadocs'
+
 subprojects {
-    apply plugin: 'java'
-    apply plugin: 'maven-publish'
+  apply plugin: 'java'
+  apply plugin: 'maven-publish'
 
-    repositories {
-        mavenLocal()
-        maven {
-            url = uri('https://repo.maven.apache.org/maven2')
-        }
+  repositories {
+    mavenLocal()
+    maven {
+      url = uri('https://repo.maven.apache.org/maven2')
     }
+  }
 
-    dependencies {
-        testImplementation 'junit:junit:4.12'
+  dependencies {
+    testImplementation 'junit:junit:4.12'
+  }
+
+  sourceCompatibility = '1.8'
+
+  java {
+    withSourcesJar()
+  }
+
+  javadoc {
+    source = sourceSets.main.allJava
+    classpath = sourceSets.main.runtimeClasspath
+  }
+
+  publishing {
+    publications {
+      maven(MavenPublication) {
+        from(components.java)
+      }
     }
+  }
 
-    sourceCompatibility = '1.8'
-
-    java {
-        withSourcesJar()
-    }
-
-    javadoc {
-        source = sourceSets.main.allJava
-        classpath = sourceSets.main.runtimeClasspath
-    }
-
-    publishing {
-        publications {
-            maven(MavenPublication) {
-                from(components.java)
-            }
-        }
-    }
-
-    tasks.withType(JavaCompile) {
-        options.encoding = 'ISO-8859-1'
-    }
+  tasks.withType(JavaCompile) {
+    options.encoding = 'ISO-8859-1'
+  }
 }

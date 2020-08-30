@@ -25,8 +25,7 @@ import java.io.IOException;
  * Interface for a tfm visitor.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public interface TfmVisitor {
 
     /**

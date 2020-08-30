@@ -26,33 +26,33 @@ import org.extex.core.exception.GeneralException;
  * this interface the visitor pattern can be implemented.
  * <p>
  * The user of the visitor pattern has to provide an implementation of this
- * interface. Then the <tt>visit</tt> method is invoked and the caller is
- * forwarded to the appropriate <tt>visit</tt> method in the visitor.
+ * interface. Then the {@code visit} method is invoked and the caller is
+ * forwarded to the appropriate {@code visit} method in the visitor.
  * </p>
  * <p>
  * Consider we have a mode constant at hand which is in fact a batch mode and we
  * invokes
- * 
+ * </p>
+ *
  * <pre>
  *   boolean boo = mode.visit(visitor, a, b, c);
  * </pre>
- * 
- * then the following method in the object <tt>visitor</tt> is used:
- * 
+ *
+ * <p>
+ * then the following method in the object {@code visitor} is used:
+ * </p>
+ *
  * <pre>
  *   visitBatchmode(visitor, a, b, c)
  * </pre>
- * 
- * </p>
- * 
+ *
  * 
  * @param <A1> the type of the first argument
  * @param <A2> the type of the second argument
  * @param <A3> the type of the third argument
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4726 $
- */
+*/
 public interface InteractionVisitor<A1, A2, A3> {
 
     /**

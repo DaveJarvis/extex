@@ -35,8 +35,7 @@ import java.nio.charset.StandardCharsets;
  * This class contains some utility methods for testing.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class TRunner {
 
     /**

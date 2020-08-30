@@ -26,28 +26,27 @@ import org.junit.Test;
  * It provides some test cases common to all dimen registers.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
 
     /**
-     * The field <tt>primitive</tt> contains the name of the primitive to test.
+     * The field {@code primitive} contains the name of the primitive to test.
      */
-    private String primitive;
+    private final String primitive;
 
     /**
-     * The field <tt>invocation</tt> contains the concatenation of primitive
+     * The field {@code invocation} contains the concatenation of primitive
      * name and arguments.
      */
-    private String invocation;
+    private final String invocation;
 
     /**
-     * The field <tt>init</tt> contains the default value.
+     * The field {@code init} contains the default value.
      */
-    private String init;
+    private final String init;
 
     /**
-     * The field <tt>prepare</tt> contains the the initializing code which goes
+     * The field {@code prepare} contains the the initializing code which goes
      * before the invocation.
      */
     private String prepare = "";
@@ -81,9 +80,9 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
-     *  Test case showing that the prefix <tt>\immediate</tt> is not applicable.
-     * </testcase>
+     *
+     *  Test case showing that the prefix {@code \immediate} is not applicable.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -99,9 +98,9 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
-     *  Test case showing that the prefix <tt>\long</tt> is not applicable.
-     * </testcase>
+     *
+     *  Test case showing that the prefix {@code \long} is not applicable.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -117,10 +116,10 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that an assignment of a skip constant does not
      *  absorb the plus component.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -135,9 +134,9 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
-     *  Test case showing that the prefix <tt>\outer</tt> is not applicable.
-     * </testcase>
+     *
+     *  Test case showing that the prefix {@code \outer} is not applicable.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -153,10 +152,10 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that the primitive is defined and has its default
      *  value.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -170,9 +169,9 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that the primitive is applicable to \showthe.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -187,10 +186,10 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that an assignment of a constant 12.3pt works when using
      *  an equal sign after the primitive name.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -205,10 +204,10 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that an assignment of a constant 12.3pt works when using
      *  no equal sign after the primitive name.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -223,10 +222,10 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that an assignment of a constant -12.3pt works when using
      *  an equal sign after the primitive name.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -241,10 +240,10 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that an assignment of a constant -12.3pt works when using
      *  no equal sign after the primitive name.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -259,10 +258,10 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that an assignment of a constant -12.3pt works when using
-     *  <tt>\globaldefs</tt>.
-     * </testcase>
+     *  {@code \globaldefs}.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -278,9 +277,9 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment respects <tt>\\afterassignment</tt>.
-     * </testcase>
+     *
+     *  Test case showing that an assignment respects {@code \\afterassignment}.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -295,9 +294,9 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that the value is dimen convertible.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -312,9 +311,9 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that the value is count convertible.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -329,9 +328,9 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that an assignment respects grouping.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -346,10 +345,10 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that an assignment of a constant 12.3pt works when using
      *  an equal sign after the primitive name.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -365,10 +364,10 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that an assignment of a constant 12.3pt works when using
      *  no equal sign after the primitive name.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -384,9 +383,9 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that an advancement by the constant 12pt works.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -402,10 +401,10 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that an advancement by the constant 12pt works when
-     *  using the keyword <tt>by</tt>.
-     * </testcase>
+     *  using the keyword {@code by}.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -421,9 +420,9 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that an advancement by the constant -12pt works.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -439,10 +438,10 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that an advancement by the constant -12pt works when
-     *  using the keyword <tt>by</tt>.
-     * </testcase>
+     *  using the keyword {@code by}.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -458,10 +457,10 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that an advancement by the constant -12.3pt works when using
-     *  <tt>\globaldefs</tt>.
-     * </testcase>
+     *  {@code \globaldefs}.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -477,9 +476,9 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment respects <tt>\\afterassignment</tt>.
-     * </testcase>
+     *
+     *  Test case showing that an assignment respects {@code \\afterassignment}.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -495,9 +494,9 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that an advancing respects grouping.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -513,9 +512,9 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that an multiplication with the constant 0 works.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -531,9 +530,9 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that an multiplication with the constant 12 works.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -549,10 +548,10 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that an multiplication with the constant 12 works when
-     *  using the keyword <tt>by</tt>.
-     * </testcase>
+     *  using the keyword {@code by}.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -568,9 +567,9 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that an multiplication by the constant -12 works.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -586,10 +585,10 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that an multiplication by the constant -12 works when
-     *  using the keyword <tt>by</tt>.
-     * </testcase>
+     *  using the keyword {@code by}.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -605,10 +604,10 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that a multiplication by a constant -12.3pt works when
-     *  using <tt>\globaldefs</tt>.
-     * </testcase>
+     *  using {@code \globaldefs}.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -624,9 +623,9 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment respects <tt>\\afterassignment</tt>.
-     * </testcase>
+     *
+     *  Test case showing that an assignment respects {@code \\afterassignment}.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -642,9 +641,9 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that multiplication respects grouping.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -660,9 +659,9 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that an division by the constant 12 works.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -678,9 +677,9 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that an division by the constant 12 works.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -696,10 +695,10 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that an division by the constant 12 works when
-     *  using the keyword <tt>by</tt>.
-     * </testcase>
+     *  using the keyword {@code by}.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -715,9 +714,9 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that an multiplication by the constant -12 works.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -733,10 +732,10 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that an multiplication by the constant -12 works when
-     *  using the keyword <tt>by</tt>.
-     * </testcase>
+     *  using the keyword {@code by}.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -752,10 +751,10 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that a division by a constant -12.3pt works when
-     *  using <tt>\globaldefs</tt>.
-     * </testcase>
+     *  using {@code \globaldefs}.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -771,9 +770,9 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment respects <tt>\\afterassignment</tt>.
-     * </testcase>
+     *
+     *  Test case showing that an assignment respects {@code \\afterassignment}.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -788,10 +787,10 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that division by the constant -12 works when
-     *  using the keyword <tt>by</tt>.
-     * </testcase>
+     *  using the keyword {@code by}.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -807,9 +806,9 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
+     *
      *  Test case showing that division respects grouping.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */

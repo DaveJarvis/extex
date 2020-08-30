@@ -41,25 +41,24 @@ import java.util.Map;
  * This class represents an LInterpreter without predefined functions.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 @SuppressWarnings("unused")
 public class LInterpreter {
 
     /**
-     * The field <tt>functionTable</tt> contains the table of all functions.
+     * The field {@code functionTable} contains the table of all functions.
      */
     private final Map<LSymbol, LFunction> functions =
         new HashMap<>();
 
     /**
-     * The field <tt>valueTable</tt> contains the table of all values of
+     * The field {@code valueTable} contains the table of all values of
      * symbols.
      */
     private final Map<LSymbol, LValue> bindings = new HashMap<>();
 
     /**
-     * The field <tt>finder</tt> contains the resource finder.
+     * The field {@code finder} contains the resource finder.
      */
     private ResourceFinder finder;
 
@@ -139,7 +138,7 @@ public class LInterpreter {
      * 
      * @param symbol the symbol to look up
      * 
-     * @return the binding or <code>null</code> if nothing is defined
+     * @return the binding or {@code null} if nothing is defined
      */
     public LValue get(LSymbol symbol) {
 
@@ -151,7 +150,7 @@ public class LInterpreter {
      * 
      * @param symbol the symbol to look up
      * 
-     * @return the binding or <code>null</code> if nothing is defined
+     * @return the binding or {@code null} if nothing is defined
      */
     public LValue get(String symbol) {
 
@@ -163,7 +162,7 @@ public class LInterpreter {
      * 
      * @param symbol the symbol to look up
      * 
-     * @return the binding or <code>null</code> if nothing is defined
+     * @return the binding or {@code null} if nothing is defined
      */
     public LFunction getFunction(LSymbol symbol) {
 
@@ -182,7 +181,7 @@ public class LInterpreter {
 
     /**
      * Read expressions from a reader and evaluate them. The last result is
-     * returned. If not expression can be read at all then <tt>nil</tt> is
+     * returned. If not expression can be read at all then {@code nil} is
      * returned.
      * 
      * @param reader the reader

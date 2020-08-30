@@ -29,15 +29,14 @@ import org.extex.exbib.bst2groovy.data.types.GIntegerConstant;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
- * This class implements the analyzer for the <code>&lt;</code> built-in.
+ * This class implements the analyzer for the {@code <} built-in.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LessCompiler implements Compiler {
 
     /**
-     * This inner class is the expression for the < built-in in the target
+     * This inner class is the expression for the {@code <} built-in in the target
      * program.
      */
     public static final class Less extends BinaryInfix {
@@ -53,12 +52,7 @@ public class LessCompiler implements Compiler {
             super(a, b, "<", BinaryInfix.RELATION_LEVEL);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GenericCode#optimize()
-         */
-        @Override
+    @Override
         public GCode optimize() {
 
             super.optimize();
@@ -74,7 +68,7 @@ public class LessCompiler implements Compiler {
     }
 
     /**
-     * This inner class is the expression for the < built-in in the target
+     * This inner class is the expression for the {@code <=} built-in in the target
      * program.
      */
     public static final class LessEqual extends BinaryInfix {
@@ -90,12 +84,7 @@ public class LessCompiler implements Compiler {
             super(a, b, "<=", BinaryInfix.RELATION_LEVEL);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GenericCode#optimize()
-         */
-        @Override
+    @Override
         public GCode optimize() {
 
             super.optimize();
@@ -111,10 +100,7 @@ public class LessCompiler implements Compiler {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryReference,
-     *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
+*      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */

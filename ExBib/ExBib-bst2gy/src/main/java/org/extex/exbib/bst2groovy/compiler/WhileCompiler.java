@@ -44,11 +44,10 @@ import org.extex.exbib.core.bst.token.impl.TLocalInteger;
 import org.extex.exbib.core.exceptions.ExBibException;
 
 /**
- * This class implements the analyzer for the <code>while$</code> instruction.
+ * This class implements the analyzer for the {@code while$} instruction.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class WhileCompiler implements Compiler {
 
     /**
@@ -58,12 +57,12 @@ public class WhileCompiler implements Compiler {
     private static final class While extends GenericCode {
 
         /**
-         * The field <tt>cond</tt> contains the condition code.
+         * The field {@code cond} contains the condition code.
          */
         private GCode cond;
 
         /**
-         * The field <tt>body</tt> contains the body code.
+         * The field {@code body} contains the body code.
          */
         private GCode body;
 
@@ -87,10 +86,7 @@ public class WhileCompiler implements Compiler {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GenericCode#optimize(java.util.List,
-         *      int)
+    *      int)
          */
         @Override
         public int optimize(List<GCode> list, int index) {
@@ -106,10 +102,7 @@ public class WhileCompiler implements Compiler {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         @Override
         public void print(CodeWriter writer, String prefix) throws IOException {
@@ -125,10 +118,7 @@ public class WhileCompiler implements Compiler {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryReference,
-     *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
+*      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */

@@ -24,8 +24,7 @@ package org.extex.exindex.makeindex.main;
  * It uses latin-1 as the default encoding for reading and writing.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 7667 $
- */
+*/
 public class MakeindexLatin1 extends Makeindex {
 
     /**

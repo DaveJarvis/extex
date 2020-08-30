@@ -30,16 +30,15 @@ import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.factory.NodeFactory;
 
 /**
- * Interface for the <code>HyphenationTable</code>.
+ * Interface for the {@code HyphenationTable}.
  * <p>
- * In the table the hyphenation patterns (see <code>\patterns</code>
- * and the user hyphenations (see <code>\hyphenation</code>) are stored.
+ * In the table the hyphenation patterns (see {@code \patterns}
+ * and the user hyphenations (see {@code \hyphenation}) are stored.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4737 $
- */
+*/
 public interface Hyphenator extends Serializable {
 
     /**
@@ -98,10 +97,10 @@ public interface Hyphenator extends Serializable {
      * @param hyphen the tokens to be inserted for hyphens
      * @param start the start index
      * @param forall the indicator that all words to the end should be
-     *  processed. if <code>false</code> then only the next word is hyphenated.
+     *  processed. if {@code false} then only the next word is hyphenated.
      * @param nodeFactory the node factory
      *
-     * @return <code>true</code> iff the hyphenator is responsible for this
+     * @return {@code true} iff the hyphenator is responsible for this
      *  word. Usually this means that some hyphenation marks have been inserted.
      *
      * @throws HyphenationException in case of an error
@@ -111,10 +110,10 @@ public interface Hyphenator extends Serializable {
             NodeFactory nodeFactory) throws HyphenationException;
 
     /**
-     * Return <code>true</code>, if hyphenation is active,
-     * otherwise <code>false</code>;
+     * Return {@code true}, if hyphenation is active,
+     * otherwise {@code false};
      *
-     * @return <code>true</code> iff the hyphenation for this language is
+     * @return {@code true} iff the hyphenation for this language is
      *  enabled
      *
      * @throws HyphenationException in case of an error

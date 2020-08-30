@@ -27,42 +27,41 @@ import java.io.Serializable;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:5417 $
- */
+*/
 public class Locator implements Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     private static final long serialVersionUID = 1L;
 
     /**
-     * The field <tt>cause</tt> contains the next in the sequence of chained
+     * The field {@code cause} contains the next in the sequence of chained
      * locators.
      */
     private Locator cause = null;
 
     /**
-     * The field <tt>line</tt> contains the current line of input.
+     * The field {@code line} contains the current line of input.
      */
-    private String line;
+    private final String line;
 
     /**
-     * The field <tt>lineNumber</tt> contains the line number.
+     * The field {@code lineNumber} contains the line number.
      */
-    private int lineNumber;
+    private final int lineNumber;
 
     /**
-     * The field <tt>linePointer</tt> contains the position in the line the
+     * The field {@code linePointer} contains the position in the line the
      * locator refers to.
      */
-    private int linePointer;
+    private final int linePointer;
 
     /**
-     * The field <tt>resource</tt> contains the name of the resource.
+     * The field {@code resource} contains the name of the resource.
      */
-    private String resource;
+    private final String resource;
 
     /**
      * Creates a new object.
@@ -125,9 +124,9 @@ public class Locator implements Serializable {
 
     /**
      * Getter for the resource name. The resource name can be unset. In this
-     * case <code>null</code> is returned.
+     * case {@code null} is returned.
      * 
-     * @return the resource name or <code>null</code>
+     * @return the resource name or {@code null}
      */
     public String getResourceName() {
 

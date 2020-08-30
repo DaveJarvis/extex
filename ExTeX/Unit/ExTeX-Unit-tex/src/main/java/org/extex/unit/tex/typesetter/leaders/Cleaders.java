@@ -28,12 +28,11 @@ import org.extex.typesetter.type.node.CenteredLeadersNode;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\cleaders</code>.
+ * {@code \cleaders}.
  * 
- * <doc name="cleaders">
- * <h3>The Primitive <tt>\cleaders</tt></h3>
+ * <p>The Primitive {@code \cleaders}</p>
  * <p>
- * The primitive <tt>\cleaders</tt> is a leaders construction which centers
+ * The primitive {@code \cleaders} is a leaders construction which centers
  * the material if it does not fit perfectly. The primitive takes as the first
  * argument a box or rule. The second argument is a horizontal or vertical skip
  * specification. The two arguments have to agree on the orientation; either
@@ -59,23 +58,25 @@ import org.extex.typesetter.type.node.CenteredLeadersNode;
  * than the natural width of the box.
  * </p>
  * <p>
- * Note that there are also the primitives <tt>\xleaders</tt> and
- * <tt>\leaders</tt> which provide essentially the same functionality but
+ * Note that there are also the primitives {@code \xleaders} and
+ * {@code \leaders} which provide essentially the same functionality but
  * adjust the material within the final space differently.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;cleaders&rang;
- *      &rarr; <tt>\cleaders</tt> &lang;Box or Rule&rang; &lang;Skip&rang;
+ *      &rarr; {@code \cleaders} &lang;Box or Rule&rang; &lang;Skip&rang;
  *
  *    &lang;Box or Rule&rang;
  *      &rarr; &lang;Box&rang;
  *       | &lang;Rule&rang;        </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * 
  * <pre class="TeXSample">
@@ -83,7 +84,7 @@ import org.extex.typesetter.type.node.CenteredLeadersNode;
  * 
  * <p>
  * This example creates a horizontal rule which fills the space made up by the
- * <tt>\hfill</tt>. The rule stretches horizontally and has its natural
+ * {@code \hfill}. The rule stretches horizontally and has its natural
  * dimensions vertically.
  * </p>
  * 
@@ -92,7 +93,7 @@ import org.extex.typesetter.type.node.CenteredLeadersNode;
  * 
  * <p>
  * This example demonstrates the same in vertical direction. Since only
- * <tt>\vil</tt> is used it may not appear at all when the other elements in
+ * {@code \vil} is used it may not appear at all when the other elements in
  * the surrounding box overrule it.
  * </p>
  * 
@@ -106,17 +107,15 @@ import org.extex.typesetter.type.node.CenteredLeadersNode;
  * the available space leaves some freedom then this extra space is distributed
  * equally on the left and right end.
  * </p>
- * </doc>
- * 
+ *
  * @see org.extex.typesetter.type.node.CenteredLeadersNode
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Cleaders extends Leaders {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;

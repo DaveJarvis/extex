@@ -40,35 +40,34 @@ import org.extex.typesetter.exception.TypesetterUnsupportedException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\prevdepth</code>.
+ * {@code \prevdepth}.
  * 
- * <doc name="prevdepth">
- * <h3>The Primitive <tt>\prevdepth</tt></h3>
+ * <p>The Primitive {@code \prevdepth}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;prevdepth&rang;
- *      &rarr; <tt>\prevdepth</tt> {@linkplain
+ *      &rarr; {@code \prevdepth} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} &lang;dimen value&rang;  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \prevdepth=123pt  </pre>
  *  <pre class="TeXSample">
  *    \dimen0=\prevdepth  </pre>
  * 
- * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Prevdepth extends AbstractAssignment
         implements
             CountConvertible,
@@ -76,19 +75,19 @@ public class Prevdepth extends AbstractAssignment
             Theable {
 
     /**
-     * The field <tt>IGNORE</tt> contains the numerical value which represents
+     * The field {@code IGNORE} contains the numerical value which represents
      * the ignored value. This will be mapped to null.
      */
     private static final long IGNORE = -65536000;
 
     /**
-     * The field <tt>IGNORE_DIMEN</tt> contains the value which represents the
+     * The field {@code IGNORE_DIMEN} contains the value which represents the
      * ignored value. This will be mapped to null.
      */
     private static final Dimen IGNORE_DIMEN = new Dimen(IGNORE);
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -104,10 +103,7 @@ public class Prevdepth extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -128,10 +124,7 @@ public class Prevdepth extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -149,10 +142,7 @@ public class Prevdepth extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertDimen(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
@@ -169,10 +159,7 @@ public class Prevdepth extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws HelpingException,

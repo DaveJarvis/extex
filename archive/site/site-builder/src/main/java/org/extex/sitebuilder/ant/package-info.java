@@ -16,13 +16,13 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the Ant task for the εχTeX site builder.
+ * Contains the Ant task for the εχTeX site builder.
  * It provides an entry point for this well-defined interface. The entry is the
  * Ant tag defined by the class {@link org.extex.sitebuilder.ant.SiteBuilderTask}.
  * This tag has some attributes and more internal tags. Those are reflected in
  * the implementing classes as depicted in the following figure:
  * 
- * <img src="doc-files/overview.png" width="100%"/>
+ * <img src="doc-files/overview.png" width="100%">
  */
 
 package org.extex.sitebuilder.ant;

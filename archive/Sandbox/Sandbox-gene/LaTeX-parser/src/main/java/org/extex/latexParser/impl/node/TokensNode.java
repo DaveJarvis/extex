@@ -28,12 +28,11 @@ import org.extex.scanner.type.token.Token;
  * This class represents a list of tokens.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TokensNode extends AbstractNode implements Node {
 
     /**
-     * The field <tt>buffer</tt> contains the buffer for the characters
+     * The field {@code buffer} contains the buffer for the characters
      * contained.
      */
     private StringBuilder buffer = new StringBuilder();
@@ -62,7 +61,7 @@ public class TokensNode extends AbstractNode implements Node {
      * 
      * @param t the token to add
      * 
-     * @return <code>true</code>
+     * @return {@code true}
      * 
      * @see java.util.List#add(java.lang.Object)
      */
@@ -72,22 +71,12 @@ public class TokensNode extends AbstractNode implements Node {
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.api.Node#print(java.io.PrintStream)
-     */
-    public void print(PrintStream stream) {
+public void print(PrintStream stream) {
 
         stream.print(buffer);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return buffer.toString();

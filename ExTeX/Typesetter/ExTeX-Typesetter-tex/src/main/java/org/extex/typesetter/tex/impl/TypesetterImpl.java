@@ -69,8 +69,7 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:4526 $
- */
+*/
 public class TypesetterImpl extends ListMakerFactory
         implements
             Typesetter,
@@ -79,63 +78,63 @@ public class TypesetterImpl extends ListMakerFactory
             LogEnabled {
 
     /**
-     * The field <tt>backend</tt> contains the back-end driver for producing the
+     * The field {@code backend} contains the back-end driver for producing the
      * output.
      */
     private BackendDriver backend = null;
 
     /**
-     * The field <tt>listMaker</tt> contains the current list maker for
+     * The field {@code listMaker} contains the current list maker for
      * efficiency. Thus we can avoid to peek at the stack whenever the list
      * maker is needed.
      */
     private TokenDelegateListMaker listMaker;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer.
+     * The field {@code localizer} contains the localizer.
      */
     private Localizer localizer;
 
     /**
-     * The field <tt>logger</tt> contains the logger to use.
+     * The field {@code logger} contains the logger to use.
      */
     private Logger logger = null;
 
     /**
-     * The field <tt>charNodeFactory</tt> contains the factory to produce glyph
+     * The field {@code charNodeFactory} contains the factory to produce glyph
      * nodes.
      */
     private NodeFactory nodeFactory = new CachingNodeFactory();
 
     /**
-     * The field <tt>options</tt> contains the context for accessing parameters.
+     * The field {@code options} contains the context for accessing parameters.
      */
     private TypesetterOptions options;
 
     /**
-     * The field <tt>outputRoutine</tt> contains the output routine.
+     * The field {@code outputRoutine} contains the output routine.
      */
     private OutputRoutine outputRoutine = null;
 
     /**
-     * The field <tt>pageBuilder</tt> contains the current page builder.
+     * The field {@code pageBuilder} contains the current page builder.
      */
     private PageBuilder pageBuilder = null;
 
     /**
-     * The field <tt>paragraphBuilder</tt> contains the current paragraph
+     * The field {@code paragraphBuilder} contains the current paragraph
      * builder.
      */
     private ParagraphBuilder paragraphBuilder = null;
 
     /**
-     * The field <tt>saveStack</tt> contains the stack of list makers.
+     * The field {@code saveStack} contains the stack of list makers.
      */
-    private List<ListMaker> saveStack = new ArrayList<ListMaker>();
+    private final List<ListMaker> saveStack = new ArrayList<ListMaker>();
 
     /**
-     * The field <tt>shipoutMark</tt> contains the recorded state of the
-     * ship-out mark. Initially the ship-out mark is <code>false</code>.
+     * The field {@code shipoutMark} contains the recorded state of the
+     * ship-out mark. Initially the ship-out mark is {@code false}.
      */
     private boolean shipoutMark = false;
 
@@ -225,7 +224,7 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @param typesettingContext the typesetting context for the space
      * @param spacefactor the space factor to use for this space or
-     *        <code>null</code> to indicate that the default space factor should
+     *        {@code null} to indicate that the default space factor should
      *        be used.
      * 
      * @throws TypesetterException in case of an error
@@ -275,7 +274,7 @@ public class TypesetterImpl extends ListMakerFactory
 
     /**
      * Clear the internal state about ship-outs. The ship-out mark is reset to
-     * <code>false</code>.
+     * {@code false}.
      * 
      * @see #isShipoutMark()
      * 
@@ -316,10 +315,7 @@ public class TypesetterImpl extends ListMakerFactory
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#cr(org.extex.interpreter.context.Context,
-     *      org.extex.typesetter.tc.TypesettingContext,
+*      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.core.UnicodeChar)
      */
     @Override
@@ -434,7 +430,7 @@ public class TypesetterImpl extends ListMakerFactory
     /**
      * Access the last node on the list.
      * 
-     * @return the last node in the current list or <code>null</code> if the
+     * @return the last node in the current list or {@code null} if the
      *         list is empty
      * 
      * @see org.extex.typesetter.ListMaker#getLastNode()
@@ -448,7 +444,7 @@ public class TypesetterImpl extends ListMakerFactory
     /**
      * Getter for the current list maker.
      * 
-     * @return the top list maker or <code>null</code> if the stack is empty
+     * @return the top list maker or {@code null} if the stack is empty
      * 
      * @see org.extex.typesetter.Typesetter#getListMaker()
      */
@@ -555,12 +551,7 @@ public class TypesetterImpl extends ListMakerFactory
         return this.listMaker.getSpacefactor();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.Typesetter#isShipoutMark()
-     */
-    @Override
+@Override
     public boolean isShipoutMark() {
 
         return shipoutMark;
@@ -577,10 +568,7 @@ public class TypesetterImpl extends ListMakerFactory
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#letter(org.extex.core.UnicodeChar,
-     *      org.extex.typesetter.tc.TypesettingContext,
+*      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.core.Locator)
      */
@@ -593,10 +581,7 @@ public class TypesetterImpl extends ListMakerFactory
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#mathShift(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
+*      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
     @Override
@@ -671,10 +656,7 @@ public class TypesetterImpl extends ListMakerFactory
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.Typesetter#pushListMaker(org.extex.typesetter.ListMakerType,
-     *      org.extex.core.Locator)
+*      org.extex.core.Locator)
      */
     @Override
     public ListMaker pushListMaker(ListMakerType type, Locator locator)
@@ -714,12 +696,7 @@ public class TypesetterImpl extends ListMakerFactory
         listMaker.rightBrace();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.Typesetter#setBackend(org.extex.backend.BackendDriver)
-     */
-    @Override
+@Override
     public void setBackend(BackendDriver driver) {
 
         backend = driver;
@@ -852,23 +829,13 @@ public class TypesetterImpl extends ListMakerFactory
         shipoutMark = true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#showlist(StringBuilder, long, long)
-     */
-    @Override
+@Override
     public void showlist(StringBuilder sb, long depth, long breadth) {
 
         listMaker.showlist(sb, depth, breadth);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.Typesetter#showlists(StringBuilder, long, long)
-     */
-    @Override
+@Override
     public void showlists(StringBuilder sb, long depth, long breadth) {
 
         localizer = LocalizerFactory.getLocalizer(getClass());
@@ -888,10 +855,7 @@ public class TypesetterImpl extends ListMakerFactory
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#subscriptMark(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
     @Override
@@ -904,10 +868,7 @@ public class TypesetterImpl extends ListMakerFactory
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#superscriptMark(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
     @Override
@@ -920,10 +881,7 @@ public class TypesetterImpl extends ListMakerFactory
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#tab(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
+*      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
     @Override
@@ -933,12 +891,7 @@ public class TypesetterImpl extends ListMakerFactory
         listMaker.tab(context, source, t);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return "stackSize = " + saveStack.size() + "\n" + listMaker.toString();

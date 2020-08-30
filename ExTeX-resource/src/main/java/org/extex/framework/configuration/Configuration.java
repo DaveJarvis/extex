@@ -58,8 +58,7 @@ import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
  * </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface Configuration extends Iterable<Configuration> {
 
     /**
@@ -79,23 +78,23 @@ public interface Configuration extends Iterable<Configuration> {
      *   &lt;/cfg&gt;
      * </pre>
      * <p>
-     * Then <tt>getConfig("abc")</tt> returns a new XMLConfig rooted at abc.
+     * Then {@code getConfig("abc")} returns a new XMLConfig rooted at abc.
      * </p>
      * <p>
      * If there are more than one tags with the same name then the first one is
      * used.
      * </p>
      * <p>
-     * If there are no tags with the given name then <code>null</code> is
+     * If there are no tags with the given name then {@code null} is
      * returned.
      * </p>
      * 
      * @param key the tag name of the sub-configuration
      * 
-     * @return the sub-configuration or <code>null</code> if none is found
+     * @return the sub-configuration or {@code null} if none is found
      * 
      * @throws ConfigurationInvalidResourceException in case that the given
-     *         resource name is <code>null</code> or empty
+     *         resource name is {@code null} or empty
      * @throws ConfigurationNotFoundException in case that the named path does
      *         not lead to a resource
      * @throws ConfigurationSyntaxException in case that the resource contains
@@ -129,7 +128,7 @@ public interface Configuration extends Iterable<Configuration> {
      *   &lt;/cfg&gt;
      * </pre>
      * <p>
-     * Then <tt>getConfig("abc","two")</tt> returns a new XMLConfig rooted at
+     * Then {@code getConfig("abc","two")} returns a new XMLConfig rooted at
      * the abc with the name attribute "two".
      * </p>
      * <p>
@@ -137,7 +136,7 @@ public interface Configuration extends Iterable<Configuration> {
      * used.
      * </p>
      * <p>
-     * If there are no tags with the given name then <code>null</code> is
+     * If there are no tags with the given name then {@code null} is
      * returned.
      * </p>
      * 
@@ -156,7 +155,7 @@ public interface Configuration extends Iterable<Configuration> {
      * 
      * @param name the tag name of the attribute
      * 
-     * @return the value of the attribute or <code>null</code> if such an
+     * @return the value of the attribute or {@code null} if such an
      *         attribute is not present
      */
     String getAttribute(String name);
@@ -178,7 +177,7 @@ public interface Configuration extends Iterable<Configuration> {
      *   &lt;/cfg&gt;
      * </pre>
      * <p>
-     * Then <tt>getConfig("abc")</tt> returns a new XMLConfig rooted at abc.
+     * Then {@code getConfig("abc")} returns a new XMLConfig rooted at abc.
      * </p>
      * <p>
      * If there are more than one tags with the same name then the first one is
@@ -192,7 +191,7 @@ public interface Configuration extends Iterable<Configuration> {
      * 
      * @return the sub-configuration
      * 
-     * @throws ConfigurationException in case of other errors. Especially <br />
+     * @throws ConfigurationException in case of other errors. Especially
      *         ConfigurationNotFoundException in case that the given name does
      *         not correspond to one of the tags in the current configuration
      */
@@ -218,8 +217,8 @@ public interface Configuration extends Iterable<Configuration> {
      *   &lt;/cfg&gt;
      * </pre>
      * <p>
-     * Then <tt>getConfig("abc","two")</tt> returns a new Configuration rooted
-     * at the <tt>abc</tt> with the name attribute <tt>"two"</tt>.
+     * Then {@code getConfig("abc","two")} returns a new Configuration rooted
+     * at the {@code abc} with the name attribute {@code "two"}.
      * </p>
      * <p>
      * If there are more than one tags with the same name then the first one is
@@ -234,7 +233,7 @@ public interface Configuration extends Iterable<Configuration> {
      * 
      * @return the sub-configuration
      * 
-     * @throws ConfigurationException in case of other errors. Especially <br/>
+     * @throws ConfigurationException in case of other errors. Especially
      *         ConfigurationNotFoundException in case that the given name does
      *         not correspond to one of the tags in the current configuration
      */
@@ -267,12 +266,12 @@ public interface Configuration extends Iterable<Configuration> {
      *   &lt;/cfg&gt;
      * </pre>
      * <p>
-     * Then <tt>getValue("two")</tt> returns the String "the second value".
+     * Then {@code getValue("two")} returns the String "the second value".
      * </p>
      * 
      * @param key the name of the desired value
      * 
-     * @return the value of key or <code>null</code>
+     * @return the value of key or {@code null}
      * 
      * @throws ConfigurationException in case that something went wrong
      */
@@ -296,11 +295,11 @@ public interface Configuration extends Iterable<Configuration> {
      * Get the list of all values with the given tag name in the current
      * configuration and append them to a given String List.
      * 
-     * @param key the name of the tags. A value of <code>null</code> is legal. I
+     * @param key the name of the tags. A value of {@code null} is legal. I
      *        this case nothing is appended.
      * @param list the list to append the values to
      * 
-     * @throws IllegalArgumentException in case that list is <code>null</code>
+     * @throws IllegalArgumentException in case that list is {@code null}
      */
     void getValues(List<String> list, String key)
             throws IllegalArgumentException;

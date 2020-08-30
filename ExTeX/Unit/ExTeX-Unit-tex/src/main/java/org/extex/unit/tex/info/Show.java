@@ -19,8 +19,6 @@
 
 package org.extex.unit.tex.info;
 
-import java.util.logging.Logger;
-
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
@@ -41,12 +39,14 @@ import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
+import java.util.logging.Logger;
+
 /**
- * This class provides an implementation for the primitive <code>\show</code>.
+ * This class provides an implementation for the primitive {@code \show}.
  * 
- * <doc name="show"> <h3>The Primitive <tt>\show</tt></h3>
+ * <p>The Primitive {@code \show}</p>
  * <p>
- * The primitive <tt>\show</tt> consumes the following token and prints the
+ * The primitive {@code \show} consumes the following token and prints the
  * definition of the token to the output stream an into the log file.
  * </p>
  * <ul>
@@ -54,64 +54,61 @@ import org.extex.typesetter.exception.TypesetterException;
  * undefined then it is reported as <i>undefined</i>.</li>
  * <li>If the token is a control sequence or active character and it is a
  * primitive then it is reported with the original name of the primitive. This
- * applies even if is redefined with <tt>\let</tt> to another name.</li>
+ * applies even if is redefined with {@code \let} to another name.</li>
  * <li>If the token is a control sequence or active character and it is a macro
  * then it is reported with the pattern and expansion text.</li>
  * <li>Otherwise the long descriptive form of the token is reported.</li>
  * </ul>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;show&rang;
- *       &rarr; <tt>\show</tt> {@linkplain
- *           org.extex.interpreter.TokenSource#getToken(Context)
- *           &lang;token&rang;} </pre>
+ *       &rarr; {@code \show} &lang;token&rang;
+ * </pre>
  * 
- * <h4>Examples</h4> Examples:
- * 
+ * <p>Examples</p>
+ *
  * <pre class="TeXSample">
  *    \show\abc
- *    > \abc=undefined
+ *    &gt; \abc=undefined
  *  </pre>
  * 
  * <pre class="TeXSample">
  *    \show \def
- *    > \def=\def.
+ *    &gt; \def=\def.
  *  </pre>
  * 
  * <pre class="TeXSample">
  *    \let\xxx=\def\show \xxx
- *    > \xxx=\def.
+ *    &gt; \xxx=\def.
  *  </pre>
  * 
  * <pre class="TeXSample">
  *    \def\m{abc}\show \m
- *    > \m=macro:
- *    ->abc.
+ *    &gt; \m=macro:
+ *    -&gt;abc.
  *  </pre>
  * 
  * <pre class="TeXSample">
  *    \show a
- *    > the letter a.
+ *    &gt; the letter a.
  *  </pre>
- * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Show extends AbstractCode implements LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>logger</tt> contains the target channel for the message.
+     * The field {@code logger} contains the target channel for the message.
      */
-    private transient Logger logger = null;
+    private transient Logger logger;
 
     /**
      * Creates a new object.
@@ -137,10 +134,7 @@ public class Show extends AbstractCode implements LogEnabled {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

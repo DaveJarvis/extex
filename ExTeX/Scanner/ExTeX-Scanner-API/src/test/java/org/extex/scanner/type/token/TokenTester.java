@@ -30,25 +30,24 @@ import static org.junit.Assert.*;
  * Test class for ActiveCharacterToken.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 @SuppressWarnings("unused")
 public abstract class TokenTester {
 
   /**
-   * The constant <tt>ACTIVE_TOKEN</tt> contains an active character token.
+   * The constant {@code ACTIVE_TOKEN} contains an active character token.
    */
   public static final ActiveCharacterToken ACTIVE_TOKEN =
       new ActiveCharacterToken( UnicodeChar.get( 'x' ),
                                 Namespace.DEFAULT_NAMESPACE );
 
   /**
-   * The constant <tt>CR_TOKEN</tt> contains an cr token.
+   * The constant {@code CR_TOKEN} contains an cr token.
    */
   public static final CrToken CR_TOKEN = new CrToken( UnicodeChar.get( 'x' ) );
 
   /**
-   * The constant <tt>CONTROL_SEQUENCE_TOKEN</tt> contains a control sequence
+   * The constant {@code CONTROL_SEQUENCE_TOKEN} contains a control sequence
    * token.
    */
   public static final ControlSequenceToken CONTROL_SEQUENCE_TOKEN =
@@ -56,66 +55,66 @@ public abstract class TokenTester {
                                 Namespace.DEFAULT_NAMESPACE );
 
   /**
-   * The constant <tt>LEFT_BRACE_TOKEN</tt> contains a left brace token.
+   * The constant {@code LEFT_BRACE_TOKEN} contains a left brace token.
    */
   public static final LeftBraceToken LEFT_BRACE_TOKEN = new LeftBraceToken(
       UnicodeChar.get( 'x' ) );
 
   /**
-   * The constant <tt>LETTER_TOKEN</tt> contains a letter token.
+   * The constant {@code LETTER_TOKEN} contains a letter token.
    */
   public static final LetterToken LETTER_TOKEN = new LetterToken(
       UnicodeChar.get( 'x' ) );
 
   /**
-   * The constant <tt>MACRO_PARAM_TOKEN</tt> contains a macro param token.
+   * The constant {@code MACRO_PARAM_TOKEN} contains a macro param token.
    */
   public static final MacroParamToken MACRO_PARAM_TOKEN =
       new MacroParamToken( UnicodeChar.get( 'x' ) );
 
   /**
-   * The constant <tt>MATH_SHIF_TOKEN</tt> contains a math shift token.
+   * The constant {@code MATH_SHIF_TOKEN} contains a math shift token.
    */
   public static final MathShiftToken MATH_SHIF_TOKEN = new MathShiftToken(
       UnicodeChar.get( 'x' ) );
 
   /**
-   * The constant <tt>OTHER_TOKEN</tt> contains an other token.
+   * The constant {@code OTHER_TOKEN} contains an other token.
    */
   public static final OtherToken OTHER_TOKEN = new OtherToken(
       UnicodeChar.get( 'x' ) );
 
   /**
-   * The constant <tt>RIGHT_BRACE_TOKEN</tt> contains a right brace token.
+   * The constant {@code RIGHT_BRACE_TOKEN} contains a right brace token.
    */
   public static final RightBraceToken RIGHT_BRACE_TOKEN =
       new RightBraceToken( UnicodeChar.get( 'x' ) );
 
   /**
-   * The constant <tt>SPACE_TOKEN</tt> contains a space token.
+   * The constant {@code SPACE_TOKEN} contains a space token.
    */
   public static final SpaceToken SPACE_TOKEN = new SpaceToken( " " );
 
   /**
-   * The constant <tt>SUB_MARK_TOKEN</tt> contains a sub mark token.
+   * The constant {@code SUB_MARK_TOKEN} contains a sub mark token.
    */
   public static final SubMarkToken SUB_MARK_TOKEN = new SubMarkToken(
       UnicodeChar.get( 'x' ) );
 
   /**
-   * The constant <tt>SUP_MARK_TOKEN</tt> contains a super mark token.
+   * The constant {@code SUP_MARK_TOKEN} contains a super mark token.
    */
   public static final SupMarkToken SUP_MARK_TOKEN = new SupMarkToken(
       UnicodeChar.get( 'x' ) );
 
   /**
-   * The constant <tt>TAB_MARK_TOKEN</tt> contains a tab mark token.
+   * The constant {@code TAB_MARK_TOKEN} contains a tab mark token.
    */
   public static final TabMarkToken TAB_MARK_TOKEN = new TabMarkToken(
       UnicodeChar.get( 'x' ) );
 
   /**
-   * The constant <tt>TV</tt> contains the token visitor returning the
+   * The constant {@code TV} contains the token visitor returning the
    * catcode.
    */
   private static final TokenVisitor<Catcode, Object> TV =
@@ -202,22 +201,22 @@ public abstract class TokenTester {
       };
 
   /**
-   * The field <tt>catcode</tt> contains the expected result for getCatcode().
+   * The field {@code catcode} contains the expected result for getCatcode().
    */
   private Catcode catcode;
 
   /**
-   * The field <tt>str</tt> contains the expected result for toString().
+   * The field {@code str} contains the expected result for toString().
    */
   private String str = "";
 
   /**
-   * The field <tt>text</tt> contains the expected result for toText().
+   * The field {@code text} contains the expected result for toText().
    */
   private String text = "";
 
   /**
-   * The field <tt>token</tt> contains the default token to perform the tests
+   * The field {@code token} contains the default token to perform the tests
    * on.
    */
   private Token token;
@@ -433,7 +432,7 @@ public abstract class TokenTester {
   }
 
   /**
-   * <testcase> Test that the corrct visit method is invoked. </testcase>
+   *  Test that the corrct visit method is invoked.
    *
    * @ in case of an error
    */

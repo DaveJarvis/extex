@@ -25,21 +25,20 @@ import java.io.OutputStream;
 import org.extex.dviware.Dvi;
 
 /**
- * This class represents the DVI instruction <tt>bop</tt>.
+ * This class represents the DVI instruction {@code bop}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DviBop extends AbstractDviCode {
 
     /**
-     * The field <tt>lastBop</tt> contains the index of the last bop in the
+     * The field {@code lastBop} contains the index of the last bop in the
      * stream or -1.
      */
     private int lastBop;
 
     /**
-     * The field <tt>pageNo</tt> contains the array of the page number
+     * The field {@code pageNo} contains the array of the page number
      * indicators.
      */
     private int[] pageNo;

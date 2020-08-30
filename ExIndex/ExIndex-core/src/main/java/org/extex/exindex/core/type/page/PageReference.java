@@ -23,8 +23,7 @@ package org.extex.exindex.core.type.page;
  * This interface describes a page reference.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface PageReference {
 
     /**

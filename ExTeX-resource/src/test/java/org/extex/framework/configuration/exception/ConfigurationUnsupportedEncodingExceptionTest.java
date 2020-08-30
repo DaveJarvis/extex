@@ -31,12 +31,11 @@ import org.junit.Test;
  * This is a test suite for {@link ConfigurationUnsupportedEncodingException}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ConfigurationUnsupportedEncodingExceptionTest {
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetLocalizedMessage() {
@@ -48,7 +47,7 @@ public class ConfigurationUnsupportedEncodingExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetLocalizer() {
@@ -60,7 +59,7 @@ public class ConfigurationUnsupportedEncodingExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetMessage1() {
@@ -72,7 +71,7 @@ public class ConfigurationUnsupportedEncodingExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetMessage2() {
@@ -84,7 +83,7 @@ public class ConfigurationUnsupportedEncodingExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetSource() {
@@ -96,7 +95,7 @@ public class ConfigurationUnsupportedEncodingExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetText0() {
@@ -108,7 +107,7 @@ public class ConfigurationUnsupportedEncodingExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetText1() {

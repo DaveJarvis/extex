@@ -40,8 +40,7 @@ import org.junit.Test;
  * This is a test suite for the {@link RbcSorter}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SorterTest {
 
     /**
@@ -50,16 +49,11 @@ public class SorterTest {
     private static class DummyConfig implements Configuration {
 
         /**
-         * The field <tt>order</tt> contains the order value.
+         * The field {@code order} contains the order value.
          */
         private String order = null;
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
-         */
-        public Configuration findConfiguration(String key)
+    public Configuration findConfiguration(String key)
                 throws ConfigurationInvalidResourceException,
                     ConfigurationNotFoundException,
                     ConfigurationSyntaxException,
@@ -70,10 +64,7 @@ public class SorterTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public Configuration findConfiguration(String key, String attribute)
                 throws ConfigurationException {
@@ -82,32 +73,19 @@ public class SorterTest {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getAttribute(java.lang.String)
-         */
-        public String getAttribute(String name) throws ConfigurationException {
+    public String getAttribute(String name) throws ConfigurationException {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String)
-         */
-        public Configuration getConfiguration(String key)
+    public Configuration getConfiguration(String key)
                 throws ConfigurationException {
 
             return null;
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public Configuration getConfiguration(String key, String attribute)
                 throws ConfigurationException {
@@ -115,31 +93,18 @@ public class SorterTest {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValue()
-         */
-        public String getValue() throws ConfigurationException {
+    public String getValue() throws ConfigurationException {
+
+            return order;
+        }
+
+    public String getValue(String key) throws ConfigurationException {
 
             return order;
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValue(java.lang.String)
-         */
-        public String getValue(String key) throws ConfigurationException {
-
-            return order;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValueAsInteger(java.lang.String,
-         *      int)
+    *      int)
          */
         public int getValueAsInteger(String key, int defaultValue)
                 throws ConfigurationException {
@@ -148,54 +113,31 @@ public class SorterTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValues(java.util.List,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public void getValues(List<String> list, String key) {
 
             // getValues unimplemented
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
-         */
-        public List<String> getValues(String key) throws ConfigurationException {
+    public List<String> getValues(String key) throws ConfigurationException {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#iterator()
-         */
-        public Iterator<Configuration> iterator() throws ConfigurationException {
+    public Iterator<Configuration> iterator() throws ConfigurationException {
 
             // iterator unimplemented
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#iterator(java.lang.String)
-         */
-        public Iterator<Configuration> iterator(String key)
+    public Iterator<Configuration> iterator(String key)
                 throws ConfigurationException {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(org.extex.framework.configuration.ConfigurationLoader)
-         */
-        public void setConfigurationLoader(ConfigurationLoader loader) {
+    public void setConfigurationLoader(ConfigurationLoader loader) {
 
             // setConfigurationLoader unimplemented
         }
@@ -213,22 +155,22 @@ public class SorterTest {
     }
 
     /**
-     * The field <tt>s</tt> contains the instance to be tested.
+     * The field {@code s} contains the instance to be tested.
      */
     private final RbcSorter s = new RbcSorter();
 
     /**
-     * The field <tt>a</tt> contains an entry.
+     * The field {@code a} contains an entry.
      */
     private Entry a;
 
     /**
-     * The field <tt>b</tt> contains another entry.
+     * The field {@code b} contains another entry.
      */
     private Entry b;
 
     /**
-     * The field <tt>c</tt> contains yet another entry.
+     * The field {@code c} contains yet another entry.
      */
     private Entry c;
 
@@ -255,7 +197,7 @@ public class SorterTest {
     }
 
     /**
-     * <testcase> The empty list is sorted to itself. </testcase>
+     *  The empty list is sorted to itself. 
      * 
      * @throws Exception in case of an error
      */
@@ -268,7 +210,7 @@ public class SorterTest {
     }
 
     /**
-     * <testcase> A one-element list is sorted to itself. </testcase>
+     *  A one-element list is sorted to itself. 
      * 
      * @throws Exception in case of an error
      */
@@ -283,7 +225,7 @@ public class SorterTest {
     }
 
     /**
-     * <testcase> A sorted two-element list is sorted to itself. </testcase>
+     *  A sorted two-element list is sorted to itself. 
      * 
      * @throws Exception in case of an error
      */
@@ -300,7 +242,7 @@ public class SorterTest {
     }
 
     /**
-     * <testcase> A unsorted two-element list is reversed. </testcase>
+     *  A unsorted two-element list is reversed. 
      * 
      * @throws Exception in case of an error
      */
@@ -317,7 +259,7 @@ public class SorterTest {
     }
 
     /**
-     * <testcase> A sorted three-element list is sorted to itself. </testcase>
+     *  A sorted three-element list is sorted to itself. 
      * 
      * @throws Exception in case of an error
      */
@@ -336,8 +278,8 @@ public class SorterTest {
     }
 
     /**
-     * <testcase> Identical elements are compared equal when no sort key is set.
-     * </testcase>
+     *  Identical elements are compared equal when no sort key is set.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -348,7 +290,7 @@ public class SorterTest {
     }
 
     /**
-     * <testcase> a < b </testcase>
+     *  a < b 
      * 
      * @throws Exception in case of an error
      */
@@ -359,8 +301,8 @@ public class SorterTest {
     }
 
     /**
-     * <testcase> Identical elements are compared equal when a sort key is set.
-     * </testcase>
+     *  Identical elements are compared equal when a sort key is set.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -372,7 +314,7 @@ public class SorterTest {
     }
 
     /**
-     * <testcase> a[ghi] < b </testcase>
+     *  a[ghi] < b 
      * 
      * @throws Exception in case of an error
      */
@@ -384,7 +326,7 @@ public class SorterTest {
     }
 
     /**
-     * <testcase> b > a[ghi] </testcase>
+     *  b > a[ghi] 
      * 
      * @throws Exception in case of an error
      */
@@ -396,7 +338,7 @@ public class SorterTest {
     }
 
     /**
-     * <testcase> b > a </testcase>
+     *  b > a 
      * 
      * @throws Exception in case of an error
      */
@@ -407,7 +349,7 @@ public class SorterTest {
     }
 
     /**
-     * <testcase> a[ac] > b[aa] </testcase>
+     *  a[ac] > b[aa] 
      * 
      * @throws Exception in case of an error
      */
@@ -420,7 +362,7 @@ public class SorterTest {
     }
 
     /**
-     * <testcase> b[aa] < a[ac] </testcase>
+     *  b[aa] < a[ac] 
      * 
      * @throws Exception in case of an error
      */

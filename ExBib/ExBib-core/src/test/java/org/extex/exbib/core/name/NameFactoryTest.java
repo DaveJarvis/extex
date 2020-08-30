@@ -26,12 +26,11 @@ import org.junit.Test;
  * This is a test suite for the class {@link Name}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NameFactoryTest {
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -44,7 +43,7 @@ public class NameFactoryTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */

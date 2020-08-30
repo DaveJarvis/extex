@@ -24,11 +24,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\over</tt>.
+ * This is a test suite for the primitive {@code \over}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class OverTest extends AbstractMathTester {
 
 
@@ -40,7 +39,7 @@ public class OverTest extends AbstractMathTester {
     /**
      * <testcase primitive="\over">
      *  ...
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -57,7 +56,7 @@ public class OverTest extends AbstractMathTester {
     /**
      * <testcase primitive="\over">
      *  ...
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */

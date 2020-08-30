@@ -34,8 +34,7 @@ import org.extex.scanner.type.token.Token;
  * uninterpreted.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Let implements Macro {
 
     /**
@@ -49,10 +48,7 @@ public class Let implements Macro {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Macro#parse(
-     *      org.extex.scanner.type.token.Token,
+*      org.extex.scanner.type.token.Token,
      *      org.extex.latexParser.impl.Parser)
      */
     public Node parse(Token token, Parser parser) throws ScannerException {

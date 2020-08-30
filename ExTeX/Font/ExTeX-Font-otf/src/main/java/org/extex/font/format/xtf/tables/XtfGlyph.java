@@ -26,8 +26,7 @@ import org.extex.font.format.xtf.tables.TtfTableGLYF.Descript;
  * (see Chap01)
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class XtfGlyph {
 
     /**

@@ -31,20 +31,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <code>sort.key$</code>.
+ * Test suite for {@code sort.key$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SortKeyTest {
 
     /**
-     * The field <tt>entry</tt> contains the entry.
+     * The field {@code entry} contains the entry.
      */
     private Entry entry;
 
     /**
-     * The field <tt>processor</tt> contains the processor.
+     * The field {@code processor} contains the processor.
      */
     private BstProcessor processor = null;
 
@@ -73,9 +72,8 @@ public class SortKeyTest {
     }
 
     /**
-     * <testcase> sort.key$ is empty if the sort key from the current entry is
-     * not set. </testcase>
-     * 
+     * sort.key$ is empty if the sort key from the current entry is not set
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -87,7 +85,7 @@ public class SortKeyTest {
     }
 
     /**
-     * <testcase> getter and setter coincide. </testcase>
+     *  getter and setter coincide.
      * 
      * @throws Exception in case of an error
      */
@@ -99,8 +97,8 @@ public class SortKeyTest {
     }
 
     /**
-     * <testcase> sort.key$ extracts the sort key from the current entry.
-     * </testcase>
+     *  sort.key$ extracts the sort key from the current entry.
+     *
      * 
      * @throws Exception in case of an error
      */

@@ -27,19 +27,15 @@ import org.extex.builder.latex.artifact.latex.LatexReader;
 import org.extex.builder.latex.artifact.latex.MacroWithArgs;
 
 /**
- * This class implements a handler for <code>\verbatiminput</code> or
- * <code>\lstinputlisting</code>.
+ * This class implements a handler for {@code \verbatiminput} or
+ * {@code \lstinputlisting}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class VerbatimInput extends MacroWithArgs {
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.builder.latex.artifact.latex.MacroWithArgs#expand(org.extex.builder.latex.artifact.latex.LatexReader,
-     *      org.extex.builder.latex.DependencyNet,
+*      org.extex.builder.latex.DependencyNet,
      *      org.extex.builder.latex.artifact.Artifact, java.lang.String,
      *      java.lang.String)
      */

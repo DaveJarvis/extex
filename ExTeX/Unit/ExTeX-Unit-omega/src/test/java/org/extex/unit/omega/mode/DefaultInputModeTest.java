@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\DefaultInputMode</tt>.
+ * This is a test suite for the primitive {@code \DefaultInputMode}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DefaultInputModeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
@@ -50,7 +49,7 @@ public class DefaultInputModeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\DefaultInputMode"> Test case checking that
-     * <tt>\DefaultInputMode</tt> needs an argument. </testcase>
+     * {@code \DefaultInputMode} needs an argument.
      * 
      * @throws Exception in case of an error
      */
@@ -65,8 +64,8 @@ public class DefaultInputModeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\DefaultInputMode"> Test case checking that
-     * <tt>\DefaultInputMode</tt> needs a known input mode as argument.
-     * </testcase>
+     * {@code \DefaultInputMode} needs a known input mode as argument.
+     *
      * 
      * @throws Exception in case of an error
      */

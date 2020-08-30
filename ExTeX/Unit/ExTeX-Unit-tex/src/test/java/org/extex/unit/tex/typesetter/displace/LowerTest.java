@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\lower</tt>.
+ * This is a test suite for the primitive {@code \lower}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class LowerTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -48,8 +47,8 @@ public class LowerTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\lower"> Test case checking that <tt>\lower</tt>
-     * on a void box works. </testcase>
+     * <testcase primitive="\lower"> Test case checking that {@code \lower}
+     * on a void box works.
      * 
      * @throws Exception in case of an error
      */

@@ -32,8 +32,7 @@ import org.extex.resource.ResourceFinder;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 5563 $
- */
+*/
 public interface CoreFontFactory extends ResourceFinder {
 
     /**
@@ -101,10 +100,10 @@ public interface CoreFontFactory extends ResourceFinder {
     /**
      * Return a new instance.
      * 
-     * If the name is empty or null, then the <code>NullFont</code> is
+     * If the name is empty or null, then the {@code NullFont} is
      * returned.
      * 
-     * If no font is found, then <code>null</code> is returned.
+     * If no font is found, then {@code null} is returned.
      * 
      * @param key the fount key
      * 

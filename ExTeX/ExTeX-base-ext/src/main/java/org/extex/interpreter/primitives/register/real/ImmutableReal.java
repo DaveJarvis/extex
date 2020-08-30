@@ -23,12 +23,11 @@ package org.extex.interpreter.primitives.register.real;
  * An immutable Real.
  * 
  * @author <a href="mailto:m.g.sn@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class ImmutableReal extends Real {
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 1L;
 
@@ -52,22 +51,14 @@ public class ImmutableReal extends Real {
         super(l);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.primitives.register.real.Real#add(double)
-     */
-    @Override
+@Override
     public void add(double val) {
 
         throw new RuntimeException("Unable to set an immutable object");
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.primitives.register.real.Real#add(
-     *      org.extex.interpreter.primitives.register.real.Real)
+*      org.extex.interpreter.primitives.register.real.Real)
      */
     @Override
     public void add(Real real) {
@@ -75,22 +66,14 @@ public class ImmutableReal extends Real {
         throw new RuntimeException("Unable to set an immutable object");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.primitives.register.real.Real#divide(double)
-     */
-    @Override
+@Override
     public void divide(double val) {
 
         throw new RuntimeException("Unable to set an immutable object");
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.primitives.register.real.Real#divide(
-     *      org.extex.interpreter.primitives.register.real.Real)
+*      org.extex.interpreter.primitives.register.real.Real)
      */
     @Override
     public void divide(Real val) {
@@ -98,22 +81,14 @@ public class ImmutableReal extends Real {
         throw new RuntimeException("Unable to set an immutable object");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.primitives.register.real.Real#multiply(double)
-     */
-    @Override
+@Override
     public void multiply(double val) {
 
         throw new RuntimeException("Unable to set an immutable object");
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.primitives.register.real.Real#multiply(
-     *      org.extex.interpreter.primitives.register.real.Real)
+*      org.extex.interpreter.primitives.register.real.Real)
      */
     @Override
     public void multiply(Real val) {

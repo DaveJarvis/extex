@@ -17,7 +17,7 @@
  */
 /**
  * 
- *   This package contains definition and implementations for alphabets.
+ *   Contains definition and implementations for alphabets.
  * 
  *
  */

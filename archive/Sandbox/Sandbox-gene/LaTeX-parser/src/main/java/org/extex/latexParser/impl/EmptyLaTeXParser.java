@@ -72,8 +72,7 @@ import org.extex.scanner.type.token.TokenVisitor;
  * active characters are known.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
 
     /**
@@ -82,10 +81,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     private class ToVi implements TokenVisitor<Node, TokenStream> {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitActive(org.extex.scanner.type.token.ActiveCharacterToken,
-         *      java.lang.Object)
+    *      java.lang.Object)
          */
         public Node visitActive(ActiveCharacterToken token, TokenStream stream)
                 throws Exception {
@@ -98,10 +94,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitCr(org.extex.scanner.type.token.CrToken,
-         *      java.lang.Object)
+    *      java.lang.Object)
          */
         public Node visitCr(CrToken token, TokenStream stream) throws Exception {
 
@@ -109,10 +102,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitEscape(org.extex.scanner.type.token.ControlSequenceToken,
-         *      java.lang.Object)
+    *      java.lang.Object)
          */
         public Node visitEscape(ControlSequenceToken token, TokenStream stream)
                 throws Exception {
@@ -126,10 +116,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitLeftBrace(org.extex.scanner.type.token.LeftBraceToken,
-         *      java.lang.Object)
+    *      java.lang.Object)
          */
         public Node visitLeftBrace(LeftBraceToken token, TokenStream stream)
                 throws Exception {
@@ -138,10 +125,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitLetter(org.extex.scanner.type.token.LetterToken,
-         *      java.lang.Object)
+    *      java.lang.Object)
          */
         public Node visitLetter(LetterToken token, TokenStream stream)
                 throws Exception {
@@ -150,10 +134,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitMacroParam(org.extex.scanner.type.token.MacroParamToken,
-         *      java.lang.Object)
+    *      java.lang.Object)
          */
         public Node visitMacroParam(MacroParamToken token, TokenStream stream)
                 throws Exception {
@@ -162,10 +143,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitMathShift(org.extex.scanner.type.token.MathShiftToken,
-         *      java.lang.Object)
+    *      java.lang.Object)
          */
         public Node visitMathShift(MathShiftToken start, TokenStream stream)
                 throws Exception {
@@ -211,10 +189,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitOther(org.extex.scanner.type.token.OtherToken,
-         *      java.lang.Object)
+    *      java.lang.Object)
          */
         public Node visitOther(OtherToken token, TokenStream stream)
                 throws Exception {
@@ -223,10 +198,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitRightBrace(org.extex.scanner.type.token.RightBraceToken,
-         *      java.lang.Object)
+    *      java.lang.Object)
          */
         public Node visitRightBrace(RightBraceToken token, TokenStream stream)
                 throws Exception {
@@ -236,10 +208,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitSpace(org.extex.scanner.type.token.SpaceToken,
-         *      java.lang.Object)
+    *      java.lang.Object)
          */
         public Node visitSpace(SpaceToken token, TokenStream stream)
                 throws Exception {
@@ -248,10 +217,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitSubMark(org.extex.scanner.type.token.SubMarkToken,
-         *      java.lang.Object)
+    *      java.lang.Object)
          */
         public Node visitSubMark(SubMarkToken token, TokenStream stream)
                 throws SyntaxError {
@@ -265,10 +231,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitSupMark(org.extex.scanner.type.token.SupMarkToken,
-         *      java.lang.Object)
+    *      java.lang.Object)
          */
         public Node visitSupMark(SupMarkToken token, TokenStream stream)
                 throws SyntaxError {
@@ -282,10 +245,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitTabMark(org.extex.scanner.type.token.TabMarkToken,
-         *      java.lang.Object)
+    *      java.lang.Object)
          */
         public Node visitTabMark(TabMarkToken token, TokenStream stream) {
 
@@ -294,12 +254,12 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     }
 
     /**
-     * The field <tt>factory</tt> contains the token factory to use.
+     * The field {@code factory} contains the token factory to use.
      */
     protected static final TokenFactory FACTORY = new TokenFactoryImpl();
 
     /**
-     * The field <tt>tokenizer</tt> contains the tokenizer to use for
+     * The field {@code tokenizer} contains the tokenizer to use for
      * categorizing characters.
      */
     public static final Tokenizer TOKENIZER = new Tokenizer() {
@@ -370,7 +330,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     };
 
     /**
-     * The field <tt>AT_TOKENIZER</tt> contains the tokenizer to use for
+     * The field {@code AT_TOKENIZER} contains the tokenizer to use for
      * categorizing characters -- including the @ character as letter.
      */
     public static final Tokenizer AT_TOKENIZER = new Tokenizer() {
@@ -443,69 +403,66 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     };
 
     /**
-     * The field <tt>active</tt> contains the definition of active characters.
+     * The field {@code active} contains the definition of active characters.
      */
     private Map<UnicodeChar, Macro> active = new HashMap<UnicodeChar, Macro>();
 
     /**
-     * The field <tt>context</tt> contains the context. The context can be used
+     * The field {@code context} contains the context. The context can be used
      * to store arbitrary data
      */
     private Map<String, Object> context = new HashMap<String, Object>();
 
     /**
-     * The field <tt>finder</tt> contains the resource finder.
+     * The field {@code finder} contains the resource finder.
      */
     private ResourceFinder finder;
 
     /**
-     * The field <tt>macros</tt> contains the definition of macros.
+     * The field {@code macros} contains the definition of macros.
      */
     private Map<String, Macro> macros = new HashMap<String, Macro>();
 
     /**
-     * The field <tt>parser</tt> contains the reference to the parser used; i.e.
+     * The field {@code parser} contains the reference to the parser used; i.e.
      * it is a self reference.
      */
     private Parser parser;
 
     /**
-     * The field <tt>reader</tt> contains the reader.
+     * The field {@code reader} contains the reader.
      */
     private LineNumberReader reader;
 
     /**
-     * The field <tt>scanner</tt> contains the reference to the scanner.
+     * The field {@code scanner} contains the reference to the scanner.
      */
     private TokenStream scanner;
 
     /**
-     * The field <tt>source</tt> contains the name of the source.
+     * The field {@code source} contains the name of the source.
      */
     private String source;
 
     /**
-     * The field <tt>tokenizer</tt> contains the tokenizer.
+     * The field {@code tokenizer} contains the tokenizer.
      */
     private Tokenizer tokenizer = TOKENIZER;
 
     /**
-     * The field <tt>visitor</tt> contains the token visitor for normal
+     * The field {@code visitor} contains the token visitor for normal
      * processing.
      */
     private final TokenVisitor<Node, TokenStream> visitor = new ToVi();
 
     /**
-     * The field <tt>visitor</tt> contains the token visitor for processing an
+     * The field {@code visitor} contains the token visitor for processing an
      * optional argument.
      */
     private final TokenVisitor<Node, TokenStream> visitorOpt = new ToVi() {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.latexParser.impl.EmptyLaTeXParser.ToVi#visitLetter(org.extex.scanner.type.token.LetterToken,
-         *      org.extex.scanner.api.TokenStream)
+    *      org.extex.scanner.api.TokenStream)
          */
         @Override
         public Node visitLetter(LetterToken token, TokenStream stream)
@@ -516,10 +473,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.latexParser.impl.EmptyLaTeXParser.ToVi#visitOther(org.extex.scanner.type.token.OtherToken,
-         *      org.extex.scanner.api.TokenStream)
+    *      org.extex.scanner.api.TokenStream)
          */
         @Override
         public Node visitOther(OtherToken token, TokenStream stream)
@@ -530,10 +484,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.latexParser.impl.EmptyLaTeXParser.ToVi#visitSpace(org.extex.scanner.type.token.SpaceToken,
-         *      org.extex.scanner.api.TokenStream)
+    *      org.extex.scanner.api.TokenStream)
          */
         @Override
         public Node visitSpace(SpaceToken token, TokenStream stream)
@@ -546,12 +497,12 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     };
 
     /**
-     * The field <tt>groupStack</tt> contains the stack of groups.
+     * The field {@code groupStack} contains the stack of groups.
      */
     private Stack<GroupNode> groupStack = new Stack<GroupNode>();
 
     /**
-     * The field <tt>logger</tt> contains the logger to use.
+     * The field {@code logger} contains the logger to use.
      */
     private Logger logger;
 
@@ -561,12 +512,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         parser = this;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Parser#closeFileStream()
-     */
-    public void closeFileStream() {
+public void closeFileStream() {
 
         scanner.closeFileStream();
     }
@@ -599,42 +545,22 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         macros.put(name, code);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Parser#getContext()
-     */
-    public Map<String, Object> getContext() {
+public Map<String, Object> getContext() {
 
         return context;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Parser#getDefinition(char)
-     */
-    public Macro getDefinition(char c) {
+public Macro getDefinition(char c) {
 
         return active.get(UnicodeChar.get(c));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Parser#getDefinition(java.lang.String)
-     */
-    public Macro getDefinition(String name) {
+public Macro getDefinition(String name) {
 
         return macros.get(name);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Parser#getLineno()
-     */
-    public int getLineno() {
+public int getLineno() {
 
         return reader == null ? -1 : reader.getLineNumber() + 1;
     }
@@ -661,42 +587,22 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         return source;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Parser#getToken()
-     */
-    public Token getToken() throws ScannerException {
+public Token getToken() throws ScannerException {
 
         return scanner.get(FACTORY, tokenizer);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Parser#getTokenFactory()
-     */
-    public TokenFactory getTokenFactory() {
+public TokenFactory getTokenFactory() {
 
         return FACTORY;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Parser#isDefined(char)
-     */
-    public boolean isDefined(char c) {
+public boolean isDefined(char c) {
 
         return active.containsKey(UnicodeChar.get(c));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Parser#isDefined(java.lang.String)
-     */
-    public boolean isDefined(String name) {
+public boolean isDefined(String name) {
 
         return macros.containsKey(name);
     }
@@ -712,10 +618,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
      * \begin[1]=org.extex.latexParser.impl.macro.Begin
      * </pre>
      * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Parser#load(java.lang.String)
-     */
+*/
     public void load(String name) throws IOException, ScannerException {
 
         String resource = "tex/" + name;
@@ -733,10 +636,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Parser#log(java.lang.String,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void log(String format, Object... args) {
 
@@ -745,10 +645,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.api.LaTeXParser#parse(java.io.InputStream,
-     *      java.lang.String)
+*      java.lang.String)
      */
     public NodeList parse(InputStream stream, String source)
             throws SyntaxError,
@@ -782,12 +679,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         return content;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.api.LaTeXParser#parse(java.lang.String)
-     */
-    public NodeList parse(String source) throws IOException, ScannerException {
+public NodeList parse(String source) throws IOException, ScannerException {
 
         InputStream stream = finder.findResource(source, "tex");
         if (stream == null) {
@@ -796,12 +688,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         return parse(stream, source);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Parser#parseGroup()
-     */
-    public GroupNode parseGroup() throws ScannerException {
+public GroupNode parseGroup() throws ScannerException {
 
         Token t = getToken();
         if (t == null) {
@@ -858,12 +745,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         return group;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Parser#parseNode(Token)
-     */
-    public Node parseNode(Token end) throws ScannerException {
+public Node parseNode(Token end) throws ScannerException {
 
         Token t = getToken();
         if (t == null || t.equals(end)) {
@@ -879,10 +761,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Parser#parseOptionalArgument(org.extex.scanner.type.token.Token,
-     *      org.extex.scanner.type.token.OtherToken)
+*      org.extex.scanner.type.token.OtherToken)
      */
     public Node parseOptionalArgument(Token cs, OtherToken token)
             throws ScannerException {
@@ -909,12 +788,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
             "unexpected end of file in optional argument of {0}", cs.toText());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Parser#parseTokenOrGroup()
-     */
-    public Node parseTokenOrGroup() throws ScannerException {
+public Node parseTokenOrGroup() throws ScannerException {
 
         Token t = getToken();
         if (t == null) {
@@ -956,12 +830,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         return list;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Parser#peek()
-     */
-    public GroupNode peek() {
+public GroupNode peek() {
 
         if (groupStack.isEmpty()) {
             return null;
@@ -969,12 +838,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         return groupStack.peek();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Parser#pop()
-     */
-    public GroupNode pop() {
+public GroupNode pop() {
 
         if (groupStack.isEmpty()) {
             return null;
@@ -982,22 +846,12 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         return groupStack.pop();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Parser#push(org.extex.latexParser.impl.node.GroupNode)
-     */
-    public void push(GroupNode content) {
+public void push(GroupNode content) {
 
         groupStack.push(content);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Parser#put(org.extex.scanner.type.token.Token)
-     */
-    public void put(Token t) {
+public void put(Token t) {
 
         scanner.put(t);
     }
@@ -1012,22 +866,12 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         this.logger = logger;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
-     */
-    public void setResourceFinder(ResourceFinder finder) {
+public void setResourceFinder(ResourceFinder finder) {
 
         this.finder = finder;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Parser#setTokenizer(org.extex.scanner.api.Tokenizer)
-     */
-    public Tokenizer setTokenizer(Tokenizer tokenizer) {
+public Tokenizer setTokenizer(Tokenizer tokenizer) {
 
         Tokenizer t = this.tokenizer;
         this.tokenizer = tokenizer;

@@ -26,18 +26,17 @@ import org.extex.core.Switch;
  * {@link org.extex.core.Switch Switch} when an event is received.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4726 $
- */
+*/
 public class SwitchObserver implements AfterGroupObserver {
 
     /**
-     * The field <tt>target</tt> contains the target Switch to set upon the
+     * The field {@code target} contains the target Switch to set upon the
      * event.
      */
     private Switch target;
 
     /**
-     * The field <tt>value</tt> contains the new value for the switch upon the
+     * The field {@code value} contains the new value for the switch upon the
      * event.
      */
     private boolean value;

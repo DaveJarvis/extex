@@ -29,12 +29,11 @@ import org.junit.Test;
  * This is a test suite for the crossref feature.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class CrossrefTest {
 
     /**
-     * The field <tt>DATA_DIR</tt> contains the directory containing database,
+     * The field {@code DATA_DIR} contains the directory containing database,
      * styles and results.
      */
     private static final String DATA_DIR = "src/test/resources/bibtex/base";
@@ -65,7 +64,7 @@ public class CrossrefTest {
     }
 
     /**
-     * <testcase> Apply the abbrev style to xampl. </testcase>
+     *  Apply the abbrev style to xampl. 
      * 
      * @throws Exception in case of an error
      */
@@ -77,7 +76,7 @@ public class CrossrefTest {
     }
 
     /**
-     * <testcase> Apply the alpha style to xampl. </testcase>
+     *  Apply the alpha style to xampl. 
      * 
      * @throws Exception in case of an error
      */
@@ -88,7 +87,7 @@ public class CrossrefTest {
     }
 
     /**
-     * <testcase> Apply the alpha style to xampl. </testcase>
+     *  Apply the alpha style to xampl. 
      * 
      * @throws Exception in case of an error
      */
@@ -99,7 +98,7 @@ public class CrossrefTest {
     }
 
     /**
-     * <testcase> Apply the alpha style to xampl. </testcase>
+     *  Apply the alpha style to xampl. 
      * 
      * @throws Exception in case of an error
      */
@@ -110,7 +109,7 @@ public class CrossrefTest {
     }
 
     /**
-     * <testcase> Apply the plain style to xampl. </testcase>
+     *  Apply the plain style to xampl. 
      * 
      * @throws Exception in case of an error
      */
@@ -122,7 +121,7 @@ public class CrossrefTest {
     }
 
     /**
-     * <testcase> Apply the unsrt style to xampl. </testcase>
+     *  Apply the unsrt style to xampl. 
      * 
      * @throws Exception in case of an error
      */

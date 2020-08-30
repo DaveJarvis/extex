@@ -32,38 +32,37 @@ import org.extex.typesetter.type.node.SkipNode;
 
 /**
  * This class provides an implementation for the primitive
- * <code>&#x5c;unskip</code>.
+ * {@code &#x5c;unskip}.
  * 
- * <doc name="unskip">
- * <h3>The Primitive <tt>&#x5c;unskip</tt></h3>
+ * <p>The Primitive {@code &#x5c;unskip}</p>
  * <p>
- * The primitive <tt>&#x5c;unskip</tt> inspects the current list and removes
+ * The primitive {@code &#x5c;unskip} inspects the current list and removes
  * the last node if it is a glue node. This includes leader nodes. If the
  * current list is empty an error is raised.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;unskip&rang;
- *        &rarr; <tt>&#x5c;unskip</tt>  </pre>
+ *        &rarr; {@code &#x5c;unskip}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    &#x5c;unskip  </pre>
  * 
- * </doc>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Unskip extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -79,10 +78,7 @@ public class Unskip extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

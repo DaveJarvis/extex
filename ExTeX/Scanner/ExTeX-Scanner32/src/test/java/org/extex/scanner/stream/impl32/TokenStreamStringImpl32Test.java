@@ -46,8 +46,7 @@ import org.junit.runner.JUnitCore;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4770 $
- */
+*/
 public class TokenStreamStringImpl32Test {
 
     /**
@@ -56,12 +55,12 @@ public class TokenStreamStringImpl32Test {
     private static final int C32 = 32;
 
     /**
-     * The field <tt>factory</tt> contains the token factory to use.
+     * The field {@code factory} contains the token factory to use.
      */
     private static TokenFactory factory;
 
     /**
-     * The field <tt>tokenizer</tt> contains the tokenizer to use for
+     * The field {@code tokenizer} contains the tokenizer to use for
      * categorizing characters.
      */
     private static Tokenizer tokenizer;
@@ -106,12 +105,7 @@ public class TokenStreamStringImpl32Test {
         factory = new TokenFactoryImpl();
         tokenizer = new Tokenizer() {
 
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.scanner.api.Tokenizer#getCatcode(org.extex.core.UnicodeChar)
-             */
-            @Override
+        @Override
             public Catcode getCatcode(UnicodeChar c) {
 
                 if (c.isLetter()) {
@@ -147,12 +141,7 @@ public class TokenStreamStringImpl32Test {
                 }
             }
 
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.scanner.api.Tokenizer#getNamespace()
-             */
-            @Override
+        @Override
             public String getNamespace() {
 
                 return "";
@@ -162,8 +151,8 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * <testcase> The digit 1 is parsed as other character and nothing more.
-     * </testcase>
+     *  The digit 1 is parsed as other character and nothing more.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -180,9 +169,8 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * <testcase> The digits 1 and 2 are parsed as other character and nothing
-     * more. </testcase>
-     * 
+     * The digits 1 and 2 are parsed as other character and nothing more
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -200,7 +188,7 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     *  TODO
      * 
      * @throws Exception in case of an error
      */
@@ -219,7 +207,7 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     *  TODO
      * 
      * @throws Exception in case of an error
      */
@@ -235,7 +223,7 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     *  TODO
      * 
      * @throws Exception in case of an error
      */
@@ -252,7 +240,7 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     *  TODO
      * 
      * @throws Exception in case of an error
      */
@@ -271,7 +259,7 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     *  TODO
      * 
      * @throws Exception in case of an error
      */
@@ -288,7 +276,7 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     *  TODO
      * 
      * @throws Exception in case of an error
      */
@@ -306,7 +294,7 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     *  TODO
      * 
      * @throws Exception in case of an error
      */
@@ -327,7 +315,7 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     *  TODO
      * 
      * @throws Exception in case of an error
      */
@@ -345,7 +333,7 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     *  TODO
      * 
      * @throws Exception in case of an error
      */
@@ -362,7 +350,7 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * <testcase> The empty string does not contain any characters </testcase>
+     *  The empty string does not contain any characters
      * 
      * @throws Exception in case of an error
      */
@@ -374,7 +362,7 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * <testcase> Test hex notation with '^^^^' </testcase>
+     *  Test hex notation with '^^^^'
      * 
      * @throws Exception in case of an error
      */
@@ -391,7 +379,7 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * <testcase> Test hex notation with '^^^^' </testcase>
+     *  Test hex notation with '^^^^'
      * 
      * @throws Exception in case of an error
      */
@@ -412,7 +400,7 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * <testcase> Test hex notation with '^^^^' </testcase>
+     *  Test hex notation with '^^^^'
      * 
      * @throws Exception in case of an error
      */
@@ -426,7 +414,7 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     *  TODO
      * 
      * @throws Exception in case of an error
      */
@@ -442,7 +430,7 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     *  TODO
      * 
      * @throws Exception in case of an error
      */
@@ -458,7 +446,7 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     *  TODO
      * 
      * @throws Exception in case of an error
      */
@@ -482,8 +470,8 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * <testcase> A single space at the beginning of the processing is skipped
-     * </testcase>
+     *  A single space at the beginning of the processing is skipped
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -495,9 +483,8 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * <testcase> The character period and space in sequence are parsed into
-     * appropriate tokens. </testcase>
-     * 
+     * The character period and space in sequence are parsed into appropriate tokens
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -511,9 +498,9 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * <testcase> The character period and two spaces in sequence are parsed
+     *  The character period and two spaces in sequence are parsed
      * into appropriate tokens. The two spaces are collapsed into one.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -528,7 +515,7 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * <testcase> Two spaces at the beginning are ignored. </testcase>
+     *  Two spaces at the beginning are ignored.
      * 
      * @throws Exception in case of an error
      */
@@ -540,7 +527,7 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * <testcase> Test one Unicode name 'a' </testcase>
+     *  Test one Unicode name 'a'
      * 
      * @throws Exception in case of an error
      */
@@ -557,7 +544,7 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * <testcase> Test one Unicode name 'A' </testcase>
+     *  Test one Unicode name 'A'
      * 
      * @throws Exception in case of an error
      */
@@ -574,7 +561,7 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * <testcase> Test one Unicode name 'error' </testcase>
+     *  Test one Unicode name 'error'
      * 
      * @throws Exception in case of an error
      */

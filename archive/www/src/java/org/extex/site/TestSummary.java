@@ -35,8 +35,7 @@ import org.apache.tools.ant.Task;
  * Extract the test results from a HTML page and produce a HTML fragment.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TestSummary extends Task {
 
     /**
@@ -84,23 +83,23 @@ public class TestSummary extends Task {
     }
 
     /**
-     * The field <tt>ignoreMissing</tt> contains the indicator tom ignore
+     * The field {@code ignoreMissing} contains the indicator tom ignore
      * missing input files.
      */
     private boolean ignoreMissing = false;
 
     /**
-     * The field <tt>verbose</tt> contains the verbosity indicator.
+     * The field {@code verbose} contains the verbosity indicator.
      */
     private boolean verbose = false;
 
     /**
-     * The field <tt>input</tt> contains the input file name.
+     * The field {@code input} contains the input file name.
      */
     private String input = null;
 
     /**
-     * The field <tt>output</tt> contains the output file name.
+     * The field {@code output} contains the output file name.
      */
     private String output = null;
 

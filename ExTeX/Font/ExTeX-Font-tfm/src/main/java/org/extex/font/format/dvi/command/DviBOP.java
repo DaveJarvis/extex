@@ -23,20 +23,19 @@ package org.extex.font.format.dvi.command;
  * DVI bop: Beginning of a page.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class DviBOP extends DviCommand {
 
     /**
      * the c
      */
-    private int[] c;
+    private final int[] c;
 
     /**
      * the p
      */
-    private int p;
+    private final int p;
 
     /**
      * Create a new object.
@@ -63,12 +62,7 @@ public class DviBOP extends DviCommand {
         return c;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviCommand#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "bop";

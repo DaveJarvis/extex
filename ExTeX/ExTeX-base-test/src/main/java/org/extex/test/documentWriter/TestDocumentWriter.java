@@ -59,8 +59,7 @@ import org.extex.typesetter.type.page.Page;
  * and as tool for testing.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4823 $
- */
+*/
 public class TestDocumentWriter
         implements
             DocumentWriter,
@@ -68,14 +67,14 @@ public class TestDocumentWriter
             Configurable {
 
     /**
-     * The field <tt>nodeVisitor</tt> contains the node visitor instance to use
+     * The field {@code nodeVisitor} contains the node visitor instance to use
      * in the form of an anonymous inner class.
      */
-    private NodeVisitor<Object, Object> nodeVisitor =
+    private final NodeVisitor<Object, Object> nodeVisitor =
             new NodeVisitor<Object, Object>() {
 
                 /**
-                 * The field <tt>vmode</tt> contains the indicator that a vlist
+                 * The field {@code vmode} contains the indicator that a vlist
                  * is processed.
                  */
                 private boolean vmode = false;
@@ -403,12 +402,12 @@ public class TestDocumentWriter
             };
 
     /**
-     * The field <tt>out</tt> contains the output stream to use.
+     * The field {@code out} contains the output stream to use.
      */
     private OutputStream out = null;
 
     /**
-     * The field <tt>tree</tt> contains the indicator whether to use the tree
+     * The field {@code tree} contains the indicator whether to use the tree
      * representation.
      */
     private boolean tree = true;
@@ -422,12 +421,7 @@ public class TestDocumentWriter
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#close()
-     */
-    @Override
+@Override
     public void close() throws IOException {
 
         if (out != null) {
@@ -436,44 +430,26 @@ public class TestDocumentWriter
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
-     */
-    @Override
+@Override
     public void configure(Configuration config) {
 
         tree = Boolean.valueOf(config.getAttribute("tree")).booleanValue();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
-     */
-    @Override
+@Override
     public String getExtension() {
 
         return "out";
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(java.io.OutputStream)
-     */
-    @Override
+@Override
     public void setOutputStream(OutputStream outStream) {
 
         out = outStream;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(java.lang.String,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public void setParameter(String name, String value) {
@@ -491,12 +467,7 @@ public class TestDocumentWriter
         this.tree = tree;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#shipout(org.extex.typesetter.type.page.Page)
-     */
-    @Override
+@Override
     public int shipout(Page page) throws DocumentWriterException {
 
         NodeList nodes = page.getNodes();

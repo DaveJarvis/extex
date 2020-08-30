@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\endinput</tt>.
+ * This is a test suite for the primitive {@code \endinput}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class EndinputTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -49,7 +48,7 @@ public class EndinputTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\endinput"> Test case checking that a
-     * <tt>\endinput</tt> works. </testcase>
+     * {@code \endinput} works.
      * 
      * @throws Exception in case of an error
      */

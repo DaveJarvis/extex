@@ -31,71 +31,70 @@ import org.extex.unit.tex.info.util.FixedHelpingException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\errmessage</code>.
+ * {@code \errmessage}.
  * 
- * <doc name="errmessage">
- * <h3>The Primitive <tt>\errmessage</tt></h3>
+ * <p>The Primitive {@code \errmessage}</p>
  * <p>
- * The primitive <tt>\errmessage</tt> takes one argument. This argument is an
+ * The primitive {@code \errmessage} takes one argument. This argument is an
  * expanded list of tokens. Those tokens are presented as error message. The
- * help text is taken from the token register <tt>\errhelp</tt>
+ * help text is taken from the token register {@code \errhelp}
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;errmessage&rang;
- *       &rarr; <tt>\errmessage</tt> {@linkplain
+ *       &rarr; {@code \errmessage} {@linkplain
  *        org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,CodeToken)
  *        &lang;tokens&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \errhelp={Too bad}
  *    \errmessage{I found an error}  </pre>
  * 
- * </doc>
+ *
  * 
- * 
- * <doc name="errhelp" type="register">
- * <h3>The Token Register <tt>\errhelp</tt></h3>
+ * <p>The Token Register {@code \errhelp}</p>
  * <p>
- * The token register <tt>\errhelp</tt> contains the help text for the
- * primitive {@link org.extex.unit.tex.info.Errmessage <tt>\errmessage</tt>}.
+ * The token register {@code \errhelp} contains the help text for the
+ * primitive {@link org.extex.unit.tex.info.Errmessage {@code \errmessage}}.
  * Nevertheless this register can be used in any place where a token register is
  * needed.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;errhelp&rang;
- *      &rarr; <tt>\errhelp</tt> {@linkplain
+ *      &rarr; {@code \errhelp} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *        &lang;tokens&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \errhelp={Too bad}
  *    \errmessage{I found an error}  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Errmessage extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -111,10 +110,7 @@ public class Errmessage extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

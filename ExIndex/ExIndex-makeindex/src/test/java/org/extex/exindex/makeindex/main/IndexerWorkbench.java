@@ -42,8 +42,7 @@ import static org.junit.Assert.assertEquals;
  * This is a test suite for the {@link Indexer}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class IndexerWorkbench {
 
     /**
@@ -66,7 +65,7 @@ public class IndexerWorkbench {
     }
 
     /**
-     * The field <tt>FILES</tt> contains the prerecorded resources.
+     * The field {@code FILES} contains the prerecorded resources.
      */
     private static final Map<String, String> FILES =
         new HashMap<>();
@@ -91,7 +90,7 @@ public class IndexerWorkbench {
      * 
      * @param args the varargs of the values
      * 
-     * @return the List constructed. This is never <code>null</code>
+     * @return the List constructed. This is never {@code null}
      */
     public static List<String> makeList(String... args) {
 
@@ -138,7 +137,7 @@ public class IndexerWorkbench {
     }
 
     /**
-     * <testcase> Check that simple input produces simple output. </testcase>
+     *  Check that simple input produces simple output. 
      * 
      * @throws Exception in case of an error
      */

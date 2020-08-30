@@ -31,12 +31,11 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\errorstopmode</code>. It does simply nothing, but as a side
+ * {@code \errorstopmode}. It does simply nothing, but as a side
  * effect all prefixes are zeroed and the interaction mode is set to
- * <tt>errorstopmode</tt>.
+ * {@code errorstopmode}.
  *
- * <doc name="errorstopmode">
- * <h3>The Primitive <tt>\errorstopmode</tt></h3>
+ * <p>The Primitive {@code \errorstopmode}</p>
  * <p>
  *  This primitive sets the interaction mode to error stop mode.
  *  In error stop mode the processing is interrupted and the error handler is
@@ -47,25 +46,25 @@ import org.extex.typesetter.exception.TypesetterException;
  *  processed globally. This means it does not interact with the group concept.
  * </p>
  *
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;errorstopmode&rang;
- *      &rarr; <tt>\errorstopmode</tt>  </pre>
+ *      &rarr; {@code \errorstopmode}  </pre>
  *
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  *  <pre class="TeXSample">
  *    \errorstopmode  </pre>
  *
- * </doc>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4408 $
- */
+*/
 public class Errorstopmode extends AbstractAssignment {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -80,10 +79,7 @@ public class Errorstopmode extends AbstractAssignment {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

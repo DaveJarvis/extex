@@ -30,8 +30,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * Abstract class for all vf commands.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public abstract class VfCommand implements XMLWriterConvertible {
 
     /**
@@ -90,7 +89,7 @@ public abstract class VfCommand implements XMLWriterConvertible {
      * 
      * @param localizer The localizer for the messages.
      * @param rar the input.
-     * @return Returns the new instance, or <code>null</code>, if no more
+     * @return Returns the new instance, or {@code null}, if no more
      *         data exists.
      * @throws FontException if a font-error occurs
      */
@@ -130,12 +129,12 @@ public abstract class VfCommand implements XMLWriterConvertible {
     /**
      * the command code
      */
-    private int ccode;
+    private final int ccode;
 
     /**
      * The localizer for the messages.
      */
-    private Localizer localizer;
+    private final Localizer localizer;
 
     /**
      * Create a new object. (only from subclasses)

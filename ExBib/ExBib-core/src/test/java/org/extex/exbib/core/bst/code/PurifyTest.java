@@ -34,15 +34,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>purify$</tt>.
+ * Test suite for {@code purify$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class PurifyTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -82,7 +81,7 @@ public class PurifyTest {
     }
 
     /**
-     * <testcase> The empty stack leads to an error. </testcase>
+     *  The empty stack leads to an error. 
      * 
      * @throws Exception in case of an error
      */
@@ -93,7 +92,7 @@ public class PurifyTest {
     }
 
     /**
-     * <testcase> Lowercase letters are left unchanged. </testcase>
+     *  Lowercase letters are left unchanged. 
      * 
      * @throws Exception in case of an error
      */
@@ -104,7 +103,7 @@ public class PurifyTest {
     }
 
     /**
-     * <testcase> \i is translated to i. </testcase>
+     *  \i is translated to i. 
      * 
      * @throws Exception in case of an error
      */
@@ -115,7 +114,7 @@ public class PurifyTest {
     }
 
     /**
-     * <testcase> \j is translated to j. </testcase>
+     *  \j is translated to j. 
      * 
      * @throws Exception in case of an error
      */
@@ -126,7 +125,7 @@ public class PurifyTest {
     }
 
     /**
-     * <testcase> \LaTeX is translated to LaTeX. </testcase>
+     *  \LaTeX is translated to LaTeX. 
      * 
      * @throws Exception in case of an error
      */
@@ -137,7 +136,7 @@ public class PurifyTest {
     }
 
     /**
-     * <testcase> \TeX is translated to TeX. </testcase>
+     *  \TeX is translated to TeX. 
      * 
      * @throws Exception in case of an error
      */
@@ -148,7 +147,7 @@ public class PurifyTest {
     }
 
     /**
-     * <testcase> Uppercase letters are left unchanged. </testcase>
+     *  Uppercase letters are left unchanged. 
      * 
      * @throws Exception in case of an error
      */
@@ -159,7 +158,7 @@ public class PurifyTest {
     }
 
     /**
-     * <testcase> Numbers are left unchanged. </testcase>
+     *  Numbers are left unchanged. 
      * 
      * @throws Exception in case of an error
      */
@@ -170,7 +169,7 @@ public class PurifyTest {
     }
 
     /**
-     * <testcase> Whitespace (including ~) is normalized to spaces. </testcase>
+     *  Whitespace (including ~) is normalized to spaces. 
      * 
      * @throws Exception in case of an error
      */
@@ -181,7 +180,7 @@ public class PurifyTest {
     }
 
     /**
-     * <testcase> Parentheses and brackets are discarded. </testcase>
+     *  Parentheses and brackets are discarded. 
      * 
      * @throws Exception in case of an error
      */
@@ -192,7 +191,7 @@ public class PurifyTest {
     }
 
     /**
-     * <testcase> Braces are discarded. </testcase>
+     *  Braces are discarded. 
      * 
      * @throws Exception in case of an error
      */
@@ -203,7 +202,7 @@ public class PurifyTest {
     }
 
     /**
-     * <testcase> \ae and \AE are translated to ae and AE resp. </testcase>
+     *  \ae and \AE are translated to ae and AE resp. 
      * 
      * @throws Exception in case of an error
      */
@@ -214,7 +213,7 @@ public class PurifyTest {
     }
 
     /**
-     * <testcase> \oe and \OE are translated to oe and OE resp. </testcase>
+     *  \oe and \OE are translated to oe and OE resp. 
      * 
      * @throws Exception in case of an error
      */
@@ -225,7 +224,7 @@ public class PurifyTest {
     }
 
     /**
-     * <testcase> \ss is translated to ss. </testcase>
+     *  \ss is translated to ss. 
      * 
      * @throws Exception in case of an error
      */
@@ -236,7 +235,7 @@ public class PurifyTest {
     }
 
     /**
-     * <testcase> The empty stack leads to an error. </testcase>
+     *  The empty stack leads to an error. 
      * 
      * @throws Exception in case of an error
      */

@@ -30,8 +30,7 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * junks.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public interface ParagraphBuilder {
 
     /**

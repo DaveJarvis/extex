@@ -28,19 +28,18 @@ import org.extex.util.file.random.RandomAccessR;
  * Class for TFM char info.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class OfmCharInfoArray extends TfmCharInfoArray {
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 1L;
 
     /**
      * The char-info-word array.
      */
-    private OfmCharInfoWord[] charinfoword;
+    private final OfmCharInfoWord[] charinfoword;
 
     /**
      * Create a new object.

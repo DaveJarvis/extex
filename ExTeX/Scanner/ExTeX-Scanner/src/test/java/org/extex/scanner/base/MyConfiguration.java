@@ -30,12 +30,11 @@ import org.extex.framework.configuration.ConfigurationLoader;
  * attribute value.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MyConfiguration implements Configuration {
 
     /**
-     * The field <tt>attribute</tt> contains the value for the attribute
+     * The field {@code attribute} contains the value for the attribute
      * getter.
      */
     private String attribute = null;
@@ -55,7 +54,7 @@ public class MyConfiguration implements Configuration {
      * 
      * @param key the tag name of the sub-configuration
      * 
-     * @return the sub-configuration or <code>null</code> if none is found
+     * @return the sub-configuration or {@code null} if none is found
      * 
      * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
      */
@@ -85,7 +84,7 @@ public class MyConfiguration implements Configuration {
      * 
      * @param name the tag name of the attribute
      * 
-     * @return the value of the attribute or <code>null</code> if such an
+     * @return the value of the attribute or {@code null} if such an
      *         attribute is not present
      * 
      * @see org.extex.framework.configuration.Configuration#getAttribute(java.lang.String)
@@ -142,7 +141,7 @@ public class MyConfiguration implements Configuration {
      * 
      * @param key the name of the desired value
      * 
-     * @return the value of key or <code>null</code>
+     * @return the value of key or {@code null}
      * 
      * @see org.extex.framework.configuration.Configuration#getValue(java.lang.String)
      */
@@ -184,10 +183,7 @@ public class MyConfiguration implements Configuration {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configuration#getValues(
-     *      java.util.List, java.lang.String)
+*      java.util.List, java.lang.String)
      */
     public void getValues(List<String> list, String key) {
 
@@ -221,10 +217,7 @@ public class MyConfiguration implements Configuration {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(
-     *      org.extex.framework.configuration.ConfigurationLoader)
+*      org.extex.framework.configuration.ConfigurationLoader)
      */
     public void setConfigurationLoader(ConfigurationLoader loader) {
 

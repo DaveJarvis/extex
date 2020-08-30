@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\moveright</tt>.
+ * This is a test suite for the primitive {@code \moveright}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class MoverightTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -49,7 +48,7 @@ public class MoverightTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\moveright"> Test case checking that
-     * <tt>\moveright</tt> on a void box works. </testcase>
+     * {@code \moveright} on a void box works.
      * 
      * @throws Exception in case of an error
      */

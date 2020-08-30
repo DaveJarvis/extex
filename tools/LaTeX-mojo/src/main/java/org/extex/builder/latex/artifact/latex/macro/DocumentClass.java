@@ -28,15 +28,14 @@ import org.extex.builder.latex.artifact.latex.LatexReader;
 import org.extex.builder.latex.artifact.latex.MacroWithArgs;
 
 /**
- * This class implements a handler for <code>\documentclass</code>.
+ * This class implements a handler for {@code \documentclass}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 7699 $
- */
+*/
 public final class DocumentClass extends MacroWithArgs {
 
     /**
-     * The field <tt>CLASSES</tt> contains the list of known classes which do
+     * The field {@code CLASSES} contains the list of known classes which do
      * not lead to a warning.
      */
     private static final String[] CLASSES = new String[]{"ConcProg", // concprog
@@ -230,10 +229,7 @@ public final class DocumentClass extends MacroWithArgs {
     };
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.builder.latex.artifact.latex.MacroWithArgs#expand(org.extex.builder.latex.artifact.latex.LatexReader,
-     *      org.extex.builder.latex.DependencyNet,
+*      org.extex.builder.latex.DependencyNet,
      *      org.extex.builder.latex.artifact.Artifact, java.lang.String,
      *      java.lang.String)
      */

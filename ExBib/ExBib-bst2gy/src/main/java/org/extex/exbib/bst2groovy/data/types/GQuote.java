@@ -24,8 +24,7 @@ import org.extex.exbib.core.bst.token.impl.TQLiteral;
  * This class represents a quoted literal. It is used intermediary only.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class GQuote extends CodeBlock {
 
     /**

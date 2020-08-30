@@ -41,52 +41,51 @@ import org.apache.tools.ant.types.FileSet;
  * </pre>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LatexTask extends Task {
 
     /**
-     * The field <tt>basename</tt> contains the ...
+     * The field {@code basename} contains the ...
      */
     private String basename;
 
     /**
-     * The field <tt>bibtex</tt> contains the ...
+     * The field {@code bibtex} contains the ...
      */
     private String bibtex = "bibtex";
 
     /**
-     * The field <tt>executable</tt> contains the ...
+     * The field {@code executable} contains the ...
      */
     private String executable = "pdflatex";
 
     /**
-     * The field <tt>file</tt> contains the ...
+     * The field {@code file} contains the ...
      */
     private String file = null;
 
     /**
-     * The field <tt>filesets</tt> contains the ...
+     * The field {@code filesets} contains the ...
      */
     private List<FileSet> filesets = new ArrayList<FileSet>();
 
     /**
-     * The field <tt>keepAux</tt> contains the ...
+     * The field {@code keepAux} contains the ...
      */
     private boolean keepAux = true;
 
     /**
-     * The field <tt>makeindex</tt> contains the ...
+     * The field {@code makeindex} contains the ...
      */
     private String makeindex = "makeindex";
 
     /**
-     * The field <tt>target</tt> contains the ...
+     * The field {@code target} contains the ...
      */
     private String target = null;
 
     /**
-     * The field <tt>visitor</tt> contains the ...
+     * The field {@code visitor} contains the ...
      */
     private AuxVisitor visitor = new AuxVisitor() {
 
@@ -246,7 +245,7 @@ public class LatexTask extends Task {
      *
      * @param f the file to check
      *
-     * @return <code>true</code> iff ...
+     * @return {@code true} iff ...
      */
     private boolean upToDate(File f) {
 

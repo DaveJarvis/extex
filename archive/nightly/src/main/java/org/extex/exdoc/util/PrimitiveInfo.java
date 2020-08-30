@@ -23,22 +23,21 @@ package org.extex.exdoc.util;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class PrimitiveInfo {
 
     /**
-     * The field <tt>implementor</tt> contains the ...
+     * The field {@code implementor} contains the ...
      */
     private String implementer;
 
     /**
-     * The field <tt>name</tt> contains the ...
+     * The field {@code name} contains the ...
      */
     private String name;
 
     /**
-     * The field <tt>namespace</tt> contains the ...
+     * The field {@code namespace} contains the ...
      */
     private String namespace;
 
@@ -46,7 +45,7 @@ public class PrimitiveInfo {
      * Creates a new object.
      * 
      * @param name the name of the primitive
-     * @param namespace the optional name space; this can be <code>null</code>
+     * @param namespace the optional name space; this can be {@code null}
      * @param implementer the implementing class
      */
     public PrimitiveInfo(String name, String namespace, String implementer) {
@@ -66,12 +65,7 @@ public class PrimitiveInfo {
         return implementer;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
+@Override
     public boolean equals(Object obj) {
 
         if (!(obj instanceof PrimitiveInfo)) {
@@ -89,19 +83,14 @@ public class PrimitiveInfo {
      * @param s the first string
      * @param t the second string
      * 
-     * @return <code>true</code> iff the arguments disagree
+     * @return {@code true} iff the arguments disagree
      */
     private boolean eq(String s, String t) {
 
         return (s == null ? t == null : s.equals(t));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
+@Override
     public int hashCode() {
 
         return name.hashCode();

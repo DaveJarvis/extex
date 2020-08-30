@@ -24,8 +24,7 @@ package org.extex.interpreter.observer.eof;
  * a token is expanded.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface EofObserver {
 
     /**

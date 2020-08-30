@@ -31,35 +31,34 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.listMaker.AlignmentList;
 
 /**
- * This class provides an implementation for the primitive <code>\span</code>.
+ * This class provides an implementation for the primitive {@code \span}.
  * 
- * <doc name="span">
- * <h3>The Primitive <tt>\span</tt></h3>
+ * <p>The Primitive {@code \span}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;span&rang;
- *       &rarr; <tt>\span</tt>  </pre>
+ *       &rarr; {@code \span}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \span 1  </pre>
  * 
- * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Span extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -75,10 +74,7 @@ public class Span extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

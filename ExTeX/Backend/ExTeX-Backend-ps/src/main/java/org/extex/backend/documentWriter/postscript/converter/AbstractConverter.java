@@ -37,22 +37,21 @@ import org.extex.typesetter.type.node.SpecialNode;
  * This is the abstract base class for an PS converter.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractConverter implements PsConverter, ResourceAware {
 
     /**
-     * The field <tt>headerManager</tt> contains the header manager.
+     * The field {@code headerManager} contains the header manager.
      */
     private HeaderManager headerManager;
 
     /**
-     * The field <tt>finder</tt> contains the resource finder.
+     * The field {@code finder} contains the resource finder.
      */
     private ResourceFinder finder;
 
     /**
-     * The field <tt>fontManager</tt> contains the font manager.
+     * The field {@code fontManager} contains the font manager.
      */
     private FontManager fontManager;
 
@@ -73,10 +72,7 @@ public abstract class AbstractConverter implements PsConverter, ResourceAware {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.postscript.converter.PsConverter#init(
-     *      org.extex.backend.documentWriter.postscript.util.HeaderManager,
+*      org.extex.backend.documentWriter.postscript.util.HeaderManager,
      *      org.extex.backend.documentWriter.postscript.util.FontManager)
      */
     public void init(HeaderManager headerMan, FontManager fontMan)
@@ -87,10 +83,7 @@ public abstract class AbstractConverter implements PsConverter, ResourceAware {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.ResourceAware#setResourceFinder(
-     *      org.extex.resource.ResourceFinder)
+*      org.extex.resource.ResourceFinder)
      */
     public void setResourceFinder(ResourceFinder resourceFinder) {
 
@@ -196,10 +189,7 @@ public abstract class AbstractConverter implements PsConverter, ResourceAware {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.postscript.converter.PsConverter#writeHeaders(
-     *      PrintStream)
+*      PrintStream)
      */
     public void writeHeaders(PrintStream stream) throws IOException {
 

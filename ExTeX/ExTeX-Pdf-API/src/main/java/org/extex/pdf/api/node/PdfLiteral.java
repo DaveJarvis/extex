@@ -27,22 +27,21 @@ import org.extex.typesetter.type.node.WhatsItNode;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4791 $
- */
+*/
 public class PdfLiteral extends WhatsItNode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>direct</tt> contains the direct indicator.
+     * The field {@code direct} contains the direct indicator.
      */
     private boolean direct;
 
     /**
-     * The field <tt>text</tt> contains the text to pass to the back-end driver.
+     * The field {@code text} contains the text to pass to the back-end driver.
      */
     private String text;
 
@@ -51,7 +50,7 @@ public class PdfLiteral extends WhatsItNode {
      * 
      * @param text the text of the literal
      * @param direct the indicator that the literal should be inserted
-     *        immediately. If it is <code>false</code> then the insertin is
+     *        immediately. If it is {@code false} then the insertin is
      *        deferred until shipout.
      */
     public PdfLiteral(String text, boolean direct) {

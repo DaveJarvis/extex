@@ -23,29 +23,28 @@ package org.extex.font.format.xtf.tables;
  * Bounding box.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class XtfBoundingBox {
 
     /**
      * The x-Max.
      */
-    private short xMax;
+    private final short xMax;
 
     /**
      * The x-Min.
      */
-    private short xMin;
+    private final short xMin;
 
     /**
      * The y-Max.
      */
-    private short yMax;
+    private final short yMax;
 
     /**
      * The y-Min.
      */
-    private short yMin;
+    private final short yMin;
 
     /**
      * Creates a new object.
@@ -65,13 +64,13 @@ public class XtfBoundingBox {
     }
 
     /**
-     * Returns <code>true</code>, if the values are equals.
+     * Returns {@code true}, if the values are equals.
      * 
      * @param xmin The x-min.
      * @param ymin The y-min.
      * @param xmax The x-max.
      * @param ymax The y-max.
-     * @return <code>true</code>, if the values are equals.
+     * @return {@code true}, if the values are equals.
      */
     public boolean eq(int xmin, int ymin, int xmax, int ymax) {
 
@@ -79,20 +78,17 @@ public class XtfBoundingBox {
     }
 
     /**
-     * Returns <code>true</code>, if the values are equals.
+     * Returns {@code true}, if the values are equals.
      * 
      * @param xmin The x-min.
      * @param ymin The y-min.
      * @param xmax The x-max.
      * @param ymax The y-max.
-     * @return <code>true</code>, if the values are equals.
+     * @return {@code true}, if the values are equals.
      */
     public boolean eq(short xmin, short ymin, short xmax, short ymax) {
 
-        if (xMin == xmin && yMin == ymin && xMax == xmax && yMax == ymax) {
-            return true;
-        }
-        return false;
+        return xMin == xmin && yMin == ymin && xMax == xmax && yMax == ymax;
     }
 
     /**
@@ -158,12 +154,7 @@ public class XtfBoundingBox {
         return yMin;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder buf = new StringBuilder();

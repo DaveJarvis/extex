@@ -39,12 +39,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class Pair implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 1L;
@@ -67,8 +66,8 @@ public class Pair implements Serializable {
     }
 
     /**
-     * Creates a new object. Scan the <code>TokenSource</code> for a
-     * <code>Pair</code>.
+     * Creates a new object. Scan the {@code TokenSource} for a
+     * {@code Pair}.
      * 
      * @param context the context
      * @param source the token source
@@ -114,7 +113,7 @@ public class Pair implements Serializable {
     /**
      * Creates a new object.
      * <p>
-     * If the string equals <code>null</code> or empty, the value is set to
+     * If the string equals {@code null} or empty, the value is set to
      * zero
      * 
      * @param s the value as String
@@ -241,9 +240,9 @@ public class Pair implements Serializable {
     }
 
     /**
-     * Return the value as <code>String</code>
+     * Return the value as {@code String}
      * 
-     * @return the value as <code>String</code>
+     * @return the value as {@code String}
      */
     @Override
     public String toString() {

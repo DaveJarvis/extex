@@ -33,27 +33,26 @@ import org.extex.typesetter.type.noad.util.MathSpacing;
  * This class provides a container for a mathematical glyph.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class MathGlyph implements Noad, Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
-     * The field <tt>character</tt> contains the character of this glyph.
+     * The field {@code character} contains the character of this glyph.
      */
-    private UnicodeChar character;
+    private final UnicodeChar character;
 
     /**
-     * The field <tt>family</tt> contains the math family.
+     * The field {@code family} contains the math family.
      */
-    private int family;
+    private final int family;
 
     /**
-     * The field <tt>spacingClass</tt> contains the spacing class.
+     * The field {@code spacingClass} contains the spacing class.
      */
     private MathSpacing spacingClass = MathSpacing.ORD; // gene: correct?
 
@@ -128,12 +127,7 @@ public class MathGlyph implements Noad, Serializable {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.noad.Noad#setSpacingClass(org.extex.typesetter.type.noad.util.MathSpacing)
-     */
-    @Override
+@Override
     public void setSpacingClass(MathSpacing spacingClass) {
 
         this.spacingClass = spacingClass;
@@ -207,7 +201,7 @@ public class MathGlyph implements Noad, Serializable {
 
         if (depth >= 0) {
             sb.append("\\fam");
-            sb.append(Integer.toString(family));
+            sb.append( family );
             sb.append(' ');
             if (character.isPrintable()) {
                 sb.append(character.toString());

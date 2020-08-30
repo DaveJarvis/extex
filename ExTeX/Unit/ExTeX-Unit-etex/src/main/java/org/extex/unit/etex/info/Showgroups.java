@@ -41,55 +41,55 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\showgroups</code>.
+ * {@code \showgroups}.
  * 
- * <doc name="showgroups">
- * <h3>The Primitive <tt>\showgroups</tt></h3>
+ * <p>The Primitive {@code \showgroups}</p>
  * <p>
- * The primitive <tt>\showgroups</tt> prints the list of group descriptions to
+ * The primitive {@code \showgroups} prints the list of group descriptions to
  * the log file. The list consists of descriptions of the currently open groups
  * in descending order.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;showgroups&rang;
- *       &rarr; <tt>\showgroups</tt>  </pre>
+ *       &rarr; {@code \showgroups}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \showgroups  </pre>
  * 
- * </doc>
- * 
- * <h4>Configuration</h4>
+ *
+ * <p>Configuration</p>
+
  * 
  * <p>
- * The primitive takes an optional attribute named <tt>format</tt>. If this
- * attribute is present and has the value <tt>short</tt> then only the line
+ * The primitive takes an optional attribute named {@code format}. If this
+ * attribute is present and has the value {@code short} then only the line
  * number is logged instead of the complete locator.
  * </p>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Showgroups extends AbstractCode
         implements
             LogEnabled,
             Configurable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 20060616L;
 
     /**
-     * The field <tt>GTV</tt> contains the group type visitor to map the group
+     * The field {@code GTV} contains the group type visitor to map the group
      * types to keys for the localizer.
      */
     private static final GroupTypeVisitor<String, Object> GTV =
@@ -370,13 +370,13 @@ public class Showgroups extends AbstractCode
             };
 
     /**
-     * The field <tt>key</tt> contains the key to be appended to the format
+     * The field {@code key} contains the key to be appended to the format
      * name.
      */
     private String key = "";
 
     /**
-     * The field <tt>logger</tt> contains the target channel for the message.
+     * The field {@code logger} contains the target channel for the message.
      */
     private transient Logger logger = null;
 
@@ -422,10 +422,7 @@ public class Showgroups extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

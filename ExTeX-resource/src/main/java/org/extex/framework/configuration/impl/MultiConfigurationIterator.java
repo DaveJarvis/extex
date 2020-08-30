@@ -28,28 +28,27 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * This class provides an Iterator over multiple Configurations.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MultiConfigurationIterator implements Iterator<Configuration> {
 
     /**
-     * The field <tt>iter</tt> contains the internal iterator in config[ptr].
+     * The field {@code iter} contains the internal iterator in config[ptr].
      */
     private Iterator<Configuration> iter = null;
 
     /**
-     * The field <tt>key</tt> contains the symbolic key for this Iterator.
+     * The field {@code key} contains the symbolic key for this Iterator.
      */
     private String key;
 
     /**
-     * The field <tt>config</tt> contains the list of configurations to iterate
+     * The field {@code config} contains the list of configurations to iterate
      * over.
      */
     private Configuration[] configs;
 
     /**
-     * The field <tt>ptr</tt> contains the index of configurations to be treated
+     * The field {@code ptr} contains the index of configurations to be treated
      * next.
      */
     private int ptr = 0;
@@ -74,11 +73,11 @@ public class MultiConfigurationIterator implements Iterator<Configuration> {
     }
 
     /**
-     * Returns <tt>true</tt> if the iteration has more elements. (In other
-     * words, returns <tt>true</tt> if <tt>next</tt> would return an element
+     * Returns {@code true} if the iteration has more elements. (In other
+     * words, returns {@code true} if {@code next} would return an element
      * rather than throwing an exception.)
      * 
-     * @return <tt>true</tt> if the iterator has more elements.
+     * @return {@code true} if the iterator has more elements.
      * 
      * @see java.util.Iterator#hasNext()
      */
@@ -104,12 +103,7 @@ public class MultiConfigurationIterator implements Iterator<Configuration> {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.util.Iterator#next()
-     */
-    public Configuration next() {
+public Configuration next() {
 
         if (iter == null) {
             return null;

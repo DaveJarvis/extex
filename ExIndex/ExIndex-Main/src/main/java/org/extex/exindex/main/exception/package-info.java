@@ -17,7 +17,7 @@
  */
 /**
  * 
- *   This package contains exceptions for the main programs or ExIndex.
+ *   Contains exceptions for the main programs or ExIndex.
  * 
  *
  */

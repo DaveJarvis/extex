@@ -23,20 +23,19 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * This Exception is thrown when a configuration is requested with the path
- * <code>null</code>> or the empty string.
+ * {@code null} or the empty string.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4726 $
- */
+*/
 public class NoTypesetterException extends ConfigurationException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>message</tt> contains the message of this exception.
+     * The field {@code message} contains the message of this exception.
      */
     private String message;
 

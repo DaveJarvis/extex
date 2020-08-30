@@ -29,8 +29,7 @@ import org.extex.scanner.type.tokens.Tokens;
  * register.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface TokensWriter {
 
     /**
@@ -41,7 +40,7 @@ public interface TokensWriter {
      * @param context the processing context
      * 
      * @return the output file on which the writing has been performed; or
-     *         <code>null</code>
+     *         {@code null}
      * 
      * @throws HelpingException in case of another error
      */

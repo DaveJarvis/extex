@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\vskip</tt>.
+ * This is a test suite for the primitive {@code \vskip}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class VskipTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -48,9 +47,9 @@ public class VskipTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\vskip"> Test case checking that <tt>\vskip</tt>
+     * <testcase primitive="\vskip"> Test case checking that {@code \vskip}
      * switches to vertical mode and inserts a glue node with the given value.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -66,9 +65,9 @@ public class VskipTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\vskip"> Test case checking that <tt>\vskip</tt>
+     * <testcase primitive="\vskip"> Test case checking that {@code \vskip}
      * switches to vertical mode and inserts a glue node with the given value.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */

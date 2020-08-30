@@ -23,11 +23,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\ifdim</tt>.
+ * This is a test suite for the primitive {@code \ifdim}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class IfdimTest extends ConditionalTester {
 
     /**
@@ -47,8 +46,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * needs an argument. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * needs an argument. 
      * 
      * @throws Exception in case of an error
      */
@@ -62,8 +61,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * needs an operator after the first argument. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * needs an operator after the first argument. 
      * 
      * @throws Exception in case of an error
      */
@@ -77,8 +76,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * does not accept ! as operator. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * does not accept ! as operator. 
      * 
      * @throws Exception in case of an error
      */
@@ -92,8 +91,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|0pt<1pt| selects the then branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|0pt<1pt| selects the then branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -107,8 +106,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|1pt<1pt| selects the else branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|1pt<1pt| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -122,8 +121,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|2pt<1pt| selects the else branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|2pt<1pt| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -137,8 +136,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|0pt=1pt| selects the else branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|0pt=1pt| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -152,8 +151,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|1pt=1pt| selects the then branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|1pt=1pt| selects the then branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -167,8 +166,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|2pt=1pt| selects the else branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|2pt=1pt| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -182,8 +181,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|0pt>1pt| selects the else branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|0pt>1pt| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -197,8 +196,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|1pt>1pt| selects the else branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|1pt>1pt| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -212,8 +211,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|2pt>1pt| selects the then branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|2pt>1pt| selects the then branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -227,8 +226,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|0.pt<1.pt| selects the then branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|0.pt<1.pt| selects the then branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -242,8 +241,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|1.pt<1.pt| selects the else branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|1.pt<1.pt| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -257,8 +256,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|2.pt<1.pt| selects the else branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|2.pt<1.pt| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -272,8 +271,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|0.pt=1.pt| selects the else branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|0.pt=1.pt| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -287,8 +286,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|1.pt=1.pt| selects the then branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|1.pt=1.pt| selects the then branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -302,8 +301,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|2.pt=1.pt| selects the else branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|2.pt=1.pt| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -317,8 +316,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|0.pt>1.pt| selects the else branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|0.pt>1.pt| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -332,8 +331,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|1.pt>1.pt| selects the else branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|1.pt>1.pt| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -347,8 +346,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|2.pt>1.pt| selects the then branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|2.pt>1.pt| selects the then branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -362,8 +361,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|.0pt<.1pt| selects the then branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|.0pt<.1pt| selects the then branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -377,8 +376,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|.1pt<.1pt| selects the else branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|.1pt<.1pt| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -392,8 +391,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|.2pt<.1pt| selects the else branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|.2pt<.1pt| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -407,8 +406,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|.0pt=.1pt| selects the else branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|.0pt=.1pt| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -422,8 +421,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|.1pt=.1pt| selects the then branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|.1pt=.1pt| selects the then branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -437,8 +436,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|.2pt=.1pt| selects the else branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|.2pt=.1pt| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -452,8 +451,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|.0pt>.1pt| selects the else branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|.0pt>.1pt| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -467,8 +466,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|.1pt>.1pt| selects the else branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|.1pt>.1pt| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -482,8 +481,8 @@ public class IfdimTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * on \verb|.2pt>.1pt| selects the then branch. </testcase>
+     * <testcase primitive="\ifdim"> Test case checking that {@code \ifdim}
+     * on \verb|.2pt>.1pt| selects the then branch. 
      * 
      * @throws Exception in case of an error
      */

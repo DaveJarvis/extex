@@ -55,7 +55,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <p>
  * hdmx Header
  * </p>
- * <table border="1"> <thead>
+ * <table> <caption>TBD</caption> <thead>
  * <tr>
  * <td><b>Type</b></td>
  * <td><b>Name</b></td>
@@ -88,8 +88,8 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <p>
  * Device Record
  * </p>
- * <table border="1"> <thead>
- * <tr><
+ * <table> <caption>TBD</caption> <thead>
+ * <tr>
  * <td><b>Type</b></td>
  * <td><b>Name</b></td>
  * <td><b>Description</b></td>
@@ -113,8 +113,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TtfTableHDMX extends AbstractXtfTable
         implements
             XtfTable,
@@ -128,17 +127,17 @@ public class TtfTableHDMX extends AbstractXtfTable
         /**
          * teh maximum width
          */
-        private int maxWidth;
+        private final int maxWidth;
 
         /**
          * the pixel size
          */
-        private int pixelSize;
+        private final int pixelSize;
 
         /**
          * the widths
          */
-        private byte[] widths;
+        private final byte[] widths;
 
         /**
          * Create a new object.
@@ -187,10 +186,7 @@ public class TtfTableHDMX extends AbstractXtfTable
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-         *      org.extex.util.xml.XMLStreamWriter)
+    *      org.extex.util.xml.XMLStreamWriter)
          */
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
@@ -215,7 +211,7 @@ public class TtfTableHDMX extends AbstractXtfTable
     /**
      * the offset in the input
      */
-    private int offset;
+    private final int offset;
 
     /**
      * the input
@@ -269,12 +265,7 @@ public class TtfTableHDMX extends AbstractXtfTable
         return numRecords;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
+public String getShortcut() {
 
         return "hdmx";
     }
@@ -309,12 +300,7 @@ public class TtfTableHDMX extends AbstractXtfTable
         return version;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.AbstractXtfTable#init()
-     */
-    @Override
+@Override
     public void init() throws IOException {
 
         if (rarinput != null) {
@@ -340,10 +326,7 @@ public class TtfTableHDMX extends AbstractXtfTable
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

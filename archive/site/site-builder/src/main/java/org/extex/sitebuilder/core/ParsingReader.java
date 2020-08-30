@@ -28,8 +28,7 @@ import java.io.Reader;
  * paring.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ParsingReader extends BufferedReader {
 
     /**
@@ -47,7 +46,7 @@ public class ParsingReader extends BufferedReader {
      * 
      * @param term the last character
      * 
-     * @return <code>true</code> iff the end has been found
+     * @return {@code true} iff the end has been found
      * 
      * @throws IOException in case of an error
      */
@@ -68,7 +67,7 @@ public class ParsingReader extends BufferedReader {
      * @param term the terminating character
      * @param buffer the buffer to store the characters in
      * 
-     * @return <code>true</code> iff the terminating character has been found
+     * @return {@code true} iff the terminating character has been found
      * 
      * @throws IOException in case of an error
      */
@@ -88,7 +87,7 @@ public class ParsingReader extends BufferedReader {
      * 
      * @param tag the name of the tag
      * 
-     * @return <code>true</code> iff the tag has been found
+     * @return {@code true} iff the tag has been found
      * 
      * @throws IOException in case of an error
      */
@@ -112,7 +111,7 @@ public class ParsingReader extends BufferedReader {
      * @param endtag the name of the end tag
      * @param buffer the buffer to collect the contents in
      * 
-     * @return <code>true</code> iff the tag has been found
+     * @return {@code true} iff the tag has been found
      * 
      * @throws IOException in case of an error
      */

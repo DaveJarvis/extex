@@ -42,8 +42,7 @@ import org.xml.sax.helpers.DefaultHandler;
  * Transform a xhtml file to LaTeX.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- * 
+*
  */
 public class Xhtml2LaTeX {
 
@@ -53,22 +52,14 @@ public class Xhtml2LaTeX {
     private static final XhtmlCommand EMPTY = new XhtmlCommand() {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see unsorted.XhtmlCommand#startElement(
-         *      java.io.PrintWriter, org.xml.sax.Attributes)
+    *      java.io.PrintWriter, org.xml.sax.Attributes)
          */
         public void startElement(PrintWriter o, Attributes attributes) {
 
             // do nothing
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see unsorted.XhtmlCommand#endElement(java.io.PrintWriter)
-         */
-        public void endElement(PrintWriter o) {
+    public void endElement(PrintWriter o) {
 
             // do nothing
 
@@ -82,22 +73,14 @@ public class Xhtml2LaTeX {
     new XhtmlCommand() {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see unsorted.XhtmlCommand#startElement(
-         *      java.io.PrintWriter, org.xml.sax.Attributes)
+    *      java.io.PrintWriter, org.xml.sax.Attributes)
          */
         public void startElement(PrintWriter out, Attributes a) {
 
             out.println("\\documentclass{scrartcl}");
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see unsorted.XhtmlCommand#endElement(java.io.PrintWriter)
-         */
-        public void endElement(PrintWriter out) {
+    public void endElement(PrintWriter out) {
 
             out.println();
         }
@@ -106,22 +89,14 @@ public class Xhtml2LaTeX {
     new XhtmlCommand() {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see unsorted.XhtmlCommand#startElement(
-         *      java.io.PrintWriter, org.xml.sax.Attributes)
+    *      java.io.PrintWriter, org.xml.sax.Attributes)
          */
         public void startElement(PrintWriter out, Attributes attributes) {
 
             out.println("\\begin{document}");
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see unsorted.XhtmlCommand#endElement(java.io.PrintWriter)
-         */
-        public void endElement(PrintWriter out) {
+    public void endElement(PrintWriter out) {
 
             out.println("\\end{document}");
         }
@@ -130,22 +105,14 @@ public class Xhtml2LaTeX {
     new XhtmlCommand() {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see unsorted.XhtmlCommand#startElement(
-         *      java.io.PrintWriter, org.xml.sax.Attributes)
+    *      java.io.PrintWriter, org.xml.sax.Attributes)
          */
         public void startElement(PrintWriter out, Attributes attributes) {
 
             out.print("\\section{");
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see unsorted.XhtmlCommand#endElement(java.io.PrintWriter)
-         */
-        public void endElement(PrintWriter out) {
+    public void endElement(PrintWriter out) {
 
             out.println("}");
         }
@@ -245,10 +212,7 @@ public class Xhtml2LaTeX {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.xml.sax.helpers.DefaultHandler#startElement(
-         *      java.lang.String, java.lang.String, java.lang.String,
+    *      java.lang.String, java.lang.String, java.lang.String,
          *      org.xml.sax.Attributes)
          */
         public void startElement(String uri, String localName, String qName,
@@ -266,10 +230,7 @@ public class Xhtml2LaTeX {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.xml.sax.helpers.DefaultHandler#endElement( java.lang.String,
-         *      java.lang.String, java.lang.String)
+    *      java.lang.String, java.lang.String)
          */
         public void endElement(String uri, String localName, String qName)
                 throws SAXException {

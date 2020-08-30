@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains encoders and decoders to map from and to external
+ * Contains encoders and decoders to map from and to external
  * representations of characters. The internal character set is based on
  * Unicode.
  */

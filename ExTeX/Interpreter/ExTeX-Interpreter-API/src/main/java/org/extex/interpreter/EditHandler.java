@@ -28,8 +28,7 @@ import org.extex.framework.i18n.Localizer;
  * place the cursor on the line indicated.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4445 $
- */
+*/
 public interface EditHandler {
 
     /**
@@ -38,7 +37,7 @@ public interface EditHandler {
      * @param localizer the localizer to acquire texts from
      * @param locator the locator for the place to edit
      *
-     * @return <code>true</code> iff the job can be continued
+     * @return {@code true} iff the job can be continued
      */
     boolean edit(Localizer localizer, Locator locator);
 

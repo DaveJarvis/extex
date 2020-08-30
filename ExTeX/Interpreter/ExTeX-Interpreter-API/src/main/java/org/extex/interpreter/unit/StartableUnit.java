@@ -29,8 +29,7 @@ import org.extex.typesetter.Typesetter;
  * should be invoked at the end of the loading process.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface StartableUnit {
 
     /**

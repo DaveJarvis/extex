@@ -41,12 +41,11 @@ import org.extex.unit.tex.typesetter.spacing.HorizontalSkip;
 import org.extex.unit.tex.typesetter.spacing.VerticalSkip;
 
 /**
- * This class provides an implementation for the primitive <code>\leaders</code>.
+ * This class provides an implementation for the primitive {@code \leaders}.
  * 
- * <doc name="leaders">
- * <h3>The Primitive <tt>\leaders</tt></h3>
+ * <p>The Primitive {@code \leaders}</p>
  * <p>
- * The primitive <tt>\leaders</tt> is a leaders construction which aligns the
+ * The primitive {@code \leaders} is a leaders construction which aligns the
  * material on an imaginary grid on the page. The primitive takes as the first
  * argument a box or rule. The second argument is a horizontal or vertical skip
  * specification. The two arguments have to agree on the orientation; either
@@ -77,28 +76,30 @@ import org.extex.unit.tex.typesetter.spacing.VerticalSkip;
  * </p>
  * <p>
  * As a consequence of the alignment on the grid several invocations of
- * <tt>\leaders</tt> with the same box will align those boxes. This can be
+ * {@code \leaders} with the same box will align those boxes. This can be
  * used in a table of figures to align the dos connecting the title and the page
  * number.
  * </p>
  * <p>
- * Note that there are also the primitives <tt>\cleaders</tt> and
- * <tt>\xleaders</tt> which provide essentially the same functionality but
+ * Note that there are also the primitives {@code \cleaders} and
+ * {@code \xleaders} which provide essentially the same functionality but
  * adjust the material within the final space differently.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;leaders&rang;
- *      &rarr; <tt>\leaders</tt> &lang;Box or Rule&rang; &lang;Skip&rang;
+ *      &rarr; {@code \leaders} &lang;Box or Rule&rang; &lang;Skip&rang;
  *
  *    &lang;Box or Rule&rang;
  *      &rarr; &lang;Box&rang;
  *       | &lang;Rule&rang;        </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * 
  * <pre class="TeXSample">
@@ -106,7 +107,7 @@ import org.extex.unit.tex.typesetter.spacing.VerticalSkip;
  * 
  * <p>
  * This example creates a horizontal rule which fills the space made up by the
- * <tt>\hfill</tt>. The rule stretches horizontally and has its natural
+ * {@code \hfill}. The rule stretches horizontally and has its natural
  * dimensions vertically.
  * </p>
  * 
@@ -115,7 +116,7 @@ import org.extex.unit.tex.typesetter.spacing.VerticalSkip;
  * 
  * <p>
  * This example demonstrates the same in vertical direction. Since only
- * <tt>\vil</tt> is used it may not appear at all when the other elements in
+ * {@code \vil} is used it may not appear at all when the other elements in
  * the surrounding box overrule it.
  * </p>
  * 
@@ -126,17 +127,15 @@ import org.extex.unit.tex.typesetter.spacing.VerticalSkip;
  * This example shows a box of the width 2em which has a centered period in it.
  * The contents of the box is repeated until it fills the space available.
  * </p>
- * </doc>
- * 
+ *
  * @see org.extex.typesetter.type.node.AlignedLeadersNode
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Leaders extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -152,10 +151,7 @@ public class Leaders extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

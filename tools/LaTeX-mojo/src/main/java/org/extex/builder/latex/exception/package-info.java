@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains artifacts for the L<span style=
+ * Contains artifacts for the L<span style=
  * "text-transform:uppercase;font-size:75%;vertical-align:0.45ex;margin-left:-0.3em;margin-right:-0.15em;"
  * >A</span>T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"

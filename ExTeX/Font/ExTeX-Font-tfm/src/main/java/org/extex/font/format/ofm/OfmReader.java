@@ -30,24 +30,23 @@ import org.extex.util.file.random.RandomAccessR;
  * This class read a OFM-file (Omega-Font_Metric).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class OfmReader {
 
     /**
      * The lengths in the file.
      */
-    private OfmHeaderLengths lengths;
+    private final OfmHeaderLengths lengths;
 
     /**
      * The header.
      */
-    private TfmHeaderArray header;
+    private final TfmHeaderArray header;
 
     /**
      * The char info array.
      */
-    private OfmCharInfoArray charinfo;
+    private final OfmCharInfoArray charinfo;
 
     /**
      * Create e new object.
@@ -100,12 +99,12 @@ public class OfmReader {
     /**
      * The font name.
      */
-    private String fontname;
+    private final String fontname;
 
     /**
      * Th eofm level.
      */
-    private int ofmLevel;
+    private final int ofmLevel;
 
     /**
      * Getter for fontname.

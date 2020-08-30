@@ -26,8 +26,7 @@ import org.extex.typesetter.type.NodeList;
  * to be invoked when a paragraph is complete.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface ParagraphObserver {
 
     /**

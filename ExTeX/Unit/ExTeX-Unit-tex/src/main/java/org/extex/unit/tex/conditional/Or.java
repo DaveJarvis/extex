@@ -32,38 +32,37 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.conditional.AbstractIf;
 
 /**
- * This class provides an implementation for the primitive <code>\or</code>.
+ * This class provides an implementation for the primitive {@code \or}.
  * 
- * <doc name="or">
- * <h3>The Primitive <tt>\or</tt></h3>
+ * <p>The Primitive {@code \or}</p>
  * <p>
- * The primitive <tt>\or</tt> indicated the other branch in the context of a
- * <tt>\if</tt> primitive. If encountered outside of an if context an error is
+ * The primitive {@code \or} indicated the other branch in the context of a
+ * {@code \if} primitive. If encountered outside of an if context an error is
  * raised.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;or&rang;
- *      &rarr; <tt>\or</tt>  </pre>
+ *      &rarr; {@code \or}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \iffalse abc \or def \fi  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4439 $
- */
+*/
 public class Or extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -79,10 +78,7 @@ public class Or extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

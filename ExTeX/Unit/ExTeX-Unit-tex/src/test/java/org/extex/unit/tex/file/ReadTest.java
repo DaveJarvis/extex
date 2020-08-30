@@ -24,15 +24,14 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\read</tt>.
+ * This is a test suite for the primitive {@code \read}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
-     * The constant <tt>DATA_FILE</tt> contains the name of the file to use
+     * The constant {@code DATA_FILE} contains the name of the file to use
      * for testing.
      */
     private static final String DATA_FILE =
@@ -55,8 +54,8 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\read"> Test case checking that a <tt>\read</tt>
-     * from the terminal in batch mode leads to an error. </testcase>
+     * <testcase primitive="\read"> Test case checking that a {@code \read}
+     * from the terminal in batch mode leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -70,8 +69,8 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\read"> Test case checking that a <tt>\read</tt>
-     * from the terminal in batch mode leads to an error. </testcase>
+     * <testcase primitive="\read"> Test case checking that a {@code \read}
+     * from the terminal in batch mode leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -85,8 +84,8 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\read"> Test case checking that a <tt>\read</tt>
-     * from the terminal in batch mode leads to an error. </testcase>
+     * <testcase primitive="\read"> Test case checking that a {@code \read}
+     * from the terminal in batch mode leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -100,8 +99,8 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\read"> Test case checking that a <tt>\read</tt>
-     * needs the <tt>to</tt> after the stream name. </testcase>
+     * <testcase primitive="\read"> Test case checking that a {@code \read}
+     * needs the {@code to} after the stream name.
      * 
      * @throws Exception in case of an error
      */
@@ -115,8 +114,8 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\read"> Test case checking that a <tt>\read</tt>
-     * needs a control sequence to store the result in. </testcase>
+     * <testcase primitive="\read"> Test case checking that a {@code \read}
+     * needs a control sequence to store the result in.
      * 
      * @throws Exception in case of an error
      */
@@ -130,8 +129,8 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\read"> Test case checking that a <tt>\read</tt>
-     * can read the first line of the test file. </testcase>
+     * <testcase primitive="\read"> Test case checking that a {@code \read}
+     * can read the first line of the test file.
      * 
      * @throws Exception in case of an error
      */
@@ -146,9 +145,9 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\read"> Test case checking that a <tt>\read</tt>
-     * honors the <tt>\global</tt> prefix by defining the macro globally.
-     * </testcase>
+     * <testcase primitive="\read"> Test case checking that a {@code \read}
+     * honors the {@code \global} prefix by defining the macro globally.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -163,9 +162,9 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\read"> Test case checking that a <tt>\read</tt>
+     * <testcase primitive="\read"> Test case checking that a {@code \read}
      * makes its definition locally to the current group per default.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */

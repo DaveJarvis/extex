@@ -31,8 +31,7 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
  * This class represents a return statement.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class Return extends GenericCode {
 
     /**
@@ -46,10 +45,7 @@ public final class Return extends GenericCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GenericCode#optimize(java.util.List,
-     *      int)
+*      int)
      */
     @Override
     public int optimize(List<GCode> list, int index) {
@@ -68,10 +64,7 @@ public final class Return extends GenericCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GenericCode#print(org.extex.exbib.bst2groovy.io.CodeWriter,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public void print(CodeWriter writer, String prefix) throws IOException {

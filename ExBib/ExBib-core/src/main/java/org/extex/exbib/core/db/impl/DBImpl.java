@@ -52,75 +52,74 @@ import org.extex.framework.configuration.exception.ConfigurationMissingException
  * >e</span>X compatible database.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DBImpl implements DB, Configurable, Observable {
 
     /**
-     * The field <tt>bibReaderFactory</tt> contains the factory used to get new
+     * The field {@code bibReaderFactory} contains the factory used to get new
      * Readers.
      */
     private BibReaderFactory bibReaderFactory;
 
     /**
-     * The field <tt>entries</tt> contains the list of entries to preserve the
+     * The field {@code entries} contains the list of entries to preserve the
      * original order.
      */
     private List<Entry> entries = new ArrayList<>();
 
     /**
-     * The field <tt>entryHash</tt> contains the Hash of entries to get fast
+     * The field {@code entryHash} contains the Hash of entries to get fast
      * access.
      */
     private final Map<String, Entry> entryHash = new HashMap<>();
 
     /**
-     * The field <tt>strings</tt> contains the defined strings.
+     * The field {@code strings} contains the defined strings.
      */
     private final Map<String, Value> strings = new HashMap<>();
 
     /**
-     * The field <tt>makeAliasHook</tt> contains the observers for the creation
+     * The field {@code makeAliasHook} contains the observers for the creation
      * of an alias.
      */
     private final ObserverList makeAliasHook = new ObserverList();
 
     /**
-     * The field <tt>makeEntryHook</tt> contains the observers for the creation
+     * The field {@code makeEntryHook} contains the observers for the creation
      * of an entry.
      */
     private final ObserverList makeEntryHook = new ObserverList();
 
     /**
-     * The field <tt>makeMacroHook</tt> contains the observers for the creation
+     * The field {@code makeMacroHook} contains the observers for the creation
      * of a macro.
      */
     private final ObserverList makeMacroHook = new ObserverList();
 
     /**
-     * The field <tt>makePreambleHook</tt> contains the observers for the
+     * The field {@code makePreambleHook} contains the observers for the
      * creation of a preamble.
      */
     private final ObserverList makePreambleHook = new ObserverList();
 
     /**
-     * The field <tt>makeStringHook</tt> contains the observers for the creation
+     * The field {@code makeStringHook} contains the observers for the creation
      * of a string.
      */
     private final ObserverList makeStringHook = new ObserverList();
 
     /**
-     * The field <tt>sorter</tt> contains the sorter to use.
+     * The field {@code sorter} contains the sorter to use.
      */
     private Sorter sorter = null;
 
     /**
-     * The field <tt>preamble</tt> contains the collected preambles.
+     * The field {@code preamble} contains the collected preambles.
      */
     private final Value preamble = new Value();
 
     /**
-     * The field <tt>minCrossref</tt> contains the minimum number of crossrefs
+     * The field {@code minCrossref} contains the minimum number of crossrefs
      * to leave the cross-referenced entry alone; otherwise it is inlined.
      */
     private int minCrossrefs = 2;
@@ -132,12 +131,7 @@ public class DBImpl implements DB, Configurable, Observable {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
-     */
-    public void configure(Configuration config) throws ConfigurationException {
+public void configure(Configuration config) throws ConfigurationException {
 
         sorter = new CodepointIgnoreCaseSorter();
     }
@@ -157,46 +151,31 @@ public class DBImpl implements DB, Configurable, Observable {
      * normalized before the entry is sought, i.e. the search is case
      * insensitive.
      * 
-     * If no record is stored under the given key then <code>null</code> is
+     * If no record is stored under the given key then {@code null} is
      * returned.
      * 
      * @param key the reference key
      * 
-     * @return the record or <code>null</code>
+     * @return the record or {@code null}
      */
     public Entry getEntry(String key) {
 
         return entryHash.get(key.toLowerCase(Locale.ENGLISH));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.DB#getExpandedMacro(java.lang.String)
-     */
-    public String getExpandedMacro(String key) {
+public String getExpandedMacro(String key) {
 
         Value value = getMacro(key);
 
         return value == null ? null : value.expand(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.DB#getMacro(java.lang.String)
-     */
-    public Value getMacro(String name) {
+public Value getMacro(String name) {
 
         return strings.get(name.toLowerCase(Locale.ENGLISH));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.DB#getMacroNames()
-     */
-    public List<String> getMacroNames() {
+public List<String> getMacroNames() {
 
         return new ArrayList<>( strings.keySet() );
     }
@@ -221,22 +200,12 @@ public class DBImpl implements DB, Configurable, Observable {
         return preamble;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.DB#getPreambleExpanded()
-     */
-    public String getPreambleExpanded() {
+public String getPreambleExpanded() {
 
         return preamble.expand(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.DB#getSorter()
-     */
-    public Sorter getSorter() {
+public Sorter getSorter() {
 
         return sorter;
     }
@@ -257,22 +226,12 @@ public class DBImpl implements DB, Configurable, Observable {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Iterable#iterator()
-     */
-    public Iterator<Entry> iterator() {
+public Iterator<Entry> iterator() {
 
         return entries.iterator();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.DB#load(java.lang.String, java.util.Map)
-     */
-    public List<String> load(String file, Map<String, String> citation)
+public List<String> load(String file, Map<String, String> citation)
             throws ExBibException,
                 ConfigurationException,
                 FileNotFoundException {

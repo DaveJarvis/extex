@@ -30,45 +30,37 @@ import org.extex.exbib.core.io.Locator;
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X built-in function <code>cite$</code>
+ * >e</span>X built-in function {@code cite$}
  * <p>
  * This function takes the citation key of the current entry and pushes the
  * string value to the stack. If there is no current entry then an error is
  * raised.
  * </p>
- * <img src="doc-files/cite.png"/>
+ * <img src="doc-files/cite.png" alt="cite">
  * <p>
- * The following example is taken from <tt>alpha.bst</tt>:
+ * The following example is taken from {@code alpha.bst}:
  * </p>
  * 
  * <pre>
  *   "there's a month but no year in " cite$ * warning$
  * </pre>
  * 
- * <hr />
+ * <hr>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X documentation:
- * <dt>
- * <dd>Pushes the string that was the <code>\cite</code>-command argument for
+ * <dt>BibTeX documentation</dt>
+ * <dd>Pushes the string that was the {@code \cite}-command argument for
  * this entry.</dd>
  * </dl>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X web documentation:</dt>
- * <dd>The <code>built_in</code> function <code>cite$</code> pushes the
- * appropriate string from <code>cite_list</code> onto the stack.</dd>
+ * <dt>BibTeX web documentation:</dt>
+ * <dd>The {@code built_in} function {@code cite$} pushes the
+ * appropriate string from {@code cite_list} onto the stack.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Cite extends AbstractCode {
 
     /**
@@ -89,10 +81,7 @@ public class Cite extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {

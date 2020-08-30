@@ -31,23 +31,23 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.register.CharCode;
 
 /**
- * This class provides an implementation for the primitive <code>\chardef</code>
+ * This class provides an implementation for the primitive {@code \chardef}
  * .
  * 
- * <doc name="chardef"> <h3>The Primitive <tt>\chardef</tt></h3>
+ * <p>The Primitive {@code \chardef}</p>
  * <p>
- * The primitive <tt>\chardef</tt> allows you to define a control sequence or
+ * The primitive {@code \chardef} allows you to define a control sequence or
  * active character to be equivalent to a character. This mean that the new
  * entity can be used wherever a character is allowed.
  * </p>
  * <p>
  * A character is represented by a code point; i.e. a positive number denoting
  * the character position. In TeX only 8-bit number where allowed. In
- * ??TeX arbitrary positive numbers are valid as values.
+ * εχTeX arbitrary positive numbers are valid as values.
  * </p>
  * <p>
  * The definition is performed with respect to to group to keep it locally. The
- * prefix <tt>/global</tt> or the value of <tt>\globaldefs</tt> can influence
+ * prefix {@code /global} or the value of {@code \globaldefs} can influence
  * the scope.
  * </p>
  * <p>
@@ -55,11 +55,12 @@ import org.extex.unit.base.register.CharCode;
  * performed.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;chardef&rang;
- *      &rarr; <tt>\chardef</tt> {@linkplain
+ *      &rarr; {@code \chardef} {@linkplain
  *        org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *        &lang;control sequence&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
@@ -67,7 +68,8 @@ import org.extex.unit.base.register.CharCode;
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \chardef\abc=45  </pre>
@@ -75,16 +77,14 @@ import org.extex.unit.base.register.CharCode;
  * <pre class="TeXSample">
  *    \chardef\abc 33  </pre>
  * 
- * </doc>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Chardef extends AbstractAssignment {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -99,10 +99,7 @@ public class Chardef extends AbstractAssignment {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

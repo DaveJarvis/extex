@@ -28,19 +28,19 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * properties from the {@link org.extex.framework.AbstractFactory
  * AbstractFactory}. Among them the support for configuration and logging.
  * 
- * <h3>Configuration</h3>
+ *  Configuration
  * 
  * <p>
  * Mainly the configuration needs to specify which class to use for the
  * ErrorHandler. The configuration provides a mapping from a type name to the
  * sub-configuration to be used. The name of the class is given as the argument
- * <tt>class</tt> of the sub-configuration as shown below.
- * 
+ * {@code class} of the sub-configuration as shown below.
+ * </p>
+ *
  * <pre>
  *    &lt;setup class=&quot;org.extex.interpreter.unit.tex.Setup&quot;/&gt;
  * </pre>
  * 
- * </p>
  * <p>
  * The named class need to implement the interface
  * {@link org.extex.interpreter.unit.Loader Loader}. If this interface is not
@@ -48,8 +48,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * </p>
  * <p>
  * The configuration is passed down to the new instance if it implements the
- * interface {@link org.extex.framework.configuration.Configurable Configurable}
- * .
+ * interface {@link org.extex.framework.configuration.Configurable Configurable}.
  * </p>
  * <p>
  * If the class implements the interface
@@ -60,12 +59,11 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LoaderFactory extends AbstractFactory<Loader> {
 
     /**
-     * Create a new instance of the class given by the attribute <tt>class</tt>
+     * Create a new instance of the class given by the attribute {@code class}
      * of the configuration.
      * 
      * @return the Code loaded

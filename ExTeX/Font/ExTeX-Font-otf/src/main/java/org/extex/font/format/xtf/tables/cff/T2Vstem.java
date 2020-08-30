@@ -26,8 +26,7 @@ import java.util.List;
  * T2: vstem: x dx {dxa dxb}* vstem (3).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class T2Vstem extends T2HintCmd {
 
     /**
@@ -43,23 +42,13 @@ public class T2Vstem extends T2HintCmd {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
-     */
-    @Override
+@Override
     public int getID() {
 
         return TYPE_VSTEM;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "vstem";

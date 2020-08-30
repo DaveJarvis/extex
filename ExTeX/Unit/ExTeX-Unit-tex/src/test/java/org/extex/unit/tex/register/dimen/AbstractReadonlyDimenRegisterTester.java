@@ -26,23 +26,22 @@ import org.junit.Test;
  * This is a test suite for read-only dimen registers.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public abstract class AbstractReadonlyDimenRegisterTester extends ExTeXLauncher {
 
     /**
-     * The field <tt>primitive</tt> contains the name of the primitive to
+     * The field {@code primitive} contains the name of the primitive to
      * test.
      */
     private String primitive;
 
     /**
-     * The field <tt>defaultValue</tt> contains the default value.
+     * The field {@code defaultValue} contains the default value.
      */
     private String defaultValue;
 
     /**
-     * The field <tt>argument</tt> contains the argument.
+     * The field {@code argument} contains the argument.
      */
     private String argument = "";
 
@@ -75,9 +74,8 @@ public abstract class AbstractReadonlyDimenRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case checking that the primitive is not allowed in
-     * vertical mode. </testcase>
-     * 
+     * Test case checking that the primitive is not allowed in vertical mode
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -90,9 +88,8 @@ public abstract class AbstractReadonlyDimenRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case checking that the primitive is not allowed in inner
-     * vertical mode. </testcase>
-     * 
+     * Test case checking that the primitive is not allowed in inner vertical mode
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -105,9 +102,8 @@ public abstract class AbstractReadonlyDimenRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case checking that the primitive is not allowed in
-     * horizontal mode. </testcase>
-     * 
+     * Test case checking that the primitive is not allowed in horizontal mode
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -120,9 +116,8 @@ public abstract class AbstractReadonlyDimenRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case checking that the primitive is not allowed in
-     * restricted horizontal mode. </testcase>
-     * 
+     * Test case checking that the primitive is not allowed in restricted horizontal mode
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -135,9 +130,8 @@ public abstract class AbstractReadonlyDimenRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case checking that the primitive is not allowed in math
-     * mode. </testcase>
-     * 
+     * Test case checking that the primitive is not allowed in math mode
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -150,9 +144,8 @@ public abstract class AbstractReadonlyDimenRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case checking that the primitive is not allowed in math
-     * mode. </testcase>
-     * 
+     * Test case checking that the primitive is not allowed in math mode
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -165,9 +158,8 @@ public abstract class AbstractReadonlyDimenRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case checking that the primitive is theable and has the
-     * default value 0. </testcase>
-     * 
+     * Test case checking that the primitive is theable and has the default value 0
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -180,9 +172,8 @@ public abstract class AbstractReadonlyDimenRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase> Test case checking that the primitive is assignable to a dimen
-     * register. </testcase>
-     * 
+     * Test case checking that the primitive is assignable to a dimen register
+* 
      * @throws Exception in case of an error
      */
     @Test

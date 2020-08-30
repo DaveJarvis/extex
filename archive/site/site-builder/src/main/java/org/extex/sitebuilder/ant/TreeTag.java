@@ -41,12 +41,11 @@ import org.extex.sitebuilder.core.TreeBuilder;
  *    template="<i>template/file</i>" /&gt; </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TreeTag {
 
     /**
-     * The field <tt>builder</tt> contains the wrapped tree builder.
+     * The field {@code builder} contains the wrapped tree builder.
      */
     private TreeBuilder builder;
 

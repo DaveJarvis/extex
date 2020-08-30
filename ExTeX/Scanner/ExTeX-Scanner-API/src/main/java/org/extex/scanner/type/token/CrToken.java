@@ -31,12 +31,11 @@ import org.extex.scanner.type.Catcode;
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4738 $
- */
+*/
 public class CrToken extends AbstractToken implements Token {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2011L;
 
@@ -58,7 +57,7 @@ public class CrToken extends AbstractToken implements Token {
      * @param cc the catcode
      * @param c the value
      * 
-     * @return <code>true</code> iff the tokens are equal
+     * @return {@code true} iff the tokens are equal
      * 
      * @see org.extex.scanner.type.token.AbstractToken#eq(org.extex.scanner.type.Catcode,
      *      char)
@@ -77,7 +76,7 @@ public class CrToken extends AbstractToken implements Token {
      * @param cc the catcode
      * @param s the value
      * 
-     * @return <code>true</code> iff the tokens are equal
+     * @return {@code true} iff the tokens are equal
      * 
      * @see org.extex.scanner.type.token.AbstractToken#eq(org.extex.scanner.type.Catcode,
      *      java.lang.String)
@@ -94,7 +93,7 @@ public class CrToken extends AbstractToken implements Token {
      * 
      * @param c the value
      * 
-     * @return <code>true</code> iff the tokens are equal
+     * @return {@code true} iff the tokens are equal
      * 
      * @see org.extex.scanner.type.token.AbstractToken#eq(char)
      */
@@ -121,11 +120,7 @@ public class CrToken extends AbstractToken implements Token {
      * Get the string representation of this object for debugging purposes.
      * 
      * @return the string representation
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [298]"
-     */
+*/
     @Override
     public String toString() {
 

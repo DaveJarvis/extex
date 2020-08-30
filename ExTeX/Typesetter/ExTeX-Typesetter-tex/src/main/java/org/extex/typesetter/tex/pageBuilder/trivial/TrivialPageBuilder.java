@@ -38,27 +38,26 @@ import org.extex.typesetter.type.page.PageFactory;
  * This is a first reference implementation of a page builder.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4483 $
- */
+*/
 public class TrivialPageBuilder implements PageBuilder {
 
     /**
-     * The field <tt>backend</tt> contains the target to receive the pages.
+     * The field {@code backend} contains the target to receive the pages.
      */
     private BackendDriver backend = null;
 
     /**
-     * The field <tt>context</tt> contains the interpreter context.
+     * The field {@code context} contains the interpreter context.
      */
     private Context context = null;
 
     /**
-     * The field <tt>options</tt> contains the options to control the behaviour.
+     * The field {@code options} contains the options to control the behaviour.
      */
     private TypesetterOptions options = null;
 
     /**
-     * The field <tt>pageFactory</tt> contains the page factory to use.
+     * The field {@code pageFactory} contains the page factory to use.
      */
     private PageFactory pageFactory = null;
 
@@ -67,12 +66,7 @@ public class TrivialPageBuilder implements PageBuilder {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.pageBuilder.PageBuilder#close()
-     */
-    @Override
+@Override
     public void close() throws TypesetterException {
 
         try {
@@ -84,10 +78,7 @@ public class TrivialPageBuilder implements PageBuilder {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.pageBuilder.PageBuilder#flush(org.extex.typesetter.type.NodeList,
-     *      org.extex.typesetter.Typesetter)
+*      org.extex.typesetter.Typesetter)
      */
     @Override
     public void flush(NodeList nodes, Typesetter typesetter)
@@ -147,12 +138,7 @@ public class TrivialPageBuilder implements PageBuilder {
         this.backend = backend;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.pageBuilder.PageBuilder#setContext(org.extex.typesetter.PageContext)
-     */
-    @Override
+@Override
     public void setContext(PageContext context) {
 
         // TODO gene: beware of ClassCastException
@@ -172,33 +158,20 @@ public class TrivialPageBuilder implements PageBuilder {
         this.options = options;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.pageBuilder.PageBuilder#setOutputRoutine(org.extex.typesetter.output.OutputRoutine)
-     */
-    @Override
+@Override
     public void setOutputRoutine(OutputRoutine output) {
 
         // not supported
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.pageBuilder.PageBuilder#setPageFactory(org.extex.typesetter.type.page.PageFactory)
-     */
-    @Override
+@Override
     public void setPageFactory(PageFactory factory) {
 
         pageFactory = factory;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.pageBuilder.PageBuilder#shipout(org.extex.typesetter.type.NodeList,
-     *      org.extex.typesetter.Typesetter)
+*      org.extex.typesetter.Typesetter)
      */
     @Override
     public void shipout(NodeList nodes, Typesetter typesetter)

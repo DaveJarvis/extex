@@ -23,8 +23,7 @@ package org.extex.exindex.core.type.alphabet;
  * This interface describes an alphabet.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface Alphabet {
 
 

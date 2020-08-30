@@ -30,36 +30,35 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\ignorespaces</code>.
+ * {@code \ignorespaces}.
  * 
- * <doc name="ignorespaces">
- * <h3>The Primitive <tt>\ignorespaces</tt></h3>
+ * <p>The Primitive {@code \ignorespaces}</p>
  * <p>
- * The primitive <tt>\ignorespaces</tt> arranges that the scanner discards
+ * The primitive {@code \ignorespaces} arranges that the scanner discards
  * following white-space.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;ignorespaces&rang;
- *      &rarr; <tt>\ignorespaces</tt> </pre>
+ *      &rarr; {@code \ignorespaces} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \ignorespaces  </pre>
  * 
- * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Ignorespaces extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -75,10 +74,7 @@ public class Ignorespaces extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

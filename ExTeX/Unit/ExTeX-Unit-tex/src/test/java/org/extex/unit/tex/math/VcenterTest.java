@@ -20,11 +20,10 @@
 package org.extex.unit.tex.math;
 
 /**
- * This is a test suite for the primitive <tt>\vcenter</tt>.
+ * This is a test suite for the primitive {@code \vcenter}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4627 $
- */
+*/
 public class VcenterTest extends AbstractMathTester {
 
 

@@ -29,12 +29,11 @@ import org.extex.exindex.lisp.type.value.LValue;
  * This is the adapter for the L system to restrict following commands to a
  * certain index.
  * 
- * <doc type="exindex-command" command="for-index">
- * 
- * <h3>The Command <tt>for-index</tt></h3>
+*
+ * <p>The Command {@code for-index}</p>
  * 
  * <p>
- * The command <tt>for-index</tt> can be used to restrict the scope of the
+ * The command {@code for-index} can be used to restrict the scope of the
  * following commands to a certain index.
  * </p>
  * 
@@ -62,18 +61,16 @@ import org.extex.exindex.lisp.type.value.LValue;
  * The example above sets the markup for the index for two index names.
  * </p>
  * 
- * </doc>
  * 
  * 
- * <h3>Parameters</h3>
+ * <p>Parameters</p>
  * <p>
  * The name of the index currently in use is stored in the index container as
  * current index.
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 6728 $
- */
+*/
 public class LForIndex extends AbstractLAdapter {
 
     /**
@@ -99,7 +96,7 @@ public class LForIndex extends AbstractLAdapter {
      * @param interpreter the interpreter
      * @param name the name of the alphabet
      * 
-     * @return <tt>nil</tt>
+     * @return {@code nil}
      * 
      * @throws UnknownIndexException in case of an error
      */

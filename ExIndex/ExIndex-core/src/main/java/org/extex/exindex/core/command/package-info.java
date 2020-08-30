@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- *   This package contains functions for the L system.
+ *   Contains functions for the L system.
  *   The parameter reading and processing utilized the L system as a tool
  *   to invoke the proper command. Those commands are defined as functions and
  *   registered in the L system.

@@ -34,30 +34,31 @@ import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.node.VerticalListNode;
 
 /**
- * This class provides an implementation for the primitive <code>\vtop</code>.
+ * This class provides an implementation for the primitive {@code \vtop}.
  *
- * <doc name="vtop">
- * <h3>The Primitive <tt>\vtop</tt></h3>
+ * <p>The Primitive {@code \vtop}</p>
  * <p>
  *  TODO missing documentation
  * </p>
  * <p>
- *  The contents of the toks register <tt>\everyvbox</tt> is inserted at the
+ *  The contents of the toks register {@code \everyvbox} is inserted at the
  *  beginning of the vertical material of the box.
  * </p>
  *
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;vtop&rang;
- *      &rarr; <tt>\vtop</tt> &lang;box specification&rang; <tt>{</tt> &lang;vertical material&rang; <tt>}</tt>
+ *      &rarr; {@code \vtop} &lang;box specification&rang; {@code {} &lang;vertical material&rang; {@code }}
  *
  *    &lang;box specification&rang;
  *      &rarr;
- *         | <tt>to</tt> &lang;rule dimension&rang;
- *         | <tt>spread</tt> &lang;rule dimension&rang;  </pre>
+ *         | {@code to} &lang;rule dimension&rang;
+ *         | {@code spread} &lang;rule dimension&rang;  </pre>
  *
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  *  <pre class="TeXSample">
  *    \vtop{abc}  </pre>
  *  <pre class="TeXSample">
@@ -65,15 +66,13 @@ import org.extex.typesetter.type.node.VerticalListNode;
  *  <pre class="TeXSample">
  *    \vtop spread 12pt{abc}  </pre>
  *
- * </doc>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Vtop extends Vbox {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -95,7 +94,7 @@ public class Vtop extends Vbox {
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * @param startToken the token which started the group
-     * @param insert the token to insert at the beginning or <code>null</code>
+     * @param insert the token to insert at the beginning or {@code null}
      *
      * @return the complete Box
      *

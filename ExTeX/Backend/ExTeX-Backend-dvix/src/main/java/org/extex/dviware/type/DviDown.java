@@ -25,15 +25,14 @@ import java.io.OutputStream;
 import org.extex.dviware.Dvi;
 
 /**
- * This class represents the DVI instruction <tt>down</tt>.
+ * This class represents the DVI instruction {@code down}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DviDown extends AbstractDviCode {
 
     /**
-     * The field <tt>dist</tt> contains the distance to move down.
+     * The field {@code dist} contains the distance to move down.
      */
     private int dist;
 

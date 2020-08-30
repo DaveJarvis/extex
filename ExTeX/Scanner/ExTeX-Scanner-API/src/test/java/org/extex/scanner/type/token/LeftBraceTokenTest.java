@@ -30,12 +30,11 @@ import org.junit.runner.JUnitCore;
  * This class contains the test cases for left brace tokens.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4756 $
- */
+*/
 public class LeftBraceTokenTest extends TokenTester {
 
     /**
-     * The field <tt>token</tt> contains the reference token.
+     * The field {@code token} contains the reference token.
      */
     private static final Token token = new LeftBraceToken( UnicodeChar.get( 'x'));
 
@@ -58,9 +57,7 @@ setText( "x");
 setStr( "begin-group character x");
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testEqualsToken1() {
 
         Token t1 = new LeftBraceToken(UnicodeChar.get(' '));

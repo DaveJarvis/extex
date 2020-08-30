@@ -33,40 +33,40 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.typesetter.AbstractHorizontalCode;
 
 /**
- * This class provides an implementation for the primitive <code>\hfill</code>.
+ * This class provides an implementation for the primitive {@code \hfill}.
  * 
- * <doc name="hfill"> <h3>The Primitive <tt>\hfill</tt></h3>
+ * <p>The Primitive {@code \hfill}</p>
  * <p>
- * The primitive <tt>\hfil</tt> inserts glue at the current position which is
+ * The primitive {@code \hfil} inserts glue at the current position which is
  * stretchable horizontally. The order of the glue is 2.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;hfill&rang;
- *        &rarr; <tt>\hfill</tt>  </pre>
+ *        &rarr; {@code \hfill}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    x \hfill x  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Hfill extends AbstractHorizontalCode implements HorizontalSkip {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>FILL</tt> contains the glue to insert for this primitive.
+     * The field {@code FILL} contains the glue to insert for this primitive.
      */
     private static final Glue FILL = new Glue(Dimen.ZERO,
         GlueComponent.ONE_FILL, GlueComponent.ZERO);
@@ -82,10 +82,7 @@ public class Hfill extends AbstractHorizontalCode implements HorizontalSkip {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -97,10 +94,7 @@ public class Hfill extends AbstractHorizontalCode implements HorizontalSkip {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.typesetter.spacing.HorizontalSkip#getGlue(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public FixedGlue getGlue(Context context, TokenSource source,

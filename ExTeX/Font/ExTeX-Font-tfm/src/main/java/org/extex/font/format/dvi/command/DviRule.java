@@ -23,27 +23,26 @@ package org.extex.font.format.dvi.command;
  * DVI: rule: draw a rule.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class DviRule extends DviCommand {
 
     /**
      * the height
      */
-    private int height;
+    private final int height;
 
     /**
      * the width
      */
-    private int width;
+    private final int width;
 
     /**
      * put-mode (The 'put' commands are exactly like the 'set' commands, except
      * that they simply put out a character or a rule without moving the
      * reference point afterwards.)
      */
-    private boolean put;
+    private final boolean put;
 
     /**
      * Create a new object.
@@ -86,12 +85,7 @@ public class DviRule extends DviCommand {
         return height;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviCommand#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         if (put) {

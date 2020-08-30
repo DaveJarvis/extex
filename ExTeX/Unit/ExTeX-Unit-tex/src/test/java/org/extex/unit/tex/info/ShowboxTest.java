@@ -23,11 +23,10 @@ import org.extex.test.NoFlagsPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\showbox</tt>.
+ * This is a test suite for the primitive {@code \showbox}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class ShowboxTest extends NoFlagsPrimitiveTester {
 
 
@@ -37,8 +36,8 @@ public class ShowboxTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\showbox"> Test case checking that <tt>\showbox</tt>
-     * needs an argument. </testcase>
+     * <testcase primitive="\showbox"> Test case checking that {@code \showbox}
+     * needs an argument.
      * 
      * @throws Exception in case of an error
      */
@@ -52,8 +51,8 @@ public class ShowboxTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\showbox"> Test case checking that <tt>\showbox</tt>
-     * complains about a negative register code. </testcase>
+     * <testcase primitive="\showbox"> Test case checking that {@code \showbox}
+     * complains about a negative register code.
      * 
      * @throws Exception in case of an error
      */
@@ -67,8 +66,8 @@ public class ShowboxTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\showbox"> Test case checking that <tt>\showbox</tt>
-     * of a hbox works. </testcase>
+     * <testcase primitive="\showbox"> Test case checking that {@code \showbox}
+     * of a hbox works.
      * 
      * @throws Exception in case of an error
      */
@@ -82,8 +81,8 @@ public class ShowboxTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\showbox"> Test case checking that <tt>\showbox</tt>
-     * of a vbox works. </testcase>
+     * <testcase primitive="\showbox"> Test case checking that {@code \showbox}
+     * of a vbox works.
      * 
      * @throws Exception in case of an error
      */
@@ -97,8 +96,8 @@ public class ShowboxTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\showbox"> Test case checking that <tt>\showbox</tt>
-     * of a void register works. </testcase>
+     * <testcase primitive="\showbox"> Test case checking that {@code \showbox}
+     * of a void register works.
      * 
      * @throws Exception in case of an error
      */

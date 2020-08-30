@@ -26,14 +26,13 @@ import java.util.List;
  * Abstract class for all hint masks.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public abstract class T2AbstractHintMask extends T2Hints {
 
     /**
      * bytes
      */
-    private short[] bytes;
+    private final short[] bytes;
 
     /**
      * Create a new object.
@@ -51,12 +50,7 @@ public abstract class T2AbstractHintMask extends T2Hints {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#getBytes()
-     */
-    @Override
+@Override
     public short[] getBytes() {
 
         return bytes;

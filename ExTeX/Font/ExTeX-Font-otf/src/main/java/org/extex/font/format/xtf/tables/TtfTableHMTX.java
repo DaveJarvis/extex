@@ -31,7 +31,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * The 'hmtx' table contains metric information for the horizontal layout each
  * of the glyphs in the font.
  * 
- * <table BORDER="1"> <tbody>
+ *  <table> <caption>TBD</caption> <tbody>
  * <tr>
  * <td><b>Field</b></td>
  * <td><b>Type</b></td>
@@ -59,8 +59,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TtfTableHMTX extends AbstractXtfTable
         implements
             XtfTable,
@@ -128,12 +127,7 @@ public class TtfTableHMTX extends AbstractXtfTable
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.AbstractXtfTable#getInitOrder()
-     */
-    @Override
+@Override
     public int getInitOrder() {
 
         return 1;
@@ -157,12 +151,7 @@ public class TtfTableHMTX extends AbstractXtfTable
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
+public String getShortcut() {
 
         return "hmtx";
     }
@@ -219,10 +208,7 @@ public class TtfTableHMTX extends AbstractXtfTable
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

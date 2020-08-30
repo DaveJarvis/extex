@@ -32,40 +32,39 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.tc.Direction;
 
 /**
- * This class provides an implementation for the primitive <code>\beginL</code>.
+ * This class provides an implementation for the primitive {@code \beginL}.
  * 
- * <doc name="beginL">
- * <h3>The Primitive <tt>\beginL</tt></h3>
+ * <p>The Primitive {@code \beginL}</p>
  * <p>
- * The primitive <tt>\beginL</tt> indicates that the following text is typeset
+ * The primitive {@code \beginL} indicates that the following text is typeset
  * left to right.
  * </p>
  * <p>
- * This primitive is deactivated unless the count register <tt>\TeXXeTstate</tt>
+ * This primitive is deactivated unless the count register {@code \TeXXeTstate}
  * has a positive value.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * 
  * <pre class="syntax">
  *    &lang;beginL&rang;
- *     &rarr; <tt>\beginL</tt> </pre>
+ *     &rarr; {@code \beginL} </pre>
  * 
- * <h4>Example:</h4>
+ * <p>Example:</p>
+
  * 
  * <pre class="TeXSample">
  *   \beginL  ... \endL</pre>
  * 
- * </doc>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class BeginL extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -81,10 +80,7 @@ public class BeginL extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

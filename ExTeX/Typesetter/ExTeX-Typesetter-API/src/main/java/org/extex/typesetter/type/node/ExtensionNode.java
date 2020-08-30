@@ -27,19 +27,18 @@ import org.extex.typesetter.type.Node;
  * possible to insert arbitrary nodes into the typesetter tree.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class ExtensionNode extends WhatsItNode implements Node {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>extension</tt> contains the extension object.
+     * The field {@code extension} contains the extension object.
      */
-    private Extension extension;
+    private final Extension extension;
 
     /**
      * Creates a new object.

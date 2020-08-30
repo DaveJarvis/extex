@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\popocplist</tt>.
+ * This is a test suite for the primitive {@code \popocplist}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class PopocplistTest extends ExTeXLauncher {
 
     /**
@@ -48,8 +47,8 @@ public class PopocplistTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\popocp"> Test case checking that <tt>\popocp</tt>
-     * needs an active ocp list. </testcase>
+     * <testcase primitive="\popocp"> Test case checking that {@code \popocp}
+     * needs an active ocp list.
      * 
      * @throws Exception in case of an error
      */

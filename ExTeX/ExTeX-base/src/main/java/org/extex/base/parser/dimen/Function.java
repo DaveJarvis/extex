@@ -30,8 +30,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * arguments from a token stream.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4404 $
- */
+*/
 public interface Function {
 
     /**

@@ -37,22 +37,21 @@ import org.extex.typesetter.type.noad.StyleNoad;
  * mathematical appearance.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class MathContext {
 
     /**
-     * The constant <tt>MU_UNIT</tt> contains the unit length for the math unit.
+     * The constant {@code MU_UNIT} contains the unit length for the math unit.
      */
     private static final long MU_UNIT = 18 * Dimen.ONE;
 
     /**
-     * The field <tt>context</tt> contains the data object for options.
+     * The field {@code context} contains the data object for options.
      */
-    private TypesetterOptions options;
+    private final TypesetterOptions options;
 
     /**
-     * The field <tt>style</tt> contains the current style.
+     * The field {@code style} contains the current style.
      */
     private StyleNoad style;
 
@@ -124,10 +123,10 @@ public class MathContext {
      * </p>
      * <p><i>
      *  There are 18 mu to an em, where the em is taken from family 2
-     *  (the math symbols family). In other words, <tt>\textfont 2</tt>
-     *  defines the em value for <tt>mu</tt> in display and text styles;
-     *  <tt>\scriptfont 2</tt> defines the em for script size material;
-     *  and <tt>\scriptscriptfont 2</tt> defines it for scriptscript size.
+     *  (the math symbols family). In other words, {@code \textfont 2}
+     *  defines the em value for {@code mu} in display and text styles;
+     *  {@code \scriptfont 2} defines the em for script size material;
+     *  and {@code \scriptscriptfont 2} defines it for scriptscript size.
      * </i></p>
      *
      * @param mudimen the math dimen to convert

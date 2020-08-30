@@ -23,7 +23,7 @@ package org.extex.ocpware.type;
  * This enumeration provides information about the &Omega;CP instructions.
  * 
  * 
- * <h3>The &Omega;CP Code Format</h3>
+ * <p>The &Omega;CP Code Format</p>
  * <p>
  * A &Omega;CP Program consists of a set of instructions. The instructions are
  * stored in words of the length of 4 bytes (of 8 bits each). Each instruction
@@ -34,9 +34,10 @@ package org.extex.ocpware.type;
  * An instruction without arguments has the following layout:
  * </p>
  * 
- * <table cellpadding="0" cellspacing="0" border="0">
+* <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td style="width:6em; border-style:none; font-size:60%;">8 bit</td>
+* <td style="width:6em; border-style:none; font-size:60%;">8 bit</td>
  * <td style="width:18em; border-style:none;; font-size:60%;">24 bit</td>
  * </tr>
  * <tr style="padding:0pt; spacing:0pt;">
@@ -49,9 +50,10 @@ package org.extex.ocpware.type;
  * An instruction with one argument has the following layout:
  * </p>
  * 
- * <table cellpadding="0" cellspacing="0" border="0">
+* <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td style="width:6em; border-style:none; font-size:60%;">8 bit</td>
+* <td style="width:6em; border-style:none; font-size:60%;">8 bit</td>
  * <td style="width:18em; border-style:none;; font-size:60%;">24 bit</td>
  * </tr>
  * <tr style="padding:0pt; spacing:0pt;">
@@ -65,9 +67,10 @@ package org.extex.ocpware.type;
  * An instruction with two arguments has the following layout:
  * </p>
  * 
- * <table cellpadding="0" cellspacing="0" border="0">
+* <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td style="width:6em; border-style:none; font-size:60%;">8 bit</td>
+* <td style="width:6em; border-style:none; font-size:60%;">8 bit</td>
  * <td style="width:18em; border-style:none;; font-size:60%;">24 bit</td>
  * </tr>
  * <tr style="padding:0pt; spacing:0pt;">
@@ -82,11 +85,12 @@ package org.extex.ocpware.type;
  * </tr>
  * </table>
  * 
- * <h3>The &Omega;CP Programming Model</h3>
+ * <p>The &Omega;CP Programming Model</p>
  * 
- * <table style="borderstyle:solid;bordercolor:black;borderwidth:1pt;">
+* <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td>table[] </td>
+* <td>table[] </td>
  * <td>Tables </td>
  * </tr>
  * <tr>
@@ -157,127 +161,126 @@ package org.extex.ocpware.type;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public enum OcpCode {
 
     /**
-     * The constant <tt>RIGHT_OUTPUT</tt> contains the description of the
+     * The constant {@code RIGHT_OUTPUT} contains the description of the
      * &Omega;CP instruction to output the topmost number from the arithmetic
      * stack. This element is removed from the stack.
      */
     RIGHT_OUTPUT(1, "RIGHT_OUTPUT"),
 
     /**
-     * The constant <tt>RIGHT_NUM</tt> contains the description of the
+     * The constant {@code RIGHT_NUM} contains the description of the
      * &Omega;CP instruction to output a constant character number. The constant
      * is passed in as argument.
      */
     RIGHT_NUM(2, "RIGHT_NUM", OcpArgumentType.CHARACTER),
 
     /**
-     * The constant <tt>RIGHT_CHAR</tt> contains the description of the
+     * The constant {@code RIGHT_CHAR} contains the description of the
      * &Omega;CP instruction to output a character from the right end of the
      * prefix.
      */
     RIGHT_CHAR(3, "RIGHT_CHAR", OcpArgumentType.NUMBER),
 
     /**
-     * The constant <tt>RIGHT_LCHAR</tt> contains the description of the
+     * The constant {@code RIGHT_LCHAR} contains the description of the
      * &Omega;CP instruction to output a character from the left end of the
      * prefix.
      */
     RIGHT_LCHAR(4, "RIGHT_LCHAR", OcpArgumentType.NUMBER),
 
     /**
-     * The constant <tt>RIGHT_SOME</tt> contains the description of the
+     * The constant {@code RIGHT_SOME} contains the description of the
      * &Omega;CP instruction to output some characters from the prefix.
      */
     RIGHT_SOME(5, "RIGHT_SOME", OcpArgumentType.NUMBER, OcpArgumentType.NUMBER),
 
     /**
-     * The constant <tt>PBACK_OUTPUT</tt> contains the description of the
+     * The constant {@code PBACK_OUTPUT} contains the description of the
      * &Omega;CP instruction to push back the top value from the arithmetic
      * stack.
      */
     PBACK_OUTPUT(6, "PBACK_OUTPUT"),
 
     /**
-     * The constant <tt>PBACK_NUM</tt> contains the description of the
+     * The constant {@code PBACK_NUM} contains the description of the
      * &Omega;CP instruction to push back a constant taken from the argument.
      */
     PBACK_NUM(7, "PBACK_NUM", OcpArgumentType.CHARACTER),
 
     /**
-     * The constant <tt>PBACK_CHAR</tt> contains the description of the
+     * The constant {@code PBACK_CHAR} contains the description of the
      * &Omega;CP instruction to push back a character from the right end of the
      * prefix.
      */
     PBACK_CHAR(8, "PBACK_CHAR", OcpArgumentType.NUMBER),
 
     /**
-     * The constant <tt>PBACK_LCHAR</tt> contains the description of the
+     * The constant {@code PBACK_LCHAR} contains the description of the
      * &Omega;CP instruction to push back a character from the left end of the
      * prefix.
      */
     PBACK_LCHAR(9, "PBACK_LCHAR", OcpArgumentType.NUMBER),
 
     /**
-     * The constant <tt>PBACK_SOME</tt> contains the description of the
+     * The constant {@code PBACK_SOME} contains the description of the
      * &Omega;CP instruction to push back some characters from the prefix.
      */
     PBACK_SOME(10, "PBACK_SOME", OcpArgumentType.NUMBER, OcpArgumentType.NUMBER),
 
     /**
-     * The constant <tt>ADD</tt> contains the description of the &Omega;CP
+     * The constant {@code ADD} contains the description of the &Omega;CP
      * instruction to add two numbers from the stack. The result is returned via
      * the stack.
      */
     ADD(11, "ADD"),
 
     /**
-     * The constant <tt>SUB</tt> contains the description of the &Omega;CP
+     * The constant {@code SUB} contains the description of the &Omega;CP
      * instruction to subtract two numbers from the stack. The result is
      * returned via the stack.
      */
     SUB(12, "SUB"),
 
     /**
-     * The constant <tt>MULT</tt> contains the description of the &Omega;CP
+     * The constant {@code MULT} contains the description of the &Omega;CP
      * instruction to multiply two numbers from the stack. The result is
      * returned via the stack.
      */
     MULT(13, "MULT"),
 
     /**
-     * The constant <tt>DIV</tt> contains the description of the &Omega;CP
+     * The constant {@code DIV} contains the description of the &Omega;CP
      * instruction to divide two numbers from the stack. The result is returned
      * via the stack.
      */
     DIV(14, "DIV"),
 
     /**
-     * The constant <tt>MOD</tt> contains the description of the &Omega;CP
+     * The constant {@code MOD} contains the description of the &Omega;CP
      * instruction to compute the remainder of two numbers from the stack. The
      * result is returned via the stack.
      */
     MOD(15, "MOD"),
 
     /**
-     * The constant <tt>LOOKUP</tt> contains the description of the &Omega;CP
+     * The constant {@code LOOKUP} contains the description of the &Omega;CP
      * instruction to look-up a value from a table. The index and the table
      * number are passed in via the stack. The result is returned on the stack.
      */
     LOOKUP(16, "LOOKUP"),
 
     /**
-     * The constant <tt>PUSH_NUM</tt> contains the description of the
+     * The constant {@code PUSH_NUM} contains the description of the
      * &Omega;CP instruction to push a constant to the stack.
      */
     PUSH_NUM(17, "PUSH_NUM", OcpArgumentType.CHARACTER),
 
     /**
-     * The constant <tt>PUSH_CHAR</tt> contains the description of the
+     * The constant {@code PUSH_CHAR} contains the description of the
      * &Omega;CP instruction to push a character from the prefix to the stack.
      * The argument passed in is the index of the character counted from the
      * right end.
@@ -285,7 +288,7 @@ public enum OcpCode {
     PUSH_CHAR(18, "PUSH_CHAR", OcpArgumentType.NUMBER),
 
     /**
-     * The constant <tt>PUSH_LCHAR</tt> contains the description of the
+     * The constant {@code PUSH_LCHAR} contains the description of the
      * &Omega;CP instruction to push a character from the prefix to the stack.
      * The argument passed in is the index of the character counted from the
      * left end.
@@ -293,51 +296,51 @@ public enum OcpCode {
     PUSH_LCHAR(19, "PUSH_LCHAR", OcpArgumentType.NUMBER),
 
     /**
-     * The constant <tt>STATE_CHANGE</tt> contains the description of the
+     * The constant {@code STATE_CHANGE} contains the description of the
      * &Omega;CP instruction to set the current state to a given value. The
      * argument is the state to use.
      */
     STATE_CHANGE(20, "STATE_CHANGE", OcpArgumentType.STATE),
 
     /**
-     * The constant <tt>STATE_PUSH</tt> contains the description of the
+     * The constant {@code STATE_PUSH} contains the description of the
      * &Omega;CP instruction to push a state to the state stack.
      */
     STATE_PUSH(21, "STATE_PUSH", OcpArgumentType.STATE),
 
     /**
-     * The constant <tt>STATE_POP</tt> contains the description of the
+     * The constant {@code STATE_POP} contains the description of the
      * &Omega;CP instruction to pop the current state from the state stack.
      */
     STATE_POP(22, "STATE_POP"),
 
     /**
-     * The constant <tt>LEFT_START</tt> contains the description of the
+     * The constant {@code LEFT_START} contains the description of the
      * &Omega;CP instruction to set the first character position to last + 1.
      */
     LEFT_START(23, "LEFT_START"),
 
     /**
-     * The constant <tt>LEFT_RETURN</tt> contains the description of the
+     * The constant {@code LEFT_RETURN} contains the description of the
      * &Omega;CP instruction to reset the last pointer to first - 1.
      */
     LEFT_RETURN(24, "LEFT_RETURN"),
 
     /**
-     * The constant <tt>LEFT_BACKUP</tt> contains the description of the
+     * The constant {@code LEFT_BACKUP} contains the description of the
      * &Omega;CP instruction to back up the last pointer by 1.
      */
     LEFT_BACKUP(25, "LEFT_BACKUP"),
 
     /**
-     * The constant <tt>GOTO</tt> contains the description of the &Omega;CP
+     * The constant {@code GOTO} contains the description of the &Omega;CP
      * instruction to unconditionally branch to another instruction. The
      * argument is the number of the instruction to set the program counter to.
      */
     GOTO(26, "GOTO", OcpArgumentType.LABEL),
 
     /**
-     * The constant <tt>GOTO_NE</tt> contains the description of the &Omega;CP
+     * The constant {@code GOTO_NE} contains the description of the &Omega;CP
      * instruction to conditionally branch to another instruction. The first
      * argument is compared against the character pointed to by last and the
      * branching is performed if they are not equal. The second argument is the
@@ -346,7 +349,7 @@ public enum OcpCode {
     GOTO_NE(27, "GOTO_NE", OcpArgumentType.CHARACTER, OcpArgumentType.LABEL),
 
     /**
-     * The constant <tt>GOTO_EQ</tt> contains the description of the &Omega;CP
+     * The constant {@code GOTO_EQ} contains the description of the &Omega;CP
      * instruction to conditionally branch to another instruction. The first
      * argument is compared against the character pointed to by last and the
      * branching is performed if they are equal. The second argument is the
@@ -355,7 +358,7 @@ public enum OcpCode {
     GOTO_EQ(28, "GOTO_EQ", OcpArgumentType.CHARACTER, OcpArgumentType.LABEL),
 
     /**
-     * The constant <tt>GOTO_LT</tt> contains the description of the &Omega;CP
+     * The constant {@code GOTO_LT} contains the description of the &Omega;CP
      * instruction to conditionally branch to another instruction. The first
      * argument is compared against the character pointed to by last and the
      * branching is performed if the last character is less than the argument.
@@ -365,7 +368,7 @@ public enum OcpCode {
     GOTO_LT(29, "GOTO_LT", OcpArgumentType.CHARACTER, OcpArgumentType.LABEL),
 
     /**
-     * The constant <tt>GOTO_LE</tt> contains the description of the &Omega;CP
+     * The constant {@code GOTO_LE} contains the description of the &Omega;CP
      * instruction to conditionally branch to another instruction. The first
      * argument is compared against the character pointed to by last and the
      * branching is performed if the last character is less or equal than the
@@ -375,7 +378,7 @@ public enum OcpCode {
     GOTO_LE(30, "GOTO_LE", OcpArgumentType.CHARACTER, OcpArgumentType.LABEL),
 
     /**
-     * The constant <tt>GOTO_GT</tt> contains the description of the &Omega;CP
+     * The constant {@code GOTO_GT} contains the description of the &Omega;CP
      * instruction to conditionally branch to another instruction. The first
      * argument is compared against the character pointed to by last and the
      * branching is performed if the last character is greater than the
@@ -385,7 +388,7 @@ public enum OcpCode {
     GOTO_GT(31, "GOTO_GT", OcpArgumentType.CHARACTER, OcpArgumentType.LABEL),
 
     /**
-     * The constant <tt>GOTO_GE</tt> contains the description of the &Omega;CP
+     * The constant {@code GOTO_GE} contains the description of the &Omega;CP
      * instruction to conditionally branch to another instruction. The first
      * argument is compared against the character pointed to by last and the
      * branching is performed if the last character is greater or equal than the
@@ -395,7 +398,7 @@ public enum OcpCode {
     GOTO_GE(32, "GOTO_GE", OcpArgumentType.CHARACTER, OcpArgumentType.LABEL),
 
     /**
-     * The constant <tt>GOTO_NO_ADVANCE</tt> contains the description of the
+     * The constant {@code GOTO_NO_ADVANCE} contains the description of the
      * &Omega;CP instruction to conditionally branch to another instruction. The
      * value of last is incremented and the branching is performed if last has
      * reached the end of input. The argument is the number of the instruction
@@ -404,7 +407,7 @@ public enum OcpCode {
     GOTO_NO_ADVANCE(33, "GOTO_NO_ADVANCE", OcpArgumentType.LABEL),
 
     /**
-     * The constant <tt>GOTO_BEG</tt> contains the description of the
+     * The constant {@code GOTO_BEG} contains the description of the
      * &Omega;CP instruction to conditionally branch to another instruction. The
      * branching is performed at the beginning of input. The argument is the
      * number of the instruction to set the program counter to.
@@ -412,7 +415,7 @@ public enum OcpCode {
     GOTO_BEG(34, "GOTO_BEG", OcpArgumentType.LABEL),
 
     /**
-     * The constant <tt>GOTO_END</tt> contains the description of the
+     * The constant {@code GOTO_END} contains the description of the
      * &Omega;CP instruction to conditionally branch to another instruction. The
      * branching is performed at the end of input. The argument is the number of
      * the instruction to set the program counter to.
@@ -420,13 +423,13 @@ public enum OcpCode {
     GOTO_END(35, "GOTO_END", OcpArgumentType.LABEL),
 
     /**
-     * The constant <tt>STOP</tt> contains the description of the &Omega;CP
+     * The constant {@code STOP} contains the description of the &Omega;CP
      * instruction to stop the processing of the current prefix.
      */
     STOP(36, "STOP");
 
     /**
-     * The constant <tt>OP_ADD</tt> contains the op code for the &Omega;CP
+     * The constant {@code OP_ADD} contains the op code for the &Omega;CP
      * instruction to add two numbers from the stack.
      * 
      * @see #ADD
@@ -434,7 +437,7 @@ public enum OcpCode {
     public static final int OP_ADD = 11;
 
     /**
-     * The constant <tt>OP_DIV</tt> contains the op code for the &Omega;CP
+     * The constant {@code OP_DIV} contains the op code for the &Omega;CP
      * instruction to divide two numbers from the stack.
      * 
      * @see #DIV
@@ -442,7 +445,7 @@ public enum OcpCode {
     public static final int OP_DIV = 14;
 
     /**
-     * The constant <tt>OP_GOTO</tt> contains the op code for the &Omega;CP
+     * The constant {@code OP_GOTO} contains the op code for the &Omega;CP
      * instruction to adjust the program counter.
      * 
      * @see #GOTO
@@ -450,7 +453,7 @@ public enum OcpCode {
     public static final int OP_GOTO = 26;
 
     /**
-     * The constant <tt>OP_GOTO_BEG</tt> contains the op code for the
+     * The constant {@code OP_GOTO_BEG} contains the op code for the
      * &Omega;CP instruction to conditionally adjust the program counter at the
      * beginning of input.
      * 
@@ -459,7 +462,7 @@ public enum OcpCode {
     public static final int OP_GOTO_BEG = 34;
 
     /**
-     * The constant <tt>OP_GOTO_END</tt> contains the op code for the
+     * The constant {@code OP_GOTO_END} contains the op code for the
      * &Omega;CP instruction to conditionally adjust the program counter at the
      * end of input.
      * 
@@ -468,7 +471,7 @@ public enum OcpCode {
     public static final int OP_GOTO_END = 35;
 
     /**
-     * The constant <tt>OP_GOTO_EQ</tt> contains the op code for the &Omega;CP
+     * The constant {@code OP_GOTO_EQ} contains the op code for the &Omega;CP
      * instruction conditionally adjust the program counter.
      * 
      * @see #GOTO_EQ
@@ -476,7 +479,7 @@ public enum OcpCode {
     public static final int OP_GOTO_EQ = 28;
 
     /**
-     * The constant <tt>OP_GOTO_GE</tt> contains the op code for the &Omega;CP
+     * The constant {@code OP_GOTO_GE} contains the op code for the &Omega;CP
      * instruction conditionally adjust the program counter.
      * 
      * @see #GOTO_GE
@@ -484,7 +487,7 @@ public enum OcpCode {
     public static final int OP_GOTO_GE = 32;
 
     /**
-     * The constant <tt>OP_GOTO_GT</tt> contains the op code for the &Omega;CP
+     * The constant {@code OP_GOTO_GT} contains the op code for the &Omega;CP
      * instruction to conditionally adjust the program counter.
      * 
      * @see #GOTO_GT
@@ -492,7 +495,7 @@ public enum OcpCode {
     public static final int OP_GOTO_GT = 31;
 
     /**
-     * The constant <tt>OP_GOTO_LE</tt> contains the op code for the &Omega;CP
+     * The constant {@code OP_GOTO_LE} contains the op code for the &Omega;CP
      * instruction to conditionally adjust the program counter.
      * 
      * @see #GOTO_LE
@@ -500,7 +503,7 @@ public enum OcpCode {
     public static final int OP_GOTO_LE = 30;
 
     /**
-     * The constant <tt>OP_GOTO_LT</tt> contains the op code for the &Omega;CP
+     * The constant {@code OP_GOTO_LT} contains the op code for the &Omega;CP
      * instruction to conditionally adjust the program counter.
      * 
      * @see #GOTO_LT
@@ -508,7 +511,7 @@ public enum OcpCode {
     public static final int OP_GOTO_LT = 29;
 
     /**
-     * The constant <tt>OP_GOTO_NE</tt> contains the op code for the &Omega;CP
+     * The constant {@code OP_GOTO_NE} contains the op code for the &Omega;CP
      * instruction to conditionally adjust the program counter.
      * 
      * @see #GOTO_NE
@@ -516,7 +519,7 @@ public enum OcpCode {
     public static final int OP_GOTO_NE = 27;
 
     /**
-     * The constant <tt>OP_GOTO_NO_ADVANCE</tt> contains the op code for the
+     * The constant {@code OP_GOTO_NO_ADVANCE} contains the op code for the
      * ocp instruction to conditionally adjust the program counter after
      * advancing last.
      * 
@@ -525,7 +528,7 @@ public enum OcpCode {
     public static final int OP_GOTO_NO_ADVANCE = 33;
 
     /**
-     * The constant <tt>OP_LEFT_BACKUP</tt> contains the op code for the
+     * The constant {@code OP_LEFT_BACKUP} contains the op code for the
      * &Omega;CP instruction to decrement the last pointer by 1.
      * 
      * @see #LEFT_BACKUP
@@ -533,7 +536,7 @@ public enum OcpCode {
     public static final int OP_LEFT_BACKUP = 25;
 
     /**
-     * The constant <tt>OP_LEFT_RETURN</tt> contains the op code for the
+     * The constant {@code OP_LEFT_RETURN} contains the op code for the
      * &Omega;CP instruction to rest last to first - 1.
      * 
      * @see #LEFT_RETURN
@@ -541,7 +544,7 @@ public enum OcpCode {
     public static final int OP_LEFT_RETURN = 24;
 
     /**
-     * The constant <tt>OP_LEFT_START</tt> contains the op code for the
+     * The constant {@code OP_LEFT_START} contains the op code for the
      * &Omega;CP instruction to set first to last + 1.
      * 
      * @see #LEFT_START
@@ -549,7 +552,7 @@ public enum OcpCode {
     public static final int OP_LEFT_START = 23;
 
     /**
-     * The constant <tt>OP_LOOKUP</tt> contains the op code for the &Omega;CP
+     * The constant {@code OP_LOOKUP} contains the op code for the &Omega;CP
      * instruction to lookup a table entry.
      * 
      * @see #LOOKUP
@@ -557,7 +560,7 @@ public enum OcpCode {
     public static final int OP_LOOKUP = 16;
 
     /**
-     * The constant <tt>OP_MOD</tt> contains the op code for the &Omega;CP
+     * The constant {@code OP_MOD} contains the op code for the &Omega;CP
      * instruction to compute the remainder of two arguments from the stack.
      * 
      * @see #MOD
@@ -565,7 +568,7 @@ public enum OcpCode {
     public static final int OP_MOD = 15;
 
     /**
-     * The constant <tt>OP_MULT</tt> contains the op code for the &Omega;CP
+     * The constant {@code OP_MULT} contains the op code for the &Omega;CP
      * instruction to multiply two arguments from the stack.
      * 
      * @see #MULT
@@ -573,7 +576,7 @@ public enum OcpCode {
     public static final int OP_MULT = 13;
 
     /**
-     * The constant <tt>OP_PBACK_CHAR</tt> contains the op code for the
+     * The constant {@code OP_PBACK_CHAR} contains the op code for the
      * &Omega;CP instruction to push back a character from the right end of the
      * prefix
      * 
@@ -582,7 +585,7 @@ public enum OcpCode {
     public static final int OP_PBACK_CHAR = 8;
 
     /**
-     * The constant <tt>OP_PBACK_LCHAR</tt> contains the op code for the
+     * The constant {@code OP_PBACK_LCHAR} contains the op code for the
      * &Omega;CP instruction to push back a character from the left end of the
      * prefix.
      * 
@@ -591,7 +594,7 @@ public enum OcpCode {
     public static final int OP_PBACK_LCHAR = 9;
 
     /**
-     * The constant <tt>OP_PBACK_NUM</tt> contains the op code for the
+     * The constant {@code OP_PBACK_NUM} contains the op code for the
      * &Omega;CP instruction to push back a number.
      * 
      * @see #PBACK_NUM
@@ -599,7 +602,7 @@ public enum OcpCode {
     public static final int OP_PBACK_NUM = 7;
 
     /**
-     * The constant <tt>OP_PBACK_OUTPUT</tt> contains the op code for the
+     * The constant {@code OP_PBACK_OUTPUT} contains the op code for the
      * &Omega;CP instruction to push back a character from the arithmetic stack.
      * 
      * @see #PBACK_OUTPUT
@@ -607,7 +610,7 @@ public enum OcpCode {
     public static final int OP_PBACK_OUTPUT = 6;
 
     /**
-     * The constant <tt>OP_PBACK_SOME</tt> contains the op code for the
+     * The constant {@code OP_PBACK_SOME} contains the op code for the
      * &Omega;CP instruction to push back a match.
      * 
      * @see #PBACK_SOME
@@ -615,7 +618,7 @@ public enum OcpCode {
     public static final int OP_PBACK_SOME = 10;
 
     /**
-     * The constant <tt>OP_PUSH_CHAR</tt> contains the op code for the
+     * The constant {@code OP_PUSH_CHAR} contains the op code for the
      * &Omega;CP instruction to push back a character.
      * 
      * @see #PUSH_CHAR
@@ -623,7 +626,7 @@ public enum OcpCode {
     public static final int OP_PUSH_CHAR = 18;
 
     /**
-     * The constant <tt>OP_PUSH_LCHAR</tt> contains the op code for the
+     * The constant {@code OP_PUSH_LCHAR} contains the op code for the
      * &Omega;CP instruction to push a referenced character.
      * 
      * @see #PUSH_LCHAR
@@ -631,7 +634,7 @@ public enum OcpCode {
     public static final int OP_PUSH_LCHAR = 19;
 
     /**
-     * The constant <tt>OP_PUSH_NUM</tt> contains the op code for the
+     * The constant {@code OP_PUSH_NUM} contains the op code for the
      * &Omega;CP instruction to push a number.
      * 
      * @see #PUSH_NUM
@@ -639,7 +642,7 @@ public enum OcpCode {
     public static final int OP_PUSH_NUM = 17;
 
     /**
-     * The constant <tt>OP_RIGHT_CHAR</tt> contains the op code for the
+     * The constant {@code OP_RIGHT_CHAR} contains the op code for the
      * &Omega;CP instruction to output a character from the right end of the
      * prefix.
      * 
@@ -648,7 +651,7 @@ public enum OcpCode {
     public static final int OP_RIGHT_CHAR = 3;
 
     /**
-     * The constant <tt>OP_RIGHT_LCHAR</tt> contains the op code for the
+     * The constant {@code OP_RIGHT_LCHAR} contains the op code for the
      * &Omega;CP instruction to output a character from the left end of the
      * prefix.
      * 
@@ -657,7 +660,7 @@ public enum OcpCode {
     public static final int OP_RIGHT_LCHAR = 4;
 
     /**
-     * The constant <tt>OP_RIGHT_NUM</tt> contains the op code for the
+     * The constant {@code OP_RIGHT_NUM} contains the op code for the
      * &Omega;CP instruction to output a constant.
      * 
      * @see #RIGHT_NUM
@@ -665,7 +668,7 @@ public enum OcpCode {
     public static final int OP_RIGHT_NUM = 2;
 
     /**
-     * The constant <tt>OP_RIGHT_OUTPUT</tt> contains the op code for the
+     * The constant {@code OP_RIGHT_OUTPUT} contains the op code for the
      * &Omega;CP instruction to pop a value off the arithmetic stack and output
      * it.
      * 
@@ -674,7 +677,7 @@ public enum OcpCode {
     public static final int OP_RIGHT_OUTPUT = 1;
 
     /**
-     * The constant <tt>OP_RIGHT_SOME</tt> contains the op code for the
+     * The constant {@code OP_RIGHT_SOME} contains the op code for the
      * &Omega;CP instruction to output some characters of the prefix.
      * 
      * @see #RIGHT_SOME
@@ -682,7 +685,7 @@ public enum OcpCode {
     public static final int OP_RIGHT_SOME = 5;
 
     /**
-     * The constant <tt>OP_STATE_CHANGE</tt> contains the op code for the
+     * The constant {@code OP_STATE_CHANGE} contains the op code for the
      * &Omega;CP instruction to set a new state.
      * 
      * @see #STATE_CHANGE
@@ -690,7 +693,7 @@ public enum OcpCode {
     public static final int OP_STATE_CHANGE = 20;
 
     /**
-     * The constant <tt>OP_STATE_POP</tt> contains the op code for the
+     * The constant {@code OP_STATE_POP} contains the op code for the
      * &Omega;CP instruction to pop a state from the state stack.
      * 
      * @see #STATE_POP
@@ -698,7 +701,7 @@ public enum OcpCode {
     public static final int OP_STATE_POP = 22;
 
     /**
-     * The constant <tt>OP_STATE_PUSH</tt> contains the op code for the
+     * The constant {@code OP_STATE_PUSH} contains the op code for the
      * &Omega;CP instruction to push a state onto the state stack.
      * 
      * @see #STATE_PUSH
@@ -706,7 +709,7 @@ public enum OcpCode {
     public static final int OP_STATE_PUSH = 21;
 
     /**
-     * The constant <tt>OP_STOP</tt> contains the op code for the &Omega;CP
+     * The constant {@code OP_STOP} contains the op code for the &Omega;CP
      * instruction to end the processing.
      * 
      * @see #STOP
@@ -714,7 +717,7 @@ public enum OcpCode {
     public static final int OP_STOP = 36;
 
     /**
-     * The constant <tt>OP_SUB</tt> contains the op code for the &Omega;CP
+     * The constant {@code OP_SUB} contains the op code for the &Omega;CP
      * instruction to subtract two numbers from the stack.
      * 
      * @see #SUB
@@ -722,19 +725,19 @@ public enum OcpCode {
     public static final int OP_SUB = 12;
 
     /**
-     * The constant <tt>ARGUMENT_BIT_MASK</tt> contains the bit mask for the
+     * The constant {@code ARGUMENT_BIT_MASK} contains the bit mask for the
      * lower 24 bits used as arguments in the &Omega;CP engine.
      */
     public static final int ARGUMENT_BIT_MASK = 0xffffff;
 
     /**
-     * The constant <tt>OPCODE_OFFSET</tt> contains the offset for the op
+     * The constant {@code OPCODE_OFFSET} contains the offset for the op
      * code.
      */
     public static final int OPCODE_OFFSET = 24;
 
     /**
-     * The constant <tt>a</tt> contains the list of ocp codes.
+     * The constant {@code a} contains the list of ocp codes.
      */
     private static final OcpCode[] OCP_CODES =
             {RIGHT_OUTPUT, RIGHT_NUM, RIGHT_CHAR, RIGHT_LCHAR, RIGHT_SOME,
@@ -750,7 +753,7 @@ public enum OcpCode {
      * 
      * @param opcode the op code
      * 
-     * @return the op code or <code>null</code> for an unknown op code
+     * @return the op code or {@code null} for an unknown op code
      */
     public static OcpCode get(int opcode) {
 
@@ -760,18 +763,18 @@ public enum OcpCode {
     }
 
     /**
-     * The field <tt>arguments</tt> contains the descriptions of the
+     * The field {@code arguments} contains the descriptions of the
      * arguments.
      */
     private OcpArgumentType[] arguments;
 
     /**
-     * The field <tt>opcode</tt> contains the op code.
+     * The field {@code opcode} contains the op code.
      */
     private int opcode;
 
     /**
-     * The field <tt>instruction</tt> contains the name of the instruction.
+     * The field {@code instruction} contains the name of the instruction.
      */
     private String instruction;
 

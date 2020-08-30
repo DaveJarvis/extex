@@ -27,22 +27,21 @@ import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
 
 /**
- * Class for a <code>Class2Record</code>.
+ * Class for a {@code Class2Record}.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class Class2Record implements XMLWriterConvertible {
 
     /**
      * The index.
      */
-    private int idx;
+    private final int idx;
 
     /**
      * Positioning data for the first and second glyph.
      */
-    private PairValue pairValue;
+    private final PairValue pairValue;
 
     /**
      * Creates a new object.
@@ -92,10 +91,7 @@ public class Class2Record implements XMLWriterConvertible {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

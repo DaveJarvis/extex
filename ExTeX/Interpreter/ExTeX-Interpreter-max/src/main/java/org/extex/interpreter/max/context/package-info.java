@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains a reference implementation for the
+ * Contains a reference implementation for the
  * {@link org.extex.interpreter.context.Context Context}.
  */
 

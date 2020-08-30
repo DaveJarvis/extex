@@ -32,8 +32,7 @@ import org.extex.typesetter.type.NodeList;
  * It might use the information from the font.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4737 $
- */
+*/
 public interface LigatureBuilder extends Serializable {
 
     /**
@@ -58,7 +57,7 @@ public interface LigatureBuilder extends Serializable {
      * @param c2 the second character
      * @param f the current font
      *
-     * @return the ligature of c1 and c2 or <code>null</code> if none exists
+     * @return the ligature of c1 and c2 or {@code null} if none exists
      *
      * @throws HyphenationException in case of an error
      */

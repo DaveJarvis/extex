@@ -39,8 +39,7 @@ import org.extex.scanner.api.exception.ScannerException;
  * main program.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LaTeXValidator {
 
     /**
@@ -54,7 +53,7 @@ public class LaTeXValidator {
     }
 
     /**
-     * The field <tt>finder</tt> contains the resource finder.
+     * The field {@code finder} contains the resource finder.
      */
     private ResourceFinder finder;
 
@@ -76,7 +75,7 @@ public class LaTeXValidator {
      * @param source the name of the source
      * @param logger the logger
      * 
-     * @return the node list of the read entities or <code>null</code> in case
+     * @return the node list of the read entities or {@code null} in case
      *         of an error
      */
     public NodeList run(String source, Logger logger) {

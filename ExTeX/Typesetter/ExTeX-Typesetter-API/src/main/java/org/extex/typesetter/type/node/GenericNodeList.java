@@ -32,52 +32,51 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * Abstract base class for all <code>NodeList</code>s.
+ * Abstract base class for all {@code NodeList}s.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4739 $
- */
+*/
 public class GenericNodeList extends AbstractNode implements NodeList {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 20060417L;
 
     /**
-     * The field <tt>list</tt> is the container for the elements of this node
+     * The field {@code list} is the container for the elements of this node
      * list.
      */
     private ArrayList<Node> list = new ArrayList<>();
 
     /**
-     * The field <tt>move</tt> contains the offset of the reference point in
+     * The field {@code move} contains the offset of the reference point in
      * vertical direction.
      */
     private Dimen move = new Dimen(0);
 
     /**
-     * The field <tt>shift</tt> contains the offset of the reference point in
+     * The field {@code shift} contains the offset of the reference point in
      * horizontal direction.
      */
     private Dimen shift = new Dimen(0);
 
     /**
-     * The field <tt>targetDepth</tt> contains the requested depth of the node
+     * The field {@code targetDepth} contains the requested depth of the node
      * list.
      */
     private Dimen targetDepth = null;
 
     /**
-     * The field <tt>targetHeight</tt> contains the requested height of the node
+     * The field {@code targetHeight} contains the requested height of the node
      * list.
      */
     private Dimen targetHeight = null;
 
     /**
-     * The field <tt>targetWidth</tt> contains the requested width of the node
+     * The field {@code targetWidth} contains the requested width of the node
      * list.
      */
     private Dimen targetWidth = null;
@@ -151,12 +150,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
         setNaturalDepth(Dimen.ZERO_PT);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#clone()
-     */
-    @Override
+@Override
     protected Object clone() throws CloneNotSupportedException {
 
         GenericNodeList clone = (GenericNodeList) super.clone();
@@ -220,7 +214,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @param index the position
      * 
-     * @return the node at position <i>index</i> of <code>null</code> if index
+     * @return the node at position <i>index</i> of {@code null} if index
      *         is out of bounds
      * 
      * @see org.extex.typesetter.type.NodeList#get(int)
@@ -385,8 +379,8 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     /**
      * Test whether the node list is empty.
      * 
-     * @return <code>true</code>, if the <code>NodeList</code> is empty,
-     *         otherwise <code>false</code>.
+     * @return {@code true}, if the {@code NodeList} is empty,
+     *         otherwise {@code false}.
      */
     @Override
     public boolean isEmpty() {
@@ -425,23 +419,13 @@ public class GenericNodeList extends AbstractNode implements NodeList {
         return list.remove(index);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractNode#setDepth(org.extex.core.dimen.FixedDimen)
-     */
-    @Override
+@Override
     public void setDepth(FixedDimen depth) {
 
         setTargetDepth(depth);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractNode#setHeight(org.extex.core.dimen.FixedDimen)
-     */
-    @Override
+@Override
     public void setHeight(FixedDimen height) {
 
         setTargetHeight(height);
@@ -561,21 +545,16 @@ public class GenericNodeList extends AbstractNode implements NodeList {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractNode#setWidth(org.extex.core.dimen.FixedDimen)
-     */
-    @Override
+@Override
     public void setWidth(FixedDimen width) {
 
         setTargetWidth(width);
     }
 
     /**
-     * Return the size of the <code>NodeList</code>.
+     * Return the size of the {@code NodeList}.
      * 
-     * @return the size of the <code>NodeList</code>
+     * @return the size of the {@code NodeList}
      */
     @Override
     public int size() {
@@ -583,12 +562,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
         return list.size();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();
@@ -597,10 +571,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractNode#toString(java.lang.StringBuilder,
-     *      java.lang.String, int, int)
+*      java.lang.String, int, int)
      */
     @Override
     public void toString(StringBuilder sb, String prefix, int breadth, int depth) {
@@ -639,10 +610,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * Provides a string representation of the current instance.
      * 
      * @return the String representation of the object
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [182]"
-     */
+*/
     @Override
     public String toText() {
 
@@ -652,10 +620,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.Node#toText(StringBuilder,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public void toText(StringBuilder sb, String prefix) {

@@ -27,8 +27,7 @@ import org.extex.interpreter.Interpreter;
  * the engine has been started.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4728 $
- */
+*/
 public interface StartObserver {
 
     /**

@@ -31,8 +31,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * implemented in arbitrary programming languages.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5563 $
- */
+*/
 public interface Loader {
 
     /**

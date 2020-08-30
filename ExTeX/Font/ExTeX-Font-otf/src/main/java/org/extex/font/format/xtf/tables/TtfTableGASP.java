@@ -35,7 +35,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * This table also has some use for monochrome devices, which may use the table
  * to turn off hinting at very large or small sizes, to improve performance.
  * </p>
- * <table border="1"> <thead>
+ * <table> <caption>TBD</caption> <thead>
  * <tr>
  * <td><b>Type</b></td>
  * <td><b>Name</b></td>
@@ -62,7 +62,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <p>
  * GASPRANGE
  * </p>
- * <table border="1"> <thead>
+ * <table> <caption>TBD</caption> <thead>
  * <tr>
  * <td><b>Type</b></td>
  * <td><b>Name</b></td>
@@ -83,10 +83,10 @@ import org.extex.util.xml.XMLWriterConvertible;
  * 
  * <p>
  * There are two flags for the rangeGaspBehavior flags:
- * <p>
- * <table border="1"> <thead>
+ * </p>
+ * <table> <caption>TBD</caption> <thead>
  * <tr>
- * <td>Flag</b></td>
+ * <td><b>Flag</b></td>
  * <td><b>Meaning</b></td>
  * </tr>
  * </thead>
@@ -104,9 +104,9 @@ import org.extex.util.xml.XMLWriterConvertible;
  * The four currently defined values of rangeGaspBehavior would have the
  * following uses:
  * </p>
- * <table border="1"> <thead>
+ * <table> <caption>TBD</caption> <thead>
  * <tr>
- * <td>Flag</b></td>
+ * <td><b>Flag</b></td>
  * <td><b>Value</b></td>
  * <td><b>Meaning</b></td>
  * </tr>
@@ -142,8 +142,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TtfTableGASP extends AbstractXtfTable
         implements
             XtfTable,
@@ -157,12 +156,12 @@ public class TtfTableGASP extends AbstractXtfTable
         /**
          * rangeGaspBehavior
          */
-        private int rangeGaspBehavior;
+        private final int rangeGaspBehavior;
 
         /**
          * rangeMaxPPEM
          */
-        private int rangeMaxPPEM;
+        private final int rangeMaxPPEM;
 
         /**
          * Create a new object.
@@ -216,10 +215,7 @@ public class TtfTableGASP extends AbstractXtfTable
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-         *      org.extex.util.xml.XMLStreamWriter)
+    *      org.extex.util.xml.XMLStreamWriter)
          */
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
@@ -255,17 +251,17 @@ public class TtfTableGASP extends AbstractXtfTable
     /**
      * the GaspRange array
      */
-    private GaspRange[] gaspRange;
+    private final GaspRange[] gaspRange;
 
     /**
      * number of records
      */
-    private int numRanges;
+    private final int numRanges;
 
     /**
      * version
      */
-    private int version;
+    private final int version;
 
     /**
      * Create a new object
@@ -309,12 +305,7 @@ public class TtfTableGASP extends AbstractXtfTable
         return numRanges;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
+public String getShortcut() {
 
         return "gasp";
     }
@@ -340,10 +331,7 @@ public class TtfTableGASP extends AbstractXtfTable
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

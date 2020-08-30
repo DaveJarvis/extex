@@ -19,9 +19,6 @@
 
 package org.extex.interpreter;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 import org.extex.core.exception.GeneralException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.font.CoreFontFactory;
@@ -36,18 +33,16 @@ import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 /**
  * This interface represents the outside view on an interpreter. It contains
  * everything needed to set it up and make it run.
  * 
- * @see "<logo>T<span style=
- *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *      >e</span>X</logo> &ndash; The Program [1029]"
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public interface Interpreter extends TokenSource {
 
     /**
@@ -61,7 +56,7 @@ public interface Interpreter extends TokenSource {
 
     /**
      * Getter for the error handler. The error handler might not be set. In this
-     * case <code>null</code> is returned.
+     * case {@code null} is returned.
      * 
      * @return the error handler currently registered
      * 
@@ -159,7 +154,7 @@ public interface Interpreter extends TokenSource {
     Context setContext(Context context);
 
     /**
-     * Setter for the error handler. The value of <code>null</code> can be used
+     * Setter for the error handler. The value of {@code null} can be used
      * to delete the error handler currently set.
      * 
      * @param handler the new error handler

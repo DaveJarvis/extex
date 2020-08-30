@@ -29,12 +29,11 @@ import java.io.IOException;
  * <pre>1234</pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class VNumber extends AbstractValueItem {
 
     /**
-     * The field <tt>value</tt> contains the value.
+     * The field {@code value} contains the value.
      */
     private final int value;
 

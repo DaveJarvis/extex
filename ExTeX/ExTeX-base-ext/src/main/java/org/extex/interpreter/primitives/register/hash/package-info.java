@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains primitives for the manipulation of hash toks
+ * Contains primitives for the manipulation of hash toks
  * registers. Registers are the primary means to store parameters which
  * influence the behavior of ExTeX as well as variables used in macro
  * programming. The name of the registers can be a name or an number.

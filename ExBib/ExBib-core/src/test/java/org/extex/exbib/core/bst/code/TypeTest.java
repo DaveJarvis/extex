@@ -33,20 +33,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>type$</tt>.
+ * Test suite for {@code type$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TypeTest {
 
     /**
-     * The field <tt>db</tt> contains the database.
+     * The field {@code db} contains the database.
      */
     private DB db = null;
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -73,7 +72,7 @@ public class TypeTest {
     }
 
     /**
-     * <testcase> A lowercase type is taken as is. </testcase>
+     *  A lowercase type is taken as is. 
      * 
      * @throws Exception in case of an error
      */
@@ -88,7 +87,7 @@ public class TypeTest {
     }
 
     /**
-     * <testcase> A cased type is taken as is. </testcase>
+     *  A cased type is taken as is. 
      * 
      * @throws Exception in case of an error
      */
@@ -103,7 +102,7 @@ public class TypeTest {
     }
 
     /**
-     * <testcase> An uppercase type is taken as is. </testcase>
+     *  An uppercase type is taken as is. 
      * 
      * @throws Exception in case of an error
      */

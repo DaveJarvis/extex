@@ -24,12 +24,11 @@ import java.io.IOException;
  * This exception signals that an unknown option has been encountered.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 7667 $
- */
+*/
 public class UnknownOptionException extends IOException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2009L;

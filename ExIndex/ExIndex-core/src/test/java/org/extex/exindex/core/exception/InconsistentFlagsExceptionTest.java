@@ -30,40 +30,28 @@ import org.junit.Test;
  * This is a test case for {@link InconsistentFlagsException}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class InconsistentFlagsExceptionTest {
 
     /**
-     * The constant <tt>RL</tt> contains the locator.
+     * The constant {@code RL} contains the locator.
      */
     private static final ResourceLocator RL = new ResourceLocator() {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exindex.lisp.parser.ResourceLocator#getLineNumber()
-         */
-        public int getLineNumber() {
+    public int getLineNumber() {
 
             return 1;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exindex.lisp.parser.ResourceLocator#getResource()
-         */
-        public String getResource() {
+    public String getResource() {
 
             return "rsc";
         }
     };
 
     /**
-     * <testcase> The locator can be <code>null</code> and the message does not
-     * show a location. </testcase>
-     */
+     * The locator can be {@code null} and the message does not show a location
+*/
     @Test
     public final void testGetLocalizedMessage1() {
 
@@ -80,9 +68,8 @@ public class InconsistentFlagsExceptionTest {
     }
 
     /**
-     * <testcase> The message shows the location if the locator is not
-     * <code>null</code>. </testcase>
-     */
+     * The message shows the location if the locator is not {@code null}
+*/
     @Test
     public final void testGetLocalizedMessage2() {
 
@@ -100,9 +87,8 @@ public class InconsistentFlagsExceptionTest {
     }
 
     /**
-     * <testcase> The locator can be <code>null</code> and the message does not
-     * show a location in German. </testcase>
-     */
+     * The locator can be {@code null} and the message does not show a location in German
+*/
     @Test
     public final void testGetLocalizedMessageDE1() {
 
@@ -120,9 +106,8 @@ public class InconsistentFlagsExceptionTest {
     }
 
     /**
-     * <testcase> The message shows the location if the locator is not
-     * <code>null</code> in German. </testcase>
-     */
+     * The message shows the location if the locator is not {@code null} in German
+*/
     @Test
     public final void testGetLocalizedMessageDE2() {
 

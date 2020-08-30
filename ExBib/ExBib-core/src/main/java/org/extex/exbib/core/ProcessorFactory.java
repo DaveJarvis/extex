@@ -29,19 +29,17 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * {@link Processor Processor}.
  * <p>
  * The factory is controlled by a configuration. This configuration contains an
- * attribute <code>class</code>. This attribute holds the name of the class to
+ * attribute {@code class}. This attribute holds the name of the class to
  * be instantiated. Consider the following example of a configuration file:
- * 
+ * </p>
+ *
  * <pre>
  *   &lt;Processor
  *     class="org.extex.exbib.core.bst.BstProcessor"/&gt;
  * </pre>
- * 
- * </p>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ProcessorFactory extends AbstractFactory<Processor> {
 
     /**
@@ -58,12 +56,12 @@ public class ProcessorFactory extends AbstractFactory<Processor> {
      * Get an instance of a {@link Processor Processor}.
      * 
      * @param type the type for lookup in the configuration; the value
-     *        <code>null</code> signals the use of the default configuration
+     *        {@code null} signals the use of the default configuration
      * @param db the database
      * 
      * @return the {@link Processor Processor}
      * 
-     * @throws ConfigurationException if the item <tt>class</tt> can not be
+     * @throws ConfigurationException if the item {@code class} can not be
      *         found in the configuration or the class can not be instantiated.
      */
     public Processor newInstance(String type, DB db)

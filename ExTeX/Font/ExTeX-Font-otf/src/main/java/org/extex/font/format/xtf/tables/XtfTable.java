@@ -25,8 +25,7 @@ import java.io.IOException;
  * Interface for all TTF/OTF table.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public interface XtfTable {
 
     /**

@@ -33,8 +33,7 @@ import org.extex.typesetter.Typesetter;
  * This class provides the setup for the unit <b>omega</b>.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class OmegaUnitInfo extends UnitInfo implements LoadedObserver {
 
     /**
@@ -42,12 +41,11 @@ public class OmegaUnitInfo extends UnitInfo implements LoadedObserver {
      * context.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
-     */
+    */
     private final class Interceptor implements InputStreamInterceptor {
 
         /**
-         * The field <tt>context</tt> contains the interpreter context.
+         * The field {@code context} contains the interpreter context.
          */
         private Context context;
 
@@ -62,10 +60,7 @@ public class OmegaUnitInfo extends UnitInfo implements LoadedObserver {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.stream.InputStreamInterceptor#pipe(
-         *      java.io.InputStream)
+    *      java.io.InputStream)
          */
         public InputStream pipe(InputStream stream) {
 
@@ -74,7 +69,7 @@ public class OmegaUnitInfo extends UnitInfo implements LoadedObserver {
     }
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -85,10 +80,7 @@ public class OmegaUnitInfo extends UnitInfo implements LoadedObserver {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.observer.load.LoadedObserver#receiveLoaded(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void receiveLoaded(Context context, TokenSource source,

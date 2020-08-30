@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\ifdefined</tt>.
+ * This is a test suite for the primitive {@code \ifdefined}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class IfdefinedTest extends ConditionalTester {
 
     /**
@@ -50,7 +49,7 @@ public class IfdefinedTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifdefined"> Test case checking that
-     * <tt>\ifdefined</tt> on \relax expands the then branch. </testcase>
+     * {@code \ifdefined} on \relax expands the then branch.
      * 
      * @throws Exception in case of an error
      */
@@ -65,7 +64,7 @@ public class IfdefinedTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifdefined"> Test case checking that
-     * <tt>\ifdefined</tt> on \par expands the then branch. </testcase>
+     * {@code \ifdefined} on \par expands the then branch.
      * 
      * @throws Exception in case of an error
      */
@@ -80,8 +79,8 @@ public class IfdefinedTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifdefined"> Test case checking that
-     * <tt>\ifdefined</tt> on an undefined control sequence expands the else
-     * branch. </testcase>
+     * {@code \ifdefined} on an undefined control sequence expands the else
+     * branch.
      * 
      * @throws Exception in case of an error
      */
@@ -96,8 +95,8 @@ public class IfdefinedTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifdefined"> Test case checking that
-     * <tt>\ifdefined</tt> on a defined macro expands the then branch.
-     * </testcase>
+     * {@code \ifdefined} on a defined macro expands the then branch.
+     *
      * 
      * @throws Exception in case of an error
      */

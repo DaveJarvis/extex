@@ -24,11 +24,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\discretionary</tt>.
+ * This is a test suite for the primitive {@code \discretionary}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class DiscretionaryTest extends NoFlagsPrimitiveTester {
 
 
@@ -39,8 +38,8 @@ public class DiscretionaryTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\discretionary">
-     *  Test case checking that <tt>\discretionary</tt> ...
-     * </testcase>
+     *  Test case checking that {@code \discretionary} ...
+     * 
      *
      * @throws Exception in case of an error
      */
@@ -56,8 +55,8 @@ public class DiscretionaryTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\discretionary">
-     *  Test case checking that <tt>\discretionary</tt> ...
-     * </testcase>
+     *  Test case checking that {@code \discretionary} ...
+     * 
      *
      * @throws Exception in case of an error
      */

@@ -25,8 +25,7 @@ import org.extex.font.ExtexFont;
  * This interface descries the ability to receive an internal font.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface ModifiableFont extends Font {
 
     /**

@@ -25,11 +25,10 @@ import org.extex.test.NoFlagsPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\showgroups</tt>.
+ * This is a test suite for the primitive {@code \showgroups}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class ShowgroupsTest extends NoFlagsPrimitiveTester {
 
 
@@ -53,9 +52,9 @@ public class ShowgroupsTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showgroups">
-     *  Test case checking that <tt>\showgroups</tt> produces the correct
+     *  Test case checking that {@code \showgroups} produces the correct
      *  message for the top-level group.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -71,8 +70,8 @@ public class ShowgroupsTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showgroups">
-     *  Test case checking that <tt>\showgroups</tt> ...
-     * </testcase>
+     *  Test case checking that {@code \showgroups} ...
+     *
      *
      * @throws Exception in case of an error
      */
@@ -89,8 +88,8 @@ public class ShowgroupsTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showgroups">
-     *  Test case checking that <tt>\showgroups</tt> ...
-     * </testcase>
+     *  Test case checking that {@code \showgroups} ...
+     *
      *
      * @throws Exception in case of an error
      */
@@ -108,8 +107,8 @@ public class ShowgroupsTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showgroups">
-     *  Test case checking that <tt>\showgroups</tt> ...
-     * </testcase>
+     *  Test case checking that {@code \showgroups} ...
+     *
      *
      * @throws Exception in case of an error
      */
@@ -128,8 +127,8 @@ public class ShowgroupsTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showgroups">
-     *  Test case checking that <tt>\showgroups</tt> ...
-     * </testcase>
+     *  Test case checking that {@code \showgroups} ...
+     *
      *
      * @throws Exception in case of an error
      */
@@ -148,8 +147,8 @@ public class ShowgroupsTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showgroups">
-     *  Test case checking that <tt>\showgroups</tt> ...
-     * </testcase>
+     *  Test case checking that {@code \showgroups} ...
+     *
      *
      * @throws Exception in case of an error
      */
@@ -168,8 +167,8 @@ public class ShowgroupsTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showgroups">
-     *  Test case checking that <tt>\showgroups</tt> ...
-     * </testcase>
+     *  Test case checking that {@code \showgroups} ...
+     *
      *
      * @throws Exception in case of an error
      */
@@ -188,8 +187,8 @@ public class ShowgroupsTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showgroups">
-     *  Test case checking that <tt>\showgroups</tt> ...
-     * </testcase>
+     *  Test case checking that {@code \showgroups} ...
+     *
      *
      * @throws Exception in case of an error
      */

@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains classes representing the instructions in a DVI files.
+ * Contains classes representing the instructions in a DVI files.
  */
 
 package org.extex.dviware.type;

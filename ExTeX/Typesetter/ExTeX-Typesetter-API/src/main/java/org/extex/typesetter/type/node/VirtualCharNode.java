@@ -39,8 +39,7 @@ import org.extex.typesetter.type.NodeVisitor;
  * This class is used to represent composed characters from virtual fonts.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class VirtualCharNode extends CharNode implements NodeList {
 
     /**
@@ -48,18 +47,17 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * to compensate the missing multiple inheritance of Java.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision: 4739 $
-     */
+    */
     private static class NL extends GenericNodeList {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         protected static final long serialVersionUID = 2007L;
 
         /**
-         * The field <tt>node</tt> contains the parent node.
+         * The field {@code node} contains the parent node.
          */
         private VirtualCharNode node;
 
@@ -115,27 +113,27 @@ public class VirtualCharNode extends CharNode implements NodeList {
     }
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>d</tt> contains the depth for delayed initialization.
+     * The field {@code d} contains the depth for delayed initialization.
      */
     private FixedDimen d = null;
 
     /**
-     * The field <tt>h</tt> contains the height for delayed initialization.
+     * The field {@code h} contains the height for delayed initialization.
      */
     private FixedDimen h = null;
 
     /**
-     * The field <tt>nodes</tt> contains the encapsulated node list.
+     * The field {@code nodes} contains the encapsulated node list.
      */
-    private NL nodes = new NL();
+    private final NL nodes = new NL();
 
     /**
-     * The field <tt>w</tt> contains the width for delayed initialization.
+     * The field {@code w} contains the width for delayed initialization.
      */
     private FixedDimen w = null;
 
@@ -265,7 +263,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @param index the position
      * 
-     * @return the node at position <i>index</i> of <code>null</code> if index
+     * @return the node at position <i>index</i> of {@code null} if index
      *         is out of bounds
      * 
      * @see org.extex.typesetter.type.NodeList#get(int)
@@ -382,12 +380,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
         return this.nodes.getWidth();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeList#isEmpty()
-     */
-    @Override
+@Override
     public boolean isEmpty() {
 
         return this.nodes.isEmpty();
@@ -534,23 +527,13 @@ public class VirtualCharNode extends CharNode implements NodeList {
         this.nodes.spreadWidth(width, sum);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractNode#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return (nodes != null ? nodes.toString() : super.toString());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeList#toText()
-     */
-    @Override
+@Override
     public String toText() {
 
         StringBuilder sb = new StringBuilder();

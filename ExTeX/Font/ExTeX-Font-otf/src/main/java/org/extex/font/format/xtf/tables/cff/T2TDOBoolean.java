@@ -28,8 +28,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * Abstract class for all boolean-values.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public abstract class T2TDOBoolean extends T2TopDICTOperator {
 
@@ -49,22 +48,18 @@ public abstract class T2TDOBoolean extends T2TopDICTOperator {
         int v = ((T2Number) stack.get(0)).getInteger();
         bytes = convertStackaddID(stack, id);
 
-        if (v == 0) {
-            value = false;
-        } else {
-            value = true;
-        }
+      value = v != 0;
     }
 
     /**
      * bytes
      */
-    private short[] bytes;
+    private final short[] bytes;
 
     /**
      * Check, if the object is a boolean.
      * 
-     * @return Returns <code>true</code>, if the object is a boolean.
+     * @return Returns {@code true}, if the object is a boolean.
      */
     @Override
     public boolean isBoolean() {
@@ -75,25 +70,15 @@ public abstract class T2TDOBoolean extends T2TopDICTOperator {
     /**
      * value
      */
-    private boolean value;
+    private final boolean value;
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#getBytes()
-     */
-    @Override
+@Override
     public short[] getBytes() {
 
         return bytes;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return String.valueOf(value);
@@ -109,22 +94,14 @@ public abstract class T2TDOBoolean extends T2TopDICTOperator {
         return value;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getValue()
-     */
-    @Override
+@Override
     public Object getValue() {
 
         return new Boolean(value);
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

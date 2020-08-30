@@ -98,16 +98,16 @@ import static java.lang.Boolean.parseBoolean;
  * <li>Specifying format, input file and TeX code in properties.</li>
  * </ul>
  * 
- * <a name="settings"/> <h3>Settings</h3>
+ * <p>Settings</p>
  * 
  * <p>
  * Settings can be stored in properties files. Those settings are the fallback
  * if none are provided otherwise.
  * </p>
  * <p>
- * The properties are stored in a file named <tt>.extex</tt>. It is sought in
+ * The properties are stored in a file named {@code .extex}. It is sought in
  * the users home directory. This determined by the system property
- * <tt>user.home</tt>. Afterwards it is sought in the current directory. The
+ * {@code user.home}. Afterwards it is sought in the current directory. The
  * local settings of a directory overwrite the user's setting. The user's
  * setting overwrite the compiled in defaults
  * </p>
@@ -115,140 +115,139 @@ import static java.lang.Boolean.parseBoolean;
  * The following properties are recognized:
  * </p>
  * <dl>
- * <dt><a name="extex.code"/><tt>extex.code</tt></a></dt>
+ * <dt>{@code extex.code}</dt>
  * <dd>This parameter contains εχTeX code to be executed directly. The execution is performed
  * after any code specified in an input file. on the command line the code has
  * to start with a backslash. This restriction does not hold for the property
  * settings.</dd>
- * <dd>Command line: <tt>&lang;code&rang;</tt></dd>
+ * <dd>Command line: {@code &lang;code&rang;}</dd>
  * 
- * <dt><a name="extex.color.converter"/><tt>extex.color.converter</tt></dt>
+ * <dt>{@code extex.color.converter}</dt>
  * <dd>This parameter contains the name of the configuration resource to use for
  * the color converter.</dd>
- * <dd>Default: <tt></tt></dd>
+ * <dd>Default: {@code }</dd>
  * 
- * <dt><a name="extex.config"/><tt>extex.config</tt></dt>
+ * <dt>{@code extex.config}</dt>
  * <dd>This parameter contains the name of the configuration resource to use.
  * This configuration resource is sought on the class path.</dd>
- * <dd>Default: <tt>extex.xml</tt></dd>
+ * <dd>Default: {@code extex.xml}</dd>
  * 
- * <dt><a name="extex.encoding"/><tt>extex.encoding</tt></dt>
+ * <dt>{@code extex.encoding}</dt>
  * <dd>This parameter contains the name of the property for the standard
  * encoding to use.</dd>
- * <dd>Default: <tt>ISO-8859-1</tt></dd>
+ * <dd>Default: {@code ISO-8859-1}</dd>
  * 
- * <dt><a name="extex.error.handler"/><tt>extex.error.handler</tt></dt>
+ * <dt>{@code extex.error.handler}</dt>
  * <dd>This parameter contains the logical name of the error handler.</dd>
  * 
- * <dt><a name="extex.error.handler"/><tt>extex.error.handler</tt></dt>
+ * <dt>{@code extex.error.handler}</dt>
  * <dd>This parameter contains the logical name of the error handler.</dd>
  * 
- * <dt><a name="extex.fonts"/><tt>extex.fonts</tt></dt>
+ * <dt>{@code extex.fonts}</dt>
  * <dd>This parameter contains the name of the property indicating where to find
  * font files. The value is a path similar to extex.texinputs.</dd>
  * 
- * <dt><a name="extex.halt.on.error"/><tt>extex.halt.on.error</tt></dt>
+ * <dt>{@code extex.halt.on.error}</dt>
  * <dd>This parameter contains the name of the property indicating whether the
  * processing should stop after the first error.</dd>
  * 
- * <dt><a name="extex.file"><tt>extex.file</tt></a></dt>
+ * <dt>{@code extex.file}</dt>
  * <dd>This parameter contains the file to read from. It has no default</dd>
  * 
- * <dt><a name="extex.format"/><tt>extex.format</tt></dt>
+ * <dt>{@code extex.format}</dt>
  * <dd>This parameter contains the name of the format to read. An empty string
  * denotes that no format should be read. This is the default.</dd>
  * 
- * <dt><a name="extex.ini"/><tt>extex.ini</tt></dt>
- * <dd>If set to <code>true</code> then act as initex. This command line option
+ * <dt>{@code extex.ini}</dt>
+ * <dd>If set to {@code true} then act as initex. This command line option
  * is defined for compatibility to TeX only. In εχTeX it has no effect at all.</dd>
  * 
- * <dt><a name="extex.interaction"/><tt>extex.interaction</tt></dt>
+ * <dt>{@code extex.interaction}</dt>
  * <dd>This parameter contains the interaction mode. possible values are the
- * numbers 0..3 and the symbolic names <tt>batchmode</tt> (0),
- * <tt>nonstopmode</tt> (1), <tt>scrollmode</tt> (2), and <tt>errorstopmode</tt>
+ * numbers 0..3 and the symbolic names {@code batchmode} (0),
+ * {@code nonstopmode} (1), {@code scrollmode} (2), and {@code errorstopmode}
  * (3).</dd>
- * <dd>Default: <tt>3</tt></dd>
+ * <dd>Default: {@code 3}</dd>
  * 
- * <dt><a name="extex.jobname"/><tt>extex.jobname</tt></dt>
+ * <dt>{@code extex.jobname}</dt>
  * <dd>This parameter contains the name of the job. It is overwritten if a file
  * is given to read from. In this case the base name of the input file is used
  * instead.</dd>
- * <dd>Default: <tt>texput</tt></dd>
+ * <dd>Default: {@code texput}</dd>
  * 
- * <dt><a name="extex.jobname.master"/><tt>extex.jobname.master</tt></dt>
+ * <dt>{@code extex.jobname.master}</dt>
  * <dd>This parameter contains the name of the job to be used with high
  * priority.</dd>
- * <dd>Default: <tt>texput</tt></dd>
+ * <dd>Default: {@code texput}</dd>
  * 
- * <dt><a name="extex.lang"/><tt>extex.lang</tt></dt>
+ * <dt>{@code extex.lang}</dt>
  * <dd>This parameter contains the name of the locale to be used for the
  * messages.</dd>
  * 
- * <dt><a name="extex.name"/><tt>extex.name</tt></dt>
+ * <dt>{@code extex.name}</dt>
  * <dd>This parameter contains the name of the program for messages.</dd>
  * 
- * <dt><a name="extex.nobanner"/><tt>extex.nobanner</tt></dt>
+ * <dt>{@code extex.nobanner}</dt>
  * <dd>This parameter contains a Boolean indicating that the banner should be
  * suppressed.</dd>
  * 
- * <dt><a name="extex.output"/><tt>extex.output</tt></dt>
+ * <dt>{@code extex.output}</dt>
  * <dd>This parameter contains the output format. This logical name is resolved
  * via the configuration.</dd>
- * <dd>Default: <tt>pdf</tt></dd>
+ * <dd>Default: {@code pdf}</dd>
  * 
- * <dt><a name="extex.output.directories"/><tt>extex.output.directories</tt></dt>
+ * <dt>{@code extex.output.directories}</dt>
  * <dd>This parameter contains a colon separated list of directories where
  * output files should be created. The directories are tried in turn until one
  * is found where the creation of the output file succeeds.</dd>
- * <dd>Default: <tt>.</tt></dd>
+ * <dd>Default: {@code .}</dd>
  * 
- * <dt><a name="extex.paper"/><tt>extex.paper</tt></dt>
+ * <dt>{@code extex.paper}</dt>
  * <dd>This parameter contains the default size of the paper. It can be one of
- * the symbolic names defined in <tt>paper/paper.xml</tt>. Otherwise the value
+ * the symbolic names defined in {@code paper/paper.xml}. Otherwise the value
  * is interpreted as a pair of width and height separated by a space.</dd>
  * 
- * <dt><a name="extex.progname"/><tt>extex.progname</tt></dt>
+ * <dt>{@code extex.progname}</dt>
  * <dd>This parameter can be used to overrule the name of the program shown in
  * the banner and the version information.</dd>
- * <dd>Default: <tt>ExTeX</tt></dd>
+ * <dd>Default: {@code ExTeX}</dd>
  * 
- * <dt><a name="extex.stacktrace.on.internal.error"/>
- * <tt>extex.stacktrace.on.internal.error</tt></dt>
+ * <dt>
+ * {@code extex.stacktrace.on.internal.error}</dt>
  * <dd>This boolean parameter contains indicator that a stack trace should be
  * written to the log stream on internal errors.</dd>
  * 
- * <dt><a name="extex.texinputs"/><tt>extex.texinputs</tt></dt>
+ * <dt>{@code extex.texinputs}</dt>
  * <dd>This parameter contains the additional directories for searching
  * TeX input files.</dd>
  * 
- * <dt><a name="extex.token.stream"/><tt>extex.token.stream</tt></dt>
+ * <dt>{@code extex.token.stream}</dt>
  * <dd>This string parameter contains the logical name of the configuration to
  * use for the token stream.</dd>
  * 
- * <dt><a name="extex.trace.input.files"/><tt>extex.trace.input.files</tt></dt>
+ * <dt>{@code extex.trace.input.files}</dt>
  * <dd>This Boolean parameter contains the indicator whether or not to trace the
  * search for input files.</dd>
  * 
- * <dt><a name="extex.trace.font.files"/><tt>extex.trace.font.files</tt></dt>
+ * <dt>{@code extex.trace.font.files}</dt>
  * <dd>This Boolean parameter contains the indicator whether or not to trace the
  * search for font files.</dd>
  * 
- * <dt><a name="extex.trace.macros"/><tt>extex.trace.macros</tt></dt>
+ * <dt>{@code extex.trace.macros}</dt>
  * <dd>This Boolean parameter contains the indicator whether or not to trace the
  * execution of macros.</dd>
  * 
- * <dt><a name="extex.trace.tokenizer"/><tt>extex.trace.tokenizer</tt></dt>
+ * <dt>{@code extex.trace.tokenizer}</dt>
  * <dd>This Boolean parameter contains the indicator whether or not to trace the
  * work of the tokenizer.</dd>
  * 
- * <dt><a name="extex.typesetter"/><tt>extex.typesetter</tt></dt>
+ * <dt>{@code extex.typesetter}</dt>
  * <dd>This parameter contains the name of the typesetter to use. If it is not
  * set then the default from the configuration file is used.</dd>
  * 
- * <dt><a name="extex.units"/><tt>extex.units</tt></dt>
+ * <dt>{@code extex.units}</dt>
  * <dd>This parameter contains a colon separated list of units to be loaded into
  * εχTeX.</dd>
- * 
  * </dl>
  * 
  * <p>
@@ -257,9 +256,8 @@ import static java.lang.Boolean.parseBoolean;
  * Java system. In those properties system wide settings can be stored.
  * Nevertheless, you should use this feature sparsely.
  * </p>
- * 
- * 
- * <a name="configuration"/> <h3>Configuration Resources</h3>
+ *
+ * <p>Configuration Resources</p>
  * 
  * <p>
  * The configuration of εχTeX is controlled by several configuration resources. The
@@ -268,13 +266,7 @@ import static java.lang.Boolean.parseBoolean;
  * the settings in the default configuration resource.
  * </p>
  * 
- * TODO gene: doc incomplete
- * 
- * 
- * <a name="running"/> <h3>Programmatically Using <logo>&epsilon;&chi;T<span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo></h3>
+ * <p>Programmatically Using εχTeX</p>
  * 
  * <p>
  * This class is the central point for using an instance of
@@ -291,8 +283,10 @@ import static java.lang.Boolean.parseBoolean;
  * accessible to extend the functionality of the class. To do so you need
  * insight into the live cycle of the class.
  * </p>
- * <div class="figure"> <img src="doc-files/ExTeX-start.png" title="Starting
- * ExTeX"/> <div class="caption"> Starting εχTeX </div> </div>
+ * <div class="figure">
+ *   <img src="doc-files/ExTeX-start.png" alt="Starting ExTeX">
+ *   <div class="caption"> Starting εχTeX</div>
+ * </div>
  * <p>
  * Mainly there are two steps in using this class. The first step is the
  * creation of a new instance. This phase is depicted in the figure above. Note
@@ -312,8 +306,10 @@ import static java.lang.Boolean.parseBoolean;
  * The major activities are carried out when the method {@link #run() run()} is
  * invoked. The methods used in this phase are shown in the figure below.
  * </p>
- * <div class="figure"> <img src="doc-files/ExTeX-run.png" title="Running
- * ExTeX"/> <div class="caption"> Running εχTeX </div> </div>
+ * <div class="figure">
+ *   <img src="doc-files/ExTeX-run.png" alt="Running ExTeX">
+ *   <div class="caption">Running εχTeX</div>
+ * </div>
  * <dl>
  * <dt>{@link #makeLogFile(String) makeLogFile()}</dt>
  * <dd>Creates the log file.</dd>
@@ -371,127 +367,123 @@ import static java.lang.Boolean.parseBoolean;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * 
- * @version $Revision: 4770 $
- */
+*/
 public class ExTeX {
 
     /**
-     * The field <tt>CONTEXT_TAG</tt> contains the name of the tag for the
+     * The field {@code CONTEXT_TAG} contains the name of the tag for the
      * configuration of the context.
      */
     private static final String CONTEXT_TAG = "Context";
 
     /**
-     * The field <tt>DEFAULT_JOBNAME</tt> contains the default for the job name
+     * The field {@code DEFAULT_JOBNAME} contains the default for the job name
      * if none can be determined otherwise.
      */
     private static final String DEFAULT_JOBNAME = "texput";
 
     /**
-     * The constant <tt>DEFAULT_LANGUAGE_KEY</tt> contains the key for the
+     * The constant {@code DEFAULT_LANGUAGE_KEY} contains the key for the
      * default language.
      */
     private static final String DEFAULT_LANGUAGE_KEY = "0";
 
     /**
-     * The constant <tt>VERSION</tt> contains the manually incremented version
+     * The constant {@code VERSION} contains the manually incremented version
      * string.
      */
     private static final String EXTEX_VERSION = "0.0";
 
     /**
-     * The field <tt>FORMAT_FALLBACK</tt> contains the fallback to be tried if
-     * the specified format can not be loaded. If it is <code>null</code> then
+     * The field {@code FORMAT_FALLBACK} contains the fallback to be tried if
+     * the specified format can not be loaded. If it is {@code null} then
      * none is tried.
      */
     private static final String FORMAT_FALLBACK = "tex";
 
     /**
-     * The constant <tt>formatType</tt> contains the type for the format.
+     * The constant {@code formatType} contains the type for the format.
      */
     private static final String FORMAT_TYPE = "fmt";
 
     /**
-     * The field <tt>LANGUAGE_TAG</tt> contains the name of the tag for the
+     * The field {@code LANGUAGE_TAG} contains the name of the tag for the
      * configuration of the language manager.
      */
     private static final String LANGUAGE_TAG = "Language";
 
     /**
-     * The constant <tt>PROP_BANNER</tt> contains the name of the property for
+     * The constant {@code PROP_BANNER} contains the name of the property for
      * the banner.
      */
     protected static final String PROP_BANNER = "extex.banner";
 
     /**
-     * The constant <tt>PROP_CODE</tt> contains the name of the property for the
+     * The constant {@code PROP_CODE} contains the name of the property for the
      * TeX code to be inserted at the beginning of the job.
      */
     protected static final String PROP_CODE = "extex.code";
 
     /**
-     * The constant <tt>PROP_COLOR_CONVERTER</tt> contains the name of the
+     * The constant {@code PROP_COLOR_CONVERTER} contains the name of the
      * property for the color converter to use.
      */
     protected static final String PROP_COLOR_CONVERTER =
             "extex.color.converter";
 
     /**
-     * The constant <tt>PROP_CONFIG</tt> contains the name of the property for
+     * The constant {@code PROP_CONFIG} contains the name of the property for
      * the configuration resource to use.
      */
     protected static final String PROP_CONFIG = "extex.config";
 
     /**
-     * The constant <tt>PROP_ENCODING</tt> contains the name of the property for
+     * The constant {@code PROP_ENCODING} contains the name of the property for
      * the standard encoding to use.
      */
     protected static final String PROP_ENCODING = "extex.encoding";
 
     /**
-     * The constant <tt>PROP_ERROR_HANDLER</tt> contains the name of the
+     * The constant {@code PROP_ERROR_HANDLER} contains the name of the
      * property for the error handler type to use. Possible values are resolved
      * via the configuration.
      */
     protected static final String PROP_ERROR_HANDLER = "extex.error.handler";
 
     /**
-     * The constant <tt>PROP_FILE</tt> contains the name of the property for the
+     * The constant {@code PROP_FILE} contains the name of the property for the
      * input file to read.
      */
     protected static final String PROP_FILE = "extex.file";
 
     /**
-     * The constant <tt>PROP_FMT</tt> contains the name of the property for the
+     * The constant {@code PROP_FMT} contains the name of the property for the
      * name of the format file to use.
      */
     protected static final String PROP_FMT = "extex.format";
 
     /**
-     * The constant <tt>PROP_HALT_ON_ERROR</tt> contains the name of the
+     * The constant {@code PROP_HALT_ON_ERROR} contains the name of the
      * property indicating whether the processing should stop at the first
      * error.
      */
     protected static final String PROP_HALT_ON_ERROR = "extex.halt.on.error";
 
     /**
-     * The constant <tt>PROP_INI</tt> contains the name of the property for the
+     * The constant {@code PROP_INI} contains the name of the property for the
      * Boolean value indicating that some kind of emulations for iniTeX should
-     * be provided. Currently this has no effect in <logo>&epsilon;&chi;T<span
-     * style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * be provided. Currently this has no effect in εχTeX.
      */
     protected static final String PROP_INI = "extex.ini";
 
     /**
-     * The constant <tt>PROP_INTERACTION</tt> contains the name of the property
+     * The constant {@code PROP_INTERACTION} contains the name of the property
      * for the interaction mode.
      */
     protected static final String PROP_INTERACTION = "extex.interaction";
 
     /**
-     * The constant <tt>PROP_INTERNAL_STACKTRACE</tt> contains the name of the
+     * The constant {@code PROP_INTERNAL_STACKTRACE} contains the name of the
      * property indicating that a stack trace should be written for internal
      * errors.
      */
@@ -499,44 +491,44 @@ public class ExTeX {
     = "extex.stacktrace.on.internal.error";
 
     /**
-     * The constant <tt>PROP_JOBNAME</tt> contains the name of the property for
+     * The constant {@code PROP_JOBNAME} contains the name of the property for
      * the job name. The value can be overruled by the property named in
-     * <tt>PROP_JOBNAME_MASTER</tt>.
+     * {@code PROP_JOBNAME_MASTER}.
      */
     protected static final String PROP_JOBNAME = "extex.jobname";
 
     /**
-     * The constant <tt>PROP_JOBNAME_MASTER</tt> contains the name of the
+     * The constant {@code PROP_JOBNAME_MASTER} contains the name of the
      * property for the job name to be used with high priority.
      */
     protected static final String PROP_JOBNAME_MASTER = "extex.jobname.master";
 
     /**
-     * The constant <tt>PROP_LANG</tt> contains the name of the property for the
+     * The constant {@code PROP_LANG} contains the name of the property for the
      * language to use for messages.
      */
     protected static final String PROP_LANG = "extex.lang";
 
     /**
-     * The constant <tt>PROP_NAME</tt> contains the name of the property for the
+     * The constant {@code PROP_NAME} contains the name of the property for the
      * program name used in messages.
      */
     protected static final String PROP_NAME = "extex.name";
 
     /**
-     * The constant <tt>PROP_NO_BANNER</tt> contains the name of the property
+     * The constant {@code PROP_NO_BANNER} contains the name of the property
      * for the Boolean value indicating whether or not to show a program banner.
      */
     protected static final String PROP_NO_BANNER = "extex.nobanner";
 
     /**
-     * The constant <tt>PROP_OUTPUT_DIRS</tt> contains the name of the property
+     * The constant {@code PROP_OUTPUT_DIRS} contains the name of the property
      * for the output directory path.
      */
     protected static final String PROP_OUTPUT_DIRS = "extex.output.directories";
 
     /**
-     * The constant <tt>PROP_OUTPUT_TYPE</tt> contains the name of the property
+     * The constant {@code PROP_OUTPUT_TYPE} contains the name of the property
      * for the output driver. This value is resolved by the
      * {@link org.extex.backend.documentWriter.DocumentWriterFactory
      * DocumentWriterFactory} to find the appropriate class.
@@ -544,31 +536,31 @@ public class ExTeX {
     protected static final String PROP_OUTPUT_TYPE = "extex.output";
 
     /**
-     * The constant <tt>PROP_PAGE</tt> contains the name of the property for the
+     * The constant {@code PROP_PAGE} contains the name of the property for the
      * default page dimensions.
      */
     protected static final String PROP_PAGE = "extex.page";
 
     /**
-     * The constant <tt>PROP_PROGNAME</tt> contains the name of the property for
+     * The constant {@code PROP_PROGNAME} contains the name of the property for
      * the program name used in format loading.
      */
     protected static final String PROP_PROGNAME = "extex.progname";
 
     /**
-     * The constant <tt>PROP_TEXINPUTS</tt> contains the name of the property
+     * The constant {@code PROP_TEXINPUTS} contains the name of the property
      * for the additional texinputs specification of directories.
      */
     protected static final String PROP_TEXINPUTS = "extex.texinputs";
 
     /**
-     * The constant <tt>PROP_TOKEN_STREAM</tt> contains the name of the property
+     * The constant {@code PROP_TOKEN_STREAM} contains the name of the property
      * for the token stream class to use.
      */
     protected static final String PROP_TOKEN_STREAM = "extex.token.stream";
 
     /**
-     * The constant <tt>PROP_TRACE_FONT_FILES</tt> contains the name of the
+     * The constant {@code PROP_TRACE_FONT_FILES} contains the name of the
      * property for the Boolean determining whether or not the searching for
      * font files should produce tracing output.
      */
@@ -576,7 +568,7 @@ public class ExTeX {
             "extex.trace.font.files";
 
     /**
-     * The constant <tt>PROP_TRACE_INPUT_FILES</tt> contains the name of the
+     * The constant {@code PROP_TRACE_INPUT_FILES} contains the name of the
      * property for the Boolean determining whether or not the searching for
      * input files should produce tracing output.
      */
@@ -584,14 +576,14 @@ public class ExTeX {
             "extex.trace.input.files";
 
     /**
-     * The constant <tt>PROP_TRACE_MACROS</tt> contains the name of the property
+     * The constant {@code PROP_TRACE_MACROS} contains the name of the property
      * for the Boolean determining whether or not the execution of macros should
      * produce tracing output.
      */
     protected static final String PROP_TRACE_MACROS = "extex.trace.macros";
 
     /**
-     * The constant <tt>PROP_TRACE_TOKENIZER</tt> contains the name of the
+     * The constant {@code PROP_TRACE_TOKENIZER} contains the name of the
      * property for the Boolean determining whether or not the tokenizer should
      * produce tracing output.
      */
@@ -599,14 +591,14 @@ public class ExTeX {
             "extex.trace.tokenizer";
 
     /**
-     * The constant <tt>PROP_TRACING_ONLINE</tt> contains the name of the
+     * The constant {@code PROP_TRACING_ONLINE} contains the name of the
      * property for the Boolean determining whether or not the tracing should
      * produce log output in the log file only.
      */
     protected static final String PROP_TRACING_ONLINE = "extex.tracing.online";
 
     /**
-     * The constant <tt>PROP_TYPESETTER_TYPE</tt> contains the name of the
+     * The constant {@code PROP_TYPESETTER_TYPE} contains the name of the
      * property for the typesetter to use. This value is resolved by the
      * {@link org.extex.engine.typesetter.TypesetterFactory TypesetterFactory}
      * to find the appropriate class.
@@ -614,14 +606,14 @@ public class ExTeX {
     protected static final String PROP_TYPESETTER_TYPE = "extex.typesetter";
 
     /**
-     * The constant <tt>TAG_ERRORHANDLER</tt> contains the name of the tag in
+     * The constant {@code TAG_ERRORHANDLER} contains the name of the tag in
      * the configuration file which contains the specification for the error
      * handler factory.
      */
     private static final String TAG_ERRORHANDLER = "ErrorHandler";
 
     /**
-     * The constant <tt>TAG_FONT</tt> contains the name of the tag in the
+     * The constant {@code TAG_FONT} contains the name of the tag in the
      * configuration file which contains the specification for the font.
      */
     private static final String TAG_FONT = "BaseFont";
@@ -651,66 +643,66 @@ public class ExTeX {
     }
 
     /**
-     * The field <tt>errorHandler</tt> contains the error handler to use.
+     * The field {@code errorHandler} contains the error handler to use.
      */
     private ErrorHandler errorHandler;
 
     /**
-     * The field <tt>ini</tt> contains the indicator for iniTeX.
+     * The field {@code ini} contains the indicator for iniTeX.
      */
     private final boolean ini;
 
     /**
-     * The field <tt>interactionObserver</tt> contains the observer called
+     * The field {@code interactionObserver} contains the observer called
      * whenever the interaction mode is changed.
      */
     private final InteractionObserver interactionObserver;
 
     /**
-     * The field <tt>iProvider</tt> contains the bridge from the resource finder
+     * The field {@code iProvider} contains the bridge from the resource finder
      * to the context.
      */
     private final ContextawareInteractionIndicator iProvider =
             new ContextawareInteractionIndicator();
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated with
+     * The field {@code localizer} contains the localizer. It is initiated with
      * a localizer for the name of this class.
      */
     private Localizer localizer = LocalizerFactory.getLocalizer(ExTeX.class);
 
     /**
-     * The field <tt>logger</tt> contains the logger currently in use.
+     * The field {@code logger} contains the logger currently in use.
      */
     private Logger logger;
 
     /**
-     * The field <tt>noBanner</tt> contains the indicator that a banner has
+     * The field {@code noBanner} contains the indicator that a banner has
      * already been printed and a repetition should be avoided.
      */
     private final boolean noBanner;
 
     /**
-     * The field <tt>outStream</tt> contains the output stream for the document
+     * The field {@code outStream} contains the output stream for the document
      * writer.
      */
     private OutputStream outStream;
 
     /**
-     * The field <tt>properties</tt> contains the properties containing the
+     * The field {@code properties} contains the properties containing the
      * settings for the invocation.
      */
     private final Properties properties;
 
     /**
-     * The field <tt>showBanner</tt> is a boolean indicating that it is
+     * The field {@code showBanner} is a boolean indicating that it is
      * necessary to display the banner. This information is needed for the cases
      * where errors show up before the normal banner has been printed.
      */
     private boolean showBanner;
 
     /**
-     * The field <tt>consoleHandler</tt> contains the ...
+     * The field {@code consoleHandler} contains the ...
      */
     private Handler consoleHandler;
 
@@ -777,13 +769,13 @@ public class ExTeX {
 
     /**
      * Creates a new object and initializes the properties from given properties
-     * and possibly from a user's properties in the file <tt>.extex</tt>. The
+     * and possibly from a user's properties in the file {@code .extex}. The
      * user properties are loaded from the users home directory and the current
      * directory.
      * 
      * @param theProperties the properties to consider
      * @param dotFile the name of the local configuration file. In the case that
-     *        this value is <code>null</code> no user properties will be
+     *        this value is {@code null} no user properties will be
      *        considered.
      * 
      * @throws HelpingException in case of an invalid interaction mode
@@ -809,7 +801,7 @@ public class ExTeX {
 
     /**
      * Propagate the settings for the interaction mode to the
-     * <code>interactionObserver</code>.
+     * {@code interactionObserver}.
      * 
      * @throws InteractionUnknownException in case that the interaction is not
      *         set properly
@@ -942,7 +934,7 @@ public class ExTeX {
      * 
      * @param key the property name
      * 
-     * @return the value of the named property or <code>null</code>
+     * @return the value of the named property or {@code null}
      */
     public String getProperty(String key) {
 
@@ -959,7 +951,7 @@ public class ExTeX {
      * @param interpreter the interpreter context
      * @param prop the properties
      * 
-     * @return <code>true</code> if the stream have not been initialized
+     * @return {@code true} if the stream have not been initialized
      * 
      * @throws ConfigurationException in case of a configuration error
      */
@@ -997,7 +989,7 @@ public class ExTeX {
     /**
      * Load a format if a non-empty name of a format is given.
      * 
-     * @param fmt the name of the format to use or <code>null</code> or the
+     * @param fmt the name of the format to use or {@code null} or the
      *        empty string to suppress loading
      * @param interpreter the interpreter to delegate the loading to
      * @param finder the resource finder to use for locating the format file
@@ -1005,7 +997,7 @@ public class ExTeX {
      * @param config the interpreter configuration
      * @param outFactory the output stream factory
      * @param tokenFactory the token factory to assign to the context or
-     *        <code>null</code> if no assignment should be performed
+     *        {@code null} if no assignment should be performed
      * 
      * @return the context
      * 
@@ -1336,7 +1328,7 @@ public class ExTeX {
      * Create a default font for the interpreter context.
      * 
      * @param config the configuration object for the font. This can be
-     *        <code>null</code>
+     *        {@code null}
      * @param fontFactory the font factory to request the font from
      * 
      * @return the default font
@@ -1949,11 +1941,11 @@ public class ExTeX {
     /**
      * Print the program banner to the logger stream and remember that this has
      * been done already to avoid repetition. The property
-     * <tt>extex.nobanner</tt> can be used to suppress the banner.
+     * {@code extex.nobanner} can be used to suppress the banner.
      * 
      * @param configuration the configuration to use. The configuration may
-     *        contain a tag <tt>banner</tt>. If present then the value is used.
-     *        The configuration can be <code>null</code>. Then it is ignored.
+     *        contain a tag {@code banner}. If present then the value is used.
+     *        The configuration can be {@code null}. Then it is ignored.
      * @param priority the log level
      */
     protected void showBanner(Configuration configuration, Level priority) {

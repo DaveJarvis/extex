@@ -27,29 +27,28 @@ import java.util.ResourceBundle;
  * This exception class signals the occurrence of a syntax error.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class UnexpectedException extends SyntaxException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>line</tt> contains the current line up to the last
+     * The field {@code line} contains the current line up to the last
      * character read.
      */
     private CharSequence line;
 
     /**
-     * The field <tt>lineno</tt> contains the number of the current line.
+     * The field {@code lineno} contains the number of the current line.
      */
     private int lineno;
 
     /**
-     * The field <tt>unexpected</tt> contains the unexpected item.
+     * The field {@code unexpected} contains the unexpected item.
      */
     private String unexpected;
 
@@ -67,12 +66,7 @@ public class UnexpectedException extends SyntaxException {
         this.lineno = lineno;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Throwable#getLocalizedMessage()
-     */
-    @Override
+@Override
     public String getLocalizedMessage() {
 
         try {

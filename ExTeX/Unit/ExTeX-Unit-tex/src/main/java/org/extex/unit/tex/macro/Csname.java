@@ -43,13 +43,12 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.Relax;
 
 /**
- * This class provides an implementation for the primitive <code>\csname</code>.
+ * This class provides an implementation for the primitive {@code \csname}.
  * 
- * <doc name="csname">
- * <h3>The Primitive <tt>\csname</tt></h3>
+ * <p>The Primitive {@code \csname}</p>
  * <p>
- * The primitive <tt>\csname</tt> absorbs further tokens until a matching
- * {@link org.extex.unit.tex.macro.Endcsname <tt>\endcsname</tt>} is found. The
+ * The primitive {@code \csname} absorbs further tokens until a matching
+ * {@link org.extex.unit.tex.macro.Endcsname {@code \endcsname}} is found. The
  * tokens found are expanded. Spaces are ignored. The expansion should lead to
  * character tokens only. No primitives producing something different are
  * allowed. A new token is constructed from the characters. The escape character
@@ -64,20 +63,22 @@ import org.extex.unit.base.Relax;
  * If a non-expandable token is encountered then an error is raised.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;csname&rang;
- *      &rarr; <tt>\csname</tt> &lang;expandable tokens&rang; <tt>\endcsname</tt>  </pre>
+ *      &rarr; {@code \csname} &lang;expandable tokens&rang; {@code \endcsname}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \csname abc\endcsname  </pre>
  * 
  * <p>
- * This results in the control sequence <tt>\abc</tt>.
+ * This results in the control sequence {@code \abc}.
  * </p>
  * 
  * <pre class="TeXSample">
@@ -92,25 +93,23 @@ import org.extex.unit.base.Relax;
  *    \csname \TeX\endcsname  </pre>
  * 
  * <p>
- * This is usually illegal since <tt>\TeX</tt> is defined in plain to contain
+ * This is usually illegal since {@code \TeX} is defined in plain to contain
  * some non-expandable primitives.
  * </p>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Csname extends AbstractCode implements ExpandableCode, PrefixCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * Expand tokens and collect the result until <tt>\endcsname</tt> is
+     * Expand tokens and collect the result until {@code \endcsname} is
      * found. In fact the termination condition is that a Token is found which
      * is assigned to {@link Endcsname Endcsname}.
      * 
@@ -176,10 +175,7 @@ public class Csname extends AbstractCode implements ExpandableCode, PrefixCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -203,10 +199,7 @@ public class Csname extends AbstractCode implements ExpandableCode, PrefixCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,

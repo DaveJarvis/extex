@@ -38,25 +38,24 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>top$</tt>.
+ * Test suite for {@code top$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TopTest {
 
     /**
-     * The field <tt>out</tt> contains the output buffer.
+     * The field {@code out} contains the output buffer.
      */
     private final StringBuffer out = new StringBuffer();
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
     /**
-     * The field <tt>err</tt> contains the error buffer.
+     * The field {@code err} contains the error buffer.
      */
     private Handler err;
 
@@ -87,7 +86,7 @@ public class TopTest {
     }
 
     /**
-     * <testcase> top$ complains about an empty stack. </testcase>
+     *  top$ complains about an empty stack.
      * 
      * @throws Exception in case of an error
      */
@@ -98,7 +97,7 @@ public class TopTest {
     }
 
     /**
-     * <testcase> top$ can pop a number. </testcase>
+     *  top$ can pop a number.
      * 
      * @throws Exception in case of an error
      */
@@ -113,7 +112,7 @@ public class TopTest {
     }
 
     /**
-     * <testcase> top$ can pop a string. </testcase>
+     *  top$ can pop a string.
      * 
      * @throws Exception in case of an error
      */

@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\vtop</tt>.
+ * This is a test suite for the primitive {@code \vtop}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class VtopTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -48,8 +47,8 @@ public class VtopTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\vtop"> Test case checking that <tt>\vtop</tt> ...
-     * </testcase>
+     * <testcase primitive="\vtop"> Test case checking that {@code \vtop} ...
+     *
      * 
      * @throws Exception in case of an error
      */

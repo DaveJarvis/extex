@@ -25,20 +25,19 @@ import java.io.OutputStream;
 import org.extex.dviware.Dvi;
 
 /**
- * This class represents the DVI instruction <tt>set_rule</tt>.
+ * This class represents the DVI instruction {@code set_rule}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DviSetRule extends AbstractDviCode {
 
     /**
-     * The field <tt>a</tt> contains the first parameter.
+     * The field {@code a} contains the first parameter.
      */
     private int a;
 
     /**
-     * The field <tt>b</tt> contains the second parameter.
+     * The field {@code b} contains the second parameter.
      */
     private int b;
 

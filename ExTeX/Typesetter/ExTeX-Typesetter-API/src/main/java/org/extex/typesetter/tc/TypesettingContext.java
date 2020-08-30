@@ -34,8 +34,7 @@ import org.extex.typesetter.tc.font.Font;
  * @see org.extex.typesetter.tc.ModifiableTypesettingContext
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4399 $
- */
+*/
 public interface TypesettingContext extends Serializable {
 
     /**

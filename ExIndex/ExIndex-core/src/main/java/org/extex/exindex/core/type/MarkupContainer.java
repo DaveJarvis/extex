@@ -25,8 +25,7 @@ import org.extex.exindex.core.type.markup.Markup;
  * This interface describes a container for markup information.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface MarkupContainer {
 
     /**
@@ -34,7 +33,7 @@ public interface MarkupContainer {
      * 
      * @param name the make of the markup
      * 
-     * @return the markup for the name or <code>null</code>
+     * @return the markup for the name or {@code null}
      */
     Markup getMarkup(String name);
 

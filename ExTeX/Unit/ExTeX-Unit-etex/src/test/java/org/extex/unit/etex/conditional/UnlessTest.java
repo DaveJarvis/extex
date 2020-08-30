@@ -25,11 +25,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\u005cnless</tt>.
+ * This is a test suite for the primitive {@code \u005cnless}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class UnlessTest extends ExTeXLauncher {
 
     /**
@@ -50,7 +49,7 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\u005cnless"> Test case checking that
-     * <tt>\u005cnless</tt> needs a following control sequence. </testcase>
+     * {@code \u005cnless} needs a following control sequence.
      * 
      * @throws Exception in case of an error
      */
@@ -66,7 +65,7 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\u005cnless"> Test case checking that
-     * <tt>\u005cnless</tt> needs a following control sequence. </testcase>
+     * {@code \u005cnless} needs a following control sequence.
      * 
      * @throws Exception in case of an error
      */
@@ -82,7 +81,7 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\u005cnless"> Test case checking that
-     * <tt>\u005cnless</tt> needs a following conditional. </testcase>
+     * {@code \u005cnless} needs a following conditional.
      * 
      * @throws Exception in case of an error
      */
@@ -98,7 +97,7 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\u005cnless"> Test case checking that
-     * <tt>\u005cnless</tt> needs a following control sequence. </testcase>
+     * {@code \u005cnless} needs a following control sequence.
      * 
      * @throws Exception in case of an error
      */
@@ -114,7 +113,7 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\u005cnless"> Test case checking that
-     * <tt>\u005cnless</tt> does not work with \ifcase. </testcase>
+     * {@code \u005cnless} does not work with \ifcase.
      * 
      * @throws Exception in case of an error
      */
@@ -130,7 +129,7 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\u005cnless"> Test case checking that
-     * <tt>\u005cnless</tt> does not work with \u005cunless. </testcase>
+     * {@code \u005cnless} does not work with \u005cunless.
      * 
      * @throws Exception in case of an error
      */
@@ -146,8 +145,8 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\u005cnless"> Test case checking that
-     * <tt>\u005cnless</tt> reverses the expansion of \ifnum on equals.
-     * </testcase>
+     * {@code \u005cnless} reverses the expansion of \ifnum on equals.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -163,7 +162,7 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\u005cnless"> Test case checking that
-     * <tt>\u005cnless</tt> reverses the expansion of \ifnum. </testcase>
+     * {@code \u005cnless} reverses the expansion of \ifnum.
      * 
      * @throws Exception in case of an error
      */
@@ -179,7 +178,7 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\u005cnless"> Test case checking that
-     * <tt>\u005cnless</tt> reverses the expansion of \if. </testcase>
+     * {@code \u005cnless} reverses the expansion of \if.
      * 
      * @throws Exception in case of an error
      */
@@ -194,7 +193,7 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\u005cnless"> Test case checking that
-     * <tt>\u005cnless</tt> reverses the expansion of \ifcat. </testcase>
+     * {@code \u005cnless} reverses the expansion of \ifcat.
      * 
      * @throws Exception in case of an error
      */
@@ -209,8 +208,8 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\u005cnless"> Test case checking that
-     * <tt>\u005cnless</tt> reverses the expansion of \ifnum (ne case).
-     * </testcase>
+     * {@code \u005cnless} reverses the expansion of \ifnum (ne case).
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -225,7 +224,7 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\u005cnless"> Test case checking that
-     * <tt>\u005cnless</tt> reverses the expansion of \ifdim. </testcase>
+     * {@code \u005cnless} reverses the expansion of \ifdim.
      * 
      * @throws Exception in case of an error
      */
@@ -240,7 +239,7 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\u005cnless"> Test case checking that
-     * <tt>\u005cnless</tt> reverses the expansion of \ifodd. </testcase>
+     * {@code \u005cnless} reverses the expansion of \ifodd.
      * 
      * @throws Exception in case of an error
      */
@@ -255,7 +254,7 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\u005cnless"> Test case checking that
-     * <tt>\u005cnless</tt> reverses the expansion of \ifvmode. </testcase>
+     * {@code \u005cnless} reverses the expansion of \ifvmode.
      * 
      * @throws Exception in case of an error
      */
@@ -270,7 +269,7 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\u005cnless"> Test case checking that
-     * <tt>\u005cnless</tt> reverses the expansion of \ifmmode. </testcase>
+     * {@code \u005cnless} reverses the expansion of \ifmmode.
      * 
      * @throws Exception in case of an error
      */
@@ -287,7 +286,7 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\u005cnless"> Test case checking that
-     * <tt>\u005cnless</tt> reverses the expansion of \ifvoid. </testcase>
+     * {@code \u005cnless} reverses the expansion of \ifvoid.
      * 
      * @throws Exception in case of an error
      */
@@ -302,7 +301,7 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\u005cnless"> Test case checking that
-     * <tt>\u005cnless</tt> reverses the expansion of \ifhbox. </testcase>
+     * {@code \u005cnless} reverses the expansion of \ifhbox.
      * 
      * @throws Exception in case of an error
      */
@@ -317,7 +316,7 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\u005cnless"> Test case checking that
-     * <tt>\u005cnless</tt> reverses the expansion of \ifvbox. </testcase>
+     * {@code \u005cnless} reverses the expansion of \ifvbox.
      * 
      * @throws Exception in case of an error
      */
@@ -332,7 +331,7 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\u005cnless"> Test case checking that
-     * <tt>\u005cnless</tt> reverses the expansion of \ifx. </testcase>
+     * {@code \u005cnless} reverses the expansion of \ifx.
      * 
      * @throws Exception in case of an error
      */
@@ -347,7 +346,7 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\u005cnless"> Test case checking that
-     * <tt>\u005cnless</tt> reverses the expansion of \ifeof. </testcase>
+     * {@code \u005cnless} reverses the expansion of \ifeof.
      * 
      * @throws Exception in case of an error
      */
@@ -362,7 +361,7 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\u005cnless"> Test case checking that
-     * <tt>\u005cnless</tt> reverses the expansion of \iftrue. </testcase>
+     * {@code \u005cnless} reverses the expansion of \iftrue.
      * 
      * @throws Exception in case of an error
      */
@@ -377,7 +376,7 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\u005cnless"> Test case checking that
-     * <tt>\u005cnless</tt> reverses the expansion of \iffalse. </testcase>
+     * {@code \u005cnless} reverses the expansion of \iffalse.
      * 
      * @throws Exception in case of an error
      */
@@ -392,7 +391,7 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\u005cnless"> Test case checking that
-     * <tt>\u005cnless</tt> reverses the expansion of \ifcsname. </testcase>
+     * {@code \u005cnless} reverses the expansion of \ifcsname.
      * 
      * @throws Exception in case of an error
      */
@@ -408,7 +407,7 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\u005cnless"> Test case checking that
-     * <tt>\u005cnless</tt> reverses the expansion of \iffontchar. </testcase>
+     * {@code \u005cnless} reverses the expansion of \iffontchar.
      * 
      * @throws Exception in case of an error
      */

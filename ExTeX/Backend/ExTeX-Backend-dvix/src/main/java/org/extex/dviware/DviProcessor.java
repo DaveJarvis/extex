@@ -27,25 +27,24 @@ import java.io.InputStream;
  * printed representation.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface DviProcessor {
 
     /**
-     * A DVI <tt>bop</tt> instruction has been encountered. This instruction
+     * A DVI {@code bop} instruction has been encountered. This instruction
      * signals the beginning of a new page.
      * 
      * @param off the current byte position in the input stream
      * @param c the array of page number indicators. The array has length 10. It
      *        is initialized from the count registers 0 to 9 at the time the
      *        page is shipped out.
-     * @param p the pointer to the previous <tt>bop</tt> instruction or -1 for
+     * @param p the pointer to the previous {@code bop} instruction or -1 for
      *        the first page
      */
     void bop(int off, int[] c, int p);
 
     /**
-     * A DVI <tt>down</tt> instruction has been encountered.
+     * A DVI {@code down} instruction has been encountered.
      * 
      * <p>
      * <i>v &larr; v + &lang;a&rang;</i>
@@ -58,7 +57,7 @@ public interface DviProcessor {
     void down(int off, int a);
 
     /**
-     * A DVI <tt>eop</tt> instruction has been encountered. This instruction
+     * A DVI {@code eop} instruction has been encountered. This instruction
      * signals the end of a page.
      * 
      * @param off the current byte position in the input stream
@@ -66,7 +65,7 @@ public interface DviProcessor {
     void eop(int off);
 
     /**
-     * A DVI <tt>fnt</tt> instruction has been encountered.
+     * A DVI {@code fnt} instruction has been encountered.
      * 
      * <p>
      * <i>f &larr; &lang;k&rang;</i>
@@ -78,7 +77,7 @@ public interface DviProcessor {
     void fnt(int off, int k);
 
     /**
-     * A DVI <tt>fntDef</tt> instruction has been encountered.
+     * A DVI {@code fntDef} instruction has been encountered.
      * 
      * @param off the current byte position in the input stream
      * @param k the number of the font
@@ -90,7 +89,7 @@ public interface DviProcessor {
     void fntDef(int off, int k, int c, int s, int d, String n);
 
     /**
-     * A DVI <tt>nop</tt> instruction has been encountered. This instruction
+     * A DVI {@code nop} instruction has been encountered. This instruction
      * simply does nothing. It just occupies one byte in the input stream.
      * 
      * @param off the current byte position in the input stream
@@ -98,7 +97,7 @@ public interface DviProcessor {
     void nop(int off);
 
     /**
-     * A DVI <tt>pop</tt> instruction has been encountered.
+     * A DVI {@code pop} instruction has been encountered.
      * 
      * <p>
      * The registers h, b, w, x, y, z are popped from the stack.
@@ -109,7 +108,7 @@ public interface DviProcessor {
     void pop(int off);
 
     /**
-     * A DVI <tt>post</tt> instruction has been encountered.
+     * A DVI {@code post} instruction has been encountered.
      * 
      * @param off the current byte position in the input stream
      * @param bop the index of the last BOP instruction
@@ -135,7 +134,7 @@ public interface DviProcessor {
     void postPost(int off, int bop, int id);
 
     /**
-     * A DVI <tt>pre</tt> instruction has been encountered.
+     * A DVI {@code pre} instruction has been encountered.
      * 
      * @param off the current byte position in the input stream
      * @param id the id of this DVI version. Usually this is 2.
@@ -147,14 +146,14 @@ public interface DviProcessor {
     void pre(int off, int id, int num, int den, int mag, String comment);
 
     /**
-     * A DVI <tt>push</tt> instruction has been encountered.
+     * A DVI {@code push} instruction has been encountered.
      * 
      * @param off the current byte position in the input stream
      */
     void push(int off);
 
     /**
-     * A DVI <tt>put_char</tt> instruction has been encountered.
+     * A DVI {@code put_char} instruction has been encountered.
      * 
      * @param off the current byte position
      * @param c the number of the character to set
@@ -162,7 +161,7 @@ public interface DviProcessor {
     void putChar(int off, int c);
 
     /**
-     * A DVI <tt>put_rule</tt> instruction has been encountered.
+     * A DVI {@code put_rule} instruction has been encountered.
      * 
      * @param off the current byte position in the input stream
      * @param a the width
@@ -171,7 +170,7 @@ public interface DviProcessor {
     void putRule(int off, int a, int b);
 
     /**
-     * A DVI <tt>right</tt> instruction has been encountered.
+     * A DVI {@code right} instruction has been encountered.
      * 
      * <p>
      * <i>h &larr; h + &lang;b&rang;</i>
@@ -188,7 +187,7 @@ public interface DviProcessor {
     void right(int off, int b);
 
     /**
-     * A DVI <tt>set_char</tt> instruction has been encountered.
+     * A DVI {@code set_char} instruction has been encountered.
      * 
      * @param off the current byte position
      * @param c the number of the character to set
@@ -196,7 +195,7 @@ public interface DviProcessor {
     void setChar(int off, int c);
 
     /**
-     * A DVI <tt>set_rule</tt> instruction has been encountered.
+     * A DVI {@code set_rule} instruction has been encountered.
      * 
      * @param off the current byte position
      * @param a the width
@@ -216,7 +215,7 @@ public interface DviProcessor {
     void undef(int off, int opcode, InputStream stream);
 
     /**
-     * A DVI <tt>w</tt> instruction has been encountered.
+     * A DVI {@code w} instruction has been encountered.
      * 
      * <p>
      * The register w is assigned from the parameter of this instruction.
@@ -229,7 +228,7 @@ public interface DviProcessor {
     void w(int off, int b);
 
     /**
-     * A DVI <tt>w0</tt> instruction has been encountered.
+     * A DVI {@code w0} instruction has been encountered.
      * 
      * <p>
      * <i>h &larr; h + w</i>
@@ -243,7 +242,7 @@ public interface DviProcessor {
     void w0(int off);
 
     /**
-     * A DVI <tt>x</tt> instruction has been encountered.
+     * A DVI {@code x} instruction has been encountered.
      * 
      * <p>
      * <i>x &larr; &lang;b&rang;</i><br>
@@ -256,7 +255,7 @@ public interface DviProcessor {
     void x(int off, int b);
 
     /**
-     * A DVI <tt>x0</tt> instruction has been encountered.
+     * A DVI {@code x0} instruction has been encountered.
      * 
      * <p>
      * <i>h &larr; h + x</i>
@@ -270,10 +269,10 @@ public interface DviProcessor {
     void x0(int ptr);
 
     /**
-     * A DVI <tt>xxx</tt> instruction has been encountered. This instruction is
+     * A DVI {@code xxx} instruction has been encountered. This instruction is
      * used to pass some bytes uninterpreted to the DVI processor. In
      * TeX this is accomplished with the primitive
-     * <tt>\special</tt>.
+     * {@code \special}.
      * 
      * @param off the current byte position in the input stream
      * @param x the array of bytes carrying the content
@@ -281,7 +280,7 @@ public interface DviProcessor {
     void xxx(int off, byte[] x);
 
     /**
-     * A DVI <tt>y</tt> instruction has been encountered.
+     * A DVI {@code y} instruction has been encountered.
      * 
      * <p>
      * <i>y &larr; &lang;a&rang;</i><br>
@@ -294,7 +293,7 @@ public interface DviProcessor {
     void y(int off, int a);
 
     /**
-     * A DVI <tt>y0</tt> instruction has been encountered.
+     * A DVI {@code y0} instruction has been encountered.
      * 
      * <p>
      * Set <i>v &larr; v + y</i>; thus the current position is moved down
@@ -306,7 +305,7 @@ public interface DviProcessor {
     void y0(int ptr);
 
     /**
-     * A DVI <tt>z</tt> instruction has been encountered.
+     * A DVI {@code z} instruction has been encountered.
      * 
      * <p>
      * <i>z &larr; &lang;a&rang;</i><br>
@@ -319,7 +318,7 @@ public interface DviProcessor {
     void z(int off, int b);
 
     /**
-     * A DVI <tt>z0</tt> instruction has been encountered.
+     * A DVI {@code z0} instruction has been encountered.
      * 
      * <p>
      * <i>v &larr; v + z</i>

@@ -45,15 +45,15 @@ import org.extex.exbib.core.io.Locator;
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X built-in function <code>set$</code>
+ * >e</span>X built-in function {@code set$}
  * <p>
  * This function assigns a value to a variable or field. It takes two arguments
  * from the stack. The first argument is the name of the target. In general it
  * needs to be quoted. The second argument is the appropriate value.
  * </p>
- * <img src="doc-files/set.png"/>
+ * <img src="doc-files/set.png" alt="set">
  * <p>
- * The following example is taken from <tt>alpha.bst</tt>:
+ * The following example is taken from {@code alpha.bst}:
  * </p>
  * 
  * <pre>
@@ -66,33 +66,25 @@ import org.extex.exbib.core.io.Locator;
  *   while$
  * </pre>
  * 
- * <hr />
+ * <hr>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X documentation:
- * <dt>
+ * <dt>BibTeX documentation</dt>
  * <dd>Pops the top two literals and assigns to the first (which must be a
  * global or entry variable) the value of the second.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Set extends AbstractCode {
 
     /**
-     * The field <tt>TV</tt> contains the visitor for tokens.
+     * The field {@code TV} contains the visitor for tokens.
      */
     private static final TokenVisitor TV = new TokenVisitor() {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitBlock(org.extex.exbib.core.bst.token.impl.TBlock,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitBlock(TBlock block, Object... args)
                 throws ExBibException {
@@ -104,10 +96,7 @@ public class Set extends AbstractCode {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitChar(org.extex.exbib.core.bst.token.impl.TChar,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitChar(TChar c, Object... args) throws ExBibException {
 
@@ -118,10 +107,7 @@ public class Set extends AbstractCode {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitField(org.extex.exbib.core.bst.token.impl.TField,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitField(TField field, Object... args)
                 throws ExBibException {
@@ -134,10 +120,7 @@ public class Set extends AbstractCode {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitInteger(org.extex.exbib.core.bst.token.impl.TInteger,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitInteger(TInteger integer, Object... args)
                 throws ExBibException {
@@ -149,10 +132,7 @@ public class Set extends AbstractCode {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitIntegerOption(org.extex.exbib.core.bst.token.impl.TIntegerOption,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitIntegerOption(TIntegerOption option, Object... args)
                 throws ExBibException {
@@ -164,10 +144,7 @@ public class Set extends AbstractCode {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLiteral(org.extex.exbib.core.bst.token.impl.TLiteral,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitLiteral(TLiteral literal, Object... args)
                 throws ExBibException {
@@ -179,10 +156,7 @@ public class Set extends AbstractCode {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalInteger(org.extex.exbib.core.bst.token.impl.TLocalInteger,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitLocalInteger(TLocalInteger integer, Object... args)
                 throws ExBibException {
@@ -195,10 +169,7 @@ public class Set extends AbstractCode {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalLocator(org.extex.exbib.core.bst.token.impl.TLocalLocator,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitLocalLocator(TLocalLocator localLocator, Object[] args)
                 throws ExBibException {
@@ -209,10 +180,7 @@ public class Set extends AbstractCode {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalString(org.extex.exbib.core.bst.token.impl.TLocalString,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitLocalString(TLocalString string, Object... args)
                 throws ExBibException {
@@ -225,10 +193,7 @@ public class Set extends AbstractCode {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitQLiteral(org.extex.exbib.core.bst.token.impl.TQLiteral,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitQLiteral(TQLiteral qliteral, Object... args)
                 throws ExBibException {
@@ -240,10 +205,7 @@ public class Set extends AbstractCode {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitString(org.extex.exbib.core.bst.token.impl.TString,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitString(TString string, Object... args)
                 throws ExBibException {
@@ -255,10 +217,7 @@ public class Set extends AbstractCode {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitStringOption(org.extex.exbib.core.bst.token.impl.TStringOption,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitStringOption(TStringOption option, Object... args)
                 throws ExBibException {
@@ -270,10 +229,7 @@ public class Set extends AbstractCode {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitTokenList(org.extex.exbib.core.bst.token.impl.TokenList,
-         *      java.lang.Object[])
+    *      java.lang.Object[])
          */
         public void visitTokenList(TokenList list, Object... args)
                 throws ExBibException {
@@ -304,10 +260,7 @@ public class Set extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {

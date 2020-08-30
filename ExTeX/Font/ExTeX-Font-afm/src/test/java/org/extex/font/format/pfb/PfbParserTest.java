@@ -28,8 +28,7 @@ import junit.framework.TestCase;
  * Test for the {@link PfbParser}.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class PfbParserTest extends TestCase {
 
     /**

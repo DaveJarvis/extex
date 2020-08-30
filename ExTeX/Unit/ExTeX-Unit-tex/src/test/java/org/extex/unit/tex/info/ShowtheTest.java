@@ -23,11 +23,10 @@ import org.extex.test.NoFlagsPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\showthe</tt>.
+ * This is a test suite for the primitive {@code \showthe}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class ShowtheTest extends NoFlagsPrimitiveTester {
 
 
@@ -38,9 +37,9 @@ public class ShowtheTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showthe">
-     *  Test case checking that <tt>\showthe</tt> produces an error message
-     *  when applied to <tt>\relax</tt>.
-     * </testcase>
+     *  Test case checking that {@code \showthe} produces an error message
+     *  when applied to {@code \relax}.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -55,9 +54,9 @@ public class ShowtheTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showthe">
-     *  Test case checking that <tt>\showthe</tt> produces an error message
+     *  Test case checking that {@code \showthe} produces an error message
      *  when applied to a digit.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -72,9 +71,9 @@ public class ShowtheTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showthe">
-     *  Test case checking that <tt>\showthe</tt> works on a count register
+     *  Test case checking that {@code \showthe} works on a count register
      *  with value 0.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -89,9 +88,9 @@ public class ShowtheTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showthe">
-     *  Test case checking that <tt>\showthe</tt> works on a count register
+     *  Test case checking that {@code \showthe} works on a count register
      *   with value 42.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -107,9 +106,9 @@ public class ShowtheTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showthe">
-     *  Test case checking that <tt>\showthe</tt> works on a dimen register
+     *  Test case checking that {@code \showthe} works on a dimen register
      *  with value 0pt.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -124,9 +123,9 @@ public class ShowtheTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showthe">
-     *  Test case checking that <tt>\showthe</tt> works on a dimen register
+     *  Test case checking that {@code \showthe} works on a dimen register
      *  with value 42pt.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -142,9 +141,9 @@ public class ShowtheTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showthe">
-     *  Test case checking that <tt>\showthe</tt> works on a glue register
+     *  Test case checking that {@code \showthe} works on a glue register
      *  with zero length and no stretch or shrink.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -159,9 +158,9 @@ public class ShowtheTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showthe">
-     *  Test case checking that <tt>\showthe</tt> works on a glue register
+     *  Test case checking that {@code \showthe} works on a glue register
      *  with length and stretch and shrink components.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -177,9 +176,9 @@ public class ShowtheTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showthe">
-     *  Test case checking that <tt>\showthe</tt> works on a undefined tokens
+     *  Test case checking that {@code \showthe} works on a undefined tokens
      *  register.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */

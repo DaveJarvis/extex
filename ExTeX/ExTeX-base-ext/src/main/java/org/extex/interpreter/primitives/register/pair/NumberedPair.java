@@ -27,7 +27,7 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\pair</code>.
+ * This class provides an implementation for the primitive {@code \pair}.
  * It sets the named pair register to the value given, and as a side effect all
  * prefixes are zeroed.
  * 
@@ -47,12 +47,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * </pre>
  * 
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class NumberedPair extends NamedPair {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;

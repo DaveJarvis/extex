@@ -30,12 +30,11 @@ import org.apache.tools.ant.Task;
  * Collect the news and make an RSS feed.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class RssCollector extends Task {
 
     /**
-     * The field <tt>verbose</tt> contains the verbosity indicator.
+     * The field {@code verbose} contains the verbosity indicator.
      */
     private static boolean verbose = false;
 
@@ -78,9 +77,9 @@ public class RssCollector extends Task {
     /**
      * Perform the real action.
      * 
-     * @param in the optional input file. If <code>null</code> then reading
+     * @param in the optional input file. If {@code null} then reading
      *        from stdin
-     * @param out the optional output file. If <code>null</code> then writing
+     * @param out the optional output file. If {@code null} then writing
      *        to stdout
      * 
      * @throws IOException in case of an error
@@ -104,12 +103,12 @@ public class RssCollector extends Task {
     }
 
     /**
-     * The field <tt>input</tt> contains the optional input file.
+     * The field {@code input} contains the optional input file.
      */
     private String input = null;
 
     /**
-     * The field <tt>output</tt> contains the optional output file.
+     * The field {@code output} contains the optional output file.
      */
     private String output = null;
 

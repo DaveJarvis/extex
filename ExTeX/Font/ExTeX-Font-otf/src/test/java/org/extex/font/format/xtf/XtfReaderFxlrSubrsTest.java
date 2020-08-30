@@ -31,13 +31,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
- * Tests for the <code>XtfReader</code> with opentype files.
+ * Tests for the {@code XtfReader} with opentype files.
  * 
- * The test use the data from the <code>ttx</code> output.
+ * The test use the data from the {@code ttx} output.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class XtfReaderFxlrSubrsTest {
 
     private final static String DIR_TARGET = "build";

@@ -25,8 +25,7 @@ import java.util.logging.Logger;
  * This interface describes a processor for a list of pages.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6622 $
- */
+*/
 public interface PageProcessor {
 
     /**

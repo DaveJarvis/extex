@@ -26,9 +26,9 @@ import java.io.Serializable;
  * This class provides symbolic constants for the different group types.
  *
  * <p>
- *  The following values are defined:
+ * The following values are defined:
  * </p>
- * <table>
+ * <table> <caption>TBD</caption>
  *  <tr><td> 0</td><td>bottom level (no group)</td></tr>
  *  <tr><td> 1</td><td>simple group</td></tr>
  *  <tr><td> 2</td><td>hbox group</td></tr>
@@ -46,27 +46,25 @@ import java.io.Serializable;
  *  <tr><td>14</td><td>semi simple group</td></tr>
  *  <tr><td>15</td><td>math shift group</td></tr>
  *  <tr><td>16</td><td>math left group</td></tr>
- * <table>
- *
+ * </table>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
  */
 public abstract class GroupType implements Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 24012007L;
 
     /**
-     * The field <tt>ADJUSTED_HBOX_GROUP</tt> contains the symbolic constant
+     * The field {@code ADJUSTED_HBOX_GROUP} contains the symbolic constant
      * for the adjusted hbox group.
      */
     public static final GroupType ADJUSTED_HBOX_GROUP = new GroupType() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the id for serialization.
+         * The field {@code serialVersionUID} contains the id for serialization.
          */
         protected static final long serialVersionUID = 20060616L;
 
@@ -105,13 +103,13 @@ public abstract class GroupType implements Serializable {
     };
 
     /**
-     * The field <tt>ALIGN_GROUP</tt> contains the symbolic constant
+     * The field {@code ALIGN_GROUP} contains the symbolic constant
      * for the align group.
      */
     public static final GroupType ALIGN_GROUP = new GroupType() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the id for serialization.
+         * The field {@code serialVersionUID} contains the id for serialization.
          */
         protected static final long serialVersionUID = 20060616L;
 
@@ -150,13 +148,13 @@ public abstract class GroupType implements Serializable {
     };
 
     /**
-     * The field <tt>BOTTOM_LEVEL_GROUP</tt> contains the symbolic constant
+     * The field {@code BOTTOM_LEVEL_GROUP} contains the symbolic constant
      * for the bottom level group.
      */
     public static final GroupType BOTTOM_LEVEL_GROUP = new GroupType() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the id for serialization.
+         * The field {@code serialVersionUID} contains the id for serialization.
          */
         protected static final long serialVersionUID = 20060616L;
 
@@ -195,13 +193,13 @@ public abstract class GroupType implements Serializable {
     };
 
     /**
-     * The field <tt>DISC_GROUP</tt> contains the symbolic constant
+     * The field {@code DISC_GROUP} contains the symbolic constant
      * for the disc group.
      */
     public static final GroupType DISC_GROUP = new GroupType() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the id for serialization.
+         * The field {@code serialVersionUID} contains the id for serialization.
          */
         protected static final long serialVersionUID = 20060616L;
 
@@ -240,13 +238,13 @@ public abstract class GroupType implements Serializable {
     };
 
     /**
-     * The field <tt>HBOX_GROUP</tt> contains the symbolic constant
+     * The field {@code HBOX_GROUP} contains the symbolic constant
      * for the hbox group.
      */
     public static final GroupType HBOX_GROUP = new GroupType() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the id for serialization.
+         * The field {@code serialVersionUID} contains the id for serialization.
          */
         protected static final long serialVersionUID = 20060616L;
 
@@ -285,13 +283,13 @@ public abstract class GroupType implements Serializable {
     };
 
     /**
-     * The field <tt>INSERT_GROUP</tt> contains the symbolic constant
+     * The field {@code INSERT_GROUP} contains the symbolic constant
      * for the insert group.
      */
     public static final GroupType INSERT_GROUP = new GroupType() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the id for serialization.
+         * The field {@code serialVersionUID} contains the id for serialization.
          */
         protected static final long serialVersionUID = 20060616L;
 
@@ -330,13 +328,13 @@ public abstract class GroupType implements Serializable {
     };
 
     /**
-     * The field <tt>MATH_CHOICE_GROUP</tt> contains the symbolic constant
+     * The field {@code MATH_CHOICE_GROUP} contains the symbolic constant
      * for the math choice group.
      */
     public static final GroupType MATH_CHOICE_GROUP = new GroupType() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the id for serialization.
+         * The field {@code serialVersionUID} contains the id for serialization.
          */
         protected static final long serialVersionUID = 20060616L;
 
@@ -375,13 +373,13 @@ public abstract class GroupType implements Serializable {
     };
 
     /**
-     * The field <tt>MATH_GROUP</tt> contains the symbolic constant
+     * The field {@code MATH_GROUP} contains the symbolic constant
      * for the math group.
      */
     public static final GroupType MATH_GROUP = new GroupType() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the id for serialization.
+         * The field {@code serialVersionUID} contains the id for serialization.
          */
         protected static final long serialVersionUID = 20060616L;
 
@@ -420,13 +418,13 @@ public abstract class GroupType implements Serializable {
     };
 
     /**
-     * The field <tt>MATH_LEFT_GROUP</tt> contains the symbolic constant
+     * The field {@code MATH_LEFT_GROUP} contains the symbolic constant
      * for the math left group.
      */
     public static final GroupType MATH_LEFT_GROUP = new GroupType() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the id for serialization.
+         * The field {@code serialVersionUID} contains the id for serialization.
          */
         protected static final long serialVersionUID = 20060616L;
 
@@ -465,13 +463,13 @@ public abstract class GroupType implements Serializable {
     };
 
     /**
-     * The field <tt>MATH_SHIFT_GROUP</tt> contains the symbolic constant
+     * The field {@code MATH_SHIFT_GROUP} contains the symbolic constant
      * for the math shift group.
      */
     public static final GroupType MATH_SHIFT_GROUP = new GroupType() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the id for serialization.
+         * The field {@code serialVersionUID} contains the id for serialization.
          */
         protected static final long serialVersionUID = 20060616L;
 
@@ -510,13 +508,13 @@ public abstract class GroupType implements Serializable {
     };
 
     /**
-     * The field <tt>NO_ALIGN_GROUP</tt> contains the symbolic constant
+     * The field {@code NO_ALIGN_GROUP} contains the symbolic constant
      * for the no align group.
      */
     public static final GroupType NO_ALIGN_GROUP = new GroupType() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the id for serialization.
+         * The field {@code serialVersionUID} contains the id for serialization.
          */
         protected static final long serialVersionUID = 20060616L;
 
@@ -555,13 +553,13 @@ public abstract class GroupType implements Serializable {
     };
 
     /**
-     * The field <tt>OUTPUT_GROUP</tt> contains the symbolic constant
+     * The field {@code OUTPUT_GROUP} contains the symbolic constant
      * for the output group.
      */
     public static final GroupType OUTPUT_GROUP = new GroupType() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the id for serialization.
+         * The field {@code serialVersionUID} contains the id for serialization.
          */
         protected static final long serialVersionUID = 20060616L;
 
@@ -600,13 +598,13 @@ public abstract class GroupType implements Serializable {
     };
 
     /**
-     * The field <tt>SEMI_SIMPLE_GROUP</tt> contains the symbolic constant
+     * The field {@code SEMI_SIMPLE_GROUP} contains the symbolic constant
      * for the semi simple group.
      */
     public static final GroupType SEMI_SIMPLE_GROUP = new GroupType() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the id for serialization.
+         * The field {@code serialVersionUID} contains the id for serialization.
          */
         protected static final long serialVersionUID = 20060616L;
 
@@ -645,13 +643,13 @@ public abstract class GroupType implements Serializable {
     };
 
     /**
-     * The field <tt>SIMPLE_GROUP</tt> contains the symbolic constant
+     * The field {@code SIMPLE_GROUP} contains the symbolic constant
      * for the simple group.
      */
     public static final GroupType SIMPLE_GROUP = new GroupType() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the id for serialization.
+         * The field {@code serialVersionUID} contains the id for serialization.
          */
         protected static final long serialVersionUID = 20060616L;
 
@@ -690,13 +688,13 @@ public abstract class GroupType implements Serializable {
     };
 
     /**
-     * The field <tt>VBOX_GROUP</tt> contains the symbolic constant
+     * The field {@code VBOX_GROUP} contains the symbolic constant
      * for the vbox group.
      */
     public static final GroupType VBOX_GROUP = new GroupType() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the id for serialization.
+         * The field {@code serialVersionUID} contains the id for serialization.
          */
         protected static final long serialVersionUID = 20060616L;
 
@@ -735,13 +733,13 @@ public abstract class GroupType implements Serializable {
     };
 
     /**
-     * The field <tt>VCENTER_GROUP</tt> contains the symbolic constant
+     * The field {@code VCENTER_GROUP} contains the symbolic constant
      * for the vcenter group.
      */
     public static final GroupType VCENTER_GROUP = new GroupType() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the id for serialization.
+         * The field {@code serialVersionUID} contains the id for serialization.
          */
         protected static final long serialVersionUID = 20060616L;
 
@@ -780,13 +778,13 @@ public abstract class GroupType implements Serializable {
     };
 
     /**
-     * The field <tt>VTOP_GROUP</tt> contains the symbolic constant
+     * The field {@code VTOP_GROUP} contains the symbolic constant
      * for the vtop group.
      */
     public static final GroupType VTOP_GROUP = new GroupType() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the id for serialization.
+         * The field {@code serialVersionUID} contains the id for serialization.
          */
         protected static final long serialVersionUID = 20060616L;
 

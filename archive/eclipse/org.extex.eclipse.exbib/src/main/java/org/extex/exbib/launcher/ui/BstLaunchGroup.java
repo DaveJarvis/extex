@@ -28,15 +28,11 @@ import org.eclipse.debug.ui.ILaunchConfigurationTab;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class BstLaunchGroup extends AbstractLaunchConfigurationTabGroup {
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.debug.ui.ILaunchConfigurationTabGroup#createTabs(org.eclipse.debug.ui.ILaunchConfigurationDialog,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public void createTabs(ILaunchConfigurationDialog dialog, String mode) {

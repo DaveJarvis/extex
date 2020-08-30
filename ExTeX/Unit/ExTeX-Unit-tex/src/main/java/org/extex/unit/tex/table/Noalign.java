@@ -33,35 +33,34 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.NodeList;
 
 /**
- * This class provides an implementation for the primitive <code>\noalign</code>.
+ * This class provides an implementation for the primitive {@code \noalign}.
  * 
- * <doc name="noalign">
- * <h3>The Primitive <tt>\noalign</tt></h3>
+ * <p>The Primitive {@code \noalign}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;noalign&rang;
- *       &rarr; <tt>\noalign</tt> <tt>{</tt> &lang;vertical material&rang; <tt>}</tt>  </pre>
+ *       &rarr; {@code \noalign} {@code {} &lang;vertical material&rang; {@code }}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \cr\noalign{\vskip 4pt}  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Noalign extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -77,10 +76,7 @@ public class Noalign extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

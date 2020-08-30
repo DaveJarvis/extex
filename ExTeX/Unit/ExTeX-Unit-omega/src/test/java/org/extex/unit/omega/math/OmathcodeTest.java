@@ -30,11 +30,10 @@ import org.extex.unit.tex.math.AbstractMathTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\omathcode</tt>.
+ * This is a test suite for the primitive {@code \omathcode}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
 
@@ -46,8 +45,8 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathcode"> Test case checking that
-     * <tt>\omathcode</tt> works for an ordinary character definition.
-     * </testcase>
+     * {@code \omathcode} works for an ordinary character definition.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -64,7 +63,7 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathcode"> Test case checking that
-     * <tt>\omathcode</tt> can be used to define active characters. </testcase>
+     * {@code \omathcode} can be used to define active characters.
      * 
      * @throws Exception in case of an error
      */
@@ -82,8 +81,8 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathcode"> Test case checking that
-     * <tt>\omathcode</tt> complains about an undefined active character
-     * definition. </testcase>
+     * {@code \omathcode} complains about an undefined active character
+     * definition.
      * 
      * @throws Exception in case of an error
      */
@@ -100,8 +99,8 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathcode"> Test case checking that
-     * <tt>\omathcode</tt> sets the code in the Context for binary characters
-     * correctly. </testcase>
+     * {@code \omathcode} sets the code in the Context for binary characters
+     * correctly.
      * 
      * @throws Exception in case of an error
      */
@@ -122,8 +121,8 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathcode"> Test case checking that
-     * <tt>\omathcode</tt> sets the code in the Context for an closing character
-     * correctly. </testcase>
+     * {@code \omathcode} sets the code in the Context for an closing character
+     * correctly.
      * 
      * @throws Exception in case of an error
      */
@@ -144,7 +143,7 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathcode"> Test case checking that
-     * <tt>\omathcode</tt> is convertible into a count. </testcase>
+     * {@code \omathcode} is convertible into a count.
      * 
      * @throws Exception in case of an error
      */
@@ -161,7 +160,7 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathcode"> Test case checking that
-     * <tt>\omathcode</tt> needs an argument. </testcase>
+     * {@code \omathcode} needs an argument.
      * 
      * @throws Exception in case of an error
      */
@@ -177,7 +176,7 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathcode"> Test case checking that
-     * <tt>\omathcode</tt> complains about negative values. </testcase>
+     * {@code \omathcode} complains about negative values.
      * 
      * @throws Exception in case of an error
      */
@@ -193,7 +192,7 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathcode"> Test case checking that
-     * <tt>\omathcode</tt> complains about too large values. </testcase>
+     * {@code \omathcode} complains about too large values.
      * 
      * @throws Exception in case of an error
      */
@@ -209,7 +208,7 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathcode"> Test case checking that
-     * <tt>\omathcode</tt> complains about too large values. </testcase>
+     * {@code \omathcode} complains about too large values.
      * 
      * @throws Exception in case of an error
      */
@@ -225,8 +224,8 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathcode"> Test case checking that
-     * <tt>\omathcode</tt> sets the code in the Context for large characters
-     * correctly. </testcase>
+     * {@code \omathcode} sets the code in the Context for large characters
+     * correctly.
      * 
      * @throws Exception in case of an error
      */
@@ -247,8 +246,8 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathcode"> Test case checking that
-     * <tt>\omathcode</tt> sets the code in the Context for an opening character
-     * correctly. </testcase>
+     * {@code \omathcode} sets the code in the Context for an opening character
+     * correctly.
      * 
      * @throws Exception in case of an error
      */
@@ -269,8 +268,8 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathcode"> Test case checking that
-     * <tt>\omathcode</tt> sets the code in the Context for ordinary characters
-     * correctly. </testcase>
+     * {@code \omathcode} sets the code in the Context for ordinary characters
+     * correctly.
      * 
      * @throws Exception in case of an error
      */
@@ -291,8 +290,8 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathcode"> Test case checking that
-     * <tt>\omathcode</tt> sets the code in the Context for a punctation
-     * character correctly. </testcase>
+     * {@code \omathcode} sets the code in the Context for a punctation
+     * character correctly.
      * 
      * @throws Exception in case of an error
      */
@@ -313,7 +312,7 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathcode"> Test case checking that
-     * <tt>\omathcode</tt> accepts a value of 0. </testcase>
+     * {@code \omathcode} accepts a value of 0.
      * 
      * @throws Exception in case of an error
      */
@@ -329,7 +328,7 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathcode"> Test case checking that
-     * <tt>\omathcode</tt> accepts a value of 32767. </testcase>
+     * {@code \omathcode} accepts a value of 32767.
      * 
      * @throws Exception in case of an error
      */
@@ -345,8 +344,8 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathcode"> Test case checking that
-     * <tt>\omathcode</tt> accepts a value of 32768, i.e. more than TeX
-     * </testcase>
+     * {@code \omathcode} accepts a value of 32768, i.e. more than TeX
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -362,8 +361,8 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathcode"> Test case checking that
-     * <tt>\omathcode</tt> sets the code in the Context for a relational
-     * character correctly. </testcase>
+     * {@code \omathcode} sets the code in the Context for a relational
+     * character correctly.
      * 
      * @throws Exception in case of an error
      */
@@ -384,7 +383,7 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathcode"> Test case checking that
-     * <tt>\omathcode</tt> is theable. </testcase>
+     * {@code \omathcode} is theable.
      * 
      * @throws Exception in case of an error
      */
@@ -400,8 +399,8 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathcode"> Test case checking that
-     * <tt>\omathcode</tt> sets the code in the Context for a variable character
-     * correctly. </testcase>
+     * {@code \omathcode} sets the code in the Context for a variable character
+     * correctly.
      * 
      * @throws Exception in case of an error
      */

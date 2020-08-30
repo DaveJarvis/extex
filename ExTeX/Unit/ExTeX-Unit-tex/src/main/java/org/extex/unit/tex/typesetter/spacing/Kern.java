@@ -31,10 +31,9 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.ExplicitKernNode;
 
 /**
- * This class provides an implementation for the primitive <code>\kern</code>.
+ * This class provides an implementation for the primitive {@code \kern}.
  * 
- * <doc name="kern">
- * <h3>The Primitive <tt>\kern</tt></h3>
+ * <p>The Primitive {@code \kern}</p>
  * <p>
  * This primitive produces a horizontal or vertical kerning. This is a (minor)
  * adjustment of the position. The meaning depends on the current mode of the
@@ -42,25 +41,24 @@ import org.extex.typesetter.type.node.ExplicitKernNode;
  * means a horizontal adjustment.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;kern&rang;
- *      &rarr; <tt>\kern</tt> {@linkplain org.extex.core.dimen#Dimen(Context,TokenSource)
- *      &lang;dimen&rang;}   </pre>
+ *      &rarr; {@code \kern} &lang;dimen&rang;
+ * </pre>
  * 
- * <h4>Examples</h4>
- * 
+ * <p>Examples</p>
+ *
  * <pre class="TeXSample">
  *    \kern 12pt  </pre>
  *  <pre class="TeXSample">
  *    \kern -3mm  </pre>
  *  <pre class="TeXSample">
  *    \kern -\dimen123  </pre>
- * 
- * </doc>
- * 
+ *
  * <p>
  * The effect of the primitive is that a
  * {@link org.extex.typesetter.type.node.KernNode KernNode} is is sent to the
@@ -68,12 +66,11 @@ import org.extex.typesetter.type.node.ExplicitKernNode;
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Kern extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -89,10 +86,7 @@ public class Kern extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

@@ -54,8 +54,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * @see <a href="package-summary.html#VFformat">VF-Format</a>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class VfFont implements XMLWriterConvertible {
 
     /**
@@ -64,20 +63,20 @@ public class VfFont implements XMLWriterConvertible {
     public static final int UNITS_PER_EM_DEFAULT = 1000;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated
+     * The field {@code localizer} contains the localizer. It is initiated
      * with a localizer for the name of this class.
      */
-    private Localizer localizer = LocalizerFactory.getLocalizer(VfFont.class);
+    private final Localizer localizer = LocalizerFactory.getLocalizer( VfFont.class);
 
     /**
      * The font anme.
      */
-    private String fontname;
+    private final String fontname;
 
     /**
      * The tfm reader.
      */
-    private TfmReader tfmReader;
+    private final TfmReader tfmReader;
 
     /**
      * The list of commands.
@@ -122,7 +121,7 @@ public class VfFont implements XMLWriterConvertible {
     }
 
     /**
-     * Returns the char command or <code>null</code>, if not found.
+     * Returns the char command or {@code null}, if not found.
      * 
      * @param number The number of the char.
      * @return Returns the char command.
@@ -168,7 +167,7 @@ public class VfFont implements XMLWriterConvertible {
     }
 
     /**
-     * Returns the font command or <code>null</code>, if not found.
+     * Returns the font command or {@code null}, if not found.
      * 
      * @param number The number of the font.
      * 
@@ -241,12 +240,7 @@ public class VfFont implements XMLWriterConvertible {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("vf");
         writer.writeAttribute("name", fontname);

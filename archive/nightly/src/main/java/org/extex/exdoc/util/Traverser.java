@@ -39,29 +39,28 @@ import javax.xml.parsers.ParserConfigurationException;
 
 /**
  * Traverse a set of directories and extract comments marked with the XML tag
- * <tt>doc</tt>.
+ * {@code doc}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5413 $
- */
+*/
 public class Traverser {
 
     /**
-     * The constant <tt>PATTERN_AUTHOR</tt> contains the pattern for the
+     * The constant {@code PATTERN_AUTHOR} contains the pattern for the
      * author.
      */
     private static final Pattern PATTERN_AUTHOR =
             Pattern.compile("@author\\s+<a href=\"mailto:(.*)\">(.*)</a>");
 
     /**
-     * The constant <tt>PATTERN_CLASS</tt> contains the pattern for the class
+     * The constant {@code PATTERN_CLASS} contains the pattern for the class
      * or interface.
      */
     private static final Pattern PATTERN_CLASS =
             Pattern.compile("^public.* (class|interface)\\s+(\\w+)");
 
     /**
-     * The constant <tt>PATTERN_METHOD</tt> contains the pattern for the
+     * The constant {@code PATTERN_METHOD} contains the pattern for the
      * method of a class.
      */
     private static final Pattern PATTERN_METHOD =
@@ -69,14 +68,14 @@ public class Traverser {
                 .compile("^\\s*(private|public|protected)[a-zA-Z_0-9 ]* (\\w+)\\(");
 
     /**
-     * The constant <tt>PATTERN_METHOD_I</tt> contains the pattern for the
+     * The constant {@code PATTERN_METHOD_I} contains the pattern for the
      * method of an interface.
      */
     private static final Pattern PATTERN_METHOD_I =
             Pattern.compile("^\\s*([a-zA-Z_0-9 ]*) (\\w+)\\(");
 
     /**
-     * The constant <tt>PATTERN_PACKAGE</tt> contains the pattern for a
+     * The constant {@code PATTERN_PACKAGE} contains the pattern for a
      * package.
      */
     private static final Pattern PATTERN_PACKAGE =
@@ -84,11 +83,11 @@ public class Traverser {
 
     /**
      * Add an attribute to a StringBuffer if the attribute value is not
-     * <code>null</code>.
+     * {@code null}.
      * 
      * @param sb the target string buffer
      * @param attribute the name of the attribute
-     * @param value the value of the attribute of <code>null</code>
+     * @param value the value of the attribute of {@code null}
      */
     private static void addAttribute(StringBuffer sb, String attribute,
             String value) {
@@ -138,29 +137,29 @@ public class Traverser {
     }
 
     /**
-     * The field <tt>authors</tt> contains the mapping from classes to
+     * The field {@code authors} contains the mapping from classes to
      * authors.
      */
     private Map<String, Author> authors = new HashMap<String, Author>();
 
     /**
-     * The field <tt>builder</tt> contains the document builder for parsing
+     * The field {@code builder} contains the document builder for parsing
      * the XML files.
      */
     private DocumentBuilder builder;
 
     /**
-     * The field <tt>logger</tt> contains the logger.
+     * The field {@code logger} contains the logger.
      */
     private Logger logger = null;
 
     /**
-     * The field <tt>output</tt> contains the output directory.
+     * The field {@code output} contains the output directory.
      */
     private String output = null;
 
     /**
-     * The field <tt>verbose</tt> contains the indicator for verbosity.
+     * The field {@code verbose} contains the indicator for verbosity.
      */
     private boolean verbose = false;
 
@@ -278,7 +277,7 @@ public class Traverser {
     }
 
     /**
-     * Process a HTML file. Most probably this is a file <tt>package.html</tt>.
+     * Process a HTML file. Most probably this is a file {@code package.html}.
      * 
      * @param f the HTML file
      * 
@@ -403,7 +402,7 @@ public class Traverser {
     }
 
     /**
-     * Run with the command line arguments. A value of <code>null</code> is
+     * Run with the command line arguments. A value of {@code null} is
      * ignored.
      * 
      * @param args the command line arguments
@@ -640,7 +639,7 @@ public class Traverser {
      * @param author the author
      * @param packageName the name of the package
      * @param className the name of the class
-     * @param methodName the name if the method or <code>null</code> for class
+     * @param methodName the name if the method or {@code null} for class
      *        level docs
      * @throws Exception in case of an error
      */

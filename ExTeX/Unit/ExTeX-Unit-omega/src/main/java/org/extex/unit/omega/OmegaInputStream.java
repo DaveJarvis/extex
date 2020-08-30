@@ -28,17 +28,16 @@ import org.extex.interpreter.context.Context;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class OmegaInputStream extends InputStream {
 
     /**
-     * The field <tt>context</tt> contains the interpreter context.
+     * The field {@code context} contains the interpreter context.
      */
     private Context context;
 
     /**
-     * The field <tt>stream</tt> contains the input stream itself.
+     * The field {@code stream} contains the input stream itself.
      */
     private InputStream stream;
 
@@ -54,23 +53,13 @@ public class OmegaInputStream extends InputStream {
         this.context = context;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.InputStream#available()
-     */
-    @Override
+@Override
     public int available() throws IOException {
 
         return stream.available();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.InputStream#read()
-     */
-    @Override
+@Override
     public int read() throws IOException {
 
         return stream.read();

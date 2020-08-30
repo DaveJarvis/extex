@@ -54,8 +54,7 @@ import org.junit.runner.JUnitCore;
  * Test suite for the base hyphenation table.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4805 $
- */
+*/
 public class BaseHyphenationTableTest {
 
     /**
@@ -64,154 +63,91 @@ public class BaseHyphenationTableTest {
     private static class MockFont extends NullFont {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the version number for
+         * The field {@code serialVersionUID} contains the version number for
          * serialization.
          */
         private static final long serialVersionUID = 1L;
 
         /**
-         * The field <tt>hyphen</tt> contains the hyphenation character.
+         * The field {@code hyphen} contains the hyphenation character.
          */
         private UnicodeChar hyphen = UnicodeChar.get('-');
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.tc.font.impl.NullFont#getActualSize()
-         */
-        @Override
+    @Override
         public FixedDimen getActualSize() {
 
             return Dimen.ONE_INCH;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.tc.font.impl.NullFont#getCheckSum()
-         */
-        @Override
+    @Override
         public int getCheckSum() {
 
             return 0;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.tc.font.impl.NullFont#getDesignSize()
-         */
-        @Override
+    @Override
         public FixedDimen getDesignSize() {
 
             return Dimen.ONE_INCH;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.tc.font.impl.NullFont#getEm()
-         */
-        @Override
+    @Override
         public FixedDimen getEm() {
 
             return Dimen.ONE_INCH;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.tc.font.impl.NullFont#getEx()
-         */
-        @Override
+    @Override
         public FixedDimen getEx() {
 
             return Dimen.ONE_INCH;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.tc.font.impl.NullFont#getFontDimen(java.lang.String)
-         */
-        @Override
+    @Override
         public FixedDimen getFontDimen(String key) {
 
             return Dimen.ONE_INCH;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.tc.font.impl.NullFont#getFontKey()
-         */
-        @Override
+    @Override
         public FontKey getFontKey() {
 
             return (new FontKeyFactory()).newInstance("mockfont"); // add by
             // mgn
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.tc.font.impl.NullFont#getFontName()
-         */
-        @Override
+    @Override
         public String getFontName() {
 
             return "mock";
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.tc.font.impl.NullFont#getHyphenChar()
-         */
-        @Override
+    @Override
         public UnicodeChar getHyphenChar() {
 
             return hyphen;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.tc.font.impl.NullFont#getSkewChar()
-         */
-        @Override
+    @Override
         public UnicodeChar getSkewChar() {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.tc.font.impl.NullFont#getSpace()
-         */
-        @Override
+    @Override
         public FixedGlue getSpace() {
 
             return new Glue(10 * Dimen.ONE);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.tc.font.impl.NullFont#hasGlyph(org.extex.core.UnicodeChar)
-         */
-        @Override
+    @Override
         public boolean hasGlyph(UnicodeChar uc) {
 
             return true;
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.tc.font.impl.NullFont#setEfCode(org.extex.core.UnicodeChar,
-         *      long)
+    *      long)
          */
         @Override
         public void setEfCode(UnicodeChar uc, long code) {
@@ -220,10 +156,7 @@ public class BaseHyphenationTableTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.tc.font.impl.NullFont#setFontDimen(java.lang.String,
-         *      org.extex.core.dimen.Dimen)
+    *      org.extex.core.dimen.Dimen)
          */
         @Override
         public void setFontDimen(String name, Dimen value) {
@@ -231,12 +164,7 @@ public class BaseHyphenationTableTest {
             // nothing to do
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.tc.font.impl.NullFont#setHyphenChar(org.extex.core.UnicodeChar)
-         */
-        @Override
+    @Override
         public void setHyphenChar(UnicodeChar h) {
 
             this.hyphen = h;
@@ -263,7 +191,7 @@ public class BaseHyphenationTableTest {
     private static class MyMockContext extends MockContext {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         private static final long serialVersionUID = 1L;
@@ -293,7 +221,7 @@ public class BaseHyphenationTableTest {
     }
 
     /**
-     * The field <tt>HYPHEN</tt> contains the hyphen character.
+     * The field {@code HYPHEN} contains the hyphen character.
      */
     private static final UnicodeChar HYPHEN = UnicodeChar.get('-');
 
@@ -328,17 +256,17 @@ public class BaseHyphenationTableTest {
     }
 
     /**
-     * The field <tt>context</tt> contains the mock context for the tests.
+     * The field {@code context} contains the mock context for the tests.
      */
     private MyMockContext context;
 
     /**
-     * The field <tt>language</tt> contains the language.
+     * The field {@code language} contains the language.
      */
     private Language language;
 
     /**
-     * The field <tt>nodeFactory</tt> contains the node factory.
+     * The field {@code nodeFactory} contains the node factory.
      */
     private NodeFactory nodeFactory = new CachingNodeFactory();
 
@@ -391,7 +319,7 @@ public class BaseHyphenationTableTest {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ... 
      * 
      * @throws Exception in case of an error
      */
@@ -404,7 +332,7 @@ public class BaseHyphenationTableTest {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ... 
      * 
      * @throws Exception in case of an error
      */
@@ -417,7 +345,7 @@ public class BaseHyphenationTableTest {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ... 
      * 
      * @throws Exception in case of an error
      */
@@ -431,7 +359,7 @@ public class BaseHyphenationTableTest {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ... 
      * 
      * @throws Exception in case of an error
      */
@@ -444,7 +372,7 @@ public class BaseHyphenationTableTest {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     *  Test case checking that ... 
      * 
      * @throws Exception in case of an error
      */
@@ -464,8 +392,8 @@ public class BaseHyphenationTableTest {
     }
 
     /**
-     * <testcase> Test case checking that initially the left hyphen min is 0.
-     * </testcase>
+     *  Test case checking that initially the left hyphen min is 0.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -476,9 +404,8 @@ public class BaseHyphenationTableTest {
     }
 
     /**
-     * <testcase> Test case checking that the left hyphen min set with
-     * setLeftHyphenmin() can be read with getLeftHyphenmin(). </testcase>
-     * 
+     * Test case checking that the left hyphen min set with setLeftHyphenmin() can be read with getLeftHyphenmin()
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -489,9 +416,8 @@ public class BaseHyphenationTableTest {
     }
 
     /**
-     * <testcase> Test case checking that initially the name is
-     * <code>null</code>. </testcase>
-     * 
+     * Test case checking that initially the name is {@code null}
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -501,9 +427,8 @@ public class BaseHyphenationTableTest {
     }
 
     /**
-     * <testcase> Test case checking that the name set with setName() is
-     * retrieved by getName(). </testcase>
-     * 
+     * Test case checking that the name set with setName() is retrieved by getName()
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -515,8 +440,8 @@ public class BaseHyphenationTableTest {
     }
 
     /**
-     * <testcase> Test case checking that initially the right hyphen min is 0.
-     * </testcase>
+     *  Test case checking that initially the right hyphen min is 0.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -527,9 +452,8 @@ public class BaseHyphenationTableTest {
     }
 
     /**
-     * <testcase> Test case checking that the right hyphen min set with
-     * setRightHyphenmin() can be read with getRightHyphenmin(). </testcase>
-     * 
+     * Test case checking that the right hyphen min set with setRightHyphenmin() can be read with getRightHyphenmin()
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -540,8 +464,8 @@ public class BaseHyphenationTableTest {
     }
 
     /**
-     * <testcase> Test case checking that initially the language is hyphenating.
-     * </testcase>
+     *  Test case checking that initially the language is hyphenating.
+     * 
      * 
      * @throws HyphenationException in case of an error
      */
@@ -552,9 +476,8 @@ public class BaseHyphenationTableTest {
     }
 
     /**
-     * <testcase> Test case checking that the hyphenating indicator set with
-     * setHyphenating() can be read with isHyphenating(). </testcase>
-     * 
+     * Test case checking that the hyphenating indicator set with setHyphenating() can be read with isHyphenating()
+* 
      * @throws HyphenationException in case of an error
      */
     @Test
@@ -565,9 +488,8 @@ public class BaseHyphenationTableTest {
     }
 
     /**
-     * <testcase> Test case checking that the hyphenating indicator set with
-     * setHyphenating() can be read with isHyphenating(). </testcase>
-     * 
+     * Test case checking that the hyphenating indicator set with setHyphenating() can be read with isHyphenating()
+* 
      * @throws HyphenationException in case of an error
      */
     @Test

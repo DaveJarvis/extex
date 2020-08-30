@@ -31,8 +31,7 @@ import org.extex.resource.io.NamedInputStream;
  * envisioned.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface ResourceFinder {
 
     /**
@@ -47,12 +46,12 @@ public interface ResourceFinder {
 
     /**
      * Find a resource which can be used for reading. If the search fails then
-     * <code>null</code> is returned.
+     * {@code null} is returned.
      * 
      * @param name the base name of the resource
      * @param type the type, i.e. the extension
      * 
-     * @return the file or <code>null</code> if none could be found
+     * @return the file or {@code null} if none could be found
      * 
      * @throws ConfigurationException in case of an exception
      */

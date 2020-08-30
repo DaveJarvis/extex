@@ -33,18 +33,17 @@ import org.extex.scanner.type.tokens.Tokens;
  * shell.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4726 $
- */
+*/
 public class ExecuteFile extends OutputFile {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
     /**
-     * The field <tt>logger</tt> contains the logger for tracing and error
+     * The field {@code logger} contains the logger for tracing and error
      * messages.
      */
     private transient Logger logger;
@@ -76,7 +75,7 @@ public class ExecuteFile extends OutputFile {
     /**
      * Check whether the output file is open.
      * 
-     * @return <code>true</code> iff the instance is open
+     * @return {@code true} iff the instance is open
      * 
      * @see org.extex.scanner.type.file.OutFile#isOpen()
      */
@@ -86,22 +85,14 @@ public class ExecuteFile extends OutputFile {
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.base.type.file.OutputFile#newline()
-     */
-    @Override
+@Override
     public void newline() throws IOException {
 
         // nothing to do
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.base.type.file.OutputFile#open(String,
-     *      java.lang.String, TokenStreamFactory)
+*      java.lang.String, TokenStreamFactory)
      */
     @Override
     public void open(String key, String encoding, TokenStreamFactory factory) {
@@ -110,10 +101,7 @@ public class ExecuteFile extends OutputFile {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.base.type.file.OutputFile#write(
-     *      org.extex.scanner.type.tokens.Tokens)
+*      org.extex.scanner.type.tokens.Tokens)
      */
     @Override
     public boolean write(Tokens toks) throws IOException {

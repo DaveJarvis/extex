@@ -25,8 +25,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * This interface describes the ability to carry a hyphenation factory.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4726 $
- */
+*/
 public interface LanguageManagerCarrier {
 
     /**

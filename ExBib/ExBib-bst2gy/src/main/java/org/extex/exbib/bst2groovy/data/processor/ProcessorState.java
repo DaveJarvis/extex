@@ -37,38 +37,37 @@ import org.extex.exbib.bst2groovy.data.var.VarManager;
  * some code can be stored in the processor state.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ProcessorState {
 
     /**
-     * The field <tt>code</tt> contains the finished code.
+     * The field {@code code} contains the finished code.
      */
     private GCodeContainer code = new GCodeContainer();
 
     /**
-     * The field <tt>locals</tt> contains the list of future items. They will be
+     * The field {@code locals} contains the list of future items. They will be
      * translated into local variables later on.
      */
     private List<Var> locals = new ArrayList<Var>();
 
     /**
-     * The field <tt>stack</tt> contains the current stack.
+     * The field {@code stack} contains the current stack.
      */
     private List<GCode> stack = new ArrayList<GCode>();
 
     /**
-     * The field <tt>varInfo</tt> contains the variable information.
+     * The field {@code varInfo} contains the variable information.
      */
     private Map<String, VarInfo> varInfo = new HashMap<String, VarInfo>();
 
     /**
-     * The field <tt>varManager</tt> contains the variable manager.
+     * The field {@code varManager} contains the variable manager.
      */
     private VarManager varManager;
 
     /**
-     * The field <tt>extraSize</tt> contains the parameter for the extra stack
+     * The field {@code extraSize} contains the parameter for the extra stack
      * size.
      */
     private final int extraSize;
@@ -267,7 +266,7 @@ public class ProcessorState {
     /**
      * Check whether the stack contains code with side effects.
      * 
-     * @return <code>true</code> iff the stack contains code with side effects
+     * @return {@code true} iff the stack contains code with side effects
      */
     public boolean stackHasSideEffects() {
 
@@ -279,12 +278,7 @@ public class ProcessorState {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder buffer = new StringBuilder();

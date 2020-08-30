@@ -33,8 +33,7 @@ import org.extex.typesetter.Typesetter;
  * context.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface ContextGroup {
 
     /**
@@ -106,7 +105,7 @@ public interface ContextGroup {
      * Test whether this group is the first one, which means that there is no
      * group before and closing this group would fail.
      * 
-     * @return <code>true</code> iff this is the first group
+     * @return {@code true} iff this is the first group
      * 
      * @see #openGroup(GroupType, Locator, Token)
      */

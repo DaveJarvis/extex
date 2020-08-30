@@ -46,16 +46,16 @@ import de.dante.util.xslt.Transform;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\inputXSLT</code>. It transform a XML file with a XSLT
+ * {@code \inputXSLT}. It transform a XML file with a XSLT
  * transformation.
  * <p>
- * It use <code>\javadef</code>.
+ * It use {@code \javadef}.
  * </p>
  * 
- * <doc name="inputXSLT">
- * <h3>The Primitive <tt>\inputXSLT</tt></h3>
+ * <p>The Primitive {@code \inputXSLT}</p>
+ *
  * <p>
- * The primitive <tt>\inputXSLT</tt> takes as argument two file names. The
+ * The primitive {@code \inputXSLT} takes as argument two file names. The
  * first one is a XML file, the second one is a XSLT file. After the
  * transformation the result is taken as input stream for the tokenizer.
  * </p>
@@ -63,31 +63,28 @@ import de.dante.util.xslt.Transform;
  * If the file can not be opened for reading then an error is raised.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;inputXSLT&rang;
- *       &rarr; <tt>\inputXSLT</tt> &lang;xml-file name&rang;
+ *       &rarr; {@code \inputXSLT} &lang;xml-file name&rang;
  *                                  &lang;xsl-file name&rang;</pre>
  * 
- * <h4>Examples</h4>
- * <p>
- * 
+ * <p>Examples</p>
+ *
  * <pre class="TeXSample">
  *    \inputXSLT{file.name.xml}{file.name.xsl}  </pre>
  * 
- * </p>
- * </doc>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class InputXslt extends AbstractFileCode {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
@@ -103,10 +100,7 @@ public class InputXslt extends AbstractFileCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -150,10 +144,7 @@ public class InputXslt extends AbstractFileCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.base.file.AbstractFileCode#scanFileName(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource)
      */
     @Override

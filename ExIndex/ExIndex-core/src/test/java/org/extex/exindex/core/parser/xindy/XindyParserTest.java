@@ -36,8 +36,7 @@ import org.junit.Test;
  * This is a test suite for the xindy parser.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6626 $
- */
+*/
 public class XindyParserTest {
 
     /**
@@ -46,7 +45,7 @@ public class XindyParserTest {
      * @param a the first array
      * @param b the second array
      * 
-     * @return <code>true</code> iff they have equal length and contents
+     * @return {@code true} iff they have equal length and contents
      */
     private boolean eq(String[] a, String[] b) {
 

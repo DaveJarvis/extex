@@ -28,8 +28,7 @@ import org.extex.core.dimen.FixedDimen;
  * Factory for the {@link FontKey}.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class FontKeyFactory {
 
     /**

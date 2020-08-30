@@ -26,18 +26,17 @@ import java.util.ResourceBundle;
  * is found.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NonNumericArgumentCliException extends CliException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2008L;
 
     /**
-     * The field <tt>value</tt> contains the value.
+     * The field {@code value} contains the value.
      */
     private final String value;
 
@@ -53,12 +52,7 @@ public class NonNumericArgumentCliException extends CliException {
         this.value = optionValue;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Throwable#getLocalizedMessage()
-     */
-    @Override
+@Override
     public String getLocalizedMessage() {
 
         ResourceBundle bundle = ResourceBundle.getBundle(getClass().getName());

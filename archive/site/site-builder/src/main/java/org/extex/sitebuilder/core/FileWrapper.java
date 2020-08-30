@@ -28,29 +28,28 @@ import java.io.IOException;
  * This class enhances {@link File} with some additional features.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class FileWrapper extends File implements FileFilter {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2011L;
 
     /**
-     * The field <tt>relativePath</tt> contains the relative path to the top of
+     * The field {@code relativePath} contains the relative path to the top of
      * the tree.
      */
     private String relativePath;
 
     /**
-     * The field <tt>title</tt> contains the cached title.
+     * The field {@code title} contains the cached title.
      */
     private String title = null;
 
     /**
-     * The field <tt>depth</tt> contains the depth in the tree.
+     * The field {@code depth} contains the depth in the tree.
      */
     private int depth;
 
@@ -79,12 +78,7 @@ public class FileWrapper extends File implements FileFilter {
         depth = d;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.FileFilter#accept(java.io.File)
-     */
-    @Override
+@Override
     public boolean accept(File pathname) {
 
         if (pathname.isDirectory()) {

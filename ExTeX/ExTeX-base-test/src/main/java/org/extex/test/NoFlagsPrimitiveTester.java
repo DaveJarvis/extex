@@ -27,28 +27,27 @@ import org.junit.Test;
  * primitives. They verify that prefix macros always lead to an error.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class NoFlagsPrimitiveTester extends ExTeXLauncher {
 
     /**
-     * The field <tt>primitive</tt> contains the name of the primitive.
+     * The field {@code primitive} contains the name of the primitive.
      */
     private String primitive = "";
 
     /**
-     * The field <tt>arguments</tt> contains the additional arguments for the
+     * The field {@code arguments} contains the additional arguments for the
      * flag test.
      */
     private String arguments = "";
 
     /**
-     * The field <tt>prepare</tt> contains the preparation code.
+     * The field {@code prepare} contains the preparation code.
      */
     private String prepare = DEFINE_BRACES;
 
     /**
-     * The field <tt>out</tt> contains the prefix expected on the output
+     * The field {@code out} contains the prefix expected on the output
      * stream.
      */
     private String out = "";
@@ -73,8 +72,8 @@ public abstract class NoFlagsPrimitiveTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that the prefix <tt>\global</tt> leads to
-     * the expected error message </testcase>
+     *  Test case checking that the prefix {@code \global} leads to
+     * the expected error message 
      *
      * @throws Exception in case of an error
      */
@@ -89,8 +88,8 @@ public abstract class NoFlagsPrimitiveTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that the prefix <tt>\immediate</tt> leads
-     * to the expected error message </testcase>
+     *  Test case checking that the prefix {@code \immediate} leads
+     * to the expected error message 
      *
      * @throws Exception in case of an error
      */
@@ -107,8 +106,8 @@ public abstract class NoFlagsPrimitiveTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that the prefix <tt>\long</tt> leads to
-     * the expected error message </testcase>
+     *  Test case checking that the prefix {@code \long} leads to
+     * the expected error message 
      *
      * @throws Exception in case of an error
      */
@@ -123,8 +122,8 @@ public abstract class NoFlagsPrimitiveTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that the prefix <tt>\outer</tt> leads to
-     * the expected error message </testcase>
+     *  Test case checking that the prefix {@code \outer} leads to
+     * the expected error message 
      *
      * @throws Exception in case of an error
      */
@@ -139,10 +138,10 @@ public abstract class NoFlagsPrimitiveTester extends ExTeXLauncher {
     }
 
      /**
-     * <testcase>
-     * Test case checking that the prefix <tt>\protected</tt> leads to the
+     * 
+     * Test case checking that the prefix {@code \protected} leads to the
      * expected error message
-     * </testcase>
+     * 
      *
      * @throws Exception in case of an error
      */

@@ -30,18 +30,17 @@ import java.util.ResourceBundle;
  * only exception thrown by the read() method of a reader.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class OcpException extends IOException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>s</tt> contains the name of the state.
+     * The field {@code s} contains the name of the state.
      */
     private String s;
 

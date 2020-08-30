@@ -25,11 +25,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\vbox</tt>.
+ * This is a test suite for the primitive {@code \vbox}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class VboxTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -50,7 +49,7 @@ public class VboxTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\vbox"> Test case checking that a vbox needs an
-     * argument in braces. Nothing at all is not enough </testcase>
+     * argument in braces. Nothing at all is not enough
      * 
      * @throws Exception in case of an error
      */
@@ -65,7 +64,7 @@ public class VboxTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\vbox"> Test case checking that a vbox needs an
-     * argument in braces. an opening brace is not enough. </testcase>
+     * argument in braces. an opening brace is not enough.
      * 
      * @throws Exception in case of an error
      */
@@ -81,7 +80,7 @@ public class VboxTest extends NoFlagsPrimitiveTester {
     /**
      * <testcase primitive="\vbox"> Test case checking that a vbox needs an
      * argument in braces. Anything else than an opening brace is not
-     * sufficient. </testcase>
+     * sufficient.
      * 
      * @throws Exception in case of an error
      */
@@ -97,7 +96,7 @@ public class VboxTest extends NoFlagsPrimitiveTester {
     /**
      * <testcase primitive="\vbox"> Test case checking that a vbox with fixed
      * width containing "abc" in font cmtt12 has the correct height and depth.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -116,7 +115,7 @@ public class VboxTest extends NoFlagsPrimitiveTester {
     /**
      * <testcase primitive="\vbox"> Test case checking that a spread vbox
      * containing "abc" in font cmtt12 has the correct height and depth.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -134,7 +133,7 @@ public class VboxTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\vbox"> Test case checking that a vbox containing
-     * "abcd" produces the desired nodes. </testcase>
+     * "abcd" produces the desired nodes.
      * 
      * @throws Exception in case of an error
      */

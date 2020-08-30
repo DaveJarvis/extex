@@ -41,12 +41,11 @@ import org.junit.Test;
  * This is a test suite for {@link TString}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TStringTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -72,7 +71,7 @@ public class TStringTest {
     }
 
     /**
-     * <testcase> A TString can be executed and returns itself. </testcase>
+     *  A TString can be executed and returns itself.
      * 
      * @throws Exception in case of an error
      */
@@ -86,8 +85,8 @@ public class TStringTest {
     }
 
     /**
-     * <testcase> getValue() of a null value returns the empty string.
-     * </testcase>
+     *  getValue() of a null value returns the empty string.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -99,9 +98,8 @@ public class TStringTest {
     }
 
     /**
-     * <testcase> A TString can be stored in a Hash and retrieved with another
-     * instance. </testcase>
-     * 
+     * A TString can be stored in a Hash and retrieved with another instance
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -116,7 +114,7 @@ public class TStringTest {
     }
 
     /**
-     * <testcase> isNull() can detect a null value. </testcase>
+     *  isNull() can detect a null value.
      * 
      * @throws Exception in case of an error
      */
@@ -127,7 +125,7 @@ public class TStringTest {
     }
 
     /**
-     * <testcase> isNull() can detect a null value. </testcase>
+     *  isNull() can detect a null value.
      * 
      * @throws Exception in case of an error
      */
@@ -138,7 +136,7 @@ public class TStringTest {
     }
 
     /**
-     * <testcase> Test the visiting. </testcase>
+     *  Test the visiting.
      * 
      * @throws Exception in case of an error
      */

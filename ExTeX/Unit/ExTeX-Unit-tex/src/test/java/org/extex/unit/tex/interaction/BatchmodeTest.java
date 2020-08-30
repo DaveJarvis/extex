@@ -28,11 +28,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\batchmode</tt>.
+ * This is a test suite for the primitive {@code \batchmode}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class BatchmodeTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -53,7 +52,7 @@ public class BatchmodeTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\batchmode"> Test case checking that batch mode is
-     * reported as 0. </testcase>
+     * reported as 0. 
      * 
      * @throws Exception in case of an error
      */
@@ -70,7 +69,7 @@ public class BatchmodeTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\batchmode"> Test case checking that batch mode is
-     * always global. </testcase>
+     * always global. 
      * 
      * @throws Exception in case of an error
      */

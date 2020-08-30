@@ -22,11 +22,10 @@ import org.extex.exbib.core.bst.code.impl.ChangeCase;
 import org.extex.exbib.core.bst.code.impl.ChangeCase8;
 
 /**
- * Test suite for <tt>change.case$</tt>.
+ * Test suite for {@code change.case$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ChangeCase8Test extends ChangeCaseTest {
 
     /**

@@ -22,11 +22,10 @@ package org.extex.unit.tex.register.muskip;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\thickmuskip</tt>.
+ * This is a test suite for the primitive {@code \thickmuskip}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ThickmuskipTest extends AbstractMuskipRegisterTester {
 
     /**

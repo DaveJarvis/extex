@@ -31,22 +31,21 @@ import org.extex.typesetter.type.page.Page;
  * This page filter selects some pages to be shipped out.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4728 $
- */
+*/
 public class PageSelector implements PagePipe {
 
     /**
-     * The field <tt>out</tt> contains the output target.
+     * The field {@code out} contains the output target.
      */
     private PagePipe out = null;
 
     /**
-     * The field <tt>pageNo</tt> contains the current page number.
+     * The field {@code pageNo} contains the current page number.
      */
     private int pageNo = 0;
 
     /**
-     * The field <tt>ranges</tt> contains the list of ranges to check.
+     * The field {@code ranges} contains the list of ranges to check.
      */
     private List<Rule> ranges = null;
 

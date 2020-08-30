@@ -36,7 +36,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * in which the font's glyphs are most likely to be written and other
  * information about the placement of glyphs in the em square.
  * 
- * <table BORDER="1"> <tbody>
+ *  <table> <caption>TBD</caption> <tbody>
  * <tr>
  * <td><b>Type</b></td>
  * <td><b>Name</b></td>
@@ -169,8 +169,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TtfTableHEAD extends AbstractXtfTable
         implements
             XtfTable,
@@ -179,87 +178,87 @@ public class TtfTableHEAD extends AbstractXtfTable
     /**
      * checksumadjustment.
      */
-    private int checkSumAdjustment;
+    private final int checkSumAdjustment;
 
     /**
      * created.
      */
-    private long created;
+    private final long created;
 
     /**
      * flags.
      */
-    private short flags;
+    private final short flags;
 
     /**
      * fontDirectionHint.
      */
-    private short fontDirectionHint;
+    private final short fontDirectionHint;
 
     /**
      * font revision.
      */
-    private Fixed32 fontRevision;
+    private final Fixed32 fontRevision;
 
     /**
      * glyphDataFormat.
      */
-    private short glyphDataFormat;
+    private final short glyphDataFormat;
 
     /**
      * indexToLocFormat.
      */
-    private short indexToLocFormat;
+    private final short indexToLocFormat;
 
     /**
      * lowestRecPPEM.
      */
-    private short lowestRecPPEM;
+    private final short lowestRecPPEM;
 
     /**
      * macstyle.
      */
-    private short macStyle;
+    private final short macStyle;
 
     /**
      * magic number.
      */
-    private int magicNumber;
+    private final int magicNumber;
 
     /**
      * modified.
      */
-    private long modified;
+    private final long modified;
 
     /**
      * units per em.
      */
-    private short unitsPerEm;
+    private final short unitsPerEm;
 
     /**
      * version.
      */
-    private int version;
+    private final int version;
 
     /**
      * xmax.
      */
-    private short xMax;
+    private final short xMax;
 
     /**
      * xmin.
      */
-    private short xMin;
+    private final short xMin;
 
     /**
      * ymax.
      */
-    private short yMax;
+    private final short yMax;
 
     /**
      * ymin.
      */
-    private short yMin;
+    private final short yMin;
 
     /**
      * Create a new object.
@@ -403,12 +402,7 @@ public class TtfTableHEAD extends AbstractXtfTable
         return modified;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
+public String getShortcut() {
 
         return "head";
     }
@@ -484,10 +478,7 @@ public class TtfTableHEAD extends AbstractXtfTable
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

@@ -27,8 +27,7 @@ import org.extex.core.exception.helping.HelpingException;
  * context.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface ContextDimen {
 
     /**
@@ -48,11 +47,11 @@ public interface ContextDimen {
      * requested groups. Dimen registers are named, either with a number or an
      * arbitrary string. The numbered registers where limited to 256 in
      * TeX. This restriction does no longer hold for
-     * ??TeX.
+     * εχTeX.
      * 
      * @param name the name or the number of the register
      * @param value the new value of the register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @throws HelpingException in case of problems in an observer
@@ -67,11 +66,11 @@ public interface ContextDimen {
      * requested groups. Dimen registers are named, either with a number or an
      * arbitrary string. The numbered registers where limited to 256 in
      * TeX. This restriction does no longer hold for
-     * ??TeX.
+     * εχTeX.
      * 
      * @param name the name or the number of the register
      * @param value the new value of the register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @throws HelpingException in case of problems in an observer

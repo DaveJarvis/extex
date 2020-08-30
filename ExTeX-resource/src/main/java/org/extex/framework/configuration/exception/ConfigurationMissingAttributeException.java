@@ -26,19 +26,18 @@ import org.extex.framework.configuration.Configuration;
  * which is not found.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ConfigurationMissingAttributeException
         extends
             ConfigurationException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     private static final long serialVersionUID = 2010L;
 
     /**
-     * The field <tt>attribute</tt> contains the name of the missing attribute.
+     * The field {@code attribute} contains the name of the missing attribute.
      */
     private String attribute;
 
@@ -79,8 +78,8 @@ public class ConfigurationMissingAttributeException
 
     /**
      * Getter for the text prefix of this ConfigException. The text is taken
-     * from the resource bundle <tt>ConfigurationEception</tt> under the key
-     * <tt>ConfigurationMissingAttributeException.Text</tt>. The argument {0} is
+     * from the resource bundle {@code ConfigurationEception} under the key
+     * {@code ConfigurationMissingAttributeException.Text}. The argument {0} is
      * replaced by the name of the missing attribute as passed to the
      * constructor.
      * 

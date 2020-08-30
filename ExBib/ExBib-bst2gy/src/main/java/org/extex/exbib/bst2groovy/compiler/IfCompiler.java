@@ -49,8 +49,7 @@ import org.extex.exbib.core.exceptions.ExBibException;
  * This class implements the analyzer for an if-then-else instruction.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class IfCompiler implements Compiler {
 
     /**
@@ -60,17 +59,17 @@ public class IfCompiler implements Compiler {
     public static final class If extends GenericCode {
 
         /**
-         * The field <tt>condition</tt> contains the condition.
+         * The field {@code condition} contains the condition.
          */
         private GCode condition;
 
         /**
-         * The field <tt>thenBranch</tt> contains the then branch.
+         * The field {@code thenBranch} contains the then branch.
          */
         private GCodeContainer thenBranch;
 
         /**
-         * The field <tt>elseBranch</tt> contains the else branch.
+         * The field {@code elseBranch} contains the else branch.
          */
         private GCodeContainer elseBranch;
 
@@ -90,12 +89,7 @@ public class IfCompiler implements Compiler {
             this.elseBranch = elseBranch;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GenericCode#optimize()
-         */
-        @Override
+    @Override
         public GCode optimize() {
 
             condition = condition.optimize();
@@ -133,10 +127,7 @@ public class IfCompiler implements Compiler {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GenericCode#optimize(java.util.List,
-         *      int)
+    *      int)
          */
         @Override
         public int optimize(List<GCode> list, int index) {
@@ -164,10 +155,7 @@ public class IfCompiler implements Compiler {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         @Override
         public void print(CodeWriter writer, String prefix) throws IOException {
@@ -213,7 +201,7 @@ public class IfCompiler implements Compiler {
     public static final class IfInline extends GenericCode {
 
         /**
-         * The field <tt>LINE_BREAKING_THRESHOLD</tt> contains the line breaking
+         * The field {@code LINE_BREAKING_THRESHOLD} contains the line breaking
          * threshold.
          */
         private static final int LINE_BREAKING_THRESHOLD = 40;
@@ -230,12 +218,7 @@ public class IfCompiler implements Compiler {
             super(thenBranch.getType(), "if", cond, thenBranch, elseBranch);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GenericCode#optimize()
-         */
-        @Override
+    @Override
         public GCode optimize() {
 
             super.optimize();
@@ -250,10 +233,7 @@ public class IfCompiler implements Compiler {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GenericCode#print(org.extex.exbib.bst2groovy.io.CodeWriter,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         @Override
         public void print(CodeWriter writer, String prefix) throws IOException {
@@ -349,10 +329,7 @@ public class IfCompiler implements Compiler {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryReference,
-     *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
+*      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */

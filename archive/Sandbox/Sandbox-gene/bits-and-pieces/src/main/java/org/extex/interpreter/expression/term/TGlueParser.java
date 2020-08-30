@@ -35,8 +35,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * for the expression evaluator.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4787 $
- */
+*/
 public final class TGlueParser implements ETypeParser {
 
 

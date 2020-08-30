@@ -23,11 +23,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\ifhmode</tt>.
+ * This is a test suite for the primitive {@code \ifhmode}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class IfhmodeTest extends ConditionalTester {
 
     /**
@@ -47,8 +46,8 @@ public class IfhmodeTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifhmode"> Test case checking that <tt>\ifhmode</tt>
-     * is false initially. </testcase>
+     * <testcase primitive="\ifhmode"> Test case checking that {@code \ifhmode}
+     * is false initially.
      * 
      * @throws Exception in case of an error
      */
@@ -62,8 +61,8 @@ public class IfhmodeTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifhmode"> Test case checking that <tt>\ifhmode</tt>
-     * is true when in a paragraph. </testcase>
+     * <testcase primitive="\ifhmode"> Test case checking that {@code \ifhmode}
+     * is true when in a paragraph.
      * 
      * @throws Exception in case of an error
      */
@@ -77,8 +76,8 @@ public class IfhmodeTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifhmode"> Test case checking that <tt>\ifhmode</tt>
-     * is false in a vbox. </testcase>
+     * <testcase primitive="\ifhmode"> Test case checking that {@code \ifhmode}
+     * is false in a vbox.
      * 
      * @throws Exception in case of an error
      */
@@ -93,8 +92,8 @@ public class IfhmodeTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifhmode"> Test case checking that <tt>\ifhmode</tt>
-     * is true in an hbox. </testcase>
+     * <testcase primitive="\ifhmode"> Test case checking that {@code \ifhmode}
+     * is true in an hbox.
      * 
      * @throws Exception in case of an error
      */

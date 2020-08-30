@@ -23,8 +23,7 @@ package org.extex.font.format.dvi.command;
  * DVI: y
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class DviY extends DviCommand {
 
@@ -36,12 +35,12 @@ public class DviY extends DviCommand {
     /**
      * the value
      */
-    private int value;
+    private final int value;
 
     /**
      * the y0
      */
-    private boolean y0;
+    private final boolean y0;
 
     /**
      * Create a new object.
@@ -70,12 +69,7 @@ public class DviY extends DviCommand {
         y0 = y;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviCommand#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return new StringBuilder("y").append(getOpcode() - Y0).toString();

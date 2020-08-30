@@ -23,11 +23,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\dp</tt>.
+ * This is a test suite for the primitive {@code \dp}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DpTest extends AbstractBoxDimenTester {
 
     /**
@@ -47,9 +46,8 @@ public class DpTest extends AbstractBoxDimenTester {
     }
 
     /**
-     * <testcase> Test case checking that the primitive is count convertible on
-     * a hbox. </testcase>
-     * 
+     * Test case checking that the primitive is count convertible on a hbox
+* 
      * @throws Exception in case of an error
      */
     @Test

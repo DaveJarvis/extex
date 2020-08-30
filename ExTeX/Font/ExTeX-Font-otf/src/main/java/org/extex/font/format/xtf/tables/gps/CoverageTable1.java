@@ -40,9 +40,10 @@ import org.extex.util.xml.XMLStreamWriter;
  * <p>
  * CoverageFormat1 table: Individual glyph indices
  * </p>
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td><b>Type</b></td>
+* <td><b>Type</b></td>
  * <td><b>Name</b></td>
  * <td><b>Description</b></td>
  * </tr>
@@ -64,14 +65,13 @@ import org.extex.util.xml.XMLStreamWriter;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class CoverageTable1 extends CoverageTable {
 
     /**
      * Array of GlyphIDs-in numerical order
      */
-    private int[] glyphArray;
+    private final int[] glyphArray;
 
     /**
      * Creates a new object.
@@ -103,10 +103,7 @@ public class CoverageTable1 extends CoverageTable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

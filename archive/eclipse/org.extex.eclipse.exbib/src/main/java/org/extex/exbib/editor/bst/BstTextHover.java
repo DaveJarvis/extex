@@ -32,12 +32,11 @@ import org.extex.exbib.editor.bst.model.BstModelNode;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public final class BstTextHover implements ITextHover {
 
     /**
-     * The field <tt>model</tt> contains the ...
+     * The field {@code model} contains the ...
      */
     private final BstModel model;
 
@@ -52,10 +51,7 @@ public final class BstTextHover implements ITextHover {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.text.ITextHover#getHoverInfo(org.eclipse.jface.text.ITextViewer,
-     *      org.eclipse.jface.text.IRegion)
+*      org.eclipse.jface.text.IRegion)
      */
     @Override
     public String getHoverInfo(ITextViewer textViewer, IRegion hoverRegion) {
@@ -77,10 +73,7 @@ public final class BstTextHover implements ITextHover {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.text.ITextHover#getHoverRegion(org.eclipse.jface.text.ITextViewer,
-     *      int)
+*      int)
      */
     @Override
     public IRegion getHoverRegion(ITextViewer textViewer, int offset) {

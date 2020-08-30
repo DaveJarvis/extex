@@ -27,8 +27,7 @@ import org.extex.test.ExTeXLauncher;
  * Test for the xml backend.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6459 $
- */
+*/
 public class XmlOutput01Test extends ExTeXLauncher {
 
 

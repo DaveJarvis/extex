@@ -41,12 +41,11 @@ import org.junit.Test;
  * This is a test suite for {@link ExBibUtilMain}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ExBibUtilMainTest extends BibUtilTester {
 
     /**
-     * The field <tt>USAGE</tt> contains the usage message (without the banner).
+     * The field {@code USAGE} contains the usage message (without the banner).
      */
     private static final String USAGE =
             "Usage: exbibutil <options> file\n"
@@ -93,8 +92,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
                     + "\t\tPrint the version information and exit.\n";
 
     /**
-     * <testcase> Test that no command line option at all leads to no output.
-     * </testcase>
+     *  Test that no command line option at all leads to no output.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -105,9 +104,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--</tt> needs an
-     * argument. </testcase>
-     * 
+     * Test that the command line option {@code --} needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -118,9 +116,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>-</tt> needs an
-     * argument. </testcase>
-     * 
+     * Test that the command line option {@code -} needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -131,7 +128,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the input file needs to exist. </testcase>
+     *  Test that the input file needs to exist.
      * 
      * @throws Exception in case of an error
      */
@@ -144,8 +141,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the data file in an aux file needs to exist.
-     * </testcase>
+     *  Test that the data file in an aux file needs to exist.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -179,8 +176,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the of the aux file selects only the needed entries.
-     * </testcase>
+     *  Test that the of the aux file selects only the needed entries.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -213,7 +210,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that a missing aux file is reported. </testcase>
+     *  Test that a missing aux file is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -226,7 +223,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that an empty aux file is reported. </testcase>
+     *  Test that an empty aux file is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -238,7 +235,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that multiple aux files are reported. </testcase>
+     *  Test that multiple aux files are reported.
      * 
      * @throws Exception in case of an error
      */
@@ -250,9 +247,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--config</tt> needs an
-     * argument. </testcase>
-     * 
+     * Test that the command line option {@code --config} needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -263,9 +259,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--config</tt> needs an
-     * existing configuration. </testcase>
-     * 
+     * Test that the command line option {@code --config} needs an existing configuration
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -276,9 +271,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--config</tt> needs a
-     * valid configuration. </testcase>
-     * 
+     * Test that the command line option {@code --config} needs a valid configuration
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -294,9 +288,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--config</tt> needs a
-     * valid configuration. </testcase>
-     * 
+     * Test that the command line option {@code --config} needs a valid configuration
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -311,7 +304,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that a misconfiguration is reported. </testcase>
+     *  Test that a misconfiguration is reported.
      * 
      * @throws Exception in case of an error
      */
@@ -324,8 +317,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--copying</tt> works.
-     * </testcase>
+     *  Test that the command line option {@code --copying} works.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -338,7 +331,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that an empty file name is silently consumed. </testcase>
+     *  Test that an empty file name is silently consumed.
      * 
      * @throws Exception in case of an error
      */
@@ -350,7 +343,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that an empty file name is silently consumed. </testcase>
+     *  Test that an empty file name is silently consumed.
      * 
      * @throws Exception in case of an error
      */
@@ -362,7 +355,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that an empty file name is silently consumed. </testcase>
+     *  Test that an empty file name is silently consumed.
      * 
      * @throws Exception in case of an error
      */
@@ -374,9 +367,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--encoding</tt> needs an
-     * argument. </testcase>
-     * 
+     * Test that the command line option {@code --encoding} needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -387,9 +379,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--encoding</tt> needs a
-     * known encoding. </testcase>
-     * 
+     * Test that the command line option {@code --encoding} needs a known encoding
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -400,8 +391,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--help</tt> works.
-     * </testcase>
+     *  Test that the command line option {@code --help} works.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -413,8 +404,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>-h</tt> works.
-     * </testcase>
+     *  Test that the command line option {@code -h} works.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -426,8 +417,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>-?</tt> works.
-     * </testcase>
+     *  Test that the command line option {@code -?} works.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -439,9 +430,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--language</tt> needs an
-     * argument. </testcase>
-     * 
+     * Test that the command line option {@code --language} needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -452,9 +442,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--language</tt> falls
-     * back to en for an unknown language. </testcase>
-     * 
+     * Test that the command line option {@code --language} falls back to en for an unknown language
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -464,9 +453,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--language</tt> can be
-     * used to set the language. </testcase>
-     * 
+     * Test that the command line option {@code --language} can be used to set the language
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -476,9 +464,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--logfile</tt> needs an
-     * argument. </testcase>
-     * 
+     * Test that the command line option {@code --logfile} needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -489,10 +476,10 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--logfile</tt> can be
+     *  Test that the command line option {@code --logfile} can be
      * used to redirect the log output. It is tested that the log file is
      * created and the {@link org.extex.exbib.core.ExBib} instance reports the
-     * log file with getLogfile(). </testcase>
+     * log file with getLogfile().
      * 
      * @throws Exception in case of an error
      */
@@ -522,9 +509,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--logfile</tt> can be
-     * used to redirect the log output. </testcase>
-     * 
+     * Test that the command line option {@code --logfile} can be used to redirect the log output
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -536,7 +522,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that everything might go right. </testcase>
+     *  Test that everything might go right.
      * 
      * @throws Exception in case of an error
      */
@@ -560,8 +546,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that everything might go right using the static method.
-     * </testcase>
+     *  Test that everything might go right using the static method.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -595,9 +581,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--outfile</tt> needs an
-     * argument. </testcase>
-     * 
+     * Test that the command line option {@code --outfile} needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -608,9 +593,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--outfile</tt> discards
-     * the output if the file name is empty. </testcase>
-     * 
+     * Test that the command line option {@code --outfile} discards the output if the file name is empty
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -622,9 +606,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--outfile</tt> sends the
-     * output to stdout if the file name is "-". </testcase>
-     * 
+     * Test that the command line option {@code --outfile} sends the output to stdout if the file name is "-"
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -636,9 +619,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--outfile</tt> sends the
-     * output to the file. </testcase>
-     * 
+     * Test that the command line option {@code --outfile} sends the output to the file
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -663,9 +645,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--outfile</tt> complains
-     * if the output file can not be opened. </testcase>
-     * 
+     * Test that the command line option {@code --outfile} complains if the output file can not be opened
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -680,9 +661,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--progname</tt> needs an
-     * argument. </testcase>
-     * 
+     * Test that the command line option {@code --progname} needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -693,9 +673,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--progname</tt> can be
-     * queried with getProgramName(). </testcase>
-     * 
+     * Test that the command line option {@code --progname} can be queried with getProgramName()
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -713,9 +692,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--progname</tt> can be
-     * used to set the program name. </testcase>
-     * 
+     * Test that the command line option {@code --progname} can be used to set the program name
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -726,8 +704,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--quiet</tt> is honored.
-     * </testcase>
+     *  Test that the command line option {@code --quiet} is honored.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -739,8 +717,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--release</tt> works.
-     * </testcase>
+     *  Test that the command line option {@code --release} works.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -752,8 +730,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--terse</tt> is honored.
-     * </testcase>
+     *  Test that the command line option {@code --terse} is honored.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -765,9 +743,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>-type</tt> needs an
-     * argument. </testcase>
-     * 
+     * Test that the command line option {@code -type} needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -778,9 +755,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>-type</tt> needs a known
-     * argument. </testcase>
-     * 
+     * Test that the command line option {@code -type} needs a known argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -791,7 +767,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test bib is a known output type. </testcase>
+     *  Test bib is a known output type.
      * 
      * @throws Exception in case of an error
      */
@@ -803,7 +779,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test xml is a known output type. </testcase>
+     *  Test xml is a known output type.
      * 
      * @throws Exception in case of an error
      */
@@ -815,8 +791,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that an undefined command line option is reported.
-     * </testcase>
+     *  Test that an undefined command line option is reported.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -828,8 +804,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that an undefined command line option is reported.
-     * </testcase>
+     *  Test that an undefined command line option is reported.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -841,8 +817,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--verbose</tt> works.
-     * </testcase>
+     *  Test that the command line option {@code --verbose} works.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -855,8 +831,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--verbose</tt> works.
-     * </testcase>
+     *  Test that the command line option {@code --verbose} works.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -872,8 +848,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--version</tt> works.
-     * </testcase>
+     *  Test that the command line option {@code --version} works.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -893,9 +869,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--version</tt> works
-     * when abbreviated as <tt>--vers</tt>. </testcase>
-     * 
+     * Test that the command line option {@code --version} works when abbreviated as {@code --vers}
+* 
      * @throws Exception in case of an error
      */
     @Test

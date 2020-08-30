@@ -32,7 +32,7 @@ import org.extex.typesetter.type.node.CharNode;
 /**
  * A node is the basic data structure for the typesetter. It has a reference
  * point and three dimensions, namely width, height, and depth (see figure).
- * <img src="doc-files/Node.png" alt="" align="right"/>
+ * <img src="doc-files/Node.png" alt="">
  * <p>
  * Note that those dimensions are sometimes used for different purposes. For
  * instance a KernNode does use the width to denote the actual size which can be
@@ -41,8 +41,7 @@ import org.extex.typesetter.type.node.CharNode;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4739 $
- */
+*/
 public interface Node extends Serializable {
 
     /**
@@ -76,7 +75,7 @@ public interface Node extends Serializable {
      * @param posX the horizontal position on the page
      * @param posY the vertical position on the page
      * @return the node to be used instead of the current one in the output
-     *         list. If the value is <code>null</code> then the node is deleted.
+     *         list. If the value is {@code null} then the node is deleted.
      *         If the value is the node itself then it is preserved.
      * 
      * @throws GeneralException in case of an error
@@ -144,7 +143,7 @@ public interface Node extends Serializable {
     /**
      * Compute the vertical size of a node. The vertical size is the size of the
      * box enclosing the bounding box and containing the base line (see figure).
-     * <img src="doc-files/verticalSize.png" alt="" align="right"/>
+     * <img src="doc-files/verticalSize.png" alt="">
      * <ul>
      * <li>The vertical size is normally the sum of height and depth. This
      * normal case applies if both height and depth are not negative.</li>

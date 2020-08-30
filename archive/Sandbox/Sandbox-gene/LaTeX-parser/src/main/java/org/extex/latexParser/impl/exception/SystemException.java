@@ -25,12 +25,11 @@ import org.extex.scanner.api.exception.ScannerException;
  * This exception encapsulates some other exception to safely pass it around.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SystemException extends ScannerException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 1L;

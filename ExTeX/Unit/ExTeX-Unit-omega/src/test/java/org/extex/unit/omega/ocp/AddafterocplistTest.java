@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\addafterocplist</tt>.
+ * This is a test suite for the primitive {@code \addafterocplist}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class AddafterocplistTest extends ExTeXLauncher {
 
     /**
@@ -49,7 +48,7 @@ public class AddafterocplistTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\addafterocplist"> Test case checking that
-     * <tt>\addafterocplist</tt> can not be used in a normal mode. </testcase>
+     * {@code \addafterocplist} can not be used in a normal mode.
      * 
      * @throws Exception in case of an error
      */

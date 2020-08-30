@@ -31,8 +31,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * Type�1 dict keys.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public abstract class T1DictKey extends T2CharString
         implements
             XMLWriterConvertible {
@@ -248,10 +247,7 @@ public abstract class T1DictKey extends T2CharString
     public abstract Object getValue();
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#init(org.extex.util.file.random.RandomAccessR,
-     *      org.extex.font.format.xtf.tables.OtfTableCFF, int,
+*      org.extex.font.format.xtf.tables.OtfTableCFF, int,
      *      org.extex.font.format.xtf.tables.cff.CffFont)
      */
     @Override

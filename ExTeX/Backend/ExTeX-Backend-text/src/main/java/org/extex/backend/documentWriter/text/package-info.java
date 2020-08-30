@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains a backend of ExTeX which dumps the information as text in a
+ * Contains a backend of ExTeX which dumps the information as text in a
  * readable format to the output file (very simple).
  */
 

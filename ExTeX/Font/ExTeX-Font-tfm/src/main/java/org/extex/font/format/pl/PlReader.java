@@ -26,6 +26,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringReader;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.SortedMap;
@@ -37,8 +38,7 @@ import java.util.TreeMap;
  * TODO: incomplete
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- * 
+*
  */
 public class PlReader {
 
@@ -103,12 +103,7 @@ public class PlReader {
      */
     private class PlCharacter extends AbstractPlCommand {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.pl.PlCommand#execute(java.io.Reader)
-         */
-        @Override
+    @Override
         public void execute(Reader reader) throws IOException {
 
             actual = new Chars();
@@ -128,12 +123,7 @@ public class PlReader {
      */
     private class PlMap extends AbstractPlCommand {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.pl.PlCommand#execute(java.io.Reader)
-         */
-        @Override
+    @Override
         public void execute(Reader reader) throws IOException {
 
             param = readParameter(reader);
@@ -147,12 +137,7 @@ public class PlReader {
      */
     private class PlNULL extends AbstractPlCommand {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.pl.PlCommand#execute(java.io.Reader)
-         */
-        @Override
+    @Override
         public void execute(Reader reader) throws IOException {
 
             param = readParameter(reader);
@@ -169,12 +154,7 @@ public class PlReader {
          */
         private int ch;
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.pl.PlCommand#execute(java.io.Reader)
-         */
-        @Override
+    @Override
         public void execute(Reader reader) throws IOException {
 
             param = readParameter(reader);
@@ -202,12 +182,7 @@ public class PlReader {
      */
     private class PlVtitle extends AbstractPlCommand {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.pl.PlCommand#execute(java.io.Reader)
-         */
-        @Override
+    @Override
         public void execute(Reader reader) throws IOException {
 
             param = readParameter(reader);
@@ -222,22 +197,22 @@ public class PlReader {
     /**
      * The characters.
      */
-    private SortedMap<Integer, Chars> characters;
+    private final SortedMap<Integer, Chars> characters;
 
     /**
      * The commands.
      */
-    private Map<String, PlCommand> commands;
+    private final Map<String, PlCommand> commands;
 
     /**
      * The pl commands.
      */
-    private Map<Object, Object> plcommands;
+    private final Map<Object, Object> plcommands;
 
     /**
      * The pl null command.
      */
-    private PlCommand plnull = new PlNULL();
+    private final PlCommand plnull = new PlNULL();
 
     /**
      * Create a new object.
@@ -330,7 +305,8 @@ public class PlReader {
     private void read(InputStream in) throws IOException {
 
         BufferedReader reader =
-                new BufferedReader(new InputStreamReader(in, "ASCII"));
+                new BufferedReader(new InputStreamReader( in,
+                                                          StandardCharsets.US_ASCII ));
 
         commandLoop(reader);
 

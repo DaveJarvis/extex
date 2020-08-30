@@ -34,8 +34,7 @@ import org.junit.Test;
  * This is a test suite for {@link TocIndex}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TocIndexTest {
 
     private final static String DIR_TARGET = "build/empty";
@@ -107,7 +106,7 @@ public class TocIndexTest {
     }
 
     /**
-     * <testcase>Test that a empty directory is correctly indexed. </testcase>
+     * Test that a empty directory is correctly indexed.
      */
     @Test
     public final void test1() {
@@ -116,8 +115,8 @@ public class TocIndexTest {
     }
 
     /**
-     * <testcase>Test that an unknown command line argument is reported.
-     * </testcase>
+     * Test that an unknown command line argument is reported.
+     *
      */
     @Test
     public final void testError01() {
@@ -126,7 +125,7 @@ public class TocIndexTest {
     }
 
     /**
-     * <testcase>Test that too many base directories are reported. </testcase>
+     * Test that too many base directories are reported.
      */
     @Test
     public final void testError02() {
@@ -135,7 +134,7 @@ public class TocIndexTest {
     }
 
     /**
-     * <testcase>Test that too many base directories are reported. </testcase>
+     * Test that too many base directories are reported.
      */
     @Test
     public final void testError03() {
@@ -144,7 +143,7 @@ public class TocIndexTest {
     }
 
     /**
-     * <testcase>Test that too many base directories are reported. </testcase>
+     * Test that too many base directories are reported.
      */
     @Test
     public final void testError04() {
@@ -153,8 +152,8 @@ public class TocIndexTest {
     }
 
     /**
-     * <testcase>Test that a missing base directory for flag - is reported.
-     * </testcase>
+     * Test that a missing base directory for flag - is reported.
+     *
      */
     @Test
     public final void testError05() {
@@ -163,8 +162,8 @@ public class TocIndexTest {
     }
 
     /**
-     * <testcase>Test that a non-existent base directory is reported.
-     * </testcase>
+     * Test that a non-existent base directory is reported.
+     *
      */
     @Test
     public final void testError06() {
@@ -176,8 +175,8 @@ public class TocIndexTest {
     }
 
     /**
-     * <testcase>Test that a missing base directory for flag -out is reported.
-     * </testcase>
+     * Test that a missing base directory for flag -out is reported.
+     *
      */
     @Test
     public final void testError07() {
@@ -186,7 +185,7 @@ public class TocIndexTest {
     }
 
     /**
-     * <testcase>Test that an unwritable output file is reported. </testcase>
+     * Test that an unwritable output file is reported.
      */
     @Test
     public final void testError08() {
@@ -198,7 +197,7 @@ public class TocIndexTest {
     }
 
     /**
-     * <testcase>Test that an unwritable output file is reported. </testcase>
+     * Test that an unwritable output file is reported.
      */
     @Test
     public final void testError09() {
@@ -210,7 +209,7 @@ public class TocIndexTest {
     }
 
     /**
-     * <testcase>Test that an unwritable output file is reported. </testcase>
+     * Test that an unwritable output file is reported.
      */
     @Test
     public final void testError10() {
@@ -222,7 +221,7 @@ public class TocIndexTest {
     }
 
     /**
-     * <testcase>Test that -help works. </testcase>
+     * Test that -help works.
      */
     @Test
     public final void testHelp1() {
@@ -231,7 +230,7 @@ public class TocIndexTest {
     }
 
     /**
-     * <testcase>Test that --help works. </testcase>
+     * Test that --help works.
      */
     @Test
     public final void testHelp2() {
@@ -240,8 +239,8 @@ public class TocIndexTest {
     }
 
     /**
-     * <testcase>Test that a empty directory is correctly indexed when some
-     * directories are omitted. </testcase>
+     * Test that a empty directory is correctly indexed when some
+     * directories are omitted.
      */
     @Test
     public final void testOmit1() {
@@ -262,8 +261,8 @@ public class TocIndexTest {
     }
 
     /**
-     * <testcase>Test that a empty directory is correctly indexed when some
-     * directories are omitted. </testcase>
+     * Test that a empty directory is correctly indexed when some
+     * directories are omitted.
      */
     @Test
     public final void testOmit2() {
@@ -274,7 +273,7 @@ public class TocIndexTest {
     }
 
     /**
-     * <testcase>Test that an illegal regex is reported. </testcase>
+     * Test that an illegal regex is reported.
      */
     @Test
     public final void testOmit3() {
@@ -285,8 +284,8 @@ public class TocIndexTest {
     }
 
     /**
-     * <testcase>Test that a empty directory is correctly indexed when some
-     * directories are omitted. </testcase>
+     * Test that a empty directory is correctly indexed when some
+     * directories are omitted.
      */
     @Test
     public final void testOut1() {
@@ -297,7 +296,7 @@ public class TocIndexTest {
     }
 
     /**
-     * <testcase>Test that an empty output file redirects to stdout. </testcase>
+     * Test that an empty output file redirects to stdout.
      */
     @Test
     public final void testOut2() {

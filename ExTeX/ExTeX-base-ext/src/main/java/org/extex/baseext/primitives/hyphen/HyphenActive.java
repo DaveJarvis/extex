@@ -37,11 +37,11 @@ import org.extex.unit.tex.hyphen.AbstractHyphenationCode;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\hyphenactive</code>.
+ * {@code \hyphenactive}.
  * <p>
- * The value is stored in the <code>HyphernationTable</code>. Each
- * <code>HyphernationTable</code> is based on <code>\language</code> and has its
- * own <code>\hyphenactive</code> value.
+ * The value is stored in the {@code HyphernationTable}. Each
+ * {@code HyphernationTable} is based on {@code \language} and has its
+ * own {@code \hyphenactive} value.
  * </p>
  * <p>
  * Example:
@@ -54,12 +54,11 @@ import org.extex.unit.tex.hyphen.AbstractHyphenationCode;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class HyphenActive extends AbstractHyphenationCode implements Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -75,7 +74,7 @@ public class HyphenActive extends AbstractHyphenationCode implements Theable {
 
     /**
      * Scan for hyphenactive value and stored it in the
-     * <code>HyphernationTable</code> with the language-number.
+     * {@code HyphernationTable} with the language-number.
      * 
      * @throws HelpingException in case of an error
      * 

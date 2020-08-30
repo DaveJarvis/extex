@@ -48,102 +48,101 @@ import org.extex.unit.tex.math.AbstractMathCode;
  * from their TeX encoding as numbers to abstract math code.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public abstract class AbstractTeXDelimiter extends AbstractMathCode {
 
     /**
-     * The constant <tt>CHAR_MASK</tt> contains the character mask.
+     * The constant {@code CHAR_MASK} contains the character mask.
      */
     private static final int CHAR_MASK = 0xff;
 
     /**
-     * The field <tt>CHAR_MAX</tt> contains the maximal number for a character.
+     * The field {@code CHAR_MAX} contains the maximal number for a character.
      */
     private static final int CHAR_MAX = 255;
 
     /**
-     * The field <tt>CHAR_MIN</tt> contains the minimal number for a character.
+     * The field {@code CHAR_MIN} contains the minimal number for a character.
      */
     private static final int CHAR_MIN = 0;
 
     /**
-     * The field <tt>CLASS_MASK</tt> contains the mask for the class. This
+     * The field {@code CLASS_MASK} contains the mask for the class. This
      * implies a maximal value.
      */
     private static final int CLASS_MASK = 0xf;
 
     /**
-     * The constant <tt>CLASS_MAX</tt> contains the maximum number for a math
+     * The constant {@code CLASS_MAX} contains the maximum number for a math
      * class.
      */
     private static final int CLASS_MAX = CLASS_MASK;
 
     /**
-     * The field <tt>CLASS_SHIFT</tt> contains the number of bits to shift the
+     * The field {@code CLASS_SHIFT} contains the number of bits to shift the
      * class rightwards in the TeX encoding of delimiters.
      */
     private static final int CLASS_SHIFT = 24;
 
     /**
-     * The field <tt>DEL_BINARY</tt> contains the delimiter code for binary.
+     * The field {@code DEL_BINARY} contains the delimiter code for binary.
      */
     private static final Integer DEL_BINARY = new Integer(2);
 
     /**
-     * The field <tt>DEL_CLOSING</tt> contains the delimiter code for closing.
+     * The field {@code DEL_CLOSING} contains the delimiter code for closing.
      */
     private static final Integer DEL_CLOSING = new Integer(5);
 
     /**
-     * The field <tt>DEL_LARGE</tt> contains the delimiter code for large.
+     * The field {@code DEL_LARGE} contains the delimiter code for large.
      */
     private static final Integer DEL_LARGE = new Integer(1);
 
     /**
-     * The field <tt>DEL_OPENING</tt> contains the delimiter code for opening.
+     * The field {@code DEL_OPENING} contains the delimiter code for opening.
      */
     private static final Integer DEL_OPENING = new Integer(4);
 
     /**
-     * The field <tt>DEL_ORDINARY</tt> contains the delimiter code for ordinary.
+     * The field {@code DEL_ORDINARY} contains the delimiter code for ordinary.
      */
     private static final Integer DEL_ORDINARY = new Integer(0);
 
     /**
-     * The field <tt>DEL_PUNCTATION</tt> contains the delimiter code for
+     * The field {@code DEL_PUNCTATION} contains the delimiter code for
      * punctation.
      */
     private static final Integer DEL_PUNCTATION = new Integer(6);
 
     /**
-     * The field <tt>DEL_RELATION</tt> contains the delimiter code for relation.
+     * The field {@code DEL_RELATION} contains the delimiter code for relation.
      */
     private static final Integer DEL_RELATION = new Integer(3);
 
     /**
-     * The field <tt>DEL_VARIABLE</tt> contains the delimiter code for variable.
+     * The field {@code DEL_VARIABLE} contains the delimiter code for variable.
      */
     private static final Integer DEL_VARIABLE = new Integer(7);
 
     /**
-     * The field <tt>FAM_MAX</tt> contains the maximum of the family number.
+     * The field {@code FAM_MAX} contains the maximum of the family number.
      */
     private static final int FAM_MAX = 15;
 
     /**
-     * The field <tt>FAM_MIN</tt> contains the minimum of the family number.
+     * The field {@code FAM_MIN} contains the minimum of the family number.
      */
     private static final int FAM_MIN = 0;
 
     /**
-     * The field <tt>LARGE_CLASS_OFFSET</tt> contains the offset for large
+     * The field {@code LARGE_CLASS_OFFSET} contains the offset for large
      * character's class.
      */
     private static final int LARGE_CLASS_OFFSET = 8;
 
     /**
-     * The field <tt>MCV</tt> contains the visitor to map a math class to
+     * The field {@code MCV} contains the visitor to map a math class to
      * numbers.
      */
     private static final MathClassVisitor<Integer, Object, Object> MCV =
@@ -279,18 +278,18 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
             };
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
-     * The field <tt>SMALL_CHAR_OFFSET</tt> contains the offset for the small
+     * The field {@code SMALL_CHAR_OFFSET} contains the offset for the small
      * characters.
      */
     private static final int SMALL_CHAR_OFFSET = 12;
 
     /**
-     * The field <tt>SMALL_CLASS_OFFSET</tt> contains the offset for the small
+     * The field {@code SMALL_CLASS_OFFSET} contains the offset for the small
      * character's class.
      */
     private static final int SMALL_CLASS_OFFSET = 20;
@@ -301,9 +300,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
      * 
      * @param del the delimiter to encode
      * 
-     * @return the <logo>T<span style=
-     *         "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *         >e</span>X</logo> encoded delimiter
+     * @return the TeX-encoded delimiter
      * 
      * @throws HelpingException in case of an error
      */
@@ -355,7 +352,8 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
      * Creates a new MathDelimiter object from the TeX encoding.
      * <p>
      * The TeX encoding interprets the number as 27 bit hex number:
-     * <tt>"csyylxx</tt>. Here the digits have the following meaning:
+     * {@code "csyylxx}. Here the digits have the following meaning:
+     * </p>
      * <dl>
      * <dt>c</dt>
      * <dd>the math class of this delimiter. It has a range from 0 to 7.</dd>
@@ -368,11 +366,8 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
      * <dt>yy</dt>
      * <dd>the character code of the small character.</dd>
      * </dl>
-     * </p>
-     * 
-     * @param delcode the <logo>T<span style=
-     *        "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *        >e</span>X</logo> encoding for the delimiter
+     *
+     * @param delcode the TeX encoding for the delimiter
      * 
      * @return a new MathDelimiter
      * 
@@ -401,7 +396,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
     }
 
     /**
-     * Parse an extended ??TeX delimiter from a token source.
+     * Parse an extended εχTeX delimiter from a token source.
      * 
      * @param context the interpreter context
      * @param source the token source to read from

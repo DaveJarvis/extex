@@ -23,11 +23,10 @@ import org.extex.test.AbstractDimenRegisterTester;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\splitmaxdepth</tt>.
+ * This is a test suite for the primitive {@code \splitmaxdepth}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SplitmaxdepthTest extends AbstractDimenRegisterTester {
 
     /**

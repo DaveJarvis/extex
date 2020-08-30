@@ -26,23 +26,22 @@ import org.junit.Test;
  * This is a test suite for horizontal filling primitives.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public abstract class AbstractHfillTester extends NoFlagsPrimitiveTester {
 
     /**
-     * The field <tt>invocation</tt> contains the concatenation of primitive
+     * The field {@code invocation} contains the concatenation of primitive
      * name and arguments.
      */
     private String invocation = "";
 
     /**
-     * The field <tt>prepare</tt> contains the preparation code.
+     * The field {@code prepare} contains the preparation code.
      */
     private String prepare = DEFINE_BRACES;
 
     /**
-     * The field <tt>fil</tt> contains the the unit inserted.
+     * The field {@code fil} contains the the unit inserted.
      */
     private String fil;
 
@@ -65,9 +64,8 @@ public abstract class AbstractHfillTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case showing that the primitive i horizontal mode has a
-     * natural width of 0pt. </testcase>
-     * 
+     * Test case showing that the primitive i horizontal mode has a natural width of 0pt
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -80,9 +78,8 @@ public abstract class AbstractHfillTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that <tt>\hfi*</tt> is ignored at the
-     * beginning of a paragraph. </testcase>
-     * 
+     * Test case checking that {@code \hfi*} is ignored at the beginning of a paragraph
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -96,9 +93,8 @@ public abstract class AbstractHfillTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case checking that <tt>\hfi*</tt> is ignored at the
-     * beginning of a paragraph. </testcase>
-     * 
+     * Test case checking that {@code \hfi*} is ignored at the beginning of a paragraph
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -116,9 +112,8 @@ public abstract class AbstractHfillTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case showing that the primitive in vertical mode appears
-     * like a space. </testcase>
-     * 
+     * Test case showing that the primitive in vertical mode appears like a space
+* 
      * @throws Exception in case of an error
      */
     @Test

@@ -26,8 +26,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
  * the model.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public interface BstModelNode {
 
     /**
@@ -55,7 +54,7 @@ public interface BstModelNode {
     /**
      * Getter for the {@link ImageDescriptor}.
      * 
-     * @return the image descriptor or <code>null</code>
+     * @return the image descriptor or {@code null}
      */
     ImageDescriptor getImageDescriptor();
 

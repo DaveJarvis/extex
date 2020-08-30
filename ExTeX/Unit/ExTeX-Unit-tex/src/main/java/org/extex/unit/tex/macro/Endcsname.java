@@ -30,46 +30,45 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\endcsname</code>.
+ * {@code \endcsname}.
  * 
- * <doc name="endcsname">
- * <h3>The Primitive <tt>\endcsname</tt></h3>
+ * <p>The Primitive {@code \endcsname}</p>
  * <p>
- * The macro <tt>\endcsname</tt> is used in combination with the macro
- * {@link org.extex.unit.tex.macro.Csname <tt>\csname</tt>} only. Whenever a
- * <tt>\endcsname</tt> is seen alone it must be an error. Thus thus primitive
+ * The macro {@code \endcsname} is used in combination with the macro
+ * {@link org.extex.unit.tex.macro.Csname {@code \csname}} only. Whenever a
+ * {@code \endcsname} is seen alone it must be an error. Thus thus primitive
  * produces an error message in any case.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;endcsname&rang;
- *      &rarr; <tt>\endscsname</tt>  </pre>
+ *      &rarr; {@code \endscsname}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * <p>
  * The following example shows a complicated way to invoke the macro
- * <tt>abc</tt>. Here the primitive <tt>\endcsname</tt> is legal. It is
- * consumed by the primitive <tt>\csname</tt> and not expanded on its own.
+ * {@code abc}. Here the primitive {@code \endcsname} is legal. It is
+ * consumed by the primitive {@code \csname} and not expanded on its own.
  * </p>
  * 
  * <pre class="TeXSample">
  *   \csname abc\endcsname  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @see "TTP [1134]"
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Endcsname extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -85,10 +84,7 @@ public class Endcsname extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

@@ -39,30 +39,21 @@ import org.junit.Test;
  * This is a test suite for the classpath archive finder.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5417 $
- */
+*/
 public class ClasspathArchiveFinderTest {
 
     /**
-     * The constant <tt>CFG</tt> contains the configuration.
+     * The constant {@code CFG} contains the configuration.
      */
     private static final Configuration CFG = new Configuration() {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
-         */
-        public Configuration findConfiguration(String key) {
+    public Configuration findConfiguration(String key) {
 
             return null;
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public Configuration findConfiguration(String key, String attribute)
                 throws ConfigurationException {
@@ -70,12 +61,7 @@ public class ClasspathArchiveFinderTest {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getAttribute(java.lang.String)
-         */
-        public String getAttribute(String name) {
+    public String getAttribute(String name) {
 
             if ("default".equals(name)) {
                 return "xxx";
@@ -84,22 +70,14 @@ public class ClasspathArchiveFinderTest {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String)
-         */
-        public Configuration getConfiguration(String key)
+    public Configuration getConfiguration(String key)
                 throws ConfigurationException {
 
             return this;
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public Configuration getConfiguration(String key, String attribute)
                 throws ConfigurationException {
@@ -107,31 +85,18 @@ public class ClasspathArchiveFinderTest {
             return this;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValue()
-         */
-        public String getValue() throws ConfigurationException {
+    public String getValue() throws ConfigurationException {
+
+            return null;
+        }
+
+    public String getValue(String key) throws ConfigurationException {
 
             return null;
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValue(java.lang.String)
-         */
-        public String getValue(String key) throws ConfigurationException {
-
-            return null;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValueAsInteger(java.lang.String,
-         *      int)
+    *      int)
          */
         public int getValueAsInteger(String key, int defaultValue)
                 throws ConfigurationException {
@@ -140,22 +105,14 @@ public class ClasspathArchiveFinderTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValues(java.util.List,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         public void getValues(List<String> list, String key) {
 
             // not needed
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
-         */
-        public List<String> getValues(String key) {
+    public List<String> getValues(String key) {
 
             if ("extension".equals(key)) {
                 List<String> list = new ArrayList<String>();
@@ -166,32 +123,19 @@ public class ClasspathArchiveFinderTest {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#iterator()
-         */
-        public Iterator<Configuration> iterator() throws ConfigurationException {
+    public Iterator<Configuration> iterator() throws ConfigurationException {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#iterator(java.lang.String)
-         */
-        public Iterator<Configuration> iterator(String key)
+    public Iterator<Configuration> iterator(String key)
                 throws ConfigurationException {
 
             return null;
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(
-         *      org.extex.framework.configuration.ConfigurationLoader)
+    *      org.extex.framework.configuration.ConfigurationLoader)
          */
         public void setConfigurationLoader(ConfigurationLoader loader) {
 

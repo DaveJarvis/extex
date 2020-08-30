@@ -26,19 +26,18 @@ import org.extex.typesetter.type.Node;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4739 $
- */
+*/
 public class SpecialNode extends WhatsItNode implements Node {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>text</tt> contains the text to pass to the back-end driver.
+     * The field {@code text} contains the text to pass to the back-end driver.
      */
-    private String text;
+    private final String text;
 
     /**
      * Creates a new object.

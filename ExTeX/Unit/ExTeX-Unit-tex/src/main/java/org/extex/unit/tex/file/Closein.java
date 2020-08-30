@@ -31,44 +31,43 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.file.AbstractFileCode;
 
 /**
- * This class provides an implementation for the primitive <code>\closein</code>.
+ * This class provides an implementation for the primitive {@code \closein}.
  * 
- * <doc name="closein">
- * <h3>The Primitive <tt>\closein</tt></h3>
+ * <p>The Primitive {@code \closein}</p>
  * <p>
  * The primitive takes one expanded integer argument. This argument denotes a
  * read register which will be closed if it is currently assigned to a file
- * &ndash; with {@link org.extex.unit.tex.file.Openin <tt>\openin</tt>}. If the
+ * &ndash; with {@link org.extex.unit.tex.file.Openin {@code \openin}}. If the
  * input file assigned to the given number has not been opened or has been
  * closed before then this primitive simply does nothing.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;closein&rang;
- *       &rarr; <tt>\closein</tt>  {@linkplain
+ *       &rarr; {@code \closein}  {@linkplain
  *        org.extex.unit.base.file.AbstractFileCode#scanInFileKey(Context,TokenSource,Typesetter)
  *        &lang;infile&nbsp;name&rang;} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \closein5  </pre>
  *  <pre class="TeXSample">
  *    \closein\count120  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4441 $
- */
+*/
 public class Closein extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -84,10 +83,7 @@ public class Closein extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

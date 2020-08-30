@@ -25,16 +25,15 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This exception is raised when a number should be read but none is found.
  * <p>
  *  The localization format is taken from the Localizer under the key
- *  <tt>TTP.MissingNumber</tt>.
+ *  {@code TTP.MissingNumber}.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4726 $
- */
+*/
 public class MissingNumberException extends HelpingException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2006L;
 

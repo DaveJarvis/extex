@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\interactionmode</tt>.
+ * This is a test suite for the primitive {@code \interactionmode}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class InteractionmodeTest extends ExTeXLauncher {
 
     /**
@@ -49,7 +48,7 @@ public class InteractionmodeTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\interactionmode"> Test case checking that batch
-     * mode is reported as 0. </testcase>
+     * mode is reported as 0.
      * 
      * @throws Exception in case of an error
      */
@@ -64,7 +63,7 @@ public class InteractionmodeTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\interactionmode"> Test case checking that non-stop
-     * mode is reported as 1. </testcase>
+     * mode is reported as 1.
      * 
      * @throws Exception in case of an error
      */
@@ -79,7 +78,7 @@ public class InteractionmodeTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\interactionmode"> Test case checking that scroll
-     * mode is reported as 2. </testcase>
+     * mode is reported as 2.
      * 
      * @throws Exception in case of an error
      */
@@ -94,7 +93,7 @@ public class InteractionmodeTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\interactionmode"> Test case checking that error
-     * stop mode is reported as 3. </testcase>
+     * stop mode is reported as 3.
      * 
      * @throws Exception in case of an error
      */
@@ -110,8 +109,8 @@ public class InteractionmodeTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\interactionmode"> Test case checking that
-     * <tt>\interactionmode</tt> can be used to set the interaction mode.
-     * </testcase>
+     * {@code \interactionmode} can be used to set the interaction mode.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -127,8 +126,8 @@ public class InteractionmodeTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\interactionmode"> Test case checking that
-     * <tt>\interactionmode</tt> can be used to set the interaction mode.
-     * </testcase>
+     * {@code \interactionmode} can be used to set the interaction mode.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -144,7 +143,7 @@ public class InteractionmodeTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\interactionmode"> Test case checking that
-     * <tt>\interactionmode</tt> does not accept 4. </testcase>
+     * {@code \interactionmode} does not accept 4.
      * 
      * @throws Exception in case of an error
      */
@@ -159,7 +158,7 @@ public class InteractionmodeTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\interactionmode"> Test case checking that
-     * <tt>\interactionmode</tt> does not accept -1. </testcase>
+     * {@code \interactionmode} does not accept -1.
      * 
      * @throws Exception in case of an error
      */

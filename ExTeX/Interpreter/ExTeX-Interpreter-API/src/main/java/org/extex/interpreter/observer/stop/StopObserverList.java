@@ -28,15 +28,14 @@ import org.extex.interpreter.Interpreter;
  * This class provides a type-safe list of observers for the start event.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4728 $
- */
+*/
 public final class StopObserverList implements StopObserver {
 
     /**
-     * Take a list and add an observer. If the list is <code>null</code> then
+     * Take a list and add an observer. If the list is {@code null} then
      * a new one is created.
      *
-     * @param list the input list or <code>null</code>
+     * @param list the input list or {@code null}
      * @param observer the observer to add
      *
      * @return the input list or a new one with the observer added
@@ -60,7 +59,7 @@ public final class StopObserverList implements StopObserver {
     }
 
     /**
-     * The field <tt>list</tt> contains the encapsulated list.
+     * The field {@code list} contains the encapsulated list.
      */
     private List<StopObserver> list = new ArrayList<StopObserver>();
 

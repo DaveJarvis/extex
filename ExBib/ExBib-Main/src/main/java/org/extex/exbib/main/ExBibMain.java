@@ -39,79 +39,76 @@ import org.extex.exbib.core.ExBib.ExBibDebug;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * This class contains the main program for <logo>&epsilon;&chi;Bib</logo>.
+ * This class contains the main program for ??Bib.
  * <p>
- * </p>
- * <p>
- * Usage: <tt>java org.extex.exbib.main.ExBib </tt><i>&lt;options&gt; file</i>
+ * Usage: {@code java org.extex.exbib.main.ExBib }<i>&lt;options&gt; file</i>
  * </p>
  * <p>
  * The following options are supported:
  * </p>
  * <dl>
- * <dt><tt>-D&lt;property&gt;=&lt;value&gt;</tt></dt>
+ * <dt>{@code -D&lt;property&gt;=&lt;value&gt;}</dt>
  * <dd>Set the property to a given value.</dd>
- * <dt><tt>-[-] &lt;file&gt;</tt></dt>
+ * <dt>{@code -[-] &lt;file&gt;}</dt>
  * <dd>Use this argument as file name &ndash; even when it looks like an option.
  * </dd>
- * <dt><tt>--a[vailableCharsets] | -a</tt></dt>
+ * <dt>{@code --a[vailableCharsets] | -a}</dt>
  * <dd>List the available encoding names and exit.</dd>
- * <dt><tt>--bib-[encoding] | --bib.[encoding] | -E &lt;enc&gt;</tt></dt>
+ * <dt>{@code --bib-[encoding] | --bib.[encoding] | -E &lt;enc&gt;}</dt>
  * <dd>Use the given encoding for the bib files.</dd>
- * <dt><tt>--c[onfig] | -c &lt;configuration&gt;</tt></dt>
+ * <dt>{@code --c[onfig] | -c &lt;configuration&gt;}</dt>
  * <dd>Use the configuration given. This is not a file!</dd>
- * <dt><tt>--cop[ying]</tt></dt>
+ * <dt>{@code --cop[ying]}</dt>
  * <dd>Display the copyright conditions.</dd>
- * <dt><tt>--cs[file] &lt;csfile&gt;</tt></dt>
+ * <dt>{@code --cs[file] &lt;csfile&gt;}</dt>
  * <dd>Name the csf for defining characters and the sort order</dd>
- * <dt><tt>--csf-[encoding] | --csf.[encoding] &lt;enc&gt;</tt></dt>
+ * <dt>{@code --csf-[encoding] | --csf.[encoding] &lt;enc&gt;}</dt>
  * <dd>Use the given encoding for the csf files.</dd>
- * <dt><tt>--d[ebug] | -d</tt></dt>
+ * <dt>{@code --d[ebug] | -d}</dt>
  * <dd>Run in debug mode.</dd>
- * <dt><tt>--e[ncoding] | -e &lt;enc&gt;</tt></dt>
+ * <dt>{@code --e[ncoding] | -e &lt;enc&gt;}</dt>
  * <dd>Use the given encoding for the output file.</dd>
- * <dt><tt>--h[elp] | -? | -h</tt></dt>
+ * <dt>{@code --h[elp] | -? | -h}</dt>
  * <dd>Show a short list of command line arguments.</dd>
- * <dt><tt>--la[nguage] | -L &lt;language></tt></dt>
+ * <dt>{@code --la[nguage] | -L &lt;language>}</dt>
  * <dd>Use the named language for message. The argument is a two-letter ISO
  * code.</dd>
- * <dt><tt>--loa[d] &lt;file&gt;</tt></dt>
+ * <dt>{@code --loa[d] &lt;file&gt;}</dt>
  * <dd>Additionally load settings from the file given.</dd>
- * <dt><tt>--l[ogfile] | -l &lt;file&gt;</tt></dt>
+ * <dt>{@code --l[ogfile] | -l &lt;file&gt;}</dt>
  * <dd>Send the output to the log file named instead of the default one.</dd>
- * <dt><tt>--m[in-crossrefs] | --min.[crossrefs] | --min_[crossrefs] | -m
- * &lt;n&gt;</tt></dt>
+ * <dt>{@code --m[in-crossrefs] | --min.[crossrefs] | --min_[crossrefs] | -m
+ * &lt;n&gt;}</dt>
  * <dd>Set the value for min.crossrefs. The default is 2.</dd>
- * <dt><tt>--o[utfile] | --outp[ut] | -o &lt;file&gt;</tt></dt>
- * <dd>Redirect the output to the file given. <br />
- * The file name - can be used to redirect to stdout <br />
+ * <dt>{@code --o[utfile] | --outp[ut] | -o &lt;file&gt;}</dt>
+ * <dd>Redirect the output to the file given. <br>
+ * The file name - can be used to redirect to stdout <br>
  * The empty file name can be used to discard the output completely</dd>
- * <dt><tt>--p[rogname] | --progr[am-name] | --program.[name] | -p
- * &lt;program&gt;</tt></dt>
+ * <dt>{@code --p[rogname] | --progr[am-name] | --program.[name] | -p
+ * &lt;program&gt;}</dt>
  * <dd>Set the program name for messages.</dd>
- * <dt><tt>--q[uiet] | --t[erse] | -q</tt></dt>
+ * <dt>{@code --q[uiet] | --t[erse] | -q}</dt>
  * <dd>Act quietly; some informative messages are suppressed.</dd>
- * <dt><tt>--r[elease] | -r</tt></dt>
+ * <dt>{@code --r[elease] | -r}</dt>
  * <dd>Print the release number and exit.</dd>
- * <dt><tt>--so[rter] | -s &lt;sort&gt;</tt></dt>
- * <dd>Use the specified sorter, e.g. <tt>locale:de</tt> or <tt>csf:ascii.</tt></dd>
- * <dt><tt>--b[ibtex] | --s[trict]</tt></dt>
+ * <dt>{@code --so[rter] | -s &lt;sort&gt;}</dt>
+ * <dd>Use the specified sorter, e.g. {@code locale:de} or {@code csf:ascii.}</dd>
+ * <dt>{@code --b[ibtex] | --s[trict]}</dt>
  * <dd>Use the configuration for BibTeX 0.99c.</dd>
- * <dt><tt>--tr[ace] | -t</tt></dt>
+ * <dt>{@code --tr[ace] | -t}</dt>
  * <dd>Show a detailed trace of many operations.</dd>
- * <dt><tt>--v[erbose] | -v</tt></dt>
+ * <dt>{@code --v[erbose] | -v}</dt>
  * <dd>Act verbosely; some additional informational messages are displayed.</dd>
- * <dt><tt>--vers[ion]</tt></dt>
+ * <dt>{@code --vers[ion]}</dt>
  * <dd>Print the version information and exit.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ExBibMain extends AbstractMain {
 
     /**
-     * The field <tt>CONFIGURATION_0_99</tt> contains the name of the
+     * The field {@code CONFIGURATION_0_99} contains the name of the
      * configuration to be used in strict mode.
      */
     private static final String CONFIGURATION_0_99 = "bibtex099";
@@ -156,7 +153,7 @@ public class ExBibMain extends AbstractMain {
     }
 
     /**
-     * The field <tt>exBib</tt> contains the enclosed object.
+     * The field {@code exBib} contains the enclosed object.
      */
     private final ExBib exBib;
 
@@ -184,12 +181,6 @@ public class ExBibMain extends AbstractMain {
 
         this.exBib = new ExBib(getProperties()) {
 
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.ExBib#logBanner(java.lang.String,
-             *      java.lang.Object[])
-             */
             @Override
             protected boolean logBanner(String tag, Object... args) {
 
@@ -197,12 +188,6 @@ public class ExBibMain extends AbstractMain {
                 return super.logBanner(tag, args);
             }
 
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.ExBib#recognizeFile(java.lang.String,
-             *      java.lang.String)
-             */
             @Override
             protected void recognizeFile(String log, String extension)
                     throws IOException {
@@ -312,8 +297,6 @@ public class ExBibMain extends AbstractMain {
      * Getter for the debug description.
      * 
      * @return the value
-     * 
-     * @see org.extex.exbib.core.ExBib#getDebug()
      */
     public Set<ExBibDebug> getDebug() {
 
@@ -337,13 +320,11 @@ public class ExBibMain extends AbstractMain {
      * >e</span>X engine. When all parameters are present then this method can
      * be invoked.
      * 
-     * @return <code>true</code> iff an error has occurred
+     * @return {@code true} iff an error has occurred
      * 
      * @throws IOException is case of an uncaught IOException
      * @throws ConfigurationException in case that the top-level configuration
      *         could not be found
-     * 
-     * @see org.extex.exbib.main.AbstractMain#run()
      */
     @Override
     public int run() throws IOException, ConfigurationException {
@@ -365,11 +346,6 @@ public class ExBibMain extends AbstractMain {
         return exBib.setFile(arg) ? CLI.EXIT_CONTINUE : CLI.EXIT_FAIL;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.main.AbstractMain#useLanguage(java.util.Locale)
-     */
     @Override
     protected void useLanguage(Locale locale) {
 

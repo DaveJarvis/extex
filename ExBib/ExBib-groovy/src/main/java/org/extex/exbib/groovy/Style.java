@@ -32,23 +32,22 @@ import java.io.IOException;
  * style.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 @SuppressWarnings("unused")
 public class Style {
 
     /**
-     * The field <tt>bibDB</tt> contains the database.
+     * The field {@code bibDB} contains the database.
      */
     private final DB bibDB;
 
     /**
-     * The field <tt>bibWriter</tt> contains the writer.
+     * The field {@code bibWriter} contains the writer.
      */
     private final Writer bibWriter;
 
     /**
-     * The field <tt>bibProcessor</tt> contains the processor.
+     * The field {@code bibProcessor} contains the processor.
      */
     private final Processor bibProcessor;
 

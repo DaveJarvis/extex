@@ -27,21 +27,19 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * This class represents a <tt>SORT</tt> command.
+ * This class represents a {@code SORT} command.
  * <p>
- * The <tt>sort</tt> command sorts the entries of the database according to its
+ * The {@code sort} command sorts the entries of the database according to its
  * sort key lexicographically increasing. The sort key is taken from the entry
- * variable <tt>sort.key\$</tt>.
- * <p>
+ * variable {@code sort.key\$}.
+ * </p>
  * 
  * <pre>
  *   SORT
  * </pre>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BstSort extends AbstractCommand {
 
     /**
@@ -55,10 +53,7 @@ public class BstSort extends AbstractCommand {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.command.Command#execute(BstProcessor,
-     *      org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Locator locator)
             throws ExBibException {
@@ -78,10 +73,7 @@ public class BstSort extends AbstractCommand {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.command.Command#visit(org.extex.exbib.core.bst.command.CommandVisitor,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visit(CommandVisitor visitor, Object... args)
             throws IOException,

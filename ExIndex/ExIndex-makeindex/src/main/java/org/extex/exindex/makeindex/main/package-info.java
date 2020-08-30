@@ -17,7 +17,7 @@
  */
 /**
  * 
- *   This package contains command line interfaces for the makeindex emulator.
+ *   Contains command line interfaces for the makeindex emulator.
  * 
  *
  */

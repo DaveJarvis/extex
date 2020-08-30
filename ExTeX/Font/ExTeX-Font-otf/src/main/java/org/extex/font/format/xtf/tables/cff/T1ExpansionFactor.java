@@ -26,8 +26,7 @@ import java.util.List;
  * ExpansionFactor.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class T1ExpansionFactor extends T1DictNumber {
 
     /**

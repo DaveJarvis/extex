@@ -37,39 +37,38 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
 
 /**
- * This class provides an implementation for the primitive <code>\relax</code>.
+ * This class provides an implementation for the primitive {@code \relax}.
  * 
- * <doc name="parshapeindent">
- * <h3>The Primitive <tt>\parshapeindent</tt></h3>
+ * <p>The Primitive {@code \parshapeindent}</p>
  * <p>
- * The primitive <tt>\parshapeindent</tt> gives access to the settings for the
+ * The primitive {@code \parshapeindent} gives access to the settings for the
  * current paragraph shape. The primitive takes a number as parameter. If this
  * number is positive then the indentation of the line denoted by the parameter
  * is returned. The line numbering starts with 1. If the argument is less than 1
  * then 0 is returned.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;parshapeindent&rang;
- *        &rarr; <tt>\parshapeindent</tt> {@linkplain
+ *        &rarr; {@code \parshapeindent} {@linkplain
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *        &lang;8-bit&nbsp;number&rang;} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \dimen2=\parshapeindent 3  </pre>
  *  <pre class="TeXSample">
  *    \dimen2=\parshapeindent -3  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Parshapeindent extends AbstractCode
         implements
             CountConvertible,
@@ -77,7 +76,7 @@ public class Parshapeindent extends AbstractCode
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -93,10 +92,7 @@ public class Parshapeindent extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -106,10 +102,7 @@ public class Parshapeindent extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertDimen(Context context, TokenSource source,
@@ -123,10 +116,7 @@ public class Parshapeindent extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

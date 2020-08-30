@@ -29,8 +29,7 @@ import org.extex.backend.outputStream.OutputStreamFactory;
  * @see org.extex.backend.documentWriter.SingleDocumentStream
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface MultipleDocumentStream {
 
     /**

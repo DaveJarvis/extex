@@ -26,8 +26,7 @@ import org.extex.scanner.api.TokenStream;
  * a stream is closed.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4499 $
- */
+*/
 public interface StreamCloseObserver {
 
     /**

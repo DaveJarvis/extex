@@ -23,36 +23,35 @@ package org.extex.pdf.api.action;
  * This class represents the action to address a certain page.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class GotoPageActionSpec extends GotoActionSpec {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>file</tt> contains the file name.
-     * The value can also be <code>null</code>.
+     * The field {@code file} contains the file name.
+     * The value can also be {@code null}.
      */
     private String file;
 
     /**
-     * The field <tt>newWin</tt> contains the indicator for the the new window.
-     * The value can also be <code>null</code>.
+     * The field {@code newWin} contains the indicator for the the new window.
+     * The value can also be {@code null}.
      */
     private Boolean newWin;
 
     /**
-     * The field <tt>page</tt> contains the page number with 0 as default.
+     * The field {@code page} contains the page number with 0 as default.
      */
     private long page;
 
     /**
-     * The field <tt>text</tt> contains the plain text.
-     * The value can also be <code>null</code>.
+     * The field {@code text} contains the plain text.
+     * The value can also be {@code null}.
      */
     private String text;
 

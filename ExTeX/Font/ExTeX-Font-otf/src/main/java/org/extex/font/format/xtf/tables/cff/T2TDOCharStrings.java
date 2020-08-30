@@ -69,15 +69,14 @@ import org.extex.util.xml.XMLStreamWriter;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class T2TDOCharStrings extends T2TDONumber {
 
     /**
      * The map for the charstrings.
      */
-    private Map<String, CharString> charmap = new HashMap<String, CharString>();
+    private final Map<String, CharString> charmap = new HashMap<String, CharString>();
 
     /**
      * The array of the char strings.
@@ -96,7 +95,7 @@ public class T2TDOCharStrings extends T2TDONumber {
     }
 
     /**
-     * Returns the charstring or <code>null</code>, if not found.
+     * Returns the charstring or {@code null}, if not found.
      * 
      * @param idx the index.
      * @return Returns the charstring.
@@ -110,7 +109,7 @@ public class T2TDOCharStrings extends T2TDONumber {
     }
 
     /**
-     * Returns the charstring or <code>null</code>, if not found.
+     * Returns the charstring or {@code null}, if not found.
      * 
      * @param name The name of the charstring.
      * @return Returns the charstring.
@@ -123,44 +122,26 @@ public class T2TDOCharStrings extends T2TDONumber {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
-     */
-    @Override
+@Override
     public int getID() {
 
         return T2TopDICTOperator.TYPE_CHARSTRINGS;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#getInitPrio()
-     */
-    @Override
+@Override
     public int getInitPrio() {
 
         return -1;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "charstring";
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#init(org.extex.util.file.random.RandomAccessR,
-     *      org.extex.font.format.xtf.tables.OtfTableCFF, int,
+*      org.extex.font.format.xtf.tables.OtfTableCFF, int,
      *      org.extex.font.format.xtf.tables.cff.CffFont)
      */
     @Override
@@ -210,12 +191,7 @@ public class T2TDOCharStrings extends T2TDONumber {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2TDONumber#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    @Override
+@Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());

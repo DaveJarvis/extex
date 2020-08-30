@@ -23,17 +23,16 @@ package org.extex.ocpware.compiler.type;
  * This class represents a table of character values as two byte numbers.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public class Table {
 
     /**
-     * The field <tt>contents</tt> contains the contents of the table.
+     * The field {@code contents} contains the contents of the table.
      */
     private int[] contents;
 
     /**
-     * The field <tt>name</tt> contains the name of the table.
+     * The field {@code name} contains the name of the table.
      */
     private String name;
 
@@ -69,12 +68,7 @@ public class Table {
         return name;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder("  ");

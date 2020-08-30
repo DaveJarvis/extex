@@ -29,7 +29,7 @@ import org.extex.exbib.core.io.Locator;
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X built-in function <code>=</code>
+ * >e</span>X built-in function {@code =}
  * <p>
  * This function pops two arguments from the stack and compares them. If the
  * arguments are integers then it succeeds if the first argument is equal to the
@@ -41,9 +41,9 @@ import org.extex.exbib.core.io.Locator;
  * If the stack does not contain enough items or the arguments have incomparable
  * types then an error is raised.
  * </p>
- * <img src="doc-files/equals.png"/>
+ * <img src="doc-files/equals.png" alt="equals">
  * <p>
- * The following example is taken from <tt>alpha.bst</tt>:
+ * The following example is taken from {@code alpha.bst}:
  * </p>
  * 
  * <pre>
@@ -53,21 +53,20 @@ import org.extex.exbib.core.io.Locator;
  *   if$
  * </pre>
  * 
- * <hr />
+ * <hr>
  * 
  * <p>
  * <i> Pops the top two (integer) literals, compares them, and pushes the
  * integer 1 they're equal, 0 otherwise. </i>
  * </p>
  * 
- * The <code>built_in</code> function <code>=</code> pops the top two (integer
+ * The {@code built_in} function {@code =} pops the top two (integer
  * or string) literals, compares them, and pushes the integer 1 if they're
  * equal, 0 otherwise. If they're not either both string or both integer, it
  * complains and pushes the integer 0.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Eq extends AbstractCode {
 
     /**
@@ -88,10 +87,7 @@ public class Eq extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {

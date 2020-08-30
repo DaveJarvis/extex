@@ -33,23 +33,22 @@ import org.extex.scanner.type.Catcode;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * 
- * @version $Revision$
- */
+*/
 public class MagicInputFilter extends InputStream {
 
     /**
-     * The field <tt>context</tt> contains the interpreter context.
+     * The field {@code context} contains the interpreter context.
      */
     private Context context;
 
     /**
-     * The field <tt>start</tt> contains the indicator that no character has
+     * The field {@code start} contains the indicator that no character has
      * been read yet.
      */
     private boolean start = true;
 
     /**
-     * The field <tt>stream</tt> contains the input stream to read from.
+     * The field {@code stream} contains the input stream to read from.
      */
     private InputStream stream;
 
@@ -66,56 +65,31 @@ public class MagicInputFilter extends InputStream {
         this.stream = stream;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.InputStream#available()
-     */
-    @Override
+@Override
     public int available() throws IOException {
 
         return stream.available();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.InputStream#close()
-     */
-    @Override
+@Override
     public void close() throws IOException {
 
         stream.close();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.InputStream#mark(int)
-     */
-    @Override
+@Override
     public void mark(int readlimit) {
 
         stream.mark(readlimit);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.InputStream#markSupported()
-     */
-    @Override
+@Override
     public boolean markSupported() {
 
         return stream.markSupported();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.InputStream#read()
-     */
-    @Override
+@Override
     public int read() throws IOException {
 
         if (!start) {
@@ -140,45 +114,25 @@ public class MagicInputFilter extends InputStream {
         return stream.read();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.InputStream#read(byte[])
-     */
-    @Override
+@Override
     public int read(byte[] b) throws IOException {
 
         return stream.read(b);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.InputStream#read(byte[], int, int)
-     */
-    @Override
+@Override
     public int read(byte[] b, int off, int len) throws IOException {
 
         return stream.read(b, off, len);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.InputStream#reset()
-     */
-    @Override
+@Override
     public void reset() throws IOException {
 
         stream.reset();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.InputStream#skip(long)
-     */
-    @Override
+@Override
     public long skip(long n) throws IOException {
 
         return stream.skip(n);

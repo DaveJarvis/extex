@@ -35,38 +35,37 @@ import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 
 /**
- * This class provides an implementation for the primitive <code>\lastbox</code>.
+ * This class provides an implementation for the primitive {@code \lastbox}.
  * 
- * <doc name="lastbox">
- * <h3>The Primitive <tt>\lastbox</tt></h3>
+ * <p>The Primitive {@code \lastbox}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;lastbox&rang;
- *    &rarr; <tt>\lastbox</tt>  </pre>
+ *    &rarr; {@code \lastbox}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \lastbox  </pre>
  *  <pre class="TeXSample">
  *    \box1=\lastbox  </pre>
  * 
- * </doc>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Lastbox extends AbstractCode implements Boxable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -82,10 +81,7 @@ public class Lastbox extends AbstractCode implements Boxable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -103,10 +99,7 @@ public class Lastbox extends AbstractCode implements Boxable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.box.Boxable#getBox(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */

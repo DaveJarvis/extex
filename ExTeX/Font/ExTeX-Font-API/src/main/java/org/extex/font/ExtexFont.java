@@ -28,8 +28,7 @@ import org.extex.core.glue.FixedGlue;
  * Interface for the extex font.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public interface ExtexFont extends BaseFont {
 
     /**
@@ -123,7 +122,7 @@ public interface ExtexFont extends BaseFont {
     /**
      * Returns the ligature for two chars.
      * 
-     * If no ligature exists then <code>null</code> is returned.
+     * If no ligature exists then {@code null} is returned.
      * 
      * @param uc1 The Unicode char (first one).
      * @param uc2 The Unicode char (second one).
@@ -158,10 +157,10 @@ public interface ExtexFont extends BaseFont {
     FixedGlue getWidth(UnicodeChar uc);
 
     /**
-     * Returns <code>true</code>, if the glyph exists.
+     * Returns {@code true}, if the glyph exists.
      * 
      * @param uc the unicode char
-     * @return <code>true</code>, if the glyph exists.
+     * @return {@code true}, if the glyph exists.
      */
     boolean hasGlyph(UnicodeChar uc);
 }

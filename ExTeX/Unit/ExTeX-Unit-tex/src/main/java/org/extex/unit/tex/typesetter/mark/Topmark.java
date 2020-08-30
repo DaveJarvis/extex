@@ -25,12 +25,11 @@ import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 
 /**
- * This class provides an implementation for the primitive <code>\topmark</code>.
+ * This class provides an implementation for the primitive {@code \topmark}.
  * 
- * <doc name="topmark">
- * <h3>The Primitive <tt>\topmark</tt></h3>
+ * <p>The Primitive {@code \topmark}</p>
  * <p>
- * The primitive <tt>\topmark</tt> provides access to the topmost mark
+ * The primitive {@code \topmark} provides access to the topmost mark
  * encountered on the current page &ndash; when processing the page in the
  * output routine.
  * </p>
@@ -40,34 +39,34 @@ import org.extex.typesetter.Typesetter;
  * </p>
  * <p>
  * See the documentation of the primitive
- * {@link org.extex.unit.tex.typesetter.mark.Mark <tt>\mark</tt>} for further
+ * {@link org.extex.unit.tex.typesetter.mark.Mark {@code \mark}} for further
  * explanation of marks.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;topmark&rang;
- *      &rarr; <tt>\topmark</tt>  </pre>
+ *      &rarr; {@code \topmark}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \topmark  </pre>
  *  <pre class="TeXSample">
  *    \toks0=\topmark  </pre>
  * 
- * </doc>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Topmark extends Topmarks {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;

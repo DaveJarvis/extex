@@ -26,8 +26,7 @@ import org.junit.Test;
  * This is a test suite for \writeType.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class WriterTypeTest extends NoFlagsPrimitiveTester {
 
 
@@ -38,7 +37,7 @@ public class WriterTypeTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase><tt>\writeType</tt> checks for an existing configuration.</testcase>
+     * {@code \writeType} checks for an existing configuration.
      * 
      * @throws Exception in case of an error
      */
@@ -51,7 +50,7 @@ public class WriterTypeTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase><tt>\writeType</tt> needs a brace</testcase>
+     * {@code \writeType} needs a brace
      * 
      * @throws Exception in case of an error
      */
@@ -64,8 +63,8 @@ public class WriterTypeTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase><tt>\writeType</tt> is not applicable after the document
-     * writer has already shipped out a page.</testcase>
+     * {@code \writeType} is not applicable after the document
+     * writer has already shipped out a page.
      * 
      * @throws Exception in case of an error
      */
@@ -78,8 +77,8 @@ public class WriterTypeTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase><tt>\writeType</tt> is not applicable after the document
-     * writer has already shipped out a page.</testcase>
+     * {@code \writeType} is not applicable after the document
+     * writer has already shipped out a page.
      * 
      * @throws Exception in case of an error
      */
@@ -92,7 +91,7 @@ public class WriterTypeTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase><tt>\writeType</tt> is applicable to <tt>\showthe</tt>.</testcase>
+     * {@code \writeType} is applicable to {@code \showthe}.
      * 
      * @throws Exception in case of an error
      */
@@ -105,7 +104,7 @@ public class WriterTypeTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase><tt>\writeType</tt> is applicable to <tt>\showthe</tt>.</testcase>
+     * {@code \writeType} is applicable to {@code \showthe}.
      * 
      * @throws Exception in case of an error
      */

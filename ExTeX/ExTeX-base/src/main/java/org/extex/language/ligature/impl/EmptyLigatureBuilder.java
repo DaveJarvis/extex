@@ -31,12 +31,11 @@ import org.extex.typesetter.type.node.CharNode;
  * Nothing is inserted. This is just a noop.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4784 $
- */
+*/
 public class EmptyLigatureBuilder implements LigatureBuilder {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2005L;
 

@@ -60,15 +60,14 @@ import org.extex.typesetter.type.page.Page;
  * This is a implementation of a dvi document writer.
  * 
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
- * @version $Revision:4704 $
- */
+*/
 public class DviDocumentWriter
         implements
             DocumentWriter,
             SingleDocumentStream {
 
     /**
-     * Internal <code>NodeVisitor</code> of this class.
+     * Internal {@code NodeVisitor} of this class.
      * 
      */
     private final class DviVisitor
@@ -83,7 +82,7 @@ public class DviDocumentWriter
         private DviWriter dviWriter = null;
 
         /**
-         * Visitor for nested nodes. This is normally <code>this</code>. It
+         * Visitor for nested nodes. This is normally {@code this}. It
          * changes during debugging.
          * 
          */
@@ -126,7 +125,7 @@ public class DviDocumentWriter
         /**
          * Set the visitor for recursive inspection of Nodes (NodeLists).
          * 
-         * @param theVisitor the new <code>NodeVisitor</code>
+         * @param theVisitor the new {@code NodeVisitor}
          */
         public void setVisitor(NodeVisitor<Object, Object> theVisitor) {
 
@@ -138,7 +137,7 @@ public class DviDocumentWriter
         /**
          * Inspect Adjust for dvi file.
          * 
-         * @param node the <code>AdjustNode</code> value
+         * @param node the {@code AdjustNode} value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
@@ -155,7 +154,7 @@ public class DviDocumentWriter
         /**
          * Inspect AfterMathNode for dvi file.
          * 
-         * @param node the <code>AfterMathNode</code> value
+         * @param node the {@code AfterMathNode} value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
@@ -172,7 +171,7 @@ public class DviDocumentWriter
         /**
          * Inspect AlignedLeadersNode for dvi file.
          * 
-         * @param node the <code>AlignedLeadersNode</code> value
+         * @param node the {@code AlignedLeadersNode} value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
@@ -189,7 +188,7 @@ public class DviDocumentWriter
         /**
          * Inspect BeforeMathNode for dvi file.
          * 
-         * @param node the <code>BeforeMathNode</code> value
+         * @param node the {@code BeforeMathNode} value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
@@ -206,7 +205,7 @@ public class DviDocumentWriter
         /**
          * Inspect CenteredLeadersNode for dvi file.
          * 
-         * @param node the <code>CenteredLeadersNode</code> value
+         * @param node the {@code CenteredLeadersNode} value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
@@ -223,14 +222,11 @@ public class DviDocumentWriter
         /**
          * Write an CharNode to dvi file.
          * 
-         * @param node the <code>CharNode</code> value
+         * @param node the {@code CharNode} value
          * @param value ignored
          * @return null
          * 
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.type.NodeVisitor#visitChar(
-         *      org.extex.typesetter.type.node.CharNode, java.lang.Object)
+    *      org.extex.typesetter.type.node.CharNode, java.lang.Object)
          */
         public Object visitChar(CharNode node, Object value)
                 throws GeneralException {
@@ -250,7 +246,7 @@ public class DviDocumentWriter
         /**
          * Inspect DiscretionaryNode for dvi file.
          * 
-         * @param node the <code>DiscretionaryNode</code> value
+         * @param node the {@code DiscretionaryNode} value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
@@ -267,7 +263,7 @@ public class DviDocumentWriter
         /**
          * Inspect ExpandedLeadersNode for dvi file.
          * 
-         * @param node the <code>ExpandedLeadersNode</code> value
+         * @param node the {@code ExpandedLeadersNode} value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
@@ -284,7 +280,7 @@ public class DviDocumentWriter
         /**
          * Write an GlueNode to dvi file.
          * 
-         * @param node the <code>GlueNode</code> value
+         * @param node the {@code GlueNode} value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
@@ -302,7 +298,7 @@ public class DviDocumentWriter
         /**
          * Write horizontal list to dvi file.
          * 
-         * @param nodes the <code>VerticalListNode</code> value
+         * @param nodes the {@code VerticalListNode} value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
@@ -325,7 +321,7 @@ public class DviDocumentWriter
         /**
          * Inspect insertion for dvi file.
          * 
-         * @param node the <code>InsertionNode</code> value
+         * @param node the {@code InsertionNode} value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
@@ -341,7 +337,7 @@ public class DviDocumentWriter
         /**
          * Write an KernNode to dvi file.
          * 
-         * @param node the <code>KernNode</code> value
+         * @param node the {@code KernNode} value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
@@ -359,7 +355,7 @@ public class DviDocumentWriter
         /**
          * Write an LigatureNode to dvi file.
          * 
-         * @param node the <code>LigatureNode</code> value
+         * @param node the {@code LigatureNode} value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
@@ -377,7 +373,7 @@ public class DviDocumentWriter
         /**
          * Inspect mark for dvi file.
          * 
-         * @param node the <code>MarkNode</code> value
+         * @param node the {@code MarkNode} value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
@@ -393,7 +389,7 @@ public class DviDocumentWriter
         /**
          * Inspect PenaltyNode for dvi file.
          * 
-         * @param node the <code>PenaltyNode</code> value
+         * @param node the {@code PenaltyNode} value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
@@ -409,7 +405,7 @@ public class DviDocumentWriter
         /**
          * Write a RuleNode to dvi file.
          * 
-         * @param node the <code>RuleNode</code> value
+         * @param node the {@code RuleNode} value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
@@ -427,7 +423,7 @@ public class DviDocumentWriter
         /**
          * Write a SpaceNode to dvi file.
          * 
-         * @param node the <code>SpaceNode</code> value
+         * @param node the {@code SpaceNode} value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
@@ -445,7 +441,7 @@ public class DviDocumentWriter
         /**
          * Write a vertical list to dvi file.
          * 
-         * @param nodes the <code>VerticalListNode</code> value
+         * @param nodes the {@code VerticalListNode} value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
@@ -479,7 +475,7 @@ public class DviDocumentWriter
         /**
          * Write a WhatsItNode to dvi file.
          * 
-         * @param node the <code>WhatsItNode</code> value
+         * @param node the {@code WhatsItNode} value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
@@ -496,7 +492,7 @@ public class DviDocumentWriter
         /**
          * Write node list to dvi file.
          * 
-         * @param nodes <code>NodeList</code> for writing.
+         * @param nodes {@code NodeList} for writing.
          * @exception GeneralException if an error occurs
          */
         private void writeNodes(NodeList nodes) throws GeneralException {
@@ -537,7 +533,7 @@ public class DviDocumentWriter
      */
 
     /**
-     * The constant <code>DEBUG</code> turn debug on or off.
+     * The constant {@code DEBUG} turn debug on or off.
      * 
      */
     private final boolean DEBUG = false;
@@ -579,7 +575,7 @@ public class DviDocumentWriter
      * Creates a new instance.
      * 
      * @param theCfg configuration of ExTeX
-     * @param options options for <code>DviDocumentWriter</code>
+     * @param options options for {@code DviDocumentWriter}
      */
     public DviDocumentWriter(Configuration theCfg,
             DocumentWriterOptions options) {
@@ -625,7 +621,7 @@ public class DviDocumentWriter
      * somethings goes wrong {@link #shipout(Page) shipout(Page)} informs the
      * caller.
      * 
-     * @param writer an <code>OutputStream</code> value
+     * @param writer an {@code OutputStream} value
      */
     public void setOutputStream(OutputStream writer) {
 
@@ -641,8 +637,8 @@ public class DviDocumentWriter
      * Setter of an named parameter. This Documentwriter supports no parameters
      * yet.
      * 
-     * @param name a <code>String</code> value
-     * @param value a <code>String</code> value
+     * @param name a {@code String} value
+     * @param value a {@code String} value
      */
     public void setParameter(String name, String value) {
 
@@ -653,7 +649,7 @@ public class DviDocumentWriter
      * This is the entry point for the document writer. Exceptions of the
      * initialisation of the class will be thrown here.
      * 
-     * @param page the <code>Page</code> to send
+     * @param page the {@code Page} to send
      * @return number of pages
      * @exception GeneralException if an error occurs
      * @exception IOException if an error occurs

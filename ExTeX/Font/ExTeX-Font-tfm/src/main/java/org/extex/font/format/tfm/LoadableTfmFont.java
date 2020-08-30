@@ -50,6 +50,7 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
 import org.extex.util.file.random.RandomAccessInputStream;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -60,8 +61,7 @@ import java.util.logging.Logger;
  * Class to load tfm fonts.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class LoadableTfmFont
         implements
             LoadableFont,
@@ -117,10 +117,10 @@ public class LoadableTfmFont
     private boolean loadPsFontMap = false;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated with
+     * The field {@code localizer} contains the localizer. It is initiated with
      * a localizer for the name of this class.
      */
-    private Localizer localizer = LocalizerFactory
+    private final Localizer localizer = LocalizerFactory
         .getLocalizer(LoadableTfmFont.class);
 
     /**
@@ -169,10 +169,7 @@ public class LoadableTfmFont
     private Map<Integer, UnicodeChar> codepointmapreverse = null;
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.CharNodeBuilder#buildCharNode(org.extex.core.UnicodeChar,
-     *      org.extex.typesetter.tc.TypesettingContext,
+*      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.typesetter.type.node.factory.NodeFactory,
      *      org.extex.typesetter.tc.TypesettingContextFactory)
      */
@@ -330,7 +327,7 @@ public class LoadableTfmFont
                 ByteArrayOutputStream out = new ByteArrayOutputStream();
                 BufferedWriter writer =
                         new BufferedWriter(new OutputStreamWriter(out,
-                            "US-ASCII"));
+                                                                  StandardCharsets.US_ASCII ));
                 writer.write("StartFontMetrics 2.0\n");
                 writer.write("FontName " + actualFontKey.getName() + "\n");
                 writer.write("FullName " + actualFontKey.getName() + "\n");
@@ -362,46 +359,26 @@ public class LoadableTfmFont
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
-     */
-    @Override
+@Override
     public void enableLogging(Logger logger) {
 
         this.logger = logger;
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BaseFont#getActualFontKey()
-     */
-    @Override
+@Override
     public FontKey getActualFontKey() {
 
         return actualFontKey;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getActualSize()
-     */
-    @Override
+@Override
     public FixedDimen getActualSize() {
 
         return actualFontKey.getDimen(FontKey.SIZE);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getAfm()
-     */
-    public byte[] getAfm() {
+public byte[] getAfm() {
 
         checkType1();
         return afmdata;
@@ -418,12 +395,7 @@ public class LoadableTfmFont
         return reader.getChecksum();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getDepth(org.extex.core.UnicodeChar)
-     */
-    @Override
+@Override
     public FixedGlue getDepth(UnicodeChar uc) {
 
         int cp = charPos(uc);
@@ -434,44 +406,24 @@ public class LoadableTfmFont
         return FixedGlue.ZERO;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getDesignSize()
-     */
-    @Override
+@Override
     public FixedDimen getDesignSize() {
 
         return reader.getDesignSize();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getEm()
-     */
-    @Override
+@Override
     public FixedDimen getEm() {
 
         return getFontDimen("QUAD");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getEncodingForChar(int)
-     */
-    public int getEncodingForChar(int codepoint) {
+public int getEncodingForChar(int codepoint) {
 
         return -1;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getEncodingVectors()
-     */
-    public List<String[]> getEncodingVectors() {
+public List<String[]> getEncodingVectors() {
 
         checkType1();
         checkXtf();
@@ -483,23 +435,13 @@ public class LoadableTfmFont
         return l;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getEx()
-     */
-    @Override
+@Override
     public FixedDimen getEx() {
 
         return getFontDimen("XHEIGHT");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getFontDimen(java.lang.String)
-     */
-    @Override
+@Override
     public FixedDimen getFontDimen(String name) {
 
         TfmFixWord param = reader.getParamAsFixWord(name);
@@ -508,34 +450,19 @@ public class LoadableTfmFont
             ((getActualSize().getValue() * param.getValue()) >> 20));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BaseFont#getFontKey()
-     */
-    @Override
+@Override
     public FontKey getFontKey() {
 
         return fontKey;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getFontName()
-     */
-    @Override
+@Override
     public String getFontName() {
 
         return reader.getFontname();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getHeight(org.extex.core.UnicodeChar)
-     */
-    @Override
+@Override
     public FixedGlue getHeight(UnicodeChar uc) {
 
         int cp = charPos(uc);
@@ -546,12 +473,7 @@ public class LoadableTfmFont
         return FixedGlue.ZERO;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getItalicCorrection(org.extex.core.UnicodeChar)
-     */
-    @Override
+@Override
     public FixedDimen getItalicCorrection(UnicodeChar uc) {
 
         int cp = charPos(uc);
@@ -563,10 +485,7 @@ public class LoadableTfmFont
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getKerning(org.extex.core.UnicodeChar,
-     *      org.extex.core.UnicodeChar)
+*      org.extex.core.UnicodeChar)
      */
     @Override
     public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
@@ -581,10 +500,7 @@ public class LoadableTfmFont
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getLigature(org.extex.core.UnicodeChar,
-     *      org.extex.core.UnicodeChar)
+*      org.extex.core.UnicodeChar)
      */
     @Override
     public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
@@ -602,23 +518,13 @@ public class LoadableTfmFont
         return UnicodeChar.get(Unicode.OFFSET + pos);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return fontKey.getName();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getPfa()
-     */
-    @Override
+@Override
     public byte[] getPfa() {
 
         checkType1();
@@ -640,24 +546,14 @@ public class LoadableTfmFont
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getPfb()
-     */
-    @Override
+@Override
     public byte[] getPfb() {
 
         checkType1();
         return pfbdata;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getScaleFactor()
-     */
-    @Override
+@Override
     public FixedCount getScaleFactor() {
 
         FixedCount actualscale = actualFontKey.getCount(FontKey.SCALE);
@@ -668,12 +564,7 @@ public class LoadableTfmFont
         return actualscale;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getSpace()
-     */
-    @Override
+@Override
     public FixedGlue getSpace() {
 
         return new Glue(getFontDimen("SPACE"), getFontDimen("STRETCH"),
@@ -681,7 +572,7 @@ public class LoadableTfmFont
     }
 
     /**
-     * Returns the Unicode char for the position or <code>null</code>, if not
+     * Returns the Unicode char for the position or {@code null}, if not
      * found.
      * 
      * @param pos The position.
@@ -703,12 +594,7 @@ public class LoadableTfmFont
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getWidth(org.extex.core.UnicodeChar)
-     */
-    @Override
+@Override
     public FixedGlue getWidth(UnicodeChar uc) {
 
         int cp = charPos(uc);
@@ -720,77 +606,41 @@ public class LoadableTfmFont
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getXtf()
-     */
-    @Override
+@Override
     public byte[] getXtf() {
 
         checkXtf();
         return xtfdata;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#hasEncodingVector()
-     */
-    public boolean hasEncodingVector() {
+public boolean hasEncodingVector() {
 
         checkType1();
         checkXtf();
-        if (fontEncvec != null) {
-            return true;
-        }
-        return false;
-    }
+  return fontEncvec != null;
+}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tc.font.Font#hasGlyph(org.extex.core.UnicodeChar)
-     */
-    @Override
+@Override
     public boolean hasGlyph(UnicodeChar uc) {
 
         int cp = charPos(uc);
         TfmFixWord w = reader.getWidth(cp);
-        if (w == null || w.getValue() == 0) {
-            return false;
-        }
-        return true;
-    }
+    return w != null && w.getValue() != 0;
+}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#hasMultiFonts()
-     */
-    public boolean hasMultiFonts() {
+public boolean hasMultiFonts() {
 
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#isType1()
-     */
-    @Override
+@Override
     public boolean isType1() {
 
         checkType1();
         return type1;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#isXtf()
-     */
-    @Override
+@Override
     public boolean isXtf() {
 
         checkXtf();
@@ -798,10 +648,7 @@ public class LoadableTfmFont
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.LoadableFont#loadFont(java.io.InputStream,
-     *      org.extex.font.CoreFontFactory, org.extex.font.FontKey)
+*      org.extex.font.CoreFontFactory, org.extex.font.FontKey)
      */
     @Override
     public void loadFont(InputStream in, CoreFontFactory factory, FontKey key)
@@ -924,24 +771,14 @@ public class LoadableTfmFont
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
-     */
-    @Override
+@Override
     public void setResourceFinder(ResourceFinder finder) {
 
         this.finder = finder;
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#usedCharacter(org.extex.font.BackendCharacter)
-     */
-    public void usedCharacter(BackendCharacter bc) {
+public void usedCharacter(BackendCharacter bc) {
 
         // ignored
 

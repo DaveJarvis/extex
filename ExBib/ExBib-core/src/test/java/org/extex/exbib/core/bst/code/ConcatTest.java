@@ -35,20 +35,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>concat$</tt>.
+ * Test suite for {@code concat$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ConcatTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
     /**
-     * Apply <tt>concat$</tt> on two strings and check the result.
+     * Apply {@code concat$} on two strings and check the result.
      * 
      * @param s1 the first string to concatenate
      * @param s2 the second string to concatenate
@@ -86,7 +85,7 @@ public class ConcatTest {
     }
 
     /**
-     * <testcase> An short stack leads to an error. </testcase>
+     *  An short stack leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -98,7 +97,7 @@ public class ConcatTest {
     }
 
     /**
-     * <testcase> "ab" + "cd" = "abcd" </testcase>
+     *  "ab" + "cd" = "abcd"
      * 
      * @throws Exception in case of an error
      */
@@ -109,7 +108,7 @@ public class ConcatTest {
     }
 
     /**
-     * <testcase> "" + "" = "" </testcase>
+     *  "" + "" = ""
      * 
      * @throws Exception in case of an error
      */
@@ -120,7 +119,7 @@ public class ConcatTest {
     }
 
     /**
-     * <testcase> "" + "abc" = "abc" </testcase>
+     *  "" + "abc" = "abc"
      * 
      * @throws Exception in case of an error
      */
@@ -131,7 +130,7 @@ public class ConcatTest {
     }
 
     /**
-     * <testcase> "abc" + "" = "abc" </testcase>
+     *  "abc" + "" = "abc"
      * 
      * @throws Exception in case of an error
      */
@@ -142,7 +141,7 @@ public class ConcatTest {
     }
 
     /**
-     * <testcase> An empty stack leads to an error. </testcase>
+     *  An empty stack leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -153,7 +152,7 @@ public class ConcatTest {
     }
 
     /**
-     * <testcase> The first argument needs to be a string. </testcase>
+     *  The first argument needs to be a string.
      * 
      * @throws Exception in case of an error
      */
@@ -165,7 +164,7 @@ public class ConcatTest {
     }
 
     /**
-     * <testcase> The second argument needs to be a string. </testcase>
+     *  The second argument needs to be a string.
      * 
      * @throws Exception in case of an error
      */

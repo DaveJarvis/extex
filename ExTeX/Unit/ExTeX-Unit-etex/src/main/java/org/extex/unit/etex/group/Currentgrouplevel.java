@@ -33,42 +33,41 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\currentgrouplevel</code>.
+ * {@code \currentgrouplevel}.
  * 
- * <doc name="currentgrouplevel">
- * <h3>The Primitive <tt>\currentgrouplevel</tt></h3>
+ * <p>The Primitive {@code \currentgrouplevel}</p>
  * <p>
- * The primitive <tt>\currentgrouplevel</tt> provides reading access to an
+ * The primitive {@code \currentgrouplevel} provides reading access to an
  * internal integer value containing the number of groups currently open.
  * Outside of any group 0 is returned. For each opened group the value is
  * incremented by 1.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;currentgrouplevel&rang;
- *      &rarr; <tt>\currentgrouplevel</tt>  </pre>
+ *      &rarr; {@code \currentgrouplevel}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \the\currentgrouplevel  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
- * @version $Revision:4435 $
- */
+*/
 public class Currentgrouplevel extends AbstractCode
         implements
             CountConvertible,
             Theable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the id for serialization.
+     * The field {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -83,10 +82,7 @@ public class Currentgrouplevel extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -96,10 +92,7 @@ public class Currentgrouplevel extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

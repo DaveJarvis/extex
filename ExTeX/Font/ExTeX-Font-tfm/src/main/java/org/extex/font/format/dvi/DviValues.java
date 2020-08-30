@@ -23,25 +23,25 @@ package org.extex.font.format.dvi;
  * Values for dvi.
  * 
  * <p>
- * The values of <code>h</code>, <code>v</code>, <code>w</code>, <code>x</code>,
- * <code>y</code>, and <code>z</code> are signed integers having up to 32 bits,
+ * The values of {@code h}, {@code v}, {@code w}, {@code x},
+ * {@code y}, and {@code z} are signed integers having up to 32 bits,
  * including the sign.
  * </p>
  * 
  * <p>
  * Since they represent physical distances, there is a small unit of measurement
- * such that increasing <code>h</code> by 1 means moving a certain tiny distance
+ * such that increasing {@code h} by 1 means moving a certain tiny distance
  * to the right. The actual unit of measurement is variable.
  * </p>
  * 
  * <p>
- * The current font <code>f</code> is an integer; this value is changed only by
- * <code>fnt</code> and <code>fnt_num</code> commands.
- * <p>
+ * The current font {@code f} is an integer; this value is changed only by
+ * {@code fnt} and {@code fnt_num} commands.
+ * </p>
  * 
  * <p>
  * The current position on the page is given by two numbers called the
- * horizontal and vertical coordinates, <code>h</code> and <code>v</code>.
+ * horizontal and vertical coordinates, {@code h} and {@code v}.
  * </p>
  * 
  * <p>
@@ -49,26 +49,25 @@ package org.extex.font.format.dvi;
  * right corresponds to increasing the horizontal coordinate, and moving down
  * corresponds to increasing the vertical coordinate. Thus, the coordinates are
  * essentially Cartesian, except that vertical directions are flipped; the
- * Cartesian version of <code>(h,v)</code> would be <code>(h,-v)</code>.
+ * Cartesian version of {@code (h,v)} would be {@code (h,-v)}.
  * </p>
  * 
  * <p>
- * The current spacing amounts are given by four numbers <code>w</code>,
- * <code>x</code>, <code>y</code>, and <code>z</code>, where <code>w</code> and
- * <code>x</code> are used for horizontal spacing and where <code>y</code> and
- * <code>z</code> are used for vertical spacing.
+ * The current spacing amounts are given by four numbers {@code w},
+ * {@code x}, {@code y}, and {@code z}, where {@code w} and
+ * {@code x} are used for horizontal spacing and where {@code y} and
+ * {@code z} are used for vertical spacing.
  * </p>
  * 
  * <p>
- * There is a stack containing <code>(h,v,w,x,y,z)</code> values; the DVI
- * commands <code>push</code> and <code>pop</code> are used to change the
- * current level of operation. Note that the current font <code>f</code> is not
+ * There is a stack containing {@code (h,v,w,x,y,z)} values; the DVI
+ * commands {@code push} and {@code pop} are used to change the
+ * current level of operation. Note that the current font {@code f} is not
  * pushed and popped; the stack contains only information about positioning.
  * <p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class DviValues {
 
@@ -232,14 +231,11 @@ public class DviValues {
     /**
      * Check, if the values (h,v,w,x,z,z) all zero.
      * 
-     * @return Returns <code>true</code>, if all values are zero.
+     * @return Returns {@code true}, if all values are zero.
      */
     public boolean isClear() {
 
-        if (h == 0 && v == 0 && w == 0 && x == 0 && y == 0 && z == 0) {
-            return true;
-        }
-        return false;
+        return h == 0 && v == 0 && w == 0 && x == 0 && y == 0 && z == 0;
     }
 
     /**
@@ -313,12 +309,7 @@ public class DviValues {
         z = az;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder buf = new StringBuilder();

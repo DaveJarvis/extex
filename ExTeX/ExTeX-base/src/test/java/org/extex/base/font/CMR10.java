@@ -38,8 +38,7 @@ import org.extex.typesetter.tc.font.Font;
  * This class encapsulates cmr10.tfm for testing purposes.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4784 $
- */
+*/
 public class CMR10 implements Font, Serializable {
 
     /**
@@ -48,43 +47,43 @@ public class CMR10 implements Font, Serializable {
     private static class Glyph {
 
         /**
-         * The field <tt>code</tt> contains the character code.
+         * The field {@code code} contains the character code.
          */
         private UnicodeChar code;
 
         /**
-         * The field <tt>wd</tt> contains the width.
+         * The field {@code wd} contains the width.
          */
         private FixedGlue wd;
 
         /**
-         * The field <tt>ht</tt> contains the height.
+         * The field {@code ht} contains the height.
          */
         private FixedGlue ht;
 
         /**
-         * The field <tt>dp</tt> contains the depth.
+         * The field {@code dp} contains the depth.
          */
         private FixedGlue dp;
 
         /**
-         * The field <tt>ic</tt> contains the italic correction.
+         * The field {@code ic} contains the italic correction.
          */
         private FixedDimen ic = Dimen.ZERO_PT;
 
         /**
-         * The field <tt>ef</tt> contains the ef code.
+         * The field {@code ef} contains the ef code.
          */
         private long ef = 0;
 
         /**
-         * The field <tt>ligatures</tt> contains the ligatures.
+         * The field {@code ligatures} contains the ligatures.
          */
         private Map<UnicodeChar, UnicodeChar> ligatures =
                 new HashMap<UnicodeChar, UnicodeChar>();
 
         /**
-         * The field <tt>kernings</tt> contains the kernings.
+         * The field {@code kernings} contains the kernings.
          */
         private Map<UnicodeChar, FixedDimen> kernings =
                 new HashMap<UnicodeChar, FixedDimen>();
@@ -130,33 +129,33 @@ public class CMR10 implements Font, Serializable {
 
     /**
      * 
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2011L;
 
     /**
-     * The field <tt>C_1000000</tt> contains the ...
+     * The field {@code C_1000000} contains the ...
      */
     private static final long C_1000000 = 1000000;
 
     /**
-     * The field <tt>FAMILY</tt> contains the ...
+     * The field {@code FAMILY} contains the ...
      */
     private static final String FAMILY = "CMR";
 
     /**
-     * The field <tt>FACE</tt> contains the ...
+     * The field {@code FACE} contains the ...
      */
     // private static final int FACE = 0352;
 
     /**
-     * The field <tt>CODINGSCHEME</tt> contains the ...
+     * The field {@code CODINGSCHEME} contains the ...
      */
     // private static final String CODINGSCHEME = "TEX TEXT";
 
     /**
-     * The field <tt>DESIGNSIZE</tt> contains the ...
+     * The field {@code DESIGNSIZE} contains the ...
      * 
      * (COMMENT DESIGNSIZE IS IN POINTS) (COMMENT OTHER SIZES ARE MULTIPLES OF
      * DESIGNSIZE)
@@ -164,379 +163,379 @@ public class CMR10 implements Font, Serializable {
     private static final Dimen DESIGNSIZE = new Dimen(10 * Dimen.ONE);
 
     /**
-     * The field <tt>GLUE_1000003</tt> contains the ...
+     * The field {@code GLUE_1000003} contains the ...
      */
     private static final Glue GLUE_1000003 = new Glue(DESIGNSIZE.getValue()
             * 1000003 / C_1000000);
 
     /**
-     * The field <tt>DIMEN_27779</tt> contains the ...
+     * The field {@code DIMEN_27779} contains the ...
      */
     private static final Dimen DIMEN_27779 = new Dimen(DESIGNSIZE.getValue()
             * 27779 / C_1000000);
 
     /**
-     * The field <tt>GLUE_61508</tt> contains the ...
+     * The field {@code GLUE_61508} contains the ...
      */
     private static final Glue GLUE_61508 = new Glue(DESIGNSIZE.getValue()
             * 61508 / C_1000000);
 
     /**
-     * The field <tt>GLUE_394445</tt> contains the ...
+     * The field {@code GLUE_394445} contains the ...
      */
     private static final Glue GLUE_394445 = new Glue(DESIGNSIZE.getValue()
             * 394445 / C_1000000);
 
     /**
-     * The field <tt>GLUE_391668</tt> contains the ...
+     * The field {@code GLUE_391668} contains the ...
      */
     private static final Glue GLUE_391668 = new Glue(DESIGNSIZE.getValue()
             * 391668 / C_1000000);
 
     /**
-     * The field <tt>GLUE_527781</tt> contains the ...
+     * The field {@code GLUE_527781} contains the ...
      */
     private static final Glue GLUE_527781 = new Glue(DESIGNSIZE.getValue()
             * 527781 / C_1000000);
 
     /**
-     * The field <tt>GLUE_667859</tt> contains the ...
+     * The field {@code GLUE_667859} contains the ...
      */
     private static final Glue GLUE_667859 = new Glue(DESIGNSIZE.getValue()
             * 667859 / C_1000000);
 
     /**
-     * The field <tt>GLUE_611113</tt> contains the ...
+     * The field {@code GLUE_611113} contains the ...
      */
     private static final Glue GLUE_611113 = new Glue(DESIGNSIZE.getValue()
             * 611113 / C_1000000);
 
     /**
-     * The field <tt>DIMEN_250000</tt> contains the ...
+     * The field {@code DIMEN_250000} contains the ...
      */
     private static final Dimen DIMEN_250000 = new Dimen(DESIGNSIZE.getValue()
             * 250000 / C_1000000);
 
     /**
-     * The field <tt>GLUE_1027781</tt> contains the ...
+     * The field {@code GLUE_1027781} contains the ...
      */
     private static final Glue GLUE_1027781 = new Glue(DESIGNSIZE.getValue()
             * 1027781 / C_1000000);
 
     /**
-     * The field <tt>DIMEN_13888</tt> contains the ...
+     * The field {@code DIMEN_13888} contains the ...
      */
     private static final Dimen DIMEN_13888 = new Dimen(DESIGNSIZE.getValue()
             * 13888 / C_1000000);
 
     /**
-     * The field <tt>GLUE_736113</tt> contains the ...
+     * The field {@code GLUE_736113} contains the ...
      */
     private static final Glue GLUE_736113 = new Glue(DESIGNSIZE.getValue()
             * 736113 / C_1000000);
 
     /**
-     * The field <tt>GLUE_916669</tt> contains the ...
+     * The field {@code GLUE_916669} contains the ...
      */
     private static final Glue GLUE_916669 = new Glue(DESIGNSIZE.getValue()
             * 916669 / C_1000000);
 
     /**
-     * The field <tt>GLUE_51389</tt> contains the ...
+     * The field {@code GLUE_51389} contains the ...
      */
     private static final Glue GLUE_51389 = new Glue(DESIGNSIZE.getValue()
             * 51389 / C_1000000);
 
     /**
-     * The field <tt>GLUE_361112</tt> contains the ...
+     * The field {@code GLUE_361112} contains the ...
      */
     private static final Glue GLUE_361112 = new Glue(DESIGNSIZE.getValue()
             * 361112 / C_1000000);
 
     /**
-     * The field <tt>GLUE_784724</tt> contains the ...
+     * The field {@code GLUE_784724} contains the ...
      */
     private static final Glue GLUE_784724 = new Glue(DESIGNSIZE.getValue()
             * 784724 / C_1000000);
 
     /**
-     * The field <tt>GLUE_652781</tt> contains the ...
+     * The field {@code GLUE_652781} contains the ...
      */
     private static final Glue GLUE_652781 = new Glue(DESIGNSIZE.getValue()
             * 652781 / C_1000000);
 
     /**
-     * The field <tt>GLUE_680557</tt> contains the ...
+     * The field {@code GLUE_680557} contains the ...
      */
     private static final Glue GLUE_680557 = new Glue(DESIGNSIZE.getValue()
             * 680557 / C_1000000);
 
     /**
-     * The field <tt>GLUE_763891</tt> contains the ...
+     * The field {@code GLUE_763891} contains the ...
      */
     private static final Glue GLUE_763891 = new Glue(DESIGNSIZE.getValue()
             * 763891 / C_1000000);
 
     /**
-     * The field <tt>GLUE_708336</tt> contains the ...
+     * The field {@code GLUE_708336} contains the ...
      */
     private static final Glue GLUE_708336 = new Glue(DESIGNSIZE.getValue()
             * 708336 / C_1000000);
 
     /**
-     * The field <tt>GLUE__133125</tt> contains the ...
+     * The field {@code GLUE__133125} contains the ...
      */
     private static final Glue GLUE__133125 = new Glue(DESIGNSIZE.getValue()
             * -133125 / C_1000000);
 
     /**
-     * The field <tt>GLUE_366875</tt> contains the ...
+     * The field {@code GLUE_366875} contains the ...
      */
     private static final Glue GLUE_366875 = new Glue(DESIGNSIZE.getValue()
             * 366875 / C_1000000);
 
     /**
-     * The field <tt>GLUE_472224</tt> contains the ...
+     * The field {@code GLUE_472224} contains the ...
      */
     private static final Glue GLUE_472224 = new Glue(DESIGNSIZE.getValue()
             * 472224 / C_1000000);
 
     /**
-     * The field <tt>GLUE_500000</tt> contains the ...
+     * The field {@code GLUE_500000} contains the ...
      */
     private static final Glue GLUE_500000 = new Glue(DESIGNSIZE.getValue()
             * 500000 / C_1000000);
 
     /**
-     * The field <tt>GLUE_644444</tt> contains the ...
+     * The field {@code GLUE_644444} contains the ...
      */
     private static final Glue GLUE_644444 = new Glue(DESIGNSIZE.getValue()
             * 644444 / C_1000000);
 
     /**
-     * The field <tt>GLUE_333334</tt> contains the ...
+     * The field {@code GLUE_333334} contains the ...
      */
     private static final Glue GLUE_333334 = new Glue(DESIGNSIZE.getValue()
             * 333334 / C_1000000);
 
     /**
-     * The field <tt>GLUE_105556</tt> contains the ...
+     * The field {@code GLUE_105556} contains the ...
      */
     private static final Glue GLUE_105556 = new Glue(DESIGNSIZE.getValue()
             * 105556 / C_1000000);
 
     /**
-     * The field <tt>GLUE_83334</tt> contains the ...
+     * The field {@code GLUE_83334} contains the ...
      */
     private static final Glue GLUE_83334 = new Glue(DESIGNSIZE.getValue()
             * 83334 / C_1000000);
 
     /**
-     * The field <tt>GLUE_583334</tt> contains the ...
+     * The field {@code GLUE_583334} contains the ...
      */
     private static final Glue GLUE_583334 = new Glue(DESIGNSIZE.getValue()
             * 583334 / C_1000000);
 
     /**
-     * The field <tt>GLUE_250000</tt> contains the ...
+     * The field {@code GLUE_250000} contains the ...
      */
     private static final Glue GLUE_250000 = new Glue(DESIGNSIZE.getValue()
             * 250000 / C_1000000);
 
     /**
-     * The field <tt>GLUE_38889</tt> contains the ...
+     * The field {@code GLUE_38889} contains the ...
      */
     private static final Glue GLUE_38889 = new Glue(DESIGNSIZE.getValue()
             * 38889 / C_1000000);
 
     /**
-     * The field <tt>GLUE_55555</tt> contains the ...
+     * The field {@code GLUE_55555} contains the ...
      */
     private static final Glue GLUE_55555 = new Glue(DESIGNSIZE.getValue()
             * 55555 / C_1000000);
 
     /**
-     * The field <tt>GLUE_750000</tt> contains the ...
+     * The field {@code GLUE_750000} contains the ...
      */
     private static final Glue GLUE_750000 = new Glue(DESIGNSIZE.getValue()
             * 750000 / C_1000000);
 
     /**
-     * The field <tt>GLUE_194443</tt> contains the ...
+     * The field {@code GLUE_194443} contains the ...
      */
     private static final Glue GLUE_194443 = new Glue(DESIGNSIZE.getValue()
             * 194443 / C_1000000);
 
     /**
-     * The field <tt>GLUE_48612</tt> contains the ...
+     * The field {@code GLUE_48612} contains the ...
      */
     private static final Glue GLUE_48612 = new Glue(DESIGNSIZE.getValue()
             * 48612 / C_1000000);
 
     /**
-     * The field <tt>GLUE_731944</tt> contains the ...
+     * The field {@code GLUE_731944} contains the ...
      */
     private static final Glue GLUE_731944 = new Glue(DESIGNSIZE.getValue()
             * 731944 / C_1000000);
 
     /**
-     * The field <tt>GLUE_1013891</tt> contains the ...
+     * The field {@code GLUE_1013891} contains the ...
      */
     private static final Glue GLUE_1013891 = new Glue(DESIGNSIZE.getValue()
             * 1013891 / C_1000000);
 
     /**
-     * The field <tt>GLUE_902781</tt> contains the ...
+     * The field {@code GLUE_902781} contains the ...
      */
     private static final Glue GLUE_902781 = new Glue(DESIGNSIZE.getValue()
             * 902781 / C_1000000);
 
     /**
-     * The field <tt>GLUE_97223</tt> contains the ...
+     * The field {@code GLUE_97223} contains the ...
      */
     private static final Glue GLUE_97223 = new Glue(DESIGNSIZE.getValue()
             * 97223 / C_1000000);
 
     /**
-     * The field <tt>GLUE_527779</tt> contains the ...
+     * The field {@code GLUE_527779} contains the ...
      */
     private static final Glue GLUE_527779 = new Glue(DESIGNSIZE.getValue()
             * 527779 / C_1000000);
 
     /**
-     * The field <tt>GLUE_500003</tt> contains the ...
+     * The field {@code GLUE_500003} contains the ...
      */
     private static final Glue GLUE_500003 = new Glue(DESIGNSIZE.getValue()
             * 500003 / C_1000000);
 
     /**
-     * The field <tt>GLUE_170138</tt> contains the ...
+     * The field {@code GLUE_170138} contains the ...
      */
     private static final Glue GLUE_170138 = new Glue(DESIGNSIZE.getValue()
             * 170138 / C_1000000);
 
     /**
-     * The field <tt>GLUE_444446</tt> contains the ...
+     * The field {@code GLUE_444446} contains the ...
      */
     private static final Glue GLUE_444446 = new Glue(DESIGNSIZE.getValue()
             * 444446 / C_1000000);
 
     /**
-     * The field <tt>GLUE_567777</tt> contains the ...
+     * The field {@code GLUE_567777} contains the ...
      */
     private static final Glue GLUE_567777 = new Glue(DESIGNSIZE.getValue()
             * 567777 / C_1000000);
 
     /**
-     * The field <tt>GLUE_628473</tt> contains the ...
+     * The field {@code GLUE_628473} contains the ...
      */
     private static final Glue GLUE_628473 = new Glue(DESIGNSIZE.getValue()
             * 628473 / C_1000000);
 
     /**
-     * The field <tt>GLUE_500002</tt> contains the ...
+     * The field {@code GLUE_500002} contains the ...
      */
     private static final Glue GLUE_500002 = new Glue(DESIGNSIZE.getValue()
             * 500002 / C_1000000);
 
     /**
-     * The field <tt>GLUE_194445</tt> contains the ...
+     * The field {@code GLUE_194445} contains the ...
      */
     private static final Glue GLUE_194445 = new Glue(DESIGNSIZE.getValue()
             * 194445 / C_1000000);
 
     /**
-     * The field <tt>GLUE_305557</tt> contains the ...
+     * The field {@code GLUE_305557} contains the ...
      */
     private static final Glue GLUE_305557 = new Glue(DESIGNSIZE.getValue()
             * 305557 / C_1000000);
 
     /**
-     * The field <tt>GLUE_430555</tt> contains the ...
+     * The field {@code GLUE_430555} contains the ...
      */
     private static final Glue GLUE_430555 = new Glue(DESIGNSIZE.getValue()
             * 430555 / C_1000000);
 
     /**
-     * The field <tt>GLUE_277779</tt> contains the ...
+     * The field {@code GLUE_277779} contains the ...
      */
     private static final Glue GLUE_277779 = new Glue(DESIGNSIZE.getValue()
             * 277779 / C_1000000);
 
     /**
-     * The field <tt>GLUE_555557</tt> contains the ...
+     * The field {@code GLUE_555557} contains the ...
      */
     private static final Glue GLUE_555557 = new Glue(DESIGNSIZE.getValue()
             * 555557 / C_1000000);
 
     /**
-     * The field <tt>DIMEN_77779</tt> contains the ...
+     * The field {@code DIMEN_77779} contains the ...
      */
     private static final Dimen DIMEN_77779 = new Dimen(DESIGNSIZE.getValue()
             * 77779 / C_1000000);
 
     /**
-     * The field <tt>GLUE_694445</tt> contains the ...
+     * The field {@code GLUE_694445} contains the ...
      */
     private static final Glue GLUE_694445 = new Glue(DESIGNSIZE.getValue()
             * 694445 / C_1000000);
 
     /**
-     * The field <tt>GLUE_583336</tt> contains the ...
+     * The field {@code GLUE_583336} contains the ...
      */
     private static final Glue GLUE_583336 = new Glue(DESIGNSIZE.getValue()
             * 583336 / C_1000000);
 
     /**
-     * The field <tt>GLUE_722224</tt> contains the ...
+     * The field {@code GLUE_722224} contains the ...
      */
     private static final Glue GLUE_722224 = new Glue(DESIGNSIZE.getValue()
             * 722224 / C_1000000);
 
     /**
-     * The field <tt>GLUE_750002</tt> contains the ...
+     * The field {@code GLUE_750002} contains the ...
      */
     private static final Glue GLUE_750002 = new Glue(DESIGNSIZE.getValue()
             * 750002 / C_1000000);
 
     /**
-     * The field <tt>GLUE_666669</tt> contains the ...
+     * The field {@code GLUE_666669} contains the ...
      */
     private static final Glue GLUE_666669 = new Glue(DESIGNSIZE.getValue()
             * 666669 / C_1000000);
 
     /**
-     * The field <tt>GLUE_694446</tt> contains the ...
+     * The field {@code GLUE_694446} contains the ...
      */
     private static final Glue GLUE_694446 = new Glue(DESIGNSIZE.getValue()
             * 694446 / C_1000000);
 
     /**
-     * The field <tt>GLUE_777781</tt> contains the ...
+     * The field {@code GLUE_777781} contains the ...
      */
     private static final Glue GLUE_777781 = new Glue(DESIGNSIZE.getValue()
             * 777781 / C_1000000);
 
     /**
-     * The field <tt>GLUE_833336</tt> contains the ...
+     * The field {@code GLUE_833336} contains the ...
      */
     private static final Glue GLUE_833336 = new Glue(DESIGNSIZE.getValue()
             * 833336 / C_1000000);
 
     /**
-     * The field <tt>GLUE_683332</tt> contains the ...
+     * The field {@code GLUE_683332} contains the ...
      */
     private static final Glue GLUE_683332 = new Glue(DESIGNSIZE.getValue()
             * 683332 / C_1000000);
 
     /**
-     * The field <tt>GLUE_625002</tt> contains the ...
+     * The field {@code GLUE_625002} contains the ...
      */
     private static final Glue GLUE_625002 = new Glue(DESIGNSIZE.getValue()
             * 625002 / C_1000000);
 
     /**
-     * The field <tt>CHECKSUM</tt> contains the ...
+     * The field {@code CHECKSUM} contains the ...
      */
     private static final int CHECKSUM = 011374260171;
 
@@ -559,7 +558,7 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * The field <tt>fontdimen</tt> contains the ...
+     * The field {@code fontdimen} contains the ...
      */
     private FixedDimen[] fontdimen = {Dimen.ZERO, // SLANT
             new Dimen(DESIGNSIZE.getValue() * 333334 / C_1000000), // SPACE
@@ -571,49 +570,49 @@ public class CMR10 implements Font, Serializable {
             };
 
     /**
-     * The field <tt>SLANT</tt> contains the font dimen position for the slant
+     * The field {@code SLANT} contains the font dimen position for the slant
      * parameter.
      */
     protected static final int SLANT = 0;
 
     /**
-     * The field <tt>SPACE</tt> contains the font dimen position for the space
+     * The field {@code SPACE} contains the font dimen position for the space
      * parameter.
      */
     protected static final int SPACE = 1;
 
     /**
-     * The field <tt>STRETCH</tt> contains the font dimen position for the
+     * The field {@code STRETCH} contains the font dimen position for the
      * stretch parameter.
      */
     protected static final int STRETCH = 2;
 
     /**
-     * The field <tt>SHRINK</tt> contains the font dimen position for the shrink
+     * The field {@code SHRINK} contains the font dimen position for the shrink
      * parameter.
      */
     protected static final int SHRINK = 3;
 
     /**
-     * The field <tt>XHEIGHT</tt> contains the font dimen position for the
+     * The field {@code XHEIGHT} contains the font dimen position for the
      * xheight parameter.
      */
     protected static final int XHEIGHT = 4;
 
     /**
-     * The field <tt>QUAD</tt> contains the font dimen position for the quad
+     * The field {@code QUAD} contains the font dimen position for the quad
      * parameter.
      */
     protected static final int QUAD = 5;
 
     /**
-     * The field <tt>EXTRASPACE</tt> contains the font dimen position for the
+     * The field {@code EXTRASPACE} contains the font dimen position for the
      * extraspace parameter.
      */
     protected static final int EXTRASPACE = 6;
 
     /**
-     * The field <tt>GLYPH_TABLE</tt> contains the ...
+     * The field {@code GLYPH_TABLE} contains the ...
      */
     private static final Map<UnicodeChar, Glyph> GLYPH_TABLE =
             new HashMap<UnicodeChar, Glyph>();
@@ -979,122 +978,77 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * The field <tt>hyphenchar</tt> contains the hyphen character.
+     * The field {@code hyphenchar} contains the hyphen character.
      */
     private UnicodeChar hyphenchar = UnicodeChar.get('-');
 
     /**
-     * The field <tt>skewchar</tt> contains the skew character.
+     * The field {@code skewchar} contains the skew character.
      */
     private UnicodeChar skewchar = null;
 
     /**
-     * The field <tt>fontKey</tt> contains the font key.
+     * The field {@code fontKey} contains the font key.
      */
     private FontKey fontKey = new FontKeyFactory().newInstance("cmr10");
 
     /**
-     * The field <tt>space</tt> contains the space specification.
+     * The field {@code space} contains the space specification.
      */
     private Glue space = new Glue(fontdimen[SPACE], fontdimen[STRETCH],
         fontdimen[SHRINK]);
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getActualFontKey()
-     */
-    @Override
+@Override
     public FontKey getActualFontKey() {
 
         return fontKey;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getActualSize()
-     */
-    @Override
+@Override
     public FixedDimen getActualSize() {
 
         return DESIGNSIZE;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getCheckSum()
-     */
-    @Override
+@Override
     public int getCheckSum() {
 
         return CHECKSUM;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getDepth(org.extex.core.UnicodeChar)
-     */
-    @Override
+@Override
     public FixedGlue getDepth(UnicodeChar uc) {
 
         Glyph glyph = GLYPH_TABLE.get(uc);
         return glyph == null ? Glue.ZERO : glyph.dp;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getDesignSize()
-     */
-    @Override
+@Override
     public FixedDimen getDesignSize() {
 
         return DESIGNSIZE;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getEfCode(org.extex.core.UnicodeChar)
-     */
-    @Override
+@Override
     public long getEfCode(UnicodeChar uc) {
 
         Glyph glyph = GLYPH_TABLE.get(uc);
         return glyph == null ? 0 : glyph.ef;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getEm()
-     */
-    @Override
+@Override
     public FixedDimen getEm() {
 
         return fontdimen[QUAD];
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getEx()
-     */
-    @Override
+@Override
     public FixedDimen getEx() {
 
         return fontdimen[XHEIGHT];
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getFontDimen(java.lang.String)
-     */
-    @Override
+@Override
     public FixedDimen getFontDimen(String name) {
 
         throw new RuntimeException("unimplemented");
@@ -1107,46 +1061,26 @@ public class CMR10 implements Font, Serializable {
         return fontKey;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getFontName()
-     */
-    @Override
+@Override
     public String getFontName() {
 
         return FAMILY + "10";
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getHeight(org.extex.core.UnicodeChar)
-     */
-    @Override
+@Override
     public FixedGlue getHeight(UnicodeChar uc) {
 
         Glyph glyph = GLYPH_TABLE.get(uc);
         return glyph == null ? Glue.ZERO : glyph.ht;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getHyphenChar()
-     */
-    @Override
+@Override
     public UnicodeChar getHyphenChar() {
 
         return hyphenchar;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getItalicCorrection(org.extex.core.UnicodeChar)
-     */
-    @Override
+@Override
     public FixedDimen getItalicCorrection(UnicodeChar uc) {
 
         Glyph glyph = GLYPH_TABLE.get(uc);
@@ -1154,10 +1088,7 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getKerning(org.extex.core.UnicodeChar,
-     *      org.extex.core.UnicodeChar)
+*      org.extex.core.UnicodeChar)
      */
     @Override
     public FixedDimen getKerning(UnicodeChar uc, UnicodeChar uc2) {
@@ -1167,10 +1098,7 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getLigature(org.extex.core.UnicodeChar,
-     *      org.extex.core.UnicodeChar)
+*      org.extex.core.UnicodeChar)
      */
     @Override
     public UnicodeChar getLigature(UnicodeChar uc, UnicodeChar uc2) {
@@ -1179,67 +1107,39 @@ public class CMR10 implements Font, Serializable {
         return glyph == null ? null : glyph.ligatures.get(uc2);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getScaleFactor()
-     */
-    @Override
+@Override
     public FixedCount getScaleFactor() {
 
         return Count.THOUSAND;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getSkewChar()
-     */
-    @Override
+@Override
     public UnicodeChar getSkewChar() {
 
         return skewchar;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getSpace()
-     */
-    @Override
+@Override
     public FixedGlue getSpace() {
 
         return space;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getWidth(org.extex.core.UnicodeChar)
-     */
-    @Override
+@Override
     public FixedGlue getWidth(UnicodeChar uc) {
 
         Glyph glyph = GLYPH_TABLE.get(uc);
         return glyph == null ? Glue.ZERO : glyph.wd;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tc.font.Font#hasGlyph(org.extex.core.UnicodeChar)
-     */
-    @Override
+@Override
     public boolean hasGlyph(UnicodeChar uc) {
 
         return GLYPH_TABLE.get(uc) != null;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tc.font.Font#setEfCode(org.extex.core.UnicodeChar,
-     *      long)
+*      long)
      */
     @Override
     public void setEfCode(UnicodeChar uc, long code) {
@@ -1249,10 +1149,7 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tc.font.Font#setFontDimen(java.lang.String,
-     *      org.extex.core.dimen.Dimen)
+*      org.extex.core.dimen.Dimen)
      */
     @Override
     public void setFontDimen(String name, Dimen value) {
@@ -1260,23 +1157,13 @@ public class CMR10 implements Font, Serializable {
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tc.font.Font#setHyphenChar(org.extex.core.UnicodeChar)
-     */
-    @Override
+@Override
     public void setHyphenChar(UnicodeChar uc) {
 
         this.hyphenchar = uc;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tc.font.Font#setSkewChar(org.extex.core.UnicodeChar)
-     */
-    @Override
+@Override
     public void setSkewChar(UnicodeChar uc) {
 
         this.skewchar = uc;

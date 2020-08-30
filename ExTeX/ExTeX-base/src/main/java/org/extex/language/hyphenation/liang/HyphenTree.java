@@ -50,16 +50,15 @@ import org.extex.language.hyphenation.exception.DuplicateHyphenationException;
  * 
  * TODO gene: missing JavaDoc (incomplete).
  * 
- * The value <code>null</code> as character is interpreted as the left or right
+ * The value {@code null} as character is interpreted as the left or right
  * word boundary.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4757 $
- */
+*/
 class HyphenTree implements Iterable<HyphenTree>, Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2011L;
 
@@ -70,12 +69,12 @@ class HyphenTree implements Iterable<HyphenTree>, Serializable {
      * <p>
      * At any position considered the maximum value of target and source is
      * stored in the target. The comparison of the array is performed at the
-     * positions <i>i</i> in <tt>source</tt> and <i>i + start</i> in
-     * <tt>target</tt> for each <i>i</i> in pointing to a hyphenation code in
-     * <tt>source</tt>.
+     * positions <i>i</i> in {@code source} and <i>i + start</i> in
+     * {@code target} for each <i>i</i> in pointing to a hyphenation code in
+     * {@code source}.
      * </p>
      * <p>
-     * If source is <code>null</code> then nothing is done.
+     * If source is {@code null} then nothing is done.
      * </p>
      * 
      * @param code the target array to modify
@@ -97,13 +96,13 @@ class HyphenTree implements Iterable<HyphenTree>, Serializable {
     }
 
     /**
-     * The field <tt>hc</tt> contains the hyphenation code for the position left
+     * The field {@code hc} contains the hyphenation code for the position left
      * of the character represented by this instance.
      */
     private char[] hc;
 
     /**
-     * The field <tt>nextTree</tt> contains the map for the next characters.
+     * The field {@code nextTree} contains the map for the next characters.
      */
     private Map<UnicodeChar, HyphenTree> nextTree = null;
 
@@ -130,14 +129,14 @@ class HyphenTree implements Iterable<HyphenTree>, Serializable {
 
     /**
      * Traverse the tree and return the appropriate hyphenation code vector. If
-     * none is found then <code>null</code> is returned. The hyphenation code
+     * none is found then {@code null} is returned. The hyphenation code
      * vector returned is the longest vector stored for any sequence of
      * characters starting with the given word.
      * 
      * @param chars the array of characters to analyze
      * @param start the start index in chars to begin with
      * 
-     * @return the hyphenation code found or <code>null</code>
+     * @return the hyphenation code found or {@code null}
      */
     public char[] get(UnicodeChar[] chars, int start) {
 
@@ -276,12 +275,7 @@ class HyphenTree implements Iterable<HyphenTree>, Serializable {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();

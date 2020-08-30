@@ -37,61 +37,59 @@ import org.extex.typesetter.type.NodeList;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\setlanguage</code>.
+ * {@code \setlanguage}.
  * 
- * <doc name="setlanguage">
- * <h3>The Primitive <tt>\\</tt></h3>
+ * <p>The Primitive {@code \\}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;setlanguage&rang;
- *       &rarr; <tt>\setlanguage</tt> &lang;number&rang; </pre>
+ *       &rarr; {@code \setlanguage} &lang;number&rang; </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \setlanguage2  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Setlanguage extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
      * This observer can be used to restore the value of the registers
-     * <tt>language</tt> and <tt>lang</tt> t the end of a paragraph.
+     * {@code language} and {@code lang} t the end of a paragraph.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision: 4770 $
-     */
+    */
     private static class ParObserver implements ParagraphObserver {
 
         /**
-         * The field <tt>context</tt> contains the interpreter context.
+         * The field {@code context} contains the interpreter context.
          */
         private Context context;
 
         /**
-         * The field <tt>language</tt> contains the value of the language
+         * The field {@code language} contains the value of the language
          * register to restore.
          */
         private long language;
 
         /**
-         * The field <tt>toks</tt> contains the value of the register lang to
+         * The field {@code toks} contains the value of the register lang to
          * restore.
          */
         private Tokens lang;
@@ -109,10 +107,7 @@ public class Setlanguage extends AbstractCode {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.ParagraphObserver#atParagraph(
-         *      org.extex.typesetter.type.NodeList)
+    *      org.extex.typesetter.type.NodeList)
          */
         public void atParagraph(NodeList nodes) throws Exception {
 
@@ -132,10 +127,7 @@ public class Setlanguage extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

@@ -23,11 +23,10 @@ import org.extex.test.ExTeXLauncher;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\csname</tt>.
+ * This is a test suite for the primitive {@code \csname}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class CsnameTest extends ExTeXLauncher {
 
 
@@ -37,7 +36,7 @@ public class CsnameTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\csname"> Test case checking that the normal
-     * operation is performed on letter inputs only. </testcase>
+     * operation is performed on letter inputs only. 
      * 
      * @throws Exception in case of an error
      */
@@ -54,7 +53,7 @@ public class CsnameTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\csname"> Test case checking that the normal
      * operation is performed on letter inputs only and white-space is ignored.
-     * </testcase>
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -70,7 +69,7 @@ public class CsnameTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\csname"> Test case checking that the primitive
-     * \string can be used to insert special characters. </testcase>
+     * \string can be used to insert special characters. 
      * 
      * @throws Exception in case of an error
      */
@@ -86,7 +85,7 @@ public class CsnameTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\csname"> Test case checking that the normal
      * operation is performed on letter and digit inputs only. Undefined control
-     * sequences are treated as <tt>\relax</tt>. </testcase>
+     * sequences are treated as {@code \relax}. 
      * 
      * @throws Exception in case of an error
      */
@@ -103,7 +102,7 @@ public class CsnameTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\csname"> Test case checking that the normal
      * operation is performed on letter and digit inputs only. Undefined control
-     * sequences are treated as <tt>\relax</tt>. </testcase>
+     * sequences are treated as {@code \relax}. 
      * 
      * @throws Exception in case of an error
      */
@@ -120,7 +119,7 @@ public class CsnameTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\csname"> Test case checking that the normal
-     * operation is performed on letter and digit inputs only. </testcase>
+     * operation is performed on letter and digit inputs only. 
      * 
      * @throws Exception in case of an error
      */
@@ -135,7 +134,7 @@ public class CsnameTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\csname"> Test case checking that the normal
-     * operation is performed on letter and digit inputs only. </testcase>
+     * operation is performed on letter and digit inputs only. 
      * 
      * @throws Exception in case of an error
      */
@@ -149,9 +148,9 @@ public class CsnameTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\csname"> Test case checking that <tt>\csname</tt>
-     * returns something equivalent to <tt>\relax</tt> if nor defined
-     * otherwise. </testcase>
+     * <testcase primitive="\csname"> Test case checking that {@code \csname}
+     * returns something equivalent to {@code \relax} if nor defined
+     * otherwise. 
      * 
      * @throws Exception in case of an error
      */
@@ -166,8 +165,8 @@ public class CsnameTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\csname"> Test case checking that <tt>\csname</tt>
-     * complains an undefined control sequence. </testcase>
+     * <testcase primitive="\csname"> Test case checking that {@code \csname}
+     * complains an undefined control sequence. 
      * 
      * @throws Exception in case of an error
      */
@@ -181,8 +180,8 @@ public class CsnameTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\csname"> Test case checking that <tt>\csname</tt>
-     * complains a missing \endcsname. </testcase>
+     * <testcase primitive="\csname"> Test case checking that {@code \csname}
+     * complains a missing \endcsname. 
      * 
      * @throws Exception in case of an error
      */
@@ -197,7 +196,7 @@ public class CsnameTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\csname"> Test case checking that eof is recognized.
-     * </testcase>
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -212,7 +211,7 @@ public class CsnameTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\csname"> Test case checking that \csname creates a
-     * defined control sequence. </testcase>
+     * defined control sequence. 
      * 
      * @throws Exception in case of an error
      */
@@ -233,7 +232,7 @@ public class CsnameTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\csname"> Test case checking that non-letters can be
-     * embedded in the defined control sequence. </testcase>
+     * embedded in the defined control sequence. 
      * 
      * @throws Exception in case of an error
      */

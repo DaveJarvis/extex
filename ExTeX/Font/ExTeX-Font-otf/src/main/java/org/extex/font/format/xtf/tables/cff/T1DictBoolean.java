@@ -28,8 +28,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * Type 1 dict boolean.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public abstract class T1DictBoolean extends T1DictKey {
 
     /**
@@ -48,21 +47,17 @@ public abstract class T1DictBoolean extends T1DictKey {
         int v = stack.get(0).getInteger();
         bytes = convertStackaddID(stack, id);
 
-        if (v == 0) {
-            value = false;
-        } else {
-            value = true;
-        }
+      value = v != 0;
     }
 
     /**
      * bytes
      */
-    private short[] bytes;
+    private final short[] bytes;
 
     /**
      * Check, if the object is a boolean.
-     * @return Returns <code>true</code>, if the object is a boolean.
+     * @return Returns {@code true}, if the object is a boolean.
      */
     @Override
     public boolean isBoolean() {
@@ -73,7 +68,7 @@ public abstract class T1DictBoolean extends T1DictKey {
     /**
      * value
      */
-    private boolean value;
+    private final boolean value;
 
     /**
      * {@inheritDoc}

@@ -18,8 +18,6 @@
 
 package org.extex.exbib.core.bst;
 
-import java.util.Iterator;
-
 import org.extex.exbib.core.bst.code.Code;
 import org.extex.exbib.core.bst.token.impl.TLocalLocator;
 import org.extex.exbib.core.exceptions.ExBibException;
@@ -30,20 +28,22 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationMissingException;
 import org.extex.framework.configuration.exception.ConfigurationWrapperException;
 
+import java.util.Iterator;
+
 /**
  * This class implements a processor. The major features are configurable.
- * 
- * <h3>The Configuration</h3>
+ * <p>
+ * Configuration
+ * </p>
  * <p>
  * The configuration can be performed with the method
  * {@link #configure(Configuration)}. The configuration should contain a list of
  * function tags which are used to set up the functions of the processor. Each
- * one needs to have the attributes <tt>name</tt> and <tt>class</tt>.
+ * one needs to have the attributes {@code name} and {@code class}.
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BstInterpreter extends BstInterpreterCore {
 
     /**
@@ -98,12 +98,7 @@ public class BstInterpreter extends BstInterpreterCore {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.Bibliography#reset()
-     */
-    @Override
+@Override
     public void reset() {
 
         super.reset();

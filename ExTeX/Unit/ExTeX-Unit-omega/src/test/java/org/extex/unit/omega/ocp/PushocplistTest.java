@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\pushocplist</tt>.
+ * This is a test suite for the primitive {@code \pushocplist}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class PushocplistTest extends ExTeXLauncher {
 
     /**
@@ -48,8 +47,8 @@ public class PushocplistTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\pushocp"> Test case checking that <tt>\pushocp</tt>
-     * needs an active ocp list. </testcase>
+     * <testcase primitive="\pushocp"> Test case checking that {@code \pushocp}
+     * needs an active ocp list.
      * 
      * @throws Exception in case of an error
      */

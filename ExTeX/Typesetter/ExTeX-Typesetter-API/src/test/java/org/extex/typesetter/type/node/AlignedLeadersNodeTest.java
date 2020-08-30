@@ -26,17 +26,16 @@ import org.extex.typesetter.type.OrientedNode;
  * This is a test suite for centered leaders nodes.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class AlignedLeadersNodeTest extends LeadersNodeTester {
 
 //    /**
-//     * The field <tt>H_LIST</tt> contains the reference hlist.
+//     * The field {@code H_LIST} contains the reference hlist.
 //     */
 //    private static final HorizontalListNode H_LIST = new HorizontalListNode();
 
 //    /**
-//     * The field <tt>V_LIST</tt> contains the reference vlist.
+//     * The field {@code V_LIST} contains the reference vlist.
 //     */
 //    private static final VerticalListNode V_LIST = new VerticalListNode();
 
@@ -50,10 +49,7 @@ public class AlignedLeadersNodeTest extends LeadersNodeTester {
 //    }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.LeadersNodeTester#makeNode(
-     *      org.extex.typesetter.type.OrientedNode,
+*      org.extex.typesetter.type.OrientedNode,
      *      org.extex.core.glue.FixedGlue)
      */
     @Override

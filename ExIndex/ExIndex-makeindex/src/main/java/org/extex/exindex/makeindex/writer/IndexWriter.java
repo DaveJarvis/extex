@@ -29,8 +29,7 @@ import org.extex.exindex.makeindex.pages.PageProcessor;
  * This interface describes a writer for an index.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6666 $
- */
+*/
 public interface IndexWriter {
 
     /**

@@ -26,34 +26,33 @@ import org.extex.typesetter.Typesetter;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\splitbotmark</code>.
+ * {@code \splitbotmark}.
  * 
- * <doc name="splitbotmark">
- * <h3>The Primitive <tt>\splitbotmark</tt></h3>
+ * <p>The Primitive {@code \splitbotmark}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
- *    <tt>\splitbotmark</tt>  </pre>
+ *    {@code \splitbotmark}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \splitbotmark </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Splitbotmark extends Splitbotmarks {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;

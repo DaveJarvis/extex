@@ -28,8 +28,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * hlineto: dx1 {dya dxb}* hlineto (6) : {dxa dyb}+ hlineto (6).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class T2HLineTo extends T2PathConstruction {
 
     /**
@@ -79,7 +78,7 @@ public class T2HLineTo extends T2PathConstruction {
      * Getter for dx.
      * 
      * <p>
-     * dx can be <code>null</code>!
+     * dx can be {@code null}!
      * </p>
      * 
      * @return the dx
@@ -89,23 +88,13 @@ public class T2HLineTo extends T2PathConstruction {
         return dx;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
-     */
-    @Override
+@Override
     public int getID() {
 
         return TYPE_HLINETO;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "hlineto";
@@ -121,12 +110,7 @@ public class T2HLineTo extends T2PathConstruction {
         return pairs;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getValue()
-     */
-    @Override
+@Override
     public Object getValue() {
 
         return pairs;
@@ -150,12 +134,7 @@ public class T2HLineTo extends T2PathConstruction {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#toText()
-     */
-    @Override
+@Override
     public String toText() {
 
         StringBuilder buf = new StringBuilder();
@@ -168,12 +147,7 @@ public class T2HLineTo extends T2PathConstruction {
         return buf.append(getName()).toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    @Override
+@Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());

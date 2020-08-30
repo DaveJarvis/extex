@@ -31,12 +31,11 @@ import org.extex.exbib.core.io.Locator;
  * execution.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TQLiteral extends AbstractToken {
 
     /**
-     * The field <tt>value</tt> contains the literal value.
+     * The field {@code value} contains the literal value.
      */
     private TLiteral value = null;
 
@@ -55,10 +54,7 @@ public class TQLiteral extends AbstractToken {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.Code#execute(org.extex.exbib.core.bst.BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
@@ -67,12 +63,7 @@ public class TQLiteral extends AbstractToken {
         processor.push(value);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.Token#expand(org.extex.exbib.core.Processor)
-     */
-    @Override
+@Override
     public String expand(Processor processor) {
 
         return getValue();
@@ -93,10 +84,7 @@ public class TQLiteral extends AbstractToken {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.Token#visit(org.extex.exbib.core.bst.token.TokenVisitor,
-     *      java.lang.Object[])
+*      java.lang.Object[])
      */
     public void visit(TokenVisitor visitor, Object... args)
             throws ExBibException {

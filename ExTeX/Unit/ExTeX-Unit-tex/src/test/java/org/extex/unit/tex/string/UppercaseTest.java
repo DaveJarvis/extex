@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>&#x5c;uppercase</tt>.
+ * This is a test suite for the primitive {@code &#x5c;uppercase}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class UppercaseTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -49,7 +48,7 @@ public class UppercaseTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="&#x5c;uppercase"> Test case checking that
-     * <tt>&#x5c;uppercase</tt> throws an error on eof. </testcase>
+     * {@code &#x5c;uppercase} throws an error on eof. 
      * 
      * @throws Exception in case of an error
      */
@@ -64,7 +63,7 @@ public class UppercaseTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="&#x5c;uppercase"> Test case checking that
-     * <tt>&#x5c;uppercase</tt> is invariant on uppercase letters. </testcase>
+     * {@code &#x5c;uppercase} is invariant on uppercase letters. 
      * 
      * @throws Exception in case of an error
      */
@@ -79,7 +78,7 @@ public class UppercaseTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="&#x5c;uppercase"> Test case checking that
-     * <tt>&#x5c;uppercase</tt> translates lowercase letters. </testcase>
+     * {@code &#x5c;uppercase} translates lowercase letters. 
      * 
      * @throws Exception in case of an error
      */
@@ -94,7 +93,7 @@ public class UppercaseTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="&#x5c;uppercase"> Test case checking that
-     * <tt>&#x5c;uppercase</tt> translates mixed letters. </testcase>
+     * {@code &#x5c;uppercase} translates mixed letters. 
      * 
      * @throws Exception in case of an error
      */
@@ -109,7 +108,7 @@ public class UppercaseTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="&#x5c;uppercase"> Test case checking that
-     * <tt>&#x5c;uppercase</tt> respects uccode. </testcase>
+     * {@code &#x5c;uppercase} respects uccode. 
      * 
      * @throws Exception in case of an error
      */

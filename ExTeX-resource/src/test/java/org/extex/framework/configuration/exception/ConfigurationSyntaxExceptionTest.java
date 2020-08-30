@@ -31,12 +31,11 @@ import org.junit.Test;
  * This is a test suite for {@link ConfigurationSyntaxException}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ConfigurationSyntaxExceptionTest {
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetLocalizedMessage() {
@@ -49,7 +48,7 @@ public class ConfigurationSyntaxExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetLocalizer() {
@@ -61,7 +60,7 @@ public class ConfigurationSyntaxExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetMessage1() {
@@ -73,7 +72,7 @@ public class ConfigurationSyntaxExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetMessage2() {
@@ -85,7 +84,7 @@ public class ConfigurationSyntaxExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetSource() {
@@ -97,7 +96,7 @@ public class ConfigurationSyntaxExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetText0() {
@@ -109,7 +108,7 @@ public class ConfigurationSyntaxExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetText1() {

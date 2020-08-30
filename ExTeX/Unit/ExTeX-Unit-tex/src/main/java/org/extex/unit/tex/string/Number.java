@@ -32,12 +32,11 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\number</code>.
+ * This class provides an implementation for the primitive {@code \number}.
  * 
- * <doc name="number">
- * <h3>The Primitive <tt>\number</tt></h3>
+ * <p>The Primitive {@code \number}</p>
  * <p>
- * The primitive <tt>\number</tt> takes a following number specification of
+ * The primitive {@code \number} takes a following number specification of
  * any kind and produces a decimal representation of it. The associated tokens
  * &ndash; with category code 12 &ndash; are pushed back to the input stream.
  * Any leading zeroes and whitespace characters are omitted.
@@ -48,16 +47,18 @@ import org.extex.typesetter.exception.TypesetterException;
  * which case one gets the tokens representing the content of the register.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;number&rang;
- *        &rarr; <tt>\number</tt> {@linkplain
+ *        &rarr; {@code \number} {@linkplain
  *           org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *           &lang;number&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \number 42  &rarr; 42</pre>
@@ -69,15 +70,13 @@ import org.extex.typesetter.exception.TypesetterException;
  * <pre class="TeXSample">
  *    \number -0042  &rarr; -42</pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Number extends AbstractCode implements ExpandableCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -93,10 +92,7 @@ public class Number extends AbstractCode implements ExpandableCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -112,10 +108,7 @@ public class Number extends AbstractCode implements ExpandableCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,

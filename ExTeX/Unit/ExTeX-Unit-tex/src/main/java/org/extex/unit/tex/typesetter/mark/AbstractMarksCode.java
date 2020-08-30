@@ -35,15 +35,14 @@ import org.extex.typesetter.exception.TypesetterException;
  * Thus abstract base class for marks primitives provides the common features.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public abstract class AbstractMarksCode extends AbstractCode
         implements
             ExpandableCode,
             TokensConvertible {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     static final long serialVersionUID = 2007L;
@@ -58,12 +57,6 @@ public abstract class AbstractMarksCode extends AbstractCode
         super(token);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
     @Override
     public Tokens convertTokens(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
@@ -72,13 +65,6 @@ public abstract class AbstractMarksCode extends AbstractCode
         return (mark != null ? mark : Tokens.EMPTY);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
     @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
@@ -86,13 +72,6 @@ public abstract class AbstractMarksCode extends AbstractCode
         source.push(getValue(context, getKey(context, source, typesetter)));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
     @Override
     public void expand(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
@@ -103,7 +82,7 @@ public abstract class AbstractMarksCode extends AbstractCode
     /**
      * Get the key for this mark.
      * 
-     * <doc type="syntax" name="mark name"> <h3>A Mark Name</h3>
+     * <p>A Mark Name</p>
      * <p>
      * A mark name determines under which key a mark can be addressed. In
      * TeX this used to be a positive number only. This has been
@@ -111,8 +90,9 @@ public abstract class AbstractMarksCode extends AbstractCode
      * </p>
      * <p>
      * The alternative is controlled by the count register
-     * <tt>\register.max</tt>. The following interpretation of the value of this
+     * {@code \register.max}. The following interpretation of the value of this
      * count is used:
+     * </p>
      * <ul>
      * <li>If the value of this count register is negative then a arbitrary
      * non-negative number is allowed as register name as well as any list of
@@ -121,30 +101,27 @@ public abstract class AbstractMarksCode extends AbstractCode
      * non-negative number is allowed as register name which does not exceed the
      * value of the count register.</li>
      * </ul>
-     * </p>
      * <p>
-     * The value of the count register <tt>\register.max</tt> is set differently
-     * for various configurations of ??TeX:
+     * The value of the count register {@code \register.max} is set differently
+     * for various configurations of εχTeX:
+     * </p>
      * <ul>
      * <li>TeX uses the value 255.</li>
-     * <li><logo>&epsilon;-T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> uses the value 32767.</li>
-     * <li><logo>Omega</logo> uses the value 65536.</li>
-     * <li>??TeX uses the value -1.</li>
+     * <li>ε-TeX uses the value 32767.</li>
+     * <li>Omega uses the value 65536.</li>
+     * <li>εχTeX uses the value -1.</li>
      * </ul>
-     * </p>
      * <p>
-     * Note that the register name <tt>\register.max</tt> contains a period.
+     * Note that the register name {@code \register.max} contains a period.
      * Thus it can normally not be entered easily since the catcode of the
      * period is OTHER but needs to be LETTER. Thus you have to use a
      * temporarily reassigned category code (see
-     * {@link org.extex.unit.tex.register.CatcodePrimitive <tt>\catcode</tt>} or
-     * use {@link org.extex.unit.tex.macro.Csname <tt>\csname</tt>}.
+     * {@link org.extex.unit.tex.register.CatcodePrimitive {@code \catcode}} or
+     * use {@link org.extex.unit.tex.macro.Csname {@code \csname}}.
      * </p>
      * 
-     * <h4>Syntax</h4>
-     * 
+     * <p>Syntax</p>
+     *
      * <pre class="syntax">
      *   &lang;register name&rang;
      *       &rarr; {@linkplain
@@ -153,15 +130,15 @@ public abstract class AbstractMarksCode extends AbstractCode
      *        | {@linkplain org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
      * 
-     * <h4>Examples</h4>
+     * <p>Examples</p>
+
      * 
      * <pre class="TeXSample">
      *  123
      *  {abc}
      * </pre>
      * 
-     * </doc>
-     * 
+     *
      * 
      * @param context the interpreter context
      * @param source the source for new tokens

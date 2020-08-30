@@ -59,8 +59,7 @@ import org.extex.typesetter.type.page.Page;
  * This is a text dummy implementation of a document writer (very simple).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:4704 $
- */
+*/
 public class TextDocumentWriter
         implements
             DocumentWriter,
@@ -68,12 +67,12 @@ public class TextDocumentWriter
             NodeVisitor<Object, Object> {
 
     /**
-     * The field <tt>out</tt> ...
+     * The field {@code out} ...
      */
     private OutputStream out = null;
 
     /**
-     * The field <tt>shippedPages</tt> ...
+     * The field {@code shippedPages} ...
      */
     private int shippedPages = 0;
 

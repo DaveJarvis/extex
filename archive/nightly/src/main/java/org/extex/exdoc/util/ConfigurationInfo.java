@@ -26,22 +26,21 @@ import java.util.List;
  * TODO gene: missing JavaDoc.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5413 $
- */
+*/
 public class ConfigurationInfo {
 
     /**
-     * The field <tt>banner</tt> contains the ...
+     * The field {@code banner} contains the ...
      */
     private String banner;
 
     /**
-     * The field <tt>name</tt> contains the ...
+     * The field {@code name} contains the ...
      */
     private String name;
 
     /**
-     * The field <tt>units</tt> contains the ...
+     * The field {@code units} contains the ...
      */
     private List<String> units = new ArrayList<String>();
 

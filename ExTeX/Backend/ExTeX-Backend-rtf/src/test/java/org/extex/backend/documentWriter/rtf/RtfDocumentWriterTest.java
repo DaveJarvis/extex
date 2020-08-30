@@ -37,13 +37,12 @@ import org.junit.Test;
  * This is the test suite for the RTF writer.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class RtfDocumentWriterTest {
 
     /**
-     * <testcase> Test that the default extension is <tt>rtf</tt>.
-     * </testcase>
+     *  Test that the default extension is {@code rtf}.
+     *
      */
     @Test
     public final void testGetExtension1() {
@@ -52,7 +51,7 @@ public class RtfDocumentWriterTest {
     }
 
     /**
-     * <testcase> Test that the extension is <tt>rtf</tt>. </testcase>
+     *  Test that the extension is {@code rtf}.
      */
     @Test
     public final void testConfigure1() {
@@ -143,8 +142,8 @@ public class RtfDocumentWriterTest {
     }
 
     /**
-     * <testcase> Test that a <code>null</code> page is not shipped.
-     * </testcase>
+     *  Test that a {@code null} page is not shipped.
+     *
      * 
      * @throws Exception in case of an error
      */

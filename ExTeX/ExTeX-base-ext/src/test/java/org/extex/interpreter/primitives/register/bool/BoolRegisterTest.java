@@ -30,8 +30,7 @@ import org.junit.Test;
  * </p>
  * 
  * @author <a href="mailto:m.g.sn@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class BoolRegisterTest extends ExTeXLauncher {
 
 
@@ -43,10 +42,10 @@ public class BoolRegisterTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\booldef">
      * 
-     * Test case checking that <tt>\booldef</tt> creates a bool assignable
-     * control sequence which is equivalent to the <tt>\bool</tt>.
+     * Test case checking that {@code \booldef} creates a bool assignable
+     * control sequence which is equivalent to the {@code \bool}.
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -63,9 +62,9 @@ public class BoolRegisterTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\booldef">
      * 
-     * Test case checking that <tt>\booldef</tt> respects a group.
+     * Test case checking that {@code \booldef} respects a group.
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -81,9 +80,9 @@ public class BoolRegisterTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\booldef">
      * 
-     * Test case checking that <tt>\booldef</tt> respects a group.
+     * Test case checking that {@code \booldef} respects a group.
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -100,9 +99,9 @@ public class BoolRegisterTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\booldef">
      * 
-     * Test case checking that <tt>\booldef</tt> respects a group.
+     * Test case checking that {@code \booldef} respects a group.
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -119,9 +118,9 @@ public class BoolRegisterTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\booldef">
      * 
-     * Test case checking that <tt>\booldef</tt> respects <tt>\globaldefs</tt>.
+     * Test case checking that {@code \booldef} respects {@code \globaldefs}.
      * 
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */

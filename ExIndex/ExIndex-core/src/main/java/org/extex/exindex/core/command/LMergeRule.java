@@ -31,12 +31,11 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to parse a merge rule.
  * 
- * <doc type="exindex-command" command="merge-rule">
- * 
- * <h3>The Command <tt>merge-rule</tt></h3>
+*
+ * <p>The Command {@code merge-rule}</p>
  * 
  * <p>
- * The command <tt>merge-rule</tt> can be used to add a merge rule.
+ * The command {@code merge-rule} can be used to add a merge rule.
  * </p>
  * 
  * <pre>
@@ -56,31 +55,29 @@ import org.extex.exindex.lisp.type.value.LValue;
  * 
  * TODO documentation incomplete
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LMergeRule extends LFunction {
 
     /**
-     * The field <tt>STRING</tt> contains the bit mask for the type :string.
+     * The field {@code STRING} contains the bit mask for the type :string.
      */
     private static final int STRING = 1;
 
     /**
-     * The field <tt>BREGEX</tt> contains the bit mask for the type :bregex.
+     * The field {@code BREGEX} contains the bit mask for the type :bregex.
      */
     private static final int BREGEX = 2;
 
     /**
-     * The field <tt>EREGEX</tt> contains the bit mask for the type :eregex.
+     * The field {@code EREGEX} contains the bit mask for the type :eregex.
      */
     private static final int EREGEX = 4;
 
     /**
-     * The field <tt>container</tt> contains the container for indices.
+     * The field {@code container} contains the container for indices.
      */
     private final IndexContainer container;
 
@@ -157,7 +154,7 @@ public class LMergeRule extends LFunction {
      * @param again the optional indicator to restart the replacement cycle from
      * start
      * 
-     * @return <tt>null</tt>
+     * @return {@code null}
      * 
      * @throws LSettingConstantException should not happen
      * @throws InconsistentFlagsException in case of an error

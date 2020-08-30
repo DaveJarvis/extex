@@ -34,34 +34,33 @@ import org.extex.typesetter.type.node.WhatsItNode;
  * This WhatsIt node writes some expanded tokens to an out file on shipping.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class WhatsItWriteNode extends WhatsItNode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>key</tt> contains the key of the output file to write to.
+     * The field {@code key} contains the key of the output file to write to.
      */
     private String key;
 
     /**
-     * The field <tt>tokens</tt> contains the tokens to expand and write.
+     * The field {@code tokens} contains the tokens to expand and write.
      */
     private Tokens tokens;
 
     /**
-     * The field <tt>writer</tt> contains the writer used as target when the
+     * The field {@code writer} contains the writer used as target when the
      * node is shipped out.
      */
     private transient TokensWriter writer;
 
     /**
-     * The field <tt>source</tt> contains the token source for expansion.
+     * The field {@code source} contains the token source for expansion.
      */
     private transient TokenSource source;
 
@@ -83,10 +82,7 @@ public class WhatsItWriteNode extends WhatsItNode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractNode#atShipping(
-     *      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
+*      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
      *      org.extex.core.dimen.FixedDimen, org.extex.core.dimen.FixedDimen)
      */
     @Override

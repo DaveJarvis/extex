@@ -25,8 +25,7 @@ package org.extex.font;
  * {@link org.extex.font.FontFactory FontFactory} via a setter method.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4484 $
- */
+*/
 public interface FontAware {
 
     /**

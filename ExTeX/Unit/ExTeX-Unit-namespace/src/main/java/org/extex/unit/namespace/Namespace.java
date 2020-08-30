@@ -37,11 +37,11 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\namespace</code>.
+ * {@code \namespace}.
  * 
- * <doc name="namespace"> <h3>The Primitive <tt>\namespace</tt></h3>
+ * <p>The Primitive {@code \namespace}</p>
  * <p>
- * The primitive <tt>\namespace</tt> witches the name space. For this purpose it
+ * The primitive {@code \namespace} witches the name space. For this purpose it
  * takes one parameter which is a group. The contents is expanded and should
  * result in a list of characters. Those characters are taken as the name of the
  * new name space to switch to.
@@ -51,34 +51,34 @@ import org.extex.typesetter.exception.TypesetterException;
  * name space.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;namespace&rang;
- *      &rarr; <tt>\namespace</tt> {@linkplain
+ *      &rarr; {@code \namespace} {@linkplain
  *      org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *      &lang;replacement text&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \namespace{org.dante.dtk}  </pre>
  * 
- * </doc>
- * 
+ *
  * @see org.extex.unit.namespace.Export
  * @see org.extex.unit.namespace.Import
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Namespace extends AbstractAssignment
         implements
             Theable,
             ExpandableCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
@@ -93,10 +93,7 @@ public class Namespace extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -113,10 +110,7 @@ public class Namespace extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -132,10 +126,7 @@ public class Namespace extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

@@ -28,8 +28,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * Interface for font which can be loaded from an external resource.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public interface LoadableFont extends ExtexFont {
 
     /**

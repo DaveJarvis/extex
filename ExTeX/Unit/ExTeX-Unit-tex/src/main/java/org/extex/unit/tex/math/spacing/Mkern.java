@@ -32,40 +32,39 @@ import org.extex.typesetter.listMaker.math.NoadConsumer;
 import org.extex.unit.tex.math.AbstractMathCode;
 
 /**
- * This class provides an implementation for the primitive <code>\mkern</code>.
+ * This class provides an implementation for the primitive {@code \mkern}.
  * 
- * <doc name="mkern">
- * <h3>The Math Primitive <tt>\mkern</tt></h3>
+ * <p>The Math Primitive {@code \mkern}</p>
  * <p>
- * The math primitive <tt>\mkern</tt> inserts some kerning in math mode. The
+ * The math primitive {@code \mkern} inserts some kerning in math mode. The
  * amount of space to be inserted is measured in math units.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;mkern&rang;
- *       &rarr; <tt>\mkern</tt> {@linkplain
+ *       &rarr; {@code \mkern} {@linkplain
  *          org.extex.base.parser.ConstantMudimenParser#parse(
  *          org.extex.interpreter.context.Context, 
  *          org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
  *          &lang;mudimen&rang;} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \mkern 12mu </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Mkern extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -81,10 +80,7 @@ public class Mkern extends AbstractMathCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

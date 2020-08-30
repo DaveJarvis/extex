@@ -37,12 +37,11 @@ import org.extex.typesetter.type.Node;
  * This utility class provides some routines for writing PostScript code.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Ps {
 
     /**
-     * The field <tt>code</tt> contains the pieces of code for the dictionary.
+     * The field {@code code} contains the pieces of code for the dictionary.
      */
     private static Map<String, String> code = new HashMap<String, String>();
 
@@ -67,12 +66,12 @@ public class Ps {
     }
 
     /**
-     * The field <tt>lib</tt> contains the library code to include.
+     * The field {@code lib} contains the library code to include.
      */
     private List<String> lib = new ArrayList<String>();
 
     /**
-     * The field <tt>used</tt> contains the indicator for the fragments used.
+     * The field {@code used} contains the indicator for the fragments used.
      */
     private Map<String, Boolean> used = new HashMap<String, Boolean>();
 

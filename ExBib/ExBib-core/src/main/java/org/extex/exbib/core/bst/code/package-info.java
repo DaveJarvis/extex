@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains implementations of the interface
+ * Contains implementations of the interface
  * {@link org.extex.exbib.core.bst.code.Code Code}. Code is anything that can be
  * executed inside of commands in a BST program.
  *

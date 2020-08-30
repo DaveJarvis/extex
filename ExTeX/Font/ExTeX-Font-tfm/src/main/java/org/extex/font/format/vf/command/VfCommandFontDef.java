@@ -35,11 +35,11 @@ import org.extex.util.xml.XMLStreamWriter;
  * VfCommand: fnt_def.
  * 
  * <p>
- * After the <code>pre</code> command, the preamble continues with font
+ * After the {@code pre} command, the preamble continues with font
  * definitions; every font needed to specify 'actual' characters in later
- * <code>set_char</code> commands is defined here. The font definitions are
+ * {@code set_char} commands is defined here. The font definitions are
  * exactly the same in VF files as they are in DVI files, except that the scaled
- * size <code>s</code> is relative and the design size <code>d</code> is
+ * size {@code s} is relative and the design size {@code d} is
  * absolute:
  * </p>
  * 
@@ -48,7 +48,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * </pre>
  * 
  * <p>
- * Define font <code>k</code>, where 0 &lt;= k &lt; 256.
+ * Define font {@code k}, where 0 &lt;= k &lt; 256.
  * </p>
  * 
  * <pre>
@@ -56,7 +56,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * </pre>
  * 
  * <p>
- * Define font <code>k</code>, where 0 &lt;= k &lt; 65536.
+ * Define font {@code k}, where 0 &lt;= k &lt; 65536.
  * </p>
  * 
  * <pre>
@@ -64,7 +64,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * </pre>
  * 
  * <p>
- * Define font <code>k</code>, where 0 &lt;= k &lt; 2^24
+ * Define font {@code k}, where 0 &lt;= k &lt; 2^24
  * </p>
  * .
  * 
@@ -73,71 +73,70 @@ import org.extex.util.xml.XMLStreamWriter;
  * </pre>
  * 
  * <p>
- * Define font <code>k</code>, where -2^31 &lt;= k &lt;= 2^31.
+ * Define font {@code k}, where -2^31 &lt;= k &lt;= 2^31.
  * </p>
  * <p>
- * These font numbers <code>k</code> are 'local'; they have no relation to font
+ * These font numbers {@code k} are 'local'; they have no relation to font
  * numbers defined in the DVI file that uses this virtual font. The dimension
- * <code>s</code>, which represents the scaled size of the local font being
- * defined, is a <code>fix_word</code> relative to the design size of the
+ * {@code s}, which represents the scaled size of the local font being
+ * defined, is a {@code fix_word} relative to the design size of the
  * virtual font. Thus if the local font is to be used at the same size as the
- * design size of the virtual font itself, <code>s</code> will be the integer
- * value 2^20. The value of <code>s</code> must be positive and less than 2^24
- * (thus less than 16 when considered as a <code>fix_word</code>). The dimension
- * <code>d</code> is a <code>fix_word</code> in units of printer's points; hence
+ * design size of the virtual font itself, {@code s} will be the integer
+ * value 2^20. The value of {@code s} must be positive and less than 2^24
+ * (thus less than 16 when considered as a {@code fix_word}). The dimension
+ * {@code d} is a {@code fix_word} in units of printer's points; hence
  * it is identical to the design size found in the corresponding TFM file.
  * </p>
  * 
  * <p>
- * The four-byte value <code>c</code> is the check sum.
+ * The four-byte value {@code c} is the check sum.
  * 
- * Parameter <code>s</code> contains a fixed-point scale factor that is applied
- * to the character widths in font <code>k</code>; font dimensions in TFM files
+ * Parameter {@code s} contains a fixed-point scale factor that is applied
+ * to the character widths in font {@code k}; font dimensions in TFM files
  * and other font files are relative to this quantity, which is always positive
  * and less than 227. It is given in the same units as the other dimensions of
  * the DVI file.
  * 
- * Parameter <code>d</code> is similar to <code>s</code>; it is the design size,
- * and (like <code>s</code>) it is given in DVI units. Thus, font <code>k</code>
- * is to be used at mag <code>s</code>/1000d times its normal size.
+ * Parameter {@code d} is similar to {@code s}; it is the design size,
+ * and (like {@code s}) it is given in DVI units. Thus, font {@code k}
+ * is to be used at mag {@code s}/1000d times its normal size.
  * 
  * The remaining part of a font definition gives the external name of the font,
- * which is an ASCII string of length <code>a</code> + <code>l</code>. The
- * number a is the length of the area or directory, and <code>l</code> is the
+ * which is an ASCII string of length {@code a} + {@code l}. The
+ * number a is the length of the area or directory, and {@code l} is the
  * length of the font name itself; the standard local system font area is
  * supposed to be used when a = 0. The n field contains the area in its first a
  * bytes.
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class VfCommandFontDef extends VfCommand {
 
     /**
      * the checksum
      */
-    private int checksum;
+    private final int checksum;
 
     /**
      * the designsize
      */
-    private TfmFixWord designsize;
+    private final TfmFixWord designsize;
 
     /**
      * the font name
      */
-    private String fontname;
+    private final String fontname;
 
     /**
      * the font numbers (local number)
      */
-    private int fontnumbers;
+    private final int fontnumbers;
 
     /**
      * the scalefactor
      */
-    private TfmFixWord scalefactor;
+    private final TfmFixWord scalefactor;
 
     /**
      * Create e new object.
@@ -276,12 +275,7 @@ public class VfCommandFontDef extends VfCommand {
         return buf.toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    @Override
+@Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("fontdef");

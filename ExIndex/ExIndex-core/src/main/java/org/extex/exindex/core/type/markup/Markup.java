@@ -32,8 +32,7 @@ import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
  * This class provides a map of arrays with a default value.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Markup {
 
     /**
@@ -42,12 +41,12 @@ public class Markup {
     public static class Position {
 
         /**
-         * The field <tt>no</tt> contains the number.
+         * The field {@code no} contains the number.
          */
         private final int no;
 
         /**
-         * The field <tt>name</tt> contains the name.
+         * The field {@code name} contains the name.
          */
         private final String name;
 
@@ -86,48 +85,48 @@ public class Markup {
     }
 
     /**
-     * The field <tt>OPEN</tt> contains the position for the open string.
+     * The field {@code OPEN} contains the position for the open string.
      */
     public static final Position OPEN = new Position(0, ":OPEN");
 
     /**
-     * The field <tt>CLOSE</tt> contains the position for the close string.
+     * The field {@code CLOSE} contains the position for the close string.
      */
     public static final Position CLOSE = new Position(1, ":CLOSE");
 
     /**
-     * The field <tt>SEP</tt> contains the position for the separator string.
+     * The field {@code SEP} contains the position for the separator string.
      */
     public static final Position SEP = new Position(2, ":SEP");
 
     /**
-     * The field <tt>ATTR</tt> contains the position for the attribute string.
+     * The field {@code ATTR} contains the position for the attribute string.
      */
     public static final Position ATTR = new Position(3, ":ATTR");
 
     /**
-     * The field <tt>OPEN_HEAD</tt> contains the position for the open string.
+     * The field {@code OPEN_HEAD} contains the position for the open string.
      */
     public static final Position OPEN_HEAD = new Position(3, ":OPEN_HEAD");
 
     /**
-     * The field <tt>CLOSE_HEAD</tt> contains the position for the close
+     * The field {@code CLOSE_HEAD} contains the position for the close
      * string.
      */
     public static final Position CLOSE_HEAD = new Position(4, ":CLOSE_HEAD");
 
     /**
-     * The field <tt>size</tt> contains the size.
+     * The field {@code size} contains the size.
      */
     private static final int SIZE = 5;
 
     /**
-     * The field <tt>map</tt> contains the content.
+     * The field {@code map} contains the content.
      */
     private final Map<String, String[]> map = new HashMap<String, String[]>();
 
     /**
-     * The field <tt>displayName</tt> contains the name of debugging.
+     * The field {@code displayName} contains the name of debugging.
      */
     private final String displayName;
 
@@ -147,13 +146,13 @@ public class Markup {
 
     /**
      * Get an element at a certain position. If the position is empty then an
-     * attempt is made to use the default value at position <code>null</code>.
+     * attempt is made to use the default value at position {@code null}.
      * If everything fails the empty string is returned.
      * 
      * @param key the key
      * @param index the index
      * 
-     * @return the specified element or <tt>nil</tt>
+     * @return the specified element or {@code nil}
      */
     public String get(String key, Position index) {
 
@@ -207,12 +206,7 @@ public class Markup {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         final StringBuilder sb = new StringBuilder(displayName);
@@ -236,7 +230,7 @@ public class Markup {
      * 
      * @param writer the target writer
      * @param markupContainer the container for markup
-     * @param clazz the class or <code>null</code>
+     * @param clazz the class or {@code null}
      * @param index the index
      * @param trace the indicator for tracing
      * @throws IOException in case of an I/O error

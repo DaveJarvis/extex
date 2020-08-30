@@ -27,8 +27,7 @@ import org.junit.Test;
  * This is the test suite for the class Switch.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SwitchTest {
 
     /**

@@ -24,8 +24,7 @@ import java.io.IOException;
  * A {@link ValueItem} is an object stored as a part of a {@link Value}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface ValueItem {
 
     /**

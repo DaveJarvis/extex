@@ -26,17 +26,16 @@ import org.extex.core.scaled.ScaledNumber;
  * kinds.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Accumulator {
 
     /**
-     * The field <tt>sp</tt> contains the number of sp units encountered.
+     * The field {@code sp} contains the number of sp units encountered.
      */
     protected int sp;
 
     /**
-     * The field <tt>value</tt> contains the numerical value in multiples of
+     * The field {@code value} contains the numerical value in multiples of
      * 2<sup>-16</sup>.
      */
     protected long value;

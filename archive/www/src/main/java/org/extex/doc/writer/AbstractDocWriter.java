@@ -33,12 +33,11 @@ import java.util.Calendar;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class AbstractDocWriter {
 
     /**
-     * The field <tt>targetDir</tt> contains the ...
+     * The field {@code targetDir} contains the ...
      */
     private String targetDir = ".";
 

@@ -29,14 +29,14 @@ import java.util.List;
  * 
  * <p>
  * Whenever an object is deserialized Java tries to invoke the method
- * <tt>readResolve()</tt>. This method can be used to get a hand on the object
+ * {@code readResolve()}. This method can be used to get a hand on the object
  * which has just been reconstructed. Here the object can be replaced by another
  * one or some other action can be applied.
  * </p>
  * <p>
  * Any class which is serializable and wants to participate in the reconnection
- * mechanism should implement the method <code>readResolve</code>. In this
- * method the method <code>reconnect()</code> of the {@link Registrar Registrar}
+ * mechanism should implement the method {@code readResolve}. In this
+ * method the method {@code reconnect()} of the {@link Registrar Registrar}
  * should be invoked. This is shown in the following example:
  * </p>
  * 
@@ -64,25 +64,23 @@ import java.util.List;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class Registrar {
 
     /**
      * This class provides a container for a pair of a class and an observer.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
-     */
+    */
     private static final class Obs {
 
         /**
-         * The field <tt>observer</tt> contains the observer.
+         * The field {@code observer} contains the observer.
          */
         private RegistrarObserver observer;
 
         /**
-         * The field <tt>type</tt> contains the class.
+         * The field {@code type} contains the class.
          */
         private Class<?> type;
 
@@ -134,12 +132,12 @@ public final class Registrar {
     }
 
     /**
-     * The field <tt>active</tt> contains the currently active registrar.
+     * The field {@code active} contains the currently active registrar.
      */
     private static Registrar active = new Registrar();
 
     /**
-     * The field <tt>pipe</tt> contains the list of registrars which wait to be
+     * The field {@code pipe} contains the list of registrars which wait to be
      * activated.
      */
     private static List<Registrar> pipe = new ArrayList<Registrar>();
@@ -248,7 +246,7 @@ public final class Registrar {
      * 
      * @param obs the reference obtained from register()
      * 
-     * @return <code>true</code> iff the removal succeeded
+     * @return {@code true} iff the removal succeeded
      */
     public static boolean unregister(Object obs) {
 
@@ -259,7 +257,7 @@ public final class Registrar {
     }
 
     /**
-     * The field <tt>observers</tt> contains the observers which are currently
+     * The field {@code observers} contains the observers which are currently
      * registered.
      */
     private List<Obs> observers = new ArrayList<Obs>();

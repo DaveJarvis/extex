@@ -23,11 +23,10 @@ import org.extex.test.ExTeXLauncher;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\endcsname</tt>.
+ * This is a test suite for the primitive {@code \endcsname}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class EndcsnameTest extends ExTeXLauncher {
 
 
@@ -37,8 +36,8 @@ public class EndcsnameTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\endcsname">
-     *  Test case checking that a lonely <tt>\endcsname</tt> leads to an error.
-     * </testcase>
+     *  Test case checking that a lonely {@code \endcsname} leads to an error.
+     *
      *
      * @throws Exception in case of an error
      */

@@ -28,12 +28,11 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to define the markup for an entry list.
  * 
- * <doc type="exindex-command" command="markup-index-entry">
- * 
- * <h3>The Command <tt>markup-index-entry</tt></h3>
+*
+ * <p>The Command {@code markup-index-entry}</p>
  * 
  * <p>
- * The command <tt>markup-index-entry-list</tt> can be used to specify the
+ * The command {@code markup-index-entry-list} can be used to specify the
  * markup for index entry lists.
  * </p>
  * 
@@ -54,17 +53,15 @@ import org.extex.exindex.lisp.type.value.LValue;
  * 
  * TODO documentation incomplete
  * 
- * </doc>
- * 
- * <h3>Parameters</h3>
+ *
+ * <p>Parameters</p>
  * <p>
  * The parameters defined with this command are stored in the L system under the
- * key of the function name (i.e. <tt>markup-indexentry-list</tt>).
+ * key of the function name (i.e. {@code markup-indexentry-list}).
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LMarkupIndexEntryList extends AbstractLAdapter {
 
     /**
@@ -96,7 +93,7 @@ public class LMarkupIndexEntryList extends AbstractLAdapter {
      * @param sep the separator
      * @param depth the depth
      * 
-     * @return <tt>null</tt>
+     * @return {@code null}
      * 
      * @throws LSettingConstantException should not happen
      * @throws LNonMatchingTypeException in case of an error

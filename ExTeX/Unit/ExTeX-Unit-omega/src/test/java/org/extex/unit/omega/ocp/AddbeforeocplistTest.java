@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\addbeforeocplist</tt>.
+ * This is a test suite for the primitive {@code \addbeforeocplist}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class AddbeforeocplistTest extends ExTeXLauncher {
 
     /**
@@ -49,8 +48,8 @@ public class AddbeforeocplistTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\addbeforeocplist"> Test case checking that
-     * <tt>\addbeforeocplist</tt> can not be used in a normal mode.
-     * </testcase>
+     * {@code \addbeforeocplist} can not be used in a normal mode.
+     *
      * 
      * @throws Exception in case of an error
      */

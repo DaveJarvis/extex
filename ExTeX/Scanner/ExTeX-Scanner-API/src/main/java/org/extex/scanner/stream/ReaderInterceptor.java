@@ -27,8 +27,7 @@ import java.io.Reader;
  * pipe manner.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5563 $
- */
+*/
 public interface ReaderInterceptor {
 
     /**
@@ -38,7 +37,7 @@ public interface ReaderInterceptor {
      * 
      * @param reader the reader to add some processing unit to
      * 
-     * @return the new reader. This value should never be <code>null</code>.
+     * @return the new reader. This value should never be {@code null}.
      */
     Reader pipe(Reader reader);
 

@@ -26,8 +26,7 @@ import org.junit.Test;
  * output.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class IndexerTraceTest extends AbstractIndexerTester {
 
     static {
@@ -38,7 +37,7 @@ public class IndexerTraceTest extends AbstractIndexerTester {
     }
 
     /**
-     * <testcase> Check that null values as parameters are accepted. </testcase>
+     *  Check that null values as parameters are accepted.
      * 
      * @throws Exception in case of an error
      */

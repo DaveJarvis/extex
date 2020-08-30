@@ -31,33 +31,33 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.listMaker.AlignmentList;
 
 /**
- * This class provides an implementation for the primitive <code>\omit</code>.
+ * This class provides an implementation for the primitive {@code \omit}.
  * 
- * <doc name="omit"> <h3>The Primitive <tt>\omit</tt></h3>
+ * <p>The Primitive {@code \omit}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;omit&rang;
- *       &rarr; <tt>\omit</tt></pre>
+ *       &rarr; {@code \omit}</pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \omit 1  </pre>
  * 
- * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Omit extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -72,10 +72,7 @@ public class Omit extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

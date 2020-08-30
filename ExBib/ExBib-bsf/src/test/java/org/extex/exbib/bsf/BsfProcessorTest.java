@@ -57,8 +57,7 @@ import org.junit.Test;
  * This is a test suite for {@link BsfProcessor}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 5432 $
- */
+*/
 public class BsfProcessorTest {
 
     /**
@@ -67,17 +66,17 @@ public class BsfProcessorTest {
     private static class Cfg implements Configuration {
 
         /**
-         * The field <tt>engine</tt> contains the name of the engine.
+         * The field {@code engine} contains the name of the engine.
          */
         private final String engine;
 
         /**
-         * The field <tt>extensions</tt> contains the list of extensions.
+         * The field {@code extensions} contains the list of extensions.
          */
         private final String extensions;
 
         /**
-         * The field <tt>script</tt> contains the name of the script.
+         * The field {@code script} contains the name of the script.
          */
         private final String script;
 
@@ -210,8 +209,8 @@ public class BsfProcessorTest {
     }
 
   /**
-     * <testcase> The default constructor treats the database an logger to be
-     * null.</testcase>
+     *  The default constructor treats the database an logger to be
+     * null.
      * 
      */
     @Test
@@ -224,9 +223,8 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> A null value for database and logger in the constructor is
-     * stored properly and can be retrieved. </testcase>
-     * 
+     * A null value for database and logger in the constructor is stored properly and can be retrieved
+* 
      */
     @Test
     public void testBsfProcessor10() {
@@ -238,9 +236,8 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> A non-null value for database and logger in the constructor is
-     * stored properly and can be retrieved. </testcase>
-     * 
+     * A non-null value for database and logger in the constructor is stored properly and can be retrieved
+* 
      */
     @Test
     public void testBsfProcessor11() {
@@ -254,8 +251,8 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> A null configuration leads to a {@link NullPointerException}.
-     * </testcase>
+     *  A null configuration leads to a {@link NullPointerException}.
+     * 
      */
     @Test(expected = NullPointerException.class)
     public void testConfigure01() {
@@ -265,9 +262,9 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> A missing engine or a missing extensions value in the
+     *  A missing engine or a missing extensions value in the
      * configuration leads to a {@link ConfigurationMissingAttributeException}.
-     * </testcase>
+     * 
      */
     @Test(expected = ConfigurationMissingAttributeException.class)
     public void testConfigure02() {
@@ -282,9 +279,9 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> A missing engine or a missing extensions value in the
+     *  A missing engine or a missing extensions value in the
      * configuration leads to a {@link ConfigurationMissingAttributeException}.
-     * </testcase>
+     * 
      */
     @Test(expected = ConfigurationMissingAttributeException.class)
     public void testConfigure03() {
@@ -299,9 +296,9 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> A missing engine or a missing extensions value in the
+     *  A missing engine or a missing extensions value in the
      * configuration leads to a {@link ConfigurationMissingAttributeException}.
-     * </testcase>
+     * 
      */
     @Test(expected = ConfigurationMissingAttributeException.class)
     public void testConfigure04() {
@@ -316,9 +313,8 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> An empty engine in the configuration leads to a
-     * {@link ConfigurationMissingAttributeException}. </testcase>
-     */
+     * An empty engine in the configuration leads to a {@link ConfigurationMissingAttributeException}
+*/
     @Test(expected = ConfigurationMissingAttributeException.class)
     public void testConfigure05() {
 
@@ -332,9 +328,9 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> A missing engine or a missing extensions value in the
+     *  A missing engine or a missing extensions value in the
      * configuration leads to a {@link ConfigurationMissingAttributeException}.
-     * </testcase>
+     * 
      */
     @Test(expected = ConfigurationMissingAttributeException.class)
     public void testConfigure06() {
@@ -349,9 +345,9 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> A missing engine or a missing extensions value in the
+     *  A missing engine or a missing extensions value in the
      * configuration leads to a {@link ConfigurationMissingAttributeException}.
-     * </testcase>
+     * 
      */
     @Test(expected = ConfigurationMissingAttributeException.class)
     public void testConfigure07() {
@@ -366,9 +362,9 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> A missing engine or a missing extensions value in the
+     *  A missing engine or a missing extensions value in the
      * configuration leads to a {@link ConfigurationMissingAttributeException}.
-     * </testcase>
+     * 
      */
     @Test(expected = ConfigurationMissingAttributeException.class)
     public void testConfigure08() {
@@ -383,9 +379,8 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> An empty engine in the configuration leads to a
-     * {@link ConfigurationMissingAttributeException}. </testcase>
-     */
+     * An empty engine in the configuration leads to a {@link ConfigurationMissingAttributeException}
+*/
     @Test
     public void testConfigure10() {
 
@@ -394,7 +389,7 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> Macro names without a database is the empty list. </testcase>
+     *  Macro names without a database is the empty list. 
      */
     @Test
     public void testGetMacroNames1() {
@@ -406,8 +401,8 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> Macro names with an empty database is the empty list.
-     * </testcase>
+     *  Macro names with an empty database is the empty list.
+     * 
      */
     @Test
     public void testGetMacroNames2() {
@@ -421,9 +416,8 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> Macro names with an non-empty database is the list from the
-     * database. </testcase>
-     */
+     * Macro names with an non-empty database is the list from the database
+*/
     @Test
     public void testGetMacroNames3() {
 
@@ -437,7 +431,7 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> The number of warnings is initially 0. </testcase>
+     *  The number of warnings is initially 0. 
      */
     @Test
     public void testGetNumberOfWarnings0() {
@@ -447,8 +441,8 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> The number of warnings is 1 after the first warning.
-     * </testcase>
+     *  The number of warnings is 1 after the first warning.
+     * 
      */
     @Test
     public void testGetNumberOfWarnings1() {
@@ -459,7 +453,7 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> Initially the output writer is null. </testcase>
+     *  Initially the output writer is null. 
      * 
      */
     @Test
@@ -470,7 +464,7 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> The entry type "" is known for the BsfProcessor. </testcase>
+     *  The entry type "" is known for the BsfProcessor. 
      * 
      */
     @Test
@@ -481,7 +475,7 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> BsfProcessor.process(null returns 0. </testcase>
+     *  BsfProcessor.process(null returns 0. 
      * 
      * @throws ExBibException in case of an error
      */
@@ -493,9 +487,9 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> An unknown bibliography database leads to a
+     *  An unknown bibliography database leads to a
      * ExBibFileNotFoundException if everything else is set up correctly.
-     * </testcase>
+     * 
      * 
      * @throws ExBibException in case of an error
      */
@@ -505,12 +499,7 @@ public class BsfProcessorTest {
         DBImpl db = new DBImpl();
         db.setBibReaderFactory(new BibReaderFactory(null, null, "", "") {
 
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bibio.BibReaderFactory#newInstance(java.lang.String)
-             */
-            @Override
+        @Override
             public BibReader newInstance(String file)
                     throws ConfigurationException,
                         FileNotFoundException {
@@ -524,7 +513,7 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> An empty language leads to an exception. </testcase>
+     *  An empty language leads to an exception. 
      * 
      * @throws Exception in case of an error
      */
@@ -566,8 +555,8 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> A warning is counted even if it is not logged since no logger
-     * is present.</testcase>
+     *  A warning is counted even if it is not logged since no logger
+     * is present.
      */
     @Test
     public void testWarning0() {
@@ -578,7 +567,7 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> A warning is counted and logged.</testcase>
+     *  A warning is counted and logged.
      */
     @Test
     public void testWarning1() {

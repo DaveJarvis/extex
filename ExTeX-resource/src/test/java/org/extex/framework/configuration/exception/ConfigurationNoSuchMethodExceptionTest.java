@@ -35,12 +35,11 @@ import org.junit.Test;
  * This is a test suite for {@link ConfigurationNoSuchMethodExceptionTest}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ConfigurationNoSuchMethodExceptionTest {
 
     /**
-     * The field <tt>CONF</tt> contains the configuration for testing purposes.
+     * The field {@code CONF} contains the configuration for testing purposes.
      */
     private static final Configuration CONF = new Configuration() {
 
@@ -129,12 +128,7 @@ public class ConfigurationNoSuchMethodExceptionTest {
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return "THE CONFIG";
@@ -143,7 +137,7 @@ public class ConfigurationNoSuchMethodExceptionTest {
     };
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test(expected = NullPointerException.class)
     public void test1() {
@@ -152,7 +146,7 @@ public class ConfigurationNoSuchMethodExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetLocalizedMessage0() {
@@ -164,7 +158,7 @@ public class ConfigurationNoSuchMethodExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetLocalizedMessage1() {
@@ -177,7 +171,7 @@ public class ConfigurationNoSuchMethodExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetLocalizedMessage4() {
@@ -190,7 +184,7 @@ public class ConfigurationNoSuchMethodExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetLocalizer() {
@@ -201,7 +195,7 @@ public class ConfigurationNoSuchMethodExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetSource() {
@@ -212,7 +206,7 @@ public class ConfigurationNoSuchMethodExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetText1() {
@@ -224,7 +218,7 @@ public class ConfigurationNoSuchMethodExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetText2() {
@@ -236,7 +230,7 @@ public class ConfigurationNoSuchMethodExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetText3() {

@@ -39,11 +39,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the <tt>LigatureBuilderImpl</tt>.
+ * This is a test suite for the {@code LigatureBuilderImpl}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4527 $
- */
+*/
 public class LigatureBuilderImplTest {
 
     /**
@@ -52,7 +51,7 @@ public class LigatureBuilderImplTest {
     private static class MockFont extends NullFont {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         private static final long serialVersionUID = 1L;
@@ -99,7 +98,7 @@ public class LigatureBuilderImplTest {
          * 
          * @param uc the character
          * 
-         * @return <code>true</code> iff the glyph is present
+         * @return {@code true} iff the glyph is present
          * 
          * @see org.extex.typesetter.tc.font.Font#hasGlyph(org.extex.core.UnicodeChar)
          */
@@ -123,39 +122,39 @@ public class LigatureBuilderImplTest {
     }
 
     /**
-     * The field <tt>builder</tt> contains the ligature builder.
+     * The field {@code builder} contains the ligature builder.
      */
     private static LigatureBuilder builder = new LigatureBuilderImpl();
 
     /**
-     * The constant <tt>CC_FF</tt> contains the faked FF ligature.
+     * The constant {@code CC_FF} contains the faked FF ligature.
      */
     private static final int CC_FF = '/';
 
     /**
-     * The constant <tt>CC_FFL</tt> contains the faked FFL ligature.
+     * The constant {@code CC_FFL} contains the faked FFL ligature.
      */
     private static final int CC_FFL = '&';
 
     /**
-     * The constant <tt>CC_FL</tt> contains the faked FL ligature..
+     * The constant {@code CC_FL} contains the faked FL ligature..
      */
     private static final int CC_FL = '$';
 
     // /**
-    // * The constant <tt>FF</tt> contains the ff ligature.
+    // * The constant {@code FF} contains the ff ligature.
     // */
     // private static final UnicodeChar FF = UnicodeChar.get(CC_FF);
     // /**
-    // * The constant <tt>FFL</tt> contains the ffl ligature.
+    // * The constant {@code FFL} contains the ffl ligature.
     // */
     // private static final UnicodeChar FFL = UnicodeChar.get(CC_FFL);
     // /**
-    // * The constant <tt>FL</tt> contains the fl ligature.
+    // * The constant {@code FL} contains the fl ligature.
     // */
     // private static final UnicodeChar FL = UnicodeChar.get(CC_FL);
     /**
-     * The field <tt>tc1</tt> contains the typesetting context.
+     * The field {@code tc1} contains the typesetting context.
      */
     private static TypesettingContext tc1;
 
@@ -183,7 +182,7 @@ public class LigatureBuilderImplTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      * @throws Exception in case of an error
      */
@@ -196,7 +195,7 @@ public class LigatureBuilderImplTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      * @throws Exception in case of an error
      */
@@ -219,7 +218,7 @@ public class LigatureBuilderImplTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      * @throws Exception in case of an error
      */
@@ -235,7 +234,7 @@ public class LigatureBuilderImplTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      * @throws Exception in case of an error
      */
@@ -251,7 +250,7 @@ public class LigatureBuilderImplTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      * @throws Exception in case of an error
      */
@@ -267,7 +266,7 @@ public class LigatureBuilderImplTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      * @throws Exception in case of an error
      */
@@ -286,7 +285,7 @@ public class LigatureBuilderImplTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      * @throws Exception in case of an error
      */
@@ -306,7 +305,7 @@ public class LigatureBuilderImplTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      * @throws Exception in case of an error
      */
@@ -324,7 +323,7 @@ public class LigatureBuilderImplTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      * 
      * @throws Exception in case of an error
      */

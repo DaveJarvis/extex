@@ -28,46 +28,45 @@ import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 
 /**
- * This class provides an implementation for the primitive <code>\outer</code>.
+ * This class provides an implementation for the primitive {@code \outer}.
  * It does simply nothing, but as a side effect the prefix <i>OUTER</i> is
  * added to the prefixes.
  * 
- * <doc name="outer">
- * <h3>The Prefix Primitive <tt>\outer</tt></h3>
+ * <p>The Prefix Primitive {@code \outer}</p>
  * <p>
- * The primitive <tt>\outer</tt> is a prefix modifying the operation of a
+ * The primitive {@code \outer} is a prefix modifying the operation of a
  * following primitive. If the immediately following token denotes another
  * prefix primitives then the functionality is accumulated. This means that the
  * next non-prefix primitive is modified by any directly preceding prefix
  * primitives.
  * </p>
  * <p>
- * Multiple <tt>\outer</tt> prefixes act identical to a single one.
+ * Multiple {@code \outer} prefixes act identical to a single one.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;outer&rang;
- *      &rarr; <tt>\outer</tt>  </pre>
+ *      &rarr; {@code \outer}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \outer\def#1{--#1--}  </pre>
  *  <pre class="TeXSample">
  *    \outer\outer\def#1{--#1--}  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Outer extends AbstractCode implements PrefixCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -83,10 +82,7 @@ public class Outer extends AbstractCode implements PrefixCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

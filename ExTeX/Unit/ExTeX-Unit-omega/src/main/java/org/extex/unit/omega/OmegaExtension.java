@@ -24,12 +24,11 @@ package org.extex.unit.omega;
  * Omega.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4411 $
- */
+*/
 public interface OmegaExtension {
 
     /**
-     * The constant <tt>NAME</tt> contains the name of the context extension.
+     * The constant {@code NAME} contains the name of the context extension.
      */
     String NAME = "org.extex.interpreter.omega";
 

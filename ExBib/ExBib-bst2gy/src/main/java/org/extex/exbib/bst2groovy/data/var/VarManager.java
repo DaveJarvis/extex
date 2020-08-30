@@ -24,22 +24,21 @@ import java.util.List;
  * This class is a manager for variables. New variables can be acquired from it.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class VarManager {
 
     /**
-     * The field <tt>no</tt> contains the counter for next items.
+     * The field {@code no} contains the counter for next items.
      */
     private int no;
 
     /**
-     * The field <tt>noMin</tt> contains the minimum unused variable index.
+     * The field {@code noMin} contains the minimum unused variable index.
      */
     private int noMin;
 
     /**
-     * The field <tt>localPrefix</tt> contains the prefix for the name of new
+     * The field {@code localPrefix} contains the prefix for the name of new
      * instances of Var.
      */
     private String localPrefix = "v";

@@ -38,11 +38,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**
- * Tests for the <code>XtfReader</code> with opentype files.
+ * Tests for the {@code XtfReader} with opentype files.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class XtfReaderFxlrGsub1Test {
 
     private final static String DIR_TARGET = "build";

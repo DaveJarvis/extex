@@ -43,43 +43,40 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\lefthyphenmin</code>.
+ * {@code \lefthyphenmin}.
  * 
- * <doc name="lefthyphenmin"> <h3>The Primitive <tt>\lefthyphenmin</tt></h3>
+ * <p>The Primitive {@code \lefthyphenmin}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * 
  * <pre class="syntax">
  *    &lang;lefthyphenmin&rang;
- *      &rarr; <tt>\lefthyphenmin</tt> {@linkplain
+ *      &rarr; {@code \lefthyphenmin} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
  * 
- * <h4>Example:</h4>
+ * <p>Example:</p>
+
  * 
  * <pre class="TeXSample">
  *   \lefthyphenmin=3 </pre>
  * 
- * </doc>
+ *
  * 
- * 
- * The value are stored in the <code>HyphernationTable</code>. Each
- * <code>HyphernationTable</code> are based on <code>\language</code> and have
- * its own <code>\lefthyphenmin</code> value (different to original <logo>T<span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>).
+ * The value are stored in the {@code HyphernationTable}. Each
+ * {@code HyphernationTable} are based on {@code \language} and have
+ * its own {@code \lefthyphenmin} value (different to original TeX).
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4770 $
- */
+*/
 public class LeftHyphenmin extends AbstractHyphenationCode
         implements
             CountConvertible,
@@ -90,7 +87,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -105,10 +102,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.code.Advanceable#advance(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -149,10 +143,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertCount(Context context, TokenSource source,
@@ -166,10 +157,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertDimen(Context context, TokenSource source,
@@ -183,10 +171,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.code.Divideable#divide(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -231,10 +216,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -269,10 +251,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.code.Multiplyable#multiply(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -307,10 +286,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

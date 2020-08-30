@@ -38,25 +38,24 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>missing$</tt>.
+ * Test suite for {@code missing$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MissingTest {
 
     /**
-     * The field <tt>db</tt> contains the database.
+     * The field {@code db} contains the database.
      */
     private DB db = null;
 
     /**
-     * The field <tt>entry</tt> contains the entry.
+     * The field {@code entry} contains the entry.
      */
     private Entry entry;
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -85,7 +84,7 @@ public class MissingTest {
     }
 
     /**
-     * <testcase> An existing field is reported as not missing. </testcase>
+     *  An existing field is reported as not missing.
      * 
      * @throws Exception in case of an error
      */
@@ -99,7 +98,7 @@ public class MissingTest {
     }
 
     /**
-     * <testcase> An non-existing field is reported as missing. </testcase>
+     *  An non-existing field is reported as missing.
      * 
      * @throws Exception in case of an error
      */
@@ -113,7 +112,7 @@ public class MissingTest {
     }
 
     /**
-     * <testcase> The empty stack leads to an error. </testcase>
+     *  The empty stack leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -124,7 +123,7 @@ public class MissingTest {
     }
 
     /**
-     * <testcase> The first argument needs to be a string. </testcase>
+     *  The first argument needs to be a string.
      * 
      * @throws Exception in case of an error
      */

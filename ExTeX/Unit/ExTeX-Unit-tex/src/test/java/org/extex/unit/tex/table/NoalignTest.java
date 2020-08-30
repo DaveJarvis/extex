@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\noalign</tt>.
+ * This is a test suite for the primitive {@code \noalign}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class NoalignTest extends ExTeXLauncher {
 
     /**
@@ -47,8 +46,8 @@ public class NoalignTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\noalign"> Test case checking that <tt>\noalign</tt>
-     * needs to be used in a tabulating context. </testcase>
+     * <testcase primitive="\noalign"> Test case checking that {@code \noalign}
+     * needs to be used in a tabulating context.
      * 
      * @throws Exception in case of an error
      */

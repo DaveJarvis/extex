@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\write</tt>.
+ * This is a test suite for the primitive {@code \write}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
 
     /**
@@ -49,7 +48,7 @@ public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
 
     /**
      * <testcase primitive="\write"> Test case checking that a lonely
-     * <tt>\write</tt> leads to an error. </testcase>
+     * {@code \write} leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -64,7 +63,7 @@ public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
 
     /**
      * <testcase primitive="\write"> Test case checking that a lonely
-     * <tt>\write</tt> with an index leads to an error. </testcase>
+     * {@code \write} with an index leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -79,7 +78,7 @@ public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
 
     /**
      * <testcase primitive="\write"> Test case checking that a lonely
-     * <tt>\write</tt> leads to an error. </testcase>
+     * {@code \write} leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -94,7 +93,7 @@ public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
 
     /**
      * <testcase primitive="\write"> Test case checking that a lonely
-     * <tt>\write</tt> with an index leads to an error. </testcase>
+     * {@code \write} with an index leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -108,8 +107,8 @@ public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\write"> Test case checking that <tt>\write</tt>
-     * takes <tt>\immediate</tt>. </testcase>
+     * <testcase primitive="\write"> Test case checking that {@code \write}
+     * takes {@code \immediate}.
      * 
      * @throws Exception in case of an error
      */
@@ -123,8 +122,8 @@ public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\write"> Test case checking that <tt>\write</tt>
-     * complains about undefined active characters in the argument. </testcase>
+     * <testcase primitive="\write"> Test case checking that {@code \write}
+     * complains about undefined active characters in the argument.
      * 
      * @throws Exception in case of an error
      */
@@ -138,8 +137,8 @@ public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\write"> Test case checking that <tt>\write</tt>
-     * expands active characters in the argument. </testcase>
+     * <testcase primitive="\write"> Test case checking that {@code \write}
+     * expands active characters in the argument.
      * 
      * @throws Exception in case of an error
      */
@@ -154,9 +153,9 @@ public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\write"> Test case checking that <tt>\write</tt>
+     * <testcase primitive="\write"> Test case checking that {@code \write}
      * writes active characters mapped to primitives in the argument.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */

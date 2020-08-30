@@ -37,15 +37,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>format.name$</tt>.
+ * Test suite for {@code format.name$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class FormatNameTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -80,7 +79,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> The empty stack leads to an error. </testcase>
+     *  The empty stack leads to an error. 
      * 
      * @throws Exception in case of an error
      */
@@ -119,7 +118,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test specifier f alone. </testcase>
+     *  Test specifier f alone. 
      * 
      * @throws Exception in case of an error
      */
@@ -130,7 +129,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test specifier v alone. </testcase>
+     *  Test specifier v alone. 
      * 
      * @throws Exception in case of an error
      */
@@ -141,7 +140,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test specifier j alone. </testcase>
+     *  Test specifier j alone. 
      * 
      * @throws Exception in case of an error
      */
@@ -152,7 +151,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test specifier ll alone. </testcase>
+     *  Test specifier ll alone. 
      * 
      * @throws Exception in case of an error
      */
@@ -163,7 +162,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test a constant format. </testcase>
+     *  Test a constant format. 
      * 
      * @throws Exception in case of an error
      */
@@ -174,7 +173,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test mixed constant and variable pieces. </testcase>
+     *  Test mixed constant and variable pieces. 
      * 
      * @throws Exception in case of an error
      */
@@ -186,7 +185,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier ll. </testcase>
+     *  Test the specifier ll. 
      * 
      * @throws Exception in case of an error
      */
@@ -197,7 +196,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier ff. </testcase>
+     *  Test the specifier ff. 
      * 
      * @throws Exception in case of an error
      */
@@ -208,7 +207,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier vv. </testcase>
+     *  Test the specifier vv. 
      * 
      * @throws Exception in case of an error
      */
@@ -219,7 +218,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier jj. </testcase>
+     *  Test the specifier jj. 
      * 
      * @throws Exception in case of an error
      */
@@ -230,7 +229,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier l. </testcase>
+     *  Test the specifier l. 
      * 
      * @throws Exception in case of an error
      */
@@ -241,7 +240,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier ll. </testcase>
+     *  Test the specifier ll. 
      * 
      * @throws Exception in case of an error
      */
@@ -252,7 +251,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier vv. </testcase>
+     *  Test the specifier vv. 
      * 
      * @throws Exception in case of an error
      */
@@ -263,7 +262,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier ff. </testcase>
+     *  Test the specifier ff. 
      * 
      * @throws Exception in case of an error
      */
@@ -274,7 +273,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier f with postfix. </testcase>
+     *  Test the specifier f with postfix. 
      * 
      * @throws Exception in case of an error
      */
@@ -286,7 +285,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier ll with postfix. </testcase>
+     *  Test the specifier ll with postfix. 
      * 
      * @throws Exception in case of an error
      */
@@ -298,7 +297,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier vv with postfix. </testcase>
+     *  Test the specifier vv with postfix. 
      * 
      * @throws Exception in case of an error
      */
@@ -310,7 +309,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier ff with postfix. </testcase>
+     *  Test the specifier ff with postfix. 
      * 
      * @throws Exception in case of an error
      */
@@ -322,7 +321,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier ll with postfix. </testcase>
+     *  Test the specifier ll with postfix. 
      * 
      * @throws Exception in case of an error
      */
@@ -334,7 +333,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier vv with postfix. </testcase>
+     *  Test the specifier vv with postfix. 
      * 
      * @throws Exception in case of an error
      */
@@ -346,7 +345,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier ff with postfix. </testcase>
+     *  Test the specifier ff with postfix. 
      * 
      * @throws Exception in case of an error
      */
@@ -358,7 +357,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier l with postfix. </testcase>
+     *  Test the specifier l with postfix. 
      * 
      * @throws Exception in case of an error
      */
@@ -370,7 +369,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier v with postfix. </testcase>
+     *  Test the specifier v with postfix. 
      * 
      * @throws Exception in case of an error
      */
@@ -382,7 +381,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier ll alone. </testcase>
+     *  Test the specifier ll alone. 
      * 
      * @throws Exception in case of an error
      */
@@ -393,7 +392,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier ff alone. </testcase>
+     *  Test the specifier ff alone. 
      * 
      * @throws Exception in case of an error
      */
@@ -404,7 +403,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier vv alone. </testcase>
+     *  Test the specifier vv alone. 
      * 
      * @throws Exception in case of an error
      */
@@ -415,7 +414,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier jj alone. </testcase>
+     *  Test the specifier jj alone. 
      * 
      * @throws Exception in case of an error
      */
@@ -426,7 +425,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier l alone. </testcase>
+     *  Test the specifier l alone. 
      * 
      * @throws Exception in case of an error
      */
@@ -437,7 +436,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier f alone. </testcase>
+     *  Test the specifier f alone. 
      * 
      * @throws Exception in case of an error
      */
@@ -448,7 +447,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier v alone. </testcase>
+     *  Test the specifier v alone. 
      * 
      * @throws Exception in case of an error
      */
@@ -459,7 +458,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier j alone. </testcase>
+     *  Test the specifier j alone. 
      * 
      * @throws Exception in case of an error
      */
@@ -470,7 +469,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier ll alone. </testcase>
+     *  Test the specifier ll alone. 
      * 
      * @throws Exception in case of an error
      */
@@ -481,7 +480,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier vv alone. </testcase>
+     *  Test the specifier vv alone. 
      * 
      * @throws Exception in case of an error
      */
@@ -492,7 +491,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier ff alone. </testcase>
+     *  Test the specifier ff alone. 
      * 
      * @throws Exception in case of an error
      */
@@ -503,7 +502,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier f with postfix. </testcase>
+     *  Test the specifier f with postfix. 
      * 
      * @throws Exception in case of an error
      */
@@ -515,7 +514,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier ll with postfix. </testcase>
+     *  Test the specifier ll with postfix. 
      * 
      * @throws Exception in case of an error
      */
@@ -527,7 +526,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier vv with postfix. </testcase>
+     *  Test the specifier vv with postfix. 
      * 
      * @throws Exception in case of an error
      */
@@ -539,7 +538,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test the specifier ff with postfix. </testcase>
+     *  Test the specifier ff with postfix. 
      * 
      * @throws Exception in case of an error
      */
@@ -551,8 +550,8 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test ll format with postfix and several last part elements.
-     * </testcase>
+     *  Test ll format with postfix and several last part elements.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -564,8 +563,8 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test vv format with postfix and several von part elements.
-     * </testcase>
+     *  Test vv format with postfix and several von part elements.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -577,8 +576,8 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test ff format with postfix and several first part elements.
-     * </testcase>
+     *  Test ff format with postfix and several first part elements.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -590,8 +589,8 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test v format with postfix and several last part elements.
-     * </testcase>
+     *  Test v format with postfix and several last part elements.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -603,8 +602,8 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test v format with postfix and several von part elements.
-     * </testcase>
+     *  Test v format with postfix and several von part elements.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -616,7 +615,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test ll format alone. </testcase>
+     *  Test ll format alone. 
      * 
      * @throws Exception in case of an error
      */
@@ -627,7 +626,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test ff format alone. </testcase>
+     *  Test ff format alone. 
      * 
      * @throws Exception in case of an error
      */
@@ -638,7 +637,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test vv format alone when there is no von part. </testcase>
+     *  Test vv format alone when there is no von part. 
      * 
      * @throws Exception in case of an error
      */
@@ -649,7 +648,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test jj format alone when there is no junior part. </testcase>
+     *  Test jj format alone when there is no junior part. 
      * 
      * @throws Exception in case of an error
      */
@@ -660,7 +659,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test l format alone. </testcase>
+     *  Test l format alone. 
      * 
      * @throws Exception in case of an error
      */
@@ -671,7 +670,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test f format alone. </testcase>
+     *  Test f format alone. 
      * 
      * @throws Exception in case of an error
      */
@@ -682,7 +681,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test v format alone. </testcase>
+     *  Test v format alone. 
      * 
      * @throws Exception in case of an error
      */
@@ -693,7 +692,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test j format alone. </testcase>
+     *  Test j format alone. 
      * 
      * @throws Exception in case of an error
      */
@@ -704,7 +703,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test ll format alone. </testcase>
+     *  Test ll format alone. 
      * 
      * @throws Exception in case of an error
      */
@@ -715,7 +714,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test vv format alone. </testcase>
+     *  Test vv format alone. 
      * 
      * @throws Exception in case of an error
      */
@@ -726,7 +725,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test ff format alone. </testcase>
+     *  Test ff format alone. 
      * 
      * @throws Exception in case of an error
      */
@@ -737,7 +736,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test f format with postfix. </testcase>
+     *  Test f format with postfix. 
      * 
      * @throws Exception in case of an error
      */
@@ -750,7 +749,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test ll format with postfix and infix. </testcase>
+     *  Test ll format with postfix and infix. 
      * 
      * @throws Exception in case of an error
      */
@@ -763,7 +762,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test vv format with postfix and infix. </testcase>
+     *  Test vv format with postfix and infix. 
      * 
      * @throws Exception in case of an error
      */
@@ -776,7 +775,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test ff format with postfix and infix. </testcase>
+     *  Test ff format with postfix and infix. 
      * 
      * @throws Exception in case of an error
      */
@@ -789,7 +788,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test ll format with postfix and infix. </testcase>
+     *  Test ll format with postfix and infix. 
      * 
      * @throws Exception in case of an error
      */
@@ -802,7 +801,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test vv format with postfix and infix. </testcase>
+     *  Test vv format with postfix and infix. 
      * 
      * @throws Exception in case of an error
      */
@@ -815,7 +814,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test ff format with postfix and infix. </testcase>
+     *  Test ff format with postfix and infix. 
      * 
      * @throws Exception in case of an error
      */
@@ -828,7 +827,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test l format with postfix and infix. </testcase>
+     *  Test l format with postfix and infix. 
      * 
      * @throws Exception in case of an error
      */
@@ -841,7 +840,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test v format with postfix and infix. </testcase>
+     *  Test v format with postfix and infix. 
      * 
      * @throws Exception in case of an error
      */
@@ -854,7 +853,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test f format with postfix and infix. </testcase>
+     *  Test f format with postfix and infix. 
      * 
      * @throws Exception in case of an error
      */
@@ -867,7 +866,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test ll format with postfix space. </testcase>
+     *  Test ll format with postfix space. 
      * 
      * @throws Exception in case of an error
      */
@@ -880,7 +879,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test vv format with postfix. </testcase>
+     *  Test vv format with postfix. 
      * 
      * @throws Exception in case of an error
      */
@@ -893,7 +892,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test ff format with postfix. </testcase>
+     *  Test ff format with postfix. 
      * 
      * @throws Exception in case of an error
      */
@@ -906,7 +905,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test ll format with postfix. </testcase>
+     *  Test ll format with postfix. 
      * 
      * @throws Exception in case of an error
      */
@@ -919,7 +918,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test vv format with postfix. </testcase>
+     *  Test vv format with postfix. 
      * 
      * @throws Exception in case of an error
      */
@@ -932,7 +931,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test ff format with postfix. </testcase>
+     *  Test ff format with postfix. 
      * 
      * @throws Exception in case of an error
      */
@@ -945,7 +944,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test l format with postfix. </testcase>
+     *  Test l format with postfix. 
      * 
      * @throws Exception in case of an error
      */
@@ -958,7 +957,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test v format. </testcase>
+     *  Test v format. 
      * 
      * @throws Exception in case of an error
      */
@@ -971,7 +970,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test double tilde. </testcase>
+     *  Test double tilde. 
      * 
      * @throws Exception in case of an error
      */
@@ -982,7 +981,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test an empty group in a prefix. </testcase>
+     *  Test an empty group in a prefix. 
      * 
      * @throws Exception in case of an error
      */
@@ -993,7 +992,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test joined initials. </testcase>
+     *  Test joined initials. 
      * 
      * @throws Exception in case of an error
      */
@@ -1004,7 +1003,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test a single initial. </testcase>
+     *  Test a single initial. 
      * 
      * @throws Exception in case of an error
      */
@@ -1015,7 +1014,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test space separated initials. </testcase>
+     *  Test space separated initials. 
      * 
      * @throws Exception in case of an error
      */
@@ -1027,7 +1026,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test several names. </testcase>
+     *  Test several names. 
      * 
      * @throws Exception in case of an error
      */
@@ -1039,7 +1038,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test accented initials. </testcase>
+     *  Test accented initials. 
      * 
      * @throws Exception in case of an error
      */
@@ -1051,7 +1050,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test double initials. </testcase>
+     *  Test double initials. 
      * 
      * @throws Exception in case of an error
      */
@@ -1062,7 +1061,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> test double first names. </testcase>
+     *  test double first names. 
      * 
      * @throws Exception in case of an error
      */
@@ -1074,7 +1073,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test a first name in a group. </testcase>
+     *  Test a first name in a group. 
      * 
      * @throws Exception in case of an error
      */
@@ -1085,7 +1084,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test a first name in a group. </testcase>
+     *  Test a first name in a group. 
      * 
      * @throws Exception in case of an error
      */
@@ -1097,7 +1096,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test a first name in a group. </testcase>
+     *  Test a first name in a group. 
      * 
      * @throws Exception in case of an error
      */
@@ -1108,7 +1107,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> Test a first name in a group. </testcase>
+     *  Test a first name in a group. 
      * 
      * @throws Exception in case of an error
      */
@@ -1141,7 +1140,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> The first name in an empty list leads to an error. </testcase>
+     *  The first name in an empty list leads to an error. 
      * 
      * @throws Exception in case of an error
      */
@@ -1152,8 +1151,8 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> The second name in a one-name list leads to an error.
-     * </testcase>
+     *  The second name in a one-name list leads to an error.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -1164,8 +1163,8 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> The third name in a two-name list leads to an error.
-     * </testcase>
+     *  The third name in a two-name list leads to an error.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -1176,8 +1175,8 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> The third name in a two-name list leads to an error.
-     * </testcase>
+     *  The third name in a two-name list leads to an error.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -1188,7 +1187,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> The index -1 in an empty list leads to an error. </testcase>
+     *  The index -1 in an empty list leads to an error. 
      * 
      * @throws Exception in case of an error
      */
@@ -1199,7 +1198,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> A short stack leads to an error. </testcase>
+     *  A short stack leads to an error. 
      * 
      * @throws Exception in case of an error
      */
@@ -1216,7 +1215,7 @@ public class FormatNameTest {
     }
 
     /**
-     * <testcase> A short stack leads to an error. </testcase>
+     *  A short stack leads to an error. 
      * 
      * @throws Exception in case of an error
      */

@@ -31,29 +31,28 @@ import org.extex.core.dimen.FixedDimen;
  * order should determine the value.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class WideGlue {
 
     /**
-     * The field <tt>SIZE</tt> contains the size of the arrays.
+     * The field {@code SIZE} contains the size of the arrays.
      */
     private static final int SIZE = 5;
 
     /**
-     * The field <tt>length</tt> contains the natural length.
+     * The field {@code length} contains the natural length.
      */
-    private Dimen length = new Dimen();
+    private final Dimen length = new Dimen();
 
     /**
-     * The field <tt>shrink</tt> contains the shrink components.
+     * The field {@code shrink} contains the shrink components.
      */
-    private long[] shrink = new long[SIZE];
+    private final long[] shrink = new long[SIZE];
 
     /**
-     * The field <tt>stretch</tt> contains the stretch components.
+     * The field {@code stretch} contains the stretch components.
      */
-    private long[] stretch = new long[SIZE];
+    private final long[] stretch = new long[SIZE];
 
     /**
      * Creates a new object.

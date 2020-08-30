@@ -23,11 +23,10 @@ import org.extex.test.ExTeXLauncher;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\ifscaled</tt>.
+ * This is a test suite for the primitive {@code \ifscaled}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class IfscaledTest extends ExTeXLauncher {
 
     /**
@@ -48,7 +47,7 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|0<1| selects the then branch. </testcase>
+     * {@code \ifscaled} on \verb|0<1| selects the then branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -62,7 +61,7 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|1<1| selects the else branch. </testcase>
+     * {@code \ifscaled} on \verb|1<1| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -76,7 +75,7 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|2<1| selects the else branch. </testcase>
+     * {@code \ifscaled} on \verb|2<1| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -90,7 +89,7 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|0=1| selects the else branch. </testcase>
+     * {@code \ifscaled} on \verb|0=1| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -104,7 +103,7 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|1=1| selects the then branch. </testcase>
+     * {@code \ifscaled} on \verb|1=1| selects the then branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -118,7 +117,7 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|2=1| selects the else branch. </testcase>
+     * {@code \ifscaled} on \verb|2=1| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -132,7 +131,7 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|0>1| selects the else branch. </testcase>
+     * {@code \ifscaled} on \verb|0>1| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -146,7 +145,7 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|1>1| selects the else branch. </testcase>
+     * {@code \ifscaled} on \verb|1>1| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -160,7 +159,7 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|2>1| selects the then branch. </testcase>
+     * {@code \ifscaled} on \verb|2>1| selects the then branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -174,8 +173,8 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|0.<1.| selects the then branch.
-     * </testcase>
+     * {@code \ifscaled} on \verb|0.<1.| selects the then branch.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -189,8 +188,8 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|1.<1.| selects the else branch.
-     * </testcase>
+     * {@code \ifscaled} on \verb|1.<1.| selects the else branch.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -204,8 +203,8 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|2.<1.| selects the else branch.
-     * </testcase>
+     * {@code \ifscaled} on \verb|2.<1.| selects the else branch.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -219,7 +218,7 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|0.=1.| selects the else branch. </testcase>
+     * {@code \ifscaled} on \verb|0.=1.| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -233,7 +232,7 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|1.=1.| selects the then branch. </testcase>
+     * {@code \ifscaled} on \verb|1.=1.| selects the then branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -247,7 +246,7 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|2.=1.| selects the else branch. </testcase>
+     * {@code \ifscaled} on \verb|2.=1.| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -261,7 +260,7 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|0.>1.| selects the else branch. </testcase>
+     * {@code \ifscaled} on \verb|0.>1.| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -275,7 +274,7 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|1.>1.| selects the else branch. </testcase>
+     * {@code \ifscaled} on \verb|1.>1.| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -289,7 +288,7 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|2.>1.| selects the then branch. </testcase>
+     * {@code \ifscaled} on \verb|2.>1.| selects the then branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -303,8 +302,8 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|.0<.1| selects the then branch.
-     * </testcase>
+     * {@code \ifscaled} on \verb|.0<.1| selects the then branch.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -318,8 +317,8 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|.1<.1| selects the else branch.
-     * </testcase>
+     * {@code \ifscaled} on \verb|.1<.1| selects the else branch.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -333,8 +332,8 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|.2<.1| selects the else branch.
-     * </testcase>
+     * {@code \ifscaled} on \verb|.2<.1| selects the else branch.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -348,7 +347,7 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|.0=.1| selects the else branch. </testcase>
+     * {@code \ifscaled} on \verb|.0=.1| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -362,7 +361,7 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|.1=.1| selects the then branch. </testcase>
+     * {@code \ifscaled} on \verb|.1=.1| selects the then branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -376,7 +375,7 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|.2=.1| selects the else branch. </testcase>
+     * {@code \ifscaled} on \verb|.2=.1| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -390,7 +389,7 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|.0>.1| selects the else branch. </testcase>
+     * {@code \ifscaled} on \verb|.0>.1| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -404,7 +403,7 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|.1>.1| selects the else branch. </testcase>
+     * {@code \ifscaled} on \verb|.1>.1| selects the else branch. 
      * 
      * @throws Exception in case of an error
      */
@@ -418,7 +417,7 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifscaled"> Test case checking that
-     * <tt>\ifscaled</tt> on \verb|.2>.1| selects the then branch. </testcase>
+     * {@code \ifscaled} on \verb|.2>.1| selects the then branch. 
      * 
      * @throws Exception in case of an error
      */

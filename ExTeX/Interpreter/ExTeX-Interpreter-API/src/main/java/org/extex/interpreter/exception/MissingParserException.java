@@ -26,12 +26,11 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This exception s thrown when a parser is requested but not registered.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MissingParserException extends HelpingException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;

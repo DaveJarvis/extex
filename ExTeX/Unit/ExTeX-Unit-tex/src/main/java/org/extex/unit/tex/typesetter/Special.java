@@ -30,10 +30,10 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.SpecialNode;
 
 /**
- * This class provides an implementation for the primitive <code>\special</code>
+ * This class provides an implementation for the primitive {@code \special}
  * .
  * 
- * <doc name="special"> <h3>The Primitive <tt>\special</tt></h3>
+ * <p>The Primitive {@code \special}</p>
  * <p>
  * This primitive sends a string to the back-end driver. The argument is a
  * balanced block of text which is expanded and translated into a string. The
@@ -41,15 +41,17 @@ import org.extex.typesetter.type.node.SpecialNode;
  * SpecialNode} to the typesetter for passing it down.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;special&rang;
- *        &rarr; <tt>\special</tt> {@linkplain
+ *        &rarr; {@code \special} {@linkplain
  *           org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,CodeToken)
  *           &lang;general text&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \special{hello world}  </pre>
@@ -61,16 +63,14 @@ import org.extex.typesetter.type.node.SpecialNode;
  * For several back-end drivers for TeX a quasi-standard has emerged which uses a prefix ended by a
  * colon to indicate the back-end driver the special is targeted at.
  * </p>
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Special extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -85,10 +85,7 @@ public class Special extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

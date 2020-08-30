@@ -51,12 +51,11 @@ import org.junit.Test;
  * This is the test suite for the PS writer.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class PsWriterTest {
 
     /**
-     * The constant <tt>OPTIONS</tt> contains the document writer options for
+     * The constant {@code OPTIONS} contains the document writer options for
      * the tests.
      */
     private static final DocumentWriterOptions OPTIONS =

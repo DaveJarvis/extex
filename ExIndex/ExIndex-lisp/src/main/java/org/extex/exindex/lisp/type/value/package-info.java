@@ -17,7 +17,7 @@
  */
 /**
  * 
- *   This package contains values for the L system.
+ *   Contains values for the L system.
  * 
  *
  */

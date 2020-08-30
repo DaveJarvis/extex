@@ -22,23 +22,22 @@ package org.extex.exbib.bst2groovy.parameters;
  * This enumeration contains the legal values for parameters.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public enum ParameterType {
 
     /**
-     * The field <tt>OPTIMIZE</tt> contains the indicator for the boolean
+     * The field {@code OPTIMIZE} contains the indicator for the boolean
      * parameter to turn on the optimization.
      */
     OPTIMIZE,
 
     /**
-     * The field <tt>STYLE_NAME</tt> contains the name for the style name.
+     * The field {@code STYLE_NAME} contains the name for the style name.
      */
     STYLE_NAME,
 
     /**
-     * The field <tt>TAB_SIZE</tt> contains name for the tab size.
+     * The field {@code TAB_SIZE} contains name for the tab size.
      */
     TAB_SIZE
 

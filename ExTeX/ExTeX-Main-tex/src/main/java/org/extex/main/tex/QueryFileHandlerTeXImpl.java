@@ -36,8 +36,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4708 $
- */
+*/
 public class QueryFileHandlerTeXImpl implements QueryFileHandler {
 
 
@@ -54,7 +53,7 @@ public class QueryFileHandlerTeXImpl implements QueryFileHandler {
      * @param logger the logger
      * @param prompt the prompt to present before the input is allowed
      * 
-     * @return the line read or <code>null</code> to signal EOF
+     * @return the line read or {@code null} to signal EOF
      * 
      * @throws IOException in case of an error during IO. This is rather
      *         unlikely
@@ -88,7 +87,7 @@ public class QueryFileHandlerTeXImpl implements QueryFileHandler {
      * @param logger the logger stream for output messages
      * @param properties the properties
      * 
-     * @return the file name or <code>null</code> if none has been given
+     * @return the file name or {@code null} if none has been given
      * 
      * @see org.extex.main.tex.QueryFileHandler#query(java.util.logging.Logger,
      *      java.util.Properties)

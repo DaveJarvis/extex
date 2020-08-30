@@ -35,15 +35,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>substring$</tt>.
+ * Test suite for {@code substring$}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SubstringTest {
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -89,7 +88,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> The empty stack leads to an error. </testcase>
+     *  The empty stack leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -100,7 +99,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> A short stack leads to an error. </testcase>
+     *  A short stack leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -112,7 +111,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> A short stack leads to an error. </testcase>
+     *  A short stack leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -125,7 +124,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("abcd", 0, 0) = "" </testcase>
+     *  substring$("abcd", 0, 0) = ""
      * 
      * @throws Exception in case of an error
      */
@@ -136,7 +135,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("abcd", 1, 1) = "a" </testcase>
+     *  substring$("abcd", 1, 1) = "a"
      * 
      * @throws Exception in case of an error
      */
@@ -147,7 +146,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("abcd", -1, 1) = "d" </testcase>
+     *  substring$("abcd", -1, 1) = "d"
      * 
      * @throws Exception in case of an error
      */
@@ -158,7 +157,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("abcd", 2, 1) = "b" </testcase>
+     *  substring$("abcd", 2, 1) = "b"
      * 
      * @throws Exception in case of an error
      */
@@ -169,7 +168,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("abcd", -2, 1) = "c" </testcase>
+     *  substring$("abcd", -2, 1) = "c"
      * 
      * @throws Exception in case of an error
      */
@@ -180,7 +179,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("abcd", 1, 2) = "ab" </testcase>
+     *  substring$("abcd", 1, 2) = "ab"
      * 
      * @throws Exception in case of an error
      */
@@ -191,7 +190,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("abcd", -1, 2) = "cd" </testcase>
+     *  substring$("abcd", -1, 2) = "cd"
      * 
      * @throws Exception in case of an error
      */
@@ -202,7 +201,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("a", 0, 0) = "" </testcase>
+     *  substring$("a", 0, 0) = ""
      * 
      * @throws Exception in case of an error
      */
@@ -213,7 +212,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("a", -2, -4) = "" </testcase>
+     *  substring$("a", -2, -4) = ""
      * 
      * @throws Exception in case of an error
      */
@@ -224,7 +223,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("a", -3, -6) = "" </testcase>
+     *  substring$("a", -3, -6) = ""
      * 
      * @throws Exception in case of an error
      */
@@ -235,7 +234,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("a", 1, 1) = "a" </testcase>
+     *  substring$("a", 1, 1) = "a"
      * 
      * @throws Exception in case of an error
      */
@@ -246,7 +245,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("a", -1, 1) = "a" </testcase>
+     *  substring$("a", -1, 1) = "a"
      * 
      * @throws Exception in case of an error
      */
@@ -257,7 +256,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("a", 2, 1) = "" </testcase>
+     *  substring$("a", 2, 1) = ""
      * 
      * @throws Exception in case of an error
      */
@@ -268,7 +267,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("a", -2, 1) = "" </testcase>
+     *  substring$("a", -2, 1) = ""
      * 
      * @throws Exception in case of an error
      */
@@ -279,7 +278,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("a", 1, 2) = "a" </testcase>
+     *  substring$("a", 1, 2) = "a"
      * 
      * @throws Exception in case of an error
      */
@@ -290,7 +289,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("a", -1, 2) = "a" </testcase>
+     *  substring$("a", -1, 2) = "a"
      * 
      * @throws Exception in case of an error
      */
@@ -301,7 +300,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("a", -2, -2) = "" </testcase>
+     *  substring$("a", -2, -2) = ""
      * 
      * @throws Exception in case of an error
      */
@@ -312,7 +311,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("a", -2, -3) = "" </testcase>
+     *  substring$("a", -2, -3) = ""
      * 
      * @throws Exception in case of an error
      */
@@ -323,7 +322,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("abc", 0, 0) = "" </testcase>
+     *  substring$("abc", 0, 0) = ""
      * 
      * @throws Exception in case of an error
      */
@@ -334,7 +333,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("abc", 1, 1) = "a" </testcase>
+     *  substring$("abc", 1, 1) = "a"
      * 
      * @throws Exception in case of an error
      */
@@ -345,7 +344,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("abc", -1, 1) = "c" </testcase>
+     *  substring$("abc", -1, 1) = "c"
      * 
      * @throws Exception in case of an error
      */
@@ -356,7 +355,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("abc", 2, 1) = "b" </testcase>
+     *  substring$("abc", 2, 1) = "b"
      * 
      * @throws Exception in case of an error
      */
@@ -367,7 +366,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("abc", -2, 1) = "b" </testcase>
+     *  substring$("abc", -2, 1) = "b"
      * 
      * @throws Exception in case of an error
      */
@@ -378,7 +377,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("abc", 1, 2) = "ab" </testcase>
+     *  substring$("abc", 1, 2) = "ab"
      * 
      * @throws Exception in case of an error
      */
@@ -389,7 +388,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("abc", -1, 2) = "bc" </testcase>
+     *  substring$("abc", -1, 2) = "bc"
      * 
      * @throws Exception in case of an error
      */
@@ -400,8 +399,8 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", 0, 2) = ""
-     * </testcase>
+     *  substring$("abcdefghijklmnopqrstuvwxyz", 0, 2) = ""
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -412,8 +411,8 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", -26, 2) = "a"
-     * </testcase>
+     *  substring$("abcdefghijklmnopqrstuvwxyz", -26, 2) = "a"
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -424,8 +423,8 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", -27, 2) = ""
-     * </testcase>
+     *  substring$("abcdefghijklmnopqrstuvwxyz", -27, 2) = ""
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -436,8 +435,8 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", 1, 2) = "ab"
-     * </testcase>
+     *  substring$("abcdefghijklmnopqrstuvwxyz", 1, 2) = "ab"
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -448,8 +447,8 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", 2, 2) = "bc"
-     * </testcase>
+     *  substring$("abcdefghijklmnopqrstuvwxyz", 2, 2) = "bc"
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -460,8 +459,8 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", 25, 2) = "yz"
-     * </testcase>
+     *  substring$("abcdefghijklmnopqrstuvwxyz", 25, 2) = "yz"
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -472,8 +471,8 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", 26, 2) = "z"
-     * </testcase>
+     *  substring$("abcdefghijklmnopqrstuvwxyz", 26, 2) = "z"
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -484,8 +483,8 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", 27, 2) = ""
-     * </testcase>
+     *  substring$("abcdefghijklmnopqrstuvwxyz", 27, 2) = ""
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -496,8 +495,8 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", -1, 2) = "yz"
-     * </testcase>
+     *  substring$("abcdefghijklmnopqrstuvwxyz", -1, 2) = "yz"
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -508,8 +507,8 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", -2, 2) = "xy"
-     * </testcase>
+     *  substring$("abcdefghijklmnopqrstuvwxyz", -2, 2) = "xy"
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -520,8 +519,8 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", -25, 2) = "ab"
-     * </testcase>
+     *  substring$("abcdefghijklmnopqrstuvwxyz", -25, 2) = "ab"
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -532,7 +531,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("ab", 0, 0) = "" </testcase>
+     *  substring$("ab", 0, 0) = ""
      * 
      * @throws Exception in case of an error
      */
@@ -543,7 +542,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("ab", 1, 1) = "a" </testcase>
+     *  substring$("ab", 1, 1) = "a"
      * 
      * @throws Exception in case of an error
      */
@@ -554,7 +553,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("ab", -1, 1) = "b" </testcase>
+     *  substring$("ab", -1, 1) = "b"
      * 
      * @throws Exception in case of an error
      */
@@ -565,7 +564,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("ab", 2, 1) = "b" </testcase>
+     *  substring$("ab", 2, 1) = "b"
      * 
      * @throws Exception in case of an error
      */
@@ -576,7 +575,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("ab", -2, 1) = "a" </testcase>
+     *  substring$("ab", -2, 1) = "a"
      * 
      * @throws Exception in case of an error
      */
@@ -587,7 +586,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("ab", 1, 2) = "ab" </testcase>
+     *  substring$("ab", 1, 2) = "ab"
      * 
      * @throws Exception in case of an error
      */
@@ -598,7 +597,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("ab", -1, 2) = "ab" </testcase>
+     *  substring$("ab", -1, 2) = "ab"
      * 
      * @throws Exception in case of an error
      */
@@ -609,7 +608,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("", 0, 0) = "" </testcase>
+     *  substring$("", 0, 0) = ""
      * 
      * @throws Exception in case of an error
      */
@@ -620,7 +619,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("", 1, 1) = "" </testcase>
+     *  substring$("", 1, 1) = ""
      * 
      * @throws Exception in case of an error
      */
@@ -631,7 +630,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("", -1, 1) = "" </testcase>
+     *  substring$("", -1, 1) = ""
      * 
      * @throws Exception in case of an error
      */
@@ -642,7 +641,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("", 2, 1) = "" </testcase>
+     *  substring$("", 2, 1) = ""
      * 
      * @throws Exception in case of an error
      */
@@ -653,7 +652,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("", -2, 1) = "" </testcase>
+     *  substring$("", -2, 1) = ""
      * 
      * @throws Exception in case of an error
      */
@@ -664,7 +663,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("", 1, 2) = "" </testcase>
+     *  substring$("", 1, 2) = ""
      * 
      * @throws Exception in case of an error
      */
@@ -675,7 +674,7 @@ public class SubstringTest {
     }
 
     /**
-     * <testcase> substring$("", -1, 2) = "" </testcase>
+     *  substring$("", -1, 2) = ""
      * 
      * @throws Exception in case of an error
      */

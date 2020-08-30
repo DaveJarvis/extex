@@ -26,8 +26,7 @@ import java.io.IOException;
  * Interface for random access (read only)
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public interface RandomAccessR extends DataInput {
 
     /**
@@ -40,15 +39,13 @@ public interface RandomAccessR extends DataInput {
      */
     int X24 = 0x800000;
 
-    /**
-     * @see java.io.RandomAccessFile#close()
-     */
     void close() throws IOException;
 
     /**
      * Returns the data.
-     * 
+     *
      * @return the data.
+     * @throws IOException if an IO error occurs
      */
     byte[] getData() throws IOException;
 
@@ -63,19 +60,16 @@ public interface RandomAccessR extends DataInput {
     /**
      * Check, if EOF is reached.
      * 
-     * @return Returns <code>true</code>, if EOF is reached.
+     * @return Returns {@code true}, if EOF is reached.
      * @throws IOException if an IO error occurs.
      */
     boolean isEOF() throws IOException;
 
-    /**
-     * @see java.io.RandomAccessFile#length()
-     */
     long length() throws IOException;
 
     /**
      * Reads a byte of data from this file. The byte is returned as an integer
-     * in the range 0 to 255 (<code>0x00-0x0ff</code>).
+     * in the range 0 to 255 ({@code 0x00-0x0ff}).
      * 
      * @throws IOException if an IO error occurs.
      * @return the next byte of data.
@@ -115,9 +109,6 @@ public interface RandomAccessR extends DataInput {
      */
     int readSignInt24() throws IOException;
 
-    /**
-     * @see java.io.RandomAccessFile#seek(long)
-     */
     void seek(long arg0) throws IOException;
 
 }

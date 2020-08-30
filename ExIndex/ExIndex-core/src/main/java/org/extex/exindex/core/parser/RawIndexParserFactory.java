@@ -32,8 +32,7 @@ import org.extex.resource.ResourceFinder;
  * the resource found.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface RawIndexParserFactory {
 
     /**
@@ -42,11 +41,11 @@ public interface RawIndexParserFactory {
      * 
      * @param resource the name of the resource
      * @param charset the name of the character set; a value of
-     *        <code>null</code> or the empty string uses the platform default
+     *        {@code null} or the empty string uses the platform default
      *        for the character set
      * @param indexer the interpreter
      * 
-     * @return the parser or <code>null</code> if the resource could not be
+     * @return the parser or {@code null} if the resource could not be
      *         found
      * 
      * @throws RawIndexException in case of an error

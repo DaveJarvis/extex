@@ -24,19 +24,18 @@ import java.io.Serializable;
 /**
  * TFM-LigKern.
  * <p>
- * Base class for <code>Ligature</code> and <code>Kerning</code> instructions.
+ * Base class for {@code Ligature} and {@code Kerning} instructions.
  * It handles the skip amount to the next instruction in the kern/lig program
  * and the character code for the next character.
  * 
  * @see <a href="package-summary.html#lig_kern">lig_kern</a>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public abstract class TfmLigKern implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2009L;
@@ -55,9 +54,9 @@ public abstract class TfmLigKern implements Serializable {
     /**
      * Create a new object.
      * 
-     * @param askip the skip amount to the next instruction. <code>0</code>
+     * @param askip the skip amount to the next instruction. {@code 0}
      *        means the folowing instruction is the next, a number
-     *        <code>< 0</code> means that there is no next instruction (this is
+     *        {@code < 0} means that there is no next instruction (this is
      *        the last).
      * @param next the code of the next character.
      */
@@ -92,7 +91,7 @@ public abstract class TfmLigKern implements Serializable {
      * program for given index of this instruction.
      * 
      * @param pos the index of this instruction.
-     * @return the index of the next instruction or <code>NOINDEX</code> if this
+     * @return the index of the next instruction or {@code NOINDEX} if this
      *         is the last instruction of the lig/kern program.
      */
     public int nextIndex(int pos) {
@@ -100,12 +99,7 @@ public abstract class TfmLigKern implements Serializable {
         return (skip < 0) ? TfmCharInfoWord.NOINDEX : pos + skip + 1;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder buf = new StringBuilder();

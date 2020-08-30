@@ -32,8 +32,7 @@ import java.util.ResourceBundle;
  * singleton pattern by providing static methods only.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class LocalizerFactory {
 
     /**
@@ -41,24 +40,23 @@ public final class LocalizerFactory {
      * delivered by this factory.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
-     */
+    */
     private static class BasicLocalizer implements Localizer {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
+         * The constant {@code serialVersionUID} contains the id for
          * serialization.
          */
         private static final long serialVersionUID = 2011L;
 
         /**
-         * The field <tt>bundle</tt> contains the resource bundle for this
-         * instance or <code>null</code> if none has been loaded yet.
+         * The field {@code bundle} contains the resource bundle for this
+         * instance or {@code null} if none has been loaded yet.
          */
         private transient ResourceBundle bundle = null;
 
         /**
-         * The field <tt>bundleName</tt> contains the name of the resource
+         * The field {@code bundleName} contains the name of the resource
          * bundle to use.
          */
         private String bundleName;
@@ -77,8 +75,8 @@ public final class LocalizerFactory {
          * Getter for the value of a format string associated to a given key.
          * 
          * @param key the key in the resource bundle to search for
-         * @return the resource string or the String <tt>???</tt><i>key</i>
-         *         <tt>???</tt> if none is found
+         * @return the resource string or the String {@code ???}<i>key</i>
+         *         {@code ???} if none is found
          */
         @Override
         public String format(String key) {
@@ -96,10 +94,10 @@ public final class LocalizerFactory {
         /**
          * Apply the given argument to the format string stored in the resource
          * bundle under the given key. The argument object's value of toString()
-         * replaces the substring <tt>'{0}'</tt> in the format.
+         * replaces the substring {@code '{0}'} in the format.
          * 
          * @param fmt the key in the resource bundle to search for
-         * @param a the Object used for the substring <tt>{0}</tt>
+         * @param a the Object used for the substring {@code {0}}
          * 
          * @return the expanded format string
          */
@@ -112,12 +110,12 @@ public final class LocalizerFactory {
         /**
          * Apply the given argument to the format string stored in the resource
          * bundle under the given key. The argument object's value of toString()
-         * replaces the substring <tt>'{0}'</tt> and <tt>'{1}'</tt> in the
+         * replaces the substring {@code '{0}'} and {@code '{1}'} in the
          * format.
          * 
          * @param fmt the key in the resource bundle to search for
-         * @param a the Object used for the substring <tt>{0}</tt>
-         * @param b the Object used for the substring <tt>{1}</tt>
+         * @param a the Object used for the substring {@code {0}}
+         * @param b the Object used for the substring {@code {1}}
          * 
          * @return the expanded format string
          */
@@ -130,13 +128,13 @@ public final class LocalizerFactory {
         /**
          * Apply the given argument to the format string stored in the resource
          * bundle under the given key. The argument object's value of toString()
-         * replaces the substring <tt>'{0}'</tt>,<tt>'{1}'</tt>, and
-         * <tt>'{2}'</tt> in the format.
+         * replaces the substring {@code '{0}'},{@code '{1}'}, and
+         * {@code '{2}'} in the format.
          * 
          * @param fmt the key in the resource bundle to search for
-         * @param a the Object used for the substring <tt>{0}</tt>
-         * @param b the Object used for the substring <tt>{1}</tt>
-         * @param c the Object used for the substring <tt>{2}</tt>
+         * @param a the Object used for the substring {@code {0}}
+         * @param b the Object used for the substring {@code {1}}
+         * @param c the Object used for the substring {@code {2}}
          * 
          * @return the expanded format string
          */
@@ -149,14 +147,14 @@ public final class LocalizerFactory {
         /**
          * Apply the given argument to the format string stored in the resource
          * bundle under the given key. The argument object's value of toString()
-         * replaces the substring <tt>'{0}'</tt>,<tt>'{1}'</tt>,<tt>'{2}'</tt>,
-         * and <tt>'{3}'</tt> in the format.
+         * replaces the substring {@code '{0}'},{@code '{1}'},{@code '{2}'},
+         * and {@code '{3}'} in the format.
          * 
          * @param fmt the key in the resource bundle to search for
-         * @param a the Object used for the substring <tt>{0}</tt>
-         * @param b the Object used for the substring <tt>{1}</tt>
-         * @param c the Object used for the substring <tt>{2}</tt>
-         * @param d the Object used for the substring <tt>{3}</tt>
+         * @param a the Object used for the substring {@code {0}}
+         * @param b the Object used for the substring {@code {1}}
+         * @param c the Object used for the substring {@code {2}}
+         * @param d the Object used for the substring {@code {3}}
          * 
          * @return the expanded format string
          */
@@ -169,15 +167,15 @@ public final class LocalizerFactory {
         /**
          * Apply the given argument to the format string stored in the resource
          * bundle under the given key. The argument object's value of toString()
-         * replaces the substring <tt>'{0}'</tt>,<tt>'{1}'</tt>,<tt>'{2}'</tt>,
-         * and <tt>'{3}'</tt> in the format.
+         * replaces the substring {@code '{0}'},{@code '{1}'},{@code '{2}'},
+         * and {@code '{3}'} in the format.
          * 
          * @param fmt the key in the resource bundle to search for
-         * @param a the Object used for the substring <tt>{0}</tt>
-         * @param b the Object used for the substring <tt>{1}</tt>
-         * @param c the Object used for the substring <tt>{2}</tt>
-         * @param d the Object used for the substring <tt>{3}</tt>
-         * @param e the Object used for the substring <tt>{4}</tt>
+         * @param a the Object used for the substring {@code {0}}
+         * @param b the Object used for the substring {@code {1}}
+         * @param c the Object used for the substring {@code {2}}
+         * @param d the Object used for the substring {@code {3}}
+         * @param e the Object used for the substring {@code {4}}
          * 
          * @return the expanded format string
          */
@@ -192,11 +190,11 @@ public final class LocalizerFactory {
         /**
          * Apply the given argument to the format string stored in the resource
          * bundle under the given key. The argument object's value of toString()
-         * replaces the substring <tt>'{0}'</tt>,<tt>'{1}'</tt>,<tt>'{2}'</tt>,
+         * replaces the substring {@code '{0}'},{@code '{1}'},{@code '{2}'},
          * and so on in the format.
          * 
          * @param fmt the key in the resource bundle to search for
-         * @param a the Object used for the substrings <tt>{<i>n</i>}</tt>
+         * @param a the Object used for the substrings {@code {<i>n</i>}}
          * 
          * @return the expanded format string
          */
@@ -211,7 +209,7 @@ public final class LocalizerFactory {
          * 
          * @param key the key in the resource bundle to search for
          * 
-         * @return the resource string or <code>null</code>
+         * @return the resource string or {@code null}
          */
         @Override
         public String getFormat(String key) {
@@ -243,11 +241,11 @@ public final class LocalizerFactory {
          * Apply the given argument to the format string stored in the resource
          * bundle under the given key and print the result to a writer. The
          * argument object's value of toString() replaces the substring
-         * <tt>'{0}'</tt> in the format.
+         * {@code '{0}'} in the format.
          * 
          * @param writer the target output writer
          * @param fmt the key in the resource bundle to search for
-         * @param a the Object used for the substring <tt>{0}</tt>
+         * @param a the Object used for the substring {@code {0}}
          */
         @Override
         public void message(PrintStream writer, String fmt, Object a) {
@@ -259,12 +257,12 @@ public final class LocalizerFactory {
          * Apply the given argument to the format string stored in the resource
          * bundle under the given key and print the result to a writer. The
          * argument object's value of toString() replaces the substring
-         * <tt>'{0}'</tt> and <tt>'{1}'</tt> in the format.
+         * {@code '{0}'} and {@code '{1}'} in the format.
          * 
          * @param writer the target output writer
          * @param fmt the key in the resource bundle to search for
-         * @param a the Object used for the substring <tt>{0}</tt>
-         * @param b the Object used for the substring <tt>{1}</tt>
+         * @param a the Object used for the substring {@code {0}}
+         * @param b the Object used for the substring {@code {1}}
          */
         @Override
         public void message(PrintStream writer, String fmt, Object a, Object b) {
@@ -277,13 +275,13 @@ public final class LocalizerFactory {
          * Apply the given argument to the format string stored in the resource
          * bundle under the given key and print the result to a writer. The
          * argument object's value of toString() replaces the substring
-         * <tt>'{0}'</tt>, <tt>'{1}'</tt>, and <tt>'{2}'</tt> in the format.
+         * {@code '{0}'}, {@code '{1}'}, and {@code '{2}'} in the format.
          * 
          * @param writer the target output writer
          * @param fmt the key in the resource bundle to search for
-         * @param a the Object used for the substring <tt>{0}</tt>
-         * @param b the Object used for the substring <tt>{1}</tt>
-         * @param c the Object used for the substring <tt>{2}</tt>
+         * @param a the Object used for the substring {@code {0}}
+         * @param b the Object used for the substring {@code {1}}
+         * @param c the Object used for the substring {@code {2}}
          */
         @Override
         public void message(PrintStream writer, String fmt, Object a, Object b,
@@ -296,7 +294,7 @@ public final class LocalizerFactory {
     }
 
     /**
-     * The field <tt>cache</tt> contains the map of localizers already
+     * The field {@code cache} contains the map of localizers already
      * constructed. The localizers are cached to minimize the overhead of
      * acquiring the same localizer several times.
      */
@@ -304,7 +302,7 @@ public final class LocalizerFactory {
             new HashMap<String, Localizer>();
 
     /**
-     * The field <tt>locale</tt> contains the locale to use.
+     * The field {@code locale} contains the locale to use.
      */
     private static Locale locale = Locale.getDefault();
 

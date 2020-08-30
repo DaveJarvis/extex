@@ -38,8 +38,7 @@ import org.extex.typesetter.type.node.HorizontalListNode;
  * @see "TTP [682]"
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class OrdinaryNoad extends AbstractNucleusNoad implements SimpleNoad {
 
     /**

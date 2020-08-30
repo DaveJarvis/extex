@@ -24,8 +24,7 @@ package org.extex.latexParser.impl;
  * in a resource.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface Locator {
 
     /**

@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\endgroup</tt>.
+ * This is a test suite for the primitive {@code \endgroup}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class EndgroupTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -49,7 +48,7 @@ public class EndgroupTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\endgroup"> Test case checking that a lonely
-     * <tt>\endgroup</tt> leads to an error. </testcase>
+     * {@code \endgroup} leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -64,7 +63,7 @@ public class EndgroupTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\endgroup"> Test case checking that
-     * <tt>\endgroup</tt> works. </testcase>
+     * {@code \endgroup} works.
      * 
      * @throws Exception in case of an error
      */

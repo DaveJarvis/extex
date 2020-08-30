@@ -43,12 +43,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * actual length is a multiple of math units (mu).
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4399 $
- */
+*/
 public class ConstantMuskipParser implements Parser<Muskip> {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2005L;
 

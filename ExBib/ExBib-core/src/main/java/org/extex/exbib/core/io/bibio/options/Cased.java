@@ -28,20 +28,16 @@ import org.extex.exbib.core.io.Writer;
  * Enumeration for case converted writing.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public enum Cased {
 
     /**
-     * The field <tt>Upper</tt> contains the translator to upper case.
+     * The field {@code Upper} contains the translator to upper case.
      */
     Upper {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.io.bibio.options.Cased#write(
-         *      org.extex.exbib.core.io.Writer, java.lang.String)
+    *      org.extex.exbib.core.io.Writer, java.lang.String)
          */
         @Override
         public void write(Writer writer, String s) throws IOException {
@@ -50,15 +46,12 @@ public enum Cased {
         }
     },
     /**
-     * The field <tt>Lower</tt> contains the translator to lower case.
+     * The field {@code Lower} contains the translator to lower case.
      */
     Lower {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.io.bibio.options.Cased#write(
-         *      org.extex.exbib.core.io.Writer, java.lang.String)
+    *      org.extex.exbib.core.io.Writer, java.lang.String)
          */
         @Override
         public void write(Writer writer, String s) throws IOException {
@@ -67,15 +60,12 @@ public enum Cased {
         }
     },
     /**
-     * The field <tt>AsIs</tt> contains the identity.
+     * The field {@code AsIs} contains the identity.
      */
     AsIs {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.io.bibio.options.Cased#write(
-         *      org.extex.exbib.core.io.Writer, java.lang.String)
+    *      org.extex.exbib.core.io.Writer, java.lang.String)
          */
         @Override
         public void write(Writer writer, String s) throws IOException {

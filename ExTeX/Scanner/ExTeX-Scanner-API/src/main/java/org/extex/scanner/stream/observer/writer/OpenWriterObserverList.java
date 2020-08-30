@@ -26,23 +26,22 @@ import java.util.ArrayList;
  * This class provides a type-safe list of observers for the open writer event.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class OpenWriterObserverList extends ArrayList<OpenWriterObserver>
         implements
             OpenWriterObserver {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains th version number for
+     * The field {@code serialVersionUID} contains th version number for
      * serialization
      */
     private static final long serialVersionUID = 2007L;
 
     /**
-     * Take a list and add an observer. If the list is <code>null</code> then
+     * Take a list and add an observer. If the list is {@code null} then
      * a new one is created.
      * 
-     * @param list the input list or <code>null</code>
+     * @param list the input list or {@code null}
      * @param observer the observer to add
      * 
      * @return the input list or a new one with the observer added

@@ -43,18 +43,17 @@ import java.util.regex.Pattern;
  * This class contains a generator for the web site.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5413 $
- */
+*/
 public class Site {
 
     /**
-     * The field <tt>force</tt> contains the indicator that all files have to be
+     * The field {@code force} contains the indicator that all files have to be
      * processed &ndash; needed or not.
      */
     private static boolean force = false;
 
     /**
-     * The field <tt>logger</tt> contains the logger.
+     * The field {@code logger} contains the logger.
      */
     private static final Logger LOGGER = Logger.getLogger(Site.class.getName());
 
@@ -81,11 +80,11 @@ public class Site {
     }
 
     /**
-     * This method terminates the program. If the argument is <code>null</code>
+     * This method terminates the program. If the argument is {@code null}
      * then the termination indicates success. Otherwise the message is printed
      * as error message ans failure is signaled.
      *
-     * @param message the message to print or <code>null</code> for none
+     * @param message the message to print or {@code null} for none
      */
     private static void exit(String message) {
 
@@ -386,24 +385,24 @@ public class Site {
     }
 
     /**
-     * The field <tt>dir</tt> contains the current directory.
+     * The field {@code dir} contains the current directory.
      */
     private File dir;
 
     /**
-     * The field <tt>parent</tt> contains the parent site.
+     * The field {@code parent} contains the parent site.
      */
     private Site parent;
 
     /**
-     * The field <tt>top</tt> contains the relative path to the top.
+     * The field {@code top} contains the relative path to the top.
      */
     private String top = "";
 
     /**
      * Creates a new object.
      *
-     * @param parent the parent site or <code>null</code> for the top
+     * @param parent the parent site or {@code null} for the top
      * @param dir the associated directory
      */
     protected Site(Site parent, File dir) {

@@ -31,57 +31,56 @@ import java.util.List;
 
 /**
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6617 $
- */
+*/
 public class MakeindexFilter extends Reader {
 
     /**
-     * The field <tt>in</tt> contains the input.
+     * The field {@code in} contains the input.
      */
     private LineNumberReader in;
 
     /**
-     * The field <tt>buffer</tt> contains the intermediate buffer.
+     * The field {@code buffer} contains the intermediate buffer.
      */
     private final StringBuilder buffer = new StringBuilder();
 
     /**
-     * The field <tt>keyword</tt> contains the keyword.
+     * The field {@code keyword} contains the keyword.
      */
     private final String keyword = "\\indexentry";
 
     /**
-     * The field <tt>argOpen</tt> contains the argument open character.
+     * The field {@code argOpen} contains the argument open character.
      */
     private final char argOpen = '{';
 
     /**
-     * The field <tt>argClose</tt> contains the argument close character.
+     * The field {@code argClose} contains the argument close character.
      */
     private final char argClose = '}';
 
     /**
-     * The field <tt>escape</tt> contains the escape character.
+     * The field {@code escape} contains the escape character.
      */
     private final char escape = '"';
 
     /**
-     * The field <tt>quote</tt> contains the quote character.
+     * The field {@code quote} contains the quote character.
      */
     private final char quote = '\\';
 
     /**
-     * The field <tt>encap</tt> contains the encapsulation character.
+     * The field {@code encap} contains the encapsulation character.
      */
     private final char encap = '|';
 
     /**
-     * The field <tt>level</tt> contains the level separation characters.
+     * The field {@code level} contains the level separation characters.
      */
     private final char level = '!';
 
     /**
-     * The field <tt>actual</tt> contains the actual character.
+     * The field {@code actual} contains the actual character.
      */
     private final char actual = '@';
 
@@ -95,12 +94,7 @@ public class MakeindexFilter extends Reader {
         this.in = new LineNumberReader(in);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.Reader#close()
-     */
-    @Override
+@Override
     public void close() throws IOException {
 
         in.close();
@@ -131,7 +125,7 @@ public class MakeindexFilter extends Reader {
      * @param locator the locator
      * @param collator the collator
      * 
-     * @return <code>true</code> at eof
+     * @return {@code true} at eof
      * 
      * @throws IOException in case of an error
      * @throws RawIndexEofException in case of an error
@@ -244,7 +238,7 @@ public class MakeindexFilter extends Reader {
      * @param r the reader
      * @param keyword the keyword to read
      * 
-     * @return <code>true</code> iff the keyword has been found
+     * @return {@code true} iff the keyword has been found
      * 
      * @throws IOException in case of an I/O error
      */
@@ -264,7 +258,7 @@ public class MakeindexFilter extends Reader {
     /**
      * @param a1 TODO
      * @param p the page
-     * @param encap the page encapsulator or <code>null</code> for none
+     * @param encap the page encapsulator or {@code null} for none
      * @param display the display representation
      */
     private void store(String a1, String p, String encap, String display) {

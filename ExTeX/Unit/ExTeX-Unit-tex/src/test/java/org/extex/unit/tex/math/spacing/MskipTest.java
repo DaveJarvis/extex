@@ -24,11 +24,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\mskip</tt>.
+ * This is a test suite for the primitive {@code \mskip}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MskipTest extends AbstractMathTester {
 
 
@@ -40,7 +39,7 @@ public class MskipTest extends AbstractMathTester {
     /**
      * <testcase primitive="\mskip">
      *  Test case checking that ...
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */

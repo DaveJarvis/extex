@@ -26,8 +26,7 @@ import java.util.List;
  * StdVW.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class T1StdVW extends T1DictNumber {
 
     /**

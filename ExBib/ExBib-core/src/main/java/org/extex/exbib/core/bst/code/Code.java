@@ -34,8 +34,7 @@ import org.extex.exbib.core.io.Locator;
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface Code {
 
     /**

@@ -34,12 +34,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * An id can either be a number or a name.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4409 $
- */
+*/
 public abstract class IdSpec implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;

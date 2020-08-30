@@ -23,11 +23,10 @@ import org.extex.test.NoFlagsButProtectedPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\pdfoutline</tt>.
+ * This is a test suite for the primitive {@code \pdfoutline}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class PdfoutlineTest extends NoFlagsButProtectedPrimitiveTester {
 
 
@@ -39,7 +38,7 @@ public class PdfoutlineTest extends NoFlagsButProtectedPrimitiveTester {
 
     /**
      * <testcase primitive="\pdfoutline"> Test case checking that ...
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */

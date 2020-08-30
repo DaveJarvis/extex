@@ -37,8 +37,7 @@ import org.extex.typesetter.listMaker.math.MathListMaker;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5563 $
- */
+*/
 public abstract class ListMakerFactory {
 
     /**
@@ -58,7 +57,7 @@ public abstract class ListMakerFactory {
     }
 
     /**
-     * The field <tt>CREATORS</tt> contains the mapping from symbolic names to
+     * The field {@code CREATORS} contains the mapping from symbolic names to
      * the creator function.
      */
     private static final Map<ListMakerType, CC> CREATORS =

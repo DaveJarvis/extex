@@ -27,11 +27,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>textdir</tt>.
+ * This is a test suite for the primitive {@code textdir}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class TextdirTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
@@ -52,8 +51,8 @@ public class TextdirTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\textdir"> Test case checking that <tt>\textdir</tt>
-     * sets the test direction i the context. </testcase>
+     * <testcase primitive="\textdir"> Test case checking that {@code \textdir}
+     * sets the test direction i the context.
      * 
      * @throws Exception in case of an error
      */
@@ -69,8 +68,8 @@ public class TextdirTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\textdir"> Test case checking that <tt>\textdir</tt>
-     * needs a direction as argument. </testcase>
+     * <testcase primitive="\textdir"> Test case checking that {@code \textdir}
+     * needs a direction as argument.
      * 
      * @throws Exception in case of an error
      */
@@ -84,8 +83,8 @@ public class TextdirTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\textdir"> Test case checking that <tt>\textdir</tt>
-     * needs an argument. </testcase>
+     * <testcase primitive="\textdir"> Test case checking that {@code \textdir}
+     * needs an argument.
      * 
      * @throws Exception in case of an error
      */

@@ -40,12 +40,11 @@ import org.xml.sax.SAXException;
  * Add the current date to the build tag.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5413 $
- */
+*/
 public class ProblemReportTask extends Task {
 
     /**
-     * The field <tt>file</tt> contains the name of the file to be processed.
+     * The field {@code file} contains the name of the file to be processed.
      */
     private String file = null;
 

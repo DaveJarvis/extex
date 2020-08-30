@@ -30,12 +30,11 @@ import org.extex.ocpware.type.OcpCode;
  * This class represents the reference to a character in the matched sequence.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public class Char extends ArithExpr implements Expr {
 
     /**
-     * The field <tt>n</tt> contains the index of the reference.
+     * The field {@code n} contains the index of the reference.
      */
     private int n;
 
@@ -49,22 +48,14 @@ public class Char extends ArithExpr implements Expr {
         this.n = n;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.compiler.arith.ArithExpr#outExpr( CompilerState)
-     */
-    @Override
+@Override
     void outExpr(CompilerState cs) throws IOException, ArgmentTooBigException {
 
         cs.putInstruction(OcpCode.OP_PUSH_CHAR, n);
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.compiler.sexpression.Expr#outRight(
-     *      org.extex.ocpware.compiler.parser.CompilerState, boolean)
+*      org.extex.ocpware.compiler.parser.CompilerState, boolean)
      */
     public void outRight(CompilerState cs, boolean withOffset)
             throws IOException,
@@ -75,12 +66,7 @@ public class Char extends ArithExpr implements Expr {
                 : OcpCode.OP_RIGHT_CHAR, n);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return "\\" + Integer.toString(n);

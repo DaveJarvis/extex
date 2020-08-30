@@ -25,8 +25,7 @@ import org.extex.exbib.core.exceptions.ExBibException;
  * This interface describes a (partial) evaluator.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface Evaluator {
 
     /**

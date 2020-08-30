@@ -31,8 +31,7 @@ import org.extex.exbib.core.io.Locator;
  * tradeoff between the time to parse and the memory to keep the parsed values.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class NameFactory {
 
     /**
@@ -42,12 +41,12 @@ public final class NameFactory {
     private static class PipeItem {
 
         /**
-         * The field <tt>key</tt> contains the key.
+         * The field {@code key} contains the key.
          */
         private String key;
 
         /**
-         * The field <tt>value</tt> contains the value.
+         * The field {@code value} contains the value.
          */
         private List<Name> value;
 
@@ -63,12 +62,7 @@ public final class NameFactory {
             this.value = value;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return key + " -> " + value.toString() + "\n";
@@ -77,12 +71,12 @@ public final class NameFactory {
     }
 
     /**
-     * The field <tt>PIPE_SIZE</tt> contains the size of the cache.
+     * The field {@code PIPE_SIZE} contains the size of the cache.
      */
     private static final int PIPE_SIZE = 8;
 
     /**
-     * The field <tt>highlander</tt> contains the only one.
+     * The field {@code highlander} contains the only one.
      */
     private static final NameFactory highlander = new NameFactory();
 
@@ -97,12 +91,12 @@ public final class NameFactory {
     }
 
     /**
-     * The field <tt>pipe</tt> contains the cache.
+     * The field {@code pipe} contains the cache.
      */
     private PipeItem[] pipe = new PipeItem[PIPE_SIZE];
 
     /**
-     * The field <tt>pp</tt> contains the pointer to the next insertion point in
+     * The field {@code pp} contains the pointer to the next insertion point in
      * the pipe.
      */
     private int pp = 0;
@@ -121,7 +115,7 @@ public final class NameFactory {
      * @param s the string to be decomposed into names
      * @param locator the locator for error messages
      * 
-     * @return the names which is never <code>null</code>
+     * @return the names which is never {@code null}
      * 
      * @throws ExBibNoNameException in case of an error
      * @throws ExBibSyntaxException in case of an error
@@ -163,12 +157,7 @@ public final class NameFactory {
         pp = 0;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();

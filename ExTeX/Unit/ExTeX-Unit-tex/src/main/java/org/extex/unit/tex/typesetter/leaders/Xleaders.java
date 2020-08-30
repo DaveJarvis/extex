@@ -28,12 +28,11 @@ import org.extex.typesetter.type.node.ExpandedLeadersNode;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\xleaders</code>.
+ * {@code \xleaders}.
  * 
- * <doc name="xleaders">
- * <h3>The Primitive <tt>\xleaders</tt></h3>
+ * <p>The Primitive {@code \xleaders}</p>
  * <p>
- * The primitive <tt>\xleaders</tt> is a leaders construction which
+ * The primitive {@code \xleaders} is a leaders construction which
  * distributes the material evenly in its surrounding box if it does not fit
  * perfectly. The primitive takes as the first argument a box or rule. The
  * second argument is a horizontal or vertical skip specification. The two
@@ -61,23 +60,25 @@ import org.extex.typesetter.type.node.ExpandedLeadersNode;
  * element is inserted then this element is centered.
  * </p>
  * <p>
- * Note that there are also the primitives <tt>\cleaders</tt> and
- * <tt>\leaders</tt> which provide essentially the same functionality but
+ * Note that there are also the primitives {@code \cleaders} and
+ * {@code \leaders} which provide essentially the same functionality but
  * adjust the material within the final space differently.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;xleaders&rang;
- *      &rarr; <tt>\xleaders</tt> &lang;Box or Rule&rang; &lang;Skip&rang;
+ *      &rarr; {@code \xleaders} &lang;Box or Rule&rang; &lang;Skip&rang;
  *
  *    &lang;Box or Rule&rang;
  *      &rarr; &lang;Box&rang;
  *       | &lang;Rule&rang;        </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * 
  * <pre class="TeXSample">
@@ -85,7 +86,7 @@ import org.extex.typesetter.type.node.ExpandedLeadersNode;
  * 
  * <p>
  * This example creates a horizontal rule which fills the space made up by the
- * <tt>\hfill</tt>. The rule stretches horizontally and has its natural
+ * {@code \hfill}. The rule stretches horizontally and has its natural
  * dimensions vertically.
  * </p>
  * 
@@ -94,7 +95,7 @@ import org.extex.typesetter.type.node.ExpandedLeadersNode;
  * 
  * <p>
  * This example demonstrates the same in vertical direction. Since only
- * <tt>\vil</tt> is used it may not appear at all when the other elements in
+ * {@code \vil} is used it may not appear at all when the other elements in
  * the surrounding box overrule it.
  * </p>
  * 
@@ -108,17 +109,15 @@ import org.extex.typesetter.type.node.ExpandedLeadersNode;
  * the available space leaves some freedom then this extra space is distributed
  * equally between the boxes inserted and the left and right margin.
  * </p>
- * </doc>
  * 
  * @see org.extex.typesetter.type.node.ExpandedLeadersNode
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Xleaders extends Leaders {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;

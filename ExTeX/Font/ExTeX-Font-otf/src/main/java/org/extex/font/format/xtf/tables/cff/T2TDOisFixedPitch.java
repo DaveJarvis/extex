@@ -26,8 +26,7 @@ import java.util.List;
  * isFixedPitch.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class T2TDOisFixedPitch extends T2TDOBoolean {
 
@@ -42,23 +41,13 @@ public class T2TDOisFixedPitch extends T2TDOBoolean {
         super(stack, new short[]{ESCAPE_BYTE, CFF_ISFIXEDPITCH});
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
-     */
-    @Override
+@Override
     public int getID() {
 
         return T2TopDICTOperator.TYPE_ISFIXEDPITCH;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "isfixedpitch";

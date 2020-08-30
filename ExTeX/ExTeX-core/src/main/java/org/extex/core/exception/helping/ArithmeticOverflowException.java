@@ -25,7 +25,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This exception is raised when an arithmetic overflow has been encountered.
  * <p>
  *  The localization format is taken from the Localizer under the key
- *  <tt>TTP.ArithmeticOverflow</tt>.
+ *  {@code TTP.ArithmeticOverflow}.
  * </p>
  * <p>
  *  The format takes one argument which is the empty sting or the name of the
@@ -33,12 +33,11 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4726 $
- */
+*/
 public class ArithmeticOverflowException extends HelpingException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2005L;
 

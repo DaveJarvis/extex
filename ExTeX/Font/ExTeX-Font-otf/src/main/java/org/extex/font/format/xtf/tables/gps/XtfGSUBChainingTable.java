@@ -29,8 +29,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * XtfGSUBChainingTable.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class XtfGSUBChainingTable extends XtfLookupTable {
 
     /**
@@ -68,12 +67,7 @@ public class XtfGSUBChainingTable extends XtfLookupTable {
         return new XtfGSUBChainingTable(0, xtfGlyph);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("chainingtable");
         writer.writeEndElement();

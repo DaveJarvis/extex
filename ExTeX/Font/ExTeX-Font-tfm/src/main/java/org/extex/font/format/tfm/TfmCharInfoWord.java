@@ -33,9 +33,10 @@ import org.extex.util.file.random.RandomAccessR;
  * Each char_info_word contains six fields packed into four bytes as follows.
  * </p>
  * 
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <thead>
- * <tr>
+* <tr>
  * <td>byte</td>
  * <td>description</td>
  * </tr>
@@ -63,9 +64,10 @@ import org.extex.util.file.random.RandomAccessR;
  * field.
  * </p>
  * 
- * <table border="1">
+ * <table>
+ * <caption>TBD</caption>
  * <thead>
- * <tr>
+* <tr>
  * <td>tag</td>
  * <td>description</td>
  * </tr>
@@ -99,8 +101,7 @@ import org.extex.util.file.random.RandomAccessR;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class TfmCharInfoWord implements Serializable {
 
@@ -110,7 +111,7 @@ public class TfmCharInfoWord implements Serializable {
     private static final class Tag implements Serializable {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the version number for
+         * The field {@code serialVersionUID} contains the version number for
          * serialization.
          */
         private static final long serialVersionUID = 1L;
@@ -152,7 +153,7 @@ public class TfmCharInfoWord implements Serializable {
     public static final int NOINDEX = -1;
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 1L;
 
@@ -441,7 +442,7 @@ public class TfmCharInfoWord implements Serializable {
      * Test, if the character exists in the font. (a character exists, if it
      * have a width)
      * 
-     * @return Returns <code>true</code> if the character exists.
+     * @return Returns {@code true} if the character exists.
      */
     public boolean exists() {
 

@@ -27,8 +27,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * This interface describes a function object for sorting a list of entries.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface Sorter {
 
     /**

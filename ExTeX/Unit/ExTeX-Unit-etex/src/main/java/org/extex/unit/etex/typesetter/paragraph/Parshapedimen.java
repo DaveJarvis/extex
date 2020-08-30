@@ -37,12 +37,11 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
 
 /**
- * This class provides an implementation for the primitive <code>\relax</code>.
+ * This class provides an implementation for the primitive {@code \relax}.
  * 
- * <doc name="parshapedimen">
- * <h3>The Primitive <tt>\parshapedimen</tt></h3>
+ * <p>The Primitive {@code \parshapedimen}</p>
  * <p>
- * The primitive <tt>\parshapedimen</tt> gives access to the settings for the
+ * The primitive {@code \parshapedimen} gives access to the settings for the
  * current paragraph shape. The primitive takes a number as parameter. If this
  * number is odd then the indentation of the line denoted by the parameter is
  * returned. If the number is even then the length of the line is returned. The
@@ -50,27 +49,27 @@ import org.extex.typesetter.paragraphBuilder.ParagraphShape;
  * returned.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;parshapedimen&rang;
- *        &rarr; <tt>\parshapedimen</tt> {@linkplain
+ *        &rarr; {@code \parshapedimen} {@linkplain
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *        &lang;8-bit&nbsp;number&rang;} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \dimen2=\parshapedimen 3  </pre>
  *  <pre class="TeXSample">
  *    \dimen2=\parshapedimen -3  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Parshapedimen extends AbstractCode
         implements
             CountConvertible,
@@ -78,7 +77,7 @@ public class Parshapedimen extends AbstractCode
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -94,10 +93,7 @@ public class Parshapedimen extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -107,10 +103,7 @@ public class Parshapedimen extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertDimen(Context context, TokenSource source,
@@ -128,10 +121,7 @@ public class Parshapedimen extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

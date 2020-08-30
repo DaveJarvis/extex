@@ -21,16 +21,15 @@ package org.extex.core;
 import java.util.ArrayList;
 
 /**
- * This class provides a list of <code>UnicodeChar</code>s.
+ * This class provides a list of {@code UnicodeChar}s.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:5417 $
- */
+*/
 public class UnicodeCharList extends ArrayList<UnicodeChar> {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 20060814L;
@@ -47,8 +46,8 @@ public class UnicodeCharList extends ArrayList<UnicodeChar> {
      * Indicates whether some other object is "equal to" this one.
      *
      * @param   obj   the reference object with which to compare.
-     * @return  <code>true</code> if this object is the same as the obj
-     *          argument; <code>false</code> otherwise.
+     * @return  {@code true} if this object is the same as the obj
+     *          argument; {@code false} otherwise.
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */
@@ -93,7 +92,7 @@ public class UnicodeCharList extends ArrayList<UnicodeChar> {
     }
 
     /**
-     * Return the <code>UnicodeCharList</code> as <code>String</code>.
+     * Return the {@code UnicodeCharList} as {@code String}.
      *
      * @return the string of the list
      */

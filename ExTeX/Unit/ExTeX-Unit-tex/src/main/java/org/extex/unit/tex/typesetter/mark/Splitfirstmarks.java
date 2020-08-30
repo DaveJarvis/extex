@@ -25,41 +25,40 @@ import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\splitfirstmarks</code>.
+ * {@code \splitfirstmarks}.
  * 
- * <doc name="splitfirstmarks">
- * <h3>The Primitive <tt>\splitfirstmarks</tt></h3>
+ * <p>The Primitive {@code \splitfirstmarks}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;splitfirstmarks&rang;
- *      &rarr; <tt>\splitfirstmarks</tt> {@linkplain
+ *      &rarr; {@code \splitfirstmarks} {@linkplain
  *        org.extex.unit.tex.typesetter.mark.AbstractMarksCode#getKey(
  *        org.extex.interpreter.context.Context,
  *        org.extex.interpreter.TokenSource,org.extex.typesetter.Typesetter)
  *        &lang;mark name&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \splitfirstmarks42  </pre>
  *  <pre class="TeXSample">
  *    \splitfirstmarks\count0  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Splitfirstmarks extends AbstractMarksCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;

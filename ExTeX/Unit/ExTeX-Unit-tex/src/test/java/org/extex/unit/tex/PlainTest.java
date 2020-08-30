@@ -31,8 +31,7 @@ import org.junit.runner.JUnitCore;
  * This is the test suite for plain.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class PlainTest extends ExTeXLauncher {
 
     /**
@@ -51,8 +50,8 @@ public class PlainTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that plain leads to a format file.
-     * </testcase>
+     *  Test case checking that plain leads to a format file.
+     * 
      * 
      * @throws Exception in case of an error
      */

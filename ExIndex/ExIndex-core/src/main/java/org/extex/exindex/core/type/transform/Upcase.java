@@ -25,8 +25,7 @@ import java.io.PrintStream;
  * This transformer translates all characters to their uppercase counterpart.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Upcase implements Transform {
 
 
@@ -34,21 +33,13 @@ public class Upcase implements Transform {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
-     */
-    public void print(PrintStream stream) {
+public void print(PrintStream stream) {
 
         stream.print("upcase");
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.transform.Transform#transform(
-     *      java.lang.String)
+*      java.lang.String)
      */
     public String transform(String in) {
 

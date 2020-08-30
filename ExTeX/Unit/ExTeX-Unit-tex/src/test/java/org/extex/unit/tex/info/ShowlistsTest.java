@@ -25,11 +25,10 @@ import org.extex.test.NoFlagsPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\showlists</tt>.
+ * This is a test suite for the primitive {@code \showlists}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ShowlistsTest extends NoFlagsPrimitiveTester {
 
 
@@ -52,8 +51,8 @@ public class ShowlistsTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showlists"> Test case checking that
-     * <tt>\showlists</tt> on the top level brings the expected results.
-     * </testcase>
+     * {@code \showlists} on the top level brings the expected results.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -74,7 +73,7 @@ public class ShowlistsTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showlists"> Test case checking that
-     * <tt>\showlists</tt> in a groupworks. </testcase>
+     * {@code \showlists} in a groupworks.
      * 
      * @throws Exception in case of an error
      */
@@ -95,7 +94,7 @@ public class ShowlistsTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showlists"> Test case checking that
-     * <tt>\showlists</tt> in an hbox works. </testcase>
+     * {@code \showlists} in an hbox works.
      * 
      * @throws Exception in case of an error
      */

@@ -28,37 +28,28 @@ import org.extex.exindex.core.type.page.PageReference;
  * This class represents a single page.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 5432 $
- */
+*/
 public class PageRangeSingle extends Pages {
 
     /**
      * Creates a new object.
      * 
      * @param page the page
-     * @param encap the encapsulator or <code>null</code>
+     * @param encap the encapsulator or {@code null}
      */
     public PageRangeSingle(PageReference page, String encap) {
 
         super(page, encap);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.makeindex.pages.Pages#isOne()
-     */
-    @Override
+@Override
     public boolean isOne() {
 
         return true;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.makeindex.pages.Pages#writeCore(java.io.Writer,
-     *      java.lang.String[], java.lang.String)
+*      java.lang.String[], java.lang.String)
      */
     @Override
     protected void writeCore(Writer writer, String[] pageParams, String fromPage)

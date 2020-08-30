@@ -26,8 +26,7 @@ import java.io.InputStream;
  * This class provides the contents of some OTP files as String.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public final class OTP {
 
     /**

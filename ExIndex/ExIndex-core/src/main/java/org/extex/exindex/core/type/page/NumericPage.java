@@ -23,8 +23,7 @@ package org.extex.exindex.core.type.page;
  * This page reference consists of digits only.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NumericPage extends AbstractPage {
 
     /**

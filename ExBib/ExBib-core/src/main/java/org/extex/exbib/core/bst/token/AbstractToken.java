@@ -30,31 +30,30 @@ import org.extex.exbib.core.io.Locator;
  * completed in the derived classes.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractToken extends AbstractCode implements Token {
 
     /**
-     * The field <tt>locator</tt> contains the locator for the {@link Token
+     * The field {@code locator} contains the locator for the {@link Token
      * Token}.
      */
     private final Locator locator;
 
     /**
-     * The field <tt>stringCache</tt> contains the cached string representation
+     * The field {@code stringCache} contains the cached string representation
      * of the object.
      */
     private String stringCache = null;
 
     /**
-     * The field <tt>value</tt> contains the String value of the {@link Token
+     * The field {@code value} contains the String value of the {@link Token
      * Token}.
      */
     private final String value;
 
     /**
-     * The field <tt>isNull</tt> contains the indicator that the value has been
-     * set to <code>null</code> initially.
+     * The field {@code isNull} contains the indicator that the value has been
+     * set to {@code null} initially.
      */
     private final boolean isNull;
 
@@ -104,10 +103,10 @@ public abstract class AbstractToken extends AbstractCode implements Token {
     /**
      * Getter for the {@link org.extex.exbib.core.io.Locator Locator}. The
      * locator is a means to get information about where the token came from
-     * originally. If no such information is available then <code>null</code> is
+     * originally. If no such information is available then {@code null} is
      * returned.
      * 
-     * @return the locator or <code>null</code>
+     * @return the locator or {@code null}
      */
     public Locator getLocator() {
 
@@ -136,11 +135,11 @@ public abstract class AbstractToken extends AbstractCode implements Token {
     }
 
     /**
-     * Check whether the value has been set to <code>null</code>. Usually the
-     * value <code>null</code> is treated as empty string. This method is the
+     * Check whether the value has been set to {@code null}. Usually the
+     * value {@code null} is treated as empty string. This method is the
      * only way to distinguish these two cases.
      * 
-     * @return <code>true</code> iff the value has been set to <code>null</code>
+     * @return {@code true} iff the value has been set to {@code null}
      */
     public boolean isNull() {
 

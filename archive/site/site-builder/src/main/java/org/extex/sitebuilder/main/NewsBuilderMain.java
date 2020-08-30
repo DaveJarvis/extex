@@ -31,12 +31,11 @@ import org.extex.sitebuilder.core.NewsBuilder;
  * This is the command line interface to the news builder.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class NewsBuilderMain {
 
     /**
-     * The constant <tt>HELP_INFO</tt> contains the help message.
+     * The constant {@code HELP_INFO} contains the help message.
      */
     protected static final String HELP_INFO = "Arguments:\n"
             + "\t-baseDirectory [base directory]\n"
@@ -46,38 +45,23 @@ public final class NewsBuilderMain {
             + "\t[base directory]\n";
 
     /**
-     * The field <tt>HANDLER</tt> contains the log handler.
+     * The field {@code HANDLER} contains the log handler.
      */
     private static final Handler HANDLER = new Handler() {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.util.logging.Handler#close()
-         */
-        @Override
+    @Override
         public void close() throws SecurityException {
 
             flush();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.util.logging.Handler#flush()
-         */
-        @Override
+    @Override
         public void flush() {
 
             System.err.flush();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.util.logging.Handler#publish(java.util.logging.LogRecord)
-         */
-        @Override
+    @Override
         public void publish(LogRecord record) {
 
             Level level = record.getLevel();

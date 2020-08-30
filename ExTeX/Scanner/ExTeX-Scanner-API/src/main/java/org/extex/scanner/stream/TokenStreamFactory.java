@@ -46,38 +46,40 @@ import java.util.List;
 /**
  * This is the factory to provide an instance of a
  * {@link org.extex.scanner.api.TokenStream TokenStream}. Like any good factory
- * it is controlled by its configuration. <h3>Configuration</h3>
+ * it is controlled by its configuration.  Configuration
  * <p>
  * Mainly the configuration needs to specify which class to use for the
  * TokenStream. The name of the class is given as the argument
- * <code>class</code> as shown below.
- * 
+ * {@code class} as shown below.
+ * </p>
+ *
  * <pre>
  *   &lt;Scanner class="the.pack.age.TheClass"/&gt;
  * </pre>
  * 
- * </p>
  * <p>
  * The class given must implement the interface
  * {@link org.extex.scanner.api.TokenStream TokenStream}. In addition an
  * appropriate constructor is required:
- * 
+ * </p>
+ *
  * <pre>
  *     public TheClass(Configuration config, Reader reader, Boolean isFile,
  *          String theSource) throws IOException
  * </pre>
  * 
- * </p>
  * <p>
  * If the Token stream is fed from a file then the additional parameter
- * <tt>buffersize</tt> is taken into account. This parameter is optional. Its
+ * {@code buffersize} is taken into account. This parameter is optional. Its
  * usage can look as follows:
- * 
+ * </p>
+ *
  * <pre>
  *   &lt;Scanner class="the.pack.age.TheClass"
  *         buffersize="0"/&gt;
  * </pre>
- * 
+ *
+ * <p>
  * The value given is a number. If this number is positive then it is
  * interpreted as the size of the buffer for the file reading operation. If it
  * is 0 or empty then no buffer will be used. If it is negative, then the
@@ -87,40 +89,39 @@ import java.util.List;
  * In addition to the class for the Token stream the reader class can be
  * specified for the case that reading from a file is requested. In this case
  * the mapping from bytes to characters according to an encoding. The name is
- * given as the parameter <tt>reader</tt> as shown below:
- * 
+ * given as the parameter {@code reader} as shown below:
+ * </p>
+ *
  * <pre>
  *   &lt;Scanner class="the.pack.age.TheClass"
  *         reader="another.pack.age.TheReaderClass"/&gt;
  * </pre>
  * 
- * </p>
  * <p>
- * Note that the attribute <tt>reader</tt> is optional. If none is given or the
- * value is the empty string then <tt>java.io.InputStreamReader</tt> is used
+ * Note that the attribute {@code reader} is optional. If none is given or the
+ * value is the empty string then {@code java.io.InputStreamReader} is used
  * instead.
  * </p>
- * <h3>Observable Events</h3>
+ * <p>Observable Events</p>
  * <p>
  * Observers can be registered for several events:
  * </p>
  * <dl>
- * <dt><tt>file</tt></dt>
+ * <dt>{@code file}</dt>
  * <dd>This event is triggered by the request for a TokenStream fed from a file.
  * It is deferred until the file has been found and opened. The name of the file
  * is passed as argument to the observer.</dd>
- * <dt><tt>reader</tt></dt>
+ * <dt>{@code reader}</dt>
  * <dd>This event is triggered by the request for a TokenStream fed from an
  * arbitrary Reader. The reader is passed as argument to the observer.</dd>
- * <dt><tt>string</tt></dt>
+ * <dt>{@code string}</dt>
  * <dd>This event is triggered by the request for a TokenStream fed from a
  * String. The string is passed as argument to the observer.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:5563 $
- */
+*/
 public class TokenStreamFactory extends AbstractFactory<Object>
         implements
             OpenFileObservable,
@@ -129,90 +130,90 @@ public class TokenStreamFactory extends AbstractFactory<Object>
             OpenWriterObservable {
 
     /**
-     * The constant <tt>BUFFERSIZE_ATTRIBUTE</tt> contains the name of the
+     * The constant {@code BUFFERSIZE_ATTRIBUTE} contains the name of the
      * attribute used to get the buffer size.
      */
     private static final String BUFFERSIZE_ATTRIBUTE = "buffersize";
 
     /**
-     * The constant <tt>CLASS_ATTRIBUTE</tt> contains the name of the attribute
+     * The constant {@code CLASS_ATTRIBUTE} contains the name of the attribute
      * used to get the class name.
      */
     private static final String CLASS_ATTRIBUTE = "class";
 
     /**
-     * The field <tt>bufferSize</tt> contains the buffer size. A value less than
+     * The field {@code bufferSize} contains the buffer size. A value less than
      * 1 indicates that the default should be used.
      */
     private int bufferSize;
 
     /**
-     * The field <tt>configuration</tt> contains the configuration for this
+     * The field {@code configuration} contains the configuration for this
      * instance.
      */
     private Configuration configuration;
 
     /**
-     * The field <tt>decorators</tt> contains the list of decorators for input
+     * The field {@code decorators} contains the list of decorators for input
      * streams acquired from a resource.
      */
     private List<InputStreamInterceptor> inStreamInterceptors;
 
     /**
-     * The field <tt>interceptors</tt> contains the list of decorators for
+     * The field {@code interceptors} contains the list of decorators for
      * readers.
      */
     private List<ReaderInterceptor> inReaderInterceptors;
 
     /**
-     * The field <tt>openFileObservers</tt> contains the observers registered
+     * The field {@code openFileObservers} contains the observers registered
      * for the "file" event.
      */
     private OpenFileObserver openFileObservers;
 
     /**
-     * The field <tt>openReaderObservers</tt> contains the observers registered
+     * The field {@code openReaderObservers} contains the observers registered
      * for the "reader" event.
      */
     private OpenReaderObserver openReaderObservers;
 
     /**
-     * The field <tt>openStringObservers</tt> contains the observers registered
+     * The field {@code openStringObservers} contains the observers registered
      * for the "string" event.
      */
     private OpenStringObserver openStringObservers;
 
     /**
-     * The field <tt>openWriterObservers</tt> contains the observers registered
+     * The field {@code openWriterObservers} contains the observers registered
      * for the "writer" event.
      */
     private OpenWriterObserver openWriterObservers;
 
     /**
-     * The field <tt>options</tt> contains the options for the token stream.
+     * The field {@code options} contains the options for the token stream.
      */
     private TokenStreamOptions options;
 
     /**
-     * The field <tt>readerConstructor</tt> contains the constructor for the
+     * The field {@code readerConstructor} contains the constructor for the
      * reader variant.
      */
     private Constructor<?> readerConstructor;
 
     /**
-     * The field <tt>tag</tt> contains the tag name of the sub-configuration to
+     * The field {@code tag} contains the tag name of the sub-configuration to
      * use.
      */
     private final String tag;
 
     /**
-     * The field <tt>outWriterInterceptors</tt> contains the output writer
+     * The field {@code outWriterInterceptors} contains the output writer
      * interceptor list.
      */
     private List<WriterInterceptor> outWriterInterceptors;
 
     /**
-     * The field <tt>outStreamInterceptors</tt> contains the output stream
+     * The field {@code outStreamInterceptors} contains the output stream
      * interceptor list.
      */
     private List<OutputStreamInterceptor> outStreamInterceptors;
@@ -228,12 +229,7 @@ public class TokenStreamFactory extends AbstractFactory<Object>
         this.tag = tag;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.AbstractFactory#configure(org.extex.framework.configuration.Configuration)
-     */
-    @Override
+@Override
     public void configure(Configuration config) throws ConfigurationException {
 
         super.configure(config);
@@ -351,7 +347,7 @@ public class TokenStreamFactory extends AbstractFactory<Object>
      * @param type the type of the file to be read
      * @param encoding the name of the encoding to use
      * 
-     * @return the new instance or <code>null</code> if the resource could not
+     * @return the new instance or {@code null} if the resource could not
      *         be located
      * @throws ConfigurationException in case of an error in the configuration
      */
@@ -453,48 +449,28 @@ public class TokenStreamFactory extends AbstractFactory<Object>
         outWriterInterceptors.add(interceptor);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.stream.observer.file.OpenFileObservable#registerObserver(org.extex.scanner.stream.observer.file.OpenFileObserver)
-     */
-    @Override
+@Override
     public void registerObserver(OpenFileObserver observer) {
 
         openFileObservers =
                 OpenFileObserverList.register(openFileObservers, observer);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.stream.observer.reader.OpenReaderObservable#registerObserver(org.extex.scanner.stream.observer.reader.OpenReaderObserver)
-     */
-    @Override
+@Override
     public void registerObserver(OpenReaderObserver observer) {
 
         openReaderObservers =
                 OpenReaderObserverList.register(openReaderObservers, observer);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.stream.observer.string.OpenStringObservable#registerObserver(org.extex.scanner.stream.observer.string.OpenStringObserver)
-     */
-    @Override
+@Override
     public void registerObserver(OpenStringObserver observer) {
 
         openStringObservers =
                 OpenStringObserverList.register(openStringObservers, observer);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.stream.observer.writer.OpenWriterObservable#registerObserver(org.extex.scanner.stream.observer.writer.OpenWriterObserver)
-     */
-    @Override
+@Override
     public void registerObserver(OpenWriterObserver observer) {
 
         openWriterObservers =
@@ -521,7 +497,7 @@ public class TokenStreamFactory extends AbstractFactory<Object>
      * @param stream the stream to put bytes to
      * @param key the name in terms of the interpreter
      * @param encoding the optional encoding. If the encoding is
-     *        <code>null</code> then it is ignored
+     *        {@code null} then it is ignored
      * @return the writer for the task
      * 
      * @throws UnsupportedEncodingException in case of an error with the

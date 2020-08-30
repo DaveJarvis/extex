@@ -28,25 +28,24 @@ import org.extex.util.file.random.RandomAccessR;
  * T2 Number Fraction.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class T2NumberFraction extends T2Number {
 
     /**
      * the bytes as short-array
      */
-    private short[] bytes;
+    private final short[] bytes;
 
     /**
      * den (nenner)
      */
-    private int den;
+    private final int den;
 
     /**
      * num (zaehler)
      */
-    private int num;
+    private final int num;
 
     /**
      * Create a new object.
@@ -72,56 +71,31 @@ public class T2NumberFraction extends T2Number {
         bytes[4] = (short) b4;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#getBytes()
-     */
-    @Override
+@Override
     public short[] getBytes() {
 
         return bytes;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Number#getDouble()
-     */
-    @Override
+@Override
     public double getDouble() {
 
         return num + (double) den / 0xffff;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Number#getInteger()
-     */
-    @Override
+@Override
     public int getInteger() {
 
         return num;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#isDouble()
-     */
-    @Override
+@Override
     public boolean isDouble() {
 
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return String.valueOf(getDouble());

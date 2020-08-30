@@ -20,11 +20,10 @@
 package org.extex.unit.tex.math.limits;
 
 /**
- * This is a test suite for the primitive <tt>\limits</tt>.
+ * This is a test suite for the primitive {@code \limits}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LimitsTest extends AbstractLimitsTester {
 
   public LimitsTest() {

@@ -27,12 +27,11 @@ import org.extex.typesetter.Typesetter;
  * Dummy Loadable which just records that the load has been requested.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class JavaloadSensor implements Loadable {
 
     /**
-     * The field <tt>sensed</tt> contains the boolean indicating that the
+     * The field {@code sensed} contains the boolean indicating that the
      * load method has been invoked.
      */
     private static boolean sensed = false;

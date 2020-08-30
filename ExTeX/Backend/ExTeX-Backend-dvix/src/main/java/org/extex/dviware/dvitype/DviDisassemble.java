@@ -39,30 +39,29 @@ import org.extex.resource.ResourceFinderFactory;
  * This class provides a command line tool to disassemble a DVI file.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4704 $
- */
+*/
 public class DviDisassemble implements DviProcessor {
 
     /**
-     * The field <tt>condensed</tt> contains the indicator that sequences of
+     * The field {@code condensed} contains the indicator that sequences of
      * put_char instructions should be condensed.
      */
     private static boolean condensed = true;
 
     /**
-     * The field <tt>hexLabel</tt> contains the indicator that the label should
+     * The field {@code hexLabel} contains the indicator that the label should
      * be presented as hex number.
      */
     private static boolean hexLabel = true;
 
     /**
-     * The constant <tt>PROP_CONFIG</tt> contains the name of the property for
+     * The constant {@code PROP_CONFIG} contains the name of the property for
      * the configuration resource to use.
      */
     protected static final String PROP_CONFIG = "extex.config";
 
     /**
-     * The field <tt>showLabel</tt> contains the indicator that the label should
+     * The field {@code showLabel} contains the indicator that the label should
      * be shown as labels.
      */
     private static boolean showLabel = true;
@@ -133,13 +132,13 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * The field <tt>inString</tt> contains the indicator that a sequence of
+     * The field {@code inString} contains the indicator that a sequence of
      * characters has already been begun.
      */
     private boolean inString = false;
 
     /**
-     * The field <tt>out</tt> contains the output stream.
+     * The field {@code out} contains the output stream.
      */
     private PrintStream out;
 
@@ -154,14 +153,14 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * A DVI <tt>bop</tt> instruction has been encountered. This instruction
+     * A DVI {@code bop} instruction has been encountered. This instruction
      * signals the beginning of a new page.
      * 
      * @param off the current byte position in the input stream
      * @param c the array of page number indicators. The array has length 10. It
      *        is initialized from the count registers 0 to 9 at the time the
      *        page is shipped out.
-     * @param p the pointer to the previous <tt>bop</tt> instruction or -1 for
+     * @param p the pointer to the previous {@code bop} instruction or -1 for
      *        the first page
      * 
      * @see org.extex.dviware.DviProcessor#bop(int, int[], int)
@@ -194,7 +193,7 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * A DVI <tt>down</tt> instruction has been encountered.
+     * A DVI {@code down} instruction has been encountered.
      * 
      * @param off the current byte position in the input stream
      * @param b the number of DVI units to move down. If negative then the
@@ -210,7 +209,7 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * A DVI <tt>eop</tt> instruction has been encountered. This instruction
+     * A DVI {@code eop} instruction has been encountered. This instruction
      * signals the end of a page.
      * 
      * @param off the current byte position in the input stream
@@ -224,7 +223,7 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * A DVI <tt>fnt</tt> instruction has been encountered.
+     * A DVI {@code fnt} instruction has been encountered.
      * 
      * @param off the current byte position in the input stream
      * @param k the new font number; this number is not negative
@@ -239,7 +238,7 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * A DVI <tt>fntDef</tt> instruction has been encountered.
+     * A DVI {@code fntDef} instruction has been encountered.
      * 
      * @param off the current byte position in the input stream
      * @param k the number of the font
@@ -269,7 +268,7 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * A DVI <tt>nop</tt> instruction has been encountered. This instruction
+     * A DVI {@code nop} instruction has been encountered. This instruction
      * simply does nothing. It just occupies one byte in the input stream.
      * 
      * @param off the current byte position in the input stream
@@ -283,7 +282,7 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * A DVI <tt>pop</tt> instruction has been encountered.
+     * A DVI {@code pop} instruction has been encountered.
      * 
      * @param off the current byte position in the input stream
      * 
@@ -296,7 +295,7 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * A DVI <tt>post</tt> instruction has been encountered.
+     * A DVI {@code post} instruction has been encountered.
      * 
      * @param off the current byte position in the input stream
      * @param bop the index of the last BOP instruction
@@ -353,7 +352,7 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * A DVI <tt>pre</tt> instruction has been encountered.
+     * A DVI {@code pre} instruction has been encountered.
      * 
      * @param off the current byte position in the input stream
      * @param id the id of this DVI version. Usually this is 2.
@@ -409,7 +408,7 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * A DVI <tt>push</tt> instruction has been encountered.
+     * A DVI {@code push} instruction has been encountered.
      * 
      * @param off the current byte position in the input stream
      * 
@@ -422,7 +421,7 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * A DVI <tt>put_char</tt> instruction has been encountered.
+     * A DVI {@code put_char} instruction has been encountered.
      * 
      * @param off the current byte position
      * @param c the number of the character to set
@@ -439,7 +438,7 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * A DVI <tt>put_rule</tt> instruction has been encountered.
+     * A DVI {@code put_rule} instruction has been encountered.
      * 
      * @param off the current byte position in the input stream
      * @param a the width
@@ -457,7 +456,7 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * A DVI <tt>right</tt> instruction has been encountered.
+     * A DVI {@code right} instruction has been encountered.
      * 
      * @param off the current byte position in the input stream
      * @param b the distance to move in DVI units
@@ -472,7 +471,7 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * A DVI <tt>set_char</tt> instruction has been encountered.
+     * A DVI {@code set_char} instruction has been encountered.
      * 
      * @param off the current byte position
      * @param c the number of the character to set
@@ -498,7 +497,7 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * A DVI <tt>set_rule</tt> instruction has been encountered.
+     * A DVI {@code set_rule} instruction has been encountered.
      * 
      * @param off the current byte position
      * @param a the width
@@ -534,7 +533,7 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * A DVI <tt>w</tt> instruction has been encountered.
+     * A DVI {@code w} instruction has been encountered.
      * 
      * @param off the current byte position in the input stream
      * @param b the distance to add in DVI units
@@ -549,7 +548,7 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * A DVI <tt>w0</tt> instruction has been encountered.
+     * A DVI {@code w0} instruction has been encountered.
      * 
      * @param off the current byte position in the input stream
      * 
@@ -562,7 +561,7 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * A DVI <tt>x</tt> instruction has been encountered.
+     * A DVI {@code x} instruction has been encountered.
      * 
      * @param off the current byte position in the input stream
      * @param b the distance to move in DVI units
@@ -577,7 +576,7 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * A DVI <tt>x0</tt> instruction has been encountered.
+     * A DVI {@code x0} instruction has been encountered.
      * 
      * @param off the current byte position in the input stream
      * 
@@ -590,10 +589,10 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * A DVI <tt>xxx</tt> instruction has been encountered. This instruction is
+     * A DVI {@code xxx} instruction has been encountered. This instruction is
      * used to pass some bytes uninterpreted to the DVI processor. In
      * TeX this is accomplished with the primitive
-     * <tt>\special</tt>.
+     * {@code \special}.
      * 
      * @param off the current byte position in the input stream
      * @param x the array of bytes carrying the content
@@ -610,7 +609,7 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * A DVI <tt>y</tt> instruction has been encountered.
+     * A DVI {@code y} instruction has been encountered.
      * 
      * @param off the current byte position in the input stream
      * @param b the distance to move
@@ -625,7 +624,7 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * A DVI <tt>y0</tt> instruction has been encountered.
+     * A DVI {@code y0} instruction has been encountered.
      * 
      * @param off the current byte position in the input stream
      * @see org.extex.dviware.DviProcessor#y0(int)
@@ -637,7 +636,7 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * A DVI <tt>z</tt> instruction has been encountered.
+     * A DVI {@code z} instruction has been encountered.
      * 
      * @param off the current byte position in the input stream
      * @param b the distance to move
@@ -651,7 +650,7 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * A DVI <tt>z0</tt> instruction has been encountered.
+     * A DVI {@code z0} instruction has been encountered.
      * 
      * @param off the current byte position in the input stream
      * 

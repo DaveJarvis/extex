@@ -38,17 +38,16 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * This observer records that a certain file has been opened.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4708 $
- */
+*/
 public class FileRecorder implements OpenFileObserver, OutputStreamObserver {
 
     /**
-     * The field <tt>outputFactory</tt> contains the output factory.
+     * The field {@code outputFactory} contains the output factory.
      */
     private OutputFactory outputFactory = null;
 
     /**
-     * The field <tt>recorded</tt> contains the recorded files.
+     * The field {@code recorded} contains the recorded files.
      */
     private List<String> recorded = new ArrayList<String>();
 
@@ -80,7 +79,7 @@ public class FileRecorder implements OpenFileObserver, OutputStreamObserver {
     /**
      * Print the recorded files to a file or stream.
      * 
-     * @param name the name of the output file or <code>null</code> for stdout
+     * @param name the name of the output file or {@code null} for stdout
      * 
      * @throws IOException in case of an I/O error
      * @throws DocumentWriterException in case of an error in the output factory
@@ -110,10 +109,7 @@ public class FileRecorder implements OpenFileObserver, OutputStreamObserver {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.stream.observer.file.OpenFileObserver#update(java.lang.String,
-     *      java.lang.String, java.io.InputStream)
+*      java.lang.String, java.io.InputStream)
      */
     public void update(String name, String filetype, InputStream stream) {
 
@@ -123,10 +119,7 @@ public class FileRecorder implements OpenFileObserver, OutputStreamObserver {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.outputStream.OutputStreamObserver#update(java.lang.String,
-     *      java.lang.String, java.io.OutputStream)
+*      java.lang.String, java.io.OutputStream)
      */
     public void update(String name, String type, OutputStream stream) {
 

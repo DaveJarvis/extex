@@ -32,11 +32,10 @@ import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
- * This class implements the analyzer for the <code>write$</code> built-in.
+ * This class implements the analyzer for the {@code write$} built-in.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class WriteCompiler implements Compiler {
 
     /**
@@ -55,22 +54,14 @@ public class WriteCompiler implements Compiler {
             super(ReturnType.VOID, "write", arg);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#hasSideEffect()
-         */
-        @Override
+    @Override
         public boolean hasSideEffect() {
 
             return true;
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GenericCode#optimize(java.util.List,
-         *      int)
+    *      int)
          */
         @Override
         public int optimize(List<GCode> list, int index) {
@@ -129,10 +120,7 @@ public class WriteCompiler implements Compiler {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryReference,
-     *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
+*      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */

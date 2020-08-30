@@ -31,13 +31,12 @@ import org.junit.Test;
  * This is a test suite for {@link Entry}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class EntryTest {
 
     /**
-     * <testcase> Test that the locator is initially <code>null</code>.
-     * </testcase>
+     *  Test that the locator is initially {@code null}.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -49,8 +48,8 @@ public class EntryTest {
     }
 
     /**
-     * <testcase> Test that the locator can be passed in with the constructor.
-     * </testcase>
+     *  Test that the locator can be passed in with the constructor.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -63,7 +62,7 @@ public class EntryTest {
     }
 
     /**
-     * <testcase> Test that a getter uses the crossref field. </testcase>
+     *  Test that a getter uses the crossref field.
      * 
      * @throws Exception in case of an error
      */
@@ -76,7 +75,7 @@ public class EntryTest {
     }
 
     /**
-     * <testcase> Test that a getter uses the crossref field. </testcase>
+     *  Test that a getter uses the crossref field.
      * 
      * @throws Exception in case of an error
      */
@@ -93,8 +92,8 @@ public class EntryTest {
     }
 
     /**
-     * <testcase> Test that a getter uses the crossref field only if required.
-     * </testcase>
+     *  Test that a getter uses the crossref field only if required.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -112,7 +111,7 @@ public class EntryTest {
     }
 
     /**
-     * <testcase> Test that setters for type and key work. </testcase>
+     *  Test that setters for type and key work.
      * 
      * @throws Exception in case of an error
      */

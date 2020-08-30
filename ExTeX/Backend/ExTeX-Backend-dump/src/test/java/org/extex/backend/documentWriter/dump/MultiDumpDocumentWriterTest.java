@@ -37,17 +37,16 @@ import org.junit.Test;
  * This document writer produces multi-page dumps.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MultiDumpDocumentWriterTest {
 
     /**
-     * The field <tt>stream</tt> contains the output stream.
+     * The field {@code stream} contains the output stream.
      */
     private static ByteArrayOutputStream stream;
 
     /**
-     * The field <tt>factory</tt> contains the global factory.
+     * The field {@code factory} contains the global factory.
      */
     protected static final OutputStreamFactory FACTORY =
             new OutputStreamFactory() {
@@ -72,8 +71,8 @@ public class MultiDumpDocumentWriterTest {
             };
 
     /**
-     * <testcase> Test that the default extension is <tt>out</tt>.
-     * </testcase>
+     *  Test that the default extension is {@code out}.
+     *
      */
     @Test
     public final void testGetExtension() {
@@ -82,8 +81,8 @@ public class MultiDumpDocumentWriterTest {
     }
 
     /**
-     * <testcase> Test that a <code>null</code> page is not shipped.
-     * </testcase>
+     *  Test that a {@code null} page is not shipped.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -95,8 +94,8 @@ public class MultiDumpDocumentWriterTest {
     }
 
     /**
-     * <testcase> Test that ...
-     * </testcase>
+     *  Test that ...
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -110,8 +109,8 @@ public class MultiDumpDocumentWriterTest {
     }
 
     /**
-     * <testcase> Test that ...
-     * </testcase>
+     *  Test that ...
+     *
      * 
      * @throws Exception in case of an error
      */

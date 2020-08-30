@@ -30,12 +30,11 @@ import org.extex.cli.exception.UnusedArgumentCliException;
  * This abstract base class describes the closure for an option.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class Option {
 
     /**
-     * The field <tt>tag</tt> contains the the tag for the description of the
+     * The field {@code tag} contains the the tag for the description of the
      * option.
      */
     private final String tag;

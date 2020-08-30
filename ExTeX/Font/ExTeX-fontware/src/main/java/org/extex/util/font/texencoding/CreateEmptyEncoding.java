@@ -29,8 +29,7 @@ import org.extex.util.font.AbstractFontUtil;
  * Create a empty tex font encoding vector.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 5594 $
- */
+*/
 public class CreateEmptyEncoding extends AbstractFontUtil {
 
     /**

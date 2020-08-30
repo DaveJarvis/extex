@@ -22,11 +22,10 @@ package org.extex.unit.tex.math.fraction;
 import org.extex.unit.tex.math.AbstractMathTester;
 
 /**
- * This is a test suite for the primitive <tt>\overwithdelims</tt>.
+ * This is a test suite for the primitive {@code \overwithdelims}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class OverwithdelimsTest extends AbstractMathTester {
 
 

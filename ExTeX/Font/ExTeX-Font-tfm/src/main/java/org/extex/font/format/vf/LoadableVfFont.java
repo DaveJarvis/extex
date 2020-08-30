@@ -65,8 +65,7 @@ import org.extex.util.file.random.RandomAccessInputArray;
  * Class to load the virtual font.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class LoadableVfFont
         implements
             LoadableFont,
@@ -97,10 +96,10 @@ public class LoadableVfFont
     private FontKey fontKey;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated
+     * The field {@code localizer} contains the localizer. It is initiated
      * with a localizer for the name of this class.
      */
-    private Localizer localizer =
+    private final Localizer localizer =
             LocalizerFactory.getLocalizer(LoadableVfFont.class);
 
     /**
@@ -149,64 +148,34 @@ public class LoadableVfFont
         return cp;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
-     */
-    public void enableLogging(Logger logger) {
+public void enableLogging(Logger logger) {
 
         this.logger = logger;
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BaseFont#getActualFontKey()
-     */
-    public FontKey getActualFontKey() {
+public FontKey getActualFontKey() {
 
         return actualFontKey;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getActualSize()
-     */
-    public FixedDimen getActualSize() {
+public FixedDimen getActualSize() {
 
         return actualFontKey.getDimen(FontKey.SIZE);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getAfm()
-     */
-    public byte[] getAfm() {
+public byte[] getAfm() {
 
         // TODO mgn: getAfm unimplemented
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getCheckSum()
-     */
-    public int getCheckSum() {
+public int getCheckSum() {
 
         return reader.getChecksum();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getDepth(org.extex.core.UnicodeChar)
-     */
-    public FixedGlue getDepth(UnicodeChar uc) {
+public FixedGlue getDepth(UnicodeChar uc) {
 
         int cp = charPos(uc);
         if (cp >= 0 && reader.getDepth(cp) != null) {
@@ -216,64 +185,34 @@ public class LoadableVfFont
         return FixedGlue.ZERO;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getDesignSize()
-     */
-    public FixedDimen getDesignSize() {
+public FixedDimen getDesignSize() {
 
         return reader.getDesignSize();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getEm()
-     */
-    public FixedDimen getEm() {
+public FixedDimen getEm() {
 
         return getFontDimen("QUAD");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getEncodingForChar(int)
-     */
-    public int getEncodingForChar(int codepoint) {
+public int getEncodingForChar(int codepoint) {
 
         // TODO mgn: getEncodingForChar unimplemented
         return 0;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getEncodingVectors()
-     */
-    public List<String[]> getEncodingVectors() {
+public List<String[]> getEncodingVectors() {
 
         // TODO mgn: getEncodingVectors unimplemented
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getEx()
-     */
-    public FixedDimen getEx() {
+public FixedDimen getEx() {
 
         return getFontDimen("XHEIGHT");
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getFontDimen(java.lang.String)
-     */
-    public FixedDimen getFontDimen(String name) {
+public FixedDimen getFontDimen(String name) {
 
         TfmFixWord param = reader.getParamAsFixWord(name);
 
@@ -281,32 +220,17 @@ public class LoadableVfFont
             ((getActualSize().getValue() * param.getValue()) >> 20));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BaseFont#getFontKey()
-     */
-    public FontKey getFontKey() {
+public FontKey getFontKey() {
 
         return fontKey;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getFontName()
-     */
-    public String getFontName() {
+public String getFontName() {
 
         return reader.getFontname();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getHeight(org.extex.core.UnicodeChar)
-     */
-    public FixedGlue getHeight(UnicodeChar uc) {
+public FixedGlue getHeight(UnicodeChar uc) {
 
         int cp = charPos(uc);
         if (cp >= 0 && reader.getHeight(cp) != null) {
@@ -316,12 +240,7 @@ public class LoadableVfFont
         return FixedGlue.ZERO;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getItalicCorrection(org.extex.core.UnicodeChar)
-     */
-    public FixedDimen getItalicCorrection(UnicodeChar uc) {
+public FixedDimen getItalicCorrection(UnicodeChar uc) {
 
         int cp = charPos(uc);
         if (cp >= 0 && reader.getItalicCorrection(cp) != null) {
@@ -332,10 +251,7 @@ public class LoadableVfFont
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getKerning(org.extex.core.UnicodeChar,
-     *      org.extex.core.UnicodeChar)
+*      org.extex.core.UnicodeChar)
      */
     public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
 
@@ -349,10 +265,7 @@ public class LoadableVfFont
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getLigature(org.extex.core.UnicodeChar,
-     *      org.extex.core.UnicodeChar)
+*      org.extex.core.UnicodeChar)
      */
     public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
 
@@ -369,44 +282,24 @@ public class LoadableVfFont
         return UnicodeChar.get(Unicode.OFFSET + pos);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getName()
-     */
-    public String getName() {
+public String getName() {
 
         return fontKey.getName();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getPfa()
-     */
-    public byte[] getPfa() {
+public byte[] getPfa() {
 
         // TODO mgn: getPfa unimplemented
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getPfb()
-     */
-    public byte[] getPfb() {
+public byte[] getPfb() {
 
         // TODO mgn: getPfb unimplemented
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getScaleFactor()
-     */
-    public FixedCount getScaleFactor() {
+public FixedCount getScaleFactor() {
 
         FixedCount actualscale = actualFontKey.getCount(FontKey.SCALE);
         if (actualscale == null) {
@@ -416,23 +309,13 @@ public class LoadableVfFont
         return actualscale;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getSpace()
-     */
-    public FixedGlue getSpace() {
+public FixedGlue getSpace() {
 
         return new Glue(getFontDimen("SPACE"), getFontDimen("STRETCH"),
             getFontDimen("SHRINK"));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#getWidth(org.extex.core.UnicodeChar)
-     */
-    public FixedGlue getWidth(UnicodeChar uc) {
+public FixedGlue getWidth(UnicodeChar uc) {
 
         int cp = charPos(uc);
         if (cp >= 0 && reader.getWidth(cp) != null) {
@@ -442,82 +325,47 @@ public class LoadableVfFont
         return FixedGlue.ZERO;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getXtf()
-     */
-    public byte[] getXtf() {
+public byte[] getXtf() {
 
         // TODO mgn: getXtf unimplemented
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#hasEncodingVector()
-     */
-    public boolean hasEncodingVector() {
+public boolean hasEncodingVector() {
 
         // TODO mgn: hasEncodingVector unimplemented
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.ExtexFont#hasGlyph(org.extex.core.UnicodeChar)
-     */
-    public boolean hasGlyph(UnicodeChar uc) {
+public boolean hasGlyph(UnicodeChar uc) {
 
         int cp = charPos(uc);
         TfmFixWord w = reader.getWidth(cp);
-        if (w == null /* || w.getValue() == 0 */) {
-            // vf font can have glyphs with zero width
-            return false;
-        }
-        return true;
-    }
+  /* || w.getValue() == 0 */
+  // vf font can have glyphs with zero width
+  return w != null;
+}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#hasMultiFonts()
-     */
-    public boolean hasMultiFonts() {
+public boolean hasMultiFonts() {
 
         // TODO mgn: hasMultiFonts unimplemented
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#isType1()
-     */
-    public boolean isType1() {
+public boolean isType1() {
 
         // TODO mgn: isType1 unimplemented
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#isXtf()
-     */
-    public boolean isXtf() {
+public boolean isXtf() {
 
         // TODO mgn: isXtf unimplemented
         return false;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.LoadableFont#loadFont(java.io.InputStream,
-     *      org.extex.font.CoreFontFactory, org.extex.font.FontKey)
+*      org.extex.font.CoreFontFactory, org.extex.font.FontKey)
      */
     public void loadFont(InputStream in, CoreFontFactory factory,
             FontKey fontKey)
@@ -588,33 +436,20 @@ public class LoadableVfFont
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
-     */
-    public void setResourceFinder(ResourceFinder finder) {
+public void setResourceFinder(ResourceFinder finder) {
 
         this.finder = finder;
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#usedCharacter(org.extex.font.BackendCharacter)
-     */
-    public void usedCharacter(BackendCharacter bc) {
+public void usedCharacter(BackendCharacter bc) {
 
         // TODO mgn: usedCharacter unimplemented
 
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.CharNodeBuilder#buildCharNode(org.extex.core.UnicodeChar,
-     *      org.extex.typesetter.tc.TypesettingContext,
+*      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.typesetter.type.node.factory.NodeFactory,
      *      org.extex.typesetter.tc.TypesettingContextFactory)
      */
@@ -662,12 +497,7 @@ public class LoadableVfFont
      */
     private CoreFontFactory fontfactory;
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.FontAware#setFontFactory(org.extex.font.CoreFontFactory)
-     */
-    public void setFontFactory(CoreFontFactory factory) {
+public void setFontFactory(CoreFontFactory factory) {
 
         fontfactory = factory;
 

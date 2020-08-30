@@ -30,8 +30,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * This interface describes a method to acquire a length value.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface DimenParser {
 
     /**

@@ -31,110 +31,109 @@ import org.junit.runner.JUnitCore;
  * Test cases for Catcodes.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5563 $
- */
+*/
 public class CatcodeTest
         implements
             CatcodeVisitor<String, String, String, String> {
 
     /**
-     * The field <tt>CAT_INVALID</tt> contains the numerical value for invalid
+     * The field {@code CAT_INVALID} contains the numerical value for invalid
      * characters.
      */
     private static final int CAT_INVALID = 15;
 
     /**
-     * The field <tt>CAT_COMMENT</tt> contains the numerical value for comment
+     * The field {@code CAT_COMMENT} contains the numerical value for comment
      * characters.
      */
     private static final int CAT_COMMENT = 14;
 
     /**
-     * The field <tt>CAT_ACTIVE</tt> contains the numerical value for active
+     * The field {@code CAT_ACTIVE} contains the numerical value for active
      * characters.
      */
     private static final int CAT_ACTIVE = 13;
 
     /**
-     * The field <tt>CAT_OTHER</tt> contains the numerical value for other
+     * The field {@code CAT_OTHER} contains the numerical value for other
      * characters.
      */
     private static final int CAT_OTHER = 12;
 
     /**
-     * The field <tt>CAT_LETTER</tt> contains the numerical value for letter
+     * The field {@code CAT_LETTER} contains the numerical value for letter
      * characters.
      */
     private static final int CAT_LETTER = 11;
 
     /**
-     * The field <tt>CAT_SPACE</tt> contains the numerical value for space
+     * The field {@code CAT_SPACE} contains the numerical value for space
      * characters.
      */
     private static final int CAT_SPACE = 10;
 
     /**
-     * The field <tt>CAT_IGNORE</tt> contains the numerical value for ignored
+     * The field {@code CAT_IGNORE} contains the numerical value for ignored
      * characters.
      */
     private static final int CAT_IGNORE = 9;
 
     /**
-     * The field <tt>CAT_SUB</tt> contains the numerical value for subscript
+     * The field {@code CAT_SUB} contains the numerical value for subscript
      * mark characters.
      */
     private static final int CAT_SUB = 8;
 
     /**
-     * The field <tt>CAT_SUP</tt> contains the numerical value for superscript
+     * The field {@code CAT_SUP} contains the numerical value for superscript
      * mark characters.
      */
     private static final int CAT_SUP = 7;
 
     /**
-     * The field <tt>CAT_HASH</tt> contains the numerical value for hash mark
+     * The field {@code CAT_HASH} contains the numerical value for hash mark
      * characters &ndash; used for macro parameters.
      */
     private static final int CAT_HASH = 6;
 
     /**
-     * The field <tt>CAT_CR</tt> contains the numerical value for carridge
+     * The field {@code CAT_CR} contains the numerical value for carridge
      * return characters.
      */
     private static final int CAT_CR = 5;
 
     /**
-     * The field <tt>CAT_TAB</tt> contains the numerical value for TAB mark
+     * The field {@code CAT_TAB} contains the numerical value for TAB mark
      * characters.
      */
     private static final int CAT_TAB = 4;
 
     /**
-     * The field <tt>CAT_MATH</tt> contains the numerical value for math shift
+     * The field {@code CAT_MATH} contains the numerical value for math shift
      * characters.
      */
     private static final int CAT_MATH = 3;
 
     /**
-     * The field <tt>CAT_RIGHT</tt> contains the numerical value for right brace
+     * The field {@code CAT_RIGHT} contains the numerical value for right brace
      * characters.
      */
     private static final int CAT_RIGHT = 2;
 
     /**
-     * The field <tt>CAT_LEFT</tt> contains the numerical value for left brace
+     * The field {@code CAT_LEFT} contains the numerical value for left brace
      * characters.
      */
     private static final int CAT_LEFT = 1;
 
     /**
-     * The field <tt>CAT_ESC</tt> contains the numerical value for escape
+     * The field {@code CAT_ESC} contains the numerical value for escape
      * characters.
      */
     private static final int CAT_ESC = 0;
 
     /**
-     * The field <tt>visited</tt> contains the indicator that a visitor has been
+     * The field {@code visited} contains the indicator that a visitor has been
      * invoked. It will be set by the visit* methods to the catcode encountered.
      */
     private static int visited = -1;
@@ -599,10 +598,7 @@ public class CatcodeTest
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.type.CatcodeVisitor#visitActive(java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+*      java.lang.Object, java.lang.Object)
      */
     @Override
     public String visitActive(String arg1, String arg2, String arg3) {
@@ -615,10 +611,7 @@ public class CatcodeTest
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.type.CatcodeVisitor#visitComment(java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+*      java.lang.Object, java.lang.Object)
      */
     @Override
     public final String visitComment(String arg1, String arg2, String arg3) {
@@ -631,10 +624,7 @@ public class CatcodeTest
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.type.CatcodeVisitor#visitCr(java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+*      java.lang.Object, java.lang.Object)
      */
     @Override
     public final String visitCr(String arg1, String arg2, String arg3) {
@@ -647,10 +637,7 @@ public class CatcodeTest
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.type.CatcodeVisitor#visitEscape(java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+*      java.lang.Object, java.lang.Object)
      */
     @Override
     public final String visitEscape(String arg1, String arg2, String arg3) {
@@ -663,10 +650,7 @@ public class CatcodeTest
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.type.CatcodeVisitor#visitIgnore(java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+*      java.lang.Object, java.lang.Object)
      */
     @Override
     public final String visitIgnore(String arg1, String arg2, String arg3) {
@@ -679,10 +663,7 @@ public class CatcodeTest
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.type.CatcodeVisitor#visitInvalid(java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+*      java.lang.Object, java.lang.Object)
      */
     @Override
     public final String visitInvalid(String arg1, String arg2, String arg3) {
@@ -695,10 +676,7 @@ public class CatcodeTest
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.type.CatcodeVisitor#visitLeftBrace(java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+*      java.lang.Object, java.lang.Object)
      */
     @Override
     public final String visitLeftBrace(String arg1, String arg2, String arg3) {
@@ -711,10 +689,7 @@ public class CatcodeTest
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.type.CatcodeVisitor#visitLetter(java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+*      java.lang.Object, java.lang.Object)
      */
     @Override
     public final String visitLetter(String arg1, String arg2, String arg3) {
@@ -727,10 +702,7 @@ public class CatcodeTest
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.type.CatcodeVisitor#visitMacroParam(java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+*      java.lang.Object, java.lang.Object)
      */
     @Override
     public final String visitMacroParam(String arg1, String arg2, String arg3) {
@@ -743,10 +715,7 @@ public class CatcodeTest
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.type.CatcodeVisitor#visitMathShift(java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+*      java.lang.Object, java.lang.Object)
      */
     @Override
     public final String visitMathShift(String arg1, String arg2, String arg3) {
@@ -759,10 +728,7 @@ public class CatcodeTest
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.type.CatcodeVisitor#visitOther(java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+*      java.lang.Object, java.lang.Object)
      */
     @Override
     public final String visitOther(String arg1, String arg2, String arg3) {
@@ -775,10 +741,7 @@ public class CatcodeTest
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.type.CatcodeVisitor#visitRightBrace(java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+*      java.lang.Object, java.lang.Object)
      */
     @Override
     public final String visitRightBrace(String arg1, String arg2, String arg3) {
@@ -791,10 +754,7 @@ public class CatcodeTest
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.type.CatcodeVisitor#visitSpace(java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+*      java.lang.Object, java.lang.Object)
      */
     @Override
     public final String visitSpace(String arg1, String arg2, String arg3) {
@@ -807,10 +767,7 @@ public class CatcodeTest
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.type.CatcodeVisitor#visitSubMark(java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+*      java.lang.Object, java.lang.Object)
      */
     @Override
     public final String visitSubMark(String arg1, String arg2, String arg3) {
@@ -823,10 +780,7 @@ public class CatcodeTest
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.type.CatcodeVisitor#visitSupMark(java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+*      java.lang.Object, java.lang.Object)
      */
     @Override
     public final String visitSupMark(String arg1, String arg2, String arg3) {
@@ -839,10 +793,7 @@ public class CatcodeTest
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.type.CatcodeVisitor#visitTabMark(java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+*      java.lang.Object, java.lang.Object)
      */
     @Override
     public final String visitTabMark(String arg1, String arg2, String arg3) {

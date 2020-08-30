@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the scaled data type for ??TeX.
+ *Contains scaled data type for εχTeX.
  */
 
 package org.extex.core.scaled;

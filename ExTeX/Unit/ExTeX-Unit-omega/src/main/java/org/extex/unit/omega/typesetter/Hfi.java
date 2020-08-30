@@ -34,47 +34,47 @@ import org.extex.unit.tex.typesetter.AbstractHorizontalCode;
 import org.extex.unit.tex.typesetter.spacing.HorizontalSkip;
 
 /**
- * This class provides an implementation for the primitive <code>\hfi</code>.
+ * This class provides an implementation for the primitive {@code \hfi}.
  * 
- * <doc name="hfi"> <h3>The Primitive <tt>\hfi</tt></h3>
+ * <p>The Primitive {@code \hfi}</p>
  * <p>
- * The primitive <tt>\hfi</tt> inserts a new infinite glue into the output. The
- * value of <tt>\hfi</tt> is an infinite quantity which is less than
- * <tt>\hfil</tt>. This means that <tt>\hfil</tt> or a larger value suppress
+ * The primitive {@code \hfi} inserts a new infinite glue into the output. The
+ * value of {@code \hfi} is an infinite quantity which is less than
+ * {@code \hfil}. This means that {@code \hfil} or a larger value suppress
  * this glue. On the other side if no greater value is present then this value
  * suppresses any finite value.
  * </p>
  * <p>
- * This quantity has been introduced by <logo>Omega</logo>.
+ * This quantity has been introduced by  Omega.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;hfi&rang;
- *        &rarr; <tt>\hfi</tt>  </pre>
+ *        &rarr; {@code \hfi}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \hfi  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Hfi extends AbstractHorizontalCode implements HorizontalSkip {
 
     /**
-     * The field <tt>FIL</tt> contains the glue to insert for this primitive.
+     * The field {@code FIL} contains the glue to insert for this primitive.
      */
     private static final Glue FI = new Glue(Dimen.ZERO, GlueComponent.ONE_FI,
         GlueComponent.ZERO);
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -89,10 +89,7 @@ public class Hfi extends AbstractHorizontalCode implements HorizontalSkip {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -106,10 +103,7 @@ public class Hfi extends AbstractHorizontalCode implements HorizontalSkip {
     /**
      * This method acquires horizontal glue.
      * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.typesetter.spacing.HorizontalSkip#getGlue(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public FixedGlue getGlue(Context context, TokenSource source,

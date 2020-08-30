@@ -25,12 +25,11 @@ import java.io.IOException;
  * This is the abstract base class for all value items.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractValueItem implements ValueItem {
 
     /**
-     * The field <tt>content</tt> contains the content of the value.
+     * The field {@code content} contains the content of the value.
      */
     private String content;
 
@@ -81,10 +80,7 @@ public abstract class AbstractValueItem implements ValueItem {
 
     /**
      * Return a String representation of the object suitable for a
-     * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
-     * style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
-     * >e</span>X file.
+     * BibTeX file.
      * 
      * @return the string representation
      */

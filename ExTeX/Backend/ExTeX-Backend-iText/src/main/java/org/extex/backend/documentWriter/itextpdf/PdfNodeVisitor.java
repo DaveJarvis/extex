@@ -63,8 +63,7 @@ import com.lowagie.text.pdf.PdfWriter;
  * PDF NodeVisitor.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
 
@@ -76,7 +75,7 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     /**
      * The logger.
      */
-    private Logger logger;
+    private final Logger logger;
 
     /**
      * The base font.
@@ -86,27 +85,27 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     /**
      * The direct content of the pdf page.
      */
-    private PdfContentByte cb;
+    private final PdfContentByte cb;
 
     /**
      * current x position.
      */
-    private Dimen currentX = new Dimen();
+    private final Dimen currentX = new Dimen();
 
     /**
      * current y position.
      */
-    private Dimen currentY = new Dimen();
+    private final Dimen currentY = new Dimen();
 
     /**
      * The pdf document.
      */
-    private Document document;
+    private final Document document;
 
     /**
      * The backend font manager.
      */
-    private BackendFontManager manager;
+    private final BackendFontManager manager;
 
     /**
      * the color from the character before.
@@ -121,7 +120,7 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     /**
      * The pdf writer.
      */
-    private PdfWriter writer;
+    private final PdfWriter writer;
 
     /**
      * Creates a new object.
@@ -146,7 +145,7 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     /**
      * The localizer.
      */
-    private Localizer localizer;
+    private final Localizer localizer;
 
     /**
      * Draw a box around the node (only for test).
@@ -224,10 +223,7 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(org.extex.typesetter.type.node.AdjustNode,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     public Object visitAdjust(AdjustNode node, Object value)
             throws GeneralException {
@@ -237,10 +233,7 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(org.extex.typesetter.type.node.AfterMathNode,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     public Object visitAfterMath(AfterMathNode node, Object value)
             throws GeneralException {
@@ -250,10 +243,7 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(org.extex.typesetter.type.node.AlignedLeadersNode,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     public Object visitAlignedLeaders(AlignedLeadersNode node, Object value)
             throws GeneralException {
@@ -263,10 +253,7 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(org.extex.typesetter.type.node.BeforeMathNode,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     public Object visitBeforeMath(BeforeMathNode node, Object value)
             throws GeneralException {
@@ -276,10 +263,7 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(org.extex.typesetter.type.node.CenteredLeadersNode,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     public Object visitCenteredLeaders(CenteredLeadersNode node, Object value)
             throws GeneralException {
@@ -289,10 +273,7 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitChar(org.extex.typesetter.type.node.CharNode,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     public Object visitChar(CharNode node, Object value)
             throws GeneralException {
@@ -335,10 +316,7 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(org.extex.typesetter.type.node.DiscretionaryNode,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     public Object visitDiscretionary(DiscretionaryNode node, Object value)
             throws GeneralException {
@@ -348,10 +326,7 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(org.extex.typesetter.type.node.ExpandedLeadersNode,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     public Object visitExpandedLeaders(ExpandedLeadersNode node, Object value)
             throws GeneralException {
@@ -361,10 +336,7 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitGlue(org.extex.typesetter.type.node.GlueNode,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     public Object visitGlue(GlueNode node, Object value)
             throws GeneralException {
@@ -376,10 +348,7 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(org.extex.typesetter.type.node.HorizontalListNode,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     public Object visitHorizontalList(HorizontalListNode node, Object value)
             throws GeneralException {
@@ -400,10 +369,7 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(org.extex.typesetter.type.node.InsertionNode,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     public Object visitInsertion(InsertionNode node, Object value)
             throws GeneralException {
@@ -413,10 +379,7 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitKern(org.extex.typesetter.type.node.KernNode,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     public Object visitKern(KernNode node, Object value)
             throws GeneralException {
@@ -426,10 +389,7 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitLigature(org.extex.typesetter.type.node.LigatureNode,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     public Object visitLigature(LigatureNode node, Object value)
             throws GeneralException {
@@ -439,10 +399,7 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitMark(org.extex.typesetter.type.node.MarkNode,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     public Object visitMark(MarkNode node, Object value)
             throws GeneralException {
@@ -452,10 +409,7 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(org.extex.typesetter.type.node.PenaltyNode,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     public Object visitPenalty(PenaltyNode node, Object value)
             throws GeneralException {
@@ -465,10 +419,7 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitRule(org.extex.typesetter.type.node.RuleNode,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     public Object visitRule(RuleNode node, Object value)
             throws GeneralException {
@@ -478,10 +429,7 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitSpace(org.extex.typesetter.type.node.SpaceNode,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     public Object visitSpace(SpaceNode node, Object value)
             throws GeneralException {
@@ -493,10 +441,7 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(org.extex.typesetter.type.node.VerticalListNode,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     public Object visitVerticalList(VerticalListNode node, Object value)
             throws GeneralException {
@@ -518,10 +463,7 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(org.extex.typesetter.type.node.VirtualCharNode,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     public Object visitVirtualChar(VirtualCharNode node, Object value)
             throws GeneralException {
@@ -531,10 +473,7 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(org.extex.typesetter.type.node.WhatsItNode,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     public Object visitWhatsIt(WhatsItNode node, Object value)
             throws GeneralException {

@@ -28,8 +28,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * hhcurveto: dy1? {dxa dxb dyb dxc}+ hhcurveto (27).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class T2HhcurveTo extends T2PathConstruction {
 
     /**
@@ -40,7 +39,7 @@ public class T2HhcurveTo extends T2PathConstruction {
     /**
      * The four values array.
      */
-    private T2FourNumber[] four;
+    private final T2FourNumber[] four;
 
     /**
      * Create a new object.
@@ -101,44 +100,26 @@ public class T2HhcurveTo extends T2PathConstruction {
         return four;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
-     */
-    @Override
+@Override
     public int getID() {
 
         return TYPE_HHCURVETO;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "hhcurveto";
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getValue()
-     */
-    @Override
+@Override
     public Object getValue() {
 
         return four;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

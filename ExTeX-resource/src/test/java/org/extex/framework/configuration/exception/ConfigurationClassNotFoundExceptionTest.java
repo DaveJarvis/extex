@@ -35,12 +35,11 @@ import org.junit.Test;
  * This is a test suite for {@link ConfigurationClassNotFoundException}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ConfigurationClassNotFoundExceptionTest {
 
     /**
-     * The field <tt>CONF</tt> contains the configuration for testing purposes.
+     * The field {@code CONF} contains the configuration for testing purposes.
      */
     private static final Configuration CONF = new Configuration() {
 
@@ -129,12 +128,7 @@ public class ConfigurationClassNotFoundExceptionTest {
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return "THE CONFIG";
@@ -143,7 +137,7 @@ public class ConfigurationClassNotFoundExceptionTest {
     };
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test(expected = NullPointerException.class)
     public void test1() {
@@ -152,7 +146,7 @@ public class ConfigurationClassNotFoundExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetLocalizedMessage0() {
@@ -164,7 +158,7 @@ public class ConfigurationClassNotFoundExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetLocalizedMessage1() {
@@ -177,7 +171,7 @@ public class ConfigurationClassNotFoundExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetLocalizer() {
@@ -188,7 +182,7 @@ public class ConfigurationClassNotFoundExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetSource() {
@@ -199,7 +193,7 @@ public class ConfigurationClassNotFoundExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetText0() {
@@ -211,7 +205,7 @@ public class ConfigurationClassNotFoundExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetText1() {
@@ -223,7 +217,7 @@ public class ConfigurationClassNotFoundExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetText2() {
@@ -235,7 +229,7 @@ public class ConfigurationClassNotFoundExceptionTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     *  ...
      */
     @Test
     public void testGetText3() {

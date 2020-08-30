@@ -16,13 +16,12 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains primitives for ??TeX's
+ * Contains primitives for εχTeX's
  * <span style="font-size:80%;">PDF</span>TeX mode.
  *
- * <doc name="pdftexversion" type="register">
- * <h3>The Count Parameter <tt>\pdftexversion</tt></h3>
+ * <p>The Count Parameter {@code \pdftexversion}</p>
  * <p>
- *  The count register <tt>\pdftexversion</tt> contains the version
+ *  The count register {@code \pdftexversion} contains the version
  *  number of <span style="font-size:80%;">PDF</span>T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
  * >e</span>X as an integer. The number is multiplied
@@ -36,22 +35,22 @@
  *  as such. Thus assignments and arithmetic can be performed on it.
  * </p>
  *
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;pdftexversion&rang;
- *       &rarr; <tt>\pdftexversion</tt> ...  </pre>
+ *       &rarr; {@code \pdftexversion} ...  </pre>
  *
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  *  <pre class="TeXSample">
  *    \the\pdftexversion  </pre>
  *
- * </doc>
  *
- * <doc name="pdftexrevision" type="register">
- * <h3>The Tokens Parameter <tt>\pdftexrevision</tt></h3>
+ * <p>The Tokens Parameter {@code \pdftexrevision}</p>
  * <p>
- *  The tokens register <tt>\pdftexrevision</tt> contains the revision
+ *  The tokens register {@code \pdftexrevision} contains the revision
  *  of <span style="font-size:80%;">PDF</span>T<span style=
  *  "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
  *  >e</span>X in use. Usually this is something like a letter.
@@ -61,17 +60,18 @@
  *  as such. Thus assignments can be performed on it.
  * </p>
  *
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;pdftexrevision&rang;
- *       &rarr; <tt>\pdftexrevision</tt> ...  </pre>
+ *       &rarr; {@code \pdftexrevision} ...  </pre>
  *
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  *  <pre class="TeXSample">
  *    \the\pdftexrevision  </pre>
  *
- * </doc>
  */
 
 package org.extex.unit.pdftex;

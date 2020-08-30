@@ -32,23 +32,22 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * This sorter uses a locale and the Java built-in collator for it.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LocaleSorter implements Comparator<Entry>, Sorter, Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2008L;
 
     /**
-     * The field <tt>collator</tt> contains the collator.
+     * The field {@code collator} contains the collator.
      */
     private final transient Collator collator;
 
     /**
-     * The field <tt>loc</tt> contains the name of the locale.
+     * The field {@code loc} contains the name of the locale.
      */
     private final String loc;
 
@@ -74,12 +73,7 @@ public class LocaleSorter implements Comparator<Entry>, Sorter, Serializable {
         this.collator = collator;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
-     */
-    public int compare(Entry a, Entry b) {
+public int compare(Entry a, Entry b) {
 
         String ka = a.getSortKey();
 
@@ -96,22 +90,12 @@ public class LocaleSorter implements Comparator<Entry>, Sorter, Serializable {
         return collator.compare(ka, kb);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.sorter.Sorter#sort(java.util.List)
-     */
-    public void sort(List<Entry> list) throws ConfigurationException {
+public void sort(List<Entry> list) throws ConfigurationException {
 
         Collections.sort(list, this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return "locale:" + loc;

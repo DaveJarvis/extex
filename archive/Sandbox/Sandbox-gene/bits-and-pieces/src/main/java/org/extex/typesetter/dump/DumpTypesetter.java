@@ -34,8 +34,7 @@ import org.extex.typesetter.type.NodeList;
  * received.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4787 $
- */
+*/
 public class DumpTypesetter extends TypesetterImpl {
 
 
@@ -44,12 +43,7 @@ public class DumpTypesetter extends TypesetterImpl {
         super();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#add( org.extex.typesetter.type.Node)
-     */
-    @Override
+@Override
     public void add(Node node)
             throws TypesetterException,
                 ConfigurationException {
@@ -57,22 +51,14 @@ public class DumpTypesetter extends TypesetterImpl {
         super.add(node);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#add( org.extex.core.glue.FixedGlue)
-     */
-    @Override
+@Override
     public void add(FixedGlue g) throws TypesetterException {
 
         super.add(g);
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.tex.impl.TypesetterImpl#addSpace(
-     *      org.extex.typesetter.tc.TypesettingContext,
+*      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.core.count.FixedCount)
      */
     @Override
@@ -85,10 +71,7 @@ public class DumpTypesetter extends TypesetterImpl {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#complete(
-     *      org.extex.typesetter.TypesetterOptions)
+*      org.extex.typesetter.TypesetterOptions)
      */
     @Override
     public NodeList complete(TypesetterOptions context)

@@ -25,8 +25,7 @@ import java.util.List;
  * This is the abstract base class for rules.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6666 $
- */
+*/
 public abstract class Rule {
 
     /**
@@ -51,17 +50,17 @@ public abstract class Rule {
     }
 
     /**
-     * The field <tt>again</tt> contains the flag :again.
+     * The field {@code again} contains the flag :again.
      */
     private boolean again = false;
 
     /**
-     * The field <tt>pattern</tt> contains the pattern.
+     * The field {@code pattern} contains the pattern.
      */
     private final String pattern;
 
     /**
-     * The field <tt>replacement</tt> contains the replacement text.
+     * The field {@code replacement} contains the replacement text.
      */
     private final String replacement;
 
@@ -120,12 +119,7 @@ public abstract class Rule {
         return again;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return ">" + pattern + "< ==> >" + replacement

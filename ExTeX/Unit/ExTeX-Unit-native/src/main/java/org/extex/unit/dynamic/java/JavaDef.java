@@ -19,8 +19,6 @@
 
 package org.extex.unit.dynamic.java;
 
-import java.lang.reflect.InvocationTargetException;
-
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.EofInToksException;
 import org.extex.core.exception.helping.HelpingException;
@@ -35,22 +33,25 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.dynamic.Definer;
 
+import java.lang.reflect.InvocationTargetException;
+
 /**
  * This primitive provides a binding of a macro or active character to Java
- * code. This code implements the primitive <tt>\javadef</tt>.
+ * code. This code implements the primitive {@code \javadef}.
  * 
- * <doc name="javadef"> <h3>The Primitive <tt>\javadef</tt></h3>
+ * <p>The Primitive {@code \javadef}</p>
  * <p>
- * The primitive <tt>\javadef</tt> attaches a definition to a macro or active
- * character. This is done in a similar way as <tt>\def</tt> works. The
+ * The primitive {@code \javadef} attaches a definition to a macro or active
+ * character. This is done in a similar way as {@code \def} works. The
  * difference is that the definition has to be provided in form of a Java class.
  * </p>
  * 
- * <h4>Syntax</h4> The general form of this primitive is
+ * <p>Syntax</p>
+ The general form of this primitive is
  * 
  * <pre class="syntax">
  *   &lang;javadef&rang;
- *       &rarr; <tt>\javadef</tt> {@linkplain
+ *       &rarr; {@code \javadef} {@linkplain
  *       org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *       &lang;control sequence&rang;} <i>&lang;tokens&rang;</i> </pre>
  * 
@@ -67,39 +68,41 @@ import org.extex.unit.dynamic.Definer;
  * </p>
  * <p>
  * The following example illustrates the use of this primitive:
- * 
+ * </p>
+ *
  * <pre class="TeXSample">
  *   \javadef\abc{org.extex.interpreter.primitive.Relax} </pre>
  * 
- * </p>
  * <p>
- * The primitive <tt>\javadef</tt> is local to the enclosing group as is
- * <tt>\def</tt>. And similar to <tt>\def</tt> the modifier <tt>\global</tt> can
+ * The primitive {@code \javadef} is local to the enclosing group as is
+ * {@code \def}. And similar to {@code \def} the modifier {@code \global} can
  * be used to make the definition in all groups instead of the current group
  * only. This is shown in the following example:
- * 
+ * </p>
+ *
  * <pre class="TeXSample">
  *   \global\javadef\abc{org.extex.interpreter.primitive.Relax}
  * </pre>
  * 
- * </p>
  * <p>
- * The primitive <tt>\javadef</tt> also respects the count register
- * <tt>\globaldefs</tt> to enable general global assignment.
+ * The primitive {@code \javadef} also respects the count register
+ * {@code \globaldefs} to enable general global assignment.
  * </p>
  * <p>
  * Since the primitive is classified as assignment the value of
- * <tt>\afterassignment</tt> is applied.
+ * {@code \afterassignment} is applied.
  * </p>
  * 
- * <h4>Java Implementation</h4>
+ * <p>Java Implementation</p>
+
  * <p>
  * Now we come to the Java side of the definition. The class given as
  * <i>&lang;tokens&rang;</i> must implement the interface
  * {@link org.extex.interpreter.type.Code Code}. The easiest way to achieve this
  * is by declaring a class derived from
  * {@link org.extex.interpreter.type.AbstractCode AbstractCode}.
- * 
+ * </p>
+ *
  * <pre class="JavaSample">
  *   <b>package</b> my.package;
  *
@@ -126,21 +129,17 @@ import org.extex.unit.dynamic.Definer;
  *       <b>return</b> <b>true</b>;
  *     }
  *   } </pre>
- * 
- * </p>
  * <p>
  * There is more to say about primitives like how to write expandable primitives
  * or ifs. Those details can be found in section <i>Primitives</i>.
  * </p>
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class JavaDef extends AbstractAssignment implements Definer {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -163,10 +162,7 @@ public class JavaDef extends AbstractAssignment implements Definer {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -177,10 +173,7 @@ public class JavaDef extends AbstractAssignment implements Definer {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.dynamic.Definer#define(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

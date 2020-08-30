@@ -29,8 +29,7 @@ import org.extex.ocpware.compiler.parser.CompilerState;
  * This interface describes the variants of a state change instruction.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public interface RightState {
 
     /**

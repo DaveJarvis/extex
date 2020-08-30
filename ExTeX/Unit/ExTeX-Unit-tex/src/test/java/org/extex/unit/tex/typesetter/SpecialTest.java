@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\special</tt>.
+ * This is a test suite for the primitive {@code \special}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class SpecialTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -48,8 +47,8 @@ public class SpecialTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\special"> Test case checking that <tt>\special</tt>
-     * inserts a special node. </testcase>
+     * <testcase primitive="\special"> Test case checking that {@code \special}
+     * inserts a special node. 
      * 
      * @throws Exception in case of an error
      */

@@ -24,12 +24,11 @@ package org.extex.framework.configuration.exception;
  * illegal access.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ConfigurationIllegalAccessException extends ConfigurationException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     private static final long serialVersionUID = 2010L;
 
@@ -45,8 +44,8 @@ public class ConfigurationIllegalAccessException extends ConfigurationException 
 
     /**
      * Getter for the text prefix of this ConfigException. The text is taken
-     * from the resource bundle <tt>ConfigurationEception</tt> under the key
-     * <tt>ConfigurationIllegalAccessException.Text</tt>. The argument {0} is
+     * from the resource bundle {@code ConfigurationEception} under the key
+     * {@code ConfigurationIllegalAccessException.Text}. The argument {0} is
      * replaced by the message of the embedded cause as passed to the
      * constructor.
      * 

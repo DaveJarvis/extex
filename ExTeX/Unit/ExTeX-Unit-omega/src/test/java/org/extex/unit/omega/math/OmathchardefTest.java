@@ -24,11 +24,10 @@ import org.extex.unit.tex.math.AbstractMathTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\omathchardef</tt>.
+ * This is a test suite for the primitive {@code \omathchardef}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     public OmathchardefTest() {
@@ -39,7 +38,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathchardef"> Test case checking that
-     * <tt>\omathchardef</tt> needs an argument. </testcase>
+     * {@code \omathchardef} needs an argument.
      * 
      * @throws Exception in case of an error
      */
@@ -55,8 +54,8 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathchardef"> Test case checking that
-     * <tt>\omathchardef</tt> defines a control sequence which can be used in
-     * math mode only. </testcase>
+     * {@code \omathchardef} defines a control sequence which can be used in
+     * math mode only.
      * 
      * @throws Exception in case of an error
      */
@@ -73,7 +72,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathchardef"> Test case checking that
-     * <tt>\omathchardef</tt> does not acept a negatibe math code. </testcase>
+     * {@code \omathchardef} does not acept a negatibe math code.
      * 
      * @throws Exception in case of an error
      */
@@ -89,8 +88,8 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathchardef"> Test case checking that
-     * <tt>\omathchardef</tt> does not accept a too large math code.
-     * </testcase>
+     * {@code \omathchardef} does not accept a too large math code.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -106,7 +105,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathchardef"> Test case checking that
-     * <tt>\omathchardef</tt> produces a desirable result. </testcase>
+     * {@code \omathchardef} produces a desirable result.
      * 
      * @throws Exception in case of an error
      */
@@ -124,7 +123,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathchardef"> Test case checking that
-     * <tt>\omathchardef</tt> can take a defined code as argument. </testcase>
+     * {@code \omathchardef} can take a defined code as argument.
      * 
      * @throws Exception in case of an error
      */
@@ -142,8 +141,8 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathchardef"> Test case checking that
-     * <tt>\omathchardef</tt> can take a character defined with
-     * <tt>\chardef</tt> as math code. </testcase>
+     * {@code \omathchardef} can take a character defined with
+     * {@code \chardef} as math code.
      * 
      * @throws Exception in case of an error
      */
@@ -161,8 +160,8 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathchardef"> Test case checking that
-     * <tt>\mathchardef</tt> can take a mathdode defined with
-     * <tt>\omathchardef</tt> as argument. </testcase>
+     * {@code \mathchardef} can take a mathdode defined with
+     * {@code \omathchardef} as argument.
      * 
      * @throws Exception in case of an error
      */
@@ -180,7 +179,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathchardef"> Test case checking that
-     * <tt>\omathchardef</tt> is count convertible. </testcase>
+     * {@code \omathchardef} is count convertible.
      * 
      * @throws Exception in case of an error
      */
@@ -197,8 +196,8 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathchardef"> Test case checking that
-     * <tt>\omathchardef</tt> can be assigned to an active character.
-     * </testcase>
+     * {@code \omathchardef} can be assigned to an active character.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -215,8 +214,8 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathchardef"> Test case checking that the controls
-     * seqeunce defined with <tt>\omathchardef</tt> is acceptabe as arginet of
-     * \the. </testcase>
+     * seqeunce defined with {@code \omathchardef} is acceptabe as arginet of
+     * \the.
      * 
      * @throws Exception in case of an error
      */
@@ -233,7 +232,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathchardef"> Test case checking that
-     * <tt>\omathchardef</tt> uses the <tt>\global</tt> flag. </testcase>
+     * {@code \omathchardef} uses the {@code \global} flag.
      * 
      * @throws Exception in case of an error
      */
@@ -250,7 +249,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathchardef"> Test case checking that
-     * <tt>\omathchardef</tt> respects groups. </testcase>
+     * {@code \omathchardef} respects groups.
      * 
      * @throws Exception in case of an error
      */
@@ -267,8 +266,8 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathchardef"> Test case checking that
-     * <tt>\omathchardef</tt> can parse the extended mach code syntax with
-     * symbolic names. </testcase>
+     * {@code \omathchardef} can parse the extended mach code syntax with
+     * symbolic names.
      * 
      * @throws Exception in case of an error
      */
@@ -285,8 +284,8 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\omathchardef"> Test case checking that
-     * <tt>\omathchardef</tt> can parse the extended mach code syntax with
-     * numeric code. </testcase>
+     * {@code \omathchardef} can parse the extended mach code syntax with
+     * numeric code.
      * 
      * @throws Exception in case of an error
      */
@@ -302,8 +301,8 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\show"> Test case checking that <tt>\show</tt>
-     * works with a defined Omega math character. </testcase>
+     * <testcase primitive="\show"> Test case checking that {@code \show}
+     * works with a defined Omega math character.
      * 
      * @throws Exception in case of an error
      */

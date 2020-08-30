@@ -28,8 +28,7 @@ import org.extex.ocpware.type.OcpProgram;
  * This interface describes a writer for an &Omega;CP program.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface OcpWriter {
 
     /**

@@ -30,13 +30,10 @@ import static org.junit.Assert.assertNotEquals;
  * Test cases for math shift tokens.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4756 $
- */
+*/
 public class MathShiftTokenTest extends TokenTester {
 
-    /**
-     */
-    private static final Token token = new MathShiftToken( UnicodeChar.get( 'x'));
+private static final Token token = new MathShiftToken( UnicodeChar.get( 'x'));
 
     /**
      * Command line interface.
@@ -57,9 +54,7 @@ public class MathShiftTokenTest extends TokenTester {
         setStr( "math shift character x");
     }
 
-    /**
-     */
-    @Test
+@Test
     public void testEqualsToken1() {
 
         Token t1 = new MathShiftToken(UnicodeChar.get(' '));

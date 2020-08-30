@@ -30,41 +30,40 @@ import org.extex.unit.base.conditional.AbstractIf;
 import org.extex.unit.base.file.AbstractFileCode;
 
 /**
- * This class provides an implementation for the primitive <code>\ifeof</code>.
+ * This class provides an implementation for the primitive {@code \ifeof}.
  * 
- * <doc name="ifeof">
- * <h3>The Primitive <tt>\ifeof</tt></h3>
+ * <p>The Primitive {@code \ifeof}</p>
  * <p>
  * This primitive tests for end of file on the given read register. The read
  * register is specified as a (expanded) number.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;ifeof&rang;
- *      &rarr; <tt>\ifeof</tt> {@linkplain
+ *      &rarr; {@code \ifeof} {@linkplain
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
- *        &lang;number&rang;} &lang;true text&rang; <tt>\fi</tt>
- *      | <tt>\ifeof</tt> {@linkplain
+ *        &lang;number&rang;} &lang;true text&rang; {@code \fi}
+ *      | {@code \ifeof} {@linkplain
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
- *        &lang;number&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
+ *        &lang;number&rang;} &lang;true text&rang; {@code \else} &lang;false text&rang; {@code \fi} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \ifeof 3 -E-O-F- \else ready \fi  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4439 $
- */
+*/
 public class Ifeof extends AbstractIf {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -80,10 +79,7 @@ public class Ifeof extends AbstractIf {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.base.conditional.AbstractIf#conditional(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

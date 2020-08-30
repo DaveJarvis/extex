@@ -29,8 +29,7 @@ import org.extex.exindex.lisp.exception.LException;
  * source.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface RawIndexParser {
 
     /**
@@ -43,7 +42,7 @@ public interface RawIndexParser {
     /**
      * Read the next index entry.
      * 
-     * @return the next index entry or <code>null</code> at end of file
+     * @return the next index entry or {@code null} at end of file
      * 
      * @throws LException in case of an error
      * @throws IOException in case of an I/O error

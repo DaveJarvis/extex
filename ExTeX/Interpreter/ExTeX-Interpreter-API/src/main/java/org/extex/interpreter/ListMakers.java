@@ -25,8 +25,7 @@ import org.extex.typesetter.ListMakerType;
  * This is a utility class which provides constants for list maker types.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class ListMakers {
 
 
@@ -36,41 +35,41 @@ public final class ListMakers {
     }
 
     /**
-     * The field <tt>HORIZONTAL</tt> contains the constant for the horizontal
+     * The field {@code HORIZONTAL} contains the constant for the horizontal
      * list maker.
      */
     public static final ListMakerType HORIZONTAL =
             new ListMakerType("horizontal");
 
     /**
-     * The field <tt>RESTRICTED_HORIZONTAL</tt> contains the constant for the
+     * The field {@code RESTRICTED_HORIZONTAL} contains the constant for the
      * restricted horizontal list maker.
      */
     public static final ListMakerType RESTRICTED_HORIZONTAL =
             new ListMakerType("restricted horizontal");
 
     /**
-     * The field <tt>VERTICAL</tt> contains the constant for the vertical list
+     * The field {@code VERTICAL} contains the constant for the vertical list
      * maker.
      */
     public static final ListMakerType VERTICAL = new ListMakerType("vertical");
 
     /**
-     * The field <tt>INNER_VERTICAL</tt> contains the constant for the inner
+     * The field {@code INNER_VERTICAL} contains the constant for the inner
      * vertical list maker.
      */
     public static final ListMakerType INNER_VERTICAL =
             new ListMakerType("inner vertical");
 
     /**
-     * The field <tt>ALIGNMENT</tt> contains the constant for the alignment
+     * The field {@code ALIGNMENT} contains the constant for the alignment
      * list maker.
      */
     public static final ListMakerType ALIGNMENT =
             new ListMakerType("alignment");
 
     /**
-     * The field <tt>MATH</tt> contains the math list maker.
+     * The field {@code MATH} contains the math list maker.
      */
     public static final ListMakerType MATH = new ListMakerType("math");
 

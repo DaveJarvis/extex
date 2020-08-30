@@ -36,11 +36,11 @@ import org.extex.typesetter.type.math.MathCode;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\mathcode</code>.
+ * {@code \mathcode}.
  * 
- * <doc name="mathcode"> <h3>The Math Primitive <tt>\mathcode</tt></h3>
+ * <p>The Math Primitive {@code \mathcode}</p>
  * <p>
- * The math primitive <tt>\mathcode</tt> sets a math code for a character. For
+ * The math primitive {@code \mathcode} sets a math code for a character. For
  * this purpose it takes a character and a math code as arguments.
  * </p>
  * <p>
@@ -55,34 +55,34 @@ import org.extex.typesetter.type.math.MathCode;
  * treated like an active character. In this case the expansion is initiated.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;mathcode&rang;
- *      &rarr; <tt>\mathcode</tt> {@link
+ *      &rarr; {@code \mathcode} {@link
  *        org.extex.interpreter.TokenSource#scanCharacterCode(Context,Typesetter,CodeToken)
  *        &lang;character code&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} &lang;math code&rang;
  *        </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \mathcode`.="41  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class MathcodePrimitive extends AbstractAssignment
         implements
             CountConvertible,
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -97,10 +97,7 @@ public class MathcodePrimitive extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -117,10 +114,7 @@ public class MathcodePrimitive extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertCount(Context context, TokenSource source,
@@ -133,10 +127,7 @@ public class MathcodePrimitive extends AbstractAssignment
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

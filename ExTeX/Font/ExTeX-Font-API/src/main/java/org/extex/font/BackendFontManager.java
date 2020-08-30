@@ -39,14 +39,13 @@ import org.extex.font.manager.ManagerInfo;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public interface BackendFontManager extends Iterable<ManagerInfo> {
 
     /**
      * Get the char info for the most recently recognized pair of font and
      * character. If invoked before any character has been recognized
-     * successfully then <code>null</code> is returned.
+     * successfully then {@code null} is returned.
      * 
      * @return the char info for the most recently recognized font/character
      *         pair
@@ -56,7 +55,7 @@ public interface BackendFontManager extends Iterable<ManagerInfo> {
     /**
      * Get the font info for the most recently recognized pair of font and
      * character. If invoked before any character has been recognized
-     * successfully then <code>null</code> is returned.
+     * successfully then {@code null} is returned.
      * 
      * @return the font info for the most recently recognized font/character
      *         pair
@@ -66,13 +65,13 @@ public interface BackendFontManager extends Iterable<ManagerInfo> {
     /**
      * Get the new font indicator for the most recently recognized pair of font
      * and character. If the font has never been recognized before then
-     * <code>true</code> is returned. The font compared for this test is the
+     * {@code true} is returned. The font compared for this test is the
      * back-end font &ndash; not the font passed in. This means that each time
      * getRecognizedFont() returns a new font info this method returns
-     * <code>true</code>.
+     * {@code true}.
      * <p>
      * If invoked before any character has been recognized successfully then
-     * <code>null</code> is returned.
+     * {@code null} is returned.
      * </p>
      * 
      * @return the font info for the most recently recognized font/character
@@ -99,7 +98,7 @@ public interface BackendFontManager extends Iterable<ManagerInfo> {
      * @param uc the Unicode character at hand
      * @throws FontException if a font error occurred.
      * 
-     * @return <code>true</code> iff the character is defined in the font given
+     * @return {@code true} iff the character is defined in the font given
      *         and a font of a requested format can be delivered.
      */
     boolean recognize(FontKey fontKey, UnicodeChar uc) throws FontException;

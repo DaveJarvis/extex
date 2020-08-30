@@ -46,8 +46,7 @@ import org.extex.resource.io.NamedInputStream;
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class FontFactoryImpl extends AbstractFactory<Object>
         implements
             CoreFontFactory,
@@ -115,13 +114,13 @@ public class FontFactoryImpl extends AbstractFactory<Object>
     /**
      * Font map.
      */
-    private Map<FontKey, LoadableFont> fontMap =
+    private final Map<FontKey, LoadableFont> fontMap =
             new WeakHashMap<FontKey, LoadableFont>();
 
     /**
      * The font key factory.
      */
-    private FontKeyFactory keyFactory = new FontKeyFactory();
+    private final FontKeyFactory keyFactory = new FontKeyFactory();
 
     /**
      * properties
@@ -133,12 +132,7 @@ public class FontFactoryImpl extends AbstractFactory<Object>
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.CoreFontFactory#createManager(java.util.List)
-     */
-    @Override
+@Override
     public BackendFontManager createManager(List<String> fontTypes)
             throws ConfigurationException {
 
@@ -188,12 +182,7 @@ public class FontFactoryImpl extends AbstractFactory<Object>
         return finder.findResource(name, type);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFontFactory#getBackendFont(org.extex.font.FontKey)
-     */
-    @Override
+@Override
     public BackendFont getBackendFont(FontKey key) throws FontException {
 
         if (key == null || key.getName() == null || key.getName().length() == 0) {
@@ -221,22 +210,14 @@ public class FontFactoryImpl extends AbstractFactory<Object>
         return keyFactory.newInstance(fontKey, FontKey.SIZE, size);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.CoreFontFactory#getFontKey(java.lang.String)
-     */
-    @Override
+@Override
     public FontKey getFontKey(String fontName) {
 
         return keyFactory.newInstance(fontName);
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.CoreFontFactory#getFontKey(java.lang.String,
-     *      org.extex.core.dimen.FixedDimen)
+*      org.extex.core.dimen.FixedDimen)
      */
     @Override
     public FontKey getFontKey(String fontName, FixedDimen size) {
@@ -246,10 +227,7 @@ public class FontFactoryImpl extends AbstractFactory<Object>
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.CoreFontFactory#getFontKey(java.lang.String,
-     *      org.extex.core.dimen.FixedDimen, java.util.Map)
+*      org.extex.core.dimen.FixedDimen, java.util.Map)
      */
     @Override
     public FontKey getFontKey(String fontName, FixedDimen size,
@@ -261,10 +239,7 @@ public class FontFactoryImpl extends AbstractFactory<Object>
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.CoreFontFactory#getFontKey(java.lang.String,
-     *      org.extex.core.dimen.FixedDimen, java.util.Map, java.util.List)
+*      org.extex.core.dimen.FixedDimen, java.util.Map, java.util.List)
      */
     @Override
     public FontKey getFontKey(String fontName, FixedDimen size,
@@ -280,7 +255,7 @@ public class FontFactoryImpl extends AbstractFactory<Object>
     /**
      * Return a new instance.
      * 
-     * If the name is empty or null, then the <code>NullFont</code> are
+     * If the name is empty or null, then the {@code NullFont} are
      * returned.
      * 
      * If the font is found in the cache, the cached object is returned,

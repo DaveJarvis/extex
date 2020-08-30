@@ -29,24 +29,23 @@ import org.extex.core.dimen.FixedDimen;
  * This class contains some utility methods.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class PsUnit {
 
     /**
-     * The constant <tt>BP100_PER_IN</tt> contains the number of 100 big points
+     * The constant {@code BP100_PER_IN} contains the number of 100 big points
      * per inch.
      */
     private static final int BP100_PER_IN = 7200;
 
     /**
-     * The constant <tt>CM100_PER_IN</tt> contains the number of 100 centimeters
+     * The constant {@code CM100_PER_IN} contains the number of 100 centimeters
      * per inch.
      */
     public static final int CM100_PER_IN = 254;
 
     /**
-     * The constant <tt>FLOAT_DIGITS</tt> contains the number of digits to
+     * The constant {@code FLOAT_DIGITS} contains the number of digits to
      * consider when producing a string representation of this type.
      * 
      * Attention: Do not change this value unless you have read and understood
@@ -55,13 +54,13 @@ public abstract class PsUnit {
     private static final int FLOAT_DIGITS = 17;
 
     /**
-     * The field <tt>POINT_PER_100_IN</tt> contains the conversion factor from
+     * The field {@code POINT_PER_100_IN} contains the conversion factor from
      * inch to point. The value contained is the number of points in 100 inch.
      */
     public static final int POINT_PER_100_IN = 7227;
 
     /**
-     * The constant <tt>PT_PER_PC</tt> contains the number of points per pica.
+     * The constant {@code PT_PER_PC} contains the number of points per pica.
      */
     public static final int PT_PER_PC = 12;
 

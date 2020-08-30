@@ -34,8 +34,7 @@ import org.junit.Test;
  * This class contains the entry point to the site builder.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SiteBuilderTest {
 
     /**
@@ -61,7 +60,7 @@ public class SiteBuilderTest {
     }
 
     /**
-     * <testcase> A non-existent library leads to an exception. </testcase>
+     *  A non-existent library leads to an exception. 
      * 
      * @throws Exception in case of an error
      */
@@ -76,9 +75,8 @@ public class SiteBuilderTest {
     }
 
     /**
-     * <testcase> A non-existent target directory which can not be created
-     * because it is a file already leads to an exception. </testcase>
-     * 
+     * A non-existent target directory which can not be created because it is a file already leads to an exception
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = FileNotFoundException.class)
@@ -99,8 +97,8 @@ public class SiteBuilderTest {
     }
 
     /**
-     * <testcase> A non-existent resource directory leads to an exception.
-     * </testcase>
+     *  A non-existent resource directory leads to an exception.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -114,7 +112,7 @@ public class SiteBuilderTest {
     }
 
     /**
-     * <testcase> A site map can be created. </testcase>
+     *  A site map can be created. 
      * 
      * @throws Exception in case of an error
      */
@@ -140,8 +138,8 @@ public class SiteBuilderTest {
     }
 
     /**
-     * <testcase> A <code>null</code> value for lib is silently ignored.
-     * </testcase>
+     *  A {@code null} value for lib is silently ignored.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -153,8 +151,8 @@ public class SiteBuilderTest {
     }
 
     /**
-     * <testcase> A <code>null</code> value for omit is silently ignored.
-     * </testcase>
+     *  A {@code null} value for omit is silently ignored.
+     * 
      * 
      * @throws Exception in case of an error
      */
@@ -166,9 +164,8 @@ public class SiteBuilderTest {
     }
 
     /**
-     * <testcase> A <code>null</code> value for the argument of setTarget()
-     * leads to an exception. </testcase>
-     * 
+     * A {@code null} value for the argument of setTarget() leads to an exception
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = IllegalArgumentException.class)

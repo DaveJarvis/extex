@@ -26,8 +26,7 @@ import java.io.IOException;
  * {@link Value Value}. This interface is used as part of the visitor pattern.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface ValueVisitor {
 
     /**

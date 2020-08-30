@@ -40,29 +40,28 @@ import org.extex.typesetter.type.OrientedNode;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4739 $
- */
+*/
 public abstract class AbstractExpandableNode extends AbstractNode
         implements
             OrientedNode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>horizontal</tt> contains the indicator that the expansion
+     * The field {@code horizontal} contains the indicator that the expansion
      * takes place in horizontal direction. Otherwise the expansion occurs in
      * vertical direction.
      */
-    private boolean horizontal;
+    private final boolean horizontal;
 
     /**
-     * The field <tt>size</tt> contains the glue specification for this node.
+     * The field {@code size} contains the glue specification for this node.
      * The natural size of the glue is the initial width of this node.
      */
-    private Glue size;
+    private final Glue size;
 
     /**
      * Creates a new object. The size is used to determine the width in

@@ -25,26 +25,25 @@ import java.io.OutputStream;
 import org.extex.dviware.Dvi;
 
 /**
- * This class represents the DVI instruction <tt>pre</tt>.
+ * This class represents the DVI instruction {@code pre}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DviPreamble extends AbstractDviCode {
 
     /**
-     * The comment <tt>MAX_COMMENT_LEN</tt> contains the maximal length of the
+     * The comment {@code MAX_COMMENT_LEN} contains the maximal length of the
      * comment string.
      */
     private static final int MAX_COMMENT_LEN = 255;
 
     /**
-     * The field <tt>comment</tt> contains the comment string.
+     * The field {@code comment} contains the comment string.
      */
     private String comment;
 
     /**
-     * The field <tt>mag</tt> contains the magnification.
+     * The field {@code mag} contains the magnification.
      */
     private int mag;
 

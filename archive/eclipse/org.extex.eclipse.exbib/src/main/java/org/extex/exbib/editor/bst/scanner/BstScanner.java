@@ -36,12 +36,11 @@ import org.extex.exbib.editor.bst.properties.BstEditorPreferences;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class BstScanner extends RuleBasedScanner {
 
     /**
-     * The field <tt>numberDetector</tt> contains the ...
+     * The field {@code numberDetector} contains the ...
      */
     private IWordDetector numberDetector = new IWordDetector() {
 
@@ -59,7 +58,7 @@ public class BstScanner extends RuleBasedScanner {
     };
 
     /**
-     * The field <tt>numberDetector</tt> contains the ...
+     * The field {@code numberDetector} contains the ...
      */
     private IWordDetector quoteDetector = new IWordDetector() {
 

@@ -25,14 +25,13 @@ import org.extex.font.exception.FontException;
  * Factory for the backend font.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public interface BackendFontFactory {
 
     /**
      * Return the font for the backend.
      * 
-     * If no font is found, then <code>null</code> is returned.
+     * If no font is found, then {@code null} is returned.
      * 
      * @param key the fount key
      * @throws FontException if a font error occurred.

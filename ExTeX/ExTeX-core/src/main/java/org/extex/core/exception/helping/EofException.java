@@ -26,16 +26,15 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This exception is raised when an unexpected end of file is encountered.
  * <p>
  *  The localization format is taken from the Localizer under the key
- *  <tt>UnexpectedEofIn</tt>.
+ *  {@code UnexpectedEofIn}.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4726 $
- */
+*/
 public class EofException extends HelpingException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
@@ -66,7 +65,7 @@ public class EofException extends HelpingException {
      * Creates a new object.
      *
      * @param macro the name of the macro in which the eof has been encountered.
-     *  If the value is <code>null</code> then a shortened error message is
+     *  If the value is {@code null} then a shortened error message is
      *  used.
      */
     public EofException(String macro) {

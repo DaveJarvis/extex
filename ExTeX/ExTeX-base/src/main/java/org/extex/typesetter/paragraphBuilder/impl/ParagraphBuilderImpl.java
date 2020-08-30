@@ -51,126 +51,99 @@ import java.util.logging.Logger;
 /**
  * This class provides a paragraph builder.
  *
- * <doc name="emergencystretch" type="register">
- * <h3>The Parameter <tt>\emergencystretch</tt></h3>
+ * <p>The Parameter {@code \emergencystretch}</p>
  *
  * TODO missing documentation
- * </doc>
  *
- * <doc name="exhyphenpenalty" type="register">
- * <h3>The Parameter <tt>\exhyphenpenalty</tt></h3>
+ * <p>The Parameter {@code \exhyphenpenalty}</p>
  *
  * TODO missing documentation
- * </doc>
  *
- * <doc name="hangafter" type="register">
- * <h3>The Parameter <tt>\hangafter</tt></h3>
+ * <p>The Parameter {@code \hangafter}</p>
  *
  * TODO missing documentation
- * </doc>
  *
- * <doc name="hangindent" type="register">
- * <h3>The Parameter <tt>\hangindent</tt></h3>
+ * <p>The Parameter {@code \hangindent}</p>
  *
  * TODO missing documentation
- * </doc>
  *
- * <doc name="hsize" type="register">
- * <h3>The Parameter <tt>\hsize</tt></h3>
- *  The parameter <tt>\hsize</tt> contains the horizontal size of the paragraph
+ * <p>The Parameter {@code \hsize}</p>
+ *  The parameter {@code \hsize} contains the horizontal size of the paragraph
  *  to be build.
  *  See also \parshape, \hangindent, and \hangafter.
- * </doc>
  *
- * <doc name="hyphenpenalty" type="register">
- * <h3>The Parameter <tt>\hyphenpenalty</tt></h3>
+ * <p>The Parameter {@code \hyphenpenalty}</p>
  *
- *  The parameter <tt>\hyphenpenalty</tt> contains the penalty inserted whenever
+ *  The parameter {@code \hyphenpenalty} contains the penalty inserted whenever
  *  a hyphenation is applied. Thus paragraphs with less hyphenations are
  *  preferred over those with more hyphenations.
- * </doc>
  *
- * <doc name="leftskip" type="register">
- * <h3>The Parameter <tt>\leftskip</tt></h3>
+ * <p>The Parameter {@code \leftskip}</p>
  *
  * <p>
- *  The parameter <tt>\leftskip</tt> contains the glue which is inserted at the
+ *  The parameter {@code \leftskip} contains the glue which is inserted at the
  *  left side of each line in the paragraph. The default is 0&nbsp;pt.
  * </p>
  * <p>
  *  This parameter can be used to flash the line to the left side or center the
  *  line. Those effects can be achieved in combination with the parameter
- *  <tt>\rightskip</tt>.
+ *  {@code \rightskip}.
  * </p>
- * </doc>
  *
- * <doc name="parfillskip" type="register">
- * <h3>The Parameter <tt>\parfillskip</tt></h3>
- *  The parameter <tt>\parfillskip</tt> contains the glue which is added at the
+ * <p>The Parameter {@code \parfillskip}</p>
+ *  The parameter {@code \parfillskip} contains the glue which is added at the
  *  end of each paragraph.
- * </doc>
  *
- * <doc name="parskip" type="register">
- * <h3>The Parameter <tt>\parskip</tt></h3>
- *  The parameter <tt>\parskip</tt> contains the glue which is added to the
+ * <p>The Parameter {@code \parskip}</p>
+ *  The parameter {@code \parskip} contains the glue which is added to the
  *  vertical list before the beginnng of each paragraph.
- * </doc>
  *
- * <doc name="pretolerance" type="register">
- * <h3>The Parameter <tt>\pretolerance</tt></h3>
+ * <p>The Parameter {@code \pretolerance}</p>
  *
  * TODO missing documentation
- * </doc>
  *
- * <doc name="rightskip" type="register">
- * <h3>The Parameter <tt>\rightskip</tt></h3>
+ * <p>The Parameter {@code \rightskip}</p>
  * <p>
- *  The parameter <tt>\rightskip</tt> contains the glue which is inserted at the
+ *  The parameter {@code \rightskip} contains the glue which is inserted at the
  *  right side of each line in the paragraph. The defult is 0&nbsp;pt.
  * </p>
  * <p>
  *  This parameter can be used to flash the line to the right side or center the
  *  line. Those effects can be achieved in combination with the parameter
- *  <tt>\leftskip</tt>.
+ *  {@code \leftskip}.
  * </p>
- * </doc>
  *
- * <doc name="tolerance" type="register">
- * <h3>The Parameter <tt>\tolerance</tt></h3>
+ * <p>The Parameter {@code \tolerance}</p>
  *
  * TODO missing documentation
- * </doc>
  *
- * <doc name="tracingparagraphs" type="register">
- * <h3>The Parameter <tt>\tracingparagraphs</tt></h3>
+ * <p>The Parameter {@code \tracingparagraphs}</p>
  *
  * TODO missing documentation
- * </doc>
  *
  *
- * <h3>Extension</h3>
+ * <p>Extension</p>
  *
  * Treat segments of a paragraph separated by forced breaks separately.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4757 $
- */
+*/
 public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
 
     /**
-     * The constant <tt>COMPLETE</tt> contains the indicator that the
+     * The constant {@code COMPLETE} contains the indicator that the
      * implementation is complete.
      */
     private static final boolean COMPLETE = true;
 
     /**
-     * The constant <tt>DEVELOP</tt> contains a boolean indicating whether the
+     * The constant {@code DEVELOP} contains a boolean indicating whether the
      * develop traces should be written.
      */
     private static final boolean DEVELOP = true;
 
     /**
-     * The field <tt>fixedParshape</tt> contains the data object used to
+     * The field {@code fixedParshape} contains the data object used to
      * transport the fixed paragraph shape to the appropriate places. The values
      * stored in it will be overwritten whenever this object will be used for
      * the current paragraph.
@@ -179,7 +152,7 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
             new FixedParagraphShape(Dimen.ZERO_PT);
 
     /**
-     * The field <tt>hangingParshape</tt> contains the data object used to
+     * The field {@code hangingParshape} contains the data object used to
      * transport the hanging paragraph shape to the appropriate places. The
      * values stored in it will be overwritten whenever this object will be
      * used for the current paragraph.
@@ -188,32 +161,32 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
             new HangingParagraphShape(0, Dimen.ZERO_PT, Dimen.ZERO_PT);
 
     /**
-     * The field <tt>logger</tt> contains the logger to be used.
+     * The field {@code logger} contains the logger to be used.
      * This field is initialized from the framework by invoking the appropriate
      * setter.
      */
     private Logger logger = null;
 
     /**
-     * The field <tt>nodeFactory</tt> contains the node factory.
+     * The field {@code nodeFactory} contains the node factory.
      */
     private NodeFactory nodeFactory;
 
     /**
-     * The field <tt>options</tt> contains the reference to the options object.
+     * The field {@code options} contains the reference to the options object.
      */
     private TypesetterOptions options = null;
 
     /**
-     * The field <tt>parshape</tt> contains the paragraph shape specification.
+     * The field {@code parshape} contains the paragraph shape specification.
      * This field is initialized at the beginning of the line breaking if it is
-     * <code>null</code>. At the end of the line breaking it is reset to
-     * <code>null</code>.
+     * {@code null}. At the end of the line breaking it is reset to
+     * {@code null}.
      */
     private ParagraphShape parshape = null;
 
     /**
-     * The field <tt>tracer</tt> contains the logger used for tracing.
+     * The field {@code tracer} contains the logger used for tracing.
      */
     private Logger tracer = null;
 
@@ -452,7 +425,7 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
      * @param rightskip the skip for the right side
      * @param emergencystretch the emergency stretch to add
      *
-     * @return the container with the breaks or <code>null</code> if none is
+     * @return the container with the breaks or {@code null} if none is
      *  found.
      */
     private Breaks findOptimalBreakPoints(BreakPoint[] breakPoint,
@@ -631,7 +604,7 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
      * @param leftskip the glue for the left side
      * @param rightskip the glue for the right side
      *
-     * @return the resulting vertical node list or <code>null</code> if this
+     * @return the resulting vertical node list or {@code null} if this
      *  attempt has not been successful
      */
     private NodeList pass1(HorizontalListNode nodes,
@@ -658,7 +631,7 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
     }
 
     /**
-     * Initializes the field <tt>parshape</tt> if not set already.
+     * Initializes the field {@code parshape} if not set already.
      * For this purpose the options are considered.
      *
      */

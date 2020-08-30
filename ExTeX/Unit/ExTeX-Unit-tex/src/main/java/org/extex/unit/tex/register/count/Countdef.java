@@ -34,29 +34,30 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\countdef</code>.
+ * {@code \countdef}.
  * 
- * <doc name="countdef"> <h3>The Primitive <tt>\countdef</tt></h3>
+ * <p>The Primitive {@code \countdef}</p>
  * <p>
- * The primitive <tt>\countdef</tt> can be used to define a control sequence as
+ * The primitive {@code \countdef} can be used to define a control sequence as
  * alias for a count register. The control sequence can be used wherever a count
  * register is expected afterwards.
  * </p>
  * <p>
- * The primitive <tt>\countdef</tt> is an assignment. Thus the settings of
- * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> are applied.
+ * The primitive {@code \countdef} is an assignment. Thus the settings of
+ * {@code \afterassignment} and {@code \globaldefs} are applied.
  * </p>
  * <p>
- * The prefix <tt>\global</tt> can be used to make the assignment to the new
+ * The prefix {@code \global} can be used to make the assignment to the new
  * control sequence global instead of the group-local assignment which is the
  * default.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;countdef&rang;
- *      &rarr; &lang;modifier&rang; <tt>\countdef</tt> {@linkplain
+ *      &rarr; &lang;modifier&rang; {@code \countdef} {@linkplain
  *        org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *        &lang;control sequence&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
@@ -66,9 +67,10 @@ import org.extex.typesetter.exception.TypesetterException;
  *
  *    &lang;modifier&rang;
  *      &rarr;
- *       |  <tt>\global</tt>  </pre>
+ *       |  {@code \global}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \countdef\abc=45  </pre>
@@ -82,34 +84,33 @@ import org.extex.typesetter.exception.TypesetterException;
  * <pre class="TeXSample">
  *    \countdef\abc={xyz\the\count0}  </pre>
  * 
- * <h4>Differences to TeX and Friends</h4>
+ * <p>Differences to TeX and Friends</p>
+
  * <p>
  * In TeX the register name could consist of an integer in the range
- * from 0 to 255. In <logo>Omega</logo> this restriction has been relaxed to
- * allow integers from 0 to 32767. In ??TeX the restriction to integers has been relaxed. The register
+ * from 0 to 255. In  Omega this restriction has been relaxed to
+ * allow integers from 0 to 32767. In εχTeX the restriction to integers has been relaxed. The register
  * name can either be a number &ndash; positive or not and of any value &ndash;
  * or alternatively any token sequence enclosed in braces.
  * </p>
  * <p>
  * Note that the extended register names and the maximal number acceptable as
- * register names are a feature of ??TeX which is configurable via the count register
- * <tt>\max.register</tt>. This means that the feature can be disabled in the
+ * register names are a feature of εχTeX which is configurable via the count register
+ * {@code \max.register}. This means that the feature can be disabled in the
  * compatibility modes.
  * </p>
- * </doc>
- * 
+ *
  * 
  * 
  * To protect the built-in registers one might consider to use the key
  * "#<i>name</i>" or "count#<i>name</i>".
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Countdef extends AbstractCount {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -124,10 +125,7 @@ public class Countdef extends AbstractCount {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

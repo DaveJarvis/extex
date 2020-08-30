@@ -52,8 +52,7 @@ import org.extex.exbib.editor.bst.properties.BstEditorPreferences;
  * This is a parser for BST input which provides its information to a model.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class BstCodeScanner extends RuleBasedScanner {
 
     /**
@@ -88,7 +87,7 @@ public class BstCodeScanner extends RuleBasedScanner {
          * @param r the parser rule
          * @param scanner the character source
          * 
-         * @return the token list or <code>null</code> at EOF before the list
+         * @return the token list or {@code null} at EOF before the list
          *         was complete
          */
         T[] parse(ParserRule r, RuleBasedScanner scanner, T[] a) {
@@ -127,23 +126,18 @@ public class BstCodeScanner extends RuleBasedScanner {
     private final class ParserRule implements IRule {
 
         /**
-         * The field <tt>skip</tt> contains the number of characters read so
+         * The field {@code skip} contains the number of characters read so
          * far.
          */
         private int skip;
 
         /**
-         * The field <tt>scanner</tt> contains the scanner. It is used to avoid
+         * The field {@code scanner} contains the scanner. It is used to avoid
          * passing around the scanner in arguments.
          */
         private RuleBasedScanner scanner;
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.text.rules.IRule#evaluate(org.eclipse.jface.text.rules.ICharacterScanner)
-         */
-        @Override
+    @Override
         public IToken evaluate(ICharacterScanner characterScanner) {
 
             scanner = (RuleBasedScanner) characterScanner;
@@ -226,10 +220,7 @@ public class BstCodeScanner extends RuleBasedScanner {
             Field[] arg = new ListParser<Field>() {
 
                 /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.exbib.editor.bst.scanner.BstCodeScanner.ListParser#atStart(org.extex.exbib.editor.bst.scanner.BstCodeScanner.ParserRule,
-                 *      org.eclipse.jface.text.rules.RuleBasedScanner)
+            *      org.eclipse.jface.text.rules.RuleBasedScanner)
                  */
                 @Override
                 public void atStart(ParserRule r, RuleBasedScanner scanner) {
@@ -251,10 +242,7 @@ public class BstCodeScanner extends RuleBasedScanner {
                 VarInteger[] arg2 = new ListParser<VarInteger>() {
 
                     /**
-                     * {@inheritDoc}
-                     * 
-                     * @see org.extex.exbib.editor.bst.scanner.BstCodeScanner.ListParser#atStart(org.extex.exbib.editor.bst.scanner.BstCodeScanner.ParserRule,
-                     *      org.eclipse.jface.text.rules.RuleBasedScanner)
+                *      org.eclipse.jface.text.rules.RuleBasedScanner)
                      */
                     @Override
                     public void atStart(ParserRule r, RuleBasedScanner scanner) {
@@ -277,10 +265,7 @@ public class BstCodeScanner extends RuleBasedScanner {
                     VarString[] arg3 = new ListParser<VarString>() {
 
                         /**
-                         * {@inheritDoc}
-                         * 
-                         * @see org.extex.exbib.editor.bst.scanner.BstCodeScanner.ListParser#atStart(org.extex.exbib.editor.bst.scanner.BstCodeScanner.ParserRule,
-                         *      org.eclipse.jface.text.rules.RuleBasedScanner)
+                    *      org.eclipse.jface.text.rules.RuleBasedScanner)
                          */
                         @Override
                         public void atStart(ParserRule r,
@@ -560,7 +545,7 @@ public class BstCodeScanner extends RuleBasedScanner {
          * 
          * @param ch the initial character
          * 
-         * @return the next token or <code>null</code>
+         * @return the next token or {@code null}
          */
         private Object tokenize(int ch) {
 
@@ -634,7 +619,7 @@ public class BstCodeScanner extends RuleBasedScanner {
     }
 
     /**
-     * The field <tt>commandToken</tt> contains the token used for commands.
+     * The field {@code commandToken} contains the token used for commands.
      */
     private Token commandToken;
 
@@ -663,7 +648,7 @@ public class BstCodeScanner extends RuleBasedScanner {
     private Token fieldToken;
 
     /**
-     * The field <tt>model</tt> contains the model.
+     * The field {@code model} contains the model.
      */
     private final BstModel model;
 

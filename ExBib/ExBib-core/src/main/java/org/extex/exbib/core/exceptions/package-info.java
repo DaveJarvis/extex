@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains Exception classes. Most exceptions are derived from a
+ * Contains Exception classes. Most exceptions are derived from a
  * common base class ExBibException.
  *
  */

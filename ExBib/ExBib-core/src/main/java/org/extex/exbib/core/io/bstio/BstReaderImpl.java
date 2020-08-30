@@ -61,239 +61,234 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 /**
  * This class implements a reader for bst files.
  * <p>
- * The syntax follows the definition of B<small>IB</small><span
- * style="margin-left: -0.15em;" >T</span><span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X 0.99c.
+ * The syntax follows the definition of BibTeX 0.99c.
  * </p>
  * 
- * <small>
  * <table>
+ * <caption>Caption TBD</caption>
  * <tr>
  * <td><i>all</i></td>
- * <td><tt>:==</tt></td>
+ * <td>{@code :==}</td>
  * <td><i>itemlist</i></td>
  * <tr>
  * <td><i>itemlist</i></td>
- * <td><tt>:==</tt></td>
+ * <td>{@code :==}</td>
  * <td></td>
  * <tr>
  * <td></td>
- * <td><tt>|</tt></td>
+ * <td>{@code |}</td>
  * <td><i>item</i> <i>itemlist</i></td>
  * </tr>
  * 
  * <tr>
  * <td><i>item</i></td>
- * <td><tt>:==</tt></td>
+ * <td>{@code :==}</td>
  * <td><i>entry</i></td>
  * <tr>
  * <td></td>
- * <td><tt>|</tt></td>
+ * <td>{@code |}</td>
  * <td><i>integers</i></td>
  * </tr>
  * <tr>
  * <td></td>
- * <td><tt>|</tt></td>
+ * <td>{@code |}</td>
  * <td><i>strings</i></td>
  * </tr>
  * <tr>
  * <td></td>
- * <td><tt>|</tt></td>
+ * <td>{@code |}</td>
  * <td><i>sort</i></td>
  * </tr>
  * <tr>
  * <td></td>
- * <td><tt>|</tt></td>
+ * <td>{@code |}</td>
  * <td><i>iterate</i></td>
  * </tr>
  * <tr>
  * <td></td>
- * <td><tt>|</tt></td>
+ * <td>{@code |}</td>
  * <td><i>reverse</i></td>
  * </tr>
  * <tr>
  * <td></td>
- * <td><tt>|</tt></td>
+ * <td>{@code |}</td>
  * <td><i>read</i></td>
  * </tr>
  * <tr>
  * <td></td>
- * <td><tt>|</tt></td>
+ * <td>{@code |}</td>
  * <td><i>execute</i></td>
  * </tr>
  * <tr>
  * <td></td>
- * <td><tt>|</tt></td>
+ * <td>{@code |}</td>
  * <td><i>function</i></td>
  * </tr>
  * <tr>
  * <td></td>
- * <td><tt>|</tt></td>
+ * <td>{@code |}</td>
  * <td><i>macro</i></td>
  * </tr>
  * 
  * <tr>
  * <td><i>entry</i></td>
- * <td><tt>:==</tt></td>
+ * <td>{@code :==}</td>
  * <td>'ENTRY' '{' <i>fieldnames</i> '}' '{' <i>integernames</i> '}' '{'
  * <i>stringnames</i> '}'</td>
  * </tr>
  * 
  * <tr>
  * <td><i>entrynames</i></td>
- * <td><tt>:==</tt></td>
+ * <td>{@code :==}</td>
  * <td></td>
  * </tr>
  * <tr>
  * <td></td>
- * <td><tt>|</tt></td>
+ * <td>{@code |}</td>
  * <td><i>namelist</i></td>
  * </tr>
  * 
  * <tr>
  * <td><i>integernames</i></td>
- * <td><tt>:==</tt></td>
+ * <td>{@code :==}</td>
  * <tr>
  * <td></td>
- * <td><tt>|</tt></td>
+ * <td>{@code |}</td>
  * <td><i>namelist</i></td>
  * </tr>
  * 
  * <tr>
  * <td><i>stringnames</i></td>
- * <td><tt>:==</tt></td>
+ * <td>{@code :==}</td>
  * <tr>
  * <td></td>
- * <td><tt>|</tt></td>
+ * <td>{@code |}</td>
  * <td><i>namelist</i></td>
  * </tr>
  * 
  * <tr>
  * <td><i>namelist</i></td>
- * <td><tt>:==</tt></td>
+ * <td>{@code :==}</td>
  * <td>name</td>
  * </tr>
  * <tr>
  * <td></td>
- * <td><tt>|</tt></td>
+ * <td>{@code |}</td>
  * <td><i>name</i> <i>namelist</i></td>
  * </tr>
  * 
  * <tr>
  * <td><i>name</i></td>
- * <td><tt>:==</tt></td>
- * <td><tt>[^0-9\s={}#'"][^\s={}#]*</tt></td>
+ * <td>{@code :==}</td>
+ * <td>{@code [^0-9\s={}#'"][^\s={}#]*}</td>
  * </tr>
  * 
  * <tr>
  * <td><i>integers</i></td>
- * <td><tt>:==</tt></td>
+ * <td>{@code :==}</td>
  * <td>'INTEGERS' '{' <i>integernames</i> '}'</td>
  * </tr>
  * 
  * <tr>
  * <td><i>strings</i></td>
- * <td><tt>:==</tt></td>
+ * <td>{@code :==}</td>
  * <td>'STRINGS' '{' <i>stringnames</i> '}'</td>
  * </tr>
  * 
  * <tr>
  * <td><i>execute</i></td>
- * <td><tt>:==</tt></td>
+ * <td>{@code :==}</td>
  * <td>'EXECUTE' '{' <i>name</i> '}'</td>
  * </tr>
  * 
  * <tr>
  * <td><i>iterate</i></td>
- * <td><tt>:==</tt></td>
+ * <td>{@code :==}</td>
  * <td>'ITERATE' '{' <i>name</i> '}'</td>
  * </tr>
  * 
  * <tr>
  * <td><i>reverse</i></td>
- * <td><tt>:==</tt></td>
+ * <td>{@code :==}</td>
  * <td>'REVERSE' '{' <i>name</i> '}'</td>
  * </tr>
  * 
  * <tr>
  * <td><i>sort</i></td>
- * <td><tt>:==</tt></td>
+ * <td>{@code :==}</td>
  * <td>'SORT'</td>
  * </tr>
  * 
  * <tr>
  * <td><i>read</i></td>
- * <td><tt>:==</tt></td>
+ * <td>{@code :==}</td>
  * <td>'READ'</td>
  * </tr>
  * 
  * <tr>
  * <td><i>macro</i></td>
- * <td><tt>:==</tt></td>
+ * <td>{@code :==}</td>
  * <td>'MACRO' '{' <i>name</i> '}' '{' <i>body</i> '}'</td>
  * </tr>
  * 
  * <tr>
  * <td><i>function</i></td>
- * <td><tt>:==</tt></td>
+ * <td>{@code :==}</td>
  * <td>'FUNCTION' '{' <i>name</i> '}' '{' <i>body</i> '}'</td>
  * </tr>
  * 
  * <tr>
  * <td><i>body</i></td>
- * <td><tt>:==</tt></td>
+ * <td>{@code :==}</td>
  * <td></td>
  * </tr>
  * <tr>
  * <td></td>
- * <td><tt>|</tt></td>
+ * <td>{@code |}</td>
  * <td><i>bodyitem</i> <i>body</i></td>
  * </tr>
  * 
  * <tr>
  * <td><i>bodyitem</i></td>
- * <td><tt>:==</tt></td>
+ * <td>{@code :==}</td>
  * <td><i>name</i></td>
  * <tr>
  * <td></td>
- * <td><tt>|</tt></td>
+ * <td>{@code |}</td>
  * <td>''' <i>name</i></td>
  * </tr>
  * <tr>
  * <td></td>
- * <td><tt>|</tt></td>
+ * <td>{@code |}</td>
  * <td><i>string</i></td>
  * </tr>
  * <tr>
  * <td></td>
- * <td><tt>|</tt></td>
+ * <td>{@code |}</td>
  * <td><i>number</i></td>
  * </tr>
  * <tr>
  * <td></td>
- * <td><tt>|</tt></td>
+ * <td>{@code |}</td>
  * <td>'{' <i>bodyitem</i> '}'</td>
  * </tr>
  * 
  * <tr>
  * <td><i>number</i></td>
- * <td><tt>:==</tt></td>
- * <td>'#' <tt>[0-9]+</tt></td>
+ * <td>{@code :==}</td>
+ * <td>'#' {@code [0-9]+}</td>
  * </tr>
  * 
  * <tr>
  * <td><i>string</i></td>
- * <td><tt>:==</tt></td>
- * <td>'"' <tt>[^"]*</tt> '"'</td>
+ * <td>{@code :==}</td>
+ * <td>'"' {@code [^"]*} '"'</td>
  * </tr>
- * 
  * </table>
- * </small>
- * 
+ *
  * Example
  * 
- * <pre>
+ * <pre>{@code
  * ENTRY {author}{}{}
  * INTEGERS {x y}
  * STRINGS {u.v}
@@ -326,11 +321,10 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * ITERATE{def}
  * REVERSE{def}
  * SORT
- * </pre>
+ * }</pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BstReaderImpl extends AbstractFileReader
         implements
             BstReader,
@@ -342,10 +336,7 @@ public class BstReaderImpl extends AbstractFileReader
     private static final class ReadInstruction implements Instruction {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
-         *      Locator)
+    *      Locator)
          */
         @Override
         public void parse(BstProcessor processor, Locator locator)
@@ -361,10 +352,7 @@ public class BstReaderImpl extends AbstractFileReader
     private static final class SortInstruction implements Instruction {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
-         *      Locator)
+    *      Locator)
          */
         @Override
         public void parse(BstProcessor processor, Locator locator)
@@ -375,49 +363,49 @@ public class BstReaderImpl extends AbstractFileReader
     }
 
     /**
-     * The constant <tt>EMPTY_PATTERN</tt> contains the pattern for whitespace.
+     * The constant {@code EMPTY_PATTERN} contains the pattern for whitespace.
      */
     private static final Pattern EMPTY_PATTERN = Pattern.compile("\\s*");
 
     /**
-     * The constant <tt>LITERAL_PATTERN</tt> contains the pattern for a literal
+     * The constant {@code LITERAL_PATTERN} contains the pattern for a literal
      * at the beginning.
      */
     private static final Pattern LITERAL_PATTERN = Pattern
         .compile("([^{}\\//\\\"\\' \t\n]+)");
 
     /**
-     * The constant <tt>NUMBER_PATTERN</tt> contains the pattern for numbers.
+     * The constant {@code NUMBER_PATTERN} contains the pattern for numbers.
      */
     private static final Pattern NUMBER_PATTERN = Pattern
         .compile("#([+-]?[0-9]+)");
 
     /**
-     * The constant <tt>STRING_PATTERN</tt> contains the pattern for a string,
+     * The constant {@code STRING_PATTERN} contains the pattern for a string,
      * i.e. something enclosed in double quotes not containing a double quote.
      */
     private static final Pattern STRING_PATTERN = Pattern
         .compile("\"([^\\\"]*)\"");
 
     /**
-     * The field <tt>encoding</tt> contains the encoding for reading.
+     * The field {@code encoding} contains the encoding for reading.
      */
     private String encoding = null;
 
     /**
-     * The field <tt>instructionMap</tt> contains the mapping from normalized
+     * The field {@code instructionMap} contains the mapping from normalized
      * names to instructions.
      */
     private final Map<String, Instruction> instructionMap =
             new HashMap<String, Instruction>();
 
     /**
-     * The field <tt>configuration</tt> contains the configuration.
+     * The field {@code configuration} contains the configuration.
      */
     private Configuration configuration;
 
     /**
-     * The field <tt>comments</tt> contains the optionla buffer for comments.
+     * The field {@code comments} contains the optionla buffer for comments.
      */
     private StringBuilder comments = null;
 
@@ -442,12 +430,7 @@ public class BstReaderImpl extends AbstractFileReader
         instructionMap.put(name.toLowerCase(Locale.ENGLISH), instruction);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
-     */
-    @Override
+@Override
     public void configure(Configuration config) throws ConfigurationException {
 
         this.configuration = config;
@@ -463,9 +446,9 @@ public class BstReaderImpl extends AbstractFileReader
      * 
      * @param value the expected value
      * 
-     * @throws ExBibException in case of an error, especially<br />
+     * @throws ExBibException in case of an error, especially<br>
      *         ExBibUnexpectedEofException in case that the end of file has been
-     *         reached before the expected character could be read<br />
+     *         reached before the expected character could be read<br>
      *         ExBibImpossibleException in case of an internal error which
      *         should not happen
      */
@@ -501,10 +484,7 @@ public class BstReaderImpl extends AbstractFileReader
         addInstruction("entry", new Instruction() {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
-             *      Locator)
+        *      Locator)
              */
             @Override
             public void parse(BstProcessor processor, Locator locator)
@@ -521,10 +501,7 @@ public class BstReaderImpl extends AbstractFileReader
         addInstruction("execute", new Instruction() {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
-             *      Locator)
+        *      Locator)
              */
             @Override
             public void parse(BstProcessor processor, Locator locator)
@@ -537,10 +514,7 @@ public class BstReaderImpl extends AbstractFileReader
         addInstruction("function", new Instruction() {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
-             *      Locator)
+        *      Locator)
              */
             @Override
             public void parse(BstProcessor processor, Locator locator)
@@ -556,10 +530,7 @@ public class BstReaderImpl extends AbstractFileReader
         addInstruction("integers", new Instruction() {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
-             *      Locator)
+        *      Locator)
              */
             @Override
             public void parse(BstProcessor processor, Locator locator)
@@ -572,10 +543,7 @@ public class BstReaderImpl extends AbstractFileReader
         addInstruction("iterate", new Instruction() {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
-             *      Locator)
+        *      Locator)
              */
             @Override
             public void parse(BstProcessor processor, Locator locator)
@@ -589,10 +557,7 @@ public class BstReaderImpl extends AbstractFileReader
         addInstruction("macro", new Instruction() {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
-             *      Locator)
+        *      Locator)
              */
             @Override
             public void parse(BstProcessor processor, Locator locator)
@@ -606,10 +571,7 @@ public class BstReaderImpl extends AbstractFileReader
         addInstruction("reverse", new Instruction() {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
-             *      Locator)
+        *      Locator)
              */
             @Override
             public void parse(BstProcessor processor, Locator locator)
@@ -623,10 +585,7 @@ public class BstReaderImpl extends AbstractFileReader
         addInstruction("strings", new Instruction() {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
-             *      Locator)
+        *      Locator)
              */
             @Override
             public void parse(BstProcessor processor, Locator locator)
@@ -641,10 +600,10 @@ public class BstReaderImpl extends AbstractFileReader
     /**
      * This is the tokenizer method for this parser class.
      * 
-     * @return the next token from the scanner or <code>null</code> if the end
+     * @return the next token from the scanner or {@code null} if the end
      *         of file has been reached
      * 
-     * @throws ExBibException in case of an error, especially<br />
+     * @throws ExBibException in case of an error, especially<br>
      *         ExBibImpossibleException in case of an internal error which
      *         should not happen
      */
@@ -748,7 +707,7 @@ public class BstReaderImpl extends AbstractFileReader
      * @param processor the processor context
      * @param bst the name of the bst file to parse
      * 
-     * @throws ExBibException in case of an syntax error, especially<br />
+     * @throws ExBibException in case of an syntax error, especially<br>
      *         ExBibBstNotFoundException in case that the requested bst could
      *         not be opened for reading
      * @throws ConfigurationException in case that the reading apparatus detects
@@ -786,17 +745,17 @@ public class BstReaderImpl extends AbstractFileReader
      * 
      * <dl>
      * <dt>Example</dt>
-     * <dd> <code>{ "abc" "def" * }</code> is parsed into the {@link TokenList
+     * <dd> {@code { "abc" "def" * }} is parsed into the {@link TokenList
      * TokenList} consisting of two {@link TString TString} tokens and a
      * {@link TChar TChar} token.</dd>
      * </dl>
      * 
      * @return the contents of the block as {@link TokenList TokenList}
      * 
-     * @throws ExBibException in case of an error, especially<br />
+     * @throws ExBibException in case of an error, especially<br>
      *         ExBibEofException in case that the end of file has been reached
-     *         before the block was complete<br />
-     *         ExBibSyntaxException in case of an syntax error<br />
+     *         before the block was complete<br>
+     *         ExBibSyntaxException in case of an syntax error<br>
      *         ExBibImpossibleException in case of an internal error which
      *         should not happen
      */
@@ -813,10 +772,10 @@ public class BstReaderImpl extends AbstractFileReader
      * 
      * @return the collected Tokens in a TBlock container
      * 
-     * @throws ExBibException in case of an error, specially<br />
+     * @throws ExBibException in case of an error, specially<br>
      *         ExBibEofException in case that the end of file has been reached
-     *         before the block was complete<br />
-     *         ExBibSyntaxException in case of an syntax error<br />
+     *         before the block was complete<br>
+     *         ExBibSyntaxException in case of an syntax error<br>
      *         ExBibImpossibleException in case of an internal error which
      *         should not happen
      */
@@ -860,10 +819,10 @@ public class BstReaderImpl extends AbstractFileReader
      * 
      * @return the literal
      * 
-     * @throws ExBibException in case of an error, especially<br />
+     * @throws ExBibException in case of an error, especially<br>
      *         ExBibEofException in case that the end of file has been reached
-     *         before the literal argument was complete<br />
-     *         ExBibSyntaxException in case of an syntax error<br />
+     *         before the literal argument was complete<br>
+     *         ExBibSyntaxException in case of an syntax error<br>
      *         ExBibImpossibleException in case of an internal error which
      *         should not happen
      */
@@ -889,10 +848,10 @@ public class BstReaderImpl extends AbstractFileReader
      * 
      * @return the list of tokens
      * 
-     * @throws ExBibException in case of an error, especially<br />
+     * @throws ExBibException in case of an error, especially<br>
      *         ExBibEofException in case that the end of file has been reached
-     *         before the literal list was complete<br />
-     *         ExBibSyntaxException in case of an syntax error<br />
+     *         before the literal list was complete<br>
+     *         ExBibSyntaxException in case of an syntax error<br>
      *         ExBibImpossibleException in case of an internal error which
      *         should not happen
      */
@@ -927,10 +886,10 @@ public class BstReaderImpl extends AbstractFileReader
      * 
      * @return the string as TString
      * 
-     * @throws ExBibException in case of an error, specially<br />
+     * @throws ExBibException in case of an error, specially<br>
      *         ExBibEofException in case that the end of file has been reached
-     *         before the string argument was complete<br />
-     *         ExBibSyntaxException in case of an syntax error<br />
+     *         before the string argument was complete<br>
+     *         ExBibSyntaxException in case of an syntax error<br>
      *         ExBibImpossibleException in case of an internal error which
      *         should not happen
      */
@@ -968,12 +927,12 @@ public class BstReaderImpl extends AbstractFileReader
      * @param token the Token to process
      * @param processor the processor context
      * 
-     * @return <code>true</code> iff the given token has been handled
+     * @return {@code true} iff the given token has been handled
      *         successfully
      * 
-     * @throws ExBibException in case of an error, especially<br />
-     *         ExBibEofException in case of an unexpected end of file<br />
-     *         ExBibSyntaxException in case of an syntax error<br />
+     * @throws ExBibException in case of an error, especially<br>
+     *         ExBibEofException in case of an unexpected end of file<br>
+     *         ExBibSyntaxException in case of an syntax error<br>
      *         ExBibImpossibleException in case something impossible happens
      */
     protected boolean processCommand(Token token, BstProcessor processor)
@@ -993,12 +952,7 @@ public class BstReaderImpl extends AbstractFileReader
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.bstio.BstReader#setSaveComment(java.lang.StringBuilder)
-     */
-    @Override
+@Override
     public void setSaveComment(StringBuilder save) {
 
         this.comments = save;

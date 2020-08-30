@@ -38,7 +38,7 @@ import org.extex.core.glue.Glue;
  * 
  * <p>
  * Font key is a collection several attributes. The central attribute is the
- * name. If the name is <code>null</code>, then the special null font is meant.
+ * name. If the name is {@code null}, then the special null font is meant.
  * </p>
  * 
  * <p>
@@ -50,8 +50,8 @@ import org.extex.core.glue.Glue;
  * the size-parameter is ignored!</li>
  * <li>letterspaced: ...</li>
  * <li>language: The language for the font (e.g. for OpenType)</li>
- * <li>ligatures: If <code>true</code>, the ligature information are used.</li>
- * <li>kerning: If <code>true</code>, the kerning information are used.</li>
+ * <li>ligatures: If {@code true}, the ligature information are used.</li>
+ * <li>kerning: If {@code true}, the kerning information are used.</li>
  * </ul>
  * 
  * <p>
@@ -62,8 +62,7 @@ import org.extex.core.glue.Glue;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class FontKey implements Serializable {
 
@@ -93,7 +92,7 @@ public class FontKey implements Serializable {
     public static final String SCALE = "scale";
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 1L;
 
@@ -105,37 +104,37 @@ public class FontKey implements Serializable {
     /**
      * Map for boolean values.
      */
-    private Map<String, Boolean> booleanMap;
+    private final Map<String, Boolean> booleanMap;
 
     /**
      * Map for count values.
      */
-    private Map<String, FixedCount> countMap;
+    private final Map<String, FixedCount> countMap;
 
     /**
      * Map for {@link Dimen} values.
      */
-    private Map<String, FixedDimen> dimenMap;
+    private final Map<String, FixedDimen> dimenMap;
 
     /**
      * Map for {@link Glue} values.
      */
-    private Map<String, FixedGlue> glueMap;
+    private final Map<String, FixedGlue> glueMap;
 
     /**
      * The name of the font.
      */
-    private String name;
+    private final String name;
 
     /**
      * Map for string values.
      */
-    private Map<String, String> stringMap;
+    private final Map<String, String> stringMap;
 
     /**
      * The tags (script, feature and language).
      */
-    private List<String> tags;
+    private final List<String> tags;
 
     /**
      * Create a new object (only in the same name space!).
@@ -188,7 +187,7 @@ public class FontKey implements Serializable {
      * Check, if the font keys are equals.
      * 
      * @param k The font key for the check.
-     * @return Returns <code>true</code>, if the keys are equals.
+     * @return Returns {@code true}, if the keys are equals.
      */
     public boolean eq(FontKey k) {
 
@@ -243,7 +242,7 @@ public class FontKey implements Serializable {
     }
 
     /**
-     * Returns the value for the key or <code>false</code>, if no key exists in
+     * Returns the value for the key or {@code false}, if no key exists in
      * the map.
      * 
      * @param key The key.
@@ -269,7 +268,7 @@ public class FontKey implements Serializable {
     }
 
     /**
-     * Returns the value for the key or <code>null</code>, if no key exists in
+     * Returns the value for the key or {@code null}, if no key exists in
      * the map.
      * 
      * @param key The key.
@@ -291,7 +290,7 @@ public class FontKey implements Serializable {
     }
 
     /**
-     * Returns the value for the key or <code>null</code>, if no key exists in
+     * Returns the value for the key or {@code null}, if no key exists in
      * the map.
      * 
      * @param key The key.
@@ -313,7 +312,7 @@ public class FontKey implements Serializable {
     }
 
     /**
-     * Returns the value for the key or <code>null</code>, if no key exists in
+     * Returns the value for the key or {@code null}, if no key exists in
      * the map.
      * 
      * @param key The key.
@@ -345,7 +344,7 @@ public class FontKey implements Serializable {
     }
 
     /**
-     * Returns the value for the key or <code>null</code>, if no key exists in
+     * Returns the value for the key or {@code null}, if no key exists in
      * the map.
      * 
      * @param key The key.
@@ -380,82 +379,67 @@ public class FontKey implements Serializable {
      * Check, if the key exists in the map.
      * 
      * @param key The key.
-     * @return Returns <code>true</code>, if the key exists.
+     * @return Returns {@code true}, if the key exists.
      */
     public boolean hasBoolean(String key) {
 
         Boolean b = booleanMap.get(key);
-        if (b == null) {
-            return false;
-        }
-        return true;
+      return b != null;
     }
 
     /**
      * Check, if the key exists in the map.
      * 
      * @param key The key.
-     * @return Returns <code>true</code>, if the key exists.
+     * @return Returns {@code true}, if the key exists.
      */
     public boolean hasCount(String key) {
 
         FixedCount v = countMap.get(key);
-        if (v == null) {
-            return false;
-        }
-        return true;
+      return v != null;
     }
 
     /**
      * Check, if the key exists in the map.
      * 
      * @param key The key.
-     * @return Returns <code>true</code>, if the key exists.
+     * @return Returns {@code true}, if the key exists.
      */
     public boolean hasDimen(String key) {
 
         FixedDimen v = dimenMap.get(key);
-        if (v == null) {
-            return false;
-        }
-        return true;
+      return v != null;
     }
 
     /**
      * Check, if the key exists in the map.
      * 
      * @param key The key.
-     * @return Returns <code>true</code>, if the key exists.
+     * @return Returns {@code true}, if the key exists.
      */
     public boolean hasGlue(String key) {
 
         FixedGlue v = glueMap.get(key);
-        if (v == null) {
-            return false;
-        }
-        return true;
+      return v != null;
     }
 
     /**
      * Check, if the key exists in the map.
      * 
      * @param key The key.
-     * @return Returns <code>true</code>, if the key exists.
+     * @return Returns {@code true}, if the key exists.
      */
     public boolean hasString(String key) {
 
         String v = stringMap.get(key);
-        if (v == null) {
-            return false;
-        }
-        return true;
+        return v != null;
     }
 
     /**
-     * Returns <code>true</code>, if the tag is set.
+     * Returns {@code true}, if the tag is set.
      * 
      * @param name The name of the tag.
-     * @return Returns <code>true</code>, if the tag is set.
+     * @return Returns {@code true}, if the tag is set.
      */
     public boolean hasTag(String name) {
 
@@ -544,8 +528,8 @@ public class FontKey implements Serializable {
     }
 
     /**
-     * Returns the value of the <code>FontKey</code> as <code>String</code>. If
-     * a value is <code>null</code>, then the text 'null' is returned.
+     * Returns the value of the {@code FontKey} as {@code String}. If
+     * a value is {@code null}, then the text 'null' is returned.
      * 
      * @return the printable representation for this instance
      * 

@@ -29,12 +29,11 @@ import org.junit.Test;
  * This is a test suite for {@link BibPrinterXMLImpl}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BibPrinterXmlImplTest {
 
     /**
-     * The field <tt>RESULT_1</tt> contains the result for test case 1.
+     * The field {@code RESULT_1} contains the result for test case 1.
      */
     private static final String RESULT_1 =
             "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n"

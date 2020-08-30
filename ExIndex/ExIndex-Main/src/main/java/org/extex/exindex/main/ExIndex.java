@@ -47,34 +47,30 @@ import java.util.logging.*;
 /**
  * This is the main program for the indexer.
  * 
- * <doc type="cli" section="Command Line Use">
- * 
- * <h2>Command Line Use</h2>
+ * <p>Command Line Use</p>
  * <p>
  * This program is normally used through a wrapper which performs all necessary
  * initializations and hides the implementation language from the casual user.
  * Since this is the default case it is described here first. Details about the
- * direct usage without the wrapper can be found in section <a
- * href="#invocation">Direct Java Invocation</a>.
+ * direct usage without the wrapper can be found in section Direct Java
+ * Invocation.
  * </p>
  * <p>
- * This program &ndash; called <tt>exindex</tt> here &ndash; has in its simplest
+ * This program &ndash; called {@code exindex} here &ndash; has in its simplest
  * form of invocation two parameters. The first parameter is the name of the
  * style to use and the second parameter the file to process:
  * </p>
  * 
- * <pre class="CLISample"> exindex -style abc.ist file.idx </pre>
+ * <pre> exindex -style abc.ist file.idx </pre>
  * 
  * <p>
  * The input file is sought in the current directory and other locations.
- * Details about searching can be found in <a href="#fileSearch">Searching
- * Files</a>.
  * </p>
  * <p>
  * In general the syntax of invocation is as follows:
  * </p>
  * 
- * <pre class="CLIsyntax"> exindex &lang;options&rang; &lang;raw-file&rang;
+ * <pre> exindex &lang;options&rang; &lang;raw-file&rang;
  * </pre>
  * 
  * <p>
@@ -82,106 +78,87 @@ import java.util.logging.*;
  * </p>
  * 
  * <dl>
- * <dt><a name="-style"/><tt>--style &lang;style-file&rang;</tt></dt>
+ * <dt>{@code --style &lang;style-file&rang;}</dt>
  * <dd>This parameter contains the name of the style to use. The style contains
- * instructions which control the behavior of <logo>&epsilon;&chi;Index</logo>.
+ * instructions which control the behavior of  &epsilon;&chi;Index.
  * Several styles are supported. The program can read makeindex styles (*.ist)
  * as well as xindy styles (*.xdy). The file name extension is used to select
  * the appropriate parser.</dd>
  * 
- * <dt><tt>&lang;raw-file&rang;</tt></dt>
+ * <dt>{@code &lang;raw-file&rang;}</dt>
  * <dd>This parameter contains the file to read raw index data from. It may not
  * start with a hyphen. It has no default. If no file is given the standard
  * input is used to read from.</dd>
  * 
- * <dt><tt>-- &lang;raw-file&rang;</tt></dt>
+ * <dt>{@code -- &lang;raw-file&rang;}</dt>
  * <dd>This parameter contains the raw index file to read from. A file name may
- * start with any character since it is protected by the prefix <tt>--</tt>.</dd>
+ * start with any character since it is protected by the prefix {@code --}.</dd>
  * 
- * <dt><a name="-input"/><tt>--input &lang;raw-file&rang;</tt></dt>
+ * <dt>{@code --input &lang;raw-file&rang;}</dt>
  * <dd>This parameter contains the raw index file to read from. A file name may
- * start with any character since it is protected by the prefix <tt>--input</tt>
+ * start with any character since it is protected by the prefix {@code --input}
  * . The file name has no default. several input file can be given in one of the
  * three forms. If no input file is given the program reads from standard input.
  * The empty raw file is also interpreted as standard input.</dd>
  * 
- * <dt><a name="-output"/><tt>--output &lang;index-file&rang;</tt></dt>
+ * <dt>{@code --output &lang;index-file&rang;}</dt>
  * <dd>This parameter names the output file to write the structured index to. If
  * not given ...</dd>
  * 
- * <dt><a name="-transcript"/><tt>--transcript &lang;transcript file&rang;</tt></dt>
+ * <dt>{@code --transcript &lang;transcript file&rang;}</dt>
  * <dd>This parameter requests that the log is sent to a file as well as to the
  * console.</dd>
  * 
- * <dt><a name="-quiet"/><tt>--quiet</tt></dt>
+ * <dt>{@code --quiet}</dt>
  * <dd>This parameter disables the informative output to the console. It a
  * transcript is requested it will be used otherwise the program is deadly
  * silent.</dd>
  * 
- * <dt><a name="-Charset"/><tt>--Charset &lang;charset-name&rang;</tt></dt>
+ * <dt>{@code --Charset &lang;charset-name&rang;}</dt>
  * <dd>This parameter can be used to set the character set to be used when
  * reading raw index files. If the charset-name is empty the platform default
  * will be used. All raw index files are read with the same charset. The default
  * value is utf-8.</dd>
  * 
- * <dt><a name="-collate-spaces"/><tt>--collate-spaces</tt></dt>
+ * <dt>{@code --collate-spaces}</dt>
  * <dd>This parameter instructs the program to delete spaces from the sort key.</dd>
  * 
- * <dt><a name="-Encoding"/><tt>-Encoding &lang;encoding-name&rang;</tt></dt>
+ * <dt>{@code -Encoding &lang;encoding-name&rang;}</dt>
  * <dd>This parameter can be used to set the character set to be used when
  * reading style files. All style files share the same character set. If the
  * encoding-name is empty the platform default will be used. The default is
  * utf-8.</dd>
  * 
- * <dt><a name="-Module"/><tt>--Module &lang;module-name&rang;</tt></dt>
+ * <dt>{@code --Module &lang;module-name&rang;}</dt>
  * <dd>This instruction can be used to load the named module.</dd>
  * 
- * <dt><a name="-filter"/><tt>--filter &lang;filter-name&rang;</tt></dt>
+ * <dt>{@code --filter &lang;filter-name&rang;}</dt>
  * <dd>...</dd>
  * 
- * <dt><a name="-german"/><tt>--german</tt></dt>
+ * <dt>{@code --german}</dt>
  * <dd>...</dd>
  * 
- * <dt><a name="-r"/><tt>--r</tt></dt>
+ * <dt>{@code --r}</dt>
  * <dd>...</dd>
  * 
- * <dt><a name="-letter-ordering"/><tt>--letter-ordering</tt></dt>
+ * <dt>{@code --letter-ordering}</dt>
  * <dd>...</dd>
  * 
- * <dt><a name="-page"/><tt>--page &lang;page&rang;</tt></dt>
+ * <dt>{@code --page &lang;page&rang;}</dt>
  * <dd>...</dd>
  * 
- * <dt><a name="-trace"/><tt>--trace</tt></dt>
+ * <dt>{@code --trace}</dt>
  * <dd>This parameter instructs the program to emit tracing output.</dd>
  * 
- * <dt><a name="-Log-level"/><tt>--Log-level &lang;level&rang;</tt></dt>
+ * <dt>{@code --Log-level &lang;level&rang;}</dt>
  * <dd>This parameter can be used to set the log level to a given value.
  * Possible levels are 0, 1, and 2.</dd>
  * 
- * <dt><a name="-help"/><tt>--help</tt></dt>
+ * <dt>{@code --help}</dt>
  * <dd>This command line option produces a short usage description on the
  * standard output stream and terminates the program afterwards.</dd>
  * 
- * <!--
- * 
- * <dt><a name="-progname"/><tt>- -progname &lang;name&rang;</tt><br />
- * <tt>-progname=&lang;name&rang;</tt></dt>
- * <dd>This parameter can be used to overrule the name of the program shown in
- * the banner and the version information.</dd>
- * 
- * <dt><a name="-copyright"/><tt>- -copyright</tt></dt>
- * <dd>This command line option produces a copyright notice on the standard
- * output stream and terminates the program afterwards.</dd>
- * 
- * 
- * <dt><a name="-texinputs"/><tt>- -texinputs &lang;path&rang;</tt><br />
- * <tt>-texinputs=&lang;path&rang;</tt></dt>
- * <dd>This parameter contains the additional directories for searching
- * <logo>&epsilon;&chi;Index</logo> input files.</dd>
- * 
- * -->
- * 
- * <dt><a name="-Version"/><tt>--Version</tt></dt>
+ * <dt>{@code --Version}</dt>
  * <dd>This command line parameter forces that the version information is
  * written to standard output and the program is terminated.</dd>
  * </dl>
@@ -191,53 +168,51 @@ import java.util.logging.*;
  * sometimes even more. Thus the following invocations are equivalent:
  * </p>
  * 
- * <pre class="CLIsyntax"> exindex --V exindex --Ve exindex --Ver exindex --Vers
+ * <pre> exindex --V exindex --Ve exindex --Ver exindex --Vers
  * exindex --Versi exindex --Versio exindex --Version </pre>
  * 
  * <p>
  * Command line parameters as described above start with a double hyphen (--).
- * They can be written with a single hyphen (-) as well. Thus <tt>-help</tt> and
- * <tt>--help</tt> are equivalent.
+ * They can be written with a single hyphen (-) as well. Thus {@code -help} and
+ * {@code --help} are equivalent.
  * </p>
  * 
- * <a name="invocation"/> <h3>Direct Java Invocation</h3>
+ * <p>Direct Java Invocation</p>
  * 
  * <p>
  * The direct invocation of the Java needs some settings to be preset. These
- * settings are needed for <logo>&epsilon;&chi;Index</logo> to run properly. The
+ * settings are needed for  &epsilon;&chi;Index to run properly. The
  * following premises are needed:
  * </p>
+ *
  * <ul>
  * <li>Java needs to be installed (see section <a
- * href="#installation">Installation</a>. The program <tt>java</tt> is assumed
+ * href="#installation">Installation</a>. The program {@code java} is assumed
  * to be on the path of executables.</li>
  * <li>Java must be configured to find the jar files from the ExIndex
  * distribution. This can be accomplished by setting the environment variable
- * <tt>CLASSPATH</tt> or <tt>JAVA_HOME</tt>. See the documentation of your Java
+ * {@code CLASSPATH} or {@code JAVA_HOME}. See the documentation of your Java
  * system for details.</li>
  * </ul>
+ *
  * <p>
- * Now <logo>&epsilon;&chi;Index</logo> can be invoked with the same parameters
+ * Now  &epsilon;&chi;Index can be invoked with the same parameters
  * as described above:
  * </p>
  * 
- * <pre class="CLIsyntax"> java org.extex.exindex.main.ExIndex
+ * <pre> java org.extex.exindex.main.ExIndex
  * &lang;options&rang; &lang;raw-file&rang; </pre>
  * 
  * <p>
  * The result should be the same as the invocation of the wrapper.
  * </p>
- * 
- * </doc>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ExIndex extends Indexer {
 
     /**
-     * The field <tt>LOCALIZER</tt> contains the the localizer.
+     * The field {@code LOCALIZER} contains the the localizer.
      */
     private static final Localizer LOCALIZER = LocalizerFactory
         .getLocalizer(ExIndex.class);
@@ -290,75 +265,75 @@ public class ExIndex extends Indexer {
     }
 
     /**
-     * The field <tt>banner</tt> contains the indicator that the banner needs to
+     * The field {@code banner} contains the indicator that the banner needs to
      * be written.
      */
     private boolean banner;
 
     /**
-     * The field <tt>collateGerman</tt> contains the indicator to recognize
+     * The field {@code collateGerman} contains the indicator to recognize
      * german.sty.
      */
     private boolean collateGerman;
 
     /**
-     * The field <tt>consoleHandler</tt> contains the handler writing to the
+     * The field {@code consoleHandler} contains the handler writing to the
      * console.
      */
     private final Handler consoleHandler;
 
     /**
-     * The field <tt>fileHandler</tt> contains the file handler for logging.
+     * The field {@code fileHandler} contains the file handler for logging.
      */
     private FileHandler fileHandler;
 
     /**
-     * The field <tt>logger</tt> contains the logger for messages.
+     * The field {@code logger} contains the logger for messages.
      */
     private Logger logger;
 
     /**
-     * The field <tt>output</tt> contains the name of the output file or
-     * <code>null</code> for stdout.
+     * The field {@code output} contains the name of the output file or
+     * {@code null} for stdout.
      */
     private String output;
 
     /**
-     * The field <tt>pageCompression</tt> contains the indicator for page range
+     * The field {@code pageCompression} contains the indicator for page range
      * compression.
      */
     private boolean pageCompression = true;
 
     /**
-     * The field <tt>log</tt> contains the name of the transcript file.
+     * The field {@code log} contains the name of the transcript file.
      */
     private String transcript;
 
     /**
-     * The field <tt>charset</tt> contains the character set to be used for
+     * The field {@code charset} contains the character set to be used for
      * writing.
      */
     private Charset charset;
 
     /**
-     * The field <tt>inCharset</tt> contains the character set to be used for
+     * The field {@code inCharset} contains the character set to be used for
      * reading style files.
      */
     private Charset inCharset;
 
     /**
-     * The field <tt>config</tt> contains the configuration.
+     * The field {@code config} contains the configuration.
      */
     private final Configuration config;
 
     /**
-     * The field <tt>letterOrdering</tt> contains the indicator for letter
+     * The field {@code letterOrdering} contains the indicator for letter
      * ordering.
      */
     private boolean letterOrdering;
 
     /**
-     * The field <tt>myParserFactory</tt> contains the parser factory.
+     * The field {@code myParserFactory} contains the parser factory.
      */
     private final FilteringParserFactory myParserFactory;
 
@@ -692,10 +667,7 @@ public class ExIndex extends Indexer {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.Indexer#startup(java.util.List,
-     *      java.util.logging.Logger)
+*      java.util.logging.Logger)
      */
     @Override
     protected void startup(List<String> styles, Logger logger)

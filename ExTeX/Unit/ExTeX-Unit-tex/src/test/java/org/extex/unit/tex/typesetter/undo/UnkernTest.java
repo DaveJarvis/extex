@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>&#x5c;unkern</tt>.
+ * This is a test suite for the primitive {@code &#x5c;unkern}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class UnkernTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -49,7 +48,7 @@ public class UnkernTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="&#x5c;unkern"> Test case checking that
-     * <tt>&#x5c;unkern</tt> need some node in the current list. </testcase>
+     * {@code &#x5c;unkern} need some node in the current list.
      * 
      * @throws Exception in case of an error
      */
@@ -65,7 +64,7 @@ public class UnkernTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="&#x5c;unkern"> Test case checking that
-     * <tt>&#x5c;unkern</tt> need some node in the current list. </testcase>
+     * {@code &#x5c;unkern} need some node in the current list.
      * 
      * @throws Exception in case of an error
      */
@@ -81,8 +80,8 @@ public class UnkernTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="&#x5c;unkern"> Test case checking that
-     * <tt>&#x5c;unkern</tt> does not touch a char node at the end of the
-     * current list. </testcase>
+     * {@code &#x5c;unkern} does not touch a char node at the end of the
+     * current list.
      * 
      * @throws Exception in case of an error
      */
@@ -101,8 +100,8 @@ public class UnkernTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="&#x5c;unkern"> Test case checking that
-     * <tt>&#x5c;unkern</tt> takes the last kern from the current list.
-     * </testcase>
+     * {@code &#x5c;unkern} takes the last kern from the current list.
+     *
      * 
      * @throws Exception in case of an error
      */

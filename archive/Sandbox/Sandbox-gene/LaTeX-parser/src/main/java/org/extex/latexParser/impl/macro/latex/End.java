@@ -36,8 +36,7 @@ import org.extex.scanner.type.token.Token;
  * This class represents an \end instruction.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class End extends AbstractNode implements Macro {
 
     /**
@@ -62,10 +61,7 @@ public class End extends AbstractNode implements Macro {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.impl.Macro#parse(
-     *      org.extex.scanner.type.token.Token,
+*      org.extex.scanner.type.token.Token,
      *      org.extex.latexParser.impl.Parser)
      */
     public Node parse(Token token, Parser parser)
@@ -103,12 +99,7 @@ public class End extends AbstractNode implements Macro {
         return new End(parser.getSource(), parser.getLineno());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.api.Node#print(java.io.PrintStream)
-     */
-    public void print(PrintStream stream) {
+public void print(PrintStream stream) {
 
 
     }

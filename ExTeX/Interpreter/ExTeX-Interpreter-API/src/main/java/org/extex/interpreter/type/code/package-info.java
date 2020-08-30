@@ -16,8 +16,8 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the basic data types for arithmetic in
-  * ??TeX*/
+ *Contains basic data types for arithmetic in
+  * εχTeX*/
 
 package org.extex.interpreter.type.code;
 

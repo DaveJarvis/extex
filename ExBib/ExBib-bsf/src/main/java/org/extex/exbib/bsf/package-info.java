@@ -16,11 +16,11 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains an adaptor class to use BSF-enabled languages to write
+ * Contains an adaptor class to use BSF-enabled languages to write
  * bibliography styles.
  * <p>
  *  Note that this package might become obsolete when 
- *  <logo>&epsilon;&chi;Bib</logo> is finally migrated to Java 6 since JSR 223
+ *  ??Bib is finally migrated to Java 6 since JSR 223
  *  is included therein.
  * </p>
  *

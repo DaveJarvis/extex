@@ -25,17 +25,16 @@ import org.extex.latexParser.api.Node;
  * This abstract base class for nodes takes care of source references.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractNode implements Node {
 
     /**
-     * The field <tt>lineNumber</tt> contains the line number.
+     * The field {@code lineNumber} contains the line number.
      */
     private int lineNumber;
 
     /**
-     * The field <tt>source</tt> contains the source, i.e. the file.
+     * The field {@code source} contains the source, i.e. the file.
      */
     private String source;
 
@@ -52,22 +51,12 @@ public abstract class AbstractNode implements Node {
         this.lineNumber = lineNumber;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.api.Node#getLineNumber()
-     */
-    public int getLineNumber() {
+public int getLineNumber() {
 
         return lineNumber;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.api.Node#getSource()
-     */
-    public String getSource() {
+public String getSource() {
 
         return source;
     }

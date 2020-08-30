@@ -31,8 +31,7 @@ import static org.junit.Assert.assertTrue;
  * This is a real life test suite for {@link Makeindex}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MakeindexExBibTest extends AbstractTester {
 
     private final static String DIR_TARGET = "build";
@@ -49,7 +48,7 @@ public class MakeindexExBibTest extends AbstractTester {
     }
 
     /**
-     * <testcase> An index can be sorted. </testcase>
+     *  An index can be sorted. 
      *
      * @throws IOException in case of an error
      */

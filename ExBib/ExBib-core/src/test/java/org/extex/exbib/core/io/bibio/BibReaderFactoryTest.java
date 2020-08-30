@@ -44,21 +44,15 @@ import org.junit.Test;
  * This is a test suite for {@link BibReaderFactory}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BibReaderFactoryTest {
 
     /**
-     * The field <tt>CFG</tt> contains the test configuration.
+     * The field {@code CFG} contains the test configuration.
      */
     private static final Configuration CFG = new Configuration() {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
-         */
-        @Override
+    @Override
         public Configuration findConfiguration(String key)
                 throws ConfigurationInvalidResourceException,
                     ConfigurationNotFoundException,
@@ -69,10 +63,7 @@ public class BibReaderFactoryTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         @Override
         public Configuration findConfiguration(String key, String attribute)
@@ -81,12 +72,7 @@ public class BibReaderFactoryTest {
             return this;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getAttribute(java.lang.String)
-         */
-        @Override
+    @Override
         public String getAttribute(String name) {
 
             if ("base".equals(name)) {
@@ -99,12 +85,7 @@ public class BibReaderFactoryTest {
             return BibReader099Impl.class.getName();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String)
-         */
-        @Override
+    @Override
         public Configuration getConfiguration(String key)
                 throws ConfigurationException {
 
@@ -112,10 +93,7 @@ public class BibReaderFactoryTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         @Override
         public Configuration getConfiguration(String key, String attribute)
@@ -124,33 +102,20 @@ public class BibReaderFactoryTest {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValue()
-         */
-        @Override
+    @Override
         public String getValue() throws ConfigurationException {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValue(java.lang.String)
-         */
-        @Override
+    @Override
         public String getValue(String key) throws ConfigurationException {
 
             return null;
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValueAsInteger(java.lang.String,
-         *      int)
+    *      int)
          */
         @Override
         public int getValueAsInteger(String key, int defaultValue)
@@ -160,10 +125,7 @@ public class BibReaderFactoryTest {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValues(java.util.List,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         @Override
         public void getValues(List<String> list, String key) {
@@ -171,46 +133,26 @@ public class BibReaderFactoryTest {
             // getValues unimplemented
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
-         */
-        @Override
+    @Override
         public List<String> getValues(String key) {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#iterator()
-         */
-        @Override
+    @Override
         public Iterator<Configuration> iterator() throws ConfigurationException {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#iterator(java.lang.String)
-         */
-        @Override
+    @Override
         public Iterator<Configuration> iterator(String key)
                 throws ConfigurationException {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(org.extex.framework.configuration.ConfigurationLoader)
-         */
-        @Override
+    @Override
         public void setConfigurationLoader(ConfigurationLoader loader) {
 
             // setConfigurationLoader unimplemented
@@ -219,26 +161,18 @@ public class BibReaderFactoryTest {
     };
 
     /**
-     * The field <tt>resourceFinder</tt> contains the test finder.
+     * The field {@code resourceFinder} contains the test finder.
      */
     private final ResourceFinder resourceFinder = new ResourceFinder() {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
-         */
-        @Override
+    @Override
         public void enableTracing(boolean flag) {
 
             
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         @Override
         public NamedInputStream findResource(String name, String type)
@@ -250,7 +184,7 @@ public class BibReaderFactoryTest {
     };
 
     /**
-     * <testcase> TOOD </testcase>
+     *  TOOD
      * 
      * @throws Exception in case of an error
      */
@@ -266,7 +200,7 @@ public class BibReaderFactoryTest {
     }
 
     /**
-     * <testcase> TOOD </testcase>
+     *  TOOD
      * 
      * @throws Exception in case of an error
      */
@@ -282,7 +216,7 @@ public class BibReaderFactoryTest {
     }
 
     /**
-     * <testcase> TOOD </testcase>
+     *  TOOD
      * 
      * @throws Exception in case of an error
      */
@@ -298,7 +232,7 @@ public class BibReaderFactoryTest {
     }
 
     /**
-     * <testcase> TOOD </testcase>
+     *  TOOD
      * 
      * @throws Exception in case of an error
      */
@@ -312,7 +246,7 @@ public class BibReaderFactoryTest {
     }
 
     /**
-     * <testcase> TOOD </testcase>
+     *  TOOD
      * 
      * @throws Exception in case of an error
      */
@@ -323,7 +257,7 @@ public class BibReaderFactoryTest {
     }
 
     /**
-     * <testcase> TOOD </testcase>
+     *  TOOD
      * 
      * @throws Exception in case of an error
      */

@@ -54,7 +54,7 @@ import java.util.logging.*;
 /**
  * This is the main program for an indexer a la <i>MakeIndex</i>.
  * <p>
- * Usage: <tt>java org.extex.exindex.makeindex.main.makeindex </tt>
+ * Usage: {@code java org.extex.exindex.makeindex.main.makeindex }
  * <i>&lt;options&gt; files</i>
  * </p>
  * <p>
@@ -65,39 +65,39 @@ import java.util.logging.*;
  * The following options are supported:
  * </p>
  * <dl>
- * <dt><tt>-c[ollateSpaces]</tt></dt>
+ * <dt>{@code -c[ollateSpaces]}</dt>
  * <dd>Treat sequences of spaces as one space for comparison.</dd>
- * <dt><tt>-D&lt;key&gt;=&lt;value&gt;</tt></dt>
+ * <dt>{@code -D&lt;key&gt;=&lt;value&gt;}</dt>
  * <dd>Store a value for a key in the parameters.</dd>
- * <dt><tt>-g[erman]</tt></dt>
+ * <dt>{@code -g[erman]}</dt>
  * <dd>Use the German sort order.</dd>
- * <dt><tt>- &lt;file&gt;</tt></dt>
- * <dt><tt>-i[nput] &lt;file&gt;</tt></dt>
+ * <dt>{@code - &lt;file&gt;}</dt>
+ * <dt>{@code -i[nput] &lt;file&gt;}</dt>
  * <dd>Take the argument as input file regardless of it starting with a minus.</dd>
- * <dt><tt>-l[etterOrdering]</tt></dt>
+ * <dt>{@code -l[etterOrdering]}</dt>
  * <dd>Consider letters only when comparing.</dd>
- * <dt><tt>-o[utput] &lt;output file&gt;</tt></dt>
- * <dt><tt>-output=&lt;output file&gt;</tt></dt>
+ * <dt>{@code -o[utput] &lt;output file&gt;}</dt>
+ * <dt>{@code -output=&lt;output file&gt;}</dt>
  * <dd>Sent the output to an output file. The default is to use the extension
- * <tt>.ind</tt> together with the first index file name.</dd>
- * <dt><tt>-p[age] &lt;page&gt;</tt></dt>
- * <dt><tt>-page=&lt;page&gt;</tt></dt>
+ * {@code .ind} together with the first index file name.</dd>
+ * <dt>{@code -p[age] &lt;page&gt;}</dt>
+ * <dt>{@code -page=&lt;page&gt;}</dt>
  * <dd>The start page.</dd>
- * <dt><tt>-q[uiet]</tt></dt>
+ * <dt>{@code -q[uiet]}</dt>
  * <dd>Act quietly and suppress the logging to the console.</dd>
- * <dt><tt>-r</tt></dt>
+ * <dt>{@code -r}</dt>
  * <dd>...</dd>
- * <dt><tt>-s[tyle] &lt;style&gt;</tt></dt>
- * <dt><tt>-style=&lt;style&gt;</tt></dt>
+ * <dt>{@code -s[tyle] &lt;style&gt;}</dt>
+ * <dt>{@code -style=&lt;style&gt;}</dt>
  * <dd>Add the style to the styles to be applied.</dd>
- * <dt><tt>-t[ranscript] &lt;transcript&gt;</tt></dt>
- * <dt><tt>-transcript=&lt;transcript&gt;</tt></dt>
+ * <dt>{@code -t[ranscript] &lt;transcript&gt;}</dt>
+ * <dt>{@code -transcript=&lt;transcript&gt;}</dt>
  * <dd>Sent the transcript to the given file. This setting overwrites previous
- * transcript file names. The default is to use the extension <tt>.ilg</tt>
+ * transcript file names. The default is to use the extension {@code .ilg}
  * together with the first index file name.</dd>
- * <dt><tt>-V[ersion]</tt></dt>
+ * <dt>{@code -V[ersion]}</dt>
  * <dd>Print the version and exit.</dd>
- * <dt><tt>-h[elp]</tt></dt>
+ * <dt>{@code -h[elp]}</dt>
  * <dd>Print a short usage and exit.</dd>
  * </dl>
  * <p>
@@ -111,96 +111,95 @@ import java.util.logging.*;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:7779 $
- */
+*/
 @SuppressWarnings("unused")
 public class Makeindex {
 
     /**
-     * The field <tt>localizer</tt> contains the localizer.
+     * The field {@code localizer} contains the localizer.
      */
     private static final Localizer LOCALIZER =
             LocalizerFactory.getLocalizer(Makeindex.class);
 
     /**
-     * The field <tt>REVISION</tt> contains the revision number.
+     * The field {@code REVISION} contains the revision number.
      */
     public static final String REVISION =
             "$Revision:7779 $".replaceAll("[^0-9]", "");
 
     /**
-     * The field <tt>VERSION</tt> contains the version number.
+     * The field {@code VERSION} contains the version number.
      */
     public static final String VERSION = "0.1";
 
     /**
-     * The field <tt>PROP_COLLATE_GERMAN</tt> contains the key for the German
+     * The field {@code PROP_COLLATE_GERMAN} contains the key for the German
      * property.
      */
     protected static final String PROP_COLLATE_GERMAN =
             "makeindex.collate.german";
 
     /**
-     * The field <tt>PROP_COLLATE_SPACES</tt> contains the key for the collate
+     * The field {@code PROP_COLLATE_SPACES} contains the key for the collate
      * property.
      */
     protected static final String PROP_COLLATE_SPACES =
             "makeindex.collate.spaces";
 
     /**
-     * The field <tt>PROP_CONFIG</tt> contains the key for the configuration
+     * The field {@code PROP_CONFIG} contains the key for the configuration
      * property.
      */
     protected static final String PROP_CONFIG = "makeindex.config";
 
     /**
-     * The field <tt>PROP_INPUT_ENCODING</tt> contains the key for the input
+     * The field {@code PROP_INPUT_ENCODING} contains the key for the input
      * encoding property.
      */
     protected static final String PROP_INPUT_ENCODING =
             "makeindex.input.encoding";
 
     /**
-     * The field <tt>PROP_LETTER_ORDERING</tt> contains the key for the letter
+     * The field {@code PROP_LETTER_ORDERING} contains the key for the letter
      * ordering property.
      */
     protected static final String PROP_LETTER_ORDERING =
             "makeindex.letter.ordering";
 
     /**
-     * The field <tt>PROP_OUTPUT_ENCODING</tt> contains the key for the output
+     * The field {@code PROP_OUTPUT_ENCODING} contains the key for the output
      * encoding property.
      */
     protected static final String PROP_OUTPUT_ENCODING =
             "makeindex.output.encoding";
 
     /**
-     * The field <tt>PROP_OUTPUT</tt> contains the key for the output property.
+     * The field {@code PROP_OUTPUT} contains the key for the output property.
      */
     protected static final String PROP_OUTPUT = "makeindex.output";
 
     /**
-     * The field <tt>PROP_PAGE_COMPRESSION</tt> contains the key for the page
+     * The field {@code PROP_PAGE_COMPRESSION} contains the key for the page
      * compression property.
      */
     protected static final String PROP_PAGE_COMPRESSION =
             "makeindex.page.compression";
 
     /**
-     * The field <tt>PROP_START_PAGE</tt> contains the key for the start page
+     * The field {@code PROP_START_PAGE} contains the key for the start page
      * property.
      */
     protected static final String PROP_START_PAGE = "makeindex.start.page";
 
     /**
-     * The field <tt>PROP_STYLE_ENCODING</tt> contains the key for the style
+     * The field {@code PROP_STYLE_ENCODING} contains the key for the style
      * encoding property.
      */
     protected static final String PROP_STYLE_ENCODING =
             "makeindex.style.encoding";
 
     /**
-     * The field <tt>PROP_TRANSCRIPT</tt> contains the key for the transcript
+     * The field {@code PROP_TRANSCRIPT} contains the key for the transcript
      * property.
      */
     protected static final String PROP_TRANSCRIPT = "makeindex.transcript";
@@ -216,49 +215,49 @@ public class Makeindex {
     }
 
     /**
-     * The field <tt>banner</tt> contains the indicator that the banner needs to
+     * The field {@code banner} contains the indicator that the banner needs to
      * be written.
      */
     private boolean banner = true;
 
     /**
-     * The field <tt>comparator</tt> contains the comparator.
+     * The field {@code comparator} contains the comparator.
      */
     private final MakeindexComparator comparator = new MakeindexComparator();
 
     /**
-     * The field <tt>consoleHandler</tt> contains the handler writing to the
+     * The field {@code consoleHandler} contains the handler writing to the
      * console.
      */
     private Handler consoleHandler;
 
     /**
-     * The field <tt>fileHandler</tt> contains the file handler for logging.
+     * The field {@code fileHandler} contains the file handler for logging.
      */
     private FileHandler fileHandler = null;
 
     /**
-     * The field <tt>files</tt> contains the input files.
+     * The field {@code files} contains the input files.
      */
     private final List<String> files = new ArrayList<>();
 
     /**
-     * The field <tt>logger</tt> contains the logger for messages.
+     * The field {@code logger} contains the logger for messages.
      */
     private Logger logger = null;
 
     /**
-     * The field <tt>styles</tt> contains the style files.
+     * The field {@code styles} contains the style files.
      */
     private final ArrayList<String> styles = new ArrayList<>();
 
     /**
-     * The field <tt>resourceFinder</tt> contains the resource finder.
+     * The field {@code resourceFinder} contains the resource finder.
      */
     private ResourceFinder resourceFinder;
 
     /**
-     * The field <tt>properties</tt> contains the properties controlling the
+     * The field {@code properties} contains the properties controlling the
      * behavior.
      */
     private final Properties properties;
@@ -289,7 +288,7 @@ public class Makeindex {
     /**
      * Add an index file.
      * 
-     * @param file the index file. If the file is <code>null</code> then the
+     * @param file the index file. If the file is {@code null} then the
      *        content is read from stdin instead.
      */
     public void addIndexFile(String file) {
@@ -553,7 +552,7 @@ public class Makeindex {
      * 
      * @param a the argument to process including a leading -
      * 
-     * @return <code>true</code> iff all letters could be digested
+     * @return {@code true} iff all letters could be digested
      */
     protected boolean processShortArguments(String a) {
 

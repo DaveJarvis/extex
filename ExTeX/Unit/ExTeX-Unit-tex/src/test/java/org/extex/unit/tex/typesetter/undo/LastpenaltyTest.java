@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\lastpenalty</tt>.
+ * This is a test suite for the primitive {@code \lastpenalty}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
 
     /**
@@ -48,8 +47,8 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
     }
 
     /**
-     * <testcase> Test case checking that <tt>\lastpenalty</tt> is showable.
-     * </testcase>
+     *  Test case checking that {@code \lastpenalty} is showable.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -66,9 +65,8 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
     }
 
     /**
-     * <testcase> Test case checking that <tt>\lastpenalty</tt> on an empty
-     * list returns 0. </testcase>
-     * 
+     * Test case checking that {@code \lastpenalty} on an empty list returns 0
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -84,8 +82,8 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
     }
 
     /**
-     * <testcase> Test case checking that \relax does not produce a node.
-     * </testcase>
+     *  Test case checking that \relax does not produce a node.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -102,9 +100,8 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
     }
 
     /**
-     * <testcase> Test case checking that <tt\lastpenalty</tt> returns 0 if the
-     * last node is a character node. </testcase>
-     * 
+     * Test case checking that <tt\lastpenalty</tt> returns 0 if the last node is a character node
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -120,9 +117,8 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
     }
 
     /**
-     * <testcase> Test case checking that <tt\lastpenalty</tt> returns 0 if the
-     * last node is a kern node. </testcase>
-     * 
+     * Test case checking that <tt\lastpenalty</tt> returns 0 if the last node is a kern node
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -138,9 +134,8 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
     }
 
     /**
-     * <testcase> Test case checking that <tt>\lastpenalty</tt> returns 0 if
-     * the last node is a glue node. </testcase>
-     * 
+     * Test case checking that {@code \lastpenalty} returns 0 if the last node is a glue node
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -156,9 +151,8 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
     }
 
     /**
-     * <testcase> Test case checking that <tt>\lastpenalty</tt> is count
-     * convertible. </testcase>
-     * 
+     * Test case checking that {@code \lastpenalty} is count convertible
+* 
      * @throws Exception in case of an error
      */
     @Test

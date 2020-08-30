@@ -29,17 +29,16 @@ import org.extex.ocpware.type.OcpCode;
  * This class represents a prefix which is trimmed on both sides.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public class Some implements Expr {
 
     /**
-     * The field <tt>m</tt> contains the right trim.
+     * The field {@code m} contains the right trim.
      */
     private int m;
 
     /**
-     * The field <tt>n</tt> contains the left trim.
+     * The field {@code n} contains the left trim.
      */
     private int n;
 
@@ -56,10 +55,7 @@ public class Some implements Expr {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.compiler.sexpression.Expr#outRight(
-     *      org.extex.ocpware.compiler.parser.CompilerState, boolean)
+*      org.extex.ocpware.compiler.parser.CompilerState, boolean)
      */
     public void outRight(CompilerState cs, boolean withOffset)
             throws IOException,
@@ -70,12 +66,7 @@ public class Some implements Expr {
                 : OcpCode.OP_RIGHT_SOME, n, m);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         if (m == 0) {

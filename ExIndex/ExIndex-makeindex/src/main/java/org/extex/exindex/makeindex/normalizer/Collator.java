@@ -22,8 +22,7 @@ package org.extex.exindex.makeindex.normalizer;
  * This interface describes a collator.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6622 $
- */
+*/
 public interface Collator {
 
     /**

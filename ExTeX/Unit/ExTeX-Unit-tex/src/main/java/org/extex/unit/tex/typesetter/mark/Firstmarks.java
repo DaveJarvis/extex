@@ -25,49 +25,48 @@ import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\firstmarks</code>.
+ * {@code \firstmarks}.
  * 
- * <doc name="firstmarks">
- * <h3>The Primitive <tt>\firstmarks</tt></h3>
+ * <p>The Primitive {@code \firstmarks}</p>
  * <p>
- * The primitive <tt>\firstmarks</tt> expands to the first mark on the current
+ * The primitive {@code \firstmarks} expands to the first mark on the current
  * page of the given class. If no mark has been encountered on the current page
  * then it expands to the last mark on the previous page. If no mark has been
  * placed ever then the primitive expands to the empty token list.
  * </p>
  * <p>
  * See the documentation of the primitive
- * {@link org.extex.unit.tex.typesetter.mark.Marks <tt>\marks</tt>} for further
+ * {@link org.extex.unit.tex.typesetter.mark.Marks {@code \marks}} for further
  * explanation of marks.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;firstmarks&rang;
- *      &rarr; <tt>\firstmarks</tt> {@linkplain
+ *      &rarr; {@code \firstmarks} {@linkplain
  *        org.extex.unit.tex.typesetter.mark.AbstractMarksCode#getKey(
  *        org.extex.interpreter.context.Context,
  *        org.extex.interpreter.TokenSource,org.extex.typesetter.Typesetter)
  *        &lang;mark name&rang;}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \firstmarks42  </pre>
  *  <pre class="TeXSample">
  *    \firstmarks\count0  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Firstmarks extends AbstractMarksCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;

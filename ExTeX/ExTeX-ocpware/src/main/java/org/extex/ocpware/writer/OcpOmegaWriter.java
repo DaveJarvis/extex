@@ -31,18 +31,17 @@ import org.extex.ocpware.type.OcpProgram;
  * with Omega.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class OcpOmegaWriter extends AbstractWriter {
 
     /**
-     * The field <tt>adjust</tt> contains the length to adjust the code to
+     * The field {@code adjust} contains the length to adjust the code to
      * this length.
      */
     private int adjust = 20;
 
     /**
-     * The field <tt>fill</tt> contains the indicator to fill in some spaces
+     * The field {@code fill} contains the indicator to fill in some spaces
      * to line up things in columns.
      */
     private boolean fill = true;
@@ -92,7 +91,7 @@ public class OcpOmegaWriter extends AbstractWriter {
      * @param t the array
      * @param j the index
      * 
-     * @return <code>true</code> iff another word as argument is required
+     * @return {@code true} iff another word as argument is required
      */
     protected boolean disassemble(PrintStream out, int[] t, int j) {
 
@@ -248,10 +247,7 @@ public class OcpOmegaWriter extends AbstractWriter {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.writer.OcpWriter#write(java.io.OutputStream,
-     *      org.extex.ocpware.type.OcpProgram)
+*      org.extex.ocpware.type.OcpProgram)
      */
     public void write(OutputStream stream, OcpProgram ocp) {
 

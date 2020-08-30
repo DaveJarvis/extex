@@ -41,20 +41,19 @@ import org.extex.exbib.editor.Activator;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class ExTeXPreferences extends FieldEditorPreferencePage
         implements
             IWorkbenchPreferencePage {
 
     /**
-     * The field <tt>PREFERENCE_BASENAME</tt> contains the ...
+     * The field {@code PREFERENCE_BASENAME} contains the ...
      */
     private static final String PREFERENCE_BASENAME =
             ExTeXPreferences.class.getName();
 
     /**
-     * The field <tt>fields</tt> contains the ...
+     * The field {@code fields} contains the ...
      */
     private List<FieldEditor> fields = new ArrayList<FieldEditor>();
 
@@ -67,12 +66,7 @@ public class ExTeXPreferences extends FieldEditorPreferencePage
         super(FieldEditorPreferencePage.GRID);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.preference.FieldEditorPreferencePage#addField(org.eclipse.jface.preference.FieldEditor)
-     */
-    @Override
+@Override
     protected void addField(FieldEditor editor) {
 
         Assert.isNotNull(editor);
@@ -80,12 +74,7 @@ public class ExTeXPreferences extends FieldEditorPreferencePage
         super.addField(editor);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.preference.FieldEditorPreferencePage#createFieldEditors()
-     */
-    @Override
+@Override
     protected void createFieldEditors() {
 
         IPreferenceStore store = getPreferenceStore();
@@ -174,12 +163,7 @@ public class ExTeXPreferences extends FieldEditorPreferencePage
         return ".";
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.preference.FieldEditorPreferencePage#dispose()
-     */
-    @Override
+@Override
     public void dispose() {
 
         for (FieldEditor editor : fields) {
@@ -189,12 +173,7 @@ public class ExTeXPreferences extends FieldEditorPreferencePage
         super.dispose();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.IWorkbenchPreferencePage#init(org.eclipse.ui.IWorkbench)
-     */
-    @Override
+@Override
     public void init(IWorkbench workbench) {
 
         setPreferenceStore(PlatformUI.getPreferenceStore());

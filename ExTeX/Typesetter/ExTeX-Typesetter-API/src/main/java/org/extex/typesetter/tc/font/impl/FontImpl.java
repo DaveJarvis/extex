@@ -40,12 +40,11 @@ import java.io.ObjectStreamException;
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class FontImpl extends NullFont implements ModifiableFont {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     protected static final long serialVersionUID = 2006L;
@@ -56,7 +55,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
     private transient ExtexFont font;
 
     /**
-     * The field <tt>key</tt> contains the font key. It is kept here since the
+     * The field {@code key} contains the font key. It is kept here since the
      * font is transient and will not make it into the format file.
      */
     private final FontKey key;
@@ -327,7 +326,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @param uc the character
      *
-     * @return <code>true</code> iff the glyph is present
+     * @return {@code true} iff the glyph is present
      *
      * @see org.extex.typesetter.tc.font.Font#hasGlyph(
      *      org.extex.core.UnicodeChar)

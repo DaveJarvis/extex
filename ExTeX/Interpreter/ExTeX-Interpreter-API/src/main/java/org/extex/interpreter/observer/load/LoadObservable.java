@@ -24,8 +24,7 @@ package org.extex.interpreter.observer.load;
  * format loading event.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface LoadObservable {
 
     /**

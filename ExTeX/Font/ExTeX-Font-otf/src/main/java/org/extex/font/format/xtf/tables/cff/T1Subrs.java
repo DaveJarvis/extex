@@ -31,8 +31,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * Subrs.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class T1Subrs extends T1DictNumber {
 
     /**
@@ -52,12 +51,12 @@ public class T1Subrs extends T1DictNumber {
     }
 
     /**
-     * Returns the {@link CharString} with the index or <code>null</code>, if
+     * Returns the {@link CharString} with the index or {@code null}, if
      * not found.
      * 
      * @param idx The index.
      * @return Returns the {@link CharString} with the index or
-     *         <code>null</code>, if not found.
+     *         {@code null}, if not found.
      */
     public CharString getCharString(int idx) {
 
@@ -67,12 +66,7 @@ public class T1Subrs extends T1DictNumber {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T1DictKey#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "Subrs";
@@ -143,10 +137,7 @@ public class T1Subrs extends T1DictNumber {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {

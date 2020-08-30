@@ -19,12 +19,12 @@
 
 package org.extex.font.format.xtf.tables.gps;
 
-import java.io.IOException;
-
 import org.extex.font.format.xtf.tables.XtfGlyphName;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
+
+import java.io.IOException;
 
 /**
  * The GPOS table <b>MarkToBase</b>.
@@ -79,8 +79,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public abstract class XtfGPOSMarkToBaseTable extends XtfLookupTable {
 
     /**
@@ -101,8 +100,9 @@ public abstract class XtfGPOSMarkToBaseTable extends XtfLookupTable {
      * <p>
      * MarkBasePosFormat1 subtable: MarkToBase attachment point
      * </p>
-     * 
-     * <table border="1">
+     *
+     * <table>
+     * <caption>TBD</caption>
      * <tr>
      * <td><b>Value</b></td>
      * <td><b>Type</b></td>
@@ -138,8 +138,7 @@ public abstract class XtfGPOSMarkToBaseTable extends XtfLookupTable {
      * <td>BaseArray</td>
      * <td>Offset to BaseArray table-from beginning of MarkBasePos subtable</td>
      * </tr>
-     * <table>
-     * 
+     * </table>
      */
     public static class MarkToBaseTableFormat1 extends XtfGPOSMarkToBaseTable
             implements
@@ -148,32 +147,32 @@ public abstract class XtfGPOSMarkToBaseTable extends XtfLookupTable {
         /**
          * Offset to MarkCoverage table-from beginning of MarkBasePos subtable.
          */
-        private int markCoverageOffset;
+        private final int markCoverageOffset;
 
         /**
          * Offset to BaseCoverage table-from beginning of MarkBasePos subtable,
          */
-        private int baseCoverageOffset;
+        private final int baseCoverageOffset;
 
         /**
          * Number of classes defined for marks.
          */
-        private int classCount;
+        private final int classCount;
 
         /**
          * Offset to MarkArray table-from beginning of MarkBasePos subtable.
          */
-        private int markArrayOffset;
+        private final int markArrayOffset;
 
         /**
          * Offset to BaseArray table-from beginning of MarkBasePos subtable.
          */
-        private int baseArrayOffset;
+        private final int baseArrayOffset;
 
         /**
          * BaseArray table.
          */
-        private BaseArrayTable baseArray;
+        private final BaseArrayTable baseArray;
 
         /**
          * Create a new object.
@@ -197,12 +196,7 @@ public abstract class XtfGPOSMarkToBaseTable extends XtfLookupTable {
             baseArray = new BaseArrayTable(rar, offset + baseArrayOffset);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("marktobase");
             writer.writeAttribute("format", getFormat());
@@ -222,9 +216,10 @@ public abstract class XtfGPOSMarkToBaseTable extends XtfLookupTable {
      * order as the BaseCoverage Index. Each base glyph in the BaseCoverage
      * table has a BaseRecord.
      * 
-     * <table border="1">
-     * <tr>
-     * <td><b>Value</b></td>
+     * <table>
+ * <caption>TBD</caption>
+ * <tr>
+* <td><b>Value</b></td>
      * <td><b>Type</b></td>
      * <td><b>Description</b></td>
      * </tr>
@@ -245,7 +240,7 @@ public abstract class XtfGPOSMarkToBaseTable extends XtfLookupTable {
         /**
          * Array of BaseRecords-in order of BaseCoverage Index.
          */
-        private BaseRecord[] baseRecord;
+        private final BaseRecord[] baseRecord;
 
         /**
          * Creates a new object.
@@ -265,12 +260,7 @@ public abstract class XtfGPOSMarkToBaseTable extends XtfLookupTable {
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("basearray");
             for (int i = 0; i < baseRecord.length; i++) {
@@ -301,9 +291,10 @@ public abstract class XtfGPOSMarkToBaseTable extends XtfLookupTable {
      * represented by the Anchor table.
      * </p>
      * 
-     * <table border="1">
-     * <tr>
-     * <td><b>Value</b></td>
+     * <table>
+ * <caption>TBD</caption>
+ * <tr>
+* <td><b>Value</b></td>
      * <td><b>Type</b></td>
      * <td><b>Description</b></td>
      * </tr>
@@ -330,12 +321,7 @@ public abstract class XtfGPOSMarkToBaseTable extends XtfLookupTable {
 
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("baserecord");
             writer.writeEndElement();

@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the exception classes for the stream implementations.
+ *Contains exception classes for the stream implementations.
  */
 
 package org.extex.scanner.stream.exception;

@@ -54,25 +54,25 @@ import org.extex.core.exception.GeneralException;
  * </p>
  * <p>
  * This problem is solved in the visitor pattern. Each class or interface of
- * the colors has to provide one method called <tt>visit()</tt> here. This
+ * the colors has to provide one method called {@code visit()} here. This
  * method has as one argument the visitor which should be called back. The
  * visitor is defined by this interface. He has to provide a set of methods
  * which allow him to differentiate the types of the colors.
  * </p>
  * <p>
- * Each color has to implement the method <tt>visit()</tt> in a way that the
+ * Each color has to implement the method {@code visit()} in a way that the
  * appropriate method from the visitor interface is invoked. Thus as a result
  * the colors and the algorithm are decoupled.
  * </p>
  *
- * <h3>The Mechanics of the ColorVisitor</h3>
+ * <p>The Mechanics of the ColorVisitor</p>
  *
  * <p>
  * A detailed description of the mechanics of a visitor can be found in the
  * documentation for the {@link org.extex.typesetter.type.NodeVisitor NodeVisitor}.
  * </p>
  *
- * <h3>Example Source Code</h3>
+ * <p>Example Source Code</p>
  * <p>
  * Consider you have a class implementing DocumentWriter with a method which
  * needs to react differently on different color types. The first approximation
@@ -114,7 +114,7 @@ import org.extex.core.exception.GeneralException;
  * </pre>
  * <p>
  * Now we just have to make sure that those methods are invoked. This is done
- * with the method <tt>visit()</tt> of the Color. The signature allows us to
+ * with the method {@code visit()} of the Color. The signature allows us to
  * provide one additional argument and receive a return value. Since we want
  * to do something with the color itself, this color is provided with the
  * correct type to the color visitor. The second argument can be casted to the
@@ -144,7 +144,7 @@ import org.extex.core.exception.GeneralException;
  * </pre>
  * <p>
  * In the example above we have not used the additional argument or the
- * return value. In the <tt>visit</tt> methods we are free to use them in all
+ * return value. In the {@code visit} methods we are free to use them in all
  * ways we like.
  * </p>
  * <p>
@@ -153,15 +153,14 @@ import org.extex.core.exception.GeneralException;
  * situations.
  * </p>
  * <p>
- * The visitor is not necessarily the class <tt>MyDocumentWriter</tt>. If this
+ * The visitor is not necessarily the class {@code MyDocumentWriter}. If this
  * class contains several methods which need to distinguish the types of the
  * colors it is possible to use another class as visitor, e.g. an inner class.
  * </p>
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5563 $
- */
+*/
 public interface ColorVisitor {
 
     /**

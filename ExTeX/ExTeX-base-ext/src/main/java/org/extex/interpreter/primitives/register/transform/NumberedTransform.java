@@ -28,7 +28,7 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\transform</code>. It sets the named pair register to the value
+ * {@code \transform}. It sets the named pair register to the value
  * given, and as a side effect all prefixes are zeroed.
  * 
  * <p>
@@ -47,12 +47,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * </pre>
  * 
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class NumberedTransform extends NamedTransform {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 1L;
@@ -70,10 +69,7 @@ public class NumberedTransform extends NamedTransform {
     /**
      * Return the key (the number) for the register.
      * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.primitives.register.transform.NamedTransform#getKey(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

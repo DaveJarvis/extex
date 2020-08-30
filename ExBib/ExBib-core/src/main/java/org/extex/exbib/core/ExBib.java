@@ -46,11 +46,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * This class contains the assembler for <logo>&epsilon;&chi;Bib</logo>.
+ * This class contains the assembler for εχBib.
  * 
  * <h2>Parameters</h2>
  * <p>
- * The parameters to<logo>&epsilon;&chi;Bib</logo> are passed in as
+ * The parameters to εχBib are passed in as
  * {@link Properties}. The keys and values in the properties are {@link String}
  * s. See {@link #setProperty(String, String)}. The names of some of the
  * supported parameters are provided as symbolic constants in this class:
@@ -91,26 +91,26 @@ import java.util.logging.Logger;
  * </p>
  * 
  * <pre>
- * &lt;<b>exbib</b> fallback="bbl"&gt;<b></b>
- *   &lt;<b>Resource</b> src="path/exbibFinder"/&gt;<b></b>
- *   &lt;<b>Processor</b> base="exbib/processor/" default="exbib"/&gt;<b></b>
- *   &lt;<b>BblWriter</b> class="org.extex.exbib.core.io.bblio.BblWriter"&gt;<b></b>
- *     &lt;<b>linelength</b>&gt;<b></b>79&lt;<b>/linelength</b>&gt;<b></b>
- *     &lt;<b>indent</b>&gt;<b></b>  &lt;<b>/indent</b>&gt;<b></b>
- *   &lt;<b>/BblWriter</b>&gt;<b></b>
- *   &lt;<b>DB</b> class="org.extex.exbib.core.db.impl.DBImpl"&gt;<b></b>
- *     &lt;<b>minCrossrefs</b>&gt;<b></b>2&lt;<b>/minCrossrefs</b>&gt;<b></b>
- *   &lt;<b>/DB</b>&gt;<b></b>
- *   &lt;<b>Sorter</b> base="exbib/sorter/" default="locale"/&gt;<b></b>
- *   &lt;<b>AuxReader</b> class="org.extex.exbib.core.io.auxio.AuxReaderImpl"/&gt;<b></b>
- *   &lt;<b>BibReader</b> class="org.extex.exbib.core.io.bibio.BibReaderImpl"/&gt;<b></b>
- *   &lt;<b>BibPrinter</b> base="exbib/printer/" default="bib"/&gt;<b></b>
- * &lt;<b>/exbib</b>&gt;<b></b>
+ * &lt;<b>exbib</b> fallback="bbl"&gt;
+ *   &lt;<b>Resource</b> src="path/exbibFinder"/&gt;
+ *   &lt;<b>Processor</b> base="exbib/processor/" default="exbib"/&gt;
+ *   &lt;<b>BblWriter</b> class="org.extex.exbib.core.io.bblio.BblWriter"&gt;
+ *     &lt;<b>linelength</b>&gt;79&lt;<b>/linelength</b>&gt;
+ *     &lt;<b>indent</b>&gt;  &lt;<b>/indent</b>&gt;
+ *   &lt;<b>/BblWriter</b>&gt;
+ *   &lt;<b>DB</b> class="org.extex.exbib.core.db.impl.DBImpl"&gt;
+ *     &lt;<b>minCrossrefs</b>&gt;2&lt;<b>/minCrossrefs</b>&gt;
+ *   &lt;<b>/DB</b>&gt;
+ *   &lt;<b>Sorter</b> base="exbib/sorter/" default="locale"/&gt;
+ *   &lt;<b>AuxReader</b> class="org.extex.exbib.core.io.auxio.AuxReaderImpl"/&gt;
+ *   &lt;<b>BibReader</b> class="org.extex.exbib.core.io.bibio.BibReaderImpl"/&gt;
+ *   &lt;<b>BibPrinter</b> base="exbib/printer/" default="bib"/&gt;
+ * &lt;<b>/exbib</b>&gt;
  * </pre>
  * 
  * <p>
  * The configuration is sought on the class path in the package
- * <tt>config/exbib</tt>.
+ * {@code config/exbib}.
  * </p>
  * 
  * <h2>Dot Files</h2>
@@ -121,8 +121,7 @@ import java.util.logging.Logger;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ExBib {
 
     /**
@@ -130,157 +129,157 @@ public class ExBib {
      */
     public enum ExBibDebug {
         /**
-         * The field <tt>CSF</tt> contains the indicator for debugging the csf
+         * The field {@code CSF} contains the indicator for debugging the csf
          * processing.
          */
         CSF,
         /**
-         * The field <tt>IO</tt> contains the indicator for debugging the I/O
+         * The field {@code IO} contains the indicator for debugging the I/O
          * operations.
          */
         IO,
         /**
-         * The field <tt>MEM</tt> contains the indicator for debugging the
+         * The field {@code MEM} contains the indicator for debugging the
          * memory allocation.
          */
         MEM,
         /**
-         * The field <tt>MISC</tt> contains indicator for debugging
+         * The field {@code MISC} contains indicator for debugging
          * miscellaneous.
          */
         MISC,
         /**
-         * The field <tt>SEARCH</tt> contains the indicator for debugging the
+         * The field {@code SEARCH} contains the indicator for debugging the
          * search.
          */
         SEARCH,
         /**
-         * The field <tt>TRACE</tt> contains the indicator for tracing.
+         * The field {@code TRACE} contains the indicator for tracing.
          */
         TRACE
     }
 
     /**
-     * The field <tt>VERSION</tt> contains the official version number.
+     * The field {@code VERSION} contains the official version number.
      */
     public static final String VERSION = "0.2";
 
     /**
-     * The field <tt>INCEPTION_YEAR</tt> contains the year the development has
+     * The field {@code INCEPTION_YEAR} contains the year the development has
      * been started. This is fixed to be 2002 and should not be altered under
      * any circumstances.
      */
     public static final int INCEPTION_YEAR = 2002;
 
     /**
-     * The field <tt>CONFIGURATION_DEFAULT</tt> contains the name of the
+     * The field {@code CONFIGURATION_DEFAULT} contains the name of the
      * configuration to be used in default mode.
      */
     private static final String CONFIGURATION_DEFAULT = "exbib";
 
     /**
-     * The field <tt>AUX_FILE_EXTENSION</tt> contains the extension of aux files
+     * The field {@code AUX_FILE_EXTENSION} contains the extension of aux files
      * (in lower case).
      */
     private static final String AUX_FILE_EXTENSION = ".aux";
 
     /**
-     * The field <tt>BLG_FILE_EXTENSION</tt> contains the extension of log files
+     * The field {@code BLG_FILE_EXTENSION} contains the extension of log files
      * (in lower case).
      */
     private static final String BLG_FILE_EXTENSION = ".blg";
 
     /**
-     * The field <tt>PROP_CONFIG</tt> contains the name of the property to carry
-     * the configuration. The default value is <tt>"extex"</tt>.
+     * The field {@code PROP_CONFIG} contains the name of the property to carry
+     * the configuration. The default value is {@code "extex"}.
      */
     public static final String PROP_CONFIG = "exbib.config";
 
     /**
-     * The field <tt>PROP_BIB_ENCODING</tt> contains the name of the property to
+     * The field {@code PROP_BIB_ENCODING} contains the name of the property to
      * carry the encoding for bib files.
      */
     public static final String PROP_BIB_ENCODING = "exbib.bib.encoding";
 
     /**
-     * The field <tt>PROP_SORT</tt> contains the specification for the sorter.
+     * The field {@code PROP_SORT} contains the specification for the sorter.
      */
     public static final String PROP_SORT = "exbib.sort";
 
     /**
-     * The field <tt>PROP_CSF_ENCODING</tt> contains the name of the property to
+     * The field {@code PROP_CSF_ENCODING} contains the name of the property to
      * carry the encoding for csf files.
      */
     public static final String PROP_CSF_ENCODING = "exbib.csf.encoding";
 
     /**
-     * The field <tt>PROP_ENCODING</tt> contains the name of the property to
+     * The field {@code PROP_ENCODING} contains the name of the property to
      * carry the encoding.
      */
     public static final String PROP_ENCODING = "exbib.encoding";
 
     /**
-     * The field <tt>PROP_FILE</tt> contains the name of the property to carry
+     * The field {@code PROP_FILE} contains the name of the property to carry
      * the aux file.
      */
     public static final String PROP_FILE = "exbib.file";
 
     /**
-     * The field <tt>PROP_MIN_CROSSREF</tt> contains the name of the property
-     * containing the value for <tt>min.crossrefs</tt>.
+     * The field {@code PROP_MIN_CROSSREF} contains the name of the property
+     * containing the value for {@code min.crossrefs}.
      */
     public static final String PROP_MIN_CROSSREF = "exbib.min.crossref";
 
     /**
-     * The field <tt>PROP_OUTFILE</tt> contains the name of the property for the
+     * The field {@code PROP_OUTFILE} contains the name of the property for the
      * output.
      */
     public static final String PROP_OUTFILE = "exbib.output";
 
     /**
-     * The field <tt>PROP_PROCESSOR</tt> contains the name of the property for
+     * The field {@code PROP_PROCESSOR} contains the name of the property for
      * the processor type.
      */
     public static final String PROP_PROCESSOR = "exbib.processor";
 
     /**
-     * The field <tt>PROP_BST</tt> contains the name of the property for the bst
+     * The field {@code PROP_BST} contains the name of the property for the bst
      * file.
      */
     public static final String PROP_BST = "exbib.bst";
 
     /**
-     * The field <tt>debug</tt> contains the indicator for debugging output.
+     * The field {@code debug} contains the indicator for debugging output.
      */
     private final Set<ExBibDebug> debug = new HashSet<>();
 
     /**
-     * The field <tt>errors</tt> contains the number of errors reported.
+     * The field {@code errors} contains the number of errors reported.
      */
     private int errors = 0;
 
     /**
-     * The field <tt>warnings</tt> contains the number of warnings.
+     * The field {@code warnings} contains the number of warnings.
      */
     private long warnings = 0;
 
     /**
-     * The field <tt>properties</tt> contains the settings for the program.
+     * The field {@code properties} contains the settings for the program.
      */
     private Properties properties = null;
 
     /**
-     * The field <tt>logger</tt> contains the logger.
+     * The field {@code logger} contains the logger.
      */
     private Logger logger;
 
     /**
-     * The field <tt>bundle</tt> contains the resource bundle for i18n.
+     * The field {@code bundle} contains the resource bundle for i18n.
      */
     private ResourceBundle bundle;
 
     /**
-     * The field <tt>resourceFinder</tt> contains the fallback resource finder.
+     * The field {@code resourceFinder} contains the fallback resource finder.
      * If not set then a new one is created from the configuration.
      */
     private ResourceFinder resourceFinder = null;
@@ -312,7 +311,7 @@ public class ExBib {
      * @param tag the tag of the resource bundle
      * @param args the arguments to be inserted for braced numbers
      * 
-     * @return <code>false</code>
+     * @return {@code false}
      */
     protected boolean error(String tag, Object... args) {
 
@@ -326,7 +325,7 @@ public class ExBib {
      * @param e the cause
      * @param tag the tag of the resource bundle
      * 
-     * @return <code>false</code>
+     * @return {@code false}
      */
     protected boolean error(Throwable e, String tag) {
 
@@ -364,7 +363,7 @@ public class ExBib {
      * 
      * @param key the key
      * 
-     * @return the value or <code>null</code>
+     * @return the value or {@code null}
      * 
      * @see java.util.Properties#getProperty(java.lang.String)
      */
@@ -379,7 +378,7 @@ public class ExBib {
      * @param tag the resource tag
      * @param args the arguments to be inserted
      * 
-     * @return <code>false</code>
+     * @return {@code false}
      */
     protected boolean info(String tag, Object... args) {
 
@@ -393,7 +392,7 @@ public class ExBib {
      * @param tag the resource tag
      * @param args the arguments to be inserted
      * 
-     * @return <code>false</code>
+     * @return {@code false}
      */
     protected boolean log(Level level, String tag, Object... args) {
 
@@ -413,7 +412,7 @@ public class ExBib {
      * @param tag the resource tag
      * @param args the arguments to be inserted
      * 
-     * @return <code>false</code>
+     * @return {@code false}
      */
     protected boolean log(String tag, Object... args) {
 
@@ -427,7 +426,7 @@ public class ExBib {
      * @param tag the resource tag of the message pattern
      * @param args the arguments
      * 
-     * @return <code>false</code>
+     * @return {@code false}
      */
     protected boolean logBanner(String tag, Object... args) {
 
@@ -440,7 +439,7 @@ public class ExBib {
      * @param finder the resource finder
      * @param cfg the configuration
      * 
-     * @return the sorter; it can be <code>null</code> if none is required
+     * @return the sorter; it can be {@code null} if none is required
      */
     protected SorterFactory makeSorterFactory(ResourceFinder finder,
             Configuration cfg) {
@@ -482,7 +481,7 @@ public class ExBib {
     }
 
     /**
-     * This is the top level of the <logo>&epsilon;&chi;Bib</logo> engine. When
+     * This is the top level of the εχBib engine. When
      * all parameters are present then this method can be invoked.
      * <p>
      * The following steps are performed:
@@ -491,13 +490,13 @@ public class ExBib {
      * <li>Read the configuration to get basic parameters.</li>
      * <li>Optionally make a new resource finder.</li>
      * <li>Make a {@link ProcessorContainer}.</li>
-     * <li>Make an {@link AuxReader}</li>
-     * and use it to read the aux file storing the data in the container.
+     * <li>Make an {@link AuxReader}
+     * and use it to read the aux file storing the data in the container.</li>
      * <li>For each processor in the container run it to produce the output
      * file.</li>
      * </ul>
      * 
-     * @return <code>false</code> iff an error has occurred
+     * @return {@code false} iff an error has occurred
      * 
      * @throws IOException is case of an uncaught IOException
      * @throws ConfigurationException in case that the top-level configuration
@@ -693,7 +692,7 @@ public class ExBib {
      * 
      * @param value indicator for debugging
      * 
-     * @return <code>true</code> if everything went through
+     * @return {@code true} if everything went through
      */
     public boolean setDebug(String... value) {
 
@@ -722,7 +721,7 @@ public class ExBib {
      * 
      * @param arg the file name
      * 
-     * @return <code>true</code> if everything went through
+     * @return {@code true} if everything went through
      */
     public boolean setFile(String arg) {
 
@@ -737,10 +736,10 @@ public class ExBib {
 
     /**
      * Setter for logger. The logger is set to a new value. The new value must
-     * not be <code>null</code> or an {@link IllegalArgumentException} is
+     * not be {@code null} or an {@link IllegalArgumentException} is
      * thrown.
      * 
-     * @param logger the logger to set which must not be <code>null</code>
+     * @param logger the logger to set which must not be {@code null}
      */
     public void setLogger(Logger logger) {
 
@@ -829,7 +828,7 @@ public class ExBib {
      * @param container the container
      * @param file the file currently read for error messages
      * 
-     * @return <code>true</code> iff everything is fine
+     * @return {@code true} iff everything is fine
      * 
      * @throws ExBibException in case of an error
      * @throws ConfigurationException in case of an configuration problem

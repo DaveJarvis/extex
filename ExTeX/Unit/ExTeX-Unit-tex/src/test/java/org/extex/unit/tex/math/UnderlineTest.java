@@ -23,11 +23,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>&#x5c;underline</tt>.
+ * This is a test suite for the primitive {@code &#x5c;underline}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4627 $
- */
+*/
 public class UnderlineTest extends AbstractMathTester {
 
 
@@ -37,9 +36,8 @@ public class UnderlineTest extends AbstractMathTester {
     }
 
     /**
-     * <testcase> Test case checking that <tt>&#x5c;underline</tt> produces a
-     * proper rule. </testcase>
-     * 
+     * Test case checking that {@code &#x5c;underline} produces a proper rule
+* 
      * @throws Exception in case of an error
      */
     @Test

@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\relax</tt>.
+ * This is a test suite for the primitive {@code \relax}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class AllocTest extends ExTeXLauncher {
 
     /**
@@ -47,7 +46,7 @@ public class AllocTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case from docstrip. </testcase>
+     *  Test case from docstrip.
      * 
      * @throws Exception in case of an error
      */

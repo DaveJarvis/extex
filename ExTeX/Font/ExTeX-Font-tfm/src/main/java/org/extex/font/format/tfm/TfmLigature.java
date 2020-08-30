@@ -28,12 +28,11 @@ import java.io.Serializable;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TfmLigature extends TfmLigKern implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 1L;
 
@@ -42,12 +41,12 @@ public class TfmLigature extends TfmLigKern implements Serializable {
      * the current and next character in the text if this instruction is
      * activated.
      */
-    private short addingChar;
+    private final short addingChar;
 
     /**
      * Indication that the current character should not be removed.
      */
-    private boolean keepLeft;
+    private final boolean keepLeft;
 
     /**
      * If some of the following flags are not set, the corresponding character
@@ -58,13 +57,13 @@ public class TfmLigature extends TfmLigKern implements Serializable {
     /**
      * Indication that the next character should not be removed.
      */
-    private boolean keepRight;
+    private final boolean keepRight;
 
     /**
      * Tells how many characters from the current position in the text should be
      * skiped over after performing this instruction.
      */
-    private byte stepOver;
+    private final byte stepOver;
 
     /**
      * Create a new object.
@@ -127,12 +126,7 @@ public class TfmLigature extends TfmLigKern implements Serializable {
         return keepRight;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder buf = new StringBuilder(super.toString());

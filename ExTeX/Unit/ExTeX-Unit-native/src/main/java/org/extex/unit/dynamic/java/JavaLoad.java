@@ -34,21 +34,22 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This primitive initiates the loading of Java code and implements the
- * primitive <tt>\javaload</tt>.
+ * primitive {@code \javaload}.
  * 
- * <doc name="javaload"> <h3>The Primitive <tt>\javaload</tt></h3>
+ * <p>The Primitive {@code \javaload}</p>
  * <p>
- * The primitive <tt>\javaload</tt> loads a java class and invokes its
- * <tt>init()</tt> method. With this method it is possible to load larger
- * extensions of ??TeX in one junk. There is no need to declare each single macro
- * with <tt>\javadef</tt>.
+ * The primitive {@code \javaload} loads a java class and invokes its
+ * {@code init()} method. With this method it is possible to load larger
+ * extensions of εχTeX in one junk. There is no need to declare each single macro
+ * with {@code \javadef}.
  * </p>
  * 
- * <h4>Syntax</h4> The general form of this primitive is
+ * <p>Syntax</p>
+ The general form of this primitive is
  * 
  * <pre class="syntax">
  *   &lang;javaload&rang;
- *       &rarr; <tt>\javaload</tt> &lang;tokens&rang;  </pre>
+ *       &rarr; {@code \javaload} &lang;tokens&rang;  </pre>
  * 
  * <p>
  * The <i>&lang;tokens&rang;</i> is any specification of a list of tokens like a
@@ -60,19 +61,21 @@ import org.extex.typesetter.exception.TypesetterException;
  * visible.
  * </p>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+ *
  * <p>
  * The following example illustrates the use of this primitive:
- * 
+ * </p>
+ *
  * <pre class="TeXSample">
  *   \javaload{org.extex.extensions.Basic} </pre>
  * 
- * </p>
  * <p>
  * For the loading of the Java class it is necessary that this Java class
  * implements the interface {@link org.extex.unit.dynamic.java.Loadable
  * Loadable}.
- * 
+ * </p>
+ *
  * <pre class="JavaSample">
  *   <b>package</b> my.package;
  *
@@ -94,17 +97,13 @@ import org.extex.typesetter.exception.TypesetterException;
  *       <i>// implement the initialization code here</i>
  *     }
  *   } </pre>
- * 
- * </p>
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class JavaLoad extends AbstractCode implements Loader {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -128,10 +127,7 @@ public class JavaLoad extends AbstractCode implements Loader {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -142,10 +138,7 @@ public class JavaLoad extends AbstractCode implements Loader {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.unit.Loader#load(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void load(Context context, TokenSource source, Typesetter typesetter)
             throws HelpingException,

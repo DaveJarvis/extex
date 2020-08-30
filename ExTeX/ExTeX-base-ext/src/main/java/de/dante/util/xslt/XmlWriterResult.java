@@ -26,11 +26,10 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 /**
- * Transformer result, which use the <code>XMLStreamWriter</code>.
+ * Transformer result, which use the {@code XMLStreamWriter}.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- * 
+*
  */
 public class XmlWriterResult extends SAXResult {
 

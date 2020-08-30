@@ -22,11 +22,10 @@ package org.extex.unit.pdftex;
 import org.extex.test.NoFlagsButProtectedPrimitiveTester;
 
 /**
- * This is a test suite for the primitive <tt>\pdfendlink</tt>.
+ * This is a test suite for the primitive {@code \pdfendlink}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class PdfendlinkTest extends NoFlagsButProtectedPrimitiveTester {
 
 

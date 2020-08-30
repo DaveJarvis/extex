@@ -31,8 +31,7 @@ import org.extex.typesetter.type.NodeList;
  * This is the derived class for a list maker in restricted horizontal mode.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class RestrictedHorizontalListMaker extends HorizontalListMaker {
 
     /**

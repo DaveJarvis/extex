@@ -50,8 +50,7 @@ import com.sun.javadoc.Type;
  *
  * @author <a href="mailto:Alexander.Kraenzlein@gmx.de">Alexander Kraenzlein</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class XMLDoclet1 extends Doclet {
 
     /**
@@ -69,7 +68,7 @@ public class XMLDoclet1 extends Doclet {
 
         //System.out.println("XMLDoclet1");
 
-        // init öffnet packages.xml , ...
+        // init ï¿½ffnet packages.xml , ...
         init();
 
         // print packages.xml
@@ -81,7 +80,7 @@ public class XMLDoclet1 extends Doclet {
         // get all packages from the root and put it on the Hashtable
         createPackagesMap(root.classes());
 
-        //erstellen von verweisen für packagename.xml (Entities)
+        //erstellen von verweisen fï¿½r packagename.xml (Entities)
         //<!ENTITY package.name SYSTEM "pacvkage.name.xml">
         //        Iterator it = map.keySet().iterator();
         //        while (it.hasNext()) {
@@ -89,7 +88,7 @@ public class XMLDoclet1 extends Doclet {
         //            main.println("<!ENTITY " + pkg.getPkg() + " SYSTEM \""
         //                    + pkg.getPkg() + ".xml\" >");
         //        }
-        //        main.println("]>"); //DTD schließen
+        //        main.println("]>"); //DTD schlieï¿½en
         //main.println("<packages>");
 
         // format the packages
@@ -474,7 +473,7 @@ public class XMLDoclet1 extends Doclet {
                 dreturn.addContent(((MethodDoc) mem).returnType().typeName());
             }
 
-            // methoden-parameter wegen Deklarration Nötig
+            // methoden-parameter wegen Deklarration Nï¿½tig
             Parameter[] parms = mem.parameters();
             if (parms.length > 0) {
                 Element dparams = new Element("params");
@@ -564,7 +563,7 @@ public class XMLDoclet1 extends Doclet {
                         }
                     }
                 }
-                //References müssen von XML Auswertung verknüpft werden!
+                //References mï¿½ssen von XML Auswertung verknï¿½pft werden!
                 SeeTag[] sees = mem.seeTags();
                 if (sees.length > 0) {
                     Element seesel = new Element("sees");
@@ -685,7 +684,7 @@ public class XMLDoclet1 extends Doclet {
                                         "</p>")) {
                             ret.append("</par>");
                             i += 3;
-                            //TODO Aufzählungen, alle auf selben Typ
+                            //TODO Aufzï¿½hlungen, alle auf selben Typ
                         } else if (str.length() > i + 3
                                 && str.substring(i, i + 4).equalsIgnoreCase(
                                         "<ol>")) {
@@ -752,7 +751,7 @@ public class XMLDoclet1 extends Doclet {
                                         "<table")) {
                             ret.append("<table>");
                             i += str.indexOf('>', i) - i;//Korrektur wegen
-                            // möglicher Attribute
+                            // mï¿½glicher Attribute
                         } else if (str.length() > i + 3
                                 && str.substring(i, i + 4).equalsIgnoreCase(
                                         "<tr>")) {
@@ -852,7 +851,7 @@ public class XMLDoclet1 extends Doclet {
     }
 
     /**
-     * TreeMap für packages (sorted!)
+     * TreeMap fï¿½r packages (sorted!)
      */
     private static TreeMap map;
 

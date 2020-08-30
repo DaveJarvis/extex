@@ -25,15 +25,14 @@ import java.io.OutputStream;
 import org.extex.dviware.Dvi;
 
 /**
- * This class represents the DVI instruction <tt>xxx</tt>.
+ * This class represents the DVI instruction {@code xxx}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class DviXxx extends AbstractDviCode {
 
     /**
-     * The field <tt>content</tt> contains the array of bytes to pass to the
+     * The field {@code content} contains the array of bytes to pass to the
      * DVI processor.
      */
     private byte[] content;

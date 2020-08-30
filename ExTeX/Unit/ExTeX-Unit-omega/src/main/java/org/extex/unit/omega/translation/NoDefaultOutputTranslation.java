@@ -32,41 +32,40 @@ import org.extex.unit.omega.mode.OmegaMode;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\noDefaultOutputTranslation</code>.
+ * {@code \noDefaultOutputTranslation}.
  * 
- * <doc name="noDefaultOutputTranslation">
- * <h3>The Primitive <tt>\noDefaultOutputTranslation</tt></h3>
+ * <p>The Primitive {@code \noDefaultOutputTranslation}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;noDefaultOutputTranslation&rang;
- *      &rarr; <tt>\noDefaultOutputTranslation</tt> &lang;mode&rang;
+ *      &rarr; {@code \noDefaultOutputTranslation} &lang;mode&rang;
  *
  *    &lang;mode&rang;
- *      &rarr; <tt>onebyte</tt>
- *        |  <tt>ebcdic</tt>
- *        |  <tt>twobyte</tt>
- *        |  <tt>twobyteLE</tt>    </pre>
+ *      &rarr; {@code onebyte}
+ *        |  {@code ebcdic}
+ *        |  {@code twobyte}
+ *        |  {@code twobyteLE}    </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *   \noDefaultOutputTranslation onebyte  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4411 $
- */
+*/
 public class NoDefaultOutputTranslation extends AbstractModeCode {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -82,10 +81,7 @@ public class NoDefaultOutputTranslation extends AbstractModeCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

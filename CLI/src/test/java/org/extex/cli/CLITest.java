@@ -37,13 +37,12 @@ import static org.junit.Assert.*;
  * This is a test suite for {@link CLI}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 @SuppressWarnings("deprecation")
 public class CLITest {
 
     /**
-     * <testcase> A <code>null</code> argument leads to an error. </testcase>
+     *  A {@code null} argument leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -54,7 +53,7 @@ public class CLITest {
     }
 
     /**
-     * <testcase> An empty array argument has no effect. </testcase>
+     *  An empty array argument has no effect.
      * 
      * @throws Exception in case of an error
      */
@@ -65,9 +64,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> A one element array argument of an unknown value without =
-     * leads to an error. </testcase>
-     * 
+     * A one element array argument of an unknown value without = leads to an error
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -84,9 +82,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> A one element array argument of an unknown value with = leads
-     * to an error which reports the option name before the =. </testcase>
-     * 
+     * A one element array argument of an unknown value with = leads to an error which reports the option name before the =
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -101,9 +98,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known boolean options without argument
-     * invokes the callback. </testcase>
-     * 
+     * The callback for known boolean options without argument invokes the callback
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -124,9 +120,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known boolean options with argument invokes
-     * the callback. </testcase>
-     * 
+     * The callback for known boolean options with argument invokes the callback
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -147,9 +142,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known boolean options with argument invokes
-     * the callback. </testcase>
-     * 
+     * The callback for known boolean options with argument invokes the callback
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -170,7 +164,7 @@ public class CLITest {
     }
 
     /**
-     * <testcase> Nothing to describe leads to an empty string. </testcase>
+     *  Nothing to describe leads to an empty string.
      * 
      * @throws Exception in case of an error
      */
@@ -181,9 +175,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> Nothing to describe leads to an empty string within
-     * delimiters. </testcase>
-     * 
+     * Nothing to describe leads to an empty string within delimiters
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -213,9 +206,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> Nothing to describe leads to an empty string within delimiters
-     * from a resource bundle. </testcase>
-     * 
+     * Nothing to describe leads to an empty string within delimiters from a resource bundle
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -244,7 +236,7 @@ public class CLITest {
     }
 
     /**
-     * <testcase> One item is described properly. </testcase>
+     *  One item is described properly.
      * 
      * @throws Exception in case of an error
      */
@@ -288,7 +280,7 @@ public class CLITest {
     }
 
     /**
-     * <testcase> Two items are described properly. </testcase>
+     *  Two items are described properly.
      * 
      * @throws Exception in case of an error
      */
@@ -344,7 +336,7 @@ public class CLITest {
     }
 
     /**
-     * <testcase> Two items are described properly. </testcase>
+     *  Two items are described properly.
      * 
      * @throws Exception in case of an error
      */
@@ -400,7 +392,7 @@ public class CLITest {
     }
 
     /**
-     * <testcase> Three items are described properly. </testcase>
+     *  Three items are described properly.
      * 
      * @throws Exception in case of an error
      */
@@ -468,7 +460,7 @@ public class CLITest {
     }
 
     /**
-     * <testcase> A <code>null</code> argument leads to an error. </testcase>
+     *  A {@code null} argument leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -479,7 +471,7 @@ public class CLITest {
     }
 
     /**
-     * <testcase> An empty list argument has no effect. </testcase>
+     *  An empty list argument has no effect.
      * 
      * @throws Exception in case of an error
      */
@@ -490,9 +482,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known long options without argument invokes
-     * the callback. </testcase>
-     * 
+     * The callback for known long options without argument invokes the callback
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = MissingArgumentCliException.class)
@@ -513,9 +504,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known long option passes its argument to the
-     * callback. </testcase>
-     * 
+     * The callback for known long option passes its argument to the callback
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -536,9 +526,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known long option passes its argument to the
-     * callback. </testcase>
-     * 
+     * The callback for known long option passes its argument to the callback
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -559,9 +548,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known long options with wrong argument
-     * craoks. </testcase>
-     * 
+     * The callback for known long options with wrong argument craoks
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = NonNumericArgumentCliException.class)
@@ -581,9 +569,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known long options with wrong argument
-     * craoks. </testcase>
-     * 
+     * The callback for known long options with wrong argument craoks
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = NonNumericArgumentCliException.class)
@@ -603,9 +590,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known long options with wrong argument
-     * craoks. </testcase>
-     * 
+     * The callback for known long options with wrong argument craoks
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = NonNumericArgumentCliException.class)
@@ -625,7 +611,7 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for unknown options is triggered. </testcase>
+     *  The callback for unknown options is triggered.
      * 
      * @throws Exception in case of an error
      */
@@ -647,9 +633,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for unknown options is not triggered if an
-     * additional argument is found. </testcase>
-     * 
+     * The callback for unknown options is not triggered if an additional argument is found
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = UnusedArgumentCliException.class)
@@ -677,7 +662,7 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for unknown options is triggered. </testcase>
+     *  The callback for unknown options is triggered.
      * 
      * @throws Exception in case of an error
      */
@@ -699,9 +684,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for unknown options is triggered but can return
-     * "ok". </testcase>
-     * 
+     * The callback for unknown options is triggered but can return "ok"
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -722,8 +706,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known options without argument is triggered.
-     * </testcase>
+     *  The callback for known options without argument is triggered.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -745,9 +729,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known options without argument is triggered.
-     * A negative argument terminates the processing. </testcase>
-     * 
+     * The callback for known options without argument is triggered. A negative argument terminates the processing
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = UnknownOptionCliException.class)
@@ -768,9 +751,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known options without argument is triggered
-     * when abbreviated. </testcase>
-     * 
+     * The callback for known options without argument is triggered when abbreviated
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -791,9 +773,9 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known options without argument is triggered
+     *  The callback for known options without argument is triggered
      * when abbreviated. A negative argument terminates the processing.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -815,7 +797,7 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known options is not overwritten. </testcase>
+     *  The callback for known options is not overwritten.
      * 
      * @throws Exception in case of an error
      */
@@ -845,9 +827,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known options is not overwritten but can be
-     * extended. </testcase>
-     * 
+     * The callback for known options is not overwritten but can be extended
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -877,8 +858,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for no-arg options without argument is accepted.
-     * </testcase>
+     *  The callback for no-arg options without argument is accepted.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -893,9 +874,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known number options without argument leads
-     * to an error. </testcase>
-     * 
+     * The callback for known number options without argument leads to an error
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = MissingArgumentCliException.class)
@@ -916,9 +896,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known number options without argument leads
-     * to an error when abbreviated. </testcase>
-     * 
+     * The callback for known number options without argument leads to an error when abbreviated
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = MissingArgumentCliException.class)
@@ -939,9 +918,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known number options with argument invokes
-     * the callback. </testcase>
-     * 
+     * The callback for known number options with argument invokes the callback
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -962,9 +940,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known number options with argument invokes
-     * the callback. </testcase>
-     * 
+     * The callback for known number options with argument invokes the callback
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -985,7 +962,7 @@ public class CLITest {
     }
 
     /**
-     * <testcase> A number option needs a numeric argument. </testcase>
+     *  A number option needs a numeric argument.
      * 
      * @throws Exception in case of an error
      */
@@ -1017,7 +994,7 @@ public class CLITest {
     }
 
     /**
-     * <testcase> A number option needs a numeric argument. </testcase>
+     *  A number option needs a numeric argument.
      * 
      * @throws Exception in case of an error
      */
@@ -1038,9 +1015,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known number options without argument leads
-     * to an error. </testcase>
-     * 
+     * The callback for known number options without argument leads to an error
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = MissingArgumentCliException.class)
@@ -1052,9 +1028,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known number options without argument leads
-     * to an error when abbreviated. </testcase>
-     * 
+     * The callback for known number options without argument leads to an error when abbreviated
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = MissingArgumentCliException.class)
@@ -1066,9 +1041,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known number options with argument invokes
-     * the callback. </testcase>
-     * 
+     * The callback for known number options with argument invokes the callback
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1082,9 +1056,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known number options with argument invokes
-     * the callback. </testcase>
-     * 
+     * The callback for known number options with argument invokes the callback
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1098,7 +1071,7 @@ public class CLITest {
     }
 
     /**
-     * <testcase> A number option needs a numeric argument. </testcase>
+     *  A number option needs a numeric argument.
      * 
      * @throws Exception in case of an error
      */
@@ -1123,7 +1096,7 @@ public class CLITest {
     }
 
     /**
-     * <testcase> A number option needs a numeric argument. </testcase>
+     *  A number option needs a numeric argument.
      * 
      * @throws Exception in case of an error
      */
@@ -1137,7 +1110,7 @@ public class CLITest {
     }
 
     /**
-     * <testcase> A <code>null</code> argument leads to an error. </testcase>
+     *  A {@code null} argument leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -1159,9 +1132,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known string options without argument is
-     * accepted. </testcase>
-     * 
+     * The callback for known string options without argument is accepted
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1181,9 +1153,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known string options without argument is
-     * accepted. </testcase>
-     * 
+     * The callback for known string options without argument is accepted
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1203,9 +1174,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known string options with argument invokes
-     * the callback. </testcase>
-     * 
+     * The callback for known string options with argument invokes the callback
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1226,9 +1196,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known string options with argument invokes
-     * the callback. </testcase>
-     * 
+     * The callback for known string options with argument invokes the callback
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1249,9 +1218,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known string options without argument leads
-     * to an error. </testcase>
-     * 
+     * The callback for known string options without argument leads to an error
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = MissingArgumentCliException.class)
@@ -1272,9 +1240,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known string options without argument leads
-     * to an error when abbreviated. </testcase>
-     * 
+     * The callback for known string options without argument leads to an error when abbreviated
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = MissingArgumentCliException.class)
@@ -1295,9 +1262,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known string options with argument invokes
-     * the callback. </testcase>
-     * 
+     * The callback for known string options with argument invokes the callback
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1318,9 +1284,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known string options with argument invokes
-     * the callback. </testcase>
-     * 
+     * The callback for known string options with argument invokes the callback
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1341,9 +1306,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known string options without argument leads
-     * to an error. </testcase>
-     * 
+     * The callback for known string options without argument leads to an error
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = MissingArgumentCliException.class)
@@ -1355,9 +1319,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known string options without argument leads
-     * to an error when abbreviated. </testcase>
-     * 
+     * The callback for known string options without argument leads to an error when abbreviated
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = MissingArgumentCliException.class)
@@ -1370,9 +1333,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known string options with argument invokes
-     * the callback. </testcase>
-     * 
+     * The callback for known string options with argument invokes the callback
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1386,9 +1348,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The callback for known string options with argument invokes
-     * the callback. </testcase>
-     * 
+     * The callback for known string options with argument invokes the callback
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1402,9 +1363,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> The dafault for an yoption is <code>null</code> and this value
-     * can be overwritten. </testcase>
-     * 
+     * The dafault for an yoption is {@code null} and this value can be overwritten
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1418,7 +1378,7 @@ public class CLITest {
     }
 
     /**
-     * <testcase> Nothing to describe leads to an empty string. </testcase>
+     *  Nothing to describe leads to an empty string.
      * 
      * @throws Exception in case of an error
      */
@@ -1429,8 +1389,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> An option invokes a method of the surrounding class.
-     * </testcase>
+     *  An option invokes a method of the surrounding class.
+     *
      * 
      * @throws Exception in case of an error
      */

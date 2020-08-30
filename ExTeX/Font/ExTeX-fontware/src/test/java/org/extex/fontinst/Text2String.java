@@ -28,8 +28,7 @@ import java.io.FileWriter;
  * Read a text file and store each line in the java string syntax.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class Text2String {
 
     /**

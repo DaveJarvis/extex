@@ -30,8 +30,7 @@ import org.extex.exbib.core.exceptions.ExBibException;
  * code is added.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface Compiler {
 
     /**

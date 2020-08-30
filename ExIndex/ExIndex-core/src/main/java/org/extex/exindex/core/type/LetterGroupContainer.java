@@ -36,12 +36,11 @@ import org.extex.exindex.lisp.exception.LException;
  * This is the container for letter groups
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 6649 $
- */
+*/
 public class LetterGroupContainer {
 
     /**
-     * The constant <tt>COMPERATOR</tt> contains the comparator to get the
+     * The constant {@code COMPERATOR} contains the comparator to get the
      * long strings first.
      */
     private static final Comparator<String> COMPERATOR =
@@ -54,34 +53,34 @@ public class LetterGroupContainer {
             };
 
     /**
-     * The field <tt>groups</tt> contains the mapping from names to letter
+     * The field {@code groups} contains the mapping from names to letter
      * groups.
      */
     private final Map<String, LetterGroup> groups =
             new HashMap<String, LetterGroup>();
 
     /**
-     * The field <tt>index</tt> contains the index for accessing the prefixes.
+     * The field {@code index} contains the index for accessing the prefixes.
      */
     private final Map<Character, SortedSet<String>> index =
             new HashMap<Character, SortedSet<String>>();
 
     /**
-     * The field <tt>sorted</tt> contains the collected letter groups. This
+     * The field {@code sorted} contains the collected letter groups. This
      * list is cleared during sorting.
      */
     private final List<LetterGroup> letterGroups = new ArrayList<LetterGroup>();
 
     /**
-     * The field <tt>prefixMap</tt> contains the mapping from prefixes to
+     * The field {@code prefixMap} contains the mapping from prefixes to
      * letter groups.
      */
     private final Map<String, LetterGroup> prefixMap =
             new HashMap<String, LetterGroup>();
 
     /**
-     * The field <tt>sorted</tt> contains the sorted letter groups. When this
-     * field is not <code>null</code> then no further letter groups can be
+     * The field {@code sorted} contains the sorted letter groups. When this
+     * field is not {@code null} then no further letter groups can be
      * added.
      */
     private LetterGroup[] sorted;
@@ -163,7 +162,7 @@ public class LetterGroupContainer {
      * 
      * @param key the key
      * 
-     * @return the associated letter group or <code>null</code> if none is
+     * @return the associated letter group or {@code null} if none is
      *         found
      */
     public LetterGroup findLetterGroup(String key) {
@@ -188,7 +187,7 @@ public class LetterGroupContainer {
      * 
      * @param prefixes the list of prefixes
      * 
-     * @return a group or <code>null</code>
+     * @return a group or {@code null}
      */
     private LetterGroup findPrefixGroup(String[] prefixes) {
 
@@ -206,7 +205,7 @@ public class LetterGroupContainer {
      * 
      * @param name the name of the letter group to get
      * 
-     * @return the letter group for name or <code>null</code> if none was
+     * @return the letter group for name or {@code null} if none was
      *         found
      */
     public LetterGroup getLetterGroup(String name) {

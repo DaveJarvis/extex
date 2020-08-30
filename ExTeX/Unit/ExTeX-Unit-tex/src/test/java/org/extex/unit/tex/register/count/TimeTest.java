@@ -25,15 +25,14 @@ import org.extex.test.count.AbstractCountRegisterTester;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\time</tt>.
+ * This is a test suite for the primitive {@code \time}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class TimeTest extends AbstractCountRegisterTester {
 
     /**
-     * The constant <tt>MINUTES_PER_HOUR</tt> contains the number of minutes
+     * The constant {@code MINUTES_PER_HOUR} contains the number of minutes
      * per hour.
      */
     private static final int MINUTES_PER_HOUR = 60;

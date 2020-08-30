@@ -29,12 +29,11 @@ import org.extex.scanner.api.TokenStream;
  * reference in TeX a closing parenthesis is written to the log file.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4445 $
- */
+*/
 public class FileCloseObserver implements StreamCloseObserver {
 
     /**
-     * The field <tt>logger</tt> contains the logger for output
+     * The field {@code logger} contains the logger for output
      */
     private Logger logger;
 

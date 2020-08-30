@@ -43,8 +43,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractXtfSFLTable extends AbstractXtfTable
         implements
             XtfTable,
@@ -106,7 +105,7 @@ public abstract class AbstractXtfSFLTable extends AbstractXtfTable
      * 
      * @param tag The script tag.
      * @param language The language.
-     * @return Returns the language system or <code>null</code>, if not
+     * @return Returns the language system or {@code null}, if not
      *         found.
      */
     public LangSys findLangSys(ScriptTag tag, LanguageSystemTag language) {
@@ -120,7 +119,7 @@ public abstract class AbstractXtfSFLTable extends AbstractXtfTable
      * @param tag The tag.
      * @param language The language.
      * @param feature The feature.
-     * @return Returns the lookups, or <code>null</code>, if nothing is
+     * @return Returns the lookups, or {@code null}, if nothing is
      *         found.
      */
     public XtfLookup[] findLookup(ScriptTag tag, LanguageSystemTag language,
@@ -143,7 +142,7 @@ public abstract class AbstractXtfSFLTable extends AbstractXtfTable
      * Find a script.
      * 
      * @param tag The script tag.
-     * @return returns the script or <code>null</code>, if not found.
+     * @return returns the script or {@code null}, if not found.
      */
     public Script findScript(ScriptTag tag) {
 
@@ -160,9 +159,6 @@ public abstract class AbstractXtfSFLTable extends AbstractXtfTable
         return featureList;
     }
 
-    /**
-     * @see org.extex.font.format.xtf.tables.gps.XtfFeatureList#getFeatureTag(int)
-     */
     public String getFeatureTag(int idx) {
 
         return featureList.getFeatureTag(idx);
@@ -188,12 +184,6 @@ public abstract class AbstractXtfSFLTable extends AbstractXtfTable
         return scriptList;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
-     */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writeStartElement(writer);

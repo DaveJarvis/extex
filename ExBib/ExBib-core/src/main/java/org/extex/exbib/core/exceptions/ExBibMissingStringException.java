@@ -25,12 +25,11 @@ import org.extex.exbib.core.io.Locator;
  * This exception is thrown when a string is missing.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ExBibMissingStringException extends ExBibSyntaxException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2008L;
@@ -38,7 +37,7 @@ public class ExBibMissingStringException extends ExBibSyntaxException {
     /**
      * Create a new object.
      * 
-     * @param found the entity found; <code>null</code> means EOF
+     * @param found the entity found; {@code null} means EOF
      * @param locator the locator
      */
     public ExBibMissingStringException(String found, Locator locator) {
@@ -46,12 +45,7 @@ public class ExBibMissingStringException extends ExBibSyntaxException {
         super(found, locator);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.exceptions.ExBibException#getLocalizedMessage()
-     */
-    @Override
+@Override
     public String getLocalizedMessage() {
 
         String found = super.getMessage();

@@ -29,12 +29,11 @@ import java.util.regex.Pattern;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Doc {
 
     /**
-     * The field <tt>ARGUMENT_PATTERN</tt> contains the ...
+     * The field {@code ARGUMENT_PATTERN} contains the ...
      */
     private static final Pattern ARGUMENT_PATTERN =
             Pattern.compile("\\W*([a-zA-Z_][a-zA-Z0-9_]*)=\"([^\"]*)\"(.*)");
@@ -61,22 +60,22 @@ public class Doc {
     }
 
     /**
-     * The field <tt>m</tt> contains the ...
+     * The field {@code m} contains the ...
      */
     private Map<String, String> attributes;
 
     /**
-     * The field <tt>pack</tt> contains the ...
+     * The field {@code pack} contains the ...
      */
     private String pack;
 
     /**
-     * The field <tt>location</tt> contains the ...
+     * The field {@code location} contains the ...
      */
     private String location;
 
     /**
-     * The field <tt>list</tt> contains the ...
+     * The field {@code list} contains the ...
      */
     private List<DocToken> list;
 

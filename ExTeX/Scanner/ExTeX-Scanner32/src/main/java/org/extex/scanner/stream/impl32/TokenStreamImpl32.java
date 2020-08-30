@@ -19,9 +19,6 @@
 
 package org.extex.scanner.stream.impl32;
 
-import java.io.IOException;
-import java.io.Reader;
-
 import org.extex.core.UnicodeChar;
 import org.extex.framework.configuration.Configuration;
 import org.extex.scanner.api.Tokenizer;
@@ -31,32 +28,24 @@ import org.extex.scanner.stream.exception.ScannerNoHexDigitFoundException;
 import org.extex.scanner.stream.exception.ScannerNoUnicodeNameException;
 import org.extex.scanner.type.Catcode;
 
+import java.io.Reader;
+
 /**
  * This class contains an implementation of a token stream which is fed from a
  * Reader.
- * <p>
+ *
  * <ul>
  * <li>'^^^UnicodeName;' use the Unicode name for the character</li>
- * <li>'^^^^ab07' a la Omega<br/> It use 4 hex digit or less, if a non hex
+ * <li>'^^^^ab07' a la Omega<br> It use 4 hex digit or less, if a non hex
  * digit are found. </li>
  * </ul>
- * </p>
- * 
- * @see org.extex.scanner.base.TokenStreamImpl
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:4725 $
  */
-
 public class TokenStreamImpl32 extends TokenStreamImpl {
 
-    /**
-     * Unicode char for ';'
-     */
     private static final UnicodeChar CPOINT = UnicodeChar.get(';');
 
-    /**
-     * hex
-     */
     private static final int HEX = 16;
 
     /**
@@ -64,33 +53,26 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
      */
     private static final int MAX_HEX_DIGITS = 4;
 
-    /**
-     * shift 4
-     */
     private static final int SHIFT4 = 4;
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param config the configuration object for this instance; This
      *        configuration is ignored in this implementation.
      * @param options ignored here
      * @param reader the reader
      * @param isFile indicator for file streams
      * @param theSource the description of the input source
-     * @throws IOException in case of an IO error
      */
     public TokenStreamImpl32(Configuration config, TokenStreamOptions options,
-            Reader reader, Boolean isFile, String theSource) throws IOException {
+            Reader reader, Boolean isFile, String theSource)  {
 
         super(config, options, reader, isFile, theSource);
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.stream.impl32.TokenStreamImpl#getChar(
-     *      org.extex.scanner.api.Tokenizer)
+*      org.extex.scanner.api.Tokenizer)
      */
     @Override
     protected UnicodeChar getChar(Tokenizer tokenizer) throws ScannerException {
@@ -179,7 +161,7 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
 
     /**
      * Analyze a character and return its hex value as char.
-     * 
+     *
      * @param c The character code to analyze.
      * @return Returns the char value of a hex digit or 0 if no hex digit is
      *         given.
@@ -197,7 +179,7 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
 
     /**
      * scan a hex number (max. n digits)
-     * 
+     *
      * @param n number of digits
      * @param tokenizer the tokenizer
      * @return UnicodeChar of a hex number
@@ -207,9 +189,8 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
             throws ScannerException {
 
         StringBuilder buf = new StringBuilder();
-        UnicodeChar uc = null;
+        UnicodeChar uc;
         for (int i = 0; i < n; i++) {
-
             uc = getRawChar();
             if (uc == null) {
                 break;
@@ -232,12 +213,12 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
 
     /**
      * Scan a Unicode name.
-     * 
+     *
      * <pre>
      * ^^^^NAME;
      * </pre>
-     * 
-     * @return Returns Unicode name as <code>String</code>.
+     *
+     * @return Returns Unicode name as {@code String}.
      * @throws ScannerException if an error occurs
      */
     private String scanUnicodeName() throws ScannerException {

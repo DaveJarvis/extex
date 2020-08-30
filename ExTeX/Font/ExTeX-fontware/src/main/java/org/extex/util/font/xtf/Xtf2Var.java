@@ -33,8 +33,7 @@ import org.extex.util.font.AbstractFontUtil;
  * Extract the xtf information's the shell variables.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:5594 $
- */
+*/
 public class Xtf2Var extends AbstractFontUtil {
 
     /**

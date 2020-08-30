@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains a implementation for an hyphenation engine.
+ * Contains a implementation for an hyphenation engine.
  */
 
 package org.extex.language.hyphenation.liang;

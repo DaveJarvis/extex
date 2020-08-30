@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains exception classes for a hyphenation engine.
+ * Contains exception classes for a hyphenation engine.
  */
 
 package org.extex.language.hyphenation.exception;

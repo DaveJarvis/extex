@@ -23,11 +23,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\ifcat</tt>.
+ * This is a test suite for the primitive {@code \ifcat}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class IfcatTest extends ConditionalTester {
 
     /**
@@ -47,8 +46,8 @@ public class IfcatTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifcat"> Test case checking that <tt>\ifcat</tt>
-     * needs an argument </testcase>
+     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+     * needs an argument
      * 
      * @throws Exception in case of an error
      */
@@ -62,8 +61,8 @@ public class IfcatTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifcat"> Test case checking that <tt>\ifcat</tt>
-     * needs two arguments </testcase>
+     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+     * needs two arguments
      * 
      * @throws Exception in case of an error
      */
@@ -77,8 +76,8 @@ public class IfcatTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifcat"> Test case checking that <tt>\ifcat</tt>
-     * detects two identical letters. </testcase>
+     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+     * detects two identical letters.
      * 
      * @throws Exception in case of an error
      */
@@ -92,8 +91,8 @@ public class IfcatTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifcat"> Test case checking that <tt>\ifcat</tt>
-     * detects two different letters. </testcase>
+     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+     * detects two different letters.
      * 
      * @throws Exception in case of an error
      */
@@ -107,8 +106,8 @@ public class IfcatTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifcat"> Test case checking that <tt>\ifcat</tt>
-     * classifies a letter and an other character as different. </testcase>
+     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+     * classifies a letter and an other character as different.
      * 
      * @throws Exception in case of an error
      */
@@ -122,8 +121,8 @@ public class IfcatTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifcat"> Test case checking that <tt>\ifcat</tt>
-     * classifies a letter and a control sequence as different. </testcase>
+     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+     * classifies a letter and a control sequence as different.
      * 
      * @throws Exception in case of an error
      */
@@ -137,8 +136,8 @@ public class IfcatTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifcat"> Test case checking that <tt>\ifcat</tt>
-     * classifies two identical control sequences as equal. </testcase>
+     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+     * classifies two identical control sequences as equal.
      * 
      * @throws Exception in case of an error
      */
@@ -152,8 +151,8 @@ public class IfcatTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifcat"> Test case checking that <tt>\ifcat</tt>
-     * classifies two different control sequences as equal. </testcase>
+     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+     * classifies two different control sequences as equal.
      * 
      * @throws Exception in case of an error
      */
@@ -167,8 +166,8 @@ public class IfcatTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifcat"> Test case checking that <tt>\ifcat</tt>
-     * classifies two identical other characters as equal. </testcase>
+     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+     * classifies two identical other characters as equal.
      * 
      * @throws Exception in case of an error
      */
@@ -182,8 +181,8 @@ public class IfcatTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifcat"> Test case checking that <tt>\ifcat</tt>
-     * classifies two different other characters as equal. </testcase>
+     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+     * classifies two different other characters as equal.
      * 
      * @throws Exception in case of an error
      */
@@ -197,8 +196,8 @@ public class IfcatTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifcat"> Test case checking that <tt>\ifcat</tt>
-     * classifies two math shift characters as equal. </testcase>
+     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+     * classifies two math shift characters as equal.
      * 
      * @throws Exception in case of an error
      */
@@ -212,8 +211,8 @@ public class IfcatTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifcat"> Test case checking that <tt>\ifcat</tt>
-     * classifies two subscript characters as equal. </testcase>
+     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+     * classifies two subscript characters as equal.
      * 
      * @throws Exception in case of an error
      */
@@ -227,8 +226,8 @@ public class IfcatTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifcat"> Test case checking that <tt>\ifcat</tt>
-     * classifies two tab mark characters as equal. </testcase>
+     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+     * classifies two tab mark characters as equal.
      * 
      * @throws Exception in case of an error
      */
@@ -242,8 +241,8 @@ public class IfcatTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifcat"> Test case checking that <tt>\ifcat</tt>
-     * classifies two open group characters as equal. </testcase>
+     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+     * classifies two open group characters as equal.
      * 
      * @throws Exception in case of an error
      */
@@ -257,8 +256,8 @@ public class IfcatTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifcat"> Test case checking that <tt>\ifcat</tt>
-     * classifies two close group characters as equal. </testcase>
+     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+     * classifies two close group characters as equal.
      * 
      * @throws Exception in case of an error
      */
@@ -272,8 +271,8 @@ public class IfcatTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifcat"> Test case checking that <tt>\ifcat</tt>
-     * classifies two macro parameter characters as equal. </testcase>
+     * <testcase primitive="\ifcat"> Test case checking that {@code \ifcat}
+     * classifies two macro parameter characters as equal.
      * 
      * @throws Exception in case of an error
      */

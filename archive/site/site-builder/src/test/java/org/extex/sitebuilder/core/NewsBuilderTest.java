@@ -28,13 +28,12 @@ import org.junit.Test;
  * This is a test suite for the {@link NewsBuilder}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NewsBuilderTest {
 
     /**
-     * <testcase> Setting the logger to <code>null</code> sets it to
-     * <code>null</code>. Pretty logical. Isn't it? </testcase>
+     *  Setting the logger to {@code null} sets it to
+     * {@code null}. Pretty logical. Isn't it? 
      * 
      * @throws Exception in case of an error
      */

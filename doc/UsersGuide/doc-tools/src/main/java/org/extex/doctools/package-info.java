@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains tools for collecting εχTeX documentation.
+ * Contains tools for collecting εχTeX documentation.
  */
 
 package org.extex.doctools;

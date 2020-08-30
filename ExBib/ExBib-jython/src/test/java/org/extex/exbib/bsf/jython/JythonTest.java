@@ -42,8 +42,7 @@ import org.junit.Test;
  * Groovy configuration.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class JythonTest {
 
     private static final String DIR_TARGET = "build";

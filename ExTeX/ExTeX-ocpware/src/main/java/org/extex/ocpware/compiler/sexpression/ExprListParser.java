@@ -36,8 +36,7 @@ import org.extex.ocpware.compiler.parser.ParserStream;
  * This utility class contains the string expression parser.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public final class ExprListParser {
 
 

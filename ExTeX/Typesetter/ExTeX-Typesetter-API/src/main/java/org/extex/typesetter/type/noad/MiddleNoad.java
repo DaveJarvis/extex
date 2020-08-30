@@ -34,24 +34,23 @@ import org.extex.typesetter.type.node.HorizontalListNode;
  * the surrounding material.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class MiddleNoad extends LeftNoad {
 
     /**
-     * The field <tt>delimiter</tt> contains the middle delimiter.
+     * The field {@code delimiter} contains the middle delimiter.
      */
-    private MathDelimiter delimiter;
+    private final MathDelimiter delimiter;
 
     /**
-     * The field <tt>noad</tt> contains the material before this noad.
+     * The field {@code noad} contains the material before this noad.
      */
-    private LeftNoad noadPre;
+    private final LeftNoad noadPre;
 
     /**
-     * The field <tt>noadPost</tt> contains the material after this noad.
+     * The field {@code noadPost} contains the material after this noad.
      */
-    private Noad noadPost;
+    private final Noad noadPost;
 
     /**
      * Creates a new object.

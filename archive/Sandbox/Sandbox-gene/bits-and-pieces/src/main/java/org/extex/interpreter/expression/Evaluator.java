@@ -52,21 +52,17 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * 
- * @version $Revision: 4787 $
- */
+*/
 public class Evaluator {
 
     /**
-     * The field <tt>ASSIGN</tt> contains the operation to assign the second
+     * The field {@code ASSIGN} contains the operation to assign the second
      * argument to the first one.
      */
     private static final BinaryFunction ASSIGN = new BinaryFunction() {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
-         *      org.extex.interpreter.expression.EType)
+    *      org.extex.interpreter.expression.EType)
          */
         @Override
         public EType apply(EType arg1, EType arg2) {
@@ -74,12 +70,7 @@ public class Evaluator {
             return arg2;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return ":=";
@@ -88,16 +79,13 @@ public class Evaluator {
     };
 
     /**
-     * The field <tt>EQ</tt> contains the operation to assign the second
+     * The field {@code EQ} contains the operation to assign the second
      * argument to the first one.
      */
     private static final BinaryFunction EQ = new BinaryFunction() {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
-         *      org.extex.interpreter.expression.EType)
+    *      org.extex.interpreter.expression.EType)
          */
         @Override
         public EType apply(EType arg1, EType arg2)
@@ -107,12 +95,7 @@ public class Evaluator {
             return arg1.eq(arg2);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return "==";
@@ -121,16 +104,13 @@ public class Evaluator {
     };
 
     /**
-     * The field <tt>GE</tt> contains the operation to assign the second
+     * The field {@code GE} contains the operation to assign the second
      * argument to the first one.
      */
     private static final BinaryFunction GE = new BinaryFunction() {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
-         *      org.extex.interpreter.expression.EType)
+    *      org.extex.interpreter.expression.EType)
          */
         @Override
         public EType apply(EType arg1, EType arg2)
@@ -140,12 +120,7 @@ public class Evaluator {
             return arg1.ge(arg2);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return ">=";
@@ -154,16 +129,13 @@ public class Evaluator {
     };
 
     /**
-     * The field <tt>GT</tt> contains the operation to assign the second
+     * The field {@code GT} contains the operation to assign the second
      * argument to the first one.
      */
     private static final BinaryFunction GT = new BinaryFunction() {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
-         *      org.extex.interpreter.expression.EType)
+    *      org.extex.interpreter.expression.EType)
          */
         @Override
         public EType apply(EType arg1, EType arg2)
@@ -173,12 +145,7 @@ public class Evaluator {
             return arg1.gt(arg2);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return ">";
@@ -187,16 +154,13 @@ public class Evaluator {
     };
 
     /**
-     * The field <tt>LAND</tt> contains the operation to assign the second
+     * The field {@code LAND} contains the operation to assign the second
      * argument to the first one.
      */
     private static final BinaryFunction LAND = new BinaryFunction() {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
-         *      org.extex.interpreter.expression.EType)
+    *      org.extex.interpreter.expression.EType)
          */
         @Override
         public EType apply(EType arg1, EType arg2)
@@ -206,12 +170,7 @@ public class Evaluator {
             return arg1.and(arg2);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return "&&";
@@ -220,16 +179,13 @@ public class Evaluator {
     };
 
     /**
-     * The field <tt>LE</tt> contains the operation to assign the second
+     * The field {@code LE} contains the operation to assign the second
      * argument to the first one.
      */
     private static final BinaryFunction LE = new BinaryFunction() {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
-         *      org.extex.interpreter.expression.EType)
+    *      org.extex.interpreter.expression.EType)
          */
         @Override
         public EType apply(EType arg1, EType arg2)
@@ -239,12 +195,7 @@ public class Evaluator {
             return arg1.le(arg2);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return "<=";
@@ -253,16 +204,13 @@ public class Evaluator {
     };
 
     /**
-     * The field <tt>LOR</tt> contains the operation to assign the second
+     * The field {@code LOR} contains the operation to assign the second
      * argument to the first one.
      */
     private static final BinaryFunction LOR = new BinaryFunction() {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
-         *      org.extex.interpreter.expression.EType)
+    *      org.extex.interpreter.expression.EType)
          */
         @Override
         public EType apply(EType arg1, EType arg2)
@@ -272,12 +220,7 @@ public class Evaluator {
             return arg1.or(arg2);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return "||";
@@ -286,16 +229,13 @@ public class Evaluator {
     };
 
     /**
-     * The field <tt>LT</tt> contains the operation to assign the second
+     * The field {@code LT} contains the operation to assign the second
      * argument to the first one.
      */
     private static final BinaryFunction LT = new BinaryFunction() {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
-         *      org.extex.interpreter.expression.EType)
+    *      org.extex.interpreter.expression.EType)
          */
         @Override
         public EType apply(EType arg1, EType arg2)
@@ -305,12 +245,7 @@ public class Evaluator {
             return arg1.lt(arg2);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return "<";
@@ -319,15 +254,12 @@ public class Evaluator {
     };
 
     /**
-     * The field <tt>MINUS</tt> contains the subtractor.
+     * The field {@code MINUS} contains the subtractor.
      */
     private static final BinaryFunction MINUS = new BinaryFunction() {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
-         *      org.extex.interpreter.expression.EType)
+    *      org.extex.interpreter.expression.EType)
          */
         @Override
         public EType apply(EType arg1, EType arg2) throws HelpingException {
@@ -335,12 +267,7 @@ public class Evaluator {
             return arg1.subtract(arg2);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return "-";
@@ -349,16 +276,13 @@ public class Evaluator {
     };
 
     /**
-     * The field <tt>LAND</tt> contains the operation to assign the second
+     * The field {@code LAND} contains the operation to assign the second
      * argument to the first one.
      */
     private static final BinaryFunction NE = new BinaryFunction() {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
-         *      org.extex.interpreter.expression.EType)
+    *      org.extex.interpreter.expression.EType)
          */
         @Override
         public EType apply(EType arg1, EType arg2)
@@ -368,12 +292,7 @@ public class Evaluator {
             return arg1.ne(arg2);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return "!=";
@@ -382,15 +301,12 @@ public class Evaluator {
     };
 
     /**
-     * The field <tt>PLUS</tt> contains the adder.
+     * The field {@code PLUS} contains the adder.
      */
     private static final BinaryFunction PLUS = new BinaryFunction() {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
-         *      org.extex.interpreter.expression.EType)
+    *      org.extex.interpreter.expression.EType)
          */
         @Override
         public EType apply(EType arg1, EType arg2) throws HelpingException {
@@ -398,12 +314,7 @@ public class Evaluator {
             return arg1.add(arg2);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
+    @Override
         public String toString() {
 
             return "+";
@@ -412,37 +323,37 @@ public class Evaluator {
     };
 
     /**
-     * The field <tt>UC_AND</tt> contains the Unicode code point for the logical
+     * The field {@code UC_AND} contains the Unicode code point for the logical
      * and.
      */
     private static final int UC_AND = 0x2227;
 
     /**
-     * The field <tt>UC_GE</tt> contains the Unicode code point for the greater
+     * The field {@code UC_GE} contains the Unicode code point for the greater
      * or equal sign.
      */
     private static final int UC_GE = 0x2265;
 
     /**
-     * The field <tt>UC_LE</tt> contains the Unicode code point for the less or
+     * The field {@code UC_LE} contains the Unicode code point for the less or
      * equal sign.
      */
     private static final int UC_LE = 0x2264;
 
     /**
-     * The field <tt>UC_NE</tt> contains the Unicode code point for the not
+     * The field {@code UC_NE} contains the Unicode code point for the not
      * equal sign.
      */
     private static final int UC_NE = 0x2260;
 
     /**
-     * The field <tt>UC_NOT</tt> contains the Unicode code point for the logical
+     * The field {@code UC_NOT} contains the Unicode code point for the logical
      * not sign.
      */
     private static final int UC_NOT = 0xac;
 
     /**
-     * The field <tt>UC_OR</tt> contains the Unicode code point for the logical
+     * The field {@code UC_OR} contains the Unicode code point for the logical
      * or.
      */
     private static final int UC_OR = 0x2228;
@@ -471,13 +382,13 @@ public class Evaluator {
     }
 
     /**
-     * The field <tt>functions</tt> contains the function object attached to a
+     * The field {@code functions} contains the function object attached to a
      * function name.
      */
     private Map<String, Object> functions = new HashMap<String, Object>();
 
     /**
-     * The field <tt>parsers</tt> contains the list of registered parsers.
+     * The field {@code parsers} contains the list of registered parsers.
      */
     private List<ETypeParser> parsers = new ArrayList<ETypeParser>();
 
@@ -645,7 +556,7 @@ public class Evaluator {
      * Evaluate a logical junction expression.
      * 
      * @param start the value of the first junction element
-     * @param junctor the junctor, i.e. && or ||
+      * @param junctor the junctor, i.e. &amp;&amp; or ||
      * @param context the Helping context
      * @param source the source for new tokens
      * @param typesetter the typesetter
@@ -905,7 +816,7 @@ public class Evaluator {
      * @param context the Helping context
      * @param source the source for new tokens
      * 
-     * @return <code>true</code> iff the junctor has been found
+     * @return {@code true} iff the junctor has been found
      * 
      * @throws HelpingException in case of an error
      */
@@ -967,7 +878,7 @@ public class Evaluator {
      * @param source the source for new tokens
      * 
      * @return the function constant associated to the operator found or
-     *         <code>null</code> if none was found
+     *         {@code null} if none was found
      * 
      * @throws HelpingException in case of an error
      */
@@ -1012,7 +923,7 @@ public class Evaluator {
      * @param source the source for new tokens
      * 
      * @return the function constant associated to the operator found or
-     *         <code>null</code> if none was found
+     *         {@code null} if none was found
      * 
      * @throws HelpingException in case of an error
      */

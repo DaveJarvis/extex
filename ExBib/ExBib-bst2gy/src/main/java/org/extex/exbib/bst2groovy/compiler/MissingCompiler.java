@@ -31,11 +31,10 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
- * This class implements the analyzer for the <code>missing$</code> built-in.
+ * This class implements the analyzer for the {@code missing$} built-in.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MissingCompiler implements Compiler {
 
     /**
@@ -55,10 +54,7 @@ public class MissingCompiler implements Compiler {
         }
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
-         *      java.lang.String)
+    *      java.lang.String)
          */
         @Override
         public void print(CodeWriter writer, String prefix) throws IOException {
@@ -70,10 +66,7 @@ public class MissingCompiler implements Compiler {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryReference,
-     *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
+*      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */

@@ -17,7 +17,7 @@
  */
 /**
  * 
- *   This package contains some buildin functions for the L system.
+ *   Contains some buildin functions for the L system.
  * 
  *
  */

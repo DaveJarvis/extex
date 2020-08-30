@@ -25,12 +25,11 @@ import java.util.ArrayList;
  * This class provides a container for a list of Noads.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4399 $
- */
+*/
 public class NoadList extends ArrayList<Noad> {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
@@ -45,7 +44,7 @@ public class NoadList extends ArrayList<Noad> {
     /**
      * Getter for the last noad previously stored.
      * 
-     * @return the last noad or <code>null</code> if none is available
+     * @return the last noad or {@code null} if none is available
      */
     Noad getLastNoad() {
 

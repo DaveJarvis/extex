@@ -43,8 +43,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * are supported.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4781 $
- */
+*/
 public final class ColorParser {
 
     /**
@@ -52,8 +51,7 @@ public final class ColorParser {
      * color models.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision: 4781 $
-     */
+    */
     private interface ColorMode {
 
         /**
@@ -77,7 +75,7 @@ public final class ColorParser {
     }
 
     /**
-     * The field <tt>CMYK_MODE</tt> contains the parser for a cmyk color.
+     * The field {@code CMYK_MODE} contains the parser for a cmyk color.
      */
     private static final ColorMode CMYK_MODE = new ColorMode() {
 
@@ -102,7 +100,7 @@ public final class ColorParser {
     };
 
     /**
-     * The field <tt>GRAY_MODE</tt> contains the parser for a gray-scale
+     * The field {@code GRAY_MODE} contains the parser for a gray-scale
      * color.
      */
     private static final ColorMode GRAY_MODE = new ColorMode() {
@@ -125,7 +123,7 @@ public final class ColorParser {
     };
 
     /**
-     * The field <tt>HSV_MODE</tt> contains the parser for a hsv color.
+     * The field {@code HSV_MODE} contains the parser for a hsv color.
      */
     private static final ColorMode HSV_MODE = new ColorMode() {
 
@@ -157,10 +155,7 @@ public final class ColorParser {
     private static final ColorMode RGB_MODE = new ColorMode() {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.unit.color.ColorParser.ColorMode#parse(
-         *      org.extex.interpreter.context.Context,
+    *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
          *      org.extex.typesetter.Typesetter, int, CodeToken)
          */
@@ -178,7 +173,7 @@ public final class ColorParser {
     };
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;

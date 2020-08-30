@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the exceptions for the font system of ??TeX.
+ *Contains exceptions for the font system of εχTeX.
  */
 
 package org.extex.font.exception;

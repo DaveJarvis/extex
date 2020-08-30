@@ -27,12 +27,11 @@ import org.junit.Test;
  * This is a test suite for the math typesetting.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MathListMakerTest extends ExTeXLauncher {
 
     /**
-     * The field <tt>DEFINE_MATH_FONTS</tt> contains the definition for the
+     * The field {@code DEFINE_MATH_FONTS} contains the definition for the
      * math fonts needed.
      */
     private static final String DEFINE_MATH_FONTS =
@@ -49,8 +48,8 @@ public class MathListMakerTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that an empty math environment works.
-     * </testcase>
+     *  Test case checking that an empty math environment works.
+     *
      *
      * @throws Exception in case of an error
      */
@@ -67,8 +66,8 @@ public class MathListMakerTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a single math character works.
-     * </testcase>
+     *  Test case checking that a single math character works.
+     *
      *
      * @throws Exception in case of an error
      */

@@ -26,8 +26,7 @@ import com.sun.javadoc.ClassDoc;
  *
  * @author <a href="mailto:Alexander.Kraenzlein@gmx.de">Alexander Kraenzlein</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class Package {
 
     /**

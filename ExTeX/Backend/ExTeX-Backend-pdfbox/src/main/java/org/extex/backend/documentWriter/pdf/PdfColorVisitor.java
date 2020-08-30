@@ -32,8 +32,7 @@ import org.pdfbox.pdmodel.edit.PDPageContentStream;
  * Color visitor for pdf.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class PdfColorVisitor implements ColorVisitor {
 
     /**
@@ -47,10 +46,7 @@ public class PdfColorVisitor implements ColorVisitor {
     private static final double DIVD = 0xffff;
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.color.ColorVisitor#visitCmyk(org.extex.color.model.CmykColor,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     @Override
     public Object visitCmyk(CmykColor color, Object value)
@@ -71,10 +67,7 @@ public class PdfColorVisitor implements ColorVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.color.ColorVisitor#visitGray(org.extex.color.model.GrayscaleColor,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     @Override
     public Object visitGray(GrayscaleColor color, Object value)
@@ -94,10 +87,7 @@ public class PdfColorVisitor implements ColorVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.color.ColorVisitor#visitHsv(org.extex.color.model.HsvColor,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     @Override
     public Object visitHsv(HsvColor color, Object value)
@@ -107,10 +97,7 @@ public class PdfColorVisitor implements ColorVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.color.ColorVisitor#visitRgb(org.extex.color.model.RgbColor,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     @Override
     public Object visitRgb(RgbColor color, Object value)

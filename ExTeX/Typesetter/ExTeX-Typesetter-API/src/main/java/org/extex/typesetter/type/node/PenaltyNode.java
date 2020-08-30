@@ -30,23 +30,19 @@ import org.extex.typesetter.type.NodeVisitor;
  * the paragraph breaking or page breaking to control the algorithm. This node
  * should be ignored by the DocumentWriter.
  * 
- * @see "<logo>T<span style=
- *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *      >e</span>X</logo> &ndash; The Program [157]"
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4739 $
- */
+*/
 public class PenaltyNode extends AbstractNode implements Node, Discardable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>penalty</tt> contains the penalty value of this node.
+     * The field {@code penalty} contains the penalty value of this node.
      */
     private long penalty = 0;
 
@@ -54,11 +50,7 @@ public class PenaltyNode extends AbstractNode implements Node, Discardable {
      * Creates a new object.
      * 
      * @param thePenalty the penalty value
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [158]"
-     */
+*/
     public PenaltyNode(Count thePenalty) {
 
         this(thePenalty.getValue());
@@ -93,11 +85,7 @@ public class PenaltyNode extends AbstractNode implements Node, Discardable {
      * @param prefix the prefix string inserted at the beginning of each line
      * @param breadth the breadth
      * @param depth the depth
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [194]"
-     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
+* @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
      *      java.lang.String, int, int)
      */
     @Override

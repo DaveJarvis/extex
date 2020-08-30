@@ -26,8 +26,7 @@ import org.extex.interpreter.context.ContextInternals;
  * opening and closing of groups.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface GroupObserver {
 
     /**

@@ -55,8 +55,7 @@ import org.extex.typesetter.type.math.MathDelimiter;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4388 $
- */
+*/
 public interface Context
         extends
             ContextCode,
@@ -109,16 +108,15 @@ public interface Context
     String esc(Token token);
 
     /**
-     * Return the current escape character or <code>\0<code> if it is undefined.
+     * Return the current escape character or {@code \0} if it is undefined.
      * The escape character is retrieved from the count register
-     * <tt>\escapechar</tt>.
+     * {@code \escapechar}.
      * This is a convenience method.
      * 
      * 
-     * <doc name="escapechar" type="register">
-     * <h3>The Count Parameter <tt>\escapechar</tt></h3>
+     * <p>The Count Parameter {@code \escapechar}</p>
      * <p>
-     *  The count register <tt>\escapechar</tt> contains code point of the
+     *  The count register {@code \escapechar} contains code point of the
      *  escape character. This character is used whenever an control sequence
      *  is about to be printed and it has to be prefixed by the escape character.
      * </p>
@@ -134,21 +132,22 @@ public interface Context
      *  controlled disagreement.
      * </p>
      * 
-     * <h4>Syntax</h4>
+     * <p>Syntax</p>
+
      *  The formal description of this primitive is the following:
      *  <pre class="syntax">
      *    &lang;escapechar&rang;
-     *     &rarr; <tt>\escapechar</tt> {@linkplain
+     *     &rarr; {@code \escapechar} {@linkplain
      *       org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *       &lang;equals&rang;} {@linkplain
      *       org.extex.interpreter.parser.CountParser#parseNumber(Context,org.extex.interpreter.TokenSource,org.extex.typesetter.Typesetter)
      *       &lang;number&rang;} </pre>
      * 
-     * <h4>Examples</h4>
+     * <p>Examples</p>
+
      *  <pre class="TeXSample">
      *    \escapechar=-1  </pre>
      * 
-     * </doc>
      * 
      * @return the escape character
      */
@@ -179,11 +178,11 @@ public interface Context
      * Getter for the {@link org.extex.interpreter.type.box.Box box} register.
      * Box registers are named, either with a number or an arbitrary string. The
      * numbered registers where limited to 256 in TeX. This restriction does no longer hold for
-     * ??TeX.
+     * εχTeX.
      * 
      * @param name the name or number of the count register
      * 
-     * @return the count register or <code>null</code> if it is void
+     * @return the count register or {@code null} if it is void
      * 
      * @see #setBox(String, Box, boolean)
      */
@@ -192,7 +191,7 @@ public interface Context
     /**
      * Getter for the currently active conditional.
      * 
-     * @return the currently active conditional or <code>null</code> if none
+     * @return the currently active conditional or {@code null} if none
      * 
      * @see #popConditional()
      * @see #pushConditional(Locator, boolean, Code, long, boolean)
@@ -216,7 +215,7 @@ public interface Context
      * 
      * @param name the name of the glue register to acquire.
      * 
-     * @return the value of the named glue register or <code>null</code> if none
+     * @return the value of the named glue register or {@code null} if none
      *         is set
      * 
      * @see #setGlue(String, Glue, boolean)
@@ -226,7 +225,7 @@ public interface Context
     /**
      * Getter for the id string. The id string is the classification of the
      * original source like given in the format file. The id string can be
-     * <code>null</code> if not known yet.
+     * {@code null} if not known yet.
      * 
      * @return the id string
      * 
@@ -309,7 +308,7 @@ public interface Context
      * 
      * @param name the name or the number of the register
      * 
-     * @return the named muskip or <code>null</code> if none is set
+     * @return the named muskip or {@code null} if none is set
      * 
      * @see #setMuskip(String, Muskip, boolean)
      */
@@ -329,7 +328,7 @@ public interface Context
     /**
      * Getter for the paragraph shape.
      * 
-     * @return the paragraph shape or <code>null</code> if no special shape is
+     * @return the paragraph shape or {@code null} if no special shape is
      *         present
      * 
      * @see #setParshape(ParagraphShape)
@@ -408,7 +407,7 @@ public interface Context
 
     /**
      * Pop the management information for a conditional from the stack and
-     * return it. If the stack is empty then <code>null</code> is returned.
+     * return it. If the stack is empty then {@code null} is returned.
      * 
      * @return the formerly topmost element from the conditional stack
      * @throws HelpingException in case of an error
@@ -422,7 +421,7 @@ public interface Context
     /**
      * Pop a direction from the direction stack.
      * 
-     * @return the topmost direction on the stack or <code>null</code> if the
+     * @return the topmost direction on the stack or {@code null} if the
      *         stack is empty
      * 
      * @see #pushDirection(Direction)
@@ -458,7 +457,7 @@ public interface Context
      * Setter for the color in the current typesetting context.
      * 
      * @param color the new color
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @throws org.extex.framework.configuration.exception.ConfigurationException
@@ -472,7 +471,7 @@ public interface Context
      * Setter for the direction in the current typesetting context.
      * 
      * @param direction the new direction
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @throws org.extex.framework.configuration.exception.ConfigurationException
@@ -486,7 +485,7 @@ public interface Context
      * Setter for the font in the current typesetting context.
      * 
      * @param font the new font
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @throws org.extex.framework.configuration.exception.ConfigurationException
@@ -500,7 +499,7 @@ public interface Context
      * Setter for the language in the current typesetting context.
      * 
      * @param language the new language
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @throws org.extex.framework.configuration.exception.ConfigurationException
@@ -516,7 +515,7 @@ public interface Context
      * @param extension the name of the extension
      * @param key the key for the value
      * @param value the value to store
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see #get(Object, Object)
@@ -527,7 +526,7 @@ public interface Context
      * Setter for the typesetting context in the specified groups.
      * 
      * @param context the processor context
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see #getTypesettingContext()
@@ -548,11 +547,11 @@ public interface Context
      * the current group. Count registers are named, either with a number or an
      * arbitrary string. The numbered registers where limited to 256 in
      * TeX. This restriction does no longer hold for
-     * ??TeX.
+     * εχTeX.
      * 
      * @param name the name or the number of the register
      * @param value the new value of the register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see #getBox(String)
@@ -564,7 +563,7 @@ public interface Context
      * 
      * @param c the character to assign a catcode for
      * @param catcode the catcode of the character
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @throws HelpingException in case of an error
@@ -579,7 +578,7 @@ public interface Context
      * 
      * @param c the character to which the delcode is assigned
      * @param delimiter the delimiter code
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see #getDelcode(UnicodeChar)
@@ -591,7 +590,7 @@ public interface Context
      * 
      * @param name the name of the glue register
      * @param value the glue value to set
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @throws HelpingException in case of an error
@@ -629,7 +628,7 @@ public interface Context
      * 
      * @param uc upper case character
      * @param lc lower case equivalent
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see #getLccode(UnicodeChar)
@@ -660,7 +659,7 @@ public interface Context
      * 
      * @param uc the character index
      * @param code the new math code
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see #getMathcode(UnicodeChar)
@@ -672,7 +671,7 @@ public interface Context
      * 
      * @param name the name or the number of the register
      * @param value the new value
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see #getMuskip(String)
@@ -683,7 +682,7 @@ public interface Context
      * Setter for the name space.
      * 
      * @param namespace the new name space
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see #getNamespace()
@@ -707,7 +706,7 @@ public interface Context
      * 
      * @param uc the Unicode character to assign the sfcode to
      * @param code the new sfcode
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see #getSfcode(UnicodeChar)
@@ -738,7 +737,7 @@ public interface Context
      * 
      * @param lc lower case character
      * @param uc uppercase equivalent
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see #getUccode(UnicodeChar)

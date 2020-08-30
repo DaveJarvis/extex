@@ -38,8 +38,7 @@ import org.junit.Test;
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
 
     /**

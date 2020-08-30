@@ -30,41 +30,40 @@ import org.extex.unit.omega.OmegaExtension;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\OutputMode</code>.
+ * {@code \OutputMode}.
  * 
- * <doc name="OutputMode">
- * <h3>The Primitive <tt>\OutputMode</tt></h3>
+ * <p>The Primitive {@code \OutputMode}</p>
  * <p>
  * TODO missing documentation
  * </p>
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;OutputMode&rang;
- *      &rarr; <tt>\OutputMode</tt> &lang;mode&rang;
+ *      &rarr; {@code \OutputMode} &lang;mode&rang;
  *
  *    &lang;mode&rang;
- *      &rarr; <tt>onebyte</tt>
- *       |  <tt>ebcdic</tt>
- *       |  <tt>twobyte</tt>
- *       |  <tt>twobyteLE</tt>     </pre>
+ *      &rarr; {@code onebyte}
+ *       |  {@code ebcdic}
+ *       |  {@code twobyte}
+ *       |  {@code twobyteLE}     </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *   \OutputMode onebyte  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4411 $
- */
+*/
 public class OutputMode extends AbstractModeCode {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -80,10 +79,7 @@ public class OutputMode extends AbstractModeCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

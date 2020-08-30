@@ -31,41 +31,40 @@ import org.extex.unit.base.conditional.AbstractIf;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\iffontchar</code>.
+ * {@code \iffontchar}.
  * 
- * <doc name="iffontchar">
- * <h3>The Primitive <tt>\iffontchar</tt></h3>
+ * <p>The Primitive {@code \iffontchar}</p>
  * <p>
- * The primitive <tt>\iffontchar</tt> can be used to check whether a certain
+ * The primitive {@code \iffontchar} can be used to check whether a certain
  * glyph exists in a font. For this purpose it takes a font and the code of a
  * character and performs the test. If the character exists the then branch is
  * expanded otherwise the else branch.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;iffontchar&rang;
- *      &rarr; <tt>\iffontchar</tt> {@link TokenSource#getFont(Context,CodeToken) &lang;font&rang;} {@link 
- *      TokenSource#scanCharacterCode(Context,Typesetter,CodeToken) &lang;code&rang; &lang;true text&rang;} <tt>\fi</tt>
- *      | <tt>\iffontchar</tt> {@link TokenSource#getFont(Context,CodeToken) &lang;font&rang;} {@link 
- *      TokenSource#scanCharacterCode(Context,Typesetter,CodeToken) &lang;code&rang; &lang;true text&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
+ *      &rarr; {@code \iffontchar} {@link TokenSource#getFont(Context,CodeToken) &lang;font&rang;} {@link
+ *      TokenSource#scanCharacterCode(Context,Typesetter,CodeToken) &lang;code&rang; &lang;true text&rang;} {@code \fi}
+ *      | {@code \iffontchar} {@link TokenSource#getFont(Context,CodeToken) &lang;font&rang;} {@link
+ *      TokenSource#scanCharacterCode(Context,Typesetter,CodeToken) &lang;code&rang; &lang;true text&rang;} &lang;true text&rang; {@code \else} &lang;false text&rang; {@code \fi} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \iffontchar abc \fi  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Iffontchar extends AbstractIf {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -81,10 +80,7 @@ public class Iffontchar extends AbstractIf {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.base.conditional.AbstractIf#conditional(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

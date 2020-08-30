@@ -30,36 +30,32 @@ import org.extex.typesetter.tc.font.Font;
  * This is an interface which describes the feature to be convertible into a
  * font.
  * 
- * <doc type="interface" name="font">
  * <p>
  * A font specification can either be a font stored in a font register or one of
  * the fonts used for math typesetting.
  * </p>
  * <p>
  * The formal description is the following:
- * 
+ * </p>
+ *
  * <pre class="syntax">
  *    &lang;font&rang;
  *        &rarr;  &lang;loaded font&rang;
- *         |   <tt>\textfont</tt> {@linkplain
+ *         |   {@code \textfont} {@linkplain
  *             org.extex.interpreter.parser.CountParser#parseNumber(Context,TokenSource,Typesetter)
  *             &lang;8-bit&nbsp;number&rang;}
- *         |   <tt>\scriptfont</tt> {@linkplain
+ *         |   {@code \scriptfont} {@linkplain
  *             org.extex.interpreter.parser.CountParser#parseNumber(Context,TokenSource,Typesetter)
  *             &lang;8-bit&nbsp;number&rang;}
- *         |   <tt>\scriptscriptfont</tt> {@linkplain
+ *         |   {@code \scriptscriptfont} {@linkplain
  *             org.extex.interpreter.parser.CountParser#parseNumber(Context,TokenSource,Typesetter)
  *             &lang;8-bit&nbsp;number&rang;}
- *         |   <tt>\font</tt>
+ *         |   {@code \font}
  *  </pre>
- * 
- * </p>
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4399 $
- */
+*/
 public interface FontConvertible {
 
     /**

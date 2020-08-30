@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\setbox</tt>.
+ * This is a test suite for the primitive {@code \setbox}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
@@ -48,8 +47,8 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\setbox"> Test case checking that <tt>\setbox</tt>
-     * needs a key. </testcase>
+     * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
+     * needs a key.
      * 
      * @throws Exception in case of an error
      */
@@ -61,8 +60,8 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\setbox"> Test case checking that <tt>\setbox</tt>
-     * needs a box. </testcase>
+     * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
+     * needs a box.
      * 
      * @throws Exception in case of an error
      */
@@ -74,8 +73,8 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\setbox"> Test case checking that <tt>\setbox</tt>
-     * respects groups. </testcase>
+     * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
+     * respects groups.
      * 
      * @throws Exception in case of an error
      */
@@ -88,8 +87,8 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\setbox"> Test case checking that <tt>\setbox</tt>
-     * respects \global. </testcase>
+     * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
+     * respects \global.
      * 
      * @throws Exception in case of an error
      */
@@ -102,8 +101,8 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\setbox"> Test case checking that <tt>\setbox</tt>
-     * respects \globaldefs. </testcase>
+     * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
+     * respects \globaldefs.
      * 
      * @throws Exception in case of an error
      */
@@ -116,8 +115,8 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\setbox"> Test case checking that <tt>\setbox</tt>
-     * respects \everyhbox. </testcase>
+     * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
+     * respects \everyhbox.
      * 
      * @throws Exception in case of an error
      */
@@ -130,8 +129,8 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\setbox"> Test case checking that <tt>\setbox</tt>
-     * respects \afterassignment. </testcase>
+     * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
+     * respects \afterassignment.
      * 
      * @throws Exception in case of an error
      */
@@ -145,8 +144,8 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\setbox"> Test case checking that <tt>\setbox</tt>
-     * takes some kind of a box. </testcase>
+     * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
+     * takes some kind of a box.
      * 
      * @throws Exception in case of an error
      */
@@ -159,8 +158,8 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\setbox"> Test case checking that <tt>\setbox</tt>
-     * takes some kind of a box. </testcase>
+     * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
+     * takes some kind of a box.
      * 
      * @throws Exception in case of an error
      */
@@ -173,8 +172,8 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\setbox"> Test case checking that <tt>\setbox</tt>
-     * takes some kind of a box. </testcase>
+     * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
+     * takes some kind of a box.
      * 
      * @throws Exception in case of an error
      */
@@ -187,8 +186,8 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\setbox"> Test case checking that <tt>\setbox</tt>
-     * assigns without the =. </testcase>
+     * <testcase primitive="\setbox"> Test case checking that {@code \setbox}
+     * assigns without the =.
      * 
      * @throws Exception in case of an error
      */

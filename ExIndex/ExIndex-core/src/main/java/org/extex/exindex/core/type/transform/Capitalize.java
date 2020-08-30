@@ -26,8 +26,7 @@ import java.io.PrintStream;
  * counterpart and the other characters to theri lowercase counterpart.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Capitalize implements Transform {
 
 
@@ -35,21 +34,13 @@ public class Capitalize implements Transform {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
-     */
-    public void print(PrintStream stream) {
+public void print(PrintStream stream) {
 
         stream.print("capitalize");
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.transform.Transform#transform(
-     *      java.lang.String)
+*      java.lang.String)
      */
     public String transform(String in) {
 

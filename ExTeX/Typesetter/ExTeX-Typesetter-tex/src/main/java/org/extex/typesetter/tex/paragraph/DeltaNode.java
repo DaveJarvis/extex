@@ -43,8 +43,7 @@ import org.extex.core.glue.WideGlue;
  * used.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4728 $
- */
+*/
 public class DeltaNode extends WideGlue {
 
     /**

@@ -87,15 +87,14 @@ import org.extex.resource.ResourceFinder;
  * @see org.extex.framework.AbstractFactory
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4737 $
- */
+*/
 public class LanguageManagerFactory extends AbstractFactory<LanguageManager> {
 
     /**
      * Get an instance of a {@link org.extex.language.LanguageManager
      * LanguageManager}. This method selects one of the entries in the
      * configuration. The selection is done with the help of a type String. If
-     * the type is <code>null</code> or the empty string then the default from
+     * the type is {@code null} or the empty string then the default from
      * the configuration is used.
      * 
      * @param type the type to use

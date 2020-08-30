@@ -28,38 +28,37 @@ import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.conditional.AbstractIf;
 
 /**
- * This class provides an implementation for the primitive <code>\ifhmode</code>.
+ * This class provides an implementation for the primitive {@code \ifhmode}.
  * 
- * <doc name="ifhmode">
- * <h3>The Primitive <tt>\ifhmode</tt></h3>
+ * <p>The Primitive {@code \ifhmode}</p>
  * <p>
  * The primitive does not take any further arguments. The conditional is true
  * iff the typesetter is in a horizontal mode. This is either the restricted
  * horizontal vertical mode or the horizontal mode.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;ifhmode&rang;
- *      &rarr; <tt>\ifhmode</tt> &lang;true text&rang; <tt>\fi</tt>
- *      | <tt>\ifhmode</tt> &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
+ *      &rarr; {@code \ifhmode} &lang;true text&rang; {@code \fi}
+ *      | {@code \ifhmode} &lang;true text&rang; {@code \else} &lang;false text&rang; {@code \fi} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \ifhmode abc \fi  </pre>
  * 
- * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4439 $
- */
+*/
 public class Ifhmode extends AbstractIf {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -75,10 +74,7 @@ public class Ifhmode extends AbstractIf {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.base.conditional.AbstractIf#conditional(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

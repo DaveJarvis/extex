@@ -29,12 +29,11 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to parse a sort rule.
  * 
- * <doc type="exindex-command" command="sort-rule">
- * 
- * <h3>The Command <tt>sort-rule</tt></h3>
+*
+ * <p>The Command {@code sort-rule}</p>
  * 
  * <p>
- * The command <tt>sort-rule</tt> can be used to add a sort rule. This command
+ * The command {@code sort-rule} can be used to add a sort rule. This command
  * honors the current index. This means that the sort rule is attached to the
  * current index.
  * </p>
@@ -54,15 +53,13 @@ import org.extex.exindex.lisp.type.value.LValue;
  * 
  * TODO documentation incomplete
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LSortRule extends LFunction {
 
     /**
-     * The field <tt>container</tt> contains the container.
+     * The field {@code container} contains the container.
      */
     private final IndexContainer container;
 
@@ -97,7 +94,7 @@ public class LSortRule extends LFunction {
      * @param phase the phase number to add this rule to; it defaults to 0 if
      * not given
      * 
-     * @return <tt>null</tt>
+     * @return {@code null}
      * 
      * @throws LSettingConstantException should not happen
      */

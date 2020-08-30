@@ -41,28 +41,27 @@ import org.extex.exdoc.ExDocXml;
  * Provide an Ant task for the Exdoc functionality.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5413 $
- */
+*/
 public class ExdocTask extends Task {
 
     /**
-     * The field <tt>format</tt> contains the format to use.
+     * The field {@code format} contains the format to use.
      */
     private String format = "xml";
 
     /**
-     * The field <tt>output</tt> contains the output attribute.
+     * The field {@code output} contains the output attribute.
      */
     private String output = "exdoc";
 
     /**
-     * The field <tt>roots</tt> contains the list of root directories to
+     * The field {@code roots} contains the list of root directories to
      * consider.
      */
     private List<String> roots = new ArrayList<String>();
 
     /**
-     * The field <tt>verbose</tt> contains the verbosity indicator.
+     * The field {@code verbose} contains the verbosity indicator.
      */
     private boolean verbose = false;
 
@@ -196,12 +195,7 @@ public class ExdocTask extends Task {
         try {
             exdoc = new ExDocTeX() {
 
-                /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.exdoc.util.Traverser#info(java.lang.String)
-                 */
-                @Override
+            @Override
                 protected void info(String msg) {
 
                     if (verbose) {
@@ -209,12 +203,7 @@ public class ExdocTask extends Task {
                     }
                 }
 
-                /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.exdoc.util.Traverser#warning(java.lang.String)
-                 */
-                @Override
+            @Override
                 protected void warning(String msg) {
 
                     log(msg);

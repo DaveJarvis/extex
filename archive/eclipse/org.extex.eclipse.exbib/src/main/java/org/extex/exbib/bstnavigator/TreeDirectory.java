@@ -34,22 +34,21 @@ import org.extex.exbib.editor.Activator;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 class TreeDirectory extends TreeNode {
 
     /**
-     * The constant <tt>LSR_FILE_NAME</tt> contains the name of the index file.
+     * The constant {@code LSR_FILE_NAME} contains the name of the index file.
      */
     private static final String LSR_FILE_NAME = "ls-R";
 
     /**
-     * The field <tt>children</tt> contains the ...
+     * The field {@code children} contains the ...
      */
     private List<TreeNode> children = null;
 
     /**
-     * The field <tt>directory</tt> contains the ...
+     * The field {@code directory} contains the ...
      */
     private final File directory;
 

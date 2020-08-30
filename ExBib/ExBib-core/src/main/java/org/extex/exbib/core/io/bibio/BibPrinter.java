@@ -28,8 +28,7 @@ import org.extex.exbib.core.db.DB;
  * databases. The format is determined by the implementation.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface BibPrinter {
 
     /**

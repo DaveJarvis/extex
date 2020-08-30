@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\scantokens</tt>.
+ * This is a test suite for the primitive {@code \scantokens}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class ScantokensTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -50,7 +49,7 @@ public class ScantokensTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\scantokens"> Test case checking that
-     * <tt>\scantokens</tt> needs an argument. </testcase>
+     * {@code \scantokens} needs an argument. 
      * 
      * @throws Exception in case of an error
      */
@@ -65,7 +64,7 @@ public class ScantokensTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\scantokens"> Test case checking that
-     * <tt>\scantokens</tt> consumes a letter. </testcase>
+     * {@code \scantokens} consumes a letter. 
      * 
      * @throws Exception in case of an error
      */
@@ -80,7 +79,7 @@ public class ScantokensTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\scantokens"> Test case checking that
-     * <tt>\scantokens</tt> respects \escapechar. </testcase>
+     * {@code \scantokens} respects \escapechar. 
      * 
      * @throws Exception in case of an error
      */
@@ -95,8 +94,8 @@ public class ScantokensTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\scantokens"> Test case checking that
-     * <tt>\scantokens</tt> inserts the tokens from <tt>\everyeof</tt>.
-     * </testcase>
+     * {@code \scantokens} inserts the tokens from {@code \everyeof}.
+     * 
      * 
      * Note: The white-space inserted by \scantokens is correct (checked with
      * e-TeX)

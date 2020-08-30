@@ -30,7 +30,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * <ul>
  * <li>Each component should define an exception hierarchy of its own.</li>
- * <li>No method should declare <tt>throws Exception</tt>. The exceptions
+ * <li>No method should declare {@code throws Exception}. The exceptions
  * declared should be as specific as possible to allow a fine grained error
  * handling.</li>
  * <li>The outside interface of a component should only throw exceptions of the
@@ -46,18 +46,17 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5417 $
- */
+*/
 public class GeneralException extends Exception {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>processed</tt> contains the indicator that the exception
+     * The field {@code processed} contains the indicator that the exception
      * has been processed by an error handler already.
      */
     private boolean processed = false;

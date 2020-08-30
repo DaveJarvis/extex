@@ -46,12 +46,11 @@ import org.extex.builder.latex.exception.MakeException;
  * 
  * @since 1.0
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LaTeXMojo extends AbstractMojo {
 
     /**
-     * The parameter <tt>bibtexCommand</tt> contains the command to be used for
+     * The parameter {@code bibtexCommand} contains the command to be used for
      * <span class="sc">Bib</span><span class="t">T</span><span
      * class="e">e</span>X. This command has to be found on the system path for
      * executables.
@@ -62,7 +61,7 @@ public class LaTeXMojo extends AbstractMojo {
     private String bibtexCommand = "bibtex";
 
     /**
-     * The parameter <tt>bibtexExtensions</tt> contains the list of extensions
+     * The parameter {@code bibtexExtensions} contains the list of extensions
      * for <span class="sc">Bib</span><span class="t">T</span><span
      * class="e">e</span>X files.
      * 
@@ -72,12 +71,12 @@ public class LaTeXMojo extends AbstractMojo {
     private String[] bibtexExtensions = null;
 
     /**
-     * The field <tt>debug</tt> contains the indicator for the debugging.
+     * The field {@code debug} contains the indicator for the debugging.
      */
     private boolean debug = false;
 
     /**
-     * The parameter <tt>file</tt> contains the name of the L<span
+     * The parameter {@code file} contains the name of the L<span
      * class="la">a</span><span class="t">T</span><span class="e">e</span>X
      * master file. This file is analyzed to determine the dependencies.
      * 
@@ -88,9 +87,9 @@ public class LaTeXMojo extends AbstractMojo {
     private File file = null;
 
     /**
-     * The parameter <tt>format</tt> contains the target format. Currently the
-     * values <tt>pdf</tt> and <tt>dvi</tt> are supported. The default is
-     * <tt>pdf</tt>.
+     * The parameter {@code format} contains the target format. Currently the
+     * values {@code pdf} and {@code dvi} are supported. The default is
+     * {@code pdf}.
      * 
      * @parameter default-value="pdf"
      * @since 1.0
@@ -98,7 +97,7 @@ public class LaTeXMojo extends AbstractMojo {
     private String format = "pdf";
 
     /**
-     * The parameter <tt>indexerCommand</tt> contains the command to be used for
+     * The parameter {@code indexerCommand} contains the command to be used for
      * index creation. This command has to be found on the system path for
      * executables.
      * 
@@ -108,7 +107,7 @@ public class LaTeXMojo extends AbstractMojo {
     private String indexerCommand = "makeindex";
 
     /**
-     * The parameter <tt>latexCommand</tt> contains the command to be used for
+     * The parameter {@code latexCommand} contains the command to be used for
      * L<span class="la">a</span><span class="t">T</span><span
      * class="e">e</span>X. This command has to be found on the system path for
      * executables.
@@ -119,7 +118,7 @@ public class LaTeXMojo extends AbstractMojo {
     private String latexCommand = "pdflatex";
 
     /**
-     * The parameter <tt>latexExtensions</tt> contains the list of extensions
+     * The parameter {@code latexExtensions} contains the list of extensions
      * for L<span class="la">a</span><span class="t">T</span><span
      * class="e">e</span>X files.
      * 
@@ -129,7 +128,7 @@ public class LaTeXMojo extends AbstractMojo {
     private String[] latexExtensions = null;
 
     /**
-     * The parameter <tt>limit</tt> contains the maximal number of iterations in
+     * The parameter {@code limit} contains the maximal number of iterations in
      * the attempt to come to a fixed point. The value should be greater than 2.
      * <p>
      * Note that you can construct files which converge not to a fixed point but
@@ -143,7 +142,7 @@ public class LaTeXMojo extends AbstractMojo {
     private int limit = 3;
 
     /**
-     * The parameter <tt>noaction</tt> contains the indicator that no actions
+     * The parameter {@code noaction} contains the indicator that no actions
      * should be performed.
      * 
      * @parameter default-value=false
@@ -152,8 +151,8 @@ public class LaTeXMojo extends AbstractMojo {
     private boolean noaction = false;
 
     /**
-     * The parameter <tt>output</tt> contains the output directory. The default
-     * is <tt>target/doc</tt>.
+     * The parameter {@code output} contains the output directory. The default
+     * is {@code target/doc}.
      * 
      * @parameter expression="${project.outputDirectory}"
      * @since 1.0
@@ -161,8 +160,8 @@ public class LaTeXMojo extends AbstractMojo {
     private File output = new File(DIR_TARGET + "/doc");
 
     /**
-     * The parameter <tt>texinputs</tt> contains the list of directories for the
-     * <tt>TEXINPUTS</tt> environment variable.
+     * The parameter {@code texinputs} contains the list of directories for the
+     * {@code TEXINPUTS} environment variable.
      * 
      * @parameter
      * @since 1.0
@@ -170,7 +169,7 @@ public class LaTeXMojo extends AbstractMojo {
     private String[] texinputs = null;
 
     /**
-     * The parameter <tt>workingDirectory</tt> contains the working directory.
+     * The parameter {@code workingDirectory} contains the working directory.
      * This is usually the base directory of the project.
      * 
      * @parameter expression="${basedir}"
@@ -197,12 +196,7 @@ public class LaTeXMojo extends AbstractMojo {
         this.noaction = noaction;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.apache.maven.plugin.Mojo#execute()
-     */
-    public void execute() throws MojoExecutionException, MojoFailureException {
+public void execute() throws MojoExecutionException, MojoFailureException {
 
         Logger logger = Logger.getLogger(LaTeXMojo.class.getName(), null);
         logger.setUseParentHandlers(false);

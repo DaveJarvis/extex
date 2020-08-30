@@ -24,21 +24,20 @@ import java.io.Reader;
 
 /**
  * Read a file and map plainTeX as well as double-quote sequences
- * defined in <tt>german.sty</tt> to characters.
+ * defined in {@code german.sty} to characters.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class PlainTeXGermanReader extends PlainTeXReader {
 
     /**
-     * The field <tt>MAP_FROM</tt> contains the source part of the mapping of
+     * The field {@code MAP_FROM} contains the source part of the mapping of
      * characters after ".
      */
     private static final String MAP_FROM = "aeiouAEIOUsz";
 
     /**
-     * The field <tt>MAP_TO</tt> contains the target part of the mapping of
+     * The field {@code MAP_TO} contains the target part of the mapping of
      * characters after ".
      */
     private static final String MAP_TO =
@@ -55,12 +54,7 @@ public class PlainTeXGermanReader extends PlainTeXReader {
         super(resource, reader);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.parser.reader.PlainTeXReader#fillBuffer()
-     */
-    @Override
+@Override
     protected boolean fillBuffer() throws IOException {
 
         resetBuffer();

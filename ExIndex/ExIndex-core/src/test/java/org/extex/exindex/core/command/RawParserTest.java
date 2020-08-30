@@ -46,8 +46,7 @@ import org.junit.Test;
  * This is a test suite for (define-attributes).
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 6598 $
- */
+*/
 public class RawParserTest {
 
     /**
@@ -224,8 +223,8 @@ public class RawParserTest {
     }
 
     /**
-     * <testcase> Test that an undefined attribute leads to a message.
-     * </testcase>
+     *  Test that an undefined attribute leads to a message.
+     *
      * 
      * @throws Exception in case of an error
      */

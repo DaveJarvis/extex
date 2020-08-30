@@ -46,8 +46,7 @@ import java.util.List;
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
- * @version $Revision$
- */
+*/
 public class Lsr {
 
     /**
@@ -167,7 +166,7 @@ public class Lsr {
     /**
      * Print the ls-R-information to the printStream.
      * 
-     * @param printStream The result is written to the <code>PrintStream</code>.
+     * @param printStream The result is written to the {@code PrintStream}.
      * @throws IOException if an io-error occurs.
      */
     public void printLsr(PrintStream printStream) throws IOException {
@@ -189,7 +188,7 @@ public class Lsr {
     /**
      * Print the ls-R-information to the printStream.
      * 
-     * @param printStream The result is written to the <code>PrintStream</code>.
+     * @param printStream The result is written to the {@code PrintStream}.
      * @param directory The base directory for output.
      * @throws IOException if an io-error occurs.
      */

@@ -26,8 +26,7 @@ import org.extex.exindex.core.type.page.PageReference;
  * strings.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface LocationClass {
 
     /**
@@ -37,7 +36,7 @@ public interface LocationClass {
      * @param encap the encapsulator
      * @param location the string to analyze
      * 
-     * @return the page reference for the string or <code>null</code> if the
+     * @return the page reference for the string or {@code null} if the
      *         matching failed
      */
     PageReference match(String encap, String location);
@@ -50,7 +49,7 @@ public interface LocationClass {
      * 
      * @param s the string to match
      * 
-     * @return <code>true</code> iff the argument string matches this class
+     * @return {@code true} iff the argument string matches this class
      */
     boolean match(StringBuilder s);
 

@@ -17,7 +17,7 @@
  */
 /**
  * 
- *   This package contains type definitions for the L system.
+ *   Contains type definitions for the L system.
  * 
  *
  */

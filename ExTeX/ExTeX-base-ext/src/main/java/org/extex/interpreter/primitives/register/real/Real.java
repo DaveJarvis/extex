@@ -40,12 +40,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * Real (with a double value).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class Real implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt>.
+     * The field {@code serialVersionUID}.
      */
     private static final long serialVersionUID = 1L;
 
@@ -67,7 +66,7 @@ public class Real implements Serializable {
     /**
      * Creates a new object.
      * 
-     * Scan the <code>TokenSource</code> for a <code>Real</code>.
+     * Scan the {@code TokenSource} for a {@code Real}.
      * 
      * @param context the interpreter context
      * @param source the token source
@@ -138,7 +137,7 @@ public class Real implements Serializable {
     /**
      * Creates a new object.
      * <p>
-     * If the string equals <code>null</code> or empty, the value is set to zero
+     * If the string equals {@code null} or empty, the value is set to zero
      * 
      * @param s the value as String
      * 
@@ -247,13 +246,13 @@ public class Real implements Serializable {
     }
 
     /**
-     * Scan the input stream for tokens making up a <code>Real</code>.
+     * Scan the input stream for tokens making up a {@code Real}.
      * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * 
-     * @return the <code>Real</code>-value
+     * @return the {@code Real}-value
      * 
      * @throws HelpingException in case of an error
      * @throws ConfigurationException in case of an configuration error
@@ -327,9 +326,9 @@ public class Real implements Serializable {
     }
 
     /**
-     * Return the value as <code>String</code>
+     * Return the value as {@code String}
      * 
-     * @return the value as <code>String</code>
+     * @return the value as {@code String}
      */
     @Override
     public String toString() {

@@ -30,8 +30,7 @@ import org.extex.builder.latex.artifact.Artifact;
  * class="e">e</span>X in one of its variants on the artifact.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BibTeXAction extends Action {
 
     /**
@@ -46,10 +45,7 @@ public class BibTeXAction extends Action {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.builder.latex.action.Action#makeCommandLine(org.extex.builder.latex.Parameters,
-     *      Artifact, Artifact, Logger)
+*      Artifact, Artifact, Logger)
      */
     @Override
     protected List<String> makeCommandLine(Parameters parameters,

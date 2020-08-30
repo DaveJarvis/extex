@@ -23,11 +23,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\ifodd</tt>.
+ * This is a test suite for the primitive {@code \ifodd}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class IfoddTest extends ConditionalTester {
 
     /**
@@ -47,8 +46,8 @@ public class IfoddTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifodd"> Test case checking that <tt>\ifodd</tt>
-     * with a constant 1 selects the then branch. </testcase>
+     * <testcase primitive="\ifodd"> Test case checking that {@code \ifodd}
+     * with a constant 1 selects the then branch.
      * 
      * @throws Exception in case of an error
      */
@@ -62,9 +61,9 @@ public class IfoddTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifodd"> Test case checking that <tt>\ifodd</tt>
+     * <testcase primitive="\ifodd"> Test case checking that {@code \ifodd}
      * with a constant 1 selects nothing if the else branch is missing.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -78,8 +77,8 @@ public class IfoddTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifodd"> Test case checking that <tt>\ifodd</tt>
-     * with a constant -1 selects the then branch. </testcase>
+     * <testcase primitive="\ifodd"> Test case checking that {@code \ifodd}
+     * with a constant -1 selects the then branch.
      * 
      * @throws Exception in case of an error
      */
@@ -93,9 +92,9 @@ public class IfoddTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifodd"> Test case checking that <tt>\ifodd</tt>
+     * <testcase primitive="\ifodd"> Test case checking that {@code \ifodd}
      * with a constant 1 selects nothing if the else branch is missing.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -109,8 +108,8 @@ public class IfoddTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifodd"> Test case checking that <tt>\ifodd</tt>
-     * with a constant 0 selects the else branch. </testcase>
+     * <testcase primitive="\ifodd"> Test case checking that {@code \ifodd}
+     * with a constant 0 selects the else branch.
      * 
      * @throws Exception in case of an error
      */
@@ -124,9 +123,9 @@ public class IfoddTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifodd"> Test case checking that <tt>\ifodd</tt>
+     * <testcase primitive="\ifodd"> Test case checking that {@code \ifodd}
      * with a constant 0 selects nothing if the else branch is missing.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */

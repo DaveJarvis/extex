@@ -34,8 +34,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * {@link org.extex.scanner.type.tokens.Tokens Tokens}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface Theable {
 
     /**

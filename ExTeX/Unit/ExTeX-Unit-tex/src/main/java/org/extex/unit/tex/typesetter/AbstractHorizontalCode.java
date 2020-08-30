@@ -34,12 +34,11 @@ import org.extex.typesetter.listMaker.HorizontalListMaker;
  * This an abstract base class for primitives in horizontal mode.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public abstract class AbstractHorizontalCode extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 

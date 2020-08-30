@@ -26,12 +26,11 @@ import org.extex.framework.i18n.LocalizerFactory;
  * Exception, if right brace is missing.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class InterpreterMissingRightBraceException extends HelpingException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 1L;

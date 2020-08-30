@@ -29,15 +29,14 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This is an interface for those primitives which are protected during
- * expansion of arguments of primitives like <tt>\edef</tt>, <tt>\xdef</tt>,
- * <tt>\message</tt>, and others..
+ * expansion of arguments of primitives like {@code \edef}, {@code \xdef},
+ * {@code \message}, and others..
  * 
  * @see TokenSource#scanUnprotectedTokens(Context, boolean, boolean,
  *      org.extex.scanner.type.token.CodeToken)
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface CodeExpander {
 
     /**

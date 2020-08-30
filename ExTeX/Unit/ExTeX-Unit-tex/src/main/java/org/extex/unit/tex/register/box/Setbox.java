@@ -31,11 +31,11 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\setbox</code>.
+ * This class provides an implementation for the primitive {@code \setbox}.
  * 
- * <doc name="setbox"> <h3>The Primitive <tt>\setbox</tt></h3>
+ * <p>The Primitive {@code \setbox}</p>
  * <p>
- * The primitive <tt>\setbox</tt> takes a key for a box register and assigns the
+ * The primitive {@code \setbox} takes a key for a box register and assigns the
  * following box to this register.
  * </p>
  * <p>
@@ -43,45 +43,45 @@ import org.extex.typesetter.exception.TypesetterException;
  * </p>
  * <p>
  * The primitive is an assignment. This means that it respects
- * <tt>\globaldefs</tt>. The treatment of <tt>\afterassignment</tt> is special
+ * {@code \globaldefs}. The treatment of {@code \afterassignment} is special
  * The token stored for after assignment are inserted just after the box as been
  * opened.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;setbox&rang;
- *      &rarr; &lang;optional prefix&rang; <tt>\setbox</tt> {@linkplain
+ *      &rarr; &lang;optional prefix&rang; {@code \setbox} {@linkplain
  *        org.extex.unit.tex.register.box.Setbox#getKey(Context,TokenSource,Typesetter,CodeToken)
  *        &lang;box register name&rang;} &lang;box&rang;
  *
  *    &lang;optional prefix&rang;
  *      &rarr;
- *       |  <tt>\global</tt> &lang;optional prefix&rang;  </pre>
+ *       |  {@code \global} &lang;optional prefix&rang;  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \setbox0\hbox{abc}  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Setbox extends AbstractAssignment {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
      * Return the key (the number) for the box register.
      * 
-     * <doc type="syntax" name="box register name"> <h3>A Box Register Name</h3>
+     * <p>A Box Register Name</p>
      * <p>
      * A box register name determines under which key a box register can be
      * addressed. In TeX this used to be a positive number only. This has been
@@ -89,8 +89,9 @@ public class Setbox extends AbstractAssignment {
      * </p>
      * <p>
      * The alternative is controlled by the count register
-     * <tt>\register.max</tt>. The following interpretation of the value of this
+     * {@code \register.max}. The following interpretation of the value of this
      * count is used:
+     * </p>
      * <ul>
      * <li>If the value of this count register is negative then a arbitrary
      * non-negative number is allowed as register name as well as any list of
@@ -99,30 +100,27 @@ public class Setbox extends AbstractAssignment {
      * non-negative number is allowed as register name which does not exceed the
      * value of the count register.</li>
      * </ul>
-     * </p>
      * <p>
-     * The value of the count register <tt>\register.max</tt> is set differently
-     * for various configurations of ??TeX:
+     * The value of the count register {@code \register.max} is set differently
+     * for various configurations of εχTeX:
+     * </p>
      * <ul>
      * <li>TeX uses the value 255.</li>
-     * <li><logo>&epsilon;-T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> uses the value 32767.</li>
-     * <li><logo>Omega</logo> uses the value 65536.</li>
-     * <li>??TeX uses the value -1.</li>
+     * <li>ε-TeX uses the value 32767.</li>
+     * <li> Omega uses the value 65536.</li>
+     * <li>εχTeX uses the value -1.</li>
      * </ul>
-     * </p>
      * <p>
-     * Note that the register name <tt>\register.max</tt> contains a period.
+     * Note that the register name {@code \register.max} contains a period.
      * Thus it can normally not be entered easily since the catcode of the
      * period is OTHER but needs to be LETTER. Thus you have to use a
      * temporarily reassigned category code (see
-     * {@link org.extex.unit.tex.register.CatcodePrimitive <tt>\catcode</tt>})
-     * or use {@link org.extex.unit.tex.macro.Csname <tt>\csname</tt>}.
+     * {@link org.extex.unit.tex.register.CatcodePrimitive {@code \catcode}})
+     * or use {@link org.extex.unit.tex.macro.Csname {@code \csname}}.
      * </p>
      * 
-     * <h4>Syntax</h4>
-     * 
+     * <p>Syntax</p>
+     *
      * <pre class="syntax">
      *   &lang;box register name&rang;
      *       &rarr; {@linkplain
@@ -131,15 +129,12 @@ public class Setbox extends AbstractAssignment {
      *        | {@linkplain org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
      * 
-     * <h4>Examples</h4>
-     * 
+     * <p>Examples</p>
+     *
      * <pre class="TeXSample">
      *  123
      *  {abc}
      * </pre>
-     * 
-     * </doc>
-     * 
      * 
      * @param context the interpreter context to use
      * @param source the source for new tokens
@@ -177,10 +172,7 @@ public class Setbox extends AbstractAssignment {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

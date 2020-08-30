@@ -26,13 +26,12 @@ import org.junit.Test;
  * This is a test suite.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public abstract class AbstractBoxDimenTester
     extends NoFlagsButGlobalPrimitiveTester {
 
     /**
-     * The field <tt>primitive</tt> contains the name of the primitive.
+     * The field {@code primitive} contains the name of the primitive.
      */
     private String primitive;
 
@@ -48,9 +47,9 @@ public abstract class AbstractBoxDimenTester
     }
 
     /**
-     * <testcase>
+     *
      *  Test case checking that the primitive needs a key.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -62,9 +61,9 @@ public abstract class AbstractBoxDimenTester
     }
 
     /**
-     * <testcase>
+     *
      *  Test case checking that the primitive needs a key.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -76,9 +75,9 @@ public abstract class AbstractBoxDimenTester
     }
 
     /**
-     * <testcase>
+     *
      *  Test case checking that the primitive respects \afterassignment.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -92,9 +91,9 @@ public abstract class AbstractBoxDimenTester
     }
 
     /**
-     * <testcase>
+     *
      *  Test case checking that the primitive respects \global.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -107,9 +106,9 @@ public abstract class AbstractBoxDimenTester
     }
 
     /**
-     * <testcase>
+     *
      *  Test case checking that the primitive is applicable on a hbox.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -123,9 +122,9 @@ public abstract class AbstractBoxDimenTester
     }
 
     /**
-     * <testcase>
+     *
      *  Test case checking that the primitive is count convertible on a void box.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */
@@ -138,9 +137,9 @@ public abstract class AbstractBoxDimenTester
     }
 
     /**
-     * <testcase>
+     *
      *  Test case checking that the primitive is dimen convertible on a void box.
-     * </testcase>
+     *
      *
      * @throws Exception in case of an error
      */

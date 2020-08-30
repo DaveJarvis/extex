@@ -26,8 +26,7 @@ import java.io.Reader;
  * constructor.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BadFilter1 extends Reader {
 
     /**
@@ -40,23 +39,13 @@ public class BadFilter1 extends Reader {
         throw new IllegalArgumentException();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.Reader#close()
-     */
-    @Override
+@Override
     public void close() throws IOException {
 
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.Reader#read(char[], int, int)
-     */
-    @Override
+@Override
     public int read(char[] cbuf, int off, int len) throws IOException {
 
         return 0;

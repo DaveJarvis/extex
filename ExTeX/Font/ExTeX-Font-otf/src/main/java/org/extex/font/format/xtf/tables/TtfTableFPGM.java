@@ -34,23 +34,22 @@ import org.extex.util.xml.XMLWriterConvertible;
  * when the font is first used. It is used only for FDEFs and IDEFs. Thus the
  * CVT Program need not contain function definitions. However, the CVT Program
  * may redefine existing FDEFs or IDEFs.
- * <p>
+ * </p>
  * 
- * <table BORDER="1"> <thead>
+ * <table> <caption>TBD</caption> <thead>
  * <tr>
  * <td><b>Type</b></td>
  * <td><b>Description</b></td>
  * </tr>
  * </thead>
  * <tr>
- * <td>BYTE[ <I>n</I> ]</td>
+ * <td>BYTE[ <i>n</i> ]</td>
  * <td>Instructions</td>
  * </tr>
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class TtfTableFPGM extends AbstractXtfTable
         implements
             XtfTable,
@@ -59,7 +58,7 @@ public class TtfTableFPGM extends AbstractXtfTable
     /**
      * instructions
      */
-    private byte[] instructions;
+    private final byte[] instructions;
 
     /**
      * Create a new object.
@@ -91,12 +90,7 @@ public class TtfTableFPGM extends AbstractXtfTable
         return instructions;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
+public String getShortcut() {
 
         return "fpgm";
     }
@@ -112,10 +106,7 @@ public class TtfTableFPGM extends AbstractXtfTable
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+*      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

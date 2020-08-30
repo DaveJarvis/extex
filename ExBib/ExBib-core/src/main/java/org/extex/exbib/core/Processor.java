@@ -40,13 +40,12 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * >e</span>X programming language.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface Processor extends Bibliography, Configurable {
 
     /**
-     * Store an additional <tt>STRING</tt> in the database. To delete a
-     * <tt>STRING</tt> the value <code>null</code> can be used.
+     * Store an additional {@code STRING} in the database. To delete a
+     * {@code STRING} the value {@code null} can be used.
      * 
      * @param name the name of the macro to add
      * @param value the value as Token
@@ -86,11 +85,11 @@ public interface Processor extends Bibliography, Configurable {
 
     /**
      * Getter for a certain macro. If the requested macro is not defined
-     * <code>null</code> is returned.
+     * {@code null} is returned.
      * 
      * @param name the name of the macro to search for
      * 
-     * @return the expanded value of the macro or <code>null</code> if none has
+     * @return the expanded value of the macro or {@code null} if none has
      *         been found.
      */
     String getMacro(String name);
@@ -121,7 +120,7 @@ public interface Processor extends Bibliography, Configurable {
      * 
      * @param type the entry type
      * 
-     * @return <code>true</code> iff the entry type is known
+     * @return {@code true} iff the entry type is known
      */
     boolean isKnown(String type);
 

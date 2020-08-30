@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains primitives for extending ??TeX with foreign languages.
+ * Contains primitives for extending εχTeX with foreign languages.
  */
 
 package org.extex.unit.dynamic;

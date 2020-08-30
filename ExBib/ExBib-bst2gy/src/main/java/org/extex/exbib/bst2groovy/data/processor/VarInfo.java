@@ -22,23 +22,22 @@ package org.extex.exbib.bst2groovy.data.processor;
  * This class contains informations for variables for optimizations.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class VarInfo {
 
     /**
-     * The field <tt>readBeforeWrite</tt> contains the indicator that the
+     * The field {@code readBeforeWrite} contains the indicator that the
      * variable is read before it has a proper value.
      */
     private boolean readBeforeWrite = false;
 
     /**
-     * The field <tt>noWrite</tt> contains the number of write operations.
+     * The field {@code noWrite} contains the number of write operations.
      */
     private int noWrite = 0;
 
     /**
-     * The field <tt>name</tt> contains the name of the variable.
+     * The field {@code name} contains the name of the variable.
      */
     private String name;
 
@@ -105,12 +104,7 @@ public class VarInfo {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return name + " " + noWrite + " " + readBeforeWrite;
@@ -119,7 +113,7 @@ public class VarInfo {
     /**
      * Recognize that the variable has been used in writing.
      * 
-     * @return <code>true</code> iff this is the first writing in this context
+     * @return {@code true} iff this is the first writing in this context
      */
     public boolean writing() {
 

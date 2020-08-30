@@ -30,22 +30,21 @@ import org.eclipse.jface.text.rules.Token;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class BstPartitionScanner extends RuleBasedPartitionScanner {
 
     /**
-     * The field <tt>BST_COMMENT</tt> contains the ...
+     * The field {@code BST_COMMENT} contains the ...
      */
     public final static String BST_COMMENT = "%_comment";
 
     /**
-     * The field <tt>BST_CODE</tt> contains the ...
+     * The field {@code BST_CODE} contains the ...
      */
     public final static String BST_CODE = "%_code";
 
     /**
-     * The field <tt>CODE_TOKEN</tt> contains the ...
+     * The field {@code CODE_TOKEN} contains the ...
      */
     private static final Token CODE_TOKEN = new Token(BST_CODE);
 

@@ -71,26 +71,25 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * </ul>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BibReader099Impl extends AbstractFileReader implements BibReader {
 
     /**
-     * The constant <tt>LHS_PATTERN</tt> contains the pattern for a left hand
+     * The constant {@code LHS_PATTERN} contains the pattern for a left hand
      * side of an assignment.
      */
     private static final Pattern LHS_PATTERN = Pattern
         .compile("[^= \t\n\r\b\f]*");
 
     /**
-     * The constant <tt>RECORD_PATTERN</tt> contains the pattern for the name of
+     * The constant {@code RECORD_PATTERN} contains the pattern for the name of
      * a record.
      */
     private static final Pattern RECORD_PATTERN = Pattern
         .compile("[a-zA-Z_.:0-9-]*");
 
     /**
-     * The constant <tt>KEY_PATTERN</tt> contains the pattern for the key of an
+     * The constant {@code KEY_PATTERN} contains the pattern for the key of an
      * entry.
      */
     private static final Pattern KEY_PATTERN = Pattern
@@ -112,7 +111,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
      * 
      * @param c the character to categorize
      * 
-     * @return <code>true</code> iff the character is allowed
+     * @return {@code true} iff the character is allowed
      */
     private boolean allowed(char c) {
 
@@ -179,7 +178,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
      *       . . .
      *     }
      *   }
-     * </pre
+     * </pre>
      * 
      * @param tag the name of the item encountered. This String has been
      *        converted to lower case already.
@@ -187,11 +186,11 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
      * @param brace the String expected as terminating brace, i.e. ')' or '}'
      *        depending on the opening brace
      * @param locator the locator
-     * @return <code>true</code> iff the item is special and has been handled
+     * @return {@code true} iff the item is special and has been handled
      *         successfully.
      * 
-     * @throws ExBibException in case of an error. especially<br />
-     *         ExBibEofException in case of an unexpected end of file<br />
+     * @throws ExBibException in case of an error. especially<br>
+     *         ExBibEofException in case of an unexpected end of file<br>
      *         ExBibSyntaxException in case of an syntax error
      */
     protected boolean handle(String tag, DB db, String brace, Locator locator)
@@ -233,7 +232,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
      * Parse the given file and store the result into the database.
      * 
      * @param db the database to store the records in
-     * @throws ExBibException in case of an error, especially<br />
+     * @throws ExBibException in case of an error, especially<br>
      *         ExBibSyntaxException in case that something is wrong in the
      *         syntax
      */
@@ -306,10 +305,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.bibio.BibReader#open(java.lang.String,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public void open(String file, String encoding)
@@ -382,7 +378,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
     /**
      * Parses a key of an entry.
      * 
-     * @return the key found or <code>null</code>
+     * @return the key found or {@code null}
      */
     protected String parseKey() {
 
@@ -392,7 +388,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
     /**
      * Reads ahead until a non-space character is found.
      * 
-     * @param lookahead if <code>true</code> then the character found is left in
+     * @param lookahead if {@code true} then the character found is left in
      *        the input for the next read
      * 
      * @return the next character or '\0' if none can be acquired
@@ -560,7 +556,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
      * 
      * @param comment the comment to add the ignored characters to
      * 
-     * @return the tag found or <code>null</code>
+     * @return the tag found or {@code null}
      */
     private String skipToAtTag(StringBuilder comment) {
 

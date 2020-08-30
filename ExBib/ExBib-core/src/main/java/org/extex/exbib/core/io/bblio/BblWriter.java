@@ -57,52 +57,51 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BblWriter implements Writer, Configurable {
 
     /**
-     * The field <tt>DEFAULT_LINE_LENGTH</tt> contains the default line length.
+     * The field {@code DEFAULT_LINE_LENGTH} contains the default line length.
      */
     public static final int DEFAULT_LINE_LENGTH = 79;
 
     /**
-     * The field <tt>indent</tt> contains the string which is inserted at the
+     * The field {@code indent} contains the string which is inserted at the
      * beginning of a continuation line.
      */
     private String indent = "  ";
 
     /**
-     * The field <tt>buffer</tt> contains the temporary memory before shipping
+     * The field {@code buffer} contains the temporary memory before shipping
      * the line to the writer.
      */
     private final StringBuilder buffer = new StringBuilder();
 
     /**
-     * The field <tt>writer</tt> contains the output writer.
+     * The field {@code writer} contains the output writer.
      */
     private Writer writer;
 
     /**
-     * The field <tt>lineLength</tt> contains the desired line length.
+     * The field {@code lineLength} contains the desired line length.
      */
     private int lineLength = DEFAULT_LINE_LENGTH;
 
     /**
-     * The field <tt>space</tt> contains the position of the last space
+     * The field {@code space} contains the position of the last space
      * character.
      */
     private int space = -1;
 
     /**
-     * The field <tt>collapseSpaces</tt> contains the flag to collapse spaces.
+     * The field {@code collapseSpaces} contains the flag to collapse spaces.
      */
     private boolean collapseSpaces;
 
     /**
      * Creates a new object.
      * 
-     * @param writer the target writer; it can not be <code>null</code>
+     * @param writer the target writer; it can not be {@code null}
      */
     public BblWriter(Writer writer) {
 
@@ -240,10 +239,7 @@ public class BblWriter implements Writer, Configurable {
      * lines are broken at whitespace. Complete lines are shipped to the output
      * writer.
      * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#print(java.lang.String[])
-     */
+*/
     public void print(String... args) throws IOException {
 
         for (String s : args) {
@@ -286,10 +282,7 @@ public class BblWriter implements Writer, Configurable {
      * lines are broken at whitespace. Complete lines are shipped to the output
      * writer. Finally a newline is written.
      * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println(java.lang.String[])
-     */
+*/
     public void println(String... args) throws IOException {
 
         print(args);
@@ -326,7 +319,7 @@ public class BblWriter implements Writer, Configurable {
     /**
      * Setter for indent.
      * 
-     * @param indent the indent to set; a <code>null</code> value is silently
+     * @param indent the indent to set; a {@code null} value is silently
      *        ignored
      */
     public void setIndent(String indent) {
@@ -349,23 +342,13 @@ public class BblWriter implements Writer, Configurable {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return lineLength + " >" + buffer.toString() + "<";
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#write(int)
-     */
-    public void write(int c) throws IOException {
+public void write(int c) throws IOException {
 
         buffer.append((char) c);
         linebreaking();

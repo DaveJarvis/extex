@@ -23,11 +23,10 @@ import org.extex.test.count.AbstractCountRegisterTester;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\eTeXversion</tt>.
+ * This is a test suite for the primitive {@code \eTeXversion}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class EtexversionTest extends AbstractCountRegisterTester {
 
     /**

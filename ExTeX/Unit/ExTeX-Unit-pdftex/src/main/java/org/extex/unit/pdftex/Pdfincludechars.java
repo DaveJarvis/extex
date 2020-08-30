@@ -31,42 +31,41 @@ import org.extex.typesetter.tc.font.Font;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\pdfincludechars</code>.
+ * {@code \pdfincludechars}.
  * 
- * <doc name="pdfincludechars">
- * <h3>The PDF Primitive <tt>\pdfincludechars</tt></h3>
+ * <p>The PDF Primitive {@code \pdfincludechars}</p>
  * <p>
  * This primitive tells the PDF back-end to include certain characters from a
  * font into the generated output. This should overwrite any partial font
  * downloading in effect.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;pdfincludechars&rang;
- *       &rarr; <tt>\pdfincludechars</tt> {@linkplain
+ *       &rarr; {@code \pdfincludechars} {@linkplain
  *          org.extex.interpreter.TokenSource#getFont(org.extex.interpreter.context.Context,CodeToken)
  *          &lang;font&rang;} {@linkplain
  *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,CodeToken)
  *          &lang;general text&rang;} </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \font\f cmr12
  *    \pdfincludechars \f {abc} </pre>
  * 
- * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4791 $
- */
+*/
 public class Pdfincludechars extends AbstractPdftexCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -82,10 +81,7 @@ public class Pdfincludechars extends AbstractPdftexCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

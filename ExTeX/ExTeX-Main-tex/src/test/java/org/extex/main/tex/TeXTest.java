@@ -37,58 +37,54 @@ import static org.junit.Assert.*;
  * This class contains test cases for the command line interface of εχTeX.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4708 $
- */
+*/
 public class TeXTest {
 
     /**
-     * The constant <tt>BANNER</tt> contains the default banner.
+     * The constant {@code BANNER} contains the default banner.
      */
     public static final String BANNER = "This is ExTeX, Version "
             + ExTeX.getVersion() + " (" + System.getProperty("java.version")
             + ")\n";
 
     /**
-     * The field <tt>BANNER_DE</tt> contains the default banner.
+     * The field {@code BANNER_DE} contains the default banner.
      */
     public static final String BANNER_DE = "Dies ist ExTeX, Version "
             + ExTeX.getVersion() + " (" + System.getProperty("java.version")
             + ")\n";
 
     /**
-     * The constant <tt>BANNER_TEX</tt> contains the banner for <logo>T<span
-     * style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> compatibility mode.
+     * The constant {@code BANNER_TEX} contains the banner for TeX compatibility mode.
      */
     private static final String BANNER_TEX = "This is ExTeX, Version "
             + ExTeX.getVersion() + " (TeX compatibility mode)\n";
 
     /**
-     * The constant <tt>EMPTY_TEX</tt> contains the name of an empty
+     * The constant {@code EMPTY_TEX} contains the name of an empty
      * TeX file.
      */
     private static final String EMPTY_TEX =
             "../Unit/ExTeX-Unit-tex/src/test/resources/tex/empty.tex";
 
     /**
-     * The constant <tt>EXIT_ERROR</tt> contains the exit code for an error.
+     * The constant {@code EXIT_ERROR} contains the exit code for an error.
      */
     public static final int EXIT_ERROR = -1;
 
     /**
-     * The constant <tt>EXIT_OK</tt> contains the exit code for success.
+     * The constant {@code EXIT_OK} contains the exit code for success.
      */
     public static final int EXIT_OK = 0;
 
     /**
-     * The constant <tt>PARSE_PATH</tt> contains the full path of the data
+     * The constant {@code PARSE_PATH} contains the full path of the data
      * directory.
      */
     private static final String PARSE_PATH = "../ExTeX-Main-tex/src/test/data/";
 
     /**
-     * The constant <tt>TRANSCRIPT_TEXPUT</tt> contains the full name of the
+     * The constant {@code TRANSCRIPT_TEXPUT} contains the full name of the
      * transcript file.
      */
     private static final String TRANSCRIPT_TEXPUT = transcript("texput");
@@ -121,7 +117,7 @@ public class TeXTest {
      * 
      * @param args the array of command line arguments
      * @param expect the expected result on the error stream or
-     *        <code>null</code>
+     *        {@code null}
      * 
      * @return the result on the error stream
      * 
@@ -141,7 +137,7 @@ public class TeXTest {
      * 
      * @param args the array of command line arguments
      * @param expect the expected result on the error stream or
-     *        <code>null</code>
+     *        {@code null}
      * @param logfile the name of the log file. It will be deleted at the end
      * 
      * @return the result on the error stream
@@ -168,7 +164,7 @@ public class TeXTest {
      * @param args the array of command line arguments
      * @param properties the properties to use
      * @param expect the expected result on the error stream or
-     *        <code>null</code>
+     *        {@code null}
      * @param exit the expected exit code
      * 
      * @return the result on the error stream
@@ -219,7 +215,7 @@ public class TeXTest {
      * 
      * @param args the array of command line arguments
      * @param expect the expected result on the error stream or
-     *        <code>null</code>
+     *        {@code null}
      * @param exit the expected exit code
      * 
      * @return the result on the error stream
@@ -254,8 +250,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that a code argument is used.
-     * </testcase>
+     *  This test case validates that a code argument is used.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -269,8 +265,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that no input produces no output
-     * </testcase>
+     *  This test case validates that no input produces no output
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -285,9 +281,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that an unrecognized configuration is
-     * encountered. </testcase>
-     * 
+     * This test case validates that an unrecognized configuration is encountered
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -300,9 +295,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that an unrecognized configuration is
-     * encountered. </testcase>
-     * 
+     * This test case validates that an unrecognized configuration is encountered
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -315,9 +309,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that -copying produces the copyright
-     * notice. </testcase>
-     * 
+     * This test case validates that -copying produces the copyright notice
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -330,9 +323,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that -copyrigh produces the short
-     * copyright note. </testcase>
-     * 
+     * This test case validates that -copyrigh produces the short copyright note
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -350,8 +342,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that an empty argument is ignored.
-     * </testcase>
+     *  This test case validates that an empty argument is ignored.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -362,9 +354,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that an unrecognized encoding is
-     * encountered. </testcase>
-     * 
+     * This test case validates that an unrecognized encoding is encountered
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -380,9 +371,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that an unrecognized encoding is
-     * encountered. </testcase>
-     * 
+     * This test case validates that an unrecognized encoding is encountered
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -398,9 +388,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that a properties file on the class
-     * path is found. </testcase>
-     * 
+     * This test case validates that a properties file on the class path is found
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -411,9 +400,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that a dot file in the current
-     * directory is found. </testcase>
-     * 
+     * This test case validates that a dot file in the current directory is found
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -434,9 +422,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the property extex.banner can be
-     * used to set the name shown in the version banner. </testcase>
-     * 
+     * This test case validates that the property extex.banner can be used to set the name shown in the version banner
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -448,9 +435,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that a non-existent file leads to an
-     * error. </testcase>
-     * 
+     * This test case validates that a non-existent file leads to an error
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -465,9 +451,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that an existent file on the command
-     * line is processed. </testcase>
-     * 
+     * This test case validates that an existent file on the command line is processed
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -482,9 +467,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that an existent file on the input
-     * stream is prcessed. </testcase>
-     * 
+     * This test case validates that an existent file on the input stream is prcessed
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -500,9 +484,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that a non-existent file leads to an
-     * error. </testcase>
-     * 
+     * This test case validates that a non-existent file leads to an error
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -516,9 +499,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that a non-existent file leads to an
-     * error. </testcase>
-     * 
+     * This test case validates that a non-existent file leads to an error
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -532,9 +514,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that a missing format on the command
-     * line in &amp; notation is reported. </testcase>
-     * 
+     * This test case validates that a missing format on the command line in &amp; notation is reported
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -551,9 +532,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that a missing format on the command
-     * line with the -fmt= flag is reported. </testcase>
-     * 
+     * This test case validates that a missing format on the command line with the -fmt= flag is reported
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -569,9 +549,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that a missing format on the command
-     * line with the -fmt flag is reported. </testcase>
-     * 
+     * This test case validates that a missing format on the command line with the -fmt flag is reported
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -588,9 +567,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that a missing format on the command
-     * line with the -format= flag is reported. </testcase>
-     * 
+     * This test case validates that a missing format on the command line with the -format= flag is reported
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -607,9 +585,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that a missing format on the command
-     * line with the -format flag is reported. </testcase>
-     * 
+     * This test case validates that a missing format on the command line with the -format flag is reported
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -626,9 +603,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that a non-existent file leads to an
-     * error. </testcase>
-     * 
+     * This test case validates that a non-existent file leads to an error
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -642,8 +618,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that -help produces some help text.
-     * </testcase>
+     *  This test case validates that -help produces some help text.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -656,9 +632,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the command line option -prog=
-     * can be used to set the program name for the help text. </testcase>
-     * 
+     * This test case validates that the command line option -prog= can be used to set the program name for the help text
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -670,9 +645,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the command line option
-     * -interaction needs a parameter. </testcase>
-     * 
+     * This test case validates that the command line option -interaction needs a parameter
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -683,9 +657,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the command line option
-     * -interaction reports am unknown interaction mode. </testcase>
-     * 
+     * This test case validates that the command line option -interaction reports am unknown interaction mode
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -696,9 +669,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the command line option
-     * -interaction takes an interaction batchmode as parameter. </testcase>
-     * 
+     * This test case validates that the command line option -interaction takes an interaction batchmode as parameter
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -710,9 +682,9 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the command line option
+     *  This test case validates that the command line option
      * -interaction takes an interaction batchmode abbreviated ab b as
-     * parameter. </testcase>
+     * parameter.
      * 
      * @throws Exception in case of an error
      */
@@ -725,9 +697,9 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the command line option
+     *  This test case validates that the command line option
      * -interaction abbreviated as -int takes an integer mode as parameter.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -740,9 +712,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the command line option
-     * -interaction= reports am unknown interaction mode. </testcase>
-     * 
+     * This test case validates that the command line option -interaction= reports am unknown interaction mode
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -753,9 +724,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the property extex.interaction
-     * reports an illegal interaction mode. </testcase>
-     * 
+     * This test case validates that the property extex.interaction reports an illegal interaction mode
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -773,9 +743,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the command line option
-     * -interaction= needs an interaction mode. </testcase>
-     * 
+     * This test case validates that the command line option -interaction= needs an interaction mode
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -786,9 +755,9 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the command line option
+     *  This test case validates that the command line option
      * -interaction= takes the interaction mode batchmode as argument.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -801,9 +770,9 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the command line option
+     *  This test case validates that the command line option
      * -interaction= takes the interaction mode batchmode abbreviated as b as
-     * argument. </testcase>
+     * argument.
      * 
      * @throws Exception in case of an error
      */
@@ -816,9 +785,9 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the command line option
+     *  This test case validates that the command line option
      * -interaction= abbreviated as -int= takes an numeric interaction mode 0 as
-     * argument. </testcase>
+     * argument.
      * 
      * @throws Exception in case of an error
      */
@@ -831,9 +800,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the command line option
-     * -jobname= can be used to set the job name. </testcase>
-     * 
+     * This test case validates that the command line option -jobname= can be used to set the job name
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -845,9 +813,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the command line option -jobname
-     * can be used to set the job name. </testcase>
-     * 
+     * This test case validates that the command line option -jobname can be used to set the job name
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -859,9 +826,9 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that <tt>-version</tt> prints the
+     *  This test case validates that {@code -version} prints the
      * version number and exists with code 0 when the language is set to German.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -873,9 +840,9 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that <tt>-version</tt> prints the
+     *  This test case validates that {@code -version} prints the
      * version number and exists with code 0 when the language is set to German.
-     * </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -887,9 +854,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that an unknown option terminates the
-     * program with code -1. </testcase>
-     */
+     * This test case validates that an unknown option terminates the program with code -1
+*/
     @Test
     public void testMain1() {
 
@@ -898,9 +864,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that an undefined parameter list
-     * terminates the program with code -1. </testcase>
-     */
+     * This test case validates that an undefined parameter list terminates the program with code -1
+*/
     @Test
     public void testMainError1() {
 
@@ -909,8 +874,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that an empty argument is ignored.
-     * </testcase>
+     *  This test case validates that an empty argument is ignored.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -926,9 +891,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the command lie parameter --
-     * expects something to follow. </testcase>
-     * 
+     * This test case validates that the command lie parameter -- expects something to follow
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -939,9 +903,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the property extex.nobanner
-     * suppresses the banner. </testcase>
-     * 
+     * This test case validates that the property extex.nobanner suppresses the banner
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -953,9 +916,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the parameter -out needs an
-     * value. </testcase>
-     * 
+     * This test case validates that the parameter -out needs an value
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -966,9 +928,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that an unknown value for -out= is
-     * reported. </testcase>
-     * 
+     * This test case validates that an unknown value for -out= is reported
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -985,9 +946,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that an unknown value for -out is
-     * reported. </testcase>
-     * 
+     * This test case validates that an unknown value for -out is reported
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1004,9 +964,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the parameter -output-path= can
-     * be used to redirect the log file. </testcase>
-     * 
+     * This test case validates that the parameter -output-path= can be used to redirect the log file
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1019,9 +978,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the parameter -output-path can
-     * be used to redirect the log file. </testcase>
-     * 
+     * This test case validates that the parameter -output-path can be used to redirect the log file
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1034,9 +992,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the parameter -output-dir can be
-     * used to redirect the log file. </testcase>
-     * 
+     * This test case validates that the parameter -output-dir can be used to redirect the log file
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1049,9 +1006,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the parameter -output-path needs
-     * a value. </testcase>
-     * 
+     * This test case validates that the parameter -output-path needs a value
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1062,8 +1018,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that -parse_first-line does no harm
-     * when using without a file.</testcase>
+     *  This test case validates that -parse_first-line does no harm
+     * when using without a file.
      * 
      * @throws Exception in case of an error
      */
@@ -1078,8 +1034,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that -parse_first-line does no harm
-     * when using on an empty file.</testcase>
+     *  This test case validates that -parse_first-line does no harm
+     * when using on an empty file.
      * 
      * @throws Exception in case of an error
      */
@@ -1094,9 +1050,9 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that -parse_first-line does evaluate
+     *  This test case validates that -parse_first-line does evaluate
      * the first line if one is given. For instance a reference to an undefined
-     * format should lead to an error.</testcase>
+     * format should lead to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -1116,9 +1072,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the option -progname sets the
-     * program name. </testcase>
-     * 
+     * This test case validates that the option -progname sets the program name
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1131,9 +1086,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the option -progname sets the
-     * program name. </testcase>
-     * 
+     * This test case validates that the option -progname sets the program name
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1146,9 +1100,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the option -progname= sets the
-     * program name. </testcase>
-     * 
+     * This test case validates that the option -progname= sets the program name
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1161,9 +1114,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that the option -progname=
-     * abbreviated as -prog= sets the program name. </testcase>
-     * 
+     * This test case validates that the option -progname= abbreviated as -prog= sets the program name
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1176,9 +1128,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that -- reads the property value from
-     * the following argument. </testcase>
-     * 
+     * This test case validates that -- reads the property value from the following argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1191,9 +1142,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that -- reads the property from the
-     * same argument. </testcase>
-     * 
+     * This test case validates that -- reads the property from the same argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1206,9 +1156,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that -- reads the property from the
-     * following argument. </testcase>
-     * 
+     * This test case validates that -- reads the property from the following argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1221,9 +1170,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that an non-existing file argument
-     * leads to an error. </testcase>
-     * 
+     * This test case validates that an non-existing file argument leads to an error
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1238,9 +1186,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that -texinputs= takes a path as
-     * argument. </testcase>
-     * 
+     * This test case validates that -texinputs= takes a path as argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1253,9 +1200,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that -texinputs takes a path as
-     * argument. </testcase>
-     * 
+     * This test case validates that -texinputs takes a path as argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1268,8 +1214,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that -texinputs needs an argument.
-     * </testcase>
+     *  This test case validates that -texinputs needs an argument.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1281,9 +1227,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that -texmfoutputs= takes a path as
-     * argument. </testcase>
-     * 
+     * This test case validates that -texmfoutputs= takes a path as argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1296,9 +1241,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that -texmfoutputs takes a path as
-     * argument. </testcase>
-     * 
+     * This test case validates that -texmfoutputs takes a path as argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1311,8 +1255,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that -texmfoutputs needs an argument.
-     * </testcase>
+     *  This test case validates that -texmfoutputs needs an argument.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1324,9 +1268,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that -texoutputs= takes a path as
-     * argument. </testcase>
-     * 
+     * This test case validates that -texoutputs= takes a path as argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1339,9 +1282,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that -texoutputs takes a path as
-     * argument. </testcase>
-     * 
+     * This test case validates that -texoutputs takes a path as argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1354,8 +1296,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that -texoutputs needs an argument.
-     * </testcase>
+     *  This test case validates that -texoutputs needs an argument.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1367,8 +1309,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that debug option can be set.
-     * </testcase>
+     *  This test case validates that debug option can be set.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1382,8 +1324,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that debug option can be set.
-     * </testcase>
+     *  This test case validates that debug option can be set.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1397,8 +1339,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that debug option can be set.
-     * </testcase>
+     *  This test case validates that debug option can be set.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1412,8 +1354,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that debug option can be set.
-     * </testcase>
+     *  This test case validates that debug option can be set.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1427,8 +1369,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that a debug code might be unknown.
-     * </testcase>
+     *  This test case validates that a debug code might be unknown.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1441,8 +1383,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that a debug code might be unknown.
-     * </testcase>
+     *  This test case validates that a debug code might be unknown.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1454,9 +1396,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that --&lt;property&gt; needs an
-     * argument. </testcase>
-     * 
+     * This test case validates that --&lt;property&gt; needs an argument
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1467,8 +1408,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that an empty argument is ignored.
-     * </testcase>
+     *  This test case validates that an empty argument is ignored.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1480,8 +1421,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that an empty argument is ignored.
-     * </testcase>
+     *  This test case validates that an empty argument is ignored.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1495,8 +1436,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that an empty argument is ignored.
-     * </testcase>
+     *  This test case validates that an empty argument is ignored.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -1510,9 +1451,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that <tt>-ver</tt> prints the version
-     * number and exists with code 0. </testcase>
-     * 
+     * This test case validates that {@code -ver} prints the version number and exists with code 0
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -1523,9 +1463,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that <tt>-version</tt> prints the
-     * version number and exists with code 0. </testcase>
-     * 
+     * This test case validates that {@code -version} prints the version number and exists with code 0
+* 
      * @throws Exception in case of an error
      */
     @Test

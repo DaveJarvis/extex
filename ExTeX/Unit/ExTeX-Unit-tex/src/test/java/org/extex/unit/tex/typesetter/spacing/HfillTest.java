@@ -24,11 +24,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\hfill</tt>.
+ * This is a test suite for the primitive {@code \hfill}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class HfillTest extends AbstractHfillTester {
 
     public HfillTest() {
@@ -37,8 +36,8 @@ public class HfillTest extends AbstractHfillTester {
     }
 
     /**
-     * <testcase primitive="\hfill"> Test case checking that <tt>\hfill</tt>
-     * switches to vertical mode and inserts a glue node with 1fill. </testcase>
+     * <testcase primitive="\hfill"> Test case checking that {@code \hfill}
+     * switches to vertical mode and inserts a glue node with 1fill. 
      * 
      * @throws Exception in case of an error
      */

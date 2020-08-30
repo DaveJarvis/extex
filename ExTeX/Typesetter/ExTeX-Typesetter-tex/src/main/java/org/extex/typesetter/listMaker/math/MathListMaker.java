@@ -81,75 +81,72 @@ import org.extex.typesetter.type.node.GlueNode;
  * This is the list maker for the inline math formulae.
  * 
  * 
- * <doc name="mathsurround" type="register"> <h3>The Dimen Parameter
- * <tt>\mathsurround</tt></h3>
+ * <p>The Dimen Parameter {@code \mathsurround}</p>
  * <p>
- * The dimen parameter <tt>\mathsurround</tt> is used to put some spacing around
+ * The dimen parameter {@code \mathsurround} is used to put some spacing around
  * mathematical formulae. The value at the end of the formula is used before and
  * after the formula. This additional space will be discarded at the end of a
  * line.
  * </p>
  * 
- * </doc>
  * 
- * <doc name="everymath" type="register"> <h3>The Tokens Parameter
- * <tt>\everymath</tt></h3>
+ * <p>The Tokens Parameter {@code \everymath}</p>
  * <p>
- * The tokens parameter <tt>\everymath</tt> contains a list of tokens which is
+ * The tokens parameter {@code \everymath} contains a list of tokens which is
  * inserted at the beginning of inline math. Those tokens take effect after the
  * math mode has been entered but before any tokens given explicitly.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *     &lang;everymath&rang;
- *       &rarr;  <tt>\everymath</tt> {@linkplain
+ *       &rarr;  {@code \everymath} {@linkplain
  *         org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *         &lang;equals&rang;} {@linkplain
  *         org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *         &lang;tokens&rang;}
  * </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *     \everymath={\,}
  * </pre>
  * 
- * </doc>
  * 
- * <doc name="everymathend" type="register"> <h3>The Tokens Parameter
- * <tt>\everymathend</tt></h3>
+ * <p>The Tokens Parameter {@code \everymathend}</p>
  * <p>
- * The tokens parameter <tt>\everymathend</tt> contains a list of tokens which
+ * The tokens parameter {@code \everymathend} contains a list of tokens which
  * is inserted at the end of inline math. Those tokens take effect just before
  * the math mode is ended but after any tokens given explicitly.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *     &lang;everymathend&rang;
- *       &rarr;  <tt>\everymathend</tt> {@linkplain
+ *       &rarr;  {@code \everymathend} {@linkplain
  *         org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *         &lang;equals&rang;} {@linkplain
  *         org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *         &lang;tokens&rang;}
  * </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *     \everymathend={\,}
  * </pre>
  * 
- * </doc>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4496 $
- */
+*/
 public class MathListMaker extends HorizontalListMaker
         implements
             NoadConsumer,
@@ -160,32 +157,31 @@ public class MathListMaker extends HorizontalListMaker
      * used to store to the stack and restore the state from the stack.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision:4496 $
-     */
+    */
     private static class MathMemento {
 
         /**
-         * The field <tt>block</tt> contains the indicator that this memento
+         * The field {@code block} contains the indicator that this memento
          * corresponds to a block. Otherwise it corresponds to a \left-\right
          * pair.
          */
-        private boolean block;
+        private final boolean block;
 
         /**
-         * The field <tt>delimiter</tt> contains the left delimiter or
-         * <code>null</code> for a block.
+         * The field {@code delimiter} contains the left delimiter or
+         * {@code null} for a block.
          */
         private MathDelimiter delimiter;
 
         /**
-         * The field <tt>ip</tt> contains the insertion point.
+         * The field {@code ip} contains the insertion point.
          */
-        private MathList ip;
+        private final MathList ip;
 
         /**
-         * The field <tt>noads</tt> contains the noads.
+         * The field {@code noads} contains the noads.
          */
-        private Noad noads;
+        private final Noad noads;
 
         /**
          * Creates a new object.
@@ -193,7 +189,7 @@ public class MathListMaker extends HorizontalListMaker
          * @param ip the insertion point to be saved in this memento
          * @param noads the noads to be saved in this memento
          * @param block indicator to distinguish blocks from \left-\right
-         *        constructs. a Value of <code>true</code> indicates a block.
+         *        constructs. a Value of {@code true} indicates a block.
          */
         public MathMemento(MathList ip, Noad noads, boolean block) {
 
@@ -244,23 +240,23 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
-     * The field <tt>SCRIPTSCRIPTFONT</tt> contains the key for the
+     * The field {@code SCRIPTSCRIPTFONT} contains the key for the
      * scriptscriptfont.
      */
     private static final String SCRIPTSCRIPTFONT = "scriptscriptfont";
 
     /**
-     * The field <tt>SCRIPTFONT</tt> contains the key for the scriptfont.
+     * The field {@code SCRIPTFONT} contains the key for the scriptfont.
      */
     private static final String SCRIPTFONT = "scriptfont";
 
     /**
-     * The field <tt>TEXTFONT</tt> contains the key for the textfont.
+     * The field {@code TEXTFONT} contains the key for the textfont.
      */
     private static final String TEXTFONT = "textfont";
 
     /**
-     * The constant <tt>noadFactory</tt> contains the noad factory.
+     * The constant {@code noadFactory} contains the noad factory.
      */
     private static final NoadFactory NOAD_FACTORY = new NoadFactory();
 
@@ -270,7 +266,7 @@ public class MathListMaker extends HorizontalListMaker
      * 
      * @param options the options
      * 
-     * @return <code>true</code> iff the needed font dimens are not present
+     * @return {@code true} iff the needed font dimens are not present
      * 
      * @see "[TTP 1195]"
      */
@@ -293,10 +289,7 @@ public class MathListMaker extends HorizontalListMaker
         Font scriptscriptfont3 =
                 options.getFont(MathFontParameter.key(options,
                     SCRIPTSCRIPTFONT, "3"));
-        if (scriptscriptfont3.getFontDimen("8") == null) {
-            return true;
-        }
-        return false;
+      return scriptscriptfont3.getFontDimen( "8" ) == null;
     }
 
     /**
@@ -306,7 +299,7 @@ public class MathListMaker extends HorizontalListMaker
      * 
      * @param options the options
      * 
-     * @return <code>true</code> iff the symbol fonts have the needed font
+     * @return {@code true} iff the symbol fonts have the needed font
      *         dimens
      * 
      * @see "[TTP 1195]"
@@ -325,39 +318,36 @@ public class MathListMaker extends HorizontalListMaker
         }
         Font scriptscriptfont2 = options.getFont(MathFontParameter.key(options,
             SCRIPTSCRIPTFONT, "2"));
-        if (scriptscriptfont2.getFontDimen("8") == null) {
-            return true;
-        }
-        return false;
+      return scriptscriptfont2.getFontDimen( "8" ) == null;
     }
 
     /**
-     * The field <tt>closing</tt> contains the indicator that this list maker is
+     * The field {@code closing} contains the indicator that this list maker is
      * in the mode of processing the terminal tokens.
      */
     private boolean closing = false;
 
     /**
-     * The field <tt>insertionPoint</tt> contains the the MathList to which the
+     * The field {@code insertionPoint} contains the the MathList to which the
      * next noads should be added.
      */
     private MathList insertionPoint;
 
     /**
-     * The field <tt>logger</tt> contains the logger.
+     * The field {@code logger} contains the logger.
      */
     private Logger logger = null;
 
     /**
-     * The field <tt>nodes</tt> contains the list of nodes encapsulated in this
+     * The field {@code nodes} contains the list of nodes encapsulated in this
      * instance.
      */
     private Noad noads;
 
     /**
-     * The field <tt>stack</tt> contains the stack for parsing sub-formulae.
+     * The field {@code stack} contains the stack for parsing sub-formulae.
      */
-    private Stack<MathMemento> stack = new Stack<MathMemento>();
+    private final Stack<MathMemento> stack = new Stack<MathMemento>();
 
     /**
      * Creates a new object.
@@ -504,7 +494,7 @@ public class MathListMaker extends HorizontalListMaker
      * 
      * @param typesettingContext the typesetting context for the space
      * @param spacefactor the space factor to use for this space or
-     *        <code>null</code> to indicate that the default space factor should
+     *        {@code null} to indicate that the default space factor should
      *        be used.
      * 
      * @throws TypesetterException in case of an error
@@ -534,10 +524,7 @@ public class MathListMaker extends HorizontalListMaker
      * @throws ConfigurationException in case of a configuration error
      * 
      * @see org.extex.typesetter.ListMaker#complete(TypesetterOptions)
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [719]"
-     */
+*/
     @Override
     public NodeList complete(TypesetterOptions context)
             throws TypesetterException,
@@ -576,10 +563,7 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.HorizontalListMaker#cr(org.extex.interpreter.context.Context,
-     *      org.extex.typesetter.tc.TypesettingContext,
+*      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.core.UnicodeChar)
      */
     @Override
@@ -604,7 +588,7 @@ public class MathListMaker extends HorizontalListMaker
 
     /**
      * Getter for the contents of the insertion point. If the insertion point
-     * does not contain an element then <code>null</code> is returned. If it
+     * does not contain an element then {@code null} is returned. If it
      * contains only one element then this element is returned. Otherwise the
      * complete list is returned.
      * 
@@ -625,7 +609,7 @@ public class MathListMaker extends HorizontalListMaker
     /**
      * Get access to the previous noad.
      * 
-     * @return the previous noad or <code>null</code> if there is none
+     * @return the previous noad or {@code null} if there is none
      * 
      * @throws TypesetterException in case of an error
      * 
@@ -640,7 +624,7 @@ public class MathListMaker extends HorizontalListMaker
     /**
      * Access the last node on the list.
      * 
-     * @return the last node in the current list or <code>null</code> if the
+     * @return the last node in the current list or {@code null} if the
      *         list is empty
      * 
      * @see org.extex.typesetter.ListMaker#getLastNode()
@@ -727,10 +711,7 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.HorizontalListMaker#letter(org.extex.core.UnicodeChar,
-     *      org.extex.typesetter.tc.TypesettingContext,
+*      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.core.Locator)
      */
@@ -763,10 +744,7 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.AbstractListMaker#mathShift(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
+*      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
     @Override
@@ -825,10 +803,7 @@ public class MathListMaker extends HorizontalListMaker
      * @throws ConfigurationException in case of an configuration error
      * 
      * @see org.extex.typesetter.ListMaker#par()
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [1047]"
-     */
+*/
     @Override
     public void par() throws TypesetterException, ConfigurationException {
 
@@ -849,7 +824,7 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
-     * Close the group for a <tt>\left</tt>-<tt>\right</tt> construction.
+     * Close the group for a {@code \left}-{@code \right} construction.
      * 
      * @param delimiter the delimiter to typeset on the right side
      * 
@@ -903,10 +878,7 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.math.NoadConsumer#scanNoad(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      Token, org.extex.interpreter.context.group.GroupType)
      */
@@ -968,7 +940,7 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
-     * Print the status for <tt>\showlists</tt>.
+     * Print the status for {@code \showlists}.
      * 
      * @param sb the target buffer
      * @param depth the depth of the list display
@@ -983,10 +955,7 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.AbstractListMaker#subscriptMark(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
     @Override
@@ -1011,10 +980,7 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.AbstractListMaker#superscriptMark(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
     @Override
@@ -1039,10 +1005,7 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.math.NoadConsumer#switchToFraction(org.extex.typesetter.type.math.MathDelimiter,
-     *      org.extex.typesetter.type.math.MathDelimiter,
+*      org.extex.typesetter.type.math.MathDelimiter,
      *      org.extex.core.dimen.FixedDimen,
      *      org.extex.typesetter.tc.TypesettingContext)
      */

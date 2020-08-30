@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains definitions for group observers.
+ * Contains definitions for group observers.
  */
 
 package org.extex.interpreter.context.observer.dimen;

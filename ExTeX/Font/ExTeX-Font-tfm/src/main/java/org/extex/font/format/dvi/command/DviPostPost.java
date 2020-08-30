@@ -23,20 +23,19 @@ package org.extex.font.format.dvi.command;
  * DVI: post post: Ending of the postamble.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class DviPostPost extends DviCommand {
 
     /**
      * the identification
      */
-    private int identification;
+    private final int identification;
 
     /**
      * the pointer of the final post
      */
-    private int pointer;
+    private final int pointer;
 
     /**
      * Create a new object.
@@ -64,12 +63,7 @@ public class DviPostPost extends DviCommand {
         return identification;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviCommand#getName()
-     */
-    @Override
+@Override
     public String getName() {
 
         return "post_post";

@@ -124,7 +124,7 @@ import org.extex.typesetter.type.math.MathDelimiter;
  * <li>If a group is closed then the next group is used as current group and the
  * formerly current group is discarded.</li>
  * <li>If a value has to be found in a group then the next chain has to be
- * traced down until the value is found. <br />
+ * traced down until the value is found. <br>
  * An implementation variant might want to insert the value found into the
  * higher groups; all or some of them to speed up the next access. This
  * optimization is currently not implemented.</li>
@@ -144,8 +144,7 @@ import org.extex.typesetter.type.math.MathDelimiter;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4770 $
- */
+*/
 public class ContextImpl
         implements
             ContextInternals,
@@ -167,228 +166,228 @@ public class ContextImpl
             Serializable {
 
     /**
-     * The field <tt>bottommarks</tt> contains the bottom marks.
+     * The field {@code bottommarks} contains the bottom marks.
      */
     private static Map<Object, Tokens> bottommarks =
             new HashMap<Object, Tokens>();
 
     /**
-     * The field <tt>firstmarks</tt> contains the first marks.
+     * The field {@code firstmarks} contains the first marks.
      */
     private static Map<Object, Tokens> firstmarks =
             new HashMap<Object, Tokens>();
 
     /**
-     * The constant <tt>GROUP_TAG</tt> contains the name of the tag for the
+     * The constant {@code GROUP_TAG} contains the name of the tag for the
      * sub-configuration for the group factory.
      */
     private static final String GROUP_TAG = "Group";
 
     /**
-     * The constant <tt>MAGNIFICATION_MAX</tt> contains the maximal allowed
+     * The constant {@code MAGNIFICATION_MAX} contains the maximal allowed
      * magnification value. This is the fallback value which can be changed in
      * the configuration.
      */
     private static final long MAGNIFICATION_MAX = 0x8000;
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 20060512L;
 
     /**
-     * The field <tt>topmarks</tt> contains the top marks.
+     * The field {@code topmarks} contains the top marks.
      */
     private static Map<Object, Tokens> topmarks = new HashMap<Object, Tokens>();
 
     /**
-     * The constant <tt>TYPESETTING_CONTEXT_TAG</tt> contains the name of the
+     * The constant {@code TYPESETTING_CONTEXT_TAG} contains the name of the
      * configuration tag for the typesetting context.
      */
     private static final String TYPESETTING_CONTEXT_TAG = "TypesettingContext";
 
     /**
-     * The field <tt>afterassignment</tt> contains the token to be inserted
-     * after an assignment is completed or <code>null</code>.
+     * The field {@code afterassignment} contains the token to be inserted
+     * after an assignment is completed or {@code null}.
      */
     private Token afterassignment = null;
 
     /**
-     * The field <tt>changeCodeObservers</tt> contains the list of observers
+     * The field {@code changeCodeObservers} contains the list of observers
      * registered for change event on the code.
      */
     private transient Map<Token, List<CodeObserver>> changeCodeObservers;
 
     /**
-     * The field <tt>changeCountObservers</tt> contains the list of observers
+     * The field {@code changeCountObservers} contains the list of observers
      * registered for change event on the count registers.
      */
     private transient Map<String, List<CountObserver>> changeCountObservers;
 
     /**
-     * The field <tt>changeDimenObservers</tt> contains the list of observers
+     * The field {@code changeDimenObservers} contains the list of observers
      * registered for change event on the dimen registers.
      */
     private transient Map<String, List<DimenObserver>> changeDimenObservers;
 
     /**
-     * The field <tt>dimenChangeObservers</tt> contains the list of observers
+     * The field {@code dimenChangeObservers} contains the list of observers
      * registered for change event on the glue (skip) registers.
      */
     private transient Map<String, List<GlueObserver>> changeGlueObservers;
 
     /**
-     * The field <tt>observersInteraction</tt> contains the observer list which
+     * The field {@code observersInteraction} contains the observer list which
      * is used for the observers registered to receive notifications when the
      * interaction is changed. The argument is the new interaction mode.
      */
     private transient List<InteractionObserver> changeInteractionObservers;
 
     /**
-     * The field <tt>toksChangeObservers</tt> contains the list of observers
+     * The field {@code toksChangeObservers} contains the list of observers
      * registered for change event on the tokens registers.
      */
     private transient Map<String, List<TokensObserver>> changeToksObservers;
 
     /**
-     * The field <tt>conditionalObservers</tt> contains the observer for
-     * conditionals. The value <code>null</code> is treated like the empty list.
+     * The field {@code conditionalObservers} contains the observer for
+     * conditionals. The value {@code null} is treated like the empty list.
      */
     private transient List<ConditionalObserver> conditionalObservers = null;
 
     /**
-     * The field <tt>conditionalStack</tt> contains the stack for conditionals.
+     * The field {@code conditionalStack} contains the stack for conditionals.
      */
     private List<Conditional> conditionalStack = new ArrayList<Conditional>();
 
     /**
-     * The field <tt>dirStack</tt> contains the stack of directions.
+     * The field {@code dirStack} contains the stack of directions.
      */
     private Stack<Direction> dirStack = new Stack<Direction>();
 
     /**
-     * The field <tt>errorCount</tt> contains the error counter.
+     * The field {@code errorCount} contains the error counter.
      */
     private int errorCount = 0;
 
     /**
-     * The field <tt>fontFactory</tt> contains the font factory to use.
+     * The field {@code fontFactory} contains the font factory to use.
      */
     private transient CoreFontFactory fontFactory;
 
     /**
-     * The field <tt>group</tt> contains the entry to the linked list of groups.
+     * The field {@code group} contains the entry to the linked list of groups.
      * The current group is the first one.
      */
     private Group group = null;
 
     /**
-     * The field <tt>groupFactory</tt> contains the factory to acquire a new
+     * The field {@code groupFactory} contains the factory to acquire a new
      * group.
      */
     private transient GroupFactory groupFactory;
 
     /**
-     * The field <tt>groupObservers</tt> contains the list of observers
+     * The field {@code groupObservers} contains the list of observers
      * registered for change event on groups.
      */
     private transient List<GroupObserver> groupObservers;
 
     /**
-     * The field <tt>id</tt> contains the is string. The id string is the
+     * The field {@code id} contains the is string. The id string is the
      * classification of the original source as given in the format file. The id
-     * string can be <code>null</code> if not known yet.
+     * string can be {@code null} if not known yet.
      */
     private String id = null;
 
     /**
-     * The field <tt>interaction</tt> contains the currently active interaction
+     * The field {@code interaction} contains the currently active interaction
      * mode.
      */
     private Interaction interaction = Interaction.ERRORSTOPMODE;
 
     /**
-     * The field <tt>languageManager</tt> contains the language manager.
+     * The field {@code languageManager} contains the language manager.
      */
     private LanguageManager languageManager;
 
     /**
-     * The field <tt>loadObserver</tt> contains the list of observers for the
+     * The field {@code loadObserver} contains the list of observers for the
      * load event. Note that this list is stored within the format. Thus it is
-     * <i>not</i> <tt>transient</tt>.
+     * <i>not</i> {@code transient}.
      */
     private List<LoadedObserver> loadObservers = null;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer to use.
+     * The field {@code localizer} contains the localizer to use.
      */
     private transient Localizer localizer = null;
 
     /**
-     * The field <tt>logger</tt> contains the logger.
+     * The field {@code logger} contains the logger.
      */
     private transient Logger logger = null;
 
     /**
-     * The field <tt>magnification</tt> contains the magnification for the whole
+     * The field {@code magnification} contains the magnification for the whole
      * document in permille. The value is always greater than 0 and less or
-     * equal to <tt>magnificationMax</tt>.
+     * equal to {@code magnificationMax}.
      */
     private long magnification = Math.min(1000, MAGNIFICATION_MAX);
 
     /**
-     * The field <tt>magnificationLock</tt> is used to determine whether the
+     * The field {@code magnificationLock} is used to determine whether the
      * magnification has already been set to a new value. It it is
-     * <code>true</code> then it is not desirable to change the value of
+     * {@code true} then it is not desirable to change the value of
      * <i>magnification</i>.
      */
     private boolean magnificationLock = false;
 
     /**
-     * The field <tt>magnificationMax</tt> contains the maximal allowed
+     * The field {@code magnificationMax} contains the maximal allowed
      * magnification value. This is initialized to MAGNIFICATION_MAX and may be
      * overwritten from within the configuration.
      */
     private long magnificationMax = MAGNIFICATION_MAX;
 
     /**
-     * The field <tt>parshape</tt> contains the object containing the dimensions
+     * The field {@code parshape} contains the object containing the dimensions
      * of the paragraph.
      */
     private ParagraphShape parshape = null;
 
     /**
-     * The field <tt>splitBottomMarks</tt> contains the split bottom marks.
+     * The field {@code splitBottomMarks} contains the split bottom marks.
      */
     private Map<Object, Tokens> splitBottomMarks =
             new Hashtable<Object, Tokens>();
 
     /**
-     * The field <tt>splitFirstMarks</tt> contains the split first marks.
+     * The field {@code splitFirstMarks} contains the split first marks.
      */
     private Map<Object, Tokens> splitFirstMarks =
             new Hashtable<Object, Tokens>();
 
     /**
-     * The field <tt>standardTokenStream</tt> contains the standard token
+     * The field {@code standardTokenStream} contains the standard token
      * stream. This token stream usually is fed by the user.
      */
     private transient TokenStream standardTokenStream = null;
 
     /**
-     * The field <tt>tokenFactory</tt> contains the token factory implementation
+     * The field {@code tokenFactory} contains the token factory implementation
      * to use.
      */
     private transient TokenFactory tokenFactory;
 
     /**
-     * The field <tt>tcFactory</tt> contains the factory to acquire new
+     * The field {@code tcFactory} contains the factory to acquire new
      * instances of a TypesettingContext.
      */
     private transient TypesettingContextFactory typesettingContextFactory;
 
     /**
-     * The field <tt>units</tt> contains the list of unit infos.
+     * The field {@code units} contains the list of unit infos.
      */
     private List<UnitInfo> units = new ArrayList<UnitInfo>();
 
@@ -499,12 +498,7 @@ public class ContextImpl
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
-     */
-    @Override
+@Override
     public void configure(Configuration configuration) {
 
         magnificationMax =
@@ -602,9 +596,9 @@ public class ContextImpl
     }
 
     /**
-     * Return the current escape character or <code>\0<code> if it is undefined.
+     * Return the current escape character or {@code \0} if it is undefined.
      * The escape character is retrieved from the count register
-     * <tt>\escapechar</tt>.
+     * {@code \escapechar}.
      * 
      * @return the escape character
      * 
@@ -619,10 +613,7 @@ public class ContextImpl
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#get(java.lang.Object,
-     *      java.lang.Object)
+*      java.lang.Object)
      */
     @Override
     public Object get(Object extension, Object key) {
@@ -671,7 +662,7 @@ public class ContextImpl
      * 
      * @param name the name or number of the count register
      * 
-     * @return the count register or <code>null</code> if it is void
+     * @return the count register or {@code null} if it is void
      * 
      * @see org.extex.interpreter.context.Context#getBox(java.lang.String)
      */
@@ -718,7 +709,7 @@ public class ContextImpl
     /**
      * Getter for the currently active conditional.
      * 
-     * @return the currently active conditional or <code>null</code> if none
+     * @return the currently active conditional or {@code null} if none
      * 
      * @see org.extex.interpreter.context.Context#getConditional()
      */
@@ -736,13 +727,13 @@ public class ContextImpl
      * Getter for the {@link org.extex.core.count.Count count} register. Count
      * registers are named, either with a number or an arbitrary string.
      * <p>
-     * The return value is guaranteed to be a valid object. <code>null</code>
+     * The return value is guaranteed to be a valid object. {@code null}
      * will never be returned.
      * </p>
      * 
      * @param name the name or number of the count register
      * 
-     * @return the count register or <code>null</code> if it is not defined
+     * @return the count register or {@code null} if it is not defined
      * 
      * @see org.extex.interpreter.context.Context#getCount(java.lang.String)
      */
@@ -812,23 +803,13 @@ public class ContextImpl
         return group.getDimen(name);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextErrorCount#getErrorCount()
-     */
-    @Override
+@Override
     public int getErrorCount() {
 
         return errorCount;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextMark#getFirstMark(java.lang.Object)
-     */
-    @Override
+@Override
     public Tokens getFirstMark(Object name) {
 
         Tokens mark = firstmarks.get(name);
@@ -838,12 +819,7 @@ public class ContextImpl
         return mark;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getFont(java.lang.String)
-     */
-    @Override
+@Override
     public Font getFont(String name) {
 
         Font font = this.group.getFont(name);
@@ -857,34 +833,19 @@ public class ContextImpl
         return font;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getFontFactory()
-     */
-    @Override
+@Override
     public CoreFontFactory getFontFactory() {
 
         return fontFactory;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getGlue(java.lang.String)
-     */
-    @Override
+@Override
     public Glue getGlue(String name) {
 
         return group.getSkip(name);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.TypesetterOptions#getGlueOption(java.lang.String)
-     */
-    @Override
+@Override
     public FixedGlue getGlueOption(String name) {
 
         return group.getSkip(name);
@@ -956,7 +917,7 @@ public class ContextImpl
     /**
      * Getter for the id string. The id string is the classification of the
      * original source as given in the format file. The id string can be
-     * <code>null</code> if not known yet.
+     * {@code null} if not known yet.
      * 
      * @return the id string
      * 
@@ -984,7 +945,7 @@ public class ContextImpl
     /**
      * Getter for a input file register. In the case that the named descriptor
      * doe not exist yet a new one is returned. Especially if the name is
-     * <code>null</code> then the default input stream is used.
+     * {@code null} then the default input stream is used.
      * 
      * @param name the name or the number of the file register
      * 
@@ -1109,7 +1070,7 @@ public class ContextImpl
      * 
      * @param name the name or the number of the register
      * 
-     * @return the named muskip or <code>null</code> if none is set
+     * @return the named muskip or {@code null} if none is set
      * 
      * @see org.extex.interpreter.context.Context#getMuskip(java.lang.String)
      */
@@ -1151,10 +1112,7 @@ public class ContextImpl
      * Getter for the parshape. The parshape is a feature of the context which
      * does not interact with the grouping mechanism.
      * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getParshape()
-     */
+*/
     @Override
     public ParagraphShape getParshape() {
 
@@ -1241,56 +1199,31 @@ public class ContextImpl
         return group;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriterOptions#getTokensOption(java.lang.String)
-     */
-    @Override
+@Override
     public String getTokensOption(String name) {
 
         return group.getToks(name).toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getToks(java.lang.String)
-     */
-    @Override
+@Override
     public Tokens getToks(String name) {
 
         return group.getToks(name);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.scanner.stream.TokenStreamOptions#getToksOption(java.lang.String)
-     */
-    @Override
+@Override
     public FixedTokens getToksOption(String name) {
 
         return group.getToks(name);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getToksOrNull(java.lang.String)
-     */
-    @Override
+@Override
     public Tokens getToksOrNull(String name) {
 
         return group.getToksOrNull(name);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextMark#getTopMark(java.lang.Object)
-     */
-    @Override
+@Override
     public Tokens getTopMark(Object name) {
 
         return topmarks.get(name);
@@ -1309,34 +1242,19 @@ public class ContextImpl
         return group.getTypesettingContext();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextInternals#getTypesettingContextFactory()
-     */
-    @Override
+@Override
     public TypesettingContextFactory getTypesettingContextFactory() {
 
         return typesettingContextFactory;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#getUccode(org.extex.core.UnicodeChar)
-     */
-    @Override
+@Override
     public UnicodeChar getUccode(UnicodeChar lc) {
 
         return group.getUccode(lc);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextErrorCount#incrementErrorCount()
-     */
-    @Override
+@Override
     public int incrementErrorCount() {
 
         return ++errorCount;
@@ -1360,22 +1278,14 @@ public class ContextImpl
         registerTokensObserver("lang", languageObserver);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#isGlobalGroup()
-     */
-    @Override
+@Override
     public boolean isGlobalGroup() {
 
         return (group.getNext() == null);
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.ContextGroup#openGroup(org.extex.interpreter.context.group.GroupType,
-     *      org.extex.core.Locator, org.extex.scanner.type.token.Token)
+*      org.extex.core.Locator, org.extex.scanner.type.token.Token)
      * @see #closeGroup(Typesetter, TokenSource)
      */
     @Override
@@ -1397,12 +1307,7 @@ public class ContextImpl
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#popConditional()
-     */
-    @Override
+@Override
     public Conditional popConditional() throws HelpingException {
 
         int len = conditionalStack.size();
@@ -1427,7 +1332,7 @@ public class ContextImpl
     /**
      * Pop a direction from the direction stack.
      * 
-     * @return the topmost direction on the stack or <code>null</code> if the
+     * @return the topmost direction on the stack or {@code null} if the
      *         stack is empty
      * 
      * @see org.extex.interpreter.context.Context#popDirection()
@@ -1500,10 +1405,7 @@ public class ContextImpl
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.observer.load.LoadedObservable#receiveLoad(org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+*      org.extex.typesetter.Typesetter)
      */
     @Override
     public void receiveLoad(TokenSource source, Typesetter typesetter)
@@ -1565,7 +1467,7 @@ public class ContextImpl
      * <p>
      * A single count register can be observed by giving a name of the count
      * register to observe. Only changes to this register trigger the
-     * notification. If this name is <code>null</code> the changes to all
+     * notification. If this name is {@code null} the changes to all
      * registers are reported to the observer.
      * </p>
      * 
@@ -1594,7 +1496,7 @@ public class ContextImpl
      * <p>
      * A single dimen register can be observed by giving a name of the dimen
      * register to observe. Only changes to this register trigger the
-     * notification. If this name is <code>null</code> the changes to all
+     * notification. If this name is {@code null} the changes to all
      * registers are reported to the observer.
      * </p>
      * 
@@ -1623,7 +1525,7 @@ public class ContextImpl
      * <p>
      * A single glue register can be observed by giving a name of the glue
      * register to observe. Only changes to this register trigger the
-     * notification. If this name is <code>null</code> the changes to all
+     * notification. If this name is {@code null} the changes to all
      * registers are reported to the observer.
      * </p>
      * 
@@ -1671,7 +1573,7 @@ public class ContextImpl
      * <p>
      * A single count register can be observed by giving a name of the count
      * register to observe. Only changes to this register trigger the
-     * notification. If this name is <code>null</code> the changes to all
+     * notification. If this name is {@code null} the changes to all
      * registers are reported to the observer.
      * </p>
      * 
@@ -1847,7 +1749,7 @@ public class ContextImpl
      * Setter for the color in the current typesetting context.
      * 
      * @param color the new color
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @throws ConfigurationException in case of an error in the configuration.
@@ -1866,7 +1768,7 @@ public class ContextImpl
      * Setter for the direction in the current typesetting context.
      * 
      * @param direction the new direction
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @throws ConfigurationException in case of an error in the configuration.
@@ -1886,7 +1788,7 @@ public class ContextImpl
      * Setter for the font in the current typesetting context.
      * 
      * @param font the new font
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @throws ConfigurationException in case of an error in the configuration.
@@ -1905,7 +1807,7 @@ public class ContextImpl
      * Setter for the language in the current typesetting context.
      * 
      * @param language the new language
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @throws ConfigurationException in case of an error in the configuration.
@@ -1927,7 +1829,7 @@ public class ContextImpl
      * @param extension the name of the extension
      * @param key the key for the value
      * @param value the value to store
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.context.Context#set(java.lang.Object,
@@ -1943,7 +1845,7 @@ public class ContextImpl
      * Setter for the typesetting context in the specified groups.
      * 
      * @param context the new context to use
-     * @param global if <code>true</code> then the new value is set in all
+     * @param global if {@code true} then the new value is set in all
      *        groups, otherwise only in the current group.
      */
     @Override
@@ -1970,11 +1872,11 @@ public class ContextImpl
      * the current group. Count registers are named, either with a number or an
      * arbitrary string. The numbered registers where limited to 256 in
      * TeX. This restriction does no longer hold for
-     * ??TeX.
+     * εχTeX.
      * 
      * @param name the name or the number of the register
      * @param value the new value of the register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.context.Context#setBox(java.lang.String,
@@ -1991,7 +1893,7 @@ public class ContextImpl
      * 
      * @param c the character to assign a catcode for
      * @param catcode the catcode of the character
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.context.Context#setCatcode(org.extex.core.UnicodeChar,
@@ -2012,7 +1914,7 @@ public class ContextImpl
      * 
      * @param t the Token to set the code for
      * @param code the code for the token
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @throws HelpingException in case of an error
@@ -2041,11 +1943,11 @@ public class ContextImpl
      * requested groups. Count registers are named, either with a number or an
      * arbitrary string. The numbered registers where limited to 256 in
      * TeX. This restriction does no longer hold for
-     * ??TeX.
+     * εχTeX.
      * 
      * @param name the name or the number of the register
      * @param value the new value of the register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      *        {@inheritDoc}
@@ -2092,7 +1994,7 @@ public class ContextImpl
      * 
      * @param c the character to which the delimiter code is assigned
      * @param delimiter the delimiter code
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.context.Context#setDelcode(org.extex.core.UnicodeChar,
@@ -2110,11 +2012,11 @@ public class ContextImpl
      * requested groups. Dimen registers are named, either with a number or an
      * arbitrary string. The numbered registers where limited to 256 in
      * TeX. This restriction does no longer hold for
-     * ??TeX.
+     * εχTeX.
      * 
      * @param name the name or the number of the register
      * @param value the new value of the register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @throws HelpingException in case of problems in an observer
@@ -2143,11 +2045,11 @@ public class ContextImpl
      * requested groups. Dimen registers are named, either with a number or an
      * arbitrary string. The numbered registers where limited to 256 in
      * TeX. This restriction does no longer hold for
-     * ??TeX.
+     * εχTeX.
      * 
      * @param name the name or the number of the register
      * @param value the new value of the register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @throws HelpingException in case of problems in an observer
@@ -2167,7 +2069,7 @@ public class ContextImpl
      * 
      * @param name the name or the number of the register
      * @param font the new Font value
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.context.Context#setFont(java.lang.String,
@@ -2197,7 +2099,7 @@ public class ContextImpl
      * 
      * @param name the name of the glue register
      * @param value the glue value to set
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @throws HelpingException in case of an error
@@ -2240,11 +2142,11 @@ public class ContextImpl
      * in all requested groups. InFile registers are named, either with a number
      * or an arbitrary string. The numbered registers where limited to 16 in
      * TeX. This restriction does no longer hold for
-     * ??TeX.
+     * εχTeX.
      * 
      * @param name the name or the number of the file register
      * @param file the input file descriptor
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.context.Context#setInFile(java.lang.String,
@@ -2284,12 +2186,7 @@ public class ContextImpl
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.language.LanguageManagerCarrier#setLanguageManager(org.extex.language.LanguageManager)
-     */
-    @Override
+@Override
     public void setLanguageManager(LanguageManager manager)
             throws ConfigurationException {
 
@@ -2306,7 +2203,7 @@ public class ContextImpl
      * 
      * @param uc upper case character
      * @param lc lower case equivalent
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.context.Context#setLccode(org.extex.core.UnicodeChar,
@@ -2323,13 +2220,10 @@ public class ContextImpl
      * can be assigned at most once. It contains the magnification factor in
      * permille. The default value is 1000. It can only take positive numbers as
      * values. The maximal value is taken from the configuration option
-     * <tt>maximalMaginification</tt>. The default value for the maximal
+     * {@code maximalMaginification}. The default value for the maximal
      * magnification is 32768.
      * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.context.Context#setMagnification(long,
-     *      boolean)
+*      boolean)
      */
     @Override
     public void setMagnification(long mag, boolean lock)
@@ -2374,7 +2268,7 @@ public class ContextImpl
      * 
      * @param uc the character index
      * @param code the new math code
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.context.Context#setMathcode(org.extex.core.UnicodeChar,
@@ -2391,7 +2285,7 @@ public class ContextImpl
      * 
      * @param name the name or the number of the register
      * @param value the new value
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.context.Context#setMuskip(java.lang.String,
@@ -2407,7 +2301,7 @@ public class ContextImpl
      * Setter for the name space.
      * 
      * @param namespace the new name space
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.context.Context#setNamespace(java.lang.String,
@@ -2424,7 +2318,7 @@ public class ContextImpl
      * 
      * @param name the name or the number of the file register
      * @param file the descriptor of the output file
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.context.Context#setOutFile(java.lang.String,
@@ -2456,7 +2350,7 @@ public class ContextImpl
      * 
      * @param uc the Unicode character to assign the sfcode to
      * @param code the new sfcode
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.context.Context#setSfcode(org.extex.core.UnicodeChar,
@@ -2519,11 +2413,11 @@ public class ContextImpl
      * register in the specified groups. Tokens registers are named, either with
      * a number or an arbitrary string. The numbered registers where limited to
      * 256 in TeX. This restriction does no longer hold for
-     * ??TeX.
+     * εχTeX.
      * 
      * @param name the name or the number of the register
      * @param toks the new value of the register
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @throws HelpingException in case of a problem in an observer
@@ -2553,7 +2447,7 @@ public class ContextImpl
      * 
      * @param lc lower case character
      * @param uc uppercase equivalent
-     * @param global the indicator for the scope; <code>true</code> means all
+     * @param global the indicator for the scope; {@code true} means all
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.context.Context#setUccode(org.extex.core.UnicodeChar,
@@ -2645,7 +2539,7 @@ public class ContextImpl
      * observer for this register. If none is registered then nothing happens.
      * </p>
      * <p>
-     * If this name is <code>null</code> then the observer for all registers is
+     * If this name is {@code null} then the observer for all registers is
      * removed. Note that the observers for named registers are not effected.
      * They have to be unregistered individually.
      * </p>
@@ -2678,7 +2572,7 @@ public class ContextImpl
      * observer for this register. If none is registered then nothing happens.
      * </p>
      * <p>
-     * If this name is <code>null</code> then the observer for all registers is
+     * If this name is {@code null} then the observer for all registers is
      * removed. Note that the observers for named registers are not effected.
      * They have to be unregistered individually.
      * </p>
@@ -2711,7 +2605,7 @@ public class ContextImpl
      * observer for this register. If none is registered then nothing happens.
      * </p>
      * <p>
-     * If this name is <code>null</code> then the observer for all registers is
+     * If this name is {@code null} then the observer for all registers is
      * removed. Note that the observers for named registers are not effected.
      * They have to be unregistered individually.
      * </p>

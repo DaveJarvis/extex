@@ -31,33 +31,32 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
  * variants.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class GenericCode implements GCode {
 
     /**
-     * The field <tt>type</tt> contains the return type.
+     * The field {@code type} contains the return type.
      */
     private ReturnType type;
 
     /**
-     * The field <tt>name</tt> contains the name.
+     * The field {@code name} contains the name.
      */
     private String name;
 
     /**
-     * The field <tt>args</tt> contains the arguments.
+     * The field {@code args} contains the arguments.
      */
     private GCode[] args;
 
     /**
-     * The field <tt>entry</tt> contains the name of the entry or
-     * <code>null</code>.
+     * The field {@code entry} contains the name of the entry or
+     * {@code null}.
      */
     private String entry = null;
 
     /**
-     * The field <tt>showArgs</tt> contains the indicator that argument braces
+     * The field {@code showArgs} contains the indicator that argument braces
      * are needed.
      */
     private boolean showArgs;
@@ -95,7 +94,7 @@ public class GenericCode implements GCode {
      * 
      * @param type the type
      * @param name the name
-     * @param entry the entry or <code>null</code>
+     * @param entry the entry or {@code null}
      * @param args the arguments
      */
     public GenericCode(ReturnType type, String name, String entry,
@@ -138,22 +137,12 @@ public class GenericCode implements GCode {
         return name;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#getType()
-     */
-    public ReturnType getType() {
+public ReturnType getType() {
 
         return type;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#hasSideEffect()
-     */
-    @Override
+@Override
     public boolean hasSideEffect() {
 
         for (GCode code : args) {
@@ -164,12 +153,7 @@ public class GenericCode implements GCode {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#optimize()
-     */
-    public GCode optimize() {
+public GCode optimize() {
 
         for (int i = 0; i < args.length; i++) {
             args[i] = args[i].optimize();
@@ -177,21 +161,13 @@ public class GenericCode implements GCode {
         return this;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#optimize(java.util.List, int)
-     */
-    public int optimize(List<GCode> list, int index) {
+public int optimize(List<GCode> list, int index) {
 
         return index + 1;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
-     *      java.lang.String)
+*      java.lang.String)
      */
     public void print(CodeWriter writer, String prefix) throws IOException {
 
@@ -258,12 +234,7 @@ public class GenericCode implements GCode {
         args[index] = value;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringWriter writer = new StringWriter();
@@ -276,12 +247,7 @@ public class GenericCode implements GCode {
         return writer.toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#unify(org.extex.exbib.bst2groovy.data.GCode)
-     */
-    public boolean unify(GCode other) {
+public boolean unify(GCode other) {
 
         int size = args.length;
         if (other instanceof Var) {

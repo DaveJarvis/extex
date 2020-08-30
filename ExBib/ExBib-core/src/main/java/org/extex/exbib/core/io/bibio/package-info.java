@@ -16,17 +16,16 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the classes for reading and writing bib files.
+ * Contains the classes for reading and writing bib files.
  * <p>
- *  Bib files have a fixed syntax in B<small>IB</small><span 
- *  style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- *  >e</span>X. 
+ *  Bib files have a fixed syntax in BibTeX.
  *  This syntax is only one possible representation. 
  *  This package may contain several representation to be used for reading and
  *  writing.
  * </p>
  * 
- * <h1>Loading a Bib File</h1>
+ * Loading a Bib File
+ *
  * <p>
  *  In this walk through example we will see how a bib file can be loaded into
  *  a database. To start with we need a configuration for a resource finder.
@@ -34,22 +33,22 @@
  *  search. In the simplest form a plain file search can be performed.
  * </p>
  * <p>
- *  The resource finder can be acquired from a <code>ConfigurationFactory</code>:
+ *  The resource finder can be acquired from a {@code ConfigurationFactory}:
  * </p>
  * <pre>
  * Configuration cfg =
  *         ConfigurationFactory.newInstance("someFinder.xml");</pre>
  * <p>
- *  Now we can push the configuration into a <code>ResourceFinderFactory</code>
- *  to get a <code>ResourceFinder</code>. There are some other arguments which
- *  are ignored at the moment. We simply use <code>null</code> values for them.
+ *  Now we can push the configuration into a {@code ResourceFinderFactory}
+ *  to get a {@code ResourceFinder}. There are some other arguments which
+ *  are ignored at the moment. We simply use {@code null} values for them.
  * </p>
  * <pre>
  * ResourceFinder finder =
  *         new ResourceFinderFactory().createResourceFinder(cfg, null,
  *             null, null);</pre>
  * <p>
- *  Next we need a reader for a bib file. <code>BibReaderImp</code> is used
+ *  Next we need a reader for a bib file. {@code BibReaderImp} is used
  *  directly.
  * </p>
  * <pre>
@@ -62,7 +61,7 @@
  * r.setResourceFinder(finder);</pre>
  * <p>
  *  Now the reader is ready and can be used to open a bib file. The argument
- *  given to <code>open()</code> is the name of a resource sought with the
+ *  given to {@code open()} is the name of a resource sought with the
  *  resource finder.
  * </p>
  * <pre>
@@ -94,4 +93,3 @@
  */
 
 package org.extex.exbib.core.io.bibio;
-

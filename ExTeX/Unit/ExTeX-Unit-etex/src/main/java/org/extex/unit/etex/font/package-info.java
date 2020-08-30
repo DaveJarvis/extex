@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains primitives to handle fonts in unit <tt>etex</tt>.
+ * Contains primitives to handle fonts in unit {@code etex}.
  */
 
 package org.extex.unit.etex.font;

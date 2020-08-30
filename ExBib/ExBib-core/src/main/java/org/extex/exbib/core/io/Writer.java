@@ -23,11 +23,10 @@ import java.io.IOException;
 
 /**
  * This is the generic interface for any class which implements some sort of
- * writing in <logo>&epsilon;&chi;Bib</logo>.
+ * writing in ??Bib.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface Writer extends Closeable {
 
     /**

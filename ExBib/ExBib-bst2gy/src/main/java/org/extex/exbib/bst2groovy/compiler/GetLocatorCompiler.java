@@ -31,8 +31,7 @@ import org.extex.exbib.core.bst.token.impl.TLocalLocator.LocatorField;
  * This class implements the analyzer for a locator reader.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class GetLocatorCompiler implements Compiler {
 
     /**
@@ -70,7 +69,7 @@ public class GetLocatorCompiler implements Compiler {
     }
 
     /**
-     * The field <tt>field</tt> contains the field.
+     * The field {@code field} contains the field.
      */
     private LocatorField field;
 
@@ -85,10 +84,7 @@ public class GetLocatorCompiler implements Compiler {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryReference,
-     *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
+*      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */

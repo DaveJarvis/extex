@@ -23,11 +23,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\mathrel</tt>.
+ * This is a test suite for the primitive {@code \mathrel}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MathrelTest extends AbstractOperatorTester {
 
     public MathrelTest() {

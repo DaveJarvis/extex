@@ -35,12 +35,11 @@ import org.extex.ocpware.type.OcpCode;
  * This class provides a constant arithmetic expression. It holds a number.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public class Constant extends ArithExpr implements Expr, Left {
 
     /**
-     * The field <tt>n</tt> contains the value.
+     * The field {@code n} contains the value.
      */
     private int n;
 
@@ -55,10 +54,7 @@ public class Constant extends ArithExpr implements Expr, Left {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.compiler.left.Left#genLeft(
-     *      org.extex.ocpware.compiler.parser.State, CompilerState)
+*      org.extex.ocpware.compiler.parser.State, CompilerState)
      */
     public List<Integer> genLeft(State state, CompilerState cs)
             throws ArgmentTooBigException,
@@ -72,10 +68,7 @@ public class Constant extends ArithExpr implements Expr, Left {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.compiler.arith.ArithExpr#outExpr(
-     *      org.extex.ocpware.compiler.parser.CompilerState)
+*      org.extex.ocpware.compiler.parser.CompilerState)
      */
     @Override
     void outExpr(CompilerState cs) throws IOException, ArgmentTooBigException {
@@ -84,10 +77,7 @@ public class Constant extends ArithExpr implements Expr, Left {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.compiler.sexpression.Expr#outRight(
-     *      org.extex.ocpware.compiler.parser.CompilerState, boolean)
+*      org.extex.ocpware.compiler.parser.CompilerState, boolean)
      */
     public void outRight(CompilerState cs, boolean withOffset)
             throws IOException,
@@ -98,12 +88,7 @@ public class Constant extends ArithExpr implements Expr, Left {
                 : OcpCode.OP_RIGHT_NUM, n);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         if (n >= ' ' && n < 126) {

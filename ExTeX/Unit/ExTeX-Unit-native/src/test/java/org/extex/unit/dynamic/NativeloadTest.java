@@ -26,11 +26,10 @@ import org.extex.test.NoFlagsPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\nativeload</tt>.
+ * This is a test suite for the primitive {@code \nativeload}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NativeloadTest extends NoFlagsPrimitiveTester {
 
 
@@ -42,7 +41,7 @@ public class NativeloadTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\nativeload"> Test case checking that
-     * <tt>\nativeload</tt> properly invokes a correct loader. </testcase>
+     * {@code \nativeload} properly invokes a correct loader. 
      * 
      * @throws Exception in case of an error
      */
@@ -60,8 +59,8 @@ public class NativeloadTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\nativeload"> Test case checking that
-     * <tt>\nativeload</tt> produces a proper error message if an invalid type
-     * is specified. </testcase>
+     * {@code \nativeload} produces a proper error message if an invalid type
+     * is specified. 
      * 
      * @throws Exception in case of an error
      */
@@ -80,8 +79,8 @@ public class NativeloadTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\nativeload"> Test case checking that
-     * <tt>\nativeload</tt> produces a proper error message if an undefined
-     * class is specified. </testcase>
+     * {@code \nativeload} produces a proper error message if an undefined
+     * class is specified. 
      * 
      * @throws Exception in case of an error
      */
@@ -98,8 +97,8 @@ public class NativeloadTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\nativeload"> Test case checking that
-     * <tt>\nativeload</tt> produces a proper error message if an invalid class
-     * is specified. </testcase>
+     * {@code \nativeload} produces a proper error message if an invalid class
+     * is specified. 
      * 
      * @throws Exception in case of an error
      */

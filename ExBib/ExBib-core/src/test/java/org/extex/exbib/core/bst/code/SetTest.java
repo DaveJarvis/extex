@@ -51,25 +51,24 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for <tt>:=</tt>.
+ * Test suite for {@code :=}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class SetTest {
 
     /**
-     * The field <tt>db</tt> contains the database.
+     * The field {@code db} contains the database.
      */
     private DB db;
 
     /**
-     * The field <tt>entry</tt> contains the entry.
+     * The field {@code entry} contains the entry.
      */
     private Entry entry;
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field {@code p} contains the processor.
      */
     private BstProcessor p = null;
 
@@ -114,7 +113,7 @@ public class SetTest {
     }
 
     /**
-     * <testcase> The empty stack leads to an error. </testcase>
+     *  The empty stack leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -125,7 +124,7 @@ public class SetTest {
     }
 
     /**
-     * <testcase> Test abc := 123. </testcase>
+     *  Test abc := 123.
      * 
      * @throws Exception in case of an error
      */
@@ -136,7 +135,7 @@ public class SetTest {
     }
 
     /**
-     * <testcase> Test abc := "123". </testcase>
+     *  Test abc := "123".
      * 
      * @throws Exception in case of an error
      */
@@ -147,7 +146,7 @@ public class SetTest {
     }
 
     /**
-     * <testcase> Test setting a string entry. </testcase>
+     *  Test setting a string entry.
      * 
      * @throws Exception in case of an error
      */
@@ -168,7 +167,7 @@ public class SetTest {
     }
 
     /**
-     * <testcase> Test setting a string entry with an integer. </testcase>
+     *  Test setting a string entry with an integer.
      * 
      * @throws Exception in case of an error
      */
@@ -190,7 +189,7 @@ public class SetTest {
     }
 
     /**
-     * <testcase> Test setting an integer entry. </testcase>
+     *  Test setting an integer entry.
      * 
      * @throws Exception in case of an error
      */
@@ -211,7 +210,7 @@ public class SetTest {
     }
 
     /**
-     * <testcase> Test setting an integer entry with a string. </testcase>
+     *  Test setting an integer entry with a string.
      * 
      * @throws Exception in case of an error
      */
@@ -233,7 +232,7 @@ public class SetTest {
     }
 
     /**
-     * <testcase> Test setting a string entry. </testcase>
+     *  Test setting a string entry.
      * 
      * @throws Exception in case of an error
      */
@@ -254,7 +253,7 @@ public class SetTest {
     }
 
     /**
-     * <testcase> Test setting a string entry with an integer. </testcase>
+     *  Test setting a string entry with an integer.
      * 
      * @throws Exception in case of an error
      */
@@ -276,7 +275,7 @@ public class SetTest {
     }
 
     /**
-     * <testcase> A short stack leads to an error. </testcase>
+     *  A short stack leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -288,7 +287,7 @@ public class SetTest {
     }
 
     /**
-     * <testcase> Test 2 := "a" leads to an error. </testcase>
+     *  Test 2 := "a" leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -301,7 +300,7 @@ public class SetTest {
     }
 
     /**
-     * <testcase> Test "a" := "a" leads to an error. </testcase>
+     *  Test "a" := "a" leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -314,7 +313,7 @@ public class SetTest {
     }
 
     /**
-     * <testcase> Test 'undef := 2. </testcase>
+     *  Test 'undef := 2.
      * 
      * @throws Exception in case of an error
      */

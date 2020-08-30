@@ -24,8 +24,7 @@ package org.extex.scanner.stream.observer.string;
  * open string event.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface OpenStringObservable {
 
     /**

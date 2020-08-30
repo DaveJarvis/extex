@@ -31,43 +31,42 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\pdfoutline</code>.
+ * {@code \pdfoutline}.
  * 
- * <doc name="pdfoutline">
- * <h3>The Primitive <tt>\pdfoutline</tt></h3>
+ * <p>The Primitive {@code \pdfoutline}</p>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;pdfoutline&rang;
- *       &rarr; <tt>\pdfoutline</tt> &lang;optional count&rang; {@linkplain
+ *       &rarr; {@code \pdfoutline} &lang;optional count&rang; {@linkplain
  *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,CodeToken)
  *          &lang;general text&rang;}
  *
  *    &lang;optional count&rang;
  *       &rarr;
- *        | <tt>count</tt> {@linkplain
+ *        | {@code count} {@linkplain
  *          org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,CodeToken)
  *          &lang;number&rang;}   </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \pdfoutline {abc.png}  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4791 $
- */
+*/
 public class Pdfoutline extends AbstractPdftexCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -83,10 +82,7 @@ public class Pdfoutline extends AbstractPdftexCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

@@ -31,12 +31,11 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\nonstopmode</code>. It does simply nothing, but as a side
+ * {@code \nonstopmode}. It does simply nothing, but as a side
  * effect all prefixes are zeroed and the interaction mode is set to
- * <tt>nonstopmode</tt>.
+ * {@code nonstopmode}.
  *
- * <doc name="nonstopmode">
- * <h3>The Primitive <tt>\nonstopmode</tt></h3>
+ * <p>The Primitive {@code \nonstopmode}</p>
  * <p>
  *  This primitive sets the interaction mode to batch mode.
  *  In batch mode the processing is terminated if the program needs input from
@@ -47,24 +46,24 @@ import org.extex.typesetter.exception.TypesetterException;
  *  processed globally. This means it does not interact with the group concept.
  * </p>
  *
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;nonstopmode&rang;
- *      &rarr; <tt>\nonstopmode</tt>  </pre>
+ *      &rarr; {@code \nonstopmode}  </pre>
  *
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  *  <pre class="TeXSample">
  *    \nonstopmode  </pre>
- * </doc>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4408 $
- */
+*/
 public class Nonstopmode extends AbstractAssignment {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -79,10 +78,7 @@ public class Nonstopmode extends AbstractAssignment {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

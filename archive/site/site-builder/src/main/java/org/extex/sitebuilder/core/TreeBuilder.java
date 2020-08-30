@@ -52,41 +52,35 @@ import org.xml.sax.SAXException;
  * This class is a builder for directory trees.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TreeBuilder extends TemplatingEngine {
 
     /**
-     * The field <tt>base</tt> contains the base directory.
+     * The field {@code base} contains the base directory.
      */
     private File base = null;
 
     /**
-     * The field <tt>target</tt> contains the target directory.
+     * The field {@code target} contains the target directory.
      */
     private File target = null;
 
     /**
-     * The field <tt>template</tt> contains the template file.
+     * The field {@code template} contains the template file.
      */
     private String template = "org/extex/sitebuilder/site.vm";
 
     /**
-     * The field <tt>omitList</tt> contains the omit patterns.
+     * The field {@code omitList} contains the omit patterns.
      */
     private List<String> omitList = new ArrayList<String>();
 
     /**
-     * The field <tt>DIR_FILTER</tt> contains the file filter for $directory.
+     * The field {@code DIR_FILTER} contains the file filter for $directory.
      */
     private final FilenameFilter DIR_FILTER = new FilenameFilter() {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.io.FilenameFilter#accept(java.io.File, java.lang.String)
-         */
-        @Override
+    @Override
         public boolean accept(File dir, String name) {
 
             return FILTER.accept(dir, name) && !name.equals("index.html");
@@ -94,16 +88,11 @@ public class TreeBuilder extends TemplatingEngine {
     };
 
     /**
-     * The field <tt>FILTER</tt> contains the file filter for $directory.
+     * The field {@code FILTER} contains the file filter for $directory.
      */
     private final FilenameFilter FILTER = new FilenameFilter() {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.io.FilenameFilter#accept(java.io.File, java.lang.String)
-         */
-        @Override
+    @Override
         public boolean accept(File dir, String name) {
 
             return !name.startsWith(".") && !omitList.contains(name);
@@ -111,12 +100,12 @@ public class TreeBuilder extends TemplatingEngine {
     };
 
     /**
-     * The field <tt>logger</tt> contains the logger.
+     * The field {@code logger} contains the logger.
      */
     private Logger logger;
 
     /**
-     * The field <tt>translateHtml</tt> contains the indicator whether or not
+     * The field {@code translateHtml} contains the indicator whether or not
      * the HTML files should be translated.
      */
     private boolean translateHtml = true;

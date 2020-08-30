@@ -33,7 +33,7 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\dimen</code>.
+ * This class provides an implementation for the primitive {@code \dimen}.
  * It sets the named length register to the value given, and as a side effect
  * all prefixes are zeroed.
  * 
@@ -46,20 +46,19 @@ import org.extex.typesetter.exception.TypesetterException;
  * </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class DimenParameter extends DimenPrimitive
         implements
             InitializableCode,
             Configurable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>key</tt> contains the key.
+     * The field {@code key} contains the key.
      */
     private String key;
 
@@ -105,10 +104,7 @@ public class DimenParameter extends DimenPrimitive
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.tex.register.dimen.AbstractDimen#getKey(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     protected String getKey(Context context, TokenSource source,
@@ -118,10 +114,7 @@ public class DimenParameter extends DimenPrimitive
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.InitializableCode#init(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public void init(Context context, TokenSource source, Typesetter typesetter)

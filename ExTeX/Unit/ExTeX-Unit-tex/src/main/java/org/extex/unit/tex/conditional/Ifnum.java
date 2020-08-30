@@ -31,52 +31,51 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.conditional.AbstractIf;
 
 /**
- * This class provides an implementation for the primitive <code>\ifnum</code>.
+ * This class provides an implementation for the primitive {@code \ifnum}.
  * 
- * <doc name="ifnum">
- * <h3>The Primitive <tt>\ifnum</tt></h3>
+ * <p>The Primitive {@code \ifnum}</p>
  * <p>
- * The primitive <tt>\ifnum</tt> provides a conditional which compares two
+ * The primitive {@code \ifnum} provides a conditional which compares two
  * numerical values. The comparison for equality, greater, and less are
  * possible.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;ifnum&rang;
- *      &rarr; <tt>\ifnum</tt> {@linkplain
+ *      &rarr; {@code \ifnum} {@linkplain
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;op&rang; {@linkplain
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
- *        &lang;number&rang;} &lang;true text&rang; <tt>\fi</tt>
- *      | <tt>\ifnum</tt> {@linkplain
+ *        &lang;number&rang;} &lang;true text&rang; {@code \fi}
+ *      | {@code \ifnum} {@linkplain
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;op&rang; {@linkplain
  *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
- *        &lang;number&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt>
+ *        &lang;number&rang;} &lang;true text&rang; {@code \else} &lang;false text&rang; {@code \fi}
  *
  *    &lang;op&rang;
  *      &rarr; [&lt;]
  *      | [=]
  *      | [&gt;]  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \ifnum\count0&gt;42 abc \fi  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4439 $
- */
+*/
 public class Ifnum extends AbstractIf {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -92,10 +91,7 @@ public class Ifnum extends AbstractIf {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.base.conditional.AbstractIf#conditional(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

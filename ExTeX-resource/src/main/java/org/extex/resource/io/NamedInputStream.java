@@ -27,17 +27,16 @@ import java.io.InputStream;
  * is coming from.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class NamedInputStream extends InputStream {
 
     /**
-     * The field <tt>name</tt> contains the name.
+     * The field {@code name} contains the name.
      */
     private final String name;
 
     /**
-     * The field <tt>stream</tt> contains the stream.
+     * The field {@code stream} contains the stream.
      */
     private final InputStream stream;
 
@@ -53,34 +52,19 @@ public class NamedInputStream extends InputStream {
         this.name = name;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.InputStream#available()
-     */
-    @Override
+@Override
     public int available() throws IOException {
 
         return stream.available();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.InputStream#close()
-     */
-    @Override
+@Override
     public void close() throws IOException {
 
         stream.close();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
+@Override
     public boolean equals(Object obj) {
 
         return stream.equals(obj);
@@ -96,100 +80,55 @@ public class NamedInputStream extends InputStream {
         return name;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
+@Override
     public int hashCode() {
 
         return stream.hashCode();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.InputStream#mark(int)
-     */
-    @Override
+@Override
     public void mark(int readlimit) {
 
         stream.mark(readlimit);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.InputStream#markSupported()
-     */
-    @Override
+@Override
     public boolean markSupported() {
 
         return stream.markSupported();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.InputStream#read()
-     */
-    @Override
+@Override
     public int read() throws IOException {
 
         return stream.read();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.InputStream#read(byte[])
-     */
-    @Override
+@Override
     public int read(byte[] b) throws IOException {
 
         return stream.read(b);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.InputStream#read(byte[], int, int)
-     */
-    @Override
+@Override
     public int read(byte[] b, int off, int len) throws IOException {
 
         return stream.read(b, off, len);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.InputStream#reset()
-     */
-    @Override
+@Override
     public void reset() throws IOException {
 
         stream.reset();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.InputStream#skip(long)
-     */
-    @Override
+@Override
     public long skip(long n) throws IOException {
 
         return stream.skip(n);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return stream.toString();

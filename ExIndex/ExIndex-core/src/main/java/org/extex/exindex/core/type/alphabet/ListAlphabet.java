@@ -29,12 +29,11 @@ import org.extex.exindex.lisp.type.value.LValue;
  * This class contains the finite set of elements as a list.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ListAlphabet implements LValue, Alphabet, LocationClass {
 
     /**
-     * The field <tt>list</tt> contains the list of words.
+     * The field {@code list} contains the list of words.
      */
     private final String[] list;
 
@@ -59,10 +58,7 @@ public class ListAlphabet implements LValue, Alphabet, LocationClass {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.alphabet.LocationClass#match(java.lang.String,
-     *      java.lang.String)
+*      java.lang.String)
      */
     public PageReference match(String encap, String s) {
 
@@ -74,12 +70,7 @@ public class ListAlphabet implements LValue, Alphabet, LocationClass {
         return new SomePage(encap, s);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.alphabet.LocationClass#match(java.lang.StringBuilder)
-     */
-    public boolean match(StringBuilder s) {
+public boolean match(StringBuilder s) {
 
         for (String x : list) {
             if (match(s, x)) {
@@ -96,7 +87,7 @@ public class ListAlphabet implements LValue, Alphabet, LocationClass {
      * @param s the string builder
      * @param x the pattern
      * 
-     * @return <code>true</code> if a match has been found
+     * @return {@code true} if a match has been found
      */
     private boolean match(StringBuilder s, String x) {
 
@@ -111,12 +102,7 @@ public class ListAlphabet implements LValue, Alphabet, LocationClass {
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
-     */
-    public void print(PrintStream stream) {
+public void print(PrintStream stream) {
 
         stream.print("#alphabet(");
         for (String a : list) {

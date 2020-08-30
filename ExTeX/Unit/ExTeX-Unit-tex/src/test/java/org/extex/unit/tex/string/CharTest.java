@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\char</tt>.
+ * This is a test suite for the primitive {@code \char}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class CharTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -48,8 +47,8 @@ public class CharTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\char"> Test case checking that <tt>\char</tt> of
-     * 65 produces an A. </testcase>
+     * <testcase primitive="\char"> Test case checking that {@code \char} of
+     * 65 produces an A.
      * 
      * @throws Exception in case of an error
      */

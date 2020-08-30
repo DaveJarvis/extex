@@ -28,32 +28,31 @@ import org.extex.exbib.editor.bst.outline.BstEditorOutline;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class BstEditor extends TextEditor {
 
     /**
-     * The constant <tt>ID</tt> contains the editor id.
+     * The constant {@code ID} contains the editor id.
      */
     public static final String ID = BstEditor.class.getName();
 
     /**
-     * The field <tt>colorManager</tt> contains the color manager.
+     * The field {@code colorManager} contains the color manager.
      */
     private ColorManager colorManager;
 
     /**
-     * The field <tt>imageManager</tt> contains the image manager.
+     * The field {@code imageManager} contains the image manager.
      */
     private ImageManager imageManager;
 
     /**
-     * The field <tt>fOutlinePage</tt> contains the outline.
+     * The field {@code fOutlinePage} contains the outline.
      */
     private BstEditorOutline outlinePage = null;
 
     /**
-     * The field <tt>model</tt> contains the model.
+     * The field {@code model} contains the model.
      */
     private BstModel model;
 
@@ -72,12 +71,7 @@ public class BstEditor extends TextEditor {
         setDocumentProvider(new BstDocumentProvider());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.editors.text.TextEditor#dispose()
-     */
-    @Override
+@Override
     public void dispose() {
 
         colorManager.dispose();
@@ -85,12 +79,7 @@ public class BstEditor extends TextEditor {
         super.dispose();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.editors.text.TextEditor#getAdapter(java.lang.Class)
-     */
-    @Override
+@Override
     @SuppressWarnings("unchecked")
     public Object getAdapter(Class required) {
 

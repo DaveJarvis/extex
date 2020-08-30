@@ -37,8 +37,7 @@ import org.apache.tools.ant.Task;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LatexAutoTask extends Task {
 
     private static final String DIR_TARGET = "build";
@@ -79,22 +78,22 @@ public class LatexAutoTask extends Task {
     private int latexLimit = 8;
 
     /**
-     * The field <tt>simulate</tt> contains the ...
+     * The field {@code simulate} contains the ...
      */
     private boolean simulate = true;
 
     /**
-     * The field <tt>output</tt> contains the ...
+     * The field {@code output} contains the ...
      */
     private String output = ".";
 
     /**
-     * The field <tt>latexCommand</tt> contains the ...
+     * The field {@code latexCommand} contains the ...
      */
     private String latexCommand = "pdflatex";
 
     /**
-     * The field <tt>workingDirectory</tt> contains the ...
+     * The field {@code workingDirectory} contains the ...
      */
     private String workingDirectory = ".";
 
@@ -158,12 +157,7 @@ public class LatexAutoTask extends Task {
         // TODO gene: determineDependencies unimplemented
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.apache.tools.ant.Task#execute()
-     */
-    @Override
+@Override
     public void execute() throws BuildException {
 
         File base = new File("base.tex");

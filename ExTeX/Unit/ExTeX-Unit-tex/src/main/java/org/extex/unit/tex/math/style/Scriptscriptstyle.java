@@ -33,12 +33,11 @@ import org.extex.unit.tex.math.AbstractMathCode;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\scriptscriptstyle</code>.
+ * {@code \scriptscriptstyle}.
  * 
- * <doc name="scriptscriptstyle">
- * <h3>The Math Primitive <tt>\scriptscriptstyle</tt></h3>
+ * <p>The Math Primitive {@code \scriptscriptstyle}</p>
  * <p>
- * The math primitive <tt>\scriptscriptstyle</tt> arranges that the following
+ * The math primitive {@code \scriptscriptstyle} arranges that the following
  * material in the current math group is typeset in script script style
  * regardless of the style determined so far. This mean that for instance a
  * subscript can be forced to be typeset in script script style.
@@ -51,27 +50,27 @@ import org.extex.unit.tex.math.AbstractMathCode;
  * If used outside of math mode an error is raised.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;scriptscriptstyle&rang;
- *       &rarr; <tt>\scriptscriptstyle</tt>  </pre>
+ *       &rarr; {@code \scriptscriptstyle}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \scriptscriptstyle  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Scriptscriptstyle extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -87,10 +86,7 @@ public class Scriptscriptstyle extends AbstractMathCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

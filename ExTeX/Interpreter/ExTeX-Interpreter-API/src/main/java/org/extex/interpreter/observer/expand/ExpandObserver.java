@@ -26,8 +26,7 @@ import org.extex.scanner.type.token.Token;
  * a token is executed.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public interface ExpandObserver {
 
     /**

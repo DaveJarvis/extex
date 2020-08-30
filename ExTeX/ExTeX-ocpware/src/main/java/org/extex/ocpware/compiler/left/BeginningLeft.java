@@ -32,8 +32,7 @@ import org.extex.ocpware.type.OcpCode;
  * This class represents a reference to the beginning of the sequence.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public class BeginningLeft implements Left {
 
 
@@ -42,10 +41,7 @@ public class BeginningLeft implements Left {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.compiler.left.Left#genLeft(org.extex.ocpware.compiler.parser.State,
-     *      CompilerState)
+*      CompilerState)
      */
     @Override
     public List<Integer> genLeft(State state, CompilerState cs)
@@ -62,12 +58,7 @@ public class BeginningLeft implements Left {
         return falseHoles;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return "beg:";

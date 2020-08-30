@@ -42,7 +42,7 @@ import org.extex.ant.latex.command.CommandFactory;
  * >a</span>T<span style="text-transform:uppercase;font-size:90%;vertical-align: -0.4ex;margin-left: -0.2em;margin-right: -0.1em;line-height: 0;"
  * >e</span>X document.
  * 
- * <h3>Usage</h3>
+ * <p>Usage</p>
  * 
  * <p>
  * To use this class in an Ant file you need to define it as a task. In the
@@ -68,7 +68,7 @@ import org.extex.ant.latex.command.CommandFactory;
  *   &lt;/LaTeX&gt;
  * </pre>
  * 
- * <h3>Configuration Properties</h3>
+ * <p>Configuration Properties</p>
  * 
  * <pre>
  *   &lt;property name="..." value="..." /&gt;
@@ -95,8 +95,7 @@ import org.extex.ant.latex.command.CommandFactory;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LatexTask extends Task implements Settings {
 
     private static final String DIR_TARGET = "build";
@@ -108,7 +107,7 @@ public class LatexTask extends Task implements Settings {
     public class Dep {
 
         /**
-         * The field <tt>name</tt> contains the ...
+         * The field {@code name} contains the ...
          */
         private String name;
 
@@ -131,12 +130,12 @@ public class LatexTask extends Task implements Settings {
     public class Prop {
 
         /**
-         * The field <tt>name</tt> contains the name.
+         * The field {@code name} contains the name.
          */
         private String name;
 
         /**
-         * The field <tt>value</tt> contains the value.
+         * The field {@code value} contains the value.
          */
         private String value;
 
@@ -206,42 +205,42 @@ public class LatexTask extends Task implements Settings {
     }
 
     /**
-     * The field <tt>master</tt> contains the name of the master file.
+     * The field {@code master} contains the name of the master file.
      */
     private File master = null;
 
     /**
-     * The field <tt>simulate</tt> contains the simulation indicator.
+     * The field {@code simulate} contains the simulation indicator.
      */
     private boolean simulate = false;
 
     /**
-     * The field <tt>target</tt> contains the target directory.
+     * The field {@code target} contains the target directory.
      */
     private File target = new File(DIR_TARGET);
 
     /**
-     * The field <tt>workingDirectory</tt> contains the working directory.
+     * The field {@code workingDirectory} contains the working directory.
      */
     private File workingDirectory = new File(".");
 
     /**
-     * The field <tt>dependencies</tt> contains the dependencies.
+     * The field {@code dependencies} contains the dependencies.
      */
     private List<Dep> dependencies = new ArrayList<Dep>();
 
     /**
-     * The field <tt>fallback</tt> contains the fall-back values for parameters.
+     * The field {@code fallback} contains the fall-back values for parameters.
      */
     private Map<String, String> fallback = new HashMap<String, String>();
 
     /**
-     * The field <tt>properties</tt> contains the local properties.
+     * The field {@code properties} contains the local properties.
      */
     private Map<String, String> properties = new HashMap<String, String>();
 
     /**
-     * The field <tt>propList</tt> contains the intermediary list pf properties.
+     * The field {@code propList} contains the intermediary list pf properties.
      */
     private List<Prop> propList = new ArrayList<Prop>();
 
@@ -302,7 +301,7 @@ public class LatexTask extends Task implements Settings {
      * Determine whether something needs to be done. This is relevant for the
      * first run primarily.
      * 
-     * @return <code>true</code> if something is not up to date
+     * @return {@code true} if something is not up to date
      */
     private boolean checkDependencies() {
 
@@ -355,12 +354,7 @@ public class LatexTask extends Task implements Settings {
         return prop;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.apache.tools.ant.Task#execute()
-     */
-    @Override
+@Override
     public void execute() throws BuildException {
 
         if (master == null) {
@@ -416,12 +410,7 @@ public class LatexTask extends Task implements Settings {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ant.latex.Settings#get(java.lang.String, java.lang.String)
-     */
-    public String get(String key, String def) {
+public String get(String key, String def) {
 
         String value = properties.get(key);
         if (value != null) {

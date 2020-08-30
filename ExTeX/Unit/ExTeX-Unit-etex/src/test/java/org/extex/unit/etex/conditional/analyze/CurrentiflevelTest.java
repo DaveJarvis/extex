@@ -24,11 +24,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\currentiflevel</tt>.
+ * This is a test suite for the primitive {@code \currentiflevel}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class CurrentiflevelTest extends AbstractReadonlyCountRegisterTester {
 
     /**
@@ -50,7 +49,7 @@ public class CurrentiflevelTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiflevel"> Test case checking that
-     * <tt>\currentiflevel</tt> returns 0 outside any conditional. </testcase>
+     * {@code \currentiflevel} returns 0 outside any conditional. 
      * 
      * @throws Exception in case of an error
      */
@@ -65,7 +64,7 @@ public class CurrentiflevelTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiflevel"> Test case checking that
-     * <tt>\currentiflevel</tt> returns 0 outside any conditional. </testcase>
+     * {@code \currentiflevel} returns 0 outside any conditional. 
      * 
      * @throws Exception in case of an error
      */
@@ -80,7 +79,7 @@ public class CurrentiflevelTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiflevel"> Test case checking that
-     * <tt>\currentiflevel</tt> is 1 inside a single conditional. </testcase>
+     * {@code \currentiflevel} is 1 inside a single conditional. 
      * 
      * @throws Exception in case of an error
      */
@@ -95,7 +94,7 @@ public class CurrentiflevelTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiflevel"> Test case checking that
-     * <tt>\currentiflevel</tt> is 2 inside two conditionals. </testcase>
+     * {@code \currentiflevel} is 2 inside two conditionals. 
      * 
      * @throws Exception in case of an error
      */

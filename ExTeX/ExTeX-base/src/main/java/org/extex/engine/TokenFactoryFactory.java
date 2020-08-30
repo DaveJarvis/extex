@@ -29,18 +29,18 @@ import org.extex.scanner.type.token.TokenFactory;
  * inherits its properties from the {@link org.extex.framework.AbstractFactory
  * AbstractFactory}. Among them the support for configuration and logging.
  * 
- * <h3>Configuration</h3>
+ *  Configuration
  * 
  * <p>
  * Mainly the configuration needs to specify which class to use for the
- * TokenFactory. The name of the class is given as the argument <tt>class</tt>
+ * TokenFactory. The name of the class is given as the argument {@code class}
  * as shown below.
- * 
+ * </p>
+ *
  * <pre>
  *   &lt;TokenFactory class="org.extex.scanner.type.token.TokenFactoryImpl"/&gt;
  *  </pre>
  * 
- * </p>
  * <p>
  * The named class needs to implement the interface
  * {@link org.extex.scanner.type.token.TokenFactory TokenFactory}. If this
@@ -60,8 +60,7 @@ import org.extex.scanner.type.token.TokenFactory;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class TokenFactoryFactory extends AbstractFactory<TokenFactory> {
 
     /**

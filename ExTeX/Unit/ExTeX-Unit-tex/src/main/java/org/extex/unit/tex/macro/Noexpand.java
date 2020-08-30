@@ -34,45 +34,44 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\noexpand</code>.
+ * {@code \noexpand}.
  * 
- * <doc name="noexpand">
- * <h3>The Primitive <tt>\noexpand</tt></h3>
+ * <p>The Primitive {@code \noexpand}</p>
  * <p>
- * The primitive <tt>\noexpand</tt> prevents a token from being expanded when
- * collecting the expanded tokens for arguments of macros like <tt>\edef</tt>,
- * <tt>\xdef</tt>, <tt>\message</tt>, and others.
+ * The primitive {@code \noexpand} prevents a token from being expanded when
+ * collecting the expanded tokens for arguments of macros like {@code \edef},
+ * {@code \xdef}, {@code \message}, and others.
  * </p>
  * <p>
- * If the token following the <tt>\noexpand</tt> is not a control sequence or
+ * If the token following the {@code \noexpand} is not a control sequence or
  * active character then the primitive does nothing at all. The primitive is
  * also void if it occurs outside the said expansion context.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;noexpand&rang;
- *      &rarr; <tt>\noexpand</tt>  </pre>
+ *      &rarr; {@code \noexpand}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \noexpand  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Noexpand extends AbstractCode
         implements
             ExpandableCode,
             CodeExpander {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -88,10 +87,7 @@ public class Noexpand extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -102,10 +98,7 @@ public class Noexpand extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,
@@ -115,10 +108,7 @@ public class Noexpand extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.CodeExpander#expandCode(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.tokens.Tokens)
      */

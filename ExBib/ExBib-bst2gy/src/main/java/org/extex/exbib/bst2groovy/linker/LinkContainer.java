@@ -30,17 +30,16 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
  * includes additional methods to be defined and a list of imports.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LinkContainer {
 
     /**
-     * The field <tt>linked</tt> contains the list of methods to be linked in.
+     * The field {@code linked} contains the list of methods to be linked in.
      */
     private Set<LinkingCode> linked = new HashSet<LinkingCode>();
 
     /**
-     * The field <tt>imports</tt> contains the set of imports.
+     * The field {@code imports} contains the set of imports.
      */
     private Set<String> imports = new HashSet<String>();
 

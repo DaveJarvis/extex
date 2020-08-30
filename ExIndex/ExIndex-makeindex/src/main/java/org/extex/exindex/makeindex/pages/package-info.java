@@ -17,7 +17,7 @@
  */
 /**
  * 
- *   This package contains page processors.
+ *   Contains page processors.
  * 
  *
  */

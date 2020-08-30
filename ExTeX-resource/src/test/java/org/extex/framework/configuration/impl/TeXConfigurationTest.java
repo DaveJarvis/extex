@@ -38,8 +38,7 @@ import org.junit.Test;
  * This is a test suite for the {@link TeXConfiguration}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class TeXConfigurationTest {
 
     /**
@@ -55,7 +54,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -70,7 +69,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -90,7 +89,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -105,7 +104,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -117,7 +116,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -130,7 +129,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -143,7 +142,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -165,7 +164,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -188,7 +187,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -211,7 +210,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -224,7 +223,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -237,7 +236,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -250,7 +249,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -265,7 +264,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -280,7 +279,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -295,7 +294,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -310,7 +309,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -326,7 +325,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> </testcase>
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -342,9 +341,8 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> An empty stream signals a failure in locating the
-     * configuration. </testcase>
-     * 
+     * An empty stream signals a failure in locating the configuration
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = ConfigurationNotFoundException.class)
@@ -354,7 +352,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> The empty stream is not valid. </testcase>
+     *  The empty stream is not valid.
      * 
      * @throws Exception in case of an error
      */
@@ -365,8 +363,8 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> The empty stream with whitespace only is not valid.
-     * </testcase>
+     *  The empty stream with whitespace only is not valid.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -377,7 +375,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> The initial cs has to be followed by something. </testcase>
+     *  The initial cs has to be followed by something.
      * 
      * @throws Exception in case of an error
      */
@@ -388,7 +386,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> The initial cs has to be followed by [ or {. </testcase>
+     *  The initial cs has to be followed by [ or {.
      * 
      * @throws Exception in case of an error
      */
@@ -399,8 +397,8 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> The initial cs has to be followed by [ and an attribute name.
-     * </testcase>
+     *  The initial cs has to be followed by [ and an attribute name.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -411,9 +409,8 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> The initial cs has to be followed by [, an attribute name and
-     * an =. </testcase>
-     * 
+     * The initial cs has to be followed by [, an attribute name and an =
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = ConfigurationSyntaxException.class)
@@ -423,9 +420,8 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> The initial cs has to be followed by [, an attribute name and
-     * an =. </testcase>
-     * 
+     * The initial cs has to be followed by [, an attribute name and an =
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = ConfigurationSyntaxException.class)
@@ -435,9 +431,8 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> The initial cs has to be followed by [, an attribute name and
-     * an =. </testcase>
-     * 
+     * The initial cs has to be followed by [, an attribute name and an =
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = ConfigurationSyntaxException.class)
@@ -447,9 +442,8 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> The initial cs has to be followed by [, an attribute name and
-     * an =. </testcase>
-     * 
+     * The initial cs has to be followed by [, an attribute name and an =
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = ConfigurationSyntaxException.class)
@@ -459,7 +453,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> Attributes need to be closed by ]. </testcase>
+     *  Attributes need to be closed by ].
      * 
      * @throws Exception in case of an error
      */
@@ -470,7 +464,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> Attributes need to be closed by ]. </testcase>
+     *  Attributes need to be closed by ].
      * 
      * @throws Exception in case of an error
      */
@@ -481,7 +475,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> Attributes need to be unique. </testcase>
+     *  Attributes need to be unique.
      * 
      * @throws Exception in case of an error
      */
@@ -492,7 +486,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> A lonely backslash raises an error. </testcase>
+     *  A lonely backslash raises an error.
      * 
      * @throws Exception in case of an error
      */
@@ -503,8 +497,8 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> A lonely backslash in the configuration raises an
-     * error.</testcase>
+     *  A lonely backslash in the configuration raises an
+     * error.
      * 
      * @throws Exception in case of an error
      */
@@ -515,8 +509,8 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> A lonely backslash in the configuration raises an
-     * error.</testcase>
+     *  A lonely backslash in the configuration raises an
+     * error.
      * 
      * @throws Exception in case of an error
      */
@@ -527,9 +521,8 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> A missing opening brace for a sub-configuration raises an
-     * error. </testcase>
-     * 
+     * A missing opening brace for a sub-configuration raises an error
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = ConfigurationSyntaxException.class)
@@ -539,7 +532,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> An unclosed brace raises an error. </testcase>
+     *  An unclosed brace raises an error.
      * 
      * @throws Exception in case of an error
      */
@@ -550,7 +543,7 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> A missing backslash raises an error. </testcase>
+     *  A missing backslash raises an error.
      * 
      * @throws Exception in case of an error
      */
@@ -561,9 +554,8 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> A missing closing bracket for the attribute section raises an
-     * error. </testcase>
-     * 
+     * A missing closing bracket for the attribute section raises an error
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = ConfigurationSyntaxException.class)
@@ -573,9 +565,8 @@ public class TeXConfigurationTest {
     }
 
     /**
-     * <testcase> A missing closing brace in the attribute section raises an
-     * error. </testcase>
-     * 
+     * A missing closing brace in the attribute section raises an error
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = ConfigurationSyntaxException.class)

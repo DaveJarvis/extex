@@ -24,8 +24,7 @@ package org.extex.exindex.core.type.alphabet;
  * This interface describes an container for named alphabets.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface AlphabetContainer {
 
     /**
@@ -41,7 +40,7 @@ public interface AlphabetContainer {
      * 
      * @param name the name of the alphabet
      * 
-     * @return the alphabet or <code>null</code> if it does not exist
+     * @return the alphabet or {@code null} if it does not exist
      */
     Alphabet lookupAlphabet(String name);
 

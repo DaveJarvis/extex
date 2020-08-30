@@ -23,11 +23,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\mathord</tt>.
+ * This is a test suite for the primitive {@code \mathord}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class MathordTest extends AbstractOperatorTester {
 
     public MathordTest() {
@@ -35,9 +34,9 @@ public class MathordTest extends AbstractOperatorTester {
     }
 
     /**
-     * <testcase>
+     * 
      *  Test case checking that a single math character works.
-     * </testcase>
+     * 
      *
      * @throws Exception in case of an error
      */

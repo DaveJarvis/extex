@@ -25,11 +25,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\lastbox</tt>.
+ * This is a test suite for the primitive {@code \lastbox}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class LastboxTest extends ExTeXLauncher {
 
     /**
@@ -49,7 +48,7 @@ public class LastboxTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\lastbox"> Test case showing that the primitive can
-     * not be used in vertical mode. </testcase>
+     * not be used in vertical mode.
      * 
      * @throws Exception in case of an error
      */
@@ -64,7 +63,7 @@ public class LastboxTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\lastbox"> Test case showing that the primitive can
-     * not be used in math mode. </testcase>
+     * not be used in math mode.
      * 
      * @throws Exception in case of an error
      */
@@ -79,7 +78,7 @@ public class LastboxTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\lastbox"> Test case showing that the primitive can
-     * not be used in display math mode. </testcase>
+     * not be used in display math mode.
      * 
      * @throws Exception in case of an error
      */
@@ -93,8 +92,8 @@ public class LastboxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\lastbox"> Test case checking that <tt>\lastbox</tt>
-     * can not be used in math mode. </testcase>
+     * <testcase primitive="\lastbox"> Test case checking that {@code \lastbox}
+     * can not be used in math mode.
      * 
      * @throws Exception in case of an error
      */
@@ -110,8 +109,8 @@ public class LastboxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\lastbox"> Test case checking that <tt>\lastbox</tt>
-     * can not be used in math mode. </testcase>
+     * <testcase primitive="\lastbox"> Test case checking that {@code \lastbox}
+     * can not be used in math mode.
      * 
      * @throws Exception in case of an error
      */
@@ -126,8 +125,8 @@ public class LastboxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\lastbox"> Test case checking that <tt>\lastbox</tt>
-     * can not be used in display math mode. </testcase>
+     * <testcase primitive="\lastbox"> Test case checking that {@code \lastbox}
+     * can not be used in display math mode.
      * 
      * @throws Exception in case of an error
      */
@@ -143,8 +142,8 @@ public class LastboxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\lastbox"> Test case checking that <tt>\lastbox</tt>
-     * can not be used in display math mode. </testcase>
+     * <testcase primitive="\lastbox"> Test case checking that {@code \lastbox}
+     * can not be used in display math mode.
      * 
      * @throws Exception in case of an error
      */

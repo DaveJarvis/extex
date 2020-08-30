@@ -28,12 +28,11 @@ import org.extex.core.dimen.Dimen;
  * Container for a BoundingBox.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class BoundingBox implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field {@code serialVersionUID} ...
      */
     private static final long serialVersionUID = 1L;
 

@@ -51,8 +51,7 @@ import org.extex.unit.tex.table.Omit;
  * @see "TTP [770]"
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class HAlignListMaker extends RestrictedHorizontalListMaker
         implements
             AlignmentList {
@@ -61,17 +60,16 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      * This inner class is a container for the cell information in an alignment.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision: 4770 $
-     */
+    */
     protected static class Cell {
 
         /**
-         * The field <tt>list</tt> contains the nodes of this cell.
+         * The field {@code list} contains the nodes of this cell.
          */
         private NodeList list = null;
 
         /**
-         * The field <tt>span</tt> contains the indicator that this cell should
+         * The field {@code span} contains the indicator that this cell should
          * be joined with the next cell when generating boxes.
          */
         private boolean span = false;
@@ -116,7 +114,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
     }
 
     /**
-     * The constant <tt>FIXED</tt> contains the default format consisting of the
+     * The constant {@code FIXED} contains the default format consisting of the
      * pure contents only.
      */
     private static final PreambleItem FIXED = new PreambleItem(Tokens.EMPTY,
@@ -140,43 +138,43 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
     }
 
     /**
-     * The field <tt>col</tt> contains the indicator for the current column.
+     * The field {@code col} contains the indicator for the current column.
      */
     private int col;
 
     /**
-     * The field <tt>format</tt> contains the format currently in effect.
+     * The field {@code format} contains the format currently in effect.
      */
     private PreambleItem format;
 
     /**
-     * The field <tt>line</tt> contains the cells of the current line.
+     * The field {@code line} contains the cells of the current line.
      */
     private Cell[] line;
 
     /**
-     * The field <tt>preamble</tt> contains the preamble for this halign.
+     * The field {@code preamble} contains the preamble for this halign.
      */
     private List<PreambleItem> preamble;
 
     /**
-     * The field <tt>rows</tt> contains the rows of this alignment.
+     * The field {@code rows} contains the rows of this alignment.
      */
     private List<Cell[]> rows = new ArrayList<Cell[]>();
 
     /**
-     * The field <tt>spread</tt> contains the indicator that the width should be
+     * The field {@code spread} contains the indicator that the width should be
      * interpreted relative to the natural width.
      */
     private boolean spread;
 
     /**
-     * The field <tt>maxWidth</tt> contains the maximal width of each column.
+     * The field {@code maxWidth} contains the maximal width of each column.
      */
     private Dimen[] maxWidth;
 
     /**
-     * The field <tt>width</tt> contains the target width or <code>null</code>
+     * The field {@code width} contains the target width or {@code null}
      * to indicate that the natural width should be used.
      */
     private FixedDimen width;
@@ -188,7 +186,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      * @param context the interpreter context
      * @param source the token source
      * @param thePreamble the list of preamble items
-     * @param theWidth the target width or <code>null</code> if the natural
+     * @param theWidth the target width or {@code null} if the natural
      *        width should be used
      * @param theSpread indicator that the width should be interpreted relative
      * 
@@ -299,7 +297,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      * 
      * @param context the interpreter context
      * @param source the token source
-     * @param noalign the tokens to be inserted or <code>null</code>
+     * @param noalign the tokens to be inserted or {@code null}
      * 
      * @throws TypesetterException in case of an error
      * 
@@ -430,10 +428,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.AbstractListMaker#tab(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
+*      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
     @Override

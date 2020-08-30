@@ -28,11 +28,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\nonstopmode</tt>.
+ * This is a test suite for the primitive {@code \nonstopmode}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class NonstopmodeTest extends NoFlagsPrimitiveTester {
 
     /**
@@ -54,7 +53,7 @@ public class NonstopmodeTest extends NoFlagsPrimitiveTester {
     /**
      * <testcase primitive="\nonstopmode">
      *  Test case checking that nonstop mode is reported as 0.
-     * </testcase>
+     * 
      *
      * @throws Exception in case of an error
      */
@@ -72,7 +71,7 @@ public class NonstopmodeTest extends NoFlagsPrimitiveTester {
     /**
      * <testcase primitive="\nonstopmode">
      *  Test case checking that nonstop mode is always global.
-     * </testcase>
+     * 
      *
      * @throws Exception in case of an error
      */

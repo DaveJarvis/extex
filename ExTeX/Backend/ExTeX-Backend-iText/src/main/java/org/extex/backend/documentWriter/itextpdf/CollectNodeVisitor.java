@@ -51,92 +51,54 @@ import org.extex.typesetter.type.node.WhatsItNode;
  * Node visitor, which collect all nodes.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class CollectNodeVisitor implements NodeVisitor<Object, Object> {
-
 
     /**
      * The backend manager.
      */
-    private BackendFontManager manager;
+    private final BackendFontManager manager;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param manager
-     */
     public CollectNodeVisitor(BackendFontManager manager) {
 
         this.manager = manager;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(org.extex.typesetter.type.node.AdjustNode,
-     *      java.lang.Object)
-     */
-    public Object visitAdjust(AdjustNode node, Object value)
-            throws GeneralException {
+    @Override
+    public Object visitAdjust(AdjustNode node, Object value) {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(org.extex.typesetter.type.node.AfterMathNode,
-     *      java.lang.Object)
-     */
+    @Override
     public Object visitAfterMath(AfterMathNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(org.extex.typesetter.type.node.AlignedLeadersNode,
-     *      java.lang.Object)
-     */
+    @Override
     public Object visitAlignedLeaders(AlignedLeadersNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(org.extex.typesetter.type.node.BeforeMathNode,
-     *      java.lang.Object)
-     */
+    @Override
     public Object visitBeforeMath(BeforeMathNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(org.extex.typesetter.type.node.CenteredLeadersNode,
-     *      java.lang.Object)
-     */
+    @Override
     public Object visitCenteredLeaders(CenteredLeadersNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitChar(org.extex.typesetter.type.node.CharNode,
-     *      java.lang.Object)
-     */
+    @Override
     public Object visitChar(CharNode node, Object value)
             throws GeneralException {
 
@@ -153,48 +115,28 @@ public class CollectNodeVisitor implements NodeVisitor<Object, Object> {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(org.extex.typesetter.type.node.DiscretionaryNode,
-     *      java.lang.Object)
-     */
+    @Override
     public Object visitDiscretionary(DiscretionaryNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(org.extex.typesetter.type.node.ExpandedLeadersNode,
-     *      java.lang.Object)
-     */
+    @Override
     public Object visitExpandedLeaders(ExpandedLeadersNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitGlue(org.extex.typesetter.type.node.GlueNode,
-     *      java.lang.Object)
-     */
+    @Override
     public Object visitGlue(GlueNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(org.extex.typesetter.type.node.HorizontalListNode,
-     *      java.lang.Object)
-     */
+    @Override
     public Object visitHorizontalList(HorizontalListNode node, Object value)
             throws GeneralException {
 
@@ -204,96 +146,56 @@ public class CollectNodeVisitor implements NodeVisitor<Object, Object> {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(org.extex.typesetter.type.node.InsertionNode,
-     *      java.lang.Object)
-     */
+    @Override
     public Object visitInsertion(InsertionNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitKern(org.extex.typesetter.type.node.KernNode,
-     *      java.lang.Object)
-     */
+    @Override
     public Object visitKern(KernNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitLigature(org.extex.typesetter.type.node.LigatureNode,
-     *      java.lang.Object)
-     */
+    @Override
     public Object visitLigature(LigatureNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitMark(org.extex.typesetter.type.node.MarkNode,
-     *      java.lang.Object)
-     */
+    @Override
     public Object visitMark(MarkNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(org.extex.typesetter.type.node.PenaltyNode,
-     *      java.lang.Object)
-     */
+    @Override
     public Object visitPenalty(PenaltyNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitRule(org.extex.typesetter.type.node.RuleNode,
-     *      java.lang.Object)
-     */
+    @Override
     public Object visitRule(RuleNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitSpace(org.extex.typesetter.type.node.SpaceNode,
-     *      java.lang.Object)
-     */
+    @Override
     public Object visitSpace(SpaceNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(org.extex.typesetter.type.node.VerticalListNode,
-     *      java.lang.Object)
-     */
+    @Override
     public Object visitVerticalList(VerticalListNode node, Object value)
             throws GeneralException {
 
@@ -304,24 +206,14 @@ public class CollectNodeVisitor implements NodeVisitor<Object, Object> {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(org.extex.typesetter.type.node.VirtualCharNode,
-     *      java.lang.Object)
-     */
+    @Override
     public Object visitVirtualChar(VirtualCharNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(org.extex.typesetter.type.node.WhatsItNode,
-     *      java.lang.Object)
-     */
+    @Override
     public Object visitWhatsIt(WhatsItNode node, Object value)
             throws GeneralException {
 

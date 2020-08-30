@@ -34,12 +34,11 @@ import org.extex.unit.tex.math.AbstractMathCode;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\displaylimits</code>.
+ * {@code \displaylimits}.
  * 
- * <doc name="displaylimits">
- * <h3>The Math Primitive <tt>\displaylimits</tt></h3>
+ * <p>The Math Primitive {@code \displaylimits}</p>
  * <p>
- * The math primitive <tt>\displaylimits</tt> influences the treatment of
+ * The math primitive {@code \displaylimits} influences the treatment of
  * limits when occurring after a math operator. The consequence is that the
  * limits are typeset in the way as in display style.
  * </p>
@@ -47,27 +46,27 @@ import org.extex.unit.tex.math.AbstractMathCode;
  * In any other circumstances the primitive raises an error.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;displaylimits&rang;
- *       &rarr; <tt>\displaylimits</tt>  </pre>
+ *       &rarr; {@code \displaylimits}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \displaylimits  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4431 $
- */
+*/
 public class Displaylimits extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -83,10 +82,7 @@ public class Displaylimits extends AbstractMathCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

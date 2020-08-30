@@ -32,8 +32,7 @@ import org.extex.util.file.random.RandomAccessR;
  * </p>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public class T2SID extends T2Number {
 
@@ -51,7 +50,7 @@ public class T2SID extends T2Number {
     /**
      * the value.
      */
-    private int value;
+    private final int value;
 
     /**
      * {@inheritDoc}

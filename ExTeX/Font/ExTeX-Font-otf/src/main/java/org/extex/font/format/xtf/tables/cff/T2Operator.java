@@ -31,8 +31,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * Operator.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 
 public abstract class T2Operator extends T2CharString
         implements
@@ -233,7 +232,7 @@ public abstract class T2Operator extends T2CharString
      * 
      * @param stack The stack.
      * @param ch The char string.
-     * @return Returns the with or <code>null</code>, if no exists.
+     * @return Returns the with or {@code null}, if no exists.
      * @throws T2MissingNumberException if a error occurred.
      */
     protected T2Number checkWidth(List<T2CharString> stack, CharString ch)
@@ -312,10 +311,7 @@ public abstract class T2Operator extends T2CharString
     public abstract Object getValue();
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#init(
-     *      org.extex.util.file.random.RandomAccessR,
+*      org.extex.util.file.random.RandomAccessR,
      *      org.extex.font.format.xtf.tables.OtfTableCFF, int,
      *      org.extex.font.format.xtf.tables.cff.CffFont)
      */
@@ -326,23 +322,13 @@ public abstract class T2Operator extends T2CharString
         // do nothing
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#isOperator()
-     */
-    @Override
+@Override
     public boolean isOperator() {
 
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         return getName();

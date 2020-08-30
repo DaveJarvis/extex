@@ -16,13 +16,13 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the core classes for the
+ * Contains the core classes for the
  * εχTeX site builder.
  * <p>
  * The entry point is the class {@link org.extex.sitebuilder.core.SiteBuilder}.
  * </p>
  * <p>
- * <img src="../doc-files/overview.png" width="90%" halign="center"/>
+ * <img src="../doc-files/overview.png" width="90%" halign="center">
  * </p>
  */
 

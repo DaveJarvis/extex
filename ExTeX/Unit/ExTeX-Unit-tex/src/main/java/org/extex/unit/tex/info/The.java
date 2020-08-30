@@ -39,41 +39,41 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\the</code>.
+ * This class provides an implementation for the primitive {@code \the}.
  * 
- * <doc name="the"> <h3>The Primitive <tt>\the</tt></h3>
+ * <p>The Primitive {@code \the}</p>
  * <p>
- * The primitive <tt>\the</tt> inserts the definition of certain primitives into
- * the input stream. If the token following <tt>\the</tt> is not theable then an
+ * The primitive {@code \the} inserts the definition of certain primitives into
+ * the input stream. If the token following {@code \the} is not theable then an
  * error is raised.
  * </p>
  * <p>
- * During the expansion of arguments of macros like <tt>\edef</tt>,
- * <tt>\xdef</tt>, <tt>\message</tt>, and others the further expansion of the
+ * During the expansion of arguments of macros like {@code \edef},
+ * {@code \xdef}, {@code \message}, and others the further expansion of the
  * tokens is inhibited.
  * </p>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;the&rang;
- *      &rarr; <tt>\the</tt> &lang;internal quantity&rang; </pre>
+ *      &rarr; {@code \the} &lang;internal quantity&rang; </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \the\count123  </pre>
  * 
- * </doc>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4770 $
- */
+*/
 public class The extends AbstractCode implements ExpandableCode, CodeExpander {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -88,10 +88,7 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -127,10 +124,7 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -141,10 +135,7 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.CodeExpander#expandCode(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.tokens.Tokens)
      */
     @Override

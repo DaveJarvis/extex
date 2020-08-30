@@ -25,32 +25,31 @@ import org.extex.exindex.core.util.StringUtils;
  * This class is a container for the raw index entries.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6617 $
- */
+*/
 public class RawIndexentry {
 
     /**
-     * The field <tt>mainKey</tt> contains the main key as given by the user.
+     * The field {@code mainKey} contains the main key as given by the user.
      */
     private final String[] mainKey;
 
     /**
-     * The field <tt>printKey</tt> contains the print key.
+     * The field {@code printKey} contains the print key.
      */
     private final String[] printKey;
 
     /**
-     * The field <tt>sortKey</tt> contains the sort key.
+     * The field {@code sortKey} contains the sort key.
      */
     private String[] sortKey = null;
 
     /**
-     * The field <tt>ref</tt> contains the page reference.
+     * The field {@code ref} contains the page reference.
      */
     private final Reference ref;
 
     /**
-     * The field <tt>index</tt> contains the name of the index.
+     * The field {@code index} contains the name of the index.
      */
     private final String index;
 
@@ -58,8 +57,8 @@ public class RawIndexentry {
      * Creates a new object.
      * 
      * @param index the name of the index or the empty string for the default
-     * @param key the main key; It can not be <code>null</code>
-     * @param print the print key; It can not be <code>null</code>
+     * @param key the main key; It can not be {@code null}
+     * @param print the print key; It can not be {@code null}
      * @param ref the reference
      */
     public RawIndexentry(String index, String[] key, String[] print,
@@ -134,12 +133,7 @@ public class RawIndexentry {
         this.sortKey = sortKey;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
+@Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();

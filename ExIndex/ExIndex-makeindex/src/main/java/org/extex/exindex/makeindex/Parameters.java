@@ -30,12 +30,11 @@ import org.extex.exindex.lisp.type.value.LValue;
  * This class encapsulates a set of parameters of type int, char, and String.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Parameters extends HashMap<String, LValue> {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2009L;
@@ -77,7 +76,7 @@ public class Parameters extends HashMap<String, LValue> {
      * 
      * @param name the name of the parameter
      * 
-     * @return the string or <code>null</code> if not defined
+     * @return the string or {@code null} if not defined
      */
     public String getString(String name) {
 

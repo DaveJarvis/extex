@@ -24,8 +24,7 @@ package org.extex.exbib.editor.bst.model;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1 $
- */
+*/
 public class VarString extends AbstractBstModelNode {
 
     /**
@@ -41,12 +40,7 @@ public class VarString extends AbstractBstModelNode {
                 : BstClass.GLOBAL_STRING);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.editor.bst.model.BstModelNode#getDescription()
-     */
-    @Override
+@Override
     public String getDescription() {
 
         return getDescription(

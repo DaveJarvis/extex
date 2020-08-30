@@ -29,35 +29,30 @@ import org.extex.exbib.core.io.Locator;
 /**
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X built-in function <code>quote$</code>
+ * >e</span>X built-in function {@code quote$}
  * <p>
  * This function takes no arguments it pushes a string containing the double
  * quote character '"' to the stack.
  * </p>
- * <img src="doc-files/quote.png"/>
+ * <img src="doc-files/quote.png" alt="quote">
  * <p>
  * This function can be used to construct a string containing a double quote
  * without using the brace trick:
- * <p>
+ * </p>
  * 
  * <pre>
  *   "abc " quote$ * " def" * 
  * </pre>
  * 
- * <hr />
+ * <hr>
  * 
  * <dl>
- * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X documentation:
- * <dt>
+ * <dt>BibTeX documentation</dt>
  * <dd>Pushes the string consisting of the double-quote character.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Quote extends AbstractCode {
 
     /**
@@ -78,10 +73,7 @@ public class Quote extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+*      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {

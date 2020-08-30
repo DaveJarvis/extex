@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains utilities for document writers.
+ * Contains utilities for document writers.
  */
 
 package org.extex.backend.documentWriter.util;

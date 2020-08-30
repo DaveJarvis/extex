@@ -50,19 +50,18 @@ import org.extex.unit.base.Relax;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\dimenexpr</code>.
+ * {@code \dimenexpr}.
  * 
- * <doc name="dimenexpr">
- * <h3>The Primitive <tt>\dimenexpr</tt></h3>
+ * <p>The Primitive {@code \dimenexpr}</p>
  * <p>
- * The primitive <tt>\dimenexpr</tt> provides a means to use a inline way of
+ * The primitive {@code \dimenexpr} provides a means to use a inline way of
  * writing mathematical expressions to be evaluated. Mathematical expressions
- * can be evaluated in ??TeX using <tt>\advance</tt>,
- * <tt>\multiply</tt>, and <tt>\divide</tt>. Nevertheless those primitives
- * result in an assignment. This is not the case for <tt>\dimenexpr</tt>.
+ * can be evaluated in εχTeX using {@code \advance},
+ * {@code \multiply}, and {@code \divide}. Nevertheless those primitives
+ * result in an assignment. This is not the case for {@code \dimenexpr}.
  * Here the intermediate results are not stored in dimen registers but kept
- * internally. Also the application of <tt>\afterassignment</tt> and
- * <tt>\tracingassigns</tt> is suppressed.
+ * internally. Also the application of {@code \afterassignment} and
+ * {@code \tracingassigns} is suppressed.
  * </p>
  * <p>
  * The mathematical expression to be evaluated can be made up of the basic
@@ -75,36 +74,38 @@ import org.extex.unit.base.Relax;
  * The expression is terminated at the first token which can not be part of an
  * expression. For instance a letter may signal the end of the expression. If
  * the expression should terminate without a proper token following it, the
- * token <tt>\relax</tt> can be used to signal the end of the expression. This
- * <tt>\relax</tt> token is silently consumed by <tt>\dimenexpr</tt>.
+ * token {@code \relax} can be used to signal the end of the expression. This
+ * {@code \relax} token is silently consumed by {@code \dimenexpr}.
  * </p>
  * <p>
- * The primitive <tt>\dimenexpr</tt> can be used in any place where a dimen is
+ * The primitive {@code \dimenexpr} can be used in any place where a dimen is
  * required. This includes assignments to dimen registers and comparisons.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;dimenexpr&rang;
- *      &rarr; <tt>\dimenexpr</tt> &lang;expr&rang; <tt>\relax</tt>
- *      |   <tt>\dimenexpr</tt> &lang;expr&rang;
+ *      &rarr; {@code \dimenexpr} &lang;expr&rang; {@code \relax}
+ *      |   {@code \dimenexpr} &lang;expr&rang;
  *
  *    &lang;expr&rang;
  *      &rarr; &lang;operand&rang;
- *      |   &lang;operand&rang; <tt>+</tt> &lang;expr&rang;
- *      |   &lang;operand&rang; <tt>-</tt> &lang;expr&rang;
+ *      |   &lang;operand&rang; {@code +} &lang;expr&rang;
+ *      |   &lang;operand&rang; {@code -} &lang;expr&rang;
  *
  *    &lang;operand&rang;
  *      &rarr; &lang;dimen&rang;
- *      |   &lang;operand&rang; <tt>*</tt> &lang;number&rang;
- *      |   &lang;number&rang; <tt>*</tt> &lang;operand&rang;
- *      |   &lang;operand&rang; <tt>/</tt> &lang;number&rang;
- *      |   <tt>-</tt> &lang;expr&rang;
- *      |   <tt>(</tt> &lang;expr&rang; <tt>)</tt>   </pre>
+ *      |   &lang;operand&rang; {@code *} &lang;number&rang;
+ *      |   &lang;number&rang; {@code *} &lang;operand&rang;
+ *      |   &lang;operand&rang; {@code /} &lang;number&rang;
+ *      |   {@code -} &lang;expr&rang;
+ *      |   {@code (} &lang;expr&rang; {@code )}   </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *   \count1=\dimenexpr 23pt \relax </pre>
@@ -117,12 +118,10 @@ import org.extex.unit.base.Relax;
  * <pre class="TeXSample">
  *   \count1=\dimenexpr 2*-\dimen0  </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Dimenexpr extends AbstractCode
         implements
             DimenConvertible,
@@ -130,7 +129,7 @@ public class Dimenexpr extends AbstractCode
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -146,10 +145,7 @@ public class Dimenexpr extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -165,10 +161,7 @@ public class Dimenexpr extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertDimen(Context context, TokenSource source,
@@ -367,10 +360,7 @@ public class Dimenexpr extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

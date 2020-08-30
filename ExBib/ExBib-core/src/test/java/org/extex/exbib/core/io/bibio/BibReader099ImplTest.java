@@ -32,8 +32,7 @@ import org.junit.Test;
  * This is a test suite for {@link BibReader099Impl}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BibReader099ImplTest extends BibReaderTester {
 
 
@@ -54,7 +53,7 @@ public class BibReader099ImplTest extends BibReaderTester {
     }
 
     /**
-     * <testcase> The {@literal @comment} is simply ignored. </testcase>
+     *  The {@literal @comment} is simply ignored. 
      * 
      * @throws Exception in case of an error
      */
@@ -66,15 +65,12 @@ public class BibReader099ImplTest extends BibReaderTester {
         r.load(new TestDB() {
 
             /**
-             * The field <tt>state</tt> contains the state.
+             * The field {@code state} contains the state.
              */
             private int state = 0;
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bibio.BibReaderTester.TestDB#makeEntry(
-             *      java.lang.String, java.lang.String,
+        *      java.lang.String, java.lang.String,
              *      org.extex.exbib.core.io.Locator)
              */
             @Override
@@ -90,12 +86,7 @@ public class BibReader099ImplTest extends BibReaderTester {
                 return null;
             }
 
-            /**
-             * {@inheritDoc}
-             * 
-             * @see BibReaderImplTest.TestDB#storeComment( java.lang.String)
-             */
-            @Override
+        @Override
             public void storeComment(String comment) {
 
                 switch (state++) {

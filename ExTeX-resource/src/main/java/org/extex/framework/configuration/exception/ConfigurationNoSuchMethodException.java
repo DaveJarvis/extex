@@ -26,17 +26,16 @@ import org.extex.framework.configuration.Configuration;
  * expected method.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class ConfigurationNoSuchMethodException extends ConfigurationException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     private static final long serialVersionUID = 2010L;
 
     /**
-     * The field <tt>methodName</tt> contains the name of the class which could
+     * The field {@code methodName} contains the name of the class which could
      * not be found.
      */
     private String methodName = null;
@@ -66,8 +65,8 @@ public class ConfigurationNoSuchMethodException extends ConfigurationException {
 
     /**
      * Getter for the text prefix of this ConfigurationException. The text is
-     * taken from the resource bundle <tt>ConfigurationEception</tt> under the
-     * key <tt>ConfigurationNoSuchMethodException.Text</tt>. The argument {0} is
+     * taken from the resource bundle {@code ConfigurationEception} under the
+     * key {@code ConfigurationNoSuchMethodException.Text}. The argument {0} is
      * replaced by the name of the missing method as passed to the constructor.
      * 
      * @return the text

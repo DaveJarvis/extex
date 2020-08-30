@@ -23,11 +23,10 @@ import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\futurelet</tt>.
+ * This is a test suite for the primitive {@code \futurelet}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
 
 
@@ -38,7 +37,7 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\futurelet"> Test case checking that
-     * <tt>\futurelet</tt> needs an argument. </testcase>
+     * {@code \futurelet} needs an argument.
      * 
      * @throws Exception in case of an error
      */
@@ -53,8 +52,8 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\futurelet"> Test case checking that
-     * <tt>\futurelet</tt> needs more than one tokens as arguments.
-     * </testcase>
+     * {@code \futurelet} needs more than one tokens as arguments.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -69,8 +68,8 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\futurelet"> Test case checking that
-     * <tt>\futurelet</tt> needs a control sequence as first character.
-     * </testcase>
+     * {@code \futurelet} needs a control sequence as first character.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -85,8 +84,8 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\futurelet"> Test case checking that
-     * <tt>\futurelet</tt> needs a control sequence as first character.
-     * </testcase>
+     * {@code \futurelet} needs a control sequence as first character.
+     *
      * 
      * @throws Exception in case of an error
      */
@@ -101,7 +100,7 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\futurelet"> Test case checking that
-     * <tt>\futurelet</tt> works on two letters. </testcase>
+     * {@code \futurelet} works on two letters.
      * 
      * @throws Exception in case of an error
      */
@@ -116,7 +115,7 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\futurelet"> Test case checking that
-     * <tt>\futurelet</tt> works on a digit ans a letter. </testcase>
+     * {@code \futurelet} works on a digit ans a letter.
      * 
      * @throws Exception in case of an error
      */
@@ -131,7 +130,7 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\futurelet"> Test case checking that
-     * <tt>\futurelet</tt> defines the control sequence locally. </testcase>
+     * {@code \futurelet} defines the control sequence locally.
      * 
      * @throws Exception in case of an error
      */
@@ -146,7 +145,7 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\futurelet"> Test case checking that
-     * <tt>\futurelet</tt> respects <tt>\global</tt>. </testcase>
+     * {@code \futurelet} respects {@code \global}.
      * 
      * @throws Exception in case of an error
      */
@@ -161,7 +160,7 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\futurelet"> Test case checking that
-     * <tt>\futurelet</tt> expands a middle macro. </testcase>
+     * {@code \futurelet} expands a middle macro.
      * 
      * @throws Exception in case of an error
      */

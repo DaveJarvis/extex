@@ -31,14 +31,15 @@ import org.extex.interpreter.ErrorHandler;
  * inherits its properties from the {@link org.extex.framework.AbstractFactory
  * AbstractFactory}. Among them the support for configuration and logging.
  * 
- * <h3>Configuration</h3>
+ *  Configuration
  * 
  * <p>
  * Mainly the configuration needs to specify which class to use for the
  * ErrorHandler. The configuration provides a mapping from a type name to the
  * sub-configuration to be used. The name of the class is given as the argument
- * <tt>class</tt> of the sub-configuration as shown below.
- * 
+ * {@code class} of the sub-configuration as shown below.
+ * </p>
+ *
  * <pre>
  *   &lt;ErrorHandler default="ExTeX"&gt;
  *     &lt;ExTeX class="org.extex.main.errorHandler.ErrorHandlerImpl"&gt;
@@ -52,7 +53,6 @@ import org.extex.interpreter.ErrorHandler;
  *    &lt;/ErrorHandler&gt;
  *  </pre>
  * 
- * </p>
  * <p>
  * The named class need to implement the interface
  * {@link org.extex.interpreter.ErrorHandler ErrorHandler}. If this interface is
@@ -60,8 +60,7 @@ import org.extex.interpreter.ErrorHandler;
  * </p>
  * <p>
  * The configuration is passed down to the new instance if it implements the
- * interface {@link org.extex.framework.configuration.Configurable Configurable}
- * .
+ * interface {@link org.extex.framework.configuration.Configurable Configurable}.
  * </p>
  * <p>
  * If the class implements the interface
@@ -69,11 +68,9 @@ import org.extex.interpreter.ErrorHandler;
  * passed to the new instance. For this purpose the factory itself is log
  * enabled to receive the logger.
  * </p>
- * 
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4757 $
- */
+*/
 public class ErrorHandlerFactory extends AbstractFactory<ErrorHandler> {
 
 
@@ -97,7 +94,7 @@ public class ErrorHandlerFactory extends AbstractFactory<ErrorHandler> {
     /**
      * Get an instance of an error handler. This method selects one of the
      * entries in the configuration. The selection is done with the help of a
-     * type String. If the type is <code>null</code> or the empty string then
+     * type String. If the type is {@code null} or the empty string then
      * the default from the configuration is used.
      * 
      * @param type the type to use

@@ -40,8 +40,7 @@ import org.extex.util.Unit;
  * Implementation of a pdf document writer.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public class PdfSinglePageDocumentWriter
         implements
             DocumentWriter,
@@ -126,44 +125,26 @@ public class PdfSinglePageDocumentWriter
         // }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#close()
-     */
-    @Override
+@Override
     public void close() throws DocumentWriterIOException {
 
         // do nothing
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
-     */
-    @Override
+@Override
     public String getExtension() {
 
         return "pdf";
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.MultipleDocumentStream#setOutputStreamFactory(org.extex.backend.outputStream.OutputStreamFactory)
-     */
-    @Override
+@Override
     public void setOutputStreamFactory(OutputStreamFactory writerFactory) {
 
         outFactory = writerFactory;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(java.lang.String,
-     *      java.lang.String)
+*      java.lang.String)
      */
     @Override
     public void setParameter(String name, String value) {
@@ -171,12 +152,7 @@ public class PdfSinglePageDocumentWriter
         // TODO?
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#shipout(org.extex.typesetter.type.page.Page)
-     */
-    @Override
+@Override
     public int shipout(Page page) throws DocumentWriterException {
 
         NodeList nodes = page.getNodes();
@@ -265,7 +241,7 @@ public class PdfSinglePageDocumentWriter
     }
 
     // /**
-    // * Create a new <code>Rectangle</code>.
+    // * Create a new {@code Rectangle}.
     // * @param w the width as Dimen
     // * @param h the height as Dimen
     // * @return Returns the new Rectangle

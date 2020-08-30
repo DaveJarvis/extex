@@ -31,12 +31,11 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\scrollmode</code>. It does simply nothing, but as a side
+ * {@code \scrollmode}. It does simply nothing, but as a side
  * effect all prefixes are zeroed and the interaction mode is set to
- * <tt>scrollmode</tt>.
+ * {@code scrollmode}.
  *
- * <doc name="scrollmode">
- * <h3>The Primitive <tt>\scrollmode</tt></h3>
+ * <p>The Primitive {@code \scrollmode}</p>
  * <p>
  *  This primitive sets the interaction mode to scroll mode.
  * </p>
@@ -45,25 +44,25 @@ import org.extex.typesetter.exception.TypesetterException;
  *  processed globally. This means it does not interact with the group concept.
  * </p>
  *
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;scrollmode&rang;
- *      &rarr; <tt>\scrollmode</tt>  </pre>
+ *      &rarr; {@code \scrollmode}  </pre>
  *
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  *  <pre class="TeXSample">
  *    \scrollmode  </pre>
  *
- * </doc>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4408 $
- */
+*/
 public class Scrollmode extends AbstractAssignment {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -78,10 +77,7 @@ public class Scrollmode extends AbstractAssignment {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

@@ -52,12 +52,11 @@ import org.extex.builder.latex.artifact.latex.macro.VerbatimInput;
  * the sate may be changed or the dependency net can be constructed.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class LaTeXMacroAnalyzer implements LaTeXAnalyzer {
 
     /**
-     * The field <tt>macros</tt> contains the macros.
+     * The field {@code macros} contains the macros.
      */
     private Map<String, Macro> macros = new HashMap<String, Macro>();
 
@@ -67,10 +66,7 @@ public class LaTeXMacroAnalyzer implements LaTeXAnalyzer {
         macros.put("\\begin", new Macro() {
 
             /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.builder.latex.artifact.latex.Macro#expand(LatexReader,
-             *      org.extex.builder.latex.DependencyNet, Artifact)
+        *      org.extex.builder.latex.DependencyNet, Artifact)
              */
             @Override
             public void expand(LatexReader reader, DependencyNet net,
@@ -108,10 +104,7 @@ public class LaTeXMacroAnalyzer implements LaTeXAnalyzer {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.builder.latex.artifact.latex.LaTeXAnalyzer#analyze(org.extex.builder.latex.artifact.Artifact,
-     *      org.extex.builder.latex.DependencyNet)
+*      org.extex.builder.latex.DependencyNet)
      */
     public void analyze(Artifact artifact, DependencyNet net)
             throws IOException {

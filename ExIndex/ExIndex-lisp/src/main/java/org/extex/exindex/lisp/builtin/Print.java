@@ -29,8 +29,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * Print the argument.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class Print extends LFunction {
 
     /**
@@ -53,7 +52,7 @@ public class Print extends LFunction {
      * @param interpreter the interpreter
      * @param arg the argument to print
      * 
-     * @return the last item read or <code>nil</code>
+     * @return the last item read or {@code nil}
      * 
      * @throws LException in case of an error
      */

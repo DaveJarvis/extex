@@ -50,13 +50,13 @@ public interface DB extends Iterable<Entry> {
      * normalized before the entry is sought, i.e. the search is case
      * insensitive.
      * <p>
-     * If no record is stored under the given key then <code>null</code> is
+     * If no record is stored under the given key then {@code null} is
      * returned.
      * </p>
      * 
      * @param key the reference key
      * 
-     * @return the record or <code>null</code>
+     * @return the record or {@code null}
      */
     Entry getEntry(String key);
 
@@ -70,13 +70,13 @@ public interface DB extends Iterable<Entry> {
      * </p>
      * <p>
      * If the named macro the expansion is started with does not exist then
-     * <code>null</code> is returned.
+     * {@code null} is returned.
      * </p>
      * 
      * @param key the name of the macro
      * 
      * @return the value of the macro with all macros resolved or
-     *         <code>null</code> if the macro is not defined
+     *         {@code null} if the macro is not defined
      */
     String getExpandedMacro(String key);
 
@@ -85,7 +85,7 @@ public interface DB extends Iterable<Entry> {
      * 
      * @param name the name of the macro
      * 
-     * @return the value of a macro or <code>null</code> if the macro is not
+     * @return the value of a macro or {@code null} if the macro is not
      *         defined
      */
     Value getMacro(String name);

@@ -23,11 +23,10 @@ import org.extex.test.NoFlagsPrimitiveTester;
 import org.junit.Test;
 
 /**
- * This is a test suite for the primitive <tt>\the</tt>.
+ * This is a test suite for the primitive {@code \the}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class TheTest extends NoFlagsPrimitiveTester {
 
 
@@ -37,8 +36,8 @@ public class TheTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\the"> Test case checking that <tt>\the</tt> on a
-     * count register works. </testcase>
+     * <testcase primitive="\the"> Test case checking that {@code \the} on a
+     * count register works.
      * 
      * @throws Exception in case of an error
      */
@@ -52,8 +51,8 @@ public class TheTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\the"> Test case checking that <tt>\the</tt> on a
-     * count register works. </testcase>
+     * <testcase primitive="\the"> Test case checking that {@code \the} on a
+     * count register works.
      * 
      * @throws Exception in case of an error
      */
@@ -67,8 +66,8 @@ public class TheTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\the"> Test case checking that <tt>\the</tt> on a
-     * letter leads to an error. </testcase>
+     * <testcase primitive="\the"> Test case checking that {@code \the} on a
+     * letter leads to an error.
      * 
      * @throws Exception in case of an error
      */
@@ -82,8 +81,8 @@ public class TheTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\the"> Test case checking that <tt>\the</tt> on a
-     * digit leads to an error. </testcase>
+     * <testcase primitive="\the"> Test case checking that {@code \the} on a
+     * digit leads to an error.
      * 
      * @throws Exception in case of an error
      */

@@ -29,8 +29,7 @@ import org.extex.ocpware.compiler.parser.CompilerState;
  * This interface represents an string expression.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
- */
+*/
 public interface Expr {
 
     /**

@@ -22,11 +22,10 @@ package org.extex.unit.pdftex;
 import org.extex.test.count.AbstractReadonlyCountRegisterTester;
 
 /**
- * This is a test suite for the primitive <tt>\pdflastximage</tt>.
+ * This is a test suite for the primitive {@code \pdflastximage}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
- */
+*/
 public class PdflastximageTest extends AbstractReadonlyCountRegisterTester {
 
     /**

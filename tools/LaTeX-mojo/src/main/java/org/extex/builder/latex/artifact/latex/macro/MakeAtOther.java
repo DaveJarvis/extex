@@ -26,18 +26,14 @@ import org.extex.builder.latex.artifact.latex.LatexReader;
 import org.extex.builder.latex.artifact.latex.Macro;
 
 /**
- * This class implements a handler for <code>\makeatother</code>.
+ * This class implements a handler for {@code \makeatother}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public final class MakeAtOther extends Macro {
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.builder.latex.artifact.latex.Macro#expand(org.extex.builder.latex.artifact.latex.LatexReader,
-     *      org.extex.builder.latex.DependencyNet, Artifact)
+*      org.extex.builder.latex.DependencyNet, Artifact)
      */
     @Override
     public void expand(LatexReader reader, DependencyNet net, Artifact artifact)

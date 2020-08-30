@@ -38,8 +38,7 @@ import org.junit.runner.JUnitCore;
  * This is a test suite for LiangsHyphenationTable.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4527 $
- */
+*/
 public class LiangsHyphenationTableTest {
 
     /**
@@ -77,9 +76,8 @@ public class LiangsHyphenationTableTest {
     }
 
     /**
-     * <testcase> This test case checks that the insertion of two different
-     * pattern does not lead to an exception. </testcase>
-     * 
+     * This test case checks that the insertion of two different pattern does not lead to an exception
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -94,9 +92,8 @@ public class LiangsHyphenationTableTest {
     }
 
     /**
-     * <testcase> This test case checks that the insertion of two different
-     * pattern does not lead to an exception. </testcase>
-     * 
+     * This test case checks that the insertion of two different pattern does not lead to an exception
+* 
      * @throws Exception in case of an error
      */
     @Test
@@ -111,9 +108,8 @@ public class LiangsHyphenationTableTest {
     }
 
     /**
-     * <testcase> This test case tests that the addPattern() method with
-     * identical arguments leads to an exception. </testcase>
-     * 
+     * This test case tests that the addPattern() method with identical arguments leads to an exception
+* 
      * @throws Exception in case of an error
      */
     @Test(expected = DuplicateHyphenationException.class)
@@ -127,9 +123,9 @@ public class LiangsHyphenationTableTest {
     }
 
     /**
-     * <testcase> This test case tests that the addPattern() method with
+     *  This test case tests that the addPattern() method with
      * identical arguments on the character positions leads to an exception.
-     * </testcase>
+     * 
      * 
      * @throws Exception in case of an error
      */

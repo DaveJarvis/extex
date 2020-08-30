@@ -32,17 +32,16 @@ import org.extex.typesetter.type.noad.util.MathContext;
  * This noad represents mathematical material under a radical sign.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4739 $
- */
+*/
 public class RadicalNoad extends AbstractNucleusNoad {
 
     /**
-     * The field <tt>leftDelimiter</tt> contains the delimiter for the left
+     * The field {@code leftDelimiter} contains the delimiter for the left
      * side. This should normally be the radical sign.
      *
      * @see "TTP [683]"
      */
-    private MathDelimiter leftDelimiter;
+    private final MathDelimiter leftDelimiter;
 
     /**
      * Creates a new object.

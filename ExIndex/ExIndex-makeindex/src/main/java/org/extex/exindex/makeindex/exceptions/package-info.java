@@ -17,7 +17,7 @@
  */
 /**
  * 
- *   This package contains exceptions for the makeindex emulator.
+ *   Contains exceptions for the makeindex emulator.
  * 
  *
  */

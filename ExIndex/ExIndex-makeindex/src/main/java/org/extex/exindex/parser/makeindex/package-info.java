@@ -17,7 +17,7 @@
  */
 /**
  * 
- *   This package contains the filter for makeindex files to emulate the xindy
+ *   Contains the filter for makeindex files to emulate the xindy
  *   behavior.
  * 
  *

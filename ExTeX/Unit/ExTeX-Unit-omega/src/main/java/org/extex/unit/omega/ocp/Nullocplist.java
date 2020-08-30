@@ -37,40 +37,39 @@ import org.extex.unit.omega.ocp.util.OmegaOcpException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\nullocplist</code>.
+ * {@code \nullocplist}.
  * 
- * <doc name="nullocplist">
- * <h3>The Primitive <tt>\nullocplist</tt></h3>
+ * <p>The Primitive {@code \nullocplist}</p>
  * <p>
- * The primitive <tt>\nullocplist</tt> can be used to build up an &Omega;PC
- * list. It is valid in the context of the primitive <tt>\ocplist</tt> only.
+ * The primitive {@code \nullocplist} can be used to build up an &Omega;PC
+ * list. It is valid in the context of the primitive {@code \ocplist} only.
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;nullocplist&rang;
- *      &rarr; <tt>\nullocplist</tt>  </pre>
+ *      &rarr; {@code \nullocplist}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  * \nullocplist </pre>
  * 
- * </doc>
- * 
+ *
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
- */
+*/
 public class Nullocplist extends AbstractCode
         implements
             Showable,
             OcplistConvertible {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
+     * The field {@code serialVersionUID} contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
@@ -86,10 +85,7 @@ public class Nullocplist extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -100,10 +96,7 @@ public class Nullocplist extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Showable#show(
-     *      org.extex.interpreter.context.Context)
+*      org.extex.interpreter.context.Context)
      */
     public Tokens show(Context context) throws HelpingException {
 
@@ -115,10 +108,7 @@ public class Nullocplist extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.omega.ocp.util.OcplistConvertible#convertOcplist(
-     *      org.extex.interpreter.context.Context,
+*      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public OcpList convertOcplist(Context context, TokenSource source,

@@ -55,8 +55,7 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
 
     /**
@@ -65,10 +64,7 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
     private static final class BibdataHandler implements AuxHandler {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.io.auxio.AuxHandler#invoke(java.lang.String,
-         *      org.extex.exbib.core.ProcessorContainer, java.lang.String,
+    *      org.extex.exbib.core.ProcessorContainer, java.lang.String,
          *      org.extex.exbib.core.io.auxio.AuxReader)
          */
         public void invoke(String arg, ProcessorContainer bibliographies,
@@ -95,10 +91,7 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
     private static final class BibstyleHandler implements AuxHandler {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.io.auxio.AuxHandler#invoke(java.lang.String,
-         *      org.extex.exbib.core.ProcessorContainer, java.lang.String,
+    *      org.extex.exbib.core.ProcessorContainer, java.lang.String,
          *      org.extex.exbib.core.io.auxio.AuxReader)
          */
         public void invoke(String arg, ProcessorContainer bibliographies,
@@ -125,10 +118,7 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
     private static final class CitationHandler implements AuxHandler {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.io.auxio.AuxHandler#invoke(java.lang.String,
-         *      org.extex.exbib.core.ProcessorContainer, java.lang.String,
+    *      org.extex.exbib.core.ProcessorContainer, java.lang.String,
          *      org.extex.exbib.core.io.auxio.AuxReader)
          */
         public void invoke(String arg, ProcessorContainer bibliographies,
@@ -155,10 +145,7 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
     private final class IncludeHandler implements AuxHandler {
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.io.auxio.AuxHandler#invoke(java.lang.String,
-         *      org.extex.exbib.core.ProcessorContainer, java.lang.String,
+    *      org.extex.exbib.core.ProcessorContainer, java.lang.String,
          *      org.extex.exbib.core.io.auxio.AuxReader)
          */
         public void invoke(String arg, ProcessorContainer bibliographies,
@@ -172,30 +159,30 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
     }
 
     /**
-     * The constant <tt>PATTERN</tt> contains the pattern for the recognized
+     * The constant {@code PATTERN} contains the pattern for the recognized
      * macros.
      */
     protected static final Pattern PATTERN = Pattern
         .compile("^\\\\([@cb][a-z]+)\\{([^{}]*)\\}");
 
     /**
-     * The constant <tt>DEFAULT_TYPE</tt> contains the default type.
+     * The constant {@code DEFAULT_TYPE} contains the default type.
      */
     protected static final String DEFAULT_TYPE = "bbl";
 
     /**
-     * The field <tt>handlerMap</tt> contains the macro handlers for the aux
+     * The field {@code handlerMap} contains the macro handlers for the aux
      * file.
      */
     private final Map<String, AuxHandler> handlerMap;
 
     /**
-     * The field <tt>observer</tt> contains the observer.
+     * The field {@code observer} contains the observer.
      */
     private ResourceObserver observer = null;
 
     /**
-     * The field <tt>encoding</tt> contains the encoding for transporting it to
+     * The field {@code encoding} contains the encoding for transporting it to
      * the registered handler.
      */
     private String encoding;
@@ -219,7 +206,7 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
      * 
      * @param key the key
      * 
-     * @return the handler or <code>null</code>
+     * @return the handler or {@code null}
      */
     protected AuxHandler getHandler(String key) {
 
@@ -237,10 +224,7 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.auxio.AuxReader#load(org.extex.exbib.core.ProcessorContainer,
-     *      java.lang.String, java.lang.String)
+*      java.lang.String, java.lang.String)
      */
     public void load(ProcessorContainer bibliographies, String resource,
             String enc)
@@ -278,12 +262,7 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.auxio.AuxReader#register(org.extex.exbib.core.io.auxio.ResourceObserver)
-     */
-    public ResourceObserver register(ResourceObserver resourceObserver) {
+public ResourceObserver register(ResourceObserver resourceObserver) {
 
         ResourceObserver obs = this.observer;
         this.observer = resourceObserver;
@@ -296,7 +275,7 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
      * @param name the name
      * @param handler the handler
      * 
-     * @return the old handler or <code>null</code> for none
+     * @return the old handler or {@code null} for none
      */
     public AuxHandler register(String name, AuxHandler handler) {
 

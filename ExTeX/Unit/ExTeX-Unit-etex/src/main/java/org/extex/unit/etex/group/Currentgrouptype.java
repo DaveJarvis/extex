@@ -34,18 +34,18 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\currentgrouptype</code>.
+ * {@code \currentgrouptype}.
  * 
- * <doc name="currentgrouptype"> <h3>The Count Primitive
- * <tt>\currentgrouptype</tt></h3>
+ * <p>The Count Primitive {@code \currentgrouptype}</p>
  * <p>
- * The count primitive <tt>\currentgrouptype</tt> is a read-only count register.
+ * The count primitive {@code \currentgrouptype} is a read-only count register.
  * It provides access to the current group type. This group type is
  * characterized according to the following list:
  * </p>
- * <table format="rl">
+* <table>
+ * <caption>TBD</caption>
  * <tr>
- * <td>0</td>
+* <td>0</td>
  * <td>bottom level (no group)</td>
  * </tr>
  * <tr>
@@ -114,13 +114,15 @@ import org.extex.typesetter.exception.TypesetterException;
  * </tr>
  * </table>
  * 
- * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * <p>Syntax</p>
+ The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;currentgrouptype&rang;
- *      &rarr; <tt>\currentgrouptype</tt>  </pre>
+ *      &rarr; {@code \currentgrouptype}  </pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \count0=\currentgrouptype  </pre>
@@ -128,22 +130,18 @@ import org.extex.typesetter.exception.TypesetterException;
  * <pre class="TeXSample">
  *    \showthe\currentgrouptype  </pre>
  * 
- * </doc>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4435 $
- */
+*/
 public class Currentgrouptype extends AbstractCode
         implements
             CountConvertible,
             Theable {
 
     /**
-     * The constant <tt>GTV</tt> contains the group visitor to map the group
-     * type to the integer representation of <logo>&epsilon;-T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * The constant {@code GTV} contains the group visitor to map the group
+     * type to the integer representation of ε-TeX.
      */
     private static final GroupTypeVisitor<Long, Object> GTV =
             new GroupTypeVisitor<Long, Object>() {
@@ -303,100 +301,100 @@ public class Currentgrouptype extends AbstractCode
             };
 
     /**
-     * The field <tt>BOTTOM_LEVEL</tt> contains the return value for a bottom
+     * The field {@code BOTTOM_LEVEL} contains the return value for a bottom
      * level group.
      */
     private static final Long BOTTOM_LEVEL = new Long(0);
 
     /**
-     * The field <tt>SIMPLE</tt> contains the return value for a simple group.
+     * The field {@code SIMPLE} contains the return value for a simple group.
      */
     private static final Long SIMPLE = new Long(1);
 
     /**
-     * The field <tt>DISCRETIONARY</tt> contains the return value for a
+     * The field {@code DISCRETIONARY} contains the return value for a
      * discretionary group.
      */
     private static final Long DISCRETIONARY = new Long(10);
 
     /**
-     * The field <tt>INSERT</tt> contains the return value for an insert group.
+     * The field {@code INSERT} contains the return value for an insert group.
      */
     private static final Long INSERT = new Long(11);
 
     /**
-     * The field <tt>VCENTER</tt> contains the return value for a vcenter group.
+     * The field {@code VCENTER} contains the return value for a vcenter group.
      */
     private static final Long VCENTER = new Long(12);
 
     /**
-     * The field <tt>MATH_CHOICE</tt> contains the return value for a math
+     * The field {@code MATH_CHOICE} contains the return value for a math
      * choice group.
      */
     private static final Long MATH_CHOICE = new Long(13);
 
     /**
-     * The field <tt>SEMI_SIMPLE</tt> contains the return value for a
+     * The field {@code SEMI_SIMPLE} contains the return value for a
      * semi-simple group.
      */
     private static final Long SEMI_SIMPLE = new Long(14);
 
     /**
-     * The field <tt>MATH_SHIFT</tt> contains the return value for a math shift
+     * The field {@code MATH_SHIFT} contains the return value for a math shift
      * group.
      */
     private static final Long MATH_SHIFT = new Long(15);
 
     /**
-     * The field <tt>MATH_LEFT</tt> contains the return value for a math left
+     * The field {@code MATH_LEFT} contains the return value for a math left
      * group.
      */
     private static final Long MATH_LEFT = new Long(16);
 
     /**
-     * The field <tt>HBOX</tt> contains the return value for a hbox group.
+     * The field {@code HBOX} contains the return value for a hbox group.
      */
     private static final Long HBOX = new Long(2);
 
     /**
-     * The field <tt>LONG_3</tt> contains the return value for an adjusted hbox
+     * The field {@code LONG_3} contains the return value for an adjusted hbox
      * group.
      */
     private static final Long ADJUSTED_HBOX = new Long(3);
 
     /**
-     * The field <tt>LONG_4</tt> contains the return value for a vbox group.
+     * The field {@code LONG_4} contains the return value for a vbox group.
      */
     private static final Long VBOX = new Long(4);
 
     /**
-     * The field <tt>LONG_5</tt> contains the return value for a vtop group.
+     * The field {@code LONG_5} contains the return value for a vtop group.
      */
     private static final Long VTOP = new Long(5);
 
     /**
-     * The field <tt>LONG_6</tt> contains the return value for an alignment
+     * The field {@code LONG_6} contains the return value for an alignment
      * group.
      */
     private static final Long ALIGNMENT = new Long(6);
 
     /**
-     * The field <tt>LONG_7</tt> contains the return value for a no align group.
+     * The field {@code LONG_7} contains the return value for a no align group.
      */
     private static final Long NO_ALIGN = new Long(7);
 
     /**
-     * The field <tt>LONG_8</tt> contains the return value for an output group.
+     * The field {@code LONG_8} contains the return value for an output group.
      */
     private static final Long OUTPUT = new Long(8);
 
     /**
-     * The field <tt>LONG_9</tt> contains the return value for a math group.
+     * The field {@code LONG_9} contains the return value for a math group.
      */
     private static final Long MATH = new Long(9);
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the id for serialization.
+     * The field {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -411,10 +409,7 @@ public class Currentgrouptype extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public long convertCount(Context context, TokenSource source,
@@ -424,10 +419,7 @@ public class Currentgrouptype extends AbstractCode
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+*      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

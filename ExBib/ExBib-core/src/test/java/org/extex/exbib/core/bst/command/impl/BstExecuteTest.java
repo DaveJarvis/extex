@@ -29,12 +29,11 @@ import org.junit.Test;
  * This is a test suite for {@link BstExecute}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public class BstExecuteTest {
 
     /**
-     * <testcase> Check that a null token leads to an error.</testcase>
+     *  Check that a null token leads to an error.
      * 
      * @throws ExBibIllegalValueException in case of an error
      */
@@ -45,7 +44,7 @@ public class BstExecuteTest {
     }
 
     /**
-     * <testcase> Check that the command prints properly.</testcase>
+     *  Check that the command prints properly.
      * 
      * @throws Exception in case of an error
      */

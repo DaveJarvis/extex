@@ -26,8 +26,7 @@ import org.junit.runner.JUnitCore;
  * Test for the primitive \currentgrouplevel.
  * 
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
- * @version $Revision$
- */
+*/
 public class CurrentgrouplevelTest {
 
     /**

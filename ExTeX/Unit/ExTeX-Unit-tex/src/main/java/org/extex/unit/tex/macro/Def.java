@@ -40,12 +40,11 @@ import org.extex.unit.tex.macro.util.MacroPattern;
 import org.extex.unit.tex.macro.util.ProtectedMacroCode;
 
 /**
- * This class provides an implementation for the primitive <code>\def</code>.
+ * This class provides an implementation for the primitive {@code \def}.
  * 
- * <doc name="def">
- * <h3>The Primitive <tt>\def</tt></h3>
+ * <p>The Primitive {@code \def}</p>
  * <p>
- * The primitive <tt>\def</tt> defines a new macro. The macro is assigned to a
+ * The primitive {@code \def} defines a new macro. The macro is assigned to a
  * control sequence or an active character.
  * </p>
  * <p>
@@ -59,23 +58,25 @@ import org.extex.unit.tex.macro.util.ProtectedMacroCode;
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
+ * <p>Syntax</p>
+
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;def&rang;
- *       &rarr; &lang;prefix&rang; <tt>\def</tt> {@linkplain
+ *       &rarr; &lang;prefix&rang; {@code \def} {@linkplain
  *       org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
- *       &lang;control sequence&rang;} &lang;parameter text&rang; <tt>{</tt> &lang;replacement text&rang; <tt>}</tt>
+ *       &lang;control sequence&rang;} &lang;parameter text&rang; {@code {} &lang;replacement text&rang; {@code }}
  *
  *    &lang;prefix&rang;
  *      &rarr;
- *       | <tt>\global</tt> &lang;prefix&rang;
- *       | <tt>\long</tt> &lang;prefix&rang;
- *       | <tt>\outer</tt> &lang;prefix&rang;
- *       | <tt>\protected</tt> &lang;prefix&rang;</pre>
+ *       | {@code \global} &lang;prefix&rang;
+ *       | {@code \long} &lang;prefix&rang;
+ *       | {@code \outer} &lang;prefix&rang;
+ *       | {@code \protected} &lang;prefix&rang;</pre>
  * 
- * <h4>Examples</h4>
+ * <p>Examples</p>
+
  * 
  * <pre class="TeXSample">
  *    \def\a#1{--#1--}  </pre>
@@ -86,21 +87,19 @@ import org.extex.unit.tex.macro.util.ProtectedMacroCode;
  *  <pre class="TeXSample">
  *    \def\a#1:#2.{--#2--#1--}  </pre>
  * 
- * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4770 $
- */
+*/
 public class Def extends AbstractAssignment implements LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
+     * The constant {@code serialVersionUID} contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>logger</tt> contains the logger.
+     * The field {@code logger} contains the logger.
      */
     private transient Logger logger;
 
@@ -115,10 +114,7 @@ public class Def extends AbstractAssignment implements LogEnabled {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+*      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -152,10 +148,7 @@ public class Def extends AbstractAssignment implements LogEnabled {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
+*      java.util.logging.Logger)
      */
     public void enableLogging(Logger log) {
 

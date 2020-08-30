@@ -31,8 +31,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * Abstract class for all coverage
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
- */
+*/
 public abstract class XtfCoverage implements XMLWriterConvertible {
 
     /**
@@ -45,12 +44,12 @@ public abstract class XtfCoverage implements XMLWriterConvertible {
         /**
          * glyph count
          */
-        private int glyphCount;
+        private final int glyphCount;
 
         /**
          * glyph ids
          */
-        private int[] glyphIds;
+        private final int[] glyphIds;
 
         /**
          * Create a new object
@@ -71,12 +70,7 @@ public abstract class XtfCoverage implements XMLWriterConvertible {
             }
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.gps.XtfCoverage#findGlyph(int)
-         */
-        @Override
+    @Override
         public int findGlyph(int glyphId) {
 
             for (int i = 0; i < glyphCount; i++) {
@@ -87,23 +81,13 @@ public abstract class XtfCoverage implements XMLWriterConvertible {
             return -1;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.gps.XtfCoverage#getGlyphs()
-         */
-        @Override
+    @Override
         public int[] getGlyphs() {
 
             return glyphIds;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("coverage");
             writer.writeAttribute("format", getFormat());
@@ -150,12 +134,12 @@ public abstract class XtfCoverage implements XMLWriterConvertible {
         /**
          * range count
          */
-        private int rangeCount;
+        private final int rangeCount;
 
         /**
          * records
          */
-        private RangeRecord[] rangeRecords;
+        private final RangeRecord[] rangeRecords;
 
         /**
          * Create a new object
@@ -176,12 +160,7 @@ public abstract class XtfCoverage implements XMLWriterConvertible {
             }
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.gps.XtfCoverage#findGlyph(int)
-         */
-        @Override
+    @Override
         public int findGlyph(int glyphId) {
 
             for (int i = 0; i < rangeCount; i++) {
@@ -193,12 +172,7 @@ public abstract class XtfCoverage implements XMLWriterConvertible {
             return -1;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.gps.XtfCoverage#getGlyphs()
-         */
-        @Override
+    @Override
         public int[] getGlyphs() {
 
             if (glyphIds == null) {
@@ -221,12 +195,7 @@ public abstract class XtfCoverage implements XMLWriterConvertible {
             return glyphIds;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("coverage");
             writer.writeAttribute("format", getFormat());
@@ -246,22 +215,22 @@ public abstract class XtfCoverage implements XMLWriterConvertible {
         /**
          * end
          */
-        private int end;
+        private final int end;
 
         /**
          * The index.
          */
-        private int idx;
+        private final int idx;
 
         /**
          * start
          */
-        private int start;
+        private final int start;
 
         /**
          * start index
          */
-        private int startCoverageIndex;
+        private final int startCoverageIndex;
 
         /**
          * Create anew object
@@ -323,12 +292,7 @@ public abstract class XtfCoverage implements XMLWriterConvertible {
             return (start <= glyphId && glyphId <= end);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("rangerecord");
             writer.writeAttribute("id", idx);
@@ -373,12 +337,12 @@ public abstract class XtfCoverage implements XMLWriterConvertible {
     /**
      * format
      */
-    private int format;
+    private final int format;
 
     /**
      * The glyph name.
      */
-    private XtfGlyphName xtfGlyph;
+    private final XtfGlyphName xtfGlyph;
 
     /**
      * Create a new object.

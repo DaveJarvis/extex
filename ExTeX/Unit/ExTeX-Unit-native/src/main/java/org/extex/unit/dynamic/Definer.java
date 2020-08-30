@@ -32,8 +32,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * definitions implemented in arbitrary programming languages.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
+*/
 public interface Definer {
 
     /**
