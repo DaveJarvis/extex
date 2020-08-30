@@ -62,6 +62,8 @@ include(':ExIndex:ExIndex-lisp')
 include(':ExIndex:ExIndex-Main')
 include(':ExIndex:ExIndex-makeindex')
 include(':ExIndex')
+include('ExTeX-example')
+
 project(':extex-texmf').projectDir = file('texmf')
 project(':extex:ExTeX-Backend-dump').projectDir = file('ExTeX/Backend/ExTeX-Backend-dump')
 project(':extex:ExTeX-Backend-dvi').projectDir = file('ExTeX/Backend/ExTeX-Backend-dvi')
