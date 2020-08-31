@@ -74,7 +74,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
      * The field {@code iv} contains the interaction visitor with the different
      * behavior for the different interaction modes.
      */
-    private InteractionVisitor<TokenSource, Context, GeneralException> iv =
+    private final InteractionVisitor<TokenSource, Context, GeneralException> iv =
             new InteractionVisitor<TokenSource, Context, GeneralException>() {
 
                 /**
@@ -254,7 +254,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
     /**
      * The field {@code localizer} contains the localizer.
      */
-    private Localizer localizer = LocalizerFactory.getLocalizer(getClass());
+    private final Localizer localizer = LocalizerFactory.getLocalizer( getClass());
 
     /**
      * The field {@code logger} contains the logger to write a protocol of the

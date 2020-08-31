@@ -32,7 +32,7 @@ public class CodeWriter extends Writer {
     /**
      * The field {@code writer} contains the wrapped writer.
      */
-    private Writer writer;
+    private final Writer writer;
 
     /**
      * The field {@code tabSize} contains the number of spaces for indentation.

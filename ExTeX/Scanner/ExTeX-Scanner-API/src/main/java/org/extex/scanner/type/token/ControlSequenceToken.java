@@ -49,12 +49,12 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     /**
      * The field {@code value} contains the string value.
      */
-    private String name;
+    private final String name;
 
     /**
      * The field {@code namespace} contains the name space for this token.
      */
-    private String namespace;
+    private final String namespace;
 
     /**
      * Creates a new object from the first character of a String. If the string

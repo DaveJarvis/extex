@@ -34,7 +34,7 @@ public class DviZ extends AbstractDviCode {
     /**
      * The field {@code value} contains the value.
      */
-    private int value;
+    private final int value;
 
     /**
      * Creates a new object.

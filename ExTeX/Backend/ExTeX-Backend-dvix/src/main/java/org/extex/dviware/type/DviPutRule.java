@@ -34,12 +34,12 @@ public class DviPutRule extends AbstractDviCode {
     /**
      * The field {@code a} contains the first parameter.
      */
-    private int a;
+    private final int a;
 
     /**
      * The field {@code b} contains the second parameter.
      */
-    private int b;
+    private final int b;
 
     /**
      * Creates a new object.

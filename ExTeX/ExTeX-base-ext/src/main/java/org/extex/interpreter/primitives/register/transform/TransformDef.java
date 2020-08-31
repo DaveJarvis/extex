@@ -73,8 +73,8 @@ public class TransformDef extends AbstractAssignment {
         source.getOptionalEquals(context);
         String key =
                 "transform#"
-                        + Long.toString(source.parseInteger(context, source,
-                            typesetter));
+                        + source.parseInteger( context, source,
+                                               typesetter );
         context.setCode(tok, new NamedTransform(tok, key), prefix.isGlobal());
         prefix.clearGlobal();
     }

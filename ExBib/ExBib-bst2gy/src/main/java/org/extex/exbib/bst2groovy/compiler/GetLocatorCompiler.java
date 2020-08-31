@@ -71,7 +71,7 @@ public class GetLocatorCompiler implements Compiler {
     /**
      * The field {@code field} contains the field.
      */
-    private LocatorField field;
+    private final LocatorField field;
 
     /**
      * Creates a new object.

@@ -58,7 +58,7 @@ public class CountArray extends CountPrimitive {
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         long no = source.parseInteger(context, source, typesetter);
-        return getName() + Long.toString(no);
+        return getName() + no;
     }
 
 }

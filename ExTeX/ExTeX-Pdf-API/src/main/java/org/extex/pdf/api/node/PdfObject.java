@@ -39,7 +39,7 @@ public class PdfObject extends WhatsItNode {
     /**
      * The field {@code nodes} contains the nodes of the object.
      */
-    private NodeList nodes;
+    private final NodeList nodes;
 
     /**
      * Creates a new object.

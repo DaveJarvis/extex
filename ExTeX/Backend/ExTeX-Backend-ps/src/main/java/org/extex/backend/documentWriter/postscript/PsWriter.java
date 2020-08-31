@@ -46,7 +46,7 @@ public class PsWriter extends AbstractPostscriptWriter
     /**
      * The field {@code page} contains the byte arrays of the single pages.
      */
-    private List<byte[]> page = new ArrayList<byte[]>();
+    private final List<byte[]> page = new ArrayList<byte[]>();
 
     /**
      * The field {@code pageHeight} contains the height of the paper.

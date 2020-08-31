@@ -36,7 +36,7 @@ public class AssignVar extends GenericCode {
     /**
      * The field {@code var} contains the name of the local variable.
      */
-    private Var var;
+    private final Var var;
 
     /**
      * The field {@code value} contains the the new value.

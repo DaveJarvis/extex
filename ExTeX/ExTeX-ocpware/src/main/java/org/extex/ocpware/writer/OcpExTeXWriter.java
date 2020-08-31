@@ -79,7 +79,7 @@ public class OcpExTeXWriter extends AbstractWriter {
                 }
                 if (a == OcpArgumentType.LABEL) {
                     if (labels[arg] == null) {
-                        labels[arg] = "_" + Integer.toString(no++);
+                        labels[arg] = "_" + no++;
                     }
                     // case 's':
                     // out.print("_S" + Integer.toString(arg));
@@ -146,7 +146,7 @@ public class OcpExTeXWriter extends AbstractWriter {
                 arg = instructions[codePointer++] & OcpCode.ARGUMENT_BIT_MASK;
             }
             if (a == OcpArgumentType.NUMBER) {
-                out.print(Integer.toString(arg));
+                out.print( arg );
             } else if (a == OcpArgumentType.CHARACTER) {
                 out.print("0x" + Integer.toHexString(arg));
             } else if (a == OcpArgumentType.LABEL) {
@@ -235,7 +235,7 @@ public class OcpExTeXWriter extends AbstractWriter {
 
         String[] stateNames = new String[states.size()];
         for (int i = 0; i < states.size(); i++) {
-            stateNames[i] = "_S" + Integer.toString(i);
+            stateNames[i] = "_S" + i;
         }
         stateNames[0] = "INITIAL";
 

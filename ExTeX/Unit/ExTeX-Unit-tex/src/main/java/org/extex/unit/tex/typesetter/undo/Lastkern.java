@@ -84,8 +84,8 @@ public class Lastkern extends AbstractCode
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Node node = typesetter.getLastNode();
-        return (node instanceof KernNode ? ((KernNode) node).getWidth()
-            .getValue() : 0);
+        return (node instanceof KernNode ? node.getWidth()
+                                               .getValue() : 0);
     }
 
     /**
@@ -96,8 +96,8 @@ public class Lastkern extends AbstractCode
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Node node = typesetter.getLastNode();
-        return (node instanceof KernNode ? ((KernNode) node).getWidth()
-            .getValue() : 0);
+        return (node instanceof KernNode ? node.getWidth()
+                                               .getValue() : 0);
     }
 
     /**
@@ -111,7 +111,7 @@ public class Lastkern extends AbstractCode
         Node node = typesetter.getLastNode();
         FixedDimen pen =
                 (node instanceof KernNode
-                        ? ((KernNode) node).getWidth()
+                        ? node.getWidth()
                         : Dimen.ZERO_PT);
         try {
             return context.getTokenFactory().toTokens(pen.toString());

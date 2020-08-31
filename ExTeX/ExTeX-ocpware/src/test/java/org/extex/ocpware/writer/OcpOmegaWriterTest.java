@@ -68,14 +68,17 @@ public class OcpOmegaWriterTest extends WriterTester {
                     + "State  0( 0):  13( 19) entries\n"
                     + "\n"
                     + "State  0( 0), entry   0(  0): OTP_LEFT_START       0(  0)\n"
-                    + "State  0( 0), entry   1(  1): OTP_GOTO_NE         61( 97,`a\')\n"
+                    + "State  0( 0), entry   1(  1): OTP_GOTO_NE         61( " +
+                "97,`a')\n"
                     + "State  0( 0), entry   2(  2):                      a( 10)\n"
                     + "State  0( 0), entry   3(  3): OTP_GOTO_NO_ADVANCE  8(  8)\n"
-                    + "State  0( 0), entry   4(  4): OTP_GOTO_NE         61( 97,`a\')\n"
+                    + "State  0( 0), entry   4(  4): OTP_GOTO_NE         61( " +
+                "97,`a')\n"
                     + "State  0( 0), entry   5(  5):                      7(  7)\n"
                     + "State  0( 0), entry   6(  6): OTP_GOTO             3(  3)\n"
                     + "State  0( 0), entry   7(  7): OTP_LEFT_BACKUP      0(  0)\n"
-                    + "State  0( 0), entry   8(  8): OTP_RIGHT_NUM       78(120,`x\')\n"
+                    + "State  0( 0), entry   8(  8): OTP_RIGHT_NUM       78" +
+                "(120,`x')\n"
                     + "State  0( 0), entry   9(  9): OTP_STOP             0(  0)\n"
                     + "State  0( 0), entry   a( 10): OTP_LEFT_RETURN      0(  0)\n"
                     + "State  0( 0), entry   b( 11): OTP_RIGHT_CHAR       1(  1)\n"

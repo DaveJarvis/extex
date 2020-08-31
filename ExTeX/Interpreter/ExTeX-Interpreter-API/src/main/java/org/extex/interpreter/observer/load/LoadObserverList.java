@@ -62,7 +62,7 @@ public final class LoadObserverList implements LoadObserver {
     /**
      * The field {@code list} contains the encapsulated list.
      */
-    private List<LoadObserver> list = new ArrayList<LoadObserver>();
+    private final List<LoadObserver> list = new ArrayList<LoadObserver>();
 
     /**
      * Add an observer to the list.

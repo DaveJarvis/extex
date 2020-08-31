@@ -45,7 +45,7 @@ public class InputFile implements InFile {
      * The field {@code standardStream} contains the indicator that the
      * current stream is the standard stream.
      */
-    private boolean standardStream;
+    private final boolean standardStream;
 
     /**
      * The field {@code stream} contains the stream.

@@ -121,12 +121,12 @@ public abstract class AbstractPostscriptWriter
     /**
      * The field {@code headerManager} contains the header manager.
      */
-    private HeaderManager headerManager = new HeaderManager();
+    private final HeaderManager headerManager = new HeaderManager();
 
     /**
      * The field {@code parameter} contains the map for parameters.
      */
-    private Map<String, String> parameter = new HashMap<String, String>();
+    private final Map<String, String> parameter = new HashMap<String, String>();
 
     /**
      * The field {@code writerFactory} contains the output stream factory.
@@ -159,7 +159,7 @@ public abstract class AbstractPostscriptWriter
     public void configure(Configuration config) throws ConfigurationException {
 
         String s = config.getAttribute("boxed");
-        this.boxed = (s == null ? false : Boolean.valueOf(s).booleanValue());
+        this.boxed = (s != null && Boolean.valueOf( s ).booleanValue());
 
         s = config.getAttribute("extension");
         if (s != null) {

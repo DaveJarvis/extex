@@ -40,7 +40,7 @@ public class StringItem implements Left, Expr {
     /**
      * The field {@code s} contains the string.
      */
-    private String s;
+    private final String s;
 
     /**
      * Creates a new object.
@@ -79,8 +79,7 @@ public List<Integer> genLeft(State state, CompilerState cs)
      */
     public void outRight(CompilerState cs, boolean withOffset)
             throws ArgmentTooBigException,
-                IOException,
-                TableNotDefinedException {
+                IOException {
 
         int len = s.length();
         for (int i = 0; i < len; i++) {

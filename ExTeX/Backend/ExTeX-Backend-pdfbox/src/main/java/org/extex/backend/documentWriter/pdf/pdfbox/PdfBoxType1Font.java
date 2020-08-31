@@ -64,7 +64,7 @@ public final class PdfBoxType1Font extends PDType1Font {
     /**
      * the map for the fonts.
      */
-    private static Map<FontKey, PDFont> map = new HashMap<FontKey, PDFont>();
+    private static final Map<FontKey, PDFont> map = new HashMap<FontKey, PDFont>();
 
     /**
      * Create a new object.
@@ -174,7 +174,7 @@ public final class PdfBoxType1Font extends PDType1Font {
     /**
      * The font descriptor.
      */
-    private PDFontDescriptorDictionary fd;
+    private final PDFontDescriptorDictionary fd;
 
     /**
      * the font metric.

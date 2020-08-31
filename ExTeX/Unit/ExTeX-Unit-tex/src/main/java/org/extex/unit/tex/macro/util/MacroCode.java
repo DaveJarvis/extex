@@ -85,17 +85,17 @@ public class MacroCode extends AbstractCode
         /**
          * The field {@code locator} contains the locator.
          */
-        private Locator locator;
+        private final Locator locator;
 
         /**
          * The field {@code name} contains the name of the primitive.
          */
-        private String name;
+        private final String name;
 
         /**
          * The field {@code tokens} contains the tokens.
          */
-        private Tokens tokens;
+        private final Tokens tokens;
 
         /**
          * Creates a new object.
@@ -252,7 +252,7 @@ public class MacroCode extends AbstractCode
     /**
      * The field {@code body} contains the tokens of the macro expansion text.
      */
-    private Tokens body;
+    private final Tokens body;
 
     /**
      * The field {@code logger} contains the logger for debugging.
@@ -264,19 +264,19 @@ public class MacroCode extends AbstractCode
      * field indicates that no macros {@code \par} are allowed in macro
      * parameter values.
      */
-    private boolean notLong;
+    private final boolean notLong;
 
     /**
      * The field {@code outerP} contains the indicator for outer definitions.
      */
-    private boolean outerP;
+    private final boolean outerP;
 
     /**
      * The field {@code pattern} contains the specification for the argument
      * matching. A value of {@code null} means that no argument are
      * expected.
      */
-    private MacroPattern pattern;
+    private final MacroPattern pattern;
 
     /**
      * The field {@code tracer} contains the observer for the argument parsing.

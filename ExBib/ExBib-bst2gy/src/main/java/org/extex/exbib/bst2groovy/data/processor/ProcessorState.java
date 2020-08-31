@@ -43,28 +43,28 @@ public class ProcessorState {
     /**
      * The field {@code code} contains the finished code.
      */
-    private GCodeContainer code = new GCodeContainer();
+    private final GCodeContainer code = new GCodeContainer();
 
     /**
      * The field {@code locals} contains the list of future items. They will be
      * translated into local variables later on.
      */
-    private List<Var> locals = new ArrayList<Var>();
+    private final List<Var> locals = new ArrayList<Var>();
 
     /**
      * The field {@code stack} contains the current stack.
      */
-    private List<GCode> stack = new ArrayList<GCode>();
+    private final List<GCode> stack = new ArrayList<GCode>();
 
     /**
      * The field {@code varInfo} contains the variable information.
      */
-    private Map<String, VarInfo> varInfo = new HashMap<String, VarInfo>();
+    private final Map<String, VarInfo> varInfo = new HashMap<String, VarInfo>();
 
     /**
      * The field {@code varManager} contains the variable manager.
      */
-    private VarManager varManager;
+    private final VarManager varManager;
 
     /**
      * The field {@code extraSize} contains the parameter for the extra stack
@@ -127,7 +127,7 @@ public class ProcessorState {
         for (Var x : list) {
             GCode v = pop();
             if (v instanceof Var) {
-                ((Var) v).unify(x);
+                v.unify( x);
             } else {
                 add(new DeclareVar(x, v));
             }

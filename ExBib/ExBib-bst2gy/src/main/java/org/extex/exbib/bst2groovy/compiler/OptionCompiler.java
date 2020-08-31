@@ -39,7 +39,7 @@ public class OptionCompiler extends GIntegerConstant implements Compiler {
     /**
      * The field {@code init} contains the initializer.
      */
-    private String init;
+    private final String init;
 
     /**
      * The field {@code INIT} contains the linking code.
@@ -60,7 +60,7 @@ public class OptionCompiler extends GIntegerConstant implements Compiler {
     /**
      * The field {@code name} contains the name.
      */
-    private String name;
+    private final String name;
 
     /**
      * Creates a new object.
@@ -72,7 +72,7 @@ public class OptionCompiler extends GIntegerConstant implements Compiler {
 
         super(value);
         this.name = name;
-        this.init = name + " = " + Integer.toString(value);
+        this.init = name + " = " + value;
     }
 
     /**

@@ -80,7 +80,7 @@ public class TestPdfDocumentWriter
      * The field {@code nodeVisitor} contains the node visitor instance to use
      * in the form of an anonymous inner class.
      */
-    private NodeVisitor<Object, Object> nodeVisitor =
+    private final NodeVisitor<Object, Object> nodeVisitor =
             new NodeVisitor<Object, Object>() {
 
                 /**
@@ -105,10 +105,7 @@ public class TestPdfDocumentWriter
                     }
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                @Override
+        @Override
                 public Object visitAdjust(AdjustNode node, Object oOut)
                         throws GeneralException {
 
@@ -116,10 +113,7 @@ public class TestPdfDocumentWriter
                     return null;
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                @Override
+        @Override
                 public Object visitAfterMath(AfterMathNode node, Object oOut)
                         throws GeneralException {
 
@@ -129,10 +123,7 @@ public class TestPdfDocumentWriter
                     return null;
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                @Override
+        @Override
                 public Object visitAlignedLeaders(AlignedLeadersNode node,
                         Object oOut) throws GeneralException {
 
@@ -143,10 +134,7 @@ public class TestPdfDocumentWriter
                     return null;
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                @Override
+        @Override
                 public Object visitBeforeMath(BeforeMathNode node, Object oOut)
                         throws GeneralException {
 
@@ -156,10 +144,7 @@ public class TestPdfDocumentWriter
                     return null;
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                @Override
+        @Override
                 public Object visitCenteredLeaders(CenteredLeadersNode node,
                         Object oOut) throws GeneralException {
 
@@ -170,10 +155,7 @@ public class TestPdfDocumentWriter
                     return null;
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                @Override
+        @Override
                 public Object visitChar(CharNode node, Object oOut)
                         throws GeneralException {
 
@@ -181,10 +163,7 @@ public class TestPdfDocumentWriter
                     return null;
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                @Override
+        @Override
                 public Object visitDiscretionary(DiscretionaryNode node,
                         Object oOut) throws GeneralException {
 
@@ -192,10 +171,7 @@ public class TestPdfDocumentWriter
                     return null;
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                @Override
+        @Override
                 public Object visitExpandedLeaders(ExpandedLeadersNode node,
                         Object oOut) throws GeneralException {
 
@@ -206,10 +182,7 @@ public class TestPdfDocumentWriter
                     return null;
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                @Override
+        @Override
                 public Object visitGlue(GlueNode node, Object oOut)
                         throws GeneralException {
 
@@ -226,10 +199,7 @@ public class TestPdfDocumentWriter
                     return null;
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                @Override
+        @Override
                 public Object visitHorizontalList(HorizontalListNode list,
                         Object oOut) throws GeneralException {
 
@@ -243,30 +213,21 @@ public class TestPdfDocumentWriter
                     return null;
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                @Override
+        @Override
                 public Object visitInsertion(InsertionNode node, Object oOut)
                         throws GeneralException {
 
                     return null;
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                @Override
+        @Override
                 public Object visitKern(KernNode node, Object oOut)
                         throws GeneralException {
 
                     return null;
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                @Override
+        @Override
                 public Object visitLigature(LigatureNode node, Object oOut)
                         throws GeneralException {
 
@@ -274,30 +235,21 @@ public class TestPdfDocumentWriter
                     return null;
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                @Override
+        @Override
                 public Object visitMark(MarkNode node, Object oOut)
                         throws GeneralException {
 
                     return null;
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                @Override
+        @Override
                 public Object visitPenalty(PenaltyNode node, Object oOut)
                         throws GeneralException {
 
                     return null;
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                @Override
+        @Override
                 public Object visitRule(RuleNode node, Object oOut)
                         throws GeneralException {
 
@@ -305,10 +257,7 @@ public class TestPdfDocumentWriter
                     return null;
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                @Override
+        @Override
                 public Object visitSpace(SpaceNode node, Object oOut)
                         throws GeneralException {
 
@@ -316,10 +265,7 @@ public class TestPdfDocumentWriter
                     return null;
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                @Override
+        @Override
                 public Object visitVerticalList(VerticalListNode list,
                         Object oOut) throws GeneralException {
 
@@ -333,10 +279,7 @@ public class TestPdfDocumentWriter
                     return null;
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                @Override
+        @Override
                 public Object visitVirtualChar(VirtualCharNode node, Object oOut)
                         throws GeneralException {
 
@@ -344,10 +287,7 @@ public class TestPdfDocumentWriter
                     return null;
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                @Override
+        @Override
                 public Object visitWhatsIt(WhatsItNode node, Object oOut)
                         throws GeneralException {
 

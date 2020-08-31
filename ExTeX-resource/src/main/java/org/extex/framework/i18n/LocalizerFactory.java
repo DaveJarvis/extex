@@ -59,7 +59,7 @@ public final class LocalizerFactory {
          * The field {@code bundleName} contains the name of the resource
          * bundle to use.
          */
-        private String bundleName;
+        private final String bundleName;
 
         /**
          * Creates a new object.
@@ -104,7 +104,7 @@ public final class LocalizerFactory {
         @Override
         public String format(String fmt, Object a) {
 
-            return MessageFormat.format(format(fmt), new Object[]{a});
+            return MessageFormat.format( format(fmt), a );
         }
 
         /**
@@ -122,7 +122,7 @@ public final class LocalizerFactory {
         @Override
         public String format(String fmt, Object a, Object b) {
 
-            return MessageFormat.format(format(fmt), new Object[]{a, b});
+            return MessageFormat.format( format(fmt), a, b );
         }
 
         /**
@@ -141,7 +141,7 @@ public final class LocalizerFactory {
         @Override
         public String format(String fmt, Object a, Object b, Object c) {
 
-            return MessageFormat.format(format(fmt), new Object[]{a, b, c});
+            return MessageFormat.format( format(fmt), a, b, c );
         }
 
         /**
@@ -161,7 +161,7 @@ public final class LocalizerFactory {
         @Override
         public String format(String fmt, Object a, Object b, Object c, Object d) {
 
-            return MessageFormat.format(format(fmt), new Object[]{a, b, c, d});
+            return MessageFormat.format( format(fmt), a, b, c, d );
         }
 
         /**
@@ -183,8 +183,8 @@ public final class LocalizerFactory {
         public String format(String fmt, Object a, Object b, Object c,
                 Object d, Object e) {
 
-            return MessageFormat.format(format(fmt),
-                new Object[]{a, b, c, d, e});
+            return MessageFormat.format( format(fmt),
+                                         a, b, c, d, e );
         }
 
         /**
@@ -250,7 +250,7 @@ public final class LocalizerFactory {
         @Override
         public void message(PrintStream writer, String fmt, Object a) {
 
-            writer.println(MessageFormat.format(format(fmt), new Object[]{a}));
+            writer.println(MessageFormat.format( format(fmt), a ));
         }
 
         /**
@@ -268,7 +268,7 @@ public final class LocalizerFactory {
         public void message(PrintStream writer, String fmt, Object a, Object b) {
 
             writer.println(MessageFormat
-                .format(format(fmt), new Object[]{a, b}));
+                .format( format(fmt), a, b ));
         }
 
         /**
@@ -287,8 +287,8 @@ public final class LocalizerFactory {
         public void message(PrintStream writer, String fmt, Object a, Object b,
                 Object c) {
 
-            writer.println(MessageFormat.format(format(fmt), new Object[]{a, b,
-                    c}));
+            writer.println(MessageFormat.format( format(fmt), a, b,
+                                                 c ));
         }
 
     }

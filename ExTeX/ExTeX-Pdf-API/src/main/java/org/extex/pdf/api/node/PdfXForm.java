@@ -39,7 +39,7 @@ public class PdfXForm extends WhatsItNode {
     /**
      * The field {@code nodes} contains the nodes of the xform.
      */
-    private NodeList nodes;
+    private final NodeList nodes;
 
     /**
      * Creates a new object.

@@ -766,17 +766,17 @@ public enum OcpCode {
      * The field {@code arguments} contains the descriptions of the
      * arguments.
      */
-    private OcpArgumentType[] arguments;
+    private final OcpArgumentType[] arguments;
 
     /**
      * The field {@code opcode} contains the op code.
      */
-    private int opcode;
+    private final int opcode;
 
     /**
      * The field {@code instruction} contains the name of the instruction.
      */
-    private String instruction;
+    private final String instruction;
 
     /**
      * Creates a new object.

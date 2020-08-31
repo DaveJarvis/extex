@@ -118,7 +118,7 @@ public class OcpReader extends Reader {
      * The field {@code outMax} contains the maximum number requested for an
      * output character.
      */
-    private int outMax;
+    private final int outMax;
 
     /**
      * The field {@code pc} contains the program counter. It must be in the
@@ -130,7 +130,7 @@ public class OcpReader extends Reader {
      * The field {@code program} contains the reference to the entire
      * program.
      */
-    private OcpProgram program;
+    private final OcpProgram program;
 
     /**
      * The field {@code pushbackBuffer} contains the buffer for push-back
@@ -172,7 +172,7 @@ public class OcpReader extends Reader {
     /**
      * The field {@code stateStack} contains the stack of states.
      */
-    private Stack<Integer> stateStack = new Stack<Integer>();
+    private final Stack<Integer> stateStack = new Stack<Integer>();
 
     /**
      * Creates a new object.
@@ -840,7 +840,7 @@ public class OcpReader extends Reader {
 @Override
     public String toString() {
 
-        return "[" + Integer.toString(state) + "/" + Integer.toString(pc)
+        return "[" + state + "/" + pc
                 + "] " + getLine() + "\n";
     }
 

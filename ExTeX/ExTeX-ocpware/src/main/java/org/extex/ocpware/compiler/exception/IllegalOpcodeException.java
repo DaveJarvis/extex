@@ -36,7 +36,7 @@ public class IllegalOpcodeException extends RuntimeException {
     /**
      * The field {@code n} contains the number encountered
      */
-    private int n;
+    private final int n;
 
     /**
      * Creates a new object.
@@ -51,7 +51,7 @@ public class IllegalOpcodeException extends RuntimeException {
 @Override
     public String getMessage() {
 
-        return "Illegal opcode (" + Integer.toString(n) + ")";
+        return "Illegal opcode (" + n + ")";
     }
 
 }

@@ -97,7 +97,7 @@ public class GStringConstant extends GenericCode {
     /**
      * The field {@code value} contains the value.
      */
-    private String value;
+    private final String value;
 
     /**
      * Creates a new object.

@@ -59,7 +59,7 @@ public final class EofObserverList implements EofObserver {
     /**
      * The field {@code list} contains the encapsulated list.
      */
-    private List<EofObserver> list = new ArrayList<EofObserver>();
+    private final List<EofObserver> list = new ArrayList<EofObserver>();
 
     /**
      * Add an observer to the list.

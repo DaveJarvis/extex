@@ -40,7 +40,7 @@ public class NotChoiceLeft implements Left {
     /**
      * The field {@code list} contains the list of left items contained.
      */
-    private List<Left> list;
+    private final List<Left> list;
 
     /**
      * Creates a new object.
@@ -58,8 +58,7 @@ public class NotChoiceLeft implements Left {
     public List<Integer> genLeft(State state, CompilerState cs)
             throws IOException,
                 ArgmentTooBigException,
-                AliasNotDefinedException,
-                IllegalOpcodeException {
+        IllegalOpcodeException {
 
         List<Integer> holes = new ArrayList<Integer>();
 

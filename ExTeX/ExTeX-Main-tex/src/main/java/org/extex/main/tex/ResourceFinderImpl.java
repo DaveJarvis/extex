@@ -50,7 +50,7 @@ public class ResourceFinderImpl
      * The field {@code configuration} contains the currently used
      * configuration.
      */
-    private Configuration configuration;
+    private final Configuration configuration;
 
     /**
      * The field {@code logger} contains the current logger or

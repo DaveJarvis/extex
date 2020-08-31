@@ -34,7 +34,7 @@ public class DviFnt extends AbstractDviCode {
     /**
      * The field {@code index} contains the index of the font to use.
      */
-    private int index;
+    private final int index;
 
     /**
      * Creates a new object.

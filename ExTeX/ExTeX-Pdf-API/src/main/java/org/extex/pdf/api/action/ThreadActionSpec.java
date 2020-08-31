@@ -71,12 +71,12 @@ public class ThreadActionSpec extends ActionSpec {
     /**
      * The field {@code file} contains the file.
      */
-    private String file;
+    private final String file;
 
     /**
      * The field {@code id} contains the id.
      */
-    private IdSpec id;
+    private final IdSpec id;
 
     /**
      * Creates a new object.

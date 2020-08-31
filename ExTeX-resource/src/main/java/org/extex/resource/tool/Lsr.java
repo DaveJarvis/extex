@@ -108,7 +108,7 @@ public class Lsr {
     /**
      * The base directory for searching.
      */
-    private File basedirectory;
+    private final File basedirectory;
 
     /**
      * A list of directories, which are excluded from the ls-R.
@@ -116,12 +116,12 @@ public class Lsr {
      * Only in the top directory!
      * </p>
      */
-    private List<String> excludeDir;
+    private final List<String> excludeDir;
 
     /**
      * A list of RegExp, which are excluded in each directory.
      */
-    private List<String> excludeRegExp;
+    private final List<String> excludeRegExp;
 
     /**
      * The level for the directory depth.

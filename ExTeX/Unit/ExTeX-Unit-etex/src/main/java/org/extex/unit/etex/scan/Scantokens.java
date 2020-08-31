@@ -88,7 +88,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
         /**
          * The field {@code stream} contains the proxied token stream.
          */
-        private TokenStream stream;
+        private final TokenStream stream;
 
         /**
          * Creates a new object.

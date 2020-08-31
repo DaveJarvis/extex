@@ -59,7 +59,7 @@ public final class AfterGroupObserverList implements AfterGroupObserver {
     /**
      * The field {@code list} contains the encapsulated list.
      */
-    private List<AfterGroupObserver> list = new ArrayList<AfterGroupObserver>();
+    private final List<AfterGroupObserver> list = new ArrayList<AfterGroupObserver>();
 
     /**
      * Add an observer to the list.

@@ -30,12 +30,12 @@ class ModuloRule implements Rule {
     /**
      * The field {@code mod} contains the divider.
      */
-    private int mod;
+    private final int mod;
 
     /**
      * The field {@code rem} contains the remainder.
      */
-    private int rem;
+    private final int rem;
 
     /**
      * Creates a new object.

@@ -37,7 +37,7 @@ public class LastChar extends ArithExpr implements Expr {
     /**
      * The field {@code n} contains the offset of the reference.
      */
-    private int n;
+    private final int n;
 
     /**
      * Creates a new object.
@@ -73,7 +73,7 @@ public class LastChar extends ArithExpr implements Expr {
         if (n == 0) {
             return "\\$";
         }
-        return "\\($-" + Integer.toString(n) + ")";
+        return "\\($-" + n + ")";
     }
 
 }

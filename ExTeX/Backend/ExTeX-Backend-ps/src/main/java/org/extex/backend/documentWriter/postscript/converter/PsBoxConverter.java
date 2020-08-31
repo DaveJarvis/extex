@@ -73,23 +73,23 @@ public class PsBoxConverter extends AbstractConverter
      * characters should be approximated in the output. If it is
      * {@code false} then only boxes are produced.
      */
-    private boolean showChars = true;
+    private final boolean showChars = true;
 
     /**
      * The field {@code trace} contains the indicator whether the node names
      * should be produced in the output.
      */
-    private boolean trace = true;
+    private final boolean trace = true;
 
     /**
      * The field {@code x} contains the current x position.
      */
-    private Dimen x = new Dimen();
+    private final Dimen x = new Dimen();
 
     /**
      * The field {@code y} contains the current y position.
      */
-    private Dimen y = new Dimen();
+    private final Dimen y = new Dimen();
 
 
     public PsBoxConverter() {

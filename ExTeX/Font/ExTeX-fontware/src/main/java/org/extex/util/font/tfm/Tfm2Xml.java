@@ -65,7 +65,7 @@ public class Tfm2Xml extends AbstractFontUtil {
         /**
          * The xml writer.
          */
-        private XMLStreamWriter writer;
+        private final XMLStreamWriter writer;
 
         /**
          * Creates a new object.

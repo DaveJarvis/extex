@@ -37,7 +37,7 @@ public class Bst2GroovyException extends RuntimeException {
     /**
      * The field {@code tag} contains the tag for the resource bundle.
      */
-    private String tag;
+    private final String tag;
 
     /**
      * The field {@code arg} contains the additional argument.

@@ -40,17 +40,17 @@ public class PdfStartLink extends WhatsItNode {
     /**
      * The field {@code action} contains the action specification.
      */
-    private ActionSpec action;
+    private final ActionSpec action;
 
     /**
      * The field {@code attr} contains the attribute string.
      */
-    private String attr;
+    private final String attr;
 
     /**
      * The field {@code rule} contains the rule.
      */
-    private RuleNode rule;
+    private final RuleNode rule;
 
     /**
      * Creates a new object.

@@ -211,7 +211,7 @@ public class ProtectedTest extends PrefixTester {
             "\\catcode`\\" + tag + "=" + catcode.getCode() + " \\" + prefix
                     + " " + tag + "\\end",
             // --- log message ---
-            "You can\'t use the prefix `\\" + prefix + "\' with " + longName);
+                      "You can't use the prefix `\\" + prefix + "' with " + longName);
     }
 
 }

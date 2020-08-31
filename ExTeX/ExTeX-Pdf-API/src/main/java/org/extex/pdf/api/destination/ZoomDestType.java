@@ -35,7 +35,7 @@ public class ZoomDestType extends DestType {
     /**
      * The field {@code zoom} contains the zoom value.
      */
-    private long zoom;
+    private final long zoom;
 
     /**
      * Creates a new object.
@@ -67,7 +67,7 @@ public class ZoomDestType extends DestType {
     @Override
     public String toString() {
 
-        return "zoom " + Long.toString(zoom);
+        return "zoom " + zoom;
     }
 
     /**

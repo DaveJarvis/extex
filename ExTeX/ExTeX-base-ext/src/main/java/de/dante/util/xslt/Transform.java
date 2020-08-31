@@ -64,7 +64,7 @@ public final class Transform {
     /**
      * PrintStream for the error channel.
      */
-    private static PrintStream outerr = System.err;
+    private static final PrintStream outerr = System.err;
 
     /**
      * The main method.

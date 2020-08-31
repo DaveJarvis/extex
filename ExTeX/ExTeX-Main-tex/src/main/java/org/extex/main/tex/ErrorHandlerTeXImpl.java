@@ -53,7 +53,7 @@ public class ErrorHandlerTeXImpl extends ErrorHandlerImpl {
         sb.append(NL);
         sb.append(file);
         sb.append(NL);
-        sb.append(line.substring(0, pointer - 1));
+        sb.append( line, 0, pointer - 1 );
         sb.append(NL);
         for (int i = pointer + file.length(); i > 0; i--) {
             sb.append(' ');

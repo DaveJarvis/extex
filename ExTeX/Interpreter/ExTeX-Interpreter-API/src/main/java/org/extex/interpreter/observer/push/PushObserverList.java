@@ -61,7 +61,7 @@ public final class PushObserverList implements PushObserver {
     /**
      * The field {@code list} contains the encapsulated list.
      */
-    private List<PushObserver> list = new ArrayList<PushObserver>();
+    private final List<PushObserver> list = new ArrayList<PushObserver>();
 
     /**
      * Add an observer to the list.

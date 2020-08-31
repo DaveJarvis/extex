@@ -41,37 +41,37 @@ public class PageImpl implements Page {
     /**
      * The field {@code mediaHeight} contains the height of the paper.
      */
-    private Dimen mediaHeight = new Dimen(
+    private final Dimen mediaHeight = new Dimen(
         Dimen.ONE_INCH.getValue() * 2970 / 254);
 
     /**
      * The field {@code mediaHOffset} contains the horizontal offset of the
      * upper left corner of the contents on the page. In TeX this value is defined to be 1 in.
      */
-    private Dimen mediaHOffset = new Dimen(Dimen.ONE_INCH);
+    private final Dimen mediaHOffset = new Dimen( Dimen.ONE_INCH);
 
     /**
      * The field {@code mediaVOffset} contains the vertical offset of the upper
      * left corner of the contents on the page. In TeX this value is defined to be 1 in.
      */
-    private Dimen mediaVOffset = new Dimen(Dimen.ONE_INCH);
+    private final Dimen mediaVOffset = new Dimen( Dimen.ONE_INCH);
 
     /**
      * The field {@code mediaWidth} contains the width of the physical paper.
      */
-    private Dimen mediaWidth =
+    private final Dimen mediaWidth =
             new Dimen(Dimen.ONE_INCH.getValue() * 2100 / 254);
 
     /**
      * The field {@code nodes} contains the nodes describing the objects on the
      * page.
      */
-    private NodeList nodes;
+    private final NodeList nodes;
 
     /**
      * The field {@code pageNo} contains the array of page number indicators.
      */
-    private FixedCount[] pageNo;
+    private final FixedCount[] pageNo;
 
     /**
      * Creates a new object.

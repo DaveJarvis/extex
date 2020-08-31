@@ -104,7 +104,7 @@ public class CenteredLeadersNodeTest extends LeadersNodeTester {
             n.getDepth().eq(Dimen.ONE_SP));
         NodeList nl = (NodeList) n;
         int size = nl.size();
-        assertTrue("size " + Integer.toString(size), 1 == size);
+        assertTrue( "size " + size, 1 == size);
     }
 
     /**
@@ -130,7 +130,7 @@ public class CenteredLeadersNodeTest extends LeadersNodeTester {
         assertTrue("depth " + n.getDepth().toString(),
             n.getDepth().eq(Dimen.ONE_SP));
         int size = nl.size();
-        assertTrue("size " + Integer.toString(size), 2 == size);
+        assertTrue( "size " + size, 2 == size);
         Node node0 = nl.get(0);
         assertTrue("0:", node0 instanceof ImplicitKernNode);
         assertTrue("0: width", node0.getWidth().getValue() == 6);
@@ -160,7 +160,7 @@ public class CenteredLeadersNodeTest extends LeadersNodeTester {
             n.getDepth().eq(Dimen.ONE_SP));
         NodeList nl = (NodeList) n;
         int size = nl.size();
-        assertTrue("size " + Integer.toString(size), 2 == size);
+        assertTrue( "size " + size, 2 == size);
         assertTrue("0:", nl.get(0) == H_LIST);
         assertTrue("1:", nl.get(1) == H_LIST);
     }
@@ -188,7 +188,7 @@ public class CenteredLeadersNodeTest extends LeadersNodeTester {
         assertTrue("depth " + n.getDepth().toString(),
             n.getDepth().eq(Dimen.ONE_SP));
         int size = nl.size();
-        assertTrue("size " + Integer.toString(size), 3 == size);
+        assertTrue( "size " + size, 3 == size);
         Node node0 = nl.get(0);
         assertTrue("0:", node0 instanceof ImplicitKernNode);
         assertTrue("0: width", node0.getWidth().getValue() == 6);
@@ -235,7 +235,7 @@ public class CenteredLeadersNodeTest extends LeadersNodeTester {
             n.getDepth().eq(Dimen.ZERO_PT));
         NodeList nl = (NodeList) n;
         int size = nl.size();
-        assertTrue("size " + Integer.toString(size), 1 == size);
+        assertTrue( "size " + size, 1 == size);
     }
 
     /**
@@ -261,7 +261,7 @@ public class CenteredLeadersNodeTest extends LeadersNodeTester {
             n.getDepth().eq(Dimen.ZERO_PT));
         NodeList nl = (NodeList) n;
         int size = nl.size();
-        assertTrue("size " + Integer.toString(size), 2 == size);
+        assertTrue( "size " + size, 2 == size);
         Node node0 = nl.get(0);
         assertTrue("0:", node0 instanceof ImplicitKernNode);
         assertTrue("0: height", node0.getHeight().getValue() == 6);
@@ -291,7 +291,7 @@ public class CenteredLeadersNodeTest extends LeadersNodeTester {
             n.getDepth().eq(Dimen.ZERO_PT));
         NodeList nl = (NodeList) n;
         int size = nl.size();
-        assertTrue("size " + Integer.toString(size), 2 == size);
+        assertTrue( "size " + size, 2 == size);
         assertTrue("0:", nl.get(0) == V_LIST);
         assertTrue("1:", nl.get(1) == V_LIST);
     }
@@ -319,7 +319,7 @@ public class CenteredLeadersNodeTest extends LeadersNodeTester {
             n.getDepth().eq(Dimen.ZERO_PT));
         NodeList nl = (NodeList) n;
         int size = nl.size();
-        assertTrue("size " + Integer.toString(size), 3 == size);
+        assertTrue( "size " + size, 3 == size);
         Node node0 = nl.get(0);
         assertTrue("0:", node0 instanceof ImplicitKernNode);
         assertTrue("0: height", node0.getHeight().getValue() == 6);

@@ -59,7 +59,7 @@ public final class ErrorObserverList implements ErrorObserver {
     /**
      * The field {@code list} contains the encapsulated list.
      */
-    private List<ErrorObserver> list = new ArrayList<ErrorObserver>();
+    private final List<ErrorObserver> list = new ArrayList<ErrorObserver>();
 
     /**
      * Add an observer to the list.

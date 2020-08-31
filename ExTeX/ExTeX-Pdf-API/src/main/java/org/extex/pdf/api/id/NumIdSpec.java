@@ -35,7 +35,7 @@ public class NumIdSpec extends IdSpec {
     /**
      * The field {@code num} contains the number.
      */
-    private long num;
+    private final long num;
 
     /**
      * Creates a new object.
@@ -67,7 +67,7 @@ public class NumIdSpec extends IdSpec {
     @Override
     public String toString() {
 
-        return "num " + Long.toString(num);
+        return "num " + num;
     }
 
 }

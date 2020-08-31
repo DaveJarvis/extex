@@ -102,22 +102,22 @@ public class Patterns extends AbstractHyphenationCode {
         /**
          * The field {@code table} contains the associated table.
          */
-        private Language table;
+        private final Language table;
 
         /**
          * The field {@code tokens} contains the the container for the tokens.
          */
-        private Tokens tokens = new Tokens();
+        private final Tokens tokens = new Tokens();
 
         /**
          * The field {@code context} contains the interpreter context to use.
          */
-        private Context context;
+        private final Context context;
 
         /**
          * The field {@code zero} contains the OtherToken 0.
          */
-        private Token zero;
+        private final Token zero;
 
         /**
          * The field {@code letter} contains the indicator that the character
@@ -491,10 +491,7 @@ public class Patterns extends AbstractHyphenationCode {
     @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter)
-            throws HelpingException,
-                EofException,
-                MissingLeftBraceException,
-                NoHelpException {
+            throws HelpingException {
 
         Token t = source.getNonSpace(context);
         if (t == null) {

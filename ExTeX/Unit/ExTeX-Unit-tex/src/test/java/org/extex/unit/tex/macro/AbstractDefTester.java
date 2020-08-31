@@ -37,7 +37,7 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     /**
      * The field {@code primitive} contains the name of the def.
      */
-    private String def;
+    private final String def;
 
     /**
      * Creates a new object.

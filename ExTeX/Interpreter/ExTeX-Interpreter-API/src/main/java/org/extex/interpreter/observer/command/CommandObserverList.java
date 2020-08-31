@@ -61,7 +61,7 @@ public final class CommandObserverList implements CommandObserver {
     /**
      * The field {@code list} contains the encapsulated list.
      */
-    private List<CommandObserver> list = new ArrayList<CommandObserver>();
+    private final List<CommandObserver> list = new ArrayList<CommandObserver>();
 
     /**
      * Add an observer to the list.

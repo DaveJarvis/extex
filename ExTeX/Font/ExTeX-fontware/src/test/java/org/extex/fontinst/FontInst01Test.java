@@ -109,13 +109,13 @@ public class FontInst01Test extends ExTeXLauncher {
                     + "%    author = \"See file T1.etx\",\n"
                     + "%    version = \"See file T1.etx\",\n"
                     + "%    date = \"generated "
-                    + Integer.toString(cal.get(Calendar.YEAR))
+                    + cal.get( Calendar.YEAR )
                     + "/"
                     + (m < 10 ? "0" : "")
-                    + Integer.toString(m)
+                    + m
                     + "/"
                     + (d < 10 ? "0" : "")
-                    + Integer.toString(d)
+                    + d
                     + "\",\n"
                     + "%    filename = \"t1.enc\",\n"
                     + "%    email = \"See file T1.etx\",\n"

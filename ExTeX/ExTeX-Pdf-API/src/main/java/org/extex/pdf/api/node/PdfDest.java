@@ -40,12 +40,12 @@ public class PdfDest extends WhatsItNode {
     /**
      * The field {@code id} contains the id.
      */
-    private IdSpec id;
+    private final IdSpec id;
 
     /**
      * The field {@code type} contains the destination type.
      */
-    private DestType type;
+    private final DestType type;
 
     /**
      * Creates a new object.

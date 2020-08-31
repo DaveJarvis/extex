@@ -46,23 +46,23 @@ public class WhatsItWriteNode extends WhatsItNode {
     /**
      * The field {@code key} contains the key of the output file to write to.
      */
-    private String key;
+    private final String key;
 
     /**
      * The field {@code tokens} contains the tokens to expand and write.
      */
-    private Tokens tokens;
+    private final Tokens tokens;
 
     /**
      * The field {@code writer} contains the writer used as target when the
      * node is shipped out.
      */
-    private transient TokensWriter writer;
+    private final transient TokensWriter writer;
 
     /**
      * The field {@code source} contains the token source for expansion.
      */
-    private transient TokenSource source;
+    private final transient TokenSource source;
 
     /**
      * Creates a new object.

@@ -69,7 +69,7 @@ public abstract class AbstractFinder implements LogEnabled, ResourceFinder {
      * The field {@code configuration} contains the configuration object on
      * which this resource finder is based.
      */
-    private Configuration configuration;
+    private final Configuration configuration;
 
     /**
      * The field {@code logger} contains the logger to be used for tracing.

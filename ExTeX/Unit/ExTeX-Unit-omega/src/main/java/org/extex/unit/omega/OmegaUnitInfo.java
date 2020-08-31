@@ -47,7 +47,7 @@ public class OmegaUnitInfo extends UnitInfo implements LoadedObserver {
         /**
          * The field {@code context} contains the interpreter context.
          */
-        private Context context;
+        private final Context context;
 
         /**
          * Creates a new object.

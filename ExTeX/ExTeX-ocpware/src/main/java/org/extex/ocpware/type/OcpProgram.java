@@ -165,12 +165,12 @@ public class OcpProgram implements Serializable {
     /**
      * The field {@code states} contains the states.
      */
-    private List<int[]> states = new ArrayList<int[]>();
+    private final List<int[]> states = new ArrayList<int[]>();
 
     /**
      * The field {@code tables} contains the tables.
      */
-    private List<int[]> tables = new ArrayList<int[]>();
+    private final List<int[]> tables = new ArrayList<int[]>();
 
 
     public OcpProgram() {

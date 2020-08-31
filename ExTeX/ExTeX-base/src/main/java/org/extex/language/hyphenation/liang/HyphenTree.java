@@ -181,7 +181,7 @@ class HyphenTree implements Iterable<HyphenTree>, Serializable {
     public HyphenTree getNext(UnicodeChar uc) {
 
         return (this.nextTree != null
-                ? (HyphenTree) this.nextTree.get(uc)
+                ? this.nextTree.get( uc)
                 : null);
     }
 

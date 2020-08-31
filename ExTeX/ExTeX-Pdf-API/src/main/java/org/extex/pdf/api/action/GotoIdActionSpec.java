@@ -37,17 +37,17 @@ public class GotoIdActionSpec extends GotoActionSpec {
     /**
      * The field {@code file} contains the optional file.
      */
-    private String file;
+    private final String file;
 
     /**
      * The field {@code id} contains the id.
      */
-    private IdSpec id;
+    private final IdSpec id;
 
     /**
      * The field {@code newWin} contains the indicator for the new window.
      */
-    private Boolean newWin;
+    private final Boolean newWin;
 
     /**
      * Creates a new object.

@@ -63,7 +63,7 @@ public class UserActionSpec extends ActionSpec {
     /**
      * The field {@code user} contains the name of the user.
      */
-    private String user;
+    private final String user;
 
     /**
      * Creates a new object.

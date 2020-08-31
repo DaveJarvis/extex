@@ -59,7 +59,7 @@ public class SkipParameter extends SkipPrimitive {
     /**
      * The field {@code key} contains the reference key.
      */
-    private String key;
+    private final String key;
 
     /**
      * Creates a new object.

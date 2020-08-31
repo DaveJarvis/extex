@@ -70,7 +70,7 @@ public class NamedReal extends AbstractAssignment
     /**
      * The field {@code key} contains the reference key.
      */
-    private String key;
+    private final String key;
 
     /**
      * Creates a new object.

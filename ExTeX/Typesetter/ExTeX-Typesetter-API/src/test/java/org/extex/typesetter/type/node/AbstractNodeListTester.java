@@ -67,7 +67,7 @@ public abstract class AbstractNodeListTester {
         /**
          * The field {@code f} contains the font.
          */
-        private Font f = new Font() {
+        private final Font f = new Font() {
 
             /**
              * The field {@code serialVersionUID} contains the version number

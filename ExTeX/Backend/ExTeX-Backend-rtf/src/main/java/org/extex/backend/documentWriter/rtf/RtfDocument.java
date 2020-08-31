@@ -48,19 +48,19 @@ public class RtfDocument {
     /**
      * The field {@code buffer} contains the buffer of the contents.
      */
-    private ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+    private final ByteArrayOutputStream buffer = new ByteArrayOutputStream();
 
     /**
      * The field {@code colorMap} contains the mapping from colors to an
      * index.
      */
-    private Map<Rgb8Color, Integer> colorMap =
+    private final Map<Rgb8Color, Integer> colorMap =
             new HashMap<Rgb8Color, Integer>();
 
     /**
      * The field {@code colorTable} contains the list of colors used.
      */
-    private List<Rgb8Color> colorTable = new ArrayList<Rgb8Color>();
+    private final List<Rgb8Color> colorTable = new ArrayList<Rgb8Color>();
 
     /**
      * The field {@code creator} contains the name of the creating program.
@@ -70,12 +70,12 @@ public class RtfDocument {
     /**
      * The field {@code fontMap} contains the mapping from Fonts to an index.
      */
-    private Map<String, Integer> fontMap = new HashMap<String, Integer>();
+    private final Map<String, Integer> fontMap = new HashMap<String, Integer>();
 
     /**
      * The field {@code fontTable} contains the table of fonts used.
      */
-    private List<Font> fontTable = new ArrayList<Font>();
+    private final List<Font> fontTable = new ArrayList<Font>();
 
     /**
      * The field {@code pages} contains the number of pages.

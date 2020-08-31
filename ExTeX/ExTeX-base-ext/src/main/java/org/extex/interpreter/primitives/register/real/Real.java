@@ -301,7 +301,7 @@ public class Real implements Serializable {
             t = source.getToken(context);
         }
 
-        sb.append(Long.toString(val));
+        sb.append( val );
         sb.append('.');
         val = 0;
 
@@ -310,7 +310,7 @@ public class Real implements Serializable {
         } else {
             source.push(t);
         }
-        sb.append(Long.toString(val));
+        sb.append( val );
 
         return (new Real(sb.toString())).getValue();
     }

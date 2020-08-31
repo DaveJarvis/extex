@@ -68,7 +68,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * The field {@code prepare} contains the the preparation code inserted
      * before each test.
      */
-    private String prepare = "";
+    private final String prepare = "";
 
     /**
      * Creates a new object.

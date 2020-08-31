@@ -49,18 +49,18 @@ public class GlobaldefsTest extends ExTeXLauncher {
      * The field {@code primitive} contains the name of the primitive to
      * test.
      */
-    private String primitive = "globaldefs";
+    private final String primitive = "globaldefs";
 
     /**
      * The field {@code invocation} contains the concatenation of primitive
      * name and arguments.
      */
-    private String invocation = "globaldefs";
+    private final String invocation = "globaldefs";
 
     /**
      * The field {@code init} contains the default value.
      */
-    private String init = "0";
+    private final String init = "0";
 
     /**
      * Test case showing that the prefix {@code \immediate} is not applicable

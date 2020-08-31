@@ -55,28 +55,28 @@ public class GroupExtensionImpl extends GroupImpl
     /**
      * The map for the real registers
      */
-    private Map<String, Real> realMap = new HashMap<String, Real>();
+    private final Map<String, Real> realMap = new HashMap<String, Real>();
 
     /**
      * The map for the bool registers
      */
-    private Map<String, Bool> boolMap = new HashMap<String, Bool>();
+    private final Map<String, Bool> boolMap = new HashMap<String, Bool>();
 
     /**
      * The map for the pair registers
      */
-    private Map<String, Pair> pairMap = new HashMap<String, Pair>();
+    private final Map<String, Pair> pairMap = new HashMap<String, Pair>();
 
     /**
      * The map for the transform registers
      */
-    private Map<String, Transform> transformMap =
+    private final Map<String, Transform> transformMap =
             new HashMap<String, Transform>();
 
     /**
      * The map for the hash-toks registers
      */
-    private Map<String, HashToks> hashtoksMap = new HashMap<String, HashToks>();
+    private final Map<String, HashToks> hashtoksMap = new HashMap<String, HashToks>();
 
     /**
      * The next group in the linked list

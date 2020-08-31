@@ -36,23 +36,23 @@ public class BinaryOp extends ArithExpr {
     /**
      * The field {@code left} contains the left argument.
      */
-    private ArithExpr left;
+    private final ArithExpr left;
 
     /**
      * The field {@code op} contains the name of the operator
      */
-    private String op;
+    private final String op;
 
     /**
      * The field {@code opCode} contains the op code of the associated
      * &Omega;CP instruction
      */
-    private int opCode;
+    private final int opCode;
 
     /**
      * The field {@code right} contains the right argument.
      */
-    private ArithExpr right;
+    private final ArithExpr right;
 
     /**
      * The field {@code needsParen} contains the indicator for the precedence
@@ -131,8 +131,7 @@ public class BinaryOp extends ArithExpr {
 @Override
     void outExpr(CompilerState cs)
             throws IOException,
-                TableNotDefinedException,
-                ArgmentTooBigException {
+    ArgmentTooBigException {
 
         left.outExpr(cs);
         right.outExpr(cs);

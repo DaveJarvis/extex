@@ -38,12 +38,12 @@ public class PdfLiteral extends WhatsItNode {
     /**
      * The field {@code direct} contains the direct indicator.
      */
-    private boolean direct;
+    private final boolean direct;
 
     /**
      * The field {@code text} contains the text to pass to the back-end driver.
      */
-    private String text;
+    private final String text;
 
     /**
      * Creates a new object.

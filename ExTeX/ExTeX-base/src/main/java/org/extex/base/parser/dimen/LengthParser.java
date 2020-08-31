@@ -80,7 +80,7 @@ public final class LengthParser {
      * The field {@code functions} contains the function object attached to a
      * function name.
      */
-    private static Map<String, Object> functions =
+    private static final Map<String, Object> functions =
             new HashMap<String, Object>();
 
     /**

@@ -36,7 +36,7 @@ public class Char extends ArithExpr implements Expr {
     /**
      * The field {@code n} contains the index of the reference.
      */
-    private int n;
+    private final int n;
 
     /**
      * Creates a new object.
@@ -69,7 +69,7 @@ public class Char extends ArithExpr implements Expr {
 @Override
     public String toString() {
 
-        return "\\" + Integer.toString(n);
+        return "\\" + n;
     }
 
 }

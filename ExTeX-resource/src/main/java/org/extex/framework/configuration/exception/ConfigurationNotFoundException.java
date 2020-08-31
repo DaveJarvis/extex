@@ -35,7 +35,7 @@ public class ConfigurationNotFoundException extends ConfigurationException {
      * The field {@code configName} contains the name of the missing
      * configuration.
      */
-    private String configName;
+    private final String configName;
 
     /**
      * Create a new object.

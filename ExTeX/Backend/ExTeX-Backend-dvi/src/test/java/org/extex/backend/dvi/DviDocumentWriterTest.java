@@ -112,7 +112,7 @@ public class DviDocumentWriterTest {
         /**
          * The field {@code value} contains the value.
          */
-        private long value;
+        private final long value;
 
         /**
          * Creates a new object.
@@ -207,7 +207,7 @@ public class DviDocumentWriterTest {
     /**
      * The field {@code configuration} contains the configuration.
      */
-    private Configuration configuration = null;
+    private final Configuration configuration = null;
 
     /**
      * The field {@code outputStream} contains the output stream.

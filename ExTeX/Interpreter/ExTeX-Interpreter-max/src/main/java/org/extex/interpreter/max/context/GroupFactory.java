@@ -56,7 +56,7 @@ public class GroupFactory {
      * instantiate. It is kept here to speed up the method
      * {@link #newInstance(Group, Locator, Token, GroupType) newInstance}.
      */
-    private Constructor<?> constructor;
+    private final Constructor<?> constructor;
 
     /**
      * Creates a new object.
@@ -84,7 +84,7 @@ public class GroupFactory {
         try {
             constructor =
                     Class.forName(classname).getConstructor(
-                        new Class[]{Group.class});
+                        Group.class );
         } catch (SecurityException e) {
             throw new ConfigurationInstantiationException(e);
         } catch (NoSuchMethodException e) {

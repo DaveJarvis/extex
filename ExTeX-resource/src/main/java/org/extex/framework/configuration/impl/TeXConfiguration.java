@@ -74,12 +74,12 @@ public class TeXConfiguration implements Configuration {
     /**
      * The field {@code attributes} contains the attributes.
      */
-    private Map<String, String> attributes = new HashMap<String, String>();
+    private final Map<String, String> attributes = new HashMap<String, String>();
 
     /**
      * The field {@code configurations} contains the configurations.
      */
-    private Map<String, List<TeXConfiguration>> configurations =
+    private final Map<String, List<TeXConfiguration>> configurations =
             new HashMap<String, List<TeXConfiguration>>();
 
     /**
@@ -89,7 +89,7 @@ public class TeXConfiguration implements Configuration {
     /**
      * The field {@code parts} contains the parts.
      */
-    private List<Object> parts = new ArrayList<Object>();
+    private final List<Object> parts = new ArrayList<Object>();
 
     /**
      * Creates a new object and fills it with the configuration read from an

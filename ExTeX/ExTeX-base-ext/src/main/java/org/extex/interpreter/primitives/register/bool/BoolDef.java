@@ -72,8 +72,8 @@ public class BoolDef extends AbstractAssignment {
         source.getOptionalEquals(context);
         String key =
                 "bool#"
-                        + Long.toString(source.parseInteger(context, source,
-                            typesetter));
+                        + source.parseInteger( context, source,
+                                               typesetter );
         context.setCode(token, new NamedBool(token, key), prefix.clearGlobal());
     }
 

@@ -40,12 +40,12 @@ public class FontFactoryImplCmr10At12Test extends AbstractFontFactoryTester {
     /**
      * The font.
      */
-    private ExtexFont font;
+    private final ExtexFont font;
 
     /**
      * The font key.
      */
-    private FontKey key;
+    private final FontKey key;
 
     /**
      * Creates a new object.

@@ -61,7 +61,7 @@ public class FontManager implements Iterable<ManagerInfo> {
      * The field {@code manager} contains the encapsulated back-end font
      * manager.
      */
-    private BackendFontManager manager;
+    private final BackendFontManager manager;
 
     /**
      * The field {@code texdict} contains the definition of font changing

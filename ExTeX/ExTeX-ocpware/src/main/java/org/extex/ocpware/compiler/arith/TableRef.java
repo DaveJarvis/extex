@@ -36,12 +36,12 @@ public class TableRef extends ArithExpr {
     /**
      * The field {@code index} contains the offset.
      */
-    private ArithExpr index;
+    private final ArithExpr index;
 
     /**
      * The field {@code table} contains the name of the table.
      */
-    private String table;
+    private final String table;
 
     /**
      * Creates a new object.
@@ -58,8 +58,7 @@ public class TableRef extends ArithExpr {
 @Override
     void outExpr(CompilerState cs)
             throws IOException,
-                TableNotDefinedException,
-                ArgmentTooBigException {
+    ArgmentTooBigException {
 
         cs.putInstruction(OcpCode.OP_PUSH_NUM, cs.lookupTable(table));
         index.outExpr(cs);

@@ -36,7 +36,7 @@ public class DeclareVar extends GenericCode {
     /**
      * The field {@code var} contains the variable.
      */
-    private Var var;
+    private final Var var;
 
     /**
      * The field {@code value} contains the value.

@@ -39,7 +39,7 @@ public class InteractionModeObserver implements InteractionObserver {
      * {@link java.util.logging.Handler Handler} at which the logging should be
      * directed.
      */
-    private Handler handler;
+    private final Handler handler;
 
     /**
      * Creates a new object.

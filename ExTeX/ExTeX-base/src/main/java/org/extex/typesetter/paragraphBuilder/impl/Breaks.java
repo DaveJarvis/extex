@@ -30,13 +30,13 @@ class Breaks {
      * The field {@code penalty} contains the accumulated penalty for the
      * breaks contained.
      */
-    private int penalty;
+    private final int penalty;
 
     /**
      * The field {@code points} contains the array of break point actually
      * used.
      */
-    private int[] points;
+    private final int[] points;
 
     /**
      * Creates a new object.

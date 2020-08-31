@@ -181,7 +181,7 @@ public class Leaders extends AbstractCode {
             node =
                     ((RuleConvertible) code).getRule(context, source,
                         typesetter);
-            horizontal = ((RuleNode) node).isHorizontal();
+            horizontal = node.isHorizontal();
         } else {
             throw new HelpingException(getLocalizer(), "TTP.BoxExpected");
         }

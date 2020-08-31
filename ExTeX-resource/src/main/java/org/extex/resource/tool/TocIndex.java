@@ -87,7 +87,7 @@ public class TocIndex {
     /**
      * The field {@code omit} contains the omit patterns.
      */
-    private List<Pattern> omit = new ArrayList<Pattern>();
+    private final List<Pattern> omit = new ArrayList<Pattern>();
 
     /**
      * The field {@code base} contains the base directory.

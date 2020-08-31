@@ -151,9 +151,7 @@ public class HyphenationPrimitive extends AbstractHyphenationCode {
     @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter)
-            throws HelpingException,
-                MissingLeftBraceException,
-                NoHelpException {
+            throws HelpingException {
 
         Language table = getHyphenationTable(context);
         Token t = source.getNonSpace(context);

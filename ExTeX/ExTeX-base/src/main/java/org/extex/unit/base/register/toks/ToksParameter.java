@@ -200,7 +200,7 @@ public class ToksParameter extends AbstractToks
                     source.getToken(context)) {
                 toks.add(t);
             }
-            context.setToks(getKey(context, (TokenSource) null, typesetter),
+            context.setToks(getKey( context, null, typesetter),
                 toks, true);
         }
     }

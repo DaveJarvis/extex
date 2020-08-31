@@ -47,26 +47,26 @@ public class BreakPoint {
      * The field {@code penalty} contains the penalty associated to the
      * break point.
      */
-    private int penalty;
+    private final int penalty;
 
     /**
      * The field {@code pointWidth} contains the width to be added in case
      * that this break point is not active.
      */
-    private FixedGlue pointWidth;
+    private final FixedGlue pointWidth;
 
     /**
      * The field {@code position} contains the pointer to the first material
      * in the new line. This material might be skipped. Thus in fact the pointer
      * indicates the material not contained in the previous line.
      */
-    private int position;
+    private final int position;
 
     /**
      * The field {@code width} contains the width of the line from the
      * previous break point to this one.
      */
-    private FixedGlue width;
+    private final FixedGlue width;
 
     /**
      * Creates a new object.
@@ -185,7 +185,7 @@ public class BreakPoint {
     @Override
     public String toString() {
 
-        return "<" + Integer.toString(position) + ": "
+        return "<" + position + ": "
                 + (width == null ? "null" : width.toString()) + " ++ "
                 + (pointWidth == null ? "null" : pointWidth.toString()) + ">";
     }

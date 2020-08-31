@@ -229,7 +229,7 @@ public class OutputFile implements OutFile {
      * The field {@code file} contains the file assigned to this instance. If
      * the value is {@code null} then it can never be opened.
      */
-    private File file;
+    private final File file;
 
     /**
      * The field {@code writer} contains the real writer assigned to this

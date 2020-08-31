@@ -49,7 +49,7 @@ public class FileRecorder implements OpenFileObserver, OutputStreamObserver {
     /**
      * The field {@code recorded} contains the recorded files.
      */
-    private List<String> recorded = new ArrayList<String>();
+    private final List<String> recorded = new ArrayList<String>();
 
 
     public FileRecorder() {

@@ -83,19 +83,19 @@ public class PsBasicConverter extends AbstractConverter
         /**
          * The field {@code charBuffer} contains the dynamic text.
          */
-        private StringBuilder text = new StringBuilder();
+        private final StringBuilder text = new StringBuilder();
 
         /**
          * The field {@code currX} contains the x coordinate for the first
          * character.
          */
-        private Dimen currX = new Dimen();
+        private final Dimen currX = new Dimen();
 
         /**
          * The field {@code currY} contains the y coordinate for the first
          * character.
          */
-        private Dimen currY = new Dimen(Long.MIN_VALUE);
+        private final Dimen currY = new Dimen( Long.MIN_VALUE);
 
         /**
          * The field {@code empty} contains the indicator that the text is
@@ -178,7 +178,7 @@ public class PsBasicConverter extends AbstractConverter
     /**
      * The field {@code text} contains the character text.
      */
-    private Buffer buffer = new Buffer();
+    private final Buffer buffer = new Buffer();
 
     /**
      * The field {@code cc} contains the color converter.
@@ -194,17 +194,17 @@ public class PsBasicConverter extends AbstractConverter
     /**
      * The field {@code ps} contains the library manager for Postscript code.
      */
-    private Ps ps = new Ps();
+    private final Ps ps = new Ps();
 
     /**
      * The field {@code x} contains the current x position.
      */
-    private Dimen x = new Dimen();
+    private final Dimen x = new Dimen();
 
     /**
      * The field {@code y} contains the current y position.
      */
-    private Dimen y = new Dimen();
+    private final Dimen y = new Dimen();
 
 
     public PsBasicConverter() {

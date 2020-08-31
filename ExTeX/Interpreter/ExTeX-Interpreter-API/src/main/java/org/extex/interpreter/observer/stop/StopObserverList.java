@@ -61,7 +61,7 @@ public final class StopObserverList implements StopObserver {
     /**
      * The field {@code list} contains the encapsulated list.
      */
-    private List<StopObserver> list = new ArrayList<StopObserver>();
+    private final List<StopObserver> list = new ArrayList<StopObserver>();
 
     /**
      * Add an observer to the list.

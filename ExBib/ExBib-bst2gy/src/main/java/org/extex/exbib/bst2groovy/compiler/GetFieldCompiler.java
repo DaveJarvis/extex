@@ -63,7 +63,7 @@ public class GetFieldCompiler implements Compiler {
     /**
      * The field {@code name} contains the name of the field.
      */
-    private GStringConstant name;
+    private final GStringConstant name;
 
     /**
      * Creates a new object.

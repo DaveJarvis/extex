@@ -48,7 +48,7 @@ public class LetCode extends AbstractCode implements ExpandableCode {
     /**
      * The field {@code token} contains the encapsulated token.
      */
-    private Token token;
+    private final Token token;
 
     /**
      * Creates a new object.

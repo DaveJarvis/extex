@@ -41,7 +41,7 @@ public class FontInjector implements RegistrarObserver {
      * The field {@code factory} contains the font factory to use for
      * reconnecting the font.
      */
-    private CoreFontFactory factory;
+    private final CoreFontFactory factory;
 
     /**
      * Creates a new object.

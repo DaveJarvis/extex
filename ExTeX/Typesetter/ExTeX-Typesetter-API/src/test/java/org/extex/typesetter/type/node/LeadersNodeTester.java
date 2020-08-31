@@ -41,7 +41,7 @@ public abstract class LeadersNodeTester {
     /**
      * The field {@code visitor} contains the visitor.
      */
-    private NodeVisitor<Node, Boolean> visitor =
+    private final NodeVisitor<Node, Boolean> visitor =
             new NodeVisitor<Node, Boolean>() {
 
                 public Node visitAdjust(AdjustNode node, Boolean value)
@@ -233,9 +233,9 @@ public abstract class LeadersNodeTester {
         Node n = node.atShipping(null, null, null, null);
         assertTrue(n instanceof RuleNode);
         assertTrue("width", Dimen.ONE * 12 == n.getWidth().getValue());
-        assertTrue("depth " + Long.toString(n.getDepth().getValue()),
+        assertTrue("depth " + n.getDepth().getValue(),
             Dimen.ONE == n.getDepth().getValue());
-        assertTrue("height " + Long.toString(n.getHeight().getValue()),
+        assertTrue("height " + n.getHeight().getValue(),
             Dimen.ONE == n.getHeight().getValue());
     }
 
@@ -255,9 +255,9 @@ public abstract class LeadersNodeTester {
         Node n = node.atShipping(null, null, null, null);
         assertTrue(n instanceof RuleNode);
         assertTrue("width", Dimen.ONE == n.getWidth().getValue());
-        assertTrue("depth " + Long.toString(n.getDepth().getValue()), 0 == n
+        assertTrue( "depth " + n.getDepth().getValue(), 0 == n
             .getDepth().getValue());
-        assertTrue("height " + Long.toString(n.getHeight().getValue()),
+        assertTrue("height " + n.getHeight().getValue(),
             Dimen.ONE * 12 == n.getHeight().getValue());
     }
 
@@ -277,9 +277,9 @@ public abstract class LeadersNodeTester {
         Node n = node.atShipping(null, null, null, null);
         assertTrue(n instanceof RuleNode);
         assertTrue("width", 0 == n.getWidth().getValue());
-        assertTrue("depth " + Long.toString(n.getDepth().getValue()),
+        assertTrue("depth " + n.getDepth().getValue(),
             Dimen.ONE == n.getDepth().getValue());
-        assertTrue("height " + Long.toString(n.getHeight().getValue()),
+        assertTrue("height " + n.getHeight().getValue(),
             Dimen.ONE == n.getHeight().getValue());
     }
 
@@ -299,9 +299,9 @@ public abstract class LeadersNodeTester {
         Node n = node.atShipping(null, null, null, null);
         assertTrue(n instanceof RuleNode);
         assertTrue("width", Dimen.ONE == n.getWidth().getValue());
-        assertTrue("depth " + Long.toString(n.getDepth().getValue()), 0 == n
+        assertTrue( "depth " + n.getDepth().getValue(), 0 == n
             .getDepth().getValue());
-        assertTrue("height " + Long.toString(n.getHeight().getValue()), 0 == n
+        assertTrue( "height " + n.getHeight().getValue(), 0 == n
             .getHeight().getValue());
     }
 

@@ -29,12 +29,12 @@ public class Table {
     /**
      * The field {@code contents} contains the contents of the table.
      */
-    private int[] contents;
+    private final int[] contents;
 
     /**
      * The field {@code name} contains the name of the table.
      */
-    private String name;
+    private final String name;
 
     /**
      * Creates a new object.

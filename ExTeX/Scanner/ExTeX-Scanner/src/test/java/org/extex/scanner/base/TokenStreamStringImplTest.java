@@ -129,9 +129,9 @@ public class TokenStreamStringImplTest {
             return "";
         }
 
-    };;
+    };
 
-    /**
+  /**
      * Command line interface.
      * 
      * @param args the arguments

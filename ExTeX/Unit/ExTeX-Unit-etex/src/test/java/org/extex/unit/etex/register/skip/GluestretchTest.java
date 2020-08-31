@@ -57,7 +57,7 @@ public class GluestretchTest extends ExTeXLauncher {
         assertFailure(// --- input code ---
             "\\gluestretch\\skip0=1pt ",
             // --- error channel ---
-            "You can't use `\\gluestretch\' in vertical mode");
+                      "You can't use `\\gluestretch' in vertical mode" );
     }
 
     /**

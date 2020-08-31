@@ -35,7 +35,7 @@ public class ResourceFinderInjector implements RegistrarObserver {
     /**
      * The field {@code finder} contains the resource finder to inject.
      */
-    private ResourceFinder finder;
+    private final ResourceFinder finder;
 
     /**
      * Creates a new object.

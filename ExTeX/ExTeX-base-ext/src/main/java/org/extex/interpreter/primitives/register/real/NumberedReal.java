@@ -78,7 +78,7 @@ public class NumberedReal extends NamedReal {
 
         return getName()
                 + "#"
-                + Long.toString(source
-                    .parseInteger(context, source, typesetter));
+                + source
+            .parseInteger( context, source, typesetter );
     }
 }

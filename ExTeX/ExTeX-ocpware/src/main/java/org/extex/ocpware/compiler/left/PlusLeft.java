@@ -40,12 +40,12 @@ public class PlusLeft implements Left {
     /**
      * The field {@code from} contains the lower bound.
      */
-    private int from;
+    private final int from;
 
     /**
      * The field {@code left} contains the left item.
      */
-    private Left left;
+    private final Left left;
 
     /**
      * Creates a new object.
@@ -65,8 +65,7 @@ public class PlusLeft implements Left {
     public List<Integer> genLeft(State state, CompilerState cs)
             throws IOException,
                 ArgmentTooBigException,
-                AliasNotDefinedException,
-                IllegalOpcodeException {
+        IllegalOpcodeException {
 
         // false_holes=nil;
         // true_holes=nil;

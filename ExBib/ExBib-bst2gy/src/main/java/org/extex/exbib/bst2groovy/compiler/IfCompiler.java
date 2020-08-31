@@ -352,7 +352,7 @@ public class IfCompiler implements Compiler {
             for (Var x : condState.getLocals()) {
                 GCode v = state.pop();
                 if (v instanceof Var) {
-                    ((Var) v).unify(x);
+                    v.unify( x);
                 } else if (v instanceof GIntegerConstant
                         || v instanceof GStringConstant) {
                     x.unify(v);

@@ -597,7 +597,7 @@ public class TeX extends ExTeX {
         /**
          * The field {@code finder} contains the resource finder.
          */
-        private ResourceFinder finder;
+        private final ResourceFinder finder;
 
         /**
          * The field {@code first} contains the indicator of the first visit.
@@ -814,9 +814,9 @@ public class TeX extends ExTeX {
      * The field {@code fileRecorder} contains the observer used to record all
      * opened files.
      */
-    private FileRecorder fileRecorder = null;;
+    private FileRecorder fileRecorder = null;
 
-    /**
+  /**
      * The field {@code interpreter} contains the interpreter. This is an
      * intermediate variable used to transport the interpreter to places where
      * it is needed.
@@ -826,7 +826,7 @@ public class TeX extends ExTeX {
     /**
      * The field {@code localizer} contains the localizer.
      */
-    private Localizer localizer = LocalizerFactory.getLocalizer(TeX.class);
+    private final Localizer localizer = LocalizerFactory.getLocalizer( TeX.class);
 
     /**
      * The field {@code observers} contains the observers.
@@ -835,7 +835,7 @@ public class TeX extends ExTeX {
      * some variables to avoid that the garbage collector does its work.
      * </p>
      */
-    private List<Object> observers = new ArrayList<Object>();
+    private final List<Object> observers = new ArrayList<Object>();
 
     /**
      * The field {@code primaryFile} contains the name of the first file read.
@@ -1336,10 +1336,9 @@ public class TeX extends ExTeX {
                                     Calendar.getInstance().get(Calendar.YEAR);
                             String copyrightYear =
                                     (year <= COPYRIGHT_YEAR ? Integer
-                                        .toString(COPYRIGHT_YEAR) : Integer
-                                        .toString(COPYRIGHT_YEAR)
+                                        .toString(COPYRIGHT_YEAR) : COPYRIGHT_YEAR
                                             + "-"
-                                            + Integer.toString(year));
+                                            + year);
                             return info(getLocalizer().format(
                                 "ExTeX.Copyright", copyrightYear));
                         } else if ("copying".startsWith(arg)) {

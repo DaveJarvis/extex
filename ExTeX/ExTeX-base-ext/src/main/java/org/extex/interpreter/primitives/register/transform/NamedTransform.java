@@ -59,7 +59,7 @@ public class NamedTransform extends AbstractAssignment implements Theable {
     /**
      * The field {@code key} contains the reference key.
      */
-    private String key;
+    private final String key;
 
     /**
      * Creates a new object.

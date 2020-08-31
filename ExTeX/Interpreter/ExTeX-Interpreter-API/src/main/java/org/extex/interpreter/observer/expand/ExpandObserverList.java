@@ -61,7 +61,7 @@ public final class ExpandObserverList implements ExpandObserver {
     /**
      * The field {@code list} contains the encapsulated list.
      */
-    private List<ExpandObserver> list = new ArrayList<ExpandObserver>();
+    private final List<ExpandObserver> list = new ArrayList<ExpandObserver>();
 
     /**
      * Add an observer to the list.

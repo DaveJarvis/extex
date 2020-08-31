@@ -34,7 +34,7 @@ public class TokenPushObserver implements PushObserver {
     /**
      * The field {@code logger} contains the logger for output
      */
-    private Logger logger;
+    private final Logger logger;
 
     /**
      * Creates a new object.

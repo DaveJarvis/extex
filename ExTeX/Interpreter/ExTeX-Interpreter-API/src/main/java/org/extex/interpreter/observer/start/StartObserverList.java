@@ -62,7 +62,7 @@ public final class StartObserverList implements StartObserver {
     /**
      * The field {@code list} contains the encapsulated list.
      */
-    private List<StartObserver> list = new ArrayList<StartObserver>();
+    private final List<StartObserver> list = new ArrayList<StartObserver>();
 
     /**
      * Add an observer to the list.

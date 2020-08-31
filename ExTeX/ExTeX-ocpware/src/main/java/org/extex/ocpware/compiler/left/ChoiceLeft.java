@@ -54,8 +54,7 @@ public class ChoiceLeft extends ArrayList<Left> implements Left {
     public List<Integer> genLeft(State state, CompilerState cs)
             throws IOException,
                 ArgmentTooBigException,
-                AliasNotDefinedException,
-                IllegalOpcodeException {
+        IllegalOpcodeException {
 
         List<Integer> trueHoles = new ArrayList<Integer>();
         List<Integer> holes = new ArrayList<Integer>();

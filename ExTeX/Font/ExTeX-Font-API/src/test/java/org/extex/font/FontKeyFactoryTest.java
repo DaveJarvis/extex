@@ -37,7 +37,7 @@ public class FontKeyFactoryTest extends TestCase {
     /**
      * The font key factory.
      */
-    private static FontKeyFactory factory = new FontKeyFactory();
+    private static final FontKeyFactory factory = new FontKeyFactory();
 
     /**
      * Test 01.

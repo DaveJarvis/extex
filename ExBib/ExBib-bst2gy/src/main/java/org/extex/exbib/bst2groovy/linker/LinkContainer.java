@@ -36,12 +36,12 @@ public class LinkContainer {
     /**
      * The field {@code linked} contains the list of methods to be linked in.
      */
-    private Set<LinkingCode> linked = new HashSet<LinkingCode>();
+    private final Set<LinkingCode> linked = new HashSet<LinkingCode>();
 
     /**
      * The field {@code imports} contains the set of imports.
      */
-    private Set<String> imports = new HashSet<String>();
+    private final Set<String> imports = new HashSet<String>();
 
     /**
      * Add code to be linked in.

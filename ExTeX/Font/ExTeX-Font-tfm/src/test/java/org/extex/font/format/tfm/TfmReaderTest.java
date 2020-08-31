@@ -44,7 +44,7 @@ public class TfmReaderTest {
     /**
      * The tfm reader.
      */
-    private TfmReader reader;
+    private final TfmReader reader;
 
     /**
      * Creates a new object.

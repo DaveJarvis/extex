@@ -47,7 +47,7 @@ public class WhatsItCloseNode extends WhatsItNode implements LogEnabled {
     /**
      * The field {@code key} contains the key of the output file to close.
      */
-    private String key;
+    private final String key;
 
     /**
      * The field {@code logger} contains the logger to use.

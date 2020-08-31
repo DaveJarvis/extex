@@ -35,7 +35,7 @@ public abstract class AbstractWriter implements OcpWriter {
     /**
      * The field {@code bundle} contains the resource bundle for i18n.
      */
-    private ResourceBundle bundle;
+    private final ResourceBundle bundle;
 
 
     public AbstractWriter() {

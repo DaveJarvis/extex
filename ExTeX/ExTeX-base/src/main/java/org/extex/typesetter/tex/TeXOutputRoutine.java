@@ -176,7 +176,7 @@ public class TeXOutputRoutine implements OutputRoutine, Serializable {
     /**
      * The field {@code interpreter} contains the interpreter.
      */
-    private transient Interpreter interpreter;
+    private final transient Interpreter interpreter;
 
     /**
      * The field {@code rightBrace} contains the group closing token.

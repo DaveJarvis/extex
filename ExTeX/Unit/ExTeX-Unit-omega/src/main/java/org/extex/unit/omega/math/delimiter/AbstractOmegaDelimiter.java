@@ -113,66 +113,42 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
     private static final MathClassVisitor<Integer, Object, Object> MCV =
             new MathClassVisitor<Integer, Object, Object>() {
 
-                /**
-            *      java.lang.Object)
-                 */
-                public Integer visitBinary(Object ignore, Object ignore2) {
+        public Integer visitBinary(Object ignore, Object ignore2) {
 
                     return new Integer(2);
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                public Integer visitClosing(Object ignore, Object ignore2) {
+        public Integer visitClosing(Object ignore, Object ignore2) {
 
                     return new Integer(5);
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                public Integer visitLarge(Object ignore, Object ignore2) {
+        public Integer visitLarge(Object ignore, Object ignore2) {
 
                     return new Integer(1);
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                public Integer visitOpening(Object ignore, Object ignore2) {
+        public Integer visitOpening(Object ignore, Object ignore2) {
 
                     return new Integer(4);
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                public Integer visitOrdinary(Object ignore, Object ignore2) {
+        public Integer visitOrdinary(Object ignore, Object ignore2) {
 
                     return new Integer(0);
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                public Integer visitPunctation(Object ignore, Object ignore2) {
+        public Integer visitPunctation(Object ignore, Object ignore2) {
 
                     return new Integer(6);
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                public Integer visitRelation(Object ignore, Object ignore2) {
+        public Integer visitRelation(Object ignore, Object ignore2) {
 
                     return new Integer(3);
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                public Integer visitVariable(Object ignore, Object ignore2) {
+        public Integer visitVariable(Object ignore, Object ignore2) {
 
                     return new Integer(7);
                 }

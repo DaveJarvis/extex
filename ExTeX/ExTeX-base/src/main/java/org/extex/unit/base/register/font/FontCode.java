@@ -57,7 +57,7 @@ public class FontCode extends AbstractCode
     /**
      * The field {@code font} contains the font enclosed in this code.
      */
-    private Font font;
+    private final Font font;
 
     /**
      * Creates a new object.

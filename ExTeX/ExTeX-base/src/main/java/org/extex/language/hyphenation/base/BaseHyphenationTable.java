@@ -92,7 +92,7 @@ public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
      * The field {@code exceptionMap} contains the exception words for
      * hyphenation.
      */
-    private Map<UnicodeCharList, boolean[]> exceptionMap =
+    private final Map<UnicodeCharList, boolean[]> exceptionMap =
             new HashMap<UnicodeCharList, boolean[]>();
 
     /**

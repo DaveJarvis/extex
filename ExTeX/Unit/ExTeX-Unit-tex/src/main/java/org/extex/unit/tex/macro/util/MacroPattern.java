@@ -72,7 +72,7 @@ public class MacroPattern extends Tokens {
         /**
          * The field {@code no} contains the index of the argument.
          */
-        private int no;
+        private final int no;
 
         /**
          * Creates a new object.
@@ -102,7 +102,7 @@ public class MacroPattern extends Tokens {
     @Override
         public String toString() {
 
-            return "#" + Integer.toString(no);
+            return "#" + no;
         }
 
     }
@@ -123,12 +123,12 @@ public class MacroPattern extends Tokens {
         /**
          * The field {@code no} contains the index of the argument.
          */
-        private int no;
+        private final int no;
 
         /**
          * The field {@code t} contains the terminating token.
          */
-        private Token token;
+        private final Token token;
 
         /**
          * Creates a new object.
@@ -158,12 +158,12 @@ public class MacroPattern extends Tokens {
     @Override
         public String toString() {
 
-            return "#" + Integer.toString(no) + token.toText();
+            return "#" + no + token.toText();
         }
 
-    };
+    }
 
-    /**
+  /**
      * Matcher which recognized just a single constant token.
      */
     private class ConstantMatcher implements Matcher {
@@ -177,7 +177,7 @@ public class MacroPattern extends Tokens {
         /**
          * The field {@code token} contains the token to look for.
          */
-        private Token token;
+        private final Token token;
 
         /**
          * Creates a new object.
@@ -233,7 +233,7 @@ public class MacroPattern extends Tokens {
         /**
          * The field {@code no} contains the index of the argument.
          */
-        private int no;
+        private final int no;
 
         /**
          * Creates a new object.
@@ -279,7 +279,7 @@ public class MacroPattern extends Tokens {
     @Override
         public String toString() {
 
-            return "#{" + Integer.toString(no);
+            return "#{" + no;
         }
 
     }

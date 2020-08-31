@@ -75,12 +75,12 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     /**
      * current x position.
      */
-    private Dimen currentX;
+    private final Dimen currentX;
 
     /**
      * current y position.
      */
-    private Dimen currentY;
+    private final Dimen currentY;
 
     /**
      * paper height in BP.
@@ -90,17 +90,17 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     /**
      * pdf content stream.
      */
-    private PDPageContentStream contentStream;
+    private final PDPageContentStream contentStream;
 
     /**
      * the pdf color visitor.
      */
-    private ColorVisitor colorVisitor;
+    private final ColorVisitor colorVisitor;
 
     /**
      * the pdf document.
      */
-    private PDDocument document;
+    private final PDDocument document;
 
     /**
      * the color from the character before.

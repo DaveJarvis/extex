@@ -49,7 +49,7 @@ public class CMR10 implements Font, Serializable {
         /**
          * The field {@code code} contains the character code.
          */
-        private UnicodeChar code;
+        private final UnicodeChar code;
 
         /**
          * The field {@code wd} contains the width.
@@ -79,13 +79,13 @@ public class CMR10 implements Font, Serializable {
         /**
          * The field {@code ligatures} contains the ligatures.
          */
-        private Map<UnicodeChar, UnicodeChar> ligatures =
+        private final Map<UnicodeChar, UnicodeChar> ligatures =
                 new HashMap<UnicodeChar, UnicodeChar>();
 
         /**
          * The field {@code kernings} contains the kernings.
          */
-        private Map<UnicodeChar, FixedDimen> kernings =
+        private final Map<UnicodeChar, FixedDimen> kernings =
                 new HashMap<UnicodeChar, FixedDimen>();
 
         /**
@@ -560,7 +560,7 @@ public class CMR10 implements Font, Serializable {
     /**
      * The field {@code fontdimen} contains the ...
      */
-    private FixedDimen[] fontdimen = {Dimen.ZERO, // SLANT
+    private final FixedDimen[] fontdimen = {Dimen.ZERO, // SLANT
             new Dimen(DESIGNSIZE.getValue() * 333334 / C_1000000), // SPACE
             new Dimen(DESIGNSIZE.getValue() * 166667 / C_1000000), // STRETCH
             new Dimen(DESIGNSIZE.getValue() * 111112 / C_1000000), // SHRINK
@@ -990,13 +990,13 @@ public class CMR10 implements Font, Serializable {
     /**
      * The field {@code fontKey} contains the font key.
      */
-    private FontKey fontKey = new FontKeyFactory().newInstance("cmr10");
+    private final FontKey fontKey = new FontKeyFactory().newInstance( "cmr10");
 
     /**
      * The field {@code space} contains the space specification.
      */
-    private Glue space = new Glue(fontdimen[SPACE], fontdimen[STRETCH],
-        fontdimen[SHRINK]);
+    private final Glue space = new Glue( fontdimen[SPACE], fontdimen[STRETCH],
+                                         fontdimen[SHRINK]);
 
 @Override
     public FontKey getActualFontKey() {

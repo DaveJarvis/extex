@@ -40,7 +40,7 @@ public class StateChange implements RightState {
     /**
      * The field {@code state} contains the state.
      */
-    private String state;
+    private final String state;
 
     /**
      * Creates a new object.
@@ -57,7 +57,7 @@ public class StateChange implements RightState {
      */
     public void compile(CompilerState cs, boolean withOffset)
             throws IOException,
-                StateNotDefinedException, ArgmentTooBigException {
+        ArgmentTooBigException {
 
         cs.putInstruction(OcpCode.OP_STATE_CHANGE, cs.lookupState(state));
     }

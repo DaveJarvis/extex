@@ -136,7 +136,7 @@ public class Main extends CLI {
     /**
      * The field {@code logger} contains the logger.
      */
-    private Logger logger = makeLogger();
+    private final Logger logger = makeLogger();
 
     /**
      * The field {@code traceFinder} contains the indicator to trace the
@@ -147,7 +147,7 @@ public class Main extends CLI {
     /**
      * The field {@code bundle} contains the resource bundle for i18n.
      */
-    private ResourceBundle bundle;
+    private final ResourceBundle bundle;
 
     /**
      * The field {@code banner} contains the indicator that the banner has

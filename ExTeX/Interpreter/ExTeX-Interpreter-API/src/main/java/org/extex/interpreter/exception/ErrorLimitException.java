@@ -36,7 +36,7 @@ public class ErrorLimitException extends HelpingException {
     /**
      * The field {@code limit} contains the maximal allowed number of errors.
      */
-    private long limit;
+    private final long limit;
 
     /**
      * Creates a new object.

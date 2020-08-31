@@ -56,7 +56,7 @@ public class EntityResolverRf implements EntityResolver {
     /**
      * The ResourceFinder.
      */
-    private ResourceFinder finder;
+    private final ResourceFinder finder;
 
     /**
      * Create a new object.

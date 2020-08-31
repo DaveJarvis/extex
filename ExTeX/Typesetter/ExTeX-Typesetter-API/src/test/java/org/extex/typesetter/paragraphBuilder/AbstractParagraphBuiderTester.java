@@ -201,9 +201,9 @@ public abstract class AbstractParagraphBuiderTester {
     /**
      * The field {@code tracer} contains the logger for the output.
      */
-    private static Logger tracer = null;;
+    private static Logger tracer = null;
 
-    /**
+  /**
      * The field {@code VPT} contains the constant for 5pt.
      */
     protected static final Dimen VPT = new Dimen(Dimen.ONE * 5);
@@ -216,7 +216,7 @@ public abstract class AbstractParagraphBuiderTester {
     /**
      * The field {@code tc} contains the mock typesetting context.
      */
-    private TypesettingContextImpl tc = new TypesettingContextImpl(new Font() {
+    private final TypesettingContextImpl tc = new TypesettingContextImpl( new Font() {
 
         /**
          * The field {@code serialVersionUID} contains the version number.

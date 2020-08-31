@@ -43,7 +43,7 @@ public class Ps {
     /**
      * The field {@code code} contains the pieces of code for the dictionary.
      */
-    private static Map<String, String> code = new HashMap<String, String>();
+    private static final Map<String, String> code = new HashMap<String, String>();
 
     static {
         code.put("eop", "/eop{}def");
@@ -68,12 +68,12 @@ public class Ps {
     /**
      * The field {@code lib} contains the library code to include.
      */
-    private List<String> lib = new ArrayList<String>();
+    private final List<String> lib = new ArrayList<String>();
 
     /**
      * The field {@code used} contains the indicator for the fragments used.
      */
-    private Map<String, Boolean> used = new HashMap<String, Boolean>();
+    private final Map<String, Boolean> used = new HashMap<String, Boolean>();
 
 
     public Ps() {

@@ -303,7 +303,7 @@ public class CommandTranslator {
     /**
      * The field {@code evaluator} contains the reference to an evaluator.
      */
-    private Evaluator evaluator;
+    private final Evaluator evaluator;
 
     /**
      * Creates a new object.

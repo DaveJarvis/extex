@@ -91,18 +91,18 @@ public class PageFactoryNodeVisitor
      * The field {@code posH} contains the current horizontal reference
      * point.
      */
-    private Dimen posH = new Dimen();
+    private final Dimen posH = new Dimen();
 
     /**
      * The field {@code posV} contains the current vertical reference point.
      */
-    private Dimen posV = new Dimen();
+    private final Dimen posV = new Dimen();
 
     /**
      * The field {@code sizePattern} contains the pattern for matching the
      * {@code papersize} special.
      */
-    private Pattern sizePattern;
+    private final Pattern sizePattern;
 
     /**
      * The field {@code typesetter} contains the typesetter.

@@ -38,7 +38,7 @@ public class PdfAnnotation extends WhatsItNode {
     /**
      * The field {@code text} contains the text to pass to the back-end driver.
      */
-    private String text;
+    private final String text;
 
     /**
      * Creates a new object.

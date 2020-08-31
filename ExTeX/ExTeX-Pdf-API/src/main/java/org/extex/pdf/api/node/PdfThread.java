@@ -40,17 +40,17 @@ public class PdfThread extends WhatsItNode {
     /**
      * The field {@code attr} contains the attribute string.
      */
-    private String attr;
+    private final String attr;
 
     /**
      * The field {@code id} contains the id.
      */
-    private IdSpec id;
+    private final IdSpec id;
 
     /**
      * The field {@code rule} contains the rule.
      */
-    private RuleNode rule;
+    private final RuleNode rule;
 
     /**
      * Creates a new object.

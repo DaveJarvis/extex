@@ -1001,10 +1001,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                     return null;
                 }
 
-                /**
-            *      java.lang.Object)
-                 */
-                @Override
+        @Override
                 public Object get(Object extension, Object key) {
 
                     return null;
@@ -1675,7 +1672,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
         long count1 = 128L;
 
         assertOutput(// --- input code ---
-            "\\font\\x= cmr10 \\count1=" + Long.toString(count1)
+            "\\font\\x= cmr10 \\count1=" + count1
                     + " \\dump \\end",
             // --- log message ---
             "Beginning to dump on file ."

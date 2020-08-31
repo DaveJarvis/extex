@@ -80,19 +80,19 @@ public class Setlanguage extends AbstractCode {
         /**
          * The field {@code context} contains the interpreter context.
          */
-        private Context context;
+        private final Context context;
 
         /**
          * The field {@code language} contains the value of the language
          * register to restore.
          */
-        private long language;
+        private final long language;
 
         /**
          * The field {@code toks} contains the value of the register lang to
          * restore.
          */
-        private Tokens lang;
+        private final Tokens lang;
 
         /**
          * Creates a new object.

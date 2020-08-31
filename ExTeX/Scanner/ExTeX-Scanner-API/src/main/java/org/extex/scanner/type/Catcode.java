@@ -1033,7 +1033,7 @@ public enum Catcode implements Serializable {
     /**
      * The field {@code code} contains the numerical value.
      */
-    private int code;
+    private final int code;
 
     /**
      * Creates a new object.

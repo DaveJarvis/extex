@@ -39,22 +39,22 @@ public class PdfXImage extends WhatsItNode {
     /**
      * The field {@code attr} contains the attribute string.
      */
-    private String attr;
+    private final String attr;
 
     /**
      * The field {@code page} contains the page number.
      */
-    private long page;
+    private final long page;
 
     /**
      * The field {@code resource} contains the name of the object.
      */
-    private String resource;
+    private final String resource;
 
     /**
      * The field {@code rule} contains the rule.
      */
-    private RuleNode rule;
+    private final RuleNode rule;
 
     /**
      * Creates a new object.

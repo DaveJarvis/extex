@@ -107,8 +107,8 @@ public class CompilerStateTest {
         try {
             new CompilerState(stream);
         } catch (SyntaxException e) {
-            assertEquals("1: syntax error; unexpected \'input\':\n" + "input",
-                e.getLocalizedMessage());
+            assertEquals( "1: syntax error; unexpected 'input':\n" + "input",
+                          e.getLocalizedMessage());
             return;
         } finally {
             stream.close();
@@ -132,7 +132,7 @@ public class CompilerStateTest {
             new CompilerState(stream);
         } catch (SyntaxException e) {
             assertEquals(
-                "1: syntax error; unexpected \'output\':\n" + "output",
+                "1: syntax error; unexpected 'output':\n" + "output",
                 e.getLocalizedMessage());
             return;
         } finally {

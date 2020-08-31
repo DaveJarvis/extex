@@ -60,7 +60,7 @@ public class OcpList extends AbstractCode
     /**
      * The field {@code map} contains the pipe.
      */
-    private Map<Long, List<OcpProgram>> map =
+    private final Map<Long, List<OcpProgram>> map =
             new HashMap<Long, List<OcpProgram>>();
 
     /**

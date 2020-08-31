@@ -63,7 +63,7 @@ public final class ExpandMacroObserverList implements ExpandMacroObserver {
     /**
      * The field {@code list} contains the encapsulated list.
      */
-    private List<ExpandMacroObserver> list =
+    private final List<ExpandMacroObserver> list =
             new ArrayList<ExpandMacroObserver>();
 
     /**

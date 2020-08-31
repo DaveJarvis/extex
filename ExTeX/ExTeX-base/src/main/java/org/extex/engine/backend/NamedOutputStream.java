@@ -32,12 +32,12 @@ public class NamedOutputStream extends OutputStream {
     /**
      * The field {@code name} contains the name.
      */
-    private String name;
+    private final String name;
 
     /**
      * The field {@code stream} contains the encapsulated stream.
      */
-    private OutputStream stream;
+    private final OutputStream stream;
 
     /**
      * Creates a new object.

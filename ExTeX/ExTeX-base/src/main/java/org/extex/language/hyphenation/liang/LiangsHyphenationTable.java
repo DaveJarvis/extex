@@ -163,7 +163,7 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
     /**
      * The field {@code patterns} contains the tree of hyphenation patterns.
      */
-    private HyphenTree patterns = new HyphenTree(new char[0]);
+    private final HyphenTree patterns = new HyphenTree( new char[0]);
 
 
     public LiangsHyphenationTable() {

@@ -37,7 +37,7 @@ public class AliasLeft implements Left {
     /**
      * The field {@code ref} contains the reference.
      */
-    private String ref;
+    private final String ref;
 
     /**
      * Creates a new object.
@@ -54,7 +54,7 @@ public class AliasLeft implements Left {
      */
     public List<Integer> genLeft(State state, CompilerState cs)
             throws IOException,
-                ArgmentTooBigException, AliasNotDefinedException {
+                ArgmentTooBigException {
 
         Left left = cs.lookupAlias(ref);
         return left.genLeft(state, cs);

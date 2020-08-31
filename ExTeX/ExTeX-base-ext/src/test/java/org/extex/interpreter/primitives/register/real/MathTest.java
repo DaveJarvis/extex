@@ -55,7 +55,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathabs 0.234 \\end",
             // --- output channel ---
-            String.valueOf(0.234d) + TERM);
+        0.234d + TERM);
     }
 
     /**
@@ -74,7 +74,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathabs -0.234 \\end",
             // --- output channel ---
-            String.valueOf(0.234d) + TERM);
+        0.234d + TERM);
     }
 
     /**
@@ -93,7 +93,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathacos 0.234 \\end",
             // --- output channel ---
-            String.valueOf(Math.acos(0.234d)) + TERM);
+        Math.acos( 0.234d ) + TERM);
     }
 
     /**
@@ -112,7 +112,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathadd 0.234 0.34 \\end",
             // --- output channel ---
-            String.valueOf(0.234d + 0.34d) + TERM);
+        (0.234d + 0.34d) + TERM);
     }
 
     /**
@@ -131,7 +131,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathasin 0.234 \\end",
             // --- output channel ---
-            String.valueOf(Math.asin(0.234d)) + TERM);
+        Math.asin( 0.234d ) + TERM);
     }
 
     /**
@@ -150,7 +150,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathatan 0.234 \\end",
             // --- output channel ---
-            String.valueOf(Math.atan(0.234d)) + TERM);
+        Math.atan( 0.234d ) + TERM);
     }
 
     /**
@@ -169,7 +169,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathatantwo 0.234 0.34 \\end",
             // --- output channel ---
-            String.valueOf(Math.atan2(0.234d, 0.34d)) + TERM);
+        Math.atan2( 0.234d, 0.34d ) + TERM);
     }
 
     /**
@@ -188,7 +188,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathceil 1.234 \\end",
             // --- output channel ---
-            String.valueOf(Math.ceil(1.234d)) + TERM);
+        Math.ceil( 1.234d ) + TERM);
     }
 
     /**
@@ -207,7 +207,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathcos 0.234 \\end",
             // --- output channel ---
-            String.valueOf(Math.cos(0.234d)) + TERM);
+        Math.cos( 0.234d ) + TERM);
     }
 
     /**
@@ -226,7 +226,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathdiv 1.234 2.1 \\end",
             // --- output channel ---
-            String.valueOf(1.234d / 2.1d) + TERM);
+        1.234d / 2.1d + TERM);
     }
 
     /**
@@ -245,7 +245,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathe \\end",
             // --- output channel ---
-            String.valueOf(Math.E) + TERM);
+        Math.E + TERM);
     }
 
     /**
@@ -264,7 +264,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathexp 0.234 \\end",
             // --- output channel ---
-            String.valueOf(Math.exp(0.234d)) + TERM);
+        Math.exp( 0.234d ) + TERM);
     }
 
     /**
@@ -283,7 +283,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathfloor 0.234 \\end",
             // --- output channel ---
-            String.valueOf(Math.floor(0.234d)) + TERM);
+        Math.floor( 0.234d ) + TERM);
     }
 
     /**
@@ -302,7 +302,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathlog 22 \\end",
             // --- output channel ---
-            String.valueOf(Math.log(22.0d)) + TERM);
+        Math.log( 22.0d ) + TERM);
     }
 
     /**
@@ -321,7 +321,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathmax 0.234 0.34 \\end",
             // --- output channel ---
-            String.valueOf(Math.max(0.234d, 0.34d)) + TERM);
+        Math.max( 0.234d, 0.34d ) + TERM);
     }
 
     /**
@@ -340,7 +340,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathmin 0.234 0.34 \\end",
             // --- output channel ---
-            String.valueOf(Math.min(0.234d, 0.34d)) + TERM);
+        Math.min( 0.234d, 0.34d ) + TERM);
     }
 
     /**
@@ -359,7 +359,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathpow 0.234 0.34 \\end",
             // --- output channel ---
-            String.valueOf(Math.pow(0.234d, 0.34d)) + TERM);
+        Math.pow( 0.234d, 0.34d ) + TERM);
     }
 
     /**
@@ -378,7 +378,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathmul 0.234 0.34 \\end",
             // --- output channel ---
-            String.valueOf(0.234d * 0.34d) + TERM);
+        0.234d * 0.34d + TERM);
     }
 
     /**
@@ -397,7 +397,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathpi \\end",
             // --- output channel ---
-            String.valueOf(Math.PI) + TERM);
+        Math.PI + TERM);
     }
 
     /**
@@ -417,7 +417,7 @@ public class MathTest extends ExTeXLauncher {
             "\\realdef\\x=42 " + "\\real42=3.0 "
                     + "\\advance\\real42 by \\mathpi" + "\\the\\real42 \\end",
             // --- output channel ---
-            String.valueOf(3.0 + Math.PI) + TERM);
+        (3.0 + Math.PI) + TERM);
     }
 
     /**
@@ -436,7 +436,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathrint 1.234 \\end",
             // --- output channel ---
-            String.valueOf(Math.rint(1.234d)) + TERM);
+        Math.rint( 1.234d ) + TERM);
     }
 
     /**
@@ -455,7 +455,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathround 1.234 \\end",
             // --- output channel ---
-            String.valueOf((double) Math.round(1.234d)) + TERM);
+        (double) Math.round( 1.234d ) + TERM);
     }
 
     /**
@@ -474,7 +474,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathsin 0.234 \\end",
             // --- output channel ---
-            String.valueOf(Math.sin(0.234d)) + TERM);
+        Math.sin( 0.234d ) + TERM);
     }
 
     /**
@@ -493,7 +493,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathsqrt 4 \\end",
             // --- output channel ---
-            String.valueOf(Math.sqrt(4d)) + TERM);
+        Math.sqrt( 4d ) + TERM);
     }
 
     /**
@@ -512,7 +512,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathsub 0.234 0.34 \\end",
             // --- output channel ---
-            String.valueOf(0.234d - 0.34d) + TERM);
+        (0.234d - 0.34d) + TERM);
     }
 
     /**
@@ -531,7 +531,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathtan 0.234 \\end",
             // --- output channel ---
-            String.valueOf(Math.tan(0.234d)) + TERM);
+        Math.tan( 0.234d ) + TERM);
     }
 
     /**
@@ -550,7 +550,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathtodegrees 0.234 \\end",
             // --- output channel ---
-            String.valueOf(Math.toDegrees(0.234d)) + TERM);
+        Math.toDegrees( 0.234d ) + TERM);
     }
 
     /**
@@ -569,7 +569,7 @@ public class MathTest extends ExTeXLauncher {
         // --- input code ---
             "\\the\\mathtoradians 0.234 \\end",
             // --- output channel ---
-            String.valueOf(Math.toRadians(0.234d)) + TERM);
+        Math.toRadians( 0.234d ) + TERM);
     }
 
 }

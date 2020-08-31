@@ -176,14 +176,14 @@ public final class LoadUnit extends AbstractFactory<Code> {
      * The field {@code stringSource} contains the reused object for string
      * parsing.
      */
-    private StringSource stringSource = new StringSource();
+    private final StringSource stringSource = new StringSource();
 
 
     private LoadUnit() {
 
-    };
+    }
 
-    /**
+  /**
      * Scan a configuration and define the primitives found.
      * 
      * @param configuration the configuration to scan

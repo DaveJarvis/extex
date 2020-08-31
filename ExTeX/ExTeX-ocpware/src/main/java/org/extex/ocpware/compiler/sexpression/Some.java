@@ -35,12 +35,12 @@ public class Some implements Expr {
     /**
      * The field {@code m} contains the right trim.
      */
-    private int m;
+    private final int m;
 
     /**
      * The field {@code n} contains the left trim.
      */
-    private int n;
+    private final int n;
 
     /**
      * Creates a new object.
@@ -73,11 +73,11 @@ public class Some implements Expr {
             if (n == 0) {
                 return "\\*";
             }
-            return "\\(*+" + Integer.toString(n) + ")";
+            return "\\(*+" + n + ")";
         } else if (n == 0) {
-            return "\\(*-" + Integer.toString(m) + ")";
+            return "\\(*-" + m + ")";
         }
-        return "\\(*+" + Integer.toString(n) + "-" + Integer.toString(m) + ")";
+        return "\\(*+" + n + "-" + m + ")";
     }
 
 }

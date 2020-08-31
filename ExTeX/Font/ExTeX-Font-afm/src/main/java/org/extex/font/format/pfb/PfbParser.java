@@ -27,6 +27,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -488,7 +489,6 @@ public class PfbParser implements XMLWriterConvertible, Serializable {
             // look for first byte
             if (src[i] != first) {
                 while (++i <= max && src[i] != first) {
-                    ;
                 }
             }
 
@@ -497,7 +497,6 @@ public class PfbParser implements XMLWriterConvertible, Serializable {
                 int j = i + 1;
                 int end = j + data.length - 1;
                 for (int k = 1; j < end && src[j] == data[k]; j++, k++) {
-                    ;
                 }
 
                 if (j == end) {
@@ -609,32 +608,28 @@ public class PfbParser implements XMLWriterConvertible, Serializable {
      */
     private int readLenIV(byte[] data) {
 
-        try {
-            String text = new String(data, "US-ASCII");
-            int pos = text.indexOf("/lenIV");
-            if (pos >= 0) {
-                String rest = text.substring(pos + 6, 10).trim();
-                StringBuilder ii = new StringBuilder();
-                for (int i = 0; i < 10; i++) {
-                    char ch = rest.charAt(i);
-                    if (ch == ' ') {
-                        break;
-                    }
-                    ii.append(ch);
-                }
-                if (ii.length() > 0) {
-                    try {
-                        int n = Integer.parseInt(ii.toString());
-                        return n;
-                    } catch (NumberFormatException e) {
-                        // ignore it
-                    }
-                }
-            }
-        } catch (UnsupportedEncodingException e) {
-            // ignore it
-        }
-        return 4;
+      String text = new String( data, StandardCharsets.US_ASCII );
+      int pos = text.indexOf("/lenIV");
+      if (pos >= 0) {
+          String rest = text.substring(pos + 6, 10).trim();
+          StringBuilder ii = new StringBuilder();
+          for (int i = 0; i < 10; i++) {
+              char ch = rest.charAt(i);
+              if (ch == ' ') {
+                  break;
+              }
+              ii.append(ch);
+          }
+          if (ii.length() > 0) {
+              try {
+                  int n = Integer.parseInt(ii.toString());
+                  return n;
+              } catch (NumberFormatException e) {
+                  // ignore it
+              }
+          }
+      }
+      return 4;
     }
 
     /**

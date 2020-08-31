@@ -136,9 +136,9 @@ public class InteractionTest {
             return false;
         }
 
-    };
+    }
 
-    /**
+  /**
      * Set up the test case.
      * 
      * @throws Exception in case of an error

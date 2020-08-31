@@ -268,7 +268,7 @@ public class BaseHyphenationTableTest {
     /**
      * The field {@code nodeFactory} contains the node factory.
      */
-    private NodeFactory nodeFactory = new CachingNodeFactory();
+    private final NodeFactory nodeFactory = new CachingNodeFactory();
 
     /**
      * Create a hlist from a string.

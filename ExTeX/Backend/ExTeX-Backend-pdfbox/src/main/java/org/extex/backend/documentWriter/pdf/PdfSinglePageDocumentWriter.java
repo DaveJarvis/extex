@@ -69,7 +69,7 @@ public class PdfSinglePageDocumentWriter
     /**
      * document writer options.
      */
-    private DocumentWriterOptions docoptions;
+    private final DocumentWriterOptions docoptions;
 
     // /**
     // * the pdf-dokument
@@ -84,22 +84,22 @@ public class PdfSinglePageDocumentWriter
     /**
      * paper width.
      */
-    private Dimen paperwidth = new Dimen();
+    private final Dimen paperwidth = new Dimen();
 
     /**
      * paper height.
      */
-    private Dimen paperheight = new Dimen();
+    private final Dimen paperheight = new Dimen();
 
     /**
      * current x position.
      */
-    private Dimen currentX = new Dimen();
+    private final Dimen currentX = new Dimen();
 
     /**
      * current y position.
      */
-    private Dimen currentY = new Dimen();
+    private final Dimen currentY = new Dimen();
 
     /**
      * the pdf node visitor.

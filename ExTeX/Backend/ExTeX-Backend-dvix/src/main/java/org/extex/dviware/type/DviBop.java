@@ -35,13 +35,13 @@ public class DviBop extends AbstractDviCode {
      * The field {@code lastBop} contains the index of the last bop in the
      * stream or -1.
      */
-    private int lastBop;
+    private final int lastBop;
 
     /**
      * The field {@code pageNo} contains the array of the page number
      * indicators.
      */
-    private int[] pageNo;
+    private final int[] pageNo;
 
     /**
      * Creates a new object.

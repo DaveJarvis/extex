@@ -56,7 +56,7 @@ public final class StreamCloseObserverList implements StreamCloseObserver {
     /**
      * The field {@code list} contains the encapsulated list.
      */
-    private List<StreamCloseObserver> list =
+    private final List<StreamCloseObserver> list =
             new ArrayList<StreamCloseObserver>();
 
     /**

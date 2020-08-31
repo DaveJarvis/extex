@@ -57,7 +57,7 @@ public class GlueshrinkTest extends ExTeXLauncher {
         assertFailure(// --- input code ---
             "\\glueshrink\\skip0=1pt ",
             // --- error channel ---
-            "You can't use `\\glueshrink\' in vertical mode");
+                      "You can't use `\\glueshrink' in vertical mode" );
     }
 
     /**

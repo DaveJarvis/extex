@@ -35,7 +35,7 @@ public class FileOpenObserver implements OpenFileObserver {
     /**
      * The field {@code logger} contains the current logger
      */
-    private Logger logger;
+    private final Logger logger;
 
     /**
      * Creates a new object.

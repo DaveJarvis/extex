@@ -44,7 +44,7 @@ public class MultiConfiguration implements Configuration {
      * The field {@code configurations} contains the internal array of
      * configurations.
      */
-    private List<Configuration> configurations;
+    private final List<Configuration> configurations;
 
     /**
      * The field {@code loader} contains the optional loader.

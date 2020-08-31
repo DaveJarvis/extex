@@ -41,7 +41,7 @@ public class PageReverser implements PagePipe {
     /**
      * The field {@code pages} contains the pages.
      */
-    private List<Page> pages = new ArrayList<Page>();
+    private final List<Page> pages = new ArrayList<Page>();
 
     /**
      * Creates a new object.

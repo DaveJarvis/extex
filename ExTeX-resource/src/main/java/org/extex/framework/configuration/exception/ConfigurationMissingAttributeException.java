@@ -39,7 +39,7 @@ public class ConfigurationMissingAttributeException
     /**
      * The field {@code attribute} contains the name of the missing attribute.
      */
-    private String attribute;
+    private final String attribute;
 
     /**
      * Create a new object.

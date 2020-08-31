@@ -61,7 +61,7 @@ public class VarManager {
      */
     public Var makeVar() {
 
-        String name = localPrefix + Integer.toString(no);
+        String name = localPrefix + no;
         return new Var(name, no++);
     }
 
@@ -75,7 +75,7 @@ public class VarManager {
     public void reassign(List<Var> varList, String prefix) {
 
         for (int i = varList.size() - 1; i >= 0; i--) {
-            String name = prefix + Integer.toString(-noMin);
+            String name = prefix + -noMin;
             new Var(name, noMin--).unify(varList.get(i));
         }
     }

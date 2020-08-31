@@ -41,7 +41,7 @@ public class Constant extends ArithExpr implements Expr, Left {
     /**
      * The field {@code n} contains the value.
      */
-    private int n;
+    private final int n;
 
     /**
      * Creates a new object.
@@ -92,7 +92,7 @@ public class Constant extends ArithExpr implements Expr, Left {
     public String toString() {
 
         if (n >= ' ' && n < 126) {
-            return "`" + Character.toString((char) n) + "'";
+            return "`" + (char) n + "'";
         }
         return "@\"" + Integer.toHexString(n);
     }

@@ -111,8 +111,7 @@ public class Romannumeral extends AbstractCode implements ExpandableCode {
     public void expand(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter)
             throws HelpingException,
-                NoHelpException,
-                TypesetterException {
+        TypesetterException {
 
         long n = source.parseInteger(context, source, typesetter);
         Tokens toks = new Tokens();

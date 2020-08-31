@@ -125,7 +125,7 @@ public class BackendDriverImpl
      * The field {@code counter} contains the counter page pipe which will
      * always be placed at the end of the of the pipe.
      */
-    private PagePipe counter = new Counter();
+    private final PagePipe counter = new Counter();
 
     /**
      * The field {@code documentWriter} contains the document writer.
@@ -164,7 +164,7 @@ public class BackendDriverImpl
      * The field {@code params} contains the parameters to be passed to the
      * document writer.
      */
-    private Map<String, String> params = new HashMap<String, String>();
+    private final Map<String, String> params = new HashMap<String, String>();
 
     /**
      * The field {@code pipeFirst} contains the elements of the pipe.

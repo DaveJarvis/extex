@@ -67,7 +67,7 @@ public class BaseLanguageManager extends AbstractFactory<ModifiableLanguage>
      * The field {@code tables} contains the mapping from index to hyphenation
      * table.
      */
-    private Map<String, Language> tables = new HashMap<String, Language>();
+    private final Map<String, Language> tables = new HashMap<String, Language>();
 
     /**
      * Creates a new object.

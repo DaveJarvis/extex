@@ -73,7 +73,7 @@ public class GFunction extends GCodeContainer implements Compiler {
     /**
      * The field {@code translationMap} contains the already mapped names.
      */
-    private static Map<String, String> translationMap = makeTranslationMap();
+    private static final Map<String, String> translationMap = makeTranslationMap();
 
     /**
      * Make a translation map and initialize it. All the reserved words of
@@ -171,7 +171,7 @@ public class GFunction extends GCodeContainer implements Compiler {
         }
         int i = 1;
         while (translationMap.containsValue(result)) {
-            result = t + Integer.toString(i++);
+            result = t + i++;
         }
 
         translationMap.put(value, result);
@@ -181,7 +181,7 @@ public class GFunction extends GCodeContainer implements Compiler {
     /**
      * The field {@code name} contains the method name.
      */
-    private String name;
+    private final String name;
 
     /**
      * The field {@code useCount} contains the use count.
@@ -196,12 +196,12 @@ public class GFunction extends GCodeContainer implements Compiler {
     /**
      * The field {@code parameters} contains the parameters.
      */
-    private List<Var> parameters;
+    private final List<Var> parameters;
 
     /**
      * The field {@code entry} contains the the entry.
      */
-    private EntryReference entry;
+    private final EntryReference entry;
 
     /**
      * Creates a new object.

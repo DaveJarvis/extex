@@ -40,17 +40,17 @@ public class UnexpectedException extends SyntaxException {
      * The field {@code line} contains the current line up to the last
      * character read.
      */
-    private CharSequence line;
+    private final CharSequence line;
 
     /**
      * The field {@code lineno} contains the number of the current line.
      */
-    private int lineno;
+    private final int lineno;
 
     /**
      * The field {@code unexpected} contains the unexpected item.
      */
-    private String unexpected;
+    private final String unexpected;
 
     /**
      * Creates a new object.

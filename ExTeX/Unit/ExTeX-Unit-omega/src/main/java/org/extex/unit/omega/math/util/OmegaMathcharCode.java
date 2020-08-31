@@ -60,7 +60,7 @@ public class OmegaMathcharCode extends AbstractOmegaMathCode
      * The field {@code mathchar} contains the actual character in the form of
      * a MathCode which can immediately be passed to the typesetter.
      */
-    private MathCode mathchar;
+    private final MathCode mathchar;
 
     /**
      * Creates a new object.

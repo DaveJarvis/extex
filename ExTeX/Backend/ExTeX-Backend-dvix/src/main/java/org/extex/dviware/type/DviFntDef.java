@@ -35,13 +35,13 @@ public class DviFntDef extends AbstractDviCode {
     /**
      * The field {@code font} contains the associated font.
      */
-    private Font font;
+    private final Font font;
 
     /**
      * The field {@code index} contains the number of the font in the font
      * table.
      */
-    private int index;
+    private final int index;
 
     /**
      * Creates a new object.

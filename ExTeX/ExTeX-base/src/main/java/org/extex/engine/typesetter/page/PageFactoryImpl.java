@@ -222,7 +222,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
      * The field {@code visitor} contains the node visitor to determine which
      * nodes to keep and to post-process the nodes.
      */
-    private PageFactoryNodeVisitor visitor = new PageFactoryNodeVisitor();
+    private final PageFactoryNodeVisitor visitor = new PageFactoryNodeVisitor();
 
 
     public PageFactoryImpl() {

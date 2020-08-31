@@ -58,7 +58,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
          * The field {@code name} contains the print name of this state for
          * debugging.
          */
-        private String name;
+        private final String name;
 
         /**
          * Creates a new object.
@@ -139,7 +139,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      * The field {@code source} contains the description of the source for
      * tokens.
      */
-    private String source;
+    private final String source;
 
     /**
      * The field {@code state} contains the current state of operation.
@@ -150,7 +150,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      * The field {@code visitor} contains the visitor to separate the cases
      * according to the catcode.
      */
-    private CatcodeVisitor<Token, TokenFactory, Tokenizer, UnicodeChar> visitor =
+    private final CatcodeVisitor<Token, TokenFactory, Tokenizer, UnicodeChar> visitor =
             new CatcodeVisitor<Token, TokenFactory, Tokenizer, UnicodeChar>() {
 
                 /**

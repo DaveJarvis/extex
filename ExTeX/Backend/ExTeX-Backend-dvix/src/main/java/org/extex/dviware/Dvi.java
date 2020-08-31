@@ -319,7 +319,7 @@ public class Dvi {
     /**
      * The field {@code dvi} contains the stream to read from.
      */
-    private InputStream dvi;
+    private final InputStream dvi;
 
     /**
      * The field {@code pointer} contains the index of the current character.

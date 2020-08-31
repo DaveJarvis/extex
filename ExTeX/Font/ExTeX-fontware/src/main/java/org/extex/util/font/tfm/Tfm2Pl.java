@@ -65,7 +65,7 @@ public class Tfm2Pl extends AbstractFontUtil {
         /**
          * The pl writer.
          */
-        private PlWriter writer;
+        private final PlWriter writer;
 
         /**
          * Creates a new object.

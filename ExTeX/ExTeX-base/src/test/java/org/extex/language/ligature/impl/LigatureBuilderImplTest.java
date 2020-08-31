@@ -124,7 +124,7 @@ public class LigatureBuilderImplTest {
     /**
      * The field {@code builder} contains the ligature builder.
      */
-    private static LigatureBuilder builder = new LigatureBuilderImpl();
+    private static final LigatureBuilder builder = new LigatureBuilderImpl();
 
     /**
      * The constant {@code CC_FF} contains the faked FF ligature.

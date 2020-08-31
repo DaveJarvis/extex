@@ -47,17 +47,17 @@ public class WhatsItOpenNode extends WhatsItNode {
     /**
      * The field {@code encoding} contains the proposed encoding.
      */
-    private String encoding;
+    private final String encoding;
 
     /**
      * The field {@code file} contains the output file.
      */
-    private OutFile file;
+    private final OutFile file;
 
     /**
      * The field {@code key} contains the reference key.
      */
-    private String key;
+    private final String key;
 
     /**
      * The field {@code factory} contains the token stream factory.

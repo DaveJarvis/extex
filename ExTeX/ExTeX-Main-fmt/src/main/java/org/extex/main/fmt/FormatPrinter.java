@@ -70,9 +70,9 @@ public final class FormatPrinter {
          * @param obj the object to print
          */
         void print(PrintStream out, Object obj);
-    };
+    }
 
-    /**
+  /**
      * The field {@code deep} contains the indicator for a deep dump.
      */
     private static boolean deep = true;
@@ -93,7 +93,7 @@ public final class FormatPrinter {
      * The field {@code printerMap} contains the mapping from class name to
      * printing routine.
      */
-    private static Map<Class<?>, PrintRoutine> printerMap =
+    private static final Map<Class<?>, PrintRoutine> printerMap =
             new HashMap<Class<?>, PrintRoutine>();
 
     /**

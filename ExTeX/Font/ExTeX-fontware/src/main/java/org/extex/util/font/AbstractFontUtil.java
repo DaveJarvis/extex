@@ -41,7 +41,7 @@ public class AbstractFontUtil {
     /**
      * The console handler.
      */
-    private Handler consoleHandler;
+    private final Handler consoleHandler;
 
     /**
      * The field {@code localizer} contains the localizer. It is initiated with
@@ -53,7 +53,7 @@ public class AbstractFontUtil {
     /**
      * The field {@code logger} contains the logger currently in use.
      */
-    private Logger logger;
+    private final Logger logger;
 
     /**
      * The directory for the output.

@@ -81,13 +81,13 @@ public class EpsWriterTest {
     /**
      * The field {@code pages} contains the list of collected pages.
      */
-    private List<ByteArrayOutputStream> pages =
+    private final List<ByteArrayOutputStream> pages =
             new ArrayList<ByteArrayOutputStream>();
 
     /**
      * The field {@code osf} contains the output stream factory.
      */
-    private OutputStreamFactory osf = new OutputStreamFactory() {
+    private final OutputStreamFactory osf = new OutputStreamFactory() {
 
         /**
     *      java.lang.String, java.lang.String)

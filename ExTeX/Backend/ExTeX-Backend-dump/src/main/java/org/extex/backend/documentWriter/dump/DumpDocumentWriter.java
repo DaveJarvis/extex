@@ -77,7 +77,7 @@ public class DumpDocumentWriter
      * The field {@code nodeVisitor} contains the node visitor instance to use
      * in the form of an anonymous inner class.
      */
-    private NodeVisitor<Object, Object> nodeVisitor =
+    private final NodeVisitor<Object, Object> nodeVisitor =
             new NodeVisitor<Object, Object>() {
 
                 /**

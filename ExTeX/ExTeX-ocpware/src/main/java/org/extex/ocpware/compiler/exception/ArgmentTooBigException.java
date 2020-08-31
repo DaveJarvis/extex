@@ -36,7 +36,7 @@ public class ArgmentTooBigException extends RuntimeException {
     /**
      * The field {@code n} contains the number encountered
      */
-    private int n;
+    private final int n;
 
     /**
      * Creates a new object.
@@ -51,7 +51,7 @@ public class ArgmentTooBigException extends RuntimeException {
 @Override
     public String getMessage() {
 
-        return "Argument (" + Integer.toString(n)
+        return "Argument (" + n
                 + ") of instruction is too big";
     }
 

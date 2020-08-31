@@ -34,7 +34,7 @@ public class DviPutChar extends AbstractDviCode {
     /**
      * The field {@code codePoint} contains the code point of the character.
      */
-    private int codePoint;
+    private final int codePoint;
 
     /**
      * Creates a new object.

@@ -37,7 +37,7 @@ public class Arith implements Expr {
     /**
      * The field {@code expr} contains the arithmetic expression.
      */
-    private ArithExpr expr;
+    private final ArithExpr expr;
 
     /**
      * Creates a new object.
@@ -54,8 +54,7 @@ public class Arith implements Expr {
      */
     public void outRight(CompilerState cs, boolean withOffset)
             throws IOException,
-                TableNotDefinedException,
-                ArgmentTooBigException {
+        ArgmentTooBigException {
 
         expr.outExpr(cs);
         cs.putInstruction(withOffset

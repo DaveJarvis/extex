@@ -38,13 +38,13 @@ public class ConfigurationInvalidClassException extends ConfigurationException {
      * The field {@code className} contains the name of the class which could
      * not be found.
      */
-    private String className;
+    private final String className;
 
     /**
      * The field {@code interfaceName} contains the name of the expected
      * interface.
      */
-    private String interfaceName;
+    private final String interfaceName;
 
     /**
      * Creates a new object.

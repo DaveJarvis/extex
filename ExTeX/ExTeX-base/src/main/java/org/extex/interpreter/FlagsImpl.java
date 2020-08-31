@@ -391,7 +391,7 @@ public class FlagsImpl implements Flags {
 
         String[] s = get();
         return LocalizerFactory.getLocalizer(FlagsImpl.class).format(
-            "text." + Integer.toString(s.length), s);
+            "text." + s.length, s);
     }
 
 }

@@ -33,13 +33,13 @@ public class SwitchObserver implements AfterGroupObserver {
      * The field {@code target} contains the target Switch to set upon the
      * event.
      */
-    private Switch target;
+    private final Switch target;
 
     /**
      * The field {@code value} contains the new value for the switch upon the
      * event.
      */
-    private boolean value;
+    private final boolean value;
 
     /**
      * Creates a new object.

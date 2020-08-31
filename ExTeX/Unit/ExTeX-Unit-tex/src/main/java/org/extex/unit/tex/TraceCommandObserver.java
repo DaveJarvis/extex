@@ -40,12 +40,12 @@ public class TraceCommandObserver implements CommandObserver {
     /**
      * The field {@code logger} contains the logger for output
      */
-    private Logger logger;
+    private final Logger logger;
 
     /**
      * The field {@code context} contains the interpreter context.
      */
-    private Context context;
+    private final Context context;
 
     /**
      * The field {@code prefix} contains the indicator that the last token

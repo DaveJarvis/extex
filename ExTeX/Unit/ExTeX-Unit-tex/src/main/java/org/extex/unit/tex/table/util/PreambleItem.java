@@ -31,12 +31,12 @@ public class PreambleItem {
     /**
      * The field {@code post} contains the tokens before the insertion text.
      */
-    private Tokens post;
+    private final Tokens post;
 
     /**
      * The field {@code pre} contains the tokens after the insertion text.
      */
-    private Tokens pre;
+    private final Tokens pre;
 
     /**
      * Creates a new object.

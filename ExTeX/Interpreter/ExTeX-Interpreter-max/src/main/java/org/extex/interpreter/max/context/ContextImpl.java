@@ -168,13 +168,13 @@ public class ContextImpl
     /**
      * The field {@code bottommarks} contains the bottom marks.
      */
-    private static Map<Object, Tokens> bottommarks =
+    private static final Map<Object, Tokens> bottommarks =
             new HashMap<Object, Tokens>();
 
     /**
      * The field {@code firstmarks} contains the first marks.
      */
-    private static Map<Object, Tokens> firstmarks =
+    private static final Map<Object, Tokens> firstmarks =
             new HashMap<Object, Tokens>();
 
     /**
@@ -198,7 +198,7 @@ public class ContextImpl
     /**
      * The field {@code topmarks} contains the top marks.
      */
-    private static Map<Object, Tokens> topmarks = new HashMap<Object, Tokens>();
+    private static final Map<Object, Tokens> topmarks = new HashMap<Object, Tokens>();
 
     /**
      * The constant {@code TYPESETTING_CONTEXT_TAG} contains the name of the
@@ -258,12 +258,12 @@ public class ContextImpl
     /**
      * The field {@code conditionalStack} contains the stack for conditionals.
      */
-    private List<Conditional> conditionalStack = new ArrayList<Conditional>();
+    private final List<Conditional> conditionalStack = new ArrayList<Conditional>();
 
     /**
      * The field {@code dirStack} contains the stack of directions.
      */
-    private Stack<Direction> dirStack = new Stack<Direction>();
+    private final Stack<Direction> dirStack = new Stack<Direction>();
 
     /**
      * The field {@code errorCount} contains the error counter.
@@ -359,13 +359,13 @@ public class ContextImpl
     /**
      * The field {@code splitBottomMarks} contains the split bottom marks.
      */
-    private Map<Object, Tokens> splitBottomMarks =
+    private final Map<Object, Tokens> splitBottomMarks =
             new Hashtable<Object, Tokens>();
 
     /**
      * The field {@code splitFirstMarks} contains the split first marks.
      */
-    private Map<Object, Tokens> splitFirstMarks =
+    private final Map<Object, Tokens> splitFirstMarks =
             new Hashtable<Object, Tokens>();
 
     /**
@@ -389,7 +389,7 @@ public class ContextImpl
     /**
      * The field {@code units} contains the list of unit infos.
      */
-    private List<UnitInfo> units = new ArrayList<UnitInfo>();
+    private final List<UnitInfo> units = new ArrayList<UnitInfo>();
 
 
     public ContextImpl() {

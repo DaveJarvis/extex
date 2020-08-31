@@ -56,12 +56,12 @@ public class PageManager {
         /**
          * The field {@code max} contains the highest value.
          */
-        private int max;
+        private final int max;
 
         /**
          * The field {@code min} contains the lowest value.
          */
-        private int min;
+        private final int min;
 
         /**
          * Creates a new object.

@@ -73,8 +73,8 @@ public class HashToksDef extends AbstractAssignment {
         source.getOptionalEquals(context);
         String key =
                 "hashtoks#"
-                        + Long.toString(source.parseInteger(context, source,
-                            typesetter));
+                        + source.parseInteger( context, source,
+                                               typesetter );
         context.setCode(tok, new NamedHashToks(tok, key), prefix.clearGlobal());
     }
 }

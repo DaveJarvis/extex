@@ -99,18 +99,18 @@ public class OutputFactory extends AbstractConfigurable
     /**
      * The field {@code basename} contains the base name for all file names.
      */
-    private String basename;
+    private final String basename;
 
     /**
      * The field {@code continuousNumbering} contains the indicator for
      * omitting the special treatment of the first stream.
      */
-    private boolean continuousNumbering = false;
+    private final boolean continuousNumbering = false;
 
     /**
      * The field {@code countMap} contains the internal counter for file names.
      */
-    private Map<String, Int> countMap = new HashMap<String, Int>();
+    private final Map<String, Int> countMap = new HashMap<String, Int>();
 
     /**
      * The field {@code defaultExtension} contains the default extension.
@@ -137,7 +137,7 @@ public class OutputFactory extends AbstractConfigurable
      * The field {@code outputDirectories} contains the list of output
      * directories. The list is tried first to last.
      */
-    private String[] outputDirectories;
+    private final String[] outputDirectories;
 
     /**
      * Creates a new object.
@@ -239,10 +239,10 @@ public class OutputFactory extends AbstractConfigurable
             filename = basename + (ext == null ? "" : "." + ext);
         } else {
             filename = MessageFormat.format(format,
-                new Object[]{basename,
-                        (name == null ? "" : name),
-                        Long.valueOf(cnt),
-                        (ext == null ? "" : "." + ext)});
+                                            basename,
+                                            (name == null ? "" : name),
+                                            Long.valueOf(cnt),
+                                            (ext == null ? "" : "." + ext) );
         }
 
         if (outputDirectories != null) {

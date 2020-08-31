@@ -93,12 +93,12 @@ public final class CompilerState {
     /**
      * The field {@code states} contains the list of states.
      */
-    private Map<String, Integer> namedStates = new HashMap<String, Integer>();
+    private final Map<String, Integer> namedStates = new HashMap<String, Integer>();
 
     /**
      * The field {@code states} contains the list of states.
      */
-    private Map<String, Integer> namedTables = new HashMap<String, Integer>();
+    private final Map<String, Integer> namedTables = new HashMap<String, Integer>();
 
     /**
      * The field {@code out} contains the number of bytes in the output stream.
@@ -109,7 +109,7 @@ public final class CompilerState {
     /**
      * The field {@code states} contains the list of states.
      */
-    private List<State> states = new ArrayList<State>();
+    private final List<State> states = new ArrayList<State>();
 
     /**
      * The field {@code tables} contains the list of tables.
@@ -651,10 +651,10 @@ public final class CompilerState {
 
         StringBuilder sb = new StringBuilder();
         sb.append("input:  ");
-        sb.append(Integer.toString(in));
+        sb.append( in );
         sb.append(";\n");
         sb.append("output: ");
-        sb.append(Integer.toString(out));
+        sb.append( out );
         sb.append(";\n");
         if (tables != null && !tables.isEmpty()) {
             sb.append("tables:\n");

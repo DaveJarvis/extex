@@ -115,7 +115,7 @@ public class PdftexUnitInfo extends UnitInfo
     /**
      * The field {@code modeMap} contains the ...
      */
-    private Map<Long, String> modeMap = new HashMap<Long, String>();
+    private final Map<Long, String> modeMap = new HashMap<Long, String>();
 
     /**
      * The field {@code observer} contains the count observer.

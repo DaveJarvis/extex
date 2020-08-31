@@ -77,7 +77,7 @@ public class NumberedHashToks extends NamedHashToks {
 
         return getName()
                 + "#"
-                + Long.toString(source
-                    .parseInteger(context, source, typesetter));
+                + source
+            .parseInteger( context, source, typesetter );
     }
 }

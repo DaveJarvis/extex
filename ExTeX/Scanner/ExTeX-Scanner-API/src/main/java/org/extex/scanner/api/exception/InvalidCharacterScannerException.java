@@ -37,7 +37,7 @@ public class InvalidCharacterScannerException extends ScannerException {
     /**
      * The field {@code c} contains the invalid character.
      */
-    private UnicodeChar c;
+    private final UnicodeChar c;
 
     /**
      * Creates a new object.
@@ -75,7 +75,7 @@ public class InvalidCharacterScannerException extends ScannerException {
         } else if (c.isPrintable()) {
             s = c.toString();
         } else {
-            s = "^^" + Integer.toString(c.getCodePoint());
+            s = "^^" + c.getCodePoint();
         }
         return getLocalizer().format("Text", s);
     }

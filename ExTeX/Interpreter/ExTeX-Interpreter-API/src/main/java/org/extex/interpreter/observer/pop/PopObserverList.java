@@ -61,7 +61,7 @@ public final class PopObserverList implements PopObserver {
     /**
      * The field {@code list} contains the encapsulated list.
      */
-    private List<PopObserver> list = new ArrayList<PopObserver>();
+    private final List<PopObserver> list = new ArrayList<PopObserver>();
 
     /**
      * Add an observer to the list.

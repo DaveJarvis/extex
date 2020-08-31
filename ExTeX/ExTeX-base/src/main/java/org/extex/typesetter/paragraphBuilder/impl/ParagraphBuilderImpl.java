@@ -253,7 +253,7 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
         if (tracer != null) {
             tracer.log(Level.FINE, "@secondpass\n");
             for (int i = 0; i < nodes.size(); i++) {
-                tracer.log(Level.FINE, Integer.toString(i) + "\t"
+                tracer.log( Level.FINE, i + "\t"
                         + nodes.get(i).toString() + "\n");
             }
         }
@@ -437,7 +437,7 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
             tracer.log(Level.FINE,
                 "........................................................."
                     .substring(0, depth)
-                        + " +++ " + Integer.toString(pointIndex) + "\n");
+                        + " +++ " + pointIndex + "\n");
             for (int i = 0; i < pointIndex; i++) {
                 if (breakPoint[i].isActive()) {
                     tracer.log(Level.FINE, " " + breakPoint[i].getPosition()

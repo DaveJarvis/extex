@@ -82,7 +82,7 @@ public class NullfontPrimitive extends AbstractCode
      * The field {@code nullFont} contains the font encapsulated in this
      * primitive.
      */
-    private NullFont nullFont = new NullFont();
+    private final NullFont nullFont = new NullFont();
 
     /**
      * Creates a new object.

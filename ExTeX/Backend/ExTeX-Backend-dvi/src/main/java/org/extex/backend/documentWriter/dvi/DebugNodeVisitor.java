@@ -64,7 +64,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     /**
      * The field {@code printStream} contains the print stream.
      */
-    private PrintStream printStream = System.out;
+    private final PrintStream printStream = System.out;
 
     /**
      * Creates a new instance.

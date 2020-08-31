@@ -64,7 +64,7 @@ public class GetOptionIntegerCompiler implements Compiler {
     /**
      * The field {@code name} contains the name.
      */
-    private GStringConstant name;
+    private final GStringConstant name;
 
     /**
      * Creates a new object.

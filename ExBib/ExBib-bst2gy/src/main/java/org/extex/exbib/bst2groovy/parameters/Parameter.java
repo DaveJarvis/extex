@@ -48,17 +48,17 @@ public class Parameter {
     /**
      * The field {@code intValue} contains the value.
      */
-    private int intValue;
+    private final int intValue;
 
     /**
      * The field {@code value} contains the value.
      */
-    private String stringValue;
+    private final String stringValue;
 
     /**
      * The field {@code booleanValue} contains the value.
      */
-    private boolean booleanValue;
+    private final boolean booleanValue;
 
     /**
      * Creates a new object.

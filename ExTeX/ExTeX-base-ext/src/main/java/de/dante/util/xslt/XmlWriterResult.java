@@ -42,7 +42,7 @@ public class XmlWriterResult extends SAXResult {
         /**
          * The xml writer.
          */
-        private XMLStreamWriter writer;
+        private final XMLStreamWriter writer;
 
         /**
          * Create a new object.

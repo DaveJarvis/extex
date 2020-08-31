@@ -127,7 +127,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     /**
      * The field {@code comments} contains the comments.
      */
-    private StringBuilder comments = new StringBuilder();
+    private final StringBuilder comments = new StringBuilder();
 
     /**
      * The field {@code compilers} contains the compilers for functions,
@@ -144,7 +144,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      * The field {@code evaluateTokenVisitor} contains the token visitor for
      * evaluation.
      */
-    private TokenVisitor evaluateTokenVisitor = new TokenVisitor() {
+    private final TokenVisitor evaluateTokenVisitor = new TokenVisitor() {
 
         /**
     *      java.lang.Object[])
@@ -417,28 +417,28 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     /**
      * The field {@code functionList} contains the list of functions.
      */
-    private List<GFunction> functionList = new ArrayList<GFunction>();
+    private final List<GFunction> functionList = new ArrayList<GFunction>();
 
     /**
      * The field {@code linkData} contains the data for linking.
      */
-    private LinkContainer linkData;
+    private final LinkContainer linkData;
 
     /**
      * The field {@code types} contains the supported types.
      */
-    private Map<String, GFunction> types = new HashMap<String, GFunction>();
+    private final Map<String, GFunction> types = new HashMap<String, GFunction>();
 
     /**
      * The field {@code parameters} contains the parameters.
      */
-    private Map<ParameterType, Parameter> parameters =
+    private final Map<ParameterType, Parameter> parameters =
             new HashMap<ParameterType, Parameter>();
 
     /**
      * The field {@code varManager} contains the variable manager.
      */
-    private VarManager varManager = new VarManager("v");
+    private final VarManager varManager = new VarManager( "v");
 
     {
         if (compilers == null) {

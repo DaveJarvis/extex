@@ -88,7 +88,7 @@ public class PdfDocumentWriter
     /**
      * document writer options.
      */
-    private DocumentWriterOptions docoptions;
+    private final DocumentWriterOptions docoptions;
 
     /**
      * the PDFDocument.
@@ -98,17 +98,17 @@ public class PdfDocumentWriter
     /**
      * map for the parameters.
      */
-    private Map<String, String> param = new HashMap<String, String>();
+    private final Map<String, String> param = new HashMap<String, String>();
 
     /**
      * paper width.
      */
-    private Dimen paperwidth = new Dimen();
+    private final Dimen paperwidth = new Dimen();
 
     /**
      * paper height.
      */
-    private Dimen paperheight = new Dimen();
+    private final Dimen paperheight = new Dimen();
 
     /**
      * paper height in BP.
@@ -118,12 +118,12 @@ public class PdfDocumentWriter
     /**
      * current x position.
      */
-    private Dimen currentX = new Dimen();
+    private final Dimen currentX = new Dimen();
 
     /**
      * current y position.
      */
-    private Dimen currentY = new Dimen();
+    private final Dimen currentY = new Dimen();
 
     /**
      * the pdf node visitor.

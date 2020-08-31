@@ -388,11 +388,7 @@ public class TokenStreamStringImpl32Test {
 
         TokenStream stream = makeStream("^^^^fffe");
         Token t = stream.get(factory, tokenizer);
-        if (t instanceof OtherToken) {
-            assertTrue(true);
-        } else {
-            assertTrue(false);
-        }
+      assertTrue( t instanceof OtherToken );
         Token token = stream.get(factory, tokenizer);
         assertNotNull(token);
         assertEquals(C32, token.getChar().getCodePoint());

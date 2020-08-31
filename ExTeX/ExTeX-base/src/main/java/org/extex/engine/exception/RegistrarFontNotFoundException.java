@@ -40,7 +40,7 @@ public class RegistrarFontNotFoundException extends RegistrarException {
     /**
      * The field {@code key} contains the font key which caused the problem.
      */
-    private FontKey key;
+    private final FontKey key;
 
     /**
      * Creates a new object.

@@ -290,10 +290,7 @@ public class AfmCharMetric implements Serializable {
      */
     public boolean isKerning() {
 
-        if (k == null) {
-            return false;
-        }
-        return true;
+      return k != null;
     }
 
     /**
@@ -303,10 +300,7 @@ public class AfmCharMetric implements Serializable {
      */
     public boolean isLigatur() {
 
-        if (l == null) {
-            return false;
-        }
-        return true;
+      return l != null;
     }
 
     /**

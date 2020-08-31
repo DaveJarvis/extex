@@ -38,7 +38,7 @@ public class EntryReference implements Serializable {
     /**
      * The field {@code name} contains the the name of the entry.
      */
-    private String name;
+    private final String name;
 
     /**
      * The field {@code used} contains the the indicator that the entry is

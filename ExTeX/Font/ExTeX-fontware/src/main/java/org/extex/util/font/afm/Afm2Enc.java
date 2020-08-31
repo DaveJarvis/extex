@@ -57,22 +57,22 @@ public class Afm2Enc extends AbstractFontUtil {
         /**
          * The encoding. (U)
          */
-        private String encoding;
+        private final String encoding;
 
         /**
          * The name of the encoding vector. (8r.enc)
          */
-        private String encvector;
+        private final String encvector;
 
         /**
          * The family name. (fxle0)
          */
-        private String family;
+        private final String family;
 
         /**
          * The name of the font. (fxl)
          */
-        private String font;
+        private final String font;
 
         /**
          * Creates a new object.
@@ -145,22 +145,22 @@ public class Afm2Enc extends AbstractFontUtil {
         /**
          * The font family.
          */
-        private String family;
+        private final String family;
 
         /**
          * The font.
          */
-        private String font;
+        private final String font;
 
         /**
          * The name of the glyph.
          */
-        private String glyphname;
+        private final String glyphname;
 
         /**
          * The number (Position in the encoding vector).
          */
-        private int number;
+        private final int number;
 
         /**
          * Create a new object.
@@ -320,7 +320,7 @@ public class Afm2Enc extends AbstractFontUtil {
     /**
      * The list for the encoding vectors.
      */
-    private List<Enc> enclist = new ArrayList<Enc>();
+    private final List<Enc> enclist = new ArrayList<Enc>();
 
     /**
      * The name for the encoding vectors.
@@ -335,7 +335,7 @@ public class Afm2Enc extends AbstractFontUtil {
     /**
      * A map for the glyphs.
      */
-    private Map<String, EncGlpyh> glyphmap = new HashMap<String, EncGlpyh>();
+    private final Map<String, EncGlpyh> glyphmap = new HashMap<String, EncGlpyh>();
 
     /**
      * The afm parser.

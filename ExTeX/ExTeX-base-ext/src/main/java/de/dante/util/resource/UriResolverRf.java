@@ -42,7 +42,7 @@ public class UriResolverRf implements URIResolver {
     /**
      * The ResourceFinder
      */
-    private ResourceFinder finder;
+    private final ResourceFinder finder;
 
     /**
      * Create a new object.

@@ -91,10 +91,10 @@ public class Ifcase extends AbstractIf {
         /**
          * The constant {@code FI} contains the value indicating a \fi.
          */
-        FI;
-    };
+        FI
+    }
 
-    /**
+  /**
      * The constant {@code serialVersionUID} contains the id for serialization.
      */
     protected static final long serialVersionUID = 2011L;

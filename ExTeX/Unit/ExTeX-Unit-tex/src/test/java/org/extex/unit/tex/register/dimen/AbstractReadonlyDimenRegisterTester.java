@@ -33,12 +33,12 @@ public abstract class AbstractReadonlyDimenRegisterTester extends ExTeXLauncher 
      * The field {@code primitive} contains the name of the primitive to
      * test.
      */
-    private String primitive;
+    private final String primitive;
 
     /**
      * The field {@code defaultValue} contains the default value.
      */
-    private String defaultValue;
+    private final String defaultValue;
 
     /**
      * The field {@code argument} contains the argument.

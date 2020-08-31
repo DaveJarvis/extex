@@ -38,7 +38,7 @@ public class FitrDestType extends DestType {
     /**
      * The field {@code rule} contains the rule specification.
      */
-    private RuleNode rule;
+    private final RuleNode rule;
 
     /**
      * Creates a new object.

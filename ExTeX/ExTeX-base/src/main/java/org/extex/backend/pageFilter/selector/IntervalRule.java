@@ -29,12 +29,12 @@ class IntervalRule implements Rule {
     /**
      * The field {@code from} contains the lower limit.
      */
-    private int from;
+    private final int from;
 
     /**
      * The field {@code to} contains the upper limit.
      */
-    private int to;
+    private final int to;
 
     /**
      * Creates a new object.

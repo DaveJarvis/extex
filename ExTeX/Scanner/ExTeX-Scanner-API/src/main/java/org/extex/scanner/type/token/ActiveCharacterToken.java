@@ -50,7 +50,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
     /**
      * The field {@code namespace} contains the namespace for this token.
      */
-    private String namespace;
+    private final String namespace;
 
     /**
      * Creates a new object.

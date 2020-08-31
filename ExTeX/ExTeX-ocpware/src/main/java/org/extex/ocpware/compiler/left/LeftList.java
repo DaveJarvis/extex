@@ -39,7 +39,7 @@ public class LeftList implements Left {
     /**
      * The field {@code list} contains the list.
      */
-    private List<Left> list;
+    private final List<Left> list;
 
     /**
      * Creates a new object.
@@ -55,8 +55,8 @@ public class LeftList implements Left {
 *      org.extex.ocpware.compiler.parser.State, CompilerState)
      */
     public List<Integer> genLeft(State state, CompilerState cs)
-            throws AliasNotDefinedException,
-                ArgmentTooBigException,
+            throws
+        ArgmentTooBigException,
                 IOException,
                 IllegalOpcodeException {
 

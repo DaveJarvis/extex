@@ -51,7 +51,7 @@ public final class Fitness {
     /**
      * The field {@code order} contains the order of the fitness.
      */
-    private int order;
+    private final int order;
 
     /**
      * Creates a new object.

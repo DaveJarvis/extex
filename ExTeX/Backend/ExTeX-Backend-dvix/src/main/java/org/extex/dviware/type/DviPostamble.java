@@ -48,28 +48,28 @@ public class DviPostamble extends AbstractDviCode {
      * The field {@code fontMap} contains the fonts and their mapping to
      * indexes.
      */
-    private Map<Font, Long> fontMap = new HashMap<Font, Long>();
+    private final Map<Font, Long> fontMap = new HashMap<Font, Long>();
 
     /**
      * The field {@code fonts} contains the list of the font def instructions
      * to be written out at the end.
      */
-    private List<DviFntDef> fonts = new ArrayList<DviFntDef>();
+    private final List<DviFntDef> fonts = new ArrayList<DviFntDef>();
 
     /**
      * The field {@code mag} contains the magnification in permille.
      */
-    private int mag;
+    private final int mag;
 
     /**
      * The field {@code maxHeight} contains the maximal height.
      */
-    private Dimen maxHeight = new Dimen(0);
+    private final Dimen maxHeight = new Dimen( 0);
 
     /**
      * The field {@code maxWidth} contains the maximal width.
      */
-    private Dimen maxWidth = new Dimen(0);
+    private final Dimen maxWidth = new Dimen( 0);
 
     /**
      * The field {@code numberOfPages} contains the number of pages.

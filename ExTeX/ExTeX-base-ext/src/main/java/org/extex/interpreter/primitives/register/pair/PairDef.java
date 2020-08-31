@@ -72,8 +72,8 @@ public class PairDef extends AbstractAssignment {
         source.getOptionalEquals(context);
         String key =
                 "pair#"
-                        + Long.toString(source.parseInteger(context, source,
-                            typesetter));
+                        + source.parseInteger( context, source,
+                                               typesetter );
         context.setCode(tok, new NamedPair(tok, key), prefix.clearGlobal());
     }
 }

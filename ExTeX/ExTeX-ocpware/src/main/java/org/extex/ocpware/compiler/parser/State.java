@@ -37,7 +37,7 @@ public class State {
     /**
      * The field {@code instructions} contains the list of instruction words.
      */
-    private List<Integer> instructions = new ArrayList<Integer>();
+    private final List<Integer> instructions = new ArrayList<Integer>();
 
     /**
      * The field {@code numberExpressions} contains the number of expressions

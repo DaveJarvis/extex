@@ -78,72 +78,72 @@ public class TokenFactoryImpl
      * The field {@code activeCache} contains the cache for active character
      * tokens.
      */
-    private Map<String, Map<UnicodeChar, WeakReference<ActiveCharacterToken>>> activeCache =
+    private final Map<String, Map<UnicodeChar, WeakReference<ActiveCharacterToken>>> activeCache =
             new HashMap<String, Map<UnicodeChar, WeakReference<ActiveCharacterToken>>>();
 
     /**
      * The field {@code csCache} contains the cache for control sequence
      * tokens.
      */
-    private Map<String, Map<String, WeakReference<ControlSequenceToken>>> csCache =
+    private final Map<String, Map<String, WeakReference<ControlSequenceToken>>> csCache =
             new HashMap<String, Map<String, WeakReference<ControlSequenceToken>>>();
 
     /**
      * The field {@code leftBraceCache} contains the cache for left brace
      * tokens.
      */
-    private Map<UnicodeChar, WeakReference<LeftBraceToken>> leftBraceCache =
+    private final Map<UnicodeChar, WeakReference<LeftBraceToken>> leftBraceCache =
             new HashMap<UnicodeChar, WeakReference<LeftBraceToken>>();
 
     /**
      * The field {@code letterCache} contains the cache for letter tokens.
      */
-    private Map<UnicodeChar, WeakReference<LetterToken>> letterCache =
+    private final Map<UnicodeChar, WeakReference<LetterToken>> letterCache =
             new HashMap<UnicodeChar, WeakReference<LetterToken>>();
 
     /**
      * The field {@code macroParamCache} contains the cache for macro parameter
      * tokens.
      */
-    private Map<UnicodeChar, WeakReference<MacroParamToken>> macroParamCache =
+    private final Map<UnicodeChar, WeakReference<MacroParamToken>> macroParamCache =
             new HashMap<UnicodeChar, WeakReference<MacroParamToken>>();
 
     /**
      * The field {@code mathShiftCache} contains the cache for math shift
      * tokens.
      */
-    private Map<UnicodeChar, WeakReference<MathShiftToken>> mathShiftCache =
+    private final Map<UnicodeChar, WeakReference<MathShiftToken>> mathShiftCache =
             new HashMap<UnicodeChar, WeakReference<MathShiftToken>>();
 
     /**
      * The field {@code otherCache} contains the cache for other tokens.
      */
-    private Map<UnicodeChar, WeakReference<OtherToken>> otherCache =
+    private final Map<UnicodeChar, WeakReference<OtherToken>> otherCache =
             new HashMap<UnicodeChar, WeakReference<OtherToken>>();
 
     /**
      * The field {@code rightBraceCache} contains the cache for right brace
      * tokens.
      */
-    private Map<UnicodeChar, WeakReference<RightBraceToken>> rightBraceCache =
+    private final Map<UnicodeChar, WeakReference<RightBraceToken>> rightBraceCache =
             new HashMap<UnicodeChar, WeakReference<RightBraceToken>>();
 
     /**
      * The field {@code subMarkCache} contains the cache for sub mark tokens.
      */
-    private Map<UnicodeChar, WeakReference<SubMarkToken>> subMarkCache =
+    private final Map<UnicodeChar, WeakReference<SubMarkToken>> subMarkCache =
             new HashMap<UnicodeChar, WeakReference<SubMarkToken>>();
 
     /**
      * The field {@code supMarkCache} contains the cache for super mark tokens.
      */
-    private Map<UnicodeChar, WeakReference<SupMarkToken>> supMarkCache =
+    private final Map<UnicodeChar, WeakReference<SupMarkToken>> supMarkCache =
             new HashMap<UnicodeChar, WeakReference<SupMarkToken>>();
 
     /**
      * The field {@code tabMarkCache} contains the cache for tab mark tokens.
      */
-    private Map<UnicodeChar, WeakReference<TabMarkToken>> tabMarkCache =
+    private final Map<UnicodeChar, WeakReference<TabMarkToken>> tabMarkCache =
             new HashMap<UnicodeChar, WeakReference<TabMarkToken>>();
 
     /**

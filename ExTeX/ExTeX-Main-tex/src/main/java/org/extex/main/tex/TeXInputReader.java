@@ -40,18 +40,18 @@ public class TeXInputReader extends Reader {
     /**
      * The field {@code logger} contains the logger to write output to.
      */
-    private Logger logger;
+    private final Logger logger;
 
     /**
      * The field {@code prompt} contains the cached prompt to be shown before
      * each line of input.
      */
-    private String prompt;
+    private final String prompt;
 
     /**
      * The field {@code reader} contains the reader to do the real job.
      */
-    private Reader reader;
+    private final Reader reader;
 
     /**
      * The field {@code showPrompt} contains the indicator that the prompt

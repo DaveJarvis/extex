@@ -910,8 +910,8 @@ public class DviDocumentWriter
                         + "."
                         + two("day")
                         + ":"
-                        + Long.toString((time / MINUTES_PER_OUR) * 100 + time
-                                % MINUTES_PER_OUR);
+                        + ((time / MINUTES_PER_OUR) * 100 + time
+                    % MINUTES_PER_OUR);
         long mag = options.getMagnification();
         if (mag > MAX_4_BYTE) {
             mag = MAX_4_BYTE;

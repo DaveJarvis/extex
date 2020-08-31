@@ -76,7 +76,7 @@ public class NumberedBool extends NamedBool {
 
         return getName()
                 + "#"
-                + Long.toString(source
-                    .parseInteger(context, source, typesetter));
+                + source
+            .parseInteger( context, source, typesetter );
     }
 }

@@ -69,7 +69,7 @@ public final class Var implements GCode {
     /**
      * The field {@code name} contains the name.
      */
-    private String name;
+    private final String name;
 
     /**
      * The field {@code type} contains the return type.
@@ -86,7 +86,7 @@ public final class Var implements GCode {
      * The field {@code age} contains the age of the variable. It helps to
      * determine which variable to bind when two unbound variables are unified.
      */
-    private int age;
+    private final int age;
 
     /**
      * Creates a new object.

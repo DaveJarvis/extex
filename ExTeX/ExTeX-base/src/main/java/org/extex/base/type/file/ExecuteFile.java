@@ -46,7 +46,7 @@ public class ExecuteFile extends OutputFile {
      * The field {@code logger} contains the logger for tracing and error
      * messages.
      */
-    private transient Logger logger;
+    private final transient Logger logger;
 
     /**
      * Creates a new object.

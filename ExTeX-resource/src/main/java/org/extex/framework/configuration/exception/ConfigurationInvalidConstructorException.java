@@ -40,7 +40,7 @@ public class ConfigurationInvalidConstructorException
      * The field {@code className} contains the name of the class which could
      * not be found.
      */
-    private String className;
+    private final String className;
 
     /**
      * Creates a new object.

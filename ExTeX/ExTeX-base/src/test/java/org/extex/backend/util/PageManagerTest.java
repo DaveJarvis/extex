@@ -59,9 +59,9 @@ public class PageManagerTest {
 
         for (int i = 0; i < reference.length(); i++) {
             if (reference.charAt(i) == '_') {
-                assertTrue("true " + Integer.toString(i), pm.isSelected(i));
+                assertTrue( "true " + i, pm.isSelected( i));
             } else {
-                assertFalse("false " + Integer.toString(i), pm.isSelected(i));
+                assertFalse( "false " + i, pm.isSelected( i));
             }
         }
     }

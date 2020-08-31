@@ -36,7 +36,7 @@ public class ConfigurationMissingException extends ConfigurationException {
     /**
      * The field {@code item} contains the name of the missing item.
      */
-    private String item;
+    private final String item;
 
     /**
      * Create a new object.

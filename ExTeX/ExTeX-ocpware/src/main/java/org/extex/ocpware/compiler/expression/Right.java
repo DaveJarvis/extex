@@ -38,7 +38,7 @@ public class Right {
     /**
      * The field {@code right} contains the list of expressions.
      */
-    private List<Expr> right;
+    private final List<Expr> right;
 
     /**
      * Creates a new object.

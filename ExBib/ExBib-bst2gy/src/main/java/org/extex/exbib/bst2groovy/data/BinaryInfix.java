@@ -45,7 +45,7 @@ public abstract class BinaryInfix extends GenericCode {
     /**
      * The field {@code level} contains the precedence.
      */
-    private int level;
+    private final int level;
 
     /**
      * Creates a new object.

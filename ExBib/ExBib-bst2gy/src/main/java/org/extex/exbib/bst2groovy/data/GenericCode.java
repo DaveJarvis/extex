@@ -37,17 +37,17 @@ public class GenericCode implements GCode {
     /**
      * The field {@code type} contains the return type.
      */
-    private ReturnType type;
+    private final ReturnType type;
 
     /**
      * The field {@code name} contains the name.
      */
-    private String name;
+    private final String name;
 
     /**
      * The field {@code args} contains the arguments.
      */
-    private GCode[] args;
+    private final GCode[] args;
 
     /**
      * The field {@code entry} contains the name of the entry or

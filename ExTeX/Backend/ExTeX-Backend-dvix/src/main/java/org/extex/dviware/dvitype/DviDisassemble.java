@@ -140,7 +140,7 @@ public class DviDisassemble implements DviProcessor {
     /**
      * The field {@code out} contains the output stream.
      */
-    private PrintStream out;
+    private final PrintStream out;
 
     /**
      * Creates a new object.
@@ -401,7 +401,7 @@ public class DviDisassemble implements DviProcessor {
                 }
                 out.print(s);
             } else {
-                out.print(Integer.toString(off));
+                out.print( off );
             }
             out.print('\t');
         }
@@ -432,9 +432,9 @@ public class DviDisassemble implements DviProcessor {
 
         printLabel(off);
         out.print("put_char ");
-        out.print(Integer.toString(c));
+        out.print( c );
         out.print("\t\t\t; ");
-        out.println(Character.toString((char) c));
+        out.println( (char) c );
     }
 
     /**
@@ -450,9 +450,9 @@ public class DviDisassemble implements DviProcessor {
 
         printLabel(off);
         out.print("put_rule ");
-        out.print(Integer.toString(a));
+        out.print( a );
         out.print(' ');
-        out.println(Integer.toString(b));
+        out.println( b );
     }
 
     /**
@@ -486,13 +486,13 @@ public class DviDisassemble implements DviProcessor {
                 out.print("\"");
                 inString = true;
             }
-            out.print(Character.toString((char) c));
+            out.print( (char) c );
         } else {
             printLabel(off);
             out.print("set_char_");
-            out.print(Integer.toString(c));
+            out.print( c );
             out.print("\t\t\t; ");
-            out.println(Character.toString((char) c));
+            out.println( (char) c );
         }
     }
 
@@ -509,9 +509,9 @@ public class DviDisassemble implements DviProcessor {
 
         printLabel(off);
         out.print("set_rule ");
-        out.print(Integer.toString(a));
+        out.print( a );
         out.print(' ');
-        out.println(Integer.toString(b));
+        out.println( b );
     }
 
     /**

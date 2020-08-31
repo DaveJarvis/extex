@@ -99,7 +99,7 @@ public class Afm2Mtx extends AbstractFontUtil {
     /**
      * The encoding reader list.
      */
-    private List<String> enclist = new ArrayList<String>();
+    private final List<String> enclist = new ArrayList<String>();
 
     /**
      * The afm parser.

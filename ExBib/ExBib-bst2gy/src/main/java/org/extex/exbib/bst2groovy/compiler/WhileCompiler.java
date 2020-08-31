@@ -59,12 +59,12 @@ public class WhileCompiler implements Compiler {
         /**
          * The field {@code cond} contains the condition code.
          */
-        private GCode cond;
+        private final GCode cond;
 
         /**
          * The field {@code body} contains the body code.
          */
-        private GCode body;
+        private final GCode body;
 
         /**
          * Creates a new object.
@@ -172,7 +172,7 @@ public class WhileCompiler implements Compiler {
                     extra--;
                     GCode v = state.pop();
                     if (v instanceof Var) {
-                        ((Var) v).unify(x);
+                        v.unify( x);
                     } else {
                         state.add(new DeclareVar(x, v));
                     }

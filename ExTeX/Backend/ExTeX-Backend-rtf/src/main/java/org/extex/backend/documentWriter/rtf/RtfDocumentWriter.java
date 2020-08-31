@@ -119,7 +119,7 @@ public class RtfDocumentWriter extends RtfDocument
      * The field {@code visitor} contains the visitor carrying the methods
      * for translating nodes to RTF instructions.
      */
-    private NodeVisitor<Boolean, Object> visitor =
+    private final NodeVisitor<Boolean, Object> visitor =
             new NodeVisitor<Boolean, Object>() {
 
                 /**
@@ -134,17 +134,17 @@ public class RtfDocumentWriter extends RtfDocument
                     /**
                      * The field {@code color} contains the color index.
                      */
-                    private int color;
+                    private final int color;
 
                     /**
                      * The field {@code font} contains the font index.
                      */
-                    private int font;
+                    private final int font;
 
                     /**
                      * The field {@code fontSize} contains the font size.
                      */
-                    private long fontSize;
+                    private final long fontSize;
 
                     /**
                      * Creates a new object.
@@ -202,7 +202,7 @@ public class RtfDocumentWriter extends RtfDocument
                  * The field {@code stack} contains the stack for RTF group
                  * state information.
                  */
-                private Stack<State> stack = new Stack<State>();
+                private final Stack<State> stack = new Stack<State>();
 
                 /**
                  * Emit the instruction to close a RTF group and restore the

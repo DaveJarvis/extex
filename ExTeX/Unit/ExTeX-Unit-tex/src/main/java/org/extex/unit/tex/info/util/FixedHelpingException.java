@@ -45,14 +45,14 @@ public class FixedHelpingException extends HelpingException {
      * The field {@code help} contains the string which is shown if further
      * help is requested.
      */
-    private String help;
+    private final String help;
 
     /**
      * The field {@code message} contains the message. We need to keep it here
      * since the parent class does not provide writing access to the message of
      * the underlying Exception.
      */
-    private String message;
+    private final String message;
 
     /**
      * Creates a new object.

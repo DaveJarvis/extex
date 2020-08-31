@@ -122,12 +122,12 @@ public class XMLDocumentWriter
     /**
      * current x position.
      */
-    private Dimen currentX = new Dimen();
+    private final Dimen currentX = new Dimen();
 
     /**
      * current y position.
      */
-    private Dimen currentY = new Dimen();
+    private final Dimen currentY = new Dimen();
 
     /**
      * debug.
@@ -137,7 +137,7 @@ public class XMLDocumentWriter
     /**
      * document writer options.
      */
-    private DocumentWriterOptions docoptions;
+    private final DocumentWriterOptions docoptions;
 
     /**
      * encoding.
@@ -172,7 +172,7 @@ public class XMLDocumentWriter
     /**
      * map for the parameters.
      */
-    private Map<String, String> param = new HashMap<String, String>();
+    private final Map<String, String> param = new HashMap<String, String>();
 
     /**
      * The number of pages, which are ship out.
@@ -974,11 +974,11 @@ public class XMLDocumentWriter
                     .isType1());
                 writer.writeAttribute("isXtf", info.getBackendFont().isXtf());
                 writer.writeAttribute("hasPfb",
-                    info.getBackendFont().getPfb() != null ? true : false);
+                                      info.getBackendFont().getPfb() != null );
                 writer.writeAttribute("hasPfa",
-                    info.getBackendFont().getPfa() != null ? true : false);
+                                      info.getBackendFont().getPfa() != null );
                 writer.writeAttribute("hasXtf",
-                    info.getBackendFont().getXtf() != null ? true : false);
+                                      info.getBackendFont().getXtf() != null );
             }
             writer
                 .writeAttribute("fontparameter", info.getFontKey().toString());

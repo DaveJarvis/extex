@@ -155,29 +155,29 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
     /**
      * The field {@code preamble} contains the preamble for this halign.
      */
-    private List<PreambleItem> preamble;
+    private final List<PreambleItem> preamble;
 
     /**
      * The field {@code rows} contains the rows of this alignment.
      */
-    private List<Cell[]> rows = new ArrayList<Cell[]>();
+    private final List<Cell[]> rows = new ArrayList<Cell[]>();
 
     /**
      * The field {@code spread} contains the indicator that the width should be
      * interpreted relative to the natural width.
      */
-    private boolean spread;
+    private final boolean spread;
 
     /**
      * The field {@code maxWidth} contains the maximal width of each column.
      */
-    private Dimen[] maxWidth;
+    private final Dimen[] maxWidth;
 
     /**
      * The field {@code width} contains the target width or {@code null}
      * to indicate that the natural width should be used.
      */
-    private FixedDimen width;
+    private final FixedDimen width;
 
     /**
      * Creates a new object.

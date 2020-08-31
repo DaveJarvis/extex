@@ -42,7 +42,7 @@ public class OcpException extends IOException {
     /**
      * The field {@code s} contains the name of the state.
      */
-    private String s;
+    private final String s;
 
     /**
      * Creates a new object.

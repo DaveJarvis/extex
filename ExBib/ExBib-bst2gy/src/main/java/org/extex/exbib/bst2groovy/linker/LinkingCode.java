@@ -32,7 +32,7 @@ public abstract class LinkingCode implements Comparable<LinkingCode> {
     /**
      * The field {@code key} contains the key for sorting.
      */
-    private String key;
+    private final String key;
 
     /**
      * Creates a new object.

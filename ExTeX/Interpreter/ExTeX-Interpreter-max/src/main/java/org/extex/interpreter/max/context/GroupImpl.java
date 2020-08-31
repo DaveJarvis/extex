@@ -594,7 +594,7 @@ public class GroupImpl implements Group {
                 return b.booleanValue();
             }
         }
-        return next != null ? next.getIf(name) : false;
+        return next != null && next.getIf( name );
     }
 
     /**

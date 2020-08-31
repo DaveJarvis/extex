@@ -167,7 +167,7 @@ public class NativeLoad extends AbstractCode
      * The field {@code map} contains the mapping from a symbolic name to a
      * configuration.
      */
-    private Map<String, Configuration> map =
+    private final Map<String, Configuration> map =
             new HashMap<String, Configuration>();
 
     /**

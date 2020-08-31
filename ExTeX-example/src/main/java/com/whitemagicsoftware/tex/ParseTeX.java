@@ -36,10 +36,15 @@ import org.extex.interpreter.max.StringSource;
 public class ParseTeX {
   private final static String TEX = "$e^{\\pi i} + 1 = 0$";
 
+  /**
+   * Main entry point.
+   *
+   * @param args Unused.
+   */
   public static void main( final String[] args ) {
     final Interpreter interpreter;
 
-    final StringSource ss = new StringSource(TEX);
+    final StringSource ss = new StringSource( TEX );
 
     //ss.getTokens(  )
 

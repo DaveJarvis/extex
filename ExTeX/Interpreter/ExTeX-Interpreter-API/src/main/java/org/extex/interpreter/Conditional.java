@@ -42,25 +42,25 @@ public class Conditional implements Serializable {
     /**
      * The field {@code branch} contains the branch indicator.
      */
-    private long branch;
+    private final long branch;
 
     /**
      * The field {@code locator} contains the locator to the position of the
      * opening {@code \if}.
      */
-    private Locator locator;
+    private final Locator locator;
 
     /**
      * The field {@code neg} contains the indicator that the conditional has
      * been negated.
      */
-    private boolean neg;
+    private final boolean neg;
 
     /**
      * The field {@code primitive} contains the name of the primitive which
      * has lead to this conditional.
      */
-    private Code primitive;
+    private final Code primitive;
 
     /**
      * Creates a new object.

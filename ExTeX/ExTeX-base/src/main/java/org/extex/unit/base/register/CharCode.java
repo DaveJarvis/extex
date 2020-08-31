@@ -61,7 +61,7 @@ public class CharCode extends AbstractCode
     /**
      * The field {@code character} contains the encapsulated Unicode character.
      */
-    private UnicodeChar character;
+    private final UnicodeChar character;
 
     /**
      * Creates a new object.

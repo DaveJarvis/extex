@@ -88,7 +88,7 @@ public class DivideTest extends NoFlagsButGlobalPrimitiveTester {
         assertFailure(// --- input code ---
             "\\divide a",
             // --- log message ---
-            "You can\'t use `the letter a\' after \\divide");
+                      "You can't use `the letter a' after \\divide" );
     }
 
     /**
@@ -103,7 +103,7 @@ public class DivideTest extends NoFlagsButGlobalPrimitiveTester {
         assertFailure(// --- input code ---
             "\\divide 12 ",
             // --- log message ---
-            "You can\'t use `the character 1\' after \\divide");
+                      "You can't use `the character 1' after \\divide" );
     }
 
     /**
@@ -118,7 +118,8 @@ public class DivideTest extends NoFlagsButGlobalPrimitiveTester {
         assertFailure(// --- input code ---
             "\\catcode`#=6 " + "\\divide #2 ",
             // --- log message ---
-            "You can\'t use `macro parameter character #\' after \\divide");
+                      "You can't use `macro parameter character #' after " +
+                          "\\divide" );
     }
 
     /**
@@ -133,7 +134,8 @@ public class DivideTest extends NoFlagsButGlobalPrimitiveTester {
         assertFailure(// --- input code ---
             "\\divide \\relax ",
             // --- log message ---
-            "You can\'t use `the control sequence \\relax\' after \\divide");
+                      "You can't use `the control sequence \\relax' after " +
+                          "\\divide" );
     }
 
     /**

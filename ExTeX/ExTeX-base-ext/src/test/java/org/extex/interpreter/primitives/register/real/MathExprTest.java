@@ -55,7 +55,7 @@ public class MathExprTest extends ExTeXLauncher {
         // --- input code ---
             DEFINE_CATCODES + "\\the\\mathexpr{2*7} \\end",
             // --- output channel ---
-            String.valueOf(2d * 7d) + TERM);
+        2d * 7d + TERM);
     }
 
     /**
@@ -74,7 +74,7 @@ public class MathExprTest extends ExTeXLauncher {
         // --- input code ---
             DEFINE_CATCODES + "\\the\\mathexpr{2*sin(0.5)} \\end",
             // --- output channel ---
-            String.valueOf(2d * Math.sin(0.5d)) + TERM);
+        2d * Math.sin( 0.5d ) + TERM);
     }
 
     /**

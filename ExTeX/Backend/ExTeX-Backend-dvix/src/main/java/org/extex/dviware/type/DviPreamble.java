@@ -40,12 +40,12 @@ public class DviPreamble extends AbstractDviCode {
     /**
      * The field {@code comment} contains the comment string.
      */
-    private String comment;
+    private final String comment;
 
     /**
      * The field {@code mag} contains the magnification.
      */
-    private int mag;
+    private final int mag;
 
     /**
      * Creates a new object.

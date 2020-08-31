@@ -37,7 +37,7 @@ public class ParserStream extends PushbackInputStream {
      * The field {@code line} contains the characters encountered on the
      * current line so far.
      */
-    private StringBuilder line = new StringBuilder();
+    private final StringBuilder line = new StringBuilder();
 
     /**
      * The field {@code lineno} contains the number of the current line.
@@ -325,7 +325,7 @@ public class ParserStream extends PushbackInputStream {
 @Override
     public String toString() {
 
-        return Integer.toString(lineno) + ":" + line;
+        return lineno + ":" + line;
     }
 
 @Override

@@ -35,7 +35,7 @@ public class DviXxx extends AbstractDviCode {
      * The field {@code content} contains the array of bytes to pass to the
      * DVI processor.
      */
-    private byte[] content;
+    private final byte[] content;
 
     /**
      * Creates a new object.

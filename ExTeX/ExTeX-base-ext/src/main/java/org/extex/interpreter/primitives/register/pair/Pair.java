@@ -56,7 +56,7 @@ public class Pair implements Serializable {
     /**
      * The value y.
      */
-    private Real yval;
+    private final Real yval;
 
 
     public Pair() {

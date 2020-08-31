@@ -44,6 +44,6 @@ public enum OcpArgumentType {
     /**
      * The field {@code STATE} contains an indicator for a state index.
      */
-    STATE;
-    
+    STATE
+
 }

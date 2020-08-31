@@ -38,7 +38,7 @@ public class PdfRefObj extends WhatsItNode {
     /**
      * The field {@code index} contains the index of the object.
      */
-    private long index;
+    private final long index;
 
     /**
      * Creates a new object.

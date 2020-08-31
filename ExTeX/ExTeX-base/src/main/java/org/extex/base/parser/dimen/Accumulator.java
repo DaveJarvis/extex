@@ -92,7 +92,7 @@ public class Accumulator {
      */
     public String ordToString() {
 
-        return "sp^" + Integer.toString(sp);
+        return "sp^" + sp;
     }
 
     /**

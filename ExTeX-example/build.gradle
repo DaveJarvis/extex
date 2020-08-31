@@ -1,3 +1,5 @@
+description = 'ExTeX Example'
+
 dependencies {
     implementation project(':ExTeX-resource')
     implementation project(':extex:ExTeX-base')
@@ -6,5 +8,3 @@ dependencies {
     implementation project(':extex:ExTeX-Interpreter-API')
     implementation project(':extex:ExTeX-Typesetter-API')
 }
-
-description = 'ExTeX Example'

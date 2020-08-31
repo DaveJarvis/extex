@@ -39,13 +39,13 @@ public class MultiConfigurationIterator implements Iterator<Configuration> {
     /**
      * The field {@code key} contains the symbolic key for this Iterator.
      */
-    private String key;
+    private final String key;
 
     /**
      * The field {@code config} contains the list of configurations to iterate
      * over.
      */
-    private Configuration[] configs;
+    private final Configuration[] configs;
 
     /**
      * The field {@code ptr} contains the index of configurations to be treated

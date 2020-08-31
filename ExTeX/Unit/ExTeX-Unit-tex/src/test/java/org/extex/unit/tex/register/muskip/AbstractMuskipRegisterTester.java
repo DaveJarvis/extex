@@ -34,18 +34,18 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
     /**
      * The field {@code primitive} contains the name of the primitive to test.
      */
-    private String primitive;
+    private final String primitive;
 
     /**
      * The field {@code invocation} contains the concatenation of primitive
      * name and arguments.
      */
-    private String invocation;
+    private final String invocation;
 
     /**
      * The field {@code init} contains the default value.
      */
-    private String init;
+    private final String init;
 
     /**
      * The field {@code prepare} contains the the preparation code inserted

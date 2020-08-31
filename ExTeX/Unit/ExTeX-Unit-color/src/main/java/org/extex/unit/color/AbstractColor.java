@@ -60,7 +60,7 @@ public abstract class AbstractColor extends AbstractAssignment
      * The field {@code theVisitor} contains the color visitor for converting
      * to a printable representation.
      */
-    private static ColorVisitor theVisitor = new ColorVisitor() {
+    private static final ColorVisitor theVisitor = new ColorVisitor() {
 
         /**
          * {@inheritDoc}

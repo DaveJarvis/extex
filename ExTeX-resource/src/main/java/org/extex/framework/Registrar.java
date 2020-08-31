@@ -77,12 +77,12 @@ public final class Registrar {
         /**
          * The field {@code observer} contains the observer.
          */
-        private RegistrarObserver observer;
+        private final RegistrarObserver observer;
 
         /**
          * The field {@code type} contains the class.
          */
-        private Class<?> type;
+        private final Class<?> type;
 
         /**
          * Creates a new object.
@@ -140,7 +140,7 @@ public final class Registrar {
      * The field {@code pipe} contains the list of registrars which wait to be
      * activated.
      */
-    private static List<Registrar> pipe = new ArrayList<Registrar>();
+    private static final List<Registrar> pipe = new ArrayList<Registrar>();
 
     /**
      * Create a new registrar and activate it.
@@ -260,7 +260,7 @@ public final class Registrar {
      * The field {@code observers} contains the observers which are currently
      * registered.
      */
-    private List<Obs> observers = new ArrayList<Obs>();
+    private final List<Obs> observers = new ArrayList<Obs>();
 
     /**
      * Private constructor to avoid instantiation.

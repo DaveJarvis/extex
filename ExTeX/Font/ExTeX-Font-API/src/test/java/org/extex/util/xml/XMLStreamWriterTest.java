@@ -289,11 +289,7 @@ public class XMLStreamWriterTest extends TestCase {
 
         } catch (IOException e) {
 
-            if (e.getMessage().startsWith("invalid struktur")) {
-                assertTrue(true);
-            } else {
-                assertTrue(false);
-            }
+          assertTrue( e.getMessage().startsWith( "invalid struktur" ) );
             return;
         }
         assertTrue(false);

@@ -34,12 +34,12 @@ public class OmegaInputStream extends InputStream {
     /**
      * The field {@code context} contains the interpreter context.
      */
-    private Context context;
+    private final Context context;
 
     /**
      * The field {@code stream} contains the input stream itself.
      */
-    private InputStream stream;
+    private final InputStream stream;
 
     /**
      * Creates a new object.

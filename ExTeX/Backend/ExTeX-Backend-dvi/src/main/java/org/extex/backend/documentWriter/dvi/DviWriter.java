@@ -382,13 +382,13 @@ public class DviWriter {
      * Fonts defined in the dvi-file.
      * 
      */
-    private Vector<Font> definedFonts = new Vector<Font>();
+    private final Vector<Font> definedFonts = new Vector<Font>();
 
     /**
      * Options for the documentWriter.
      * 
      */
-    private DocumentWriterOptions documentWriterOptions;
+    private final DocumentWriterOptions documentWriterOptions;
 
     /**
      * Magnification of the document.
@@ -424,7 +424,7 @@ public class DviWriter {
      * Space to save currentPosition.
      * 
      */
-    private Stack<DviPositions> savedPositions = new Stack<DviPositions>();
+    private final Stack<DviPositions> savedPositions = new Stack<DviPositions>();
 
     /**
      * Variable for remembering errors. If an error occurs this variable is set

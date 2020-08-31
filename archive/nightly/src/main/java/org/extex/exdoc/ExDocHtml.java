@@ -207,10 +207,7 @@ public class ExDocHtml extends ExDocXml {
 
         Collections.sort(keys, new Comparator<Key>() {
 
-            /**
-        *      java.lang.Object)
-             */
-            public int compare(Key o1, Key o2) {
+    public int compare(Key o1, Key o2) {
 
                 return o1.toString().compareTo(o2.toString());
             }

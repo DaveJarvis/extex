@@ -79,7 +79,7 @@ public class NumberedPair extends NamedPair {
 
         return getName()
                 + "#"
-                + Long.toString(source
-                    .parseInteger(context, source, typesetter));
+                + source
+            .parseInteger( context, source, typesetter );
     }
 }

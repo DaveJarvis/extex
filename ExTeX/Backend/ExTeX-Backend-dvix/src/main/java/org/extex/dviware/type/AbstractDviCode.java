@@ -85,7 +85,7 @@ public abstract class AbstractDviCode implements DviCode {
     /**
      * The field {@code name} contains the name of the dvi instruction.
      */
-    private String name;
+    private final String name;
 
     /**
      * Creates a new object.

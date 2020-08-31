@@ -53,7 +53,7 @@ public class OcpReaderTest {
      * The field {@code buffer} contains the buffer for transporting
      * information from a visitor out.
      */
-    private StringBuilder buffer = new StringBuilder();
+    private final StringBuilder buffer = new StringBuilder();
 
     /**
      * Attach an observer for debugging.
@@ -904,7 +904,7 @@ public class OcpReaderTest {
 
         OcpReader reader =
                 prepare("expressions:\n" + "`a'`b'`c' => 123;"
-                        + "\n`a\'`b\' => `x' <= \\$; . => \\1;",
+                        + "\n`a'`b' => `x' <= \\$; . => \\1;",
                     "ab");
 
         assertEquals((int) 'x', reader.read());

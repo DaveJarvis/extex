@@ -37,7 +37,7 @@ public class CodeBlock implements GCode {
     /**
      * The field {@code t} contains the token.
      */
-    private Token t;
+    private final Token t;
 
     /**
      * Creates a new object.

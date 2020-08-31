@@ -36,24 +36,24 @@ public class GotoPageActionSpec extends GotoActionSpec {
      * The field {@code file} contains the file name.
      * The value can also be {@code null}.
      */
-    private String file;
+    private final String file;
 
     /**
      * The field {@code newWin} contains the indicator for the the new window.
      * The value can also be {@code null}.
      */
-    private Boolean newWin;
+    private final Boolean newWin;
 
     /**
      * The field {@code page} contains the page number with 0 as default.
      */
-    private long page;
+    private final long page;
 
     /**
      * The field {@code text} contains the plain text.
      * The value can also be {@code null}.
      */
-    private String text;
+    private final String text;
 
     /**
      * Creates a new object.

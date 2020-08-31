@@ -40,18 +40,18 @@ public class CompleteLeft implements Left {
     /**
      * The field {@code from} contains the lower bound.
      */
-    private int from;
+    private final int from;
 
     /**
      * The field {@code left} contains the left item to apply the constraints
      * to.
      */
-    private Left left;
+    private final Left left;
 
     /**
      * The field {@code to} contains the upper bound.
      */
-    private int to;
+    private final int to;
 
     /**
      * Creates a new object.
@@ -73,8 +73,7 @@ public class CompleteLeft implements Left {
     public List<Integer> genLeft(State state, CompilerState cs)
             throws IOException,
                 ArgmentTooBigException,
-                AliasNotDefinedException,
-                IllegalOpcodeException {
+        IllegalOpcodeException {
 
         List<Integer> holes = new ArrayList<Integer>();
         if (from > to) {

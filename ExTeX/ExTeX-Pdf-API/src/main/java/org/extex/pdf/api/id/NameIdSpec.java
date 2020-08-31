@@ -35,7 +35,7 @@ public class NameIdSpec extends IdSpec {
     /**
      * The field {@code name} contains the name.
      */
-    private String name;
+    private final String name;
 
     /**
      * Creates a new object.

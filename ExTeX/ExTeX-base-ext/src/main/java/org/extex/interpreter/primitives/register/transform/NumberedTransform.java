@@ -78,7 +78,7 @@ public class NumberedTransform extends NamedTransform {
 
         return getName()
                 + "#"
-                + Long.toString(source
-                    .parseInteger(context, source, typesetter));
+                + source
+            .parseInteger( context, source, typesetter );
     }
 }

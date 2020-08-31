@@ -37,7 +37,7 @@ public class MissingResourceFinderException extends ConfigurationException {
     /**
      * The field {@code message} contains the message of this exception.
      */
-    private String message;
+    private final String message;
 
     /**
      * Create a new object.

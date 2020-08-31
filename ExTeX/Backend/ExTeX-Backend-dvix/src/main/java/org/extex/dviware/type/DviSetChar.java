@@ -35,7 +35,7 @@ public class DviSetChar extends AbstractDviCode {
      * The field {@code codePoint} contains the code point of the character to
      * set.
      */
-    private int codePoint;
+    private final int codePoint;
 
     /**
      * Creates a new object.

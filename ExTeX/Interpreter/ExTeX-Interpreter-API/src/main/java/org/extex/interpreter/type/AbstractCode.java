@@ -58,7 +58,7 @@ public abstract class AbstractCode implements Code, Serializable {
     /**
      * The field {@code token} contains the name of this code for debugging.
      */
-    private CodeToken token;
+    private final CodeToken token;
 
     /**
      * Creates a new object.

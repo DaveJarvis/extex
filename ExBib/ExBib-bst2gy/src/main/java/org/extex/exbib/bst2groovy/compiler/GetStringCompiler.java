@@ -53,7 +53,7 @@ public class GetStringCompiler implements Compiler {
     /**
      * The field {@code name} contains the name of the variable.
      */
-    private String name;
+    private final String name;
 
     /**
      * Creates a new object.

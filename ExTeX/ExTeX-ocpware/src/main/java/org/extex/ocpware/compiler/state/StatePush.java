@@ -43,7 +43,7 @@ public class StatePush implements RightState {
     /**
      * The field {@code state} contains the state.
      */
-    private String state;
+    private final String state;
 
     /**
      * Creates a new object.
@@ -60,8 +60,7 @@ public class StatePush implements RightState {
      */
     public void compile(CompilerState cs, boolean withOffset)
             throws IOException,
-                StateNotDefinedException,
-                ArgmentTooBigException {
+        ArgmentTooBigException {
 
         cs.putInstruction(OcpCode.OP_STATE_PUSH, cs.lookupState(state));
     }
