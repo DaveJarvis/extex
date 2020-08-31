@@ -50,7 +50,7 @@ public class ImpossibleExceptionTest {
             e.toString());
         Locale.setDefault(Locale.GERMAN);
         assertEquals(
-            "org.extex.exbib.bst2groovy.exception.ImpossibleException: Unm�glich: msg\n",
+            "org.extex.exbib.bst2groovy.exception.ImpossibleException: Unm\u00F6glich: msg\n",
             e.toString());
     }
 
@@ -71,7 +71,7 @@ public class ImpossibleExceptionTest {
             e.toString());
         Locale.setDefault(Locale.GERMAN);
         assertEquals(
-            "org.extex.exbib.bst2groovy.exception.ImpossibleException: Unm�glich: java.lang.Exception: msg\n",
+            "org.extex.exbib.bst2groovy.exception.ImpossibleException: Unm\u00F6glich: java.lang.Exception: msg\n",
             e.toString());
     }
 
